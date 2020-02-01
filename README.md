@@ -5,11 +5,8 @@
     *  <a href="#fetch-merge">fetch + merge</a>
     *  <a href="#fetch-rebase">fetch + rebase</a>
 *  <a href="#分支branch">分支(branch)</a>
-<<<<<<< HEAD
 *  <a href="#提交commit">提交(commit)</a>
-=======
 
->>>>>>> b822d1029248cbde579c2e86d96b3541530613eb
 
 ## 名詞解釋
 *  master: 本地分支名(只是一個分支名，開新專案自動幫你創的)
@@ -32,7 +29,6 @@
 ### fetch + rebase
 
 ## 分支(branch)
-<<<<<<< HEAD
 *  分支是為了將修改記錄的整體流程分開儲存，讓分開的分支不受其他分支的影響
 *  查看分支: ```git branch```
 *  建立分支: ```git branch <branchname>```
@@ -43,6 +39,4 @@
 
 ## 提交(commit)
 *  基本提交: ```git commit -m "commit content"```
-=======
 *  分支是為了將修改記錄的整體流程分開儲存，讓分開的分支不受其他分支的影響。
->>>>>>> b822d1029248cbde579c2e86d96b3541530613eb
