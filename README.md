@@ -35,7 +35,7 @@
 *  切換分支: ```git checkout <branch>```
 *  合併分支: ```git merge <branch>``` (依你現在所在的 branch 去合併)
 *  刪除分支: ```git branch -d <branch>```
-
+*  建立分支是依你目前所在的分支狀態，複製並建立起來的(看你建立時有甚麼檔案，新建立的分支就有甚麼)
 
 ## 提交(commit)
 *  基本提交: ```git commit -m "commit content"```
