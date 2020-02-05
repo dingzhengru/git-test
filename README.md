@@ -45,5 +45,5 @@
 
 ## 提交(commit)
 *  基本提交: ```git commit -m "commit content"```
-*  上傳: ```git push```，非預設分支(master)的話: ```git push --set-upstream origin dev```
+*  上傳: ```git push```
 *  分支是為了將修改記錄的整體流程分開儲存，讓分開的分支不受其他分支的影響。
