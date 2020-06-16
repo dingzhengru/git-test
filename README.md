@@ -81,6 +81,7 @@
 - 可以先用 `git log --oneline` 查看所有紀錄，或是用`git reflog` 查看所有訊息版本
 - `git rebase -i commit_id` 指定要修改的範圍(目前 ~ 指定的 commit_id)
 - 會打開編輯器讓你修改，存檔並離開編輯器，它會開始進行 Rebase
+- 若想放棄這次的 rebase 可以 `git rebase --abort`
 
 
 ## 其他指令
