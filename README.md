@@ -75,22 +75,36 @@
 - **請記得，雖然這只是改訊息，不管如何它就是修改了一次的歷史，所以請儘量不要在已經 Push 出去之後再修改，否則可能會造成其它人的困擾。**
 
 #### 使用 reset git reset 拆掉 commit，再重新 commit
+
 - 可以先用 `git log --oneline` 來查看過去的 commit
 
-#### 
+####
+
 ## 其他指令
 
 ```sh
 git status # 查看目前的狀態
+
 git reflog # 查看所有訊息版本
+
 git log # 查看所有紀錄，越上面越新，enter:往下顯示，q: 離開
 git log --oneline # 查看所有紀錄，且簡化成一行來顯示
-git reset --hard HEAD # 回復到上一個（或更前的）版本
-git reset --hard HEAD~ # 回復到上一個提交版本
-git reset --hard HEAD~n # 回復之前指定的提交版本，n 等於往上第幾個提交版本
-git reset --hard commit_id # 根據 commit id 回覆到指定版本
+
+# reset 使用與參數說明可以參考: https://gitbook.tw/chapters/using-git/reset-commit.html
+# reset 這個英文單字的翻譯是「重新設定」，但事實上 Git 的 Reset 指令用中文來說比較像是「前往」或「變成」
+# 當執行這個指令的時候：git reset HEAD~2
+# 這個指令你原本可能會解讀成「拆掉最後兩次的 Commit」，事實上並沒有真的把 Commit「拆掉」（放心，所有的 Commit 都還在）
+#
+#
+
+git reset # 參數: --mixed, --soft, --hard
+git reset HEAD # 回復到上一個（或更前的）版本
+git reset HEAD~ # 回復到上一個提交版本
+git reset HEAD~n # 回復之前指定的提交版本，n 等於往上第幾個提交版本
+git reset commit_id # 根據 commit id 回覆到指定版本
 git revert # 撤銷一個提交的同時會創建一個新的提交，參數用法跟 reset 一樣
 ```
+
 asdjlasd
 ajdklsjalsdkj
 ajdksjlasd
