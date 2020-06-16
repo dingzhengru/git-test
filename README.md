@@ -76,7 +76,12 @@
 - `git reset --hard commit_id` 用 --hard 是工作目錄跟暫存區都直接變成指定的版本
 - `git push -f` 因為修改已經發生的事實，所以正常來說是推不上去的
 
-ㄋ
+#### 使用 git rebase 來修改、合併
+
+- 可以先用 `git log --oneline` 查看所有紀錄，或是用`git reflog` 查看所有訊息版本
+- `git rebase -i commit_id` 指定要修改的範圍(目前 ~ 指定的 commit_id)
+- 會打開編輯器讓你修改，存檔並離開編輯器，它會開始進行 Rebase
+
 
 ## 其他指令
 
