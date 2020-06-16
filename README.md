@@ -64,18 +64,33 @@
 - 參考 https://gitbook.tw/chapters/using-git/amend-commit1.html
 - 有三種方法
   1. 使用 --amend 參數來修改**最後一次**的 commit
-  2. 使用 git rebase 來修改歷史
-  3. 先把 Commit 用 git reset 拆掉，整理後再重新 commit
+  2. 先把 commit 用 git reset 拆掉，整理後再重新 commit
+  3. 使用 git rebase 來修改歷史
 
 #### 使用 --amend 參數來修改最後一次的 commit
 
 - 可以先用 `git log --oneline` 來查看過去的 commit
 - 修改最後一次的 commit 訊息 `git commit --amend -m "Welcome To Facebook"`
-- 
+- 雖然說是修改，但實際只是產生一個新的 commit 在其上面而已，**原本的紀錄還是存在**
+- **請記得，雖然這只是改訊息，不管如何它就是修改了一次的歷史，所以請儘量不要在已經 Push 出去之後再修改，否則可能會造成其它人的困擾。**
+
+#### 使用 reset git reset 拆掉 commit，再重新 commit
+- 可以先用 `git log --oneline` 來查看過去的 commit
+
+#### 
 ## 其他指令
 
 ```sh
 git status # 查看目前的狀態
+git reflog # 查看所有訊息版本
 git log # 查看所有紀錄，越上面越新，enter:往下顯示，q: 離開
 git log --oneline # 查看所有紀錄，且簡化成一行來顯示
+git reset --hard HEAD # 回復到上一個（或更前的）版本
+git reset --hard HEAD~ # 回復到上一個提交版本
+git reset --hard HEAD~n # 回復之前指定的提交版本，n 等於往上第幾個提交版本
+git reset --hard commit_id # 根據 commit id 回覆到指定版本
+git revert # 撤銷一個提交的同時會創建一個新的提交，參數用法跟 reset 一樣
 ```
+asdjlasd
+ajdklsjalsdkj
+ajdksjlasd
