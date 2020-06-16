@@ -6,7 +6,8 @@
   - <a href="#fetch-merge">fetch + merge</a>
   - <a href="#fetch-rebase">fetch + rebase</a>
 - <a href="#分支branch">分支(branch)</a>
-  - <a href="#基本提交commit">基本提交(commit)</a>
+  - <a href="#提交commit">基本提交(commit)</a>
+- <a href="#其他指令">其他指令</a>
 
 ## 名詞解釋
 
@@ -49,9 +50,12 @@
   - 建立分支之後才新增的檔案，則會保留
   - 重複的檔案則會用提醒字串的方式放在一起
 
-### 基本提交(commit)
+## 提交(commit)
 
-- 基本提交: `git commit -m "commit content"`
+### 基本提交
+
+- 新增、修改、刪除檔案: `git add -A` 或 `git add --all`
+- 提交: `git commit -m "commit content"`
 - 上傳: `git push`
 - 分支是為了將修改記錄的整體流程分開儲存，讓分開的分支不受其他分支的影響。
 
@@ -59,6 +63,19 @@
 
 - 參考 https://gitbook.tw/chapters/using-git/amend-commit1.html
 - 有三種方法
-  1. 使用 --amend 參數來修改**最後一次**的 Commit
+  1. 使用 --amend 參數來修改**最後一次**的 commit
   2. 使用 git rebase 來修改歷史
-  3. 先把 Commit 用 git reset 拆掉，整理後再重新 Commit。
+  3. 先把 Commit 用 git reset 拆掉，整理後再重新 commit
+
+#### 使用 --amend 參數來修改最後一次的 commit
+
+- 可以先用 `git log --oneline` 來查看過去的 commit
+- 修改最後一次的 commit 訊息 `git commit --amend -m "Welcome To Facebook"`
+- 
+## 其他指令
+
+```sh
+git status # 查看目前的狀態
+git log # 查看所有紀錄，越上面越新，enter:往下顯示，q: 離開
+git log --oneline # 查看所有紀錄，且簡化成一行來顯示
+```
