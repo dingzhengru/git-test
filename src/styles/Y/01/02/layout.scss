@@ -4,8 +4,7 @@ $type: 'Y/01/02';
 /*===================================================================================================================*/
 
 body {
-  background: #fff url(~@/assets/#{$type}/imgs/layout/bg.jpg) no-repeat center
-    top;
+  background: #fff url(~@/assets/#{$type}/imgs/layout/bg.jpg) no-repeat center top;
   background-attachment: fixed;
   color: #fff;
   font: 13px 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
@@ -14,8 +13,7 @@ body {
 .ui-ddl {
   min-width: 230px;
   height: 71px;
-  background: #2e2e2e url(~@/assets/#{$type}/imgs/ui/ddl_arrow.jpg) no-repeat
-    right top;
+  background: #2e2e2e url(~@/assets/#{$type}/imgs/ui/ddl_arrow.jpg) no-repeat right top;
   padding-left: 10px;
   margin: 0 3px;
   border: 1px solid #8b8b8b;
@@ -41,8 +39,7 @@ body {
   height: 59px;
   margin: 25px 0 31px 34px;
   font-size: 24px;
-  background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire.png) center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire.png) center no-repeat;
   border: 0;
   text-indent: 20px;
   outline: none;
@@ -52,8 +49,7 @@ body {
   width: 53px;
   height: 73px;
   font-size: 24px;
-  background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center no-repeat;
   border: 0;
   text-indent: -9999px;
   outline: none;
@@ -76,8 +72,7 @@ body {
 .theme-slotgame-supply,
 .theme-livegame-supply {
   height: 182px;
-  background: #11516f url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom
-    center no-repeat;
+  background: #11516f url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
   overflow: hidden;
   position: relative;
 }
@@ -153,8 +148,7 @@ body {
 */
 
 // body {
-//   background: #000 url(~@/assets/#{$type}/imgs/layout/bg.jpg) no-repeat center
-//     top;
+//   background: #000 url(~@/assets/#{$type}/imgs/layout/bg.jpg) no-repeat center top;
 //   color: #fff;
 //   font: 13px 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
 // }
@@ -167,8 +161,7 @@ body {
 .ui-ddl {
   min-width: 250px;
   height: 71px;
-  background: #2e2e2e url(~@/assets/#{$type}/imgs/ui/ddl_arrow.jpg) no-repeat
-    right top;
+  background: #2e2e2e url(~@/assets/#{$type}/imgs/ui/ddl_arrow.jpg) no-repeat right top;
   padding-right: 22px;
   border: 1px solid #8b8b8b;
   border-right: none;
@@ -429,8 +422,7 @@ body {
   position: absolute;
   width: 53px;
   height: 71px;
-  background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center no-repeat;
   border: 0;
   text-indent: -9999px;
   outline: none;
@@ -451,8 +443,7 @@ body {
   width: 133px;
   height: 65px;
   color: #fedebe;
-  background: url(~@/assets/#{$type}/imgs/ui/btn_transferNow.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/ui/btn_transferNow.png) left center no-repeat;
   margin: 13px 10px 0 0;
   font-size: 30px;
   letter-spacing: 1px;
@@ -467,14 +458,12 @@ body {
 .theme-livegame-jackpot {
   height: 71px;
   margin-bottom: 28px;
-  background: url(~@/assets/#{$type}/imgs/theme/bg_jackpot.png) center top
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/theme/bg_jackpot.png) center top no-repeat;
 }
 .theme-slotgame-supply,
 .theme-livegame-supply {
   height: 182px;
-  background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center
-    no-repeat;
+  background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
   overflow: hidden;
   position: relative;
 }
@@ -499,8 +488,7 @@ body {
   width: 71px;
   height: 73px;
   padding-top: 22px;
-  background: url(~@/assets/#{$type}/imgs/main/prizeIcn.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/prizeIcn.png) left center no-repeat;
   position: absolute;
   left: -18px;
 }
@@ -509,8 +497,7 @@ body {
   width: 409px;
   height: 71px;
   padding: 23px 0 0 20px;
-  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
 }
 .i-luckyDraw {
   display: inline-block;
@@ -518,8 +505,7 @@ body {
   width: 71px;
   height: 73px;
   padding-top: 22px;
-  background: url(~@/assets/#{$type}/imgs/main/luckyDrawIcn.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/luckyDrawIcn.png) left center no-repeat;
   position: absolute;
   left: -18px;
 }
@@ -528,8 +514,7 @@ body {
   width: 409px;
   height: 71px;
   padding: 23px 0 0 20px;
-  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
 }
 /* .reg-footer { width: 100%; background: url(~@/assets/#{$type}/imgs/footer/footerBg.png) no-repeat center top; padding-top: 3px; position: fixed; left: 0; bottom: 0;} */
 /* .ul-footer-toolbar { background: url(~@/assets/#{$type}/imgs/footer/toolbarBg.jpg) repeat-x; } */
@@ -546,12 +531,10 @@ body {
 //   background: url(~@/assets/#{$type}/imgs/layout/bg_index2.jpg) no-repeat;
 // }
 .lnk-banner-prev {
-  background: url(~@/assets/#{$type}/imgs/banner/prev.png) no-repeat center
-    center;
+  background: url(~@/assets/#{$type}/imgs/banner/prev.png) no-repeat center center;
 }
 .lnk-banner-next {
-  background: url(~@/assets/#{$type}/imgs/banner/next.png) no-repeat center
-    center;
+  background: url(~@/assets/#{$type}/imgs/banner/next.png) no-repeat center center;
 }
 .li-game-1010 {
   background-image: url(~@/assets/#{$type}/imgs/game/game1010.png);
@@ -626,10 +609,8 @@ body {
   background: url(~@/assets/#{$type}/imgs/main/freeGo-bg.jpg) left top repeat-x;
 }
 .icn-freeGo {
-  background: url(~@/assets/#{$type}/imgs/main/freeGo-icn.png) left top
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-icn.png) left top no-repeat;
 }
 .txt-freeGo {
-  background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center no-repeat;
 }

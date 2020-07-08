@@ -31,7 +31,7 @@ $type: 'Y/01/03';
 */
 
 body {
-  background: #000 url(~@/assets/#{$type}/imgs/layout/bg.jpg) no-repeat center;
+  background: #000 url(~@/assets/#{$type}/imgs/layout/bg.jpg) no-repeat center top;
 }
 .ui-btn01 {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn01.jpg);

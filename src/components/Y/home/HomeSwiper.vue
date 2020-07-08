@@ -1,7 +1,7 @@
 <template>
   <div>
     <swiper class="swiper" :options="swiperOption">
-      <swiper-slide v-for="slide in swiperSlides" :key="slide">
+      <swiper-slide v-for="(slide,index) in swiperSlides" :key="index">
         <img :src="slide.img" alt="" />
       </swiper-slide>
       <a class="lnk-banner-prev" slot="button-prev"></a>
