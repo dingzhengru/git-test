@@ -1,13 +1,13 @@
 <template>
   <div>
     <swiper class="swiper" :options="swiperOption">
-      <swiper-slide v-for="(slide,index) in swiperSlides" :key="index">
-        <img :src="slide.img" alt="" />
+      <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
+        <router-link :to="slide.link">
+          <img :src="slide.img" alt="" />
+        </router-link>
       </swiper-slide>
       <a class="lnk-banner-prev" slot="button-prev"></a>
       <a class="lnk-banner-next" slot="button-next"></a>
-      <!-- <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div> -->
-      <!-- <div class="swiper-button-next swiper-button-white" slot="button-next"></div> -->
     </swiper>
   </div>
 </template>
@@ -47,31 +47,32 @@ export default {
           enabled: true,
         },
         navigation: {
-          // prevEl: '.swiper-button-prev',
-          // nextEl: '.swiper-button-next',
           prevEl: '.lnk-banner-prev',
           nextEl: '.lnk-banner-next',
         },
         autoplay: {
           delay: 5000,
           disableOnInteraction: false,
-        }
+        },
       },
-      swiperSlides: [
-        {
-          img: banner16,
-          link: '/',
-        },
-        {
-          img: banner17,
-          link: '/',
-        },
-        {
-          img: banner18,
-          link: '/',
-        },
-      ],
+      swiperSlides: [],
     };
+  },
+  mounted() {
+    this.swiperSlides = [
+      {
+        img: banner16,
+        link: '/',
+      },
+      {
+        img: banner17,
+        link: '/',
+      },
+      {
+        img: banner18,
+        link: '/',
+      },
+    ];
   },
 };
 </script>

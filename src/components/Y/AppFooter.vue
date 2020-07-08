@@ -33,4 +33,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.reg-footer { z-index: 4;}
+</style>
