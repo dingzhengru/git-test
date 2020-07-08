@@ -14,6 +14,7 @@ import '@/styles/Y/common/layout-zh-cn.scss';
 import '@/styles/Y/common/layout-th-th.scss';
 import '@/styles/Y/common/layout-en-us.scss';
 
+
 import { getLang } from '@/utils/cookie';
 import settings from '@/settings';
 

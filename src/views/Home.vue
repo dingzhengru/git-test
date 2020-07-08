@@ -1,10 +1,17 @@
 <template>
-  <div></div>
+  <div>
+    <HomeSwiper></HomeSwiper>
+  </div>
 </template>
 
 <script>
+
+
+
 export default {
   name: 'Home',
-  components: {},
+  components: {
+    HomeSwiper: () => import('@/components/Y/home/HomeSwiper')
+  },
 };
 </script>
