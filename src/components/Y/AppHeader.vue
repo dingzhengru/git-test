@@ -2,9 +2,9 @@
   <header class="reg-header">
     <div class="lay-screen">
       <div class="are-header-logo"></div>
-      <a class="cpn-inBlock lnk-header-home" href="/"></a>
+      <router-link to="/" class="cpn-inBlock lnk-header-home"></router-link>
       <a
-        href="javascript:"
+        href="javascript:;"
         class="cpn-inBlock lnk-header-langOpen"
         @click="isShowLangList = !isShowLangList"
       ></a>

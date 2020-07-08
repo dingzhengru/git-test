@@ -13,6 +13,21 @@ const routes = [
     name: 'Home',
     component: () => import('@/views/Home'),
   },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/Login'),
+  },
+  {
+    path: '/promotion',
+    name: 'Promotion',
+    component: () => import('@/views/Promotion'),
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: () => import('@/views/Contact'),
+  },
 ];
 
 const router = new VueRouter({
