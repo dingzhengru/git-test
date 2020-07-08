@@ -13,11 +13,6 @@ const routes = [
     name: 'Home',
     component: () => import('@/views/Home'),
   },
-  {
-    path: '/NoneLogin/MainPage',
-    name: 'NoneLoginMainPage',
-    component: () => import('@/views/NoneLogin/MainPage'),
-  },
 ];
 
 const router = new VueRouter({
