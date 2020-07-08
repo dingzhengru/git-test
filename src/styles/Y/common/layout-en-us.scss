@@ -1,0 +1,36 @@
+/* #layout@en-us */
+
+.en-us {
+  /*===================================================================================================================*/
+  /*                                                        UI                                                         */
+  /*===================================================================================================================*/
+  .li-tabs2-active,
+  .lnk-tabs2 {
+    font-size: 2.75em;
+  }
+  .li-tabs3-active,
+  .lnk-tabs3 {
+    font-size: 2.75em;
+  }
+  .ui-lnk-tabs {
+    width: 145px;
+    margin: 0 8px;
+  }
+  /*===================================================================================================================*/
+  /*                                                      Header                                                       */
+  /*===================================================================================================================*/
+  .h1-header-title {
+    font-size: 3.445em;
+  }
+  .lnk-header-login {
+    background: url(~@/assets/Y/01/01/imgs/header/btn_login.png) no-repeat;
+  }
+
+  .lnk-footer-toolbar {
+    padding: 30% 0 0 0;
+    font-size: 26px;
+    line-height: 27px;
+  }
+  .lnk-header-langOpen, .lnk-header-langClose { background: url(~@/assets/Y/01/01/imgs/header/lang_en_s.png) center center no-repeat; }
+  // .lnk-ilang.en {display: none;}
+}

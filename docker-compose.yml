@@ -1,0 +1,12 @@
+# volumes 成功，不過改資料後，還需重啟 service 才會改變 
+version: '3'
+services:
+  nginx: 
+    image: nginx:alpine
+    container_name: nginx_reverse_proxy
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf  # 反代理伺服器
+      - ./dist:/nginx/html                  # 看要不要 serve build 後檔案
+    ports:
+      - 50001:80
+      # - 443:443

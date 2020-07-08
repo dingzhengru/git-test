@@ -1,0 +1,201 @@
+/*
+ * 用 Y/01/01 的當基礎
+*/
+
+.reg-header {
+  /* background: url(~@/assets/Y/01/01/imgs/header/headerBg.jpg) no-repeat top
+    center; */
+}
+/*? .reg-header > */
+.are-header-logo {
+  height: 144px;
+  /* background: url(~@/assets/Y/01/01/imgs/header/logo.png) no-repeat center; */
+  padding: 0 117px;
+}
+.lnk-header-home {
+  width: 77px;
+  height: 65px;
+  /* background: url(~@/assets/Y/01/01/imgs/header/btn_home.png) no-repeat; */
+  margin-top: -32.5px;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+}
+.lnk-header-login {
+  width: 61px;
+  height: 87px;
+  background: url(~@/assets/Y/01/01/imgs/header/btn_login.png) no-repeat;
+  margin-top: -30.5px;
+  position: absolute;
+  top: 45%;
+  right: 20px;
+}
+.lnk-header-back {
+  width: 48px;
+  height: 80px;
+  background: url(~@/assets/Y/01/01/imgs/header/btn_back.png) no-repeat;
+  margin-top: -40px;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+}
+.lnk-header-menuOpen {
+  width: 70px;
+  height: 58px;
+  background: url(~@/assets/Y/01/01/imgs/header/btn_menuOpen.png) no-repeat;
+  margin-top: -29px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+.lnk-header-menuClose {
+  display: none;
+  width: 70px;
+  height: 58px;
+  background: url(~@/assets/Y/01/01/imgs/header/btn_menuClose.png) no-repeat center;
+  margin-top: -29px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+.are-header-memberInfo {
+  width: 96%;
+  min-height: 50px;
+  padding: 0 15px;
+  background: url(~@/assets/Y/01/01/imgs/header/memberInfoBg.png) repeat;
+  margin-bottom: 30px;
+  font-size: 1.846em;
+  line-height: 40px;
+  position: absolute;
+  top: 144px;
+  left: 0;
+}
+.are-header-menu {
+  display: none;
+  width: 100%;
+  height: 85vh;
+  background: url(~@/assets/Y/01/01/imgs/header/menuBg.png) repeat;
+  overflow: hidden;
+  position: absolute;
+  top: 144px;
+  left: 0;
+}
+/*? .reg-header > .are-header-memberInfo > */
+.blk-memberInfo-left {
+  float: left;
+  max-width: 55%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.blk-memberInfo-right {
+  float: right;
+}
+.txt-vip {
+  color: #d2ac3e;
+}
+/*? .reg-header > .are-header-menu > */
+.ul-menu {
+  padding: 20px 0;
+}
+.li-menu {
+  margin: 35px 0;
+}
+.lnk-menu {
+  display: block;
+  color: #d2bd7c;
+  font-size: 2.923em;
+  text-align: center;
+  line-height: 48px;
+}
+.lnk-menu:active {
+  color: #fff;
+}
+.ul-lang {
+  margin-bottom: 60px;
+  text-align: center;
+}
+.li-lang {
+  margin: 0 30px;
+}
+.lnk-lang {
+  display: block;
+  width: 116px;
+  background: no-repeat center top;
+  padding-top: 71px;
+  color: #fff;
+  font-size: 2.153em;
+}
+.lnk-lang-tw {
+  background-image: url(~@/assets/Y/01/01/imgs/header/lang_tw.png);
+}
+.lnk-lang-cn {
+  background-image: url(~@/assets/Y/01/01/imgs/header/lang_cn.png);
+}
+.lnk-lang-en {
+  background-image: url(~@/assets/Y/01/01/imgs/header/lang_en.png);
+}
+.lnk-lang-th {
+  background-image: url(~@/assets/Y/01/01/imgs/header/lang_th.png);
+}
+.lnk-lang-mm {
+  background-image: url(~@/assets/Y/01/01/imgs/header/lang_mm.png);
+}
+.btn-header-logout {
+  display: block;
+  width: 80%;
+  background: url(~@/assets/Y/01/01/imgs/header/btn_logout.jpg) repeat-x;
+  margin: 0 10%;
+  color: #000;
+  font-size: 2.923em;
+  line-height: 87px;
+}
+
+/*
+  index2.css 的部分
+*/
+
+.lnk-header-langOpen,
+.lnk-header-langClose {
+  width: 73px;
+  height: 60px;
+  /* background: url(~@/assets/Y/01/01/imgs/header/lang_tw_s.png) center center no-repeat; */
+  position: absolute;
+  top: 30%;
+  right: 20px;
+}
+.lnk-header-langClose {
+  display: none;
+}
+.are-header-langMenu {
+  /* display: none; */
+  width: 90px;
+  background: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  position: absolute;
+  top: 141px;
+  right: 12px;
+  z-index: 2;
+}
+.ul-ilang {
+  margin-bottom: 0;
+}
+.li-ilang {
+  margin: 10px auto;
+}
+.lnk-ilang {
+  width: 60px;
+  padding-top: 65px;
+}
+.lnk-ilang.tw {
+  background-image: url(~@/assets/Y/01/01/imgs/header/lang_tw_s.png);
+}
+.lnk-ilang.cn {
+  background-image: url(~@/assets/Y/01/01/imgs/header/lang_cn_s.png);
+}
+.lnk-ilang.en {
+  background-image: url(~@/assets/Y/01/01/imgs/header/lang_en_s.png);
+}
+.lnk-ilang.th {
+  background-image: url(~@/assets/Y/01/01/imgs/header/lang_th_s.png);
+}

@@ -1,0 +1,86 @@
+$type: 'Y/01/03';
+
+/*
+  ! index2.css
+*/
+
+.lnk-header-langOpen,
+.lnk-header-langClose {
+  width: 73px;
+  height: 60px;
+  // background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
+  position: absolute;
+  top: 42%;
+  right: 20px;
+}
+
+/*
+  ! 所有圖片路徑不同
+*/
+
+.reg-header {
+  background: url(~@/assets/#{$type}/imgs/header/headerBg.jpg) no-repeat top center;
+}
+.are-header-logo {
+  background: url(~@/assets/#{$type}/imgs/header/logo.png) no-repeat center;
+}
+.lnk-header-home {
+  background: url(~@/assets/#{$type}/imgs/header/btn_home.png) no-repeat;
+}
+.lnk-header-login {
+  background: url(~@/assets/#{$type}/imgs/header/btn_login.png) no-repeat;
+}
+.lnk-header-back {
+  background: url(~@/assets/#{$type}/imgs/header/btn_back.png) no-repeat;
+}
+.lnk-header-menuOpen {
+  background: url(~@/assets/#{$type}/imgs/header/btn_menuOpen.png) no-repeat;
+}
+.lnk-header-menuClose {
+  background: url(~@/assets/#{$type}/imgs/header/btn_menuClose.png) no-repeat center;
+}
+.are-header-memberInfo {
+  background: url(~@/assets/#{$type}/imgs/header/memberInfoBg.png) repeat;
+}
+.are-header-menu {
+  background: url(~@/assets/#{$type}/imgs/header/menuBg.png) repeat;
+}
+.lnk-lang-tw {
+  background-image: url(~@/assets/#{$type}/imgs/header/lang_tw.png);
+}
+.lnk-lang-cn {
+  background-image: url(~@/assets/#{$type}/imgs/header/lang_cn.png);
+}
+.lnk-lang-en {
+  background-image: url(~@/assets/#{$type}/imgs/header/lang_en.png);
+}
+.lnk-lang-th {
+  background-image: url(~@/assets/#{$type}/imgs/header/lang_th.png);
+}
+.lnk-lang-mm {
+  background-image: url(~@/assets/#{$type}/imgs/header/lang_mm.png);
+}
+.btn-header-logout {
+  background: url(~@/assets/#{$type}/imgs/header/btn_logout.jpg) repeat-x;
+}
+
+/*
+  ! index2 的圖片部分
+*/
+
+// .lnk-header-langOpen,
+// .lnk-header-langClose {
+//   background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
+// }
+.lnk-ilang.tw {
+  background-image: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png);
+}
+.lnk-ilang.cn {
+  background-image: url(~@/assets/#{$type}/imgs/header/lang_cn_s.png);
+}
+.lnk-ilang.en {
+  background-image: url(~@/assets/#{$type}/imgs/header/lang_en_s.png);
+}
+.lnk-ilang.th {
+  background-image: url(~@/assets/#{$type}/imgs/header/lang_th_s.png);
+}
