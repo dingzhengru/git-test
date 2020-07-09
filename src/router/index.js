@@ -20,8 +20,19 @@ const routes = [
   },
   {
     path: '/promotion',
-    name: 'Promotion',
-    component: () => import('@/views/Promotion'),
+    component: () => import('@/components/BlankLayout'),
+    children: [
+      {
+        path: '',
+        name: 'Promotion',
+        component: () => import('@/views/Promotion'),
+      },
+      {
+        path: ':id',
+        name: 'PromotionContent',
+        component: () => import('@/views/PromotionContent'),
+      }
+    ]
   },
   {
     path: '/contact',
