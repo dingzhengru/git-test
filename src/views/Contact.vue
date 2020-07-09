@@ -94,7 +94,7 @@ export default {
   },
   mounted() {
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    import(`@/styles/${this.templateType}/common/contact.css`);
+    // import(`@/styles/${this.templateType}/common/contact.css`);
     import(`@/styles/${templatePath}/contact.scss`);
   },
 };
@@ -105,6 +105,10 @@ export default {
   display: block;
 }
 
+/*
+  * fade 顯示 telephones 區塊
+*/
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -112,4 +116,77 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
+/*
+  * contact.css
+*/
+
+/* .reg-main > */
+.ul-service {
+  text-align: center;
+}
+.li-service {
+  width: 225px;
+  background-repeat: no-repeat;
+  background-position: center top;
+  padding: 0 57px;
+  border-right: 1px dotted #535353;
+}
+.li-service:last-child {
+  border-right: none;
+}
+.li-service-download {
+  background-position: center 20px;
+}
+.lnk-service {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  padding-top: 99px;
+  color: #000;
+  font-size: 2.461em;
+  text-align: center;
+}
+/* .are-contact {
+  margin: 80px;
+} */
+/* .reg-main > .are-contact > */
+.li-contact {
+  margin: 31px 20px;
+  position: relative;
+}
+.lnk-contact {
+  display: block;
+  width: 198px;
+  background-repeat: no-repeat;
+  background-position: center top;
+  padding-top: 115px;
+  font-size: 2.461em;
+  text-align: center;
+  word-break: break-all;
+}
+
+.blk-qq,
+.blk-skype,
+.blk-tel {
+  width: 328px;
+  height: 286px;
+  text-align: center;
+  position: absolute;
+  top: 165px;
+  left: -99px;
+  z-index: 2;
+}
+.lnk-contact-qq2,
+.lnk-contact-skype2 {
+  font-size: 3.23em;
+  line-height: 95px;
+}
+.lnk-contact-tel {
+  font-size: 2.461em;
+  line-height: 65px;
+}
+
+
+
 </style>
