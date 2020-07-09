@@ -1,5 +1,17 @@
 $type: 'Y/01/01';
 
+.lnk-contact {
+  color: #fff;
+}
+
+.lnk-contact-qq2,
+.lnk-contact-skype2 {
+  color: #fff;
+}
+.lnk-contact-tel {
+  color: #fff;
+}
+
 /*
   ! 圖片路徑
 */
@@ -7,9 +19,9 @@ $type: 'Y/01/01';
 .li-service-online {
   background-image: url(~@/assets/#{$type}/imgs/main/onlineServicebg.png);
 }
-.li-service-download {
-  // background-image: url(~@/assets/#{$type}/imgs/main/downloadServicebg.png);
-}
+// .li-service-download {
+//   background-image: url(~@/assets/#{$type}/imgs/main/downloadServicebg.png);
+// }
 .lnk-contact-service {
   background-image: url(~@/assets/#{$type}/imgs/main/onlineServicebg.png);
 }

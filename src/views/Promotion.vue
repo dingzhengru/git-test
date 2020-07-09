@@ -9,8 +9,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: 'Promotion',
+  computed: {
+    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+  },
+  data() {
+    return {};
+  },
+  mounted() {
+    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
+    import(`@/styles/${this.templateType}/common/promotion.css`);
+    import(`@/styles/${templatePath}/promotion.scss`);
+  },
 };
 </script>
 

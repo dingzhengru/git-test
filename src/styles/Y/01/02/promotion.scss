@@ -1,12 +1,37 @@
 $type: 'Y/01/02';
 
+// .lay-are-pageContent {
+//   width: 100%;
+//   padding: 40px 0 0;
+// }
+// .are-bonus {
+//   margin-top: -40px;
+// }
+.txt-bonus {
+  color: #fff;
+}
 
+// .reg-main {
+//   min-height: 75vh;
+//   padding: 88px 0 40px 0;
+//   background: #fff url(imgs/layout/bg_main.jpg) no-repeat top center !important;
+// }
 
+// .ul-event { width: 600px; margin: 30px auto 0; text-align: center; }
+// .li-event { background: no-repeat; margin-bottom: 20px; }
 /*
   ! 圖片路徑
 */
-.lnk-bonus { background: url(~@/assets/#{$type}/imgs/main/freeGo-bg.jpg) left top repeat-x;}
-.icn-bonus { background: url(~@/assets/#{$type}/imgs/main/bonusVIP.png) left top no-repeat;}
-.txt-bonus { background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center no-repeat;}
-.h3-desc-title { background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;}
+.lnk-bonus {
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-bg.jpg) left top repeat-x;
+}
+.icn-bonus {
+  background: url(~@/assets/#{$type}/imgs/main/bonusVIP.png) left top no-repeat;
+}
+.txt-bonus {
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center no-repeat;
+}
+.h3-desc-title {
+  background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
+}
 // .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }
