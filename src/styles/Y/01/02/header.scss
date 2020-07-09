@@ -1,44 +1,27 @@
 $type: 'Y/01/02';
 
-.lnk-header-menuOpen {
-  width: 76px;
-  height: 65px;
-  background: url(~@/assets/#{$type}/imgs/header/btn_menuOpen.png) no-repeat;
-  margin-top: -29px;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-}
+// .lnk-header-menuOpen {
+//   width: 76px;
+//   height: 65px;
+//   margin-top: -29px;
+//   position: absolute;
+//   top: 50%;
+//   right: 20px;
+// }
 
 /*
  ! index2.css
 */
 
-.lnk-header-langOpen,
-.lnk-header-langClose {
-  width: 73px;
-  height: 60px;
-  // background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
-  position: absolute;
-  top: 42%;
-  right: 20px;
-}
 .lnk-header-langClose {
   display: none;
 }
 .are-header-langMenu {
-  // display: none;
-  width: 90px;
   background: #1b607f;
-  overflow: hidden;
-  position: absolute;
-  top: 123px;
-  right: 12px;
-  z-index: 2;
 }
 
 /*
-  ! 所有圖片路徑不同
+  ! 圖片路徑
 */
 
 .reg-header {
@@ -56,9 +39,9 @@ $type: 'Y/01/02';
 .lnk-header-back {
   background: url(~@/assets/#{$type}/imgs/header/btn_back.png) no-repeat;
 }
-// .lnk-header-menuOpen {
-//   background: url(~@/assets/#{$type}/imgs/header/btn_menuOpen.png) no-repeat;
-// }
+.lnk-header-menuOpen {
+  background: url(~@/assets/#{$type}/imgs/header/btn_menuOpen.png) no-repeat;
+}
 .lnk-header-menuClose {
   background: url(~@/assets/#{$type}/imgs/header/btn_menuClose.png) no-repeat center;
 }
@@ -90,10 +73,10 @@ $type: 'Y/01/02';
 /*
   ! index2 的圖片部分
 */
-// .lnk-header-langOpen,
-// .lnk-header-langClose {
-//   background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
-// }
+.lnk-header-langOpen,
+.lnk-header-langClose {
+  background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
+}
 .lnk-ilang.tw {
   background-image: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png);
 }

@@ -1,21 +1,7 @@
 $type: 'Y/01/03';
 
 /*
-  ! index2.css
-*/
-
-.lnk-header-langOpen,
-.lnk-header-langClose {
-  width: 73px;
-  height: 60px;
-  // background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
-  position: absolute;
-  top: 42%;
-  right: 20px;
-}
-
-/*
-  ! 所有圖片路徑不同
+  ! 圖片路徑
 */
 
 .reg-header {
@@ -68,10 +54,10 @@ $type: 'Y/01/03';
   ! index2 的圖片部分
 */
 
-// .lnk-header-langOpen,
-// .lnk-header-langClose {
-//   background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
-// }
+.lnk-header-langOpen,
+.lnk-header-langClose {
+  background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
+}
 .lnk-ilang.tw {
   background-image: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png);
 }
