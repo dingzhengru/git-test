@@ -1,0 +1,47 @@
+$type: 'Y/01/03';
+
+.lnk-contact {
+  display: block;
+  width: 198px;
+  background: no-repeat center top;
+  padding-top: 115px;
+  color: #fff;
+  font-size: 2.1em;
+  text-align: center;
+  word-break: break-all;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.li-service-online {
+  background-image: url(~@/assets/#{$type}/imgs/main/onlineServicebg.png);
+}
+// .li-service-download {
+//   background-image: url(~@/assets/#{$type}/imgs/main/downloadServicebg.png);
+// }
+.lnk-contact-service {
+  background-image: url(~@/assets/#{$type}/imgs/main/onlineServicebg.png);
+}
+.lnk-contact-qq {
+  background-image: url(~@/assets/#{$type}/imgs/main/qqBg.png);
+}
+.lnk-contact-mobile {
+  background-image: url(~@/assets/#{$type}/imgs/main/mobileBg.png);
+}
+.lnk-contact-skype {
+  background-image: url(~@/assets/#{$type}/imgs/main/skypeBg.png);
+}
+.lnk-contact-line {
+  background-image: url(~@/assets/#{$type}/imgs/main/lineBg.png);
+}
+.lnk-contact-wechat {
+  background-image: url(~@/assets/#{$type}/imgs/main/wechatBg.png);
+}
+.lnk-contact-facebook {
+  background-image: url(~@/assets/#{$type}/imgs/main/FacebookBg.png);
+}
+.blk-tel {
+  background: url(~@/assets/#{$type}/imgs/main/telBg.png) no-repeat;
+}

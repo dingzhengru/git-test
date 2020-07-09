@@ -3,16 +3,16 @@
     <div class="lay-screen">
       <ul class="cpn-boxzero cpn-inBlock-row ul-footer-toolbar">
         <li class="li-footer-toolbar li-toolbar-member">
-          <a href="/Y/NoneLogin/LoginIn" class="lnk-footer-toolbar">Member Center</a>
+          <router-link to="/login" class="lnk-footer-toolbar">Member Center</router-link>
         </li>
         <li class="li-footer-toolbar li-toolbar-regist">
-          <a href="/Y/NoneLogin/LoginIn" class="lnk-footer-toolbar">Log in / Register</a>
+          <router-link to="/login" class="lnk-footer-toolbar">Log in / Register</router-link>
         </li>
         <li class="li-footer-toolbar li-toolbar-event">
-          <a href="/Y/Promotion/NoneLogin" class="lnk-footer-toolbar">Promotions</a>
+          <router-link to="/promotion" class="lnk-footer-toolbar">Promotions</router-link>
         </li>
         <li class="li-footer-toolbar li-toolbar-service">
-          <a href="/Y/StaticPage/NoneLogin?Tag=Service" class="lnk-footer-toolbar">Online Customer</a>
+          <router-link to="/contact" class="lnk-footer-toolbar">Online Customer</router-link>
         </li>
       </ul>
     </div>

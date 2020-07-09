@@ -159,26 +159,10 @@ body {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn02.jpg);
 }
 .ui-ddl {
-  min-width: 250px;
-  height: 71px;
   background: #2e2e2e url(~@/assets/#{$type}/imgs/ui/ddl_arrow.jpg) no-repeat right top;
-  padding-right: 22px;
-  border: 1px solid #8b8b8b;
-  border-right: none;
-  outline: none;
-  color: #fff;
-  font-size: 2.769em;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 .ui-table01 {
-  width: 100%;
   background: url(~@/assets/#{$type}/imgs/ui/table01Bg.png) repeat;
-  color: #959595;
-  font-size: 2.153em;
-  letter-spacing: 2px;
-  line-height: 2em;
 }
 .ui-table01 .ui-lnk-detail {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk_detail1.png);
@@ -187,12 +171,7 @@ body {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk_detail2.png);
 }
 .ui-table04 {
-  width: 100%;
   background: url(~@/assets/#{$type}/imgs/ui/table01Bg.png) repeat;
-  color: #959595;
-  font-size: 2.307em;
-  letter-spacing: 2px;
-  line-height: 2em;
 }
 .ui-li-tabs-account {
   background-image: url(~@/assets/#{$type}/imgs/ui/tabs_account.png);
@@ -306,30 +285,19 @@ body {
   background-image: url(~@/assets/#{$type}/imgs/ui/tabs_pointrecordActive.png);
 }
 .ui-lnk-pagerPreviousMore {
-  width: 134px;
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk_previousMore.png);
 }
 .ui-lnk-pagerPrevious {
-  width: 135px;
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk_previous.png);
 }
 .ui-lnk-pagerNext {
-  width: 135px;
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk_next.png);
 }
 .ui-lnk-pagerNextMore {
-  width: 134px;
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk_nextMore.png);
-  margin-right: 0;
 }
 .ui-ddl-pager {
-  width: 134px;
-  min-width: 0;
-  height: 65px;
   background: url(~@/assets/#{$type}/imgs/ui/ddl_pager.jpg) no-repeat;
-  border: none;
-  padding: 0 67px 0 20px;
-  line-height: 65px;
 }
 .ui-li-supply-1180 {
   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1180.png);
@@ -404,68 +372,27 @@ body {
   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1200-active.png);
 }
 .ui-ipt-inquire {
-  width: 302px;
-  background-size: cover;
-  -webkit-background-size: cover;
-  background-attachment: fixed;
-  height: 59px;
-  margin: 25px 0 31px 34px;
-  font-size: 24px;
   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
-  border: 0;
-  text-indent: 20px;
-  outline: none; /* position: relative;*/
 }
 .ui-lnk-inquire {
-  top: 19px;
-  left: 280px;
-  position: absolute;
-  width: 53px;
-  height: 71px;
   background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center no-repeat;
-  border: 0;
-  text-indent: -9999px;
-  outline: none;
 }
 .ui-ipt-favorites {
-  width: 85px;
-  height: 65px;
-  margin: 0 0 0 85px;
-  font-size: 24px;
   background: url(~@/assets/#{$type}/imgs/ui/ipt_favorites.png) center no-repeat;
-  text-indent: -9999px;
-  border: 0;
-  outline: none;
 }
 .ui-lnk-transferNow {
-  float: right;
-  vertical-align: top;
-  width: 133px;
-  height: 65px;
-  color: #fedebe;
   background: url(~@/assets/#{$type}/imgs/ui/btn_transferNow.png) left center no-repeat;
-  margin: 13px 10px 0 0;
-  font-size: 30px;
-  letter-spacing: 1px;
-  padding: 22px 0 0 50px;
 }
 .theme-content-box {
   background: url(~@/assets/#{$type}/imgs/theme/boxBg.png);
-  padding: 0 3%;
-  border: 1px solid #d6c388;
 }
 .theme-slotgame-jackpot,
 .theme-livegame-jackpot {
-  height: 71px;
-  margin-bottom: 28px;
   background: url(~@/assets/#{$type}/imgs/theme/bg_jackpot.png) center top no-repeat;
 }
 .theme-slotgame-supply,
 .theme-livegame-supply {
-  height: 182px;
   background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
-  overflow: hidden;
-  position: relative;
 }
 /* .reg-header { background: url(~@/assets/#{$type}/imgs/header/headerBg.jpg) no-repeat top center;} */
 /* .are-header-logo { height: 144px; background: url(~@/assets/#{$type}/imgs/header/logo.png) no-repeat center; padding: 0 117px;} */
@@ -483,37 +410,15 @@ body {
 /* .lnk-lang-mm { background-image: url(~@/assets/#{$type}/imgs/header/lang_mm.png);} */
 /* .btn-header-logout { display: block; width: 80%; background: url(~@/assets/#{$type}/imgs/header/btn_logout.jpg) repeat-x; margin: 0 10%; color: #000; font-size: 2.923em; line-height: 87px; } */
 .i-prize {
-  display: inline-block;
-  // float: left;
-  width: 71px;
-  height: 73px;
-  padding-top: 22px;
   background: url(~@/assets/#{$type}/imgs/main/prizeIcn.png) left center no-repeat;
-  position: absolute;
-  left: -18px;
 }
 .ul-prize {
-  display: inline-block;
-  width: 409px;
-  height: 71px;
-  padding: 23px 0 0 20px;
   background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
 }
 .i-luckyDraw {
-  display: inline-block;
-  // float: left;
-  width: 71px;
-  height: 73px;
-  padding-top: 22px;
   background: url(~@/assets/#{$type}/imgs/main/luckyDrawIcn.png) left center no-repeat;
-  position: absolute;
-  left: -18px;
 }
 .ul-luckyDraw {
-  display: inline-block;
-  width: 409px;
-  height: 71px;
-  padding: 23px 0 0 20px;
   background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
 }
 /* .reg-footer { width: 100%; background: url(~@/assets/#{$type}/imgs/footer/footerBg.png) no-repeat center top; padding-top: 3px; position: fixed; left: 0; bottom: 0;} */

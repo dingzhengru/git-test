@@ -19,7 +19,7 @@ import { getLang } from '@/utils/cookie';
 import settings from '@/settings';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.type
-const type = 'Y/01/01';
+const type = 'Y/01/02';
 store.commit('setType', type);
 
 //* 取得語系 => 存進 store.state.lang
