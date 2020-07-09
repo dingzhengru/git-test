@@ -22,7 +22,7 @@ export default {
   },
   mounted() {
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    import(`@/styles/${this.templateType}/common/home.css`);
+    // import(`@/styles/${this.templateType}/common/home.css`);
     import(`@/styles/${templatePath}/home.scss`);
   },
 };

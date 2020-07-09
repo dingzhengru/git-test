@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       langList: ['zh-cn', 'th-th', 'en-us'],
-      isShowLangList: false,
+      isShowLangList: true,
     };
   },
   mounted() {
@@ -74,5 +74,59 @@ export default {
 .slide-enter,
 .slide-leave-to {
   max-height: 0;
+}
+
+/* 
+  * 刪除了登入後的 header 樣式，只留非登入時的樣式 
+  * 可於 common/header.css 或原專案的 layout 與 index2 中取得
+*/
+
+/*? .reg-header > */
+.are-header-logo {
+  height: 144px;
+  padding: 0 117px;
+}
+.lnk-header-home {
+  width: 77px;
+  height: 65px;
+  margin-top: -32.5px;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+}
+
+.lnk-header-langOpen {
+  width: 73px;
+  height: 60px;
+  position: absolute;
+  top: 30%;
+  right: 20px;
+}
+.are-header-langMenu {
+  width: 90px;
+  /* background: rgba(0, 0, 0, 0.9); */
+  overflow: hidden;
+  position: absolute;
+  top: 141px;
+  right: 12px;
+  z-index: 2;
+}
+
+.ul-lang {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.li-lang {
+  margin: 10px auto;
+}
+
+.lnk-lang {
+  display: block;
+  background: no-repeat center top;
+  color: #fff;
+  font-size: 2.153em;
+  width: 60px;
+  padding-top: 65px;
 }
 </style>

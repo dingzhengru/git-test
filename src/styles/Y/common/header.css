@@ -1,9 +1,7 @@
-/*
- * 用 Y/01/01 的當基礎
-*/
+
 
 /*? .reg-header > */
-.are-header-logo {
+/* .are-header-logo {
   height: 144px;
   padding: 0 117px;
 }
@@ -67,9 +65,9 @@
   position: absolute;
   top: 144px;
   left: 0;
-}
+} */
 /*? .reg-header > .are-header-memberInfo > */
-.blk-memberInfo-left {
+/* .blk-memberInfo-left {
   float: left;
   max-width: 55%;
   white-space: nowrap;
@@ -81,9 +79,9 @@
 }
 .txt-vip {
   color: #d2ac3e;
-}
+} */
 /*? .reg-header > .are-header-menu > */
-.ul-menu {
+/* .ul-menu {
   padding: 20px 0;
 }
 .li-menu {
@@ -121,13 +119,13 @@
   color: #000;
   font-size: 2.923em;
   line-height: 87px;
-}
+} */
 
 /*
   ! index2.css 的部分
 */
 
-.lnk-header-langOpen,
+/* .lnk-header-langOpen,
 .lnk-header-langClose {
   width: 73px;
   height: 60px;
@@ -156,4 +154,4 @@
 .lnk-ilang {
   width: 60px;
   padding-top: 65px;
-}
+} */
