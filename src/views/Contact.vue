@@ -94,8 +94,8 @@ export default {
   },
   mounted() {
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    import(`@/styles/${this.templateType}/common/service.css`);
-    import(`@/styles/${templatePath}/service.scss`);
+    import(`@/styles/${this.templateType}/common/contact.css`);
+    import(`@/styles/${templatePath}/contact.scss`);
   },
 };
 </script>
