@@ -11,15 +11,16 @@
 /*                                                       Main                                                        */
 
 /*===================================================================================================================*/
-.ul-event { width: 634px; margin: 20px auto; text-align: center; }
-.li-event { background: center center no-repeat; }
-.li-event a {color: #fff;font-size: 26px;}
-.li-event h3 { margin: 0;padding: 0; }
-h3.theme-event-title { display:none; text-align: left;}
-.lnk-event { display: block; height: 224px; }
-.are-eventImg { width: 600px; height: 190px; background: no-repeat; margin: 20px auto 20px; }
-.are-eventContents { }
-.are-control { text-align: center; }
+/*? 這些註解掉的，是改用我的，css 部分在 /views/Promotion.vue 中 */
+/* .ul-event { width: 634px; margin: 20px auto; text-align: center; } */
+/* .li-event { background: center center no-repeat; } */
+/* .li-event a {color: #fff;font-size: 26px;} */
+/* .li-event h3 { margin: 0;padding: 0; } */
+/* h3.theme-event-title { display:none; text-align: left;} */
+/* .lnk-event { display: block; height: 224px; } */
+/* .are-eventImg { width: 600px; height: 190px; background: no-repeat; margin: 20px auto 20px; } */
+/* .are-eventContents { } */
+/* .are-control { text-align: center; } */
 
 /* .reg-main > .are-eventContents */
 .blk-eventContents-desc { margin-bottom: 40px; width: 95%; margin: 0 auto; }
