@@ -4,7 +4,7 @@
 .lay-are-pageContent { width: 100%; padding: 0; }
 .lnk-bonus { display: block; width: 100%; height: 109px; /*background: url(imgs/main/freeGo-bg.jpg) left top repeat-x;*/ padding: 20px 0 0 35px; box-sizing: border-box; margin-bottom: 8px; }
 .icn-bonus { display: inline-block; width: 70px; height: 64px; /*background: url(imgs/main/bonusVIP.png) left top no-repeat;*/ text-indent: -999em; vertical-align: top; }
-.txt-bonus { display: inline-block; width: 82%; color: #fcf0ca; font-size: 32px; line-height: 72px; /*background: url(imgs/main/freeGo-arrow.png) right center no-repeat;*/ padding-left: 20px;/* vertical-align: top; */ }
+.txt-bonus { display: inline-block; width: 82%; /*color: #fcf0ca;*/ font-size: 32px; line-height: 72px; /*background: url(imgs/main/freeGo-arrow.png) right center no-repeat;*/ padding-left: 20px;/* vertical-align: top; */ }
 
 /*===================================================================================================================*/
 

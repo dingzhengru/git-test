@@ -1,12 +1,22 @@
 $type: 'Y/01/03';
 
-
+.txt-bonus {
+  color: #fcf0ca;
+}
 
 /*
   ! 圖片路徑
 */
-.lnk-bonus { background: url(~@/assets/#{$type}/imgs/main/freeGo-bg.jpg) left top repeat-x;}
-.icn-bonus { background: url(~@/assets/#{$type}/imgs/main/bonusVIP.png) left top no-repeat;}
-.txt-bonus { background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center no-repeat;}
-.h3-desc-title { background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;}
+.lnk-bonus {
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-bg.jpg) left top repeat-x;
+}
+.icn-bonus {
+  background: url(~@/assets/#{$type}/imgs/main/bonusVIP.png) left top no-repeat;
+}
+.txt-bonus {
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center no-repeat;
+}
+.h3-desc-title {
+  background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
+}
 // .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }

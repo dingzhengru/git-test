@@ -1,24 +1,18 @@
 $type: 'Y/01/02';
 
-// .lay-are-pageContent {
-//   width: 100%;
-//   padding: 40px 0 0;
-// }
-// .are-bonus {
-//   margin-top: -40px;
-// }
+// * 自己新增的，取代掉原本的那些 css，共通屬性放在 views/Promotion.vue
+.promotions {
+  img {
+    outline: 2px solid #fff;
+  }
+}
+
 .txt-bonus {
   color: #fff;
 }
 
-// .reg-main {
-//   min-height: 75vh;
-//   padding: 88px 0 40px 0;
-//   background: #fff url(imgs/layout/bg_main.jpg) no-repeat top center !important;
-// }
 
-// .ul-event { width: 600px; margin: 30px auto 0; text-align: center; }
-// .li-event { background: no-repeat; margin-bottom: 20px; }
+
 /*
   ! 圖片路徑
 */
