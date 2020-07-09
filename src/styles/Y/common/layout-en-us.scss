@@ -16,9 +16,22 @@
     width: 145px;
     margin: 0 8px;
   }
+
+  .li-prizeNum,
+  .li-prizeDsc {
+    font-size: 36px;
+    font-weight: bold;
+  }
+
   /*===================================================================================================================*/
   /*                                                      Header                                                       */
   /*===================================================================================================================*/
+  .lnk-header-langOpen,
+  .lnk-header-langClose {
+    background: url(~@/assets/Y/01/01/imgs/header/lang_en_s.png) center center no-repeat;
+  }
+  // .lnk-ilang.en {display: none;}
+
   .h1-header-title {
     font-size: 3.445em;
   }
@@ -26,11 +39,13 @@
     background: url(~@/assets/Y/01/01/imgs/header/btn_login.png) no-repeat;
   }
 
+  /*===================================================================================================================*/
+  /*                                                      Footer                                                       */
+  /*===================================================================================================================*/
+
   .lnk-footer-toolbar {
     padding: 30% 0 0 0;
     font-size: 26px;
     line-height: 27px;
   }
-  .lnk-header-langOpen, .lnk-header-langClose { background: url(~@/assets/Y/01/01/imgs/header/lang_en_s.png) center center no-repeat; }
-  // .lnk-ilang.en {display: none;}
 }

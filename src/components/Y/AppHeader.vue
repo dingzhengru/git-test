@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       langList: ['zh-cn', 'th-th', 'en-us'],
-      isShowLangList: true,
+      isShowLangList: false,
     };
   },
   mounted() {

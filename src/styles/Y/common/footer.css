@@ -1,12 +1,12 @@
-.reg-footer {
+/* .reg-footer {
   width: 100%;
   padding-top: 3px;
   position: fixed;
   left: 0;
   bottom: 0;
-}
+} */
 /*? .reg-footer > */
-.li-footer-toolbar {
+/* .li-footer-toolbar {
   width: 25%;
 }
 .lnk-footer-toolbar {
@@ -33,9 +33,9 @@
 }
 .li-footer-toolbar:first-child:after {
   background: none;
-}
+} */
 /* .li-toolbar-member > .lnk-footer-toolbar {} */
-.li-toolbar-regist > .lnk-footer-toolbar {
+/* .li-toolbar-regist > .lnk-footer-toolbar {
   background-position: 24% 6px;
   text-indent: 12px;
 }
@@ -47,4 +47,4 @@
 }
 .li-toolbar-transaction > .lnk-footer-toolbar {
   background-position: 97% 6px;
-}
+} */
