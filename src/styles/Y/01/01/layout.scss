@@ -1,4 +1,44 @@
 $type: 'Y/01/01';
+/*===================================================================================================================*/
+/*                                                      UI                                                           */
+/*===================================================================================================================*/
+
+body {
+  background: #000 url(~@/assets/#{$type}/imgs/layout/bg.jpg) no-repeat center top;
+}
+.ui-ddl {
+  border: 1px solid #8b8b8b;
+}
+
+.ui-li-category-active > .ui-lnk-category {
+  color: #ff5962;
+}
+
+.ui-lnk-category {
+  color: #657aa6;
+}
+
+/*===================================================================================================================*/
+/*                                                      Theme                                                        */
+/*===================================================================================================================*/
+
+.theme-content-box {
+  border: 1px solid #d6c388;
+}
+
+.theme-slotgame-supply,
+.theme-livegame-supply {
+  background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
+}
+.theme-slotgame-inquire,
+.theme-livegame-inquire {
+  background-color: #000;
+}
+.theme-slotgame-list,
+.theme-livegame-list {
+  background-color: #181b23;
+}
+
 /*
   ! 圖片路徑
 */
