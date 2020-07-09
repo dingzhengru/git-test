@@ -44,11 +44,13 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Contact',
   computed: {
-    ...mapGetters(['type']),
+    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
   mounted() {
-    import(`@/styles/Y/common/service.css`);
-    import(`@/styles/${this.type}/service.scss`);
+
+    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`
+    import(`@/styles/${this.templateType}/common/service.css`);
+    import(`@/styles/${templatePath}/service.scss`);
   },
 };
 </script>

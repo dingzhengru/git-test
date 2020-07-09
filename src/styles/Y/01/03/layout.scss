@@ -4,12 +4,10 @@ $type: 'Y/01/03';
 /*                                                      UI                                                           */
 /*===================================================================================================================*/
 
-
 .ui-ddl {
   min-width: 250px;
   height: 71px;
-  background: #2e2e2e url(~@/assets/#{$type}/imgs/ui/ddl_arrow.jpg) no-repeat
-    right top;
+  background: #2e2e2e url(~@/assets/#{$type}/imgs/ui/ddl_arrow.jpg) no-repeat right top;
   padding-left: 10px;
   border: 1px solid #8b8b8b;
   border-right: none;
@@ -24,7 +22,6 @@ $type: 'Y/01/03';
 /*
   ! index2.css
 */
-
 
 /*
   ! 所有圖片路徑不同
@@ -256,28 +253,24 @@ body {
   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
 }
 .ui-lnk-inquire {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center no-repeat;
 }
 .ui-ipt-favorites {
   background: url(~@/assets/#{$type}/imgs/ui/ipt_favorites.png) center no-repeat;
 }
 .ui-lnk-transferNow {
-  background: url(~@/assets/#{$type}/imgs/ui/btn_transferNow.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/ui/btn_transferNow.png) left center no-repeat;
 }
 .theme-content-box {
   background: url(~@/assets/#{$type}/imgs/theme/boxBg.png);
 }
 .theme-slotgame-jackpot,
 .theme-livegame-jackpot {
-  background: url(~@/assets/#{$type}/imgs/theme/bg_jackpot.png) center top
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/theme/bg_jackpot.png) center top no-repeat;
 }
 .theme-slotgame-supply,
 .theme-livegame-supply {
-  background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center
-    no-repeat;
+  background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
 }
 /* .reg-header { background: url(~@/assets/#{$type}/imgs/header/headerBg.jpg) no-repeat top center;} */
 /* .are-header-logo { height: 144px; background: url(~@/assets/#{$type}/imgs/header/logo.png) no-repeat center; padding: 0 117px;} */
@@ -295,20 +288,16 @@ body {
 /* .lnk-lang-mm { background-image: url(~@/assets/#{$type}/imgs/header/lang_mm.png);} */
 /* .btn-header-logout { display: block; width: 80%; background: url(~@/assets/#{$type}/imgs/header/btn_logout.jpg) repeat-x; margin: 0 10%; color: #000; font-size: 2.923em; line-height: 87px; } */
 .i-prize {
-  background: url(~@/assets/#{$type}/imgs/main/prizeIcn.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/prizeIcn.png) left center no-repeat;
 }
 .ul-prize {
-  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
 }
 .i-luckyDraw {
-  background: url(~@/assets/#{$type}/imgs/main/luckyDrawIcn.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/luckyDrawIcn.png) left center no-repeat;
 }
 .ul-luckyDraw {
-  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
 }
 /* .reg-footer { width: 100%; background: url(~@/assets/#{$type}/imgs/footer/footerBg.png) no-repeat center top; padding-top: 3px; position: fixed; left: 0; bottom: 0;} */
 /* .ul-footer-toolbar { background: url(~@/assets/#{$type}/imgs/footer/toolbarBg.jpg) repeat-x; } */
@@ -325,12 +314,10 @@ body {
   background: url(~@/assets/#{$type}/imgs/layout/bg_index2.jpg) no-repeat;
 }
 .lnk-banner-prev {
-  background: url(~@/assets/#{$type}/imgs/banner/prev.png) no-repeat center
-    center;
+  background: url(~@/assets/#{$type}/imgs/banner/prev.png) no-repeat center center;
 }
 .lnk-banner-next {
-  background: url(~@/assets/#{$type}/imgs/banner/next.png) no-repeat center
-    center;
+  background: url(~@/assets/#{$type}/imgs/banner/next.png) no-repeat center center;
 }
 .li-game-1010 {
   background-image: url(~@/assets/#{$type}/imgs/game/game1010.png);
@@ -405,10 +392,8 @@ body {
   background: url(~@/assets/#{$type}/imgs/main/freeGo-bg.jpg) left top repeat-x;
 }
 .icn-freeGo {
-  background: url(~@/assets/#{$type}/imgs/main/freeGo-icn.png) left top
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-icn.png) left top no-repeat;
 }
 .txt-freeGo {
-  background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center no-repeat;
 }

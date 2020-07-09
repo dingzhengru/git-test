@@ -14,13 +14,16 @@ import '@/styles/Y/common/layout-zh-cn.scss';
 import '@/styles/Y/common/layout-th-th.scss';
 import '@/styles/Y/common/layout-en-us.scss';
 
-
 import { getLang } from '@/utils/cookie';
 import settings from '@/settings';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.type
-const type = 'Y/01/02';
-store.commit('setType', type);
+const templateType = 'Y';
+const templateVersion = '01';
+const templateVersionNumber = '01';
+store.commit('template/setType', templateType);
+store.commit('template/setVersion', templateVersion);
+store.commit('template/setVersionNumber', templateVersionNumber);
 
 //* 取得語系 => 存進 store.state.lang
 // const browserLang = navigator.language || navigator.userLanguage;

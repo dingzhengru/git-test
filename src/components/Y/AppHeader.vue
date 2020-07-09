@@ -3,20 +3,12 @@
     <div class="lay-screen">
       <div class="are-header-logo"></div>
       <router-link to="/" class="cpn-inBlock lnk-header-home"></router-link>
-      <a
-        href="javascript:;"
-        class="cpn-inBlock lnk-header-langOpen"
-        @click="isShowLangList = !isShowLangList"
-      ></a>
+      <a href="javascript:;" class="cpn-inBlock lnk-header-langOpen" @click="isShowLangList = !isShowLangList"></a>
       <!-- <a href="javascript:" class="cpn-inBlock lnk-header-langClose"></a> -->
       <transition name="slide">
         <div class="are-header-langMenu" v-if="isShowLangList">
           <ul class="cpn-boxzero cpn-inBlock-row ul-lang ul-ilang">
-            <li
-              class="li-lang li-ilang"
-              v-for="(langItem, index) in langList"
-              :key="index"
-            >
+            <li class="li-lang li-ilang" v-for="(langItem, index) in langList" :key="index">
               <a
                 href="javascript:void(0)"
                 class="lnk-lang lnk-ilang"
@@ -41,7 +33,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TypeYAppHeader',
   computed: {
-    ...mapGetters(['type', 'lang']),
+    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
   data() {
     return {
@@ -50,7 +42,9 @@ export default {
     };
   },
   mounted() {
-    import(`@/styles/${this.type}/header.scss`);
+    // * 根據版型引入 css
+    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
+    import(`@/styles/${templatePath}/header.scss`);
   },
   methods: {
     changeLang(lang) {
@@ -62,8 +56,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 /**
  ** 語系下拉動畫
  */

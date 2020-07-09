@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home-swiper">
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
         <router-link :to="slide.link">
@@ -78,6 +78,10 @@ export default {
 </script>
 
 <style scoped>
+.home-swiper {
+  height: 431px;
+}
+
 .lnk-banner-prev,
 .lnk-banner-next {
   display: inline-block;

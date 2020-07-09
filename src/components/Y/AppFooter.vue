@@ -25,14 +25,18 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TypeYAppFooter',
   computed: {
-    ...mapGetters(['type']),
+    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
   mounted() {
-    import(`@/styles/${this.type}/footer.scss`);
+    // * 根據版型引入 css
+    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
+    import(`@/styles/${templatePath}/footer.scss`);
   },
 };
 </script>
 
 <style scoped>
-.reg-footer { z-index: 4;}
+.reg-footer {
+  z-index: 4;
+}
 </style>

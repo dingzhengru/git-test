@@ -22,17 +22,17 @@ export default {
     TypeYAppFooter: () => import('@/components/Y/AppFooter'),
   },
   computed: {
-    ...mapGetters(['type', 'lang']),
+    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
 
     // * 根據版型引入 css
-    import(`@/styles/${this.type}/layout.scss`);
+    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`
+    import(`@/styles/${templatePath}/layout.scss`);
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

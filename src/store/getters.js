@@ -1,5 +1,7 @@
 const getters = {
-  type: state => state.type,
+  templateType: state => state.template.type,
+  templateVersion: state => state.template.version,
+  templateVersionNumber: state => state.template.versionNumber,
   lang: state => state.lang,
   token: state => state.user.token,
 };
