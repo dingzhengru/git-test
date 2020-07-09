@@ -1,0 +1,98 @@
+/* 原專案是 index2.css */
+$type: 'Y/01/01';
+
+.lnk-game {
+  color: #fff;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.are-game {
+  background: url(~@/assets/#{$type}/imgs/layout/bg_index2.jpg) no-repeat;
+}
+.lnk-banner-prev {
+  background: url(~@/assets/#{$type}/imgs/banner/prev.png) no-repeat center center;
+}
+.lnk-banner-next {
+  background: url(~@/assets/#{$type}/imgs/banner/next.png) no-repeat center center;
+}
+.li-game-1010 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1010.png);
+}
+.li-game-1040 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1040.png);
+}
+.li-game-1080 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1080.png);
+}
+.li-game-1020 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1020.png);
+}
+.li-game-1120 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1120.png);
+}
+.li-game-1130 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1130.png);
+}
+.li-game-1140 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1140.png);
+}
+.li-game-1150 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1150.png);
+}
+.li-game-1170 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1170.png);
+}
+.li-game-1160 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1160.png);
+}
+.li-game-12203100-03 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game12203100.png);
+}
+.li-game-12203110-03 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game12203110.png);
+}
+.li-game-1150-01 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1150-01.png);
+}
+.li-game-11902602-02 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1150-02.png);
+}
+.li-game-1180 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1180.png);
+}
+.li-game-11901030-01 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game11901030-01.png);
+}
+.li-game-11901031-02 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1190-02.png);
+}
+.li-game-11901032-01 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game11901032-01.png);
+}
+.li-game-1200 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1200.png);
+}
+.li-game-1190-04 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game1190-04.png);
+}
+.li-game-11902100-02 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game11902100-02.png);
+}
+.li-game-app {
+  background-image: url(~@/assets/#{$type}/imgs/game/gameApp.png);
+}
+.li-game-download {
+  background-image: url(~@/assets/#{$type}/imgs/game/gameDownload.png);
+}
+.lnk-freeGo {
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-bg.jpg) left top repeat-x;
+}
+.icn-freeGo {
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-icn.png) left top no-repeat;
+}
+.txt-freeGo {
+  background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center no-repeat;
+}
