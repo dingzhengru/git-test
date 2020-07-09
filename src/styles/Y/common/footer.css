@@ -1,21 +1,13 @@
 .reg-footer {
   width: 100%;
-  background: url(~@/assets/Y/01/01/imgs/footer/footerBg.png) no-repeat center top;
   padding-top: 3px;
   position: fixed;
   left: 0;
   bottom: 0;
 }
 /*? .reg-footer > */
-.ul-footer-toolbar {
-  background: url(~@/assets/Y/01/01/imgs/footer/toolbarBg.jpg) repeat-x;
-}
 .li-footer-toolbar {
   width: 25%;
-  background: url(~@/assets/Y/01/01/imgs/footer/toolbarBg.jpg) repeat-x;
-}
-.li-toolbar-active {
-  background-image: url(~@/assets/Y/01/01/imgs/footer/toolbarBgActive.jpg);
 }
 .lnk-footer-toolbar {
   display: table-cell;
@@ -31,15 +23,11 @@
   vertical-align: middle;
   box-sizing: border-box;
 }
-.lnk-footer-toolbar {
-  background: url(~@/assets/Y/01/01/imgs/footer/lnk_toolbar.png) 0px 6px no-repeat;
-}
 .li-footer-toolbar:after {
   display: inline-block;
   content: '';
   width: 4px;
   height: 119px;
-  background: url(~@/assets/Y/01/01/imgs/footer/lnk_line.png) right top no-repeat;
   position: absolute;
   top: 0;
 }
