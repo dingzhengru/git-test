@@ -2,20 +2,14 @@
  * 用 Y/01/01 的當基礎
 */
 
-.reg-header {
-  /* background: url(~@/assets/Y/01/01/imgs/header/headerBg.jpg) no-repeat top
-    center; */
-}
 /*? .reg-header > */
 .are-header-logo {
   height: 144px;
-  /* background: url(~@/assets/Y/01/01/imgs/header/logo.png) no-repeat center; */
   padding: 0 117px;
 }
 .lnk-header-home {
   width: 77px;
   height: 65px;
-  /* background: url(~@/assets/Y/01/01/imgs/header/btn_home.png) no-repeat; */
   margin-top: -32.5px;
   position: absolute;
   top: 50%;
@@ -24,7 +18,6 @@
 .lnk-header-login {
   width: 61px;
   height: 87px;
-  background: url(~@/assets/Y/01/01/imgs/header/btn_login.png) no-repeat;
   margin-top: -30.5px;
   position: absolute;
   top: 45%;
@@ -33,7 +26,6 @@
 .lnk-header-back {
   width: 48px;
   height: 80px;
-  background: url(~@/assets/Y/01/01/imgs/header/btn_back.png) no-repeat;
   margin-top: -40px;
   position: absolute;
   top: 50%;
@@ -42,7 +34,6 @@
 .lnk-header-menuOpen {
   width: 70px;
   height: 58px;
-  background: url(~@/assets/Y/01/01/imgs/header/btn_menuOpen.png) no-repeat;
   margin-top: -29px;
   position: absolute;
   top: 50%;
@@ -52,7 +43,6 @@
   display: none;
   width: 70px;
   height: 58px;
-  background: url(~@/assets/Y/01/01/imgs/header/btn_menuClose.png) no-repeat center;
   margin-top: -29px;
   position: absolute;
   top: 50%;
@@ -62,7 +52,6 @@
   width: 96%;
   min-height: 50px;
   padding: 0 15px;
-  background: url(~@/assets/Y/01/01/imgs/header/memberInfoBg.png) repeat;
   margin-bottom: 30px;
   font-size: 1.846em;
   line-height: 40px;
@@ -74,7 +63,6 @@
   display: none;
   width: 100%;
   height: 85vh;
-  background: url(~@/assets/Y/01/01/imgs/header/menuBg.png) repeat;
   overflow: hidden;
   position: absolute;
   top: 144px;
@@ -126,25 +114,9 @@
   color: #fff;
   font-size: 2.153em;
 }
-.lnk-lang-tw {
-  background-image: url(~@/assets/Y/01/01/imgs/header/lang_tw.png);
-}
-.lnk-lang-cn {
-  background-image: url(~@/assets/Y/01/01/imgs/header/lang_cn.png);
-}
-.lnk-lang-en {
-  background-image: url(~@/assets/Y/01/01/imgs/header/lang_en.png);
-}
-.lnk-lang-th {
-  background-image: url(~@/assets/Y/01/01/imgs/header/lang_th.png);
-}
-.lnk-lang-mm {
-  background-image: url(~@/assets/Y/01/01/imgs/header/lang_mm.png);
-}
 .btn-header-logout {
   display: block;
   width: 80%;
-  background: url(~@/assets/Y/01/01/imgs/header/btn_logout.jpg) repeat-x;
   margin: 0 10%;
   color: #000;
   font-size: 2.923em;
@@ -152,14 +124,13 @@
 }
 
 /*
-  index2.css 的部分
+  ! index2.css 的部分
 */
 
 .lnk-header-langOpen,
 .lnk-header-langClose {
   width: 73px;
   height: 60px;
-  /* background: url(~@/assets/Y/01/01/imgs/header/lang_tw_s.png) center center no-repeat; */
   position: absolute;
   top: 30%;
   right: 20px;
@@ -168,7 +139,6 @@
   display: none;
 }
 .are-header-langMenu {
-  /* display: none; */
   width: 90px;
   background: rgba(0, 0, 0, 0.9);
   overflow: hidden;
@@ -186,16 +156,4 @@
 .lnk-ilang {
   width: 60px;
   padding-top: 65px;
-}
-.lnk-ilang.tw {
-  background-image: url(~@/assets/Y/01/01/imgs/header/lang_tw_s.png);
-}
-.lnk-ilang.cn {
-  background-image: url(~@/assets/Y/01/01/imgs/header/lang_cn_s.png);
-}
-.lnk-ilang.en {
-  background-image: url(~@/assets/Y/01/01/imgs/header/lang_en_s.png);
-}
-.lnk-ilang.th {
-  background-image: url(~@/assets/Y/01/01/imgs/header/lang_th_s.png);
 }

@@ -4,8 +4,7 @@ $type: 'Y/01/02';
 */
 
 .reg-footer {
-  background: url(~@/assets/#{$type}/imgs/footer/footerBg.png) no-repeat center
-    top;
+  background: url(~@/assets/#{$type}/imgs/footer/footerBg.png) no-repeat center top;
 }
 .ul-footer-toolbar {
   background: url(~@/assets/#{$type}/imgs/footer/toolbarBg.jpg) repeat-x;
@@ -17,17 +16,13 @@ $type: 'Y/01/02';
   background-image: url(~@/assets/#{$type}/imgs/footer/toolbarBgActive.jpg);
 }
 .lnk-footer-toolbar {
-  background: url(~@/assets/#{$type}/imgs/footer/lnk_toolbar.png) 0px 6px
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/footer/lnk_toolbar.png) 0px 6px no-repeat;
 }
 .li-footer-toolbar:after {
-  background: url(~@/assets/#{$type}/imgs/footer/lnk_line.png) right top
-    no-repeat;
+  background: url(~@/assets/#{$type}/imgs/footer/lnk_line.png) right top no-repeat;
 }
 .noneLoginPopup {
-  background: rgba(0, 0, 0, 0.8)
-    url(~@/assets/#{$type}/imgs/main/Bg-noneLoginPopup.jpg) center center
-    no-repeat;
+  background: rgba(0, 0, 0, 0.8) url(~@/assets/#{$type}/imgs/main/Bg-noneLoginPopup.jpg) center center no-repeat;
 }
 
 /*
