@@ -90,5 +90,4 @@ export default {
 .li-toolbar-transaction > .lnk-footer-toolbar {
   background-position: 97% 6px;
 }
-
 </style>
