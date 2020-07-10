@@ -2,12 +2,28 @@
   <div>
     <div class="lay-are-pageTitle"><h1 class="cpn-boxzero ui-h1-pageTitle">Member Login</h1></div>
     <div class="are-auth">
-      <form class="tablelogin">
+      <form id="LoginForm" @submit.prevent="login">
         <div class="blk-auth blk-account">
-          <input class="ipt-auth" id="UserName" type="text" name="UserName" tabindex="1" placeholder="Account" />
+          <input
+            class="ipt-auth"
+            id="UserName"
+            type="text"
+            name="UserName"
+            tabindex="1"
+            placeholder="Account"
+            v-model="username"
+          />
         </div>
         <div class="blk-auth blk-password">
-          <input class="ipt-auth" id="Password" type="password" name="Password" tabindex="2" placeholder="Password" />
+          <input
+            class="ipt-auth"
+            id="Password"
+            type="password"
+            name="Password"
+            tabindex="2"
+            placeholder="Password"
+            v-model="password"
+          />
         </div>
         <div class="blk-auth blk-code">
           <input
@@ -18,17 +34,18 @@
             tabindex="3"
             placeholder="Captcha"
             maxlength="4"
+            v-model="captcha"
           />
           <input type="hidden" name="_mvcCaptchaGuid" id="_mvcCaptchaGuid" />
         </div>
         <div class="blk-auth blk-rememberme">
           <input class="ipt-auth" id="RememberMe" name="RememberMe" tabindex="4" type="checkbox" />
-          <label class="ipt-auth" for="RememberMe" id="lbRememberMe">Remember Me</label>
+          <label class="ipt-auth" id="lbRememberMe" for="RememberMe">Remember Me</label>
         </div>
       </form>
-      <a class="cpn-inBlock lnk-regist" href="/Y/NoneLogin/RegisterNew/">Register</a>
-      <a class="cpn-inBlock lnk-forget" href="/Y/NoneLogin/ForgetPwd/">GetPassword</a>
-      <button class="ui-btn01 ui-btn-long btn-login" id="loginbtn" type="submit">
+      <a class="cpn-inBlock lnk-regist" id="register" href="/Y/NoneLogin/RegisterNew/">Register</a>
+      <a class="cpn-inBlock lnk-forget" id="forgetPwd" href="/Y/NoneLogin/ForgetPwd/">GetPassword</a>
+      <button class="ui-btn01 ui-btn-long btn-login" id="loginbtn" type="submit" form="LoginForm">
         Login
       </button>
     </div>
@@ -43,13 +60,23 @@ export default {
   computed: {
     ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
+  data() {
+    return {
+      username: '',
+      password: '',
+      captcha: '',
+    };
+  },
   mounted() {
-    // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
-    document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
-
     // * 根據版型引入 css
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/login.scss`);
+  },
+  methods: {
+    login() {
+      this.$store.commit('user/setToken', 'auth-token-hash');
+      this.$router.replace({ name: 'Home' });
+    },
   },
 };
 </script>

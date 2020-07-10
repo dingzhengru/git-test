@@ -14,7 +14,7 @@ import '@/styles/Y/common/layout-zh-cn.scss';
 import '@/styles/Y/common/layout-th-th.scss';
 import '@/styles/Y/common/layout-en-us.scss';
 
-import { getLang } from '@/utils/cookie';
+import { getLang, getAuthToken } from '@/utils/cookie';
 import settings from '@/settings';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.type
@@ -29,6 +29,12 @@ store.commit('template/setVersionNumber', templateVersionNumber);
 // const browserLang = navigator.language || navigator.userLanguage;
 const lang = getLang() || settings.DEFAULT_LANG;
 store.commit('setLang', lang);
+
+//* 用 token 判斷是否登入，並取使用者資料
+const authToken = getAuthToken();
+if(authToken) {
+  store.commit('user/settAuthToken', authToken);
+}
 
 new Vue({
   router,

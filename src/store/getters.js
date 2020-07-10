@@ -3,6 +3,7 @@ const getters = {
   templateVersion: state => state.template.version,
   templateVersionNumber: state => state.template.versionNumber,
   lang: state => state.lang,
-  token: state => state.user.token,
+  token: state => state.token,
+  authToken: state => state.user.token,
 };
 export default getters;
