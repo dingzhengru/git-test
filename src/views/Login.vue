@@ -1,11 +1,131 @@
 <template>
-  <div></div>
+  <div>
+    <div class="lay-are-pageTitle"><h1 class="cpn-boxzero ui-h1-pageTitle">Member Login</h1></div>
+    <div class="are-auth">
+      <form class="tablelogin">
+        <div class="blk-auth blk-account">
+          <input class="ipt-auth" id="UserName" type="text" name="UserName" tabindex="1" placeholder="Account" />
+        </div>
+        <div class="blk-auth blk-password">
+          <input class="ipt-auth" id="Password" type="password" name="Password" tabindex="2" placeholder="Password" />
+        </div>
+        <div class="blk-auth blk-code">
+          <input
+            class="ipt-auth ipt-auth-code"
+            id="CaptchaValue"
+            type="tel"
+            name="CaptchaValue"
+            tabindex="3"
+            placeholder="Captcha"
+            maxlength="4"
+          />
+          <input type="hidden" name="_mvcCaptchaGuid" id="_mvcCaptchaGuid" />
+        </div>
+        <div class="blk-auth blk-rememberme">
+          <input class="ipt-auth" id="RememberMe" name="RememberMe" tabindex="4" type="checkbox" />
+          <label class="ipt-auth" for="RememberMe" id="lbRememberMe">Remember Me</label>
+        </div>
+      </form>
+      <a class="cpn-inBlock lnk-regist" href="/Y/NoneLogin/RegisterNew/">Register</a>
+      <a class="cpn-inBlock lnk-forget" href="/Y/NoneLogin/ForgetPwd/">GetPassword</a>
+      <button class="ui-btn01 ui-btn-long btn-login" id="loginbtn" type="submit">
+        Login
+      </button>
+    </div>
+  </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Login',
+  computed: {
+    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+  },
+  mounted() {
+    // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
+    document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
+
+    // * 根據版型引入 css
+    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
+    import(`@/styles/${templatePath}/login.scss`);
+  },
 };
 </script>
 
-<style></style>
+<style scoped>
+/* .reg-main > */
+.are-auth {
+  width: 563px;
+  margin: 0 auto;
+  text-align: center;
+}
+/* .reg-main > .are-auth > */
+.blk-auth {
+  height: 81px;
+  background-repeat: no-repeat;
+  margin-bottom: 30px;
+  padding-left: 80px;
+}
+.blk-code {
+  position: relative;
+}
+
+.lnk-regist,
+.lnk-forget,
+.lnk-open,
+.lnk-download {
+  /* width: 150px; */
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 134px 15px 0;
+  margin-top: 35px;
+  /* color: #fff; */
+  font-size: 2.46em;
+}
+
+.btn-login {
+  display: block;
+  margin: 20px auto;
+}
+/* .reg-main > .are-auth > .blk-auth */
+.ipt-auth {
+  width: 465px;
+  height: 64px;
+  background-color: transparent;
+  margin: 8px 0 9px;
+  padding: 0 3px;
+  border: none;
+  outline: none;
+  font-size: 2.5em;
+}
+.ipt-auth-code {
+  width: 315px;
+  padding-right: 153px;
+}
+.blk-code > a {
+  position: absolute;
+  top: 11px;
+  right: 15px;
+}
+
+.blk-rememberme {
+  height: 70px;
+  padding: 0;
+  outline: none;
+}
+input#RememberMe {
+  width: 35px;
+  height: 27px;
+  margin-left: 0;
+  float: none;
+}
+
+.are-auth.closeRegist .lnk-regist {
+  display: none;
+}
+.are-auth.closeRegist .lnk-forget {
+  margin-left: 25%;
+}
+</style>

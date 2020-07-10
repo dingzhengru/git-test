@@ -1,0 +1,41 @@
+$type: 'Y/01/02';
+
+.blk-auth {
+  outline: 3px solid #2b7d9c;
+}
+.lnk-regist,
+.lnk-forget,
+.lnk-open,
+.lnk-download {
+  color: #1b607f;
+}
+
+.ipt-auth {
+  color: #000;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.blk-account {
+  background: #fff url(~@/assets/#{$type}/imgs/main/authBg_account.png) 8px center no-repeat;
+}
+.blk-password {
+  background: #fff url(~@/assets/#{$type}/imgs/main/authBg_password.png) 8px center no-repeat;
+}
+.blk-code {
+  background: #fff url(~@/assets/#{$type}/imgs/main/authBg_code.png) 8px center no-repeat;
+}
+.lnk-regist {
+  background-image: url(~@/assets/#{$type}/imgs/main/registerBg.png);
+}
+.lnk-forget {
+  background-image: url(~@/assets/#{$type}/imgs/main/forgetBg.png);
+}
+// .lnk-open {
+//   background-image: url(~@/assets/#{$type}/imgs/main/open.png);
+// }
+// .lnk-download {
+//   background-image: url(~@/assets/#{$type}/imgs/main/download.png);
+// }

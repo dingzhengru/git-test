@@ -20,7 +20,7 @@ import settings from '@/settings';
 //* 取得版型(網域判斷或後端給) => 存進 store.state.type
 const templateType = 'Y';
 const templateVersion = '01';
-const templateVersionNumber = '03';
+const templateVersionNumber = '01';
 store.commit('template/setType', templateType);
 store.commit('template/setVersion', templateVersion);
 store.commit('template/setVersionNumber', templateVersionNumber);
