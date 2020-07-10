@@ -8,7 +8,7 @@
       <transition name="slide">
         <div class="are-header-langMenu" v-if="isShowLangList">
           <ul class="cpn-boxzero cpn-inBlock-row ul-lang ul-ilang">
-            <li class="li-lang li-ilang" v-for="(langItem, index) in langList" :key="index">
+            <li class="li-lang li-ilang" v-for="langItem in langList" :key="langItem">
               <a
                 href="javascript:void(0)"
                 class="lnk-lang lnk-ilang"

@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="lay-container" :class="lang">
-    <TypeYAppHeader v-if="!authToken"></TypeYAppHeader>
-    <TypeYAppHeaderAuth v-if="authToken"></TypeYAppHeaderAuth>
+    <TypeYAppHeader v-if="!token"></TypeYAppHeader>
+    <TypeYAppHeaderAuth v-if="token"></TypeYAppHeaderAuth>
 
     <div class="reg-main">
       <div class="lay-screen">
@@ -24,7 +24,10 @@ export default {
     TypeYAppFooter: () => import('@/components/Y/AppFooter'),
   },
   computed: {
-    ...mapGetters(['lang', 'authToken', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters(['lang', 'token', 'templateType', 'templateVersion', 'templateVersionNumber']),
+  },
+  data() {
+    return {};
   },
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />

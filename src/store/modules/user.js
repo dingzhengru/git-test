@@ -1,4 +1,4 @@
-import { setAuthToken } from '@/utils/cookie';
+import { setToken } from '@/utils/cookie';
 
 const state = {
   token: null,
@@ -11,7 +11,7 @@ const state = {
 const mutations = {
   setToken: (state, token) => {
     state.token = token;
-    setAuthToken(token);
+    setToken(token);
   },
   setAccount: (state, account) => {
     state.account = account;

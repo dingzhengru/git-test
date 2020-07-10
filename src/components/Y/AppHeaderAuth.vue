@@ -10,33 +10,46 @@
         @click="isShowMenu = !isShowMenu"
       ></a>
       <transition name="slide">
-        <div class="are-header-menu">
+        <div class="are-header-menu" v-if="isShowMenu">
           <ul class="cpn-boxzero ul-menu">
-            <li class="li-menu"><a href="/Y/AlreadyLogin/Profile/?Tag=ChangeAdvance" class="lnk-menu">Profile</a></li>
-            <li class="li-menu"><a href="/Y/Operator/Deposit/" class="lnk-menu">Trade Center</a></li>
-            <li class="li-menu"><a href="/Y/BetHistory/MainPage/?Tag=NoneFinal" class="lnk-menu">Report</a></li>
-            <li class="li-menu"><a href="/Y/AlreadyLogin/News" class="lnk-menu">Latest News</a></li>
-            <li class="li-menu"><a href="/Y/Promotion/AlreadyLogin/" class="lnk-menu">Promotions</a></li>
-            <li class="li-menu"><a href="/Y/StaticPage/AlreadyLogin/?Tag=gameIntro" class="lnk-menu">About Us</a></li>
+            <li class="li-menu" @click="isShowMenu = false">
+              <router-link to="/" class="lnk-menu">Profile</router-link>
+            </li>
+            <li class="li-menu" @click="isShowMenu = false">
+              <router-link to="/" class="lnk-menu">Trade Center</router-link>
+            </li>
+            <li class="li-menu" @click="isShowMenu = false">
+              <router-link to="/" class="lnk-menu">Report</router-link>
+            </li>
+            <li class="li-menu" @click="isShowMenu = false">
+              <router-link to="/" class="lnk-menu">Latest News</router-link>
+            </li>
+            <li class="li-menu" @click="isShowMenu = false">
+              <router-link to="/" class="lnk-menu">Promotions</router-link>
+            </li>
+            <li class="li-menu" @click="isShowMenu = false">
+              <router-link to="/" class="lnk-menu">About Us</router-link>
+            </li>
           </ul>
           <ul class="cpn-boxzero cpn-inBlock-row ul-lang">
-            <li class="li-lang">
-              <a href="javascript:void(0)" class="lnk-lang lnk-lang-cn"
-                >简体中文</a
+            <li class="li-lang" v-for="langItem in langList" :key="langItem">
+              <a
+                href="javascript:;"
+                class="lnk-lang"
+                :class="{
+                  'lnk-lang-cn': langItem == 'zh-cn',
+                  'lnk-lang-th': langItem == 'th-th',
+                  'lnk-lang-en': langItem == 'en-us',
+                }"
+                @click="isShowMenu = false"
               >
-            </li>
-            <li class="li-lang">
-              <a href="javascript:void(0)" class="lnk-lang lnk-lang-th"
-                >ภาษาไทย</a
-              >
-            </li>
-            <li class="li-lang">
-              <a href="javascript:void(0)" class="lnk-lang lnk-lang-en"
-                >English</a
-              >
+                <span v-if="langItem == 'zh-cn'">简体中文</span>
+                <span v-else-if="langItem == 'th-th'">ภาษาไทย</span>
+                <span v-else-if="langItem == 'en-us'">English</span>
+              </a>
             </li>
           </ul>
-          <button type="button" class="btn-header-logout" onclick="location.href='/Login/Logout/'">Logout</button>
+          <button type="button" class="btn-header-logout" @click="logout">Logout</button>
         </div>
       </transition>
     </div>
@@ -66,6 +79,7 @@ export default {
       this.$store.commit('setLang', lang);
       this.isShowLangList = false;
     },
+    logout() {},
   },
 };
 </script>
@@ -83,7 +97,7 @@ export default {
 
 .slide-enter-to,
 .slide-leave {
-  max-height: 250px;
+  max-height: 1000px;
 }
 
 .slide-enter,

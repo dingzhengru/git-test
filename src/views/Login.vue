@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     login() {
-      this.$store.commit('user/setToken', 'auth-token-hash');
+      this.$store.commit('user/setToken', 'token-hash');
       this.$router.replace({ name: 'Home' });
     },
   },

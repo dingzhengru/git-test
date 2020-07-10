@@ -4,8 +4,7 @@
 import Cookies from 'js-cookie';
 // import settings from '@/settings';
 
-const tokenKey = 'token'; //! 登入前的 token
-const authTokenKey = 'authToken'; //! 登入後的 token
+const tokenKey = 'token';
 const langKey = 'lang'; //! 目前語系
 
 /**
@@ -14,10 +13,6 @@ const langKey = 'lang'; //! 目前語系
  */
 
 const tokenConfig = {
-  sameSite: 'lax',
-  expires: 1,
-};
-const authTokenConfig = {
   sameSite: 'lax',
   expires: 1,
 };
@@ -37,18 +32,6 @@ export function setToken(token) {
 
 export function deleteToken() {
   return Cookies.remove(tokenKey);
-}
-
-export function getAuthToken() {
-  return Cookies.get(authTokenKey);
-}
-
-export function setAuthToken(token) {
-  return Cookies.set(authTokenKey, token, authTokenConfig);
-}
-
-export function deleteAuthToken() {
-  return Cookies.remove(authTokenKey);
 }
 
 export function getLang() {
