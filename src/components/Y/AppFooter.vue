@@ -2,16 +2,16 @@
   <footer class="reg-footer">
     <div class="lay-screen">
       <ul class="cpn-boxzero cpn-inBlock-row ul-footer-toolbar">
-        <li class="li-footer-toolbar li-toolbar-member">
+        <li class="li-footer-toolbar li-toolbar-member" :class="{ 'li-toolbar-active': false }">
           <router-link to="/login" class="lnk-footer-toolbar">Member Center</router-link>
         </li>
-        <li class="li-footer-toolbar li-toolbar-regist">
+        <li class="li-footer-toolbar li-toolbar-regist" :class="{ 'li-toolbar-active': $route.name == 'Login' }">
           <router-link to="/login" class="lnk-footer-toolbar">Log in / Register</router-link>
         </li>
-        <li class="li-footer-toolbar li-toolbar-event">
+        <li class="li-footer-toolbar li-toolbar-event" :class="{ 'li-toolbar-active': $route.name.includes('Promotion') }">
           <router-link to="/promotion" class="lnk-footer-toolbar">Promotions</router-link>
         </li>
-        <li class="li-footer-toolbar li-toolbar-service">
+        <li class="li-footer-toolbar li-toolbar-service" :class="{ 'li-toolbar-active': $route.name == 'Contact' }">
           <router-link to="/contact" class="lnk-footer-toolbar">Online Customer</router-link>
         </li>
       </ul>
@@ -28,6 +28,7 @@ export default {
     ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
   mounted() {
+    console.log(this.$router.currentRoute.name, this.$route.name);
     // * 根據版型引入 css
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/footer.scss`);
