@@ -1,14 +1,15 @@
 <template>
   <div class="lay-are-pageContent">
     <div class="promotion__div--img">
-      <img :src="promotion.img" alt="" />
+      <img :src="image" alt="" />
     </div>
     <div class="are-eventContents">
-      <div class="blk-eventContents-desc">
-        <h3 class="h3-desc-title">Activity time</h3>
-        <div class="panel-eventContents-desc">
-          Starts 07/08/2017 at 11:00 (During the time member second deposit maximum can get 99,999THB.)
-        </div>
+      <div class="blk-eventContents-desc" v-for="content in contentList" :key="content.title">
+        <h3 class="h3-desc-title">{{ content.title }}</h3>
+        <div class="panel-eventContents-desc" v-html="content.content"></div>
+      </div>
+      <div class="are-control">
+        <a href="javascript:;" class="ui-btn01 ui-btn-long btn-return" @click="$router.go(-1)">Back</a>
       </div>
     </div>
   </div>
@@ -24,35 +25,39 @@ export default {
   },
   data() {
     return {
-      promotion: {
-        img: event01,
-        activityTime: {
+      image: event01,
+      contentList: [
+        {
           title: 'Activity Time',
           content: 'Starts 07/08/2017 at 11:00 (During the time member second deposit maximum can get 99,999THB.)',
         },
-        activityContent: {
+        {
           title: 'Activity Content',
           content: `<div class="panel-eventContents-desc"><ul class="cpn-ul-decimal"><li>Minimum deposit 500 THB can join this promotion</li><li>Bonus up to 5% the amount of deposit . highest to 99,999THB and rolling request multiple by 5 times to cash out.</li><li>Exp.Deposit 500 bath get bonus 10% (1,000x5%=50) The member can withdraw if summary of wagering more than (1,000+50)x5 = 5,250</li></ul></div>`,
         },
-      },
+        {
+          title: 'Activity Rules',
+          content: `<ul class="cpn-ul-decimal"><li>Maximum bonus up to99,999</li><li>The same deposit amount. Can only get bonus one time.</li><li>Roling 5 times to cash out (Deposit+Bonus) and rolling will be counted when the amount of money taken bets will be win or lose</li><li>Member account multiple applications behavior will be reserves the right to cancel. If multiple players in the common use of an account or a single player use multiple accounts or any fraudulent activity, all wagers will be canceled</li><li>Live Casino: Baccaract bet “Banker+Player”, Roulette : Bet on “Red+ Black”，”Even+Odds“，”Big+Small“ are all does not count.</li><li>Live Casino Roulette , one game wagers over 25th will not count. Below 24(or including 24 ) will be normal betting.</li><li>Sport (SABA):Same match can not be bets opposite side.</li><li>We also reserve the right to change rules or confidentiality regulations at any time. Any change will be published and displayed at the website of『LIONKING88』</li></ul>`,
+        },
+      ],
     };
   },
   mounted() {
     // const id = this.$route.params.id;
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     // import(`@/styles/${this.templateType}/common/promotion.css`);
-    import(`@/styles/${templatePath}/promotion.scss`);
+    import(`@/styles/${templatePath}/promotion-content.scss`);
   },
 };
 </script>
 
 <style scoped>
-
 .lay-are-pageContent {
   width: 100%;
   padding: 0;
 }
 
+/* 自己的 */
 .promotion__div--img {
   margin: 20px auto;
   text-align: center;
@@ -70,8 +75,8 @@ export default {
   margin-bottom: 20px;
 }
 .blk-eventContents-desc ul > li > a {
-  color: #ffffff;
-  background-color: #d40505;
+  /* color: #ffffff; */
+  /* background-color: #d40505; */
   border-radius: 6px;
   padding: 5px 10px;
   margin: 5px;
@@ -87,8 +92,7 @@ export default {
 .panel-eventContents-desc {
   font-size: 2.307em;
 }
-.img-event-poster {
-  width: 100%;
-  height: 545px;
+.are-control {
+  text-align: center;
 }
 </style>

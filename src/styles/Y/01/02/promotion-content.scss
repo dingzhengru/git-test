@@ -1,0 +1,23 @@
+$type: 'Y/01/02';
+
+.promotion__div--img img {
+  outline: 2px solid #fff;
+}
+
+.panel-eventContents-desc ul > li > a {
+  background-color: #1c6080;
+  color: #fff;
+}
+
+.panel-eventContents-desc {
+  color: #000;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.h3-desc-title {
+  background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
+}
+// .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }

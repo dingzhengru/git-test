@@ -140,7 +140,7 @@ export default {
 }
 .lnk-service {
   display: inline-block;
-  *display: inline;
+  display: inline;
   zoom: 1;
   padding-top: 99px;
   color: #000;
@@ -186,7 +186,5 @@ export default {
   font-size: 2.461em;
   line-height: 65px;
 }
-
-
 
 </style>

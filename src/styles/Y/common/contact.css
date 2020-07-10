@@ -1,7 +1,7 @@
 /*! 原專案是 service.css */
 
 /* .reg-main > */
-.ul-service {
+/* .ul-service {
   text-align: center;
 }
 .li-service {
@@ -18,18 +18,18 @@
 }
 .lnk-service {
   display: inline-block;
-  *display: inline;
+  display: inline;
   zoom: 1;
   padding-top: 99px;
   color: #000;
   font-size: 2.461em;
   text-align: center;
 }
-/* .are-contact {
+.are-contact {
   margin: 80px;
 } */
 /* .reg-main > .are-contact > */
-.li-contact {
+/* .li-contact {
   margin: 31px 20px;
   position: relative;
 }
@@ -62,4 +62,4 @@
 .lnk-contact-tel {
   font-size: 2.461em;
   line-height: 65px;
-}
+} */

@@ -1,0 +1,20 @@
+$type: 'Y/01/03';
+
+/* .reg-main > .are-eventContents */
+
+.blk-eventContents-desc ul > li > a {
+  color: #ffffff;
+  background-color: #044403;
+}
+
+.h3-desc-title {
+  color: #000;
+}
+/*
+  ! 圖片路徑
+*/
+
+.h3-desc-title {
+  background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
+}
+// .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }
