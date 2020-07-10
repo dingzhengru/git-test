@@ -34,6 +34,7 @@
             tabindex="3"
             placeholder="Captcha"
             maxlength="4"
+            autocomplete="off"
             v-model="captcha"
           />
           <input type="hidden" name="_mvcCaptchaGuid" id="_mvcCaptchaGuid" />

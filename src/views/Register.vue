@@ -209,6 +209,17 @@ export default {
   },
   data() {
     return {
+      recommend: '',
+      account: '',
+      password: '',
+      passwordCheck: '',
+      mobile: '',
+      email: '',
+      line: '',
+      firstName: '',
+      lastName: '',
+      nickname: '',
+      captcha: '',
       errorAccount: '',
       errorPassword: '',
       errorPasswordCheck: '',
@@ -228,7 +239,7 @@ export default {
   },
   methods: {
     register() {
-      console.log('register')
+      console.log('register');
     },
   },
 };
