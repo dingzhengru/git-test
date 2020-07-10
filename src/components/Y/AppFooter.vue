@@ -7,7 +7,7 @@
         </li>
         <li
           class="li-footer-toolbar li-toolbar-regist"
-          :class="{ 'li-toolbar-active': $route.name == 'Login' || 'Register' }"
+          :class="{ 'li-toolbar-active': $route.name == 'Login' ||  $route.name == 'Register' }"
         >
           <router-link to="/login" class="lnk-footer-toolbar">Log in / Register</router-link>
         </li>
