@@ -43,8 +43,8 @@
           <label class="ipt-auth" id="lbRememberMe" for="RememberMe">Remember Me</label>
         </div>
       </form>
-      <a class="cpn-inBlock lnk-regist" id="register" href="/Y/NoneLogin/RegisterNew/">Register</a>
-      <a class="cpn-inBlock lnk-forget" id="forgetPwd" href="/Y/NoneLogin/ForgetPwd/">GetPassword</a>
+      <router-link class="cpn-inBlock lnk-regist" id="register" :to="{ name:'Register' }">Register</router-link>
+      <router-link class="cpn-inBlock lnk-forget" id="forgetPwd" :to="{ name:'ForgetPassword' }">GetPassword</router-link>
       <button class="ui-btn01 ui-btn-long btn-login" id="loginbtn" type="submit" form="LoginForm">
         Login
       </button>

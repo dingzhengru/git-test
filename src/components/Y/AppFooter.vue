@@ -28,7 +28,6 @@ export default {
     ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
   mounted() {
-    console.log(this.$router.currentRoute.name, this.$route.name);
     // * 根據版型引入 css
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/footer.scss`);

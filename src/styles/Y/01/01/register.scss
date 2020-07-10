@@ -1,0 +1,31 @@
+$type: 'Y/01/01';
+
+.blk-notice {
+  color: #959595;
+}
+.ol-notice {
+  color: #959595;
+}
+/*
+  ! 圖片路徑
+*/
+
+
+.blk-recommend {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_recommend.png);
+}
+.blk-account {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
+}
+.blk-password {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
+}
+.blk-callphone {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_callphone.png);
+}
+.blk-name {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_name.png);
+}
+.blk-code {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_code.png);
+}

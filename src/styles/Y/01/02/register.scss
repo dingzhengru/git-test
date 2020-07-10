@@ -1,0 +1,44 @@
+$type: 'Y/01/02';
+
+.register {
+  background-color: #04354c;
+  margin-bottom: -30px;
+  padding-bottom: 50px !important;
+}
+
+.blk-auth {
+  outline: 3px solid #2b7d9c;
+}
+
+.blk-notice {
+  color: #fff;
+}
+.ol-notice {
+  color: #fff;
+}
+::placeholder {
+  color: #fff;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.blk-recommend {
+  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_recommend.png) 8px center no-repeat;
+}
+.blk-account {
+  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_account.png) 8px center no-repeat;
+}
+.blk-password {
+  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_password.png) 8px center no-repeat;
+}
+.blk-callphone {
+  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_callphone.png) 8px center no-repeat;
+}
+.blk-name {
+  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_name.png) 8px center no-repeat;
+}
+.blk-code {
+  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_code.png) 8px center no-repeat;
+}

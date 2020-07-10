@@ -1,0 +1,40 @@
+/* #freeregist@common */
+/*===================================================================================================================*/
+/*                                                      Header                                                       */
+/*===================================================================================================================*/
+.lnk-header-langOpen, .lnk-header-langClose { width: 73px; height: 60px; /*background: url(imgs/header/lang_tw_s.png) center center no-repeat;*/ position: absolute; top: 33%; right: 20px; }
+.lnk-header-langClose { display: none; }
+.are-header-langMenu { display: none; width: 90px; background: rgba(0, 0, 0, 0.9); overflow: hidden; position: absolute; top: 141px; right: 12px; z-index: 2; }
+.ul-ilang { margin-bottom: 0; }
+.li-ilang { margin: 10px auto; }
+.lnk-ilang { width: 60px;  padding-top: 65px;}
+/* .lnk-ilang.tw { background-image: url(imgs/header/lang_tw_s.png);} */
+/* .lnk-ilang.cn { background-image: url(imgs/header/lang_cn_s.png);} */
+/* .lnk-ilang.en { background-image: url(imgs/header/lang_en_s.png);} */
+/* .lnk-ilang.th { background-image: url(imgs/header/lang_th_s.png);} */
+/*===================================================================================================================*/
+/*                                                       Main                                                        */
+/*===================================================================================================================*/
+/* .reg-main {} */
+/* .reg-main > */
+.are-auth { width: 563px; margin: 0 auto;}
+.are-control { width: 666px; margin: 50px auto 0;}
+/* .reg-main > .are-auth > */
+.blk-auth { height: 81px; background: no-repeat; margin-top: 30px; padding-left: 80px; position: relative;}
+.blk-recommend { /*background-image: url(imgs/main/authBg_recommend.png);*/ margin-top: 0;}
+/* .blk-account { background-image: url(imgs/main/authBg_account.png);} */
+/* .blk-password { background-image: url(imgs/main/authBg_password.png);} */
+/* .blk-callphone { background-image: url(imgs/main/authBg_callphone.png);} */
+/* .blk-name { background-image: url(imgs/main/authBg_name.png);} */
+/* .blk-code { background-image: url(imgs/main/authBg_code.png);} */
+.blk-notice { margin: 5px 0; color: #959595; font-size: 2em;}
+
+/* .reg-main > .are-auth > .blk-auth */
+.txt-auth-star { font-size: 2.5em; position: absolute; top: 20px; left: -25px;}
+.ipt-auth { width: 465px; height: 64px; background: transparent; margin: 8px 0 9px; padding: 0 3px; border: none; outline: none; font-size: 2.5em;}
+.ipt-auth-code { width: 315px; padding-right: 153px;}
+.blk-code > a { position: absolute; top: 11px; right: 15px;}
+/* .reg-main > .are-control > */
+.btn-send,
+.btn-reset { margin: 0 10px;}
+.ol-notice { margin: 50px 10px 0; color: #959595; font-size: 2.153em;}

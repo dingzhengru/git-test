@@ -33,7 +33,7 @@ store.commit('setLang', lang);
 //* 用 token 判斷是否登入，並取使用者資料
 const authToken = getAuthToken();
 if(authToken) {
-  store.commit('user/settAuthToken', authToken);
+  store.commit('user/setToken', authToken);
 }
 
 new Vue({
