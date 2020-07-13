@@ -11,9 +11,9 @@
         :key="index"
         :style="{ 'background-image': `url(${game.img})` }"
       >
-        <a class="lnk-game" href="javascript:void(0)">
+        <router-link :to="{ name: 'About' }" class="lnk-game" href="javascript:void(0)">
           {{ game.name }}
-        </a>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -100,7 +100,7 @@ export default {
 .lnk-freeGo {
   display: block;
   width: 100%;
-  height: 109px; 
+  height: 109px;
   padding: 20px 0 0 35px;
   box-sizing: border-box;
   margin-bottom: 8px;
@@ -108,7 +108,7 @@ export default {
 .icn-freeGo {
   display: inline-block;
   width: 70px;
-  height: 64px; 
+  height: 64px;
   text-indent: -999em;
   vertical-align: top;
 }
@@ -117,7 +117,7 @@ export default {
   width: 82%;
   color: #fcf0ca;
   font-size: 32px;
-  line-height: 72px; 
+  line-height: 72px;
   padding-left: 20px;
 }
 </style>

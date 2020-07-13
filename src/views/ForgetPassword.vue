@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .are-desc {
   padding-top: 316px;
   font-size: 2.769em;

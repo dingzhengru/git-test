@@ -248,8 +248,6 @@ export default {
 <style scoped>
 /* .reg-main > */
 
-
-
 .are-auth {
   width: 563px;
   margin: 0 auto;

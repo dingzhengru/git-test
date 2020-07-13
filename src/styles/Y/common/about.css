@@ -1,0 +1,21 @@
+/*gameIntro/common*/
+
+.reg-main { padding: 80px 0 20px 0; text-align: center; }
+.ul-gameIntro-toolbar { position: fixed; right: 10px; bottom: 145px; }
+.li-gameIntro-toolbar { width: 70px; height: 70px; background: url(imgs/ui/gameIntro_sort.png) center top no-repeat; }
+.lnk-gameIntro-toolbar { display: block; height: 70px; }
+.li-gameIntro-toolbar-01 { background-position: center top; }
+.li-gameIntro-toolbar-02 { background-position: center center; }
+.li-gameIntro-toolbar-03 { background-position: center bottom; }
+
+.img-gameIntro { display: block; height: 215px; background: url(imgs/game/gameIntro-01.jpg) center top no-repeat; }
+.img-gameIntro-01 { background-image: url(imgs/game/gameIntro-01.jpg); }
+.img-gameIntro-02 { background-image: url(imgs/game/gameIntro-02.jpg); }
+.img-gameIntro-03 { background-image: url(imgs/game/gameIntro-03.jpg); }
+
+.ui-h2-pageTitle { font-size: 40px; padding: 45px 0 10px 0; }
+.blk-gameIntro { width: 96%; margin: 0 auto; }
+.ui-h2-gameIntroTitle { text-align: left; font-size: 40px; margin: 20px 0 24px 15px; }
+.txt-gameIntroDesc { display: block; margin: 0 2%; text-align: left; font-size: 32px; line-height: 50px; padding-bottom: 80px; word-break: break-word;}
+#gameGclub > .txt-gameIntroDesc:first-of-type { padding-bottom: 20px; }
+
