@@ -11,7 +11,7 @@
         :key="index"
         :style="{ 'background-image': `url(${game.img})` }"
       >
-        <router-link :to="{ name: 'About' }" class="lnk-game" href="javascript:void(0)">
+        <router-link :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }" class="lnk-game" href="javascript:void(0)">
           {{ game.name }}
         </router-link>
       </li>

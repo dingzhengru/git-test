@@ -73,13 +73,16 @@ export default {
     // * 根據版型引入 css
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/about.scss`);
+
+    // * 根據 query 移動到該標籤，若不設延遲，重整會停在較上面的位置
+    setTimeout(() => {
+      this.$scrollTo(this.$route.query.scrollTo);
+    }, 100);
   },
 };
 </script>
 
 <style scoped>
-
-
 .ui-h2-pageTitle {
   font-size: 40px;
   padding: 45px 0 10px 0;
@@ -104,7 +107,6 @@ export default {
   word-break: break-word;
 }
 
-
 .ul-gameIntro-toolbar {
   position: fixed;
   right: 10px;
@@ -127,5 +129,4 @@ export default {
 .li-gameIntro-toolbar-03 {
   background-position: center bottom;
 }
-
 </style>
