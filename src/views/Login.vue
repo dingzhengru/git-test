@@ -11,7 +11,7 @@
             name="UserName"
             tabindex="1"
             placeholder="Account"
-            v-model="username"
+            v-model="user.username"
           />
         </div>
         <div class="blk-auth blk-password">
@@ -22,7 +22,7 @@
             name="Password"
             tabindex="2"
             placeholder="Password"
-            v-model="password"
+            v-model="user.password"
           />
         </div>
         <div class="blk-auth blk-code">
@@ -35,7 +35,7 @@
             placeholder="Captcha"
             maxlength="4"
             autocomplete="off"
-            v-model="captcha"
+            v-model="user.captcha"
           />
           <input type="hidden" name="_mvcCaptchaGuid" id="_mvcCaptchaGuid" />
         </div>
@@ -44,8 +44,10 @@
           <label class="ipt-auth" id="lbRememberMe" for="RememberMe">Remember Me</label>
         </div>
       </form>
-      <router-link class="cpn-inBlock lnk-regist" id="register" :to="{ name:'Register' }">Register</router-link>
-      <router-link class="cpn-inBlock lnk-forget" id="forgetPwd" :to="{ name:'ForgetPassword' }">GetPassword</router-link>
+      <router-link class="cpn-inBlock lnk-regist" id="register" :to="{ name: 'Register' }">Register</router-link>
+      <router-link class="cpn-inBlock lnk-forget" id="forgetPwd" :to="{ name: 'ForgetPassword' }"
+        >GetPassword</router-link
+      >
       <button class="ui-btn01 ui-btn-long btn-login" id="loginbtn" type="submit" form="LoginForm">
         Login
       </button>
@@ -63,9 +65,11 @@ export default {
   },
   data() {
     return {
-      username: '',
-      password: '',
-      captcha: '',
+      user: {
+        username: '',
+        password: '',
+        captcha: '',
+      },
     };
   },
   mounted() {
@@ -74,9 +78,9 @@ export default {
     import(`@/styles/${templatePath}/login.scss`);
   },
   methods: {
-    login() {
-      this.$store.commit('user/setToken', 'token-hash');
-      this.$router.replace({ name: 'Home' });
+    async login() {
+      const token = await this.$store.dispatch('user/login', this.user);
+      console.log(token);
     },
   },
 };

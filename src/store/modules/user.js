@@ -1,4 +1,5 @@
-import { setToken } from '@/utils/cookie';
+import { setToken, removeToken } from '@/utils/cookie';
+import router from '@/router';
 
 const state = {
   token: null,
@@ -9,16 +10,31 @@ const state = {
 };
 
 const mutations = {
-  setToken: (state, token) => {
+  setToken(state, token) {
     state.token = token;
     setToken(token);
   },
-  setAccount: (state, account) => {
+  setAccount(state, account) {
     state.account = account;
+  },
+  removeToken() {
+    removeToken();
   },
 };
 
-const actions = {};
+const actions = {
+  async login({ commit }, user) {
+    console.log('user', user);
+    const token = 'token-hash';
+    commit('setToken', token);
+    router.replace({ name: 'Home' });
+    return token;
+  },
+  async logout({ commit }) {
+    commit('removeToken');
+    window.location.replace('/login');
+  },
+};
 
 export default {
   namespaced: true,

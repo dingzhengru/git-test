@@ -30,7 +30,7 @@ export function setToken(token) {
   return Cookies.set(tokenKey, token, tokenConfig);
 }
 
-export function deleteToken() {
+export function removeToken() {
   return Cookies.remove(tokenKey);
 }
 
@@ -42,6 +42,6 @@ export function setLang(lang) {
   return Cookies.set(langKey, lang, langConfig);
 }
 
-export function deleteLang() {
+export function removeLang() {
   return Cookies.remove(langKey);
 }

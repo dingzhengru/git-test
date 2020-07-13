@@ -32,7 +32,7 @@
             </li>
           </ul>
           <ul class="cpn-boxzero cpn-inBlock-row ul-lang">
-            <li class="li-lang" v-for="langItem in langList" :key="langItem">
+            <li class="li-lang" v-for="langItem in langList" :key="langItem" @click="changeLang(langItem)">
               <a
                 href="javascript:;"
                 class="lnk-lang"
@@ -77,9 +77,11 @@ export default {
   methods: {
     changeLang(lang) {
       this.$store.commit('setLang', lang);
-      this.isShowLangList = false;
+      this.isShowMenu = false;
     },
-    logout() {},
+    logout() {
+      this.$store.dispatch('user/logout');
+    },
   },
 };
 </script>
