@@ -1,0 +1,34 @@
+<template>
+  <div class="forget-password">
+    <div class="are-title"><h1 class="h1-title">Forgotten your account or passwords?</h1></div>
+    <div class="are-desc">
+      <span class="txt-note">Notice：</span> <br />
+      Please contact with our online service, and submit any information to prove your identification of member.
+      <span class="cpn-inBlock bg-forget"></span>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  name: 'ForgetPassword',
+  computed: {
+    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+  },
+  mounted() {
+    // * 根據版型引入 css
+    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
+    import(`@/styles/${templatePath}/forget-password.scss`);
+  },
+};
+</script>
+
+<style>
+.are-desc {
+  padding-top: 316px;
+  font-size: 2.769em;
+  text-align: center;
+}
+</style>

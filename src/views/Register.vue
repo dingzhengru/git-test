@@ -248,9 +248,7 @@ export default {
 <style scoped>
 /* .reg-main > */
 
-.register {
-  padding-bottom: 20px;
-}
+
 
 .are-auth {
   width: 563px;

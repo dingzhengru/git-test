@@ -24,6 +24,11 @@ const routes = [
     component: () => import('@/views/Register'),
   },
   {
+    path: '/forget-password',
+    name: 'ForgetPassword',
+    component: () => import('@/views/ForgetPassword'),
+  },
+  {
     path: '/promotion',
     component: () => import('@/components/BlankLayout'),
     children: [
@@ -36,8 +41,8 @@ const routes = [
         path: ':id',
         name: 'PromotionContent',
         component: () => import('@/views/PromotionContent'),
-      }
-    ]
+      },
+    ],
   },
   {
     path: '/contact',

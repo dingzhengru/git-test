@@ -1,5 +1,9 @@
 $type: 'Y/01/01';
 
+.register {
+  padding-bottom: 20px;
+}
+
 .blk-notice {
   color: #959595;
 }
@@ -9,7 +13,6 @@ $type: 'Y/01/01';
 /*
   ! 圖片路徑
 */
-
 
 .blk-recommend {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_recommend.png);
