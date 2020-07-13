@@ -1,17 +1,26 @@
 $type: 'Y/01/02';
 
+.ui-btn01 {
+  background-image: url(~@/assets/#{$type}/imgs/ui/btn03.jpg);
+}
 
+.lnk-notice-tabs {
+  color: #fff;
+}
+
+.blk-notice > ul > li {
+  color: #000;
+}
 /*
   ! 圖片路徑
 */
-
 
 .lnk-notice-top {
   background: url(~@/assets/#{$type}/imgs/main/topBg.jpg) no-repeat;
 }
 .li-notice-tabs {
-  background: url(~@/assets/#{$type}/imgs/main/noticeTabs.jpg) repeat-x;
+  background: url(~@/assets/#{$type}/imgs/ui/btn02.jpg) repeat-x;
 }
-.li-notice-tabs.li-active {
-  background-image: url(~@/assets/#{$type}/imgs/main/noticeTabsHover.jpg);
-}
+// .li-notice-tabs.li-active {
+//   background-image: url(~@/assets/#{$type}/imgs/main/noticeTabsHover.jpg);
+// }

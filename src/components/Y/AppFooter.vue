@@ -1,5 +1,5 @@
 <template>
-  <footer class="reg-footer">
+  <footer class="reg-footer" v-if="!isHideFooter">
     <div class="lay-screen">
       <ul class="cpn-boxzero cpn-inBlock-row ul-footer-toolbar">
         <li class="li-footer-toolbar li-toolbar-member" :class="{ 'li-toolbar-active': false }">
@@ -7,7 +7,7 @@
         </li>
         <li
           class="li-footer-toolbar li-toolbar-regist"
-          :class="{ 'li-toolbar-active': $route.name == 'Login' ||  $route.name == 'Register' }"
+          :class="{ 'li-toolbar-active': $route.name == 'Login' || $route.name == 'Register' }"
         >
           <router-link to="/login" class="lnk-footer-toolbar">Log in / Register</router-link>
         </li>
@@ -32,6 +32,14 @@ export default {
   name: 'TypeYAppFooter',
   computed: {
     ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    isHideFooter() {
+      return this.hideFooterList.includes(this.$route.name);
+    },
+  },
+  data() {
+    return {
+      hideFooterList: ['Agreement'],
+    };
   },
   mounted() {
     // * 根據版型引入 css

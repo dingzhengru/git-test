@@ -57,7 +57,7 @@ const routes = [
   {
     path: '/agreement',
     name: 'Agreement',
-    component: () => import('@views/Agreement'),
+    component: () => import('@/views/Agreement'),
   },
 ];
 
