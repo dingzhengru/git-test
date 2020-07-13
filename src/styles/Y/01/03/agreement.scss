@@ -1,0 +1,17 @@
+$type: 'Y/01/03';
+
+
+/*
+  ! 圖片路徑
+*/
+
+
+.lnk-notice-top {
+  background: url(~@/assets/#{$type}/imgs/main/topBg.jpg) no-repeat;
+}
+.li-notice-tabs {
+  background: url(~@/assets/#{$type}/imgs/main/noticeTabs.jpg) repeat-x;
+}
+.li-notice-tabs.li-active {
+  background-image: url(~@/assets/#{$type}/imgs/main/noticeTabsHover.jpg);
+}

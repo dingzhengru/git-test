@@ -10,6 +10,18 @@
     </div>
 
     <TypeYAppFooter></TypeYAppFooter>
+
+    <div class="Box" id="alertbox" v-if="isShowAlertBox">
+      <div class="Boxinner">
+        <h1 class="h1-tit">
+          ** ประชาสัมพันธ์ : หากลูกค้าไม่ได้เข้าเล่นกับเว็ปเรานานเกิน 7 วัน
+          รบกวนให้ติดต่อศูนย์บริการเพื่อติดต่อขอเลขบัญชีทุกครั้งด้วยนะคะ ขอบคุณค่ะ ------------------<br />
+          CAESAR88 คาสิโนออนไลน์ บาคาร่า รูเล็ต ไฮโล สล็อตออนไลน์ ยิงปลา หมีแพนด้า ฟรีเกมส์ สมัครฟรี การเงิน มั่นคง
+          ปลอดภัย ฝากถอนรวดเร็ว บริการตลอด 24 ชม.
+        </h1>
+        <button id="CloseAlert" class="lnk-boxSubmit" @click="isShowAlertBox = false">OK</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,7 +39,9 @@ export default {
     ...mapGetters(['lang', 'token', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
   data() {
-    return {};
+    return {
+      isShowAlertBox: false,
+    };
   },
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
