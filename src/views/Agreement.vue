@@ -116,9 +116,6 @@ export default {
   /* color: #000; */
   font-size: 2.307em;
 }
-.li-notice-tabs.li-active > .lnk-notice-tabs {
-  /* color: #fff; */
-}
 .blk-notice > ul > li {
   margin-bottom: 30px;
   /* color: #fff; */
