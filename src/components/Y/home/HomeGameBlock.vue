@@ -1,6 +1,6 @@
 <template>
   <div id="gameblock" class="are-game">
-    <a href="/Y/NoneLogin/FreePlay/" class="lnk-freeGo">
+    <a href="/Y/NoneLogin/FreePlay/" class="lnk-freeGo" v-if="!token">
       <i class="icn-freeGo"></i> <span class="txt-freeGo">Free Play</span>
     </a>
 
@@ -11,7 +11,11 @@
         :key="index"
         :style="{ 'background-image': `url(${game.img})` }"
       >
-        <router-link :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }" class="lnk-game" href="javascript:void(0)">
+        <router-link
+          :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }"
+          class="lnk-game"
+          href="javascript:void(0)"
+        >
           {{ game.name }}
         </router-link>
       </li>
@@ -33,7 +37,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['type']),
+    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber', 'token']),
   },
   mounted() {
     this.gameList = [

@@ -2,6 +2,16 @@
   <header class="reg-header">
     <div class="lay-screen">
       <div class="are-header-logo"></div>
+      <div class="are-header-memberInfo">
+        <div class="blk-memberInfo-left">
+          <span class="txt-memberInfo-username">Username：{{ account || 'ding' }}</span> <br />
+          <span class="txt-memberInfo-username">Bonus VIP level：{{ pointAmount || 0 }}</span>
+        </div>
+        <div class="blk-memberInfo-right">
+          <span class="txt-memberInfo-cash">Total：{{ level || '0.00' }}</span> <br />
+          <span class="txt-memberInfo-cash">Rolling：{{ washcodeAmount || '0.00' }}</span>
+        </div>
+      </div>
       <router-link to="/" class="cpn-inBlock lnk-header-home"></router-link>
       <a
         href="javascript:;"
@@ -61,7 +71,16 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TypeYAppHeaderAuth',
   computed: {
-    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters([
+      'lang',
+      'templateType',
+      'templateVersion',
+      'templateVersionNumber',
+      'account',
+      'pointAmount',
+      'level',
+      'washcodeAmount',
+    ]),
   },
   data() {
     return {

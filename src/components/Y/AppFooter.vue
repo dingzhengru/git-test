@@ -2,23 +2,16 @@
   <footer class="reg-footer" v-if="!isHideFooter">
     <div class="lay-screen">
       <ul class="cpn-boxzero cpn-inBlock-row ul-footer-toolbar">
-        <li class="li-footer-toolbar li-toolbar-member" :class="{ 'li-toolbar-active': false }">
-          <router-link to="/login" class="lnk-footer-toolbar">Member Center</router-link>
-        </li>
         <li
-          class="li-footer-toolbar li-toolbar-regist"
-          :class="{ 'li-toolbar-active': $route.name == 'Login' || $route.name == 'Register' }"
+          class="li-footer-toolbar li-toolbar-member"
+          :class="[
+            { 'li-toolbar-active': $route.name == item.link || item.otherActivePath.includes($route.name) },
+            item.class,
+          ]"
+          v-for="item in list"
+          :key="item.name"
         >
-          <router-link to="/login" class="lnk-footer-toolbar">Log in / Register</router-link>
-        </li>
-        <li
-          class="li-footer-toolbar li-toolbar-event"
-          :class="{ 'li-toolbar-active': $route.name.includes('Promotion') }"
-        >
-          <router-link to="/promotion" class="lnk-footer-toolbar">Promotions</router-link>
-        </li>
-        <li class="li-footer-toolbar li-toolbar-service" :class="{ 'li-toolbar-active': $route.name == 'Contact' }">
-          <router-link to="/contact" class="lnk-footer-toolbar">Online Customer</router-link>
+          <router-link :to="{ name: item.link }" class="lnk-footer-toolbar">{{ item.name }}</router-link>
         </li>
       </ul>
     </div>
@@ -31,7 +24,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TypeYAppFooter',
   computed: {
-    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber', 'token']),
     isHideFooter() {
       return this.hideFooterList.includes(this.$route.name);
     },
@@ -39,12 +32,77 @@ export default {
   data() {
     return {
       hideFooterList: ['Agreement'],
+      list: [],
+      noAuthList: [
+        {
+          name: 'Member Center',
+          link: 'Profile',
+          class: 'li-toolbar-member',
+          otherActivePath: [],
+        },
+        {
+          name: 'Log in / Register',
+          link: 'Login',
+          class: 'li-toolbar-regist',
+          otherActivePath: ['Register'],
+        },
+        {
+          name: 'Promotions',
+          link: 'Promotion',
+          class: 'li-toolbar-event',
+          otherActivePath: ['PromotionContent'],
+        },
+        {
+          name: 'Online Customer',
+          link: 'Contact',
+          class: 'li-toolbar-service',
+          otherActivePath: [],
+        },
+      ],
+      authList: [
+        {
+          name: 'Member Center',
+          link: 'Profile',
+          class: 'li-toolbar-member',
+          otherActivePath: [],
+        },
+        {
+          name: 'Cashier',
+          link: 'Deposit',
+          class: 'li-toolbar-transaction',
+          otherActivePath: [],
+        },
+        {
+          name: 'Promotions',
+          link: 'Promotion',
+          class: 'li-toolbar-event',
+          otherActivePath: ['PromotionContent'],
+        },
+        {
+          name: 'Online Customer',
+          link: 'Contact',
+          class: 'li-toolbar-service',
+          otherActivePath: [],
+        },
+      ],
     };
   },
   mounted() {
     // * 根據版型引入 css
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/footer.scss`);
+  },
+  watch: {
+    token: {
+      immediate: true,
+      handler(newVal) {
+        if (newVal) {
+          this.list = this.authList;
+        } else {
+          this.list = this.noAuthList;
+        }
+      },
+    },
   },
 };
 </script>

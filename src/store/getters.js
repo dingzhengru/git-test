@@ -4,5 +4,9 @@ const getters = {
   templateVersionNumber: state => state.template.versionNumber,
   lang: state => state.lang,
   token: state => state.user.token,
+  account: state => state.user.account,
+  pointAmount: state => state.user.pointAmount,
+  level: state => state.user.level,
+  washcodeAmount: state => state.user.washcodeAmount,
 };
 export default getters;
