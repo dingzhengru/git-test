@@ -59,6 +59,11 @@ const routes = [
     name: 'Agreement',
     component: () => import('@/views/Agreement'),
   },
+  {
+    path: '*',
+    name: 'PageNotFound',
+    component: () => import('@/views/PageNotFound'),
+  },
 ];
 
 const router = new VueRouter({
