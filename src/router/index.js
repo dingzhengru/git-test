@@ -29,6 +29,27 @@ const routes = [
     component: () => import('@/views/ForgetPassword'),
   },
   {
+    path: '/user',
+    component: () => import('@/components/BlankLayout'),
+    children: [
+      {
+        path: '',
+        name: 'UserHome',
+        redirect: { name: 'UserProfile' },
+      },
+      {
+        path: 'profile',
+        name: 'UserProfile',
+        component: () => import('@/views/user/UserProfile'),
+      },
+      {
+        path: 'change-password',
+        name: 'UserChangePassword',
+        component: () => import('@/views/user/UserChangePassword'),
+      }
+    ],
+  },
+  {
     path: '/promotion',
     component: () => import('@/components/BlankLayout'),
     children: [

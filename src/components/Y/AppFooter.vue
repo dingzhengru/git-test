@@ -62,7 +62,7 @@ export default {
       authList: [
         {
           name: 'Member Center',
-          link: 'Profile',
+          link: 'UserHome',
           class: 'li-toolbar-member',
           otherActivePath: [],
         },

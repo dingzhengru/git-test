@@ -3,6 +3,7 @@ import router from '@/router';
 
 const state = {
   token: null,
+  isAccessed: false,
   account: null, // 用戶名
   pointAmount: null,
   level: null,
@@ -13,6 +14,9 @@ const mutations = {
   setToken(state, token) {
     state.token = token;
     setToken(token);
+  },
+  setIsAccessed(state, isAccessed) {
+    state.isAccessed = isAccessed;
   },
   setAccount(state, account) {
     state.account = account;
