@@ -28,7 +28,6 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getLangList } from '@/api/lang';
-import { getSwiperList } from '@/api/swiper';
 export default {
   name: 'App',
   components: {
@@ -62,14 +61,6 @@ export default {
       if (result.Code == 200) {
         this.langList = result.RetObj;
         console.log(this.langList);
-      }
-    });
-
-    // * 取得輪播列表
-    getSwiperList(requestData).then(result => {
-      if (result.Code == 200) {
-        this.swiperList = result.RetObj;
-        console.log(this.swiperList);
       }
     });
   },

@@ -1,13 +1,13 @@
 <template>
-  <div class="user-profile lay-are-pageContent">
-    <ul class="ui-ul-tabs ul-tabs-account">
+  <div class="user-profile">
+    <!-- <ul class="ui-ul-tabs ul-tabs-account">
       <li class="ui-li-tabs ui-li-tabs-account ui-li-tabsActive">
         <a href="/Y/AlreadyLogin/Profile/?Tag=ChangeAdvance" class="ui-lnk-tabs">Personal Info</a>
       </li>
       <li class="ui-li-tabs ui-li-tabs-password">
         <a href="/Y/AlreadyLogin/Profile/?Tag=ChangePwd" class="ui-lnk-tabs">Password</a>
       </li>
-    </ul>
+    </ul> -->
 
     <!-- 未開通的 -->
     <UserProfileList :list="list" v-if="!isAccessed"></UserProfileList>
@@ -101,8 +101,5 @@ export default {
 </script>
 
 <style scoped>
-.user-profile {
-  padding-top: 88px;
-  padding-bottom: 20px;
-}
+
 </style>

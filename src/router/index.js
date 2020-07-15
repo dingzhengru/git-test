@@ -30,7 +30,7 @@ const routes = [
   },
   {
     path: '/user',
-    component: () => import('@/components/BlankLayout'),
+    component: () => import('@/views/user/UserHome'),
     children: [
       {
         path: '',
