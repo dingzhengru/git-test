@@ -41,23 +41,24 @@
               <router-link to="/" class="lnk-menu">About Us</router-link>
             </li>
           </ul>
-          <ul class="cpn-boxzero cpn-inBlock-row ul-lang">
-            <li class="li-lang" v-for="langItem in langList" :key="langItem" @click="changeLang(langItem)">
-              <a
-                href="javascript:;"
-                class="lnk-lang"
-                :class="{
-                  'lnk-lang-cn': langItem == 'zh-cn',
-                  'lnk-lang-th': langItem == 'th-th',
-                  'lnk-lang-en': langItem == 'en-us',
-                }"
-                @click="isShowMenu = false"
-              >
-                <span v-if="langItem == 'zh-cn'">简体中文</span>
-                <span v-else-if="langItem == 'th-th'">ภาษาไทย</span>
-                <span v-else-if="langItem == 'en-us'">English</span>
-              </a>
-            </li>
+          <ul class="cpn-boxzero ul-lang">
+            <div class="ul-lang-div" v-for="langItem in langList" :key="langItem.Lst_Locales_Code">
+              <li class="li-lang" @click="changeLang(langItem.Lst_Locales_Code)" v-if="langItem.Lst_Is_Enable">
+                <a
+                  href="javascript:;"
+                  class="lnk-lang"
+                  :class="{
+                    'lnk-lang-cn': langItem.Lst_Locales_Code == 'zh-cn',
+                    'lnk-lang-th': langItem.Lst_Locales_Code == 'th-th',
+                    'lnk-lang-en': langItem.Lst_Locales_Code == 'en-us',
+                    'lnk-lang-mm': langItem.Lst_Locales_Code == 'my-mm',
+                  }"
+                  @click="isShowMenu = false"
+                >
+                  {{ langItem.Lst_Locales_Name }}
+                </a>
+              </li>
+            </div>
           </ul>
           <button type="button" class="btn-header-logout" @click="logout">Logout</button>
         </div>
@@ -82,9 +83,14 @@ export default {
       'washcodeAmount',
     ]),
   },
+  props: {
+    langList: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
-      langList: ['zh-cn', 'th-th', 'en-us'],
       isShowMenu: false,
     };
   },
@@ -208,7 +214,13 @@ export default {
 .ul-lang {
   margin-bottom: 60px;
   text-align: center;
+  list-style-type: none;
 }
+
+.ul-lang-div {
+  display: inline-block;
+}
+
 .li-lang {
   margin: 0 30px;
 }
@@ -246,5 +258,21 @@ export default {
 }
 .txt-vip {
   color: #d2ac3e;
+}
+
+.lnk-lang-tw {
+  background-image: url(~@/assets/common/imgs/header/lang_tw.png);
+}
+.lnk-lang-cn {
+  background-image: url(~@/assets/common/imgs/header/lang_cn.png);
+}
+.lnk-lang-en {
+  background-image: url(~@/assets/common/imgs/header/lang_en.png);
+}
+.lnk-lang-th {
+  background-image: url(~@/assets/common/imgs/header/lang_th.png);
+}
+.lnk-lang-mm {
+  background-image: url(~@/assets/common/imgs/header/lang_mm.png);
 }
 </style>

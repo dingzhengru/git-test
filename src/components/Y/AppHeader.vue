@@ -52,8 +52,6 @@ export default {
     // * 根據版型引入 css
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/header.scss`);
-
-    console.log('header:', this.langList);
   },
   methods: {
     changeLang(lang) {

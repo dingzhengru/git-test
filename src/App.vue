@@ -28,6 +28,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getLangList } from '@/api/lang';
+import { getSwiperList } from '@/api/swiper';
 export default {
   name: 'App',
   components: {
@@ -42,10 +43,10 @@ export default {
     return {
       isShowAlertBox: false,
       langList: [],
-      swiper: [],
+      swiperList: [],
     };
   },
-  async mounted() {
+  mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
 
@@ -53,14 +54,24 @@ export default {
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/layout.scss`);
 
-    // * 取得語系列表
-    const getLangListResult = await getLangList({ siteID: 'C' });
-    if (getLangListResult.Code == 200) {
-      this.langList = getLangListResult.RetObj;
-    }
+    const siteID = 'C';
+    const requestData = { siteID };
 
-    console.log(this.langList);
+    // * 取得語系列表
+    getLangList(requestData).then(result => {
+      if (result.Code == 200) {
+        this.langList = result.RetObj;
+        console.log(this.langList);
+      }
+    });
+
     // * 取得輪播列表
+    getSwiperList(requestData).then(result => {
+      if (result.Code == 200) {
+        this.swiperList = result.RetObj;
+        console.log(this.swiperList);
+      }
+    });
   },
 };
 </script>
