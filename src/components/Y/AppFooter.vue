@@ -36,7 +36,7 @@ export default {
       noAuthList: [
         {
           name: 'Member Center',
-          link: 'Profile',
+          link: 'UserProfile',
           class: 'li-toolbar-member',
           otherActivePath: [],
         },

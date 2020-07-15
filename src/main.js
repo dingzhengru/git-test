@@ -19,7 +19,7 @@ import VueScrollTo from 'vue-scrollto';
 Vue.use(VueScrollTo);
 
 import { getLang, getToken } from '@/utils/cookie';
-import settings from '@/settings';
+import { DEFAULT_LANG } from '@/settings';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.type
 const templateType = 'Y';
@@ -31,7 +31,7 @@ store.commit('template/setVersionNumber', templateVersionNumber);
 
 //* 取得語系 => 存進 store.state.lang
 // const browserLang = navigator.language || navigator.userLanguage;
-const lang = getLang() || settings.DEFAULT_LANG;
+const lang = getLang() || DEFAULT_LANG;
 store.commit('setLang', lang);
 
 //* 用 token 判斷是否登入，並取使用者資料

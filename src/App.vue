@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="lay-container" :class="lang">
-    <TypeYAppHeader v-if="!token"></TypeYAppHeader>
-    <TypeYAppHeaderAuth v-if="token"></TypeYAppHeaderAuth>
+    <TypeYAppHeader v-if="!token" :langList="langList"></TypeYAppHeader>
+    <TypeYAppHeaderAuth v-if="token" :langList="langList"></TypeYAppHeaderAuth>
 
     <div class="reg-main">
       <div class="lay-screen">
@@ -27,7 +27,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-
+import { getLangList } from '@/api/lang';
 export default {
   name: 'App',
   components: {
@@ -41,15 +41,26 @@ export default {
   data() {
     return {
       isShowAlertBox: false,
+      langList: [],
+      swiper: [],
     };
   },
-  mounted() {
+  async mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
 
     // * 根據版型引入 css
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/layout.scss`);
+
+    // * 取得語系列表
+    const getLangListResult = await getLangList({ siteID: 'C' });
+    if (getLangListResult.Code == 200) {
+      this.langList = getLangListResult.RetObj;
+    }
+
+    console.log(this.langList);
+    // * 取得輪播列表
   },
 };
 </script>

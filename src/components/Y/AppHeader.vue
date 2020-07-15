@@ -8,17 +8,18 @@
       <transition name="slide">
         <div class="are-header-langMenu" v-if="isShowLangList">
           <ul class="cpn-boxzero cpn-inBlock-row ul-lang ul-ilang">
-            <li class="li-lang li-ilang" v-for="langItem in langList" :key="langItem">
+            <li class="li-lang li-ilang" v-for="langItem in langList" :key="langItem.Lst_Locales_Code">
               <a
                 href="javascript:void(0)"
                 class="lnk-lang lnk-ilang"
-                v-if="langItem != lang"
+                v-if="langItem.Lst_Locales_Code != lang && langItem.Lst_Is_Enable"
                 :class="{
-                  cn: langItem == 'zh-cn',
-                  th: langItem == 'th-th',
-                  en: langItem == 'en-us',
+                  cn: langItem.Lst_Locales_Code == 'zh-cn',
+                  th: langItem.Lst_Locales_Code == 'th-th',
+                  en: langItem.Lst_Locales_Code == 'en-us',
+                  mm: langItem.Lst_Locales_Code == 'my-mm',
                 }"
-                @click="changeLang(langItem)"
+                @click="changeLang(langItem.Lst_Locales_Code)"
               ></a>
             </li>
           </ul>
@@ -30,21 +31,29 @@
 
 <script>
 import { mapGetters } from 'vuex';
+
 export default {
   name: 'TypeYAppHeader',
   computed: {
     ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
+  props: {
+    langList: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
-      langList: ['zh-cn', 'th-th', 'en-us'],
       isShowLangList: false,
     };
   },
-  mounted() {
+  async mounted() {
     // * 根據版型引入 css
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/header.scss`);
+
+    console.log('header:', this.langList);
   },
   methods: {
     changeLang(lang) {
@@ -129,4 +138,21 @@ export default {
   width: 60px;
   padding-top: 65px;
 }
+
+.lnk-ilang.tw {
+  background-image: url(~@/assets/common/imgs/header/lang_tw_s.png);
+}
+.lnk-ilang.cn {
+  background-image: url(~@/assets/common/imgs/header/lang_cn_s.png);
+}
+.lnk-ilang.en {
+  background-image: url(~@/assets/common/imgs/header/lang_en_s.png);
+}
+.lnk-ilang.th {
+  background-image: url(~@/assets/common/imgs/header/lang_th_s.png);
+}
+.lnk-lang.mm {
+  background-image: url(~@/assets/common/imgs/header/lang_mm_s.png);
+}
+
 </style>
