@@ -14,22 +14,7 @@ $type: 'Y/01/03';
   ! 圖片路徑
 */
 
-.lnk-header-langOpen,
-.lnk-header-langClose {
-  background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
-}
-.lnk-ilang.tw {
-  background-image: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png);
-}
-.lnk-ilang.cn {
-  background-image: url(~@/assets/#{$type}/imgs/header/lang_cn_s.png);
-}
-.lnk-ilang.en {
-  background-image: url(~@/assets/#{$type}/imgs/header/lang_en_s.png);
-}
-.lnk-ilang.th {
-  background-image: url(~@/assets/#{$type}/imgs/header/lang_th_s.png);
-}
+
 .blk-recommend {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_recommend.png);
 }
