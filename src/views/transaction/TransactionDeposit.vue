@@ -82,7 +82,7 @@
             <p class="txt-notice txt-notice-ps">Note: Non-selection regarded as abdication.</p>
           </div>
           <ol class="ui-ol-memberNotice">
-            <li>only for<span class="ui-txt-mask">Baht</span>transaction.</li>
+            <li>only for Bahttransaction.</li>
             <li>Please note that the lowest and higest limiation on Deposit.</li>
             <li>The minimum and maximum values listed above are to act as a guideline only.</li>
             <li>
@@ -102,9 +102,7 @@
       </div>
     </div>
     <div class="are-control">
-      <button type="submit" class="ui-btn01 btn-send">
-        Submit
-      </button>
+      <button type="submit" class="ui-btn01 btn-send">Submit</button>
       <router-link class="ui-btn02 btn-reset" :to="{ name: 'Home' }">Cancellation</router-link>
     </div>
   </form>
