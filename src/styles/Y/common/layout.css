@@ -171,7 +171,8 @@ body { /*background: #000 url(~@/assets/Y/01/01/imgs/layout/bg.jpg) no-repeat ce
 .theme-li-dataView:last-child { border-bottom: none;}
 .theme-dataView-header { display: block; margin: 10px 0; color: #959595; font-size: 2.307em;}
 .theme-dataView-data { margin: 5px 0; padding-left: 1em; color: #fff; font-size: 2.769em; font-weight: bolder;}
-.theme-li-dataView > .ui-ipt { width: 92%; margin-left: 5%; padding: 0 1.5%;}
+/* .theme-li-dataView > .ui-ipt { width: 92%; margin-left: 5%; padding: 0 1.5%;} */
+.theme-li-dataView .ui-ipt { width: 92%; margin-left: 5%; padding: 0 1.5%;}
 
 /* Error Message */
 .theme-errorMsg { background-color: #be0707; margin: 20px 0; padding: 10px; border-radius: 20px; -moz-border-radius: 20px; -ms-border-radius: 20px;}
