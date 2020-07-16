@@ -52,6 +52,9 @@ export default {
     // * 根據版型引入 css
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
     import(`@/styles/${templatePath}/layout.scss`);
+    import(`@/styles/${templatePath}/lang/zh-cn.scss`);
+    import(`@/styles/${templatePath}/lang/en-us.scss`);
+    import(`@/styles/${templatePath}/lang/th-th.scss`);
 
     const siteID = 'C';
     const requestData = { siteID };
