@@ -12,12 +12,7 @@ $type: 'Y/01/01';
 .are-game {
   background: url(~@/assets/#{$type}/imgs/layout/bg_index2.jpg) no-repeat;
 }
-.lnk-banner-prev {
-  background: url(~@/assets/#{$type}/imgs/banner/prev.png) no-repeat center center;
-}
-.lnk-banner-next {
-  background: url(~@/assets/#{$type}/imgs/banner/next.png) no-repeat center center;
-}
+
 .li-game-1010 {
   background-image: url(~@/assets/#{$type}/imgs/game/game1010.png);
 }

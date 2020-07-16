@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HomeSwiper></HomeSwiper>
+    <HomeSwiper :list="swiperList"></HomeSwiper>
     <HomeGameBlock></HomeGameBlock>
   </div>
 </template>
@@ -18,7 +18,9 @@ export default {
     ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
   },
   data() {
-    return {};
+    return {
+      swiperList: [],
+    };
   },
   mounted() {
     const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
@@ -26,8 +28,13 @@ export default {
     import(`@/styles/${templatePath}/home.scss`);
 
     const siteID = 'C';
-    const requestData = { siteID };
-    
+    const requestData = {
+      siteID,
+      DeviceType: 1,
+      lang: 'zh-cn',
+      bNewPromotion: true,
+    };
+
     // * 取得輪播列表
     getSwiperList(requestData).then(result => {
       if (result.Code == 200) {

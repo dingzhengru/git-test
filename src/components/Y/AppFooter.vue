@@ -62,13 +62,13 @@ export default {
       authList: [
         {
           name: 'Member Center',
-          link: 'UserHome',
+          link: 'UserProfile',
           class: 'li-toolbar-member',
           otherActivePath: [],
         },
         {
           name: 'Cashier',
-          link: 'Deposit',
+          link: 'TransactionDeposit',
           class: 'li-toolbar-transaction',
           otherActivePath: [],
         },

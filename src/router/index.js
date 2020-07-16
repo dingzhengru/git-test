@@ -46,7 +46,38 @@ const routes = [
         path: 'change-password',
         name: 'UserChangePassword',
         component: () => import('@/views/user/UserChangePassword'),
-      }
+      },
+    ],
+  },
+  {
+    path: '/transaction',
+    component: () => import('@/views/transaction/TransactionHome'),
+    children: [
+      {
+        path: '',
+        name: 'TransactionHome',
+        redirect: { name: 'TransactionDeposit' },
+      },
+      {
+        path: 'deposit',
+        name: 'TransactionDeposit',
+        component: () => import('@/views/transaction/TransactionDeposit'),
+      },
+      {
+        path: 'withdraw',
+        name: 'TransactionWithdraw',
+        component: () => import('@/views/transaction/TransactionWithdraw'),
+      },
+      {
+        path: 'transfer',
+        name: 'TransactionTransfer',
+        component: () => import('@/views/transaction/TransactionTransfer'),
+      },
+      {
+        path: 'record',
+        name: 'TransactionRecord',
+        component: () => import('@/views/transaction/TransactionRecord'),
+      },
     ],
   },
   {
