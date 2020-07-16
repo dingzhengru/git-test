@@ -51,7 +51,7 @@
 
           <div class="theme-input-box are-deposit-input">
             <span class="theme-input-header">Deposit Method</span>
-            <select class="ui-ddl ddl-payType" id="Add_SDM_Key_Method02" name="Add_SDM_Key_Method02" v-model="method">
+            <select class="ui-ddl ddl-payType" id="Add_SDM_Key_Method02" v-model="method">
               <option :value="{}">Please select</option>
               <option :value="method" v-for="methodItem in methodList" :key="methodItem.value">
                 {{ methodItem.name }}
@@ -60,16 +60,7 @@
           </div>
           <div class="theme-input-box are-deposit-input">
             <span class="theme-input-header">Deposit Amount</span>
-            <input
-              class="ui-ipt ipt-deposit"
-              name="Add_Pay_Money_Method02"
-              type="number"
-              step="0.01"
-              id="Add_Pay_Money_Method02"
-              onkeyup="ValidateFloat($(this),value)"
-              onkeydown="return KeyDown(event)"
-              onchange="setCurrencyExchange()"
-            />
+            <input class="ui-ipt ipt-deposit" id="Add_Pay_Money_Method02" type="number" step="0.01" v-model="amount" />
             <p class="txt-notice">
               Baht Maximum 100000.00 , Minimum 200.00 <br />
               Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an
@@ -82,11 +73,12 @@
           </div>
           <div class="theme-input-box are-deposit-input">
             <span class="theme-input-header">Favorable Project on Payment</span>
-            <select class="ui-ddl ddl-promType" id="Add_Activity_Method02" name="Add_Activity_Method02"
-              ><option selected="" value="-1">Please select a Promotion</option
-              ><option value="Dd16012700001">ฝากครั้งแรกรับ 10 เปอร์เซ็นต์</option
-              ><option value="Dd15083100001">ฝากครั้งแรก</option></select
-            >
+            <select class="ui-ddl ddl-promType" id="Add_Activity_Method02" v-model="promotion">
+              <option :value="{}">Please select</option>
+              <option :value="promotion" v-for="promotionItem in promotionList" :key="promotionItem.value">
+                {{ promotionItem.name }}
+              </option>
+            </select>
             <p class="txt-notice txt-notice-ps">Note: Non-selection regarded as abdication.</p>
           </div>
           <ol class="ui-ol-memberNotice">
@@ -184,7 +176,17 @@ export default {
       method: {},
       amount: '',
       remark: '',
-      promotion: '',
+      promotionList: [
+        {
+          name: 'promotion name 01',
+          value: 'promotion value 01',
+        },
+        {
+          name: 'promotion name 02',
+          value: 'promotion value 02',
+        },
+      ],
+      promotion: {},
     };
   },
   mounted() {
