@@ -1,0 +1,42 @@
+$type: 'Y/01/02';
+
+.li-paytype {
+  border-bottom: 1px solid #307da1;
+  color: #fff;
+}
+.li-bank {
+  border-bottom: 1px solid #d6c388;
+  color: #fff;
+}
+.txt-notice,
+.txt-UploadName {
+  color: #a0a0a0;
+}
+.txt-notice-ps,
+.ui-txt-mask {
+  color: #a0a0a0;
+}
+
+
+
+/*
+  ! 圖片路徑
+*/
+.lnk-paytype-deposit01 {
+  background-image: url(~@/assets/#{$type}/imgs/main/deposit01.jpg);
+}
+.lnk-paytype-deposit02 {
+  background-image: url(~@/assets/#{$type}/imgs/main/deposit02.jpg);
+}
+.lnk-paytype-pay01 {
+  background-image: url(~@/assets/#{$type}/imgs/main/pay01.jpg);
+}
+.lnk-paytype-pay02 {
+  background-image: url(~@/assets/#{$type}/imgs/main/pay02.jpg);
+}
+.lnk-bank-01 {
+  background-image: url(~@/assets/#{$type}/imgs/main/bank01.jpg);
+}
+.lnk-bank-02 {
+  background-image: url(~@/assets/#{$type}/imgs/main/bank02.jpg);
+}
