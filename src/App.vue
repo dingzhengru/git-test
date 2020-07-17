@@ -21,13 +21,12 @@
 
     <TypeYAppFooter :token="token"></TypeYAppFooter>
 
-    <div class="Box" id="alertbox" v-if="isShowAlertBox">
+    <div class="Box" id="alertbox" v-if="isShowAlertBox && alertMessageList">
       <div class="Boxinner">
         <h1 class="h1-tit">
-          ** ประชาสัมพันธ์ : หากลูกค้าไม่ได้เข้าเล่นกับเว็ปเรานานเกิน 7 วัน
-          รบกวนให้ติดต่อศูนย์บริการเพื่อติดต่อขอเลขบัญชีทุกครั้งด้วยนะคะ ขอบคุณค่ะ ------------------<br />
-          CAESAR88 คาสิโนออนไลน์ บาคาร่า รูเล็ต ไฮโล สล็อตออนไลน์ ยิงปลา หมีแพนด้า ฟรีเกมส์ สมัครฟรี การเงิน มั่นคง
-          ปลอดภัย ฝากถอนรวดเร็ว บริการตลอด 24 ชม.
+          <p v-for="(message, index) in alertMessageList" :key="index">
+            {{ message.Lst_Content }}
+          </p>
         </h1>
         <button id="CloseAlert" class="lnk-boxSubmit" @click="isShowAlertBox = false">OK</button>
       </div>
@@ -38,6 +37,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getLangList } from '@/api/lang';
+import { getMessageList } from '@/api/alert';
 export default {
   name: 'App',
   components: {
@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       isShowAlertBox: false,
+      alertMessageList: [],
       logo: '',
       langList: [],
       swiperList: [],
@@ -113,11 +114,24 @@ export default {
         this.logo = `${this.siteRemoteCSSUrl}/ContentStyle/${this.siteMainDomain}/Member/${this.siteCssClass}/${this.siteCssVersion}/2/default/css${this.siteCssType}/common/imgs/header/logo.png`;
 
         // * 取得語系列表
-        const requestData = { siteID: this.siteID };
-        getLangList(requestData).then(result => {
+        const requestDataLangList = { siteID: this.siteID };
+        getLangList(requestDataLangList).then(result => {
           if (result.Code == 200) {
             this.langList = result.RetObj;
-            console.log('[Lang]',this.langList);
+            console.log('[Lang]', this.langList);
+          }
+        });
+
+        // * 取得訊息列表(msgtype: C 彈出)
+        const requestDataMessageList = {
+          siteID: this.siteID,
+          msgtype: 'C',
+          localescode: this.lang,
+        };
+        getMessageList(requestDataMessageList).then(result => {
+          if (result.Code == 200) {
+            this.alertMessageList = result.RetObj;
+            console.log('[Message]', this.alertMessageList);
           }
         });
       },
