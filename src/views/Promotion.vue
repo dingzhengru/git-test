@@ -6,11 +6,7 @@
       </a>
     </div>
     <div class="promotions">
-      <router-link 
-        v-for="(promotion, index) in promotions"
-        :key="index"
-        :to="promotion.link"
-      >
+      <router-link v-for="(promotion, index) in promotions" :key="index" :to="promotion.link">
         <img :src="promotion.img" alt="" />
       </router-link>
     </div>
@@ -23,44 +19,42 @@ import event01 from '@/assets/Y/01/01/imgs/promotion/event01.jpg';
 export default {
   name: 'Promotion',
   computed: {
-    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
   },
   data() {
     return {
       promotions: [
         {
           img: event01,
-          link: '/promotion/Ann01'
+          link: '/promotion/Ann01',
         },
         {
           img: event01,
-          link: '/promotion/Ann01'
+          link: '/promotion/Ann01',
         },
         {
           img: event01,
-          link: '/promotion/Ann01'
+          link: '/promotion/Ann01',
         },
         {
           img: event01,
-          link: '/promotion/Ann01'
+          link: '/promotion/Ann01',
         },
         {
           img: event01,
-          link: '/promotion/Ann01'
+          link: '/promotion/Ann01',
         },
       ],
     };
   },
   mounted() {
-    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    // import(`@/styles/${this.templateType}/common/promotion.css`);
-    import(`@/styles/${templatePath}/promotion.scss`);
+    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+    import(`@/styles/${cssPath}/promotion.scss`);
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 .promotions {
   width: 600px;
   margin: 30px auto;
@@ -97,5 +91,4 @@ export default {
   line-height: 72px;
   padding-left: 20px;
 }
-
 </style>

@@ -205,7 +205,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Register',
   computed: {
-    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
   },
   data() {
     return {
@@ -234,8 +234,8 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    import(`@/styles/${templatePath}/register.scss`);
+    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+    import(`@/styles/${cssPath}/register.scss`);
   },
   methods: {
     register() {

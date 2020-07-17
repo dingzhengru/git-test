@@ -1,7 +1,10 @@
 const getters = {
-  templateType: state => state.template.type,
-  templateVersion: state => state.template.version,
-  templateVersionNumber: state => state.template.versionNumber,
+  siteID: state => state.site.id,
+  siteMode: state => state.site.mode,
+  siteCssClass: state => state.site.cssClass,
+  siteCssVersion: state => state.site.cssVersion,
+  siteCssType: state => state.site.cssType,
+  siteCssFestival: state => state.site.cssFestival,
   lang: state => state.lang,
   token: state => state.user.token,
   isAccessed: state => state.user.isAccessed,

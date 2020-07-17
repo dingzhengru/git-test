@@ -15,7 +15,7 @@ export default {
     HomeGameBlock: () => import('@/components/Y/home/HomeGameBlock'),
   },
   computed: {
-    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
   },
   data() {
     return {
@@ -23,9 +23,8 @@ export default {
     };
   },
   mounted() {
-    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    // import(`@/styles/${this.templateType}/common/home.css`);
-    import(`@/styles/${templatePath}/home.scss`);
+    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+    import(`@/styles/${cssPath}/home.scss`);
 
     const siteID = 'C';
     const requestData = {

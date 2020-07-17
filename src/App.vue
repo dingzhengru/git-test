@@ -36,7 +36,7 @@ export default {
     TypeYAppFooter: () => import('@/components/Y/AppFooter'),
   },
   computed: {
-    ...mapGetters(['lang', 'token', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
   },
   data() {
     return {
@@ -50,11 +50,12 @@ export default {
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
 
     // * 根據版型引入 css
-    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    import(`@/styles/${templatePath}/layout.scss`);
-    import(`@/styles/${templatePath}/lang/zh-cn.scss`);
-    import(`@/styles/${templatePath}/lang/en-us.scss`);
-    import(`@/styles/${templatePath}/lang/th-th.scss`);
+    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+
+    import(`@/styles/${cssPath}/layout.scss`);
+    import(`@/styles/${cssPath}/lang/zh-cn.scss`);
+    import(`@/styles/${cssPath}/lang/en-us.scss`);
+    import(`@/styles/${cssPath}/lang/th-th.scss`);
 
     const siteID = 'C';
     const requestData = { siteID };

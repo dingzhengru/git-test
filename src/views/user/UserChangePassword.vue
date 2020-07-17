@@ -64,7 +64,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'UserChangePassword',
   computed: {
-    ...mapGetters(['lang', 'token', 'isAccessed', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
   },
   data() {
     return {
@@ -85,8 +85,8 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    import(`@/styles/${templatePath}/user/change-password.scss`);
+    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+    import(`@/styles/${cssPath}/user/change-password.scss`);
   },
   methods: {
     changePassword() {

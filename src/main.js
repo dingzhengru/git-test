@@ -18,16 +18,17 @@ import VueScrollTo from 'vue-scrollto';
 
 Vue.use(VueScrollTo);
 
+import { getSiteInfo } from '@/api/site';
 import { getLang, getToken } from '@/utils/cookie';
 import { DEFAULT_LANG } from '@/settings';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.type
-const templateType = 'Y';
-const templateVersion = '01';
-const templateVersionNumber = '02';
-store.commit('template/setType', templateType);
-store.commit('template/setVersion', templateVersion);
-store.commit('template/setVersionNumber', templateVersionNumber);
+const cssClass = 'Y';
+const cssVersion = '01';
+const cssType = '02';
+store.commit('site/setCssClass', cssClass);
+store.commit('site/setCssVersion', cssVersion);
+store.commit('site/setCssType', cssType);
 
 //* 取得語系 => 存進 store.state.lang
 // const browserLang = navigator.language || navigator.userLanguage;
@@ -39,6 +40,12 @@ const token = getToken();
 if (token) {
   store.commit('user/setToken', token);
 }
+
+//* 取得 site info
+const requestData = { DeviceType: 1 };
+getSiteInfo(requestData).then(result => {
+  console.log(result.RetObj);
+});
 
 new Vue({
   router,

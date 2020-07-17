@@ -74,9 +74,12 @@ export default {
   computed: {
     ...mapGetters([
       'lang',
-      'templateType',
-      'templateVersion',
-      'templateVersionNumber',
+      'token',
+      'siteID',
+      'siteCssClass',
+      'siteCssVersion',
+      'siteCssType',
+      'siteCssFestival',
       'account',
       'pointAmount',
       'level',
@@ -96,8 +99,8 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    import(`@/styles/${templatePath}/header.scss`);
+    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+    import(`@/styles/${cssPath}/header.scss`);
   },
   methods: {
     changeLang(lang) {

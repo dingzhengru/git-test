@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import user from './modules/user';
-import template from './modules/template';
+import site from './modules/site';
 import getters from './getters';
 import { setLang } from '@/utils/cookie';
 Vue.use(Vuex);
@@ -19,7 +19,7 @@ export default new Vuex.Store({
   actions: {},
   modules: {
     user,
-    template,
+    site,
   },
   getters,
 });

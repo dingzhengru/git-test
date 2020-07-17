@@ -60,7 +60,7 @@ import imgRNG from '@/assets/Y/01/01/imgs/game/gameIntro-03.jpg';
 export default {
   name: 'About',
   computed: {
-    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
   },
   data() {
     return {
@@ -71,8 +71,8 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    import(`@/styles/${templatePath}/about.scss`);
+    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+    import(`@/styles/${cssPath}/about.scss`);
 
     // * 根據 query 移動到該標籤，若不設延遲，重整會停在較上面的位置
     setTimeout(() => {

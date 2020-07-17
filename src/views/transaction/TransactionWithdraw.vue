@@ -68,7 +68,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TransactionWithdraw',
   computed: {
-    ...mapGetters(['lang', 'token', 'templateType', 'templateVersion', 'templateVersionNumber']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
   },
   data() {
     return {
@@ -126,8 +126,8 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    const templatePath = `${this.templateType}/${this.templateVersion}/${this.templateVersionNumber}`;
-    import(`@/styles/${templatePath}/transaction/withdraw.scss`);
+    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+    import(`@/styles/${cssPath}/transaction/withdraw.scss`);
   },
   methods: {
     allGamePointBackToMain() {
