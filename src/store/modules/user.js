@@ -21,6 +21,15 @@ const mutations = {
   setAccount(state, account) {
     state.account = account;
   },
+  setPointAmount(state, pointAmount) {
+    state.pointAmount = pointAmount;
+  },
+  setLevel(state, level) {
+    state.level = level;
+  },
+  setWashcodeAmount(state, washcodeAmount) {
+    state.washcodeAmount = washcodeAmount;
+  },
   removeToken() {
     removeToken();
   },

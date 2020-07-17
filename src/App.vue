@@ -5,6 +5,10 @@
       :langList="langList"
       :lang="lang"
       :logo="logo"
+      :account="account"
+      :pointAmount="pointAmount"
+      :level="level"
+      :washcodeAmount="washcodeAmount"
       @changeLang="changeLang"
       @logout="logout"
     ></TypeYAppHeader>
@@ -51,6 +55,10 @@ export default {
       'siteCssFestival',
       'siteRemoteCSSUrl',
       'siteMainDomain',
+      'account',
+      'pointAmount',
+      'level',
+      'washcodeAmount',
     ]),
   },
   data() {
@@ -84,6 +92,8 @@ export default {
         if (!this.siteID) {
           return;
         }
+
+        console.log(this.account)
 
         const faviconUrl = `${this.siteRemoteCSSUrl}/ContentStyle/${this.siteMainDomain}/Member/${this.siteCssClass}/${this.siteCssVersion}/2/default/css${this.siteCssType}/common/imgs/favicon/favicon.ico`;
         document.querySelector('#favicon').setAttribute('href', faviconUrl);

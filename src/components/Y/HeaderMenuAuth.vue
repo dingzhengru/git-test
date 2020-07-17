@@ -1,5 +1,15 @@
 <template>
   <div>
+    <div class="are-header-memberInfo">
+      <div class="blk-memberInfo-left">
+        <span class="txt-memberInfo-username">Username：{{ account || 'ding' }}</span> <br />
+        <span class="txt-memberInfo-username">Bonus VIP level：{{ level || 0 }}</span>
+      </div>
+      <div class="blk-memberInfo-right">
+        <span class="txt-memberInfo-cash">Total：{{ pointAmount || '0.00' }}</span> <br />
+        <span class="txt-memberInfo-cash">Rolling：{{ washcodeAmount || '0.00' }}</span>
+      </div>
+    </div>
     <a
       href="javascript:;"
       class="cpn-inBlock"
@@ -65,11 +75,30 @@ export default {
       type: String,
       default: () => '',
     },
+    account: {
+      type: String,
+      default: () => '',
+    },
+    pointAmount: {
+      type: Number,
+      default: () => '',
+    },
+    level: {
+      type: Number,
+      default: () => '',
+    },
+    washcodeAmount: {
+      type: Number,
+      default: () => '',
+    },
   },
   data() {
     return {
       isShowMenu: false,
     };
+  },
+  mounted() {
+    console.log(this.account, this.pointAmount, this.level, this.washcodeAmount);
   },
   methods: {
     changeLang(lang) {
@@ -102,38 +131,6 @@ export default {
 .slide-enter,
 .slide-leave-to {
   max-height: 0;
-}
-
-/*
-  * 只留登入時的樣式
-  * 可於 common/header.css 或原專案的 layout 與 index2 中取得
-*/
-.are-header-logo {
-  position: relative;
-  height: 144px;
-}
-
-.logo-img {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-/* .are-header-logo {
-  height: 144px;
-  padding: 0 117px;
-} */
-
-.lnk-header-home {
-  width: 77px;
-  height: 65px;
-  margin-top: -32.5px;
-  position: absolute;
-  top: 50%;
-  left: 20px;
 }
 
 /*

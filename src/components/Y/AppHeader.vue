@@ -5,16 +5,15 @@
         <img :src="logo" class="logo-img" alt="" />
       </div>
       <router-link to="/" class="cpn-inBlock lnk-header-home"></router-link>
-      <HeaderMenu
-        v-if="!token"
-        :langList="langList"
-        :lang="lang"
-        @changeLang="changeLang"
-      ></HeaderMenu>
+      <HeaderMenu v-if="!token" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
       <HeaderMenuAuth
         v-if="token"
         :langList="langList"
         :lang="lang"
+        :account="account"
+        :pointAmount="pointAmount"
+        :level="level"
+        :washcodeAmount="washcodeAmount"
         @changeLang="changeLang"
         @logout="logout"
       ></HeaderMenuAuth>
@@ -46,6 +45,22 @@ export default {
     },
     logo: {
       type: String,
+      default: () => '',
+    },
+    account: {
+      type: String,
+      default: () => '',
+    },
+    pointAmount: {
+      type: Number,
+      default: () => '',
+    },
+    level: {
+      type: Number,
+      default: () => '',
+    },
+    washcodeAmount: {
+      type: Number,
       default: () => '',
     },
   },
