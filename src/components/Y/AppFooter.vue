@@ -19,12 +19,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   name: 'TypeYAppFooter',
+  props: {
+    token: {
+      type: String,
+      default: () => '',
+    },
+  },
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
     isHideFooter() {
       return this.hideFooterList.includes(this.$route.name);
     },
@@ -86,11 +89,6 @@ export default {
         },
       ],
     };
-  },
-  mounted() {
-    // * 根據版型引入 css
-    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-    import(`@/styles/${cssPath}/footer.scss`);
   },
   watch: {
     token: {

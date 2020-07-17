@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <TypeYAppFooter></TypeYAppFooter>
+    <TypeYAppFooter :token="token"></TypeYAppFooter>
 
     <div class="Box" id="alertbox" v-if="isShowAlertBox">
       <div class="Boxinner">
@@ -93,7 +93,7 @@ export default {
           return;
         }
 
-        console.log(this.account)
+        console.log(this.account);
 
         const faviconUrl = `${this.siteRemoteCSSUrl}/ContentStyle/${this.siteMainDomain}/Member/${this.siteCssClass}/${this.siteCssVersion}/2/default/css${this.siteCssType}/common/imgs/favicon/favicon.ico`;
         document.querySelector('#favicon').setAttribute('href', faviconUrl);
