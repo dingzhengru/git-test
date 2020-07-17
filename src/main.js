@@ -41,6 +41,7 @@ if (token) {
   store.commit('user/setToken', token);
 
   // * 取得使用者資料，並放置進 store.user
+  store.commit('user/setIsAccessed', true); // * 設置是否已開通
   store.commit('user/setAccount', 'ding0101');
   store.commit('user/setPointAmount', 1.23);
   store.commit('user/setLevel', 123);
@@ -52,7 +53,7 @@ const requestData = { DeviceType: 1 };
 getSiteInfo(requestData).then(result => {
   const siteInfo = result.RetObj;
 
-  console.log(siteInfo);
+  console.log('[Site]', siteInfo);
 
   store.commit('site/setID', siteInfo.LS_SiteID);
   // store.commit('site/setCssClass', siteInfo.LS_CSS_Class);

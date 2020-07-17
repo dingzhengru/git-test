@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 
 export default {
   name: 'UserProfileList',
@@ -31,9 +30,6 @@ export default {
       type: Array,
       default: () => [],
     },
-  },
-  computed: {
-    ...mapGetters(['token']),
   },
   data() {
     return {
@@ -46,7 +42,7 @@ export default {
   },
   methods: {
     instantAccess() {
-      console.log('instantAccess');
+      this.$emit('instantAccess');
     },
   },
 };

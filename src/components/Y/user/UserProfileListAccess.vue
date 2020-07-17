@@ -6,7 +6,7 @@
           <span class="theme-dataView-header">{{ item.title }}</span>
           <p class="theme-dataView-data">{{ item.content }}</p>
         </li>
-        <form id="formPasswordChange" @submit.prevent="changePassword">
+        <form id="formPasswordChange" @submit.prevent="changeWithdrawPassword">
           <li class="theme-li-dataView">
             <span class="theme-dataView-header">取款密码(旧)</span>
             <input
@@ -53,8 +53,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   name: 'UserProfileListAccess',
   props: {
@@ -62,9 +60,6 @@ export default {
       type: Array,
       default: () => [],
     },
-  },
-  computed: {
-    ...mapGetters(['token']),
   },
   data() {
     return {
@@ -76,8 +71,8 @@ export default {
     };
   },
   methods: {
-    changePassword() {
-      console.log('changePassword()');
+    changeWithdrawPassword() {
+      console.log('changeWithdrawPassword()');
     },
   },
 };

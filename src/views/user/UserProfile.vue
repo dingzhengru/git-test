@@ -10,10 +10,14 @@
     </ul> -->
 
     <!-- 未開通的 -->
-    <UserProfileList :list="list" v-if="!isAccessed"></UserProfileList>
+    <UserProfileList :list="list" v-if="!isAccessed" @instantAccess="instantAccess"></UserProfileList>
 
     <!-- 開通後的 -->
-    <UserProfileListAccess :list="list" v-else-if="isAccessed"></UserProfileListAccess>
+    <UserProfileListAccess
+      :list="list"
+      v-else-if="isAccessed"
+      @changeWithdrawPassword="changeWithdrawPassword"
+    ></UserProfileListAccess>
   </div>
 </template>
 
@@ -98,13 +102,38 @@ export default {
       ],
     };
   },
-  mounted() {
-    // * 根據版型引入 css
-    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-    import(`@/styles/${cssPath}/user/profile.scss`);
+  mounted() {},
+  methods: {
+    instantAccess() {
+      console.log('instantAccess');
+    },
+    changeWithdrawPassword() {
+      console.log('changeWithdrawPassword');
+    },
+  },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
 
-    // this.list = this.accessList;
-    this.list = this.noAccessList;
+        // * 根據版型引入 css
+        const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+        import(`@/styles/${cssPath}/user/profile.scss`);
+      },
+    },
+    token: {
+      immediate: true,
+      handler() {
+        if (this.isAccessed) {
+          this.list = this.accessList;
+        } else {
+          this.list = this.noAccessList;
+        }
+      },
+    },
   },
 };
 </script>

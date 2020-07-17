@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'http://localhost:80/api';
 //const API_URL = 'http://api.caza7.re888show.com/api',
 
 // 預設語系 (以後應該會由後端取得)

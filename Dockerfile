@@ -12,8 +12,13 @@ COPY ./ /app
 RUN npm run build
 
 # ---------- Production -------------
-FROM nginx:alpine
+FROM nginx
 
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+WORKDIR /nginx/html
+
+COPY ./nginx.conf /etc/nginx
+COPY --from=build-stage /app/dist /nginx/html
+
+RUN nginx -t
 
 EXPOSE 80

@@ -25,22 +25,31 @@ export default {
   mounted() {
     const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
     import(`@/styles/${cssPath}/home.scss`);
+  },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
 
-    const siteID = 'C';
-    const requestData = {
-      siteID,
-      DeviceType: 1,
-      lang: 'zh-cn',
-      bNewPromotion: true,
-    };
+        const requestData = {
+          siteID: this.siteID,
+          DeviceType: 1,
+          lang: 'zh-cn',
+          bNewPromotion: true,
+        };
 
-    // * 取得輪播列表
-    getSwiperList(requestData).then(result => {
-      if (result.Code == 200) {
-        this.swiperList = result.RetObj;
-        console.log(this.swiperList);
-      }
-    });
+        // * 取得輪播列表
+        getSwiperList(requestData).then(result => {
+          if (result.Code == 200) {
+            this.swiperList = result.RetObj;
+            console.log('[Swiper]', this.swiperList);
+          }
+        });
+      },
+    },
   },
 };
 </script>

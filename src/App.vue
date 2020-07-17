@@ -74,8 +74,8 @@ export default {
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
 
     // * 跟 siteInfo 有關的，都放到 watch 了，每次 siteInfo 變動就去改
-    const staticResourceUrl = `{remoteCSSUrl}/ContentStyle/{mainDomain}/Member/{siteCssClass}/{siteCssVersion}/2/default/css{siteCssType}/common/imgs/favicon/favicon.ico`;
-    console.log('靜態資源網址組成(favicon)', staticResourceUrl);
+    // const staticResourceUrl = `{remoteCSSUrl}/ContentStyle/{mainDomain}/Member/{siteCssClass}/{siteCssVersion}/2/default/css{siteCssType}/common/imgs/favicon/favicon.ico`;
+    // console.log('靜態資源網址組成(favicon)', staticResourceUrl);
   },
   methods: {
     changeLang(lang) {
@@ -92,8 +92,6 @@ export default {
         if (!this.siteID) {
           return;
         }
-
-        console.log(this.account);
 
         const faviconUrl = `${this.siteRemoteCSSUrl}/ContentStyle/${this.siteMainDomain}/Member/${this.siteCssClass}/${this.siteCssVersion}/2/default/css${this.siteCssType}/common/imgs/favicon/favicon.ico`;
         document.querySelector('#favicon').setAttribute('href', faviconUrl);
@@ -119,7 +117,7 @@ export default {
         getLangList(requestData).then(result => {
           if (result.Code == 200) {
             this.langList = result.RetObj;
-            console.log(this.langList);
+            console.log('[Lang]',this.langList);
           }
         });
       },

@@ -97,9 +97,6 @@ export default {
       isShowMenu: false,
     };
   },
-  mounted() {
-    console.log(this.account, this.pointAmount, this.level, this.washcodeAmount);
-  },
   methods: {
     changeLang(lang) {
       this.$emit('changeLang', lang);
