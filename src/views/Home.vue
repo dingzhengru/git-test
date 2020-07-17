@@ -1,13 +1,21 @@
 <template>
   <div>
     <HomeSwiper :list="swiperList"></HomeSwiper>
-    <HomeGameBlock></HomeGameBlock>
+    <HomeGameBlock
+      :list="productList"
+      :siteCssClass="siteCssClass"
+      :siteCssVersion="siteCssVersion"
+      :siteCssType="siteCssType"
+      :siteRemoteCSSUrl="siteRemoteCSSUrl"
+      :siteMainDomain="siteMainDomain"
+    ></HomeGameBlock>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { getSwiperList } from '@/api/swiper';
+import { getProductList } from '@/api/product';
 export default {
   name: 'Home',
   components: {
@@ -15,16 +23,35 @@ export default {
     HomeGameBlock: () => import('@/components/Y/home/HomeGameBlock'),
   },
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
+    ...mapGetters([
+      'lang',
+      'token',
+      'siteID',
+      'siteCssClass',
+      'siteCssVersion',
+      'siteCssType',
+      'siteCssFestival',
+      'siteRemoteCSSUrl',
+      'siteMainDomain',
+    ]),
   },
   data() {
     return {
       swiperList: [],
+      productList: [],
     };
   },
   mounted() {
-    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-    import(`@/styles/${cssPath}/home.scss`);
+    // * 取得遊戲館列表，因不需要 siteID 所以放這即可
+    const requestDataProductList = {
+      DeviceType: 1,
+    };
+    getProductList(requestDataProductList).then(result => {
+      if (result.Code == 200) {
+        this.productList = result.RetObj;
+        console.log('[Product]', this.productList);
+      }
+    });
   },
   watch: {
     siteID: {
@@ -33,16 +60,18 @@ export default {
         if (!this.siteID) {
           return;
         }
-
-        const requestData = {
-          siteID: this.siteID,
-          DeviceType: 1,
-          lang: 'zh-cn',
-          bNewPromotion: true,
-        };
+        // * 根據版型引入 css
+        const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
+        import(`@/styles/${cssPath}/home.scss`);
 
         // * 取得輪播列表
-        getSwiperList(requestData).then(result => {
+        const requestDataSwiperList = {
+          siteID: this.siteID,
+          DeviceType: 1,
+          lang: this.lang,
+          bNewPromotion: true,
+        };
+        getSwiperList(requestDataSwiperList).then(result => {
           if (result.Code == 200) {
             this.swiperList = result.RetObj;
             console.log('[Swiper]', this.swiperList);

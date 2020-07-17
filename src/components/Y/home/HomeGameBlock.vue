@@ -1,13 +1,20 @@
 <template>
   <div id="gameblock" class="are-game">
-    <a href="/Y/NoneLogin/FreePlay/" class="lnk-freeGo" v-if="!token">
-      <i class="icn-freeGo"></i> <span class="txt-freeGo">Free Play</span>
-    </a>
-
     <ul class="cpn-boxzero cpn-inBlock-row ul-game">
-      <li
+      <li class="li-game" v-for="(game, index) in list" :key="index">
+        <router-link
+          :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }"
+          class="lnk-game"
+          :class="['li-game-' + game.sGameID]"
+          href="javascript:void(0)"
+        >
+          {{ game.Lst_Name }}
+        </router-link>
+      </li>
+
+      <!-- <li
         class="li-game"
-        v-for="(game, index) in gameList"
+        v-for="(game, index) in list"
         :key="index"
         :style="{ 'background-image': `url(${game.img})` }"
       >
@@ -18,66 +25,43 @@
         >
           {{ game.name }}
         </router-link>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import game1010 from '@/assets/Y/01/03/imgs/game/game1010.png';
-import game1020 from '@/assets/Y/01/03/imgs/game/game1020.png';
-import game1040 from '@/assets/Y/01/03/imgs/game/game1040.png';
 
 export default {
   name: 'HomeGameBlock',
-  data() {
-    return {
-      gameList: [],
-    };
-  },
-  computed: {
-    ...mapGetters(['lang', 'templateType', 'templateVersion', 'templateVersionNumber', 'token']),
+  props: {
+    list: {
+      type: Array,
+      default: () => [],
+    },
+    siteCssClass: {
+      type: String,
+      default: () => '',
+    },
+    siteCssVersion: {
+      type: String,
+      default: () => '',
+    },
+    siteCssType: {
+      type: String,
+      default: () => '',
+    },
+    siteRemoteCSSUrl: {
+      type: String,
+      default: () => '',
+    },
+    siteMainDomain: {
+      type: String,
+      default: () => '',
+    },
   },
   mounted() {
-    this.gameList = [
-      {
-        name: 'game1010',
-        img: game1010,
-      },
-      {
-        name: 'game1020',
-        img: game1020,
-      },
-      {
-        name: 'game1040',
-        img: game1040,
-      },
-      {
-        name: 'game1040',
-        img: game1040,
-      },
-      {
-        name: 'game1040',
-        img: game1040,
-      },
-      {
-        name: 'game1040',
-        img: game1040,
-      },
-      {
-        name: 'game1040',
-        img: game1040,
-      },
-      {
-        name: 'game1040',
-        img: game1040,
-      },
-      {
-        name: 'game1040',
-        img: game1040,
-      },
-    ];
+    // * 拼湊遊戲圖片網址
   },
 };
 </script>
