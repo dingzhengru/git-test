@@ -1,41 +1,33 @@
 <template>
-  <header class="reg-header">
-    <div class="lay-screen">
-      <div class="are-header-logo">
-        <img :src="logo" class="logo-img" alt="" />
+  <div>
+    <a href="javascript:;" class="cpn-inBlock lnk-header-langOpen" @click="isShowLangList = !isShowLangList"></a>
+    <transition name="slide">
+      <div class="are-header-langMenu" v-if="isShowLangList">
+        <ul class="cpn-boxzero cpn-inBlock-row ul-lang ul-ilang">
+          <li class="li-lang li-ilang" v-for="langItem in langList" :key="langItem.Lst_Locales_Code">
+            <a
+              href="javascript:void(0)"
+              class="lnk-lang lnk-ilang"
+              v-if="langItem.Lst_Locales_Code != lang && langItem.Lst_Is_Enable"
+              :class="{
+                cn: langItem.Lst_Locales_Code == 'zh-cn',
+                th: langItem.Lst_Locales_Code == 'th-th',
+                en: langItem.Lst_Locales_Code == 'en-us',
+                mm: langItem.Lst_Locales_Code == 'my-mm',
+              }"
+              @click="changeLang(langItem.Lst_Locales_Code)"
+            ></a>
+          </li>
+        </ul>
       </div>
-      <router-link to="/" class="cpn-inBlock lnk-header-home"></router-link>
-      <HeaderMenu
-        v-if="!token"
-        :langList="langList"
-        :lang="lang"
-        @changeLang="changeLang"
-      ></HeaderMenu>
-      <HeaderMenuAuth
-        v-if="token"
-        :langList="langList"
-        :lang="lang"
-        @changeLang="changeLang"
-        @logout="logout"
-      ></HeaderMenuAuth>
-    </div>
-  </header>
+    </transition>
+  </div>
 </template>
 
 <script>
-// import HeaderMenu from './HeaderMenu';
-// import HeaderMenuAuth from './HeaderMenuAuth';
 export default {
-  name: 'AppHeader',
-  components: {
-    HeaderMenu: () => import('@/components/Y/HeaderMenu'),
-    HeaderMenuAuth: () => import('@/components/Y/HeaderMenuAuth'),
-  },
+  name: 'HeaderMenu',
   props: {
-    token: {
-      type: String,
-      default: () => '',
-    },
     langList: {
       type: Array,
       default: () => [],
@@ -44,23 +36,16 @@ export default {
       type: String,
       default: () => '',
     },
-    logo: {
-      type: String,
-      default: () => '',
-    },
   },
   data() {
     return {
-      logoUrl: '',
+      isShowLangList: false,
     };
   },
   methods: {
     changeLang(lang) {
       this.$emit('changeLang', lang);
       this.isShowLangList = false;
-    },
-    logout() {
-      this.$emit('logout');
     },
   },
 };
@@ -85,39 +70,6 @@ export default {
 .slide-enter,
 .slide-leave-to {
   max-height: 0;
-}
-
-/* 
-  * 刪除了登入後的 header 樣式，只留非登入時的樣式 
-  * 可於 common/header.css 或原專案的 layout 與 index2 中取得
-*/
-
-/*? .reg-header > */
-/* .are-header-logo {
-  height: 144px;
-  padding: 0 117px;
-} */
-
-.are-header-logo {
-  position: relative;
-  height: 144px;
-}
-.logo-img {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.lnk-header-home {
-  width: 77px;
-  height: 65px;
-  margin-top: -32.5px;
-  position: absolute;
-  top: 50%;
-  left: 20px;
 }
 
 .lnk-header-langOpen {

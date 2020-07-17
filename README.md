@@ -1,6 +1,5 @@
 <!-- omit in toc -->
 
-
 # cms-fend-client <!-- omit in toc -->
 
 H3 前後端分離的前端專案，使用 vue & vue-cli 框架
@@ -9,6 +8,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [點擊輪播無法正常換頁](#點擊輪播無法正常換頁)
   - [Agreement 頁面的規章頁籤 .active 沒有設定](#agreement-頁面的規章頁籤-active-沒有設定)
   - [登入方式](#登入方式)
+  - [取得網站資訊不同步，將處理放置 watch](#取得網站資訊不同步將處理放置-watch)
 
 ## 其他
 
@@ -19,5 +19,19 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 ### Agreement 頁面的規章頁籤 .active 沒有設定
 
 ### 登入方式
+
 - 原專案: 登入頁面 => 送出登入資料 => 規章頁面 => 同意 => 登入成功
 - 建議: 登入頁面 => 送出登入資料(包含是否同意規章) => 登入成功
+
+### 取得網站資訊不同步，將處理放置 watch
+
+將關於需要用到 siteInfo 的處理都放置 watch，避免還沒取得 siteInfo (預設值是 null)，就去使用 API 或 去組靜態資源 URL
+
+```js
+watch: {
+  siteID: {
+    immediate: true,
+    handler() {},
+  },
+},
+```
