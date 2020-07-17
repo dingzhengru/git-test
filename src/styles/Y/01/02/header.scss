@@ -15,9 +15,9 @@ $type: 'Y/01/02';
 .reg-header {
   background: url(~@/assets/#{$type}/imgs/header/headerBg.jpg) no-repeat top center;
 }
-.are-header-logo {
-  background: url(~@/assets/#{$type}/imgs/header/logo.png) no-repeat center;
-}
+// .are-header-logo {
+//   background: url(~@/assets/#{$type}/imgs/header/logo.png) no-repeat center;
+// }
 .lnk-header-home {
   background: url(~@/assets/#{$type}/imgs/header/btn_home.png) no-repeat;
 }

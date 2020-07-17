@@ -1,7 +1,9 @@
 <template>
   <header class="reg-header">
     <div class="lay-screen">
-      <div class="are-header-logo"></div>
+      <div class="are-header-logo">
+        <img :src="logoUrl" class="logo-img" alt="" />
+      </div>
       <router-link to="/" class="cpn-inBlock lnk-header-home"></router-link>
       <a href="javascript:;" class="cpn-inBlock lnk-header-langOpen" @click="isShowLangList = !isShowLangList"></a>
       <!-- <a href="javascript:" class="cpn-inBlock lnk-header-langClose"></a> -->
@@ -35,7 +37,17 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TypeYAppHeader',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
+    ...mapGetters([
+      'lang',
+      'token',
+      'siteID',
+      'siteCssClass',
+      'siteCssVersion',
+      'siteCssType',
+      'siteCssFestival',
+      'siteRemoteCSSUrl',
+      'siteMainDomain',
+    ]),
   },
   props: {
     langList: {
@@ -46,6 +58,7 @@ export default {
   data() {
     return {
       isShowLangList: false,
+      logoUrl: '',
     };
   },
   async mounted() {
@@ -57,6 +70,14 @@ export default {
     changeLang(lang) {
       this.$store.commit('setLang', lang);
       this.isShowLangList = false;
+    },
+  },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        this.logoUrl = `${this.siteRemoteCSSUrl}/ContentStyle/${this.siteMainDomain}/Member/${this.siteCssClass}/${this.siteCssVersion}/2/default/css${this.siteCssType}/common/imgs/header/logo.png`;
+      },
     },
   },
 };
@@ -89,10 +110,24 @@ export default {
 */
 
 /*? .reg-header > */
-.are-header-logo {
+/* .are-header-logo {
   height: 144px;
   padding: 0 117px;
+} */
+
+.are-header-logo {
+  position: relative;
+  height: 144px;
 }
+.logo-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 .lnk-header-home {
   width: 77px;
   height: 65px;
@@ -152,5 +187,4 @@ export default {
 .lnk-lang.mm {
   background-image: url(~@/assets/common/imgs/header/lang_mm_s.png);
 }
-
 </style>

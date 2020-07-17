@@ -1,7 +1,9 @@
 <template>
   <header class="reg-header">
     <div class="lay-screen">
-      <div class="are-header-logo"></div>
+      <div class="are-header-logo">
+        <img :src="logoUrl" class="logo-img" alt="" />
+      </div>
       <div class="are-header-memberInfo">
         <div class="blk-memberInfo-left">
           <span class="txt-memberInfo-username">Username：{{ account || 'ding' }}</span> <br />
@@ -69,6 +71,8 @@
 
 <script>
 import { mapGetters } from 'vuex';
+// import logo from '@/assets/Y/01/01/imgs/header/logo.png';
+
 export default {
   name: 'TypeYAppHeaderAuth',
   computed: {
@@ -80,6 +84,8 @@ export default {
       'siteCssVersion',
       'siteCssType',
       'siteCssFestival',
+      'siteRemoteCSSUrl',
+      'siteMainDomain',
       'account',
       'pointAmount',
       'level',
@@ -95,6 +101,7 @@ export default {
   data() {
     return {
       isShowMenu: false,
+      logoUrl: '',
     };
   },
   mounted() {
@@ -109,6 +116,14 @@ export default {
     },
     logout() {
       this.$store.dispatch('user/logout');
+    },
+  },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        this.logoUrl = `${this.siteRemoteCSSUrl}/ContentStyle/${this.siteMainDomain}/Member/${this.siteCssClass}/${this.siteCssVersion}/2/default/css${this.siteCssType}/common/imgs/header/logo.png`;
+      },
     },
   },
 };
@@ -135,16 +150,29 @@ export default {
   max-height: 0;
 }
 
-/* 
-  * 刪除了登入後的 header 樣式，只留非登入時的樣式 
+/*
+  * 只留登入時的樣式
   * 可於 common/header.css 或原專案的 layout 與 index2 中取得
 */
-
-/*? .reg-header > */
 .are-header-logo {
+  position: relative;
+  height: 144px;
+}
+
+.logo-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* .are-header-logo {
   height: 144px;
   padding: 0 117px;
-}
+} */
+
 .lnk-header-home {
   width: 77px;
   height: 65px;
