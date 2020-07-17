@@ -1,6 +1,5 @@
 const getters = {
   siteID: state => state.site.id,
-  siteMode: state => state.site.mode,
   siteCssClass: state => state.site.cssClass,
   siteCssVersion: state => state.site.cssVersion,
   siteCssType: state => state.site.cssType,

@@ -1,6 +1,5 @@
 const state = {
   id: null,
-  mode: null,
   cssClass: null,
   cssVersion: null,
   cssType: null,
@@ -10,9 +9,6 @@ const state = {
 const mutations = {
   setID(state, id) {
     state.id = id;
-  },
-  setMode(state, mode) {
-    state.mode = mode;
   },
   setCssClass(state, cssClass) {
     state.cssClass = cssClass;
