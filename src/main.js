@@ -22,10 +22,10 @@ import { getSiteInfo } from '@/api/site';
 import { getLang, getToken } from '@/utils/cookie';
 import { DEFAULT_LANG } from '@/settings';
 
-//* 取得版型(網域判斷或後端給) => 存進 store.state.type
+//* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
 const cssVersion = '01';
-const cssType = '02';
+const cssType = '01';
 store.commit('site/setCssClass', cssClass);
 store.commit('site/setCssVersion', cssVersion);
 store.commit('site/setCssType', cssType);
@@ -41,10 +41,18 @@ if (token) {
   store.commit('user/setToken', token);
 }
 
-//* 取得 site info
+//* 取得 site info => 存進 store.state.site
 const requestData = { DeviceType: 1 };
 getSiteInfo(requestData).then(result => {
-  console.log(result.RetObj);
+  const siteInfo = result.RetObj;
+
+  console.log(siteInfo);
+
+  store.commit('site/setID', siteInfo.LS_SiteID);
+  // store.commit('site/setCssClass', siteInfo.LS_CSS_Class);
+  // store.commit('site/setCssVersion', siteInfo.LS_CSS_Version);
+  // store.commit('site/setCssType', siteInfo.LS_CSS_Type);
+  // store.commit('site/setCssFestival', siteInfo.LS_CSS_Festival);
 });
 
 new Vue({

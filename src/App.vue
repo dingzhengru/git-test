@@ -57,7 +57,7 @@ export default {
     import(`@/styles/${cssPath}/lang/en-us.scss`);
     import(`@/styles/${cssPath}/lang/th-th.scss`);
 
-    const siteID = 'C';
+    const siteID = this.siteID;
     const requestData = { siteID };
 
     // * 取得語系列表

@@ -45,17 +45,11 @@
         </div>
       </li>
     </ul>
-    <div class="hightlightMsg" style="color:#ffff00;font-size:2em">
+    <div class="hightlightMsg">
       For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount 500 THB
     </div>
     <div class="are-control">
-      <a
-        class="ui-btn01 ui-btn-long btn-send"
-        id="Withdrawals"
-        href="javascript:"
-        onclick="beforeSend();btnWithdrawalsSaveClick()"
-        >Submit</a
-      >
+      <button type="submit" class="ui-btn01 ui-btn-long btn-send" id="Withdrawals">Submit</button>
     </div>
     <ol class="ui-ol-memberNotice">
       <li>If you have any additional questions about your account details ,please contact our online service.</li>
@@ -153,5 +147,9 @@ export default {
 .btn-transferBack {
   display: block;
   margin: 0 auto;
+}
+
+.hightlightMsg {
+  font-size: 2em;
 }
 </style>
