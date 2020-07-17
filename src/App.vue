@@ -36,7 +36,17 @@ export default {
     TypeYAppFooter: () => import('@/components/Y/AppFooter'),
   },
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
+    ...mapGetters([
+      'lang',
+      'token',
+      'siteID',
+      'siteCssClass',
+      'siteCssVersion',
+      'siteCssType',
+      'siteCssFestival',
+      'siteRemoteCSSUrl',
+      'siteMainDomain',
+    ]),
   },
   data() {
     return {
@@ -48,6 +58,10 @@ export default {
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
+
+    // * 動態載入 favicon，已將 pubcli/index.html 中新增 <link rel="icon" id="favicon">
+    const faviconUrl = `${this.siteRemoteCSSUrl}/ContentStyle/${this.siteMainDomain}/Member/${this.siteCssClass}/${this.siteCssVersion}/2/default/css${this.siteCssType}/common/imgs/favicon/favicon.ico`;
+    document.querySelector('#favicon').setAttribute('href', faviconUrl);
 
     // * 根據版型引入 css
     const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
@@ -67,6 +81,10 @@ export default {
         console.log(this.langList);
       }
     });
+
+    // logo url: http://resource.re888show.com/ContentStyle/THRY1688M_net/Member/Y/01/2/default/css02/common/imgs/header/logo.png
+    const staticResourceUrl = `{remoteCSSUrl}/ContentStyle/{mainDomain}/Member/{siteCssClass}/{siteCssVersion}/2/default/css{siteCssType}/common/imgs/favicon/favicon.ico`;
+    console.log('靜態資源網址組成(favicon)', staticResourceUrl);
   },
 };
 </script>

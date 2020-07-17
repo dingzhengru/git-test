@@ -4,6 +4,8 @@ const state = {
   cssVersion: null,
   cssType: null,
   cssFestival: null,
+  mainDomain: null,
+  remoteCSSUrl: null,
 };
 
 const mutations = {
@@ -21,6 +23,12 @@ const mutations = {
   },
   setCssFestival(state, cssFestival) {
     state.cssFestival = cssFestival;
+  },
+  setMainDomain(state, mainDomain) {
+    state.mainDomain = mainDomain;
+  },
+  setRemoteCSSUrl(state, remoteCSSUrl) {
+    state.remoteCSSUrl = remoteCSSUrl;
   },
 };
 

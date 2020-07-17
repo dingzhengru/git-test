@@ -53,6 +53,8 @@ getSiteInfo(requestData).then(result => {
   // store.commit('site/setCssVersion', siteInfo.LS_CSS_Version);
   // store.commit('site/setCssType', siteInfo.LS_CSS_Type);
   // store.commit('site/setCssFestival', siteInfo.LS_CSS_Festival);
+  store.commit('site/setMainDomain', siteInfo.LS_MainDomain);
+  store.commit('site/setRemoteCSSUrl', siteInfo.RemoteCSSUrls);
 });
 
 new Vue({
