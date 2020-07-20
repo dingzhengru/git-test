@@ -83,13 +83,21 @@ export default {
       ],
     };
   },
-  mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/user/change-password.scss`);
-  },
   methods: {
     changePassword() {
       console.log('changePassword()');
+    },
+  },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
+        // * 根據版型引入 css
+        import(`@/styles/${this.siteFullCss}/user/change-password.scss`);
+      },
     },
   },
 };

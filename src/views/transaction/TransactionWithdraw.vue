@@ -118,16 +118,24 @@ export default {
       password: '',
     };
   },
-  mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/transaction/withdraw.scss`);
-  },
   methods: {
     allGamePointBackToMain() {
       console.log('allGamePointBackToMain');
     },
     submitWithdraw() {
       console.log('submitWithdraw');
+    },
+  },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
+        // * 根據版型引入 css
+        import(`@/styles/${this.siteFullCss}/transaction/withdraw.scss`);
+      },
     },
   },
 };

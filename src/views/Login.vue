@@ -72,14 +72,22 @@ export default {
       },
     };
   },
-  mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/login.scss`);
-  },
   methods: {
     async login() {
       const token = await this.$store.dispatch('user/login', this.user);
-      console.log(token);
+      console.log(`[token]`, token);
+    },
+  },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
+        // * 根據版型引入 css
+        import(`@/styles/${this.siteFullCss}/login.scss`);
+      },
     },
   },
 };

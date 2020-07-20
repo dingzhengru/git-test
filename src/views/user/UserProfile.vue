@@ -93,7 +93,6 @@ export default {
       ],
     };
   },
-  mounted() {},
   methods: {
     instantAccess() {
       console.log('instantAccess');

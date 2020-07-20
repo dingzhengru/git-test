@@ -42,9 +42,17 @@ export default {
       ],
     };
   },
-  mounted() {
-    // const id = this.$route.params.id;
-    import(`@/styles/${this.siteFullCss}/promotion-content.scss`);
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
+        // * 根據版型引入 css
+        import(`@/styles/${this.siteFullCss}/promotion-content.scss`);
+      },
+    },
   },
 };
 </script>

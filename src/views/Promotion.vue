@@ -47,8 +47,17 @@ export default {
       ],
     };
   },
-  mounted() {
-    import(`@/styles/${this.siteFullCss}/promotion.scss`);
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
+        // * 根據版型引入 css
+        import(`@/styles/${this.siteFullCss}/promotion.scss`);
+      },
+    },
   },
 };
 </script>
