@@ -1,0 +1,30 @@
+$type: 'Y/01/01';
+
+.table-transfer-account {
+  border: 1px solid #d6c388;
+}
+
+.table-transfer-account tr {
+  border-bottom: 1px solid #d6c388;
+}
+
+.table-transfer-account .th-1st {
+  color: #959595;
+}
+
+.ipt-transfer-money {
+  background-color: #2e2e2e;
+  border: 1px solid #8b8b8b;
+}
+
+.btn-refresh {
+  color: #000;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.btn-refresh {
+  background: url(~@/assets/#{$type}/imgs/header/btn_logout.jpg) !important;
+}

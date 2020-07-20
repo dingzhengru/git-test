@@ -55,6 +55,8 @@ getSiteInfo(requestData).then(result => {
 
   console.log('[Site]', siteInfo);
 
+
+
   store.commit('site/setID', siteInfo.LS_SiteID);
   // store.commit('site/setCssClass', siteInfo.LS_CSS_Class);
   // store.commit('site/setCssVersion', siteInfo.LS_CSS_Version);
@@ -62,7 +64,10 @@ getSiteInfo(requestData).then(result => {
   // store.commit('site/setCssFestival', siteInfo.LS_CSS_Festival);
   store.commit('site/setMainDomain', siteInfo.LS_MainDomain);
   store.commit('site/setRemoteCSSUrl', siteInfo.RemoteCSSUrls);
-});
+}).catch(() => {
+  store.commit('site/setID', 'C');
+
+})
 
 new Vue({
   router,

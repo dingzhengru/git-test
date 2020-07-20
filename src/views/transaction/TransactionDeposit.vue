@@ -306,4 +306,6 @@ export default {
 .btn-reset {
   margin: 0 10px;
 }
+
+
 </style>

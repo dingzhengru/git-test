@@ -9,6 +9,14 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [Agreement 頁面的規章頁籤 .active 沒有設定](#agreement-頁面的規章頁籤-active-沒有設定)
   - [登入方式](#登入方式)
   - [取得網站資訊不同步，將處理放置 watch](#取得網站資訊不同步將處理放置-watch)
+  - [optgroup 的前面空格，無法實現](#optgroup-的前面空格無法實現)
+- [Library](#library)
+  - [axios](#axios)
+  - [jsencrypt](#jsencrypt)
+  - [numeral](#numeral)
+  - [vue-awesome-swiper](#vue-awesome-swiper)
+  - [vue-scrollto](#vue-scrollto)
+  - [vue-slider-component](#vue-slider-component)
 
 ## 其他
 
@@ -21,7 +29,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 ### 登入方式
 
 - 原專案: 登入頁面 => 送出登入資料 => 規章頁面 => 同意 => 登入成功
-- 建議: 登入頁面 => 送出登入資料(包含是否同意規章) => 登入成功
+- 新專案: 登入頁面 => 送出登入資料(包含是否同意規章) => 登入成功
 
 ### 取得網站資訊不同步，將處理放置 watch
 
@@ -35,3 +43,19 @@ watch: {
   },
 },
 ```
+
+### optgroup 的前面空格，無法實現
+於 transaction/transfer 中
+
+
+
+
+## Library
+詳細可於 package.json 查看
+
+### axios
+### jsencrypt
+### numeral
+### vue-awesome-swiper
+### vue-scrollto
+### vue-slider-component
