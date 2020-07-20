@@ -263,8 +263,6 @@ export default {
   padding: 20px 0;
   /* border-bottom: 1px solid #d6c388; */
 }
-.blk-transfer-money {
-}
 .blk-transfer-control {
   padding: 20px 0;
   /* border-top: 1px solid #d6c388; */
@@ -282,15 +280,13 @@ export default {
   font-weight: normal;
   vertical-align: middle;
 }
-.table-transfer-money .td-2nd {
-}
 
 /*
  * Range
 */
 
 .panel-wallet-range {
-  margin: 0 auto;
+  width: 448px;
 }
 
 .custom-dot {

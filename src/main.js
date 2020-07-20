@@ -50,24 +50,23 @@ if (token) {
 
 //* 取得 site info => 存進 store.state.site
 const requestData = { DeviceType: 1 };
-getSiteInfo(requestData).then(result => {
-  const siteInfo = result.RetObj;
+getSiteInfo(requestData)
+  .then(result => {
+    const siteInfo = result.RetObj;
 
-  console.log('[Site]', siteInfo);
+    console.log('[Site]', siteInfo);
 
-
-
-  store.commit('site/setID', siteInfo.LS_SiteID);
-  // store.commit('site/setCssClass', siteInfo.LS_CSS_Class);
-  // store.commit('site/setCssVersion', siteInfo.LS_CSS_Version);
-  // store.commit('site/setCssType', siteInfo.LS_CSS_Type);
-  // store.commit('site/setCssFestival', siteInfo.LS_CSS_Festival);
-  store.commit('site/setMainDomain', siteInfo.LS_MainDomain);
-  store.commit('site/setRemoteCSSUrl', siteInfo.RemoteCSSUrls);
-}).catch(() => {
-  store.commit('site/setID', 'C');
-
-})
+    store.commit('site/setID', siteInfo.LS_SiteID);
+    // store.commit('site/setCssClass', siteInfo.LS_CSS_Class);
+    // store.commit('site/setCssVersion', siteInfo.LS_CSS_Version);
+    // store.commit('site/setCssType', siteInfo.LS_CSS_Type);
+    // store.commit('site/setCssFestival', siteInfo.LS_CSS_Festival);
+    store.commit('site/setMainDomain', siteInfo.LS_MainDomain);
+    store.commit('site/setRemoteCSSUrl', siteInfo.RemoteCSSUrls);
+  })
+  .catch(() => {
+    store.commit('site/setID', 'C');
+  });
 
 new Vue({
   router,
