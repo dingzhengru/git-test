@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import BlankLayout from '@/components/BlankLayout';
 
 Vue.use(VueRouter);
 
@@ -73,16 +74,37 @@ const routes = [
         name: 'TransactionTransfer',
         component: () => import('@/views/transaction/TransactionTransfer'),
       },
+      // {
+      //   path: 'record',
+      //   name: 'TransactionRecord',
+      //   component: () => import('@/views/transaction/TransactionRecord'),
+      // },
       {
         path: 'record',
-        name: 'TransactionRecord',
-        component: () => import('@/views/transaction/TransactionRecord'),
+        component: BlankLayout,
+        children: [
+          {
+            path: '',
+            name: 'TransactionRecord',
+            component: () => import('@/views/transaction/TransactionRecord'),
+          },
+          {
+            path: ':name',
+            name: 'TransactionRecordContent',
+            component: () => import('@/views/transaction/TransactionRecordContent'),
+          },
+          {
+            path: 'detail/:id',
+            name: 'TransactionRecordDetail',
+            component: () => import('@/views/transaction/TransactionRecordDetail'),
+          }
+        ],
       },
     ],
   },
   {
     path: '/promotion',
-    component: () => import('@/components/BlankLayout'),
+    component: BlankLayout,
     children: [
       {
         path: '',

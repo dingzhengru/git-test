@@ -162,7 +162,6 @@ export default {
       },
     };
   },
-  mounted() {},
   methods: {
     submitTransfer() {
       console.log('submitTransfer');
