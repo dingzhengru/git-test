@@ -5,7 +5,7 @@
         class="li-game"
         v-for="(game, index) in list"
         :key="index"
-        :style="{ 'background-image': `url(${resourceUrl}/imgs/game/${game.sGameID}.png)` }"
+        :style="{ 'background-image': `url(${resourceUrl}/imgs/game/game${game.sGameID}.png)` }"
       >
         <router-link
           :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }"

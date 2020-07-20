@@ -69,15 +69,6 @@ export default {
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
-
-    setTimeout(() => {
-      console.log(this.resourceUrl);
-      console.log(this.siteFullCss);
-    }, 1000);
-
-    // * 跟 siteInfo 有關的，都放到 watch 了，每次 siteInfo 變動就去改
-    // const staticResourceUrl = `{remoteCSSUrl}/ContentStyle/{mainDomain}/Member/{siteCssClass}/{siteCssVersion}/2/default/css{siteCssType}/common/imgs/favicon/favicon.ico`;
-    // console.log('靜態資源網址組成(favicon)', staticResourceUrl);
   },
   methods: {
     changeLang(lang) {

@@ -8,5 +8,4 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf  # 反代理伺服器
       - ./dist:/nginx/html                  # 看要不要 serve build 後檔案
     ports:
-      - 50001:80
-      # - 443:443
+      - 80:80
