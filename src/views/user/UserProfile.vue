@@ -30,16 +30,7 @@ export default {
     UserProfileListAccess: () => import('../../components/Y/user/UserProfileListAccess'),
   },
   computed: {
-    ...mapGetters([
-      'lang',
-      'token',
-      'isAccessed',
-      'siteID',
-      'siteCssClass',
-      'siteCssVersion',
-      'siteCssType',
-      'siteCssFestival',
-    ]),
+    ...mapGetters(['lang', 'token', 'isAccessed', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -120,8 +111,7 @@ export default {
         }
 
         // * 根據版型引入 css
-        const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-        import(`@/styles/${cssPath}/user/profile.scss`);
+        import(`@/styles/${this.siteFullCss}/user/profile.scss`);
       },
     },
     token: {

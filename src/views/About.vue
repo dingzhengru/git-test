@@ -60,7 +60,7 @@ import imgRNG from '@/assets/Y/01/01/imgs/game/gameIntro-03.jpg';
 export default {
   name: 'About',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -71,8 +71,7 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-    import(`@/styles/${cssPath}/about.scss`);
+    import(`@/styles/${this.siteFullCss}/about.scss`);
 
     // * 根據 query 移動到該標籤，若不設延遲，重整會停在較上面的位置
     setTimeout(() => {

@@ -61,7 +61,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Login',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -74,8 +74,7 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-    import(`@/styles/${cssPath}/login.scss`);
+    import(`@/styles/${this.siteFullCss}/login.scss`);
   },
   methods: {
     async login() {

@@ -113,7 +113,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TransactionDeposit',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -189,8 +189,7 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-    import(`@/styles/${cssPath}/transaction/deposit.scss`);
+    import(`@/styles/${this.siteFullCss}/transaction/deposit.scss`);
   },
   methods: {
     submitDeposit() {

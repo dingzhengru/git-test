@@ -6,6 +6,12 @@ const getters = {
   siteCssFestival: state => state.site.cssFestival,
   siteRemoteCSSUrl: state => state.site.remoteCSSUrl,
   siteMainDomain: state => state.site.mainDomain,
+  siteFullCss: state => {
+    return `${state.site.cssClass}/${state.site.cssVersion}/${state.site.cssType}`;
+  },
+  resourceUrl: state => {
+    return `${state.site.remoteCSSUrl}/ContentStyle/${state.site.mainDomain}/Member/${state.site.cssClass}/${state.site.cssVersion}/2/default/css${state.site.cssType}/common`;
+  },
   lang: state => state.lang,
   token: state => state.user.token,
   isAccessed: state => state.user.isAccessed,

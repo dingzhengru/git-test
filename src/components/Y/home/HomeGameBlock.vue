@@ -1,11 +1,15 @@
 <template>
   <div id="gameblock" class="are-game">
     <ul class="cpn-boxzero cpn-inBlock-row ul-game">
-      <li class="li-game" v-for="(game, index) in list" :key="index">
+      <li
+        class="li-game"
+        v-for="(game, index) in list"
+        :key="index"
+        :style="{ 'background-image': `url(${resourceUrl}/imgs/game/${game.sGameID}.png)` }"
+      >
         <router-link
           :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }"
           class="lnk-game"
-          :class="['li-game-' + game.sGameID]"
           href="javascript:void(0)"
         >
           {{ game.Lst_Name }}
@@ -31,7 +35,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'HomeGameBlock',
   props: {
@@ -39,29 +42,10 @@ export default {
       type: Array,
       default: () => [],
     },
-    siteCssClass: {
+    resourceUrl: {
       type: String,
       default: () => '',
     },
-    siteCssVersion: {
-      type: String,
-      default: () => '',
-    },
-    siteCssType: {
-      type: String,
-      default: () => '',
-    },
-    siteRemoteCSSUrl: {
-      type: String,
-      default: () => '',
-    },
-    siteMainDomain: {
-      type: String,
-      default: () => '',
-    },
-  },
-  mounted() {
-    // * 拼湊遊戲圖片網址
   },
 };
 </script>

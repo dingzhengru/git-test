@@ -3,11 +3,7 @@
     <HomeSwiper :list="swiperList"></HomeSwiper>
     <HomeGameBlock
       :list="productList"
-      :siteCssClass="siteCssClass"
-      :siteCssVersion="siteCssVersion"
-      :siteCssType="siteCssType"
-      :siteRemoteCSSUrl="siteRemoteCSSUrl"
-      :siteMainDomain="siteMainDomain"
+      :resourceUrl="resourceUrl"
     ></HomeGameBlock>
   </div>
 </template>
@@ -23,17 +19,7 @@ export default {
     HomeGameBlock: () => import('@/components/Y/home/HomeGameBlock'),
   },
   computed: {
-    ...mapGetters([
-      'lang',
-      'token',
-      'siteID',
-      'siteCssClass',
-      'siteCssVersion',
-      'siteCssType',
-      'siteCssFestival',
-      'siteRemoteCSSUrl',
-      'siteMainDomain',
-    ]),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss', 'resourceUrl']),
   },
   data() {
     return {
@@ -60,9 +46,9 @@ export default {
         if (!this.siteID) {
           return;
         }
+
         // * 根據版型引入 css
-        const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-        import(`@/styles/${cssPath}/home.scss`);
+        import(`@/styles/${this.siteFullCss}/home.scss`);
 
         // * 取得輪播列表
         const requestDataSwiperList = {

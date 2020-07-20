@@ -58,7 +58,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Contact',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -93,8 +93,7 @@ export default {
     };
   },
   mounted() {
-    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-    import(`@/styles/${cssPath}/contact.scss`);
+    import(`@/styles/${this.siteFullCss}/contact.scss`);
   },
 };
 </script>
@@ -185,5 +184,4 @@ export default {
   font-size: 2.461em;
   line-height: 65px;
 }
-
 </style>

@@ -21,7 +21,7 @@ import event01 from '@/assets/Y/01/01/imgs/promotion/event01.jpg';
 export default {
   name: 'PromotionContent',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -44,8 +44,7 @@ export default {
   },
   mounted() {
     // const id = this.$route.params.id;
-    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-    import(`@/styles/${cssPath}/promotion-content.scss`);
+    import(`@/styles/${this.siteFullCss}/promotion-content.scss`);
   },
 };
 </script>

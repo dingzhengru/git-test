@@ -49,12 +49,8 @@ export default {
       'lang',
       'token',
       'siteID',
-      'siteCssClass',
-      'siteCssVersion',
-      'siteCssType',
-      'siteCssFestival',
-      'siteRemoteCSSUrl',
-      'siteMainDomain',
+      'siteFullCss',
+      'resourceUrl',
       'account',
       'pointAmount',
       'level',
@@ -73,6 +69,11 @@ export default {
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
+
+    setTimeout(() => {
+      console.log(this.resourceUrl);
+      console.log(this.siteFullCss);
+    }, 1000);
 
     // * 跟 siteInfo 有關的，都放到 watch 了，每次 siteInfo 變動就去改
     // const staticResourceUrl = `{remoteCSSUrl}/ContentStyle/{mainDomain}/Member/{siteCssClass}/{siteCssVersion}/2/default/css{siteCssType}/common/imgs/favicon/favicon.ico`;
@@ -94,24 +95,23 @@ export default {
           return;
         }
 
-        const faviconUrl = `${this.siteRemoteCSSUrl}/ContentStyle/${this.siteMainDomain}/Member/${this.siteCssClass}/${this.siteCssVersion}/2/default/css${this.siteCssType}/common/imgs/favicon/favicon.ico`;
+        const faviconUrl = `${this.resourceUrl}/imgs/favicon/favicon.ico`;
         document.querySelector('#favicon').setAttribute('href', faviconUrl);
 
         // * 根據版型引入 css
-        const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-        import(`@/styles/${cssPath}/layout.scss`);
-        import(`@/styles/${cssPath}/lang/zh-cn.scss`);
-        import(`@/styles/${cssPath}/lang/en-us.scss`);
-        import(`@/styles/${cssPath}/lang/th-th.scss`);
+        import(`@/styles/${this.siteFullCss}/layout.scss`);
+        import(`@/styles/${this.siteFullCss}/lang/zh-cn.scss`);
+        import(`@/styles/${this.siteFullCss}/lang/en-us.scss`);
+        import(`@/styles/${this.siteFullCss}/lang/th-th.scss`);
 
         // * header css
-        import(`@/styles/${cssPath}/header.scss`);
+        import(`@/styles/${this.siteFullCss}/header.scss`);
 
         // * footer css
-        import(`@/styles/${cssPath}/footer.scss`);
+        import(`@/styles/${this.siteFullCss}/footer.scss`);
 
         // * 使用 siteInfo 拼湊 logo url
-        this.logo = `${this.siteRemoteCSSUrl}/ContentStyle/${this.siteMainDomain}/Member/${this.siteCssClass}/${this.siteCssVersion}/2/default/css${this.siteCssType}/common/imgs/header/logo.png`;
+        this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
 
         // * 取得語系列表
         const requestDataLangList = { siteID: this.siteID };

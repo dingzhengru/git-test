@@ -19,7 +19,7 @@ import event01 from '@/assets/Y/01/01/imgs/promotion/event01.jpg';
 export default {
   name: 'Promotion',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteCssClass', 'siteCssVersion', 'siteCssType', 'siteCssFestival']),
+    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -48,8 +48,7 @@ export default {
     };
   },
   mounted() {
-    const cssPath = `${this.siteCssClass}/${this.siteCssVersion}/${this.siteCssType}`;
-    import(`@/styles/${cssPath}/promotion.scss`);
+    import(`@/styles/${this.siteFullCss}/promotion.scss`);
   },
 };
 </script>
