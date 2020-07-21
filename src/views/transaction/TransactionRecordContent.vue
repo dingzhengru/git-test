@@ -6,13 +6,14 @@
       :notice="notice"
       :isSearchActive="isSearchActive"
       :isPageActive="isPageActive"
-      :pagesize="pagesize"
+      :productList="productList"
     />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import { getProductList } from '@/api/product';
 export default {
   name: 'TransactionRecordContent',
   components: {
@@ -29,7 +30,7 @@ export default {
       notice: '',
       isSearchActive: false,
       isPageActive: false,
-      pagesize: 10,
+      productList: [],
     };
   },
   mounted() {
@@ -72,26 +73,61 @@ export default {
             detail: 'Under review',
           },
         ];
-        this.title = 'Deposit Record';
+        this.title = 'Withdrawals Record';
         this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
         break;
       case 'transfer':
         this.list = [
           {
-            id: '',
+            id: '000',
             isSuccess: false,
             date: '2020-07-21',
             game: 'Royal Gaming',
             type: 'Roll-out of Points',
             amount: -767,
           },
+          {
+            id: '111',
+            isSuccess: true,
+            date: '2020-07-22',
+            game: 'Royal Gaming',
+            type: 'Roll-out of Points',
+            amount: 1122,
+          },
         ];
-        this.title = 'Deposit Record';
+        this.title = 'Transfer Details';
         this.isSearchActive = true;
         this.isPageActive = true;
         this.pagesize = 10;
         break;
     }
+  },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
+
+        // * 根據版型引入 css
+        import(`@/styles/${this.siteFullCss}/transaction/record-content.scss`);
+
+        // * 根據版型引入 css (pagination)
+        import(`@/styles/${this.siteFullCss}/pagination.scss`);
+
+        // * 取得遊戲館列表
+        const requestDataProductList = {
+          DeviceType: 1,
+        };
+        getProductList(requestDataProductList).then(result => {
+          if (result.Code == 200) {
+            this.productList = result.RetObj;
+            console.log('[Product]', this.productList);
+          }
+        });
+      },
+    },
   },
 };
 </script>
