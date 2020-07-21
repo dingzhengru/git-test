@@ -36,7 +36,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getLangList } from '@/api/lang';
+import { getLangList, changeLang } from '@/api/lang';
 import { getMessageList } from '@/api/alert';
 export default {
   name: 'App',
@@ -72,7 +72,16 @@ export default {
   },
   methods: {
     changeLang(lang) {
-      this.$store.commit('setLang', lang);
+      if (this.lang == lang) {
+        return;
+      }
+      const requestDataChangeLang = { Lang: lang };
+      changeLang(requestDataChangeLang).then(result => {
+        if (result.Code == 200) {
+          this.$store.commit('setLang', lang);
+          console.log('[Lang]', 'changeLang:', result.RetObj);
+        }
+      });
     },
     logout() {
       this.$store.dispatch('user/logout');
@@ -105,8 +114,7 @@ export default {
         this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
 
         // * 取得語系列表
-        const requestDataLangList = { siteID: this.siteID };
-        getLangList(requestDataLangList).then(result => {
+        getLangList().then(result => {
           if (result.Code == 200) {
             this.langList = result.RetObj;
             console.log('[Lang]', this.langList);
@@ -114,11 +122,7 @@ export default {
         });
 
         // * 取得訊息列表(msgtype: C 彈出)
-        const requestDataMessageList = {
-          siteID: this.siteID,
-          msgtype: 'C',
-          localescode: this.lang,
-        };
+        const requestDataMessageList = { msgtype: 'C' };
         getMessageList(requestDataMessageList).then(result => {
           if (result.Code == 200) {
             this.alertMessageList = result.RetObj;
@@ -126,6 +130,16 @@ export default {
           }
         });
       },
+    },
+    lang() {
+      // * 取得訊息列表(msgtype: C 彈出)
+      const requestDataMessageList = { msgtype: 'C' };
+      getMessageList(requestDataMessageList).then(result => {
+        if (result.Code == 200) {
+          this.alertMessageList = result.RetObj;
+          console.log('[Message]', this.alertMessageList);
+        }
+      });
     },
   },
 };

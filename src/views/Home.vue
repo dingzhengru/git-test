@@ -1,10 +1,7 @@
 <template>
   <div>
     <HomeSwiper :list="swiperList"></HomeSwiper>
-    <HomeGameBlock
-      :list="productList"
-      :resourceUrl="resourceUrl"
-    ></HomeGameBlock>
+    <HomeGameBlock :list="productList" :resourceUrl="resourceUrl"></HomeGameBlock>
   </div>
 </template>
 
@@ -52,9 +49,7 @@ export default {
 
         // * 取得輪播列表
         const requestDataSwiperList = {
-          siteID: this.siteID,
           DeviceType: 1,
-          lang: this.lang,
           bNewPromotion: true,
         };
         getSwiperList(requestDataSwiperList).then(result => {
@@ -64,6 +59,19 @@ export default {
           }
         });
       },
+    },
+    lang() {
+      // * 取得輪播列表
+      const requestDataSwiperList = {
+        DeviceType: 1,
+        bNewPromotion: true,
+      };
+      getSwiperList(requestDataSwiperList).then(result => {
+        if (result.Code == 200) {
+          this.swiperList = result.RetObj;
+          console.log('[Swiper]', this.swiperList);
+        }
+      });
     },
   },
 };

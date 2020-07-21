@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 // import settings from '@/settings';
 
 const tokenKey = 'token';
-const langKey = 'lang'; //! 目前語系
+const langKey = 'user-lang'; //! 目前語系
 
 /**
  * ? sameSite  設定跨網域是否給予存取此 cookie 的規則，有三種設定，Strict | Lax | None，參考: https://medium.com/@ChibaKuma/chrome-80-samesite-cookie-%E7%9A%84%E5%BD%B1%E9%9F%BF-dce3ecff732a
