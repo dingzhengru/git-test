@@ -7,10 +7,10 @@
         :key="index"
         :style="{ 'background-image': `url(${resourceUrl}/imgs/game/game${game.sGameID}.png)` }"
       >
-        <router-link v-if="!token" :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }" class="lnk-game">
+        <router-link v-if="!token" :to="{ name: 'About', query: { scrollTo: gameClassMap[game.sURL] } }" class="lnk-game">
           {{ game.Lst_Name }}
         </router-link>
-        <router-link v-if="token" :to="{ name: 'GameList', params: { type: 'gametype' } }" class="lnk-game">
+        <router-link v-if="token" :to="{ name: 'GameLobby', params: { type: 'gametype' } }" class="lnk-game">
           {{ game.Lst_Name }}
         </router-link>
       </li>
@@ -34,6 +34,15 @@ export default {
       type: String,
       default: () => '',
     },
+  },
+  data() {
+    return {
+      gameClassMap: {
+        gameclass01: '#gameGclub',
+        gameclass02: '#gameRNG',
+        gameclass03: '#gameSport',
+      },
+    };
   },
 };
 </script>

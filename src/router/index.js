@@ -39,9 +39,9 @@ const routes = [
         redirect: { name: 'GameList' },
       },
       {
-        path: ':type',
-        name: 'GameList',
-        component: () => import('@/views/game/GameList'),
+        path: ':type', //* query: { id: 遊戲館ID } => 判斷到哪個遊戲館
+        name: 'GameLobby',
+        component: () => import('@/views/game/GameLobby'),
       },
     ],
   },
