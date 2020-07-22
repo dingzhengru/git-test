@@ -2,7 +2,7 @@
   <div class="lay-are-pager">
     <a href="javascript:;" class="ui-lnk-pagerPreviousMore" id="btnPreviousMore" @click="changePage(1)"></a>
     <a href="javascript:;" class="ui-lnk-pagerPrevious" id="btnPreviousPage" @click="goPreviousPage"></a>
-    <select class="ui-ddl ui-ddl-pager ng-pristine ng-valid" name="NoPage" id="slcPage" v-model="page">
+    <select class="ui-ddl ui-ddl-pager" name="NoPage" id="slcPage" v-model="clonePage" @change="changePage(clonePage)">
       <option :value="p" v-for="p in totalPage" :key="p">{{ p }}</option>
     </select>
     <a href="javascript:;" class="ui-lnk-pagerNext" id="btnNextPage" @click="goNextPage"></a>
@@ -28,7 +28,9 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      clonePage: this.page,
+    };
   },
   computed: {
     totalPage() {
@@ -48,6 +50,14 @@ export default {
       if (this.page < this.totalPage) {
         this.$emit('change-page', this.page + 1);
       }
+    },
+  },
+  watch: {
+    page: {
+      immediate: true,
+      handler() {
+        this.clonePage = this.page;
+      },
     },
   },
 };

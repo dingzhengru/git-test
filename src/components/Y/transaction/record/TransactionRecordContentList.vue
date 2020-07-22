@@ -59,7 +59,7 @@
     <p class="txt-notice">{{ notice }}</p>
     <AppPagination
       :length="list.length"
-      :page.sync="pagination.page"
+      :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
     />
@@ -149,6 +149,7 @@ export default {
   methods: {
     submitSearchRecordList() {
       console.log('submitSearchRecordList', this.search);
+      this.$emit('submit-search-record-list', this.search);
     },
     changePage(page) {
       this.pagination.page = page;
