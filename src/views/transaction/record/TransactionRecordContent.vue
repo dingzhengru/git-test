@@ -95,7 +95,7 @@ export default {
             transferAmount: 1122,
           },
         ];
-        this.title = 'Transfer Details';
+        this.title = 'Transfer Record';
         this.detailKey = 'transferAmount';
         this.isSearchActive = true;
         this.isPageActive = true;

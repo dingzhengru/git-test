@@ -13,9 +13,9 @@
           </select>
           <select id="sltDateRange" class="ui-ddl ddl-inquire-range">
             <option :value="{}" selected>Select Date Range</option>
-            <option :value="range.value" v-for="range in searchDateRangeList" :key="range.name">{{
-              range.name
-            }}</option>
+            <option :value="range.value" v-for="range in searchDateRangeList" :key="range.name">
+              {{ range.name }}
+            </option>
           </select>
           <span class="txt-inquire">From</span>
           <input class="ui-ipt ui-ipt-date ipt-inquire-date" type="date" v-model="search.dateFrom" />
@@ -49,7 +49,11 @@
                       {{ value }}
                     </template>
 
-                    <router-link class="ui-lnk-detail" to="/" v-if="isShowDetailLink(key, value, item)"></router-link>
+                    <router-link
+                      class="ui-lnk-detail"
+                      :to="{ name: 'TransactionRecordDetail', params: { name: $route.params.name, id: item.id } }"
+                      v-if="isShowDetailLink(key, value, item)"
+                    ></router-link>
                   </td>
                 </template>
               </tr>
@@ -66,15 +70,6 @@
       :pagesize="pagination.pagesize"
       @change-page="changePage"
     />
-    <!-- <div class="lay-are-pager">
-      <a href="javascript:;" class="ui-lnk-pagerPreviousMore" id="btnPreviousMore"></a>
-      <a href="javascript:;" class="ui-lnk-pagerPrevious" id="btnPreviousPage"></a>
-      <select class="ui-ddl ui-ddl-pager ng-pristine ng-valid" name="NoPage" id="slcPage">
-        <option value="1" selected="selected">1</option>
-      </select>
-      <a href="javascript:;" class="ui-lnk-pagerNext" id="btnNextPage"></a>
-      <a href="javascript:;" class="ui-lnk-pagerNextMore" id="btnNextMore"></a>
-    </div> -->
   </div>
 </template>
 
@@ -148,8 +143,8 @@ export default {
         (key == 'adjustmentPoints' && value < 0)
       );
     },
-    isShowDetailLink: (app) => (key, value, item) => {
-      return key == app.detailKey && (item.isSuccess != false);
+    isShowDetailLink: app => (key, value, item) => {
+      return key == app.detailKey && item.isSuccess != false;
     },
   },
   data() {

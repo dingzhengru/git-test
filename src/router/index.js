@@ -81,18 +81,18 @@ const routes = [
           {
             path: '',
             name: 'TransactionRecord',
-            component: () => import('@/views/transaction/TransactionRecord'),
+            component: () => import('@/views/transaction/record/TransactionRecord'),
           },
           {
             path: ':name',
             name: 'TransactionRecordContent',
-            component: () => import('@/views/transaction/TransactionRecordContent'),
+            component: () => import('@/views/transaction/record/TransactionRecordContent'),
           },
           {
-            path: 'detail/:id',
+            path: ':name/detail/:id',
             name: 'TransactionRecordDetail',
-            component: () => import('@/views/transaction/TransactionRecordDetail'),
-          }
+            component: () => import('@/views/transaction/record/TransactionRecordDetail'),
+          },
         ],
       },
     ],
