@@ -1,83 +1,67 @@
-$type: 'Y/01/02';
-
-// .reg-main {
-//   background-color: #1c6080;
-// }
+$type: 'Y/01/03';
 
 .lay-are-pager {
-  background-color: #1c6080;
+  background-color: #181b23;
 }
 
 .table-mgGame .tr-mgGame-selected .td-2nd {
-  color: #fff100;
+  color: #ffbebc;
 }
 
 .table-ptGame .tr-ptGame-selected .td-2nd {
-  color: #fff100;
+  color: #ffbebc;
 }
 
 .blk-rgGame-enter {
-  background-color: #1c6080;
+  background-color: black;
 }
 
 .blk-transferNow {
-  background-color: #1c6080;
+  background-color: black;
 }
 
 .transInfo .txt {
-  color: #fff;
+  color: #d6c388;
 }
 
-.blk-account {
-  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_account.png) 9px center no-repeat;
-  outline: 1px solid #7b7b7d;
-}
-
-.blk-password {
-  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_password.png) 9px center no-repeat;
-  outline: 1px solid #7b7b7d;
-}
+// .blk-account {
+//   background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
+// }
+// .blk-password {
+//   background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
+// }
 
 .lnk-customPswd {
-  color: #fff;
-  border: 1px solid #fff;
-  background: -moz-linear-gradient(top, #eab134 0%, #c58318 49%, #ac6304 49%, #bc6d07 100%);
-  background: -webkit-linear-gradient(top, #eab134 0%, #c58318 49%, #ac6304 49%, #bc6d07 100%);
-  background: linear-gradient(to bottom, #eab134 0%, #c58318 49%, #ac6304 49%, #bc6d07 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eab134', endColorstr='#bc6d07',GradientType=0 );
+  color: #000;
+  // background: url(~@/assets/#{$type}/imgs/main/lnk_recordlist.jpg) repeat-x;
 }
 
 .btn-copy {
-  border: 2px solid #fff;
-  background: #bab7b7;
-  background: -moz-linear-gradient(top, #bab7b7 0%, #fcfcfc 49%, #bcbbbb 50%, #b2b0b0 100%);
-  background: -webkit-linear-gradient(top, #bab7b7 0%, #fcfcfc 49%, #bcbbbb 50%, #b2b0b0 100%);
-  background: linear-gradient(to bottom, #bab7b7 0%, #fcfcfc 49%, #bcbbbb 50%, #b2b0b0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bab7b7', endColorstr='#b2b0b0',GradientType=0 );
+  border: 2px solid #d2bd7c;
+  background: #b59f59;
+  background: -moz-linear-gradient(top, #b59f59 0%, #b7a25f 51%, #b7a25f 51%, #8a7128 51%, #b7a25f 99%);
+  background: -webkit-linear-gradient(top, #b59f59 0%, #b7a25f 51%, #b7a25f 51%, #8a7128 51%, #b7a25f 99%);
+  background: linear-gradient(to bottom, #b59f59 0%, #b7a25f 51%, #b7a25f 51%, #8a7128 51%, #b7a25f 99%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b59f59', endColorstr='#b7a25f', GradientType=0);
 }
 
 .blk-notice {
-  color: #000;
+  color: #959595;
 }
-
 .blk-support {
-  color: #000;
+  color: #fff;
 }
 
 .are-infoGet:after {
-  border-bottom: 1px solid #1c6080;
+  border-bottom: 1px solid #d2bd7c;
 }
 
 .lnk-download {
-  color: #bd6e07;
-}
-
-#cboxOverlay {
-  background: #1c6080;
+  color: #ffb000;
 }
 
 .blk-customPswd {
-  background-color: #1c6080;
+  background-color: black;
 }
 
 .h3-boxTit {
@@ -85,12 +69,13 @@ $type: 'Y/01/02';
 }
 
 .ipt-pswd {
-  background-color: #0e3040;
+  background-color: black;
 }
 
 /*
   ! 圖片路徑
 */
+
 .table-mgGame .tr-mgGame {
   background: url(~@/assets/#{$type}/imgs/ui/bg_list_line.jpg) no-repeat center bottom;
 }

@@ -157,12 +157,12 @@ $type: 'Y/01/01';
 .blk-logoApp {
   background: url(~@/assets/#{$type}/imgs/main/jdbLogo.png) center no-repeat;
 }
-.blk-account {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
-}
-.blk-password {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
-}
+// .blk-account {
+//   background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
+// }
+// .blk-password {
+//   background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
+// }
 .lnk-customPswd {
   background: url(~@/assets/#{$type}/imgs/main/lnk_recordlist.jpg) repeat-x;
 }
