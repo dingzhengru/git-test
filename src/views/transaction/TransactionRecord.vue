@@ -27,7 +27,7 @@ export default {
           content: 'Deposit Record',
         },
         {
-          name: 'withdraw',
+          name: 'withdrawal',
           content: 'Withdrawals Record',
         },
         {
@@ -43,7 +43,7 @@ export default {
           content: 'Lottery Record',
         },
         {
-          name: 'withdraw-restriction',
+          name: 'withdrawal-restriction',
           content: 'Withdrawal Restriction',
         },
         {

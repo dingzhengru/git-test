@@ -3,7 +3,10 @@
     <ul class="ui-ul-tabs ul-tabs-deposit">
       <li
         class="ui-li-tabs ui-li-tabs-deposit"
-        :class="[route.class, { 'ui-li-tabsActive': route.link == $route.name }]"
+        :class="[
+          route.class,
+          { 'ui-li-tabsActive': route.link == $route.name || route.otherActivePath.includes($route.name) },
+        ]"
         v-for="route in transationRouteList"
         :key="route.link"
       >
@@ -24,21 +27,25 @@ export default {
           name: 'Deposit',
           link: 'TransactionDeposit',
           class: 'ui-li-tabs-deposit',
+          otherActivePath: [],
         },
         {
-          name: 'Withdraw',
-          link: 'TransactionWithdraw',
+          name: 'Withdrawal',
+          link: 'TransactionWithdrawal',
           class: 'ui-li-tabs-withdrawal',
+          otherActivePath: [],
         },
         {
           name: 'Transfer',
           link: 'TransactionTransfer',
           class: 'ui-li-tabs-wallet',
+          otherActivePath: [],
         },
         {
           name: 'Record',
           link: 'TransactionRecord',
           class: 'ui-li-tabs-pointrecord',
+          otherActivePath: ['TransactionRecordContent', 'TransactionRecordDetail'],
         },
       ],
     };
@@ -51,5 +58,4 @@ export default {
   padding-top: 88px;
   padding-bottom: 20px;
 }
-
 </style>

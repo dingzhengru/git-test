@@ -3,7 +3,7 @@
     <div class="theme-content-box">
       <h3 class="theme-h3-boxTitle">{{ title }}</h3>
 
-      <form @submit.prevent="submitSearchRecordList">
+      <form @submit.prevent="submitSearchRecordList" v-if="isSearchActive">
         <div class="blk-inquire-select">
           <select class="ui-ddl ddl-inquire-game" id="sltProduct" v-model="search.product">
             <option :value="{}" selected>Choose the product</option>
@@ -37,17 +37,19 @@
                   <td
                     class="td-2nd"
                     :class="{
-                      'ui-txt-positive': (key == 'detail' && item.isSuccess) || (key == 'amount' && item.amount > 0),
-                      'ui-txt-negative': (key == 'detail' && !item.isSuccess) || (key == 'amount' && item.amount < 0),
+                      'ui-txt-positive': isPositive(key, value, item),
+                      'ui-txt-negative': isNegative(key, value, item),
                     }"
                   >
-                    <template v-if="key == 'amount'">
+                    <template v-if="typeof value == 'number'">
                       {{ numeral(value).format('0,0.00') }}
                     </template>
 
                     <template v-else>
                       {{ value }}
                     </template>
+
+                    <router-link class="ui-lnk-detail" to="/" v-if="isShowDetailLink(key, value, item)"></router-link>
                   </td>
                 </template>
               </tr>
@@ -58,6 +60,7 @@
     </div>
     <p class="txt-notice">{{ notice }}</p>
     <AppPagination
+      v-if="isPageActive"
       :length="list.length"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
@@ -93,6 +96,10 @@ export default {
       type: String,
       default: () => '',
     },
+    detailKey: {
+      type: String,
+      default: () => '',
+    },
     isSearchActive: {
       type: Boolean,
       default: () => false,
@@ -112,9 +119,37 @@ export default {
   },
   computed: {
     pageData() {
-      let startAt = this.pagination.pagesize * (this.pagination.page - 1);
-      let endAt = startAt + this.pagination.pagesize;
+      if (!this.isPageActive) {
+        return this.list;
+      }
+      const startAt = this.pagination.pagesize * (this.pagination.page - 1);
+      const endAt = startAt + this.pagination.pagesize;
       return this.list.slice(startAt, endAt) || [];
+    },
+    isPositive: () => (key, value, item) => {
+      return (
+        (key == 'depositAmount' && value > 0) ||
+        (key == 'depositDetail' && item.isSuccess) ||
+        (key == 'withdrawalAmount' && value > 0) ||
+        (key == 'transferAmount' && value > 0) ||
+        (key == 'bonusIssue' && value > 0) ||
+        (key == 'lotteryStatus' && item.isSuccess) ||
+        (key == 'adjustmentPoints' && value > 0)
+      );
+    },
+    isNegative: () => (key, value, item) => {
+      return (
+        (key == 'depositAmount' && value < 0) ||
+        (key == 'depositDetail' && !item.isSuccess) ||
+        (key == 'withdrawalAmount' && value < 0) ||
+        (key == 'transferAmount' && value < 0) ||
+        (key == 'bonusIssue' && value < 0) ||
+        (key == 'lotteryStatus' && !item.isSuccess) ||
+        (key == 'adjustmentPoints' && value < 0)
+      );
+    },
+    isShowDetailLink: (app) => (key, value, item) => {
+      return key == app.detailKey && (item.isSuccess != false);
     },
   },
   data() {
@@ -194,12 +229,13 @@ export default {
 }
 
 .th-1st {
-  width: 100px;
+  width: 35%;
   text-align: center;
 }
 .td-2nd {
+  /* width: 70%; */
   text-align: center;
-  padding-right: 73px;
+  /* padding-right: 73px; */
   position: relative;
 }
 .txt-notice {

@@ -3,6 +3,7 @@
     <TransactionRecordContentList
       :list="list"
       :title="title"
+      :detailKey="detailKey"
       :notice="notice"
       :isSearchActive="isSearchActive"
       :isPageActive="isPageActive"
@@ -24,82 +25,169 @@ export default {
   },
   data() {
     return {
-      name: '',
       list: [],
       title: '',
-      notice: '',
+      detailKey: '', //* 放 detail link 的欄位名稱
+      notice: '', //* 最下方的小字
       isSearchActive: false,
       isPageActive: false,
       productList: [],
     };
   },
   mounted() {
-    this.name = this.$route.params.name;
-    console.log(this.name);
-
-    switch (this.name) {
-      case 'deposit':
+    switch (this.$route.params.name) {
+      case 'deposit': {
         this.list = [
           {
             id: 'DR200721114109903',
             isSuccess: true,
-            date: '2020-07-21',
-            bank: 'KNANK123',
-            amount: 1000,
-            receipt: '',
-            detail: 'Successful',
+            depositDate: '2020-07-21',
+            depositBank: 'KNANK',
+            depositAmount: 1000,
+            depositReceipt: '',
+            depositDetail: 'Successful',
           },
           {
             id: 'DR200721111105963',
             isSuccess: false,
-            date: '2020-07-21',
-            bank: 'KNANK123',
-            amount: 10000,
-            receipt: 'Remittance Receipt',
-            detail: 'Under review',
+            depositDate: '2020-07-22',
+            depositBank: 'KNANK123',
+            depositAmount: 10000,
+            depositReceipt: 'Remittance Receipt',
+            depositDetail: 'Under review',
           },
         ];
         this.title = 'Deposit Record';
+        this.detailKey = 'depositDetail';
         this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
         break;
-      case 'withdraw':
+      }
+      case 'withdrawal': {
         this.list = [
           {
             id: '',
             isSuccess: false,
-            date: '2020-07-21',
-            bank: 'SCB',
-            amount: 1000,
-            detail: 'Under review',
+            withdrawalDate: '2020-07-21',
+            withdrawalBank: 'SCB',
+            withdrawalAmount: 1000,
+            withdrawalDetail: 'Under review',
           },
         ];
         this.title = 'Withdrawals Record';
+        this.detailKey = 'withdrawalDetail';
         this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
         break;
-      case 'transfer':
+      }
+      case 'transfer': {
+        this.list = [
+          {
+            id: '000',
+            transferDate: '2020-07-21',
+            transferGame: 'Royal Gaming',
+            transferType: 'Roll-out of Points',
+            transferAmount: -767,
+          },
+          {
+            id: '111',
+            transferDate: '2020-07-22',
+            transferGame: 'Royal Gaming',
+            transferType: 'Roll-out of Points',
+            transferAmount: 1122,
+          },
+        ];
+        this.title = 'Transfer Details';
+        this.detailKey = 'transferAmount';
+        this.isSearchActive = true;
+        this.isPageActive = true;
+
+        // * 取得遊戲館列表
+        const requestDataProductList = { DeviceType: 1 };
+        getProductList(requestDataProductList).then(result => {
+          if (result.Code == 200) {
+            this.productList = result.RetObj;
+            console.log('[Product]', this.productList);
+          }
+        });
+        break;
+      }
+      case 'bonus': {
+        this.list = [
+          {
+            id: '000',
+            bonusActivityName: 'ฝากเพิ่มรับสูงสุด 88,888',
+            bonusBindPurse: 'Wallet',
+            bonusIssue: 10,
+            bonusDatetime: '2020-07-21 11:13:42',
+          },
+          {
+            id: '111',
+            bonusActivityName: 'ฝากเพิ่มรับสูงสุด 88,888',
+            bonusBindPurse: 'Wallet',
+            bonusIssue: -10,
+            bonusDatetime: '2020-07-22 11:13:42',
+          },
+        ];
+        this.title = 'Bonus Record';
+        this.isSearchActive = false;
+        this.isPageActive = true;
+        break;
+      }
+      case 'lottery': {
         this.list = [
           {
             id: '000',
             isSuccess: false,
-            date: '2020-07-21',
-            game: 'Royal Gaming',
-            type: 'Roll-out of Points',
-            amount: -767,
+            lotteryPrize: '88',
+            lotteryStatus: 'Undelivered',
+            lotteryType: 'Prize',
+            lotteryDatetime: '2020-07-21 11:41:52',
           },
           {
             id: '111',
             isSuccess: true,
-            date: '2020-07-22',
-            game: 'Royal Gaming',
-            type: 'Roll-out of Points',
-            amount: 1122,
+            lotteryPrize: '8888',
+            lotteryStatus: 'Successful',
+            lotteryType: 'Prize',
+            lotteryDatetime: '2020-07-22 13:41:52',
           },
         ];
-        this.title = 'Transfer Details';
-        this.isSearchActive = true;
+        this.title = 'Lottery Record';
+        this.detailKey = 'lotteryStatus';
+        this.isSearchActive = false;
         this.isPageActive = true;
-        this.pagesize = 10;
         break;
+      }
+      case 'withdrawal-restriction': {
+        this.list = [
+          {
+            id: '000',
+            withdrawalRestrictionType: 'General washing code',
+            withdrawalRestrictionContent: 'Withdrawal Bouns-Wallet',
+            'withdrawalRestriction non-rollover Exchange Volume': 13120,
+            'withdrawalRestriction deadline Of Rollover Exchange': '2021-2-6',
+          },
+        ];
+        this.title = 'Withdrawal Restriction';
+        this.detailKey = 'withdrawalRestrictionContent';
+        this.isSearchActive = false;
+        this.isPageActive = true;
+        break;
+      }
+      case 'adjustment': {
+        this.list = [
+          {
+            id: '000',
+            adjustmentStatus: 'Deduction from Points',
+            adjustmentDescription: 'description',
+            adjustmentPoints: -1000,
+            adjustmentDatetime: '2020-07-21 11:20:24',
+          },
+        ];
+        this.title = 'Adjustment Record';
+        this.isSearchActive = false;
+        this.isPageActive = true;
+        break;
+      }
     }
   },
   watch: {
@@ -117,15 +205,15 @@ export default {
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
         // * 取得遊戲館列表
-        const requestDataProductList = {
-          DeviceType: 1,
-        };
-        getProductList(requestDataProductList).then(result => {
-          if (result.Code == 200) {
-            this.productList = result.RetObj;
-            console.log('[Product]', this.productList);
-          }
-        });
+        // const requestDataProductList = {
+        //   DeviceType: 1,
+        // };
+        // getProductList(requestDataProductList).then(result => {
+        //   if (result.Code == 200) {
+        //     this.productList = result.RetObj;
+        //     console.log('[Product]', this.productList);
+        //   }
+        // });
       },
     },
   },

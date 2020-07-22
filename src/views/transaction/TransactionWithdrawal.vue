@@ -1,5 +1,5 @@
 <template>
-  <form class="withdraw" @submit.prevent="submitWithdraw">
+  <form class="withdraw" @submit.prevent="submitWithdrawal">
     <ul class="theme-content-box are-withdrawal">
       <li class="theme-li-dataView" v-for="item in accountInfoList" :key="item.name">
         <span class="theme-dataView-header">{{ item.title }}</span>
@@ -60,7 +60,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-  name: 'TransactionWithdraw',
+  name: 'TransactionWithdrawal',
   computed: {
     ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
   },
@@ -122,8 +122,8 @@ export default {
     allGamePointBackToMain() {
       console.log('allGamePointBackToMain');
     },
-    submitWithdraw() {
-      console.log('submitWithdraw');
+    submitWithdrawal() {
+      console.log('submitWithdrawal');
     },
   },
   watch: {
@@ -134,7 +134,7 @@ export default {
           return;
         }
         // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/transaction/withdraw.scss`);
+        import(`@/styles/${this.siteFullCss}/transaction/withdrawal.scss`);
       },
     },
   },

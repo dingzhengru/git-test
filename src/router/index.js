@@ -65,20 +65,15 @@ const routes = [
         component: () => import('@/views/transaction/TransactionDeposit'),
       },
       {
-        path: 'withdraw',
-        name: 'TransactionWithdraw',
-        component: () => import('@/views/transaction/TransactionWithdraw'),
+        path: 'withdrawal',
+        name: 'TransactionWithdrawal',
+        component: () => import('@/views/transaction/TransactionWithdrawal'),
       },
       {
         path: 'transfer',
         name: 'TransactionTransfer',
         component: () => import('@/views/transaction/TransactionTransfer'),
       },
-      // {
-      //   path: 'record',
-      //   name: 'TransactionRecord',
-      //   component: () => import('@/views/transaction/TransactionRecord'),
-      // },
       {
         path: 'record',
         component: BlankLayout,
