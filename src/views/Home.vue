@@ -1,7 +1,7 @@
 <template>
   <div>
     <HomeSwiper :list="swiperList"></HomeSwiper>
-    <HomeGameBlock :list="productList" :resourceUrl="resourceUrl"></HomeGameBlock>
+    <HomeGameBlock :list="productList" :resourceUrl="resourceUrl" :token="token"></HomeGameBlock>
   </div>
 </template>
 

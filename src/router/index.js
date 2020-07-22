@@ -30,6 +30,22 @@ const routes = [
     component: () => import('@/views/ForgetPassword'),
   },
   {
+    path: '/game',
+    component: () => import('@/views/game/GameHome'),
+    children: [
+      {
+        path: '',
+        name: 'GameHome',
+        redirect: { name: 'GameList' },
+      },
+      {
+        path: ':type',
+        name: 'GameList',
+        component: () => import('@/views/game/GameList'),
+      },
+    ],
+  },
+  {
     path: '/user',
     component: () => import('@/views/user/UserHome'),
     children: [

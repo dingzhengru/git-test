@@ -7,29 +7,13 @@
         :key="index"
         :style="{ 'background-image': `url(${resourceUrl}/imgs/game/game${game.sGameID}.png)` }"
       >
-        <router-link
-          :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }"
-          class="lnk-game"
-          href="javascript:void(0)"
-        >
+        <router-link v-if="!token" :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }" class="lnk-game">
+          {{ game.Lst_Name }}
+        </router-link>
+        <router-link v-if="token" :to="{ name: 'GameList', params: { type: 'gametype' } }" class="lnk-game">
           {{ game.Lst_Name }}
         </router-link>
       </li>
-
-      <!-- <li
-        class="li-game"
-        v-for="(game, index) in list"
-        :key="index"
-        :style="{ 'background-image': `url(${game.img})` }"
-      >
-        <router-link
-          :to="{ name: 'About', query: { scrollTo: '#gameGclub' } }"
-          class="lnk-game"
-          href="javascript:void(0)"
-        >
-          {{ game.name }}
-        </router-link>
-      </li> -->
     </ul>
   </div>
 </template>
@@ -43,6 +27,10 @@ export default {
       default: () => [],
     },
     resourceUrl: {
+      type: String,
+      default: () => '',
+    },
+    token: {
       type: String,
       default: () => '',
     },
