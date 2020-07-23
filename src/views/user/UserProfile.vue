@@ -1,14 +1,5 @@
 <template>
   <div class="user-profile">
-    <!-- <ul class="ui-ul-tabs ul-tabs-account">
-      <li class="ui-li-tabs ui-li-tabs-account ui-li-tabsActive">
-        <a href="/Y/AlreadyLogin/Profile/?Tag=ChangeAdvance" class="ui-lnk-tabs">Personal Info</a>
-      </li>
-      <li class="ui-li-tabs ui-li-tabs-password">
-        <a href="/Y/AlreadyLogin/Profile/?Tag=ChangePwd" class="ui-lnk-tabs">Password</a>
-      </li>
-    </ul> -->
-
     <!-- 未開通的 -->
     <UserProfileList :list="list" v-if="!isAccessed" @instantAccess="instantAccess"></UserProfileList>
 

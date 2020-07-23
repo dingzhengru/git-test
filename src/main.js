@@ -6,6 +6,8 @@ import store from './store';
 
 Vue.config.productionTip = false;
 
+import './routerPermission'; //* 路徑權限
+
 import '../node_modules/normalize.css/normalize.css'; // ^3.0.2
 import '@/styles/Y/common/layout.css';
 import '@/styles/Y/common/header.css';

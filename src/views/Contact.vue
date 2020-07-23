@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div class="contact" :class="{ 'contact-auth': token }">
     <div class="theme-content-box are-contact">
       <ul class="cpn-boxzero cpn-inBlock-row ul-contact">
         <li class="li-contact" v-if="contact.service.isActive">
@@ -110,6 +110,10 @@ export default {
 <style scoped>
 .contact {
   padding-bottom: 119px;
+}
+
+.contact-auth {
+  padding-top: 88px;
 }
 
 .lnk-contact-tel {

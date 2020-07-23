@@ -1,5 +1,5 @@
 <template>
-  <div class="promotion-content">
+  <div class="promotion-content" :class="{ 'promotion-content-auth': token }">
     <div class="promotion-content--div">
       <img :src="image" alt="" />
     </div>
@@ -58,9 +58,12 @@ export default {
 </script>
 
 <style scoped>
-
 .promotion-content {
   padding-bottom: 160px;
+}
+
+.promotion-content-auth {
+  padding-top: 88px;
 }
 
 .promotion-content--div {

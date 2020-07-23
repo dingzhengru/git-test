@@ -1,5 +1,5 @@
 <template>
-  <div class="transaction lay-are-pageContent">
+  <div class="transaction">
     <ul class="ui-ul-tabs ul-tabs-deposit">
       <li
         class="ui-li-tabs ui-li-tabs-deposit"
@@ -55,7 +55,6 @@ export default {
 
 <style scoped>
 .transaction {
-  padding-top: 88px;
-  padding-bottom: 20px;
+  padding: 88px 20px 160px 20px;
 }
 </style>

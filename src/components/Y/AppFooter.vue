@@ -67,13 +67,19 @@ export default {
           name: 'Member Center',
           link: 'UserProfile',
           class: 'li-toolbar-member',
-          otherActivePath: [],
+          otherActivePath: ['UserChangePassword'],
         },
         {
           name: 'Cashier',
           link: 'TransactionDeposit',
           class: 'li-toolbar-transaction',
-          otherActivePath: [],
+          otherActivePath: [
+            'TransactionWithdrawal',
+            'TransactionTransfer',
+            'TransactionRecord',
+            'TransactionRecordContent',
+            'TransactionRecordDetail',
+          ],
         },
         {
           name: 'Promotions',

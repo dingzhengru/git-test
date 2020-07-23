@@ -1,5 +1,5 @@
 <template>
-  <div class="promotion">
+  <div class="promotion" :class="{ 'promotion-auth': token }">
     <div class="are-bonus">
       <a href="/Y/StaticPage/NoneLogin/?Tag=PermanentIncome" class="lnk-bonus">
         <i class="icn-bonus"></i> <span class="txt-bonus">Bonus V.I.P</span>
@@ -65,6 +65,10 @@ export default {
 <style scoped>
 .promotion {
   padding-bottom: 160px;
+}
+
+.promotion-auth {
+  padding-top: 88px;
 }
 
 .promotion--list {

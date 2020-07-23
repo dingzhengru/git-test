@@ -7,10 +7,18 @@
         :key="index"
         :style="{ 'background-image': `url(${resourceUrl}/imgs/game/game${game.sGameID}.png)` }"
       >
-        <router-link v-if="!token" :to="{ name: 'About', query: { scrollTo: gameClassMap[game.sURL] } }" class="lnk-game">
+        <router-link
+          v-if="!token"
+          :to="{ name: 'About', query: { scrollTo: gameClassMap[game.sURL] } }"
+          class="lnk-game"
+        >
           {{ game.Lst_Name }}
         </router-link>
-        <router-link v-if="token" :to="{ name: 'GameLobby', params: { type: 'gametype' } }" class="lnk-game">
+        <router-link
+          v-if="token"
+          :to="{ name: 'GameLobby', params: { type: 'gametype01' }, query: { category: 'all' } }"
+          class="lnk-game"
+        >
           {{ game.Lst_Name }}
         </router-link>
       </li>

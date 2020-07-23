@@ -21,37 +21,3 @@ $type: 'Y/01/01';
 .lnk-game-favorites-selected {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites_active.png);
 }
-
-// .transSwitch .lnk-transAll {
-//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png) left center no-repeat;
-// }
-// .transSwitch .lnk-transAll.on {
-//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png) left center no-repeat;
-// }
-// .transSwitch .lnk-transPart {
-//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png) left center no-repeat;
-// }
-// .transSwitch .lnk-transPart.on {
-//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png) left center no-repeat;
-// }
-// .blk-logoApp {
-//   background: url(~@/assets/#{$type}/imgs/main/jdbLogo.png) center no-repeat;
-// }
-// .blk-account {
-//   background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
-// }
-// .blk-password {
-//   background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
-// }
-// .lnk-customPswd {
-//   background: url(~@/assets/#{$type}/imgs/main/lnk_recordlist.jpg) repeat-x;
-// }
-// .lnk-customPswd:before {
-//   background: url(~@/assets/#{$type}/imgs/main/jdbIcon.png) left center no-repeat;
-// }
-// .are-infoApp {
-//   background: url(~@/assets/#{$type}/imgs/main/jdbBg.png) 10px top no-repeat;
-// }
-// .lnk-download i {
-//   background: url(~@/assets/#{$type}/imgs/main/jdbIcon-download.png) left center no-repeat;
-// }

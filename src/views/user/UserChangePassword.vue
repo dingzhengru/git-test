@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="user-change-password">
     <div class="theme-content-box are-accountChg">
       <div class="theme-input-box blk-accountChg-input">
         <span class="theme-input-header">旧密码</span>

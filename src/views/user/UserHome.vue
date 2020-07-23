@@ -1,5 +1,5 @@
 <template>
-  <div class="user lay-are-pageContent">
+  <div class="user">
     <ul class="ui-ul-tabs ul-tabs-account">
       <li
         class="ui-li-tabs"
@@ -38,7 +38,6 @@ export default {
 
 <style scoped>
 .user {
-  padding-top: 88px;
-  padding-bottom: 20px;
+  padding: 88px 20px 160px 20px;
 }
 </style>

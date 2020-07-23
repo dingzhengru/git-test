@@ -1,95 +1,11 @@
 $type: 'Y/01/02';
 
-// .reg-main {
-//   background-color: #1c6080;
-// }
-
-.game-lobby {
+.game {
   background-color: #1c6080;
 }
 
 .lay-are-pager {
   background-color: #1c6080;
-}
-
-.table-mgGame .tr-mgGame-selected .td-2nd {
-  color: #fff100;
-}
-
-.table-ptGame .tr-ptGame-selected .td-2nd {
-  color: #fff100;
-}
-
-.blk-rgGame-enter {
-  background-color: #1c6080;
-}
-
-.blk-transferNow {
-  background-color: #1c6080;
-}
-
-.transInfo .txt {
-  color: #fff;
-}
-
-.blk-account {
-  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_account.png) 9px center no-repeat;
-  outline: 1px solid #7b7b7d;
-}
-
-.blk-password {
-  background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_password.png) 9px center no-repeat;
-  outline: 1px solid #7b7b7d;
-}
-
-.lnk-customPswd {
-  color: #fff;
-  border: 1px solid #fff;
-  background: -moz-linear-gradient(top, #eab134 0%, #c58318 49%, #ac6304 49%, #bc6d07 100%);
-  background: -webkit-linear-gradient(top, #eab134 0%, #c58318 49%, #ac6304 49%, #bc6d07 100%);
-  background: linear-gradient(to bottom, #eab134 0%, #c58318 49%, #ac6304 49%, #bc6d07 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eab134', endColorstr='#bc6d07',GradientType=0 );
-}
-
-.btn-copy {
-  border: 2px solid #fff;
-  background: #bab7b7;
-  background: -moz-linear-gradient(top, #bab7b7 0%, #fcfcfc 49%, #bcbbbb 50%, #b2b0b0 100%);
-  background: -webkit-linear-gradient(top, #bab7b7 0%, #fcfcfc 49%, #bcbbbb 50%, #b2b0b0 100%);
-  background: linear-gradient(to bottom, #bab7b7 0%, #fcfcfc 49%, #bcbbbb 50%, #b2b0b0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bab7b7', endColorstr='#b2b0b0',GradientType=0 );
-}
-
-.blk-notice {
-  color: #000;
-}
-
-.blk-support {
-  color: #000;
-}
-
-.are-infoGet:after {
-  border-bottom: 1px solid #1c6080;
-}
-
-.lnk-download {
-  color: #bd6e07;
-}
-
-#cboxOverlay {
-  background: #1c6080;
-}
-
-.blk-customPswd {
-  background-color: #1c6080;
-}
-
-.h3-boxTit {
-  color: #fff;
-}
-
-.ipt-pswd {
-  background-color: #0e3040;
 }
 
 /*
@@ -110,36 +26,3 @@ $type: 'Y/01/02';
 .lnk-game-favorites-selected {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites_active.png);
 }
-// .transSwitch .lnk-transAll {
-//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png) left center no-repeat;
-// }
-// .transSwitch .lnk-transAll.on {
-//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png) left center no-repeat;
-// }
-// .transSwitch .lnk-transPart {
-//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png) left center no-repeat;
-// }
-// .transSwitch .lnk-transPart.on {
-//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png) left center no-repeat;
-// }
-// .blk-logoApp {
-//   background: url(~@/assets/#{$type}/imgs/main/jdbLogo.png) center no-repeat;
-// }
-// .blk-account {
-//   background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
-// }
-// .blk-password {
-//   background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
-// }
-// .lnk-customPswd {
-//   background: url(~@/assets/#{$type}/imgs/main/lnk_recordlist.jpg) repeat-x;
-// }
-// .lnk-customPswd:before {
-//   background: url(~@/assets/#{$type}/imgs/main/jdbIcon.png) left center no-repeat;
-// }
-// .are-infoApp {
-//   background: url(~@/assets/#{$type}/imgs/main/jdbBg.png) 10px top no-repeat;
-// }
-// .lnk-download i {
-//   background: url(~@/assets/#{$type}/imgs/main/jdbIcon-download.png) left center no-repeat;
-// }
