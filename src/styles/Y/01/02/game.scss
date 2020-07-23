@@ -4,6 +4,10 @@ $type: 'Y/01/02';
 //   background-color: #1c6080;
 // }
 
+.game-lobby {
+  background-color: #1c6080;
+}
+
 .lay-are-pager {
   background-color: #1c6080;
 }
@@ -91,102 +95,51 @@ $type: 'Y/01/02';
 /*
   ! 圖片路徑
 */
-.table-mgGame .tr-mgGame {
+.table-game .tr-game {
   background: url(~@/assets/#{$type}/imgs/ui/bg_list_line.jpg) no-repeat center bottom;
 }
-.lnk-mgGame-start {
+.lnk-game-start {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn_start.png);
 }
-.lnk-mgGame-freeplay {
+.lnk-game-freeplay {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn_freeplay.png);
 }
-.lnk-mgGame-favorites {
+.lnk-game-favorites {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites.png);
 }
-.lnk-mgGame-favorites-selected {
+.lnk-game-favorites-selected {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites_active.png);
 }
-.table-ptGame .tr-ptGame {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_list_line.jpg) no-repeat center bottom;
-}
-.lnk-ptGame-start {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_start.png);
-}
-.lnk-ptGame-freeplay {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_freeplay.png);
-}
-.lnk-ptGame-favorites {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites.png);
-}
-.lnk-ptGame-favorites-selected {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites_active.png);
-}
-.table-jdbGame .tr-jdbGame {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_list_line.jpg) no-repeat center bottom;
-}
-.lnk-jdbGame-start {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_start.png);
-}
-.lnk-jdbGame-freeplay {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_freeplay.png);
-}
-.lnk-jdbGame-favorites {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites.png);
-}
-.lnk-jdbGame-favorites-selected {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites_active.png);
-}
-.table-apSlot .tr-apSlot {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_list_line.jpg) no-repeat center bottom;
-}
-.lnk-apSlot-start {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_start.png);
-}
-.lnk-apSlot-freeplay {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_freeplay.png);
-}
-.lnk-apSlot-favorites {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites.png);
-}
-.lnk-apSlot-favorites-selected {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites_active.png);
-}
-.table-rgGame .tr-rgGame {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_list_line.jpg) no-repeat center bottom;
-}
-.lnk-rgGame-start {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_start.png);
-}
-.transSwitch .lnk-transAll {
-  background: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png) left center no-repeat;
-}
-.transSwitch .lnk-transAll.on {
-  background: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png) left center no-repeat;
-}
-.transSwitch .lnk-transPart {
-  background: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png) left center no-repeat;
-}
-.transSwitch .lnk-transPart.on {
-  background: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png) left center no-repeat;
-}
-.blk-logoApp {
-  background: url(~@/assets/#{$type}/imgs/main/jdbLogo.png) center no-repeat;
-}
+// .transSwitch .lnk-transAll {
+//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png) left center no-repeat;
+// }
+// .transSwitch .lnk-transAll.on {
+//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png) left center no-repeat;
+// }
+// .transSwitch .lnk-transPart {
+//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png) left center no-repeat;
+// }
+// .transSwitch .lnk-transPart.on {
+//   background: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png) left center no-repeat;
+// }
+// .blk-logoApp {
+//   background: url(~@/assets/#{$type}/imgs/main/jdbLogo.png) center no-repeat;
+// }
 // .blk-account {
 //   background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
 // }
 // .blk-password {
 //   background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
 // }
-.lnk-customPswd {
-  background: url(~@/assets/#{$type}/imgs/main/lnk_recordlist.jpg) repeat-x;
-}
-.lnk-customPswd:before {
-  background: url(~@/assets/#{$type}/imgs/main/jdbIcon.png) left center no-repeat;
-}
-.are-infoApp {
-  background: url(~@/assets/#{$type}/imgs/main/jdbBg.png) 10px top no-repeat;
-}
-.lnk-download i {
-  background: url(~@/assets/#{$type}/imgs/main/jdbIcon-download.png) left center no-repeat;
-}
+// .lnk-customPswd {
+//   background: url(~@/assets/#{$type}/imgs/main/lnk_recordlist.jpg) repeat-x;
+// }
+// .lnk-customPswd:before {
+//   background: url(~@/assets/#{$type}/imgs/main/jdbIcon.png) left center no-repeat;
+// }
+// .are-infoApp {
+//   background: url(~@/assets/#{$type}/imgs/main/jdbBg.png) 10px top no-repeat;
+// }
+// .lnk-download i {
+//   background: url(~@/assets/#{$type}/imgs/main/jdbIcon-download.png) left center no-repeat;
+// }

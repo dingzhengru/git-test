@@ -39,7 +39,7 @@ const routes = [
         redirect: { name: 'GameList' },
       },
       {
-        path: ':type', //* query: { id: 遊戲館ID } => 判斷到哪個遊戲館
+        path: ':type', //* query: { category } => 篩選類別 (ex: Hot Games)
         name: 'GameLobby',
         component: () => import('@/views/game/GameLobby'),
       },

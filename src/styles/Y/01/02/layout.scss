@@ -272,8 +272,11 @@ body {
 .ui-li-supply-1200.ui-li-supply-active {
   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1200-active.png);
 }
+// .ui-ipt-inquire {
+//   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
+// }
 .ui-ipt-inquire {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
+  background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire.png) no-repeat;
 }
 .ui-lnk-inquire {
   background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center no-repeat;
