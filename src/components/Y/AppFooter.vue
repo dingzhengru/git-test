@@ -93,8 +93,8 @@ export default {
   watch: {
     token: {
       immediate: true,
-      handler(newVal) {
-        if (newVal) {
+      handler() {
+        if (this.token) {
           this.list = this.authList;
         } else {
           this.list = this.noAuthList;

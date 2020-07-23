@@ -194,10 +194,10 @@ body { /*background: #000 url(~@/assets/Y/01/01/imgs/layout/bg.jpg) no-repeat ce
 /*===================================================================================================================*/
 /*                                                      Layout                                                       */
 /*===================================================================================================================*/
-.lay-container { padding-bottom: 147px;}
-.lay-screen { width: 720px; margin: 0 auto; position: relative; clear: both;}
-.lay-are-pageTitle { width: 680px; margin-bottom: 20px; padding: 20px;}
-.lay-are-pageContent { width: 680px; padding: 0 20px;}
+/* .lay-container { padding-bottom: 147px;} */
+/* .lay-screen { width: 720px; margin: 0 auto; position: relative; clear: both;} */
+/* .lay-are-pageTitle { width: 680px; margin-bottom: 20px; padding: 20px;} */
+/* .lay-are-pageContent { width: 680px; padding: 0 20px;} */
 /* .lay-are-pager { margin: 20px 0; padding: 25px 0; letter-spacing: -0.31em; *letter-spacing: normal; text-align: center;} */
 
 /*===================================================================================================================*/
@@ -206,7 +206,7 @@ body { /*background: #000 url(~@/assets/Y/01/01/imgs/layout/bg.jpg) no-repeat ce
 /* .reg-main > */
 /* .reg-main { padding: 88px 0 20px 0;} */
 /* .reg-main > .are-prize > */
-.reg-main { padding-top: 0;}
+/* .reg-main { padding-top: 0;} */
 .blk-prize { width: 427px; height: 75px; line-height: 75px; margin: 0 auto; text-align: center; cursor: pointer; position: relative;}
 .i-prize { display: inline-block; /*float: left;*/ width: 71px; height: 73px; padding-top: 22px; /*background: url(~@/assets/Y/01/01/imgs/main/prizeIcn.png) left center no-repeat;*/ position: absolute; left: -18px;}
 .ul-prize { display: inline-block; width: 409px; height: 71px; padding: 23px 0 0 20px;  /*background: url(~@/assets/Y/01/01/imgs/main/prizeBg.png) left center no-repeat;*/}
@@ -244,13 +244,14 @@ body { /*background: #000 url(~@/assets/Y/01/01/imgs/layout/bg.jpg) no-repeat ce
 .Boxinner .h1-tit { text-align: center; color: #636363; font-size: 20px; font-weight: normal; margin: 15px 0 30px; }
 
 @media screen and (max-width: 1000px) { .Boxinner { width: 80%; min-width: auto; } }
+
 /*===================================================================================================================*/
 /*                                                     Z-index                                                       */
 /*===================================================================================================================*/
-.are-header-memberInfo { z-index: 2;}
-.are-header-menu { z-index: 3;}
-.reg-footer { z-index: 4;}
-.blk-tel { z-index: 1;}
+/* .are-header-memberInfo { z-index: 2;} */
+/* .are-header-menu { z-index: 3;} */
+/* .reg-footer { z-index: 4;} */
+/* .blk-tel { z-index: 1;} */
 
 /*===================================================================================================================*/
 /*                                                       Hack                                                        */

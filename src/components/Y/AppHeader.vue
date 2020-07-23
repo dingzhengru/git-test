@@ -1,23 +1,21 @@
 <template>
   <header class="reg-header">
-    <div class="lay-screen">
-      <div class="are-header-logo">
-        <img :src="logo" class="logo-img" alt="" />
-      </div>
-      <router-link to="/" class="cpn-inBlock lnk-header-home"></router-link>
-      <HeaderMenu v-if="!token" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
-      <HeaderMenuAuth
-        v-if="token"
-        :langList="langList"
-        :lang="lang"
-        :account="account"
-        :pointAmount="pointAmount"
-        :level="level"
-        :washcodeAmount="washcodeAmount"
-        @changeLang="changeLang"
-        @logout="logout"
-      ></HeaderMenuAuth>
+    <div class="are-header-logo">
+      <img :src="logo" class="logo-img" alt="" />
     </div>
+    <router-link to="/" class="cpn-inBlock lnk-header-home"></router-link>
+    <HeaderMenu v-if="!token" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
+    <HeaderMenuAuth
+      v-if="token"
+      :langList="langList"
+      :lang="lang"
+      :account="account"
+      :pointAmount="pointAmount"
+      :level="level"
+      :washcodeAmount="washcodeAmount"
+      @changeLang="changeLang"
+      @logout="logout"
+    ></HeaderMenuAuth>
   </header>
 </template>
 
@@ -112,6 +110,10 @@ export default {
   height: 144px;
   padding: 0 117px;
 } */
+
+.reg-header {
+  position: relative;
+}
 
 .are-header-logo {
   position: relative;

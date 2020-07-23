@@ -1,13 +1,13 @@
 <template>
-  <div class="lay-are-pageContent">
+  <div class="promotion">
     <div class="are-bonus">
       <a href="/Y/StaticPage/NoneLogin/?Tag=PermanentIncome" class="lnk-bonus">
         <i class="icn-bonus"></i> <span class="txt-bonus">Bonus V.I.P</span>
       </a>
     </div>
-    <div class="promotions">
+    <div class="promotion--list">
       <router-link v-for="(promotion, index) in promotions" :key="index" :to="promotion.link">
-        <img :src="promotion.img" alt="" />
+        <img :src="promotion.img" class="promotion--list--img" alt="" />
       </router-link>
     </div>
   </div>
@@ -62,19 +62,18 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.promotions {
-  width: 600px;
-  margin: 30px auto;
-  text-align: center;
-  img {
-    margin-bottom: 20px;
-  }
+<style scoped>
+.promotion {
+  padding-bottom: 160px;
 }
 
-.lay-are-pageContent {
-  width: 100%;
-  padding: 0;
+.promotion--list {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.promotion--list--img {
+  margin-bottom: 20px;
 }
 
 .lnk-bonus {

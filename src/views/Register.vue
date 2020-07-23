@@ -1,5 +1,5 @@
 <template>
-  <div class="lay-are-pageContent register">
+  <div class="register">
     <form @submit.prevent="register">
       <div class="are-auth">
         <div class="blk-auth blk-recommend">
@@ -253,7 +253,10 @@ export default {
 </script>
 
 <style scoped>
-/* .reg-main > */
+
+.register {
+  padding-bottom: 160px;
+}
 
 .are-auth {
   width: 563px;

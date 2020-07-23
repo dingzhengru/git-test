@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="lay-container" :class="lang">
+  <div id="app" :class="lang">
     <TypeYAppHeader
       :token="token"
       :langList="langList"
@@ -13,10 +13,8 @@
       @logout="logout"
     ></TypeYAppHeader>
 
-    <div class="reg-main">
-      <div class="lay-screen">
-        <router-view />
-      </div>
+    <div>
+      <router-view />
     </div>
 
     <TypeYAppFooter :token="token"></TypeYAppFooter>

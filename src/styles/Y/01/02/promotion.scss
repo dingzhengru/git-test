@@ -1,9 +1,11 @@
 $type: 'Y/01/02';
 
-// * 自己新增的，取代掉原本的那些 css，共通屬性放在 views/Promotion.vue
-.promotions {
-  img {
-    outline: 2px solid #fff;
+
+.promotion {
+  .promotion--list {
+    .promotion--list--img {
+      outline: 2px solid #fff;
+    }
   }
 }
 

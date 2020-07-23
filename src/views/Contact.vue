@@ -1,5 +1,5 @@
 <template>
-  <div class="lay-are-pageContent">
+  <div class="contact">
     <div class="theme-content-box are-contact">
       <ul class="cpn-boxzero cpn-inBlock-row ul-contact">
         <li class="li-contact" v-if="contact.service.isActive">
@@ -108,6 +108,10 @@ export default {
 </script>
 
 <style scoped>
+.contact {
+  padding-bottom: 119px;
+}
+
 .lnk-contact-tel {
   display: block;
 }

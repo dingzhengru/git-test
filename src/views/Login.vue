@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="lay-are-pageTitle"><h1 class="cpn-boxzero ui-h1-pageTitle">Member Login</h1></div>
+  <div class="login">
+    <h1 class="ui-h1-pageTitle">Member Login</h1>
     <div class="are-auth">
       <form id="LoginForm" @submit.prevent="login">
         <div class="blk-auth blk-account">
@@ -94,7 +94,10 @@ export default {
 </script>
 
 <style scoped>
-/* .reg-main > */
+.login {
+  padding-bottom: 119px;
+}
+
 .are-auth {
   width: 563px;
   margin: 0 auto;
@@ -120,8 +123,15 @@ export default {
   background-position: top center;
   padding: 134px 15px 0;
   margin-top: 35px;
-  /* color: #fff; */
   font-size: 2.46em;
+}
+
+.lnk-regist {
+  width: 175px;
+}
+
+.lnk-forget {
+  width: 200px;
 }
 
 .btn-login {

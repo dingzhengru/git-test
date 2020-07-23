@@ -162,6 +162,7 @@ export default {
   position: absolute;
   top: 144px;
   left: 0;
+  z-index: 2;
 }
 
 .are-header-menu {
@@ -171,7 +172,8 @@ export default {
   position: absolute;
   top: 144px;
   left: 0;
-  z-index: 6;
+  z-index: 3;
+  /* z-index: 6; */
 }
 
 .ul-menu {

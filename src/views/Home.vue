@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <HomeSwiper :list="swiperList"></HomeSwiper>
     <HomeGameBlock :list="productList" :resourceUrl="resourceUrl" :token="token"></HomeGameBlock>
   </div>
@@ -76,4 +76,8 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.home {
+  padding-bottom: 119px;
+}
+</style>

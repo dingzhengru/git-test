@@ -8,7 +8,7 @@ const DEFAULT_LANG = 'th-th';
 const CRYPTO_API_LIST = [];
 
 // 需要登入才能進入的 route name(利用 beforeEach & store.getters.token)
-const AUTH_ROUTE_LIST = [];
+const AUTH_ROUTE_LIST = ['UserProfile'];
 
 // 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
 const ACCESS_ROUTE_LIST = [];

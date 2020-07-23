@@ -1,6 +1,6 @@
 <template>
-  <div class="lay-are-pageContent">
-    <div class="promotion__div--img">
+  <div class="promotion-content">
+    <div class="promotion-content--div">
       <img :src="image" alt="" />
     </div>
     <div class="are-eventContents">
@@ -58,13 +58,12 @@ export default {
 </script>
 
 <style scoped>
-.lay-are-pageContent {
-  width: 100%;
-  padding: 0;
+
+.promotion-content {
+  padding-bottom: 160px;
 }
 
-/* 自己的 */
-.promotion__div--img {
+.promotion-content--div {
   margin: 20px auto;
   text-align: center;
 }
