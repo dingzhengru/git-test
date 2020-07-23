@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="cpn-inBlock-row theme-slotgame-inquire">
-      <input class="ui-ipt-inquire" type="text" placeholder="Search" />
+      <input class="ui-ipt-inquire" type="text" v-model="search.text" placeholder="Search" />
       <button class="ui-lnk-inquire"></button>
       <input type="submit" class="ui-ipt-favorites" title="My Favorites" />
       <a href="javascript:;" class="inline cpn-inBlock ui-lnk-transferNow">Transfer Now</a>
@@ -43,13 +43,11 @@
     <div class="theme-slotgame-list">
       <table class="table-game">
         <tbody>
-          <tr class="tr-game">
+          <tr class="tr-game" v-for="(game, index) in pageData" :key="index">
             <td class="td-1st">
-              <img class="img-gameBg" src="http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg" />
+              <img class="img-gameBg" :src="game.img" />
             </td>
-            <td class="td-2nd">
-              <div>Thor 2</div>
-            </td>
+            <td class="td-2nd">{{ game.name }}</td>
             <td class="td-3rd">
               <a href="javascript:;" class="cpn-inBlock lnk-game-start">Play Now</a>
               <a href="javascript:;" class="cpn-inBlock lnk-game-freeplay">Free Play</a>
@@ -59,16 +57,37 @@
         </tbody>
       </table>
     </div>
+    <AppPagination
+      :length="gameList.length"
+      :page="pagination.page"
+      :pagesize="pagination.pagesize"
+      @change-page="changePage"
+    />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import AppPagination from '@/components/Y/AppPagination';
 
 export default {
   name: 'GameList',
+  components: {
+    AppPagination,
+  },
   computed: {
     ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    searcData() {
+      if (!this.search.text) {
+        return this.gameList;
+      }
+      return this.gameList.filter(item => item.name.toLowerCase().includes(this.search.text.toLowerCase()));
+    },
+    pageData() {
+      const startAt = this.pagination.pagesize * (this.pagination.page - 1);
+      const endAt = startAt + this.pagination.pagesize;
+      return this.searcData.slice(startAt, endAt) || [];
+    },
   },
   data() {
     return {
@@ -110,9 +129,21 @@ export default {
         },
       ],
       categoryList: [],
+      gameList: [1, 2, 3, 4, 5, 6, 7],
+      search: {
+        text: '',
+      },
+      pagination: {
+        page: 1,
+        pagesize: 6,
+      },
     };
   },
-  mounted() {},
+  methods: {
+    changePage(page) {
+      this.pagination.page = page;
+    },
+  },
   watch: {
     siteID: {
       immediate: true,
@@ -122,6 +153,9 @@ export default {
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/game.scss`);
+
+        // * 根據版型引入 css (pagination)
+        import(`@/styles/${this.siteFullCss}/pagination.scss`);
       },
     },
     '$route.params.type': {
@@ -135,6 +169,36 @@ export default {
           {
             name: 'Hot Games',
             value: 'hot',
+          },
+        ];
+        this.gameList = [
+          {
+            name: 'Thor2',
+            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
+          },
+          {
+            name: 'Thor2',
+            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
+          },
+          {
+            name: 'Thor2',
+            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
+          },
+          {
+            name: 'Thor2',
+            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
+          },
+          {
+            name: 'Thor2',
+            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
+          },
+          {
+            name: 'Thor2',
+            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
+          },
+          {
+            name: 'Thor2',
+            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
           },
         ];
       },
