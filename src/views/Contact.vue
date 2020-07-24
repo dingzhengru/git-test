@@ -1,51 +1,47 @@
 <template>
   <div class="contact" :class="{ 'contact-auth': token }">
-    <div class="theme-content-box are-contact">
-      <ul class="cpn-boxzero cpn-inBlock-row ul-contact">
-        <li class="li-contact" v-if="contact.service.isActive">
-          <a href="javascript:;" class="lnk-contact lnk-contact-service">
+    <div class="contact__content theme-content-box">
+      <ul class="contact__content__ul">
+        <li class="contact__content__ul__li" v-if="contact.service.isActive">
+          <a href="javascript:;" class="contact__content__ul__li__link contact__content__ul__li__link--service">
             Online Customer Service
           </a>
         </li>
-
-        <!-- <li class="li-contact">
-          <a href="javascript:;" class="lnk-contact lnk-contact-service" onclick="CSBind()">Online Customer Service</a>
-        </li> -->
-        <li class="li-contact" v-if="contact.facebook.isActive">
-          <a :href="contact.facebook.link" target="_blank" class="lnk-contact lnk-contact-facebook">Facebook</a>
+        <li class="contact__content__ul__li" v-if="contact.facebook.isActive">
+          <a :href="contact.facebook.link" target="_blank" class="contact__content__ul__li__link contact__content__ul__li__link--facebook">Facebook</a>
         </li>
-        <li class="li-contact" v-if="contact.mobile.isActive">
+        <li class="contact__content__ul__li" v-if="contact.mobile.isActive">
           <a
             href="javascript:;"
-            class="lnk-contact lnk-contact-mobile"
+            class="contact__content__ul__li__link contact__content__ul__li__link--mobile"
             @click="isShowMobileTelephones = !isShowMobileTelephones"
             @blur="isShowMobileTelephones = false"
             >Mobile</a
           >
           <transition name="fade">
-            <div class="blk-tel" v-if="isShowMobileTelephones">
-              <a class="lnk-contact-tel" :href="`tel:${tel}`" v-for="tel in contact.mobile.telephones" :key="tel">
+            <div class="contact__content__ul__li__block--tel" v-if="isShowMobileTelephones">
+              <a class="contact__content__ul__li__link--tel" :href="`tel:${tel}`" v-for="tel in contact.mobile.telephones" :key="tel">
                 {{ tel }}
               </a>
             </div>
           </transition>
         </li>
-        <li class="li-contact" v-if="contact.skype.isActive">
-          <a :href="contact.skype.link" class="lnk-contact lnk-contact-skype">Skype</a>
+        <li class="contact__content__ul__li" v-if="contact.skype.isActive">
+          <a :href="contact.skype.link" class="contact__content__ul__li__link contact__content__ul__li__link--skype">Skype</a>
         </li>
-        <!-- <li class="li-contact">
-          <a href="javascript:;" class="lnk-contact lnk-contact-qq">QQ</a>
-          <div class="blk-qq">
-            <a href="tencent://message/?uin=1448366105&amp;Menu=yes" class="lnk-contact-qq2">1448366105</a><br />
-            <a href="tencent://message/?uin=1279982976&amp;Menu=yes" class="lnk-contact-qq2">1279982976</a><br />
-            <a href="tencent://message/?uin=2272806809&amp;Menu=yes" class="lnk-contact-qq2">2272806809</a>
+        <!-- <li class="contact__content__ul__li">
+          <a href="javascript:;" class="contact__content__ul__li__link contact__content__ul__li__link--qq">QQ</a>
+          <div class="contact__content__ul__li__block--qq">
+            <a href="tencent://message/?uin=1448366105&amp;Menu=yes" class="contact__content__ul__li__link--qq2">1448366105</a><br />
+            <a href="tencent://message/?uin=1279982976&amp;Menu=yes" class="contact__content__ul__li__link--qq2">1279982976</a><br />
+            <a href="tencent://message/?uin=2272806809&amp;Menu=yes" class="contact__content__ul__li__link--qq2">2272806809</a>
           </div>
         </li> -->
-        <li class="li-contact" v-if="contact.line.isActive">
-          <a :href="contact.line.link" class="lnk-contact lnk-contact-line">{{ contact.line.name }}</a>
+        <li class="contact__content__ul__li" v-if="contact.line.isActive">
+          <a :href="contact.line.link" class="contact__content__ul__li__link contact__content__ul__li__link--line">{{ contact.line.name }}</a>
         </li>
-        <li class="li-contact" v-if="contact.wechat.isActive">
-          <a :href="contact.wechat.link" class="lnk-contact lnk-contact-wechat">{{ contact.wechat.name }}</a>
+        <li class="contact__content__ul__li" v-if="contact.wechat.isActive">
+          <a :href="contact.wechat.link" class="contact__content__ul__li__link contact__content__ul__li__link--wechat">{{ contact.wechat.name }}</a>
         </li>
       </ul>
     </div>
@@ -108,20 +104,8 @@ export default {
 </script>
 
 <style scoped>
-.contact {
-  padding-bottom: 119px;
-}
-
-.contact-auth {
-  padding-top: 88px;
-}
-
-.lnk-contact-tel {
-  display: block;
-}
-
 /*
-  * fade 顯示 telephones 區塊
+ * fade 顯示 telephones 區塊
 */
 
 .fade-enter-active,
@@ -132,45 +116,31 @@ export default {
   opacity: 0;
 }
 
-/*
-  * contact.css
-*/
+.contact {
+  padding-bottom: 119px;
+}
 
-/* .reg-main > */
-.ul-service {
-  text-align: center;
+.contact-auth {
+  padding-top: 88px;
 }
-.li-service {
-  width: 225px;
-  background-repeat: no-repeat;
-  background-position: center top;
-  padding: 0 57px;
-  border-right: 1px dotted #535353;
-}
-.li-service:last-child {
-  border-right: none;
-}
-.li-service-download {
-  background-position: center 20px;
-}
-.lnk-service {
-  display: inline-block;
-  display: inline;
-  zoom: 1;
-  padding-top: 99px;
-  color: #000;
-  font-size: 2.461em;
-  text-align: center;
-}
-/* .are-contact {
+
+.contact__content {
   margin: 80px;
-} */
-/* .reg-main > .are-contact > */
-.li-contact {
+}
+
+.contact__content__ul {
+  padding: 0;
+  margin: 0;
+}
+
+.contact__content__ul__li {
+  display: inline-block;
   margin: 31px 20px;
+  vertical-align: top;
   position: relative;
 }
-.lnk-contact {
+
+.contact__content__ul__li__link {
   display: block;
   width: 198px;
   background-repeat: no-repeat;
@@ -181,9 +151,10 @@ export default {
   word-break: break-all;
 }
 
-.blk-qq,
-.blk-skype,
-.blk-tel {
+
+.contact__content__ul__li__block--qq,
+.contact__content__ul__li__block--skype,
+.contact__content__ul__li__block--tel {
   width: 328px;
   height: 286px;
   text-align: center;
@@ -192,13 +163,47 @@ export default {
   left: -99px;
   z-index: 2;
 }
-.lnk-contact-qq2,
-.lnk-contact-skype2 {
+.contact__content__ul__li__link--qq2,
+.contact__content__ul__li__link--skype2 {
   font-size: 3.23em;
   line-height: 95px;
 }
-.lnk-contact-tel {
+.contact__content__ul__li__link--tel {
   font-size: 2.461em;
   line-height: 65px;
+  display: block;
 }
+
+/*
+ * 圖片
+*/
+
+.contact__content__ul__li__link--online {
+  background-image: url(~@/assets/common/imgs/main/onlineServicebg.png);
+}
+/* .li-service-download {
+ background-image: url(~@/assets/common/imgs/main/downloadServicebg.png);
+} */
+.contact__content__ul__li__link--service {
+  background-image: url(~@/assets/common/imgs/main/onlineServicebg.png);
+}
+.contact__content__ul__li__link--qq {
+  background-image: url(~@/assets/common/imgs/main/qqBg.png);
+}
+.contact__content__ul__li__link--mobile {
+  background-image: url(~@/assets/common/imgs/main/mobileBg.png);
+}
+.contact__content__ul__li__link--skype {
+  background-image: url(~@/assets/common/imgs/main/skypeBg.png);
+}
+.contact__content__ul__li__link--line {
+  background-image: url(~@/assets/common/imgs/main/lineBg.png);
+}
+.contact__content__ul__li__link--wechat {
+  background-image: url(~@/assets/common/imgs/main/wechatBg.png);
+}
+.contact__content__ul__li__link--facebook {
+  background-image: url(~@/assets/common/imgs/main/FacebookBg.png);
+}
+
 </style>
