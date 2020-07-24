@@ -1,34 +1,30 @@
 $type: 'Y/01/01';
 
-.register {
-  padding-bottom: 20px;
-}
-
-.register--form--input-group--notice {
+.register__form__input-group__notice {
   color: #959595;
 }
-.register--notice--ol {
+.register__notice__ol {
   color: #959595;
 }
 /*
   ! 圖片路徑
 */
 
-.register--form--input-group--div__recommend {
+.register__form__input-group__div--recommend {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_recommend.png);
 }
-.register--form--input-group--div__account {
+.register__form__input-group__div--account {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
 }
-.register--form--input-group--div__password {
+.register__form__input-group__div--password {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
 }
-.register--form--input-group--div__callphone {
+.register__form__input-group__div--callphone {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_callphone.png);
 }
-.register--form--input-group--div__name {
+.register__form__input-group__div--name {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_name.png);
 }
-.register--form--input-group--div__code {
+.register__form__input-group__div--code {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_code.png);
 }
