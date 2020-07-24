@@ -6,39 +6,38 @@ $type: 'Y/01/02';
   padding-bottom: 50px;
 }
 
-.blk-auth {
+.register--form--input-group--div {
   outline: 3px solid #2b7d9c;
 }
 
-.blk-notice {
+.register--form--input-group--notice {
   color: #fff;
 }
-.ol-notice {
+.register--notice--ol {
   color: #fff;
 }
-::placeholder {
-  color: #fff;
-}
+
 
 /*
   ! 圖片路徑
 */
 
-.blk-recommend {
+.register--form--input-group--div__recommend {
   background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_recommend.png) 8px center no-repeat;
 }
-.blk-account {
+.register--form--input-group--div__account {
   background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_account.png) 8px center no-repeat;
 }
-.blk-password {
+.register--form--input-group--div__password {
   background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_password.png) 8px center no-repeat;
 }
-.blk-callphone {
+.register--form--input-group--div__callphone {
   background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_callphone.png) 8px center no-repeat;
 }
-.blk-name {
+.register--form--input-group--div__name {
   background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_name.png) 8px center no-repeat;
 }
-.blk-code {
+.register--form--input-group--div__code {
   background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_code.png) 8px center no-repeat;
 }
+

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="theme-slotgame-supply">
+    <div class="theme-supply">
       <ul class="cpn-boxzero cpn-inBlock-row ui-ul-supply" id="lobbyproduct">
         <li
           class="ui-li-supply"
@@ -34,13 +34,13 @@
         </ul>
       </div>
     </div>
-    <div class="cpn-inBlock-row theme-slotgame-inquire">
+    <div class="cpn-inBlock-row theme-inquire">
       <input class="ui-ipt-inquire" type="text" v-model="search.text" placeholder="Search" />
       <button class="ui-lnk-inquire"></button>
       <input type="submit" class="ui-ipt-favorites" title="My Favorites" />
-      <a href="javascript:;" class="inline cpn-inBlock ui-lnk-transferNow">Transfer Now</a>
+      <a href="javascript:;" class="cpn-inBlock ui-lnk-transferNow">Transfer Now</a>
     </div>
-    <div class="theme-slotgame-list">
+    <div class="theme-list">
       <table class="table-game">
         <tbody>
           <tr class="tr-game" v-for="(game, index) in pageData" :key="index">
@@ -129,7 +129,7 @@ export default {
         },
       ],
       categoryList: [],
-      gameList: [1, 2, 3, 4, 5, 6, 7],
+      gameList: [],
       search: {
         text: '',
       },

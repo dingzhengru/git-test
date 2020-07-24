@@ -10,8 +10,6 @@ import './routerPermission'; //* 路徑權限
 
 import '../node_modules/normalize.css/normalize.css'; // ^3.0.2
 import '@/styles/Y/common/layout.css';
-import '@/styles/Y/common/header.css';
-import '@/styles/Y/common/footer.css';
 import '@/styles/Y/common/layout-zh-cn.scss';
 import '@/styles/Y/common/layout-th-th.scss';
 import '@/styles/Y/common/layout-en-us.scss';

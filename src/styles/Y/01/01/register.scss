@@ -4,31 +4,31 @@ $type: 'Y/01/01';
   padding-bottom: 20px;
 }
 
-.blk-notice {
+.register--form--input-group--notice {
   color: #959595;
 }
-.ol-notice {
+.register--notice--ol {
   color: #959595;
 }
 /*
   ! 圖片路徑
 */
 
-.blk-recommend {
+.register--form--input-group--div__recommend {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_recommend.png);
 }
-.blk-account {
+.register--form--input-group--div__account {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
 }
-.blk-password {
+.register--form--input-group--div__password {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
 }
-.blk-callphone {
+.register--form--input-group--div__callphone {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_callphone.png);
 }
-.blk-name {
+.register--form--input-group--div__name {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_name.png);
 }
-.blk-code {
+.register--form--input-group--div__code {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_code.png);
 }

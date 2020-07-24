@@ -23,20 +23,16 @@ body {
 /*===================================================================================================================*/
 
 .theme-content-box {
-  // padding: 0 3%;
   border: 1px solid #d6c388;
 }
 
-.theme-slotgame-supply,
-.theme-livegame-supply {
+.theme-supply {
   background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
 }
-.theme-slotgame-inquire,
-.theme-livegame-inquire {
+.theme-inquire {
   background-color: #000;
 }
-.theme-slotgame-list,
-.theme-livegame-list {
+.theme-list {
   background-color: #181b23;
 }
 
@@ -194,78 +190,78 @@ body {
 // .ui-ddl-pager {
 //   background: url(~@/assets/#{$type}/imgs/ui/ddl_pager.jpg) no-repeat;
 // }
-.ui-li-supply-1180 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1180.png);
-}
-.ui-li-supply-1150 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1150.png);
-}
-.ui-li-supply-1140 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1140.png);
-}
-.ui-li-supply-1120 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1120.png);
-}
-.ui-li-supply-1130 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1130.png);
-}
-.ui-li-supply-1030 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1030.png);
-}
-.ui-li-supply-1190 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190.png);
-}
-.ui-li-supply-1010 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1010.png);
-}
-.ui-li-supply-1170 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1170.png);
-}
-.ui-li-supply-1160 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1160.png);
-}
-.ui-li-supply-1200 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1200.png);
-}
-.ui-li-supply-1190-02 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190-02.png);
-}
-.ui-li-supply-1180.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1180-active.png);
-}
-.ui-li-supply-1150.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1150-active.png);
-}
-.ui-li-supply-1140.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1140-active.png);
-}
-.ui-li-supply-1120.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1120-active.png);
-}
-.ui-li-supply-1130.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1130-active.png);
-}
-.ui-li-supply-1030.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1030-active.png);
-}
-.ui-li-supply-1190.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190-active.png);
-}
-.ui-li-supply-1190-02.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190-02-active.png);
-}
-.ui-li-supply-1010.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1010-active.png);
-}
-.ui-li-supply-1170.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1170-active.png);
-}
-.ui-li-supply-1160.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1160-active.png);
-}
-.ui-li-supply-1200.ui-li-supply-active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1200-active.png);
-}
+// .ui-li-supply-1180 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1180.png);
+// }
+// .ui-li-supply-1150 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1150.png);
+// }
+// .ui-li-supply-1140 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1140.png);
+// }
+// .ui-li-supply-1120 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1120.png);
+// }
+// .ui-li-supply-1130 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1130.png);
+// }
+// .ui-li-supply-1030 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1030.png);
+// }
+// .ui-li-supply-1190 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190.png);
+// }
+// .ui-li-supply-1010 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1010.png);
+// }
+// .ui-li-supply-1170 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1170.png);
+// }
+// .ui-li-supply-1160 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1160.png);
+// }
+// .ui-li-supply-1200 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1200.png);
+// }
+// .ui-li-supply-1190-02 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190-02.png);
+// }
+// .ui-li-supply-1180.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1180-active.png);
+// }
+// .ui-li-supply-1150.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1150-active.png);
+// }
+// .ui-li-supply-1140.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1140-active.png);
+// }
+// .ui-li-supply-1120.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1120-active.png);
+// }
+// .ui-li-supply-1130.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1130-active.png);
+// }
+// .ui-li-supply-1030.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1030-active.png);
+// }
+// .ui-li-supply-1190.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190-active.png);
+// }
+// .ui-li-supply-1190-02.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190-02-active.png);
+// }
+// .ui-li-supply-1010.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1010-active.png);
+// }
+// .ui-li-supply-1170.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1170-active.png);
+// }
+// .ui-li-supply-1160.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1160-active.png);
+// }
+// .ui-li-supply-1200.ui-li-supply-active {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/supply-1200-active.png);
+// }
 .ui-ipt-inquire {
   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
 }
@@ -278,17 +274,22 @@ body {
 .ui-lnk-transferNow {
   background: url(~@/assets/#{$type}/imgs/ui/btn_transferNow.png) left center no-repeat;
 }
-.theme-content-box {
-  background: url(~@/assets/#{$type}/imgs/theme/boxBg.png);
-}
-.theme-slotgame-jackpot,
-.theme-livegame-jackpot {
+// .theme-content-box {
+//   background: url(~@/assets/#{$type}/imgs/theme/boxBg.png);
+// }
+
+.theme-jackpot {
   background: url(~@/assets/#{$type}/imgs/theme/bg_jackpot.png) center top no-repeat;
 }
-.theme-slotgame-supply,
-.theme-livegame-supply {
-  background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
-}
+
+// .theme-slotgame-jackpot,
+// .theme-livegame-jackpot {
+//   background: url(~@/assets/#{$type}/imgs/theme/bg_jackpot.png) center top no-repeat;
+// }
+// .theme-slotgame-supply,
+// .theme-livegame-supply {
+//   background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
+// }
 
 .i-prize {
   background: url(~@/assets/#{$type}/imgs/main/prizeIcn.png) left center no-repeat;

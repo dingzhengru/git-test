@@ -1,6 +1,6 @@
 <template>
   <div class="game">
-    <div class="game-jackpot theme-slotgame-jackpot">
+    <div class="game-jackpot theme-jackpot">
       <span id="proValue" class="ui-txt-jackpot-count">218,119,944</span>
     </div>
     <router-view />
