@@ -109,7 +109,7 @@ export default {
         import(`@/styles/${this.siteFullCss}/footer.scss`);
 
         // * 使用 siteInfo 拼湊 logo url
-        this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
+        this.logo = `${this.resourceUrl}/imgs/header/logo.png`;        
 
         // * 取得語系列表
         getLangList().then(result => {

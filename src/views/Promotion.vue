@@ -1,13 +1,14 @@
 <template>
   <div class="promotion" :class="{ 'promotion-auth': token }">
-    <div class="are-bonus">
-      <a href="/Y/StaticPage/NoneLogin/?Tag=PermanentIncome" class="lnk-bonus">
-        <i class="icn-bonus"></i> <span class="txt-bonus">Bonus V.I.P</span>
+    <div class="promotion__bonus">
+      <a class="promotion__bonus__link" href="/Y/StaticPage/NoneLogin/?Tag=PermanentIncome">
+        <i class="promotion__bonus__link__icon"></i>
+        <span class="promotion__bonus__link__text">Bonus V.I.P</span>
       </a>
     </div>
-    <div class="promotion--list">
+    <div class="promotion__list">
       <router-link v-for="(promotion, index) in promotions" :key="index" :to="promotion.link">
-        <img :src="promotion.img" class="promotion--list--img" alt="" />
+        <img :src="promotion.img" class="promotion__list__img" alt="" />
       </router-link>
     </div>
   </div>
@@ -71,16 +72,16 @@ export default {
   padding-top: 88px;
 }
 
-.promotion--list {
+.promotion__list {
   text-align: center;
   margin-top: 20px;
 }
 
-.promotion--list--img {
+.promotion__list__img {
   margin-bottom: 20px;
 }
 
-.lnk-bonus {
+.promotion__bonus__link {
   display: block;
   width: 100%;
   height: 109px;
@@ -88,14 +89,14 @@ export default {
   box-sizing: border-box;
   margin-bottom: 8px;
 }
-.icn-bonus {
+.promotion__bonus__link__icon {
   display: inline-block;
   width: 70px;
   height: 64px;
   text-indent: -999em;
   vertical-align: top;
 }
-.txt-bonus {
+.promotion__bonus__link__text {
   display: inline-block;
   width: 82%;
   font-size: 32px;

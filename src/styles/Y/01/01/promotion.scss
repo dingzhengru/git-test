@@ -1,18 +1,18 @@
 $type: 'Y/01/01';
 
-.txt-bonus {
+.promotion__bonus__link__text {
   color: #fcf0ca;
 }
 
 /*
   ! 圖片路徑
 */
-.lnk-bonus {
+.promotion__bonus__link {
   background: url(~@/assets/#{$type}/imgs/main/freeGo-bg.jpg) left top repeat-x;
 }
-.icn-bonus {
+.promotion__bonus__link__icon {
   background: url(~@/assets/#{$type}/imgs/main/bonusVIP.png) left top no-repeat;
 }
-.txt-bonus {
+.promotion__bonus__link__text {
   background: url(~@/assets/#{$type}/imgs/main/freeGo-arrow.png) right center no-repeat;
 }
