@@ -8,44 +8,44 @@ $type: 'Y/01/01';
   ! 圖片路徑
 */
 
-.reg-header {
+.header {
   background: url(~@/assets/#{$type}/imgs/header/headerBg.jpg) no-repeat top center;
 }
 
-// .are-header-logo {
-//   background: url(~@/assets/#{$type}/imgs/header/logo.png) no-repeat center;
-// }
-.lnk-header-home {
+.header__link--home {
   background: url(~@/assets/#{$type}/imgs/header/btn_home.png) no-repeat;
 }
-.lnk-header-login {
-  background: url(~@/assets/#{$type}/imgs/header/btn_login.png) no-repeat;
-}
-.lnk-header-back {
-  background: url(~@/assets/#{$type}/imgs/header/btn_back.png) no-repeat;
-}
-.lnk-header-menuOpen {
-  background: url(~@/assets/#{$type}/imgs/header/btn_menuOpen.png) no-repeat;
-}
-.lnk-header-menuClose {
-  background: url(~@/assets/#{$type}/imgs/header/btn_menuClose.png) no-repeat center;
-}
-.are-header-memberInfo {
-  background: url(~@/assets/#{$type}/imgs/header/memberInfoBg.png) repeat;
-}
-.are-header-menu {
+
+.header-menu__lang-menu {
   background: url(~@/assets/#{$type}/imgs/header/menuBg.png) repeat;
 }
-.btn-header-logout {
+
+/* 
+ * 登入後的 menu
+*/
+
+.header-menu-auth__member {
+  background: url(~@/assets/#{$type}/imgs/header/memberInfoBg.png) repeat;
+}
+
+.header-menu-auth__button--open {
+  background: url(~@/assets/#{$type}/imgs/header/btn_menuOpen.png) no-repeat;
+}
+.header-menu-auth__button--close {
+  background: url(~@/assets/#{$type}/imgs/header/btn_menuClose.png) no-repeat center;
+}
+
+.header-menu-auth__menu {
+  background: url(~@/assets/#{$type}/imgs/header/menuBg.png) repeat;
+}
+
+.header-menu-auth__logout {
   background: url(~@/assets/#{$type}/imgs/header/btn_logout.jpg) repeat-x;
 }
 
-/*
-  ! index2 的圖片部分
-*/
-
-// .lnk-header-langOpen,
-// .lnk-header-langClose {
-//   background: url(~@/assets/#{$type}/imgs/header/lang_tw_s.png) center center no-repeat;
+// .lnk-header-login {
+//   background: url(~@/assets/#{$type}/imgs/header/btn_login.png) no-repeat;
 // }
-
+// .lnk-header-back {
+//   background: url(~@/assets/#{$type}/imgs/header/btn_back.png) no-repeat;
+// }

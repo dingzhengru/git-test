@@ -1,9 +1,9 @@
 <template>
-  <header class="reg-header">
-    <div class="are-header-logo">
-      <img :src="logo" class="logo-img" alt="" />
+  <header class="header">
+    <div class="header__logo">
+      <img :src="logo" class="header__logo__img" alt="" />
     </div>
-    <router-link to="/" class="cpn-inBlock lnk-header-home"></router-link>
+    <router-link to="/" class="cpn-inBlock header__link--home"></router-link>
     <HeaderMenu v-if="!token" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
     <HeaderMenuAuth
       v-if="token"
@@ -105,21 +105,15 @@ export default {
   * 可於 common/header.css 或原專案的 layout 與 index2 中取得
 */
 
-/*? .reg-header > */
-/* .are-header-logo {
-  height: 144px;
-  padding: 0 117px;
-} */
-
-.reg-header {
+.header {
   position: relative;
 }
 
-.are-header-logo {
+.header__logo {
   position: relative;
   height: 144px;
 }
-.logo-img {
+.header__logo__img {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -128,63 +122,12 @@ export default {
   margin: auto;
 }
 
-.lnk-header-home {
+.header__link--home {
   width: 77px;
   height: 65px;
   margin-top: -32.5px;
   position: absolute;
   top: 50%;
   left: 20px;
-}
-
-.lnk-header-langOpen {
-  width: 73px;
-  height: 60px;
-  position: absolute;
-  top: 30%;
-  right: 20px;
-}
-.are-header-langMenu {
-  width: 90px;
-  /* background: rgba(0, 0, 0, 0.9); */
-  overflow: hidden;
-  position: absolute;
-  top: 141px;
-  right: 12px;
-  z-index: 2;
-}
-
-.ul-lang {
-  margin-bottom: 0;
-  text-align: center;
-}
-
-.li-lang {
-  margin: 10px auto;
-}
-
-.lnk-lang {
-  display: block;
-  background: no-repeat center top;
-  color: #fff;
-  font-size: 2.153em;
-  width: 60px;
-  padding-top: 65px;
-}
-
-.lnk-ilang.tw {
-  background-image: url(~@/assets/common/imgs/header/lang_tw_s.png);
-}
-.lnk-ilang.cn {
-  background-image: url(~@/assets/common/imgs/header/lang_cn_s.png);
-}
-.lnk-ilang.en {
-  background-image: url(~@/assets/common/imgs/header/lang_en_s.png);
-}
-.lnk-ilang.th {
-  background-image: url(~@/assets/common/imgs/header/lang_th_s.png);
-}
-.lnk-lang.mm {
-  background-image: url(~@/assets/common/imgs/header/lang_mm_s.png);
 }
 </style>

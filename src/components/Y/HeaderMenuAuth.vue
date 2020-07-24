@@ -1,54 +1,51 @@
 <template>
-  <div>
-    <div class="are-header-memberInfo">
-      <div class="blk-memberInfo-left">
-        <span class="txt-memberInfo-username">Username：{{ account || 'ding' }}</span> <br />
-        <span class="txt-memberInfo-username">Bonus VIP level：{{ level || 0 }}</span>
+  <div class="header-menu-auth">
+    <div class="header-menu-auth__member">
+      <div class="header-menu-auth__member__div header-menu-auth__member__div--left">
+        <span class="header-menu-auth__member__text">Username：{{ account || 'ding' }}</span> <br />
+        <span class="header-menu-auth__member__text">Bonus VIP level：{{ level || 0 }}</span>
       </div>
-      <div class="blk-memberInfo-right">
-        <span class="txt-memberInfo-cash">Total：{{ pointAmount || '0.00' }}</span> <br />
-        <span class="txt-memberInfo-cash">Rolling：{{ washcodeAmount || '0.00' }}</span>
+      <div class="header-menu-auth__member__div header-menu-auth__member__div--right">
+        <span class="header-menu-auth__member__text">Total：{{ pointAmount || '0.00' }}</span> <br />
+        <span class="header-menu-auth__member__text">Rolling：{{ washcodeAmount || '0.00' }}</span>
       </div>
     </div>
     <a
       href="javascript:;"
-      class="cpn-inBlock"
-      :class="{ 'lnk-header-menuOpen': !isShowMenu, 'lnk-header-menuClose': isShowMenu }"
+      class="header-menu-auth__button"
+      :class="{ 'header-menu-auth__button--open': !isShowMenu, 'header-menu-auth__button--close': isShowMenu }"
       @click="isShowMenu = !isShowMenu"
     ></a>
     <transition name="slide">
-      <div class="are-header-menu" v-if="isShowMenu">
-        <ul class="cpn-boxzero ul-menu">
-          <li class="li-menu" @click="isShowMenu = false">
-            <router-link to="/" class="lnk-menu">Profile</router-link>
-          </li>
-          <li class="li-menu" @click="isShowMenu = false">
-            <router-link to="/" class="lnk-menu">Trade Center</router-link>
-          </li>
-          <li class="li-menu" @click="isShowMenu = false">
-            <router-link to="/" class="lnk-menu">Report</router-link>
-          </li>
-          <li class="li-menu" @click="isShowMenu = false">
-            <router-link to="/" class="lnk-menu">Latest News</router-link>
-          </li>
-          <li class="li-menu" @click="isShowMenu = false">
-            <router-link to="/" class="lnk-menu">Promotions</router-link>
-          </li>
-          <li class="li-menu" @click="isShowMenu = false">
-            <router-link to="/" class="lnk-menu">About Us</router-link>
+      <div class="header-menu-auth__menu" v-if="isShowMenu">
+        <ul class="header-menu-auth__menu__route-ul">
+          <li
+            class="header-menu-auth__menu__route-ul__li"
+            v-for="route in routeList"
+            :key="route.name"
+            @click="isShowMenu = false"
+          >
+            <router-link class="header-menu-auth__menu__route-ul__li__link" :to="{ name: route.link }">
+              {{ route.name }}
+            </router-link>
           </li>
         </ul>
-        <ul class="cpn-boxzero ul-lang">
-          <div class="ul-lang-div" v-for="langItem in langList" :key="langItem.Lst_Locales_Code">
-            <li class="li-lang" @click="changeLang(langItem.Lst_Locales_Code)" v-if="langItem.Lst_Is_Enable">
+        <ul class="header-menu-auth__menu__lang-ul">
+          <div
+            class="header-menu-auth__menu__lang-ul__div"
+            v-for="langItem in langList"
+            :key="langItem.Lst_Locales_Code"
+          >
+            <li class="header-menu-auth__menu__lang-ul__li" @click="changeLang(langItem.Lst_Locales_Code)" v-if="langItem.Lst_Is_Enable">
               <a
                 href="javascript:;"
-                class="lnk-lang"
+                class="header-menu-auth__menu__lang-ul__li__link"
                 :class="{
-                  'lnk-lang-cn': langItem.Lst_Locales_Code == 'zh-cn',
-                  'lnk-lang-th': langItem.Lst_Locales_Code == 'th-th',
-                  'lnk-lang-en': langItem.Lst_Locales_Code == 'en-us',
-                  'lnk-lang-mm': langItem.Lst_Locales_Code == 'my-mm',
+                  'tw': langItem.Lst_Locales_Code == 'zh-cn',
+                  'cn': langItem.Lst_Locales_Code == 'zh-cn',
+                  'th': langItem.Lst_Locales_Code == 'th-th',
+                  'en': langItem.Lst_Locales_Code == 'en-us',
+                  'mm': langItem.Lst_Locales_Code == 'my-mm',
                 }"
                 @click="isShowMenu = false"
               >
@@ -57,7 +54,7 @@
             </li>
           </div>
         </ul>
-        <button type="button" class="btn-header-logout" @click="logout">Logout</button>
+        <button type="button" class="header-menu-auth__logout" @click="logout">Logout</button>
       </div>
     </transition>
   </div>
@@ -95,6 +92,32 @@ export default {
   data() {
     return {
       isShowMenu: false,
+      routeList: [
+        {
+          name: 'Profile',
+          link: 'UserProfile',
+        },
+        {
+          name: 'Trade Center',
+          link: 'TransactionDeposit',
+        },
+        {
+          name: 'Report',
+          link: 'Home',
+        },
+        {
+          name: 'Latest News',
+          link: 'Home',
+        },
+        {
+          name: 'Promotions',
+          link: 'Promotion',
+        },
+        {
+          name: 'About us',
+          link: 'About',
+        },
+      ],
     };
   },
   methods: {
@@ -131,28 +154,10 @@ export default {
 }
 
 /*
-  * menu
+  * memberInfo
 */
 
-.lnk-header-menuOpen {
-  width: 70px;
-  height: 58px;
-  margin-top: -29px;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-}
-
-.lnk-header-menuClose {
-  width: 70px;
-  height: 58px;
-  margin-top: -29px;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-}
-
-.are-header-memberInfo {
+.header-menu-auth__member {
   width: 96%;
   min-height: 50px;
   padding: 0 15px;
@@ -165,7 +170,51 @@ export default {
   z-index: 2;
 }
 
-.are-header-menu {
+.header-menu-auth__member__div {
+  max-width: 55%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-menu-auth__member__div--left {
+  float: left;
+}
+.header-menu-auth__member__div--right {
+  float: right;
+}
+
+.header-menu-auth__member__text--vip {
+  color: #d2ac3e;
+}
+
+/*
+  * menu
+*/
+
+.header-menu-auth__button {
+  display: inline-block;
+}
+
+.header-menu-auth__button--open {
+  width: 70px;
+  height: 58px;
+  margin-top: -29px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+
+.header-menu-auth__button--close {
+  width: 70px;
+  height: 58px;
+  margin-top: -29px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+
+.header-menu-auth__menu {
   width: 100%;
   height: 85vh;
   overflow: hidden;
@@ -176,37 +225,39 @@ export default {
   /* z-index: 6; */
 }
 
-.ul-menu {
+.header-menu-auth__menu__route-ul {
+  margin: 0;
   padding: 20px 0;
 }
-.li-menu {
+.header-menu-auth__menu__route-ul__li {
   margin: 35px 0;
 }
-.lnk-menu {
+.header-menu-auth__menu__route-ul__li__link {
   display: block;
   color: #d2bd7c;
   font-size: 2.923em;
   text-align: center;
   line-height: 48px;
 }
-.lnk-menu:active {
+.header-menu-auth__menu__route-ul__li__link:active {
   color: #fff;
 }
 
-.ul-lang {
-  margin-bottom: 60px;
+.header-menu-auth__menu__lang-ul {
+  padding: 0;
+  margin: 0 0 60px 0;
   text-align: center;
   list-style-type: none;
 }
 
-.ul-lang-div {
+.header-menu-auth__menu__lang-ul__div {
   display: inline-block;
 }
 
-.li-lang {
+.header-menu-auth__menu__lang-ul__li {
   margin: 0 30px;
 }
-.lnk-lang {
+.header-menu-auth__menu__lang-ul__li__link {
   display: block;
   width: 116px;
   background-repeat: no-repeat;
@@ -215,7 +266,7 @@ export default {
   color: #fff;
   font-size: 2.153em;
 }
-.btn-header-logout {
+.header-menu-auth__logout {
   display: block;
   width: 80%;
   margin: 0 10%;
@@ -224,37 +275,19 @@ export default {
   line-height: 87px;
 }
 
-/*
-  * memberInfo
-*/
-
-.blk-memberInfo-left {
-  float: left;
-  max-width: 55%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.blk-memberInfo-right {
-  float: right;
-}
-.txt-vip {
-  color: #d2ac3e;
-}
-
-.lnk-lang-tw {
+.tw.header-menu-auth__menu__lang-ul__li__link {
   background-image: url(~@/assets/common/imgs/header/lang_tw.png);
 }
-.lnk-lang-cn {
+.cn.header-menu-auth__menu__lang-ul__li__link {
   background-image: url(~@/assets/common/imgs/header/lang_cn.png);
 }
-.lnk-lang-en {
+.en.header-menu-auth__menu__lang-ul__li__link {
   background-image: url(~@/assets/common/imgs/header/lang_en.png);
 }
-.lnk-lang-th {
+.th.header-menu-auth__menu__lang-ul__li__link {
   background-image: url(~@/assets/common/imgs/header/lang_th.png);
 }
-.lnk-lang-mm {
+.mm.header-menu-auth__menu__lang-ul__li__link {
   background-image: url(~@/assets/common/imgs/header/lang_mm.png);
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <a href="javascript:;" class="cpn-inBlock lnk-header-langOpen" @click="isShowLangList = !isShowLangList"></a>
+  <div class="header-menu">
+    <a href="javascript:;" class="cpn-inBlock header-menu__lang-toggle" @click="isShowLangList = !isShowLangList"></a>
     <transition name="slide">
-      <div class="are-header-langMenu" v-if="isShowLangList">
-        <ul class="cpn-boxzero cpn-inBlock-row ul-lang ul-ilang">
-          <li class="li-lang li-ilang" v-for="langItem in langList" :key="langItem.Lst_Locales_Code">
+      <div class="header-menu__lang-menu" v-if="isShowLangList">
+        <ul class="header-menu__lang-menu__ul cpn-boxzero cpn-inBlock-row">
+          <li class="header-menu__lang-menu__ul__li" v-for="langItem in langList" :key="langItem.Lst_Locales_Code">
             <a
-              href="javascript:void(0)"
-              class="lnk-lang lnk-ilang"
+              href="javascript:;"
+              class="header-menu__lang-menu__ul__li__link"
               v-if="langItem.Lst_Locales_Code != lang && langItem.Lst_Is_Enable"
               :class="{
                 cn: langItem.Lst_Locales_Code == 'zh-cn',
@@ -72,16 +72,15 @@ export default {
   max-height: 0;
 }
 
-.lnk-header-langOpen {
+.header-menu__lang-toggle {
   width: 73px;
   height: 60px;
   position: absolute;
   top: 30%;
   right: 20px;
 }
-.are-header-langMenu {
+.header-menu__lang-menu {
   width: 90px;
-  /* background: rgba(0, 0, 0, 0.9); */
   overflow: hidden;
   position: absolute;
   top: 141px;
@@ -89,16 +88,16 @@ export default {
   z-index: 2;
 }
 
-.ul-lang {
+.header-menu__lang-menu__ul {
   margin-bottom: 0;
   text-align: center;
 }
 
-.li-lang {
+.header-menu__lang-menu__ul__li {
   margin: 10px auto;
 }
 
-.lnk-lang {
+.header-menu__lang-menu__ul__li__link {
   display: block;
   background: no-repeat center top;
   color: #fff;
@@ -107,19 +106,19 @@ export default {
   padding-top: 65px;
 }
 
-.lnk-ilang.tw {
+.header-menu__lang-menu__ul__li__link.tw {
   background-image: url(~@/assets/common/imgs/header/lang_tw_s.png);
 }
-.lnk-ilang.cn {
+.header-menu__lang-menu__ul__li__link.cn {
   background-image: url(~@/assets/common/imgs/header/lang_cn_s.png);
 }
-.lnk-ilang.en {
+.header-menu__lang-menu__ul__li__link.en {
   background-image: url(~@/assets/common/imgs/header/lang_en_s.png);
 }
-.lnk-ilang.th {
+.header-menu__lang-menu__ul__li__link.th {
   background-image: url(~@/assets/common/imgs/header/lang_th_s.png);
 }
-.lnk-lang.mm {
+.header-menu__lang-menu__ul__li__link.mm {
   background-image: url(~@/assets/common/imgs/header/lang_mm_s.png);
 }
 
@@ -127,15 +126,15 @@ export default {
  * 語系
 */
 
-.en-us .lnk-header-langOpen {
+.en-us .header-menu__lang-toggle {
   background: url(~@/assets/common/imgs/header/lang_en_s.png) center center no-repeat;
 }
 
-.th-th .lnk-header-langOpen {
+.th-th .header-menu__lang-toggle {
   background: url(~@/assets/common/imgs/header/lang_th_s.png) center center no-repeat;
 }
 
-.zh-cn .lnk-header-langOpen {
+.zh-cn .header-menu__lang-toggle {
   background: url(~@/assets/common/imgs/header/lang_cn_s.png) center center no-repeat;
 }
 </style>
