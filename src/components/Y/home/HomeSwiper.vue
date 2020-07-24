@@ -1,20 +1,13 @@
 <template>
-  <div class="home-swiper">
-    <swiper class="swiper" :options="swiperOption">
-      <!-- <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
-        <router-link :to="slide.link">
-          <img :src="slide.img" alt="" />
-        </router-link>
-      </swiper-slide> -->
-      <swiper-slide v-for="slide in list" :key="slide.Lst_Nonelogin_url">
-        <router-link :to="slide.Lst_Nonelogin_url">
-          <img :src="slide.ImageUrl" alt="" />
-        </router-link>
-      </swiper-slide>
-      <a class="lnk-banner-prev" slot="button-prev"></a>
-      <a class="lnk-banner-next" slot="button-next"></a>
-    </swiper>
-  </div>
+  <swiper class="home-swiper" :options="swiperOption">
+    <swiper-slide v-for="slide in list" :key="slide.Lst_Nonelogin_url">
+      <router-link :to="slide.Lst_Nonelogin_url">
+        <img :src="slide.ImageUrl" alt="" />
+      </router-link>
+    </swiper-slide>
+    <a class="home-swiper__button--previous" slot="button-prev"></a>
+    <a class="home-swiper__button--next" slot="button-next"></a>
+  </swiper>
 </template>
 
 <script>
@@ -49,8 +42,8 @@ export default {
           enabled: true,
         },
         navigation: {
-          prevEl: '.lnk-banner-prev',
-          nextEl: '.lnk-banner-next',
+          prevEl: '.home-swiper__button--previous',
+          nextEl: '.home-swiper__button--next',
         },
         autoplay: {
           delay: 5000,
@@ -68,8 +61,8 @@ export default {
   height: 431px;
 }
 
-.lnk-banner-prev,
-.lnk-banner-next {
+.home-swiper__button--previous,
+.home-swiper__button--next {
   display: inline-block;
   position: absolute;
   top: 40%;
@@ -77,11 +70,11 @@ export default {
   height: 100px;
   z-index: 1;
 }
-.lnk-banner-prev {
+.home-swiper__button--previous {
   background: url(~@/assets/common/imgs/banner/prev.png) no-repeat center center;
   left: 0;
 }
-.lnk-banner-next {
+.home-swiper__button--next {
   background: url(~@/assets/common/imgs/banner/next.png) no-repeat center center;
   right: 0;
 }
