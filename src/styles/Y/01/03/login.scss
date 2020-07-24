@@ -1,28 +1,25 @@
 $type: 'Y/01/03';
 
-.lnk-regist,
-.lnk-forget,
-.lnk-open,
-.lnk-download {
+.login__form__link {
   color: #fff;
 }
 /*
   ! 圖片路徑
 */
 
-.blk-account {
+.login__form__field--account {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
 }
-.blk-password {
+.login__form__field--password {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
 }
-.blk-code {
+.login__form__field--code {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_code.png);
 }
-.lnk-regist {
+.login__form__link--regist {
   background-image: url(~@/assets/#{$type}/imgs/main/registerBg.png);
 }
-.lnk-forget {
+.login__form__link--forget {
   background-image: url(~@/assets/#{$type}/imgs/main/forgetBg.png);
 }
 // .lnk-open {
