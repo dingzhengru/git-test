@@ -1,192 +1,192 @@
 <template>
   <div class="register">
-    <form class="register__form" @submit.prevent="register">
-      <div class="register__form__input-group">
-        <div class="register__form__input-group__div register__form__input-group__div--recommend">
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_RelatedAccount"
-            type="text"
-            name="Add_RelatedAccount"
-            placeholder="Refferrer"
-            size="20"
-          />
-        </div>
-        <div class="register__form__input-group__notice">If there is no referrer,you are not required to fill in</div>
-        <div class="register__form__input-group__div register__form__input-group__div--account">
-          <span class="ui-txt-star register__form__input-group__div__star">*</span>
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_Account"
-            type="text"
-            name="Add_Account"
-            placeholder="Account No."
-            maxlength="11"
-            size="20"
-            title="Please enter your account"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorAccount">
-          <span class="theme-txt-errorMsg">{{ errorAccount }}</span>
-        </div>
-        <div class="register__form__input-group__div register__form__input-group__div--password">
-          <span class="ui-txt-star register__form__input-group__div__star">*</span>
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_Password"
-            type="password"
-            name="Add_Password"
-            placeholder="Password"
-            size="20"
-            title="Please enter your passwords"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorPassword">
-          <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
-        </div>
-        <div class="register__form__input-group__div register__form__input-group__div--password blk-passwordCon">
-          <span class="ui-txt-star register__form__input-group__div__star">*</span>
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_PasswordCheck"
-            type="password"
-            name="Add_PasswordCheck"
-            placeholder="Confirm Password"
-            size="20"
-            title="Please reconfirm your passwords"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorPasswordCheck">
-          <span class="theme-txt-errorMsg">{{ errorPasswordCheck }}</span>
-        </div>
-        <div class="register__form__input-group__div register__form__input-group__div--callphone">
-          <span class="ui-txt-star register__form__input-group__div__star">*</span>
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_Mobile"
-            type="tel"
-            name="Add_Mobile"
-            placeholder="Mobile number"
-            maxlength="20"
-            size="20"
-            title="Please enter your phone number"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorMobile">
-          <span class="theme-txt-errorMsg">{{ errorMobile }}</span>
-        </div>
-        <div class="register__form__input-group__notice">
-          This is for contact channel of account and supprise preferential informing, please kindly provide the real
-          information.
-        </div>
-        <div class="register__form__input-group__div register__form__input-group__div--name">
-          <span class="ui-txt-star register__form__input-group__div__star">*</span>
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_Email"
-            type="text"
-            name="Add_Email"
-            placeholder="E-mail"
-            maxlength="50"
-            size="20"
-            title="Please enter your E-mail"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorEmail">
-          <span class="theme-txt-errorMsg">{{ errorEmail }}</span>
-        </div>
-        <div class="register__form__input-group__notice">
-          This is for supprise preferential informing, please kindly provide the real information.
-        </div>
-        <div class="register__form__input-group__div register__form__input-group__div--name">
-          <span class="ui-txt-star register__form__input-group__div__star"></span>
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_Line"
-            type="text"
-            name="Add_Line"
-            placeholder="ID LINE"
-            maxlength="50"
-            size="20"
-            title="Please enter your LINE"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorLine">
-          <span class="theme-txt-errorMsg">{{ errorLine }}</span>
-        </div>
-        <div class="register__form__input-group__notice">
-          This is for supprise preferential informing, please kindly provide the real information.
-        </div>
-        <div class="register__form__input-group__div register__form__input-group__div--name">
-          <span class="ui-txt-star register__form__input-group__div__star"> * </span>
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_FirstName"
-            type="text"
-            name="Add_FirstName"
-            placeholder="First Name"
-            maxlength="70"
-            size="20"
-            title="Please enter your first &amp; last name"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorFirstName">
-          <span class="theme-txt-errorMsg">{{ errorFirstName }}</span>
-        </div>
-        <div class="register__form__input-group__div register__form__input-group__div--name">
-          <span class="ui-txt-star register__form__input-group__div__star">*</span>
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_LastName"
-            type="text"
-            name="Add_LastName"
-            placeholder="Last Name"
-            maxlength="70"
-            size="20"
-            title="Please enter your first &amp; last name"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorLastName">
-          <span class="theme-txt-errorMsg">{{ errorLastName }}</span>
-        </div>
-        <div class="register__form__input-group__notice">
-          It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.
-        </div>
-        <div class="register__form__input-group__div register__form__input-group__div--name">
-          <span class="ui-txt-star register__form__input-group__div__star"> </span>
-          <input
-            class="register__form__input-group__div__input"
-            id="Add_NickName"
-            type="text"
-            name="Add_NickName"
-            placeholder="Nickname"
-            maxlength="70"
-            size="20"
-            title="Please enter your nickname"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorNickname">
-          <span class="theme-txt-errorMsg">{{ errorNickname }}</span>
-        </div>
-        <div class="register__form__input-group__div register__form__input-group__div--code">
-          <span class="ui-txt-star register__form__input-group__div__star">*</span>
-          <input
-            class="register__form__input-group__div__input register__form__input-group__div__input--captcha"
-            id="Add_CaptchaValue"
-            type="tel"
-            name="CaptchaValue"
-            placeholder="Captcha"
-          />
-        </div>
-        <div class="theme-errorMsg" v-if="errorCaptcha">
-          <span class="theme-txt-errorMsg">{{ errorCaptcha }}</span>
-        </div>
+    <form class="register__form" id="register-form" @submit.prevent="register">
+      <div class="register__form__field register__form__field--recommend">
+        <input
+          class="register__form__field__input"
+          id="Add_RelatedAccount"
+          type="text"
+          name="Add_RelatedAccount"
+          placeholder="Refferrer"
+          size="20"
+        />
       </div>
-      <div class="register__form__button-group">
-        <button type="submit" id="btnSubmit" class="ui-btn01 register__form__button-group__button--send">Submit</button>
-        <button type="reset" id="btnReset" class="ui-btn02 register__form__button-group__button--reset">Reset</button>
+      <div class="register__form__field__notice">If there is no referrer,you are not required to fill in</div>
+      <div class="register__form__field register__form__field--account">
+        <span class="ui-txt-star register__form__field__star">*</span>
+        <input
+          class="register__form__field__input"
+          id="Add_Account"
+          type="text"
+          name="Add_Account"
+          placeholder="Account No."
+          maxlength="11"
+          size="20"
+          title="Please enter your account"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorAccount">
+        <span class="theme-txt-errorMsg">{{ errorAccount }}</span>
+      </div>
+      <div class="register__form__field register__form__field--password">
+        <span class="ui-txt-star register__form__field__star">*</span>
+        <input
+          class="register__form__field__input"
+          id="Add_Password"
+          type="password"
+          name="Add_Password"
+          placeholder="Password"
+          size="20"
+          title="Please enter your passwords"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorPassword">
+        <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
+      </div>
+      <div class="register__form__field register__form__field--password blk-passwordCon">
+        <span class="ui-txt-star register__form__field__star">*</span>
+        <input
+          class="register__form__field__input"
+          id="Add_PasswordCheck"
+          type="password"
+          name="Add_PasswordCheck"
+          placeholder="Confirm Password"
+          size="20"
+          title="Please reconfirm your passwords"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorPasswordCheck">
+        <span class="theme-txt-errorMsg">{{ errorPasswordCheck }}</span>
+      </div>
+      <div class="register__form__field register__form__field--callphone">
+        <span class="ui-txt-star register__form__field__star">*</span>
+        <input
+          class="register__form__field__input"
+          id="Add_Mobile"
+          type="tel"
+          name="Add_Mobile"
+          placeholder="Mobile number"
+          maxlength="20"
+          size="20"
+          title="Please enter your phone number"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorMobile">
+        <span class="theme-txt-errorMsg">{{ errorMobile }}</span>
+      </div>
+      <div class="register__form__field__notice">
+        This is for contact channel of account and supprise preferential informing, please kindly provide the real
+        information.
+      </div>
+      <div class="register__form__field register__form__field--name">
+        <span class="ui-txt-star register__form__field__star">*</span>
+        <input
+          class="register__form__field__input"
+          id="Add_Email"
+          type="text"
+          name="Add_Email"
+          placeholder="E-mail"
+          maxlength="50"
+          size="20"
+          title="Please enter your E-mail"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorEmail">
+        <span class="theme-txt-errorMsg">{{ errorEmail }}</span>
+      </div>
+      <div class="register__form__field__notice">
+        This is for supprise preferential informing, please kindly provide the real information.
+      </div>
+      <div class="register__form__field register__form__field--name">
+        <span class="ui-txt-star register__form__field__star"></span>
+        <input
+          class="register__form__field__input"
+          id="Add_Line"
+          type="text"
+          name="Add_Line"
+          placeholder="ID LINE"
+          maxlength="50"
+          size="20"
+          title="Please enter your LINE"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorLine">
+        <span class="theme-txt-errorMsg">{{ errorLine }}</span>
+      </div>
+      <div class="register__form__field__notice">
+        This is for supprise preferential informing, please kindly provide the real information.
+      </div>
+      <div class="register__form__field register__form__field--name">
+        <span class="ui-txt-star register__form__field__star"> * </span>
+        <input
+          class="register__form__field__input"
+          id="Add_FirstName"
+          type="text"
+          name="Add_FirstName"
+          placeholder="First Name"
+          maxlength="70"
+          size="20"
+          title="Please enter your first &amp; last name"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorFirstName">
+        <span class="theme-txt-errorMsg">{{ errorFirstName }}</span>
+      </div>
+      <div class="register__form__field register__form__field--name">
+        <span class="ui-txt-star register__form__field__star">*</span>
+        <input
+          class="register__form__field__input"
+          id="Add_LastName"
+          type="text"
+          name="Add_LastName"
+          placeholder="Last Name"
+          maxlength="70"
+          size="20"
+          title="Please enter your first &amp; last name"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorLastName">
+        <span class="theme-txt-errorMsg">{{ errorLastName }}</span>
+      </div>
+      <div class="register__form__field__notice">
+        It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.
+      </div>
+      <div class="register__form__field register__form__field--name">
+        <span class="ui-txt-star register__form__field__star"> </span>
+        <input
+          class="register__form__field__input"
+          id="Add_NickName"
+          type="text"
+          name="Add_NickName"
+          placeholder="Nickname"
+          maxlength="70"
+          size="20"
+          title="Please enter your nickname"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorNickname">
+        <span class="theme-txt-errorMsg">{{ errorNickname }}</span>
+      </div>
+      <div class="register__form__field register__form__field--code">
+        <span class="ui-txt-star register__form__field__star">*</span>
+        <input
+          class="register__form__field__input register__form__field__input--captcha"
+          id="Add_CaptchaValue"
+          type="tel"
+          name="CaptchaValue"
+          placeholder="Captcha"
+        />
+      </div>
+      <div class="theme-errorMsg" v-if="errorCaptcha">
+        <span class="theme-txt-errorMsg">{{ errorCaptcha }}</span>
       </div>
     </form>
+    <div class="register__form__button">
+      <button type="submit" class="ui-btn01 register__form_send" id="btnSubmit" form="register-form">
+        Submit
+      </button>
+      <button type="reset" class="ui-btn02 register__form__reset" id="btnReset">Reset</button>
+    </div>
     <div class="register__notice">
       <ol class="register__notice__ol">
         <li>
@@ -259,13 +259,13 @@ export default {
   padding-bottom: 160px;
 }
 
-.register__form__input-group {
+.register__form {
   width: 563px;
   margin: 0 auto;
   padding-top: 88px;
 }
 
-.register__form__button-group {
+.register__form__button {
   text-align: center;
   margin-top: 50px;
 }
@@ -274,7 +274,7 @@ export default {
   margin: 0 20px;
 }
 
-.register__form__input-group__div {
+.register__form__field {
   height: 81px;
   background-repeat: no-repeat;
   margin-top: 30px;
@@ -282,21 +282,21 @@ export default {
   position: relative;
 }
 
-.register__form__input-group__div--recommend {
+.register__form__field--recommend {
   margin-top: 0;
 }
-.register__form__input-group__notice {
+.register__form__field__notice {
   margin: 5px 0;
   font-size: 2em;
 }
 
-.register__form__input-group__div__star {
+.register__form__field__star {
   font-size: 2.5em;
   position: absolute;
   top: 20px;
   left: -25px;
 }
-.register__form__input-group__div__input {
+.register__form__field__input {
   width: 465px;
   height: 64px;
   background-color: transparent;
@@ -306,18 +306,18 @@ export default {
   outline: none;
   font-size: 2.5em;
 }
-.register__form__input-group__div__input--captcha {
+.register__form__field__input--captcha {
   width: 315px;
   padding-right: 153px;
 }
-/* .register__form__input-group__div__input--captcha > a {
+/* .register__form__field__input--captcha > a {
   position: absolute;
   top: 11px;
   right: 15px;
 } */
 
-.register__form__button-group__button--send,
-.register__form__button-group__button--reset {
+.register__form_send,
+.register__form__reset {
   margin: 0 10px;
 }
 .register__notice__ol {
