@@ -15,26 +15,4 @@
     font-size: 36px;
     font-weight: bold;
   }
-
-  /*===================================================================================================================*/
-  /*                                                      Header                                                       */
-  /*===================================================================================================================*/
-  .lnk-header-langOpen,
-  .lnk-header-langClose {
-    background: url(~@/assets/common/imgs/header/lang_cn_s.png) center center no-repeat;
-  }
-
-  // .lnk-header-login {
-  //   background: url(~@/assets/Y/01/01/imgs/header/btn_login_cn.png) no-repeat;
-  // }
-  // .lnk-ilang.cn { display: none; }
-  /*===================================================================================================================*/
-  /*                                                      Footer                                                       */
-  /*===================================================================================================================*/
-
-  .lnk-footer-toolbar {
-    padding: 27% 0 0 0;
-    font-size: 32px;
-    line-height: 38px;
-  }
 }

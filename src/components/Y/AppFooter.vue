@@ -166,4 +166,26 @@ export default {
 .li-toolbar-transaction > .lnk-footer-toolbar {
   background-position: 97% 6px;
 }
+
+/*
+ * 語系
+*/
+
+.en-us .lnk-footer-toolbar {
+  padding: 30% 0 0 0;
+  font-size: 26px;
+  line-height: 27px;
+}
+
+.th-th .lnk-footer-toolbar {
+  padding: 24% 0 0 0;
+  font-size: 30px;
+  line-height: 28px;
+}
+
+.zh-cn .lnk-footer-toolbar {
+  padding: 27% 0 0 0;
+  font-size: 32px;
+  line-height: 38px;
+}
 </style>

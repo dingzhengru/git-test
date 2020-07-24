@@ -122,4 +122,20 @@ export default {
 .lnk-lang.mm {
   background-image: url(~@/assets/common/imgs/header/lang_mm_s.png);
 }
+
+/*
+ * 語系
+*/
+
+.en-us .lnk-header-langOpen {
+  background: url(~@/assets/common/imgs/header/lang_en_s.png) center center no-repeat;
+}
+
+.th-th .lnk-header-langOpen {
+  background: url(~@/assets/common/imgs/header/lang_th_s.png) center center no-repeat;
+}
+
+.zh-cn .lnk-header-langOpen {
+  background: url(~@/assets/common/imgs/header/lang_cn_s.png) center center no-repeat;
+}
 </style>

@@ -41,7 +41,7 @@
                 />
                 <div class="panel-wallet-range">
                   <vue-slider v-model="amount" v-bind="rangeOptions" @error="rangeError" @change="rangeChange">
-                    <template v-slot:dot >
+                    <template v-slot:dot>
                       <img src="~@/assets/common/imgs/main/sliderPoint.png" class="custom-dot" />
                     </template>
                     <template v-slot:process="{}">
@@ -214,7 +214,7 @@ export default {
 </script>
 
 <style>
-.vue-slider-dot{
+.vue-slider-dot {
   z-index: 2;
 }
 </style>
@@ -331,10 +331,11 @@ export default {
   /* color: #000; */
 }
 
-/* .panel-wallet-range .range-bar {
-  background: url(~@/assets/common/imgs/main/sliderBar.png) no-repeat;
+/*
+ * 語系
+*/
+
+.en-us .blk-transfer-select {
+  font-size: 28px;
 }
-.panel-wallet-range .range-handle {
-  background: url(~@/assets/common/imgs/main/sliderPoint.png) no-repeat;
-} */
 </style>
