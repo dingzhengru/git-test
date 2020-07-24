@@ -25,7 +25,7 @@ import { getLang, getToken } from '@/utils/cookie';
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
 const cssVersion = '01';
-const cssType = '03';
+const cssType = '02';
 store.commit('site/setCssClass', cssClass);
 store.commit('site/setCssVersion', cssVersion);
 store.commit('site/setCssType', cssType);
@@ -33,7 +33,9 @@ store.commit('site/setCssType', cssType);
 //* 取得語系 => 存進 store.state.lang
 // const browserLang = navigator.language || navigator.userLanguage;
 const lang = getLang();
-store.commit('setLang', lang);
+if(lang) {
+  store.commit('setLang', lang);
+}
 
 //* 用 token 判斷是否登入，並取使用者資料
 const token = getToken();

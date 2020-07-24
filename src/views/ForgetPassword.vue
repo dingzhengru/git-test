@@ -1,7 +1,7 @@
 <template>
   <div class="forget-password">
-    <div class="are-title"><h1 class="h1-title">Forgotten your account or passwords?</h1></div>
-    <div class="are-desc">
+    <h1 class="forget-password__title">Forgotten your account or passwords?</h1>
+    <div class="forget-password__desc">
       <span class="txt-note">Notice：</span> <br />
       Please contact with our online service, and submit any information to prove your identification of member.
       <span class="cpn-inBlock bg-forget"></span>
@@ -33,7 +33,13 @@ export default {
 </script>
 
 <style scoped>
-.are-desc {
+.forget-password__title {
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 20px;
+  font-size: 2rem;
+}
+.forget-password__desc {
   padding-top: 316px;
   font-size: 2.769em;
   text-align: center;
