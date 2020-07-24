@@ -1,20 +1,18 @@
 <template>
-  <footer class="reg-footer" v-if="!isHideFooter">
-    <div class="lay-screen">
-      <ul class="cpn-boxzero cpn-inBlock-row ul-footer-toolbar">
-        <li
-          class="li-footer-toolbar li-toolbar-member"
-          :class="[
-            { 'li-toolbar-active': $route.name == item.link || item.otherActivePath.includes($route.name) },
-            item.class,
-          ]"
-          v-for="item in list"
-          :key="item.name"
-        >
-          <router-link :to="{ name: item.link }" class="lnk-footer-toolbar">{{ item.name }}</router-link>
-        </li>
-      </ul>
-    </div>
+  <footer class="footer" v-if="!isHideFooter">
+    <ul class="footer__ul cpn-boxzero cpn-inBlock-row">
+      <li
+        class="footer__ul__li"
+        :class="[
+          { 'footer__ul__li--active': $route.name == item.link || item.otherActivePath.includes($route.name) },
+          item.class,
+        ]"
+        v-for="item in list"
+        :key="item.name"
+      >
+        <router-link :to="{ name: item.link }" class="footer__ul__li__link">{{ item.name }}</router-link>
+      </li>
+    </ul>
   </footer>
 </template>
 
@@ -40,25 +38,25 @@ export default {
         {
           name: 'Member Center',
           link: 'UserProfile',
-          class: 'li-toolbar-member',
+          class: 'footer__ul__li--member',
           otherActivePath: [],
         },
         {
           name: 'Log in / Register',
           link: 'Login',
-          class: 'li-toolbar-regist',
+          class: 'footer__ul__li--regist',
           otherActivePath: ['Register'],
         },
         {
           name: 'Promotions',
           link: 'Promotion',
-          class: 'li-toolbar-event',
+          class: 'footer__ul__li--event',
           otherActivePath: ['PromotionContent'],
         },
         {
           name: 'Online Customer',
           link: 'Contact',
-          class: 'li-toolbar-service',
+          class: 'footer__ul__li--service',
           otherActivePath: [],
         },
       ],
@@ -66,13 +64,13 @@ export default {
         {
           name: 'Member Center',
           link: 'UserProfile',
-          class: 'li-toolbar-member',
+          class: 'footer__ul__li--member',
           otherActivePath: ['UserChangePassword'],
         },
         {
           name: 'Cashier',
           link: 'TransactionDeposit',
-          class: 'li-toolbar-transaction',
+          class: 'footer__ul__li--transaction',
           otherActivePath: [
             'TransactionWithdrawal',
             'TransactionTransfer',
@@ -84,13 +82,13 @@ export default {
         {
           name: 'Promotions',
           link: 'Promotion',
-          class: 'li-toolbar-event',
+          class: 'footer__ul__li--event',
           otherActivePath: ['PromotionContent'],
         },
         {
           name: 'Online Customer',
           link: 'Contact',
-          class: 'li-toolbar-service',
+          class: 'footer__ul__li--service',
           otherActivePath: [],
         },
       ],
@@ -112,36 +110,29 @@ export default {
 </script>
 
 <style scoped>
-.reg-footer {
-  z-index: 4;
-}
-
-.reg-footer {
+.footer {
   width: 100%;
   padding-top: 3px;
   position: fixed;
   left: 0;
   bottom: 0;
+  z-index: 4;
 }
-/*? .reg-footer > */
-.li-footer-toolbar {
+.footer__ul__li {
   width: 25%;
 }
-.lnk-footer-toolbar {
+.footer__ul__li__link {
   display: table-cell;
   width: 25%;
   height: 119px;
-  /* padding: 27% 0 0 0; */
   color: #fff;
-  /* font-size: 32px; */
-  /* line-height: 38px; */
   word-wrap: break-word;
   word-break: keep-all;
   text-align: center;
   vertical-align: middle;
   box-sizing: border-box;
 }
-.li-footer-toolbar:after {
+.footer__ul__li:after {
   display: inline-block;
   content: '';
   width: 4px;
@@ -149,21 +140,20 @@ export default {
   position: absolute;
   top: 0;
 }
-.li-footer-toolbar:first-child:after {
+.footer__ul__li:first-child:after {
   background: none;
 }
-/* .li-toolbar-member > .lnk-footer-toolbar {} */
-.li-toolbar-regist > .lnk-footer-toolbar {
+.footer__ul__li--regist > .footer__ul__li__link {
   background-position: 24% 6px;
   text-indent: 12px;
 }
-.li-toolbar-event > .lnk-footer-toolbar {
+.footer__ul__li--event > .footer__ul__li__link {
   background-position: 50% 6px;
 }
-.li-toolbar-service > .lnk-footer-toolbar {
+.footer__ul__li--service > .footer__ul__li__link {
   background-position: 75% 6px;
 }
-.li-toolbar-transaction > .lnk-footer-toolbar {
+.footer__ul__li--transaction > .footer__ul__li__link {
   background-position: 97% 6px;
 }
 
@@ -171,19 +161,19 @@ export default {
  * 語系
 */
 
-.en-us .lnk-footer-toolbar {
+.en-us .footer__ul__li__link {
   padding: 30% 0 0 0;
   font-size: 26px;
   line-height: 27px;
 }
 
-.th-th .lnk-footer-toolbar {
+.th-th .footer__ul__li__link {
   padding: 24% 0 0 0;
   font-size: 30px;
   line-height: 28px;
 }
 
-.zh-cn .lnk-footer-toolbar {
+.zh-cn .footer__ul__li__link {
   padding: 27% 0 0 0;
   font-size: 32px;
   line-height: 38px;
