@@ -1,23 +1,23 @@
 $type: 'Y/01/02';
 
-.promotion__div--img img {
+.promotion-content__image__img {
   outline: 2px solid #fff;
 }
 
-.panel-eventContents-desc ul > li > a {
-  background-color: #1c6080;
-  color: #fff;
+.promotion-content__main__content__desc {
+  color: #000;
 }
 
-.panel-eventContents-desc {
-  color: #000;
+.promotion-content__main__content__desc ul > li > a {
+  background-color: #1c6080;
+  color: #fff;
 }
 
 /*
   ! 圖片路徑
 */
 
-.h3-desc-title {
+.promotion-content__main__content__title {
   background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
 }
 // .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }

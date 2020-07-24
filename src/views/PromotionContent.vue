@@ -1,14 +1,14 @@
 <template>
   <div class="promotion-content" :class="{ 'promotion-content-auth': token }">
-    <div class="promotion-content--div">
-      <img :src="image" alt="" />
+    <div class="promotion-content__image">
+      <img class="promotion-content__image__img" :src="image" alt="" />
     </div>
-    <div class="are-eventContents">
-      <div class="blk-eventContents-desc" v-for="content in contentList" :key="content.title">
-        <h3 class="h3-desc-title">{{ content.title }}</h3>
-        <div class="panel-eventContents-desc" v-html="content.content"></div>
+    <div class="promotion-content__main">
+      <div class="promotion-content__main__content" v-for="content in contentList" :key="content.title">
+        <h3 class="promotion-content__main__content__title">{{ content.title }}</h3>
+        <div class="promotion-content__main__content__desc" v-html="content.content"></div>
       </div>
-      <div class="are-control">
+      <div class="promotion-content__main__button-group">
         <a href="javascript:;" class="ui-btn01 ui-btn-long btn-return" @click="$router.go(-1)">Back</a>
       </div>
     </div>
@@ -33,7 +33,7 @@ export default {
         },
         {
           title: 'Activity Content',
-          content: `<div class="panel-eventContents-desc"><ul class="cpn-ul-decimal"><li>Minimum deposit 500 THB can join this promotion</li><li>Bonus up to 5% the amount of deposit . highest to 99,999THB and rolling request multiple by 5 times to cash out.</li><li>Exp.Deposit 500 bath get bonus 10% (1,000x5%=50) The member can withdraw if summary of wagering more than (1,000+50)x5 = 5,250</li></ul></div>`,
+          content: `<div class="promotion-content__main__content__desc"><ul class="cpn-ul-decimal"><li>Minimum deposit 500 THB can join this promotion</li><li>Bonus up to 5% the amount of deposit . highest to 99,999THB and rolling request multiple by 5 times to cash out.</li><li>Exp.Deposit 500 bath get bonus 10% (1,000x5%=50) The member can withdraw if summary of wagering more than (1,000+50)x5 = 5,250</li></ul></div>`,
         },
         {
           title: 'Activity Rules',
@@ -66,41 +66,39 @@ export default {
   padding-top: 88px;
 }
 
-.promotion-content--div {
+.promotion-content__image {
   margin: 20px auto;
   text-align: center;
 }
 
-.blk-eventContents-desc {
+.promotion-content__main__content {
   margin-bottom: 40px;
   width: 95%;
   margin: 0 auto;
 }
-.blk-eventContents-desc .ui-table04 {
+.promotion-content__main__content .ui-table04 {
   font-size: 1em;
 }
-.blk-eventContents-desc ul > li {
+.promotion-content__main__content ul > li {
   margin-bottom: 20px;
 }
-.blk-eventContents-desc ul > li > a {
-  /* color: #ffffff; */
-  /* background-color: #d40505; */
+.promotion-content__main__content ul > li > a {
   border-radius: 6px;
   padding: 5px 10px;
   margin: 5px;
   display: inline-block;
 }
-.h3-desc-title {
+.promotion-content__main__content__title {
   height: 68px;
   margin: 20px 0;
   padding: 30px 0 0 95px;
   font-size: 2.461em;
   font-weight: normal;
 }
-.panel-eventContents-desc {
+.promotion-content__main__content__desc {
   font-size: 2.307em;
 }
-.are-control {
+.promotion-content__main__button-group {
   text-align: center;
 }
 </style>
