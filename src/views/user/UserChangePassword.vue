@@ -1,13 +1,16 @@
 <template>
   <div class="user-change-password">
-    <div class="theme-content-box are-accountChg">
-      <div class="theme-input-box blk-accountChg-input">
+    <form
+      class="theme-content-box user-change-password__form"
+      id="user-change-passowrd-form"
+      @submit.prevent="changePassword"
+    >
+      <div class="user-change-password__input-div theme-input-box">
         <span class="theme-input-header">旧密码</span>
         <input
-          class="ui-ipt ipt-accountChg"
+          class="ui-ipt"
           id="Add_OldPassword"
           type="password"
-          name="Add_OldPassword"
           size="30"
           title="请输入旧密码"
           v-model="user.passwordOld"
@@ -16,13 +19,12 @@
           <span class="theme-txt-errorMsg">{{ errorPasswordOld }}</span>
         </div>
       </div>
-      <div class="theme-input-box blk-accountChg-input">
+      <div class="user-change-password__input-div theme-input-box">
         <span class="theme-input-header">新密码</span>
         <input
-          class="ui-ipt ipt-accountChg"
+          class="ui-ipt"
           type="password"
           id="Add_NewPassword"
-          name="Add_NewPassword"
           size="30"
           title="请输入新密码"
           v-model="user.passwordNew"
@@ -31,13 +33,12 @@
           <span class="theme-txt-errorMsg">{{ errorPasswordNew }}</span>
         </div>
       </div>
-      <div class="theme-input-box blk-accountChg-input">
+      <div class="user-change-password__input-div theme-input-box">
         <span class="theme-input-header">确认密码</span>
         <input
-          class="ui-ipt ipt-accountChg"
+          class="ui-ipt"
           id="Add_PasswordCheck"
           type="password"
-          name="Add_PasswordCheck"
           size="30"
           title="请再次输入新密码"
           v-model="user.passwordCheck"
@@ -46,9 +47,15 @@
           <span class="theme-txt-errorMsg">{{ errorPasswordCheck }}</span>
         </div>
       </div>
-    </div>
-    <div class="are-control">
-      <button type="button" class="ui-btn01 ui-btn-long btn-send" onclick="btnChgPasswordClick()">提交</button>
+    </form>
+    <div class="user-change-password__button-div">
+      <button
+        class="user-change-password__button--submit ui-btn ui-btn-long"
+        type="submit"
+        form="user-change-passowrd-form"
+      >
+        提交
+      </button>
     </div>
     <ol class="ui-ol-memberNotice">
       <li v-for="notice in noticeList" :key="notice">
@@ -104,19 +111,16 @@ export default {
 </script>
 
 <style scoped>
-.are-accountChg {
+.user-change-password__form {
   margin: 40px 0;
 }
 
-/* .are-accountChg-input {
+.user-change-password__input-div {
   margin: 20px 0;
-} */
-.are-control {
+}
+
+.user-change-password__button-div {
   margin: 40px 0;
   text-align: center;
-}
-
-.blk-accountChg-input {
-  margin: 20px 0;
 }
 </style>
