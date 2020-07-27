@@ -19,6 +19,14 @@ $type: 'Y/01/02';
   color: #fff;
 }
 
+.register__form_send {
+  background-image: url(~@/assets/#{$type}/imgs/ui/btn01.jpg);
+}
+
+.register__form__reset {
+  background-image: url(~@/assets/#{$type}/imgs/ui/btn02.jpg);
+}
+
 /*
   ! 圖片路徑
 */

@@ -6,6 +6,14 @@ $type: 'Y/01/01';
 .register__notice__ol {
   color: #959595;
 }
+.register__form_send {
+  background-image: url(~@/assets/#{$type}/imgs/ui/btn01.jpg);
+}
+
+.register__form__reset {
+  background-image: url(~@/assets/#{$type}/imgs/ui/btn02.jpg);
+}
+
 /*
   ! 圖片路徑
 */
