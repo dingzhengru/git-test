@@ -18,13 +18,12 @@ $type: 'Y/01/02';
 .register__notice__ol {
   color: #fff;
 }
-
 .register__form_send {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn01.jpg);
+  background-image: url(~@/assets/common/imgs/ui/btn--yellow-dark.jpg);
 }
 
 .register__form__reset {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn02.jpg);
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
 }
 
 /*

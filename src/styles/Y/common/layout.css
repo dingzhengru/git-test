@@ -88,6 +88,23 @@ body {
   /* background-repeat: repeat-x; */
   /* line-height: 97px; */
 }
+
+/* .ui-btn--red {
+  background-image: url('../../../assets/common/imgs/ui/btn--red.jpg');
+}
+.ui-btn--black {
+  background-image: url('../../../assets/common/imgs/ui/btn--black.jpg');
+}
+.ui-btn--yellow {
+  background-image: url('../../../assets/common/imgs/ui/btn--yellow.jpg');
+}
+.ui-btn--yellow-light {
+  background-image: url('../../../assets/common/imgs/ui/btn--yellow-light.jpg');
+}
+.ui-btn--yellow-dark {
+  background-image: url('../../../assets/common/imgs/ui/btn--yellow-dark.jpg');
+} */
+
 .ui-btn-long {
   width: 500px;
 }
