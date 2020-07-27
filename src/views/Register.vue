@@ -13,7 +13,7 @@
       </div>
       <div class="register__form__field__notice">If there is no referrer,you are not required to fill in</div>
       <div class="register__form__field register__form__field--account">
-        <span class="ui-txt-star register__form__field__star">*</span>
+        <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
           id="Add_Account"
@@ -29,7 +29,7 @@
         <span class="theme-txt-errorMsg">{{ errorAccount }}</span>
       </div>
       <div class="register__form__field register__form__field--password">
-        <span class="ui-txt-star register__form__field__star">*</span>
+        <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
           id="Add_Password"
@@ -44,7 +44,7 @@
         <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
       </div>
       <div class="register__form__field register__form__field--password blk-passwordCon">
-        <span class="ui-txt-star register__form__field__star">*</span>
+        <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
           id="Add_PasswordCheck"
@@ -59,7 +59,7 @@
         <span class="theme-txt-errorMsg">{{ errorPasswordCheck }}</span>
       </div>
       <div class="register__form__field register__form__field--callphone">
-        <span class="ui-txt-star register__form__field__star">*</span>
+        <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
           id="Add_Mobile"
@@ -79,7 +79,7 @@
         information.
       </div>
       <div class="register__form__field register__form__field--name">
-        <span class="ui-txt-star register__form__field__star">*</span>
+        <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
           id="Add_Email"
@@ -98,7 +98,7 @@
         This is for supprise preferential informing, please kindly provide the real information.
       </div>
       <div class="register__form__field register__form__field--name">
-        <span class="ui-txt-star register__form__field__star"></span>
+        <span class="register__form__field__star"></span>
         <input
           class="register__form__field__input"
           id="Add_Line"
@@ -117,7 +117,7 @@
         This is for supprise preferential informing, please kindly provide the real information.
       </div>
       <div class="register__form__field register__form__field--name">
-        <span class="ui-txt-star register__form__field__star"> * </span>
+        <span class="register__form__field__star"> * </span>
         <input
           class="register__form__field__input"
           id="Add_FirstName"
@@ -133,7 +133,7 @@
         <span class="theme-txt-errorMsg">{{ errorFirstName }}</span>
       </div>
       <div class="register__form__field register__form__field--name">
-        <span class="ui-txt-star register__form__field__star">*</span>
+        <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
           id="Add_LastName"
@@ -152,7 +152,7 @@
         It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.
       </div>
       <div class="register__form__field register__form__field--name">
-        <span class="ui-txt-star register__form__field__star"> </span>
+        <span class="register__form__field__star"> </span>
         <input
           class="register__form__field__input"
           id="Add_NickName"
@@ -168,7 +168,7 @@
         <span class="theme-txt-errorMsg">{{ errorNickname }}</span>
       </div>
       <div class="register__form__field register__form__field--code">
-        <span class="ui-txt-star register__form__field__star">*</span>
+        <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input register__form__field__input--captcha"
           id="Add_CaptchaValue"
@@ -189,8 +189,9 @@
     </div>
     <div class="register__notice">
       <ol class="register__notice__ol">
-        <li>
-          Remark with<span class="ui-txt-star">*</span>are required items, please be sure to fill in them correctly.
+        <li class="register__notice__ol__li">
+          Remark with <span class="register__notice__ol__li__star">*</span>
+          are required items, please be sure to fill in them correctly.
         </li>
         <li>
           Customer who knows our website through our client introduction, please kindly write the referee code at
@@ -295,6 +296,7 @@ export default {
   position: absolute;
   top: 20px;
   left: -25px;
+  color: #cfa972;
 }
 .register__form__field__input {
   width: 465px;
@@ -332,5 +334,8 @@ export default {
 .register__notice__ol {
   margin: 50px 10px 0;
   font-size: 2.153em;
+}
+.register__notice__ol__li__star {
+  color: #cfa972;
 }
 </style>
