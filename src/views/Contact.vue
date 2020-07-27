@@ -8,7 +8,12 @@
           </a>
         </li>
         <li class="contact__content__ul__li" v-if="contact.facebook.isActive">
-          <a :href="contact.facebook.link" target="_blank" class="contact__content__ul__li__link contact__content__ul__li__link--facebook">Facebook</a>
+          <a
+            :href="contact.facebook.link"
+            target="_blank"
+            class="contact__content__ul__li__link contact__content__ul__li__link--facebook"
+            >Facebook</a
+          >
         </li>
         <li class="contact__content__ul__li" v-if="contact.mobile.isActive">
           <a
@@ -20,14 +25,21 @@
           >
           <transition name="fade">
             <div class="contact__content__ul__li__block--tel" v-if="isShowMobileTelephones">
-              <a class="contact__content__ul__li__link--tel" :href="`tel:${tel}`" v-for="tel in contact.mobile.telephones" :key="tel">
+              <a
+                class="contact__content__ul__li__link--tel"
+                :href="`tel:${tel}`"
+                v-for="tel in contact.mobile.telephones"
+                :key="tel"
+              >
                 {{ tel }}
               </a>
             </div>
           </transition>
         </li>
         <li class="contact__content__ul__li" v-if="contact.skype.isActive">
-          <a :href="contact.skype.link" class="contact__content__ul__li__link contact__content__ul__li__link--skype">Skype</a>
+          <a :href="contact.skype.link" class="contact__content__ul__li__link contact__content__ul__li__link--skype"
+            >Skype</a
+          >
         </li>
         <!-- <li class="contact__content__ul__li">
           <a href="javascript:;" class="contact__content__ul__li__link contact__content__ul__li__link--qq">QQ</a>
@@ -38,10 +50,16 @@
           </div>
         </li> -->
         <li class="contact__content__ul__li" v-if="contact.line.isActive">
-          <a :href="contact.line.link" class="contact__content__ul__li__link contact__content__ul__li__link--line">{{ contact.line.name }}</a>
+          <a :href="contact.line.link" class="contact__content__ul__li__link contact__content__ul__li__link--line">{{
+            contact.line.name
+          }}</a>
         </li>
         <li class="contact__content__ul__li" v-if="contact.wechat.isActive">
-          <a :href="contact.wechat.link" class="contact__content__ul__li__link contact__content__ul__li__link--wechat">{{ contact.wechat.name }}</a>
+          <a
+            :href="contact.wechat.link"
+            class="contact__content__ul__li__link contact__content__ul__li__link--wechat"
+            >{{ contact.wechat.name }}</a
+          >
         </li>
       </ul>
     </div>
@@ -151,7 +169,6 @@ export default {
   word-break: break-all;
 }
 
-
 .contact__content__ul__li__block--qq,
 .contact__content__ul__li__block--skype,
 .contact__content__ul__li__block--tel {
@@ -175,7 +192,7 @@ export default {
 }
 
 /*
- * 圖片
+ * 共用圖片
 */
 
 .contact__content__ul__li__link--online {
@@ -205,5 +222,4 @@ export default {
 .contact__content__ul__li__link--facebook {
   background-image: url(~@/assets/common/imgs/main/FacebookBg.png);
 }
-
 </style>
