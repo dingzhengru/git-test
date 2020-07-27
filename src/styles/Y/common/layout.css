@@ -337,7 +337,6 @@ body {
 }
 .ui-li-tabs {
   display: inline-block;
-  *display: inline;
   zoom: 1;
   background: no-repeat center top;
   border-right: 1px dotted #fff;
@@ -406,8 +405,8 @@ body {
 }
 
 /* slotgame-jackpot */
-.ui-txt-jackpot-count {
-  font-size: 42px;
+/* .ui-txt-jackpot-count { */
+  /* font-size: 42px;
   font-family: Arial Black, sans-serif;
   font-weight: bold;
   color: #fffefe;
@@ -417,16 +416,17 @@ body {
     to bottom,
     #989898 0%,
     #ffffff 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  background-clip: text;
+  );  */
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  /* background-clip: text;
   -webkit-text-fill-color: transparent;
   position: absolute;
   left: 246px;
-  top: 3px;
-}
+  top: 3px; */
+/* } */
 
 /* ul-supply */
-.ui-ul-supply {
+/* .ui-ul-supply {
   width: 100%;
   padding: 11px 0;
   text-align: center;
@@ -435,28 +435,28 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-}
-.ui-li-supply,
+} */
+/* .ui-li-supply,
 .ui-li-supply-active {
   margin: 0 21px;
   background-position: center top;
   background-repeat: no-repeat;
-}
-.ui-lnk-supply {
+} */
+/* .ui-lnk-supply {
   min-width: 74px;
   display: block;
   padding: 56px 0 0 0;
   font-size: 22px;
   color: #92a0c0;
   text-align: center;
-}
-.ui-li-supply-active > .ui-lnk-supply {
+} */
+/* .ui-li-supply-active > .ui-lnk-supply {
   color: #ffbebc;
   text-shadow: 0px 0px 8px #ff1c59;
-}
+} */
 
 /* ul-category */
-.ui-ul-category {
+/* .ui-ul-category {
   width: 100%;
   padding: 0 15px;
   white-space: nowrap;
@@ -464,23 +464,23 @@ body {
   bottom: 0;
   left: 0;
   overflow: auto;
-}
-.ui-li-category {
+} */
+/* .ui-li-category {
   font-size: 24px;
   white-space: nowrap;
-}
-.ui-ul-category li:last-child {
+} */
+/* .ui-ul-category li:last-child {
   padding-right: 20px;
-}
+} */
 /*! 不同處 .ui-li-category-active > .ui-lnk-category: color  */
 /* .ui-li-category-active > .ui-lnk-category { color: #ff5962;} */
 /*! 不同處 .ui-lnk-category: color  */
-.ui-lnk-category {
+/* .ui-lnk-category {
   display: block;
   padding: 0 15px;
   line-height: 74px;
-}
-.ui-ipt-inquire {
+} */
+/* .ui-ipt-inquire {
   width: 302px;
   background-size: cover;
   -webkit-background-size: cover;
@@ -492,7 +492,7 @@ body {
   border: 0;
   text-indent: 20px;
   outline: none;
-}
+} */
 .ui-lnk-inquire {
   top: 19px;
   left: 280px;
@@ -503,7 +503,7 @@ body {
   text-indent: -9999px;
   outline: none;
 }
-.ui-ipt-favorites {
+/* .ui-ipt-favorites {
   width: 85px;
   height: 65px;
   margin: 0 0 0 85px;
@@ -511,8 +511,8 @@ body {
   text-indent: -9999px;
   border: 0;
   outline: none;
-}
-.ui-ipt-favorites-txt {
+} */
+/* .ui-ipt-favorites-txt {
   display: none;
   color: #a6312e;
   font-size: 24px;
@@ -522,8 +522,8 @@ body {
   top: 36px;
   letter-spacing: -0.5px;
   cursor: pointer;
-}
-.ui-lnk-transferNow {
+} */
+/* .ui-lnk-transferNow {
   float: right;
   vertical-align: top;
   width: 133px;
@@ -533,7 +533,7 @@ body {
   font-size: 30px;
   letter-spacing: 1px;
   padding: 22px 0 0 50px;
-}
+} */
 /*==================================================================================================================*/
 /*                                                      Theme                                                        */
 /*===================================================================================================================*/
