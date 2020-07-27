@@ -2,124 +2,88 @@
   <form class="deposit" @submit.prevent="submitDeposit">
     <div class="deposit__main theme-content-box">
       <h3 class="theme-h3-boxTitle deposit__main__title">Fill in Cash Voucher</h3>
-      <div class="theme-input-box deposit__main__select">
-        <span class="theme-input-header deposit__main__select__header">Select Desposit Bank</span>
-        <select class="ui-ddl" v-model="bankDesposit">
-          <option :value="{}" selected>Select Desposit Bank</option>
-          <option :value="bank" v-for="bank in bankDespositList" :key="bank.value">
-            {{ bank.name }}
-          </option>
-        </select>
 
-        <div class="theme-input-box deposit__main__info">
-          <template v-for="(value, key, index) in bankDesposit">
-            <span class="theme-input-header deposit__main__info__header" :key="index" v-if="key != 'value'">{{
-              key
-            }}</span>
-            <p class="deposit__main__info__text" id="txt_BankName" :key="index" v-if="key != 'value'">{{ value }}</p>
-          </template>
-        </div>
-        <div class="theme-input-box deposit__main__select">
-          <span class="theme-input-header">Bank Transfer</span>
-          <select class="ui-ddl ddl-transferBank" v-model="bankTransfer">
-            <option :value="{}" selected>please choose your payment bank.</option>
-            <option :value="bank" v-for="bank in bankTransferList" :key="bank.value">
+      <div class="theme-input-box deposit__main__field" v-for="field in fieldList" :key="field.name">
+        <span class="theme-input-header deposit__main__field__header">{{ field.title }}</span>
+
+        <template v-if="field.name == 'bankDeposit'">
+          <select class="deposit__main__field__select ui-ddl" v-model="bankDeposit">
+            <option :value="{}" selected>Select Deposit Bank</option>
+            <option :value="bank" v-for="bank in bankDepositList" :key="bank.value">
               {{ bank.name }}
             </option>
           </select>
-        </div>
-        <div class="theme-input-box deposit__main__select">
-          <span class="theme-input-header">Deposit Time</span>
-          <input
-            class="ui-ipt ui-ipt-date ipt-deposit-date"
-            id="Date_Add_Pay_Method02"
-            type="datetime-local"
-            v-model="datetime"
-          />
-          <!-- <select class="ui-ddl ddl-hour" v-model="hour">
-            <option value="" selected>Hour</option>
-            <option :value="h" v-for="h in 24" :key="h">{{ h >= 10 ? h : '0' + h }}</option>
+          <template v-for="(value, key) in bankDeposit">
+            <span class="deposit__main__field__info__header theme-input-header" :key="key" v-if="key != 'value'">
+              {{ key }}
+            </span>
+            <p class="deposit__main__field__info__text" :key="value" v-if="key != 'value'">{{ value }}</p>
+          </template>
+        </template>
+
+        <template v-if="field.name == 'bankTransfer'">
+          <select class="deposit__main__field__select ui-ddl" v-model="bankDeposit">
+            <option :value="{}" selected>Select Deposit Bank</option>
+            <option :value="bank" v-for="bank in bankDepositList" :key="bank.value">
+              {{ bank.name }}
+            </option>
           </select>
-          <select class="ui-ddl ddl-minute" v-model="minute">
-            <option value="" selected>Minute</option>
-            <option :value="m" v-for="m in 60" :key="m">{{ m >= 10 ? m : '0' + m }}</option>
-          </select> -->
+        </template>
 
-          <div class="theme-input-box deposit__main__select">
-            <span class="theme-input-header">Deposit Method</span>
-            <select class="ui-ddl ddl-payType" id="Add_SDM_Key_Method02" v-model="method">
-              <option :value="{}">Please select</option>
-              <option :value="method" v-for="methodItem in methodList" :key="methodItem.value">
-                {{ methodItem.name }}
-              </option>
-            </select>
-          </div>
-          <div class="theme-input-box deposit__main__select">
-            <span class="theme-input-header">Deposit Amount</span>
-            <input class="ui-ipt ipt-deposit" id="Add_Pay_Money_Method02" type="number" step="0.01" v-model="amount" />
-            <p class="txt-notice">
-              Baht Maximum 100000.00 , Minimum 200.00 <br />
-              Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an
-              unsuccessful deposit. <br />
-            </p>
-          </div>
+        <template v-if="field.name == 'datetime'">
+          <input class="ui-ipt" type="datetime-local" v-model="datetime" />
+        </template>
 
-          <div class="deposit__main__select deposit__main__select--receipt-upload theme-input-box">
-            <span class="theme-input-header">Remittance Receipt</span>
-            <label class="deposit__receipt-upload__label ui-btn01 ui-btn-long" for="deposit__receipt-upload__input">
-              Upload
-              <input
-                class="deposit__receipt-upload__input "
-                id="deposit__receipt-upload__input"
-                type="file"
-                accept="image/*"
-                @change="onFileChange"
-              />
-            </label>
+        <template v-if="field.name == 'method'">
+          <select class="deposit__main__field__select ui-ddl" v-model="method">
+            <option :value="{}">Please select</option>
+            <option :value="method" v-for="methodItem in methodList" :key="methodItem.value">
+              {{ methodItem.name }}
+            </option>
+          </select>
+        </template>
 
-            <p class="txt-UploadName" id="UploadReceiptName">{{ receipt.name }}</p>
-            <input type="file" name="upfile" id="UploadReceipt" accept=".png, .jpg" style="visibility:hidden" />
-            <p class="txt-notice">
-              <br />
-              <span class="lay-txt-mask">The Format of Image Allow Only JPG / PNG</span>
-              <br />
-              <span class="lay-txt-mask">File size cannot exceed 2MB</span>
-            </p>
-          </div>
+        <template v-if="field.name == 'amount'">
+          <input class="ui-ipt" type="number" step="0.01" v-model="amount" />
+        </template>
 
-          <div class="theme-input-box deposit__main__select">
-            <span class="theme-input-header">Remark</span>
-            <input class="ui-ipt ipt-deposit" name="Add_Pay_Memo_Method02" type="text" id="Add_Pay_Memo_Method02" />
-          </div>
-          <div class="theme-input-box deposit__main__select">
-            <span class="theme-input-header">Favorable Project on Payment</span>
-            <select class="ui-ddl ddl-promType" id="Add_Activity_Method02" v-model="promotion">
-              <option :value="{}">Please select</option>
-              <option :value="promotion" v-for="promotionItem in promotionList" :key="promotionItem.value">
-                {{ promotionItem.name }}
-              </option>
-            </select>
-            <p class="txt-notice txt-notice-ps">Note: Non-selection regarded as abdication.</p>
-          </div>
-          <ol class="ui-ol-memberNotice">
-            <li>only for Bahttransaction.</li>
-            <li>Please note that the lowest and higest limiation on Deposit.</li>
-            <li>The minimum and maximum values listed above are to act as a guideline only.</li>
-            <li>
-              Please conduct deposit according to the deposit method as above, otherwise members shall bear any
-              additional expense by themselves.
-            </li>
-            <li>Members shall bear any additional expense resulted from any failure transfer or drawback occurred.</li>
-            <li>
-              It can accelerate the review procedure in case of deposit of non-integer amount.(eg. deposit amout of
-              123).
-            </li>
-            <li>
-              If you have any additional questions about your Withdrawal details ,please contact our online service.
-            </li>
-          </ol>
-        </div>
+        <template v-if="field.name == 'receipt'">
+          <label class="deposit__receipt-upload__label ui-btn01 ui-btn-long" for="deposit__receipt-upload__input">
+            Upload
+            <input
+              class="deposit__receipt-upload__input"
+              id="deposit__receipt-upload__input"
+              type="file"
+              accept=".jpg,.png"
+              @change="onFileChange"
+            />
+          </label>
+          <p class="deposit__main__field__notice deposit__main__field__notice--receipt-upload">
+            {{ receipt.name }}
+          </p>
+        </template>
+
+        <template v-if="field.name == 'remark'">
+          <input class="ui-ipt" type="text" v-model="remark" />
+        </template>
+
+        <template v-if="field.name == 'promotion'">
+          <select class="deposit__main__field__select ui-ddl" v-model="promotion">
+            <option :value="{}">Please select</option>
+            <option :value="promotion" v-for="promotionItem in promotionList" :key="promotionItem.value">
+              {{ promotionItem.name }}
+            </option>
+          </select>
+        </template>
+
+        <p class="deposit__main__field__notice" v-html="field.notice"></p>
       </div>
+
+      <ol class="ui-ol-memberNotice">
+        <li v-for="(notice, index) in memberNoticeList" :key="`memberNotice${index}`">
+          {{ notice }}
+        </li>
+      </ol>
     </div>
     <div class="deposit__button-div">
       <button class="ui-btn deposit__button-div--submit" type="submit">Submit</button>
@@ -137,7 +101,54 @@ export default {
   },
   data() {
     return {
-      bankDespositList: [
+      fieldList: [
+        {
+          name: 'bankDeposit',
+          title: 'Select Deposit Bank',
+          notice: ``,
+        },
+        {
+          name: 'bankTransfer',
+          title: 'Bank Transfer',
+          notice: ``,
+        },
+        {
+          name: 'datetime',
+          title: 'Deposit Time',
+          notice: ``,
+        },
+        {
+          name: 'method',
+          title: 'Deposit Method',
+          notice: ``,
+        },
+        {
+          name: 'amount',
+          title: 'Deposit Amount',
+          notice: `Baht Maximum 100000.00 , Minimum 200.00 <br />
+          Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful
+          deposit. <br />`,
+        },
+        {
+          name: 'receipt',
+          title: 'Remittance Receipt',
+          notice: `<br />
+          <span class="lay-txt-mask">The Format of Image Allow Only JPG / PNG</span>
+          <br />
+          <span class="lay-txt-mask">File size cannot exceed 2MB</span>`,
+        },
+        {
+          name: 'remark',
+          title: 'Remark',
+          notice: ``,
+        },
+        {
+          name: 'promotion',
+          title: 'Favorable Project on Payment',
+          notice: `Note: Non-selection regarded as abdication.`,
+        },
+      ],
+      bankDepositList: [
         {
           name: 'bank01',
           branch: 'bank branch 01',
@@ -153,7 +164,6 @@ export default {
           value: 'value 02',
         },
       ],
-      bankDesposit: {},
       bankTransferList: [
         {
           name: 'bank01',
@@ -164,11 +174,6 @@ export default {
           value: 'value 02',
         },
       ],
-      bankTransfer: {},
-      datetime: '2018-06-12T19:30',
-      date: '2020-07-15',
-      hour: '',
-      minute: '',
       methodList: [
         {
           name: 'WebATM',
@@ -191,13 +196,6 @@ export default {
           value: '19',
         },
       ],
-      method: {},
-      amount: '',
-      receipt: {
-        name: '',
-        image: '',
-      },
-      remark: '',
       promotionList: [
         {
           name: 'promotion name 01',
@@ -208,12 +206,41 @@ export default {
           value: 'promotion value 02',
         },
       ],
+      memberNoticeList: [
+        `only for Baht transaction.`,
+        `Please note that the lowest and higest limiation on Deposit.`,
+        `The minimum and maximum values listed above are to act as a guideline only.`,
+        `Please conduct deposit according to the deposit method as above, otherwise members shall bear any additional expense by themselves.`,
+        `Members shall bear any additional expense resulted from any failure transfer or drawback occurred.`,
+        `It can accelerate the review procedure in case of deposit of non-integer amount.(eg. deposit amout of 123).`,
+        `If you have any additional questions about your Withdrawal details ,please contact our online service.`,
+      ],
+      bankDeposit: {},
+      bankTransfer: {},
+      datetime: '2018-06-12T19:30',
+      method: {},
+      amount: '',
+      receipt: {
+        name: '',
+        image: '',
+      },
+      remark: '',
       promotion: {},
     };
   },
   methods: {
     submitDeposit() {
       console.log('submitDeposit');
+      console.log(`
+        bankDeposit: ${ this.bankDeposit }
+        bankTransfer: ${ this.bankTransfer }
+        datetime: ${ this.datetime }
+        method: ${ this.method }
+        amount: ${ this.amount }
+        receipt: ${ this.receipt }
+        remark: ${ this.remark }
+        promotion: ${ this.promotion }
+      `)
     },
     onFileChange(event) {
       const files = event.target.files || event.dataTransfer.files;
@@ -254,16 +281,18 @@ export default {
   margin-top: 40px;
 }
 
-.deposit__main {
-  margin-bottom: 20px;
-}
-.deposit__main__select {
+.deposit__main__field {
   margin: 20px 0;
 }
-.deposit__main__info {
+
+.deposit__main__field__select {
+  padding: 0 1.5%;
+}
+
+.deposit__main__field__info {
   margin: 20px 0;
 }
-.deposit__main__info__text {
+.deposit__main__field__info__text {
   margin: 0 0 20px;
   font-size: 2.307em;
 }
@@ -287,39 +316,15 @@ export default {
   display: none;
 }
 
-.li-paytype {
-  padding: 20px 0;
-  font-size: 2.461em;
+.deposit__main__field__notice {
+  margin: 10px 0;
+  font-size: 2.153em;
+}
+.deposit__main__field__notice--receipt-upload {
   text-align: center;
 }
-.li-paytype:last-child {
-  border-bottom: none;
-}
-.lnk-paytype {
-  display: block;
-  width: 408px;
-  height: 136px;
-  background: no-repeat;
-  margin: 0 auto 10px;
-}
 
-.li-bank {
-  padding: 20px 0;
-  font-size: 2.461em;
-  text-align: center;
-}
-.li-bank:last-child {
-  border-bottom: none;
-}
-.lnk-bank {
-  display: block;
-  width: 588px;
-  height: 137px;
-  background: no-repeat;
-  margin: 0 auto 10px;
-}
-
-.theme-input-box > .ddl-hour,
+/* .theme-input-box > .ddl-hour,
 .theme-input-box > .ddl-minute {
   min-width: auto;
   width: 310px;
@@ -328,17 +333,5 @@ export default {
 }
 .theme-input-box > .ddl-minute {
   margin-right: 0;
-}
-.txt-notice,
-.txt-UploadName {
-  margin: 10px 0;
-  font-size: 2.153em;
-}
-.txt-deposit21-paytype {
-  margin: 0 0 20px;
-  font-size: 2.307em;
-}
-.txt-UploadName {
-  text-align: center;
-}
+} */
 </style>
