@@ -19,15 +19,15 @@ body {
   border: 1px solid #d6c388;
 }
 
-.theme-supply {
-  background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
-}
-.theme-inquire {
-  background-color: #000;
-}
-.theme-list {
-  background-color: #181b23;
-}
+// .game-lobby__supply {
+//   background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
+// }
+// .game-lobby__inquire {
+//   background-color: #000;
+// }
+// .game-lobby__table {
+//   background-color: #181b23;
+// }
 
 /*
   ! 圖片路徑
@@ -184,9 +184,9 @@ body {
 //   background: url(~@/assets/#{$type}/imgs/ui/ddl_pager.jpg) no-repeat;
 // }
 
-.ui-ipt-inquire {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
-}
+// .ui-ipt-inquire {
+//   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
+// }
 // .ui-lnk-inquire {
 //   background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center no-repeat;
 // }

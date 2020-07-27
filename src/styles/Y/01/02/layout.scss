@@ -19,15 +19,15 @@ body {
 .theme-content-box {
   background: #206083;
 }
-.theme-supply {
-  background: #11516f url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
-}
-.theme-inquire {
-  background-color: #11516f;
-}
-.theme-list {
-  background-color: #1c6080;
-}
+// .game-lobby__supply {
+//   background: #11516f url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
+// }
+// .game-lobby__inquire {
+//   background-color: #11516f;
+// }
+// .game-lobby__table {
+//   background-color: #1c6080;
+// }
 
 /*
   ! 圖片路徑
@@ -263,9 +263,9 @@ body {
 // .ui-ipt-inquire {
 //   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
 // }
-.ui-ipt-inquire {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire.png) no-repeat;
-}
+// .ui-ipt-inquire {
+//   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire.png) no-repeat;
+// }
 // .ui-lnk-inquire {
 //   background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center no-repeat;
 // }

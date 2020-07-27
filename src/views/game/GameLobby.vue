@@ -1,6 +1,6 @@
 <template>
   <div class="game-lobby">
-    <div class="game-lobby__supply theme-supply">
+    <div class="game-lobby__supply">
       <ul class="game-lobby__supply__ul">
         <li
           class="game-lobby__supply__ul__li"
@@ -34,29 +34,27 @@
         </ul>
       </div>
     </div>
-    <div class="game-lobby__inquire theme-inquire">
+    <div class="game-lobby__inquire">
       <input class="game-lobby__inquire__search" type="text" v-model="search.text" placeholder="Search" />
       <button class="game-lobby__inquire__search-icon"></button>
       <input class="game-lobby__inquire__favorites" type="submit" title="My Favorites" />
       <a class="game-lobby__inquire__transfer-now" href="javascript:;">Transfer Now</a>
     </div>
-    <div class="theme-list">
-      <table class="game-lobby__table">
-        <tbody>
-          <tr class="game-lobby__table__tr" v-for="(game, index) in pageData" :key="index">
-            <td class="game-lobby__table__tr__td-1st">
-              <img class="game-lobby__table__tr__td__img" :src="game.img" />
-            </td>
-            <td class="game-lobby__table__tr__td-2nd">{{ game.name }}</td>
-            <td class="game-lobby__table__tr__td-3rd">
-              <a href="javascript:;" class="game-lobby__table__tr__td__link--start">Play Now</a>
-              <a href="javascript:;" class="game-lobby__table__tr__td__link--freeplay">Free Play</a>
-              <a href="javascript:;" class="game-lobby__table__tr__td__link--favorites">Favorites</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table class="game-lobby__table">
+      <tbody>
+        <tr class="game-lobby__table__tr" v-for="(game, index) in pageData" :key="index">
+          <td class="game-lobby__table__tr__td-1st">
+            <img class="game-lobby__table__tr__td__img" :src="game.img" />
+          </td>
+          <td class="game-lobby__table__tr__td-2nd">{{ game.name }}</td>
+          <td class="game-lobby__table__tr__td-3rd">
+            <a href="javascript:;" class="game-lobby__table__tr__td__link--start">Play Now</a>
+            <a href="javascript:;" class="game-lobby__table__tr__td__link--freeplay">Free Play</a>
+            <a href="javascript:;" class="game-lobby__table__tr__td__link--favorites">Favorites</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <AppPagination
       :length="gameList.length"
       :page="pagination.page"
@@ -218,6 +216,11 @@ export default {
 </script>
 
 <style>
+.game-lobby__supply {
+  height: 182px;
+  overflow: hidden;
+  position: relative;
+}
 .game-lobby__supply__ul {
   width: 100%;
   position: absolute;
@@ -279,6 +282,10 @@ export default {
   line-height: 74px;
 }
 
+.game-lobby__inquire {
+  position: relative;
+}
+
 .game-lobby__inquire__search {
   width: 302px;
   background-size: cover;
@@ -330,6 +337,7 @@ export default {
 .game-lobby__table {
   width: 100%;
   letter-spacing: -1px;
+  background-color: #181b23;
 }
 
 .game-lobby__table__tr__td-1st {

@@ -8,6 +8,13 @@ $type: 'Y/01/03';
   color: #ff5962;
 }
 
+.game-lobby__inquire {
+  background-color: #000;
+}
+.game-lobby__table {
+  background-color: #181b23;
+}
+
 /*
  ! 語系
 */
@@ -26,6 +33,10 @@ $type: 'Y/01/03';
 /*
   ! 圖片路徑
 */
+
+.game-lobby__supply {
+  background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
+}
 .game-lobby__inquire__search {
   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
 }

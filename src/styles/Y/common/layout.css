@@ -20,12 +20,11 @@ ul.cpn-boxzero > li {
 }
 .cpn-inBlock-row {
   letter-spacing: -0.31em;
-  *letter-spacing: normal;
+  /* letter-spacing: normal; */
 }
 .cpn-inBlock-row > .cpn-inBlock-cell,
 ul.cpn-inBlock-row > li {
   display: inline-block;
-  *display: inline;
   zoom: 1;
   letter-spacing: normal;
   word-spacing: normal;
@@ -493,7 +492,7 @@ body {
   text-indent: 20px;
   outline: none;
 } */
-.ui-lnk-inquire {
+/* .ui-lnk-inquire {
   top: 19px;
   left: 280px;
   position: absolute;
@@ -502,7 +501,7 @@ body {
   border: 0;
   text-indent: -9999px;
   outline: none;
-}
+} */
 /* .ui-ipt-favorites {
   width: 85px;
   height: 65px;
@@ -621,30 +620,30 @@ body {
 
 /* theme-slotgame + theme-livegame */
 /* .theme-slotgame-jackpot, .theme-livegame-jackpot { height: 71px; margin-bottom: 28px;} */
-.theme-jackpot {
+/* .theme-jackpot {
   height: 71px;
   margin-bottom: 28px;
-}
+} */
 
 /*! 不同處 .theme-slotgame-supply, .theme-livegame-supply: background*/
-.theme-supply {
+/* .theme-supply {
   height: 182px;
   overflow: hidden;
   position: relative;
-}
+} */
 
 /*! 不同處 .theme-slotgame-inquire, .theme-livegame-inquire: background-color*/
-.theme-inquire {
+/* .theme-inquire {
   position: relative;
-}
+} */
 
 /*! 不同處 .theme-slotgame-list, .theme-livegame-list: background-color*/
-.theme-list {
+/* .theme-list {
   width: 720px;
-}
-.theme-livegame {
+} */
+/* .theme-livegame {
   margin-top: 25px;
-}
+} */
 /*===================================================================================================================*/
 /*                                                      Layout                                                       */
 /*===================================================================================================================*/
