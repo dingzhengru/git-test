@@ -53,7 +53,7 @@
       <router-link class="login__form__link login__form__link--forget" id="forgetPwd" :to="{ name: 'ForgetPassword' }">
         GetPassword
       </router-link>
-      <button class="ui-btn01 ui-btn-long login__form__submit" id="loginbtn" type="submit" form="LoginForm">
+      <button class="ui-btn ui-btn-long login__form__submit" id="loginbtn" type="submit" form="LoginForm">
         Login
       </button>
     </form>
