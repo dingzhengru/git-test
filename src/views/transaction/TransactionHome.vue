@@ -1,8 +1,8 @@
 <template>
   <div class="transaction">
-    <ul class="ui-ul-tabs ul-tabs-deposit">
+    <ul class="ui-ul-tabs">
       <li
-        class="ui-li-tabs ui-li-tabs-deposit"
+        class="ui-li-tabs"
         :class="[
           route.class,
           { 'ui-li-tabsActive': route.link == $route.name || route.otherActivePath.includes($route.name) },
@@ -10,7 +10,7 @@
         v-for="route in transationRouteList"
         :key="route.link"
       >
-        <router-link :to="{ name: route.link }" class="ui-lnk-tabs">{{ route.name }}</router-link>
+        <router-link class="ui-lnk-tabs" :to="{ name: route.link }">{{ route.name }}</router-link>
       </li>
     </ul>
     <router-view />

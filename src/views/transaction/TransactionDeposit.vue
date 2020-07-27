@@ -1,38 +1,34 @@
 <template>
   <form class="deposit" @submit.prevent="submitDeposit">
-    <div class="theme-content-box are-bank">
-      <h3 class="theme-h3-boxTitle">Fill in Cash Voucher</h3>
-      <div class="theme-input-box are-deposit-input">
-        <span class="theme-input-header">Select Desposit Bank</span>
-
-        <select class="ui-ddl ddl-companyBank" v-model="bankDesposit">
+    <div class="deposit__main theme-content-box">
+      <h3 class="theme-h3-boxTitle deposit__main__title">Fill in Cash Voucher</h3>
+      <div class="theme-input-box deposit__main__select">
+        <span class="theme-input-header deposit__main__select__header">Select Desposit Bank</span>
+        <select class="ui-ddl" v-model="bankDesposit">
           <option :value="{}" selected>Select Desposit Bank</option>
           <option :value="bank" v-for="bank in bankDespositList" :key="bank.value">
             {{ bank.name }}
           </option>
         </select>
 
-        <div class="theme-input-box are-deposit-bankInfo">
-          <span class="theme-input-header">Bank name of deposit</span>
-          <p class="txt-bankInfo" id="txt_BankName">{{ bankDesposit.name }}</p>
-          <span class="theme-input-header Mibile_BankBrancheName">Branch Name of Bank</span>
-          <p class="txt-bankInfo Mibile_BankBrancheName" id="txt_BankBrancheName">{{ bankDesposit.branch }}</p>
-          <span class="theme-input-header">Account name of deposit</span>
-          <p class="txt-bankInfo" id="txt_BankAccountName">{{ bankDesposit.accountName }}</p>
-          <span class="theme-input-header">Account number of deposit</span>
-          <p class="txt-bankInfo" id="txt_BankAccount">{{ bankDesposit.accountNumber }}</p>
+        <div class="theme-input-box deposit__main__info">
+          <template v-for="(value, key, index) in bankDesposit">
+            <span class="theme-input-header deposit__main__info__header" :key="index" v-if="key != 'value'">{{
+              key
+            }}</span>
+            <p class="deposit__main__info__text" id="txt_BankName" :key="index" v-if="key != 'value'">{{ value }}</p>
+          </template>
         </div>
-        <div class="theme-input-box are-deposit-input">
+        <div class="theme-input-box deposit__main__select">
           <span class="theme-input-header">Bank Transfer</span>
-
-          <select class="ui-ddl ddl-transferBank" v-model="bankDesposit">
+          <select class="ui-ddl ddl-transferBank" v-model="bankTransfer">
             <option :value="{}" selected>please choose your payment bank.</option>
             <option :value="bank" v-for="bank in bankTransferList" :key="bank.value">
               {{ bank.name }}
             </option>
           </select>
         </div>
-        <div class="theme-input-box are-deposit-input">
+        <div class="theme-input-box deposit__main__select">
           <span class="theme-input-header">Deposit Time</span>
           <input
             class="ui-ipt ui-ipt-date ipt-deposit-date"
@@ -49,7 +45,7 @@
             <option :value="m" v-for="m in 60" :key="m">{{ m >= 10 ? m : '0' + m }}</option>
           </select> -->
 
-          <div class="theme-input-box are-deposit-input">
+          <div class="theme-input-box deposit__main__select">
             <span class="theme-input-header">Deposit Method</span>
             <select class="ui-ddl ddl-payType" id="Add_SDM_Key_Method02" v-model="method">
               <option :value="{}">Please select</option>
@@ -58,7 +54,7 @@
               </option>
             </select>
           </div>
-          <div class="theme-input-box are-deposit-input">
+          <div class="theme-input-box deposit__main__select">
             <span class="theme-input-header">Deposit Amount</span>
             <input class="ui-ipt ipt-deposit" id="Add_Pay_Money_Method02" type="number" step="0.01" v-model="amount" />
             <p class="txt-notice">
@@ -67,11 +63,35 @@
               unsuccessful deposit. <br />
             </p>
           </div>
-          <div class="theme-input-box are-deposit-input">
+
+          <div class="deposit__main__select deposit__main__select--receipt-upload theme-input-box">
+            <span class="theme-input-header">Remittance Receipt</span>
+            <label class="deposit__receipt-upload__label ui-btn01 ui-btn-long" for="deposit__receipt-upload__input">
+              Upload
+              <input
+                class="deposit__receipt-upload__input "
+                id="deposit__receipt-upload__input"
+                type="file"
+                accept="image/*"
+                @change="onFileChange"
+              />
+            </label>
+
+            <p class="txt-UploadName" id="UploadReceiptName">{{ receipt.name }}</p>
+            <input type="file" name="upfile" id="UploadReceipt" accept=".png, .jpg" style="visibility:hidden" />
+            <p class="txt-notice">
+              <br />
+              <span class="lay-txt-mask">The Format of Image Allow Only JPG / PNG</span>
+              <br />
+              <span class="lay-txt-mask">File size cannot exceed 2MB</span>
+            </p>
+          </div>
+
+          <div class="theme-input-box deposit__main__select">
             <span class="theme-input-header">Remark</span>
             <input class="ui-ipt ipt-deposit" name="Add_Pay_Memo_Method02" type="text" id="Add_Pay_Memo_Method02" />
           </div>
-          <div class="theme-input-box are-deposit-input">
+          <div class="theme-input-box deposit__main__select">
             <span class="theme-input-header">Favorable Project on Payment</span>
             <select class="ui-ddl ddl-promType" id="Add_Activity_Method02" v-model="promotion">
               <option :value="{}">Please select</option>
@@ -101,9 +121,9 @@
         </div>
       </div>
     </div>
-    <div class="are-control">
-      <button type="submit" class="ui-btn01 btn-send">Submit</button>
-      <router-link class="ui-btn02 btn-reset" :to="{ name: 'Home' }">Cancellation</router-link>
+    <div class="deposit__button-div">
+      <button class="ui-btn deposit__button-div--submit" type="submit">Submit</button>
+      <router-link class="ui-btn deposit__button-div--cancel" :to="{ name: 'Home' }">Cancellation</router-link>
     </div>
   </form>
 </template>
@@ -173,6 +193,10 @@ export default {
       ],
       method: {},
       amount: '',
+      receipt: {
+        name: '',
+        image: '',
+      },
       remark: '',
       promotionList: [
         {
@@ -191,6 +215,24 @@ export default {
     submitDeposit() {
       console.log('submitDeposit');
     },
+    onFileChange(event) {
+      const files = event.target.files || event.dataTransfer.files;
+      if (!files.length || files.length <= 0) {
+        return;
+      }
+      this.receipt.name = files[0].name;
+
+      //* 將圖片轉成 base64 url
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        this.receipt.image = e.target.result;
+        console.log(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    },
   },
   watch: {
     siteID: {
@@ -208,31 +250,45 @@ export default {
 </script>
 
 <style scoped>
-.are-paytype {
-  margin: 40px 0 20px;
+.deposit {
+  margin-top: 40px;
 }
-.are-bank {
-  margin: 40px 0 20px;
+
+.deposit__main {
+  margin-bottom: 20px;
 }
-/* .txt-ps {
-  color: #f00;
-} */
-.are-deposit-input {
+.deposit__main__select {
   margin: 20px 0;
 }
-.are-deposit-bankInfo {
+.deposit__main__info {
   margin: 20px 0;
 }
-.are-control {
+.deposit__main__info__text {
+  margin: 0 0 20px;
+  font-size: 2.307em;
+}
+
+.deposit__button-div {
   margin: 40px 0;
   text-align: center;
 }
-/* .reg-main > .are-paytype */
+
+.deposit__button-div--submit,
+.deposit__button-div--cancel {
+  margin: 0 10px;
+}
+
+.deposit__receipt-upload__label {
+  display: block;
+  margin: 0 auto;
+}
+
+.deposit__receipt-upload__input {
+  display: none;
+}
 
 .li-paytype {
   padding: 20px 0;
-  /* border-bottom: 1px solid #d6c388; */
-  /* color: #959595; */
   font-size: 2.461em;
   text-align: center;
 }
@@ -247,12 +303,8 @@ export default {
   margin: 0 auto 10px;
 }
 
-/* .reg-main > .are-bank */
-
 .li-bank {
   padding: 20px 0;
-  /* border-bottom: 1px solid #d6c388; */
-  /* color: #959595; */
   font-size: 2.461em;
   text-align: center;
 }
@@ -266,8 +318,6 @@ export default {
   background: no-repeat;
   margin: 0 auto 10px;
 }
-
-/* .reg-main > .are-deposit-input > */
 
 .theme-input-box > .ddl-hour,
 .theme-input-box > .ddl-minute {
@@ -291,21 +341,4 @@ export default {
 .txt-UploadName {
   text-align: center;
 }
-.btn-upload {
-  display: block;
-  width: 500px;
-  margin: 0 auto;
-}
-/* .reg-main > .are-deposit-bankInfo > */
-.txt-bankInfo {
-  margin: 0 0 20px;
-  font-size: 2.307em;
-}
-/* .reg-main > .are-control > */
-.btn-send,
-.btn-reset {
-  margin: 0 10px;
-}
-
-
 </style>

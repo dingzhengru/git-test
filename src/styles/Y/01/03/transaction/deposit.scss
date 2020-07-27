@@ -19,3 +19,12 @@ $type: 'Y/01/03';
 /*
   ! 圖片路徑
 */
+
+
+.deposit__button-div--submit {
+  background-image: url(~@/assets/common/imgs/ui/btn--yellow.jpg);
+}
+
+.deposit__button-div--cancel {
+  background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
+}
