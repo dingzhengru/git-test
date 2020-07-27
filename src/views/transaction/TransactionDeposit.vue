@@ -1,10 +1,10 @@
 <template>
   <form class="deposit" @submit.prevent="submitDeposit">
     <div class="deposit__main theme-content-box">
-      <h3 class="theme-h3-boxTitle deposit__main__title">Fill in Cash Voucher</h3>
+      <h3 class="deposit__main__title theme-h3-boxTitle">Fill in Cash Voucher</h3>
 
-      <div class="theme-input-box deposit__main__field" v-for="field in fieldList" :key="field.name">
-        <span class="theme-input-header deposit__main__field__header">{{ field.title }}</span>
+      <div class="deposit__main__field theme-input-box" v-for="field in fieldList" :key="field.name">
+        <span class="deposit__main__field__header theme-input-header">{{ field.title }}</span>
 
         <template v-if="field.name == 'bankDeposit'">
           <select class="deposit__main__field__select ui-ddl" v-model="bankDeposit">
@@ -232,15 +232,15 @@ export default {
     submitDeposit() {
       console.log('submitDeposit');
       console.log(`
-        bankDeposit: ${ this.bankDeposit }
-        bankTransfer: ${ this.bankTransfer }
-        datetime: ${ this.datetime }
-        method: ${ this.method }
-        amount: ${ this.amount }
-        receipt: ${ this.receipt }
-        remark: ${ this.remark }
-        promotion: ${ this.promotion }
-      `)
+        bankDeposit: ${this.bankDeposit}
+        bankTransfer: ${this.bankTransfer}
+        datetime: ${this.datetime}
+        method: ${this.method}
+        amount: ${this.amount}
+        receipt: ${this.receipt}
+        remark: ${this.remark}
+        promotion: ${this.promotion}
+      `);
     },
     onFileChange(event) {
       const files = event.target.files || event.dataTransfer.files;
