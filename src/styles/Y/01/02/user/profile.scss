@@ -1,8 +1,13 @@
 $type: 'Y/01/02';
 
-.ui-btn01 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn03.jpg);
+.user-profile__button--instant {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
 }
+
+.user-profile-access__button--submit {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+
 .ui-table02 tr {
   border-bottom: 1px solid #7e7e7e;
 }

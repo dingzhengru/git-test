@@ -1,28 +1,27 @@
 <template>
-  <div>
-    <div class="theme-content-box are-account">
-      <table class="ui-table02 table-account">
+  <div class="user-profile">
+    <div class="user-profile__table-div theme-content-box">
+      <table class="ui-table02">
         <tbody>
           <tr v-for="item in list" :key="item.title">
-            <th class="th-1st">{{ item.title }}</th>
-            <td class="td-2nd">{{ item.content }}</td>
+            <th>{{ item.title }}</th>
+            <td>{{ item.content }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="are-control">
-      <button type="button" class="ui-btn01 ui-btn-long btn-open" @click="instantAccess">
+    <div class="user-profile__button-div">
+      <button type="button" class="user-profile__button--instant ui-btn ui-btn-long" @click="instantAccess">
         Instant Access
       </button>
     </div>
-    <ol class="ui-ol-memberNotice">
+    <ol class="user-profile__notice ui-ol-memberNotice">
       <li v-for="notice in noticeList" :key="notice">{{ notice }}</li>
     </ol>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'UserProfileList',
   props: {
@@ -49,10 +48,10 @@ export default {
 </script>
 
 <style scoped>
-.are-account {
+.user-profile__table-div {
   margin: 40px 0;
 }
-.are-control {
+.user-profile__button-div {
   margin: 40px 0;
   text-align: center;
 }

@@ -282,7 +282,8 @@ body {
   background: url(~@/assets/#{$type}/imgs/ui/btn_transferNow.png) left center no-repeat;
 }
 .theme-content-box {
-  background: url(~@/assets/#{$type}/imgs/theme/boxBg.png);
+  // background: url(~@/assets/#{$type}/imgs/theme/boxBg.png);
+  background-color: #206083;
 }
 
 .theme-jackpot {

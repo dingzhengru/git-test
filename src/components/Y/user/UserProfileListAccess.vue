@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <div class="theme-content-box are-account2">
-      <ul class="cpn-boxzero theme-ul-dataView ul-account2">
+  <div class="user-profile-access">
+    <div class="user-profile-access__main theme-content-box">
+      <ul class="user-profile-access__main__ul theme-ul-dataView">
         <li class="theme-li-dataView" v-for="item in list" :key="item.title">
           <span class="theme-dataView-header">{{ item.title }}</span>
           <p class="theme-dataView-data">{{ item.content }}</p>
         </li>
-        <form id="formPasswordChange" @submit.prevent="changeWithdrawPassword">
+        <form class="user-profile-access__main__form" id="formPasswordChange" @submit.prevent="changeWithdrawPassword">
           <li class="theme-li-dataView">
             <span class="theme-dataView-header">取款密码(旧)</span>
             <input
-              class="ui-ipt theme-ipt-dataview ipt-account2"
+              class="ui-ipt"
               id="Add_Withdrawals_OldPassword"
               type="password"
               name="Add_Withdrawals_OldPassword"
@@ -22,7 +22,7 @@
           <li class="theme-li-dataView">
             <span class="theme-dataView-header">取款密码(新)</span>
             <input
-              class="ui-ipt theme-ipt-dataview ipt-account2"
+              class="ui-ipt"
               id="Add_Withdrawals_Password"
               type="password"
               name="Add_Withdrawals_Password"
@@ -34,7 +34,7 @@
           <li class="theme-li-dataView">
             <span class="theme-dataView-header">取款密码(确认)</span>
             <input
-              class="ui-ipt theme-ipt-dataview ipt-account2"
+              class="ui-ipt"
               id="Add_Withdrawals_CheckPassword"
               type="password"
               name="Add_Withdrawals_CheckPassword"
@@ -46,8 +46,10 @@
         </form>
       </ul>
     </div>
-    <div class="are-control">
-      <button type="submit" class="ui-btn01 ui-btn-long btn-send" form="formPasswordChange">提交</button>
+    <div class="user-profile-access__button-div">
+      <button type="submit" class="user-profile-access__button--submit ui-btn ui-btn-long" form="formPasswordChange">
+        提交
+      </button>
     </div>
   </div>
 </template>
@@ -79,11 +81,17 @@ export default {
 </script>
 
 <style scoped>
-.are-account2 {
+.user-profile-access__main {
   margin: 40px 0;
 }
 
-.are-control {
+.user-profile-access__main__ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.user-profile-access__button-div {
   margin: 40px 0;
   text-align: center;
 }
