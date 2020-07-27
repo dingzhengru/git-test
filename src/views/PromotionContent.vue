@@ -8,8 +8,10 @@
         <h3 class="promotion-content__main__content__title">{{ content.title }}</h3>
         <div class="promotion-content__main__content__desc" v-html="content.content"></div>
       </div>
-      <div class="promotion-content__main__button-group">
-        <a href="javascript:;" class="ui-btn01 ui-btn-long btn-return" @click="$router.go(-1)">Back</a>
+      <div class="promotion-content__main__button">
+        <button class="promotion-content__main__button--back ui-btn ui-btn-long" @click="$router.go(-1)">
+          Back
+        </button>
       </div>
     </div>
   </div>
@@ -98,7 +100,7 @@ export default {
 .promotion-content__main__content__desc {
   font-size: 2.307em;
 }
-.promotion-content__main__button-group {
+.promotion-content__main__button {
   text-align: center;
 }
 </style>
