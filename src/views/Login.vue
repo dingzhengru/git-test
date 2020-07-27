@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <h1 class="ui-h1-pageTitle login__title">Member Login</h1>
+    <h1 class="login__title">Member Login</h1>
     <form class="login__form" id="LoginForm" @submit.prevent="login">
       <div class="login__form__field login__form__field--account">
         <input
@@ -115,6 +115,13 @@ export default {
 <style scoped>
 .login {
   padding-bottom: 119px;
+}
+
+.login__title {
+  color: #fff;
+  font-size: 3.584em;
+  font-weight: normal;
+  text-align: center;
 }
 
 .login__form {

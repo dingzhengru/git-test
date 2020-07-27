@@ -74,29 +74,22 @@ body {
 }
 
 /* button(/a) */
+.ui-btn,
 .ui-btn01,
 .ui-btn02 {
   width: 300px;
-  background: repeat-x;
-  border: none;
+  height: 97px;
+  display: inline-block;
   color: #fff;
   font-size: 3.23em;
   text-align: center;
-  line-height: 97px;
   border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
+  border: none;
+  /* background-repeat: repeat-x; */
+  /* line-height: 97px; */
 }
 .ui-btn-long {
   width: 500px;
-}
-.ui-btn01,
-.ui-btn02 {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  color: #fff;
-  text-align: center;
 }
 
 /* dropDownList(select) */
@@ -148,7 +141,7 @@ body {
 
 /* table */
 .ui-table01 {
-  width: 100%; 
+  width: 100%;
   color: #959595;
   font-size: 2.153em;
   letter-spacing: 2px;
@@ -238,7 +231,7 @@ body {
   right: 0px;
 }
 .ui-table04 {
-  width: 100%; 
+  width: 100%;
   color: #959595;
   font-size: 2.307em;
   letter-spacing: 2px;
@@ -297,8 +290,8 @@ body {
 .ui-table05-1 th,
 .ui-table05-1 td {
   text-align: center;
-  border: 1px solid #000; 
-  color: #fff; 
+  border: 1px solid #000;
+  color: #fff;
   white-space: nowrap;
 }
 .ui-table05-1 th {
@@ -488,7 +481,7 @@ body {
   left: 280px;
   position: absolute;
   width: 53px;
-  height: 71px; 
+  height: 71px;
   border: 0;
   text-indent: -9999px;
   outline: none;
@@ -661,10 +654,10 @@ body {
   position: relative;
 }
 .i-prize {
-  display: inline-block; 
+  display: inline-block;
   width: 71px;
   height: 73px;
-  padding-top: 22px; 
+  padding-top: 22px;
   position: absolute;
   left: -18px;
 }
@@ -679,7 +672,7 @@ body {
   font-size: 36px;
   font-weight: bold;
   line-height: 52px;
-  text-indent: 8px; 
+  text-indent: 8px;
   /* background: -webkit-linear-gradient(top, #f1c579 0, #c47b00 100%); -webkit-background-clip: text;  -webkit-text-fill-color: transparent; */ /*漸層字*/
   -webkit-filter: drop-shadow(5px 1px 1px #272727);
   filter: drop-shadow(0px 1px 1px #272727);
@@ -721,7 +714,7 @@ body {
   font-size: 36px;
   font-weight: bold;
   line-height: 52px;
-  text-indent: 8px; 
+  text-indent: 8px;
   /* background: -webkit-linear-gradient(top, #f1c579 0, #c47b00 100%); -webkit-background-clip: text;  -webkit-text-fill-color: transparent; */ /*漸層字*/
   -webkit-filter: drop-shadow(5px 1px 1px #272727);
   filter: drop-shadow(0px 1px 1px #272727);

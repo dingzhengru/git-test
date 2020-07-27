@@ -182,10 +182,10 @@
       </div>
     </form>
     <div class="register__form__button">
-      <button type="submit" class="register__form_send" id="btnSubmit" form="register-form">
+      <button type="submit" class="register__form_send ui-btn" id="btnSubmit" form="register-form">
         Submit
       </button>
-      <button type="reset" class="register__form__reset" id="btnReset">Reset</button>
+      <button type="reset" class="register__form__reset ui-btn" id="btnReset">Reset</button>
     </div>
     <div class="register__notice">
       <ol class="register__notice__ol">
@@ -320,15 +320,7 @@ export default {
 
 .register__form_send,
 .register__form__reset {
-  width: 300px;
-  display: inline-block;
-  color: #fff;
-  font-size: 3.23em;
-  text-align: center;
   margin: 0 10px;
-  line-height: 97px;
-  border-radius: 10px;
-  border: none;
 }
 
 .register__notice__ol {
