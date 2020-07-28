@@ -1,7 +1,5 @@
 $type: 'Y/01/03';
 
-
-
 // .theme-colorBox {
 //   border: 2px solid #c1ae71;
 //   background: #000;
@@ -10,3 +8,6 @@ $type: 'Y/01/03';
 /*
   ! 圖片路徑
 */
+.record-content__search-form__button--search {
+  background-image: url(~@/assets/common/imgs/ui/btn--yellow.jpg);
+}

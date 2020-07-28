@@ -203,17 +203,6 @@ export default {
 
         // * 根據版型引入 css (pagination)
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
-
-        // * 取得遊戲館列表
-        // const requestDataProductList = {
-        //   DeviceType: 1,
-        // };
-        // getProductList(requestDataProductList).then(result => {
-        //   if (result.Code == 200) {
-        //     this.productList = result.RetObj;
-        //     console.log('[Product]', this.productList);
-        //   }
-        // });
       },
     },
   },
