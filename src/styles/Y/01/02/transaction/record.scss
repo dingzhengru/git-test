@@ -1,6 +1,6 @@
 $type: 'Y/01/02';
 
-.lnk-recordlist {
+.record-list__ul__li__link {
   color: #2a2a2a;
 }
 
@@ -8,6 +8,6 @@ $type: 'Y/01/02';
   ! 圖片路徑
 */
 
-.lnk-recordlist {
+.record-list__ul__li__link {
   background: url(~@/assets/#{$type}/imgs/main/lnk_recordlist.jpg) repeat-x;
 }
