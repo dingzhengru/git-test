@@ -1,9 +1,9 @@
 <template>
   <form class="transfer" @submit.prevent="submitTransfer">
-    <div class="theme-content-box are-transfer">
-      <div class="blk-transfer-select">
+    <div class="transfer__box theme-content-box">
+      <div class="transfer__wallet">
         <span>From </span>
-        <select class="ui-ddl transfer-from" id="Add_Source" v-model="from">
+        <select class="transfer__wallet__select ui-ddl" v-model="from">
           <option :value="{}" selected>Wallet</option>
           <template v-for="product in productList">
             <option :value="product.value" :key="product.name">
@@ -15,78 +15,68 @@
             </template>
           </template>
         </select>
+
         <span> To </span>
-        <select class="ui-ddl ddl-transfer-to transfer-to" id="Add_Destination" v-model="to">
+        <select class="transfer__wallet__select ui-ddl" v-model="to">
           <option :value="{}" selected>Please select</option>
           <option value="" v-for="product in toList" :key="product.name">
             {{ product.name }}
           </option>
         </select>
       </div>
-      <div class="blk-transfer-money">
-        <table class="table-transfer-money">
-          <tbody>
-            <tr>
-              <th class="th-1st">Amount</th>
-              <td class="td-2nd">
-                <input
-                  class="ipt-transfer-money"
-                  id="Add_TransferPoint"
-                  type="number"
-                  maxlength="12"
-                  size="20"
-                  step="0.01"
-                  title="Please enter the point transfer amount"
-                  v-model="amount"
-                />
-                <div class="panel-wallet-range">
-                  <vue-slider v-model="amount" v-bind="rangeOptions" @error="rangeError" @change="rangeChange">
-                    <template v-slot:dot>
-                      <img src="~@/assets/common/imgs/main/sliderPoint.png" class="custom-dot" />
-                    </template>
-                    <template v-slot:process="{}">
-                      <div class="custom-process" :style="[{ 'background-color': 'black' }]"></div>
-                    </template>
-                  </vue-slider>
-                </div>
-                <span id="sp_AddTransferPointHint">
-                  <span class="field-validation-valid" data-valmsg-for="Add_TransferPoint" data-valmsg-replace="true">
-                  </span>
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="blk-transfer-control">
-        <button type="submit" class="ui-btn01 ui-btn-long btn-transfer" id="pointtransfersubmit">
+      <table class="transfer__amount-table">
+        <tbody>
+          <tr>
+            <th class="transfer__amount-table__th-1st">Amount</th>
+            <td class="transfer__amount-table__td-2nd">
+              <input
+                class="transfer__amount-table__input"
+                type="number"
+                maxlength="12"
+                size="20"
+                step="0.01"
+                placeholder="Please enter the point transfer amount"
+                v-model="amount"
+              />
+              <div class="transfer__amount-table__range">
+                <vue-slider v-model="amount" v-bind="rangeOptions" @error="rangeError" @change="rangeChange">
+                  <template v-slot:dot>
+                    <img src="~@/assets/common/imgs/main/sliderPoint.png" class="custom-dot" />
+                  </template>
+                  <template v-slot:process>
+                    <div class="custom-process"></div>
+                  </template>
+                </vue-slider>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="transfer__button-div">
+        <button type="submit" class="transfer__button--transfer ui-btn ui-btn-long">
           Transfer
         </button>
       </div>
-      <div class="blk-transfer-control">
-        <button type="button" class="ui-btn01 ui-btn-long btn-transfer" id="GamePointBackToMain" @click="backToWallet">
+      <div class="transfer__button-div">
+        <button type="button" class="transfer__button--all-to-my-wallet ui-btn ui-btn-long" @click="backToWallet">
           All to my wallet
         </button>
       </div>
     </div>
-    <table border="0" class="table-transfer-account">
+    <table class="transfer__account-table">
       <tbody>
         <tr>
           <td colspan="2">
-            <div class="blk-transfer-control">
-              <button
-                class="ui-btn01 ui-btn-long btn-refresh lnk-reflash txt-reflash"
-                @click="reflash()"
-                id="reflashpoint"
-              >
+            <div class="transfer__button-div">
+              <button class="transfer__button--reflash ui-btn ui-btn-long" @click="reflash()">
                 Refresh
               </button>
             </div>
           </td>
         </tr>
         <tr v-for="product in productList" :key="product.name">
-          <td class="th-1st">{{ product.name }}：</td>
-          <td class="td-2nd">{{ numeral(product.amount).format('0,0.00') }}</td>
+          <td class="transfer__account-table__th-1st">{{ product.name }}：</td>
+          <td class="transfer__account-table__td-2nd">{{ numeral(product.amount).format('0,0.00') }}</td>
         </tr>
       </tbody>
     </table>
@@ -159,6 +149,7 @@ export default {
       rangeOptions: {
         min: 0,
         max: 10000,
+        tooltip: 'none',
       },
     };
   },
@@ -220,77 +211,90 @@ export default {
 </style>
 
 <style scoped>
-.transfer-from,
-.transfer-to {
+.transfer {
+  margin-top: 30px;
+}
+
+.transfer__box {
+  font-size: 2.461em;
+}
+
+.transfer__wallet {
+  padding: 20px 0;
+}
+
+.transfer__wallet__select {
+  padding: 0 1.5%;
+  font-size: 1.125em;
+}
+
+.transfer__wallet__select optgroup {
   background-color: #2e2e2e;
 }
 
-.transfer-from optgroup::before,
-.transfer-to optgroup::before {
-  content: '';
-  padding-left: 10px;
+.transfer__amount-table {
+  width: 100%;
+  margin: 20px 0;
 }
 
-.are-transfer {
-  margin-top: 30px;
-  font-size: 2.461em;
+.transfer__amount-table__th-1st,
+.transfer__amount-table__td-2nd {
+  /* padding: 3px 15px; */
+  font-weight: normal;
+  vertical-align: middle;
 }
-.table-transfer-account {
+
+.transfer__amount-table__td-2nd {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.transfer__amount-table__input {
+  display: block;
+  width: 446px;
+  height: 77px;
+  margin-bottom: 40px;
+  outline: none;
+  text-align: center;
+  line-height: 77px;
+}
+
+.transfer__button-div {
+  padding: 20px 0;
+}
+
+.transfer__button-div button {
+  font-size: 2.5rem;
+  display: block;
+  margin: 0 auto;
+}
+/*
+ * Table
+*/
+
+.transfer__account-table {
   width: 100%;
   margin: 40px auto;
-  /* border: 1px solid #d6c388; */
 }
-/* .table-transfer-account tr {
-  border-bottom: 1px solid #d6c388;
-} */
-.table-transfer-account th,
-.table-transfer-account td {
+.transfer__account-table__th-1st,
+.transfer__account-table__td-2nd {
   padding: 10px;
 }
-.table-transfer-account .th-1st {
-  /* color: #959595; */
+.transfer__account-table__th-1st {
   font-size: 2.5em;
   font-weight: normal;
   text-align: left;
 }
-.table-transfer-account .td-2nd {
+.transfer__account-table__td-2nd {
   font-size: 2.769em;
   text-align: right;
-}
-/* .reg-main > .are-transfer > */
-.are-transfer .ui-ddl {
-  font-size: 1.125em;
-}
-.are-transfer .ui-btn01 {
-  font-size: 1.312em;
-}
-.blk-transfer-select {
-  padding: 20px 0;
-  /* border-bottom: 1px solid #d6c388; */
-}
-.blk-transfer-control {
-  padding: 20px 0;
-  /* border-top: 1px solid #d6c388; */
-}
-/* .reg-main > .are-transfer > .blk-transfer-money > */
-.table-transfer-money {
-  width: 100%;
-  margin: 20px 0;
-}
-.table-transfer-money th,
-.table-transfer-money td {
-  padding: 3px 15px;
-}
-.table-transfer-money .th-1st {
-  font-weight: normal;
-  vertical-align: middle;
 }
 
 /*
  * Range
 */
 
-.panel-wallet-range {
+.transfer__amount-table__range {
   width: 448px;
 }
 
@@ -305,37 +309,16 @@ export default {
   position: relative;
   left: 0px;
   top: -8px;
-  background-image: url(~@/assets/common/imgs/main/sliderBar.png) !important;
+  background-image: url(~@/assets/common/imgs/main/sliderBar.png);
   background-repeat: no-repeat;
-}
-
-.ipt-transfer-money {
-  display: block;
-  width: 446px;
-  height: 77px;
-  margin: 40px auto 20px;
-  outline: none;
-  text-align: center;
-  line-height: 77px;
-}
-/* .reg-main > .are-transfer > .blk-transfer-control > */
-.btn-transfer {
-  display: block;
-  margin: 0 auto;
-}
-.btn-refresh {
-  display: block;
-  margin: 0 auto;
-  /* background-image: url(imgs/header/btn_logout.jpg); */
-  background-size: contain;
-  /* color: #000; */
+  background-position: center;
 }
 
 /*
  * 語系
 */
 
-.en-us .blk-transfer-select {
+.en-us .transfer__wallet {
   font-size: 28px;
 }
 </style>
