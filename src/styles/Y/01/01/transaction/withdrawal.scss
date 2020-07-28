@@ -1,8 +1,15 @@
 $type: 'Y/01/01';
 
-.hightlightMsg {
+.withdrawal__light-message {
   color: #ffff00;
 }
 /*
   ! 圖片路徑
 */
+
+.withdrawal__ul__li__button {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+.withdrawal__button-div__submit {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}

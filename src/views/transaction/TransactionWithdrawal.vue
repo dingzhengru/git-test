@@ -1,57 +1,55 @@
 <template>
-  <form class="withdraw" @submit.prevent="submitWithdrawal">
-    <ul class="theme-content-box are-withdrawal">
-      <li class="theme-li-dataView" v-for="item in accountInfoList" :key="item.name">
-        <span class="theme-dataView-header">{{ item.title }}</span>
-        <p class="theme-dataView-data" v-if="item.content">{{ item.content }}</p>
+  <form class="withdrawal" @submit.prevent="submitWithdrawal">
+    <ul class="withdrawal__ul theme-content-box">
+      <li class="withdrawal__ul__li theme-li-dataView" v-for="item in accountInfoList" :key="item.name">
+        <span class="withdrawal__ul__li__title theme-dataView-header">{{ item.title }}</span>
+        <p class="withdrawal__ul__li__content theme-dataView-data" v-if="item.content">
+          {{ typeof item.content == 'number' ? numeral(item.content).format('0,0.00')  : item.content }}
+        </p>
 
-        <div v-if="item.name == 'balance'">
+        <template v-if="item.name == 'balance'">
           <button
             type="button"
-            class="ui-btn01 ui-btn-long btn-transferBack"
+            class="withdrawal__ul__li__button ui-btn ui-btn-long"
             id="GamePointBackToMain"
             @click="allGamePointBackToMain"
           >
             All to my wallet
           </button>
-        </div>
+        </template>
 
-        <div v-if="item.name == 'amount'">
+        <template v-if="item.name == 'amount'">
           <input
-            class="ui-ipt theme-ipt-dataview ipt-withdrawal"
-            id="Add_WithdrswalsPoint"
+            class="withdrawal__ul__li__input ui-ipt theme-ipt-dataview"
             type="number"
-            name="Add_WithdrswalsPoint"
             maxlength="12"
             size="20"
             step="0.01"
-            title="Please enter amount of withdrawal"
+            placeholder="Please enter amount of withdrawal"
             v-model="amount"
           />
-        </div>
+        </template>
 
-        <div v-if="item.name == 'password'">
+        <template v-if="item.name == 'password'">
           <input
-            class="ui-ipt theme-ipt-dataview ipt-withdrawal"
-            id="Add_Withdrawals_Password"
+            class="withdrawal__ul__li__input ui-ipt theme-ipt-dataview"
             type="password"
-            name="Add_Withdrawals_Password"
             size="20"
-            title="Please enter your passwords"
+            placeholder="Please enter your password"
           />
           <div class="theme-errorMsg" v-if="errorPassword">
             <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
           </div>
-        </div>
+        </template>
       </li>
     </ul>
-    <div class="hightlightMsg">
+    <div class="withdrawal__light-message">
       For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount 500 THB
     </div>
-    <div class="are-control">
-      <button type="submit" class="ui-btn01 ui-btn-long btn-send" id="Withdrawals">Submit</button>
+    <div class="withdrawal__button-div">
+      <button type="submit" class="withdrawal__button-div__submit ui-btn ui-btn-long" id="Withdrawals">Submit</button>
     </div>
-    <ol class="ui-ol-memberNotice">
+    <ol class="withdrawal__notice ui-ol-memberNotice">
       <li>If you have any additional questions about your account details ,please contact our online service.</li>
     </ol>
   </form>
@@ -59,6 +57,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import numeral from 'numeral';
 export default {
   name: 'TransactionWithdrawal',
   computed: {
@@ -66,6 +65,8 @@ export default {
   },
   data() {
     return {
+      numeral: numeral,
+
       errorPassword: '',
       accountInfoList: [
         {
@@ -81,7 +82,7 @@ export default {
         {
           name: 'balance',
           title: 'Wallet balance',
-          content: '0.00',
+          content: 10710,
         },
         {
           name: 'amount',
@@ -142,21 +143,20 @@ export default {
 </script>
 
 <style scoped>
-/* .reg-main > */
-.are-withdrawal {
+.withdrawal {
   margin: 40px 0;
 }
-.are-control {
-  margin: 40px 0;
-  text-align: center;
-}
-/* .reg-main > .are-withdrawal > */
-.btn-transferBack {
+.withdrawal__ul__li__button {
   display: block;
   margin: 0 auto;
 }
 
-.hightlightMsg {
+.withdrawal__button-div {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.withdrawal__light-message {
   font-size: 2em;
 }
 </style>

@@ -4,7 +4,7 @@
       <h3 class="deposit__main__title theme-h3-boxTitle">Fill in Cash Voucher</h3>
 
       <div class="deposit__main__field theme-input-box" v-for="field in fieldList" :key="field.name">
-        <span class="deposit__main__field__header theme-input-header">{{ field.title }}</span>
+        <span class="deposit__main__field__title theme-input-header">{{ field.title }}</span>
 
         <template v-if="field.name == 'bankDeposit'">
           <select class="deposit__main__field__select ui-ddl" v-model="bankDeposit">
