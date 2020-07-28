@@ -1,19 +1,82 @@
 <template>
   <div>
-    <TransactionRecordDetailList :list="list" :title="title" />
+    <div class="record-detail">
+      <div class="theme-content-box">
+        <h3 class="theme-h3-boxTitle">{{ title }}</h3>
+
+        <ul class="record-detail__ol theme-ul-listView">
+          <li class="record-detail__ol__li theme-li-listView" v-for="item in list" :key="item.id">
+            <table class="record-detail__table ui-table02">
+              <tbody>
+                <tr v-for="(value, key, index) in item" :key="index">
+                  <template v-if="!notShowKeyList.includes(key)">
+                    <th class="record-detail__table__th-1st th-1st">{{ key }}</th>
+                    <td
+                      class="record-detail__table__td-2nd td-2nd"
+                      :class="{
+                        'ui-txt-positive': isPositive(key, value, item),
+                        'ui-txt-negative': isNegative(key, value, item),
+                      }"
+                    >
+                      <template v-if="typeof value == 'number'">
+                        {{ numeral(value).format('0,0.00') }}
+                      </template>
+
+                      <template v-else>
+                        {{ value }}
+                      </template>
+                    </td>
+                  </template>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+        </ul>
+      </div>
+      <div class="record-detail__button-div">
+        <button
+          type="button"
+          class="record-detail__button--return ui-btn ui-btn-long"
+          @click="$router.push({ name: 'TransactionRecordContent', params: { name: $route.params.name } })"
+        >
+          Previous
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import numeral from 'numeral';
+
 export default {
   name: 'TransactionRecordDetail',
-  components: {
-    TransactionRecordDetailList: () => import('@/components/Y/transaction/record/TransactionRecordDetailList'),
+  computed: {
+    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss', 'resourceUrl']),
+    isPositive: () => (key, value) => {
+      return (
+        (key == 'rollinOfPoints' && value >= 0) ||
+        (key == 'rollinOfPoints' && value >= 0) ||
+        (key == 'rolloutOfPoints' && value >= 0) ||
+        (key == 'bonusIssue' && value >= 0)
+      );
+    },
+    isNegative: () => (key, value) => {
+      return (
+        (key == 'rollinOfPoints' && value < 0) ||
+        (key == 'rollinOfPoints' && value < 0) ||
+        (key == 'rolloutOfPoints' && value < 0) ||
+        (key == 'bonusIssue' && value < 0)
+      );
+    },
   },
   data() {
     return {
+      numeral: numeral,
       list: [],
       title: '',
+      notShowKeyList: ['id'],
     };
   },
   mounted() {
@@ -90,7 +153,43 @@ export default {
       }
     }
   },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
+
+        // * 根據版型引入 css
+        import(`@/styles/${this.siteFullCss}/transaction/record-detail.scss`);
+      },
+    },
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.record-detail {
+  margin: 30px 0;
+}
+
+.record-detail__ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.record-detail__table__th-1st {
+  width: 45%;
+  word-break: break-word;
+}
+.record-detail__table__td-2nd {
+  white-space: nowrap;
+  text-align: right;
+}
+.record-detail__button-div {
+  margin: 40px 0 20px;
+  text-align: center;
+}
+</style>
