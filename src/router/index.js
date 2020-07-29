@@ -132,6 +132,11 @@ const routes = [
         name: 'ReportBetRecord',
         component: () => import('@/views/report/ReportBetRecord'),
       },
+      {
+        path: 'bet-record/:date',
+        name: 'ReportBetRecordDetail',
+        component: () => import('@/views/report/ReportBetRecordDetail'),
+      },
     ],
   },
   {

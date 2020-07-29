@@ -1,4 +1,5 @@
 /* #layout@common */
+
 /*===================================================================================================================*/
 /*                                                    Component                                                      */
 /*===================================================================================================================*/
@@ -397,15 +398,15 @@ body {
   color: #f00;
 }
 .ui-txt-negative {
-  color: #ff0000;
+  color: #ff0000 !important;
 }
 .ui-txt-positive {
-  color: #32b16c;
+  color: #0b8140 !important;
 }
 
 /* slotgame-jackpot */
 /* .ui-txt-jackpot-count { */
-  /* font-size: 42px;
+/* font-size: 42px;
   font-family: Arial Black, sans-serif;
   font-weight: bold;
   color: #fffefe;
@@ -416,8 +417,8 @@ body {
     #989898 0%,
     #ffffff 100%
   );  */
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  /* background-clip: text;
+/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/* background-clip: text;
   -webkit-text-fill-color: transparent;
   position: absolute;
   left: 246px;

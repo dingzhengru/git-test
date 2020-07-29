@@ -5,7 +5,9 @@
         <tbody>
           <tr v-for="(value, key) in item" :key="key">
             <th class="th-1st">{{ key }}</th>
-            <td class="td-2nd">{{ value }}</td>
+            <td class="td-2nd">
+              {{ typeof value == 'number' && key != 'betCount' ? numeral(value).format('0,0.00') : value }}
+            </td>
           </tr>
         </tbody>
       </table>

@@ -27,7 +27,7 @@ import { getLang, getToken } from '@/utils/cookie';
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
 const cssVersion = '01';
-const cssType = '01';
+const cssType = '03';
 store.commit('site/setCssClass', cssClass);
 store.commit('site/setCssVersion', cssVersion);
 store.commit('site/setCssType', cssType);
