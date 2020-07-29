@@ -1,16 +1,17 @@
 import axios from 'axios';
-import settings from '@/settings';
+import { API_URL } from '@/settings';
 
-const API_URL = settings.API_URL;
+export async function getTokenAndPublicKey() {
+  const result = await axios.post(API_URL + '/siteinfo/Token');
+  return result.data;
+}
 
+export async function login(data) {
+  const result = await axios.post(API_URL + '/Member/LoginIn', data);
+  return result.data;
+}
 
-
-export async function getUserInfo(data) {
-  const res = await axios.post(API_URL + '/', data);
-
-  if (res) {
-    return res.data;
-  }
-
-  return {};
+export async function logout() {
+  const result = await axios.post(API_URL + '/Member/LogOut');
+  return result.data;
 }

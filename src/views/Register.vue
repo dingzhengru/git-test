@@ -4,9 +4,7 @@
       <div class="register__form__field register__form__field--recommend">
         <input
           class="register__form__field__input"
-          id="Add_RelatedAccount"
           type="text"
-          name="Add_RelatedAccount"
           placeholder="Refferrer"
           size="20"
         />
@@ -16,9 +14,7 @@
         <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
-          id="Add_Account"
           type="text"
-          name="Add_Account"
           placeholder="Account No."
           maxlength="11"
           size="20"
@@ -32,9 +28,7 @@
         <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
-          id="Add_Password"
           type="password"
-          name="Add_Password"
           placeholder="Password"
           size="20"
           title="Please enter your passwords"
@@ -47,9 +41,7 @@
         <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
-          id="Add_PasswordCheck"
           type="password"
-          name="Add_PasswordCheck"
           placeholder="Confirm Password"
           size="20"
           title="Please reconfirm your passwords"
@@ -62,9 +54,7 @@
         <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
-          id="Add_Mobile"
           type="tel"
-          name="Add_Mobile"
           placeholder="Mobile number"
           maxlength="20"
           size="20"
@@ -82,9 +72,7 @@
         <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
-          id="Add_Email"
           type="text"
-          name="Add_Email"
           placeholder="E-mail"
           maxlength="50"
           size="20"
@@ -101,9 +89,7 @@
         <span class="register__form__field__star"></span>
         <input
           class="register__form__field__input"
-          id="Add_Line"
           type="text"
-          name="Add_Line"
           placeholder="ID LINE"
           maxlength="50"
           size="20"
@@ -120,9 +106,7 @@
         <span class="register__form__field__star"> * </span>
         <input
           class="register__form__field__input"
-          id="Add_FirstName"
           type="text"
-          name="Add_FirstName"
           placeholder="First Name"
           maxlength="70"
           size="20"
@@ -136,9 +120,7 @@
         <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input"
-          id="Add_LastName"
           type="text"
-          name="Add_LastName"
           placeholder="Last Name"
           maxlength="70"
           size="20"
@@ -155,9 +137,7 @@
         <span class="register__form__field__star"> </span>
         <input
           class="register__form__field__input"
-          id="Add_NickName"
           type="text"
-          name="Add_NickName"
           placeholder="Nickname"
           maxlength="70"
           size="20"
@@ -171,9 +151,7 @@
         <span class="register__form__field__star">*</span>
         <input
           class="register__form__field__input register__form__field__input--captcha"
-          id="Add_CaptchaValue"
           type="tel"
-          name="CaptchaValue"
           placeholder="Captcha"
         />
       </div>

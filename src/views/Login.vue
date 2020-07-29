@@ -1,5 +1,8 @@
 <template>
   <div class="login">
+    <div class="theme-errorMsg" v-if="error">
+      <span class="theme-txt-errorMsg">{{ error }}</span>
+    </div>
     <h1 class="login__title">Member Login</h1>
     <form class="login__form" id="LoginForm" @submit.prevent="login">
       <div class="login__form__field login__form__field--account">
@@ -9,7 +12,7 @@
           type="text"
           tabindex="1"
           placeholder="Account"
-          v-model="user.username"
+          v-model="user.UserName"
         />
       </div>
       <div class="login__form__field login__form__field--password">
@@ -19,7 +22,7 @@
           type="password"
           tabindex="2"
           placeholder="Password"
-          v-model="user.password"
+          v-model="user.Password"
         />
       </div>
       <div class="login__form__field login__form__field--code">
@@ -31,7 +34,7 @@
           placeholder="Captcha"
           maxlength="4"
           autocomplete="off"
-          v-model="user.captcha"
+          v-model="user.CaptchaValue"
         />
         <img
           class="login__form__field__image--code"
@@ -44,7 +47,13 @@
         />
       </div>
       <div class="login__form__field login__form__field--remember-me">
-        <input class="login__form__field__checkbox" id="RememberMe" tabindex="4" type="checkbox" />
+        <input
+          class="login__form__field__checkbox"
+          id="RememberMe"
+          tabindex="4"
+          type="checkbox"
+          v-model="user.RememberMe"
+        />
         <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">Remember Me</label>
       </div>
       <router-link class="login__form__link login__form__link--regist" id="register" :to="{ name: 'Register' }">
@@ -70,10 +79,12 @@ export default {
   },
   data() {
     return {
+      error: '',
       user: {
-        username: '',
-        password: '',
-        captcha: '',
+        UserName: 'ding',
+        Password: 'asdf1234',
+        CaptchaValue: '',
+        RememberMe: false,
       },
       captchaImage: {
         Width: 147,
@@ -84,8 +95,8 @@ export default {
   },
   methods: {
     async login() {
-      const token = await this.$store.dispatch('user/login', this.user);
-      console.log(`[token]`, token);
+      console.log('[login]', this.user);
+      this.error = await this.$store.dispatch('user/login', this.user);
     },
   },
   mounted() {

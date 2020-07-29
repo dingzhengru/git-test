@@ -7,6 +7,7 @@ import store from './store';
 Vue.config.productionTip = false;
 
 import './routerPermission'; //* 路徑權限
+import '@/api/interceptors.js'; //* 攔截器
 
 import '../node_modules/normalize.css/normalize.css'; // ^3.0.2
 import '@/styles/Y/common/layout.css';
@@ -19,13 +20,14 @@ import VueScrollTo from 'vue-scrollto';
 Vue.use(VueScrollTo);
 
 import { getSiteInfo } from '@/api/site';
+import { getTokenAndPublicKey } from '@/api/user';
 import { getLang, getToken } from '@/utils/cookie';
 // import { DEFAULT_LANG } from '@/settings';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
 const cssVersion = '01';
-const cssType = '03';
+const cssType = '01';
 store.commit('site/setCssClass', cssClass);
 store.commit('site/setCssVersion', cssVersion);
 store.commit('site/setCssType', cssType);
@@ -33,9 +35,15 @@ store.commit('site/setCssType', cssType);
 //* 取得語系 => 存進 store.state.lang
 // const browserLang = navigator.language || navigator.userLanguage;
 const lang = getLang();
-if(lang) {
+if (lang) {
   store.commit('setLang', lang);
 }
+
+//* 取得公鑰
+getTokenAndPublicKey().then(result => {
+  store.commit('user/setAnonymousToken', result.RetObj.token);
+  store.commit('user/setPublicKey', result.RetObj.publickey);
+});
 
 //* 用 token 判斷是否登入，並取使用者資料
 const token = getToken();
@@ -66,7 +74,7 @@ getSiteInfo(requestData)
     store.commit('site/setMainDomain', siteInfo.LS_MainDomain);
     store.commit('site/setRemoteCSSUrl', siteInfo.RemoteCSSUrls);
 
-    if(!store.getters.lang) {
+    if (!store.getters.lang) {
       // *當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
       store.commit('setLang', getLang());
     }

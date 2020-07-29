@@ -5,7 +5,7 @@ const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localho
 const DEFAULT_LANG = 'th-th';
 
 // 需加密的 API
-const CRYPTO_API_LIST = [];
+const CRYPTO_API_LIST = ['Member/LoginIn'];
 
 // 需要登入才能進入的 route name(利用 beforeEach & store.getters.token)
 const AUTH_ROUTE_LIST = ['UserProfile'];

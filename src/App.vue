@@ -67,6 +67,8 @@ export default {
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
+
+    
   },
   methods: {
     changeLang(lang) {
@@ -109,7 +111,7 @@ export default {
         import(`@/styles/${this.siteFullCss}/footer.scss`);
 
         // * 使用 siteInfo 拼湊 logo url
-        this.logo = `${this.resourceUrl}/imgs/header/logo.png`;        
+        this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
 
         // * 取得語系列表
         getLangList().then(result => {

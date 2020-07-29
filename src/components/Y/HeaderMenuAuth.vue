@@ -103,11 +103,11 @@ export default {
         },
         {
           name: 'Report',
-          link: 'Home',
+          link: 'ReportHome',
         },
         {
           name: 'Latest News',
-          link: 'Home',
+          link: 'NotificationHome',
         },
         {
           name: 'Promotions',

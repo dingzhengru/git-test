@@ -114,6 +114,53 @@ const routes = [
     ],
   },
   {
+    path: '/report',
+    component: () => import('@/views/report/ReportHome'),
+    children: [
+      {
+        path: '',
+        name: 'ReportHome',
+        redirect: { name: 'ReportUnsettleBet' },
+      },
+      {
+        path: 'unsettle-bet',
+        name: 'ReportUnsettleBet',
+        component: () => import('@/views/report/ReportUnsettleBet'),
+      },
+      {
+        path: 'bet-record',
+        name: 'ReportBetRecord',
+        component: () => import('@/views/report/ReportBetRecord'),
+      },
+    ],
+  },
+  {
+    path: '/notification',
+    component: () => import('@/views/notification/NotificationHome'),
+    children: [
+      {
+        path: '',
+        name: 'NotificationHome',
+        redirect: { name: 'NotificationNews' },
+      },
+      {
+        path: 'news',
+        name: 'NotificationNews',
+        component: () => import('@/views/notification/NotificationNews'),
+      },
+      {
+        path: 'chat',
+        name: 'NotificationChat',
+        component: () => import('@/views/notification/NotificationChat'),
+      },
+      {
+        path: 'outbox',
+        name: 'NotificationOutbox',
+        component: () => import('@/views/notification/NotificationOutbox'),
+      },
+    ],
+  },
+  {
     path: '/promotion',
     component: BlankLayout,
     children: [
