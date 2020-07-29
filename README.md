@@ -10,6 +10,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [登入方式](#登入方式)
   - [取得網站資訊不同步，將處理放置 watch](#取得網站資訊不同步將處理放置-watch)
   - [optgroup 的前面空格，無法實現](#optgroup-的前面空格無法實現)
+  - [notification 的 nav 圖片大小不同](#notification-的-nav-圖片大小不同)
 - [Library](#library)
   - [axios](#axios)
   - [jsencrypt](#jsencrypt)
@@ -47,6 +48,9 @@ watch: {
 ### optgroup 的前面空格，無法實現
 於 transaction/transfer 中
 
+
+### notification 的 nav 圖片大小不同
+starbets 的圖片大小跟其他不同，造成位置不同
 
 
 
