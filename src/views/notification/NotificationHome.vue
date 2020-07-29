@@ -26,7 +26,7 @@ export default {
         },
         {
           name: 'Outbox',
-          link: 'NotificationOutobx',
+          link: 'NotificationOutbox',
           class: 'ui-li-tabs-sendmail',
         },
       ],
