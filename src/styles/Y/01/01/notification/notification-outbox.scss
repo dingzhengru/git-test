@@ -3,3 +3,10 @@ $type: 'Y/01/01';
 /*
   ! 圖片路徑
 */
+.notification-outbox__button--submit {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+
+.notification-outbox__button--cancel {
+  background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
+}
