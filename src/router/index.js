@@ -159,6 +159,11 @@ const routes = [
         component: () => import('@/views/notification/NotificationChat'),
       },
       {
+        path: 'chat/:id',
+        name: 'NotificationChatDetail',
+        component: () => import('@/views/notification/NotificationChatDetail'),
+      },
+      {
         path: 'outbox',
         name: 'NotificationOutbox',
         component: () => import('@/views/notification/NotificationOutbox'),

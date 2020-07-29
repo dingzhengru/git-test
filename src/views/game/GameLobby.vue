@@ -66,12 +66,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import AppPagination from '@/components/Y/AppPagination';
 
 export default {
   name: 'GameList',
   components: {
-    AppPagination,
+    AppPagination: () => import('@/components/Y/AppPagination'),
   },
   computed: {
     ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
