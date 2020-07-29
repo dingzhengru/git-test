@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'ReportHome',
   components: {
@@ -19,11 +18,13 @@ export default {
           name: 'Unsettled Betting',
           link: 'ReportUnsettleBet',
           class: 'ui-li-tabs-uns',
+          otherActivePath: [],
         },
         {
           name: 'Betting Records',
           link: 'ReportBetRecord',
           class: 'ui-li-tabs-bethistory',
+          otherActivePath: [],
         },
       ],
     };

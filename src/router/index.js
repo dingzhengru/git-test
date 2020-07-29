@@ -159,7 +159,7 @@ const routes = [
         component: () => import('@/views/notification/NotificationChat'),
       },
       {
-        path: 'chat/:id',
+        path: 'chat/group/:group',
         name: 'NotificationChatDetail',
         component: () => import('@/views/notification/NotificationChatDetail'),
       },

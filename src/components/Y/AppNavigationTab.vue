@@ -2,7 +2,7 @@
   <ul class="ui-ul-tabs">
     <li
       class="ui-li-tabs"
-      :class="[route.class, { 'ui-li-tabsActive': route.link == $route.name }]"
+      :class="[route.class, { 'ui-li-tabsActive': route.link == $route.name || (route.otherActivePath && route.otherActivePath.includes($route.name))  }]"
       v-for="route in list"
       :key="route.name"
     >

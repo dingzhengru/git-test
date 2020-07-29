@@ -6,7 +6,7 @@
           <td class="td-1st">{{ item.date }}</td>
           <td class="td-2nd">
             {{ item.title }}
-            <router-link class="ui-lnk-detail" :to="{ name: 'NotificationChatDetail', params: { id: item.id } }" />
+            <router-link class="ui-lnk-detail" :to="{ name: 'NotificationChatDetail', params: { group: item.group } }" />
           </td>
         </tr>
       </tbody>
@@ -42,11 +42,13 @@ export default {
       list: [
         {
           id: '111',
+          group: 'group-id11111',
           date: '2020-07-29',
           title: '[R][R][R]test',
         },
         {
           id: '000',
+          group: 'group-id00000',
           date: '2020-07-29',
           title: '[R]ttestt',
         },
