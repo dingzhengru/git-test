@@ -26,7 +26,7 @@
       <button class="notification-outbox__button--submit ui-btn" type="submit" form="notification-outbox-form">
         Submit
       </button>
-      <button class="notification-outbox__button--cancel ui-btn">
+      <button class="notification-outbox__button--cancel ui-btn" @click="$router.go(-1)">
         Cancellation
       </button>
     </div>

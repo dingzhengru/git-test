@@ -1,15 +1,6 @@
 <template>
   <div class="user">
-    <ul class="ui-ul-tabs ul-tabs-account">
-      <li
-        class="ui-li-tabs"
-        :class="[route.class, { 'ui-li-tabsActive': route.link == $route.name }]"
-        v-for="route in userRouteList"
-        :key="route.link"
-      >
-        <router-link :to="{ name: route.link }" class="ui-lnk-tabs">{{ route.name }}</router-link>
-      </li>
-    </ul>
+    <AppNavigationTab :list="routeList" />
     <router-view />
   </div>
 </template>
@@ -17,18 +8,23 @@
 <script>
 export default {
   name: 'UserHome',
+  components: {
+    AppNavigationTab: () => import('@/components/Y/AppNavigationTab'),
+  },
   data() {
     return {
-      userRouteList: [
+      routeList: [
         {
           name: 'Personal Info',
           link: 'UserProfile',
           class: 'ui-li-tabs-account',
+          otherActivePath: [],
         },
         {
           name: 'Password',
           link: 'UserChangePassword',
           class: 'ui-li-tabs-password',
+          otherActivePath: [],
         },
       ],
     };
