@@ -1,3 +1,10 @@
 {
-  "message": "hello i18n !!"
+  "header": {},
+  "footer": {
+    "member": "Member Center",
+    "login": "Log in / Register",
+    "transaction": "Cashier",
+    "promotion": "Promotions",
+    "contact": "Online Customer"
+  }
 }

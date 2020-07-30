@@ -13,6 +13,10 @@
       @logout="logout"
     ></AppHeader>
 
+    <div class="main">
+      <router-view />
+    </div>
+
     <AppFooter :isLoggedIn="isLoggedIn"></AppFooter>
 
     <div class="Box" id="alertbox" v-if="isShowAlertBox && alertMessageList">
@@ -139,4 +143,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

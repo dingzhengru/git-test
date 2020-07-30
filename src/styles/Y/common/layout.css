@@ -1,5 +1,14 @@
 /* #layout@common */
 
+html,
+body,
+footer {
+  max-width: 720px;
+  /* margin: 0 auto; */
+  color: #fff;
+  font: 13px 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
+}
+
 /*===================================================================================================================*/
 /*                                                    Component                                                      */
 /*===================================================================================================================*/
@@ -49,13 +58,6 @@ ul.cpn-inBlock-row > li {
 /*                                                        UI                                                         */
 /*===================================================================================================================*/
 /* tag */
-/*
-  ! 不同處 body: background 
-*/
-body {
-  color: #fff;
-  font: 13px 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
-}
 
 /* input */
 .ui-ipt {

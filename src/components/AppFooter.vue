@@ -10,7 +10,9 @@
         v-for="item in list"
         :key="item.name"
       >
-        <router-link :to="{ name: item.link }" class="footer__ul__li__link">{{ item.name }}</router-link>
+        <router-link :to="{ name: item.link }" class="footer__ul__li__link">
+          {{ $t(item.name) }}
+        </router-link>
       </li>
     </ul>
   </footer>
@@ -36,25 +38,25 @@ export default {
       list: [],
       noAuthList: [
         {
-          name: 'Member Center',
+          name: 'footer.member',
           link: 'UserProfile',
           class: 'footer__ul__li--member',
           otherActivePath: [],
         },
         {
-          name: 'Log in / Register',
+          name: 'footer.login',
           link: 'Login',
           class: 'footer__ul__li--regist',
           otherActivePath: ['Register'],
         },
         {
-          name: 'Promotions',
+          name: 'footer.promotion',
           link: 'Promotion',
           class: 'footer__ul__li--event',
           otherActivePath: ['PromotionContent'],
         },
         {
-          name: 'Online Customer',
+          name: 'footer.contact',
           link: 'Contact',
           class: 'footer__ul__li--service',
           otherActivePath: [],
@@ -62,13 +64,13 @@ export default {
       ],
       authList: [
         {
-          name: 'Member Center',
+          name: 'footer.member',
           link: 'UserProfile',
           class: 'footer__ul__li--member',
           otherActivePath: ['UserChangePassword'],
         },
         {
-          name: 'Cashier',
+          name: 'footer.transaction',
           link: 'TransactionDeposit',
           class: 'footer__ul__li--transaction',
           otherActivePath: [
@@ -80,13 +82,13 @@ export default {
           ],
         },
         {
-          name: 'Promotions',
+          name: 'footer.promotion',
           link: 'Promotion',
           class: 'footer__ul__li--event',
           otherActivePath: ['PromotionContent'],
         },
         {
-          name: 'Online Customer',
+          name: 'footer.contact',
           link: 'Contact',
           class: 'footer__ul__li--service',
           otherActivePath: [],
