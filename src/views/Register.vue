@@ -2,25 +2,27 @@
   <div class="register">
     <form class="register__form" id="register-form" @submit.prevent="register">
       <div class="register__form__field" v-for="field in fieldList" :key="field.name">
-        <div class="register__form__field__input-div" :class="[field.class]">
-          <span class="register__form__field__star" v-if="field.isRequired">*</span>
-          <input
-            class="register__form__field__input"
-            :type="field.type"
-            :placeholder="$t(field.placeholder)"
-            :required="field.isRequired"
-            :minlength="field.minlength"
-            :maxlength="field.maxlength"
-            :pattern="field.regex"
-            v-model="field.value"
-          />
-        </div>
-        <div class="register__form__field__hint">
-          {{ $t(field.hint) }}
-        </div>
-        <div class="theme-errorMsg" v-if="field.error">
-          <span class="theme-txt-errorMsg">{{ field.error }}</span>
-        </div>
+        <template v-if="field.isShow">
+          <div class="register__form__field__input-div" :class="[field.class]">
+            <span class="register__form__field__star" v-if="field.isRequired">*</span>
+            <input
+              class="register__form__field__input"
+              :type="field.type"
+              :placeholder="$t(field.placeholder)"
+              :required="field.isRequired"
+              :minlength="field.minlength"
+              :maxlength="field.maxlength"
+              :pattern="field.regex"
+              v-model="field.value"
+            />
+          </div>
+          <div class="register__form__field__hint">
+            {{ $t(field.hint) }}
+          </div>
+          <div class="theme-errorMsg" v-if="field.error">
+            <span class="theme-txt-errorMsg">{{ field.error }}</span>
+          </div>
+        </template>
       </div>
     </form>
     <div class="register__form__button-div">
@@ -65,6 +67,7 @@ export default {
           minlength: 1,
           maxlength: 20,
           value: '',
+          isShow: true,
         },
         {
           name: 'account',
@@ -78,6 +81,7 @@ export default {
           maxlength: 20,
           regex: '^[a-zA-Z]{1}[a-zA-Z0-9]*$', //* 英文字母開頭、英數字、長度: 3~15
           value: '',
+          isShow: true,
         },
         {
           name: 'password',
@@ -91,6 +95,7 @@ export default {
           maxlength: 20,
           regex: '^[a-zA-Z0-9]*$', //* 英數字、長度: 6~20
           value: '',
+          isShow: true,
         },
         {
           name: 'passwordCheck',
@@ -104,6 +109,7 @@ export default {
           maxlength: 20,
           regex: '^[a-zA-Z0-9]*$', //* 英數字、長度: 6~20
           value: '',
+          isShow: true,
         },
         {
           name: 'mobile',
@@ -117,6 +123,7 @@ export default {
           maxlength: 20,
           regex: '^[0-9]*$', //* 英數字、長度: 5~20
           value: '',
+          isShow: true,
         },
         {
           name: 'email',
@@ -130,6 +137,7 @@ export default {
           maxlength: 50,
           regex: '\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*', //* email regex，需有 @ 與後面要有 .
           value: '',
+          isShow: true,
         },
         {
           name: 'line',
@@ -142,6 +150,7 @@ export default {
           minlength: 0,
           maxlength: 50,
           value: '',
+          isShow: true,
         },
         {
           name: 'firstName',
@@ -155,6 +164,7 @@ export default {
           maxlength: 20,
           regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
           value: '',
+          isShow: true,
         },
         {
           name: 'lastName',
@@ -168,6 +178,7 @@ export default {
           maxlength: 20,
           regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
           value: '',
+          isShow: true,
         },
         {
           name: 'nickname',
@@ -180,6 +191,7 @@ export default {
           minlength: 1,
           maxlength: 20,
           value: '',
+          isShow: true,
         },
         {
           name: 'captcha',
@@ -192,6 +204,7 @@ export default {
           minlength: 4,
           maxlength: 4,
           value: '',
+          isShow: true,
         },
       ],
       noticeList: ['register.notice.required', 'register.notice.recommend', 'register.notice.contact'],
