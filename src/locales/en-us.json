@@ -1,5 +1,20 @@
 {
-  "header": {},
+  "header": {
+    "menu": {
+      "profile": "Profile",
+      "transaction": "Trade Center",
+      "report": "Report",
+      "notification": "Latest News",
+      "promotion": "Promotions",
+      "about": "About us"
+    },
+    "user": {
+      "username": "Username",
+      "total": "Total",
+      "vip": "Bonus VIP level",
+      "roll": "rolling"
+    }
+  },
   "footer": {
     "member": "Member Center",
     "login": "Log in / Register",

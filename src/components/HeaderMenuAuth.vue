@@ -1,13 +1,12 @@
 <template>
   <div class="header-menu-auth">
     <div class="header-menu-auth__member">
-      <div class="header-menu-auth__member__div header-menu-auth__member__div--left">
-        <span class="header-menu-auth__member__text">Username：{{ account || 'ding' }}</span> <br />
-        <span class="header-menu-auth__member__text">Bonus VIP level：{{ level || 0 }}</span>
-      </div>
-      <div class="header-menu-auth__member__div header-menu-auth__member__div--right">
-        <span class="header-menu-auth__member__text">Total：{{ pointAmount || '0.00' }}</span> <br />
-        <span class="header-menu-auth__member__text">Rolling：{{ washcodeAmount || '0.00' }}</span>
+      <div class="header-menu-auth__member__block" v-for="infoKey in userInfoKeyList" :key="infoKey">
+        {{ $t(infoKey) }}：
+        <template v-if="infoKey == 'header.user.username'">{{ username }}</template>
+        <template v-else-if="infoKey == 'header.user.total'">{{ total }}</template>
+        <template v-else-if="infoKey == 'header.user.vip'">{{ vip }}</template>
+        <template v-else-if="infoKey == 'header.user.roll'">{{ roll }}</template>
       </div>
     </div>
     <a
@@ -26,7 +25,7 @@
             @click="isShowMenu = false"
           >
             <router-link class="header-menu-auth__menu__route-ul__li__link" :to="{ name: route.link }">
-              {{ route.name }}
+              {{ $t(route.name) }}
             </router-link>
           </li>
         </ul>
@@ -36,16 +35,20 @@
             v-for="langItem in langList"
             :key="langItem.Lst_Locales_Code"
           >
-            <li class="header-menu-auth__menu__lang-ul__li" @click="changeLang(langItem.Lst_Locales_Code)" v-if="langItem.Lst_Is_Enable">
+            <li
+              class="header-menu-auth__menu__lang-ul__li"
+              @click="changeLang(langItem.Lst_Locales_Code)"
+              v-if="langItem.Lst_Is_Enable"
+            >
               <a
                 href="javascript:;"
                 class="header-menu-auth__menu__lang-ul__li__link"
                 :class="{
-                  'tw': langItem.Lst_Locales_Code == 'zh-cn',
-                  'cn': langItem.Lst_Locales_Code == 'zh-cn',
-                  'th': langItem.Lst_Locales_Code == 'th-th',
-                  'en': langItem.Lst_Locales_Code == 'en-us',
-                  'mm': langItem.Lst_Locales_Code == 'my-mm',
+                  tw: langItem.Lst_Locales_Code == 'zh-cn',
+                  cn: langItem.Lst_Locales_Code == 'zh-cn',
+                  th: langItem.Lst_Locales_Code == 'th-th',
+                  en: langItem.Lst_Locales_Code == 'en-us',
+                  mm: langItem.Lst_Locales_Code == 'my-mm',
                 }"
                 @click="isShowMenu = false"
               >
@@ -72,21 +75,21 @@ export default {
       type: String,
       default: () => '',
     },
-    account: {
+    username: {
       type: String,
       default: () => '',
     },
-    pointAmount: {
+    total: {
       type: Number,
-      default: () => '',
+      default: () => 0,
     },
-    level: {
+    vip: {
       type: Number,
-      default: () => '',
+      default: () => 0,
     },
-    washcodeAmount: {
+    roll: {
       type: Number,
-      default: () => '',
+      default: () => 0,
     },
   },
   data() {
@@ -94,29 +97,35 @@ export default {
       isShowMenu: false,
       routeList: [
         {
-          name: 'Profile',
+          name: 'header.menu.profile',
           link: 'UserProfile',
         },
         {
-          name: 'Trade Center',
+          name: 'header.menu.transaction',
           link: 'TransactionDeposit',
         },
         {
-          name: 'Report',
+          name: 'header.menu.report',
           link: 'ReportHome',
         },
         {
-          name: 'Latest News',
+          name: 'header.menu.notification',
           link: 'NotificationHome',
         },
         {
-          name: 'Promotions',
+          name: 'header.menu.promotion',
           link: 'Promotion',
         },
         {
-          name: 'About us',
+          name: 'header.menu.about',
           link: 'About',
         },
+      ],
+      userInfoKeyList: [
+        'header.user.username',
+        'header.user.total',
+        'header.user.vip',
+        'header.user.roll',
       ],
     };
   },
@@ -170,19 +179,28 @@ export default {
   z-index: 2;
 }
 
-.header-menu-auth__member__div {
+.header-menu-auth__member__block {
+  width: 50%;
+  display: inline-block;
+}
+
+.header-menu-auth__member__block:nth-child(even) {
+  text-align: right;
+}
+
+/* .header-menu-auth__member__div {
   max-width: 55%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+} */
 
-.header-menu-auth__member__div--left {
+/* .header-menu-auth__member__div--left {
   float: left;
-}
-.header-menu-auth__member__div--right {
+} */
+/* .header-menu-auth__member__div--right {
   float: right;
-}
+} */
 
 .header-menu-auth__member__text--vip {
   color: #d2ac3e;

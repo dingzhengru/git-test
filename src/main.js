@@ -56,10 +56,10 @@ store.commit('user/setIsLoggedIn', isLoggedIn);
 if (isLoggedIn) {
   // * 取得使用者資料，並放置進 store.user
   store.commit('user/setIsAccessed', true); // * 設置是否已開通
-  store.commit('user/setAccount', 'ding0101');
-  store.commit('user/setPointAmount', 1.23);
-  store.commit('user/setLevel', 123);
-  store.commit('user/setWashcodeAmount', 4.56);
+  store.commit('user/setUsername', 'ding0101');
+  store.commit('user/setTotal', 1.23);
+  store.commit('user/setVip', 123);
+  store.commit('user/setRoll', 4.56);
 }
 
 //* 取得 site info => 存進 store.state.site

@@ -9,10 +9,10 @@
       v-if="isLoggedIn"
       :langList="langList"
       :lang="lang"
-      :account="account"
-      :pointAmount="pointAmount"
-      :level="level"
-      :washcodeAmount="washcodeAmount"
+      :username="username"
+      :total="total"
+      :vip="vip"
+      :roll="roll"
       @changeLang="changeLang"
       @logout="logout"
     ></HeaderMenuAuth>
@@ -45,21 +45,21 @@ export default {
       type: String,
       default: () => '',
     },
-    account: {
+    username: {
       type: String,
       default: () => '',
     },
-    pointAmount: {
+    total: {
       type: Number,
-      default: () => '',
+      default: () => 0,
     },
-    level: {
+    vip: {
       type: Number,
-      default: () => '',
+      default: () => 0,
     },
-    washcodeAmount: {
+    roll: {
       type: Number,
-      default: () => '',
+      default: () => 0,
     },
   },
   data() {

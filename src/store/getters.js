@@ -17,9 +17,9 @@ const getters = {
   token: state => state.user.token,
   publicKey: state => state.user.publicKey,
   isAccessed: state => state.user.isAccessed,
-  account: state => state.user.account,
-  pointAmount: state => state.user.pointAmount,
-  level: state => state.user.level,
-  washcodeAmount: state => state.user.washcodeAmount,
+  username: state => state.user.username,
+  total: state => state.user.total,
+  vip: state => state.user.vip,
+  roll: state => state.user.roll,
 };
 export default getters;

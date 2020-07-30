@@ -7,10 +7,10 @@ const state = {
   token: null,
   publicKey: null,
   isAccessed: false,
-  account: null, // 用戶名
-  pointAmount: null,
-  level: null,
-  washcodeAmount: null,
+  username: null, // 用戶名
+  total: null,
+  vip: null,
+  roll: null,
 };
 
 const mutations = {
@@ -27,17 +27,17 @@ const mutations = {
   setIsAccessed(state, isAccessed) {
     state.isAccessed = isAccessed;
   },
-  setAccount(state, account) {
-    state.account = account;
+  setUsername(state, username) {
+    state.username = username;
   },
-  setPointAmount(state, pointAmount) {
-    state.pointAmount = pointAmount;
+  setTotal(state, total) {
+    state.total = total;
   },
-  setLevel(state, level) {
-    state.level = level;
+  setVip(state, vip) {
+    state.vip = vip;
   },
-  setWashcodeAmount(state, washcodeAmount) {
-    state.washcodeAmount = washcodeAmount;
+  setRoll(state, roll) {
+    state.roll = roll;
   },
 };
 

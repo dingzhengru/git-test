@@ -5,10 +5,10 @@
       :langList="langList"
       :lang="lang"
       :logo="logo"
-      :account="account"
-      :pointAmount="pointAmount"
-      :level="level"
-      :washcodeAmount="washcodeAmount"
+      :username="username"
+      :total="total"
+      :vip="vip"
+      :roll="roll"
       @changeLang="changeLang"
       @logout="logout"
     ></AppHeader>
@@ -49,10 +49,10 @@ export default {
       'siteID',
       'siteFullCss',
       'resourceUrl',
-      'account',
-      'pointAmount',
-      'level',
-      'washcodeAmount',
+      'username',
+      'total',
+      'vip',
+      'roll',
     ]),
   },
   data() {
@@ -67,6 +67,10 @@ export default {
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
+
+    setTimeout(() => {
+      this.$store.commit('user/setRoll', 444444);
+    }, 5000);
   },
   methods: {
     changeLang(lang) {
