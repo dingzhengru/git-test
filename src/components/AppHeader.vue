@@ -25,8 +25,8 @@
 export default {
   name: 'AppHeader',
   components: {
-    HeaderMenu: () => import('@/components/Y/HeaderMenu'),
-    HeaderMenuAuth: () => import('@/components/Y/HeaderMenuAuth'),
+    HeaderMenu: () => import('@/components/HeaderMenu'),
+    HeaderMenuAuth: () => import('@/components/HeaderMenuAuth'),
   },
   props: {
     isLoggedIn: {

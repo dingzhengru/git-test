@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'TypeYAppFooter',
+  name: 'AppFooter',
   props: {
     isLoggedIn: {
       type: Boolean,

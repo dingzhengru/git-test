@@ -27,7 +27,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'NotificationChat',
   components: {
-    AppPagination: () => import('@/components/Y/AppPagination'),
+    AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),

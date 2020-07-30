@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import BlankLayout from '@/components/BlankLayout';
+import BlankLayout from '@/components/layout/BlankLayout';
 
 Vue.use(VueRouter);
 

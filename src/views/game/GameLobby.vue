@@ -70,7 +70,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'GameList',
   components: {
-    AppPagination: () => import('@/components/Y/AppPagination'),
+    AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),

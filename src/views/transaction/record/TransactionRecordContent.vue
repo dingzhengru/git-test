@@ -18,7 +18,7 @@ import { getProductList } from '@/api/product';
 export default {
   name: 'TransactionRecordContent',
   components: {
-    TransactionRecordContentList: () => import('@/components/Y/transaction/record/TransactionRecordContentList'),
+    TransactionRecordContentList: () => import('@/components/transaction/record/TransactionRecordContentList'),
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),

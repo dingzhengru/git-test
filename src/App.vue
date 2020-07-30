@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="lang">
-    <TypeYAppHeader
+    <AppHeader
       :isLoggedIn="isLoggedIn"
       :langList="langList"
       :lang="lang"
@@ -11,13 +11,13 @@
       :washcodeAmount="washcodeAmount"
       @changeLang="changeLang"
       @logout="logout"
-    ></TypeYAppHeader>
+    ></AppHeader>
 
     <div>
       <router-view />
     </div>
 
-    <TypeYAppFooter :isLoggedIn="isLoggedIn"></TypeYAppFooter>
+    <AppFooter :isLoggedIn="isLoggedIn"></AppFooter>
 
     <div class="Box" id="alertbox" v-if="isShowAlertBox && alertMessageList">
       <div class="Boxinner">
@@ -39,8 +39,8 @@ import { getMessageList } from '@/api/alert';
 export default {
   name: 'App',
   components: {
-    TypeYAppHeader: () => import('@/components/Y/AppHeader'),
-    TypeYAppFooter: () => import('@/components/Y/AppFooter'),
+    AppHeader: () => import('@/components/AppHeader'),
+    AppFooter: () => import('@/components/AppFooter'),
   },
   computed: {
     ...mapGetters([

@@ -87,12 +87,11 @@
 
 <script>
 import numeral from 'numeral';
-import AppPagination from '../../AppPagination';
 
 export default {
   name: 'TransactionRecordContentList',
   components: {
-    AppPagination,
+    AppPagination: () => import('@/components/AppPagination'),
   },
   props: {
     list: {

@@ -17,8 +17,8 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Profile',
   components: {
-    UserProfileList: () => import('../../components/Y/user/UserProfileList'),
-    UserProfileListAccess: () => import('../../components/Y/user/UserProfileListAccess'),
+    UserProfileList: () => import('../../components/user/UserProfileList'),
+    UserProfileListAccess: () => import('../../components/user/UserProfileListAccess'),
   },
   computed: {
     ...mapGetters(['isAccessed', 'siteID', 'siteFullCss']),

@@ -12,8 +12,8 @@ import { getProductList } from '@/api/product';
 export default {
   name: 'Home',
   components: {
-    HomeSwiper: () => import('@/components/Y/home/HomeSwiper'),
-    HomeGameBlock: () => import('@/components/Y/home/HomeGameBlock'),
+    HomeSwiper: () => import('@/components/home/HomeSwiper'),
+    HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
   },
   computed: {
     ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss', 'resourceUrl']),

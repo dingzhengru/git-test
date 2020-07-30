@@ -22,7 +22,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'NotificationNews',
   components: {
-    AppPagination: () => import('@/components/Y/AppPagination'),
+    AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),

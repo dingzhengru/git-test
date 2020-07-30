@@ -9,7 +9,7 @@
 export default {
   name: 'NotificationHome',
   components: {
-    AppNavigationTab: () => import('@/components/Y/AppNavigationTab'),
+    AppNavigationTab: () => import('@/components/AppNavigationTab'),
   },
   data() {
     return {
