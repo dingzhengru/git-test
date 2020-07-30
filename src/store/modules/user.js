@@ -1,4 +1,4 @@
-// import { setToken, removeToken } from '@/utils/cookie';
+import { setIsLoggedIn } from '@/utils/cookie';
 import router from '@/router';
 import { login, logout } from '@/api/user';
 
@@ -16,10 +16,10 @@ const state = {
 const mutations = {
   setIsLoggedIn(state, isLoggedIn) {
     state.isLoggedIn = isLoggedIn;
+    setIsLoggedIn(isLoggedIn);
   },
   setToken(state, token) {
     state.token = token;
-    // setToken(token);
   },
   setPublicKey(state, publicKey) {
     state.publicKey = publicKey;
@@ -38,10 +38,6 @@ const mutations = {
   },
   setWashcodeAmount(state, washcodeAmount) {
     state.washcodeAmount = washcodeAmount;
-  },
-  removeToken() {
-    state.token = null;
-    // removeToken();
   },
 };
 
@@ -62,7 +58,6 @@ const actions = {
     await logout();
 
     commit('setIsLoggedIn', false);
-    commit('removeToken');
     window.location.replace('/login');
   },
 };

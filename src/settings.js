@@ -4,6 +4,9 @@ const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localho
 // 預設語系 (以後應該會由後端取得)
 const DEFAULT_LANG = 'th-th';
 
+// 需要 Authorization bearer token 的 API
+const AUTH_API_LIST = ['Member/LoginIn'];
+
 // 需加密的 API
 const CRYPTO_API_LIST = ['Member/LoginIn'];
 
@@ -13,10 +16,11 @@ const AUTH_ROUTE_LIST = ['UserProfile'];
 // 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
 const ACCESS_ROUTE_LIST = [];
 
-export { API_URL, DEFAULT_LANG, CRYPTO_API_LIST, AUTH_ROUTE_LIST, ACCESS_ROUTE_LIST };
+export { API_URL, DEFAULT_LANG, AUTH_API_LIST, CRYPTO_API_LIST, AUTH_ROUTE_LIST, ACCESS_ROUTE_LIST };
 export default {
   API_URL,
   DEFAULT_LANG,
+  AUTH_API_LIST,
   CRYPTO_API_LIST,
   AUTH_ROUTE_LIST,
   ACCESS_ROUTE_LIST,

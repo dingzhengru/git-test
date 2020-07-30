@@ -47,9 +47,8 @@ getTokenAndPublicKey().then(result => {
 
 //* 用 isLoggedIn 判斷是否登入
 const isLoggedIn = getIsLoggedIn();
+store.commit('user/setIsLoggedIn', isLoggedIn);
 if (isLoggedIn) {
-  store.commit('user/setIsLoggedIn', isLoggedIn);
-
   // * 取得使用者資料，並放置進 store.user
   store.commit('user/setIsAccessed', true); // * 設置是否已開通
   store.commit('user/setAccount', 'ding0101');
