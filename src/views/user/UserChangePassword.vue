@@ -71,7 +71,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'UserChangePassword',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {

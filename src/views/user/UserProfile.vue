@@ -21,7 +21,7 @@ export default {
     UserProfileListAccess: () => import('../../components/Y/user/UserProfileListAccess'),
   },
   computed: {
-    ...mapGetters(['lang', 'token', 'isAccessed', 'siteID', 'siteFullCss']),
+    ...mapGetters(['isAccessed', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -84,6 +84,13 @@ export default {
       ],
     };
   },
+  mounted() {
+    if (this.isAccessed) {
+      this.list = this.accessList;
+    } else {
+      this.list = this.noAccessList;
+    }
+  },
   methods: {
     instantAccess() {
       console.log('instantAccess');
@@ -102,16 +109,6 @@ export default {
 
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/user/profile.scss`);
-      },
-    },
-    token: {
-      immediate: true,
-      handler() {
-        if (this.isAccessed) {
-          this.list = this.accessList;
-        } else {
-          this.list = this.noAccessList;
-        }
       },
     },
   },

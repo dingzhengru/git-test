@@ -52,7 +52,7 @@ import numeral from 'numeral';
 export default {
   name: 'ReportBetRecordDetail',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
     isPositive: () => (key, value) => {
       return key == 'winLose' && value >= 0;
     },

@@ -25,7 +25,7 @@ export default {
     AppPagination: () => import('@/components/Y/AppPagination'),
   },
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
     pageData() {
       const startAt = this.pagination.pagesize * (this.pagination.page - 1);
       const endAt = startAt + this.pagination.pagesize;

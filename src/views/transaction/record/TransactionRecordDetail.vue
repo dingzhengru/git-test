@@ -53,7 +53,7 @@ import numeral from 'numeral';
 export default {
   name: 'TransactionRecordDetail',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss', 'resourceUrl']),
+    ...mapGetters(['siteID', 'siteFullCss']),
     isPositive: () => (key, value) => {
       return (
         (key == 'rollinOfPoints' && value >= 0) ||

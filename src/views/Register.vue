@@ -2,12 +2,7 @@
   <div class="register">
     <form class="register__form" id="register-form" @submit.prevent="register">
       <div class="register__form__field register__form__field--recommend">
-        <input
-          class="register__form__field__input"
-          type="text"
-          placeholder="Refferrer"
-          size="20"
-        />
+        <input class="register__form__field__input" type="text" placeholder="Refferrer" size="20" />
       </div>
       <div class="register__form__field__notice">If there is no referrer,you are not required to fill in</div>
       <div class="register__form__field register__form__field--account">
@@ -186,7 +181,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Register',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {

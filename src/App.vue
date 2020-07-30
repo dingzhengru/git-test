@@ -1,7 +1,7 @@
 <template>
   <div id="app" :class="lang">
     <TypeYAppHeader
-      :token="token"
+      :isLoggedIn="isLoggedIn"
       :langList="langList"
       :lang="lang"
       :logo="logo"
@@ -17,7 +17,7 @@
       <router-view />
     </div>
 
-    <TypeYAppFooter :token="token"></TypeYAppFooter>
+    <TypeYAppFooter :isLoggedIn="isLoggedIn"></TypeYAppFooter>
 
     <div class="Box" id="alertbox" v-if="isShowAlertBox && alertMessageList">
       <div class="Boxinner">
@@ -45,7 +45,7 @@ export default {
   computed: {
     ...mapGetters([
       'lang',
-      'token',
+      'isLoggedIn',
       'siteID',
       'siteFullCss',
       'resourceUrl',
@@ -67,8 +67,6 @@ export default {
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
-
-    
   },
   methods: {
     changeLang(lang) {

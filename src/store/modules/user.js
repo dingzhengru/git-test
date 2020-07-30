@@ -1,9 +1,9 @@
-import { setToken, removeToken } from '@/utils/cookie';
+// import { setToken, removeToken } from '@/utils/cookie';
 import router from '@/router';
 import { login, logout } from '@/api/user';
 
 const state = {
-  anonymousToken: null,
+  isLoggedIn: false,
   token: null,
   publicKey: null,
   isAccessed: false,
@@ -14,12 +14,12 @@ const state = {
 };
 
 const mutations = {
-  setAnonymousToken(state, anonymousToken) {
-    state.anonymousToken = anonymousToken;
+  setIsLoggedIn(state, isLoggedIn) {
+    state.isLoggedIn = isLoggedIn;
   },
   setToken(state, token) {
     state.token = token;
-    setToken(token);
+    // setToken(token);
   },
   setPublicKey(state, publicKey) {
     state.publicKey = publicKey;
@@ -40,7 +40,8 @@ const mutations = {
     state.washcodeAmount = washcodeAmount;
   },
   removeToken() {
-    removeToken();
+    state.token = null;
+    // removeToken();
   },
 };
 
@@ -51,8 +52,7 @@ const actions = {
     console.log('[login response]', responseData);
 
     if (responseData.Code == 200) {
-      const token = 'token-hash';
-      commit('setToken', token);
+      commit('setIsLoggedIn', true);
       router.replace({ name: 'Home' });
     } else {
       return responseData.ErrMsg;
@@ -61,6 +61,7 @@ const actions = {
   async logout({ commit }) {
     await logout();
 
+    commit('setIsLoggedIn', false);
     commit('removeToken');
     window.location.replace('/login');
   },

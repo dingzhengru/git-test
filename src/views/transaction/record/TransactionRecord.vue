@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TransactionRecord',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {

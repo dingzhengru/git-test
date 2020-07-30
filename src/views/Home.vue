@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <HomeSwiper :list="swiperList"></HomeSwiper>
-    <HomeGameBlock :list="productList" :resourceUrl="resourceUrl" :token="token"></HomeGameBlock>
+    <HomeGameBlock :list="productList" :resourceUrl="resourceUrl" :isLoggedIn="isLoggedIn"></HomeGameBlock>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     HomeGameBlock: () => import('@/components/Y/home/HomeGameBlock'),
   },
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss', 'resourceUrl']),
+    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss', 'resourceUrl']),
   },
   data() {
     return {

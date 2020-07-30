@@ -15,7 +15,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'ForgetPassword',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   watch: {
     siteID: {

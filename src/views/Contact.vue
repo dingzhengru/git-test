@@ -1,5 +1,5 @@
 <template>
-  <div class="contact" :class="{ 'contact-auth': token }">
+  <div class="contact" :class="{ 'contact-auth': isLoggedIn }">
     <div class="contact__content theme-content-box">
       <ul class="contact__content__ul">
         <li class="contact__content__ul__li" v-if="contact.service.isActive">
@@ -72,7 +72,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Contact',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
   },
   data() {
     return {

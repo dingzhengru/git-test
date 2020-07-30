@@ -1,5 +1,5 @@
 <template>
-  <div class="promotion-content" :class="{ 'promotion-content-auth': token }">
+  <div class="promotion-content" :class="{ 'promotion-content-auth': isLoggedIn }">
     <div class="promotion-content__image">
       <img class="promotion-content__image__img" :src="image" alt="" />
     </div>
@@ -23,7 +23,7 @@ import event01 from '@/assets/Y/01/01/imgs/promotion/event01.jpg';
 export default {
   name: 'PromotionContent',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
   },
   data() {
     return {

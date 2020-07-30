@@ -39,7 +39,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'NotificationOutbox',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {

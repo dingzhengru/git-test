@@ -13,7 +13,7 @@ const getters = {
     return `${state.site.remoteCSSUrl}/ContentStyle/${state.site.mainDomain}/Member/${state.site.cssClass}/${state.site.cssVersion}/2/default/css${state.site.cssType}/common`;
   },
   lang: state => state.lang,
-  anonymousToken: state => state.user.anonymousToken,
+  isLoggedIn: state => state.user.isLoggedIn,
   token: state => state.user.token,
   publicKey: state => state.user.publicKey,
   isAccessed: state => state.user.isAccessed,

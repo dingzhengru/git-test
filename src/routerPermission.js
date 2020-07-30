@@ -3,9 +3,9 @@ import store from './store';
 import { AUTH_ROUTE_LIST } from './settings';
 
 router.beforeEach((to, from, next) => {
-  const token = store.getters.token;
+  const isLoggedIn = store.getters.isLoggedIn;
   if (AUTH_ROUTE_LIST.includes(to.name)) {
-    if (!token) {
+    if (!isLoggedIn) {
       next({ name: 'Login' });
     } else {
       next();

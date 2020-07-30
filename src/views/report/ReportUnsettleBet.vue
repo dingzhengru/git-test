@@ -48,5 +48,4 @@ export default {
 .report-unsettle-bet__table {
   margin-bottom: 10px;
 }
-
 </style>

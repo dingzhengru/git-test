@@ -96,7 +96,7 @@ export default {
     VueSlider,
   },
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
     toList() {
       return this.productList.filter(item => item.name != 'Wallet');
     },

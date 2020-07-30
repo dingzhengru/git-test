@@ -73,7 +73,7 @@ export default {
     AppPagination: () => import('@/components/Y/AppPagination'),
   },
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
     searcData() {
       if (!this.search.text) {
         return this.gameList;

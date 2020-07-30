@@ -8,14 +8,14 @@
         :style="{ 'background-image': `url(${resourceUrl}/imgs/game/game${game.sGameID}.png)` }"
       >
         <router-link
-          v-if="!token"
+          v-if="!isLoggedIn"
           :to="{ name: 'About', query: { scrollTo: gameClassMap[game.sURL] } }"
           class="home-game__ul__li__link"
         >
           {{ game.Lst_Name }}
         </router-link>
         <router-link
-          v-if="token"
+          v-else
           :to="{ name: 'GameLobby', params: { type: 'gametype01' }, query: { category: 'all' } }"
           class="home-game__ul__li__link"
         >
@@ -38,9 +38,9 @@ export default {
       type: String,
       default: () => '',
     },
-    token: {
-      type: String,
-      default: () => '',
+    isLoggedIn: {
+      type: Boolean,
+      default: () => false,
     },
   },
   data() {

@@ -21,7 +21,7 @@ export default {
     TransactionRecordContentList: () => import('@/components/Y/transaction/record/TransactionRecordContentList'),
   },
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {

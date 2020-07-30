@@ -20,9 +20,9 @@
 export default {
   name: 'TypeYAppFooter',
   props: {
-    token: {
-      type: String,
-      default: () => '',
+    isLoggedIn: {
+      type: Boolean,
+      default: () => false,
     },
   },
   computed: {
@@ -95,10 +95,10 @@ export default {
     };
   },
   watch: {
-    token: {
+    isLoggedIn: {
       immediate: true,
       handler() {
-        if (this.token) {
+        if (this.isLoggedIn) {
           this.list = this.authList;
         } else {
           this.list = this.noAuthList;

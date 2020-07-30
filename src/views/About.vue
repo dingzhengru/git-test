@@ -102,6 +102,10 @@ export default {
 </script>
 
 <style scoped>
+.about {
+  margin-bottom: 160px;
+}
+
 .about__title {
   font-size: 40px;
   margin: 0;

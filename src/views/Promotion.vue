@@ -1,5 +1,5 @@
 <template>
-  <div class="promotion" :class="{ 'promotion-auth': token }">
+  <div class="promotion" :class="{ 'promotion-auth': isLoggedIn }">
     <div class="promotion__bonus">
       <a class="promotion__bonus__link" href="/Y/StaticPage/NoneLogin/?Tag=PermanentIncome">
         <i class="promotion__bonus__link__icon"></i>
@@ -20,7 +20,7 @@ import event01 from '@/assets/Y/01/01/imgs/promotion/event01.jpg';
 export default {
   name: 'Promotion',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
   },
   data() {
     return {

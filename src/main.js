@@ -21,7 +21,7 @@ Vue.use(VueScrollTo);
 
 import { getSiteInfo } from '@/api/site';
 import { getTokenAndPublicKey } from '@/api/user';
-import { getLang, getToken } from '@/utils/cookie';
+import { getLang, getIsLoggedIn } from '@/utils/cookie';
 // import { DEFAULT_LANG } from '@/settings';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
@@ -41,14 +41,14 @@ if (lang) {
 
 //* 取得公鑰
 getTokenAndPublicKey().then(result => {
-  store.commit('user/setAnonymousToken', result.RetObj.token);
+  store.commit('user/setToken', result.RetObj.token);
   store.commit('user/setPublicKey', result.RetObj.publickey);
 });
 
-//* 用 token 判斷是否登入，並取使用者資料
-const token = getToken();
-if (token) {
-  store.commit('user/setToken', token);
+//* 用 isLoggedIn 判斷是否登入
+const isLoggedIn = getIsLoggedIn();
+if (isLoggedIn) {
+  store.commit('user/setIsLoggedIn', isLoggedIn);
 
   // * 取得使用者資料，並放置進 store.user
   store.commit('user/setIsAccessed', true); // * 設置是否已開通

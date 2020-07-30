@@ -97,7 +97,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TransactionDeposit',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {

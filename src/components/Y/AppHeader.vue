@@ -4,9 +4,9 @@
       <img :src="logo" class="header__logo__img" alt="" />
     </div>
     <router-link to="/" class="cpn-inBlock header__link--home"></router-link>
-    <HeaderMenu v-if="!token" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
+    <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
     <HeaderMenuAuth
-      v-if="token"
+      v-if="isLoggedIn"
       :langList="langList"
       :lang="lang"
       :account="account"
@@ -29,9 +29,9 @@ export default {
     HeaderMenuAuth: () => import('@/components/Y/HeaderMenuAuth'),
   },
   props: {
-    token: {
-      type: String,
-      default: () => '',
+    isLoggedIn: {
+      type: Boolean,
+      default: () => false,
     },
     langList: {
       type: Array,

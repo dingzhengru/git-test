@@ -4,7 +4,7 @@
       <li class="withdrawal__ul__li theme-li-dataView" v-for="item in accountInfoList" :key="item.name">
         <span class="withdrawal__ul__li__title theme-dataView-header">{{ item.title }}</span>
         <p class="withdrawal__ul__li__content theme-dataView-data" v-if="item.content">
-          {{ typeof item.content == 'number' ? numeral(item.content).format('0,0.00')  : item.content }}
+          {{ typeof item.content == 'number' ? numeral(item.content).format('0,0.00') : item.content }}
         </p>
 
         <template v-if="item.name == 'balance'">
@@ -61,7 +61,7 @@ import numeral from 'numeral';
 export default {
   name: 'TransactionWithdrawal',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {

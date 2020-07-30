@@ -75,7 +75,7 @@ import { getCaptcha } from '@/api/captcha';
 export default {
   name: 'Login',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {

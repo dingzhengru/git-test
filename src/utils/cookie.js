@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 // import settings from '@/settings';
 
 const tokenKey = 'token';
+const isLoggedInKey = 'isLoggedIn';
 const langKey = 'lang'; //! 目前語系
 
 /**
@@ -13,6 +14,11 @@ const langKey = 'lang'; //! 目前語系
  */
 
 const tokenConfig = {
+  sameSite: 'lax',
+  expires: 1,
+};
+
+const isLoggedInConfig = {
   sameSite: 'lax',
   expires: 1,
 };
@@ -32,6 +38,18 @@ export function setToken(token) {
 
 export function removeToken() {
   return Cookies.remove(tokenKey);
+}
+
+export function getIsLoggedIn() {
+  return Cookies.get(isLoggedInKey) == 'true';
+}
+
+export function setIsLoggedIn(isLoggedIn) {
+  return Cookies.set(isLoggedInKey, isLoggedIn, isLoggedInConfig);
+}
+
+export function removeIsLoggedIn() {
+  return Cookies.remove(isLoggedInKey);
 }
 
 export function getLang() {
