@@ -19,10 +19,12 @@ import VueScrollTo from 'vue-scrollto';
 
 Vue.use(VueScrollTo);
 
+import { getLang, getIsLoggedIn } from '@/utils/cookie';
+import { i18n, loadLanguageAsync } from '@/i18n-lazy'; // 載入語言
+
+//* API
 import { getSiteInfo } from '@/api/site';
 import { getTokenAndPublicKey } from '@/api/user';
-import { getLang, getIsLoggedIn } from '@/utils/cookie';
-// import { DEFAULT_LANG } from '@/settings';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
@@ -37,6 +39,9 @@ store.commit('site/setCssType', cssType);
 const lang = getLang();
 if (lang) {
   store.commit('setLang', lang);
+  loadLanguageAsync(lang).then(result => {
+    console.log('[i18n]', 'load:', result);
+  });
 }
 
 //* 取得公鑰
@@ -76,6 +81,10 @@ getSiteInfo(requestData)
     if (!store.getters.lang) {
       // *當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
       store.commit('setLang', getLang());
+
+      loadLanguageAsync(getLang()).then(result => {
+        console.log('[i18n]', 'load:', result);
+      });
     }
   })
   .catch(() => {
@@ -85,5 +94,6 @@ getSiteInfo(requestData)
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App),
 }).$mount('#app');
