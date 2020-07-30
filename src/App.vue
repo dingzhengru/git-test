@@ -67,10 +67,6 @@ export default {
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
-
-    setTimeout(() => {
-      this.$store.commit('user/setRoll', 444444);
-    }, 5000);
   },
   methods: {
     changeLang(lang) {

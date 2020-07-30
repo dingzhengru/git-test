@@ -1,176 +1,42 @@
 <template>
   <div class="register">
     <form class="register__form" id="register-form" @submit.prevent="register">
-      <div class="register__form__field register__form__field--recommend">
-        <input class="register__form__field__input" type="text" placeholder="Refferrer" size="20" />
-      </div>
-      <div class="register__form__field__notice">If there is no referrer,you are not required to fill in</div>
-      <div class="register__form__field register__form__field--account">
-        <span class="register__form__field__star">*</span>
+      <div class="register__form__field" :class="[field.class]" v-for="field in fieldList" :key="field.name">
+        <span class="register__form__field__star" v-if="field.isRequired">*</span>
         <input
           class="register__form__field__input"
-          type="text"
-          placeholder="Account No."
-          maxlength="11"
-          size="20"
-          title="Please enter your account"
+          :type="field.type"
+          :placeholder="$t(field.placeholder)"
+          :required="field.isRequired"
+          :minlength="field.minlength"
+          :maxlength="field.maxlength"
+          :pattern="field.regex"
+          v-model="field.value"
         />
-      </div>
-      <div class="theme-errorMsg" v-if="errorAccount">
-        <span class="theme-txt-errorMsg">{{ errorAccount }}</span>
-      </div>
-      <div class="register__form__field register__form__field--password">
-        <span class="register__form__field__star">*</span>
-        <input
-          class="register__form__field__input"
-          type="password"
-          placeholder="Password"
-          size="20"
-          title="Please enter your passwords"
-        />
-      </div>
-      <div class="theme-errorMsg" v-if="errorPassword">
-        <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
-      </div>
-      <div class="register__form__field register__form__field--password blk-passwordCon">
-        <span class="register__form__field__star">*</span>
-        <input
-          class="register__form__field__input"
-          type="password"
-          placeholder="Confirm Password"
-          size="20"
-          title="Please reconfirm your passwords"
-        />
-      </div>
-      <div class="theme-errorMsg" v-if="errorPasswordCheck">
-        <span class="theme-txt-errorMsg">{{ errorPasswordCheck }}</span>
-      </div>
-      <div class="register__form__field register__form__field--callphone">
-        <span class="register__form__field__star">*</span>
-        <input
-          class="register__form__field__input"
-          type="tel"
-          placeholder="Mobile number"
-          maxlength="20"
-          size="20"
-          title="Please enter your phone number"
-        />
-      </div>
-      <div class="theme-errorMsg" v-if="errorMobile">
-        <span class="theme-txt-errorMsg">{{ errorMobile }}</span>
-      </div>
-      <div class="register__form__field__notice">
-        This is for contact channel of account and supprise preferential informing, please kindly provide the real
-        information.
-      </div>
-      <div class="register__form__field register__form__field--name">
-        <span class="register__form__field__star">*</span>
-        <input
-          class="register__form__field__input"
-          type="text"
-          placeholder="E-mail"
-          maxlength="50"
-          size="20"
-          title="Please enter your E-mail"
-        />
-      </div>
-      <div class="theme-errorMsg" v-if="errorEmail">
-        <span class="theme-txt-errorMsg">{{ errorEmail }}</span>
-      </div>
-      <div class="register__form__field__notice">
-        This is for supprise preferential informing, please kindly provide the real information.
-      </div>
-      <div class="register__form__field register__form__field--name">
-        <span class="register__form__field__star"></span>
-        <input
-          class="register__form__field__input"
-          type="text"
-          placeholder="ID LINE"
-          maxlength="50"
-          size="20"
-          title="Please enter your LINE"
-        />
-      </div>
-      <div class="theme-errorMsg" v-if="errorLine">
-        <span class="theme-txt-errorMsg">{{ errorLine }}</span>
-      </div>
-      <div class="register__form__field__notice">
-        This is for supprise preferential informing, please kindly provide the real information.
-      </div>
-      <div class="register__form__field register__form__field--name">
-        <span class="register__form__field__star"> * </span>
-        <input
-          class="register__form__field__input"
-          type="text"
-          placeholder="First Name"
-          maxlength="70"
-          size="20"
-          title="Please enter your first &amp; last name"
-        />
-      </div>
-      <div class="theme-errorMsg" v-if="errorFirstName">
-        <span class="theme-txt-errorMsg">{{ errorFirstName }}</span>
-      </div>
-      <div class="register__form__field register__form__field--name">
-        <span class="register__form__field__star">*</span>
-        <input
-          class="register__form__field__input"
-          type="text"
-          placeholder="Last Name"
-          maxlength="70"
-          size="20"
-          title="Please enter your first &amp; last name"
-        />
-      </div>
-      <div class="theme-errorMsg" v-if="errorLastName">
-        <span class="theme-txt-errorMsg">{{ errorLastName }}</span>
-      </div>
-      <div class="register__form__field__notice">
-        It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.
-      </div>
-      <div class="register__form__field register__form__field--name">
-        <span class="register__form__field__star"> </span>
-        <input
-          class="register__form__field__input"
-          type="text"
-          placeholder="Nickname"
-          maxlength="70"
-          size="20"
-          title="Please enter your nickname"
-        />
-      </div>
-      <div class="theme-errorMsg" v-if="errorNickname">
-        <span class="theme-txt-errorMsg">{{ errorNickname }}</span>
-      </div>
-      <div class="register__form__field register__form__field--code">
-        <span class="register__form__field__star">*</span>
-        <input
-          class="register__form__field__input register__form__field__input--captcha"
-          type="tel"
-          placeholder="Captcha"
-        />
-      </div>
-      <div class="theme-errorMsg" v-if="errorCaptcha">
-        <span class="theme-txt-errorMsg">{{ errorCaptcha }}</span>
+        <div class="register__form__field__hint">
+          {{ $t(field.hint) }}
+        </div>
+        <div class="theme-errorMsg" v-if="field.error">
+          <span class="theme-txt-errorMsg">{{ field.error }}</span>
+        </div>
       </div>
     </form>
     <div class="register__form__button">
-      <button type="submit" class="register__form_send ui-btn" id="btnSubmit" form="register-form">
-        Submit
+      <button type="submit" class="register__form_send ui-btn" form="register-form">
+        {{ $t('ui.button.submit') }}
       </button>
-      <button type="reset" class="register__form__reset ui-btn" id="btnReset">Reset</button>
+      <button type="reset" class="register__form__reset ui-btn" @click.prevent="resetForm">
+        {{ $t('ui.button.reset') }}
+      </button>
     </div>
     <div class="register__notice">
       <ol class="register__notice__ol">
-        <li class="register__notice__ol__li">
-          Remark with <span class="register__notice__ol__li__star">*</span>
-          are required items, please be sure to fill in them correctly.
-        </li>
-        <li>
-          Customer who knows our website through our client introduction, please kindly write the referee code at
-          referral column
-        </li>
-        <li>Any questions toward member registration, please feel free to contact our online service</li>
+        <li
+          class="register__notice__ol__li"
+          v-for="(notice, index) in noticeList"
+          :key="index"
+          v-html="$t(notice)"
+        ></li>
       </ol>
     </div>
   </div>
@@ -185,32 +51,164 @@ export default {
   },
   data() {
     return {
-      recommend: '',
-      account: '',
-      password: '',
-      passwordCheck: '',
-      mobile: '',
-      email: '',
-      line: '',
-      firstName: '',
-      lastName: '',
-      nickname: '',
-      captcha: '',
-      errorAccount: '',
-      errorPassword: '',
-      errorPasswordCheck: '',
-      errorMobile: '',
-      errorEmail: '',
-      errorLine: '',
-      errorFirstName: '',
-      errorLastName: '',
-      errorNickname: '',
-      errorCaptcha: '',
+      fieldList: [
+        {
+          name: 'recommend',
+          class: 'register__form__field--recommend',
+          type: 'text',
+          placeholder: 'register.placeholder.recommend',
+          hint: 'register.hint.recommend',
+          error: '',
+          isRequired: false,
+          minlength: 1,
+          maxlength: 20,
+          value: '',
+        },
+        {
+          name: 'account',
+          class: 'register__form__field--account',
+          type: 'text',
+          placeholder: 'register.placeholder.account',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 3,
+          maxlength: 20,
+          regex: '^[a-zA-Z]{1}[a-zA-Z0-9]*$', //* 英文字母開頭、英數字、長度: 3~15
+          value: '',
+        },
+        {
+          name: 'password',
+          class: 'register__form__field--password',
+          type: 'password',
+          placeholder: 'register.placeholder.password',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 6,
+          maxlength: 20,
+          regex: '^[a-zA-Z0-9]*$', //* 英數字、長度: 6~20
+          value: '',
+        },
+        {
+          name: 'passwordCheck',
+          class: 'register__form__field--password',
+          type: 'password',
+          placeholder: 'register.placeholder.passwordCheck',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 6,
+          maxlength: 20,
+          regex: '^[a-zA-Z0-9]*$', //* 英數字、長度: 6~20
+          value: '',
+        },
+        {
+          name: 'mobile',
+          class: 'register__form__field--callphone',
+          type: 'tel',
+          placeholder: 'register.placeholder.mobile',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 5,
+          maxlength: 20,
+          regex: '^[0-9]*$', //* 英數字、長度: 5~20
+          value: '',
+        },
+        {
+          name: 'email',
+          class: 'register__form__field--name',
+          type: 'text',
+          placeholder: 'register.placeholder.email',
+          hint: 'register.hint.email',
+          error: '',
+          isRequired: true,
+          minlength: 1,
+          maxlength: 50,
+          regex: '\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*', //* email regex，需有 @ 與後面要有 .
+          value: '',
+        },
+        {
+          name: 'line',
+          class: 'register__form__field--name',
+          type: 'text',
+          placeholder: 'register.placeholder.line',
+          hint: 'register.hint.line',
+          error: '',
+          isRequired: false,
+          minlength: 0,
+          maxlength: 50,
+          value: '',
+        },
+        {
+          name: 'firstName',
+          class: 'register__form__field--name',
+          type: 'text',
+          placeholder: 'register.placeholder.firstName',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 1,
+          maxlength: 20,
+          regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
+          value: '',
+        },
+        {
+          name: 'lastName',
+          class: 'register__form__field--name',
+          type: 'text',
+          placeholder: 'register.placeholder.lastName',
+          hint: 'register.hint.name',
+          error: '',
+          isRequired: true,
+          minlength: 1,
+          maxlength: 20,
+          regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
+          value: '',
+        },
+        {
+          name: 'nickname',
+          class: 'register__form__field--name',
+          type: 'text',
+          placeholder: 'register.placeholder.nickname',
+          hint: '',
+          error: '',
+          isRequired: false,
+          minlength: 1,
+          maxlength: 20,
+          value: '',
+        },
+        {
+          name: 'captcha',
+          class: 'register__form__field--code',
+          type: 'text',
+          placeholder: 'register.placeholder.captcha',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 4,
+          maxlength: 4,
+          value: '',
+        },
+      ],
+      noticeList: ['register.notice.required', 'register.notice.recommend', 'register.notice.contact'],
     };
   },
   methods: {
     register() {
-      console.log('register');
+      const requestData = {};
+
+      for (const field of this.fieldList) {
+        requestData[field.name] = field.value;
+      }
+
+      console.log('[register]', requestData);
+    },
+    resetForm() {
+      for (const field of this.fieldList) {
+        field.value = '';
+      }
     },
   },
   watch: {
@@ -249,17 +247,16 @@ export default {
 }
 
 .register__form__field {
-  height: 81px;
+  position: relative;
   background-repeat: no-repeat;
   margin-top: 30px;
-  padding-left: 80px;
-  position: relative;
 }
 
 .register__form__field--recommend {
   margin-top: 0;
 }
-.register__form__field__notice {
+.register__form__field__hint {
+  display: block;
   margin: 5px 0;
   font-size: 2em;
 }
@@ -276,11 +273,13 @@ export default {
   height: 64px;
   background-color: transparent;
   margin: 8px 0 9px;
-  padding: 0 3px;
+  padding-left: 80px;
+  /* padding: 0 3px; */
   border: none;
   outline: none;
   font-size: 2.5em;
 }
+
 .register__form__field__input--captcha {
   width: 315px;
   padding-right: 153px;
@@ -300,7 +299,13 @@ export default {
   margin: 50px 10px 0;
   font-size: 2.153em;
 }
-.register__notice__ol__li__star {
-  color: #cfa972;
+
+.register__form__field__input:invalid{
+  color:red;
 }
+
+.register__form__field__input:valid{
+  color:green;
+}
+
 </style>

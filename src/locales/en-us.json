@@ -1,4 +1,10 @@
 {
+  "ui": {
+    "button": {
+      "submit": "Submit",
+      "reset": "Reset"
+    }
+  },
   "header": {
     "menu": {
       "profile": "Profile",
@@ -21,5 +27,36 @@
     "transaction": "Cashier",
     "promotion": "Promotions",
     "contact": "Online Customer"
+  },
+  "register": {
+    "placeholder": {
+      "recommend": "Referer",
+      "account": "Account No.",
+      "password": "Password",
+      "passwordCheck": "Confirm Password",
+      "mobile": "Mobile number",
+      "email": "E-mail",
+      "line": "ID LINE",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "nickname": "Nickname",
+      "bank": "Please select",
+      "bankAccount": "Bank Account 1",
+      "passwordWithdrawal": "Password for Withdrawal",
+      "passwordCheckWithdrawal": "Withdrawal Confirm Password",
+      "captcha": "Captcha"
+    },
+    "hint": {
+      "recommend": "If there is no referrer,you are not required to fill in",
+      "mobile": "This is for contact channel of account and surprise preferential informing, please kindly provide the real information.",
+      "email": "This is for surprise preferential informing, please kindly provide the real information.",
+      "line": "This is for surprise preferential informing, please kindly provide the real information.",
+      "name": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance."
+    },
+    "notice": {
+      "required": "Remark with <span class='ui-txt-star'>*</span> are required items, please be sure to fill in them correctly.",
+      "recommend": "Customer who knows our website through our client introduction, please kindly write the referee code at referral column.",
+      "contact": "Any questions toward member registration, please feel free to contact our online service."
+    }
   }
 }
