@@ -4,11 +4,11 @@ $type: 'Y/01/02';
   background-color: #04354c;
 }
 
-.register__form__field {
+.register__form__field__input-div {
   outline: 3px solid #2b7d9c;
 }
 
-.register__form__field ::placeholder {
+.register__form__field__input::placeholder {
   color: #fff;
 }
 
@@ -18,7 +18,7 @@ $type: 'Y/01/02';
 .register__notice__ol {
   color: #fff;
 }
-.register__form_send {
+.register__form__send {
   background-image: url(~@/assets/common/imgs/ui/btn--yellow-dark.jpg);
 }
 

@@ -1,18 +1,20 @@
 <template>
   <div class="register">
     <form class="register__form" id="register-form" @submit.prevent="register">
-      <div class="register__form__field" :class="[field.class]" v-for="field in fieldList" :key="field.name">
-        <span class="register__form__field__star" v-if="field.isRequired">*</span>
-        <input
-          class="register__form__field__input"
-          :type="field.type"
-          :placeholder="$t(field.placeholder)"
-          :required="field.isRequired"
-          :minlength="field.minlength"
-          :maxlength="field.maxlength"
-          :pattern="field.regex"
-          v-model="field.value"
-        />
+      <div class="register__form__field" v-for="field in fieldList" :key="field.name">
+        <div class="register__form__field__input-div" :class="[field.class]">
+          <span class="register__form__field__star" v-if="field.isRequired">*</span>
+          <input
+            class="register__form__field__input"
+            :type="field.type"
+            :placeholder="$t(field.placeholder)"
+            :required="field.isRequired"
+            :minlength="field.minlength"
+            :maxlength="field.maxlength"
+            :pattern="field.regex"
+            v-model="field.value"
+          />
+        </div>
         <div class="register__form__field__hint">
           {{ $t(field.hint) }}
         </div>
@@ -21,8 +23,8 @@
         </div>
       </div>
     </form>
-    <div class="register__form__button">
-      <button type="submit" class="register__form_send ui-btn" form="register-form">
+    <div class="register__form__button-div">
+      <button type="submit" class="register__form__send ui-btn" form="register-form">
         {{ $t('ui.button.submit') }}
       </button>
       <button type="reset" class="register__form__reset ui-btn" @click.prevent="resetForm">
@@ -229,38 +231,24 @@ export default {
 <style scoped>
 .register {
   padding-bottom: 160px;
+  padding-top: 60px;
 }
 
 .register__form {
   width: 563px;
   margin: 0 auto;
-  padding-top: 88px;
 }
 
-.register__form__button {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.register__notice {
-  margin: 0 20px;
-}
-
-.register__form__field {
+.register__form__field__input-div {
   position: relative;
   background-repeat: no-repeat;
   margin-top: 30px;
-}
-
-.register__form__field--recommend {
-  margin-top: 0;
 }
 .register__form__field__hint {
   display: block;
   margin: 5px 0;
   font-size: 2em;
 }
-
 .register__form__field__star {
   font-size: 2.5em;
   position: absolute;
@@ -280,19 +268,12 @@ export default {
   font-size: 2.5em;
 }
 
-.register__form__field__input--captcha {
-  width: 315px;
-  padding-right: 153px;
+.register__form__field__input:invalid {
+  color: red;
 }
-/* .register__form__field__input--captcha > a {
-  position: absolute;
-  top: 11px;
-  right: 15px;
-} */
 
-.register__form_send,
-.register__form__reset {
-  margin: 0 10px;
+.register__form__field__input:valid {
+  color: green;
 }
 
 .register__notice__ol {
@@ -300,12 +281,16 @@ export default {
   font-size: 2.153em;
 }
 
-.register__form__field__input:invalid{
-  color:red;
+.register__form__button-div {
+  text-align: center;
+  margin-top: 50px;
 }
 
-.register__form__field__input:valid{
-  color:green;
+.register__form__button-div button {
+  margin: 0 10px;
 }
 
+.register__notice {
+  margin: 0 20px;
+}
 </style>
