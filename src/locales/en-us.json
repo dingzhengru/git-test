@@ -76,6 +76,13 @@
       "contact": "Any questions toward member registration, please feel free to contact our online service."
     }
   },
+  "forgetPassword": {
+    "title": "Forgotten your account or passwords?",
+    "notice": {
+      "title": "Notice：",
+      "content": "Please contact with our online service, and submit any information to prove your identification of member."
+    }
+  },
   "promotionContent": {
     "title": {
       "date": "Activity time",

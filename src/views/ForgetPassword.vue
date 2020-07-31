@@ -1,10 +1,9 @@
 <template>
   <div class="forget-password">
-    <h1 class="forget-password__title">Forgotten your account or passwords?</h1>
+    <h1 class="forget-password__title">{{ $t('forgetPassword.title') }}</h1>
     <div class="forget-password__desc">
-      <span class="txt-note">Notice：</span> <br />
-      Please contact with our online service, and submit any information to prove your identification of member.
-      <span class="cpn-inBlock bg-forget"></span>
+      <span class="txt-note">{{ $t('forgetPassword.notice.title') }}</span> <br />
+      {{ $t('forgetPassword.notice.content') }}
     </div>
   </div>
 </template>

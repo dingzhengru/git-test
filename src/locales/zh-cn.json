@@ -76,6 +76,13 @@
       "contact": "对于会员注册有任何问题，欢迎联系我们的客服人员"
     }
   },
+  "forgetPassword": {
+    "title": "忘记账号或密码?",
+    "notice": {
+      "title": "注意：",
+      "content": "请联系我们的客服人员，并提交可证明您是会员账号本人的数据讯息。 "
+    }
+  },
   "promotionContent": {
     "title": {
       "date": "活动时间",
