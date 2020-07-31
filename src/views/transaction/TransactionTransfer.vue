@@ -2,9 +2,9 @@
   <form class="transfer" @submit.prevent="submitTransfer">
     <div class="transfer__box theme-content-box">
       <div class="transfer__wallet">
-        <span>From </span>
+        <span>{{ $t('transaction.transfer.field.from') }} </span>
         <select class="transfer__wallet__select ui-ddl" v-model="from">
-          <option :value="{}" selected>Wallet</option>
+          <option :value="{}" selected>{{ $t('transaction.transfer.placeholder.from') }}</option>
           <template v-for="product in productList">
             <option :value="product.value" :key="product.name">
               {{ product.name }}
@@ -16,9 +16,9 @@
           </template>
         </select>
 
-        <span> To </span>
+        <span> {{ $t('transaction.transfer.field.to') }} </span>
         <select class="transfer__wallet__select ui-ddl" v-model="to">
-          <option :value="{}" selected>Please select</option>
+          <option :value="{}" selected>{{ $t('transaction.transfer.placeholder.to') }} </option>
           <option value="" v-for="product in toList" :key="product.name">
             {{ product.name }}
           </option>
@@ -27,7 +27,7 @@
       <table class="transfer__amount-table">
         <tbody>
           <tr>
-            <th class="transfer__amount-table__th-1st">Amount</th>
+            <th class="transfer__amount-table__th-1st">{{ $t('transaction.transfer.field.amount') }}</th>
             <td class="transfer__amount-table__td-2nd">
               <input
                 class="transfer__amount-table__input"
@@ -54,12 +54,12 @@
       </table>
       <div class="transfer__button-div">
         <button type="submit" class="transfer__button--transfer ui-btn ui-btn-long">
-          Transfer
+          {{ $t('transaction.transfer.button.transfer') }}
         </button>
       </div>
       <div class="transfer__button-div">
         <button type="button" class="transfer__button--all-to-my-wallet ui-btn ui-btn-long" @click="backToWallet">
-          All to my wallet
+          {{ $t('transaction.transfer.button.allToMyWallet') }}
         </button>
       </div>
     </div>
@@ -69,13 +69,13 @@
           <td colspan="2">
             <div class="transfer__button-div">
               <button class="transfer__button--reflash ui-btn ui-btn-long" @click="reflash()">
-                Refresh
+                {{ $t('transaction.transfer.button.refresh') }}
               </button>
             </div>
           </td>
         </tr>
         <tr v-for="product in productList" :key="product.name">
-          <td class="transfer__account-table__th-1st">{{ product.name }}：</td>
+          <td class="transfer__account-table__th-1st">{{ $t(product.text) }}</td>
           <td class="transfer__account-table__td-2nd">{{ numeral(product.amount).format('0,0.00') }}</td>
         </tr>
       </tbody>
@@ -106,38 +106,45 @@ export default {
       numeral: numeral,
       productList: [
         {
-          name: 'Wallet',
+          name: 'wallet',
+          text: 'transaction.transfer.table.wallet',
           value: '9999',
           amount: 1000000,
         },
         {
-          name: 'SABA Sports',
+          name: 'SABA',
+          text: 'transaction.transfer.table.SABA',
           value: '1080',
           amount: 2000.22,
         },
         {
           name: 'BBIN',
+          text: 'transaction.transfer.table.BBIN',
           value: '1080',
           amount: 333333.3,
         },
         {
           name: 'JDB',
+          text: 'transaction.transfer.table.JDB',
           value: '1180',
           amount: 44444.444,
         },
         {
-          name: 'Royal Gaming',
+          name: 'RG',
+          text: 'transaction.transfer.table.RG',
           value: '1190',
           amount: 55555.55,
           children: ['☑ MG+ RNG', ' ☑ PNG', ' ☑ Gclub', '☑ DS RNG'],
         },
         {
           name: 'CQ9',
+          text: 'transaction.transfer.table.CQ9',
           value: '1200',
           amount: 666666,
         },
         {
-          name: 'SBO Sports',
+          name: 'SBO',
+          text: 'transaction.transfer.table.SBO',
           value: '1220',
           amount: 7777,
         },

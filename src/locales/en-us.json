@@ -194,6 +194,31 @@
       "notice": {
         "contact": "If you have any additional questions about your account details ,please contact our online service."
       }
+    },
+    "transfer": {
+      "field": {
+        "from": "From",
+        "to": "To",
+        "amount": "Amount"
+      },
+      "placeholder": {
+        "from": "Wallet",
+        "to": "Please select"
+      },
+      "button": {
+        "transfer": "Transfer",
+        "allToMyWallet": "All to my wallet",
+        "refresh": "Refresh"
+      },
+      "table": {
+        "wallet": "Wallet：",
+        "SABA": "SABA Sports：",
+        "BBIN": "BBIN：",
+        "JDB": "JDB：",
+        "RG": "Royal Gaming：",
+        "CQ9": "CQ9：",
+        "SBO": "SBO Sports："
+      }
     }
   },
   "promotionContent": {
