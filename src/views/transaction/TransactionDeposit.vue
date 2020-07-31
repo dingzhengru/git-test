@@ -1,30 +1,32 @@
 <template>
   <form class="deposit" @submit.prevent="submitDeposit">
     <div class="deposit__main theme-content-box">
-      <h3 class="deposit__main__title theme-h3-boxTitle">Fill in Cash Voucher</h3>
+      <h3 class="deposit__main__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
 
       <div class="deposit__main__field theme-input-box" v-for="field in fieldList" :key="field.name">
-        <span class="deposit__main__field__title theme-input-header">{{ field.title }}</span>
+        <span class="deposit__main__field__title theme-input-header">{{ $t(field.title) }}</span>
 
         <template v-if="field.name == 'bankDeposit'">
           <select class="deposit__main__field__select ui-ddl" v-model="bankDeposit">
-            <option :value="{}" selected>Select Deposit Bank</option>
+            <option :value="{}" selected>{{ $t(field.placeholder) }}</option>
             <option :value="bank" v-for="bank in bankDepositList" :key="bank.value">
-              {{ bank.name }}
+              {{ bank.bank }}
             </option>
           </select>
           <template v-for="(value, key) in bankDeposit">
             <span class="deposit__main__field__info__header theme-input-header" :key="key" v-if="key != 'value'">
-              {{ key }}
+              {{ $t(`transaction.deposit.field.${key}`) }}
             </span>
-            <p class="deposit__main__field__info__text" :key="value" v-if="key != 'value'">{{ value }}</p>
+            <p class="deposit__main__field__info__text" :key="value" v-if="key != 'value'">
+              {{ value }}
+            </p>
           </template>
         </template>
 
         <template v-if="field.name == 'bankTransfer'">
-          <select class="deposit__main__field__select ui-ddl" v-model="bankDeposit">
-            <option :value="{}" selected>Select Deposit Bank</option>
-            <option :value="bank" v-for="bank in bankDepositList" :key="bank.value">
+          <select class="deposit__main__field__select ui-ddl" v-model="bankTransfer">
+            <option :value="{}" selected>{{ $t(field.placeholder) }}</option>
+            <option :value="bank" v-for="bank in bankTransferList" :key="bank.value">
               {{ bank.name }}
             </option>
           </select>
@@ -36,7 +38,7 @@
 
         <template v-if="field.name == 'method'">
           <select class="deposit__main__field__select ui-ddl" v-model="method">
-            <option :value="{}">Please select</option>
+            <option :value="{}">{{ $t(field.placeholder) }}</option>
             <option :value="method" v-for="methodItem in methodList" :key="methodItem.value">
               {{ methodItem.name }}
             </option>
@@ -69,25 +71,29 @@
 
         <template v-if="field.name == 'promotion'">
           <select class="deposit__main__field__select ui-ddl" v-model="promotion">
-            <option :value="{}">Please select</option>
+            <option :value="{}">{{ $t(field.placeholder) }}</option>
             <option :value="promotion" v-for="promotionItem in promotionList" :key="promotionItem.value">
               {{ promotionItem.name }}
             </option>
           </select>
         </template>
 
-        <p class="deposit__main__field__notice" v-html="field.notice"></p>
+        <p class="deposit__main__field__notice" v-html="$t(field.hint)"></p>
       </div>
 
       <ol class="ui-ol-memberNotice">
-        <li v-for="(notice, index) in memberNoticeList" :key="`memberNotice${index}`">
-          {{ notice }}
+        <li v-for="(notice, index) in noticeList" :key="`memberNotice${index}`">
+          {{ $t(notice) }}
         </li>
       </ol>
     </div>
     <div class="deposit__button-div">
-      <button class="ui-btn deposit__button-div--submit" type="submit">Submit</button>
-      <router-link class="ui-btn deposit__button-div--cancel" :to="{ name: 'Home' }">Cancellation</router-link>
+      <button class="ui-btn deposit__button-div--submit" type="submit">
+        {{ $t('ui.button.submit') }}
+      </button>
+      <router-link class="ui-btn deposit__button-div--cancel" :to="{ name: 'Home' }">
+        {{ $t('ui.button.cancel') }}
+      </router-link>
     </div>
   </form>
 </template>
@@ -104,73 +110,72 @@ export default {
       fieldList: [
         {
           name: 'bankDeposit',
-          title: 'Select Deposit Bank',
-          notice: ``,
+          title: 'transaction.deposit.field.selectDepositBank',
+          placeholder: 'transaction.deposit.placeholder.depositBank',
+          hint: '',
         },
         {
           name: 'bankTransfer',
-          title: 'Bank Transfer',
-          notice: ``,
+          title: 'transaction.deposit.field.selectTransferBank',
+          placeholder: 'transaction.deposit.placeholder.transferBank',
+          hint: '',
         },
         {
           name: 'datetime',
-          title: 'Deposit Time',
-          notice: ``,
+          title: 'transaction.deposit.field.datetime',
+          hint: '',
         },
         {
           name: 'method',
-          title: 'Deposit Method',
-          notice: ``,
+          title: 'transaction.deposit.field.method',
+          placeholder: 'transaction.deposit.placeholder.method',
+          hint: '',
         },
         {
           name: 'amount',
-          title: 'Deposit Amount',
-          notice: `Baht Maximum 100000.00 , Minimum 200.00 <br />
-          Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful
-          deposit. <br />`,
+          title: 'transaction.deposit.field.amount',
+          hint: 'transaction.deposit.hint.amount',
         },
         {
           name: 'receipt',
-          title: 'Remittance Receipt',
-          notice: `<br />
-          <span class="lay-txt-mask">The Format of Image Allow Only JPG / PNG</span>
-          <br />
-          <span class="lay-txt-mask">File size cannot exceed 2MB</span>`,
+          title: 'transaction.deposit.field.receipt',
+          hint: 'transaction.deposit.hint.receipt',
         },
         {
           name: 'remark',
-          title: 'Remark',
-          notice: ``,
+          title: 'transaction.deposit.field.remark',
+          hint: '',
         },
         {
           name: 'promotion',
-          title: 'Favorable Project on Payment',
-          notice: `Note: Non-selection regarded as abdication.`,
+          title: 'transaction.deposit.field.promotion',
+          placeholder: 'transaction.deposit.placeholder.promotion',
+          hint: 'transaction.deposit.hint.promotion',
         },
       ],
       bankDepositList: [
         {
-          name: 'bank01',
-          branch: 'bank branch 01',
-          accountName: 'account name 01',
-          accountNumber: 'account number 01',
+          bank: 'bank01',
+          bankBranch: 'bank branch 01',
+          bankAccountName: 'account name 01',
+          bankAccount: 'account number 01',
           value: 'value 01',
         },
         {
-          name: 'bank02',
-          branch: 'bank branch 02',
-          accountName: 'account name 02',
-          accountNumber: 'account number 02',
+          bank: 'bank02',
+          bankBranch: 'bank branch 02',
+          bankAccountName: 'account name 02',
+          bankAccount: 'account number 02',
           value: 'value 02',
         },
       ],
       bankTransferList: [
         {
-          name: 'bank01',
+          name: 'Transfer Bank01',
           value: 'value 01',
         },
         {
-          name: 'bank02',
+          name: 'Transfer Bank02',
           value: 'value 02',
         },
       ],
@@ -206,14 +211,14 @@ export default {
           value: 'promotion value 02',
         },
       ],
-      memberNoticeList: [
-        `only for Baht transaction.`,
-        `Please note that the lowest and higest limiation on Deposit.`,
-        `The minimum and maximum values listed above are to act as a guideline only.`,
-        `Please conduct deposit according to the deposit method as above, otherwise members shall bear any additional expense by themselves.`,
-        `Members shall bear any additional expense resulted from any failure transfer or drawback occurred.`,
-        `It can accelerate the review procedure in case of deposit of non-integer amount.(eg. deposit amout of 123).`,
-        `If you have any additional questions about your Withdrawal details ,please contact our online service.`,
+      noticeList: [
+        'transaction.deposit.notice.currency',
+        'transaction.deposit.notice.depositLimit01',
+        'transaction.deposit.notice.depositLimit02',
+        'transaction.deposit.notice.userBear01',
+        'transaction.deposit.notice.userBear02',
+        'transaction.deposit.notice.suggest',
+        'transaction.deposit.notice.contact',
       ],
       bankDeposit: {},
       bankTransfer: {},

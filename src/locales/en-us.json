@@ -2,7 +2,8 @@
   "ui": {
     "button": {
       "submit": "Submit",
-      "reset": "Reset"
+      "reset": "Reset",
+      "cancel": "Cancellation"
     }
   },
   "header": {
@@ -126,6 +127,51 @@
         "suggest": "For the security of account, please change your passwords periodically.",
         "rule": "It needs over six characters to set up your new passwords.",
         "contact": "If you have any additional questions about your account details ,please contact our online service."
+      }
+    }
+  },
+  "transaction": {
+    "nav": {
+      "deposit": "Deposit",
+      "withdrawal": "Withdrawal",
+      "transfer": "Transfer",
+      "record": "Record"
+    },
+    "deposit": {
+      "title": "Fill in Cash Voucher",
+      "field": {
+        "selectDepositBank": "Select Deposit Bank",
+        "bank": "Bank name of deposit",
+        "bankBranch": "Branch Name of Bank",
+        "bankAccountName": "Account name of deposit",
+        "bankAccount": "Account number of deposit",
+        "selectTransferBank": "Bank Transfer",
+        "datetime": "Deposit Time",
+        "method": "Deposit Method",
+        "amount": "Deposit Amount",
+        "receipt": "Remittance Receipt",
+        "remark": "Remark",
+        "promotion": "Favorable Project on Payment"
+      },
+      "placeholder": {
+        "depositBank": "Select Deposit Bank",
+        "transferBank": "please choose your payment bank.",
+        "method": "Please select",
+        "promotion": "Please select a Promotion"
+      },
+      "hint": {
+        "amount": "Baht Maximum 100000.00 , Minimum 200.00 Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit. ",
+        "receipt": "The Format of Image Allow Only JPG / PNG <br /> File size cannot exceed 2MB",
+        "promotion": "Note: Non-selection regarded as abdication."
+      },
+      "notice": {
+        "currency": "only for Baht transaction.",
+        "depositLimit01": "Please note that the lowest and highest limitation on Deposit.",
+        "depositLimit02": "The minimum and maximum values listed above are to act as a guideline only.",
+        "userBear01": "Please conduct deposit according to the deposit method as above, otherwise members shall bear any additional expense by themselves.",
+        "userBear02": "Members shall bear any additional expense resulted from any failure transfer or drawback occurred.",
+        "suggest": "It can accelerate the review procedure in case of deposit of non-integer amount.(eg. deposit amount of 123).",
+        "contact": "If you have any additional questions about your Withdrawal details ,please contact our online service."
       }
     }
   },
