@@ -59,5 +59,15 @@
       "recommend": "Customer who knows our website through our client introduction, please kindly write the referee code at referral column.",
       "contact": "Any questions toward member registration, please feel free to contact our online service."
     }
+  },
+  "promotionContent": {
+    "title": {
+      "date": "Activity time",
+      "content": "Activity Content",
+      "rule": "Activity rules"
+    },
+    "button": {
+      "back": "Back"
+    }
   }
 }
