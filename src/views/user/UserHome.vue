@@ -15,13 +15,15 @@ export default {
     return {
       routeList: [
         {
-          name: 'Personal Info',
+          name: 'profile',
+          text: 'user.nav.profile',
           link: 'UserProfile',
           class: 'ui-li-tabs-account',
           otherActivePath: [],
         },
         {
-          name: 'Password',
+          name: 'changePassword',
+          text: 'user.nav.changePassword',
           link: 'UserChangePassword',
           class: 'ui-li-tabs-password',
           otherActivePath: [],

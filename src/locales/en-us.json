@@ -83,6 +83,43 @@
       "content": "Please contact with our online service, and submit any information to prove your identification of member."
     }
   },
+  "user": {
+    "nav": {
+      "profile": "Personal Info",
+      "changePassword": "Password"
+    },
+    "profile": {
+      "accessed": {
+        "username": "Account",
+        "currency": "Specific Currency",
+        "datetime": "Registration time",
+        "fullName": "Your real name",
+        "email": "E-mail",
+        "birthday": "Birthday",
+        "bank": "Name of Bank",
+        "bankAccount": "Bank Account",
+        "bankBrach": "Name of Branch",
+        "bankAccountName": "Account Name of Bank",
+        "withdrawalPasswordOld": "Withdrawal password (old)",
+        "withdrawalPasswordNew": "Withdrawal password (new)",
+        "withdrawalPasswordCheck": "Withdrawal password(confirm)"
+      },
+      "notAccessed": {
+        "username": "Account",
+        "currency": "Specific Currency",
+        "datetime": "Registration time",
+        "button": {
+          "access": "Instant Access"
+        },
+        "notice": {
+          "access": "Your account has not opened yet, you can only use the limited function currently.",
+          "suggest": "For ensuring your rights and benefits, we urge you to open the member account as soon as possible.",
+          "contact": "If you have any additional questions about your account details ,please contact our online service."
+        }
+      }
+    },
+    "changePassword": {}
+  },
   "promotionContent": {
     "title": {
       "date": "Activity time",

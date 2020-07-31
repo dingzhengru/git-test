@@ -26,59 +26,72 @@ export default {
   data() {
     return {
       list: [],
-      noAccessList: [
+      notAccessList: [
         {
-          title: 'Account',
+          name: 'username',
+          title: 'user.profile.notAccessed.username',
           content: 'ding01',
         },
         {
-          title: 'Specific Currency',
+          name: 'currency',
+          title: 'user.profile.notAccessed.currency',
           content: 'THB',
         },
         {
-          title: 'Registration time',
+          name: 'datetime',
+          title: 'user.profile.notAccessed.datetime',
           content: '2020/07/10 15:53:06 (GMT+8)',
         },
       ],
       accessList: [
         {
-          title: 'Account',
+          name: 'username',
+          title: 'user.profile.accessed.username',
           content: 'ding01',
         },
         {
-          title: 'Specific Currency',
+          name: 'currency',
+          title: 'user.profile.accessed.currency',
           content: 'THB',
         },
         {
-          title: 'Registration time',
+          name: 'datetime',
+          title: 'user.profile.accessed.datetime',
           content: '2020/07/10 15:53:06 (GMT+8)',
         },
         {
-          title: 'Your real name',
+          name: 'fullName',
+          title: 'user.profile.accessed.fullName',
           content: 'first last',
         },
         {
-          title: 'E-mail',
+          name: 'email',
+          title: 'user.profile.accessed.email',
           content: 'asdf@gmail.com',
         },
         {
-          title: 'Birthday',
+          name: 'birthday',
+          title: 'user.profile.accessed.birthday',
           content: '2020/07/14',
         },
         {
-          title: 'Name of Bank',
+          name: 'bank',
+          title: 'user.profile.accessed.bank',
           content: '123',
         },
         {
-          title: 'Bank Account',
+          name: 'bankAccount',
+          title: 'user.profile.accessed.bankAccount',
           content: '1111111',
         },
         {
-          title: 'Name of Branch',
+          name: 'bankBrach',
+          title: 'user.profile.accessed.bankBrach',
           content: '分行00000',
         },
         {
-          title: 'Account Name of Bank',
+          name: 'bankAccountName',
+          title: 'user.profile.accessed.bankAccountName',
           content: 'first last',
         },
       ],
@@ -88,7 +101,7 @@ export default {
     if (this.isAccessed) {
       this.list = this.accessList;
     } else {
-      this.list = this.noAccessList;
+      this.list = this.notAccessList;
     }
   },
   methods: {

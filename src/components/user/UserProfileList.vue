@@ -4,7 +4,7 @@
       <table class="ui-table02">
         <tbody>
           <tr v-for="item in list" :key="item.title">
-            <th>{{ item.title }}</th>
+            <th>{{ $t(item.title) }}</th>
             <td>{{ item.content }}</td>
           </tr>
         </tbody>
@@ -12,11 +12,11 @@
     </div>
     <div class="user-profile__button-div">
       <button type="button" class="user-profile__button--instant ui-btn ui-btn-long" @click="instantAccess">
-        Instant Access
+        {{ $t('user.profile.notAccessed.button.access') }}
       </button>
     </div>
     <ol class="user-profile__notice ui-ol-memberNotice">
-      <li v-for="notice in noticeList" :key="notice">{{ notice }}</li>
+      <li v-for="notice in noticeList" :key="notice.name">{{ $t(notice.content) }}</li>
     </ol>
   </div>
 </template>
@@ -33,9 +33,18 @@ export default {
   data() {
     return {
       noticeList: [
-        `Your account has not opened yet, you can only use the limited function currently`,
-        `For ensuring your rights and benefits, we urge you to open the member account as soon as possible.`,
-        `If you have any additional questions about your account details ,please contact our online service.`,
+        {
+          name: 'access',
+          content: 'user.profile.notAccessed.notice.access'
+        },
+        {
+          name: 'suggest',
+          content: 'user.profile.notAccessed.notice.suggest'
+        },
+        {
+          name: 'contact',
+          content: 'user.profile.notAccessed.notice.contact'
+        },
       ],
     };
   },

@@ -93,6 +93,43 @@
       "back": "回优惠活动"
     }
   },
+  "user": {
+    "nav": {
+      "profile": "个人资料",
+      "changePassword": "登入密码"
+    },
+    "profile": {
+      "accessed": {
+        "username": "帐号",
+        "currency": "币别",
+        "datetime": "注册时间",
+        "fullName": "真实姓名",
+        "email": "E-mail",
+        "birthday": "生日",
+        "bank": "银行名称",
+        "bankAccount": "银行帐号",
+        "bankBrach": "支行名称",
+        "bankAccountName": "银行户名",
+        "withdrawalPasswordOld": "取款密码(旧)",
+        "withdrawalPasswordNew": "取款密码(新)",
+        "withdrawalPasswordCheck": "取款密码(确认)"
+      },
+      "notAccessed": {
+        "username": "帐号",
+        "currency": "币别",
+        "datetime": "注册时间",
+        "button": {
+          "access": "立即开通"
+        },
+        "notice": {
+          "access": "您的会员账号尚未开通，目前只能使用有限的功能。",
+          "suggest": "为保障您的权益，我们极力建议您尽快开通会员账号。",
+          "contact": "如果您需要任何协助，请随时联系我们的客服人员，您的个人资料将被保密。"
+        }
+      }
+    },
+    "changePassword": {}
+  },
   "contact": {
     "service": "在线客服"
   },
