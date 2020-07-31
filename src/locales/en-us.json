@@ -95,5 +95,20 @@
   },
   "contact": {
     "service": "Online Customer Service"
+  },
+  "about": {
+    "title": "ABOUT US",
+    "sport": {
+      "title": "Sports",
+      "content": "Offers a wide range of sporting event bets, including soccer, baseball, basketball and rugby, and other major sporting events in the world, offering the most accurate real-time event results and online betting services by a professional information management team. In addition to the diversification of events, but also in the various events in the design of many games are played, such as the ball and size, audience half, wave, the first goal / final goal."
+    },
+    "GClub": {
+      "title": "G-Club",
+      "content": "GClub locates in the resort of Cambodia POIPET. It established legally and our online casino is franchised. Royal Online has stable financial background and safe information system. Members can fully trust that your rights will be guaranteed completely. GClub is a casino which is licensed and ruled by the local laws of Cambodia and managed by local administration. GClub is a live and open casino. Member can trust in any circumstances, because the financial system is supervised by the rules and ruled by public. The information system is the same level with the bank's. It is highly reliable and safe."
+    },
+    "RNG": {
+      "title": "RNG",
+      "content": "Slot game ... provide more than 100 probability games, including slot machines, table games, arcade games, scratch music and other projects, in recent years more active development of multiplayer online game, wish you all the good luck, visual and acoustical effects Top-level entertainment, 4 level of gold pool and bonus game like a movie, unique style characters with current events, festivals and other topics, just want to give you a fun to enjoy the game experience."
+    }
   }
 }

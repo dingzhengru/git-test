@@ -1,10 +1,10 @@
 <template>
-  <div class="about">
-    <h2 class="about__title">ABOUT US</h2>
+  <div class="about" :class="{ 'about-auth': isLoggedIn }">
+    <h2 class="about__title">{{ $t('about.title') }}</h2>
     <div class="about__intro" :id="item.id" v-for="item in aboutList" :key="item.id">
       <img class="about__intro__img" :src="item.img" alt="" />
-      <h2 class="about__intro__title">{{ item.title }}</h2>
-      <span class="about__intro__content">{{ item.content }}</span>
+      <h2 class="about__intro__title">{{ $t(item.title) }}</h2>
+      <span class="about__intro__content">{{ $t(item.content) }}</span>
     </div>
 
     <ul class="about__toolbar">
@@ -24,7 +24,7 @@ import imgRNG from '@/assets/common/imgs/game/gameIntro-03.jpg';
 export default {
   name: 'About',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -34,34 +34,21 @@ export default {
       aboutList: [
         {
           id: 'gameSport',
-          title: 'Sports',
           img: imgSport,
-          content: `Offers a wide range of sporting event bets, including soccer, baseball, basketball and rugby, and other major
-          sporting events in the world, offering the most accurate real-time event results and online betting services
-          by a professional information management team. In addition to the diversification of events, but also in the
-          various events in the design of many games are played, such as the ball and size, audience half, wave, the
-          first goal / final goal.`,
+          title: 'about.sport.title',
+          content: 'about.sport.content',
         },
         {
           id: 'gameGclub',
-          title: 'G-Club',
           img: imgGClub,
-          content: `GClub locates in the resort of Cambodia POIPET. It established legally and our online casino is franchised.
-        Royal Online has stable financial background and safe information system. Members can fully trust that your
-        rights will be guaranteed completely. GClub is a casino which is licensed and ruled by the local laws of
-        Cambodia and managed by local administration. GClub is a live and open casino. Member can trust in any
-        circumstances, because the financial system is supervised by the rules and ruled by public. The information
-        system is the same level with the bank's. It is highly reliable and safe.`,
+          title: 'about.GClub.title',
+          content: 'about.GClub.content',
         },
         {
           id: 'gameRNG',
-          title: 'RNG',
           img: imgRNG,
-          content: `Slot game ... provide more than 100 probability games, including slot machines, table games, arcade games,
-        scratch music and other projects, in recent years more active development of multiplayer online game, wish you
-        all the good luck, visual and acoustical effects Top-level entertainment, 4 level of gold pool and bonus game
-        like a movie, unique style characters with current events, festivals and other topics, just want to give you a
-        fun to enjoy the game experience`,
+          title: 'about.RNG.title',
+          content: 'about.RNG.content',
         },
       ],
       toolList: [
@@ -104,6 +91,10 @@ export default {
 <style scoped>
 .about {
   margin-bottom: 160px;
+}
+
+.about-auth {
+  padding-top: 88px;
 }
 
 .about__title {
