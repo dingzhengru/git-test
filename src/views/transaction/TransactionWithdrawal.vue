@@ -2,12 +2,14 @@
   <form class="withdrawal" @submit.prevent="submitWithdrawal">
     <ul class="withdrawal__ul theme-content-box">
       <li class="withdrawal__ul__li theme-li-dataView" v-for="item in accountInfoList" :key="item.name">
-        <span class="withdrawal__ul__li__title theme-dataView-header">{{ item.title }}</span>
+        <span class="withdrawal__ul__li__title theme-dataView-header">
+          {{ $t(item.title) }}
+        </span>
         <p class="withdrawal__ul__li__content theme-dataView-data" v-if="item.content">
           {{ typeof item.content == 'number' ? numeral(item.content).format('0,0.00') : item.content }}
         </p>
 
-        <template v-if="item.name == 'balance'">
+        <template v-if="item.name == 'walletBalance'">
           <button
             type="button"
             class="withdrawal__ul__li__button ui-btn ui-btn-long"
@@ -34,8 +36,10 @@
           <input
             class="withdrawal__ul__li__input ui-ipt theme-ipt-dataview"
             type="password"
-            size="20"
-            placeholder="Please enter your password"
+            required
+            minlength="6"
+            pattern="^[a-zA-Z0-9]$"
+            v-model="password"
           />
           <div class="theme-errorMsg" v-if="errorPassword">
             <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
@@ -44,13 +48,15 @@
       </li>
     </ul>
     <div class="withdrawal__light-message">
-      For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount 500 THB
+      {{ $t('transaction.withdrawal.hightLightMessage') }}
     </div>
     <div class="withdrawal__button-div">
-      <button type="submit" class="withdrawal__button-div__submit ui-btn ui-btn-long" id="Withdrawals">Submit</button>
+      <button type="submit" class="withdrawal__button-div__submit ui-btn ui-btn-long">
+        {{ $t('ui.button.submit') }}
+      </button>
     </div>
     <ol class="withdrawal__notice ui-ol-memberNotice">
-      <li>If you have any additional questions about your account details ,please contact our online service.</li>
+      <li v-for="notice in noticeList" :key="notice">{{ $t(notice) }}</li>
     </ol>
   </form>
 </template>
@@ -70,51 +76,52 @@ export default {
       errorPassword: '',
       accountInfoList: [
         {
-          name: 'account',
-          title: 'Account',
+          name: 'username',
+          title: 'transaction.withdrawal.field.username',
           content: 'ding01',
         },
         {
           name: 'currency',
-          title: 'Specific Currency',
+          title: 'transaction.withdrawal.field.currency',
           content: 'Baht',
         },
         {
-          name: 'balance',
-          title: 'Wallet balance',
+          name: 'walletBalance',
+          title: 'transaction.withdrawal.field.walletBalance',
           content: 10710,
         },
         {
           name: 'amount',
-          title: 'Withdrawal Amount',
+          title: 'transaction.withdrawal.field.amount',
           content: '',
         },
         {
-          name: 'bankName',
-          title: 'Name of Bank',
+          name: 'bank',
+          title: 'transaction.withdrawal.field.bank',
           content: 'SCB',
         },
         {
           name: 'bankAccount',
-          title: 'Bank Account',
+          title: 'transaction.withdrawal.field.bankAccount',
           content: '1111111',
         },
         {
           name: 'bankBranch',
-          title: 'Name of Branch',
+          title: 'transaction.withdrawal.field.bankBranch',
           content: '分行00000',
         },
         {
-          name: 'accountName',
-          title: 'Account Name of Bank',
+          name: 'bankAccountName',
+          title: 'transaction.withdrawal.field.bankAccountName',
           content: 'first last',
         },
         {
           name: 'password',
-          title: 'Password for Withdrawal',
+          title: 'transaction.withdrawal.field.password',
           content: '',
         },
       ],
+      noticeList: ['transaction.withdrawal.notice.contact'],
       amount: 0,
       password: '',
     };
@@ -146,6 +153,11 @@ export default {
 .withdrawal {
   margin: 40px 0;
 }
+
+.withdrawal__ul__li {
+  list-style: none;
+}
+
 .withdrawal__ul__li__button {
   display: block;
   margin: 0 auto;

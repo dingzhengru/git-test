@@ -173,6 +173,27 @@
         "suggest": "It can accelerate the review procedure in case of deposit of non-integer amount.(eg. deposit amount of 123).",
         "contact": "If you have any additional questions about your Withdrawal details ,please contact our online service."
       }
+    },
+    "withdrawal": {
+      "title": "Trade Center",
+      "hightLightMessage": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount 500 THB",
+      "field": {
+        "username": "Account",
+        "currency": "Specific Currency",
+        "walletBalance": "wallet balance",
+        "amount": "Withdrawal Amount",
+        "bank": "Name of Bank",
+        "bankAccount": "Bank Account",
+        "bankBranch": "Name of Branch",
+        "bankAccountName": "Account Name of Bank",
+        "password": "Password for Withdrawal"
+      },
+      "button": {
+        "allToMyWallet": "All to my wallet"
+      },
+      "notice": {
+        "contact": "If you have any additional questions about your account details ,please contact our online service."
+      }
     }
   },
   "promotionContent": {
