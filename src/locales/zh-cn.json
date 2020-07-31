@@ -28,6 +28,22 @@
     "promotion": "优惠活动",
     "contact": "在线客服"
   },
+  "login": {
+    "title": "会员登入",
+    "rememberMe": "记住我",
+    "placeholder": {
+      "username": "帐号",
+      "password": "密码",
+      "captcha": "验证码"
+    },
+    "link": {
+      "register": "注册",
+      "forgetPassword": "忘记密码"
+    },
+    "button": {
+      "login": "登入"
+    }
+  },
   "register": {
     "placeholder": {
       "recommend": "推 荐 人",

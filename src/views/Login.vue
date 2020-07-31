@@ -3,7 +3,7 @@
     <div class="theme-errorMsg" v-if="error">
       <span class="theme-txt-errorMsg">{{ error }}</span>
     </div>
-    <h1 class="login__title">Member Login</h1>
+    <h1 class="login__title">{{ $t('login.title') }}</h1>
     <form class="login__form" id="LoginForm" @submit.prevent="login">
       <div class="login__form__field login__form__field--account">
         <input
@@ -11,7 +11,7 @@
           id="UserName"
           type="text"
           tabindex="1"
-          placeholder="Account"
+          :placeholder="$t('login.placeholder.username')"
           v-model="user.UserName"
         />
       </div>
@@ -21,7 +21,7 @@
           id="Password"
           type="password"
           tabindex="2"
-          placeholder="Password"
+          :placeholder="$t('login.placeholder.password')"
           v-model="user.Password"
         />
       </div>
@@ -31,9 +31,9 @@
           id="CaptchaValue"
           type="tel"
           tabindex="3"
-          placeholder="Captcha"
           maxlength="4"
           autocomplete="off"
+          :placeholder="$t('login.placeholder.captcha')"
           v-model="user.CaptchaValue"
         />
         <img
@@ -54,16 +54,16 @@
           type="checkbox"
           v-model="user.RememberMe"
         />
-        <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">Remember Me</label>
+        <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">{{ $t('login.rememberMe') }}</label>
       </div>
       <router-link class="login__form__link login__form__link--regist" id="register" :to="{ name: 'Register' }">
-        Register
+        {{ $t('login.link.register') }}
       </router-link>
       <router-link class="login__form__link login__form__link--forget" id="forgetPwd" :to="{ name: 'ForgetPassword' }">
-        GetPassword
+        {{ $t('login.link.forgetPassword') }}
       </router-link>
       <button class="ui-btn ui-btn-long login__form__submit" id="loginbtn" type="submit" form="LoginForm">
-        Login
+        {{ $t('login.button.login') }}
       </button>
     </form>
   </div>

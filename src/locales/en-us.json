@@ -28,6 +28,22 @@
     "promotion": "Promotions",
     "contact": "Online Customer"
   },
+  "login": {
+    "title": "Member Login",
+    "rememberMe": "Remember Me",
+    "placeholder": {
+      "username": "Account",
+      "password": "Password",
+      "captcha": "Captcha"
+    },
+    "link": {
+      "register": "Register",
+      "forgetPassword": "GetPassword"
+    },
+    "button": {
+      "login": "Login"
+    }
+  },
   "register": {
     "placeholder": {
       "recommend": "Referer",

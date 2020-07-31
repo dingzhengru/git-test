@@ -28,6 +28,22 @@
     "promotion": "โปรโมชั่น",
     "contact": "ศูนย์ลูกค้า"
   },
+  "login": {
+    "title": "สมาชิกล็อคอิน",
+    "rememberMe": "คลิกจำยูสเซอร์",
+    "placeholder": {
+      "username": "ยูสเซอร์",
+      "password": "รหัสผ่าน",
+      "captcha": "รหัสยืนยัน"
+    },
+    "link": {
+      "register": "สมัครสมาชิก",
+      "forgetPassword": "ลืมรหัสผ่าน"
+    },
+    "button": {
+      "login": "ล็อกอิน"
+    }
+  },
   "register": {
     "placeholder": {
       "recommend": "ผู้แนะนำ",
