@@ -41,6 +41,7 @@
       "lastName": "Last Name",
       "nickname": "Nickname",
       "bank": "Please select",
+      "bankBranch": "Branch Name 1",
       "bankAccount": "Bank Account 1",
       "passwordWithdrawal": "Password for Withdrawal",
       "passwordCheckWithdrawal": "Withdrawal Confirm Password",

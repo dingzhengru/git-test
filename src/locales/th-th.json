@@ -41,6 +41,7 @@
       "lastName": "นามสกุล",
       "nickname": "ชื่อเล่น",
       "bank": "โปรดเลือก",
+      "bankBranch": "สาขาธนาคาร",
       "bankAccount": "หมายเลขบัญชีธนาคาร",
       "passwordWithdrawal": "รหัสถอนเงินเว็บไซต์",
       "passwordCheckWithdrawal": "ยืนยันรหัสผ่านอีกครั้ง",

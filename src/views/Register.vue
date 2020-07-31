@@ -14,11 +14,22 @@
               :maxlength="field.maxlength"
               :pattern="field.regex"
               v-model="field.value"
+              v-if="field.type != 'select'"
             />
+
+            <select
+              class="register__form__field__select"
+              :class="{
+                'register__form__field__select--default': field.value == '',
+              }"
+              v-else-if="field.type == 'select'"
+              v-model="field.value"
+            >
+              <option value="" selected>{{ $t(field.placeholder) }}</option>
+              <option :value="bank" v-for="bank in bankList" :key="bank.value">{{ bank.name }}</option>
+            </select>
           </div>
-          <div class="register__form__field__hint">
-            {{ $t(field.hint) }}
-          </div>
+          <div class="register__form__field__hint">{{ $t(field.hint) }}</div>
           <div class="theme-errorMsg" v-if="field.error">
             <span class="theme-txt-errorMsg">{{ field.error }}</span>
           </div>
@@ -194,6 +205,73 @@ export default {
           isShow: true,
         },
         {
+          name: 'bank',
+          class: 'register__form__field--name',
+          type: 'select',
+          placeholder: 'register.placeholder.bank',
+          hint: '',
+          error: '',
+          isRequired: true,
+          value: '',
+          isShow: true,
+        },
+        {
+          name: 'bankBranch',
+          class: 'register__form__field--name',
+          type: 'text',
+          placeholder: 'register.placeholder.bankBranch',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 1,
+          maxlength: 30,
+          regex: '^[A-Za-z0-9\u4E00-\u9FA5\uF900-\uFA2D\u0e00-\u0e5b]+$',
+          value: '',
+          isShow: true,
+        },
+        {
+          name: 'bankAccount',
+          class: 'register__form__field--account',
+          type: 'text',
+          placeholder: 'register.placeholder.bankAccount',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 1,
+          maxlength: 30,
+          regex: '^[0-9]+[0-9]*$',
+          value: '',
+          isShow: true,
+        },
+        {
+          name: 'passwordWithdrawal',
+          class: 'register__form__field--password',
+          type: 'password',
+          placeholder: 'register.placeholder.passwordWithdrawal',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 6,
+          maxlength: 20,
+          regex: '^[a-zA-Z0-9]*$',
+          value: '',
+          isShow: true,
+        },
+        {
+          name: 'passwordCheckWithdrawal',
+          class: 'register__form__field--password',
+          type: 'password',
+          placeholder: 'register.placeholder.passwordCheckWithdrawal',
+          hint: '',
+          error: '',
+          isRequired: true,
+          minlength: 6,
+          maxlength: 20,
+          regex: '^[a-zA-Z0-9]*$',
+          value: '',
+          isShow: true,
+        },
+        {
           name: 'captcha',
           class: 'register__form__field--code',
           type: 'text',
@@ -208,6 +286,32 @@ export default {
         },
       ],
       noticeList: ['register.notice.required', 'register.notice.recommend', 'register.notice.contact'],
+      bankList: [
+        {
+          name: 'KBANK',
+          value: '210',
+        },
+        {
+          name: 'SCB',
+          value: '211',
+        },
+        {
+          name: 'KTB',
+          value: '212',
+        },
+        {
+          name: 'TMB',
+          value: '213',
+        },
+        {
+          name: 'BangkokBank',
+          value: '214',
+        },
+        {
+          name: 'BAAC ธ.ก.ส.',
+          value: '275',
+        },
+      ],
     };
   },
   methods: {
@@ -257,6 +361,7 @@ export default {
   background-repeat: no-repeat;
   margin-top: 30px;
 }
+
 .register__form__field__hint {
   display: block;
   margin: 5px 0;
@@ -273,12 +378,27 @@ export default {
   width: 465px;
   height: 64px;
   background-color: transparent;
-  margin: 8px 0 9px;
-  padding-left: 80px;
-  /* padding: 0 3px; */
+  margin: 8px 0 9px 80px;
   border: none;
   outline: none;
   font-size: 2.5em;
+}
+
+.register__form__field__select {
+  width: 465px;
+  height: 64px;
+  font-size: 2.5em;
+  font-weight: normal;
+  background: transparent;
+  margin: 8px 0 9px 80px;
+  border: none;
+  outline: none;
+  /* background-color: #2e2e2e; */
+}
+
+.register__form__field__select option {
+  color: black;
+  background-color: #979797;
 }
 
 .register__form__field__input:invalid {

@@ -228,7 +228,13 @@ export default {
   font-size: 1.125em;
 }
 
+.transfer__wallet__select option {
+  color: black;
+  background-color: #979797;
+}
+
 .transfer__wallet__select optgroup {
+  color: white;
   background-color: #2e2e2e;
 }
 

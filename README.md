@@ -4,6 +4,7 @@
 
 H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
+- [API 詢問](#api-詢問)
 - [其他](#其他)
   - [點擊輪播無法正常換頁](#點擊輪播無法正常換頁)
   - [Agreement 頁面的規章頁籤 .active 沒有設定](#agreement-頁面的規章頁籤-active-沒有設定)
@@ -18,6 +19,12 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [vue-awesome-swiper](#vue-awesome-swiper)
   - [vue-scrollto](#vue-scrollto)
   - [vue-slider-component](#vue-slider-component)
+
+## API 詢問
+
+- register
+  - field list
+  - bank list
 
 ## 其他
 
@@ -46,20 +53,25 @@ watch: {
 ```
 
 ### optgroup 的前面空格，無法實現
+
 於 transaction/transfer 中
 
-
 ### notification 的 nav 圖片大小不同
+
 starbets 的圖片大小跟其他不同，造成位置不同
 
-
-
 ## Library
+
 詳細可於 package.json 查看
 
 ### axios
+
 ### jsencrypt
+
 ### numeral
+
 ### vue-awesome-swiper
+
 ### vue-scrollto
+
 ### vue-slider-component
