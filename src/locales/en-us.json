@@ -219,6 +219,16 @@
         "CQ9": "CQ9：",
         "SBO": "SBO Sports："
       }
+    },
+    "record": {
+      "title": "Record List",
+      "deposit": "Deposit Record",
+      "withdrawal": "Withdrawal Record",
+      "transfer": "Transfer Record",
+      "bonus": "Bonus Record",
+      "lottery": "Lottery Record",
+      "withdrawalRestriction": "Withdrawal Restriction",
+      "adjust": "Adjustment Record"
     }
   },
   "promotionContent": {

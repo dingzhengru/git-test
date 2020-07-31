@@ -219,6 +219,16 @@
         "CQ9": "CQ9：",
         "SBO": "กีฬา SBO："
       }
+    },
+    "record": {
+      "title": "ค้นหาบันทึก",
+      "deposit": "บันทึกรายการเติมเงิน",
+      "withdrawal": "บันทึกรายการถอนเงิน",
+      "transfer": "บันทึกรายการโอนเงิน",
+      "bonus": "บันทึกโปรโมชั่น",
+      "lottery": "รายการบันทึก",
+      "withdrawalRestriction": "ยอดจำกัดการถอน",
+      "adjust": "บันทึกรายการแก้ไข"
     }
   },
   "promotionContent": {

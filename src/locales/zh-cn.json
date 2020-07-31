@@ -219,6 +219,16 @@
         "CQ9": "CQ9：",
         "SBO": "SBO体育："
       }
+    },
+    "record": {
+      "title": "纪录查询",
+      "deposit": "存款纪录",
+      "withdrawal": "取款记录",
+      "transfer": "转账纪录",
+      "bonus": "红利纪录",
+      "lottery": "开奖纪绿",
+      "withdrawalRestriction": "提取限制",
+      "adjust": "调整记录"
     }
   },
   "promotionContent": {

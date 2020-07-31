@@ -1,10 +1,10 @@
 <template>
   <div class="record-list theme-content-box">
-    <h3 class="record-list__title theme-h3-boxTitle">Record List</h3>
+    <h3 class="record-list__title theme-h3-boxTitle">{{ $t('transaction.record.title') }}</h3>
     <ul class="record-list__ul">
       <li class="record-list__ul__li" v-for="record in recordList" :key="record.name">
         <router-link class="record-list__ul__li__link" :to="{ name: 'TransactionRecordContent', params: { name: record.name } }">
-          {{ record.content }}
+          {{ $t(record.content) }}
         </router-link>
       </li>
     </ul>
@@ -15,7 +15,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'TransactionRecord',
+  name: 'TransactionRecordHome',
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
   },
@@ -24,31 +24,31 @@ export default {
       recordList: [
         {
           name: 'deposit',
-          content: 'Deposit Record',
+          content: 'transaction.record.deposit',
         },
         {
           name: 'withdrawal',
-          content: 'Withdrawals Record',
+          content: 'transaction.record.withdrawal',
         },
         {
           name: 'transfer',
-          content: 'Transfer Record',
+          content: 'transaction.record.transfer',
         },
         {
           name: 'bonus',
-          content: 'Bonus Record',
+          content: 'transaction.record.bonus',
         },
         {
           name: 'lottery',
-          content: 'Lottery Record',
+          content: 'transaction.record.lottery',
         },
         {
-          name: 'withdrawal-restriction',
-          content: 'Withdrawal Restriction',
+          name: 'withdrawalRestriction',
+          content: 'transaction.record.withdrawalRestriction',
         },
         {
-          name: 'adjustment',
-          content: 'Adjustment Record',
+          name: 'adjust',
+          content: 'transaction.record.adjust',
         },
       ],
     };

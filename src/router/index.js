@@ -96,8 +96,8 @@ const routes = [
         children: [
           {
             path: '',
-            name: 'TransactionRecord',
-            component: () => import('@/views/transaction/record/TransactionRecord'),
+            name: 'TransactionRecordHome',
+            component: () => import('@/views/transaction/record/TransactionRecordHome'),
           },
           {
             path: ':name',

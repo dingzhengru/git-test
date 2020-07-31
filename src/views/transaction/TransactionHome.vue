@@ -38,7 +38,7 @@ export default {
         {
           name: 'Record',
           text: 'transaction.nav.record',
-          link: 'TransactionRecord',
+          link: 'TransactionRecordHome',
           class: 'ui-li-tabs-pointrecord',
           otherActivePath: ['TransactionRecordContent', 'TransactionRecordDetail'],
         },
