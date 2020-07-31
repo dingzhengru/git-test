@@ -92,5 +92,8 @@
     "button": {
       "back": "回优惠活动"
     }
+  },
+  "contact": {
+    "service": "在线客服"
   }
 }

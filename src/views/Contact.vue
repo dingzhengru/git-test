@@ -4,7 +4,7 @@
       <ul class="contact__content__ul">
         <li class="contact__content__ul__li" v-if="contact.service.isActive">
           <a href="javascript:;" class="contact__content__ul__li__link contact__content__ul__li__link--service">
-            Online Customer Service
+            {{ $t('contact.service') }}
           </a>
         </li>
         <li class="contact__content__ul__li" v-if="contact.facebook.isActive">

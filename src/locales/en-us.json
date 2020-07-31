@@ -92,5 +92,8 @@
     "button": {
       "back": "Back"
     }
+  },
+  "contact": {
+    "service": "Online Customer Service"
   }
 }
