@@ -16,7 +16,7 @@
             id="GamePointBackToMain"
             @click="allGamePointBackToMain"
           >
-            All to my wallet
+            {{ $t('transaction.withdrawal.button.allToMyWallet') }}
           </button>
         </template>
 

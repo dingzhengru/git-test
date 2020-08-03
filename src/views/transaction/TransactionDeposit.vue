@@ -51,7 +51,7 @@
 
         <template v-if="field.name == 'receipt'">
           <label class="deposit__receipt-upload__label ui-btn01 ui-btn-long" for="deposit__receipt-upload__input">
-            Upload
+            {{ $t('transaction.deposit.button.upload') }}
             <input
               class="deposit__receipt-upload__input"
               id="deposit__receipt-upload__input"

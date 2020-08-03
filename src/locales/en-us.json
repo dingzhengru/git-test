@@ -172,6 +172,9 @@
         "userBear02": "Members shall bear any additional expense resulted from any failure transfer or drawback occurred.",
         "suggest": "It can accelerate the review procedure in case of deposit of non-integer amount.(eg. deposit amount of 123).",
         "contact": "If you have any additional questions about your Withdrawal details ,please contact our online service."
+      },
+      "button": {
+        "upload": "Upload"
       }
     },
     "withdrawal": {
