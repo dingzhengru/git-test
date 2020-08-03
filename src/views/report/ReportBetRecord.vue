@@ -46,11 +46,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import numeral from 'numeral';
 export default {
   name: 'ReportBetRecord',
   components: {
     ReportBetRecordDetailTable: () => import('@/components/report/ReportBetRecordDetailTable'),
+  },
+  computed: {
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -97,7 +101,7 @@ export default {
         if (!this.siteID) {
           return;
         }
-        // * 根據版型引入 css ()
+        // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
       },
     },

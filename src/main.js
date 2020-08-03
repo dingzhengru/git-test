@@ -29,7 +29,7 @@ import { getTokenAndPublicKey } from '@/api/user';
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
 const cssVersion = '01';
-const cssType = '01';
+const cssType = '02';
 store.commit('site/setCssClass', cssClass);
 store.commit('site/setCssVersion', cssVersion);
 store.commit('site/setCssType', cssType);

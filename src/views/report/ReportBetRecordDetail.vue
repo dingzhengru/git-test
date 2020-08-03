@@ -1,6 +1,8 @@
 <template>
   <div class="report-bet-record">
+    
     <ReportBetRecordDetailTable :title="title" :recordList="recordList" />
+
     <div class="report-bet-record__button-div">
       <button class="report-bet-record__button--return ui-btn ui-btn-long" @click="$router.go(-1)">
         {{ $t('report.betRecordDetail.button.back') }}

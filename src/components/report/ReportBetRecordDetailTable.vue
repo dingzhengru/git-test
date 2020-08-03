@@ -81,19 +81,12 @@ export default {
         totalObject.totalWinLose = totalObject.totalWinLose + item.totalWinLose
         totalObject.prize = totalObject.prize + item.prize
       });
-
       return totalObject;
     },
   },
   data() {
     return {
       numeral: numeral,
-      // total: {
-      //   betCount: this.recordList.length,
-      //   betAmount: 280,
-      //   winLose: 8012,
-      //   prize: 0,
-      // },
     };
   },
 };
