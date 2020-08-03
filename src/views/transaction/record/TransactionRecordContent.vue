@@ -22,7 +22,6 @@
           <span class="txt-inquire">{{ $t(`${i18nKey}.field.from`) }}</span>
           <input
             class="record-content__search-form__field__input--date-from ui-ipt"
-            .
             type="date"
             v-model="search.dateFrom"
           />
@@ -112,26 +111,30 @@ export default {
       const endAt = startAt + this.pagination.pagesize;
       return this.list.slice(startAt, endAt) || [];
     },
-    isPositive: () => (key, value, item) => {
+    isPositive: app => (key, value, item) => {
+      const routeName = app.$route.params.name;
       return (
-        (key == 'depositAmount' && value > 0) ||
-        (key == 'depositDetail' && item.isSuccess) ||
-        (key == 'withdrawalAmount' && value > 0) ||
-        (key == 'transferAmount' && value > 0) ||
-        (key == 'bonusIssue' && value > 0) ||
-        (key == 'lotteryStatus' && item.isSuccess) ||
-        (key == 'adjustmentPoints' && value > 0)
+        (routeName == 'deposit' && key == 'amount' && value > 0) ||
+        (routeName == 'deposit' && key == 'detail' && item.isSuccess) ||
+        (routeName == 'withdrawal' && key == 'amount' && value > 0) ||
+        (routeName == 'withdrawal' && key == 'detail' && item.isSuccess) ||
+        (routeName == 'transfer' && key == 'amount' && value > 0) ||
+        (routeName == 'bonus' && key == 'issue' && value > 0) ||
+        (routeName == 'lottery' && key == 'status' && item.isSuccess) ||
+        (routeName == 'adjustment' && key == 'point' && value > 0)
       );
     },
-    isNegative: () => (key, value, item) => {
+    isNegative: app => (key, value, item) => {
+      const routeName = app.$route.params.name;
       return (
-        (key == 'depositAmount' && value < 0) ||
-        (key == 'depositDetail' && !item.isSuccess) ||
-        (key == 'withdrawalAmount' && value < 0) ||
-        (key == 'transferAmount' && value < 0) ||
-        (key == 'bonusIssue' && value < 0) ||
-        (key == 'lotteryStatus' && !item.isSuccess) ||
-        (key == 'adjustmentPoints' && value < 0)
+        (routeName == 'deposit' && key == 'amount' && value < 0) ||
+        (routeName == 'deposit' && key == 'detail' && !item.isSuccess) ||
+        (routeName == 'withdrawal' && key == 'amount' && value < 0) ||
+        (routeName == 'withdrawal' && key == 'detail' && !item.isSuccess) ||
+        (routeName == 'transfer' && key == 'amount' && value < 0) ||
+        (routeName == 'bonus' && key == 'issue' && value < 0) ||
+        (routeName == 'lottery' && key == 'status' && !item.isSuccess) ||
+        (routeName == 'adjustment' && key == 'point' && value < 0)
       );
     },
     isShowDetailLink: app => (key, value, item) => {
@@ -198,23 +201,23 @@ export default {
           },
         ];
         this.title = 'Deposit Record';
-        this.detailKey = 'depositDetail';
+        this.detailKey = 'detail';
         this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
         break;
       }
       case 'withdrawal': {
         this.list = [
           {
-            id: '',
-            isSuccess: false,
+            id: 'SR200721110313463',
+            isSuccess: true,
             date: '2020-07-21',
             bank: 'SCB',
             amount: 1000,
-            detail: 'Under review',
+            detail: 'Successful',
           },
         ];
         this.title = 'Withdrawals Record';
-        this.detailKey = 'withdrawalDetail';
+        this.detailKey = 'detail';
         this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
         break;
       }
@@ -236,7 +239,7 @@ export default {
           },
         ];
         this.title = 'Transfer Record';
-        this.detailKey = 'transferAmount';
+        this.detailKey = 'amount';
         this.isSearchActive = true;
         this.isPageActive = true;
 
@@ -308,7 +311,7 @@ export default {
           },
         ];
         this.title = 'Withdrawal Restriction';
-        this.detailKey = 'withdrawalRestrictionContent';
+        this.detailKey = 'restriction';
         this.isSearchActive = false;
         this.isPageActive = true;
         break;

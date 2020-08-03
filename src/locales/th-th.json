@@ -313,6 +313,60 @@
           "datetime": "แก้ไขเวลา"
         }
       }
+    },
+    "recordDetail": {
+      "button": {
+        "back": "Previous"
+      },
+      "deposit": {
+        "title": "รายละเอียดการฝาก",
+        "table": {
+          "bank": "โอนเข้าธนาคาร",
+          "rollinPoint": "ยอดเงินโอนเข้า",
+          "createdDate": "วันที่ก่อตั้ง",
+          "submitDate": "เวลาทำรายการ",
+          "transactionTime": "เวลาฝากเงินสำเร็จ",
+          "paymentMethod": "วิธีการชำระ",
+          "transactionNumber": "หมายเลขบิล",
+          "activity": "กิจกรรม"
+        }
+      },
+      "withdrawal": {
+        "title": "รายละเอียดการถอน",
+        "table": {
+          "amount": "ยอดเงินที่ถอน",
+          "serviceCharge": "ค่าธรรมเนียม",
+          "createdDate": "วันที่ก่อตั้ง",
+          "submitDate": "เวลาทำรายการ",
+          "transactionTime": "เวลาฝากเงินสำเร็จ",
+          "transactionNumber": "หมายเลขบิล"
+        }
+      },
+      "transfer": {
+        "title": "โอน รายละเอียด",
+        "table": {
+          "game": "เกมส์",
+          "rollinPoint": "ยอดเงินโอนเข้า",
+          "rolloutPoint": "ยอดเงินโอนออก",
+          "accountingDate": "วันที่บัญชี",
+          "transactionTime": "เวลาทำการ",
+          "beforeWallet": "กระเป๋าเงิน(ก่อนโยกเงิน)",
+          "afterWallet": "กระเป๋าเงิน(หลังโยกเงิน)",
+          "beforeGameAccount": "ชื่อเกมส์(ก่อนโยกเงิน)",
+          "afterGameAccount": "ชื่อเกมส์(หลังโยกเงิน)"
+        }
+      },
+      "bonus": {},
+      "lottery": {},
+      "withdrawalRestriction": {
+        "title": "ถอนเงิน-กระเป๋าเงิน จำกัด",
+        "table": {
+          "activity": "ชื่อโปรโมชั่น",
+          "bonusIssue": "แจกโบนัส",
+          "datetime": "Time"
+        }
+      },
+      "adjustment": {}
     }
   },
   "promotionContent": {

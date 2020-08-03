@@ -2,7 +2,7 @@
   <div>
     <div class="record-detail">
       <div class="theme-content-box">
-        <h3 class="theme-h3-boxTitle">{{ title }}</h3>
+        <h3 class="theme-h3-boxTitle">{{ $t(`${i18nKey}.title`) }}</h3>
 
         <ul class="record-detail__ol theme-ul-listView">
           <li class="record-detail__ol__li theme-li-listView" v-for="item in list" :key="item.id">
@@ -10,7 +10,9 @@
               <tbody>
                 <tr v-for="(value, key, index) in item" :key="index">
                   <template v-if="!notShowKeyList.includes(key)">
-                    <th class="record-detail__table__th-1st th-1st">{{ key }}</th>
+                    <th class="record-detail__table__th-1st th-1st">
+                      {{ $t(`${i18nKey}.table.${key}`) }}
+                    </th>
                     <td
                       class="record-detail__table__td-2nd td-2nd"
                       :class="{
@@ -39,7 +41,7 @@
           class="record-detail__button--return ui-btn ui-btn-long"
           @click="$router.push({ name: 'TransactionRecordContent', params: { name: $route.params.name } })"
         >
-          Previous
+          {{ $t('transaction.recordDetail.button.back') }}
         </button>
       </div>
     </div>
@@ -54,20 +56,24 @@ export default {
   name: 'TransactionRecordDetail',
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
-    isPositive: () => (key, value) => {
+    i18nKey() {
+      return `transaction.recordDetail.${this.$route.params.name}`;
+    },
+    isPositive: app => (key, value) => {
+      const routeName = app.$route.params.name;
       return (
-        (key == 'rollinOfPoints' && value >= 0) ||
-        (key == 'rollinOfPoints' && value >= 0) ||
-        (key == 'rolloutOfPoints' && value >= 0) ||
-        (key == 'bonusIssue' && value >= 0)
+        (routeName == 'deposit' && key == 'rollinPoint' && value > 0) ||
+        (routeName == 'withdrawal' && key == 'amount' && value > 0) ||
+        (routeName == 'transfer' && key == 'rollinPoint') ||
+        (routeName == 'withdrawalRestriction' && key == 'bonusIssue')
       );
     },
-    isNegative: () => (key, value) => {
+    isNegative: app => (key, value) => {
+      const routeName = app.$route.params.name;
       return (
-        (key == 'rollinOfPoints' && value < 0) ||
-        (key == 'rollinOfPoints' && value < 0) ||
-        (key == 'rolloutOfPoints' && value < 0) ||
-        (key == 'bonusIssue' && value < 0)
+        (routeName == 'deposit' && key == 'rollinPoint' && value < 0) ||
+        (routeName == 'withdrawal' && key == 'amount' && value < 0) ||
+        (routeName == 'transfer' && key == 'rolloutPoint')
       );
     },
   },
@@ -84,12 +90,12 @@ export default {
       case 'deposit': {
         this.list = [
           {
-            bankRecorded: 'SCB-VIP',
-            rollinOfPoints: 1000,
-            creationDate: '2020-07-21',
+            bank: 'SCB-VIP',
+            rollinPoint: 1000,
+            createdDate: '2020-07-21',
             submitDate: '2020-07-21',
             transactionTime: '11:41:26',
-            payMentMethod: 'WebATM',
+            paymentMethod: 'WebATM',
             transactionNumber: this.$route.params.id,
             activity: '輪盤測試',
           },
@@ -98,7 +104,16 @@ export default {
         break;
       }
       case 'withdrawal': {
-        this.list = [];
+        this.list = [
+          {
+            amount: -500,
+            serviceCharge: '5',
+            createdDate: '2020-07-21',
+            submitDate: '2020-07-21',
+            transactionTime: '11:41:26',
+            transactionNumber: this.$route.params.id,
+          },
+        ];
         this.title = 'Withdrawals Record';
         break;
       }
@@ -107,14 +122,14 @@ export default {
           {
             id: '000',
             game: 'Royal Gaming',
-            rollinOfPoints: 0,
-            rolloutOfPoints: -767,
+            rollinPoint: 0,
+            rolloutPoint: -767,
             accountingDate: '2020-07-21',
             transactionTime: '11:05:38',
-            walletBeforeTransfer: 8933,
-            walletAfterTransfer: 9700,
-            gameAccountBeforeTransfer: 767,
-            gameAccountAfterTransfer: 0,
+            beforeWallet: 8933,
+            afterWallet: 9700,
+            beforeGameAccount: 767,
+            afterGameAccount: 0,
           },
         ];
         this.title = 'Transfer Details';
@@ -128,17 +143,17 @@ export default {
         this.title = 'Lottery Details';
         break;
       }
-      case 'withdrawal-restriction': {
+      case 'withdrawalRestriction': {
         this.list = [
           {
             id: '000',
-            activityName: 'Cash Flow',
+            activity: 'Cash Flow',
             bonusIssue: 0,
             datetime: '2020-07-21 11:41:35',
           },
           {
             id: '111',
-            activityName: 'Cash Flow',
+            activity: 'Cash Flow',
             bonusIssue: 10,
             datetime: '2020-07-21 11:41:35',
           },

@@ -313,6 +313,60 @@
           "datetime": "调整时间"
         }
       }
+    },
+    "recordDetail": {
+      "button": {
+        "back": "返回"
+      },
+      "deposit": {
+        "title": "存款明细",
+        "table": {
+          "bank": "入帐银行",
+          "rollinPoint": "点数转入",
+          "createdDate": "建立日期",
+          "submitDate": "送单时间",
+          "transactionTime": "成功交易时间",
+          "paymentMethod": "支付方式",
+          "transactionNumber": "交易编号",
+          "activity": "活动"
+        }
+      },
+      "withdrawal": {
+        "title": "取款明细",
+        "table": {
+          "amount": "取款金额",
+          "serviceCharge": "手续费",
+          "createdDate": "建立日期",
+          "submitDate": "送单时间",
+          "transactionTime": "成功交易时间",
+          "transactionNumber": "交易编号"
+        }
+      },
+      "transfer": {
+        "title": "转账明细",
+        "table": {
+          "game": "游戏",
+          "rollinPoint": "点数转入",
+          "rolloutPoint": "点数转出",
+          "accountingDate": "帐务日期",
+          "transactionTime": "交易时间",
+          "beforeWallet": "我的钱包(转帐前)",
+          "afterWallet": "我的钱包(转帐后)",
+          "beforeGameAccount": "游戏帐户(转帐前)",
+          "afterGameAccount": "游戏帐户(转帐后)"
+        }
+      },
+      "bonus": {},
+      "lottery": {},
+      "withdrawalRestriction": {
+        "title": "取款-我的钱包 限制",
+        "table": {
+          "activity": "活动名称",
+          "bonusIssue": "发放红利",
+          "datetime": "时间"
+        }
+      },
+      "adjustment": {}
     }
   },
   "promotionContent": {

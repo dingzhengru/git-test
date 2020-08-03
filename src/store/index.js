@@ -14,7 +14,7 @@ export default new Vuex.Store({
     setLang: (state, lang) => {
       state.lang = lang;
       loadLanguageAsync(lang).then(result => {
-        console.log('[Lang]: loadLanguageAsync', result);
+        console.log('[Lang] loadLanguageAsync', result);
       });
     },
   },

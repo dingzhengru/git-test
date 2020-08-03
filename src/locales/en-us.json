@@ -313,6 +313,60 @@
           "datetime": "Adjustment time"
         }
       }
+    },
+    "recordDetail": {
+      "button": {
+        "back": "Previous"
+      },
+      "deposit": {
+        "title": "Deposit Detail",
+        "table": {
+          "bank": "Bank Recorded",
+          "rollinPoint": "Roll-in of Points",
+          "createdDate": "Creation Date",
+          "submitDate": "Submit Time",
+          "transactionTime": "Transaction Time",
+          "paymentMethod": "Payment Method",
+          "transactionNumber": "Transaction No.",
+          "activity": "Activity"
+        }
+      },
+      "withdrawal": {
+        "title": "Withdrawal Detail",
+        "table": {
+          "amount": "Withdrawal Amount",
+          "serviceCharge": "Service Charge",
+          "createdDate": "Creation Date",
+          "submitDate": "Submit Time",
+          "transactionTime": "Transaction Time",
+          "transactionNumber": "Transaction No."
+        }
+      },
+      "transfer": {
+        "title": "Transfer Detail",
+        "table": {
+          "game": "Game",
+          "rollinPoint": "Roll-in of Points",
+          "rolloutPoint": "Roll-out of Points",
+          "accountingDate": "Accounting Date",
+          "transactionTime": "Transaction Time",
+          "beforeWallet": "Wallet(Before transfer)",
+          "afterWallet": "Wallet(After transfer)",
+          "beforeGameAccount": "Game Account(Before transfer)",
+          "afterGameAccount": "Game Account(After transfer)"
+        }
+      },
+      "bonus": {},
+      "lottery": {},
+      "withdrawalRestriction": {
+        "title": "Withdrawal-Wallet Restriction",
+        "table": {
+          "activity": "Activity Name",
+          "bonusIssue": "Bonus Issue",
+          "datetime": "Time"
+        }
+      },
+      "adjustment": {}
     }
   },
   "promotionContent": {
