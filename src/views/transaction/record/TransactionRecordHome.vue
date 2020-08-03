@@ -47,8 +47,8 @@ export default {
           content: 'transaction.record.withdrawalRestriction',
         },
         {
-          name: 'adjust',
-          content: 'transaction.record.adjust',
+          name: 'adjustment',
+          content: 'transaction.record.adjustment',
         },
       ],
     };

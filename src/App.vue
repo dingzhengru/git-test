@@ -77,7 +77,7 @@ export default {
       changeLang(requestDataChangeLang).then(result => {
         if (result.Code == 200) {
           this.$store.commit('setLang', lang);
-          console.log('[Lang]', 'changeLang:', result.RetObj);
+          console.log('[Lang]', 'changeLang:', lang, result.RetObj);
         }
       });
     },

@@ -228,7 +228,91 @@
       "bonus": "บันทึกโปรโมชั่น",
       "lottery": "รายการบันทึก",
       "withdrawalRestriction": "ยอดจำกัดการถอน",
-      "adjust": "บันทึกรายการแก้ไข"
+      "adjustment": "บันทึกรายการแก้ไข"
+    },
+    "recordContent": {
+      "deposit": {
+        "title": "บันทึกรายการเติมเงิน",
+        "table": {
+          "date": "วันที่",
+          "bank": "ธนาคาร",
+          "amount": "จำนวน",
+          "receipt": "ใบเสร็จรับเงิน",
+          "detail": "รายละเอียด"
+        },
+        "notice": "บันทึกการซื้อขายจะถูกบันทึกเฉพาะ 10 รายการเท่านั้น ต้องการสินค้ามากกว่า 10 ชิ้น? กรุณาติดต่อเรา"
+      },
+      "withdrawal": {
+        "title": "บันทึกรายการถอนเงิน",
+        "table": {
+          "date": "วันที่",
+          "bank": "ธนาคาร",
+          "amount": "จำนวน",
+          "detail": "รายละเอียด"
+        },
+        "notice": "บันทึกการซื้อขายจะถูกบันทึกเฉพาะ 10 รายการเท่านั้น ต้องการสินค้ามากกว่า 10 ชิ้น? กรุณาติดต่อเรา"
+      },
+      "transfer": {
+        "title": "บันทึกรายการโอนเงิน",
+        "table": {
+          "date": "วันที่",
+          "game": "เกมส์",
+          "type": "ประเภท",
+          "amount": "Amount"
+        },
+        "field": {
+          "from": "From",
+          "to": "To"
+        },
+        "placeholder": {
+          "product": "เลือกหัวข้อ",
+          "dateRange": "เลือกช่วงวันที่"
+        },
+        "dateRange": {
+          "lastWeek": "อาทิตย์ที่แล้ว",
+          "lastTwoWeek": "สองสัปดาห์ที่ผ่านมา",
+          "lastMonth": "เดือนที่แล้ว"
+        },
+        "button": {
+          "search": "ค้นหา"
+        }
+      },
+      "bonus": {
+        "title": "บันทึกโปรโมชั่น",
+        "table": {
+          "activity": "ชื่อโปรโมชั่น",
+          "กระเป๋าเงินที่สัมพันธ์": "Binding Purse",
+          "แจกโบนัส": "Bonus Issue",
+          "datetime": "เวลา"
+        }
+      },
+      "lottery": {
+        "title": "รายการบันทึก",
+        "table": {
+          "prize": "ชื่อรางวัล",
+          "status": "รางวัลที่แจก",
+          "type": "ประเภทรางวัล",
+          "datetime": "วันที่จับรางวัล"
+        }
+      },
+      "withdrawalRestriction": {
+        "title": "ยอดจำกัดการถอน",
+        "table": {
+          "type": "ประเภท",
+          "restriction": "จำกัด",
+          "notRolloverExchange": "เหลือยอดโรลลิ่ง",
+          "rolloverDeadline": "กำหนดวันทำโรลลิ่ง"
+        }
+      },
+      "adjustment": {
+        "title": "บันทึกรายการแก้ไข",
+        "table": {
+          "status": "สถานะ",
+          "description": "แก้ไขรายละเอียดปัญหา",
+          "point": "แก้ไขยอดเงิน",
+          "datetime": "แก้ไขเวลา"
+        }
+      }
     }
   },
   "promotionContent": {

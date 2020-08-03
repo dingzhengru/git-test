@@ -228,7 +228,91 @@
       "bonus": "Bonus Record",
       "lottery": "Lottery Record",
       "withdrawalRestriction": "Withdrawal Restriction",
-      "adjust": "Adjustment Record"
+      "adjustment": "Adjustment Record"
+    },
+    "recordContent": {
+      "deposit": {
+        "title": "Deposit Record",
+        "table": {
+          "date": "Date",
+          "bank": "Bank",
+          "amount": "Amount",
+          "receipt": "Remittance Receipt",
+          "detail": "Detail"
+        },
+        "notice": "Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger"
+      },
+      "withdrawal": {
+        "title": "Withdrawal Record",
+        "table": {
+          "date": "Date",
+          "bank": "Bank",
+          "amount": "Amount",
+          "detail": "Detail"
+        },
+        "notice": "Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger"
+      },
+      "transfer": {
+        "title": "Transfer Record",
+        "table": {
+          "date": "Date",
+          "game": "Game",
+          "type": "Type",
+          "amount": "Amount"
+        },
+        "field": {
+          "from": "From",
+          "to": "To"
+        },
+        "placeholder": {
+          "product": "Choose the product",
+          "dateRange": "Select Date Range"
+        },
+        "dateRange": {
+          "lastWeek": "Last week",
+          "lastTwoWeek": "Last two week",
+          "lastMonth": "Last month"
+        },
+        "button": {
+          "search": "Search"
+        }
+      },
+      "bonus": {
+        "title": "Bonus Record",
+        "table": {
+          "activity": "Activity Name",
+          "bindWallet": "Binding Purse",
+          "issue": "Bonus Issue",
+          "datetime": "Time"
+        }
+      },
+      "lottery": {
+        "title": "Lottery Record",
+        "table": {
+          "prize": "Prize",
+          "status": "Status",
+          "type": "Type",
+          "datetime": "Date"
+        }
+      },
+      "withdrawalRestriction": {
+        "title": "Withdrawal Restriction",
+        "table": {
+          "type": "Type",
+          "restriction": "Restriction",
+          "notRolloverExchange": "Non-rollover Exchange Volume",
+          "rolloverDeadline": "Deadline of Rollover Exchange"
+        }
+      },
+      "adjustment": {
+        "title": "Adjustment Record",
+        "table": {
+          "status": "Status",
+          "description": "Adjustment Description",
+          "point": "Adjustment points",
+          "datetime": "Adjustment time"
+        }
+      }
     }
   },
   "promotionContent": {

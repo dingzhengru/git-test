@@ -1,33 +1,34 @@
 <template>
   <div class="record-content">
     <div class="record-content__box theme-content-box">
-      <h3 class="theme-h3-boxTitle">{{ title }}</h3>
+      <h3 class="theme-h3-boxTitle">{{ $t(`${i18nKey}.title`) }}</h3>
 
       <form class="record-content__search-form" @submit.prevent="submitSearchRecordList" v-if="isSearchActive">
         <div class="record-content__search-form__field">
           <select class="record-content__search-form__field__select--product ui-ddl" v-model="search.product">
-            <option :value="{}" selected>Choose the product</option>
+            <option :value="{}" selected>{{ $t(`${i18nKey}.placeholder.product`) }}</option>
             <option :value="product" v-for="product in productList" :key="product.sGameID">
               {{ product.Lst_Name }}
             </option>
           </select>
           <select class="record-content__search-form__field__select--date-range ui-ddl">
-            <option :value="{}" selected>Select Date Range</option>
+            <option :value="{}" selected>{{ $t(`${i18nKey}.placeholder.dateRange`) }}</option>
             <option :value="range.value" v-for="range in searchDateRangeList" :key="range.name">
-              {{ range.name }}
+              {{ $t(`${i18nKey}.dateRange.${range.name}`) }}
             </option>
           </select>
         </div>
         <div class="record-content__search-form__field">
-          <span class="txt-inquire">From</span>
+          <span class="txt-inquire">{{ $t(`${i18nKey}.field.from`) }}</span>
           <input
             class="record-content__search-form__field__input--date-from ui-ipt"
+            .
             type="date"
             v-model="search.dateFrom"
           />
         </div>
         <div class="record-content__search-form__field">
-          <span class="txt-inquire">To</span>
+          <span class="txt-inquire">{{ $t(`${i18nKey}.field.to`) }}</span>
           <input
             class="record-content__search-form__field__input--date-to ui-ipt"
             type="date"
@@ -35,7 +36,9 @@
           />
         </div>
         <div class="record-content__search-form__button-div">
-          <button class="record-content__search-form__button--search ui-btn ui-btn-long" type="submit">Search</button>
+          <button class="record-content__search-form__button--search ui-btn ui-btn-long" type="submit">
+            {{ $t(`${i18nKey}.button.search`) }}
+          </button>
         </div>
       </form>
 
@@ -45,7 +48,9 @@
             <tbody>
               <tr v-for="(value, key, index) in item" :key="index">
                 <template v-if="!notShowKeyList.includes(key)">
-                  <th class="record-content__ul__li__table__th-1st th-1st">{{ key }}</th>
+                  <th class="record-content__ul__li__table__th-1st th-1st">
+                    {{ $t(`${i18nKey}.table.${key}`) }}
+                  </th>
                   <td
                     class="record-content__ul__li__table__td-2nd td-2nd"
                     :class="{
@@ -96,6 +101,9 @@ export default {
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
+    i18nKey() {
+      return `transaction.recordContent.${this.$route.params.name}`;
+    },
     pageData() {
       if (!this.isPageActive) {
         return this.list;
@@ -143,15 +151,15 @@ export default {
       notShowKeyList: ['id', 'isSuccess'],
       searchDateRangeList: [
         {
-          name: 'Last week',
+          name: 'lastWeek',
           value: 7,
         },
         {
-          name: 'Last two week',
+          name: 'lastTwoWeek',
           value: 14,
         },
         {
-          name: 'Last month',
+          name: 'lastMonth',
           value: 30,
         },
       ],
@@ -173,20 +181,20 @@ export default {
           {
             id: 'DR200721114109903',
             isSuccess: true,
-            depositDate: '2020-07-21',
-            depositBank: 'KNANK',
-            depositAmount: 1000,
-            depositReceipt: '',
-            depositDetail: 'Successful',
+            date: '2020-07-21',
+            bank: 'KNANK',
+            amount: 1000,
+            receipt: '',
+            detail: 'Successful',
           },
           {
             id: 'DR200721111105963',
             isSuccess: false,
-            depositDate: '2020-07-22',
-            depositBank: 'KNANK123',
-            depositAmount: 10000,
-            depositReceipt: 'Remittance Receipt',
-            depositDetail: 'Under review',
+            date: '2020-07-22',
+            bank: 'KNANK123',
+            amount: 10000,
+            receipt: 'Remittance Receipt',
+            detail: 'Under review',
           },
         ];
         this.title = 'Deposit Record';
@@ -199,10 +207,10 @@ export default {
           {
             id: '',
             isSuccess: false,
-            withdrawalDate: '2020-07-21',
-            withdrawalBank: 'SCB',
-            withdrawalAmount: 1000,
-            withdrawalDetail: 'Under review',
+            date: '2020-07-21',
+            bank: 'SCB',
+            amount: 1000,
+            detail: 'Under review',
           },
         ];
         this.title = 'Withdrawals Record';
@@ -214,17 +222,17 @@ export default {
         this.list = [
           {
             id: '000',
-            transferDate: '2020-07-21',
-            transferGame: 'Royal Gaming',
-            transferType: 'Roll-out of Points',
-            transferAmount: -767,
+            date: '2020-07-21',
+            game: 'Royal Gaming',
+            type: 'Roll-out of Points',
+            amount: -767,
           },
           {
             id: '111',
-            transferDate: '2020-07-22',
-            transferGame: 'Royal Gaming',
-            transferType: 'Roll-out of Points',
-            transferAmount: 1122,
+            date: '2020-07-22',
+            game: 'Royal Gaming',
+            type: 'Roll-out of Points',
+            amount: 1122,
           },
         ];
         this.title = 'Transfer Record';
@@ -246,17 +254,17 @@ export default {
         this.list = [
           {
             id: '000',
-            bonusActivityName: 'ฝากเพิ่มรับสูงสุด 88,888',
-            bonusBindPurse: 'Wallet',
-            bonusIssue: 10,
-            bonusDatetime: '2020-07-21 11:13:42',
+            activity: 'ฝากเพิ่มรับสูงสุด 88,888',
+            bindWallet: 'Wallet',
+            issue: 10,
+            datetime: '2020-07-21 11:13:42',
           },
           {
             id: '111',
-            bonusActivityName: 'ฝากเพิ่มรับสูงสุด 88,888',
-            bonusBindPurse: 'Wallet',
-            bonusIssue: -10,
-            bonusDatetime: '2020-07-22 11:13:42',
+            activity: 'ฝากเพิ่มรับสูงสุด 88,888',
+            bindWallet: 'Wallet',
+            issue: -10,
+            datetime: '2020-07-22 11:13:42',
           },
         ];
         this.title = 'Bonus Record';
@@ -269,18 +277,18 @@ export default {
           {
             id: '000',
             isSuccess: false,
-            lotteryPrize: '88',
-            lotteryStatus: 'Undelivered',
-            lotteryType: 'Prize',
-            lotteryDatetime: '2020-07-21 11:41:52',
+            prize: '88',
+            status: 'Undelivered',
+            type: 'Prize',
+            datetime: '2020-07-21 11:41:52',
           },
           {
             id: '111',
             isSuccess: true,
-            lotteryPrize: '8888',
-            lotteryStatus: 'Successful',
-            lotteryType: 'Prize',
-            lotteryDatetime: '2020-07-22 13:41:52',
+            prize: '8888',
+            status: 'Successful',
+            type: 'Prize',
+            datetime: '2020-07-22 13:41:52',
           },
         ];
         this.title = 'Lottery Record';
@@ -289,14 +297,14 @@ export default {
         this.isPageActive = true;
         break;
       }
-      case 'withdrawal-restriction': {
+      case 'withdrawalRestriction': {
         this.list = [
           {
             id: '000',
-            withdrawalRestrictionType: 'General washing code',
-            withdrawalRestrictionContent: 'Withdrawal Bouns-Wallet',
-            'withdrawalRestriction non-rollover Exchange Volume': 13120,
-            'withdrawalRestriction deadline Of Rollover Exchange': '2021-2-6',
+            type: 'General washing code',
+            restriction: 'Withdrawal Bouns-Wallet',
+            notRolloverExchange: 13120,
+            rolloverDeadline: '2021-2-6',
           },
         ];
         this.title = 'Withdrawal Restriction';
@@ -309,10 +317,10 @@ export default {
         this.list = [
           {
             id: '000',
-            adjustmentStatus: 'Deduction from Points',
-            adjustmentDescription: 'description',
-            adjustmentPoints: -1000,
-            adjustmentDatetime: '2020-07-21 11:20:24',
+            status: 'Deduction from Points',
+            description: 'description',
+            point: -1000,
+            datetime: '2020-07-21 11:20:24',
           },
         ];
         this.title = 'Adjustment Record';
