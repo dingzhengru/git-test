@@ -430,7 +430,24 @@
       "datetime": "ที่ส่งจดหมาย",
       "reply": "ตอบกลับจดหมาย"
     },
-    "outbox": {}
+    "outbox": {
+      "category": "ประเภท",
+      "title": "หัวข้อ",
+      "content": "รายละเอียด",
+      "categoryList": {
+        "placeholder": "โปรดเลือกประเภทจดหมาย",
+        "registerIssue": "ปัญหาการสมัคร",
+        "accountSearch": "ค้นหายูสเซอร์",
+        "depositIssue": "ปัญหาการเติมเงิน",
+        "withdrawalRelated": "ปัญหาในการถอนเงิน",
+        "betIssue": "ปัญหาการเดิมพัน",
+        "gameIssue": "ปัญหาเกมส์",
+        "limitedGambling": "ปัญหากฎคาสิโน",
+        "promotion": "โปรโมชั่น",
+        "technologyRelated": "ปัญหาทางเทคนิก",
+        "aboutUs": "เกี่ยวกับเว็ป"
+      }
+    }
   },
   "promotionContent": {
     "title": {

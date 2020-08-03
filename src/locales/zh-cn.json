@@ -430,7 +430,24 @@
       "datetime": "信件日期",
       "reply": "回覆信件"
     },
-    "outbox": {}
+    "outbox": {
+      "category": "信件类别",
+      "title": "主旨",
+      "content": "内容",
+      "categoryList": {
+        "placeholder": "请选择信件类别",
+        "registerIssue": "开户问题",
+        "accountSearch": "查询账户",
+        "depositIssue": "存款问题",
+        "withdrawalRelated": "取款问题",
+        "betIssue": "投注问题",
+        "gameIssue": "游戏问题",
+        "limitedGambling": "博彩责任",
+        "promotion": "优惠活动",
+        "technologyRelated": "技术问题",
+        "aboutUs": "有关本站"
+      }
+    }
   },
   "promotionContent": {
     "title": {

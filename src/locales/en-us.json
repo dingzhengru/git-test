@@ -430,7 +430,24 @@
       "datetime": "Date",
       "reply": "Reply to mail"
     },
-    "outbox": {}
+    "outbox": {
+      "category": "Letter Category",
+      "title": "Title",
+      "content": "Content",
+      "categoryList": {
+        "placeholder": "Please select the category of mail.",
+        "registerIssue": "Register Issue",
+        "accountSearch": "Account Search",
+        "depositIssue": "Deposit Issue",
+        "withdrawalRelated": "Withdrawals Related",
+        "betIssue": "Betting Issue",
+        "gameIssue": "Gaming Issue",
+        "limitedGambling": "Limited gambling",
+        "promotion": "Promotions",
+        "technologyRelated": "Technology Related",
+        "aboutUs": "About us"
+      }
+    }
   },
   "promotionContent": {
     "title": {

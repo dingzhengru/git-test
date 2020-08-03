@@ -2,13 +2,15 @@
   <div class="notification-outbox">
     <form class="notification-outbox__box theme-content-box" id="notification-outbox-form" @submit.prevent="submitMail">
       <div class="notification-outbox__field theme-input-box" v-for="field in fieldList" :key="field.name">
-        <span class="theme-input-header">{{ field.title }}</span>
+        <span class="theme-input-header">
+          {{ $t(field.text) }}
+        </span>
 
         <template v-if="field.name == 'category'">
           <select class="notification-outbox__field__select ui-ddl" v-model="mail.category">
-            <option :value="{}" selected>Please select the category of mail.</option>
+            <option :value="{}" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
             <option :value="category" v-for="category in categoryList" :key="category.value">
-              {{ category.name }}
+              {{ $t(category.text) }}
             </option>
           </select>
         </template>
@@ -24,10 +26,10 @@
     </form>
     <div class="notification-outbox__button-div">
       <button class="notification-outbox__button--submit ui-btn" type="submit" form="notification-outbox-form">
-        Submit
+        {{ $t('ui.button.submit') }}
       </button>
       <button class="notification-outbox__button--cancel ui-btn" @click="$router.go(-1)">
-        Cancellation
+        {{ $t('ui.button.cancel') }}
       </button>
     </div>
   </div>
@@ -45,58 +47,68 @@ export default {
     return {
       categoryList: [
         {
-          name: 'Register Issue',
+          name: 'registerIssue',
+          text: 'notification.outbox.categoryList.registerIssue',
           value: '01',
         },
         {
-          name: 'Account Serch',
+          name: 'accountSearch',
+          text: 'notification.outbox.categoryList.accountSearch',
           value: '02',
         },
         {
-          name: 'Deposit Issue',
+          name: 'depositIssue',
+          text: 'notification.outbox.categoryList.depositIssue',
           value: '03',
         },
         {
-          name: 'Withdrawals Related',
+          name: 'withdrawalRelated',
+          text: 'notification.outbox.categoryList.withdrawalRelated',
           value: '04',
         },
         {
-          name: 'Betting Issue',
+          name: 'betIssue',
+          text: 'notification.outbox.categoryList.betIssue',
           value: '05',
         },
         {
-          name: 'Gaming Issue',
+          name: 'gameIssue',
+          text: 'notification.outbox.categoryList.gameIssue',
           value: '06',
         },
         {
-          name: 'Limited gambling',
+          name: 'limitedGambling',
+          text: 'notification.outbox.categoryList.limitedGambling',
           value: '07',
         },
         {
-          name: 'Promotions',
+          name: 'promotion',
+          text: 'notification.outbox.categoryList.promotion',
           value: '08',
         },
         {
-          name: 'Technology Related',
+          name: 'technologyRelated',
+          text: 'notification.outbox.categoryList.technologyRelated',
           value: '09',
         },
         {
-          name: 'About us',
+          name: 'aboutUs',
+          text: 'notification.outbox.categoryList.aboutUs',
           value: '10',
         },
       ],
       fieldList: [
         {
           name: 'category',
-          title: 'Letter Category',
+          text: 'notification.outbox.category',
         },
         {
           name: 'title',
-          title: 'Title',
+          text: 'notification.outbox.title',
         },
         {
           name: 'content',
-          title: 'Content',
+          text: 'notification.outbox.content',
         },
       ],
       mail: {
@@ -137,6 +149,7 @@ export default {
 
 .notification-outbox__field__select {
   padding: 0 1.5%;
+  font-size: 2.5rem;
 }
 
 .notification-outbox__button-div {
