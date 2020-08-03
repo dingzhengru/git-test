@@ -416,6 +416,22 @@
       }
     }
   },
+  "notification": {
+    "nav": {
+      "news": "Latest News",
+      "chat": "Chats",
+      "outbox": "Outbox"
+    },
+    "news": {},
+    "chat": {},
+    "chatDetail": {
+      "title": "Title",
+      "sender": "Contact info",
+      "datetime": "Date",
+      "reply": "Reply to mail"
+    },
+    "outbox": {}
+  },
   "promotionContent": {
     "title": {
       "date": "Activity time",

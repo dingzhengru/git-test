@@ -416,6 +416,22 @@
       }
     }
   },
+  "notification": {
+    "nav": {
+      "news": "ข่าวล่าสุด",
+      "chat": "แชท",
+      "outbox": "กล่องขาออก"
+    },
+    "news": {},
+    "chat": {},
+    "chatDetail": {
+      "title": "หัวข้อ",
+      "sender": "ผู้ส่งสาร",
+      "datetime": "ที่ส่งจดหมาย",
+      "reply": "ตอบกลับจดหมาย"
+    },
+    "outbox": {}
+  },
   "promotionContent": {
     "title": {
       "date": "เวลากิจกรรม",

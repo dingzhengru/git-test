@@ -2,9 +2,15 @@
   <div class="notification-chat-detail">
     <div v-for="item in list" :key="item.id">
       <ul class="notification-chat-detail__ul">
-        <li class="notification-chat-detail__ul__li">Title：{{ item.title }}</li>
-        <li class="notification-chat-detail__ul__li">Contact info：{{ item.user }}</li>
-        <li class="notification-chat-detail__ul__li">Date：{{ item.datetime }}</li>
+        <li class="notification-chat-detail__ul__li">
+          {{ `${$t('notification.chatDetail.title')}：${item.title}` }}
+        </li>
+        <li class="notification-chat-detail__ul__li">
+          {{ `${$t('notification.chatDetail.sender')}：${item.sender}` }}
+        </li>
+        <li class="notification-chat-detail__ul__li">
+          {{ `${$t('notification.chatDetail.datetime')}：${item.datetime}` }}
+        </li>
       </ul>
       <div class="theme-content-box notification-chat-detail__content" v-html="item.content"></div>
     </div>
@@ -14,7 +20,7 @@
       @submit.prevent="submitChat"
     >
       <div class="theme-input-box">
-        <span class="theme-input-header">Reply to mail</span>
+        <span class="theme-input-header">{{ $t('notification.chatDetail.reply') }}</span>
         <textarea class="ui-tar" cols="80" rows="5" v-model="chat"></textarea>
       </div>
     </form>
@@ -48,7 +54,7 @@ export default {
           id: '111',
           group: 'group-id11111',
           title: 'ttestt',
-          user: 'ding01',
+          sender: 'ding01',
           datetime: '2020-07-29 10:31:26',
           content: `<h2>test11111</h2>`,
         },
@@ -56,7 +62,7 @@ export default {
           id: '000',
           group: 'group-id11111',
           title: 'ttestt',
-          user: 'SysAdmin',
+          sender: 'SysAdmin',
           datetime: '2020-07-29 10:33:28',
           content: `<h2>test00000</h2>`,
         },
@@ -96,7 +102,8 @@ export default {
 }
 
 .notification-chat-detail__ul__li {
-  padding: 10px 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px dotted #fff;
 }
 

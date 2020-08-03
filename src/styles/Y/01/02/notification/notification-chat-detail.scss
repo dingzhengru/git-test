@@ -1,7 +1,11 @@
 $type: 'Y/01/02';
 .notification-chat-detail__ul__li {
   background-color: #0f445d;
+  padding-left: 10px;
 }
+
+
+
 .notification-chat-detail__ul__li:nth-child(2),
 .notification-chat-detail__ul__li:nth-child(3) {
   background-color: #1c6080;
