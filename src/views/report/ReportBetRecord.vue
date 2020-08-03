@@ -1,24 +1,25 @@
 <template>
   <div class="report-bet-record">
     <div class="report-bet-record__field">
-      <select class="report-bet-record__field__select ui-ddl" v-model="dayRange" @change="changeDayRange">
-        <option :value="{}" selected>Accounting of the day</option>
-        <option :value="dayRange" v-for="dayRange in dayRangeList" :key="dayRange.value">
-          {{ dayRange.name }}
+      <select class="report-bet-record__field__select ui-ddl" v-model="dateRange">
+        <option :value="dateRangeItem" v-for="dateRangeItem in dateRangeList" :key="dateRangeItem.value">
+          {{ $t(`report.betRecord.dateRange.${dateRangeItem.name}`) }}
         </option>
       </select>
     </div>
-    <div class="report-bet-record__box theme-content-box">
-      <h3 class="report-bet-record__title theme-h3-boxTitle">Accounting of this week</h3>
+    <div class="report-bet-record__box theme-content-box" v-if="dateRange.name != 'today'">
+      <h3 class="report-bet-record__title theme-h3-boxTitle">
+        {{ $t(`report.betRecord.dateRange.${dateRange.name}`) }}
+      </h3>
       <table class="report-bet-record__table ui-table03">
         <thead>
           <tr class="report-bet-record__table__tr">
-            <th>Date</th>
-            <th>Total Win-lose</th>
+            <th>{{ $t(`report.betRecord.table.date`) }}</th>
+            <th>{{ $t(`report.betRecord.table.totalWinLose`) }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="report-bet-record__table__tr" v-for="item in list" :key="item.date">
+          <tr class="report-bet-record__table__tr" v-for="item in weekList" :key="item.date">
             <td class="report-bet-record__table__td-1st td-1st">{{ item.date }}</td>
             <td
               class="report-bet-record__table__td-2nd td-2nd"
@@ -35,6 +36,12 @@
         </tbody>
       </table>
     </div>
+
+    <ReportBetRecordDetailTable
+      :title="$t(`report.betRecord.dateRange.${dateRange.name}`)"
+      :recordList="recordList"
+      v-if="dateRange.name == 'today'"
+    />
   </div>
 </template>
 
@@ -42,26 +49,27 @@
 import numeral from 'numeral';
 export default {
   name: 'ReportBetRecord',
+  components: {
+    ReportBetRecordDetailTable: () => import('@/components/report/ReportBetRecordDetailTable'),
+  },
   data() {
     return {
       numeral: numeral,
-      dayRangeList: [
+      dateRangeList: [
         {
-          name: 'Accounting of this week',
+          name: 'today',
+          value: 'today',
+        },
+        {
+          name: 'thisWeek',
           value: 'thisWeek',
         },
         {
-          name: 'Accounting of last week',
+          name: 'lastWeek',
           value: 'lastWeek',
         },
       ],
-      total: {
-        betCount: 4,
-        betAmount: 280,
-        winLose: 8012,
-        prize: 0,
-      },
-      list: [
+      weekList: [
         {
           date: '2020-07-27 (GMT+8)',
           winLose: -216,
@@ -73,12 +81,53 @@ export default {
           hasDetail: true,
         },
       ],
-      dayRange: {},
+      dateRange: { name: 'today', value: 'today' },
+      recordList: [],
     };
   },
   methods: {
-    changeDayRange() {
-      console.log('[ReportBetRecord] changeDayRange:', this.dayRange);
+    changeDateRange() {
+      console.log('[ReportBetRecord] changeDateRange:', this.dateRange);
+    },
+  },
+  watch: {
+    siteID: {
+      immediate: true,
+      handler() {
+        if (!this.siteID) {
+          return;
+        }
+        // * 根據版型引入 css ()
+        import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
+      },
+    },
+    dateRange: {
+      immediate: true,
+      handler() {
+        console.log('[ReportBetRecord]:', this.dateRange.name);
+        if (this.dateRange.name == 'today') {
+          this.recordList = [
+            {
+              id: '00000',
+              game: 'RNG-RG電子',
+              count: 3,
+              totalAmount: 240,
+              validAmount: 240,
+              totalWinLose: -216,
+              prize: 0,
+            },
+            {
+              id: '11111',
+              game: 'RNG-CQ9 RNG',
+              count: 1,
+              totalAmount: 40,
+              validAmount: 40,
+              totalWinLose: 8228,
+              prize: 0,
+            },
+          ];
+        }
+      },
     },
   },
 };

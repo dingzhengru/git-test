@@ -382,7 +382,39 @@
         "amount": "Total Bet Amount"
       }
     },
-    "betRecord": {}
+    "betRecord": {
+      "table": {
+        "date": "Date",
+        "totalWinLose": "Total Win-lose"
+      },
+      "dateRange": {
+        "today": "Accounting of the day",
+        "thisWeek": "Accounting of this week",
+        "lastWeek": "Accounting of last week"
+      }
+    },
+    "betRecordDetail": {
+      "title": "Account detail",
+      "table": {
+        "total": {
+          "count": "Total Bet Count",
+          "amount": "Total Bet Amount",
+          "totalWinLose": "Total Win-lose",
+          "prize": "Total Prize"
+        },
+        "recordList": {
+          "game": "Arena of Games",
+          "count": "Total Bet Count",
+          "totalAmount": "Total Bet Amount",
+          "validAmount": "Valid Bet Amount",
+          "totalWinLose": "Total Win-lose",
+          "prize": "Total Prize"
+        }
+      },
+      "button": {
+        "back": "Previous"
+      }
+    }
   },
   "promotionContent": {
     "title": {

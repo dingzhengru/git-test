@@ -26,7 +26,7 @@ export default {
           text: 'report.nav.betRecord',
           link: 'ReportBetRecord',
           class: 'ui-li-tabs-bethistory',
-          otherActivePath: [],
+          otherActivePath: ['ReportBetRecordDetail'],
         },
       ],
     };

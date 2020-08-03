@@ -384,10 +384,35 @@
     },
     "betRecord": {
       "table": {
-        "number": "NO.",
-        "game": "游戏馆别",
-        "count": "总下注笔数",
-        "amount": "总下注金额"
+        "date": "日期",
+        "totalWinLose": "总输赢"
+      },
+      "dateRange": {
+        "today": "当天帐务",
+        "thisWeek": "本周帐务",
+        "lastWeek": "上周帐务"
+      }
+    },
+    "betRecordDetail": {
+      "title": "帐务明细",
+      "table": {
+        "total": {
+          "count": "总下注笔数",
+          "amount": "总下注金额",
+          "totalWinLose": "总输赢",
+          "prize": "总彩金"
+        },
+        "recordList": {
+          "game": "游戏馆别",
+          "count": "总下注笔数",
+          "totalAmount": "总下注金额",
+          "validAmount": "有效下注量",
+          "totalWinLose": "总输赢",
+          "prize": "总彩金"
+        }
+      },
+      "button": {
+        "back": "返回"
       }
     }
   },

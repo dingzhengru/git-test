@@ -384,10 +384,35 @@
     },
     "betRecord": {
       "table": {
-        "number": "NO.",
-        "game": "游戏馆别",
-        "count": "总下注笔数",
-        "amount": "总下注金额"
+        "date": "วันที่",
+        "totalWinLose": "ยอดได้เสีย"
+      },
+      "dateRange": {
+        "today": "รีพอร์ตวันนี้",
+        "thisWeek": "รีพอร์ตสัปดาห์นี้",
+        "lastWeek": "รีพอร์ตสัปดาห์ก่อน"
+      }
+    },
+    "betRecordDetail": {
+      "title": "รายละเอียดบัญชี",
+      "table": {
+        "total": {
+          "count": "จำนวนบิล",
+          "amount": "ยอดเดิมพันทั้งหมด",
+          "totalWinLose": "ยอดได้เสีย",
+          "prize": "ยอดแจ็คพอต"
+        },
+        "recordList": {
+          "game": "สาขาเกมส์",
+          "count": "จำนวนบิล",
+          "totalAmount": "ยอดเดิมพันทั้งหมด",
+          "validAmount": "ยอดโรลลิ่ง",
+          "totalWinLose": "ยอดได้เสีย",
+          "prize": "ยอดแจ็คพอต"
+        }
+      },
+      "button": {
+        "back": "กลับไปยังหน้าที่แล้ว"
       }
     }
   },
