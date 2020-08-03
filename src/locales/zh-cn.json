@@ -369,6 +369,28 @@
       "adjustment": {}
     }
   },
+  "report": {
+    "nav": {
+      "unsettleBet": "未结算投注",
+      "betRecord": "帐务纪录"
+    },
+    "unsettleBet": {
+      "table": {
+        "number": "NO.",
+        "game": "游戏馆别",
+        "count": "总下注笔数",
+        "amount": "总下注金额"
+      }
+    },
+    "betRecord": {
+      "table": {
+        "number": "NO.",
+        "game": "游戏馆别",
+        "count": "总下注笔数",
+        "amount": "总下注金额"
+      }
+    }
+  },
   "promotionContent": {
     "title": {
       "date": "活动时间",

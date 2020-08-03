@@ -369,6 +369,28 @@
       "adjustment": {}
     }
   },
+  "report": {
+    "nav": {
+      "unsettleBet": "Unsettled Betting",
+      "betRecord": "Betting Records"
+    },
+    "unsettleBet": {
+      "table": {
+        "number": "NO.",
+        "game": "สาขาเกมส์",
+        "count": "จำนวนบิล",
+        "amount": "ยอดเดิมพันทั้งหมด"
+      }
+    },
+    "betRecord": {
+      "table": {
+        "number": "NO.",
+        "game": "游戏馆别",
+        "count": "总下注笔数",
+        "amount": "总下注金额"
+      }
+    }
+  },
   "promotionContent": {
     "title": {
       "date": "เวลากิจกรรม",

@@ -369,6 +369,21 @@
       "adjustment": {}
     }
   },
+  "report": {
+    "nav": {
+      "unsettleBet": "Unsettled Betting",
+      "betRecord": "Betting Records"
+    },
+    "unsettleBet": {
+      "table": {
+        "number": "NO.",
+        "game": "Arena of Games",
+        "count": "Total Bet Count",
+        "amount": "Total Bet Amount"
+      }
+    },
+    "betRecord": {}
+  },
   "promotionContent": {
     "title": {
       "date": "Activity time",

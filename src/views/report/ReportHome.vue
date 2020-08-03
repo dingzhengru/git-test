@@ -15,13 +15,15 @@ export default {
     return {
       routeList: [
         {
-          name: 'Unsettled Betting',
+          name: 'unsettleBet',
+          text: 'report.nav.unsettleBet',
           link: 'ReportUnsettleBet',
           class: 'ui-li-tabs-uns',
           otherActivePath: [],
         },
         {
-          name: 'Betting Records',
+          name: 'betRecord',
+          text: 'report.nav.betRecord',
           link: 'ReportBetRecord',
           class: 'ui-li-tabs-bethistory',
           otherActivePath: [],
