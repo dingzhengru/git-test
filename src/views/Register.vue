@@ -16,6 +16,7 @@
               v-model="field.value"
               v-if="field.type != 'select'"
             />
+            
             <img
               class="register__form__field__image--code"
               :src="`data:image/png;base64,${captchaImage.ImgBase64}`"

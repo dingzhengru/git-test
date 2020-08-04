@@ -5,7 +5,7 @@ const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localho
 const DEFAULT_LANG = 'th-th';
 
 // 需要 Authorization bearer token 的 API
-const AUTH_API_LIST = ['Member/LoginIn', 'Member/SimpleRegister'];
+const AUTH_API_LIST = ['Member/LoginIn', 'Member/SimpleRegister', 'Siteinfo/MGetAllGamePoint'];
 
 // 需加密的 API
 const CRYPTO_API_LIST = ['Member/LoginIn'];

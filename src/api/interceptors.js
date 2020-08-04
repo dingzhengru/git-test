@@ -5,8 +5,9 @@ import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 
 axios.interceptors.request.use(
   config => {
-    //* 判斷是否在認證列表中
+    //* 判斷是否在認證列表中 (於 header 加上 Authorization: bearer ${token})
     if (AUTH_API_LIST.find(item => config.url.includes(item))) {
+      console.log(store.getters.token);
       config.headers = {
         Authorization: `Bearer ${store.getters.token}`,
       };

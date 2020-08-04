@@ -85,6 +85,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { getAllGamePoint } from '@/api/user';
 import numeral from 'numeral';
 
 import VueSlider from 'vue-slider-component';
@@ -96,7 +97,7 @@ export default {
     VueSlider,
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'token']),
     toList() {
       return this.productList.filter(item => item.name != 'Wallet');
     },
@@ -205,6 +206,17 @@ export default {
 
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/transfer.scss`);
+      },
+    },
+    token: {
+      immediate: true,
+      handler() {
+        if (!this.token) {
+          return;
+        }
+        getAllGamePoint().then(result => {
+          console.log('[AllGamePoint]', result);
+        });
       },
     },
   },
