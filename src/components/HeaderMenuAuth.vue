@@ -80,12 +80,12 @@ export default {
       default: () => '',
     },
     total: {
-      type: Number,
-      default: () => 0,
+      type: String,
+      default: () => '',
     },
     vip: {
-      type: Number,
-      default: () => 0,
+      type: String,
+      default: () => '',
     },
     roll: {
       type: Number,

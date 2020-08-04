@@ -44,7 +44,7 @@ if (lang) {
   });
 }
 
-//* 取得公鑰
+//* 取得公鑰 & token
 getTokenAndPublicKey().then(result => {
   store.commit('user/setToken', result.RetObj.token);
   store.commit('user/setPublicKey', result.RetObj.publickey);
@@ -53,14 +53,6 @@ getTokenAndPublicKey().then(result => {
 //* 用 isLoggedIn 判斷是否登入
 const isLoggedIn = getIsLoggedIn();
 store.commit('user/setIsLoggedIn', isLoggedIn);
-if (isLoggedIn) {
-  // * 取得使用者資料，並放置進 store.user
-  store.commit('user/setIsAccessed', true); // * 設置是否已開通
-  store.commit('user/setUsername', 'ding0101');
-  store.commit('user/setTotal', 1.23);
-  store.commit('user/setVip', 123);
-  store.commit('user/setRoll', 4.56);
-}
 
 //* 取得 site info => 存進 store.state.site
 const requestData = { DeviceType: 1 };

@@ -42,7 +42,10 @@ axios.interceptors.response.use(
     console.log('[interceptors response error]', error);
     console.log('[interceptors response error code]', error.response.status);
     console.log('[interceptors response error data]', error.response.data);
-    if (error.response.status == 401) {
+    if (error.response.status == 401 && error.response.data.Code == 201) {
+      console.log('[Logout]', 'status code:401 && data.Code == 201');
+      store.dispatch('user/logout');
+    } else if (error.response.status == 401) {
       return error.response;
     } else {
       return Promise.reject(error);

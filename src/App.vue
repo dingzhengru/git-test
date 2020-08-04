@@ -36,6 +36,9 @@
 import { mapGetters } from 'vuex';
 import { getLangList, changeLang } from '@/api/lang';
 import { getMessageList } from '@/api/alert';
+import { getUserInfo, getPITTLBet } from '@/api/user';
+import numeral from 'numeral';
+
 export default {
   name: 'App',
   components: {
@@ -43,7 +46,18 @@ export default {
     AppFooter: () => import('@/components/AppFooter'),
   },
   computed: {
-    ...mapGetters(['lang', 'isLoggedIn', 'siteID', 'siteFullCss', 'resourceUrl', 'username', 'total', 'vip', 'roll']),
+    ...mapGetters([
+      'siteID',
+      'siteFullCss',
+      'token',
+      'lang',
+      'isLoggedIn',
+      'resourceUrl',
+      'username',
+      'total',
+      'vip',
+      'roll',
+    ]),
   },
   data() {
     return {
@@ -59,6 +73,21 @@ export default {
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
   },
   methods: {
+    getUserInfo() {
+      getPITTLBet().then(result => {
+        console.log('[PITTLBet]', result.RetObj);
+        this.$store.commit('user/setRoll', result.RetObj.PI_BetAmount);
+        this.$store.commit('user/setVip', result.RetObj.PI_Level);
+      });
+
+      getUserInfo().then(result => {
+        console.log('[UserInfo]', result);
+        this.$store.commit('user/setUsername', result.RetObj.Lst_Account);
+        this.$store.commit('user/setTotal', numeral(result.RetObj.Lst_TotalDeposit).format('0,0.00'));
+      });
+
+      this.$store.commit('user/setIsAccessed', true); // * 設置是否已開通
+    },
     changeLang(lang) {
       if (this.lang == lang) {
         return;
@@ -118,6 +147,27 @@ export default {
           }
         });
       },
+    },
+    token() {
+      /*
+       * 這裡放需要 token 且是僅進入頁面才發需求的 API
+       * ex: 使用者的上方資訊欄位
+       */
+      if (!this.token) {
+        return;
+      }
+
+      if (this.isLoggedIn) {
+        this.getUserInfo();
+      }
+    },
+    isLoggedIn() {
+      /*
+       * 這裡放登入後，馬上需要更新的 API
+       */
+      if (this.isLoggedIn) {
+        this.getUserInfo();
+      }
     },
     lang() {
       // * 取得訊息列表(msgtype: C 彈出)
