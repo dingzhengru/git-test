@@ -16,7 +16,7 @@ a {
   text-decoration: none;
   outline: none;
 }
-.cpn-boxzero {
+/* .cpn-boxzero {
   margin: 0;
   padding: 0;
 }
@@ -25,12 +25,10 @@ ul.cpn-boxzero > li {
 }
 .cpn-inBlock {
   display: inline-block;
-  *display: inline;
   zoom: 1;
 }
 .cpn-inBlock-row {
   letter-spacing: -0.31em;
-  /* letter-spacing: normal; */
 }
 .cpn-inBlock-row > .cpn-inBlock-cell,
 ul.cpn-inBlock-row > li {
@@ -40,7 +38,6 @@ ul.cpn-inBlock-row > li {
   word-spacing: normal;
   vertical-align: top;
 }
-/* .cpn-ul-decimal {} */
 .cpn-ul-decimal > li {
   list-style-type: decimal;
 }
@@ -52,7 +49,7 @@ ul.cpn-inBlock-row > li {
 }
 .cpn-clear-both {
   clear: both;
-}
+} */
 
 /*===================================================================================================================*/
 /*                                                        UI                                                         */
@@ -76,9 +73,7 @@ ul.cpn-inBlock-row > li {
 }
 
 /* button(/a) */
-.ui-btn,
-.ui-btn01,
-.ui-btn02 {
+.ui-btn {
   width: 300px;
   height: 97px;
   display: inline-block;
@@ -330,7 +325,7 @@ ul.cpn-inBlock-row > li {
 }
 
 /* tabs */
-.ui-ul-tabs {
+/* .ui-ul-tabs {
   margin: 0;
   padding: 0;
   letter-spacing: -0.31em;
@@ -359,15 +354,15 @@ ul.cpn-inBlock-row > li {
   color: #fff;
   font-size: 2.153em;
   text-align: center;
-}
+} */
 
 /* pageTitle */
-.ui-h1-pageTitle {
+/* .ui-h1-pageTitle {
   color: #fff;
   font-size: 3.584em;
   font-weight: normal;
   text-align: center;
-}
+} */
 
 /* memberNotice */
 .ui-ol-memberNotice {

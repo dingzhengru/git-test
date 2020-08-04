@@ -57,12 +57,15 @@ export default {
 
 <style scoped>
 .home-game__ul {
+  padding: 20px 0 0 0;
   margin: 0 32px;
-  padding-top: 20px;
 }
 .home-game__ul__li {
-  background: no-repeat center top;
+  display: inline-block;
+  vertical-align: top;
   margin: 0 2px 30px;
+  background-repeat: no-repeat;
+  background-position: center top;
 }
 .home-game__ul__li__link {
   display: block;

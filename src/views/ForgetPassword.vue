@@ -36,7 +36,8 @@ export default {
   text-align: center;
   margin-top: 0px;
   padding-top: 20px;
-  font-size: 2rem;
+  font-size: 3rem;
+  /* font-weight: bold; */
 }
 .forget-password__desc {
   padding-top: 316px;

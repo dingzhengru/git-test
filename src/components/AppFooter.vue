@@ -1,6 +1,6 @@
 <template>
   <footer class="footer" v-if="!isHideFooter">
-    <ul class="footer__ul cpn-boxzero cpn-inBlock-row">
+    <ul class="footer__ul">
       <li
         class="footer__ul__li"
         :class="[
@@ -120,8 +120,16 @@ export default {
   bottom: 0;
   z-index: 4;
 }
+
+.footer__ul {
+  padding: 0;
+  margin: 0;
+}
+
 .footer__ul__li {
   width: 25%;
+  display: inline-block;
+  vertical-align: top;
 }
 .footer__ul__li__link {
   display: table-cell;
