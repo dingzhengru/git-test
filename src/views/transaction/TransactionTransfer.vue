@@ -24,34 +24,36 @@
           </option>
         </select>
       </div>
-      <table class="transfer__amount-table">
-        <tbody>
-          <tr>
-            <th class="transfer__amount-table__th-1st">{{ $t('transaction.transfer.field.amount') }}</th>
-            <td class="transfer__amount-table__td-2nd">
-              <input
-                class="transfer__amount-table__input"
-                type="number"
-                maxlength="12"
-                size="20"
-                step="0.01"
-                placeholder="Please enter the point transfer amount"
-                v-model="amount"
-              />
-              <div class="transfer__amount-table__range">
-                <vue-slider v-model="amount" v-bind="rangeOptions" @error="rangeError" @change="rangeChange">
-                  <template v-slot:dot>
-                    <img src="~@/assets/common/imgs/main/sliderPoint.png" class="custom-dot" />
-                  </template>
-                  <template v-slot:process>
-                    <div class="custom-process"></div>
-                  </template>
-                </vue-slider>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="transfer__amount-table-div">
+        <table class="transfer__amount-table">
+          <tbody>
+            <tr>
+              <th class="transfer__amount-table__th-1st">{{ $t('transaction.transfer.field.amount') }}</th>
+              <td class="transfer__amount-table__td-2nd">
+                <input
+                  class="transfer__amount-table__input"
+                  type="number"
+                  maxlength="12"
+                  size="20"
+                  step="0.01"
+                  placeholder="Please enter the point transfer amount"
+                  v-model="amount"
+                />
+                <div class="transfer__amount-table__range">
+                  <vue-slider v-model="amount" v-bind="rangeOptions" @error="rangeError" @change="rangeChange">
+                    <template v-slot:dot>
+                      <img src="~@/assets/common/imgs/main/sliderPoint.png" class="custom-dot" />
+                    </template>
+                    <template v-slot:process>
+                      <div class="custom-process"></div>
+                    </template>
+                  </vue-slider>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="transfer__button-div">
         <button type="submit" class="transfer__button--transfer ui-btn ui-btn-long">
           {{ $t('transaction.transfer.button.transfer') }}
@@ -65,7 +67,7 @@
     </div>
     <table class="transfer__account-table">
       <tbody>
-        <tr>
+        <tr class="transfer__account-table__tr">
           <td colspan="2">
             <div class="transfer__button-div">
               <button class="transfer__button--reflash ui-btn ui-btn-long" @click="reflash()">
@@ -74,9 +76,9 @@
             </div>
           </td>
         </tr>
-        <tr v-for="product in productList" :key="product.name">
-          <td class="transfer__account-table__th-1st">{{ $t(product.text) }}</td>
-          <td class="transfer__account-table__td-2nd">{{ numeral(product.amount).format('0,0.00') }}</td>
+        <tr class="transfer__account-table__tr" v-for="product in productList" :key="product.Product_id">
+          <td class="transfer__account-table__th-1st">{{ product.Product_Name }}</td>
+          <td class="transfer__account-table__td-2nd">{{ numeral(product.Point).format('0,0.00') }}</td>
         </tr>
       </tbody>
     </table>
@@ -105,51 +107,52 @@ export default {
   data() {
     return {
       numeral: numeral,
-      productList: [
-        {
-          name: 'wallet',
-          text: 'transaction.transfer.table.wallet',
-          value: '9999',
-          amount: 1000000,
-        },
-        {
-          name: 'SABA',
-          text: 'transaction.transfer.table.SABA',
-          value: '1080',
-          amount: 2000.22,
-        },
-        {
-          name: 'BBIN',
-          text: 'transaction.transfer.table.BBIN',
-          value: '1080',
-          amount: 333333.3,
-        },
-        {
-          name: 'JDB',
-          text: 'transaction.transfer.table.JDB',
-          value: '1180',
-          amount: 44444.444,
-        },
-        {
-          name: 'RG',
-          text: 'transaction.transfer.table.RG',
-          value: '1190',
-          amount: 55555.55,
-          children: ['☑ MG+ RNG', ' ☑ PNG', ' ☑ Gclub', '☑ DS RNG'],
-        },
-        {
-          name: 'CQ9',
-          text: 'transaction.transfer.table.CQ9',
-          value: '1200',
-          amount: 666666,
-        },
-        {
-          name: 'SBO',
-          text: 'transaction.transfer.table.SBO',
-          value: '1220',
-          amount: 7777,
-        },
-      ],
+      productList: [],
+      // productList: [
+      //   {
+      //     name: 'wallet',
+      //     text: 'transaction.transfer.table.wallet',
+      //     value: '9999',
+      //     amount: 1000000,
+      //   },
+      //   {
+      //     name: 'SABA',
+      //     text: 'transaction.transfer.table.SABA',
+      //     value: '1080',
+      //     amount: 2000.22,
+      //   },
+      //   {
+      //     name: 'BBIN',
+      //     text: 'transaction.transfer.table.BBIN',
+      //     value: '1080',
+      //     amount: 333333.3,
+      //   },
+      //   {
+      //     name: 'JDB',
+      //     text: 'transaction.transfer.table.JDB',
+      //     value: '1180',
+      //     amount: 44444.444,
+      //   },
+      //   {
+      //     name: 'RG',
+      //     text: 'transaction.transfer.table.RG',
+      //     value: '1190',
+      //     amount: 55555.55,
+      //     children: ['☑ MG+ RNG', ' ☑ PNG', ' ☑ Gclub', '☑ DS RNG'],
+      //   },
+      //   {
+      //     name: 'CQ9',
+      //     text: 'transaction.transfer.table.CQ9',
+      //     value: '1200',
+      //     amount: 666666,
+      //   },
+      //   {
+      //     name: 'SBO',
+      //     text: 'transaction.transfer.table.SBO',
+      //     value: '1220',
+      //     amount: 7777,
+      //   },
+      // ],
       from: {},
       to: {},
       amount: 0,
@@ -203,7 +206,6 @@ export default {
         if (!this.siteID) {
           return;
         }
-
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/transfer.scss`);
       },
@@ -216,6 +218,7 @@ export default {
         }
         getAllGamePoint().then(result => {
           console.log('[AllGamePoint]', result);
+          this.productList = result.RetObj;
         });
       },
     },
@@ -225,7 +228,7 @@ export default {
 
 <style>
 .vue-slider-dot {
-  z-index: 2;
+  z-index: 2 !important;
 }
 </style>
 
@@ -257,9 +260,9 @@ export default {
   background-color: #2e2e2e;
 }
 
-.transfer__amount-table {
-  width: 100%;
-  margin: 20px 0;
+.transfer__amount-table-div {
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 .transfer__amount-table__th-1st,
@@ -267,6 +270,10 @@ export default {
   /* padding: 3px 15px; */
   font-weight: normal;
   vertical-align: middle;
+}
+
+.transfer__amount-table__th-1st {
+  width: 40%;
 }
 
 .transfer__amount-table__td-2nd {
