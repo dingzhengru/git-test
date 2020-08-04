@@ -20,6 +20,9 @@
       "total": "总余额",
       "vip": "金管家等级",
       "roll": "累积总打码量"
+    },
+    "butotn": {
+      "logout": "登出"
     }
   },
   "footer": {
@@ -450,6 +453,30 @@
         "technologyRelated": "技术问题",
         "aboutUs": "有关本站"
       }
+    }
+  },
+  "game": {
+    "category": {
+      "all": "所有游戏",
+      "hot": "热门游戏",
+      "arcade": "街机游戏",
+      "fish": "捕鱼游戏",
+      "card": "棋牌游戏",
+      "lottery": "彩票游戏",
+      "slot": "老虎机游戏",
+      "table": "Table Games",
+      "other": "Other Games"
+    },
+    "placeholder": {
+      "search": "搜寻游戏"
+    },
+    "button": {
+      "transferNow": "立即转帐"
+    },
+    "link": {
+      "play": "立即开始",
+      "free": "免费试玩",
+      "fav": "加入收藏"
     }
   },
   "promotionContent": {

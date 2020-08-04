@@ -28,17 +28,22 @@
               class="game-lobby__category__ul__li__link"
               :to="{ name: 'GameLobby', params: { type: $route.params.type }, query: { category: category.value } }"
             >
-              {{ category.name }}
+              {{ $t(`game.category.${category.name}`) }}
             </router-link>
           </li>
         </ul>
       </div>
     </div>
     <div class="game-lobby__inquire">
-      <input class="game-lobby__inquire__search" type="text" v-model="search.text" placeholder="Search" />
+      <input
+        class="game-lobby__inquire__search"
+        type="text"
+        v-model="search.text"
+        :placeholder="$t('game.placeholder.search')"
+      />
       <button class="game-lobby__inquire__search-icon"></button>
       <input class="game-lobby__inquire__favorites" type="submit" title="My Favorites" />
-      <a class="game-lobby__inquire__transfer-now" href="javascript:;">Transfer Now</a>
+      <a class="game-lobby__inquire__transfer-now" href="javascript:;">{{ $t('game.button.transferNow') }}</a>
     </div>
     <table class="game-lobby__table">
       <tbody>
@@ -48,9 +53,9 @@
           </td>
           <td class="game-lobby__table__tr__td-2nd">{{ game.name }}</td>
           <td class="game-lobby__table__tr__td-3rd">
-            <a href="javascript:;" class="game-lobby__table__tr__td__link--start">Play Now</a>
-            <a href="javascript:;" class="game-lobby__table__tr__td__link--freeplay">Free Play</a>
-            <a href="javascript:;" class="game-lobby__table__tr__td__link--favorites">Favorites</a>
+            <a href="javascript:;" class="game-lobby__table__tr__td__link--start">{{ $t('game.link.play') }}</a>
+            <a href="javascript:;" class="game-lobby__table__tr__td__link--freeplay">{{ $t('game.link.free') }}</a>
+            <a href="javascript:;" class="game-lobby__table__tr__td__link--favorites">{{ $t('game.link.fav') }}</a>
           </td>
         </tr>
       </tbody>
@@ -160,11 +165,11 @@ export default {
       handler() {
         this.categoryList = [
           {
-            name: 'All Games',
+            name: 'all',
             value: 'all',
           },
           {
-            name: 'Hot Games',
+            name: 'hot',
             value: 'hot',
           },
         ];

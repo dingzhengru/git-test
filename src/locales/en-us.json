@@ -20,6 +20,9 @@
       "total": "Total",
       "vip": "Bonus VIP level",
       "roll": "rolling"
+    },
+    "butotn": {
+      "logout": "Logout"
     }
   },
   "footer": {
@@ -450,6 +453,30 @@
         "technologyRelated": "Technology Related",
         "aboutUs": "About us"
       }
+    }
+  },
+  "game": {
+    "category": {
+      "all": "All Games",
+      "hot": "Hot Games",
+      "arcade": "Arcade Games",
+      "fish": "Fish Games",
+      "card": "Card Games",
+      "lottery": "Lottery Games",
+      "slot": "Slot Games",
+      "table": "Table Games",
+      "other": "Other Games"
+    },
+    "placeholder": {
+      "search": "Search"
+    },
+    "button": {
+      "transferNow": "Transfer Now"
+    },
+    "link": {
+      "play": "Play Now",
+      "free": "Free Play",
+      "fav": "Favorites"
     }
   },
   "promotionContent": {

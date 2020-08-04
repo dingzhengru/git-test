@@ -20,6 +20,9 @@
       "total": "รวมยอดคงเหลือ",
       "vip": "ระดับขั้นยอดสะสมโรลลิ่ง",
       "roll": "ยอดสะสมโรลลิ่ง"
+    },
+    "butotn": {
+      "logout": "ออก"
     }
   },
   "footer": {
@@ -450,6 +453,30 @@
         "technologyRelated": "ปัญหาทางเทคนิก",
         "aboutUs": "เกี่ยวกับเว็ป"
       }
+    }
+  },
+  "game": {
+    "category": {
+      "all": "เกมทั้งหมด",
+      "hot": "เกมส์ยอดนิยม",
+      "arcade": "Arcade Games",
+      "fish": "Fish Games",
+      "card": "เกมส์หมากรุก",
+      "lottery": "เกมส์ล็อตเตอรี่",
+      "slot": "เกมส์สล็อต",
+      "table": "Table Games",
+      "other": "Other Games"
+    },
+    "placeholder": {
+      "search": "ค้นหาเกมส์"
+    },
+    "button": {
+      "transferNow": "โอนเงินทันที"
+    },
+    "link": {
+      "play": "เริ่มต้นตอนนี้",
+      "free": "ทดลองเล่นฟรี",
+      "fav": "เก็บไว้"
     }
   },
   "promotionContent": {

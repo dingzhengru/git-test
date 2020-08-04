@@ -10,7 +10,7 @@
       </div>
       <div class="promotion-content__main__button">
         <button class="promotion-content__main__button--back ui-btn ui-btn-long" @click="$router.go(-1)">
-          Back
+          {{ $t('promotionContent.button.back') }}
         </button>
       </div>
     </div>
