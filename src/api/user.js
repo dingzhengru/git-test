@@ -6,6 +6,11 @@ export async function getTokenAndPublicKey() {
   return result.data;
 }
 
+export async function register(data) {
+  const result = await axios.post(API_URL + '/Member/SimpleRegister', data);
+  return result.data;
+}
+
 export async function login(data) {
   const result = await axios.post(API_URL + '/Member/LoginIn', data);
   return result.data;

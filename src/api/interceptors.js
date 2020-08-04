@@ -1,7 +1,7 @@
 import store from '@/store';
 import axios from 'axios';
-import { AUTH_API_LIST, CRYPTO_API_LIST } from '@/settings';
-import { rsaEncrypt } from '@/utils/rsa';
+import { AUTH_API_LIST, CRYPTO_API_LIST, CRYPTO_BIG_DATA_API_LIST } from '@/settings';
+import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 
 axios.interceptors.request.use(
   config => {
@@ -12,12 +12,20 @@ axios.interceptors.request.use(
       };
     }
 
-    //* 判斷是否在加密列表中
+    //* 判斷是否在加密列表中 (一般資料大小)
     if (CRYPTO_API_LIST.find(item => config.url.includes(item))) {
       config.data = {
         rsaMsg: rsaEncrypt(config.data, store.getters.publicKey),
       };
     }
+
+    //* 判斷是否在加密列表中 (大數據加密)
+    if (CRYPTO_BIG_DATA_API_LIST.find(item => config.url.includes(item))) {
+      config.data = {
+        rsaMsg: rsaEncryptLong(config.data, store.getters.publicKey),
+      };
+    }
+
     // console.log('[interceptors]', config);
     return config;
   },

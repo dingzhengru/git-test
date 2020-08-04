@@ -42,10 +42,21 @@ const mutations = {
 };
 
 const actions = {
+  // async register({ commit }, data) {
+  //   const responseData = await register(data);
+
+  //   console.log('[Register Response]', responseData);
+
+  //   if (responseData.Code == 200) {
+  //     router.replace({ name: 'Login' });
+  //   } else {
+  //     return responseData.ErrMsg;
+  //   }
+  // },
   async login({ commit }, user) {
     const responseData = await login(user);
 
-    console.log('[login response]', responseData);
+    console.log('[Login Response]', responseData);
 
     if (responseData.Code == 200) {
       commit('setIsLoggedIn', true);

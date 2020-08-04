@@ -36,6 +36,8 @@
 import { mapGetters } from 'vuex';
 import { getLangList, changeLang } from '@/api/lang';
 import { getMessageList } from '@/api/alert';
+
+// import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 export default {
   name: 'App',
   components: {
@@ -43,17 +45,7 @@ export default {
     AppFooter: () => import('@/components/AppFooter'),
   },
   computed: {
-    ...mapGetters([
-      'lang',
-      'isLoggedIn',
-      'siteID',
-      'siteFullCss',
-      'resourceUrl',
-      'username',
-      'total',
-      'vip',
-      'roll',
-    ]),
+    ...mapGetters(['lang', 'isLoggedIn', 'siteID', 'siteFullCss', 'resourceUrl', 'username', 'total', 'vip', 'roll']),
   },
   data() {
     return {
@@ -67,6 +59,15 @@ export default {
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
+
+    // * 測試大數據加密
+    // setTimeout(() => {
+    //   console.log('[RSA]', rsaEncrypt('123', this.$store.getters.publicKey));
+    //   const rsaData = rsaEncrypt('123', this.$store.getters.publicKey);
+    //   const rsaDataLong = rsaEncryptLong('123', this.$store.getters.publicKey);
+    //   console.log('[RSA]', rsaData);
+    //   console.log('[RSA] Long', rsaDataLong);
+    // }, 1000);
   },
   methods: {
     changeLang(lang) {
@@ -143,6 +144,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

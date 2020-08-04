@@ -16,17 +16,27 @@
               v-model="field.value"
               v-if="field.type != 'select'"
             />
+            <img
+              class="register__form__field__image--code"
+              :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
+              alt="MvcCaptcha"
+              title="Refrash Captcha"
+              :width="captchaImage.Width"
+              :height="captchaImage.Height"
+              border="0"
+              v-if="field.name == 'CaptchaValue'"
+            />
 
             <select
               class="register__form__field__select"
               :class="{
                 'register__form__field__select--default': field.value == '',
               }"
-              v-else-if="field.type == 'select'"
+              v-if="field.type == 'select'"
               v-model="field.value"
             >
               <option value="" selected>{{ $t(field.placeholder) }}</option>
-              <option :value="bank" v-for="bank in bankList" :key="bank.value">{{ bank.name }}</option>
+              <option :value="bank.value" v-for="bank in bankList" :key="bank.value">{{ bank.name }}</option>
             </select>
           </div>
           <div class="register__form__field__hint">{{ $t(field.hint) }}</div>
@@ -59,16 +69,30 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { getCaptcha } from '@/api/captcha';
+import { register } from '@/api/user';
 export default {
   name: 'Register',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    fullName() {
+      let fullName = '';
+      const firstName = this.fieldList.find(item => item.name == 'Add_FirstName').value;
+      const lastName = this.fieldList.find(item => item.name == 'Add_LastName').value;
+
+      if (this.lang == 'zh-cn') {
+        fullName = `${lastName}${firstName}`;
+      } else {
+        fullName = `${firstName} ${lastName}`;
+      }
+      return fullName;
+    },
   },
   data() {
     return {
       fieldList: [
         {
-          name: 'recommend',
+          name: 'Add_RelatedAccount',
           class: 'register__form__field--recommend',
           type: 'text',
           placeholder: 'register.placeholder.recommend',
@@ -76,12 +100,12 @@ export default {
           error: '',
           isRequired: false,
           minlength: 1,
-          maxlength: 20,
+          maxlength: 30,
           value: '',
           isShow: true,
         },
         {
-          name: 'account',
+          name: 'Add_Account',
           class: 'register__form__field--account',
           type: 'text',
           placeholder: 'register.placeholder.account',
@@ -95,7 +119,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'password',
+          name: 'Add_Password',
           class: 'register__form__field--password',
           type: 'password',
           placeholder: 'register.placeholder.password',
@@ -109,7 +133,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'passwordCheck',
+          name: 'Add_PasswordCheck',
           class: 'register__form__field--password',
           type: 'password',
           placeholder: 'register.placeholder.passwordCheck',
@@ -123,7 +147,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'mobile',
+          name: 'Add_Mobile',
           class: 'register__form__field--callphone',
           type: 'tel',
           placeholder: 'register.placeholder.mobile',
@@ -137,7 +161,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'email',
+          name: 'Add_Email',
           class: 'register__form__field--name',
           type: 'text',
           placeholder: 'register.placeholder.email',
@@ -151,7 +175,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'line',
+          name: 'Add_Line',
           class: 'register__form__field--name',
           type: 'text',
           placeholder: 'register.placeholder.line',
@@ -164,7 +188,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'firstName',
+          name: 'Add_FirstName',
           class: 'register__form__field--name',
           type: 'text',
           placeholder: 'register.placeholder.firstName',
@@ -172,13 +196,13 @@ export default {
           error: '',
           isRequired: true,
           minlength: 1,
-          maxlength: 20,
+          maxlength: 30,
           regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
           value: '',
           isShow: true,
         },
         {
-          name: 'lastName',
+          name: 'Add_LastName',
           class: 'register__form__field--name',
           type: 'text',
           placeholder: 'register.placeholder.lastName',
@@ -186,13 +210,13 @@ export default {
           error: '',
           isRequired: true,
           minlength: 1,
-          maxlength: 20,
+          maxlength: 30,
           regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
           value: '',
           isShow: true,
         },
         {
-          name: 'nickname',
+          name: 'Add_NickName',
           class: 'register__form__field--name',
           type: 'text',
           placeholder: 'register.placeholder.nickname',
@@ -200,12 +224,12 @@ export default {
           error: '',
           isRequired: false,
           minlength: 1,
-          maxlength: 20,
+          maxlength: 30,
           value: '',
           isShow: true,
         },
         {
-          name: 'bank',
+          name: 'Add_BankId1',
           class: 'register__form__field--name',
           type: 'select',
           placeholder: 'register.placeholder.bank',
@@ -216,7 +240,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'bankBranch',
+          name: 'Add_BankBranchName1',
           class: 'register__form__field--name',
           type: 'text',
           placeholder: 'register.placeholder.bankBranch',
@@ -224,13 +248,13 @@ export default {
           error: '',
           isRequired: true,
           minlength: 1,
-          maxlength: 30,
+          maxlength: 70,
           regex: '^[A-Za-z0-9\u4E00-\u9FA5\uF900-\uFA2D\u0e00-\u0e5b]+$',
           value: '',
           isShow: true,
         },
         {
-          name: 'bankAccount',
+          name: 'Add_BankAccount1',
           class: 'register__form__field--account',
           type: 'text',
           placeholder: 'register.placeholder.bankAccount',
@@ -244,7 +268,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'passwordWithdrawal',
+          name: 'Add_Withdrawals_Password',
           class: 'register__form__field--password',
           type: 'password',
           placeholder: 'register.placeholder.passwordWithdrawal',
@@ -258,7 +282,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'passwordCheckWithdrawal',
+          name: 'Add_Withdrawals_CheckPassword',
           class: 'register__form__field--password',
           type: 'password',
           placeholder: 'register.placeholder.passwordCheckWithdrawal',
@@ -272,7 +296,7 @@ export default {
           isShow: true,
         },
         {
-          name: 'captcha',
+          name: 'CaptchaValue',
           class: 'register__form__field--code',
           type: 'text',
           placeholder: 'register.placeholder.captcha',
@@ -312,17 +336,41 @@ export default {
           value: '275',
         },
       ],
+      captchaImage: {
+        Width: 147,
+        Height: 58,
+        ImgBase64: '',
+      },
     };
+  },
+  mounted() {
+    const requestDataCaptcha = { pageCode: 'MemberRegister' };
+    getCaptcha(requestDataCaptcha).then(result => {
+      console.log('[Captcha]', result.RetObj);
+      if (result.Code == 200) {
+        this.captchaImage = result.RetObj;
+      }
+    });
   },
   methods: {
     register() {
-      const requestData = {};
+      let requestData = {};
 
       for (const field of this.fieldList) {
-        requestData[field.name] = field.value;
+        if (field.value) {
+          requestData[field.name] = field.value;
+        }
       }
 
+      requestData['Add_RealName'] = this.fullName;
+
       console.log('[register]', requestData);
+
+      // const error = await this.$store.dispatch('user/register', requestData);
+
+      register(requestData).then(result => {
+        console.log('[Register]', result);
+      });
     },
     resetForm() {
       for (const field of this.fieldList) {
@@ -399,6 +447,12 @@ export default {
 .register__form__field__select option {
   color: black;
   background-color: #979797;
+}
+
+.register__form__field__image--code {
+  position: absolute;
+  top: 11px;
+  right: 15px;
 }
 
 .register__form__field__input:invalid {
