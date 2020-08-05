@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="user-change-password__input-div theme-input-box">
-        <span class="theme-input-header">{{ $t('user.changePassword.PasswordCheck') }}</span>
+        <span class="theme-input-header">{{ $t('user.changePassword.passwordCheck') }}</span>
         <input
           class="ui-ipt"
           type="password"
@@ -46,6 +46,19 @@
         <div class="theme-errorMsg" v-if="errorPasswordCheck">
           <span class="theme-txt-errorMsg">{{ errorPasswordCheck }}</span>
         </div>
+      </div>
+      <div class="user-change-password__input-div theme-input-box">
+        <span class="theme-input-header">{{ $t('user.changePassword.passwordRemember') }}</span>
+        <toggle-button
+          v-model="isRememberPassword"
+          :width="640"
+          :height="80"
+          :sync="true"
+          :margin="0"
+          :color="{ checked: 'purple', unchecked: 'gray' }"
+          :labels="{ checked: '啟用', unchecked: '停用' }"
+          :font-size="40"
+        />
       </div>
     </form>
     <div class="user-change-password__button-div">
@@ -67,9 +80,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { ToggleButton } from 'vue-js-toggle-button';
 
 export default {
   name: 'UserChangePassword',
+  components: {
+    ToggleButton,
+  },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
   },
@@ -83,6 +100,7 @@ export default {
         passwordNew: '',
         passwordCheck: '',
       },
+      isRememberPassword: false,
       noticeList: [
         {
           name: 'suggest',
@@ -115,9 +133,54 @@ export default {
         import(`@/styles/${this.siteFullCss}/user/change-password.scss`);
       },
     },
+    isRememberPassword() {
+      console.log(this.isRememberPassword);
+    },
   },
 };
 </script>
+
+<style>
+/*
+ * Switch 開關，width: 640px, height: 100px
+*/
+
+.user-change-password__input-div .v-switch-core {
+  border-radius: 0 !important;
+}
+
+/*
+ * 按鈕
+*/
+
+.user-change-password__input-div .vue-js-switch .v-switch-core .v-switch-button {
+  width: 320px !important;
+  border-radius: 0 !important;
+}
+
+/*
+ * 按鈕在右邊時
+ * 位置: (開關寬度/2) + (開關寬度/2 - 按鈕寬度) => (640/2) + (640/2 - 320)
+*/
+.user-change-password__input-div .vue-js-switch.toggled .v-switch-core .v-switch-button {
+  transform: translate3d(320px, 0px, 0px) !important;
+}
+/*
+ * 左邊標籤(文字)
+ * 位置: (按鈕大小 - 標籤大小) / 2 => (320-80) / 2
+*/
+.user-change-password__input-div .vue-js-switch .v-switch-label.v-left {
+  left: 120px;
+}
+
+/*
+ * 右邊標籤(文字)
+ * 位置: 同上
+*/
+.user-change-password__input-div .vue-js-switch .v-switch-label.v-right {
+  right: 120px;
+}
+</style>
 
 <style scoped>
 .user-change-password__form {

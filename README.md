@@ -16,10 +16,12 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 - [Library](#library)
   - [axios](#axios)
   - [jsencrypt](#jsencrypt)
+  - [encryptlong](#encryptlong)
   - [numeral](#numeral)
   - [vue-awesome-swiper](#vue-awesome-swiper)
   - [vue-scrollto](#vue-scrollto)
   - [vue-slider-component](#vue-slider-component)
+  - [vue-js-toggle-button](#vue-js-toggle-button)
 
 ## API 詢問
 
@@ -74,6 +76,8 @@ starbets 的圖片大小跟其他不同，造成位置不同
 
 ### jsencrypt
 
+### encryptlong
+
 ### numeral
 
 ### vue-awesome-swiper
@@ -81,3 +85,5 @@ starbets 的圖片大小跟其他不同，造成位置不同
 ### vue-scrollto
 
 ### vue-slider-component
+
+### vue-js-toggle-button
