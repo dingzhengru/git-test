@@ -72,7 +72,7 @@ getSiteInfo(requestData)
     store.commit('site/setIsNewPromotion', siteInfo.bNewPromotion);
 
     if (!store.getters.lang) {
-      // *當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
+      //* 當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
       store.commit('setLang', getLang());
 
       loadLanguageAsync(getLang()).then(result => {

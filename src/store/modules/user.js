@@ -1,6 +1,6 @@
 import { setIsLoggedIn } from '@/utils/cookie';
 import router from '@/router';
-import { login, logout } from '@/api/user';
+import { register, login, logout } from '@/api/user';
 
 const state = {
   isLoggedIn: false,
@@ -42,17 +42,19 @@ const mutations = {
 };
 
 const actions = {
-  // async register({ commit }, data) {
-  //   const responseData = await register(data);
+  // eslint-disable-next-line
+  async register({ commit }, data) {
+    const responseData = await register(data);
 
-  //   console.log('[Register Response]', responseData);
+    console.log('[Register Response]', responseData);
 
-  //   if (responseData.Code == 200) {
-  //     router.replace({ name: 'Login' });
-  //   } else {
-  //     return responseData.ErrMsg;
-  //   }
-  // },
+    if (responseData.Code == 200) {
+      router.replace({ name: 'Login' });
+      return '';
+    } else {
+      return responseData.ErrMsg;
+    }
+  },
   async login({ commit }, user) {
     const responseData = await login(user);
 

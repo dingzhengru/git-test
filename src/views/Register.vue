@@ -47,7 +47,11 @@
           </div>
         </template>
       </div>
+      <div class="theme-errorMsg" v-if="error">
+        <span class="theme-txt-errorMsg">{{ error }}</span>
+      </div>
     </form>
+
     <div class="register__form__button-div">
       <button type="submit" class="register__form__send ui-btn" form="register-form">
         {{ $t('ui.button.submit') }}
@@ -72,7 +76,6 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
-import { register } from '@/api/user';
 export default {
   name: 'Register',
   computed: {
@@ -307,6 +310,7 @@ export default {
           isRequired: true,
           minlength: 4,
           maxlength: 4,
+          regex: '^[0-9]*$',
           value: '',
           isShow: true,
         },
@@ -343,30 +347,24 @@ export default {
         Height: 58,
         ImgBase64: '',
       },
+      error: '',
     };
   },
   mounted() {
     this.changeCaptcha();
   },
   methods: {
-    register() {
-      let requestData = {};
+    async register() {
+      const requestData = {};
 
       for (const field of this.fieldList) {
         if (field.value) {
           requestData[field.name] = field.value;
         }
       }
-
       requestData['Add_RealName'] = this.fullName;
 
-      console.log('[register]', requestData);
-
-      // const error = await this.$store.dispatch('user/register', requestData);
-
-      register(requestData).then(result => {
-        console.log('[Register]', result);
-      });
+      this.error = await this.$store.dispatch('user/register', requestData);
     },
     resetForm() {
       for (const field of this.fieldList) {

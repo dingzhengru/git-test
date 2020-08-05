@@ -10,6 +10,10 @@ $type: 'Y/01/01';
   ! 圖片路徑
 */
 
+.deposit__receipt-upload__label {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+
 .deposit__button-div--submit {
   background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
 }

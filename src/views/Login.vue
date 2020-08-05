@@ -35,11 +35,12 @@
         <input
           class="login__form__field__input login__form__field__input--code"
           id="CaptchaValue"
-          type="tel"
+          type="text"
           tabindex="3"
           required
           minlength="4"
           maxlength="4"
+          pattern="^[0-9]*$"
           autocomplete="off"
           :placeholder="$t('login.placeholder.captcha')"
           v-model="user.CaptchaValue"

@@ -50,7 +50,7 @@
         </template>
 
         <template v-if="field.name == 'receipt'">
-          <label class="deposit__receipt-upload__label ui-btn01 ui-btn-long" for="deposit__receipt-upload__input">
+          <label class="deposit__receipt-upload__label ui-btn ui-btn-long" for="deposit__receipt-upload__input">
             {{ $t('transaction.deposit.button.upload') }}
             <input
               class="deposit__receipt-upload__input"
@@ -83,7 +83,7 @@
 
       <ol class="ui-ol-memberNotice">
         <li v-for="(notice, index) in noticeList" :key="`memberNotice${index}`">
-          {{ $t(notice) }}
+          <span v-html="$t(notice)"></span>
         </li>
       </ol>
     </div>

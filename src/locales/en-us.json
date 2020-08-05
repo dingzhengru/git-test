@@ -170,10 +170,10 @@
       "hint": {
         "amount": "Baht Maximum 100000.00 , Minimum 200.00 Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit. ",
         "receipt": "The Format of Image Allow Only JPG / PNG <br /> File size cannot exceed 2MB",
-        "promotion": "Note: Non-selection regarded as abdication."
+        "promotion": "<span class='ui-txt-mask'>Note: Non-selection regarded as abdication.</span>"
       },
       "notice": {
-        "currency": "only for Baht transaction.",
+        "currency": "only for <span class='ui-txt-mask'>Baht</span> transaction.",
         "depositLimit01": "Please note that the lowest and highest limitation on Deposit.",
         "depositLimit02": "The minimum and maximum values listed above are to act as a guideline only.",
         "userBear01": "Please conduct deposit according to the deposit method as above, otherwise members shall bear any additional expense by themselves.",

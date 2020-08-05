@@ -22,6 +22,9 @@ const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister'];
 // 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
 const AUTH_ROUTE_LIST = ['UserProfile'];
 
+// "不需要"登入才能進入的 route name
+const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword'];
+
 // 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
 const ACCESS_ROUTE_LIST = [];
 
@@ -33,6 +36,7 @@ export {
   CRYPTO_BIG_DATA_API_LIST,
   AUTH_ROUTE_LIST,
   ACCESS_ROUTE_LIST,
+  NO_AUTH_ROUTE_LIST,
 };
 export default {
   API_URL,
@@ -42,4 +46,5 @@ export default {
   CRYPTO_BIG_DATA_API_LIST,
   AUTH_ROUTE_LIST,
   ACCESS_ROUTE_LIST,
+  NO_AUTH_ROUTE_LIST,
 };

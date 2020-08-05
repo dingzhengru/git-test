@@ -171,4 +171,5 @@ export default {
 .withdrawal__light-message {
   font-size: 2em;
 }
+
 </style>
