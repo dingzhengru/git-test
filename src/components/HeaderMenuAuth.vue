@@ -57,7 +57,9 @@
             </li>
           </div>
         </ul>
-        <button type="button" class="header-menu-auth__logout" @click="logout">Logout</button>
+        <button type="button" class="header-menu-auth__logout" @click="logout">
+          {{ $t('header.button.logout') }}
+        </button>
       </div>
     </transition>
   </div>
@@ -121,12 +123,7 @@ export default {
           link: 'About',
         },
       ],
-      userInfoKeyList: [
-        'header.user.username',
-        'header.user.total',
-        'header.user.vip',
-        'header.user.roll',
-      ],
+      userInfoKeyList: ['header.user.username', 'header.user.total', 'header.user.vip', 'header.user.roll'],
     };
   },
   methods: {
