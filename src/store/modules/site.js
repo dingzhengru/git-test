@@ -6,7 +6,7 @@ const state = {
   cssFestival: null,
   mainDomain: null,
   remoteCSSUrl: null,
-  isNewPromotion: null,
+  isNewPromotion: false,
 };
 
 const mutations = {

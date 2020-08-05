@@ -84,9 +84,8 @@ export default {
         console.log('[UserInfo]', result);
         this.$store.commit('user/setUsername', result.RetObj.Lst_Account);
         this.$store.commit('user/setTotal', numeral(result.RetObj.Lst_TotalDeposit).format('0,0.00'));
+        this.$store.commit('user/setIsAccessed', result.RetObj.Lst_Account_Open); // * 設置是否已開通
       });
-
-      this.$store.commit('user/setIsAccessed', true); // * 設置是否已開通
     },
     changeLang(lang) {
       if (this.lang == lang) {

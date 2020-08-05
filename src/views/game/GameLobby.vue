@@ -43,7 +43,7 @@
       />
       <button class="game-lobby__inquire__search-icon"></button>
       <input class="game-lobby__inquire__favorites" type="submit" title="My Favorites" />
-      <a class="game-lobby__inquire__transfer-now" href="javascript:;">{{ $t('game.button.transferNow') }}</a>
+      <button class="game-lobby__inquire__button--transfer-now" href="javascript:;">{{ $t('game.button.transferNow') }}</button>
     </div>
     <table class="game-lobby__table">
       <tbody>
@@ -324,18 +324,17 @@ export default {
   outline: none;
 }
 
-.game-lobby__inquire__transfer-now {
+.game-lobby__inquire__button--transfer-now {
   display: inline-block;
-  width: 133px;
+  width: 187px;
   height: 65px;
   font-size: 21px;
-  letter-spacing: 0;
-  line-height: 2;
-  padding: 22px 8px 0 48px;
-  margin: 13px 0 0 10px;
+  padding: 10px 10px 10px 48px;
+  margin: 22px 0 0 10px;
   color: #fedebe;
   vertical-align: top;
   background: url(~@/assets/common/imgs/ui/btn_transferNow.png) left center no-repeat;
+  border: none;
 }
 
 .game-lobby__table {
@@ -382,4 +381,10 @@ export default {
   margin: 0 10px;
   background-repeat: no-repeat;
 }
+
+
+.zh-cn .game-lobby__inquire__button--transfer-now {
+  font-size: 2.4rem;
+}
+
 </style>

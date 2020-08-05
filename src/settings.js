@@ -11,6 +11,7 @@ const AUTH_API_LIST = [
   'Siteinfo/MGetAllGamePoint',
   'Siteinfo/MGetPITTLBet',
   'Member/MemInfo',
+  'PointRecord/Deposit',
 ];
 
 // 需加密的 API
@@ -20,7 +21,26 @@ const CRYPTO_API_LIST = ['Member/LoginIn'];
 const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister'];
 
 // 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
-const AUTH_ROUTE_LIST = ['UserProfile'];
+
+const AUTH_ROUTE_LIST = [
+  'GameHome',
+  'GameLobby',
+  'UserProfile',
+  'UserChangePassword',
+  'TransactionDeposit',
+  'TransactionWithdrawal',
+  'TransactionTransfer',
+  'TransactionRecordHome',
+  'TransactionRecordContent',
+  'TransactionRecordDetail',
+  'ReportUnsettleBet',
+  'ReportBetRecord',
+  'ReportBetRecordDetail',
+  'NotificationNews',
+  'NotificationChat',
+  'NotificationChatDetail',
+  'NotificationOutbox',
+];
 
 // "不需要"登入才能進入的 route name
 const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword'];

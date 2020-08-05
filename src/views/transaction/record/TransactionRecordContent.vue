@@ -92,6 +92,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getProductList } from '@/api/product';
+import { getRecordDeposit } from '@/api/record';
 import numeral from 'numeral';
 export default {
   name: 'TransactionRecordContent',
@@ -99,7 +100,7 @@ export default {
     AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'token']),
     i18nKey() {
       return `transaction.recordContent.${this.$route.params.name}`;
     },
@@ -177,162 +178,6 @@ export default {
       },
     };
   },
-  mounted() {
-    switch (this.$route.params.name) {
-      case 'deposit': {
-        this.list = [
-          {
-            id: 'DR200721114109903',
-            isSuccess: true,
-            date: '2020-07-21',
-            bank: 'KNANK',
-            amount: 1000,
-            receipt: '',
-            detail: 'Successful',
-          },
-          {
-            id: 'DR200721111105963',
-            isSuccess: false,
-            date: '2020-07-22',
-            bank: 'KNANK123',
-            amount: 10000,
-            receipt: 'Remittance Receipt',
-            detail: 'Under review',
-          },
-        ];
-        this.title = 'Deposit Record';
-        this.detailKey = 'detail';
-        this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
-        break;
-      }
-      case 'withdrawal': {
-        this.list = [
-          {
-            id: 'SR200721110313463',
-            isSuccess: true,
-            date: '2020-07-21',
-            bank: 'SCB',
-            amount: 1000,
-            detail: 'Successful',
-          },
-        ];
-        this.title = 'Withdrawals Record';
-        this.detailKey = 'detail';
-        this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
-        break;
-      }
-      case 'transfer': {
-        this.list = [
-          {
-            id: '000',
-            date: '2020-07-21',
-            game: 'Royal Gaming',
-            type: 'Roll-out of Points',
-            amount: -767,
-          },
-          {
-            id: '111',
-            date: '2020-07-22',
-            game: 'Royal Gaming',
-            type: 'Roll-out of Points',
-            amount: 1122,
-          },
-        ];
-        this.title = 'Transfer Record';
-        this.detailKey = 'amount';
-        this.isSearchActive = true;
-        this.isPageActive = true;
-
-        // * 取得遊戲館列表
-        const requestDataProductList = { DeviceType: 1 };
-        getProductList(requestDataProductList).then(result => {
-          if (result.Code == 200) {
-            this.productList = result.RetObj;
-            console.log('[Product]', this.productList);
-          }
-        });
-        break;
-      }
-      case 'bonus': {
-        this.list = [
-          {
-            id: '000',
-            activity: 'ฝากเพิ่มรับสูงสุด 88,888',
-            bindWallet: 'Wallet',
-            issue: 10,
-            datetime: '2020-07-21 11:13:42',
-          },
-          {
-            id: '111',
-            activity: 'ฝากเพิ่มรับสูงสุด 88,888',
-            bindWallet: 'Wallet',
-            issue: -10,
-            datetime: '2020-07-22 11:13:42',
-          },
-        ];
-        this.title = 'Bonus Record';
-        this.isSearchActive = false;
-        this.isPageActive = true;
-        break;
-      }
-      case 'lottery': {
-        this.list = [
-          {
-            id: '000',
-            isSuccess: false,
-            prize: '88',
-            status: 'Undelivered',
-            type: 'Prize',
-            datetime: '2020-07-21 11:41:52',
-          },
-          {
-            id: '111',
-            isSuccess: true,
-            prize: '8888',
-            status: 'Successful',
-            type: 'Prize',
-            datetime: '2020-07-22 13:41:52',
-          },
-        ];
-        this.title = 'Lottery Record';
-        this.detailKey = 'lotteryStatus';
-        this.isSearchActive = false;
-        this.isPageActive = true;
-        break;
-      }
-      case 'withdrawalRestriction': {
-        this.list = [
-          {
-            id: '000',
-            type: 'General washing code',
-            restriction: 'Withdrawal Bouns-Wallet',
-            notRolloverExchange: 13120,
-            rolloverDeadline: '2021-2-6',
-          },
-        ];
-        this.title = 'Withdrawal Restriction';
-        this.detailKey = 'restriction';
-        this.isSearchActive = false;
-        this.isPageActive = true;
-        break;
-      }
-      case 'adjustment': {
-        this.list = [
-          {
-            id: '000',
-            status: 'Deduction from Points',
-            description: 'description',
-            point: -1000,
-            datetime: '2020-07-21 11:20:24',
-          },
-        ];
-        this.title = 'Adjustment Record';
-        this.isSearchActive = false;
-        this.isPageActive = true;
-        break;
-      }
-    }
-  },
   methods: {
     submitSearchRecordList() {
       console.log('submitSearchRecordList', this.search);
@@ -354,6 +199,171 @@ export default {
 
         // * 根據版型引入 css (pagination)
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
+      },
+    },
+    token: {
+      immediate: true,
+      handler() {
+        if (!this.token) {
+          return;
+        }
+        switch (this.$route.params.name) {
+          case 'deposit': {
+            getRecordDeposit().then(result => {
+              console.log('[RecordDeposit]', result);
+            });
+            this.list = [
+              {
+                id: 'DR200721114109903',
+                isSuccess: true,
+                date: '2020-07-21',
+                bank: 'KNANK',
+                amount: 1000,
+                receipt: '',
+                detail: 'Successful',
+              },
+              {
+                id: 'DR200721111105963',
+                isSuccess: false,
+                date: '2020-07-22',
+                bank: 'KNANK123',
+                amount: 10000,
+                receipt: 'Remittance Receipt',
+                detail: 'Under review',
+              },
+            ];
+            this.title = 'Deposit Record';
+            this.detailKey = 'detail';
+            this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
+            break;
+          }
+          case 'withdrawal': {
+            this.list = [
+              {
+                id: 'SR200721110313463',
+                isSuccess: true,
+                date: '2020-07-21',
+                bank: 'SCB',
+                amount: 1000,
+                detail: 'Successful',
+              },
+            ];
+            this.title = 'Withdrawals Record';
+            this.detailKey = 'detail';
+            this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
+            break;
+          }
+          case 'transfer': {
+            this.list = [
+              {
+                id: '000',
+                date: '2020-07-21',
+                game: 'Royal Gaming',
+                type: 'Roll-out of Points',
+                amount: -767,
+              },
+              {
+                id: '111',
+                date: '2020-07-22',
+                game: 'Royal Gaming',
+                type: 'Roll-out of Points',
+                amount: 1122,
+              },
+            ];
+            this.title = 'Transfer Record';
+            this.detailKey = 'amount';
+            this.isSearchActive = true;
+            this.isPageActive = true;
+
+            // * 取得遊戲館列表
+            const requestDataProductList = { DeviceType: 1 };
+            getProductList(requestDataProductList).then(result => {
+              if (result.Code == 200) {
+                this.productList = result.RetObj;
+                console.log('[Product]', this.productList);
+              }
+            });
+            break;
+          }
+          case 'bonus': {
+            this.list = [
+              {
+                id: '000',
+                activity: 'ฝากเพิ่มรับสูงสุด 88,888',
+                bindWallet: 'Wallet',
+                issue: 10,
+                datetime: '2020-07-21 11:13:42',
+              },
+              {
+                id: '111',
+                activity: 'ฝากเพิ่มรับสูงสุด 88,888',
+                bindWallet: 'Wallet',
+                issue: -10,
+                datetime: '2020-07-22 11:13:42',
+              },
+            ];
+            this.title = 'Bonus Record';
+            this.isSearchActive = false;
+            this.isPageActive = true;
+            break;
+          }
+          case 'lottery': {
+            this.list = [
+              {
+                id: '000',
+                isSuccess: false,
+                prize: '88',
+                status: 'Undelivered',
+                type: 'Prize',
+                datetime: '2020-07-21 11:41:52',
+              },
+              {
+                id: '111',
+                isSuccess: true,
+                prize: '8888',
+                status: 'Successful',
+                type: 'Prize',
+                datetime: '2020-07-22 13:41:52',
+              },
+            ];
+            this.title = 'Lottery Record';
+            this.detailKey = 'lotteryStatus';
+            this.isSearchActive = false;
+            this.isPageActive = true;
+            break;
+          }
+          case 'withdrawalRestriction': {
+            this.list = [
+              {
+                id: '000',
+                type: 'General washing code',
+                restriction: 'Withdrawal Bouns-Wallet',
+                notRolloverExchange: 13120,
+                rolloverDeadline: '2021-2-6',
+              },
+            ];
+            this.title = 'Withdrawal Restriction';
+            this.detailKey = 'restriction';
+            this.isSearchActive = false;
+            this.isPageActive = true;
+            break;
+          }
+          case 'adjustment': {
+            this.list = [
+              {
+                id: '000',
+                status: 'Deduction from Points',
+                description: 'description',
+                point: -1000,
+                datetime: '2020-07-21 11:20:24',
+              },
+            ];
+            this.title = 'Adjustment Record';
+            this.isSearchActive = false;
+            this.isPageActive = true;
+            break;
+          }
+        }
       },
     },
   },
