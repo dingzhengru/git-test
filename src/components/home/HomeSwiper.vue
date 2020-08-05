@@ -1,8 +1,9 @@
 <template>
   <swiper class="home-swiper" :options="swiperOption">
-    <swiper-slide v-for="slide in list" :key="slide.Lst_Nonelogin_url">
-      <router-link :to="slide.Lst_Nonelogin_url">
-        <img :src="slide.ImageUrl" alt="" />
+    <swiper-slide v-for="(slide, index) in list" :key="index">
+      <router-link :to="{ name: 'Home' }">
+        <img v-if="siteBNewPromotion" :src="slide.ImageUrl" alt="" />
+        <img v-if="!siteBNewPromotion" :src="`${resourceUrl}/imgs/banner/${slide.ImageUrl}`" alt="" />
       </router-link>
     </swiper-slide>
     <a class="home-swiper__button--previous" slot="button-prev"></a>
@@ -28,6 +29,14 @@ export default {
     list: {
       type: Array,
       default: () => [],
+    },
+    resourceUrl: {
+      type: String,
+      default: () => '',
+    },
+    siteBNewPromotion: {
+      type: Boolean,
+      default: () => false,
     },
   },
   data() {

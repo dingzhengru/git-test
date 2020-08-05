@@ -69,6 +69,7 @@ getSiteInfo(requestData)
     // store.commit('site/setCssFestival', siteInfo.LS_CSS_Festival);
     store.commit('site/setMainDomain', siteInfo.LS_MainDomain);
     store.commit('site/setRemoteCSSUrl', siteInfo.RemoteCSSUrls);
+    store.commit('site/setBNewPromotion', siteInfo.bNewPromotion);
 
     if (!store.getters.lang) {
       // *當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了

@@ -5,8 +5,8 @@ const state = {
   cssType: null,
   cssFestival: null,
   mainDomain: null,
-  bNewPromotion: null,
   remoteCSSUrl: null,
+  bNewPromotion: null,
 };
 
 const mutations = {
@@ -28,11 +28,11 @@ const mutations = {
   setMainDomain(state, mainDomain) {
     state.mainDomain = mainDomain;
   },
-  setBNewPromotion(state, bNewPromotion) {
-    state.bNewPromotion = bNewPromotion;
-  },
   setRemoteCSSUrl(state, remoteCSSUrl) {
     state.remoteCSSUrl = remoteCSSUrl;
+  },
+  setBNewPromotion(state, bNewPromotion) {
+    state.bNewPromotion = bNewPromotion;
   },
 };
 

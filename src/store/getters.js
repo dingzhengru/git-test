@@ -6,6 +6,7 @@ const getters = {
   siteCssFestival: state => state.site.cssFestival,
   siteRemoteCSSUrl: state => state.site.remoteCSSUrl,
   siteMainDomain: state => state.site.mainDomain,
+  siteBNewPromotion: state => state.site.bNewPromotion,
   siteFullCss: state => {
     return `${state.site.cssClass}/${state.site.cssVersion}/${state.site.cssType}`;
   },

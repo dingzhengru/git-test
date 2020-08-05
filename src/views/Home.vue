@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HomeSwiper :list="swiperList"></HomeSwiper>
+    <HomeSwiper :list="swiperList" :resourceUrl="resourceUrl" :siteBNewPromotion="siteBNewPromotion"></HomeSwiper>
     <HomeGameBlock :list="productList" :resourceUrl="resourceUrl" :isLoggedIn="isLoggedIn"></HomeGameBlock>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
   },
   computed: {
-    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss', 'resourceUrl']),
+    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss', 'resourceUrl', 'siteBNewPromotion']),
   },
   data() {
     return {
@@ -44,13 +44,15 @@ export default {
           return;
         }
 
+        console.log(this.siteBNewPromotion);
+
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/home.scss`);
 
         // * 取得輪播列表
         const requestDataSwiperList = {
           DeviceType: 1,
-          bNewPromotion: true,
+          bNewPromotion: this.siteBNewPromotion,
         };
         getSwiperList(requestDataSwiperList).then(result => {
           if (result.Code == 200) {
@@ -64,7 +66,7 @@ export default {
       // * 取得輪播列表
       const requestDataSwiperList = {
         DeviceType: 1,
-        bNewPromotion: true,
+        bNewPromotion: this.siteBNewPromotion,
       };
       getSwiperList(requestDataSwiperList).then(result => {
         if (result.Code == 200) {
