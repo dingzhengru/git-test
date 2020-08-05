@@ -16,7 +16,7 @@
               v-model="field.value"
               v-if="field.type != 'select'"
             />
-            
+
             <img
               class="register__form__field__image--code"
               :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
@@ -26,6 +26,7 @@
               :height="captchaImage.Height"
               border="0"
               v-if="field.name == 'CaptchaValue'"
+              @click="changeCaptcha"
             />
 
             <select
@@ -114,7 +115,7 @@ export default {
           error: '',
           isRequired: true,
           minlength: 3,
-          maxlength: 20,
+          maxlength: 15,
           regex: '^[a-zA-Z]{1}[a-zA-Z0-9]*$', //* 英文字母開頭、英數字、長度: 3~15
           value: '',
           isShow: true,
@@ -345,13 +346,7 @@ export default {
     };
   },
   mounted() {
-    const requestDataCaptcha = { pageCode: 'MemberRegister' };
-    getCaptcha(requestDataCaptcha).then(result => {
-      console.log('[Captcha]', result.RetObj);
-      if (result.Code == 200) {
-        this.captchaImage = result.RetObj;
-      }
-    });
+    this.changeCaptcha();
   },
   methods: {
     register() {
@@ -377,6 +372,15 @@ export default {
       for (const field of this.fieldList) {
         field.value = '';
       }
+    },
+    changeCaptcha() {
+      const requestDataCaptcha = { pageCode: 'MemberRegister' };
+      getCaptcha(requestDataCaptcha).then(result => {
+        console.log('[Captcha]', result.RetObj);
+        if (result.Code == 200) {
+          this.captchaImage = result.RetObj;
+        }
+      });
     },
   },
   watch: {

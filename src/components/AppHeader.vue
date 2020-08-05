@@ -3,7 +3,7 @@
     <div class="header__logo">
       <img :src="logo" class="header__logo__img" alt="" />
     </div>
-    <router-link to="/" class="cpn-inBlock header__link--home"></router-link>
+    <router-link to="/" class="header__link--home"></router-link>
     <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
     <HeaderMenuAuth
       v-if="isLoggedIn"
@@ -100,8 +100,8 @@ export default {
   max-height: 0;
 }
 
-/* 
-  * 刪除了登入後的 header 樣式，只留非登入時的樣式 
+/*
+  * 刪除了登入後的 header 樣式，只留非登入時的樣式
   * 可於 common/header.css 或原專案的 layout 與 index2 中取得
 */
 
@@ -123,6 +123,7 @@ export default {
 }
 
 .header__link--home {
+  display: inline-block;
   width: 77px;
   height: 65px;
   margin-top: -32.5px;

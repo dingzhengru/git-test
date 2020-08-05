@@ -1,6 +1,6 @@
 <template>
   <div class="header-menu">
-    <a href="javascript:;" class="cpn-inBlock header-menu__lang-toggle" @click="isShowLangList = !isShowLangList"></a>
+    <a href="javascript:;" class="header-menu__lang-toggle" @click="isShowLangList = !isShowLangList"></a>
     <transition name="slide">
       <div class="header-menu__lang-menu" v-if="isShowLangList">
         <ul class="header-menu__lang-menu__ul cpn-boxzero cpn-inBlock-row">
@@ -73,6 +73,7 @@ export default {
 }
 
 .header-menu__lang-toggle {
+  display: inline-block;
   width: 73px;
   height: 60px;
   position: absolute;
@@ -89,11 +90,14 @@ export default {
 }
 
 .header-menu__lang-menu__ul {
-  margin-bottom: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
   text-align: center;
 }
 
 .header-menu__lang-menu__ul__li {
+  display: inline-block;
   margin: 10px auto;
 }
 

@@ -11,6 +11,9 @@
           id="UserName"
           type="text"
           tabindex="1"
+          required
+          minlength="3"
+          maxlength="15"
           :placeholder="$t('login.placeholder.username')"
           v-model="user.UserName"
         />
@@ -21,6 +24,9 @@
           id="Password"
           type="password"
           tabindex="2"
+          required
+          minlength="6"
+          maxlength="30"
           :placeholder="$t('login.placeholder.password')"
           v-model="user.Password"
         />
@@ -31,6 +37,8 @@
           id="CaptchaValue"
           type="tel"
           tabindex="3"
+          required
+          minlength="4"
           maxlength="4"
           autocomplete="off"
           :placeholder="$t('login.placeholder.captcha')"
@@ -44,6 +52,7 @@
           :width="captchaImage.Width"
           :height="captchaImage.Height"
           border="0"
+          @click="changeCaptcha"
         />
       </div>
       <div class="login__form__field login__form__field--remember-me">
@@ -93,20 +102,23 @@ export default {
       },
     };
   },
+  mounted() {
+    this.changeCaptcha();
+  },
   methods: {
     async login() {
       console.log('[login]', this.user);
       this.error = await this.$store.dispatch('user/login', this.user);
     },
-  },
-  mounted() {
-    const requestDataCaptcha = { pageCode: 'MemberLogin' };
-    getCaptcha(requestDataCaptcha).then(result => {
-      console.log('[Captcha]', result.RetObj);
-      if (result.Code == 200) {
-        this.captchaImage = result.RetObj;
-      }
-    });
+    changeCaptcha() {
+      const requestDataCaptcha = { pageCode: 'MemberLogin' };
+      getCaptcha(requestDataCaptcha).then(result => {
+        console.log('[Captcha]', result.RetObj);
+        if (result.Code == 200) {
+          this.captchaImage = result.RetObj;
+        }
+      });
+    },
   },
   watch: {
     siteID: {
