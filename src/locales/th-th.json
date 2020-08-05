@@ -220,15 +220,6 @@
         "transfer": "โอนเงิน",
         "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด",
         "refresh": "รีเฟรช"
-      },
-      "table": {
-        "wallet": "กระเป๋าเงิน：",
-        "SABA": "กีฬา SABA：",
-        "BBIN": "BBIN：",
-        "JDB": "JDB：",
-        "RG": "รอยัลโซนRG：",
-        "CQ9": "CQ9：",
-        "SBO": "กีฬา SBO："
       }
     },
     "record": {

@@ -220,15 +220,6 @@
         "transfer": "转帐",
         "allToMyWallet": "全部转回我的钱包",
         "refresh": "刷新"
-      },
-      "table": {
-        "wallet": "我的钱包：",
-        "SABA": "沙巴体育：",
-        "BBIN": "BBIN：",
-        "JDB": "JDB：",
-        "RG": "皇家RG馆：",
-        "CQ9": "CQ9：",
-        "SBO": "SBO体育："
       }
     },
     "record": {

@@ -220,15 +220,6 @@
         "transfer": "Transfer",
         "allToMyWallet": "All to my wallet",
         "refresh": "Refresh"
-      },
-      "table": {
-        "wallet": "Wallet：",
-        "SABA": "SABA Sports：",
-        "BBIN": "BBIN：",
-        "JDB": "JDB：",
-        "RG": "Royal Gaming：",
-        "CQ9": "CQ9：",
-        "SBO": "SBO Sports："
       }
     },
     "record": {
