@@ -2,8 +2,8 @@
   <swiper class="home-swiper" :options="swiperOption">
     <swiper-slide v-for="(slide, index) in list" :key="index">
       <router-link :to="{ name: 'Home' }">
-        <img v-if="siteBNewPromotion" :src="slide.ImageUrl" alt="" />
-        <img v-if="!siteBNewPromotion" :src="`${resourceUrl}/imgs/banner/${slide.ImageUrl}`" alt="" />
+        <img v-if="siteIsNewPromotion" :src="slide.ImageUrl" alt="" />
+        <img v-if="!siteIsNewPromotion" :src="`${resourceUrl}/imgs/banner/${slide.ImageUrl}`" alt="" />
       </router-link>
     </swiper-slide>
     <a class="home-swiper__button--previous" slot="button-prev"></a>
@@ -34,7 +34,7 @@ export default {
       type: String,
       default: () => '',
     },
-    siteBNewPromotion: {
+    siteIsNewPromotion: {
       type: Boolean,
       default: () => false,
     },
@@ -61,7 +61,6 @@ export default {
       },
     };
   },
-  mounted() {},
 };
 </script>
 
