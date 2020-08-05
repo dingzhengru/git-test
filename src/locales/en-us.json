@@ -127,6 +127,10 @@
       "passwordNew": "New Password",
       "passwordCheck": "Confirm Password",
       "passwordRemember": "Phone memory account",
+      "switch": {
+        "on": "Enabled",
+        "off": "Disabled"
+      },
       "notice": {
         "suggest": "For the security of account, please change your passwords periodically.",
         "rule": "It needs over six characters to set up your new passwords.",

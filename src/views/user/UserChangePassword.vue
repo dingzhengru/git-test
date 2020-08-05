@@ -56,7 +56,7 @@
           :sync="true"
           :margin="0"
           :color="{ checked: 'purple', unchecked: 'gray' }"
-          :labels="{ checked: '啟用', unchecked: '停用' }"
+          :labels="{ checked: $t('user.changePassword.switch.on'), unchecked: $t('user.changePassword.switch.off') }"
           :font-size="40"
         />
       </div>
@@ -134,7 +134,7 @@ export default {
       },
     },
     isRememberPassword() {
-      console.log(this.isRememberPassword);
+      console.log('[isRememberPassword]', this.isRememberPassword);
     },
   },
 };

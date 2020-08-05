@@ -127,6 +127,10 @@
       "passwordNew": "新密码",
       "passwordCheck": "确认密码",
       "passwordRemember": "手机版记忆帐密",
+      "switch": {
+        "on": "启用",
+        "off": "停用"
+      },
       "notice": {
         "suggest": "为保障您的账号安全，请定期更换您的密码。",
         "rule": "设定新密码必须超过6个字符。",
