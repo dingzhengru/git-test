@@ -80,6 +80,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
+import dayjs from 'dayjs';
 export default {
   name: 'Register',
   computed: {
@@ -372,8 +373,12 @@ export default {
 
     //* 生日欄位，設定 min, max
     const inputBirthday = this.fieldList.find(item => item.name == 'Add_Birthday');
+    const maxYearRange = 18;
+
     inputBirthday.min = '1900-01-01';
-    inputBirthday.max = this.getBirthdayMax();
+    inputBirthday.max = dayjs()
+      .subtract(maxYearRange, 'year')
+      .format('YYYY-MM-DD');
   },
   methods: {
     async register() {
@@ -403,26 +408,6 @@ export default {
           this.captchaImage = result.RetObj;
         }
       });
-    },
-    getBirthdayMax() {
-      const range = 18;
-      const today = new Date();
-      const maxYear = today.getFullYear() - range;
-      const maxDate = new Date(maxYear, today.getMonth(), today.getDate());
-      const maxDateString = this.getDateString(maxDate);
-      return maxDateString;
-    },
-    getDateString(dateObject) {
-      let dd = dateObject.getDate();
-      let mm = dateObject.getMonth() + 1;
-      let yyyy = dateObject.getFullYear();
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      return `${yyyy}-${mm}-${dd}`;
     },
   },
   watch: {
