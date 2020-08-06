@@ -8,7 +8,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    lang: '', // * 語系
+    lang: '',
   },
   mutations: {
     setLang: (state, lang) => {

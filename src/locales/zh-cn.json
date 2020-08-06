@@ -50,8 +50,8 @@
   },
   "register": {
     "placeholder": {
-      "recommend": "推 荐 人",
-      "account": "帐　　号",
+      "recommend": "推荐人",
+      "account": "帐号",
       "password": "密码",
       "passwordCheck": "确认密码",
       "mobile": "手机号码",
@@ -60,6 +60,7 @@
       "firstName": "名字",
       "lastName": "姓氏",
       "nickname": "昵称",
+      "birthday": "生日 ",
       "bank": "请选择",
       "bankBranch": "分行名称1",
       "bankAccount": "银行帐号1",

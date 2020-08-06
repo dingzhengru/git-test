@@ -66,7 +66,7 @@ watch: {
 
 ### notification 的 nav 圖片大小不同
 
-starbets 的圖片大小跟其他不同，造成位置不同
+StarBets 的圖片大小跟其他不同，造成位置不同
 
 ## Library
 

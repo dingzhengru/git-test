@@ -60,6 +60,7 @@
       "firstName": "ชื่อ",
       "lastName": "นามสกุล",
       "nickname": "ชื่อเล่น",
+      "birthday": "วันเกิด ",
       "bank": "โปรดเลือก",
       "bankBranch": "สาขาธนาคาร",
       "bankAccount": "หมายเลขบัญชีธนาคาร",

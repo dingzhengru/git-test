@@ -50,7 +50,7 @@
   },
   "register": {
     "placeholder": {
-      "recommend": "Referer",
+      "recommend": "Referrer",
       "account": "Account No.",
       "password": "Password",
       "passwordCheck": "Confirm Password",
@@ -60,6 +60,7 @@
       "firstName": "First Name",
       "lastName": "Last Name",
       "nickname": "Nickname",
+      "birthday": "Birthday ",
       "bank": "Please select",
       "bankBranch": "Branch Name 1",
       "bankAccount": "Bank Account 1",

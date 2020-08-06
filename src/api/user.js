@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
+//* 心跳
+export async function keepUserOnline() {
+  const result = await axios.post(API_URL + '/Siteinfo/KeepUserOnline');
+  return result.data;
+}
+
 //* 取得會員資訊
 export async function getUserInfo() {
   const result = await axios.post(API_URL + '/Member/MemInfo');

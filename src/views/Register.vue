@@ -6,18 +6,23 @@
           <div class="register__form__field__input-div" :class="[field.class]">
             <span class="register__form__field__star" v-if="field.isRequired">*</span>
             <input
+              v-if="field.name != 'Add_BankId1'"
               class="register__form__field__input"
+              :id="field.id"
+              :ref="field.ref"
               :type="field.type"
               :placeholder="$t(field.placeholder)"
               :required="field.isRequired"
               :minlength="field.minlength"
               :maxlength="field.maxlength"
+              :min="field.min"
+              :max="field.max"
               :pattern="field.regex"
               v-model="field.value"
-              v-if="field.type != 'select'"
             />
 
             <img
+              v-if="field.name == 'CaptchaValue'"
               class="register__form__field__image--code"
               :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
               alt="MvcCaptcha"
@@ -25,16 +30,15 @@
               :width="captchaImage.Width"
               :height="captchaImage.Height"
               border="0"
-              v-if="field.name == 'CaptchaValue'"
               @click="changeCaptcha"
             />
 
             <select
+              v-if="field.name == 'Add_BankId1'"
               class="register__form__field__select"
               :class="{
                 'register__form__field__select--default': field.value == '',
               }"
-              v-if="field.type == 'select'"
               v-model="field.value"
             >
               <option value="" selected>{{ $t(field.placeholder) }}</option>
@@ -234,6 +238,19 @@ export default {
           isShow: true,
         },
         {
+          name: 'Add_Birthday',
+          class: 'register__form__field--name',
+          type: 'date',
+          placeholder: 'register.placeholder.birthday',
+          hint: '',
+          error: '',
+          isRequired: true,
+          min: '',
+          max: '',
+          value: '',
+          isShow: true,
+        },
+        {
           name: 'Add_BankId1',
           class: 'register__form__field--name',
           type: 'select',
@@ -352,6 +369,11 @@ export default {
   },
   mounted() {
     this.changeCaptcha();
+
+    //* 生日欄位，設定 min, max
+    const inputBirthday = this.fieldList.find(item => item.name == 'Add_Birthday');
+    inputBirthday.min = '1900-01-01';
+    inputBirthday.max = this.getBirthdayMax();
   },
   methods: {
     async register() {
@@ -363,6 +385,8 @@ export default {
         }
       }
       requestData['Add_RealName'] = this.fullName;
+
+      console.log('[Register]', requestData);
 
       this.error = await this.$store.dispatch('user/register', requestData);
     },
@@ -379,6 +403,26 @@ export default {
           this.captchaImage = result.RetObj;
         }
       });
+    },
+    getBirthdayMax() {
+      const range = 18;
+      const today = new Date();
+      const maxYear = today.getFullYear() - range;
+      const maxDate = new Date(maxYear, today.getMonth(), today.getDate());
+      const maxDateString = this.getDateString(maxDate);
+      return maxDateString;
+    },
+    getDateString(dateObject) {
+      let dd = dateObject.getDate();
+      let mm = dateObject.getMonth() + 1;
+      let yyyy = dateObject.getFullYear();
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+      return `${yyyy}-${mm}-${dd}`;
     },
   },
   watch: {
@@ -482,5 +526,14 @@ export default {
 
 .register__notice {
   margin: 0 20px;
+}
+
+.register__form__field__input::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* 反轉圖像顏色 */
+}
+
+.register__form__field__input::before {
+  color: #959595;
+  content: attr(placeholder);
 }
 </style>
