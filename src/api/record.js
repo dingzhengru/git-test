@@ -5,3 +5,8 @@ export async function getRecordDeposit() {
   const result = await axios.post(API_URL + '/PointRecord/Deposit');
   return result.data;
 }
+
+export async function getRecordWithdrawal() {
+  const result = await axios.post(API_URL + '/PointRecord/Withdrawals');
+  return result.data;
+}

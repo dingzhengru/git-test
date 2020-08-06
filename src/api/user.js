@@ -14,10 +14,10 @@ export async function getUserInfo() {
 }
 
 //* 取得金管家
-export async function getPITTLBet() {
-  const result = await axios.post(API_URL + '/Siteinfo/MGetPITTLBet');
-  return result.data;
-}
+// export async function getPITTLBet() {
+//   const result = await axios.post(API_URL + '/Siteinfo/MGetPITTLBet');
+//   return result.data;
+// }
 
 //* 取得錢包額度
 export async function getAllGamePoint() {

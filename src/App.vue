@@ -36,8 +36,10 @@
 import { mapGetters } from 'vuex';
 import { getLangList, changeLang } from '@/api/lang';
 import { getMessageList } from '@/api/alert';
-import { getUserInfo, getPITTLBet } from '@/api/user';
+import { getUserInfo } from '@/api/user';
 import numeral from 'numeral';
+
+import { getGameUrl } from '@/api/game';
 
 export default {
   name: 'App',
@@ -74,16 +76,18 @@ export default {
   },
   methods: {
     getUserInfo() {
-      getPITTLBet().then(result => {
-        console.log('[PITTLBet]', result.RetObj);
-        this.$store.commit('user/setRoll', result.RetObj.PI_BetAmount);
-        this.$store.commit('user/setVip', result.RetObj.PI_Level);
-      });
+      // getPITTLBet().then(result => {
+      //   console.log('[PITTLBet]', result.RetObj);
+      //   this.$store.commit('user/setRoll', result.RetObj.PI_BetAmount);
+      //   this.$store.commit('user/setVip', result.RetObj.PI_Level);
+      // });
 
       getUserInfo().then(result => {
         console.log('[UserInfo]', result);
         this.$store.commit('user/setUsername', result.RetObj.Lst_Account);
         this.$store.commit('user/setTotal', numeral(result.RetObj.Lst_TotalDeposit).format('0,0.00'));
+        this.$store.commit('user/setRoll', result.RetObj.Lst_PI_BetAmount);
+        this.$store.commit('user/setVip', result.RetObj.Lst_PI_Level);
         this.$store.commit('user/setIsAccessed', result.RetObj.Lst_Account_Open); // * 設置是否已開通
       });
     },
@@ -158,6 +162,12 @@ export default {
 
       if (this.isLoggedIn) {
         this.getUserInfo();
+
+        const requestDataGetGameUrl = { Tag: '1180-701', Gameid: '9008', Freeplay: '0' };
+
+        getGameUrl(requestDataGetGameUrl).then(result => {
+          console.log('[Game]', result);
+        });
       }
     },
     isLoggedIn() {

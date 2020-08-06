@@ -12,10 +12,12 @@ const AUTH_API_LIST = [
   'Siteinfo/MGetPITTLBet',
   'Member/MemInfo',
   'PointRecord/Deposit',
+  'PointRecord/Withdrawals',
+  'Game/MLobbyGameRedirect',
 ];
 
 // 需加密的 API
-const CRYPTO_API_LIST = ['Member/LoginIn'];
+const CRYPTO_API_LIST = ['Member/LoginIn', 'Game/MLobbyGameRedirect'];
 
 // 需使用"大數據加密"的 API
 const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister'];

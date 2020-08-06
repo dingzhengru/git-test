@@ -92,7 +92,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getProductList } from '@/api/product';
-import { getRecordDeposit } from '@/api/record';
+import { getRecordDeposit, getRecordWithdrawal } from '@/api/record';
 import numeral from 'numeral';
 export default {
   name: 'TransactionRecordContent',
@@ -212,42 +212,101 @@ export default {
             getRecordDeposit().then(result => {
               console.log('[RecordDeposit]', result);
             });
-            this.list = [
+            const responseList = [
               {
-                id: 'DR200721114109903',
-                isSuccess: true,
-                date: '2020-07-21',
-                bank: 'KNANK',
-                amount: 1000,
-                receipt: '',
-                detail: 'Successful',
-              },
-              {
-                id: 'DR200721111105963',
-                isSuccess: false,
-                date: '2020-07-22',
-                bank: 'KNANK123',
-                amount: 10000,
-                receipt: 'Remittance Receipt',
-                detail: 'Under review',
+                Lst_TransID: 'CR200804140218373',
+                Lst_CreateTime: '2020-08-04T14:02:18.377',
+                Lst_Mtime: '2020-08-04T14:50:02.07',
+                Lst_BankName: '７－１１',
+                Lst_MemberBankName: 'SCB',
+                Lst_Money: 200.0,
+                Lst_MoneyIncome: 200.0,
+                Lst_Status: 2,
+                Lst_ActivityName: '',
+                Lst_DMTitle: '网络转账',
+                Lst_Receipt: '会员没有上传汇款收据',
               },
             ];
+
+            this.list = responseList.map(item => {
+              const newItem = {};
+              newItem.id = item.Lst_TransID;
+              newItem.isSuccess = item.Lst_Status == 2;
+              newItem.date = item.Lst_CreateTime.split('T')[0];
+              newItem.bank = item.Lst_BankName;
+              newItem.amount = item.Lst_Money;
+              newItem.receipt = item.Lst_Receipt;
+
+              if (item.Lst_Status == 1) {
+                newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
+              } else if (item.Lst_Status == 2) {
+                newItem.detail = this.$t('transaction.recordContent.statusText.success');
+              } else if (item.Lst_Status == 3) {
+                newItem.detail = this.$t('transaction.recordContent.statusText.failure');
+              }
+              return newItem;
+            });
+
+            // this.list = [
+            //   {
+            //     id: 'DR200721114109903',
+            //     isSuccess: true,
+            //     date: '2020-07-21',
+            //     bank: 'KNANK',
+            //     amount: 1000,
+            //     receipt: '',
+            //     detail: 'Successful',
+            //   },
+            // ];
             this.title = 'Deposit Record';
             this.detailKey = 'detail';
             this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
             break;
           }
           case 'withdrawal': {
-            this.list = [
+            getRecordWithdrawal().then(result => {
+              console.log('[RecordWithdrawal]', result);
+            });
+            const responseList = [
               {
-                id: 'SR200721110313463',
-                isSuccess: true,
-                date: '2020-07-21',
-                bank: 'SCB',
-                amount: 1000,
-                detail: 'Successful',
+                Lst_TransID: 'CR200805151631650',
+                Lst_CreateTime: '2020-08-05T15:16:31.653',
+                Lst_CasherTime: '2020-08-05T17:34:17.7310394+08:00',
+                Lst_MemberBankName: 'SCB',
+                Lst_Money: 400.0,
+                Lst_MoneyPayment: -400.0,
+                Lst_Status: 2,
+                Lst_Charges: 0.0,
               },
             ];
+
+            this.list = responseList.map(item => {
+              const newItem = {};
+              newItem.id = item.Lst_TransID;
+              newItem.isSuccess = item.Lst_Status == 2;
+              newItem.date = item.Lst_CreateTime.split('T')[0];
+              newItem.bank = item.Lst_MemberBankName;
+              newItem.amount = item.Lst_Money;
+
+              if (item.Lst_Status == 1) {
+                newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
+              } else if (item.Lst_Status == 2) {
+                newItem.detail = this.$t('transaction.recordContent.statusText.success');
+              } else if (item.Lst_Status == 3) {
+                newItem.detail = this.$t('transaction.recordContent.statusText.failure');
+              }
+              return newItem;
+            });
+            // this.list = [
+            //   {
+            //     id: 'SR200721110313463',
+            //     isSuccess: true,
+            //     date: '2020-07-21',
+            //     bank: 'SCB',
+            //     amount: 1000,
+            //     detail: 'Successful',
+            //   },
+            // ];
             this.title = 'Withdrawals Record';
             this.detailKey = 'detail';
             this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;

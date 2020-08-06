@@ -234,6 +234,11 @@
       "adjustment": "调整记录"
     },
     "recordContent": {
+      "statusText": {
+        "underReview": "审核中",
+        "success": "成功",
+        "failure": "失败"
+      },
       "deposit": {
         "title": "存款纪录",
         "table": {

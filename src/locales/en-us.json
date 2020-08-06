@@ -234,6 +234,11 @@
       "adjustment": "Adjustment Record"
     },
     "recordContent": {
+      "statusText": {
+        "underReview": "under review",
+        "success": "Successful",
+        "failure": "Failure"
+      },
       "deposit": {
         "title": "Deposit Record",
         "table": {
