@@ -15,9 +15,10 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [notification 的 nav 圖片大小不同](#notification-的-nav-圖片大小不同)
 - [Library](#library)
   - [axios](#axios)
+  - [numeral](#numeral)
+  - [dayjs](#dayjs)
   - [jsencrypt](#jsencrypt)
   - [encryptlong](#encryptlong)
-  - [numeral](#numeral)
   - [vue-awesome-swiper](#vue-awesome-swiper)
   - [vue-scrollto](#vue-scrollto)
   - [vue-slider-component](#vue-slider-component)
@@ -30,9 +31,9 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - bank list
 
 ## 畫面
-- 還未能看見
-  - 取款的詳細頁面(需請QA操作)
 
+- 還未能看見
+  - 取款的詳細頁面(需請 QA 操作)
 
 ## 其他
 
@@ -74,11 +75,13 @@ StarBets 的圖片大小跟其他不同，造成位置不同
 
 ### axios
 
+### numeral
+
+### dayjs
+
 ### jsencrypt
 
 ### encryptlong
-
-### numeral
 
 ### vue-awesome-swiper
 

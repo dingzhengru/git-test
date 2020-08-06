@@ -26,6 +26,9 @@ import { i18n, loadLanguageAsync } from '@/i18n-lazy'; // 載入語言
 import { getSiteInfo } from '@/api/site';
 import { getTokenAndPublicKey } from '@/api/user';
 
+//* Page Title
+document.title = 'H3 前後端分離';
+
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
 const cssVersion = '01';
