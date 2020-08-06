@@ -35,7 +35,7 @@
         <input
           class="login__form__field__input login__form__field__input--code"
           id="CaptchaValue"
-          type="text"
+          type="tel"
           tabindex="3"
           required
           minlength="4"

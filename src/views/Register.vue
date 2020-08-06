@@ -168,7 +168,7 @@ export default {
         {
           name: 'Add_Email',
           class: 'register__form__field--name',
-          type: 'text',
+          type: 'email',
           placeholder: 'register.placeholder.email',
           hint: 'register.hint.email',
           error: '',
@@ -303,7 +303,7 @@ export default {
         {
           name: 'CaptchaValue',
           class: 'register__form__field--code',
-          type: 'text',
+          type: 'tel',
           placeholder: 'register.placeholder.captcha',
           hint: '',
           error: '',

@@ -35,15 +35,19 @@
       </div>
     </div>
     <div class="game-lobby__inquire">
-      <input
-        class="game-lobby__inquire__search"
-        type="text"
-        v-model="search.text"
-        :placeholder="$t('game.placeholder.search')"
-      />
-      <button class="game-lobby__inquire__search-icon"></button>
+      <div class="game-lobby__inquire__input-div">
+        <input
+          class="game-lobby__inquire__search"
+          type="search"
+          v-model="search.text"
+          :placeholder="$t('game.placeholder.search')"
+        />
+        <button class="game-lobby__inquire__search-icon"></button>
+      </div>
       <input class="game-lobby__inquire__favorites" type="submit" title="My Favorites" />
-      <button class="game-lobby__inquire__button--transfer-now" href="javascript:;">{{ $t('game.button.transferNow') }}</button>
+      <button class="game-lobby__inquire__button--transfer-now" href="javascript:;">
+        {{ $t('game.button.transferNow') }}
+      </button>
     </div>
     <table class="game-lobby__table">
       <tbody>
@@ -290,6 +294,11 @@ export default {
   position: relative;
 }
 
+.game-lobby__inquire__input-div {
+  display: inline-block;
+  position: relative;
+}
+
 .game-lobby__inquire__search {
   width: 302px;
   background-size: cover;
@@ -305,13 +314,12 @@ export default {
 
 .game-lobby__inquire__search-icon {
   top: 19px;
-  left: 280px;
+  /* left: 280px; */
+  right: 0;
   position: absolute;
   width: 53px;
   height: 71px;
   border: 0;
-  text-indent: -9999px;
-  outline: none;
 }
 
 .game-lobby__inquire__favorites {
@@ -328,7 +336,7 @@ export default {
   display: inline-block;
   width: 187px;
   height: 65px;
-  font-size: 21px;
+  /* font-size: 21px; */
   padding: 10px 10px 10px 48px;
   margin: 22px 0 0 10px;
   color: #fedebe;
@@ -382,9 +390,19 @@ export default {
   background-repeat: no-repeat;
 }
 
+/*
+ * 語系
+*/
+
+.en-us .game-lobby__inquire__button--transfer-now {
+  font-size: 1.5rem;
+}
+
+.th-th .game-lobby__inquire__button--transfer-now {
+  font-size: 1.5rem;
+}
 
 .zh-cn .game-lobby__inquire__button--transfer-now {
   font-size: 2.4rem;
 }
-
 </style>
