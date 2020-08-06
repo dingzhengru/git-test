@@ -40,8 +40,9 @@ axios.interceptors.response.use(
   },
   error => {
     console.log('[interceptors response error]', error);
-    console.log('[interceptors response error code]', error.response.status);
-    console.log('[interceptors response error data]', error.response.data);
+    console.log('[interceptors response error] [url]', error.response.config.url);
+    console.log('[interceptors response error] [status]', error.response.status);
+    console.log('[interceptors response error] [data]', error.response.data);
     if (error.response.status == 401 && error.response.data.Code == 201) {
       console.log('[Logout]', 'status code:401 && data.Code == 201');
       store.dispatch('user/logout');

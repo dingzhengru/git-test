@@ -27,7 +27,7 @@ import { getSiteInfo } from '@/api/site';
 import { getTokenAndPublicKey } from '@/api/user';
 
 //* Page Title
-document.title = 'H3 前後端分離';
+document.title = 'H3 手機版 前後端分離';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
