@@ -239,6 +239,7 @@ export default {
           max: dayjs()
             .subtract(18, 'year')
             .format('YYYY-MM-DD'),
+          regex: '^[1-9][0-9]{3}-[0-1][0-9]-[0-3][0-9]$',
           value: '',
           isShow: false,
         },
