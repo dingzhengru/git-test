@@ -49,31 +49,95 @@
     }
   },
   "register": {
-    "placeholder": {
-      "recommend": "Referrer",
-      "account": "Account No.",
-      "password": "Password",
-      "passwordCheck": "Confirm Password",
-      "mobile": "Mobile number",
-      "email": "E-mail",
-      "line": "ID LINE",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "nickname": "Nickname",
-      "birthday": "Birthday ",
-      "bank": "Please select",
-      "bankBranch": "Branch Name 1",
-      "bankAccount": "Bank Account 1",
-      "passwordWithdrawal": "Password for Withdrawal",
-      "passwordCheckWithdrawal": "Withdrawal Confirm Password",
-      "captcha": "Captcha"
+    "Add_RelatedAccount": {
+      "placeholder": "Referrer",
+      "hint": "If there is no referrer,you are not required to fill in",
+      "error": {}
     },
-    "hint": {
-      "recommend": "If there is no referrer,you are not required to fill in",
-      "mobile": "This is for contact channel of account and surprise preferential informing, please kindly provide the real information.",
-      "email": "This is for surprise preferential informing, please kindly provide the real information.",
-      "line": "This is for surprise preferential informing, please kindly provide the real information.",
-      "name": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance."
+    "Add_Account": {
+      "placeholder": "Account No.",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Password": {
+      "placeholder": "Password",
+      "hint": "",
+      "error": {}
+    },
+    "Add_PasswordCheck": {
+      "placeholder": "Confirm Password",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Mobile": {
+      "placeholder": "Mobile number",
+      "hint": "This is for contact channel of account and surprise preferential informing, please kindly provide the real information.",
+      "error": {}
+    },
+    "Add_Email": {
+      "placeholder": "E-mail",
+      "hint": "This is for surprise preferential informing, please kindly provide the real information.",
+      "error": {}
+    },
+    "Add_Line": {
+      "placeholder": "ID LINE",
+      "hint": "This is for surprise preferential informing, please kindly provide the real information.",
+      "error": {}
+    },
+    "Add_FirstName": {
+      "placeholder": "First Name",
+      "hint": "",
+      "error": {}
+    },
+    "Add_LastName": {
+      "placeholder": "Last Name",
+      "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.",
+      "error": {}
+    },
+    "Add_RealName": {
+      "placeholder": "Real Name",
+      "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.",
+      "error": {}
+    },
+    "Add_NickName": {
+      "placeholder": "Nickname",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Birthday": {
+      "placeholder": "Birthday ",
+      "hint": "",
+      "error": {}
+    },
+    "Add_BankId1": {
+      "placeholder": "Please select",
+      "hint": "",
+      "error": {}
+    },
+    "Add_BankBranchName1": {
+      "placeholder": "Branch Name 1",
+      "hint": "",
+      "error": {}
+    },
+    "Add_BankAccount1": {
+      "placeholder": "Bank Account 1",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Withdrawals_Password": {
+      "placeholder": "Password for Withdrawal",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Withdrawals_CheckPassword": {
+      "placeholder": "Withdrawal Confirm Password",
+      "hint": "",
+      "error": {}
+    },
+    "CaptchaValue": {
+      "placeholder": "Captcha",
+      "hint": "",
+      "error": {}
     },
     "notice": {
       "required": "Remark with <span class='ui-txt-star'>*</span> are required items, please be sure to fill in them correctly.",

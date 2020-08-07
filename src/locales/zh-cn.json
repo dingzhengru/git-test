@@ -49,31 +49,95 @@
     }
   },
   "register": {
-    "placeholder": {
-      "recommend": "推荐人",
-      "account": "帐号",
-      "password": "密码",
-      "passwordCheck": "确认密码",
-      "mobile": "手机号码",
-      "email": "E-mail",
-      "line": "ID LINE",
-      "firstName": "名字",
-      "lastName": "姓氏",
-      "nickname": "昵称",
-      "birthday": "生日 ",
-      "bank": "请选择",
-      "bankBranch": "分行名称1",
-      "bankAccount": "银行帐号1",
-      "passwordWithdrawal": "取款密碼",
-      "passwordCheckWithdrawal": "确认取款密码",
-      "captcha": "验证码"
+    "Add_RelatedAccount": {
+      "placeholder": "推荐人",
+      "hint": "若无推荐人,则不需要填写",
+      "error": {}
     },
-    "hint": {
-      "recommend": "若无推荐人,则不需要填写",
-      "mobile": "此为账户联系渠道，惊喜优惠通知，请务必真实填入",
-      "email": "此为公司发送惊喜优惠通知，请务必真实填入",
-      "line": "此为公司发送惊喜优惠通知，请务必真实填入",
-      "name": "必须与您的银行账户名称相同，否则不能出款"
+    "Add_Account": {
+      "placeholder": "帐号",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Password": {
+      "placeholder": "密码",
+      "hint": "",
+      "error": {}
+    },
+    "Add_PasswordCheck": {
+      "placeholder": "确认密码",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Mobile": {
+      "placeholder": "手机号码",
+      "hint": "此为账户联系渠道，惊喜优惠通知，请务必真实填入",
+      "error": {}
+    },
+    "Add_Email": {
+      "placeholder": "E-mail",
+      "hint": "此为公司发送惊喜优惠通知，请务必真实填入",
+      "error": {}
+    },
+    "Add_Line": {
+      "placeholder": "ID LINE",
+      "hint": "此为公司发送惊喜优惠通知，请务必真实填入",
+      "error": {}
+    },
+    "Add_FirstName": {
+      "placeholder": "名字",
+      "hint": "",
+      "error": {}
+    },
+    "Add_LastName": {
+      "placeholder": "姓氏",
+      "hint": "必须与您的银行账户名称相同，否则不能出款",
+      "error": {}
+    },
+    "Add_RealName": {
+      "placeholder": "姓名",
+      "hint": "必须与您的银行账户名称相同，否则不能出款",
+      "error": {}
+    },
+    "Add_NickName": {
+      "placeholder": "昵称",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Birthday": {
+      "placeholder": "生日",
+      "hint": "",
+      "error": {}
+    },
+    "Add_BankId1": {
+      "placeholder": "请选择",
+      "hint": "",
+      "error": {}
+    },
+    "Add_BankBranchName1": {
+      "placeholder": "分行名称1",
+      "hint": "",
+      "error": {}
+    },
+    "Add_BankAccount1": {
+      "placeholder": "银行帐号1",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Withdrawals_Password": {
+      "placeholder": "取款密碼",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Withdrawals_CheckPassword": {
+      "placeholder": "确认取款密码",
+      "hint": "",
+      "error": {}
+    },
+    "CaptchaValue": {
+      "placeholder": "验证码",
+      "hint": "",
+      "error": {}
     },
     "notice": {
       "required": "标记有 <span class='ui-txt-star'>*</span> 为必填字段，请留意并正确填写。",

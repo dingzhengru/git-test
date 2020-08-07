@@ -49,31 +49,95 @@
     }
   },
   "register": {
-    "placeholder": {
-      "recommend": "ผู้แนะนำ",
-      "account": "ยูสเซอร์สมาชิก",
-      "password": "รหัสผ่าน",
-      "passwordCheck": "ยืนยันรหัสผ่าน",
-      "mobile": "เบอร์โทรศัพท์",
-      "email": "E-mail",
-      "line": "ID LINE",
-      "firstName": "ชื่อ",
-      "lastName": "นามสกุล",
-      "nickname": "ชื่อเล่น",
-      "birthday": "วันเกิด ",
-      "bank": "โปรดเลือก",
-      "bankBranch": "สาขาธนาคาร",
-      "bankAccount": "หมายเลขบัญชีธนาคาร",
-      "passwordWithdrawal": "รหัสถอนเงินเว็บไซต์",
-      "passwordCheckWithdrawal": "ยืนยันรหัสผ่านอีกครั้ง",
-      "captcha": "รหัสยืนยัน"
+    "Add_RelatedAccount": {
+      "placeholder": "ผู้แนะนำ",
+      "hint": "หากไม่มีผู้แนะนำ ก็ไม่ต้องการกรอก",
+      "error": {}
     },
-    "hint": {
-      "recommend": "หากไม่มีผู้แนะนำ ก็ไม่ต้องการกรอก",
-      "mobile": "ใช้สำหรับติดต่อและแจ้งข้อมูลรางวัลที่ได้ หรือโปรโมชั่นต่างๆ โปรดกรอกตามความเป็นจริง",
-      "email": "ใช้สำหรับแจ้งข้อมูลรางวัลที่ได้รับ โปรดกรอกตามความเป็นจริง",
-      "line": "ใช้สำหรับแจ้งข้อมูลรางวัลที่ได้รับ โปรดกรอกตามความเป็นจริง",
-      "name": "ชื่อและนามสกุลต้องตรงกับชื่อบัญชีธนาคาร มิเช่นนั้นจะไม่สามารถถอนเงินได้"
+    "Add_Account": {
+      "placeholder": "ยูสเซอร์สมาชิก",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Password": {
+      "placeholder": "รหัสผ่าน",
+      "hint": "",
+      "error": {}
+    },
+    "Add_PasswordCheck": {
+      "placeholder": "ยืนยันรหัสผ่าน",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Mobile": {
+      "placeholder": "เบอร์โทรศัพท์",
+      "hint": "ช้สำหรับติดต่อและแจ้งข้อมูลรางวัลที่ได้ หรือโปรโมชั่นต่างๆ โปรดกรอกตามความเป็นจริง",
+      "error": {}
+    },
+    "Add_Email": {
+      "placeholder": "E-mail",
+      "hint": "ใช้สำหรับแจ้งข้อมูลรางวัลที่ได้รับ โปรดกรอกตามความเป็นจริง",
+      "error": {}
+    },
+    "Add_Line": {
+      "placeholder": "ID LINE",
+      "hint": "ใช้สำหรับแจ้งข้อมูลรางวัลที่ได้รับ โปรดกรอกตามความเป็นจริง",
+      "error": {}
+    },
+    "Add_FirstName": {
+      "placeholder": "ชื่อ",
+      "hint": "",
+      "error": {}
+    },
+    "Add_LastName": {
+      "placeholder": "นามสกุล",
+      "hint": "ชื่อและนามสกุลต้องตรงกับชื่อบัญชีธนาคาร มิเช่นนั้นจะไม่สามารถถอนเงินได้",
+      "error": {}
+    },
+    "Add_RealName": {
+      "placeholder": "Real Name",
+      "hint": "ชื่อและนามสกุลต้องตรงกับชื่อบัญชีธนาคาร มิเช่นนั้นจะไม่สามารถถอนเงินได้",
+      "error": {}
+    },
+    "Add_NickName": {
+      "placeholder": "ชื่อเล่น",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Birthday": {
+      "placeholder": "วันเกิด",
+      "hint": "",
+      "error": {}
+    },
+    "Add_BankId1": {
+      "placeholder": "โปรดเลือก",
+      "hint": "",
+      "error": {}
+    },
+    "Add_BankBranchName1": {
+      "placeholder": "สาขาธนาคาร",
+      "hint": "",
+      "error": {}
+    },
+    "Add_BankAccount1": {
+      "placeholder": "หมายเลขบัญชีธนาคาร",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Withdrawals_Password": {
+      "placeholder": "รหัสถอนเงินเว็บไซต์",
+      "hint": "",
+      "error": {}
+    },
+    "Add_Withdrawals_CheckPassword": {
+      "placeholder": "ยืนยันรหัสผ่านอีกครั้ง",
+      "hint": "",
+      "error": {}
+    },
+    "CaptchaValue": {
+      "placeholder": "รหัสยืนยัน",
+      "hint": "",
+      "error": {}
     },
     "notice": {
       "required": "ที่มีเครื่องหมาย <span class='ui-txt-star'>*</span> เป็นช่องที่ต้องกรอก โปรดกรอกข้อมูลตามจริง",

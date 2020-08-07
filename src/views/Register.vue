@@ -11,7 +11,7 @@
               :id="field.id"
               :ref="field.ref"
               :type="field.type"
-              :placeholder="$t(field.placeholder)"
+              :placeholder="$t(`register.${field.name}.placeholder`)"
               :required="field.isRequired"
               :minlength="field.minlength"
               :maxlength="field.maxlength"
@@ -41,11 +41,11 @@
               }"
               v-model="field.value"
             >
-              <option value="" selected>{{ $t(field.placeholder) }}</option>
+              <option value="" selected>{{ $t(`register.${field.name}.placeholder`) }}</option>
               <option :value="bank.value" v-for="bank in bankList" :key="bank.value">{{ bank.name }}</option>
             </select>
           </div>
-          <div class="register__form__field__hint">{{ $t(field.hint) }}</div>
+          <div class="register__form__field__hint">{{ $t(`register.${field.name}.hint`) }}</div>
           <div class="theme-errorMsg" v-if="field.error">
             <span class="theme-txt-errorMsg">{{ field.error }}</span>
           </div>
@@ -106,8 +106,6 @@ export default {
           name: 'Add_RelatedAccount',
           class: 'register__form__field--recommend',
           type: 'text',
-          placeholder: 'register.placeholder.recommend',
-          hint: 'register.hint.recommend',
           error: '',
           isRequired: false,
           maxlength: 30,
@@ -119,8 +117,6 @@ export default {
           ref: 'Add_Account',
           class: 'register__form__field--account',
           type: 'text',
-          placeholder: 'register.placeholder.account',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 3,
@@ -133,8 +129,6 @@ export default {
           name: 'Add_Password',
           class: 'register__form__field--password',
           type: 'password',
-          placeholder: 'register.placeholder.password',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 6,
@@ -147,8 +141,6 @@ export default {
           name: 'Add_PasswordCheck',
           class: 'register__form__field--password',
           type: 'password',
-          placeholder: 'register.placeholder.passwordCheck',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 6,
@@ -161,8 +153,6 @@ export default {
           name: 'Add_Mobile',
           class: 'register__form__field--callphone',
           type: 'tel',
-          placeholder: 'register.placeholder.mobile',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 5,
@@ -175,8 +165,6 @@ export default {
           name: 'Add_Email',
           class: 'register__form__field--name',
           type: 'email',
-          placeholder: 'register.placeholder.email',
-          hint: 'register.hint.email',
           error: '',
           isRequired: false,
           minlength: 1,
@@ -189,8 +177,6 @@ export default {
           name: 'Add_Line',
           class: 'register__form__field--name',
           type: 'text',
-          placeholder: 'register.placeholder.line',
-          hint: 'register.hint.line',
           error: '',
           isRequired: false,
           maxlength: 50,
@@ -201,12 +187,10 @@ export default {
           name: 'Add_FirstName',
           class: 'register__form__field--name',
           type: 'text',
-          placeholder: 'register.placeholder.firstName',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 1,
-          maxlength: 30,
+          maxlength: 70,
           regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
           value: '',
           isShow: false,
@@ -215,26 +199,22 @@ export default {
           name: 'Add_LastName',
           class: 'register__form__field--name',
           type: 'text',
-          placeholder: 'register.placeholder.lastName',
-          hint: 'register.hint.name',
           error: '',
           isRequired: false,
           minlength: 1,
-          maxlength: 30,
+          maxlength: 70,
           regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
           value: '',
           isShow: false,
         },
         {
-          name: 'Add_LastName',
+          name: 'Add_RealName',
           class: 'register__form__field--name',
           type: 'text',
-          placeholder: 'register.placeholder.lastName',
-          hint: 'register.hint.name',
           error: '',
           isRequired: false,
           minlength: 1,
-          maxlength: 30,
+          maxlength: 70,
           regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
           value: '',
           isShow: false,
@@ -243,8 +223,6 @@ export default {
           name: 'Add_NickName',
           class: 'register__form__field--name',
           type: 'text',
-          placeholder: 'register.placeholder.nickname',
-          hint: '',
           error: '',
           isRequired: false,
           maxlength: 30,
@@ -255,12 +233,12 @@ export default {
           name: 'Add_Birthday',
           class: 'register__form__field--name',
           type: 'date',
-          placeholder: 'register.placeholder.birthday',
-          hint: '',
           error: '',
           isRequired: false,
-          min: '',
-          max: '',
+          min: '1900-01-01',
+          max: dayjs()
+            .subtract(18, 'year')
+            .format('YYYY-MM-DD'),
           value: '',
           isShow: false,
         },
@@ -268,8 +246,6 @@ export default {
           name: 'Add_BankId1',
           class: 'register__form__field--name',
           type: 'select',
-          placeholder: 'register.placeholder.bank',
-          hint: '',
           error: '',
           isRequired: false,
           value: '',
@@ -279,8 +255,6 @@ export default {
           name: 'Add_BankBranchName1',
           class: 'register__form__field--name',
           type: 'text',
-          placeholder: 'register.placeholder.bankBranch',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 1,
@@ -293,8 +267,6 @@ export default {
           name: 'Add_BankAccount1',
           class: 'register__form__field--account',
           type: 'text',
-          placeholder: 'register.placeholder.bankAccount',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 1,
@@ -307,8 +279,6 @@ export default {
           name: 'Add_Withdrawals_Password',
           class: 'register__form__field--password',
           type: 'password',
-          placeholder: 'register.placeholder.passwordWithdrawal',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 6,
@@ -321,8 +291,6 @@ export default {
           name: 'Add_Withdrawals_CheckPassword',
           class: 'register__form__field--password',
           type: 'password',
-          placeholder: 'register.placeholder.passwordCheckWithdrawal',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 6,
@@ -335,8 +303,6 @@ export default {
           name: 'CaptchaValue',
           class: 'register__form__field--code',
           type: 'tel',
-          placeholder: 'register.placeholder.captcha',
-          hint: '',
           error: '',
           isRequired: false,
           minlength: 4,
@@ -399,18 +365,9 @@ export default {
       }
     });
 
-    //* 生日欄位，設定 min, max
-    const inputBirthday = this.fieldList.find(item => item.name == 'Add_Birthday');
-    const maxYearRange = 18;
-
-    inputBirthday.min = '1900-01-01';
-    inputBirthday.max = dayjs()
-      .subtract(maxYearRange, 'year')
-      .format('YYYY-MM-DD');
-
     // setInterval(() => {
     //   this.validateForm();
-    // }, 5000);
+    // }, 3000);
   },
   methods: {
     async register() {
@@ -463,6 +420,9 @@ export default {
       } else if (field.regex && !RegExp(field.regex).test(field.value)) {
         //* 是否有正規表示式 && 不符合正規表示式
         field.error = `格式錯誤`;
+      } else if (field.name == 'Add_Birthday' && dayjs(field.value).isAfter(field.max)) {
+        //* 是否為生日欄位 && 是否超過指定最大日期(18歲限制)
+        field.error = `年齡必須超過 18 歲`;
       } else {
         field.error = '';
       }
