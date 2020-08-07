@@ -4,8 +4,6 @@
 
 H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
-- [API 詢問](#api-詢問)
-- [畫面](#畫面)
 - [其他](#其他)
   - [點擊輪播無法正常換頁](#點擊輪播無法正常換頁)
   - [Agreement 頁面的規章頁籤 .active 沒有設定](#agreement-頁面的規章頁籤-active-沒有設定)
@@ -23,17 +21,6 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [vue-scrollto](#vue-scrollto)
   - [vue-slider-component](#vue-slider-component)
   - [vue-js-toggle-button](#vue-js-toggle-button)
-
-## API 詢問
-
-- register
-  - field list
-  - bank list
-
-## 畫面
-
-- 還未能看見
-  - 取款的詳細頁面(需請 QA 操作)
 
 ## 其他
 

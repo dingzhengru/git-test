@@ -31,10 +31,8 @@ document.title = 'H3 手機版 前後端分離';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
-const cssVersion = '01';
 const cssType = '01';
 store.commit('site/setCssClass', cssClass);
-store.commit('site/setCssVersion', cssVersion);
 store.commit('site/setCssType', cssType);
 
 //* 取得語系 => 存進 store.state.lang
@@ -67,9 +65,9 @@ getSiteInfo(requestData)
 
     store.commit('site/setID', siteInfo.LS_SiteID);
     // store.commit('site/setCssClass', siteInfo.LS_CSS_Class);
-    // store.commit('site/setCssVersion', siteInfo.LS_CSS_Version);
+    store.commit('site/setCssVersion', siteInfo.LS_CSS_Version);
     // store.commit('site/setCssType', siteInfo.LS_CSS_Type);
-    // store.commit('site/setCssFestival', siteInfo.LS_CSS_Festival);
+    store.commit('site/setCssFestival', siteInfo.LS_CSS_Festival);
     store.commit('site/setMainDomain', siteInfo.LS_MainDomain);
     store.commit('site/setRemoteCSSUrl', siteInfo.RemoteCSSUrls);
     store.commit('site/setIsNewPromotion', siteInfo.bNewPromotion);

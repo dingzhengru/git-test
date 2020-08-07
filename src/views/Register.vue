@@ -112,7 +112,7 @@ export default {
           isRequired: false,
           maxlength: 30,
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_Account',
@@ -122,12 +122,12 @@ export default {
           placeholder: 'register.placeholder.account',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 3,
           maxlength: 15,
           regex: '^[a-zA-Z]{1}[a-zA-Z0-9]*$', //* 英文字母開頭、英數字、長度: 3~15
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_Password',
@@ -136,12 +136,12 @@ export default {
           placeholder: 'register.placeholder.password',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 6,
           maxlength: 20,
           regex: '^[a-zA-Z0-9]*$', //* 英數字、長度: 6~20
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_PasswordCheck',
@@ -150,12 +150,12 @@ export default {
           placeholder: 'register.placeholder.passwordCheck',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 6,
           maxlength: 20,
           regex: '^[a-zA-Z0-9]*$', //* 英數字、長度: 6~20
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_Mobile',
@@ -164,12 +164,12 @@ export default {
           placeholder: 'register.placeholder.mobile',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 5,
           maxlength: 20,
           regex: '^[0-9]*$', //* 英數字、長度: 5~20
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_Email',
@@ -178,12 +178,12 @@ export default {
           placeholder: 'register.placeholder.email',
           hint: 'register.hint.email',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 1,
           maxlength: 50,
           regex: '\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*', //* email regex，需有 @ 與後面要有 .
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_Line',
@@ -195,7 +195,7 @@ export default {
           isRequired: false,
           maxlength: 50,
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_FirstName',
@@ -204,12 +204,12 @@ export default {
           placeholder: 'register.placeholder.firstName',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 1,
           maxlength: 30,
           regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_LastName',
@@ -218,12 +218,26 @@ export default {
           placeholder: 'register.placeholder.lastName',
           hint: 'register.hint.name',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 1,
           maxlength: 30,
           regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
           value: '',
-          isShow: true,
+          isShow: false,
+        },
+        {
+          name: 'Add_LastName',
+          class: 'register__form__field--name',
+          type: 'text',
+          placeholder: 'register.placeholder.lastName',
+          hint: 'register.hint.name',
+          error: '',
+          isRequired: false,
+          minlength: 1,
+          maxlength: 30,
+          regex: '^[A-Za-z]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
+          value: '',
+          isShow: false,
         },
         {
           name: 'Add_NickName',
@@ -235,7 +249,7 @@ export default {
           isRequired: false,
           maxlength: 30,
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_Birthday',
@@ -244,11 +258,11 @@ export default {
           placeholder: 'register.placeholder.birthday',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           min: '',
           max: '',
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_BankId1',
@@ -257,9 +271,9 @@ export default {
           placeholder: 'register.placeholder.bank',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_BankBranchName1',
@@ -268,12 +282,12 @@ export default {
           placeholder: 'register.placeholder.bankBranch',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 1,
           maxlength: 70,
           regex: '^[A-Za-z0-9\u4E00-\u9FA5\uF900-\uFA2D\u0e00-\u0e5b]+$',
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_BankAccount1',
@@ -282,12 +296,12 @@ export default {
           placeholder: 'register.placeholder.bankAccount',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 1,
           maxlength: 30,
           regex: '^[0-9]+[0-9]*$',
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_Withdrawals_Password',
@@ -296,12 +310,12 @@ export default {
           placeholder: 'register.placeholder.passwordWithdrawal',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 6,
           maxlength: 20,
           regex: '^[a-zA-Z0-9]*$',
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'Add_Withdrawals_CheckPassword',
@@ -310,12 +324,12 @@ export default {
           placeholder: 'register.placeholder.passwordCheckWithdrawal',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 6,
           maxlength: 20,
           regex: '^[a-zA-Z0-9]*$',
           value: '',
-          isShow: true,
+          isShow: false,
         },
         {
           name: 'CaptchaValue',
@@ -324,7 +338,7 @@ export default {
           placeholder: 'register.placeholder.captcha',
           hint: '',
           error: '',
-          isRequired: true,
+          isRequired: false,
           minlength: 4,
           maxlength: 4,
           regex: '^[0-9]*$',
@@ -374,9 +388,15 @@ export default {
 
     getRegisterFieldList(requestDataRegisterFieldList).then(result => {
       console.log('[Register]', result.RetObj);
-      // for(const field of this.fieldList) {
-        
-      // }
+      for (const registerField of result.RetObj.Register) {
+        const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
+
+        if (field) {
+          console.log(field.name);
+          field.isShow = registerField.Lst_Phase == 1;
+          field.isRequired = registerField.Lst_isRequired;
+        }
+      }
     });
 
     //* 生日欄位，設定 min, max
@@ -401,7 +421,12 @@ export default {
           requestData[field.name] = field.value;
         }
       }
-      requestData['Add_RealName'] = this.fullName;
+      //* Add_RealName 此欄位有兩種情況
+      //* 1. FirstName 與 LastName 組成
+      //* 2. 直接讓使用者填寫 Add_RealName 這個欄位
+      if (!Object.hasOwnProperty.call(requestData, 'Add_RealName')) {
+        requestData['Add_RealName'] = this.fullName;
+      }
 
       console.log('[Register]', requestData);
 
