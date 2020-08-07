@@ -1,0 +1,11 @@
+$type: 'Y/03';
+.notification-news__box__date {
+  color: #959595;
+}
+/*
+  ! 圖片路徑
+*/
+
+.notification-news__box__date {
+  background: url(~@/assets/#{$type}/imgs/main/newsDateBg.jpg) no-repeat;
+}

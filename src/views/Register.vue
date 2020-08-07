@@ -80,6 +80,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
+import { getRegisterFieldList } from '@/api/register';
 import dayjs from 'dayjs';
 export default {
   name: 'Register',
@@ -109,13 +110,13 @@ export default {
           hint: 'register.hint.recommend',
           error: '',
           isRequired: false,
-          minlength: 1,
           maxlength: 30,
           value: '',
           isShow: true,
         },
         {
           name: 'Add_Account',
+          ref: 'Add_Account',
           class: 'register__form__field--account',
           type: 'text',
           placeholder: 'register.placeholder.account',
@@ -192,7 +193,6 @@ export default {
           hint: 'register.hint.line',
           error: '',
           isRequired: false,
-          minlength: 0,
           maxlength: 50,
           value: '',
           isShow: true,
@@ -233,7 +233,6 @@ export default {
           hint: '',
           error: '',
           isRequired: false,
-          minlength: 1,
           maxlength: 30,
           value: '',
           isShow: true,
@@ -371,6 +370,15 @@ export default {
   mounted() {
     this.changeCaptcha();
 
+    const requestDataRegisterFieldList = { DeviceType: 1 };
+
+    getRegisterFieldList(requestDataRegisterFieldList).then(result => {
+      console.log('[Register]', result.RetObj);
+      // for(const field of this.fieldList) {
+        
+      // }
+    });
+
     //* 生日欄位，設定 min, max
     const inputBirthday = this.fieldList.find(item => item.name == 'Add_Birthday');
     const maxYearRange = 18;
@@ -379,6 +387,10 @@ export default {
     inputBirthday.max = dayjs()
       .subtract(maxYearRange, 'year')
       .format('YYYY-MM-DD');
+
+    // setInterval(() => {
+    //   this.validateForm();
+    // }, 5000);
   },
   methods: {
     async register() {
@@ -408,6 +420,46 @@ export default {
           this.captchaImage = result.RetObj;
         }
       });
+    },
+    validateField(field) {
+      if (!field.isRequired && !field.value) {
+        //* 非必填 && 空值
+        return null;
+      } else if (field.isRequired && !field.value) {
+        //* 必填 && 空值
+        field.error = '此欄位為必填';
+      } else if (!!field.minlength && field.value.length < field.minlength) {
+        //* 是否有最小長度 && 低於最小長度
+        field.error = `此欄位最少需要輸入字數: ${field.minlength}`;
+      } else if (!!field.maxlength && field.value.length > field.maxlength) {
+        //* 是否有最大長度 && 高於最大長度
+        console.log(!!field.maxlength, field.value.length);
+        field.error = `此欄位最多只能輸入字數: ${field.maxlength}`;
+      } else if (field.regex && !RegExp(field.regex).test(field.value)) {
+        //* 是否有正規表示式 && 不符合正規表示式
+        field.error = `格式錯誤`;
+      } else {
+        field.error = '';
+      }
+
+      if (field.error) {
+        return field;
+      }
+      return null;
+    },
+    validateForm() {
+      let invalidFieldList = [];
+      for (const field of this.fieldList) {
+        const reulst = this.validateField(field);
+
+        if (reulst != null) {
+          invalidFieldList.push(reulst);
+        }
+      }
+
+      console.log(invalidFieldList);
+
+      return invalidFieldList.length == 0;
     },
   },
   watch: {

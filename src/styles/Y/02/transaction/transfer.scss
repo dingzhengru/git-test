@@ -1,0 +1,37 @@
+$type: 'Y/02';
+
+.transfer__amount-table__input {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #8b8b8b;
+}
+
+.transfer__account-table {
+  border: 1px solid #307da1;
+  background-color: #1c6080;
+}
+.transfer__account-table tr {
+  border-bottom: 1px solid #307da1;
+}
+
+.transfer__account-table__th-1st {
+  color: #fff;
+}
+
+.transfer__button--reflash {
+  color: #fff;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.transfer__button--transfer {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+.transfer__button--all-to-my-wallet {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+.transfer__button--reflash {
+  background-image: url(~@/assets/common/imgs/ui/btn--yellow-light.jpg);
+}

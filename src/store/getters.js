@@ -8,7 +8,7 @@ const getters = {
   siteMainDomain: state => state.site.mainDomain,
   siteIsNewPromotion: state => state.site.isNewPromotion,
   siteFullCss: state => {
-    return `${state.site.cssClass}/${state.site.cssVersion}/${state.site.cssType}`;
+    return `${state.site.cssClass}/${state.site.cssType}`;
   },
   resourceUrl: state => {
     return `${state.site.remoteCSSUrl}/ContentStyle/${state.site.mainDomain}/Member/${state.site.cssClass}/${state.site.cssVersion}/2/default/css${state.site.cssType}/common`;

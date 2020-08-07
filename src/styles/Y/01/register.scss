@@ -1,0 +1,42 @@
+$type: 'Y/01';
+
+.register__form__field__hint {
+  color: #959595;
+}
+.register__notice__ol {
+  color: #959595;
+}
+.register__form__field__select--default {
+  color: #959595;
+}
+
+.register__form__send {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+
+.register__form__reset {
+  background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.register__form__field--recommend {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_recommend.png);
+}
+.register__form__field--account {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
+}
+.register__form__field--password {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
+}
+.register__form__field--callphone {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_callphone.png);
+}
+.register__form__field--name {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_name.png);
+}
+.register__form__field--code {
+  background-image: url(~@/assets/#{$type}/imgs/main/authBg_code.png);
+}

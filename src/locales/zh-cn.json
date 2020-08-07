@@ -226,12 +226,12 @@
     "record": {
       "title": "纪录查询",
       "deposit": "存款纪录",
-      "withdrawal": "取款记录",
+      "withdrawal": "取款纪录",
       "transfer": "转账纪录",
       "bonus": "红利纪录",
       "lottery": "开奖纪绿",
       "withdrawalRestriction": "提取限制",
-      "adjustment": "调整记录"
+      "adjustment": "调整纪录"
     },
     "recordContent": {
       "statusText": {
@@ -251,7 +251,7 @@
         "notice": "事务数据为本月最新10笔交易，如对帐务有任何疑问需调阅总账务请联系客服人员。"
       },
       "withdrawal": {
-        "title": "取款记录",
+        "title": "取款纪录",
         "table": {
           "date": "日期",
           "bank": "银行",

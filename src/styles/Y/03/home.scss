@@ -1,0 +1,13 @@
+/* 原專案是 index2.css */
+$type: 'Y/03';
+
+.lnk-game {
+  color: #fff;
+}
+/*
+  ! 圖片路徑
+*/
+
+.home-game {
+  background: url(~@/assets/#{$type}/imgs/layout/bg_index2.jpg) no-repeat;
+}

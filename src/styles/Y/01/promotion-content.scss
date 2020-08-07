@@ -1,0 +1,19 @@
+$type: 'Y/01';
+
+.promotion-content__main__content__desc ul > li > a {
+  color: #ffffff;
+  background-color: #d40505;
+}
+
+.promotion-content__main__button--back {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.promotion-content__main__content__title {
+  background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
+}
+// .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }

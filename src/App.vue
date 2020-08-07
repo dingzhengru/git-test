@@ -120,9 +120,6 @@ export default {
 
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/layout.scss`);
-        import(`@/styles/${this.siteFullCss}/lang/zh-cn.scss`);
-        import(`@/styles/${this.siteFullCss}/lang/en-us.scss`);
-        import(`@/styles/${this.siteFullCss}/lang/th-th.scss`);
 
         // * header css
         import(`@/styles/${this.siteFullCss}/header.scss`);

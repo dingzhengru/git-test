@@ -1,0 +1,23 @@
+$type: 'Y/03';
+/*
+  ! 圖片路徑
+*/
+
+.footer {
+  background: url(~@/assets/#{$type}/imgs/footer/footerBg.png) no-repeat center top;
+}
+.footer__ul {
+  background: url(~@/assets/#{$type}/imgs/footer/toolbarBg.jpg) repeat-x;
+}
+.footer__ul__li {
+  background: url(~@/assets/#{$type}/imgs/footer/toolbarBg.jpg) repeat-x;
+}
+.footer__ul__li--active {
+  background-image: url(~@/assets/#{$type}/imgs/footer/toolbarBgActive.jpg);
+}
+.footer__ul__li__link {
+  background: url(~@/assets/#{$type}/imgs/footer/lnk_toolbar.png) 0px 6px no-repeat;
+}
+.footer__ul__li:after {
+  background: url(~@/assets/#{$type}/imgs/footer/lnk_line.png) right top no-repeat;
+}

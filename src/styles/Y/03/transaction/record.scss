@@ -1,0 +1,13 @@
+$type: 'Y/03';
+
+.record-list__ul__li__link{
+  color: #000;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.record-list__ul__li__link{
+  background: url(~@/assets/#{$type}/imgs/main/lnk_recordlist.jpg) repeat-x;
+}

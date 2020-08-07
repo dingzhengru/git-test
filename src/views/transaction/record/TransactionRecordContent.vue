@@ -92,7 +92,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getProductList } from '@/api/product';
-import { getRecordDeposit, getRecordWithdrawal } from '@/api/record';
+import { getRecordDeposit, getRecordWithdrawal, getRecordTransfer } from '@/api/record';
 import numeral from 'numeral';
 export default {
   name: 'TransactionRecordContent',
@@ -313,6 +313,18 @@ export default {
             break;
           }
           case 'transfer': {
+            const requestDataTransfer = {
+              Sidx: 'Lst_TransTime',
+              Sord: 'DESC',
+              Page: '1',
+              Rows: '10',
+              _Search: 'false',
+              Filters: '  ',
+            };
+
+            getRecordTransfer(requestDataTransfer).then(result => {
+              console.log('[RecordTransfer]', result);
+            });
             this.list = [
               {
                 id: '000',

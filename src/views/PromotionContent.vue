@@ -19,7 +19,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import event01 from '@/assets/Y/01/01/imgs/promotion/event01.jpg';
+import event01 from '@/assets/Y/01/imgs/promotion/event01.jpg';
 export default {
   name: 'PromotionContent',
   computed: {
