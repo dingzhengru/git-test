@@ -52,92 +52,182 @@
     "Add_RelatedAccount": {
       "placeholder": "ผู้แนะนำ",
       "hint": "หากไม่มีผู้แนะนำ ก็ไม่ต้องการกรอก",
-      "error": {}
+      "error": {
+        "invalid": "ไม่มีผู้แนะนำ",
+        "required": "",
+        "length": "",
+        "regex": ""
+      }
     },
     "Add_Account": {
       "placeholder": "ยูสเซอร์สมาชิก",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "มีชื่อบัญชีนี้อยู่แล้ว",
+        "required": "โปรดกรอกชื่อบัญชีของท่าน",
+        "length": "อย่างน้อย 3 ตัวอักษร อย่างมาก 11 ตัวอักษร",
+        "regex": "จะต้องเป็นรูปแบบภาษาอังกฤษ ตัวแรกจะต้องเป็นภาษาอังกฤษ และไม่ให้มีช่องว่าง"
+      }
     },
     "Add_Password": {
       "placeholder": "รหัสผ่าน",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกรหัสผ่านของท่าน",
+        "length": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร",
+        "regex": ""
+      }
     },
     "Add_PasswordCheck": {
       "placeholder": "ยืนยันรหัสผ่าน",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "พาสเวิร์ดผิดพลาด",
+        "required": "โปรดยืนยันรหัสของท่านอีกครั้ง",
+        "length": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร",
+        "regex": ""
+      }
     },
     "Add_Mobile": {
       "placeholder": "เบอร์โทรศัพท์",
       "hint": "ช้สำหรับติดต่อและแจ้งข้อมูลรางวัลที่ได้ หรือโปรโมชั่นต่างๆ โปรดกรอกตามความเป็นจริง",
-      "error": {}
+      "error": {
+        "invalid": "หมายเลข/หรือเบอร์โทรศัพท์นี้มีผู้ใช้บริการอยู่แล้ว  กรุณากรอกหมายเลข/หรือเบอร์โทรศัพท์ใหม่",
+        "required": "โปรดกรอกเบอร์มือถือ",
+        "length": "อย่างน้อย 5 ตัวอักษร อย่างมาก 20 ตัวอักษร",
+        "regex": "รูปแบบผิดพลาด"
+      }
     },
     "Add_Email": {
       "placeholder": "E-mail",
       "hint": "ใช้สำหรับแจ้งข้อมูลรางวัลที่ได้รับ โปรดกรอกตามความเป็นจริง",
-      "error": {}
+      "error": {
+        "invalid": "อีเมล์นี้มีผู้ใช้บริการอยู่แล้ว กรุณากรอกอีเมล์ใหม่",
+        "required": "โปรดกรอกอีเมล์",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
     },
     "Add_Line": {
       "placeholder": "ID LINE",
       "hint": "ใช้สำหรับแจ้งข้อมูลรางวัลที่ได้รับ โปรดกรอกตามความเป็นจริง",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "กรุณากรอก บัญชี LINE",
+        "length": "",
+        "regex": ""
+      }
     },
     "Add_FirstName": {
       "placeholder": "ชื่อ",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกชื่อของท่าน",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
     },
     "Add_LastName": {
       "placeholder": "นามสกุล",
       "hint": "ชื่อและนามสกุลต้องตรงกับชื่อบัญชีธนาคาร มิเช่นนั้นจะไม่สามารถถอนเงินได้",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกชื่อของท่าน",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
     },
     "Add_RealName": {
-      "placeholder": "Real Name",
+      "placeholder": "ชื่อนามสกุล",
       "hint": "ชื่อและนามสกุลต้องตรงกับชื่อบัญชีธนาคาร มิเช่นนั้นจะไม่สามารถถอนเงินได้",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกชื่อของท่าน",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
     },
     "Add_NickName": {
       "placeholder": "ชื่อเล่น",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกชื่อผู้เล่นของท่าน",
+        "length": "",
+        "regex": ""
+      }
     },
     "Add_Birthday": {
       "placeholder": "วันเกิด",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "ต้องมีอายุอย่างน้อย 18 ปี",
+        "required": "กรุณาใส่วันเกิดของคุณ",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
     },
     "Add_BankId1": {
       "placeholder": "โปรดเลือก",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "โปรดเลือกชื่อบัญชีธนาคาร",
+        "length": "",
+        "regex": ""
+      }
     },
     "Add_BankBranchName1": {
       "placeholder": "สาขาธนาคาร",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกชื่อสาขา",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
     },
     "Add_BankAccount1": {
       "placeholder": "หมายเลขบัญชีธนาคาร",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "มีการใช้บัญชีธนาคาร",
+        "required": "โปรดกรอกบัญชีธนาคาร",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
     },
     "Add_Withdrawals_Password": {
       "placeholder": "รหัสถอนเงินเว็บไซต์",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกรหัสผ่านสำหรับการถอนเงิน",
+        "length": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร",
+        "regex": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร"
+      }
     },
     "Add_Withdrawals_CheckPassword": {
       "placeholder": "ยืนยันรหัสผ่านอีกครั้ง",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "พาสเวิร์ดผิดพลาด",
+        "required": "โปรดกรอกรหัสผ่านสำหรับการถอนเงิน",
+        "length": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร",
+        "regex": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร"
+      }
     },
     "CaptchaValue": {
       "placeholder": "รหัสยืนยัน",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกรหัสยืนยัน",
+        "length": "",
+        "regex": ""
+      }
     },
     "notice": {
       "required": "ที่มีเครื่องหมาย <span class='ui-txt-star'>*</span> เป็นช่องที่ต้องกรอก โปรดกรอกข้อมูลตามจริง",

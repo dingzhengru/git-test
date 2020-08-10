@@ -53,7 +53,10 @@
       "placeholder": "推荐人",
       "hint": "若无推荐人,则不需要填写",
       "error": {
-        "invalid": "推荐人不存在"
+        "invalid": "推荐人不存在",
+        "required": "",
+        "length": "",
+        "regex": ""
       }
     },
     "Add_Account": {
@@ -110,10 +113,10 @@
       "placeholder": "ID LINE",
       "hint": "此为公司发送惊喜优惠通知，请务必真实填入",
       "error": {
-        "invalid": "此手机/电话号码已他人使用,请输入其他手机/电话号码",
-        "required": "请输入您的手机号码",
-        "length": "最少 5 字元，最多 20 字元",
-        "regex": "格式错误"
+        "invalid": "",
+        "required": "请输入您的LINE",
+        "length": "",
+        "regex": ""
       }
     },
     "Add_FirstName": {
@@ -163,33 +166,58 @@
         "invalid": "需满18岁",
         "required": "请输入您的生日",
         "length": "",
-        "regex": ""
+        "regex": "格式错误"
       }
     },
     "Add_BankId1": {
       "placeholder": "请选择",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "请选择银行名称",
+        "length": "",
+        "regex": ""
+      }
     },
     "Add_BankBranchName1": {
-      "placeholder": "分行名称1",
+      "placeholder": "支行名称1",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "请输入支行名称",
+        "length": "",
+        "regex": "格式错误"
+      }
     },
     "Add_BankAccount1": {
       "placeholder": "银行帐号1",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "银行账号已存在",
+        "required": "请输入银行帐号",
+        "length": "",
+        "regex": "格式错误"
+      }
     },
     "Add_Withdrawals_Password": {
       "placeholder": "取款密碼",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "请输入取款密​​码",
+        "length": "密码长度最少为6位字元",
+        "regex": "格式错误"
+      }
     },
     "Add_Withdrawals_CheckPassword": {
       "placeholder": "确认取款密码",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "请输入取款密​​码",
+        "length": "密码长度最少为6位字元",
+        "regex": "格式错误"
+      }
     },
     "CaptchaValue": {
       "placeholder": "验证码",
@@ -198,7 +226,7 @@
         "invalid": "",
         "required": "请输入验证码",
         "length": "",
-        "regex": ""
+        "regex": "格式错误"
       }
     },
     "notice": {

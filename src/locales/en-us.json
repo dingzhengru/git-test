@@ -52,92 +52,182 @@
     "Add_RelatedAccount": {
       "placeholder": "Referrer",
       "hint": "If there is no referrer,you are not required to fill in",
-      "error": {}
+      "error": {
+        "invalid": "Referrer does not exist",
+        "required": "",
+        "length": "",
+        "regex": ""
+      }
     },
     "Add_Account": {
       "placeholder": "Account No.",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "The account has been used.",
+        "required": "Please enter your account",
+        "length": "At least 3 characters up to 11 characters",
+        "regex": "Alphanumeric format necessary, prefix with a letter, blank not allowed."
+      }
     },
     "Add_Password": {
       "placeholder": "Password",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please enter your password",
+        "length": "The length of password must be 6 and above",
+        "regex": ""
+      }
     },
     "Add_PasswordCheck": {
       "placeholder": "Confirm Password",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please reconfirm your password",
+        "length": "The length of password must be 6 and above",
+        "regex": ""
+      }
     },
     "Add_Mobile": {
       "placeholder": "Mobile number",
       "hint": "This is for contact channel of account and surprise preferential informing, please kindly provide the real information.",
-      "error": {}
+      "error": {
+        "invalid": "This cell phone / telephone number has been used by others, please enter other phone / telephone number",
+        "required": "Please enter your phone number",
+        "length": "At least 5 characters up to 20 characters",
+        "regex": "Format False"
+      }
     },
     "Add_Email": {
       "placeholder": "E-mail",
       "hint": "This is for surprise preferential informing, please kindly provide the real information.",
-      "error": {}
+      "error": {
+        "invalid": "This mailbox has been used by others, please enter another mailbox",
+        "required": "Please enter your E-mail",
+        "length": "",
+        "regex": "Format False"
+      }
     },
     "Add_Line": {
       "placeholder": "ID LINE",
       "hint": "This is for surprise preferential informing, please kindly provide the real information.",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please enter your LINE",
+        "length": "",
+        "regex": ""
+      }
     },
     "Add_FirstName": {
       "placeholder": "First Name",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please enter your first name",
+        "length": "",
+        "regex": "Format False"
+      }
     },
     "Add_LastName": {
       "placeholder": "Last Name",
       "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please enter your last name",
+        "length": "",
+        "regex": "Format False"
+      }
     },
     "Add_RealName": {
       "placeholder": "Real Name",
       "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please enter your real name",
+        "length": "",
+        "regex": "Format False"
+      }
     },
     "Add_NickName": {
       "placeholder": "Nickname",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please enter your nickname",
+        "length": "",
+        "regex": ""
+      }
     },
     "Add_Birthday": {
       "placeholder": "Birthday ",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "Must be at least 18 years old",
+        "required": "Please enter your birthday",
+        "length": "",
+        "regex": "Format False"
+      }
     },
     "Add_BankId1": {
       "placeholder": "Please select",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please select the bank name",
+        "length": "",
+        "regex": ""
+      }
     },
     "Add_BankBranchName1": {
       "placeholder": "Branch Name 1",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please enter the branch name",
+        "length": "",
+        "regex": "Format False"
+      }
     },
     "Add_BankAccount1": {
       "placeholder": "Bank Account 1",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "The bank account has been used.",
+        "required": "Please enter your bank account number",
+        "length": "",
+        "regex": "Format False"
+      }
     },
     "Add_Withdrawals_Password": {
       "placeholder": "Password for Withdrawal",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please enter a withdrawal password",
+        "length": "The length of password must be 6 and above",
+        "regex": ""
+      }
     },
     "Add_Withdrawals_CheckPassword": {
       "placeholder": "Withdrawal Confirm Password",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "Confirm the password Error",
+        "required": "Please enter a withdrawal password",
+        "length": "The length of password must be 6 and above",
+        "regex": ""
+      }
     },
     "CaptchaValue": {
       "placeholder": "Captcha",
       "hint": "",
-      "error": {}
+      "error": {
+        "invalid": "",
+        "required": "Please enter the verification code",
+        "length": "",
+        "regex": ""
+      }
     },
     "notice": {
       "required": "Remark with <span class='ui-txt-star'>*</span> are required items, please be sure to fill in them correctly.",

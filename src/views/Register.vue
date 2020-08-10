@@ -366,13 +366,32 @@ export default {
       }
     });
 
-    // setInterval(() => {
-    //   this.validateForm();
-    // }, 3000);
+    setInterval(() => {
+      this.validateForm();
+    }, 3000);
   },
   methods: {
+    changeCaptcha() {
+      const requestDataCaptcha = { pageCode: 'MemberRegister' };
+      getCaptcha(requestDataCaptcha).then(result => {
+        console.log('[Captcha]', result.RetObj);
+        if (result.Code == 200) {
+          this.captchaImage = result.RetObj;
+        }
+      });
+    },
+    resetForm() {
+      for (const field of this.fieldList) {
+        field.value = '';
+      }
+    },
     async register() {
       const requestData = {};
+
+      //* 先用 JS 檢查欄位
+      if (!this.validateForm()) {
+        return;
+      }
 
       for (const field of this.fieldList) {
         if (field.value) {
@@ -390,19 +409,41 @@ export default {
 
       this.error = await this.$store.dispatch('user/register', requestData);
     },
-    resetForm() {
+    validateForm() {
+      let passwordField, passwordCheckField;
+      let withdrawalsPasswordField, withdrawalsPasswordCheckField;
+
+      let invalidFieldList = [];
       for (const field of this.fieldList) {
-        field.value = '';
-      }
-    },
-    changeCaptcha() {
-      const requestDataCaptcha = { pageCode: 'MemberRegister' };
-      getCaptcha(requestDataCaptcha).then(result => {
-        console.log('[Captcha]', result.RetObj);
-        if (result.Code == 200) {
-          this.captchaImage = result.RetObj;
+        //* 檢查欄位自己的屬性(required, minlength, maxlength, min, max)
+        const validateReulst = this.validateField(field);
+        if (validateReulst != null) {
+          invalidFieldList.push(validateReulst);
         }
-      });
+
+        //* 檢查密碼與確認密碼是否相同，passwordCheck 一定會在 password 後面
+        if (field.name == 'Add_Password') {
+          passwordField = field;
+        } else if (field.name == 'Add_PasswordCheck') {
+          passwordCheckField = field;
+
+          if (passwordField.value != passwordCheckField.value) {
+            passwordCheckField.error = '密碼確認錯誤';
+            invalidFieldList.push(passwordCheckField);
+          }
+        } else if (field.name == 'Add_Withdrawals_Password') {
+          withdrawalsPasswordField = field;
+        } else if (field.name == 'Add_Withdrawals_CheckPassword') {
+          withdrawalsPasswordCheckField = field;
+
+          if (withdrawalsPasswordField.value != withdrawalsPasswordCheckField.value) {
+            withdrawalsPasswordCheckField.error = '密碼確認錯誤';
+            invalidFieldList.push(withdrawalsPasswordCheckField);
+          }
+        }
+      }
+
+      return invalidFieldList.length == 0;
     },
     validateField(field) {
       if (!field.isRequired && !field.value) {
@@ -410,20 +451,24 @@ export default {
         return null;
       } else if (field.isRequired && !field.value) {
         //* 必填 && 空值
-        field.error = '此欄位為必填';
+        // field.error = '此欄位為必填';
+        field.error = this.$t(`register.${field.name}.error.required`);
       } else if (!!field.minlength && field.value.length < field.minlength) {
         //* 是否有最小長度 && 低於最小長度
-        field.error = `此欄位最少需要輸入字數: ${field.minlength}`;
+        // field.error = `此欄位最少需要輸入字數: ${field.minlength}`;
+        field.error = this.$t(`register.${field.name}.error.length`);
       } else if (!!field.maxlength && field.value.length > field.maxlength) {
         //* 是否有最大長度 && 高於最大長度
-        console.log(!!field.maxlength, field.value.length);
-        field.error = `此欄位最多只能輸入字數: ${field.maxlength}`;
+        // field.error = `此欄位最多只能輸入字數: ${field.maxlength}`;
+        field.error = this.$t(`register.${field.name}.error.length`);
       } else if (field.regex && !RegExp(field.regex).test(field.value)) {
         //* 是否有正規表示式 && 不符合正規表示式
-        field.error = `格式錯誤`;
+        // field.error = `格式錯誤`;
+        field.error = this.$t(`register.${field.name}.error.regex`);
       } else if (field.name == 'Add_Birthday' && dayjs(field.value).isAfter(field.max)) {
         //* 是否為生日欄位 && 是否超過指定最大日期(18歲限制)
-        field.error = `年齡必須超過 18 歲`;
+        // field.error = `年齡必須超過 18 歲`;
+        field.error = this.$t(`register.${field.name}.error.invalid`);
       } else {
         field.error = '';
       }
@@ -432,20 +477,6 @@ export default {
         return field;
       }
       return null;
-    },
-    validateForm() {
-      let invalidFieldList = [];
-      for (const field of this.fieldList) {
-        const reulst = this.validateField(field);
-
-        if (reulst != null) {
-          invalidFieldList.push(reulst);
-        }
-      }
-
-      console.log(invalidFieldList);
-
-      return invalidFieldList.length == 0;
     },
   },
   watch: {
