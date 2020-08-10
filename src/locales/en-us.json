@@ -65,7 +65,7 @@
       "error": {
         "invalid": "The account has been used.",
         "required": "Please enter your account",
-        "length": "At least 3 characters up to 11 characters",
+        "length": "At least 3 characters up to 15 characters",
         "regex": "Alphanumeric format necessary, prefix with a letter, blank not allowed."
       }
     },
@@ -115,6 +115,26 @@
       "error": {
         "invalid": "",
         "required": "Please enter your LINE",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_Skype": {
+      "placeholder": "Skype Account",
+      "hint": "",
+      "error": {
+        "invalid": "The Skype already exists",
+        "required": "Please enter your Skype",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_QQ": {
+      "placeholder": "QQ number",
+      "hint": "",
+      "error": {
+        "invalid": "The QQ already exists",
+        "required": "Please enter your QQ",
         "length": "",
         "regex": ""
       }

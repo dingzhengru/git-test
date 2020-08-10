@@ -41,8 +41,8 @@
               }"
               v-model="field.value"
             >
-              <option value="" selected>{{ $t(`register.${field.name}.placeholder`) }}</option>
-              <option :value="bank.value" v-for="bank in bankList" :key="bank.value">{{ bank.name }}</option>
+              <!-- <option value="" selected>{{ $t(`register.${field.name}.placeholder`) }}</option> -->
+              <option :value="bank.Value" v-for="bank in bankList" :key="bank.value">{{ bank.Text }}</option>
             </select>
           </div>
           <div class="register__form__field__hint">{{ $t(`register.${field.name}.hint`) }}</div>
@@ -132,7 +132,7 @@ export default {
           error: '',
           isRequired: false,
           minlength: 6,
-          maxlength: 20,
+          maxlength: 30,
           regex: '^[a-zA-Z0-9]*$', //* 英數字、長度: 6~20
           value: '',
           isShow: false,
@@ -144,7 +144,7 @@ export default {
           error: '',
           isRequired: false,
           minlength: 6,
-          maxlength: 20,
+          maxlength: 30,
           regex: '^[a-zA-Z0-9]*$', //* 英數字、長度: 6~20
           value: '',
           isShow: false,
@@ -180,6 +180,26 @@ export default {
           error: '',
           isRequired: false,
           maxlength: 50,
+          value: '',
+          isShow: false,
+        },
+        {
+          name: 'Add_Skype',
+          class: 'register__form__field--name',
+          type: 'text',
+          error: '',
+          isRequired: false,
+          maxlength: 12,
+          value: '',
+          isShow: false,
+        },
+        {
+          name: 'Add_QQ',
+          class: 'register__form__field--name',
+          type: 'text',
+          error: '',
+          isRequired: false,
+          maxlength: 20,
           value: '',
           isShow: false,
         },
@@ -283,7 +303,7 @@ export default {
           error: '',
           isRequired: false,
           minlength: 6,
-          maxlength: 20,
+          maxlength: 30,
           regex: '^[a-zA-Z0-9]*$',
           value: '',
           isShow: false,
@@ -295,7 +315,7 @@ export default {
           error: '',
           isRequired: false,
           minlength: 6,
-          maxlength: 20,
+          maxlength: 30,
           regex: '^[a-zA-Z0-9]*$',
           value: '',
           isShow: false,
@@ -354,12 +374,13 @@ export default {
     const requestDataRegisterFieldList = { DeviceType: 1 };
 
     getRegisterFieldList(requestDataRegisterFieldList).then(result => {
+      this.bankList = result.RetObj.Add_BankList;
+
       console.log('[Register]', result.RetObj);
       for (const registerField of result.RetObj.Register) {
         const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
 
         if (field) {
-          console.log(field.name);
           field.isShow = registerField.Lst_Phase == 1;
           field.isRequired = registerField.Lst_isRequired;
         }

@@ -1,4 +1,4 @@
-import { setIsLoggedIn } from '@/utils/cookie';
+import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
 import { register, login, logout } from '@/api/user';
 
@@ -20,9 +20,11 @@ const mutations = {
   },
   setToken(state, token) {
     state.token = token;
+    setToken(token);
   },
   setPublicKey(state, publicKey) {
     state.publicKey = publicKey;
+    setPublicKey(publicKey);
   },
   setIsAccessed(state, isAccessed) {
     state.isAccessed = isAccessed;
@@ -38,6 +40,14 @@ const mutations = {
   },
   setRoll(state, roll) {
     state.roll = roll;
+  },
+  removeToken(state) {
+    state.token = null;
+    removeToken();
+  },
+  removePublicKey(state) {
+    state.publicKey = null;
+    removePublicKey();
   },
 };
 
@@ -71,6 +81,8 @@ const actions = {
     await logout();
 
     commit('setIsLoggedIn', false);
+    commit('removeToken');
+    commit('removePublicKey');
     window.location.replace('/login');
   },
 };

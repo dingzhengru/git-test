@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 // import settings from '@/settings';
 
 const tokenKey = 'token';
+const publicKeyKey = 'publicKey';
 const isLoggedInKey = 'isLoggedIn';
 const langKey = 'lang'; //! 目前語系
 
@@ -15,7 +16,12 @@ const langKey = 'lang'; //! 目前語系
 
 const tokenConfig = {
   sameSite: 'lax',
-  expires: 1,
+  expires: 1 / 24,
+};
+
+const publicKeyConfig = {
+  sameSite: 'lax',
+  expires: 1 / 24,
 };
 
 const isLoggedInConfig = {
@@ -38,6 +44,18 @@ export function setToken(token) {
 
 export function removeToken() {
   return Cookies.remove(tokenKey);
+}
+
+export function getPublicKey() {
+  return Cookies.get(publicKeyKey);
+}
+
+export function setPublicKey(publicKey) {
+  return Cookies.set(publicKeyKey, publicKey, publicKeyConfig);
+}
+
+export function removePublicKey() {
+  return Cookies.remove(publicKeyKey);
 }
 
 export function getIsLoggedIn() {

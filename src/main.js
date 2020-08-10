@@ -19,7 +19,7 @@ import VueScrollTo from 'vue-scrollto';
 
 Vue.use(VueScrollTo);
 
-import { getLang, getIsLoggedIn } from '@/utils/cookie';
+import { getLang, getIsLoggedIn, getToken, getPublicKey } from '@/utils/cookie';
 import { i18n, loadLanguageAsync } from '@/i18n-lazy'; // 載入語言
 
 //* API
@@ -46,10 +46,15 @@ if (lang) {
 }
 
 //* 取得公鑰 & token
-getTokenAndPublicKey().then(result => {
-  store.commit('user/setToken', result.RetObj.token);
-  store.commit('user/setPublicKey', result.RetObj.publickey);
-});
+if (getToken() && getPublicKey()) {
+  store.commit('user/setToken', getToken());
+  store.commit('user/setPublicKey', getPublicKey());
+} else {
+  getTokenAndPublicKey().then(result => {
+    store.commit('user/setToken', result.RetObj.token);
+    store.commit('user/setPublicKey', result.RetObj.publickey);
+  });
+}
 
 //* 用 isLoggedIn 判斷是否登入
 const isLoggedIn = getIsLoggedIn();

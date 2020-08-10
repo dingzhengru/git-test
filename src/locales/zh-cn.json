@@ -65,7 +65,7 @@
       "error": {
         "invalid": "该账号已存在",
         "required": "请输入您的账号",
-        "length": "最少 3 字元，最多 11 字元",
+        "length": "最少 3 字元，最多 15 字元",
         "regex": "须为英数格式，字首必须为英文字母，且不可有空白"
       }
     },
@@ -113,8 +113,28 @@
       "placeholder": "ID LINE",
       "hint": "此为公司发送惊喜优惠通知，请务必真实填入",
       "error": {
-        "invalid": "",
+        "invalid": "Line帐号已存在",
         "required": "请输入您的LINE",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_Skype": {
+      "placeholder": "Skype号",
+      "hint": "",
+      "error": {
+        "invalid": "Skype帐号已存在",
+        "required": "请输入您的Skype",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_QQ": {
+      "placeholder": "QQ号",
+      "hint": "",
+      "error": {
+        "invalid": "该QQ已存在",
+        "required": "请输入您的QQ",
         "length": "",
         "regex": ""
       }
