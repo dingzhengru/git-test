@@ -43,6 +43,7 @@
               <a
                 href="javascript:;"
                 class="header-menu-auth__menu__lang-ul__li__link"
+                :id="langItem.id"
                 :class="{
                   tw: langItem.Lst_Locales_Code == 'zh-cn',
                   cn: langItem.Lst_Locales_Code == 'zh-cn',

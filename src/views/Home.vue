@@ -1,7 +1,10 @@
 <template>
-  <div class="home">
+  <div class="home" @click="isShowLoginPopup = false">
     <HomeSwiper :list="swiperList" :resourceUrl="resourceUrl" :siteIsNewPromotion="siteIsNewPromotion"></HomeSwiper>
     <HomeGameBlock :list="productList" :resourceUrl="resourceUrl" :isLoggedIn="isLoggedIn"></HomeGameBlock>
+    <transition name="fade">
+      <div id="noneLoginPopup" class="noneLoginPopup" v-if="isShowLoginPopup"></div>
+    </transition>
   </div>
 </template>
 
@@ -20,11 +23,18 @@ export default {
   },
   data() {
     return {
+      isShowLoginPopup: false,
       swiperList: [],
       productList: [],
     };
   },
   mounted() {
+    if (this.isLoggedIn) {
+      this.isShowLoginPopup = false;
+    } else {
+      this.isShowLoginPopup = true;
+    }
+
     //* 取得遊戲館列表，因不需要 siteID 所以放這即可
     this.getProductList();
   },
@@ -34,15 +44,38 @@ export default {
       getProductList(requestDataProductList).then(result => {
         if (result.Code == 200) {
           this.productList = result.RetObj;
+
+          this.productList = this.productList.map(item => {
+            if (item.sGameID == '1080') {
+              item.id = 'SABA';
+            } else if (item.sGameID == '11902400-02') {
+              item.id = 'BBIN';
+            } else if (item.sGameID == '11902100-02') {
+              item.id = 'DS';
+            } else if (item.sGameID == '11901030-01') {
+              item.id = 'liveGame';
+            } else if (item.sGameID == '11902300-02') {
+              item.id = 'JDB';
+            } else if (item.sGameID == '11902200-02') {
+              item.id = 'CQ9';
+            } else if (item.sGameID == '11901031-02') {
+              item.id = 'RGSlot';
+            } else if (item.sGameID == '1190-04') {
+              item.id = 'RGLottery';
+            } else if (item.sGameID == '11902602-02') {
+              item.id = 'MGPlus';
+            } else if (item.sGameID == '12203100-03') {
+              item.id = 'SBO';
+            }
+            return item;
+          });
+
           console.log('[Product]', this.productList);
         }
       });
     },
     getSwiperList() {
-      const requestDataSwiperList = {
-        DeviceType: 1,
-        bNewPromotion: this.siteIsNewPromotion,
-      };
+      const requestDataSwiperList = { bNewPromotion: this.siteIsNewPromotion };
       getSwiperList(requestDataSwiperList).then(result => {
         if (result.Code == 200) {
           this.swiperList = result.RetObj;
@@ -79,5 +112,22 @@ export default {
 <style scoped>
 .home {
   padding-bottom: 119px;
+}
+.noneLoginPopup {
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.8) url(imgs/main/Bg-noneLoginPopup.jpg) center center no-repeat; */
+  position: fixed;
+  top: 0;
+  z-index: 5;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -47,6 +47,7 @@
         />
         <img
           class="login__form__field__image--code"
+          id="MvcCaptcha"
           :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
           alt="MvcCaptcha"
           title="Refrash Captcha"

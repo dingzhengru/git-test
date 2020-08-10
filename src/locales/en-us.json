@@ -83,7 +83,7 @@
       "placeholder": "Confirm Password",
       "hint": "",
       "error": {
-        "invalid": "",
+        "invalid": "Confirm password error",
         "required": "Please reconfirm your password",
         "length": "The length of password must be 6 and above",
         "regex": ""
@@ -113,7 +113,7 @@
       "placeholder": "ID LINE",
       "hint": "This is for surprise preferential informing, please kindly provide the real information.",
       "error": {
-        "invalid": "",
+        "invalid": "The LINE already exists",
         "required": "Please enter your LINE",
         "length": "",
         "regex": ""

@@ -1,9 +1,9 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <img :src="logo" class="header__logo__img" alt="" />
+      <img :src="logo" class="header__logo__img" id="headerLogo" alt="" />
     </div>
-    <router-link to="/" class="header__link--home"></router-link>
+    <router-link to="/" class="header__link--home" id="mainPage"></router-link>
     <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
     <HeaderMenuAuth
       v-if="isLoggedIn"

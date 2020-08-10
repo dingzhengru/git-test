@@ -134,6 +134,23 @@ export default {
         getLangList().then(result => {
           if (result.Code == 200) {
             this.langList = result.RetObj;
+
+            this.langList = this.langList.map(item => {
+              if (item.Lst_Locales_Code == 'th-th') {
+                item.id = 'thTh';
+              } else if (item.Lst_Locales_Code == 'en-us') {
+                item.id = 'enUs';
+              } else if (item.Lst_Locales_Code == 'zh-cn') {
+                item.id = 'zhCn';
+              } else if (item.Lst_Locales_Code == 'my-mm') {
+                item.id = 'myMm';
+              }
+
+              return item;
+            });
+
+            console.log(this.langList);
+
             console.log('[Lang]', this.langList);
           }
         });

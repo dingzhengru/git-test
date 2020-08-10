@@ -7,6 +7,7 @@
           { 'footer__ul__li--active': $route.name == item.link || item.otherActivePath.includes($route.name) },
           item.class,
         ]"
+        :id="item.id"
         v-for="item in list"
         :key="item.name"
       >
@@ -38,24 +39,28 @@ export default {
       list: [],
       noAuthList: [
         {
+          id: 'member',
           name: 'footer.member',
           link: 'UserProfile',
           class: 'footer__ul__li--member',
           otherActivePath: [],
         },
         {
+          id: 'login',
           name: 'footer.login',
           link: 'Login',
           class: 'footer__ul__li--regist',
           otherActivePath: ['Register'],
         },
         {
+          id: 'event',
           name: 'footer.promotion',
           link: 'Promotion',
           class: 'footer__ul__li--event',
           otherActivePath: ['PromotionContent'],
         },
         {
+          id: 'service',
           name: 'footer.contact',
           link: 'Contact',
           class: 'footer__ul__li--service',
@@ -64,12 +69,14 @@ export default {
       ],
       authList: [
         {
+          id: 'member',
           name: 'footer.member',
           link: 'UserProfile',
           class: 'footer__ul__li--member',
           otherActivePath: ['UserChangePassword'],
         },
         {
+          id: 'transaction',
           name: 'footer.transaction',
           link: 'TransactionDeposit',
           class: 'footer__ul__li--transaction',
@@ -82,12 +89,14 @@ export default {
           ],
         },
         {
+          id: 'event',
           name: 'footer.promotion',
           link: 'Promotion',
           class: 'footer__ul__li--event',
           otherActivePath: ['PromotionContent'],
         },
         {
+          id: 'service',
           name: 'footer.contact',
           link: 'Contact',
           class: 'footer__ul__li--service',

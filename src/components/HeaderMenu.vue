@@ -1,6 +1,11 @@
 <template>
   <div class="header-menu">
-    <a href="javascript:;" class="header-menu__lang-toggle" @click="isShowLangList = !isShowLangList"></a>
+    <a
+      href="javascript:;"
+      class="header-menu__lang-toggle"
+      id="langOpen"
+      @click="isShowLangList = !isShowLangList"
+    ></a>
     <transition name="slide">
       <div class="header-menu__lang-menu" v-if="isShowLangList">
         <ul class="header-menu__lang-menu__ul cpn-boxzero cpn-inBlock-row">
@@ -8,6 +13,7 @@
             <a
               href="javascript:;"
               class="header-menu__lang-menu__ul__li__link"
+              :id="langItem.id"
               v-if="langItem.Lst_Locales_Code != lang && langItem.Lst_Is_Enable"
               :class="{
                 cn: langItem.Lst_Locales_Code == 'zh-cn',

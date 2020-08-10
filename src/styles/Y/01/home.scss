@@ -11,3 +11,7 @@ $type: 'Y/01';
 .home-game {
   background: url(~@/assets/#{$type}/imgs/layout/bg_index2.jpg) no-repeat;
 }
+
+.noneLoginPopup {
+  background: rgba(0, 0, 0, 0.8) url(~@/assets/#{$type}/imgs/main/Bg-noneLoginPopup.jpg) center center no-repeat;
+}

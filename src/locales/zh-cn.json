@@ -76,7 +76,7 @@
         "invalid": "",
         "required": "请输入您的密码",
         "length": "密码长度最少为6位字元",
-        "regex": "格式错误"
+        "regex": ""
       }
     },
     "Add_PasswordCheck": {
@@ -105,7 +105,7 @@
       "error": {
         "invalid": "此信箱已他人使用,请输入其他信箱",
         "required": "请输入您的E-mail",
-        "length": "最多 50 字元",
+        "length": "",
         "regex": "格式错误"
       }
     },
@@ -226,7 +226,7 @@
         "invalid": "",
         "required": "请输入取款密​​码",
         "length": "密码长度最少为6位字元",
-        "regex": "格式错误"
+        "regex": ""
       }
     },
     "Add_Withdrawals_CheckPassword": {
@@ -236,7 +236,7 @@
         "invalid": "",
         "required": "请输入取款密​​码",
         "length": "密码长度最少为6位字元",
-        "regex": "格式错误"
+        "regex": ""
       }
     },
     "CaptchaValue": {
@@ -246,7 +246,7 @@
         "invalid": "",
         "required": "请输入验证码",
         "length": "",
-        "regex": "格式错误"
+        "regex": ""
       }
     },
     "notice": {
