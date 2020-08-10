@@ -1,9 +1,9 @@
 <template>
-  <div class="home" @click="isShowLoginPopup = false">
+  <div class="home" @click="isShowNoneLoginPopup = false">
     <HomeSwiper :list="swiperList" :resourceUrl="resourceUrl" :siteIsNewPromotion="siteIsNewPromotion"></HomeSwiper>
     <HomeGameBlock :list="productList" :resourceUrl="resourceUrl" :isLoggedIn="isLoggedIn"></HomeGameBlock>
     <transition name="fade">
-      <div id="noneLoginPopup" class="noneLoginPopup" v-if="isShowLoginPopup"></div>
+      <div id="noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
     </transition>
   </div>
 </template>
@@ -23,16 +23,16 @@ export default {
   },
   data() {
     return {
-      isShowLoginPopup: false,
+      isShowNoneLoginPopup: false,
       swiperList: [],
       productList: [],
     };
   },
   mounted() {
     if (this.isLoggedIn) {
-      this.isShowLoginPopup = false;
+      this.isShowNoneLoginPopup = false;
     } else {
-      this.isShowLoginPopup = true;
+      this.isShowNoneLoginPopup = true;
     }
 
     //* 取得遊戲館列表，因不需要 siteID 所以放這即可
