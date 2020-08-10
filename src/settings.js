@@ -13,6 +13,8 @@ const AUTH_API_LIST = [
   'Member/MemInfo',
   'PointRecord/Deposit',
   'PointRecord/Withdrawals',
+  'PointRecord/ActivityTransaction',
+  'PointRecord/LuckyWheelLotteryResult',
   'Game/MLobbyGameRedirect',
 ];
 

@@ -92,7 +92,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getProductList } from '@/api/product';
-import { getRecordDeposit, getRecordWithdrawal, getRecordTransfer } from '@/api/record';
+import {
+  getRecordDeposit,
+  getRecordWithdrawal,
+  getRecordTransfer,
+  getRecordBonus,
+  getRecordLottery,
+} from '@/api/record';
 import numeral from 'numeral';
 export default {
   name: 'TransactionRecordContent',
@@ -321,10 +327,33 @@ export default {
               _Search: 'false',
               Filters: '  ',
             };
-
             getRecordTransfer(requestDataTransfer).then(result => {
               console.log('[RecordTransfer]', result);
             });
+
+            // const responseList = [
+            //   {
+            //     Lst_TransTime: '2020-07-01T11:53:59.98',
+            //     Lst_ProductName: 'BBIN',
+            //     Lst_PointIncome: 20.0,
+            //     Lst_PointPayment: 0.0,
+            //     Lst_Org_Point: 280429.86,
+            //     Lst_Final_Point: 280449.86,
+            //     Lst_Org_Game_Point: 20.0,
+            //     Lst_Final_Game_Point: 0.0,
+            //   },
+            // ];
+
+            // this.list = responseList.map(item => {
+            //   const newItem = {};
+            //   newItem.id = item.Lst_TransID;
+            //   newItem.date = item.Lst_TransTime.split('T')[0];
+            //   newItem.game = item.Lst_ProductName;
+            //   newItem.type = item.Lst_ProductName;
+            //   newItem.amount = item.Lst_Final_Point;
+            //   return newItem;
+            // });
+
             this.list = [
               {
                 id: '000',
@@ -357,46 +386,97 @@ export default {
             break;
           }
           case 'bonus': {
-            this.list = [
+            const requestDataRecordBonus = { Page: 1 };
+
+            getRecordBonus(requestDataRecordBonus).then(result => {
+              console.log('[RecordBonus]', result);
+            });
+
+            const responseList = [
               {
-                id: '000',
-                activity: 'ฝากเพิ่มรับสูงสุด 88,888',
-                bindWallet: 'Wallet',
-                issue: 10,
-                datetime: '2020-07-21 11:13:42',
-              },
-              {
-                id: '111',
-                activity: 'ฝากเพิ่มรับสูงสุด 88,888',
-                bindWallet: 'Wallet',
-                issue: -10,
-                datetime: '2020-07-22 11:13:42',
+                Lst_MTime: '2020-06-05T14:40:59.927',
+                Lst_Name: 'QA-轉JDB',
+                Lst_WalletLimit: '1180',
+                Lst_Bonus: 10.0,
               },
             ];
+
+            this.list = responseList.map(item => {
+              const newItem = {};
+              // newItem.id = item.Lst_TransID;
+              newItem.activity = item.Lst_Name;
+              newItem.bindWallet = item.Lst_WalletLimit;
+              newItem.issue = item.Lst_Bonus;
+              newItem.datetime = item.Lst_MTime.replace('T', ' ').split('.')[0];
+              return newItem;
+            });
+
+            // this.list = [
+            //   {
+            //     id: '000',
+            //     activity: 'ฝากเพิ่มรับสูงสุด 88,888',
+            //     bindWallet: 'Wallet',
+            //     issue: 10,
+            //     datetime: '2020-07-21 11:13:42',
+            //   },
+            //   {
+            //     id: '111',
+            //     activity: 'ฝากเพิ่มรับสูงสุด 88,888',
+            //     bindWallet: 'Wallet',
+            //     issue: -10,
+            //     datetime: '2020-07-22 11:13:42',
+            //   },
+            // ];
             this.title = 'Bonus Record';
             this.isSearchActive = false;
             this.isPageActive = true;
             break;
           }
           case 'lottery': {
-            this.list = [
+            const requestDataRecordLottery = { Page: 1 };
+
+            getRecordLottery(requestDataRecordLottery).then(result => {
+              console.log('[RecordLottery]', result);
+            });
+
+            const responseList = [
               {
-                id: '000',
-                isSuccess: false,
-                prize: '88',
-                status: 'Undelivered',
-                type: 'Prize',
-                datetime: '2020-07-21 11:41:52',
-              },
-              {
-                id: '111',
-                isSuccess: true,
-                prize: '8888',
-                status: 'Successful',
-                type: 'Prize',
-                datetime: '2020-07-22 13:41:52',
+                Lst_CTime: '2020-05-15T10:14:26.427',
+                Lst_PrizeName: 'TestPrize5',
+                Lst_GiveoutStatus: '已发放',
+                Lst_PrizeType: '金额',
               },
             ];
+
+            this.list = responseList.map(item => {
+              const newItem = {};
+              // newItem.id = item.Lst_TransID;
+              // newItem.isSuccess = item.Lst_PrizeName;
+              newItem.prize = item.Lst_PrizeName;
+              newItem.status = item.Lst_GiveoutStatus;
+              newItem.type = item.Lst_PrizeType;
+              newItem.datetime = item.Lst_CTime.replace('T', ' ').split('.')[0];
+              return newItem;
+            });
+
+            // this.list = [
+            //   {
+            //     id: '000',
+            //     isSuccess: false,
+            //     prize: '88',
+            //     status: 'Undelivered',
+            //     type: 'Prize',
+            //     datetime: '2020-07-21 11:41:52',
+            //   },
+            //   {
+            //     id: '111',
+            //     isSuccess: true,
+            //     prize: '8888',
+            //     status: 'Successful',
+            //     type: 'Prize',
+            //     datetime: '2020-07-22 13:41:52',
+            //   },
+            // ];
             this.title = 'Lottery Record';
             this.detailKey = 'lotteryStatus';
             this.isSearchActive = false;
