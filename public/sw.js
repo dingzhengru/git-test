@@ -3,10 +3,15 @@ importScripts('/workbox-sw-5.1.2.js');
 
 workbox.setConfig({ debug: false });
 
-// 目前因為語系導致頁面變化，改採用 NetworkFirst
+/**
+ ** 存頁面
+ ** 1. 只存 / 首頁而已
+ ** 2. 存所有沒有 . 的頁面
+ */
 workbox.routing.registerRoute(
-  /\/Y\/NoneLogin\/MainPage/,
-  new workbox.strategies.NetworkFirst({
+  /^(http|https).*\/$/,
+  // /^(http|https)[^\.]+$/,
+  new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'page-cache',
   })
 );
@@ -19,5 +24,5 @@ workbox.routing.registerRoute(
 );
 
 self.addEventListener('install', function() {
-  self.skipWaiting(); // skipWaiting 可以跳過等待，直接套用最新的快取
+  self.skipWaiting(); //* skipWaiting 可以跳過等待 service worker 的更新週期，直接套用最新的 sw.js
 });

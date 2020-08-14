@@ -39,7 +39,7 @@ import { getMessageList } from '@/api/alert';
 import { getUserInfo } from '@/api/user';
 import numeral from 'numeral';
 
-import { getGameUrl } from '@/api/game';
+// import { getGameUrl } from '@/api/game';
 
 export default {
   name: 'App',
@@ -53,6 +53,8 @@ export default {
       'siteFullCss',
       'token',
       'lang',
+      'pwaInstallStatus',
+      'pwaPrompt',
       'isLoggedIn',
       'resourceUrl',
       'username',
@@ -73,15 +75,39 @@ export default {
   mounted() {
     // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
+
+    //* 一秒後沒觸發 beforeinstallprompt 的話，就視為已下載
+    setTimeout(() => {
+      if (this.pwaInstallStatus == null) {
+        this.$store.commit('pwa/setStatus', 'installed');
+      }
+    }, 3000);
+
+    //* PWA
+    window.addEventListener('beforeinstallprompt', event => {
+      console.log('beforeinstallprompt event');
+
+      //* 能進來此事件代表: 未安裝 pwa
+      this.$store.commit('pwa/setStatus', 'notInstalled');
+
+      event.preventDefault();
+      this.$store.commit('pwa/setPrompt', event);
+
+      // pwa下載視窗的選擇處理
+      this.pwaPrompt.userChoice.then(choiceResult => {
+        if (choiceResult.outcome === 'accepted') {
+          this.$store.commit('pwa/setStatus', 'installing');
+
+          //* 五秒後設為已下載，因目前無事件可以確認是否安裝完成
+          setTimeout(() => {
+            this.$store.commit('pwa/setStatus', 'installed');
+          }, 5000);
+        }
+      });
+    });
   },
   methods: {
     getUserInfo() {
-      // getPITTLBet().then(result => {
-      //   console.log('[PITTLBet]', result.RetObj);
-      //   this.$store.commit('user/setRoll', result.RetObj.PI_BetAmount);
-      //   this.$store.commit('user/setVip', result.RetObj.PI_Level);
-      // });
-
       getUserInfo().then(result => {
         console.log('[UserInfo]', result);
         this.$store.commit('user/setUsername', result.RetObj.Lst_Account);
@@ -165,24 +191,27 @@ export default {
         });
       },
     },
-    token() {
-      /*
-       * 這裡放需要 token 且是僅進入頁面才發需求的 API
-       * ex: 使用者的上方資訊欄位
-       */
-      if (!this.token) {
-        return;
-      }
+    token: {
+      immediate: true,
+      handler() {
+        /*
+         * 這裡放需要 token 且是僅進入頁面才發需求的 API
+         * ex: 使用者的上方資訊欄位
+         */
+        if (!this.token) {
+          return;
+        }
 
-      if (this.isLoggedIn) {
-        this.getUserInfo();
+        if (this.isLoggedIn) {
+          this.getUserInfo();
 
-        const requestDataGetGameUrl = { Tag: '1180-701', Gameid: '9008', Freeplay: '0' };
+          // const requestDataGetGameUrl = { Tag: '1180-701', Gameid: '9008', Freeplay: '0' };
 
-        getGameUrl(requestDataGetGameUrl).then(result => {
-          console.log('[Game]', result);
-        });
-      }
+          // getGameUrl(requestDataGetGameUrl).then(result => {
+          //   console.log('[Game]', result);
+          // });
+        }
+      },
     },
     isLoggedIn() {
       /*

@@ -26,9 +26,9 @@ $type: 'Y/03';
 .login__form__link--forget {
   background-image: url(~@/assets/#{$type}/imgs/main/forgetBg.png);
 }
-// .lnk-open {
-//   background-image: url(~@/assets/#{$type}/imgs/main/open.png);
-// }
-// .lnk-download {
-//   background-image: url(~@/assets/#{$type}/imgs/main/download.png);
-// }
+.login__form__link--open {
+  background-image: url(~@/assets/#{$type}/imgs/main/open.png);
+}
+.login__form__link--download {
+  background-image: url(~@/assets/#{$type}/imgs/main/download.png);
+}

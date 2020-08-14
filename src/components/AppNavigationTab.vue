@@ -35,17 +35,21 @@ export default {
   margin: 0;
   padding: 0;
   text-align: center;
+
+  /* 避免換行 */
+  /* white-space: nowrap; */
+  /* word-break: break-word; */
 }
 .tabs__ul__li {
   display: inline-block;
-  zoom: 1;
   background-repeat: no-repeat;
   background-position: center top;
   border-right: 1px dotted #fff;
   list-style: none;
-  letter-spacing: normal;
-  word-spacing: normal;
   vertical-align: top;
+  /* word-break: break-word; */
+  /* letter-spacing: normal; */
+  /* word-spacing: normal; */
 }
 .tabs__ul__li:last-child {
   border-right: none;
@@ -55,8 +59,10 @@ export default {
   display: block;
   min-width: 116px;
   max-width: 140px;
-  margin: 0 25px;
-  padding-top: 102px;
+  margin: 0;
+  padding: 102px 20px 0px 20px;
+  /* margin: 0 25px; */
+  /* padding-top: 102px; */
   color: #fff;
   font-size: 2.153em;
   text-align: center;

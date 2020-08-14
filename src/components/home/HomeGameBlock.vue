@@ -15,13 +15,10 @@
         >
           {{ game.Lst_Name }}
         </router-link>
-        <router-link
-          v-else
-          :to="{ name: 'GameLobby', params: { type: 'gametype01' }, query: { category: 'all' } }"
-          class="home-game__ul__li__link"
-        >
+        <a v-else class="home-game__ul__li__link" href="javascript:;" @click="clickGameLink(game)">
           {{ game.Lst_Name }}
-        </router-link>
+          <!-- :to="{ name: 'GameLobby', params: { type: 'gametype01' }, query: { category: 'all' } }" -->
+        </a>
       </li>
     </ul>
   </div>
@@ -52,6 +49,11 @@ export default {
         gameclass03: '#gameSport',
       },
     };
+  },
+  methods: {
+    clickGameLink(game) {
+      this.$emit('clickGameLink', game);
+    },
   },
 };
 </script>

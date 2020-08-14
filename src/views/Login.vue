@@ -54,6 +54,7 @@
           :width="captchaImage.Width"
           :height="captchaImage.Height"
           border="0"
+          v-if="captchaImage.ImgBase64 != ''"
           @click="changeCaptcha"
         />
       </div>
@@ -67,12 +68,48 @@
         />
         <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">{{ $t('login.rememberMe') }}</label>
       </div>
-      <router-link class="login__form__link login__form__link--regist" id="register" :to="{ name: 'Register' }">
-        {{ $t('login.link.register') }}
-      </router-link>
-      <router-link class="login__form__link login__form__link--forget" id="forgetPwd" :to="{ name: 'ForgetPassword' }">
-        {{ $t('login.link.forgetPassword') }}
-      </router-link>
+      <div class="login__form__link-div">
+        <router-link class="login__form__link login__form__link--regist" id="register" :to="{ name: 'Register' }">
+          {{ $t('login.link.register') }}
+        </router-link>
+        <router-link
+          class="login__form__link login__form__link--forget"
+          id="forgetPwd"
+          :to="{ name: 'ForgetPassword' }"
+        >
+          {{ $t('login.link.forgetPassword') }}
+        </router-link>
+
+        <a class="login__form__link" href="javascript:;" v-if="pwaInstallStatus == null"></a>
+
+        <a
+          class="login__form__link login__form__link--download"
+          id="pwaDownload"
+          href="javascript:;"
+          v-if="pwaInstallStatus == 'notInstalled'"
+          @click="pwaPrompt.prompt()"
+        >
+          App
+        </a>
+        <a
+          class="login__form__link login__form__link--download"
+          id="pwaDownload"
+          href="javascript:;"
+          v-if="pwaInstallStatus == 'installing'"
+        >
+          Installing
+        </a>
+        <a
+          class="login__form__link login__form__link--open"
+          id="pwaOpen"
+          href="/"
+          target="_blank"
+          v-if="pwaInstallStatus == 'installed'"
+        >
+          Open
+        </a>
+      </div>
+
       <button class="ui-btn ui-btn-long login__form__submit" id="loginbtn" type="submit" form="LoginForm">
         {{ $t('login.button.login') }}
       </button>
@@ -83,10 +120,11 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
+import { getTokenAndPublicKey } from '@/api/user';
 export default {
   name: 'Login',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'token', 'publicKey', 'pwaInstallStatus', 'pwaPrompt']),
   },
   data() {
     return {
@@ -106,7 +144,18 @@ export default {
   },
   mounted() {
     this.changeCaptcha();
+
+    //* 取得公鑰 & token (登入後才於這取得，登入前放置 Login 頁面)
+    if (!this.token || !this.publicKey) {
+      getTokenAndPublicKey().then(result => {
+        this.$store.commit('user/setToken', result.RetObj.token);
+        this.$store.commit('user/setPublicKey', result.RetObj.publickey);
+      });
+    }
+
+    
   },
+  beforeDestroy() {},
   methods: {
     async login() {
       console.log('[login]', this.user);
@@ -200,22 +249,34 @@ export default {
   font-size: 2.5em;
 }
 
-.login__form__link {
-  /* width: 150px; */
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: top center;
-  padding: 134px 15px 0;
+.login__form__link-div {
   margin-top: 35px;
   font-size: 2.46em;
 }
 
-.login__form__link--regist {
-  width: 175px;
+.login__form__link {
+  /* width: 150px; */
+  min-width: 129px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding-top: 134px;
 }
 
-.login__form__link--forget {
+.en-us .login__form__link {
+  width: 170px;
+}
+
+.en-us .login__form__link--forget {
   width: 200px;
+}
+
+.zh-cn .login__form__link {
+  width: 170px;
+}
+
+.th-th .login__form__link {
+  width: 180px;
 }
 
 .login__form__submit {

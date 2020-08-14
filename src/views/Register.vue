@@ -406,9 +406,9 @@ export default {
       }
     });
 
-    setInterval(() => {
-      this.validateForm();
-    }, 3000);
+    // setInterval(() => {
+    //   this.validateForm();
+    // }, 3000);
   },
   methods: {
     changeCaptcha() {

@@ -1,10 +1,10 @@
 const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
 //const API_URL = 'http://api.caza7.re888show.com/api',
 
-// 預設語系 (以後應該會由後端取得)
+//* 預設語系 (以後應該會由後端取得)
 const DEFAULT_LANG = 'th-th';
 
-// 需要 Authorization bearer token 的 API
+//* 需要 Authorization bearer token 的 API
 const AUTH_API_LIST = [
   'Member/LoginIn',
   'Member/SimpleRegister',
@@ -16,15 +16,17 @@ const AUTH_API_LIST = [
   'PointRecord/ActivityTransaction',
   'PointRecord/LuckyWheelLotteryResult',
   'Game/MLobbyGameRedirect',
+  'Siteinfo/MGetLotteryCount',
+  'Proxy/PlayLottery',
 ];
 
-// 需加密的 API
+//* 需加密的 API
 const CRYPTO_API_LIST = ['Member/LoginIn', 'Game/MLobbyGameRedirect'];
 
-// 需使用"大數據加密"的 API
+//* 需使用"大數據加密"的 API
 const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister'];
 
-// 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
+//* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
 
 const AUTH_ROUTE_LIST = [
   'GameHome',
@@ -46,10 +48,10 @@ const AUTH_ROUTE_LIST = [
   'NotificationOutbox',
 ];
 
-// "不需要"登入才能進入的 route name
+//* "不需要"登入才能進入的 route name
 const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword'];
 
-// 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
+//* 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
 const ACCESS_ROUTE_LIST = [];
 
 export {

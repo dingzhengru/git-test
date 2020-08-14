@@ -15,7 +15,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./Y/NoneLogin/MainPage/",
+  "start_url": ".",
   "scope":"/",
   "display": "fullscreen",
   "background_color": "#ffffff"

@@ -1,4 +1,7 @@
 const getters = {
+  lang: state => state.lang,
+  pwaInstallStatus: state => state.pwa.status,
+  pwaPrompt: state => state.pwa.prompt,
   siteID: state => state.site.id,
   siteCssClass: state => state.site.cssClass,
   siteCssVersion: state => state.site.cssVersion,
@@ -13,7 +16,6 @@ const getters = {
   resourceUrl: state => {
     return `${state.site.remoteCSSUrl}/ContentStyle/${state.site.mainDomain}/Member/${state.site.cssClass}/${state.site.cssVersion}/2/default/css${state.site.cssType}/common`;
   },
-  lang: state => state.lang,
   isLoggedIn: state => state.user.isLoggedIn,
   token: state => state.user.token,
   publicKey: state => state.user.publicKey,

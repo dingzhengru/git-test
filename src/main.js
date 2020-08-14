@@ -45,20 +45,24 @@ if (lang) {
   });
 }
 
-//* 取得公鑰 & token
+//* 用 isLoggedIn 判斷是否登入
+const isLoggedIn = getIsLoggedIn();
+store.commit('user/setIsLoggedIn', isLoggedIn);
+
+//* 取得公鑰 & token (登入後才於這取得，登入前放置 Login 頁面)
+
 if (getToken() && getPublicKey()) {
   store.commit('user/setToken', getToken());
   store.commit('user/setPublicKey', getPublicKey());
 } else {
-  getTokenAndPublicKey().then(result => {
-    store.commit('user/setToken', result.RetObj.token);
-    store.commit('user/setPublicKey', result.RetObj.publickey);
-  });
+  //* 只有登入後的狀態才會去跟後端要
+  if (isLoggedIn) {
+    getTokenAndPublicKey().then(result => {
+      store.commit('user/setToken', result.RetObj.token);
+      store.commit('user/setPublicKey', result.RetObj.publickey);
+    });
+  }
 }
-
-//* 用 isLoggedIn 判斷是否登入
-const isLoggedIn = getIsLoggedIn();
-store.commit('user/setIsLoggedIn', isLoggedIn);
 
 //* 取得 site info => 存進 store.state.site
 const requestData = { DeviceType: 1 };

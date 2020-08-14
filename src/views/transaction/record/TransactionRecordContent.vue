@@ -433,7 +433,7 @@ export default {
             break;
           }
           case 'lottery': {
-            const requestDataRecordLottery = { Page: 1 };
+            const requestDataRecordLottery = { Page: 2, SiteID: 'C', Account: 'test' };
 
             getRecordLottery(requestDataRecordLottery).then(result => {
               console.log('[RecordLottery]', result);

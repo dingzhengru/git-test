@@ -1,7 +1,12 @@
 <template>
   <div class="home" @click="isShowNoneLoginPopup = false">
     <HomeSwiper :list="swiperList" :resourceUrl="resourceUrl" :siteIsNewPromotion="siteIsNewPromotion"></HomeSwiper>
-    <HomeGameBlock :list="productList" :resourceUrl="resourceUrl" :isLoggedIn="isLoggedIn"></HomeGameBlock>
+    <HomeGameBlock
+      :list="productList"
+      :resourceUrl="resourceUrl"
+      :isLoggedIn="isLoggedIn"
+      @clickGameLink="clickGameLink"
+    ></HomeGameBlock>
     <transition name="fade">
       <div id="noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
     </transition>
@@ -12,6 +17,7 @@
 import { mapGetters } from 'vuex';
 import { getSwiperList } from '@/api/swiper';
 import { getProductList } from '@/api/product';
+import { getGameUrl } from '@/api/game';
 export default {
   name: 'Home',
   components: {
@@ -45,6 +51,7 @@ export default {
         if (result.Code == 200) {
           this.productList = result.RetObj;
 
+          /* 設置 ID */
           this.productList = this.productList.map(item => {
             if (item.sGameID == '1080') {
               item.id = 'SABA';
@@ -81,6 +88,20 @@ export default {
           this.swiperList = result.RetObj;
           console.log('[Swiper]', this.swiperList);
         }
+      });
+    },
+    clickGameLink(game) {
+      console.log('[Game Click]', game);
+      const requestDataGetGameUrl = {
+        Tag: game.Lst_Product_Proxy_Tag,
+        Gameid: game.sGameID,
+        Freeplay: '0',
+      };
+
+      console.log('[Game RequestData]',requestDataGetGameUrl)
+
+      getGameUrl(requestDataGetGameUrl).then(result => {
+        console.log('[Game URL]', result);
       });
     },
   },
