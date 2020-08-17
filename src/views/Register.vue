@@ -22,7 +22,7 @@
             />
 
             <img
-              v-if="field.name == 'CaptchaValue'"
+              v-if="field.name == 'CaptchaValue' && captchaImage.ImgBase64 != ''"
               class="register__form__field__image--code"
               id="Add_CaptchaValue_Image"
               :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
@@ -82,11 +82,13 @@
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
 import { getRegisterFieldList } from '@/api/register';
+import { getTokenAndPublicKey } from '@/api/user';
 import dayjs from 'dayjs';
+
 export default {
   name: 'Register',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'token', 'publicKey']),
     fullName() {
       let fullName = '';
       const firstName = this.fieldList.find(item => item.name == 'Add_FirstName').value;
@@ -405,6 +407,14 @@ export default {
         }
       }
     });
+
+    //* 取得公鑰 & token (登入後才於這取得，登入前放置 Login、Register 頁面)
+    if (!this.token || !this.publicKey) {
+      getTokenAndPublicKey().then(result => {
+        this.$store.commit('user/setToken', result.RetObj.token);
+        this.$store.commit('user/setPublicKey', result.RetObj.publickey);
+      });
+    }
 
     // setInterval(() => {
     //   this.validateForm();

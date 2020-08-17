@@ -15,7 +15,7 @@
         >
           {{ game.Lst_Name }}
         </router-link>
-        <a v-else class="home-game__ul__li__link" href="javascript:;" @click="clickGameLink(game)">
+        <a v-else class="home-game__ul__li__link" href="javascript:;" @click="handleGameLink(game)">
           {{ game.Lst_Name }}
           <!-- :to="{ name: 'GameLobby', params: { type: 'gametype01' }, query: { category: 'all' } }" -->
         </a>
@@ -51,8 +51,8 @@ export default {
     };
   },
   methods: {
-    clickGameLink(game) {
-      this.$emit('clickGameLink', game);
+    handleGameLink(game) {
+      this.$emit('handleGameLink', game);
     },
   },
 };

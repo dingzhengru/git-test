@@ -6,5 +6,23 @@ export async function getGameUrl(data) {
   return result.data;
 }
 
+export async function getGameLobbyProduct(data) {
+  const result = await axios.post(API_URL + '/Game/MGetGameLobbyProduct', data);
+  return result.data;
+}
 
+export async function getGameLobbyCategory(data) {
+  const result = await axios.post(API_URL + '/Game/MGetGameLobbyMenu', data);
+  return result.data;
+}
 
+export async function getGameLobbyGameList(data) {
+  const result = await axios.post(API_URL + '/Game/MGetGameLobbyList', data);
+  return result.data;
+}
+
+//* 導向遊戲大廰(站外連結)
+export async function getGameRedirectUrl(data) {
+  const result = await axios.post(API_URL + '/Game/MGameRedirectUrl', data);
+  return result.data;
+}

@@ -145,15 +145,13 @@ export default {
   mounted() {
     this.changeCaptcha();
 
-    //* 取得公鑰 & token (登入後才於這取得，登入前放置 Login 頁面)
+    //* 取得公鑰 & token (登入後才於這取得，登入前放置 Login、Register 頁面)
     if (!this.token || !this.publicKey) {
       getTokenAndPublicKey().then(result => {
         this.$store.commit('user/setToken', result.RetObj.token);
         this.$store.commit('user/setPublicKey', result.RetObj.publickey);
       });
     }
-
-    
   },
   beforeDestroy() {},
   methods: {

@@ -5,7 +5,7 @@
       :list="productList"
       :resourceUrl="resourceUrl"
       :isLoggedIn="isLoggedIn"
-      @clickGameLink="clickGameLink"
+      @handleGameLink="handleGameLink"
     ></HomeGameBlock>
     <transition name="fade">
       <div id="noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
@@ -90,7 +90,7 @@ export default {
         }
       });
     },
-    clickGameLink(game) {
+    handleGameLink(game) {
       console.log('[Game Click]', game);
       const requestDataGetGameUrl = {
         Tag: game.Lst_Product_Proxy_Tag,
@@ -98,11 +98,34 @@ export default {
         Freeplay: '0',
       };
 
-      console.log('[Game RequestData]',requestDataGetGameUrl)
+      /*
+       * Lst_Game_Classify 分類分別是
+       * 1: 真人(站內大廳)，2: 電子(站內大廳)，3: 運動(站外大廳)
+       */
 
-      getGameUrl(requestDataGetGameUrl).then(result => {
-        console.log('[Game URL]', result);
-      });
+      if (game.Lst_Game_Classify == 1) {
+        console.log(game.Lst_Game_Classify, game.Lst_Name);
+        this.$router.push({
+          name: 'GameLobby',
+          params: { id: game.Lst_Product_id, key: game.Lst_Proxy_Product_Key },
+          query: { category: '' },
+        });
+      } else if (game.Lst_Game_Classify == 2) {
+        console.log(game.Lst_Game_Classify, game.Lst_Name);
+        this.$router.push({
+          name: 'GameLobby',
+          params: { id: game.Lst_Product_id, key: game.Lst_Proxy_Product_Key },
+          query: { category: '' },
+        });
+      } else if (game.Lst_Game_Classify == 3) {
+        console.log('[Game RequestData]', requestDataGetGameUrl);
+
+        getGameUrl(requestDataGetGameUrl).then(result => {
+          console.log('[Game URL]', result);
+        });
+      } else if (game.Lst_Game_Classify == 4) {
+        console.log(game.Lst_Game_Classify, game.Lst_Name);
+      }
     },
   },
   watch: {

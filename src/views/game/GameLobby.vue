@@ -4,15 +4,22 @@
       <ul class="game-lobby__supply__ul">
         <li
           class="game-lobby__supply__ul__li"
-          :class="[gameType.class, { 'game-lobby__supply__ul__li--active': $route.params.type == gameType.type }]"
-          v-for="gameType in gameTypeList"
-          :key="gameType.name"
+          :class="[
+            product.class,
+            { 'game-lobby__supply__ul__li--active': $route.params.key == product.Lst_Proxy_Product_Key },
+          ]"
+          v-for="product in productList"
+          :key="product.Lst_Proxy_Product_Key"
         >
           <router-link
             class="game-lobby__supply__ul__li__link"
-            :to="{ name: 'GameLobby', params: { type: gameType.type }, query: { category: 'all' } }"
+            :to="{
+              name: 'GameLobby',
+              params: { id: product.Lst_Product_id, key: product.Lst_Proxy_Product_Key },
+              query: { category: '' },
+            }"
           >
-            {{ gameType.name }}
+            {{ product.Lst_Name }}
           </router-link>
         </li>
       </ul>
@@ -21,14 +28,25 @@
           <li
             class="game-lobby__category__ul__li"
             v-for="category in categoryList"
-            :key="category.name"
-            :class="{ 'game-lobby__category__ul__li--active': $route.query.category == category.value }"
+            :key="category.Lst_Category"
+            :class="{ 'game-lobby__category__ul__li--active': $route.query.category == category.Lst_Category }"
+            @click="getGameList({ Tag: productTag, Category: category.Lst_Category })"
           >
             <router-link
               class="game-lobby__category__ul__li__link"
-              :to="{ name: 'GameLobby', params: { type: $route.params.type }, query: { category: category.value } }"
+              :to="{
+                name: 'GameLobby',
+                params: { id: $route.params.id, key: $route.params.key },
+                query: { category: category.Lst_Category },
+              }"
             >
-              {{ $t(`game.category.${category.name}`) }}
+              <template v-if="category.Lst_GameName == 'all' || category.Lst_GameName == 'hot'">
+                {{ $t(`game.category.${category.Lst_GameName}`) }}
+              </template>
+
+              <template v-else>
+                {{ category.Lst_GameName }}
+              </template>
             </router-link>
           </li>
         </ul>
@@ -51,14 +69,27 @@
     </div>
     <table class="game-lobby__table">
       <tbody>
-        <tr class="game-lobby__table__tr" v-for="(game, index) in pageData" :key="index">
+        <tr
+          class="game-lobby__table__tr"
+          v-for="game in pageData"
+          :key="game.Lst_GameID"
+          @click="getGameUrl({ Tag: productTag, Gameid: game.Lst_GameID, Freeplay: '0' })"
+        >
           <td class="game-lobby__table__tr__td-1st">
-            <img class="game-lobby__table__tr__td__img" :src="game.img" />
+            <img class="game-lobby__table__tr__td__img" :src="game.imagePath" />
           </td>
-          <td class="game-lobby__table__tr__td-2nd">{{ game.name }}</td>
+          <td class="game-lobby__table__tr__td-2nd">{{ game.Lst_GameName }}</td>
           <td class="game-lobby__table__tr__td-3rd">
-            <a href="javascript:;" class="game-lobby__table__tr__td__link--start">{{ $t('game.link.play') }}</a>
-            <a href="javascript:;" class="game-lobby__table__tr__td__link--freeplay">{{ $t('game.link.free') }}</a>
+            <a href="javascript:;" class="game-lobby__table__tr__td__link--start">
+              {{ $t('game.link.play') }}
+            </a>
+            <a
+              href="javascript:;"
+              class="game-lobby__table__tr__td__link--freeplay"
+              @click.capture.stop="getGameUrl({ Tag: productTag, Gameid: game.Lst_GameID, Freeplay: '1' })"
+            >
+              {{ $t('game.link.free') }}
+            </a>
             <a href="javascript:;" class="game-lobby__table__tr__td__link--favorites">{{ $t('game.link.fav') }}</a>
           </td>
         </tr>
@@ -75,6 +106,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { getGameLobbyProduct, getGameLobbyCategory, getGameLobbyGameList, getGameUrl } from '@/api/game';
 
 export default {
   name: 'GameList',
@@ -83,6 +115,9 @@ export default {
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
+    productTag() {
+      return this.$route.params.id + '-' + this.$route.params.key;
+    },
     searcData() {
       if (!this.search.text) {
         return this.gameList;
@@ -97,45 +132,19 @@ export default {
   },
   data() {
     return {
-      gameTypeList: [
-        {
-          name: 'MG+RNG',
-          type: 'gametype01',
-          class: 'ui-li-supply-1190',
-        },
-        {
-          name: 'BBIN RNG',
-          type: 'gametype02',
-          class: 'ui-li-supply-1120',
-        },
-        {
-          name: 'JDB',
-          type: 'gametype03',
-          class: 'ui-li-supply-1180',
-        },
-        {
-          name: 'CQ9 RNG',
-          type: 'gametype04',
-          class: 'ui-li-supply-1200',
-        },
-        {
-          name: 'RG電子',
-          type: 'gametype05',
-          class: 'ui-li-supply-1190',
-        },
-        {
-          name: 'DS RNG',
-          type: 'gametype06',
-          class: 'ui-li-supply-1190',
-        },
-        {
-          name: 'Royal RNG',
-          type: 'gametype07',
-          class: 'ui-li-supply-1190',
-        },
-      ],
+      productList: [],
       categoryList: [],
       gameList: [],
+      defaultCategoryList: [
+        {
+          Lst_Category: '',
+          Lst_GameName: 'all',
+        },
+        {
+          Lst_Category: 'Hot Games',
+          Lst_GameName: 'hot',
+        },
+      ],
       search: {
         text: '',
       },
@@ -145,7 +154,58 @@ export default {
       },
     };
   },
+  mounted() {
+    const requestDataGetGameLobbyProduct = { Tag: this.productTag };
+    getGameLobbyProduct(requestDataGetGameLobbyProduct).then(result => {
+      console.log('[GameLobby]', result.RetObj.ProductList);
+      this.productList = result.RetObj.ProductList;
+
+      this.productList = this.productList
+        .filter(item => {
+          //* 篩掉舊的
+          const oldProductList = [701, 402, 1040];
+          return !oldProductList.includes(item.Lst_Proxy_Product_Key);
+        })
+        .map(item => {
+          if (item.Lst_Proxy_Product_Key == 1031) {
+            //* RG-PNG電子
+            item.class = 'ui-li-supply-1190';
+          } else if (item.Lst_Proxy_Product_Key == 2602) {
+            //* Mg+電子
+            item.class = 'ui-li-supply-1190';
+          } else if (item.Lst_Proxy_Product_Key == 2100) {
+            //* DS電子
+            item.class = 'ui-li-supply-1190';
+          } else if (item.Lst_Proxy_Product_Key == 1034) {
+            //* 皇家電子
+            item.class = 'ui-li-supply-1190';
+          } else if (item.Lst_Proxy_Product_Key == 2200) {
+            //* CQ9
+            item.class = 'ui-li-supply-1200';
+          } else if (item.Lst_Proxy_Product_Key == 2300) {
+            //* JDB
+            item.class = 'ui-li-supply-1180';
+          } else if (item.Lst_Proxy_Product_Key == 2400) {
+            //* BBIN
+            item.class = 'ui-li-supply-1120';
+          }
+          return item;
+        });
+
+      console.log('[GameLobby]', this.productList);
+    });
+  },
   methods: {
+    async getGameList(data) {
+      const result = await getGameLobbyGameList(data);
+      console.log('[GameLobby GameList]', result.RetObj);
+      this.gameList = result.RetObj.JsonGameList;
+    },
+    async getGameUrl(data) {
+      const result = await getGameUrl(data);
+      console.log('[GameLobby GameList]', data, result);
+      // this.gameList = result.RetObj.JsonGameList;
+    },
     changePage(page) {
       this.pagination.page = page;
     },
@@ -164,60 +224,19 @@ export default {
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
       },
     },
-    '$route.params.type': {
+    '$route.params.key': {
       immediate: true,
       handler() {
-        this.categoryList = [
-          {
-            name: 'all',
-            value: 'all',
-          },
-          {
-            name: 'hot',
-            value: 'hot',
-          },
-        ];
-        this.gameList = [
-          {
-            name: 'Thor2',
-            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
-          },
-          {
-            name: 'Thor2',
-            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
-          },
-          {
-            name: 'Thor2',
-            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
-          },
-          {
-            name: 'Thor2',
-            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
-          },
-          {
-            name: 'Thor2',
-            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
-          },
-          {
-            name: 'Thor2',
-            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
-          },
-          {
-            name: 'Thor2',
-            img: 'http://resource.re888show.com/SlotgameImg/1200/en-us/Thor2.jpg',
-          },
-        ];
-      },
-    },
-    categoryList() {
-      //! 當 category 對不上時(使用者擅自從網址輸入)，就轉址至 { category: 'all' }
-      if (!this.categoryList.find(item => this.$route.query.category == item.value)) {
-        this.$router.push({
-          name: 'GameLobby',
-          params: { type: this.$route.params.type },
-          query: { category: 'all' },
+        const requestDataGetGameLobbyCategory = { Tag: this.productTag };
+        getGameLobbyCategory(requestDataGetGameLobbyCategory).then(result => {
+          console.log('[GameLobby Category]', result.RetObj);
+
+          this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
         });
-      }
+
+        const requestDataGetGameLobbyGameList = { Tag: this.productTag };
+        this.getGameList(requestDataGetGameLobbyGameList);
+      },
     },
   },
 };
