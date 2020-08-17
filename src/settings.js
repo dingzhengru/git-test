@@ -19,6 +19,7 @@ const AUTH_API_LIST = [
   'Game/MGetGameLobbyMenu',
   'Game/MGetGameLobbyList',
   'Game/MLobbyGameRedirect',
+  'Game/MGameRedirectUrl',
   'Siteinfo/MGetLotteryCount',
   'Proxy/PlayLottery',
 ];

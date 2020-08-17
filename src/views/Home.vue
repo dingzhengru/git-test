@@ -17,7 +17,7 @@
 import { mapGetters } from 'vuex';
 import { getSwiperList } from '@/api/swiper';
 import { getProductList } from '@/api/product';
-import { getGameUrl } from '@/api/game';
+import { getGameRedirectUrl } from '@/api/game';
 export default {
   name: 'Home',
   components: {
@@ -91,40 +91,29 @@ export default {
       });
     },
     handleGameLink(game) {
-      console.log('[Game Click]', game);
-      const requestDataGetGameUrl = {
-        Tag: game.Lst_Product_Proxy_Tag,
-        Gameid: game.sGameID,
-        Freeplay: '0',
-      };
-
       /*
        * Lst_Game_Classify 分類分別是
-       * 1: 真人(站內大廳)，2: 電子(站內大廳)，3: 運動(站外大廳)
+       * 1: 真人(站內大廳)，2: 電子(站內大廳)，3: 運動(站外大廳)，4: 皇家彩票(站外大廳)
        */
 
-      if (game.Lst_Game_Classify == 1) {
-        console.log(game.Lst_Game_Classify, game.Lst_Name);
+      if (game.GetGameRedirectUrl == false) {
         this.$router.push({
           name: 'GameLobby',
           params: { id: game.Lst_Product_id, key: game.Lst_Proxy_Product_Key },
           query: { category: '' },
         });
-      } else if (game.Lst_Game_Classify == 2) {
-        console.log(game.Lst_Game_Classify, game.Lst_Name);
-        this.$router.push({
-          name: 'GameLobby',
-          params: { id: game.Lst_Product_id, key: game.Lst_Proxy_Product_Key },
-          query: { category: '' },
-        });
-      } else if (game.Lst_Game_Classify == 3) {
-        console.log('[Game RequestData]', requestDataGetGameUrl);
+      } else if (game.GetGameRedirectUrl == true) {
+        const requestDataGameRedirectUrl = {
+          Pid: game.Lst_Product_id,
+          gameclassify: game.Lst_Game_Classify,
+          proxypid: game.Lst_Proxy_Product_Key,
+        };
 
-        getGameUrl(requestDataGetGameUrl).then(result => {
-          console.log('[Game URL]', result);
+        getGameRedirectUrl(requestDataGameRedirectUrl).then(result => {
+          console.log('[Game Redirect URL]', result.RetObj);
+
+          window.open(result.RetObj.RedirectUrl);
         });
-      } else if (game.Lst_Game_Classify == 4) {
-        console.log(game.Lst_Game_Classify, game.Lst_Name);
       }
     },
   },
