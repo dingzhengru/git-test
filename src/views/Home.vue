@@ -108,7 +108,16 @@ export default {
         console.log('[Game Redirect URL]', result.RetObj);
 
         if (result.Code == 200) {
-          window.open(result.RetObj.RedirectUrl);
+          /**
+           ** iGameOpenType: 判斷回傳內容類型
+           ** 1: 一般URL，2: HTML
+           */
+          if (result.RetObj.iGameOpenType == 1) {
+            window.open(result.RetObj.RedirectUrl);
+          } else if (result.RetObj.iGameOpenType == 2) {
+            const gameWindow = open('', game.Lst_Name);
+            gameWindow.document.write(result.RetObj.RedirectUrl);
+          }
         }
       }
     },

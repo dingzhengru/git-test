@@ -15,6 +15,7 @@ const AUTH_API_LIST = [
   'PointRecord/Withdrawals',
   'PointRecord/ActivityTransaction',
   'PointRecord/LuckyWheelLotteryResult',
+  'Game/MGetJackpotTotal',
   'Game/MGetGameLobbyProduct',
   'Game/MGetGameLobbyMenu',
   'Game/MGetGameLobbyList',

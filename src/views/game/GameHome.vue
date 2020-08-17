@@ -1,15 +1,36 @@
 <template>
   <div class="game">
     <div class="game__jackpot">
-      <span class="game__jackpot__text">218,119,944</span>
+      <span class="game__jackpot__text">{{ jackpot }}</span>
     </div>
     <router-view />
   </div>
 </template>
 
 <script>
+import { getJackpotTotal } from '@/api/game';
+import numeral from 'numeral';
 export default {
   name: 'GameHome',
+  computed: {
+    productTag() {
+      return this.$route.params.id + '-' + this.$route.params.key;
+    },
+  },
+  data() {
+    return {
+      jackpot: null,
+    };
+  },
+  mounted() {
+    const requestDataGetJackpotTotal = { Tag: this.productTag };
+    getJackpotTotal(requestDataGetJackpotTotal).then(result => {
+      console.log('[Jackpot]', result.RetObj);
+      if (result.Code == 200) {
+        this.jackpot = numeral(result.RetObj).format('0,0');
+      }
+    });
+  },
 };
 </script>
 
