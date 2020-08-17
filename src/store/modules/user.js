@@ -1,5 +1,6 @@
 import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
+import numeral from 'numeral';
 import { register, login, logout } from '@/api/user';
 
 const state = {
@@ -68,7 +69,13 @@ const actions = {
   async login({ commit }, user) {
     const responseData = await login(user);
 
-    console.log('[Login Response]', responseData);
+    console.log('[Login Response]', responseData.RetObj);
+
+    commit('setUsername', responseData.RetObj.Lst_Account);
+    commit('setTotal', numeral(responseData.RetObj.Lst_Point).format('0,0.00'));
+    commit('setRoll', responseData.RetObj.Lst_PI_BetAmount);
+    commit('setVip', responseData.RetObj.Lst_PI_Level);
+    commit('setIsAccessed', responseData.RetObj.Lst_Account_Open); // * 設置是否已開通
 
     if (responseData.Code == 200) {
       commit('setIsLoggedIn', true);

@@ -81,7 +81,7 @@ export default {
       if (this.pwaInstallStatus == null) {
         this.$store.commit('pwa/setStatus', 'installed');
       }
-    }, 3000);
+    }, 1000);
 
     //* PWA
     window.addEventListener('beforeinstallprompt', event => {
@@ -107,15 +107,14 @@ export default {
     });
   },
   methods: {
-    getUserInfo() {
-      getUserInfo().then(result => {
-        console.log('[UserInfo]', result);
-        this.$store.commit('user/setUsername', result.RetObj.Lst_Account);
-        this.$store.commit('user/setTotal', numeral(result.RetObj.Lst_TotalDeposit).format('0,0.00'));
-        this.$store.commit('user/setRoll', result.RetObj.Lst_PI_BetAmount);
-        this.$store.commit('user/setVip', result.RetObj.Lst_PI_Level);
-        this.$store.commit('user/setIsAccessed', result.RetObj.Lst_Account_Open); // * 設置是否已開通
-      });
+    async getUserInfo() {
+      const result = await getUserInfo();
+      console.log('[UserInfo]', result.RetObj);
+      this.$store.commit('user/setUsername', result.RetObj.Lst_Account);
+      this.$store.commit('user/setTotal', numeral(result.RetObj.Lst_Point).format('0,0.00'));
+      this.$store.commit('user/setRoll', result.RetObj.Lst_PI_BetAmount);
+      this.$store.commit('user/setVip', result.RetObj.Lst_PI_Level);
+      this.$store.commit('user/setIsAccessed', result.RetObj.Lst_Account_Open); // * 設置是否已開通
     },
     changeLang(lang) {
       if (this.lang == lang) {
@@ -175,8 +174,6 @@ export default {
               return item;
             });
 
-            console.log(this.langList);
-
             console.log('[Lang]', this.langList);
           }
         });
@@ -204,22 +201,8 @@ export default {
 
         if (this.isLoggedIn) {
           this.getUserInfo();
-
-          // const requestDataGetGameUrl = { Tag: '1180-701', Gameid: '9008', Freeplay: '0' };
-
-          // getGameUrl(requestDataGetGameUrl).then(result => {
-          //   console.log('[Game]', result);
-          // });
         }
       },
-    },
-    isLoggedIn() {
-      /*
-       * 這裡放登入後，馬上需要更新的 API
-       */
-      if (this.isLoggedIn) {
-        this.getUserInfo();
-      }
     },
     lang() {
       // * 取得訊息列表(msgtype: C 彈出)
