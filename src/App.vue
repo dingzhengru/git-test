@@ -19,23 +19,12 @@
 
     <AppFooter :isLoggedIn="isLoggedIn"></AppFooter>
 
-    <div class="Box" id="alertbox" v-if="isShowAlertBox && alertMessageList">
-      <div class="Boxinner">
-        <h1 class="h1-tit">
-          <p v-for="(message, index) in alertMessageList" :key="index">
-            {{ message.Lst_Content }}
-          </p>
-        </h1>
-        <button id="CloseAlert" class="lnk-boxSubmit" @click="isShowAlertBox = false">OK</button>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { getLangList, changeLang } from '@/api/lang';
-import { getMessageList } from '@/api/alert';
 import { getUserInfo } from '@/api/user';
 import numeral from 'numeral';
 
@@ -65,8 +54,6 @@ export default {
   },
   data() {
     return {
-      isShowAlertBox: false,
-      alertMessageList: [],
       logo: '',
       langList: [],
       swiperList: [],
@@ -177,15 +164,6 @@ export default {
             console.log('[Lang]', this.langList);
           }
         });
-
-        // * 取得訊息列表(msgtype: C 彈出)
-        const requestDataMessageList = { msgtype: 'C' };
-        getMessageList(requestDataMessageList).then(result => {
-          if (result.Code == 200) {
-            this.alertMessageList = result.RetObj;
-            console.log('[Message]', this.alertMessageList);
-          }
-        });
       },
     },
     token: {
@@ -203,17 +181,7 @@ export default {
           this.getUserInfo();
         }
       },
-    },
-    lang() {
-      // * 取得訊息列表(msgtype: C 彈出)
-      const requestDataMessageList = { msgtype: 'C' };
-      getMessageList(requestDataMessageList).then(result => {
-        if (result.Code == 200) {
-          this.alertMessageList = result.RetObj;
-          console.log('[Message]', this.alertMessageList);
-        }
-      });
-    },
+    }
   },
 };
 </script>

@@ -10,6 +10,17 @@
     <transition name="fade">
       <div id="noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
     </transition>
+
+    <div class="Box" id="alertbox" v-if="isShowAlertBox && alertMessageList.length > 0">
+      <div class="Boxinner">
+        <h1 class="h1-tit">
+          <p v-for="(message, index) in alertMessageList" :key="index">
+            {{ message.Lst_Content }}
+          </p>
+        </h1>
+        <button id="CloseAlert" class="lnk-boxSubmit" @click="isShowAlertBox = false">OK</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -18,6 +29,8 @@ import { mapGetters } from 'vuex';
 import { getSwiperList } from '@/api/swiper';
 import { getProductList } from '@/api/product';
 import { getGameRedirectUrl } from '@/api/game';
+import { getMessageList } from '@/api/alert';
+
 export default {
   name: 'Home',
   components: {
@@ -30,6 +43,8 @@ export default {
   data() {
     return {
       isShowNoneLoginPopup: false,
+      isShowAlertBox: false,
+      alertMessageList: [],
       swiperList: [],
       productList: [],
     };
@@ -42,6 +57,14 @@ export default {
     this.getProductList();
   },
   methods: {
+    async getMessageList() {
+      const requestDataMessageList = { msgtype: 'C' };
+      const result = await getMessageList(requestDataMessageList);
+      if (result.Code == 200) {
+        this.alertMessageList = result.RetObj;
+        console.log('[Message]', this.alertMessageList);
+      }
+    },
     async getSwiperList() {
       const requestDataSwiperList = { bNewPromotion: this.siteIsNewPromotion };
       const result = await getSwiperList(requestDataSwiperList);
@@ -135,6 +158,9 @@ export default {
 
         // * 取得輪播列表
         this.getSwiperList();
+
+        // * 取得訊息列表(msgtype: C 彈出)
+        this.getMessageList();
       },
     },
     lang() {
@@ -143,6 +169,9 @@ export default {
 
       //* 取得遊戲館列表
       this.getProductList();
+
+      // * 取得訊息列表(msgtype: C 彈出)
+      this.getMessageList();
     },
   },
 };
