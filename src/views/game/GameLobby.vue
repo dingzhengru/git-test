@@ -155,6 +155,9 @@ export default {
     };
   },
   mounted() {
+    /*
+     * API: 電子遊戲 & 真人遊戲，兩者的方法是分開的(Category, GameList, GameUrl)
+     */
     const requestDataGetGameLobbyProduct = { Tag: this.productTag };
     getGameLobbyProduct(requestDataGetGameLobbyProduct).then(result => {
       console.log('[GameLobby]', result.RetObj.ProductList);
@@ -167,6 +170,7 @@ export default {
           return !oldProductList.includes(item.Lst_Proxy_Product_Key);
         })
         .map(item => {
+          //* 放置對應的 css
           if (item.Lst_Proxy_Product_Key == 1031) {
             //* RG-PNG電子
             item.class = 'ui-li-supply-1190';
@@ -188,6 +192,9 @@ export default {
           } else if (item.Lst_Proxy_Product_Key == 2400) {
             //* BBIN
             item.class = 'ui-li-supply-1120';
+          } else if (item.Lst_Proxy_Product_Key == 1030) {
+            //* 真人
+            item.class = 'ui-li-supply-1190';
           }
           return item;
         });
@@ -196,6 +203,11 @@ export default {
     });
   },
   methods: {
+    async getGameCategory(data) {
+      const result = await getGameLobbyCategory(data);
+      console.log('[GameLobby Category]', result.RetObj);
+      this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
+    },
     async getGameList(data) {
       const result = await getGameLobbyGameList(data);
       console.log('[GameLobby GameList]', result.RetObj);
@@ -204,7 +216,9 @@ export default {
     async getGameUrl(data) {
       const result = await getGameUrl(data);
       console.log('[GameLobby GameList]', data, result);
-      // this.gameList = result.RetObj.JsonGameList;
+      if (result.Code == 200) {
+        window.open(result.RetObj.RedirectUrl);
+      }
     },
     changePage(page) {
       this.pagination.page = page;
@@ -228,11 +242,7 @@ export default {
       immediate: true,
       handler() {
         const requestDataGetGameLobbyCategory = { Tag: this.productTag };
-        getGameLobbyCategory(requestDataGetGameLobbyCategory).then(result => {
-          console.log('[GameLobby Category]', result.RetObj);
-
-          this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
-        });
+        this.getGameCategory(requestDataGetGameLobbyCategory);
 
         const requestDataGetGameLobbyGameList = { Tag: this.productTag };
         this.getGameList(requestDataGetGameLobbyGameList);

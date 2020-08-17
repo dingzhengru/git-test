@@ -39,7 +39,7 @@ const routes = [
         redirect: { name: 'GameList' },
       },
       {
-        path: ':id/:key', //* query: { category } => 篩選類別 (ex: Hot Games)
+        path: ':type/:id/:key', //* query: { category } => 篩選類別 (ex: Hot Games)
         name: 'GameLobby',
         component: () => import('@/views/game/GameLobby'),
       },

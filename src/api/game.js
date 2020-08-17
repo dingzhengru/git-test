@@ -26,3 +26,12 @@ export async function getGameRedirectUrl(data) {
   const result = await axios.post(API_URL + '/Game/MGameRedirectUrl', data);
   return result.data;
 }
+
+/**
+ ** 真人遊戲
+ */
+
+export async function getLiveGameLobbyCategory(data) {
+  const result = await axios.post(API_URL + '/Game/MGetLiveLobbyMenu', data);
+  return result.data;
+}
