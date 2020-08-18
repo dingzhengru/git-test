@@ -76,9 +76,9 @@
             </div>
           </td>
         </tr>
-        <tr class="transfer__account-table__tr" v-for="product in productList" :key="product.Product_id">
-          <td class="transfer__account-table__th-1st">{{ product.Product_Name }}</td>
-          <td class="transfer__account-table__td-2nd">{{ numeral(product.Point).format('0,0.00') }}</td>
+        <tr class="transfer__account-table__tr" v-for="game in gamePointList" :key="game.Product_id">
+          <td class="transfer__account-table__th-1st">{{ game.Product_Name }}</td>
+          <td class="transfer__account-table__td-2nd">{{ numeral(game.Point).format('0,0.00') }}</td>
         </tr>
       </tbody>
     </table>
@@ -87,7 +87,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-// import { getAllGamePoint } from '@/api/user';
+import { getAllGamePoint } from '@/api/user';
 import { getTransferInfo } from '@/api/transaction-transfer';
 import numeral from 'numeral';
 
@@ -116,6 +116,7 @@ export default {
     return {
       numeral: numeral,
       productList: [],
+      gamePointList: [],
       from: 9999,
       to: -1,
       amount: 0,
@@ -179,9 +180,15 @@ export default {
         if (!this.token) {
           return;
         }
+
         getTransferInfo().then(result => {
-          console.log('[Transfer]', result);
+          console.log('[Transfer]', result.RetObj);
           this.productList = result.RetObj.Add_SourceList;
+        });
+
+        getAllGamePoint().then(result => {
+          console.log('[AllGamePoint]', result.RetObj);
+          this.gamePointList = result.RetObj;
         });
       },
     },

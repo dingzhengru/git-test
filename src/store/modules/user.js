@@ -1,7 +1,7 @@
 import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
 import numeral from 'numeral';
-import { register, login, logout } from '@/api/user';
+import { register, login, logout, getUserInfo } from '@/api/user';
 
 const state = {
   isLoggedIn: false,
@@ -55,33 +55,41 @@ const mutations = {
 const actions = {
   // eslint-disable-next-line
   async register({ commit }, data) {
-    const responseData = await register(data);
+    const responseDataRegister = await register(data);
 
-    console.log('[Register Response]', responseData);
+    console.log('[Register Response]', responseDataRegister);
 
-    if (responseData.Code == 200) {
-      router.replace({ name: 'Login' });
+    if (responseDataRegister.Code == 200) {
+      const responseDataUserInfo = await getUserInfo();
+
+      commit('setUsername', responseDataUserInfo.RetObj.Lst_Account);
+      commit('setTotal', numeral(responseDataUserInfo.RetObj.Lst_Point).format('0,0.00'));
+      commit('setRoll', responseDataUserInfo.RetObj.Lst_PI_BetAmount);
+      commit('setVip', responseDataUserInfo.RetObj.Lst_PI_Level);
+      commit('setIsAccessed', responseDataUserInfo.RetObj.Lst_Account_Open); // * 設置是否已開通
+      commit('setIsLoggedIn', true);
+
+      router.replace({ name: 'Home' });
       return '';
     } else {
-      return responseData.ErrMsg;
+      return responseDataRegister.ErrMsg;
     }
   },
   async login({ commit }, user) {
-    const responseData = await login(user);
+    const responseDataLogin = await login(user);
 
-    console.log('[Login Response]', responseData.RetObj);
+    console.log('[Login Response]', responseDataLogin.RetObj);
 
-    commit('setUsername', responseData.RetObj.Lst_Account);
-    commit('setTotal', numeral(responseData.RetObj.Lst_Point).format('0,0.00'));
-    commit('setRoll', responseData.RetObj.Lst_PI_BetAmount);
-    commit('setVip', responseData.RetObj.Lst_PI_Level);
-    commit('setIsAccessed', responseData.RetObj.Lst_Account_Open); // * 設置是否已開通
-
-    if (responseData.Code == 200) {
+    if (responseDataLogin.Code == 200) {
+      commit('setUsername', responseDataLogin.RetObj.Lst_Account);
+      commit('setTotal', numeral(responseDataLogin.RetObj.Lst_Point).format('0,0.00'));
+      commit('setRoll', responseDataLogin.RetObj.Lst_PI_BetAmount);
+      commit('setVip', responseDataLogin.RetObj.Lst_PI_Level);
+      commit('setIsAccessed', responseDataLogin.RetObj.Lst_Account_Open); // * 設置是否已開通
       commit('setIsLoggedIn', true);
       router.replace({ name: 'Home' });
     } else {
-      return responseData.ErrMsg;
+      return responseDataLogin.ErrMsg;
     }
   },
   async logout({ commit }) {

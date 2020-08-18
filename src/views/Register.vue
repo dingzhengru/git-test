@@ -37,9 +37,7 @@
             <select
               v-if="field.name == 'Add_BankId1'"
               class="register__form__field__select"
-              :class="{
-                'register__form__field__select--default': field.value == '',
-              }"
+              :class="{ 'register__form__field__select--default': field.value == '' }"
               :id="field.id"
               v-model="field.value"
             >
