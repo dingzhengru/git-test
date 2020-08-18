@@ -78,7 +78,7 @@ const actions = {
   async login({ commit }, user) {
     const responseDataLogin = await login(user);
 
-    console.log('[Login Response]', responseDataLogin.RetObj);
+    console.log('[Login Response]', responseDataLogin);
 
     if (responseDataLogin.Code == 200) {
       commit('setUsername', responseDataLogin.RetObj.Lst_Account);
@@ -88,9 +88,8 @@ const actions = {
       commit('setIsAccessed', responseDataLogin.RetObj.Lst_Account_Open); // * 設置是否已開通
       commit('setIsLoggedIn', true);
       router.replace({ name: 'Home' });
-    } else {
-      return responseDataLogin.ErrMsg;
     }
+    return responseDataLogin;
   },
   async logout({ commit }) {
     await logout();

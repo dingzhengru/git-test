@@ -46,6 +46,15 @@ axios.interceptors.response.use(
     if (error.response.status == 401 && error.response.data.Code == 201) {
       console.log('[Logout]', 'status code:401 && data.Code == 201');
       store.dispatch('user/logout');
+    } else if (
+      error.response.status == 500 &&
+      error.response.data.Code == 500 &&
+      error.response.data.ErrMsg == 'TokenError' &&
+      process.env.NODE_ENV === 'production'
+    ) {
+      store.dispatch('user/logout');
+    } else if (error.response.status == 501 && error.response.data.Code == 615) {
+      store.dispatch('user/logout');
     } else if (error.response.status == 401) {
       return error.response;
     } else {

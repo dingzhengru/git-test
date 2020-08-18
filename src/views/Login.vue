@@ -166,7 +166,15 @@ export default {
   methods: {
     async login() {
       console.log('[login]', this.user);
-      this.error = await this.$store.dispatch('user/login', this.user);
+      this.$store.commit('setIsLoading', true);
+      const resultLogin = await this.$store.dispatch('user/login', this.user);
+      this.$store.commit('setIsLoading', false);
+      
+      //* 203: CaptchaError
+      if (resultLogin.Code == 203) {
+        this.error = resultLogin.ErrMsg;
+        this.changeCaptcha();
+      }
     },
     changeCaptcha() {
       const requestDataCaptcha = { pageCode: 'MemberLogin' };

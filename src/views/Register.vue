@@ -452,8 +452,9 @@ export default {
       }
 
       console.log('[Register]', requestData);
-
+      this.$store.commit('setIsLoading', true);
       this.error = await this.$store.dispatch('user/register', requestData);
+      this.$store.commit('setIsLoading', false);
     },
     validateForm() {
       let passwordField, passwordCheckField;
