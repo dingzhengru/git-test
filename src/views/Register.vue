@@ -40,6 +40,7 @@
               :class="{
                 'register__form__field__select--default': field.value == '',
               }"
+              :id="field.id"
               v-model="field.value"
             >
               <!-- <option value="" selected>{{ $t(`register.${field.name}.placeholder`) }}</option> -->
@@ -118,7 +119,7 @@ export default {
         },
         {
           name: 'Add_Account',
-          id: '‘Add_Account',
+          id: 'Add_Account',
           ref: 'Add_Account',
           class: 'register__form__field--account',
           type: 'text',

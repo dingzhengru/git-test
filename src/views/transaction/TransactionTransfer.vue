@@ -4,23 +4,23 @@
       <div class="transfer__wallet">
         <span>{{ $t('transaction.transfer.field.from') }} </span>
         <select class="transfer__wallet__select ui-ddl" v-model="from">
-          <option :value="{}" selected>{{ $t('transaction.transfer.placeholder.from') }}</option>
-          <template v-for="product in productList">
-            <option :value="product.value" :key="product.name">
-              {{ product.name }}
+          <!-- <option :value="{}" selected>{{ $t('transaction.transfer.placeholder.from') }}</option> -->
+          <template v-for="product in fromList">
+            <option :value="product.Product_id" :key="product.Product_id">
+              {{ product.Product_Name }}
             </option>
 
-            <template v-if="product.children && product.children.length > 0">
+            <!-- <template v-if="product.children && product.children.length > 0">
               <optgroup v-for="(child, index) in product.children" :key="index" :label="child"></optgroup>
-            </template>
+            </template> -->
           </template>
         </select>
 
         <span> {{ $t('transaction.transfer.field.to') }} </span>
         <select class="transfer__wallet__select ui-ddl" v-model="to">
-          <option :value="{}" selected>{{ $t('transaction.transfer.placeholder.to') }} </option>
-          <option value="" v-for="product in toList" :key="product.name">
-            {{ product.name }}
+          <option :value="-1" selected v-if="from == 9999">{{ $t('transaction.transfer.placeholder.to') }} </option>
+          <option :value="product.Product_id" v-for="product in toList" :key="product.Product_id">
+            {{ product.Product_Name }}
           </option>
         </select>
       </div>
@@ -87,7 +87,8 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getAllGamePoint } from '@/api/user';
+// import { getAllGamePoint } from '@/api/user';
+import { getTransferInfo } from '@/api/transaction-transfer';
 import numeral from 'numeral';
 
 import VueSlider from 'vue-slider-component';
@@ -100,61 +101,23 @@ export default {
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss', 'token']),
+    fromList() {
+      return this.productList;
+    },
     toList() {
-      return this.productList.filter(item => item.name != 'Wallet');
+      if (this.from == 9999) {
+        return this.productList.filter(item => item.Product_id != 9999);
+      } else {
+        return this.productList.filter(item => item.Product_id == 9999);
+      }
     },
   },
   data() {
     return {
       numeral: numeral,
       productList: [],
-      // productList: [
-      //   {
-      //     name: 'wallet',
-      //     text: 'transaction.transfer.table.wallet',
-      //     value: '9999',
-      //     amount: 1000000,
-      //   },
-      //   {
-      //     name: 'SABA',
-      //     text: 'transaction.transfer.table.SABA',
-      //     value: '1080',
-      //     amount: 2000.22,
-      //   },
-      //   {
-      //     name: 'BBIN',
-      //     text: 'transaction.transfer.table.BBIN',
-      //     value: '1080',
-      //     amount: 333333.3,
-      //   },
-      //   {
-      //     name: 'JDB',
-      //     text: 'transaction.transfer.table.JDB',
-      //     value: '1180',
-      //     amount: 44444.444,
-      //   },
-      //   {
-      //     name: 'RG',
-      //     text: 'transaction.transfer.table.RG',
-      //     value: '1190',
-      //     amount: 55555.55,
-      //     children: ['☑ MG+ RNG', ' ☑ PNG', ' ☑ Gclub', '☑ DS RNG'],
-      //   },
-      //   {
-      //     name: 'CQ9',
-      //     text: 'transaction.transfer.table.CQ9',
-      //     value: '1200',
-      //     amount: 666666,
-      //   },
-      //   {
-      //     name: 'SBO',
-      //     text: 'transaction.transfer.table.SBO',
-      //     value: '1220',
-      //     amount: 7777,
-      //   },
-      // ],
-      from: {},
-      to: {},
+      from: 9999,
+      to: -1,
       amount: 0,
       totalAmount: 1000000,
       rangeOptions: {
@@ -216,11 +179,20 @@ export default {
         if (!this.token) {
           return;
         }
-        getAllGamePoint().then(result => {
-          console.log('[AllGamePoint]', result);
-          this.productList = result.RetObj;
+        getTransferInfo().then(result => {
+          console.log('[Transfer]', result);
+          this.productList = result.RetObj.Add_SourceList;
         });
       },
+    },
+    from() {
+      if (this.from != 9999) {
+        //* 當 from 選擇非錢包時，to 列表會只剩下錢包
+        this.to = 9999;
+      } else if (this.from == 9999 && this.to == 9999) {
+        //* 當 from 選錢包，但 to 也是錢包時
+        this.to = -1;
+      }
     },
   },
 };
