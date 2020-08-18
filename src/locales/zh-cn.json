@@ -457,7 +457,8 @@
         },
         "button": {
           "search": "查询"
-        }
+        },
+        "notice": ""
       },
       "bonus": {
         "title": "红利纪录",
@@ -466,7 +467,8 @@
           "bindWallet": "绑定钱包",
           "issue": "发放红利",
           "datetime": "时间"
-        }
+        },
+        "notice": ""
       },
       "lottery": {
         "title": "开奖纪绿",
@@ -475,7 +477,8 @@
           "status": "奖品发放",
           "type": "奖品类型",
           "datetime": "抽奖日期"
-        }
+        },
+        "notice": ""
       },
       "withdrawalRestriction": {
         "title": "提取限制",
@@ -484,7 +487,8 @@
           "restriction": "限制",
           "notRolloverExchange": "未洗码量",
           "rolloverDeadline": "洗码期限"
-        }
+        },
+        "notice": ""
       },
       "adjustment": {
         "title": "调整记录",
@@ -493,7 +497,8 @@
           "description": "调整问题描述",
           "point": "调整点数",
           "datetime": "调整时间"
-        }
+        },
+        "notice": ""
       }
     },
     "recordDetail": {

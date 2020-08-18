@@ -6,13 +6,17 @@
       <form class="record-content__search-form" @submit.prevent="submitSearchRecordList" v-if="isSearchActive">
         <div class="record-content__search-form__field">
           <select class="record-content__search-form__field__select--product ui-ddl" v-model="search.product">
-            <option :value="{}" selected>{{ $t(`${i18nKey}.placeholder.product`) }}</option>
-            <option :value="product" v-for="product in productList" :key="product.sGameID">
+            <option value="" selected>{{ $t(`${i18nKey}.placeholder.product`) }}</option>
+            <option :value="product.value" v-for="product in productList" :key="product.sGameID">
               {{ product.Lst_Name }}
             </option>
           </select>
-          <select class="record-content__search-form__field__select--date-range ui-ddl">
-            <option :value="{}" selected>{{ $t(`${i18nKey}.placeholder.dateRange`) }}</option>
+          <select
+            class="record-content__search-form__field__select--date-range ui-ddl"
+            v-model="searchDateRange"
+            @change="changeSearchDateRange"
+          >
+            <option value="" selected>{{ $t(`${i18nKey}.placeholder.dateRange`) }}</option>
             <option :value="range.value" v-for="range in searchDateRangeList" :key="range.name">
               {{ $t(`${i18nKey}.dateRange.${range.name}`) }}
             </option>
@@ -24,6 +28,7 @@
             class="record-content__search-form__field__input--date-from ui-ipt"
             type="date"
             v-model="search.dateFrom"
+            @change="searchDateRange = ''"
           />
         </div>
         <div class="record-content__search-form__field">
@@ -32,6 +37,7 @@
             class="record-content__search-form__field__input--date-to ui-ipt"
             type="date"
             v-model="search.dateTo"
+            :max="dayjs().format('YYYY-MM-DD')"
           />
         </div>
         <div class="record-content__search-form__button-div">
@@ -78,7 +84,7 @@
         </li>
       </ul>
     </div>
-    <p class="record-content__notice">{{ notice }}</p>
+    <p class="record-content__notice">{{ $t(`${i18nKey}.notice`) }}</p>
     <AppPagination
       v-if="isPageActive"
       :length="list.length"
@@ -98,8 +104,10 @@ import {
   getRecordTransfer,
   getRecordBonus,
   getRecordLottery,
+  getRecordAdjustment,
 } from '@/api/record';
 import numeral from 'numeral';
+import dayjs from 'dayjs';
 export default {
   name: 'TransactionRecordContent',
   components: {
@@ -151,12 +159,11 @@ export default {
   data() {
     return {
       numeral: numeral,
+      dayjs: dayjs,
       list: [],
-      title: '',
       detailKey: '', //* 放 detail link 的欄位名稱
-      notice: '', //* 最下方的小字
-      isSearchActive: false,
-      isPageActive: false,
+      isPageActive: false, //* 是否有分頁
+      isSearchActive: false, //* 是否有搜尋
       productList: [],
       notShowKeyList: ['id', 'isSuccess'],
       searchDateRangeList: [
@@ -173,8 +180,9 @@ export default {
           value: 30,
         },
       ],
+      searchDateRange: '',
       search: {
-        product: {},
+        product: '',
         dateFrom: '',
         dateTo: '',
       },
@@ -185,6 +193,12 @@ export default {
     };
   },
   methods: {
+    changeSearchDateRange() {
+      this.search.dateTo = dayjs().format('YYYY-MM-DD');
+      this.search.dateFrom = dayjs()
+        .subtract(this.searchDateRange, 'day')
+        .format('YYYY-MM-DD');
+    },
     submitSearchRecordList() {
       console.log('submitSearchRecordList', this.search);
     },
@@ -264,9 +278,9 @@ export default {
             //     detail: 'Successful',
             //   },
             // ];
-            this.title = 'Deposit Record';
+            // this.title = 'Deposit Record';
             this.detailKey = 'detail';
-            this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
+            // this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
             break;
           }
           case 'withdrawal': {
@@ -313,9 +327,9 @@ export default {
             //     detail: 'Successful',
             //   },
             // ];
-            this.title = 'Withdrawals Record';
+            // this.title = 'Withdrawals Record';
             this.detailKey = 'detail';
-            this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
+            // this.notice = `Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger`;
             break;
           }
           case 'transfer': {
@@ -370,7 +384,7 @@ export default {
                 amount: 1122,
               },
             ];
-            this.title = 'Transfer Record';
+            // this.title = 'Transfer Record';
             this.detailKey = 'amount';
             this.isSearchActive = true;
             this.isPageActive = true;
@@ -427,7 +441,7 @@ export default {
             //     datetime: '2020-07-22 11:13:42',
             //   },
             // ];
-            this.title = 'Bonus Record';
+            // this.title = 'Bonus Record';
             this.isSearchActive = false;
             this.isPageActive = true;
             break;
@@ -477,7 +491,7 @@ export default {
             //     datetime: '2020-07-22 13:41:52',
             //   },
             // ];
-            this.title = 'Lottery Record';
+            // this.title = 'Lottery Record';
             this.detailKey = 'lotteryStatus';
             this.isSearchActive = false;
             this.isPageActive = true;
@@ -493,23 +507,49 @@ export default {
                 rolloverDeadline: '2021-2-6',
               },
             ];
-            this.title = 'Withdrawal Restriction';
+            // this.title = 'Withdrawal Restriction';
             this.detailKey = 'restriction';
             this.isSearchActive = false;
             this.isPageActive = true;
             break;
           }
           case 'adjustment': {
-            this.list = [
+            const requestDataRecordAdjustment = { Page: 1 };
+
+            getRecordAdjustment(requestDataRecordAdjustment).then(result => {
+              console.log('[RecordAdjustment]', result);
+            });
+
+            const responseList = [
               {
-                id: '000',
-                status: 'Deduction from Points',
-                description: 'description',
-                point: -1000,
-                datetime: '2020-07-21 11:20:24',
+                Lst_TransTime: '2020-08-14T13:22:52.72',
+                Lst_PaymentType: '补点',
+                Lst_Memo: 'test',
+                Lst_Amount: 50.0,
               },
             ];
-            this.title = 'Adjustment Record';
+
+            this.list = responseList.map(item => {
+              const newItem = {};
+              // newItem.id = item.Lst_TransID;
+              // newItem.isSuccess = item.Lst_PrizeName;
+              newItem.status = item.Lst_PaymentType;
+              newItem.description = item.Lst_Memo;
+              newItem.point = item.Lst_Amount;
+              newItem.datetime = item.Lst_TransTime.replace('T', ' ');
+              return newItem;
+            });
+
+            // this.list = [
+            //   {
+            //     id: '000',
+            //     status: 'Deduction from Points',
+            //     description: 'description',
+            //     point: -1000,
+            //     datetime: '2020-07-21 11:20:24',
+            //   },
+            // ];
+            // this.title = 'Adjustment Record';
             this.isSearchActive = false;
             this.isPageActive = true;
             break;

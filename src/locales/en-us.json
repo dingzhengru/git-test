@@ -457,7 +457,8 @@
         },
         "button": {
           "search": "Search"
-        }
+        },
+        "notice": ""
       },
       "bonus": {
         "title": "Bonus Record",
@@ -466,7 +467,8 @@
           "bindWallet": "Binding Purse",
           "issue": "Bonus Issue",
           "datetime": "Time"
-        }
+        },
+        "notice": ""
       },
       "lottery": {
         "title": "Lottery Record",
@@ -475,7 +477,8 @@
           "status": "Status",
           "type": "Type",
           "datetime": "Date"
-        }
+        },
+        "notice": ""
       },
       "withdrawalRestriction": {
         "title": "Withdrawal Restriction",
@@ -484,7 +487,8 @@
           "restriction": "Restriction",
           "notRolloverExchange": "Non-rollover Exchange Volume",
           "rolloverDeadline": "Deadline of Rollover Exchange"
-        }
+        },
+        "notice": ""
       },
       "adjustment": {
         "title": "Adjustment Record",
@@ -493,7 +497,8 @@
           "description": "Adjustment Description",
           "point": "Adjustment points",
           "datetime": "Adjustment time"
-        }
+        },
+        "notice": ""
       }
     },
     "recordDetail": {

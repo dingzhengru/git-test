@@ -25,3 +25,8 @@ export async function getRecordLottery(data) {
   const result = await axios.post(API_URL + '/PointRecord/LuckyWheelLotteryResult', data);
   return result.data;
 }
+
+export async function getRecordAdjustment(data) {
+  const result = await axios.post(API_URL + '/PointRecord/Adjustment', data);
+  return result.data;
+}

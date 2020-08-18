@@ -106,7 +106,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getGameLobbyProduct, getGameLobbyCategory, getGameLobbyGameList, getGameUrl } from '@/api/game';
+import {
+  getGameLobbyProduct,
+  getGameLobbyCategory,
+  getGameLobbyGameList,
+  getGameUrl,
+  getLiveGameLobbyCategory,
+} from '@/api/game';
 
 export default {
   name: 'GameList',
@@ -143,6 +149,12 @@ export default {
         {
           Lst_Category: 'Hot Games',
           Lst_GameName: 'hot',
+        },
+      ],
+      defaultCategoryListLiveGame: [
+        {
+          Lst_Category: '',
+          Lst_GameName: 'all',
         },
       ],
       search: {
@@ -205,19 +217,30 @@ export default {
   methods: {
     async getGameCategory(data) {
       const result = await getGameLobbyCategory(data);
-      console.log('[GameLobby Category]', result.RetObj);
-      this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
+      if (result.Code == 200) {
+        this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
+        console.log('[GameLobby Category]', result.RetObj);
+      }
     },
     async getGameList(data) {
       const result = await getGameLobbyGameList(data);
-      console.log('[GameLobby GameList]', result.RetObj);
-      this.gameList = result.RetObj.JsonGameList;
+      if (result.Code == 200) {
+        this.gameList = result.RetObj.JsonGameList;
+        console.log('[GameLobby GameList]', result.RetObj);
+      }
     },
     async getGameUrl(data) {
       const result = await getGameUrl(data);
       console.log('[GameLobby GameList]', data, result);
       if (result.Code == 200) {
         window.open(result.RetObj.RedirectUrl);
+      }
+    },
+    async getLiveGameCategory(data) {
+      const result = await getLiveGameLobbyCategory(data);
+      if (result.Code == 200) {
+        this.categoryList = this.defaultCategoryListLiveGame.concat(result.RetObj.gameCategoryList);
+        console.log('[GameLobby Category]', result.RetObj);
       }
     },
     changePage(page) {
@@ -242,8 +265,11 @@ export default {
       immediate: true,
       handler() {
         const requestDataGetGameLobbyCategory = { Tag: this.productTag };
-        this.getGameCategory(requestDataGetGameLobbyCategory);
-
+        if (this.$route.params.type == 1) {
+          this.getLiveGameCategory(requestDataGetGameLobbyCategory);
+        } else if (this.$route.params.type == 2) {
+          this.getGameCategory(requestDataGetGameLobbyCategory);
+        }
         const requestDataGetGameLobbyGameList = { Tag: this.productTag };
         this.getGameList(requestDataGetGameLobbyGameList);
       },
