@@ -1,9 +1,9 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <img :src="logo" class="header__logo__img" id="headerLogo" alt="" />
+      <img :src="logo" class="header__logo__img" :id="idMapper.header.logo" alt="" />
     </div>
-    <router-link to="/" class="header__link--home" id="mainPage"></router-link>
+    <router-link to="/" class="header__link--home" :id="idMapper.header.link.home"></router-link>
     <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
     <HeaderMenuAuth
       v-if="isLoggedIn"
@@ -22,6 +22,8 @@
 <script>
 // import HeaderMenu from './HeaderMenu';
 // import HeaderMenuAuth from './HeaderMenuAuth';
+import idMapper from '@/idMapper';
+
 export default {
   name: 'AppHeader',
   components: {
@@ -64,6 +66,7 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       logoUrl: '',
     };
   },

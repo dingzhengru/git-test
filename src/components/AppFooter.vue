@@ -7,12 +7,12 @@
           { 'footer__ul__li--active': $route.name == item.link || item.otherActivePath.includes($route.name) },
           item.class,
         ]"
-        :id="item.id"
+        :id="idMapper.footer[item.name]"
         v-for="item in list"
         :key="item.name"
       >
         <router-link :to="{ name: item.link }" class="footer__ul__li__link">
-          {{ $t(item.name) }}
+          {{ $t(`footer.${item.name}`) }}
         </router-link>
       </li>
     </ul>
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import idMapper from '@/idMapper';
+
 export default {
   name: 'AppFooter',
   props: {
@@ -35,33 +37,30 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       hideFooterList: ['Agreement'],
       list: [],
       noAuthList: [
         {
-          id: 'member',
-          name: 'footer.member',
+          name: 'member',
           link: 'UserProfile',
           class: 'footer__ul__li--member',
           otherActivePath: [],
         },
         {
-          id: 'login',
-          name: 'footer.login',
+          name: 'login',
           link: 'Login',
           class: 'footer__ul__li--regist',
           otherActivePath: ['Register'],
         },
         {
-          id: 'event',
-          name: 'footer.promotion',
+          name: 'promotion',
           link: 'Promotion',
           class: 'footer__ul__li--event',
           otherActivePath: ['PromotionContent'],
         },
         {
-          id: 'service',
-          name: 'footer.contact',
+          name: 'contact',
           link: 'Contact',
           class: 'footer__ul__li--service',
           otherActivePath: [],
@@ -69,15 +68,13 @@ export default {
       ],
       authList: [
         {
-          id: 'member',
-          name: 'footer.member',
+          name: 'member',
           link: 'UserProfile',
           class: 'footer__ul__li--member',
           otherActivePath: ['UserChangePassword'],
         },
         {
-          id: 'transaction',
-          name: 'footer.transaction',
+          name: 'transaction',
           link: 'TransactionDeposit',
           class: 'footer__ul__li--transaction',
           otherActivePath: [
@@ -89,15 +86,13 @@ export default {
           ],
         },
         {
-          id: 'event',
-          name: 'footer.promotion',
+          name: 'promotion',
           link: 'Promotion',
           class: 'footer__ul__li--event',
           otherActivePath: ['PromotionContent'],
         },
         {
-          id: 'service',
-          name: 'footer.contact',
+          name: 'contact',
           link: 'Contact',
           class: 'footer__ul__li--service',
           otherActivePath: [],

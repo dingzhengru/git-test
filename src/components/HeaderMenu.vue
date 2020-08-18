@@ -3,7 +3,7 @@
     <a
       href="javascript:;"
       class="header-menu__lang-toggle"
-      id="langOpen"
+      :id="idMapper.header.link.lang"
       @click="isShowLangList = !isShowLangList"
     ></a>
     <transition name="slide">
@@ -13,7 +13,7 @@
             <a
               href="javascript:;"
               class="header-menu__lang-menu__ul__li__link"
-              :id="langItem.id"
+              :id="idMapper.header[langItem.Lst_Locales_Code]"
               v-if="langItem.Lst_Locales_Code != lang && langItem.Lst_Is_Enable"
               :class="{
                 cn: langItem.Lst_Locales_Code == 'zh-cn',
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import idMapper from '@/idMapper';
+
 export default {
   name: 'HeaderMenu',
   props: {
@@ -45,6 +47,7 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       isShowLangList: false,
     };
   },

@@ -18,7 +18,7 @@
     </div>
 
     <AppFooter :isLoggedIn="isLoggedIn"></AppFooter>
-
+    <AppLoadingOverlay :isLoading="isLoading"></AppLoadingOverlay>
   </div>
 </template>
 
@@ -28,13 +28,16 @@ import { getLangList, changeLang } from '@/api/lang';
 import { getUserInfo } from '@/api/user';
 import numeral from 'numeral';
 
-// import { getGameUrl } from '@/api/game';
+import AppHeader from '@/components/AppHeader';
+import AppFooter from '@/components/AppFooter';
+import AppLoadingOverlay from '@/components/AppLoadingOverlay';
 
 export default {
   name: 'App',
   components: {
-    AppHeader: () => import('@/components/AppHeader'),
-    AppFooter: () => import('@/components/AppFooter'),
+    AppHeader,
+    AppFooter,
+    AppLoadingOverlay,
   },
   computed: {
     ...mapGetters([
@@ -42,6 +45,7 @@ export default {
       'siteFullCss',
       'token',
       'lang',
+      'isLoading',
       'pwaInstallStatus',
       'pwaPrompt',
       'isLoggedIn',
@@ -147,20 +151,6 @@ export default {
           if (result.Code == 200) {
             this.langList = result.RetObj;
 
-            this.langList = this.langList.map(item => {
-              if (item.Lst_Locales_Code == 'th-th') {
-                item.id = 'thTh';
-              } else if (item.Lst_Locales_Code == 'en-us') {
-                item.id = 'enUs';
-              } else if (item.Lst_Locales_Code == 'zh-cn') {
-                item.id = 'zhCn';
-              } else if (item.Lst_Locales_Code == 'my-mm') {
-                item.id = 'myMm';
-              }
-
-              return item;
-            });
-
             console.log('[Lang]', this.langList);
           }
         });
@@ -181,7 +171,7 @@ export default {
           this.getUserInfo();
         }
       },
-    }
+    },
   },
 };
 </script>

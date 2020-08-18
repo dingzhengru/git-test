@@ -8,7 +8,7 @@
             <input
               v-if="field.name != 'Add_BankId1'"
               class="register__form__field__input"
-              :id="field.id"
+              :id="idMapper.register.input[field.name]"
               :ref="field.ref"
               :type="field.type"
               :placeholder="$t(`register.${field.name}.placeholder`)"
@@ -24,7 +24,7 @@
             <img
               v-if="field.name == 'CaptchaValue' && captchaImage.ImgBase64 != ''"
               class="register__form__field__image--code"
-              id="Add_CaptchaValue_Image"
+              :id="idMapper.register.image.captcha"
               :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
               alt="MvcCaptcha"
               title="Refrash Captcha"
@@ -38,7 +38,7 @@
               v-if="field.name == 'Add_BankId1'"
               class="register__form__field__select"
               :class="{ 'register__form__field__select--default': field.value == '' }"
-              :id="field.id"
+              :id="idMapper.register.input[field.name]"
               v-model="field.value"
             >
               <!-- <option value="" selected>{{ $t(`register.${field.name}.placeholder`) }}</option> -->
@@ -57,10 +57,20 @@
     </form>
 
     <div class="register__form__button-div">
-      <button type="submit" class="register__form__send ui-btn" id="btnSubmit" form="register-form">
+      <button
+        type="submit"
+        class="register__form__send ui-btn"
+        :id="idMapper.register.button.submit"
+        form="register-form"
+      >
         {{ $t('ui.button.submit') }}
       </button>
-      <button type="reset" class="register__form__reset ui-btn" id="btnReset" @click.prevent="resetForm">
+      <button
+        type="reset"
+        class="register__form__reset ui-btn"
+        :id="idMapper.register.button.reset"
+        @click.prevent="resetForm"
+      >
         {{ $t('ui.button.reset') }}
       </button>
     </div>
@@ -83,6 +93,7 @@ import { getCaptcha } from '@/api/captcha';
 import { getRegisterFieldList } from '@/api/register';
 import { getTokenAndPublicKey } from '@/api/user';
 import dayjs from 'dayjs';
+import idMapper from '@/idMapper';
 
 export default {
   name: 'Register',
@@ -103,10 +114,10 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       fieldList: [
         {
           name: 'Add_RelatedAccount',
-          id: 'Add_RelatedAccount',
           class: 'register__form__field--recommend',
           type: 'text',
           error: '',
@@ -117,7 +128,6 @@ export default {
         },
         {
           name: 'Add_Account',
-          id: 'Add_Account',
           ref: 'Add_Account',
           class: 'register__form__field--account',
           type: 'text',
@@ -131,7 +141,6 @@ export default {
         },
         {
           name: 'Add_Password',
-          id: 'Add_Password',
           class: 'register__form__field--password',
           type: 'password',
           error: '',
@@ -144,7 +153,6 @@ export default {
         },
         {
           name: 'Add_PasswordCheck',
-          id: 'Add_PasswordCheck',
           class: 'register__form__field--password',
           type: 'password',
           error: '',
@@ -157,7 +165,6 @@ export default {
         },
         {
           name: 'Add_Mobile',
-          id: 'Add_Mobile',
           class: 'register__form__field--callphone',
           type: 'tel',
           error: '',
@@ -170,7 +177,6 @@ export default {
         },
         {
           name: 'Add_Email',
-          id: 'Add_Email',
           class: 'register__form__field--name',
           type: 'email',
           error: '',
@@ -183,7 +189,6 @@ export default {
         },
         {
           name: 'Add_Line',
-          id: 'Add_Line',
           class: 'register__form__field--name',
           type: 'text',
           error: '',
@@ -194,7 +199,6 @@ export default {
         },
         {
           name: 'Add_Skype',
-          id: 'Add_Skype',
           class: 'register__form__field--name',
           type: 'text',
           error: '',
@@ -205,7 +209,6 @@ export default {
         },
         {
           name: 'Add_QQ',
-          id: 'Add_QQ',
           class: 'register__form__field--name',
           type: 'text',
           error: '',
@@ -216,7 +219,6 @@ export default {
         },
         {
           name: 'Add_FirstName',
-          id: 'Add_FirstName',
           class: 'register__form__field--name',
           type: 'text',
           error: '',
@@ -229,7 +231,6 @@ export default {
         },
         {
           name: 'Add_LastName',
-          id: 'Add_LastName',
           class: 'register__form__field--name',
           type: 'text',
           error: '',
@@ -242,7 +243,6 @@ export default {
         },
         {
           name: 'Add_RealName',
-          id: 'Add_RealName',
           class: 'register__form__field--name',
           type: 'text',
           error: '',
@@ -255,7 +255,6 @@ export default {
         },
         {
           name: 'Add_NickName',
-          id: 'Add_NickName',
           class: 'register__form__field--name',
           type: 'text',
           error: '',
@@ -266,7 +265,6 @@ export default {
         },
         {
           name: 'Add_Birthday',
-          id: 'Add_Birthday',
           class: 'register__form__field--name',
           type: 'date',
           error: '',
@@ -281,7 +279,6 @@ export default {
         },
         {
           name: 'Add_BankId1',
-          id: 'Add_BankId1',
           class: 'register__form__field--name',
           type: 'select',
           error: '',
@@ -291,7 +288,6 @@ export default {
         },
         {
           name: 'Add_BankBranchName1',
-          id: 'Add_BankBranchName1',
           class: 'register__form__field--name',
           type: 'text',
           error: '',
@@ -304,7 +300,6 @@ export default {
         },
         {
           name: 'Add_BankAccount1',
-          id: 'Add_BankAccount1',
           class: 'register__form__field--account',
           type: 'text',
           error: '',
@@ -317,7 +312,6 @@ export default {
         },
         {
           name: 'Add_Withdrawals_Password',
-          id: 'Add_Withdrawals_Password',
           class: 'register__form__field--password',
           type: 'password',
           error: '',
@@ -330,7 +324,6 @@ export default {
         },
         {
           name: 'Add_Withdrawals_CheckPassword',
-          id: 'Add_Withdrawals_CheckPassword',
           class: 'register__form__field--password',
           type: 'password',
           error: '',
@@ -343,7 +336,6 @@ export default {
         },
         {
           name: 'CaptchaValue',
-          id: 'Add_CaptchaValue',
           class: 'register__form__field--code',
           type: 'tel',
           error: '',
@@ -391,9 +383,14 @@ export default {
     };
   },
   mounted() {
+    //* 設置 loading
+    this.$store.commit('setIsLoading', true);
     this.changeCaptcha();
 
     getRegisterFieldList().then(result => {
+      //* 解除 loading
+      this.$store.commit('setIsLoading', false);
+
       this.bankList = result.RetObj.Add_BankList;
 
       console.log('[Register]', result.RetObj);

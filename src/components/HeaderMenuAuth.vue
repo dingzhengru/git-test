@@ -13,6 +13,7 @@
       href="javascript:;"
       class="header-menu-auth__button"
       :class="{ 'header-menu-auth__button--open': !isShowMenu, 'header-menu-auth__button--close': isShowMenu }"
+      :id="idMapper.header.link.menu"
       @click="isShowMenu = !isShowMenu"
     ></a>
     <transition name="slide">
@@ -25,7 +26,7 @@
             @click="isShowMenu = false"
           >
             <router-link class="header-menu-auth__menu__route-ul__li__link" :to="{ name: route.link }">
-              {{ $t(route.name) }}
+              {{ $t(`header.menu.${route.name}`) }}
             </router-link>
           </li>
         </ul>
@@ -67,6 +68,8 @@
 </template>
 
 <script>
+import idMapper from '@/idMapper';
+
 export default {
   name: 'HeaderMenuAuth',
   props: {
@@ -97,30 +100,31 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       isShowMenu: false,
       routeList: [
         {
-          name: 'header.menu.profile',
+          name: 'profile',
           link: 'UserProfile',
         },
         {
-          name: 'header.menu.transaction',
+          name: 'transaction',
           link: 'TransactionDeposit',
         },
         {
-          name: 'header.menu.report',
+          name: 'report',
           link: 'ReportHome',
         },
         {
-          name: 'header.menu.notification',
+          name: 'notification',
           link: 'NotificationHome',
         },
         {
-          name: 'header.menu.promotion',
+          name: 'promotion',
           link: 'Promotion',
         },
         {
-          name: 'header.menu.about',
+          name: 'about',
           link: 'About',
         },
       ],

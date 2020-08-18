@@ -8,7 +8,7 @@
       <div class="login__form__field login__form__field--account">
         <input
           class="login__form__field__input"
-          id="UserName"
+          :id="idMapper.login.input.username"
           type="text"
           tabindex="1"
           required
@@ -21,7 +21,7 @@
       <div class="login__form__field login__form__field--password">
         <input
           class="login__form__field__input"
-          id="Password"
+          :id="idMapper.login.input.password"
           type="password"
           tabindex="2"
           required
@@ -34,7 +34,7 @@
       <div class="login__form__field login__form__field--code">
         <input
           class="login__form__field__input login__form__field__input--code"
-          id="CaptchaValue"
+          :id="idMapper.login.input.captcha"
           type="tel"
           tabindex="3"
           required
@@ -47,13 +47,10 @@
         />
         <img
           class="login__form__field__image--code"
-          id="MvcCaptcha"
+          :id="idMapper.login.image.captcha"
           :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
-          alt="MvcCaptcha"
-          title="Refrash Captcha"
           :width="captchaImage.Width"
           :height="captchaImage.Height"
-          border="0"
           v-if="captchaImage.ImgBase64 != ''"
           @click="changeCaptcha"
         />
@@ -69,12 +66,16 @@
         <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">{{ $t('login.rememberMe') }}</label>
       </div>
       <div class="login__form__link-div">
-        <router-link class="login__form__link login__form__link--regist" id="register" :to="{ name: 'Register' }">
+        <router-link
+          class="login__form__link login__form__link--regist"
+          :id="idMapper.login.link.register"
+          :to="{ name: 'Register' }"
+        >
           {{ $t('login.link.register') }}
         </router-link>
         <router-link
           class="login__form__link login__form__link--forget"
-          id="forgetPwd"
+          :id="idMapper.login.link.forgetPassword"
           :to="{ name: 'ForgetPassword' }"
         >
           {{ $t('login.link.forgetPassword') }}
@@ -110,7 +111,12 @@
         </a>
       </div>
 
-      <button class="ui-btn ui-btn-long login__form__submit" id="loginbtn" type="submit" form="LoginForm">
+      <button
+        class="ui-btn ui-btn-long login__form__submit"
+        :id="idMapper.login.button.submit"
+        type="submit"
+        form="LoginForm"
+      >
         {{ $t('login.button.login') }}
       </button>
     </form>
@@ -121,6 +127,8 @@
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
 import { getTokenAndPublicKey } from '@/api/user';
+import idMapper from '@/idMapper';
+
 export default {
   name: 'Login',
   computed: {
@@ -128,6 +136,7 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       error: '',
       user: {
         UserName: 'ding',

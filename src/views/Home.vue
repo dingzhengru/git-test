@@ -8,17 +8,17 @@
       @handleGameLink="handleGameLink"
     ></HomeGameBlock>
     <transition name="fade">
-      <div id="noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
+      <div :id="idMapper.home.noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
     </transition>
 
-    <div class="Box" id="alertbox" v-if="isShowAlertBox && alertMessageList.length > 0">
+    <div class="Box" v-if="isShowAlertBox && alertMessageList.length > 0">
       <div class="Boxinner">
         <h1 class="h1-tit">
           <p v-for="(message, index) in alertMessageList" :key="index">
             {{ message.Lst_Content }}
           </p>
         </h1>
-        <button id="CloseAlert" class="lnk-boxSubmit" @click="isShowAlertBox = false">OK</button>
+        <button class="lnk-boxSubmit" @click="isShowAlertBox = false">OK</button>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@ import { getSwiperList } from '@/api/swiper';
 import { getProductList } from '@/api/product';
 import { getGameRedirectUrl } from '@/api/game';
 import { getMessageList } from '@/api/alert';
-
+import idMapper from '@/idMapper';
 export default {
   name: 'Home',
   components: {
@@ -42,6 +42,7 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       isShowNoneLoginPopup: false,
       isShowAlertBox: false,
       alertMessageList: [],
@@ -82,25 +83,25 @@ export default {
         /* 設置 ID */
         this.productList = this.productList.map(item => {
           if (item.sGameID == '1080') {
-            item.id = 'SABA';
+            item.id = idMapper.home.product.saba;
           } else if (item.sGameID == '11902400-02') {
-            item.id = 'BBIN';
+            item.id = idMapper.home.product.bbin;
           } else if (item.sGameID == '11902100-02') {
-            item.id = 'DS';
+            item.id = idMapper.home.product.ds;
           } else if (item.sGameID == '11901030-01') {
-            item.id = 'liveGame';
+            item.id = idMapper.home.product.liveGame;
           } else if (item.sGameID == '11902300-02') {
-            item.id = 'JDB';
+            item.id = idMapper.home.product.jdb;
           } else if (item.sGameID == '11902200-02') {
-            item.id = 'CQ9';
+            item.id = idMapper.home.product.cq9;
           } else if (item.sGameID == '11901031-02') {
-            item.id = 'RGSlot';
+            item.id = idMapper.home.product.rgSlot;
           } else if (item.sGameID == '1190-04') {
-            item.id = 'RGLottery';
+            item.id = idMapper.home.product.rgLottery;
           } else if (item.sGameID == '11902602-02') {
-            item.id = 'MGPlus';
+            item.id = idMapper.home.product.mgplus;
           } else if (item.sGameID == '12203100-03') {
-            item.id = 'SBO';
+            item.id = idMapper.home.product.sbo;
           }
           return item;
         });

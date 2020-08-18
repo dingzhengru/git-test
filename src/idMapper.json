@@ -1,0 +1,87 @@
+{
+  "header": {
+    "logo": "headerLogo",
+    "en-us": "enUs",
+    "zh-cn": "zhCn",
+    "zh-tw": "zhTw",
+    "th-th": "thTh",
+    "my-mm": "myMm",
+    "link": {
+      "home": "mainPage",
+      "lang": "langOpen",
+      "menu": "menuOpen"
+    },
+    "menu": {
+      "profile": "changeAdvance",
+      "transaction": "deposit",
+      "report": "betHistory",
+      "notification": "news",
+      "promotion": "promotion",
+      "about": "gameIntro"
+    },
+    "button": {
+      "logout": "logout"
+    }
+  },
+  "footer": {
+    "member": "member",
+    "login": "login",
+    "transaction": "deposit",
+    "promotion": "event",
+    "contact": "service"
+  },
+  "home": {
+    "noneLoginPopup": "noneLoginPopup",
+    "product": {
+      "saba": "SABA",
+      "bbin": "BBIN",
+      "ds": "DS",
+      "liveGame": "liveGame",
+      "jdb": "JDB",
+      "cq9": "CQ9",
+      "rgSlot": "RGSlot",
+      "rgLottery": "RGLottery",
+      "mgplus": "MGPlus",
+      "sbo": "SBO"
+    }
+  },
+  "login": {
+    "input": {
+      "username": "UserName",
+      "password": "Password",
+      "captcha": "CaptchaValue"
+    },
+    "image": {
+      "captcha": "MvcCaptcha"
+    },
+    "link": {
+      "register": "register",
+      "forgetPassword": "forgetPwd"
+    },
+    "button": {
+      "submit": "loginbtn"
+    }
+  },
+  "register": {
+    "input": {
+      "Add_RelatedAccount": "Add_RelatedAccount",
+      "Add_Account": "Add_Account",
+      "Add_Password": "Add_Password",
+      "Add_PasswordCheck": "Add_PasswordCheck",
+      "Add_Mobile": "Add_Mobile",
+      "Add_Email": "Add_Email",
+      "Add_Line": "Add_Line",
+      "Add_FirstName": "Add_FirstName",
+      "Add_LastName": "Add_LastName",
+      "Add_NickName": "Add_NickName",
+      "CaptchaValue": "Add_CaptchaValue"
+    },
+    "image": {
+      "captcha": "MvcCaptcha"
+    },
+    "button": {
+      "submit": "btnSubmit",
+      "reset": "btnReset"
+    }
+  }
+}
