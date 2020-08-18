@@ -7,7 +7,11 @@
         <span class="deposit__main__field__title theme-input-header">{{ $t(field.title) }}</span>
 
         <template v-if="field.name == 'bankDeposit'">
-          <select class="deposit__main__field__select ui-ddl" v-model="bankDeposit">
+          <select
+            class="deposit__main__field__select ui-ddl"
+            :id="idMapper.transaction.deposit.field[field.name]"
+            v-model="bankDeposit"
+          >
             <option :value="{}" selected>{{ $t(field.placeholder) }}</option>
             <option :value="bank" v-for="bank in bankDepositList" :key="bank.value">
               {{ bank.bank }}
@@ -24,7 +28,11 @@
         </template>
 
         <template v-if="field.name == 'bankTransfer'">
-          <select class="deposit__main__field__select ui-ddl" v-model="bankTransfer">
+          <select
+            class="deposit__main__field__select ui-ddl"
+            :id="idMapper.transaction.deposit.field[field.name]"
+            v-model="bankTransfer"
+          >
             <option :value="{}" selected>{{ $t(field.placeholder) }}</option>
             <option :value="bank" v-for="bank in bankTransferList" :key="bank.value">
               {{ bank.name }}
@@ -37,7 +45,11 @@
         </template>
 
         <template v-if="field.name == 'method'">
-          <select class="deposit__main__field__select ui-ddl" v-model="method">
+          <select
+            class="deposit__main__field__select ui-ddl"
+            :id="idMapper.transaction.deposit.field[field.name]"
+            v-model="method"
+          >
             <option :value="{}">{{ $t(field.placeholder) }}</option>
             <option :value="method" v-for="methodItem in methodList" :key="methodItem.value">
               {{ methodItem.name }}
@@ -46,7 +58,13 @@
         </template>
 
         <template v-if="field.name == 'amount'">
-          <input class="ui-ipt" type="number" step="0.01" v-model="amount" />
+          <input
+            class="ui-ipt"
+            :id="idMapper.transaction.deposit.field[field.name]"
+            type="number"
+            step="0.01"
+            v-model="amount"
+          />
         </template>
 
         <template v-if="field.name == 'receipt'">
@@ -54,7 +72,7 @@
             {{ $t('transaction.deposit.button.upload') }}
             <input
               class="deposit__receipt-upload__input"
-              id="deposit__receipt-upload__input"
+              :id="idMapper.transaction.deposit.button.upload"
               type="file"
               accept=".jpg,.png"
               @change="onFileChange"
@@ -66,11 +84,15 @@
         </template>
 
         <template v-if="field.name == 'remark'">
-          <input class="ui-ipt" type="text" v-model="remark" />
+          <input class="ui-ipt" :id="idMapper.transaction.deposit.field[field.name]" type="text" v-model="remark" />
         </template>
 
         <template v-if="field.name == 'promotion'">
-          <select class="deposit__main__field__select ui-ddl" v-model="promotion">
+          <select
+            class="deposit__main__field__select ui-ddl"
+            :id="idMapper.transaction.deposit.field[field.name]"
+            v-model="promotion"
+          >
             <option :value="{}">{{ $t(field.placeholder) }}</option>
             <option :value="promotion" v-for="promotionItem in promotionList" :key="promotionItem.value">
               {{ promotionItem.name }}
@@ -100,6 +122,8 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import idMapper from '@/idMapper';
+
 export default {
   name: 'TransactionDeposit',
   computed: {
@@ -107,6 +131,7 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       fieldList: [
         {
           name: 'bankDeposit',

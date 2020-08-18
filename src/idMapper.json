@@ -83,5 +83,54 @@
       "submit": "btnSubmit",
       "reset": "btnReset"
     }
+  },
+  "transaction": {
+    "nav": {
+      "deposit": "deposit",
+      "withdrawal": "withdrawals",
+      "transfer": "transferPoint",
+      "record": "recordList"
+    },
+    "deposit": {
+      "field": {
+        "bankDeposit": "select_Method2_PayBank",
+        "bankTransfer": "select_Method2_WebATMURL",
+        "method": "Add_SDM_Key_Method02",
+        "amount": "Add_Pay_Money_Method02",
+        "remark": "Add_Pay_Memo_Method02",
+        "promotion": "Add_Activity_Method02"
+      },
+      "button": {
+        "upload": "upfile",
+        "submit": "dipositsubmit_Method02"
+      }
+    },
+    "withdrawal": {
+      "field": {
+        "amount": "Add_WithdrawalsPoint",
+        "password": "Add_Withdrawals_Password"
+      },
+      "button": {
+        "submit": "Withdrawals"
+      }
+    },
+    "transfer": {
+      "field": {
+        "from": "Add_Source",
+        "to": "Add_Destination"
+      },
+      "button": {
+        "transfer": "pointtransfersubmit"
+      }
+    },
+    "record": {
+      "deposit": "depositRecord",
+      "withdrawal": "withdrawalsRecord",
+      "transfer": "transferPointRecord",
+      "bonus": "activityTransactionRecord",
+      "lottery": "lotteryRecord",
+      "withdrawalRestriction": "activityWashcodeList",
+      "adjustment": "adjustmentRecord"
+    }
   }
 }

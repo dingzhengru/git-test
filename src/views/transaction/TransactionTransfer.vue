@@ -3,7 +3,7 @@
     <div class="transfer__box theme-content-box">
       <div class="transfer__wallet">
         <span>{{ $t('transaction.transfer.field.from') }} </span>
-        <select class="transfer__wallet__select ui-ddl" v-model="from">
+        <select class="transfer__wallet__select ui-ddl" :id="idMapper.transaction.transfer.field.from" v-model="from">
           <!-- <option :value="{}" selected>{{ $t('transaction.transfer.placeholder.from') }}</option> -->
           <template v-for="product in fromList">
             <option :value="product.Product_id" :key="product.Product_id">
@@ -17,7 +17,7 @@
         </select>
 
         <span> {{ $t('transaction.transfer.field.to') }} </span>
-        <select class="transfer__wallet__select ui-ddl" v-model="to">
+        <select class="transfer__wallet__select ui-ddl" :id="idMapper.transaction.transfer.field.to" v-model="to">
           <option :value="-1" selected v-if="from == 9999">{{ $t('transaction.transfer.placeholder.to') }} </option>
           <option :value="product.Product_id" v-for="product in toList" :key="product.Product_id">
             {{ product.Product_Name }}
@@ -55,7 +55,11 @@
         </table>
       </div>
       <div class="transfer__button-div">
-        <button type="submit" class="transfer__button--transfer ui-btn ui-btn-long">
+        <button
+          type="submit"
+          class="transfer__button--transfer ui-btn ui-btn-long"
+          :id="idMapper.transaction.transfer.button.transfer"
+        >
           {{ $t('transaction.transfer.button.transfer') }}
         </button>
       </div>
@@ -90,6 +94,7 @@ import { mapGetters } from 'vuex';
 import { getAllGamePoint } from '@/api/user';
 import { getTransferInfo } from '@/api/transaction-transfer';
 import numeral from 'numeral';
+import idMapper from '@/idMapper';
 
 import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/antd.css';
@@ -114,6 +119,7 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       numeral: numeral,
       productList: [],
       gamePointList: [],

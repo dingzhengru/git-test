@@ -8,6 +8,11 @@
           active: route.link == $route.name || (route.otherActivePath && route.otherActivePath.includes($route.name)),
         },
       ]"
+      :id="
+        route.id.split('.').reduce((item, key) => {
+          return item[key];
+        }, idMapper)
+      "
       v-for="route in list"
       :key="route.name"
     >
@@ -19,6 +24,8 @@
 </template>
 
 <script>
+import idMapper from '@/idMapper';
+
 export default {
   name: 'AppNavigationTab',
   props: {
@@ -26,6 +33,11 @@ export default {
       type: Array,
       default: () => [],
     },
+  },
+  data() {
+    return {
+      idMapper: idMapper,
+    };
   },
 };
 </script>

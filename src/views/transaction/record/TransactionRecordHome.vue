@@ -3,7 +3,11 @@
     <h3 class="record-list__title theme-h3-boxTitle">{{ $t('transaction.record.title') }}</h3>
     <ul class="record-list__ul">
       <li class="record-list__ul__li" v-for="record in recordList" :key="record.name">
-        <router-link class="record-list__ul__li__link" :to="{ name: 'TransactionRecordContent', params: { name: record.name } }">
+        <router-link
+          class="record-list__ul__li__link"
+          :id="idMapper.transaction.record[record.name]"
+          :to="{ name: 'TransactionRecordContent', params: { name: record.name } }"
+        >
           {{ $t(record.content) }}
         </router-link>
       </li>
@@ -13,6 +17,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import idMapper from '@/idMapper';
 
 export default {
   name: 'TransactionRecordHome',
@@ -21,6 +26,7 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       recordList: [
         {
           name: 'deposit',

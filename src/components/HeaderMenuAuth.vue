@@ -21,6 +21,7 @@
         <ul class="header-menu-auth__menu__route-ul">
           <li
             class="header-menu-auth__menu__route-ul__li"
+            :id="idMapper.header.menu[route.name]"
             v-for="route in routeList"
             :key="route.name"
             @click="isShowMenu = false"
@@ -44,7 +45,7 @@
               <a
                 href="javascript:;"
                 class="header-menu-auth__menu__lang-ul__li__link"
-                :id="langItem.id"
+                :id="idMapper.header[langItem.Lst_Locales_Code]"
                 :class="{
                   tw: langItem.Lst_Locales_Code == 'zh-cn',
                   cn: langItem.Lst_Locales_Code == 'zh-cn',
@@ -59,7 +60,7 @@
             </li>
           </div>
         </ul>
-        <button type="button" class="header-menu-auth__logout" @click="logout">
+        <button type="button" class="header-menu-auth__logout" :id="idMapper.header.button.logout" @click="logout">
           {{ $t('header.button.logout') }}
         </button>
       </div>

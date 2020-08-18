@@ -10,12 +10,7 @@
         </p>
 
         <template v-if="item.name == 'walletBalance'">
-          <button
-            type="button"
-            class="withdrawal__ul__li__button ui-btn ui-btn-long"
-            id="GamePointBackToMain"
-            @click="allGamePointBackToMain"
-          >
+          <button type="button" class="withdrawal__ul__li__button ui-btn ui-btn-long" @click="allGamePointBackToMain">
             {{ $t('transaction.withdrawal.button.allToMyWallet') }}
           </button>
         </template>
@@ -23,6 +18,7 @@
         <template v-if="item.name == 'amount'">
           <input
             class="withdrawal__ul__li__input ui-ipt theme-ipt-dataview"
+            :id="idMapper.transaction.withdrawal.field[item.name]"
             type="number"
             maxlength="12"
             size="20"
@@ -35,6 +31,7 @@
         <template v-if="item.name == 'password'">
           <input
             class="withdrawal__ul__li__input ui-ipt theme-ipt-dataview"
+            :id="idMapper.transaction.withdrawal.field[item.name]"
             type="password"
             required
             minlength="6"
@@ -51,7 +48,11 @@
       {{ $t('transaction.withdrawal.hightLightMessage') }}
     </div>
     <div class="withdrawal__button-div">
-      <button type="submit" class="withdrawal__button-div__submit ui-btn ui-btn-long">
+      <button
+        type="submit"
+        class="withdrawal__button-div__submit ui-btn ui-btn-long"
+        :id="idMapper.transaction.withdrawal.button.submit"
+      >
         {{ $t('ui.button.submit') }}
       </button>
     </div>
@@ -64,6 +65,8 @@
 <script>
 import { mapGetters } from 'vuex';
 import numeral from 'numeral';
+import idMapper from '@/idMapper';
+
 export default {
   name: 'TransactionWithdrawal',
   computed: {
@@ -71,8 +74,8 @@ export default {
   },
   data() {
     return {
+      idMapper: idMapper,
       numeral: numeral,
-
       errorPassword: '',
       accountInfoList: [
         {
@@ -171,5 +174,4 @@ export default {
 .withdrawal__light-message {
   font-size: 2em;
 }
-
 </style>
