@@ -40,6 +40,10 @@ export default {
       ],
     };
   },
+  mounted() {
+    //* 關掉 loading
+    this.$store.commit('setIsLoading', false);
+  },
 };
 </script>
 

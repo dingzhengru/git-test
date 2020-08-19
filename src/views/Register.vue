@@ -383,12 +383,10 @@ export default {
     };
   },
   mounted() {
-    //* 設置 loading
-    this.$store.commit('setIsLoading', true);
     this.changeCaptcha();
 
     getRegisterFieldList().then(result => {
-      //* 解除 loading
+      //* 關掉 loading
       this.$store.commit('setIsLoading', false);
 
       this.bankList = result.RetObj.Add_BankList;

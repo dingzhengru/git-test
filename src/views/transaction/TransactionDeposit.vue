@@ -300,6 +300,9 @@ export default {
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/deposit.scss`);
+
+        //* 關掉 loading
+        this.$store.commit('setIsLoading', false);
       },
     },
   },

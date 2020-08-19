@@ -1,6 +1,5 @@
 <template>
   <div class="report-bet-record">
-    
     <ReportBetRecordDetailTable :title="title" :recordList="recordList" />
 
     <div class="report-bet-record__button-div">
@@ -60,6 +59,9 @@ export default {
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
+
+        //* 關掉 loading
+        this.$store.commit('setIsLoading', false);
       },
     },
   },

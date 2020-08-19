@@ -154,7 +154,7 @@ export default {
   mounted() {
     this.changeCaptcha();
 
-    //* 取得公鑰 & token (登入後才於這取得，登入前放置 Login、Register 頁面)
+    //* 取得公鑰 & token
     if (!this.token || !this.publicKey) {
       getTokenAndPublicKey().then(result => {
         this.$store.commit('user/setToken', result.RetObj.token);
@@ -162,28 +162,26 @@ export default {
       });
     }
   },
-  beforeDestroy() {},
   methods: {
     async login() {
       console.log('[login]', this.user);
       this.$store.commit('setIsLoading', true);
       const resultLogin = await this.$store.dispatch('user/login', this.user);
       this.$store.commit('setIsLoading', false);
-      
+
       //* 203: CaptchaError
       if (resultLogin.Code == 203) {
         this.error = resultLogin.ErrMsg;
         this.changeCaptcha();
       }
     },
-    changeCaptcha() {
+    async changeCaptcha() {
       const requestDataCaptcha = { pageCode: 'MemberLogin' };
-      getCaptcha(requestDataCaptcha).then(result => {
-        console.log('[Captcha]', result.RetObj);
-        if (result.Code == 200) {
-          this.captchaImage = result.RetObj;
-        }
-      });
+      const result = await getCaptcha(requestDataCaptcha);
+      console.log('[Captcha]', result.RetObj);
+      if (result.Code == 200) {
+        this.captchaImage = result.RetObj;
+      }
     },
   },
   watch: {
@@ -193,8 +191,11 @@ export default {
         if (!this.siteID) {
           return;
         }
-        // * 根據版型引入 css
+        //* 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/login.scss`);
+
+        //* 關掉 loading
+        this.$store.commit('setIsLoading', false);
       },
     },
   },

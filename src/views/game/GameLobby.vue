@@ -259,6 +259,9 @@ export default {
 
         // * 根據版型引入 css (pagination)
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
+
+        //* 關掉 loading
+        this.$store.commit('setIsLoading', false);
       },
     },
     '$route.params.key': {

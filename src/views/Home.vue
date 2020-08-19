@@ -51,6 +51,7 @@ export default {
     };
   },
   mounted() {
+    this.$store.commit('setIsLoading', false);
     //* 沒登入就顯示 NoneLoginPopup
     this.isShowNoneLoginPopup = !this.isLoggedIn;
 
