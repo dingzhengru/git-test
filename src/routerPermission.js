@@ -12,7 +12,9 @@ router.beforeEach((to, from, next) => {
     //* 已登入 && 非登入才能進入的頁面
     next({ name: 'Home' });
   } else {
-    store.commit('setIsLoading', true);
+    if (to.name != from.name) {
+      store.commit('setIsLoading', true);
+    }
     next();
   }
 });

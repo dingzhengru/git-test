@@ -1,7 +1,7 @@
 <template>
   <div class="game-lobby">
     <div class="game-lobby__supply">
-      <ul class="game-lobby__supply__ul">
+      <ul class="game-lobby__supply__ul" :class="{ 'text-center': productList.length == 1 }">
         <li
           class="game-lobby__supply__ul__li"
           :class="[
@@ -111,7 +111,9 @@ import {
   getGameLobbyCategory,
   getGameLobbyGameList,
   getGameUrl,
+  getLiveGameLobbyProduct,
   getLiveGameLobbyCategory,
+  getLiveGameLobbyGameList,
 } from '@/api/game';
 
 export default {
@@ -124,7 +126,7 @@ export default {
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
     },
-    searcData() {
+    searchData() {
       if (!this.search.text) {
         return this.gameList;
       }
@@ -133,11 +135,12 @@ export default {
     pageData() {
       const startAt = this.pagination.pagesize * (this.pagination.page - 1);
       const endAt = startAt + this.pagination.pagesize;
-      return this.searcData.slice(startAt, endAt) || [];
+      return this.searchData.slice(startAt, endAt) || [];
     },
   },
   data() {
     return {
+      guid: '',
       productList: [],
       categoryList: [],
       gameList: [],
@@ -166,15 +169,24 @@ export default {
       },
     };
   },
-  mounted() {
+  async mounted() {
     /*
-     * API: 電子遊戲 & 真人遊戲，兩者的方法是分開的(Category, GameList, GameUrl)
+     * API: 電子遊戲 & 真人遊戲，兩者的方法是分開的
+     * 用 this.$route.params.type 來判斷，1: 真人 2: 電子
      */
     const requestDataGetGameLobbyProduct = { Tag: this.productTag };
-    getGameLobbyProduct(requestDataGetGameLobbyProduct).then(result => {
-      console.log('[GameLobby]', result.RetObj.ProductList);
+    this.getGameProduct(requestDataGetGameLobbyProduct);
+  },
+  methods: {
+    async getGameProduct(data) {
+      let result = {};
+      if (this.$route.params.type == 1) {
+        result = await getLiveGameLobbyProduct(data);
+      } else if (this.$route.params.type == 2) {
+        result = await getGameLobbyProduct(data);
+      }
+      console.log('[GameLobby Product]', result.RetObj.ProductList);
       this.productList = result.RetObj.ProductList;
-
       this.productList = this.productList
         .filter(item => {
           //* 篩掉舊的
@@ -210,37 +222,38 @@ export default {
           }
           return item;
         });
-
-      console.log('[GameLobby]', this.productList);
-    });
-  },
-  methods: {
+      console.log('[GameLobby Product]', this.productList);
+    },
     async getGameCategory(data) {
-      const result = await getGameLobbyCategory(data);
-      if (result.Code == 200) {
+      let result = {};
+      if (this.$route.params.type == 1) {
+        result = await getLiveGameLobbyCategory(data);
+        this.categoryList = this.defaultCategoryListLiveGame.concat(result.RetObj.gameCategoryList);
+        this.guid = result.RetObj.H3GUID;
+      } else if (this.$route.params.type == 2) {
+        result = await getGameLobbyCategory(data);
         this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
-        console.log('[GameLobby Category]', result.RetObj);
       }
+      console.log('[GameLobby Category]', result.RetObj);
+      return result;
     },
     async getGameList(data) {
-      const result = await getGameLobbyGameList(data);
-      if (result.Code == 200) {
-        this.gameList = result.RetObj.JsonGameList;
-        console.log('[GameLobby GameList]', result.RetObj);
+      let result = {};
+      if (this.$route.params.type == 1) {
+        data.H3GUID = this.guid;
+        result = await getLiveGameLobbyGameList(data);
+        this.gameList = result.RetObj.JsonGameList || [];
+      } else if (this.$route.params.type == 2) {
+        result = await getGameLobbyGameList(data);
+        this.gameList = result.RetObj.JsonGameList || [];
       }
+      console.log('[GameLobby GameList]', result.RetObj);
     },
     async getGameUrl(data) {
       const result = await getGameUrl(data);
-      console.log('[GameLobby GameList]', data, result);
+      console.log('[GameLobby GameUrl]', data, result);
       if (result.Code == 200) {
         window.open(result.RetObj.RedirectUrl);
-      }
-    },
-    async getLiveGameCategory(data) {
-      const result = await getLiveGameLobbyCategory(data);
-      if (result.Code == 200) {
-        this.categoryList = this.defaultCategoryListLiveGame.concat(result.RetObj.gameCategoryList);
-        console.log('[GameLobby Category]', result.RetObj);
       }
     },
     changePage(page) {
@@ -266,13 +279,11 @@ export default {
     },
     '$route.params.key': {
       immediate: true,
-      handler() {
+      async handler() {
+        //* 這裡是切換遊戲分類時觸發
         const requestDataGetGameLobbyCategory = { Tag: this.productTag };
-        if (this.$route.params.type == 1) {
-          this.getLiveGameCategory(requestDataGetGameLobbyCategory);
-        } else if (this.$route.params.type == 2) {
-          this.getGameCategory(requestDataGetGameLobbyCategory);
-        }
+        await this.getGameCategory(requestDataGetGameLobbyCategory);
+
         const requestDataGetGameLobbyGameList = { Tag: this.productTag };
         this.getGameList(requestDataGetGameLobbyGameList);
       },
