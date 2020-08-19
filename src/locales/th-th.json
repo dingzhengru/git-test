@@ -364,14 +364,14 @@
       "title": "ทำรายการฝาก-ถอนเงิน",
       "hightLightMessage": "รายการถอนเงินรบกวนทำรายการยอดจำนวนเต็ม เช่นยอด 300 บาท หรือ 1,100 บาท (หลักหน่วย/หลักสิบทางเว็ปไม่ถอนค่ะ)",
       "field": {
-        "username": "ยูสเซอร์",
-        "currency": "สกุลเงิน",
-        "walletBalance": "ยอดเงินในกระเป๋าเงิน",
-        "amount": "ยอดเงินที่ถอน",
-        "bank": "ธนาคาร",
-        "bankAccount": "เลขที่บัญชี",
-        "bankBranch": "สาขา",
-        "bankAccountName": "ชื่อบัญชี",
+        "Lst_Account": "ยูสเซอร์",
+        "Lst_Currency": "สกุลเงิน",
+        "Lst_Point": "ยอดเงินในกระเป๋าเงิน",
+        "Add_WithdrswalsPoint": "ยอดเงินที่ถอน",
+        "Lst_Bank_name_1": "ธนาคาร",
+        "Lst_BankAccount_1": "เลขที่บัญชี",
+        "Lst_Bank_Branches_1": "สาขา",
+        "Add_RealName": "ชื่อบัญชี",
         "password": "รหัสถอนเงินเว็บไซต์"
       },
       "button": {

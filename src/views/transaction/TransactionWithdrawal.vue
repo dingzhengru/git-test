@@ -3,7 +3,7 @@
     <ul class="withdrawal__ul theme-content-box">
       <li class="withdrawal__ul__li theme-li-dataView" v-for="item in accountInfoList" :key="item.name">
         <span class="withdrawal__ul__li__title theme-dataView-header">
-          {{ $t(item.title) }}
+          {{ $t(`transaction.withdrawal.field.${item.name}`) }}
         </span>
         <p class="withdrawal__ul__li__content theme-dataView-data" v-if="item.content">
           {{ typeof item.content == 'number' ? numeral(item.content).format('0,0.00') : item.content }}
@@ -15,7 +15,7 @@
           </button>
         </template>
 
-        <template v-if="item.name == 'amount'">
+        <template v-if="item.name == 'Add_WithdrswalsPoint'">
           <input
             class="withdrawal__ul__li__input ui-ipt theme-ipt-dataview"
             :id="idMapper.transaction.withdrawal.field[item.name]"
@@ -64,13 +64,14 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { getWithdrawal } from '@/api/transaction-withdrawal';
+
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
-
 export default {
   name: 'TransactionWithdrawal',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'token']),
   },
   data() {
     return {
@@ -79,48 +80,39 @@ export default {
       errorPassword: '',
       accountInfoList: [
         {
-          name: 'username',
-          title: 'transaction.withdrawal.field.username',
+          name: 'Lst_Account',
           content: 'ding01',
         },
         {
-          name: 'currency',
-          title: 'transaction.withdrawal.field.currency',
+          name: 'Lst_Currency',
           content: 'Baht',
         },
         {
-          name: 'walletBalance',
-          title: 'transaction.withdrawal.field.walletBalance',
+          name: 'Lst_Point',
           content: 10710,
         },
         {
-          name: 'amount',
-          title: 'transaction.withdrawal.field.amount',
+          name: 'Add_WithdrswalsPoint',
           content: '',
         },
         {
-          name: 'bank',
-          title: 'transaction.withdrawal.field.bank',
+          name: 'Lst_Bank_name_1',
           content: 'SCB',
         },
         {
-          name: 'bankAccount',
-          title: 'transaction.withdrawal.field.bankAccount',
+          name: 'Lst_BankAccount_1',
           content: '1111111',
         },
         {
-          name: 'bankBranch',
-          title: 'transaction.withdrawal.field.bankBranch',
+          name: 'Lst_Bank_Branches_1',
           content: '分行00000',
         },
         {
-          name: 'bankAccountName',
-          title: 'transaction.withdrawal.field.bankAccountName',
+          name: 'Add_RealName',
           content: 'first last',
         },
         {
           name: 'password',
-          title: 'transaction.withdrawal.field.password',
           content: '',
         },
       ],
@@ -149,6 +141,18 @@ export default {
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);
+      },
+    },
+    token: {
+      immediate: true,
+      handler() {
+        if (!this.token) {
+          return;
+        }
+
+        getWithdrawal().then(result => {
+          console.log('[Withdrawal]', result);
+        });
       },
     },
   },
