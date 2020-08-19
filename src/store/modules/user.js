@@ -27,6 +27,14 @@ const mutations = {
     state.publicKey = publicKey;
     setPublicKey(publicKey);
   },
+  setUserInfo(state, info) {
+    //* 設置 userinfo
+    state.isAccessed = info.RetObj.Lst_Account_Open; // * 設置是否已開通
+    state.username = info.RetObj.Lst_Account;
+    state.total = numeral(info.RetObj.Lst_Point).format('0,0.00');
+    state.roll = info.RetObj.Lst_PI_BetAmount;
+    state.vip = info.RetObj.Lst_PI_Level;
+  },
   setIsAccessed(state, isAccessed) {
     state.isAccessed = isAccessed;
   },
@@ -54,13 +62,9 @@ const mutations = {
 
 const actions = {
   async getInfo({ commit }) {
-    const result = await getUserInfo();
-    console.log('[UserInfo]', result.RetObj);
-    commit('setUsername', result.RetObj.Lst_Account);
-    commit('setTotal', numeral(result.RetObj.Lst_Point).format('0,0.00'));
-    commit('setRoll', result.RetObj.Lst_PI_BetAmount);
-    commit('setVip', result.RetObj.Lst_PI_Level);
-    commit('setIsAccessed', result.RetObj.Lst_Account_Open); // * 設置是否已開通
+    const responseDataUserInfo = await getUserInfo();
+    console.log('[UserInfo]', responseDataUserInfo.RetObj);
+    commit('setUserInfo', responseDataUserInfo);
   },
   async register({ commit }, data) {
     const responseDataRegister = await register(data);
@@ -68,12 +72,8 @@ const actions = {
     console.log('[Register Response]', responseDataRegister);
 
     if (responseDataRegister.Code == 200) {
-      commit('setUsername', responseDataRegister.RetObj.Lst_Account);
-      commit('setTotal', numeral(responseDataRegister.RetObj.Lst_Point).format('0,0.00'));
-      commit('setRoll', responseDataRegister.RetObj.Lst_PI_BetAmount);
-      commit('setVip', responseDataRegister.RetObj.Lst_PI_Level);
-      commit('setIsAccessed', responseDataRegister.RetObj.Lst_Account_Open); // * 設置是否已開通
       commit('setIsLoggedIn', true);
+      commit('setUserInfo', responseDataRegister);
 
       router.replace({ name: 'Home' });
       return '';
@@ -87,12 +87,8 @@ const actions = {
     console.log('[Login Response]', responseDataLogin);
 
     if (responseDataLogin.Code == 200) {
-      commit('setUsername', responseDataLogin.RetObj.Lst_Account);
-      commit('setTotal', numeral(responseDataLogin.RetObj.Lst_Point).format('0,0.00'));
-      commit('setRoll', responseDataLogin.RetObj.Lst_PI_BetAmount);
-      commit('setVip', responseDataLogin.RetObj.Lst_PI_Level);
-      commit('setIsAccessed', responseDataLogin.RetObj.Lst_Account_Open); // * 設置是否已開通
       commit('setIsLoggedIn', true);
+      commit('setUserInfo', responseDataLogin);
       router.replace({ name: 'Home' });
     }
     return responseDataLogin;
