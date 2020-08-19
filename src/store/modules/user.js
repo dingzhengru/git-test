@@ -53,20 +53,26 @@ const mutations = {
 };
 
 const actions = {
-  // eslint-disable-next-line
+  async getInfo({ commit }) {
+    const result = await getUserInfo();
+    console.log('[UserInfo]', result.RetObj);
+    commit('setUsername', result.RetObj.Lst_Account);
+    commit('setTotal', numeral(result.RetObj.Lst_Point).format('0,0.00'));
+    commit('setRoll', result.RetObj.Lst_PI_BetAmount);
+    commit('setVip', result.RetObj.Lst_PI_Level);
+    commit('setIsAccessed', result.RetObj.Lst_Account_Open); // * 設置是否已開通
+  },
   async register({ commit }, data) {
     const responseDataRegister = await register(data);
 
     console.log('[Register Response]', responseDataRegister);
 
     if (responseDataRegister.Code == 200) {
-      const responseDataUserInfo = await getUserInfo();
-
-      commit('setUsername', responseDataUserInfo.RetObj.Lst_Account);
-      commit('setTotal', numeral(responseDataUserInfo.RetObj.Lst_Point).format('0,0.00'));
-      commit('setRoll', responseDataUserInfo.RetObj.Lst_PI_BetAmount);
-      commit('setVip', responseDataUserInfo.RetObj.Lst_PI_Level);
-      commit('setIsAccessed', responseDataUserInfo.RetObj.Lst_Account_Open); // * 設置是否已開通
+      commit('setUsername', responseDataRegister.RetObj.Lst_Account);
+      commit('setTotal', numeral(responseDataRegister.RetObj.Lst_Point).format('0,0.00'));
+      commit('setRoll', responseDataRegister.RetObj.Lst_PI_BetAmount);
+      commit('setVip', responseDataRegister.RetObj.Lst_PI_Level);
+      commit('setIsAccessed', responseDataRegister.RetObj.Lst_Account_Open); // * 設置是否已開通
       commit('setIsLoggedIn', true);
 
       router.replace({ name: 'Home' });

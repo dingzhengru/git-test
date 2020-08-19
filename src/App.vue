@@ -25,8 +25,6 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getLangList, changeLang } from '@/api/lang';
-import { getUserInfo } from '@/api/user';
-import numeral from 'numeral';
 
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
@@ -98,15 +96,6 @@ export default {
     });
   },
   methods: {
-    async getUserInfo() {
-      const result = await getUserInfo();
-      console.log('[UserInfo]', result.RetObj);
-      this.$store.commit('user/setUsername', result.RetObj.Lst_Account);
-      this.$store.commit('user/setTotal', numeral(result.RetObj.Lst_Point).format('0,0.00'));
-      this.$store.commit('user/setRoll', result.RetObj.Lst_PI_BetAmount);
-      this.$store.commit('user/setVip', result.RetObj.Lst_PI_Level);
-      this.$store.commit('user/setIsAccessed', result.RetObj.Lst_Account_Open); // * 設置是否已開通
-    },
     changeLang(lang) {
       if (this.lang == lang) {
         return;
@@ -168,7 +157,7 @@ export default {
         }
 
         if (this.isLoggedIn) {
-          this.getUserInfo();
+          this.$store.dispatch('user/getInfo');
         }
       },
     },
