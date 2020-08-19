@@ -105,7 +105,10 @@ const routes = [
             component: () => import('@/views/transaction/record/TransactionRecordContent'),
           },
           {
-            path: ':name/detail/:id',
+            //* 因提取限制的詳細資料，需要多個參數，所以改成一律用 query
+            //* 其他: id
+            //* 提取限制: productId, bonusCode, typeCode
+            path: ':name/detail',
             name: 'TransactionRecordDetail',
             component: () => import('@/views/transaction/record/TransactionRecordDetail'),
           },

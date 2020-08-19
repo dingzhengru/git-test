@@ -52,6 +52,8 @@
 import { mapGetters } from 'vuex';
 import numeral from 'numeral';
 
+import { getRecordDetailWithdrawalRestriction } from '@/api/transaction-record';
+
 export default {
   name: 'TransactionRecordDetail',
   computed: {
@@ -96,7 +98,7 @@ export default {
             submitDate: '2020-07-21',
             transactionTime: '11:41:26',
             paymentMethod: 'WebATM',
-            transactionNumber: this.$route.params.id,
+            transactionNumber: this.$route.query.id,
             activity: '輪盤測試',
           },
         ];
@@ -111,7 +113,7 @@ export default {
             createdDate: '2020-07-21',
             submitDate: '2020-07-21',
             transactionTime: '11:41:26',
-            transactionNumber: this.$route.params.id,
+            transactionNumber: this.$route.query.id,
           },
         ];
         this.title = 'Withdrawals Record';
@@ -144,20 +146,35 @@ export default {
         break;
       }
       case 'withdrawalRestriction': {
-        this.list = [
-          {
-            id: '000',
-            activity: 'Cash Flow',
-            bonusIssue: 0,
-            datetime: '2020-07-21 11:41:35',
-          },
-          {
-            id: '111',
-            activity: 'Cash Flow',
-            bonusIssue: 10,
-            datetime: '2020-07-21 11:41:35',
-          },
-        ];
+        getRecordDetailWithdrawalRestriction(this.$route.query).then(result => {
+          console.log('[RecordDetailWithdrawalRestriction]', result);
+
+          this.list = result.RetObj.map(item => {
+            const newItem = {};
+            newItem.activity = item.Lst_Activty_Name;
+            newItem.bonusIssue = item.Lst_Bonus;
+            newItem.datetime = item.Lst_Mtime.replace('T', ' ').split('.')[0];
+
+            return newItem;
+          });
+        });
+
+        // const responseList = [
+        //   {
+        //     Lst_Activty_Name: '測試紅利100R50',
+        //     Lst_Bonus: 10.0,
+        //     Lst_Mtime: '2020-08-17T14:10:49.517',
+        //   },
+        // ];
+
+        // this.list = [
+        //   {
+        //     id: '000',
+        //     activity: 'Cash Flow',
+        //     bonusIssue: 0,
+        //     datetime: '2020-07-21 11:41:35',
+        //   },
+        // ];
         this.title = 'Withdrawal Restriction Details';
         break;
       }

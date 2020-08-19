@@ -13,12 +13,14 @@ const AUTH_API_LIST = [
   'Member/MemInfo',
   'Operator/Withdrawals',
   'Operator/MTransferInfo',
-  'PointRecord/Deposit',
-  'PointRecord/Withdrawals',
-  'PointRecord/Transfer',
-  'PointRecord/ActivityTransaction',
-  'PointRecord/LuckyWheelLotteryResult',
-  'PointRecord/Adjustment',
+  'PointRecord/MDeposit',
+  'PointRecord/MWithdrawals',
+  'PointRecord/MTransfer',
+  'PointRecord/MActivityTransaction',
+  'PointRecord/MLuckyWheelLotteryResult',
+  'PointRecord/MActivityWashcode',
+  'PointRecord/MAdjustment',
+  'PointRecord/MActivityWashcodeDetail',
   'Game/MGetJackpotTotal',
   'Game/MGetGameLobbyProduct',
   'Game/MGetGameLobbyMenu',
@@ -37,7 +39,6 @@ const CRYPTO_API_LIST = ['Member/LoginIn', 'Game/MLobbyGameRedirect'];
 const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister'];
 
 //* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
-
 const AUTH_ROUTE_LIST = [
   'GameHome',
   'GameLobby',

@@ -49,8 +49,7 @@ if (lang) {
 const isLoggedIn = getIsLoggedIn();
 store.commit('user/setIsLoggedIn', isLoggedIn);
 
-//* 取得公鑰 & token (登入後才於這取得，登入前放置 Login 頁面)
-
+//* 取得公鑰 & token (已登入才於這取得，未登入只放置 Login、Register 頁面)
 if (getToken() && getPublicKey()) {
   store.commit('user/setToken', getToken());
   store.commit('user/setPublicKey', getPublicKey());
