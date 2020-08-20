@@ -250,11 +250,13 @@ export default {
       console.log('[GameLobby GameList]', result.RetObj);
     },
     async getGameUrl(data) {
+      this.$store.commit('setIsLoading', true);
       const result = await getGameUrl(data);
       console.log('[GameLobby GameUrl]', data, result);
       if (result.Code == 200) {
         window.open(result.RetObj.RedirectUrl);
       }
+      this.$store.commit('setIsLoading', false);
     },
     changePage(page) {
       this.pagination.page = page;
