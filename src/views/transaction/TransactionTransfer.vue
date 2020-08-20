@@ -24,9 +24,20 @@
         <span> {{ $t('transaction.transfer.field.to') }} </span>
         <select class="transfer__wallet__select ui-ddl" :id="idMapper.transaction.transfer.field.to" v-model="to">
           <option :value="-1" selected v-if="from == 9999">{{ $t('transaction.transfer.placeholder.to') }} </option>
-          <option :value="product.Product_id" v-for="product in toList" :key="product.Product_id">
-            {{ product.Product_Name }}
-          </option>
+          <template v-for="product in toList">
+            <option :value="product.Product_id" :key="product.Product_id">
+              {{ product.Product_Name }}
+            </option>
+
+            <template v-for="child in productDetailList">
+              <option
+                disabled
+                :key="product.Product_id + child.Lst_Proxy_Product_Key"
+                v-if="child.Lst_Product_id == product.Product_id && child.Lst_Name != product.Product_Name"
+                v-html="`&nbsp;&nbsp;&nbsp;&nbsp;☑${child.Lst_Name}`"
+              ></option>
+            </template>
+          </template>
         </select>
       </div>
       <div class="transfer__amount-table-div">
@@ -259,6 +270,7 @@ export default {
 .transfer__wallet__select {
   padding: 0 1.5%;
   font-size: 1.125em;
+  width: 40%;
 }
 
 .transfer__wallet__select option {
@@ -368,6 +380,27 @@ export default {
 */
 
 .en-us .transfer__wallet {
-  font-size: 28px;
+  font-size: 2.2rem;
+}
+
+.th-th .transfer__wallet {
+  font-size: 1.5rem;
+}
+
+.zh-cn .transfer__wallet {
+  font-size: 2.5rem;
+}
+
+.en-us .transfer__wallet__select {
+  font-size: 2.5rem;
+  width: 40%;
+}
+.th-th .transfer__wallet__select {
+  font-size: 2.3rem;
+  width: 40%;
+}
+.zh-cn .transfer__wallet__select {
+  font-size: 2.5rem;
+  width: 40%;
 }
 </style>
