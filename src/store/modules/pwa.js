@@ -4,6 +4,7 @@ const state = {
 };
 
 const mutations = {
+  //* installed, notInstalled, installed
   setStatus(state, status) {
     state.status = status;
   },

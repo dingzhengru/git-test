@@ -33,11 +33,10 @@
                 <input
                   class="transfer__amount-table__input"
                   type="number"
-                  maxlength="12"
-                  size="20"
-                  step="0.01"
+                  max="9999999999"
                   placeholder="Please enter the point transfer amount"
-                  v-model="amount"
+                  v-model.number="amount"
+                  @input="inputAmount"
                 />
                 <div class="transfer__amount-table__range">
                   <vue-slider v-model="amount" v-bind="rangeOptions" @error="rangeError" @change="rangeChange">
@@ -126,10 +125,9 @@ export default {
       from: 9999,
       to: -1,
       amount: 0,
-      totalAmount: 1000000,
       rangeOptions: {
         min: 0,
-        max: 10000,
+        max: 0,
         tooltip: 'none',
       },
     };
@@ -163,10 +161,17 @@ export default {
       }
       console.log(msg);
     },
-    rangeChange() {
-      //* 輸入超過最大，就變成最大值
-      //* 輸入小於最小，就變成最小值
-      //* 輸入非數字，就變成最小值，或回復上一動
+    updateRangeMax() {
+      const currentProduct = this.gamePointList.find(item => item.Product_id == this.from);
+      this.rangeOptions.max = Math.floor(currentProduct.Point);
+      this.amount = this.rangeOptions.max;
+    },
+    inputAmount() {
+      if (this.amount < 0 || typeof this.amount != 'number') {
+        this.amount = 0;
+      } else if (this.amount > this.rangeOptions.max) {
+        this.amount = this.rangeOptions.max;
+      }
     },
   },
   watch: {
@@ -198,10 +203,17 @@ export default {
         getAllGamePoint().then(result => {
           console.log('[AllGamePoint]', result.RetObj);
           this.gamePointList = result.RetObj;
+          this.updateRangeMax();
+
+          //* 之後會改成下面
+          // this.gamePointList = result.RetObj.GameSitePoints;
+          // this.rangeOptions.max = Math.floor(result.RetObj.TotalBalance);
         });
       },
     },
     from() {
+      this.updateRangeMax();
+
       if (this.from != 9999) {
         //* 當 from 選擇非錢包時，to 列表會只剩下錢包
         this.to = 9999;
