@@ -137,14 +137,14 @@ export default {
         this.title = 'Transfer Details';
         break;
       }
-      case 'bonus': {
-        break;
-      }
-      case 'lottery': {
-        this.list = [];
-        this.title = 'Lottery Details';
-        break;
-      }
+      // case 'bonus': {
+      //   break;
+      // }
+      // case 'lottery': {
+      //   this.list = [];
+      //   this.title = 'Lottery Details';
+      //   break;
+      // }
       case 'withdrawalRestriction': {
         getRecordDetailWithdrawalRestriction(this.$route.query).then(result => {
           console.log('[RecordDetailWithdrawalRestriction]', result);
@@ -178,11 +178,11 @@ export default {
         this.title = 'Withdrawal Restriction Details';
         break;
       }
-      case 'adjustment': {
-        this.list = [];
-        this.title = 'Adjustment Details';
-        break;
-      }
+      // case 'adjustment': {
+      //   this.list = [];
+      //   this.title = 'Adjustment Details';
+      //   break;
+      // }
     }
   },
   watch: {

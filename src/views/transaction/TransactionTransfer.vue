@@ -1,5 +1,5 @@
 <template>
-  <form class="transfer" @submit.prevent="submitTransfer">
+  <form class="transfer" @submit.prevent="transferPoint">
     <div class="transfer__box theme-content-box">
       <div class="transfer__wallet">
         <span>{{ $t('transaction.transfer.field.from') }} </span>
@@ -79,7 +79,7 @@
         </button>
       </div>
       <div class="transfer__button-div">
-        <button type="button" class="transfer__button--all-to-my-wallet ui-btn ui-btn-long" @click="backToWallet">
+        <button type="button" class="transfer__button--all-to-my-wallet ui-btn ui-btn-long" @click="transferToMain">
           {{ $t('transaction.transfer.button.allToMyWallet') }}
         </button>
       </div>
@@ -107,7 +107,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getAllGamePoint } from '@/api/user';
-import { getTransferInfo } from '@/api/transaction-transfer';
+import { getTransferInfo, transferPoint, transferAllGamePointToMain } from '@/api/transaction-transfer';
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
 
@@ -162,14 +162,25 @@ export default {
       // this.gamePointList = result.RetObj.GameSitePoints;
       // this.rangeOptions.max = Math.floor(result.RetObj.TotalBalance);
     },
-    submitTransfer() {
-      console.log('submitTransfer');
+    async transferPoint() {
+      this.$store.commit('setIsLoading', true);
+      const requestData = { Add_Source: this.from, Add_Destination: this.to, Add_TransferPoint: this.amount };
+      const result = await transferPoint(requestData);
+      console.log('[TransferPoint]', result);
+
+      if (result.Code == 200) {
+        window.alert('Transfer Successful');
+      }
+      this.$store.commit('setIsLoading', false);
     },
-    backToWallet() {
-      console.log('backToWallet');
-    },
-    reflash() {
-      console.log('reflash');
+    async transferToMain() {
+      console.log('transferToMain');
+      this.$store.commit('setIsLoading', true);
+      const result = await transferAllGamePointToMain();
+      this.$store.commit('setIsLoading', false);
+      if (result.Code == 200) {
+        window.alert(result.RetObj.MsgString);
+      }
     },
     rangeError(type, msg) {
       //* 參考 https://nightcatsama.github.io/vue-slider-component/#/zh-CN/advanced/input

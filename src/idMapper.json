@@ -73,7 +73,13 @@
       "Add_Line": "Add_Line",
       "Add_FirstName": "Add_FirstName",
       "Add_LastName": "Add_LastName",
+      "Add_RealName": "Add_RealName",
       "Add_NickName": "Add_NickName",
+      "Add_BankId1": "Add_BankId1",
+      "Add_BankBranchName1": "Add_BankBranchName1",
+      "Add_BankAccount1": "Add_BankAccount1",
+      "Add_Withdrawals_Password": "Add_Withdrawals_Password",
+      "Add_Withdrawals_CheckPassword": "Add_Withdrawals_CheckPassword",
       "CaptchaValue": "Add_CaptchaValue"
     },
     "image": {

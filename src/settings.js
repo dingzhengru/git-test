@@ -13,6 +13,8 @@ const AUTH_API_LIST = [
   'Member/MemInfo',
   'Operator/MWithdrawalsInfo',
   'Operator/MTransferInfo',
+  'Operator/MTransferPoint',
+  'Operator/MPointTransferForAllGame',
   'PointRecord/MDeposit',
   'PointRecord/MWithdrawals',
   'PointRecord/MTransfer',
