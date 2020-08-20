@@ -48,7 +48,7 @@
       </form>
 
       <ul class="record-content__ul theme-ul-listView">
-        <li class="record-content__ul__li theme-li-listView" v-for="item in pageData" :key="item.id">
+        <li class="record-content__ul__li theme-li-listView" v-for="item in list" :key="item.id">
           <table class="record-content__ul__li__table ui-table01">
             <tbody>
               <tr v-for="(value, key, index) in item" :key="index">
@@ -88,7 +88,7 @@
     <p class="record-content__notice">{{ $t(`${i18nKey}.notice`) }}</p>
     <AppPagination
       v-if="isPageActive"
-      :length="list.length"
+      :length="pagination.dataLength"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
@@ -119,14 +119,6 @@ export default {
     ...mapGetters(['siteID', 'siteFullCss', 'token']),
     i18nKey() {
       return `transaction.recordContent.${this.$route.params.name}`;
-    },
-    pageData() {
-      if (!this.isPageActive) {
-        return this.list;
-      }
-      const startAt = this.pagination.pagesize * (this.pagination.page - 1);
-      const endAt = startAt + this.pagination.pagesize;
-      return this.list.slice(startAt, endAt) || [];
     },
     isPositive: app => (key, value, item) => {
       const routeName = app.$route.params.name;
@@ -190,11 +182,170 @@ export default {
       },
       pagination: {
         page: 1,
-        pagesize: 1,
+        pagesize: 10,
+        dataLength: 1,
       },
     };
   },
   methods: {
+    async getRecord() {
+      //* 因換頁都會用到，所以放 methods
+      this.$store.commit('setIsLoading', true);
+      switch (this.$route.params.name) {
+        case 'deposit': {
+          const result = await getRecordDeposit();
+          console.log('[RecordDeposit]', result.RetObj);
+
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.id = item.Lst_TransID;
+            newItem.isSuccess = item.Lst_Status == 2;
+            newItem.date = item.Lst_CreateTime.split('T')[0];
+            newItem.bank = item.Lst_BankName;
+            newItem.amount = item.Lst_Money;
+            newItem.receipt = item.Lst_Receipt;
+
+            if (item.Lst_Status == 1) {
+              newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
+            } else if (item.Lst_Status == 2) {
+              newItem.detail = this.$t('transaction.recordContent.statusText.success');
+            } else if (item.Lst_Status == 3) {
+              newItem.detail = this.$t('transaction.recordContent.statusText.failure');
+            }
+            return newItem;
+          });
+          break;
+        }
+        case 'withdrawal': {
+          const result = await getRecordWithdrawal();
+          console.log('[RecordWithdrawal]', result.RetObj);
+
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.id = item.Lst_TransID;
+            newItem.isSuccess = item.Lst_Status == 2;
+            newItem.date = item.Lst_CreateTime.split('T')[0];
+            newItem.bank = item.Lst_MemberBankName;
+            newItem.amount = item.Lst_Money;
+
+            if (item.Lst_Status == 1) {
+              newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
+            } else if (item.Lst_Status == 2) {
+              newItem.detail = this.$t('transaction.recordContent.statusText.success');
+            } else if (item.Lst_Status == 3) {
+              newItem.detail = this.$t('transaction.recordContent.statusText.failure');
+            }
+            return newItem;
+          });
+          break;
+        }
+        case 'transfer': {
+          const requestDataTransfer = {
+            Sidx: 'Lst_TransTime',
+            Sord: 'DESC',
+            Page: this.pagination.page,
+            Rows: '10',
+            _Search: 'false',
+            Filters: '',
+          };
+          const result = await getRecordTransfer(requestDataTransfer);
+          console.log('[RecordTransfer]', result.RetObj);
+
+          this.pagination.dataLength = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            // newItem.id = item.Lst_TransID;
+            newItem.date = item.Lst_TransTime.split('T')[0];
+            newItem.game = item.Lst_ProductName;
+            newItem.type = item.Lst_ProductName;
+
+            if (item.Lst_PointIncome == 0) {
+              newItem.amount = item.Lst_Final_Point;
+            } else {
+              newItem.amount = item.Lst_PointPayment;
+            }
+
+            return newItem;
+          });
+          break;
+        }
+        case 'bonus': {
+          const requestDataRecordBonus = { Page: this.pagination.page };
+
+          const result = await getRecordBonus(requestDataRecordBonus);
+          console.log('[RecordBonus]', result.RetObj);
+
+          this.pagination.dataLength = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            // newItem.id = item.Lst_TransID;
+            newItem.activity = item.Lst_Name;
+            newItem.bindWallet = item.Lst_WalletLimit;
+            newItem.issue = item.Lst_Bonus;
+            newItem.datetime = item.Lst_MTime.replace('T', ' ').split('.')[0];
+            return newItem;
+          });
+          break;
+        }
+        case 'lottery': {
+          const requestDataRecordLottery = { Page: this.pagination.page };
+
+          const result = await getRecordLottery(requestDataRecordLottery);
+          console.log('[RecordLottery]', result.RetObj);
+
+          this.pagination.dataLength = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            // newItem.id = item.Lst_TransID;
+            // newItem.isSuccess = item.Lst_PrizeName;
+            newItem.prize = item.Lst_PrizeName;
+            newItem.status = item.Lst_GiveoutStatus;
+            newItem.type = item.Lst_PrizeType;
+            newItem.datetime = item.Lst_CTime.replace('T', ' ').split('.')[0];
+            return newItem;
+          });
+          break;
+        }
+        case 'withdrawalRestriction': {
+          const requestDataRecordWithdrawalRestriction = { Page: this.pagination.page };
+
+          const result = await getRecordWithdrawalRestriction(requestDataRecordWithdrawalRestriction);
+          console.log('[RecordWithdrawalRestriction]', result.RetObj);
+          this.pagination.dataLength = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.Procudtid = item.Lst_Procudt_id;
+            newItem.BonusCode = item.Lst_Bonus_Code;
+            newItem.WashCodeType = item.Lst_WashCodeType;
+            newItem.type = item.Lst_WashCodeTypeStr;
+            newItem.restriction = item.Lst_Procudt_Name;
+            newItem.notRolloverExchange = item.Lst_Need_Washcode;
+            newItem.rolloverDeadline = item.Lst_Ctime.split('T')[0];
+            return newItem;
+          });
+          break;
+        }
+        case 'adjustment': {
+          const requestDataRecordAdjustment = { Page: this.pagination.page };
+
+          const result = await getRecordAdjustment(requestDataRecordAdjustment);
+          console.log('[RecordAdjustment]', result.RetObj);
+          this.pagination.dataLength = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            // newItem.id = item.Lst_TransID;
+            // newItem.isSuccess = item.Lst_PrizeName;
+            newItem.status = item.Lst_PaymentType;
+            newItem.description = item.Lst_Memo;
+            newItem.point = item.Lst_Amount;
+            newItem.datetime = item.Lst_TransTime.replace('T', ' ').split('.')[0];
+            return newItem;
+          });
+          break;
+        }
+      }
+      this.$store.commit('setIsLoading', false);
+    },
     changeSearchDateRange() {
       this.search.dateTo = dayjs().format('YYYY-MM-DD');
       this.search.dateFrom = dayjs()
@@ -219,6 +370,7 @@ export default {
     },
     changePage(page) {
       this.pagination.page = page;
+      this.getRecord();
     },
   },
   watch: {
@@ -245,160 +397,19 @@ export default {
         if (!this.token) {
           return;
         }
+
+        this.getRecord();
+
         switch (this.$route.params.name) {
           case 'deposit': {
-            getRecordDeposit().then(result => {
-              console.log('[RecordDeposit]', result.RetObj);
-
-              this.list = result.RetObj.Rows.map(item => {
-                const newItem = {};
-                newItem.id = item.Lst_TransID;
-                newItem.isSuccess = item.Lst_Status == 2;
-                newItem.date = item.Lst_CreateTime.split('T')[0];
-                newItem.bank = item.Lst_BankName;
-                newItem.amount = item.Lst_Money;
-                newItem.receipt = item.Lst_Receipt;
-
-                if (item.Lst_Status == 1) {
-                  newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
-                } else if (item.Lst_Status == 2) {
-                  newItem.detail = this.$t('transaction.recordContent.statusText.success');
-                } else if (item.Lst_Status == 3) {
-                  newItem.detail = this.$t('transaction.recordContent.statusText.failure');
-                }
-                return newItem;
-              });
-            });
-            // const responseList = [
-            //   {
-            //     Lst_TransID: 'CR200804140218373',
-            //     Lst_CreateTime: '2020-08-04T14:02:18.377',
-            //     Lst_Mtime: '2020-08-04T14:50:02.07',
-            //     Lst_BankName: '７－１１',
-            //     Lst_MemberBankName: 'SCB',
-            //     Lst_Money: 200.0,
-            //     Lst_MoneyIncome: 200.0,
-            //     Lst_Status: 2,
-            //     Lst_ActivityName: '',
-            //     Lst_DMTitle: '网络转账',
-            //     Lst_Receipt: '会员没有上传汇款收据',
-            //   },
-            // ];
-
-            // this.list = [
-            //   {
-            //     id: 'DR200721114109903',
-            //     isSuccess: true,
-            //     date: '2020-07-21',
-            //     bank: 'KNANK',
-            //     amount: 1000,
-            //     receipt: '',
-            //     detail: 'Successful',
-            //   },
-            // ];
             this.detailKey = 'detail';
             break;
           }
           case 'withdrawal': {
-            getRecordWithdrawal().then(result => {
-              console.log('[RecordWithdrawal]', result.RetObj);
-
-              this.list = result.RetObj.Rows.map(item => {
-                const newItem = {};
-                newItem.id = item.Lst_TransID;
-                newItem.isSuccess = item.Lst_Status == 2;
-                newItem.date = item.Lst_CreateTime.split('T')[0];
-                newItem.bank = item.Lst_MemberBankName;
-                newItem.amount = item.Lst_Money;
-
-                if (item.Lst_Status == 1) {
-                  newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
-                } else if (item.Lst_Status == 2) {
-                  newItem.detail = this.$t('transaction.recordContent.statusText.success');
-                } else if (item.Lst_Status == 3) {
-                  newItem.detail = this.$t('transaction.recordContent.statusText.failure');
-                }
-                return newItem;
-              });
-            });
-            // const responseList = [
-            //   {
-            //     Lst_TransID: 'CR200805151631650',
-            //     Lst_CreateTime: '2020-08-05T15:16:31.653',
-            //     Lst_CasherTime: '2020-08-05T17:34:17.7310394+08:00',
-            //     Lst_MemberBankName: 'SCB',
-            //     Lst_Money: 400.0,
-            //     Lst_MoneyPayment: -400.0,
-            //     Lst_Status: 2,
-            //     Lst_Charges: 0.0,
-            //   },
-            // ];
-
-            // this.list = [
-            //   {
-            //     id: 'SR200721110313463',
-            //     isSuccess: true,
-            //     date: '2020-07-21',
-            //     bank: 'SCB',
-            //     amount: 1000,
-            //     detail: 'Successful',
-            //   },
-            // ];
             this.detailKey = 'detail';
             break;
           }
           case 'transfer': {
-            const requestDataTransfer = {
-              Sidx: 'Lst_TransTime',
-              Sord: 'DESC',
-              Page: '1',
-              Rows: '10',
-              _Search: 'false',
-              Filters: '',
-            };
-            getRecordTransfer(requestDataTransfer).then(result => {
-              console.log('[RecordTransfer]', result.RetObj);
-            });
-
-            // const responseList = [
-            //   {
-            //     Lst_TransTime: '2020-07-01T11:53:59.98',
-            //     Lst_ProductName: 'BBIN',
-            //     Lst_PointIncome: 20.0,
-            //     Lst_PointPayment: 0.0,
-            //     Lst_Org_Point: 280429.86,
-            //     Lst_Final_Point: 280449.86,
-            //     Lst_Org_Game_Point: 20.0,
-            //     Lst_Final_Game_Point: 0.0,
-            //   },
-            // ];
-
-            // this.list = responseList.map(item => {
-            //   const newItem = {};
-            //   newItem.id = item.Lst_TransID;
-            //   newItem.date = item.Lst_TransTime.split('T')[0];
-            //   newItem.game = item.Lst_ProductName;
-            //   newItem.type = item.Lst_ProductName;
-            //   newItem.amount = item.Lst_Final_Point;
-            //   return newItem;
-            // });
-
-            this.list = [
-              {
-                id: '000',
-                date: '2020-07-21',
-                game: 'Royal Gaming',
-                type: 'Roll-out of Points',
-                amount: -767,
-              },
-              {
-                id: '111',
-                date: '2020-07-22',
-                game: 'Royal Gaming',
-                type: 'Roll-out of Points',
-                amount: 1122,
-              },
-            ];
             this.detailKey = 'amount';
             this.isSearchActive = true;
             this.isPageActive = true;
@@ -414,166 +425,19 @@ export default {
             break;
           }
           case 'bonus': {
-            const requestDataRecordBonus = { Page: 1 };
-
-            getRecordBonus(requestDataRecordBonus).then(result => {
-              console.log('[RecordBonus]', result.RetObj);
-
-              this.list = result.RetObj.Rows.map(item => {
-                const newItem = {};
-                // newItem.id = item.Lst_TransID;
-                newItem.activity = item.Lst_Name;
-                newItem.bindWallet = item.Lst_WalletLimit;
-                newItem.issue = item.Lst_Bonus;
-                newItem.datetime = item.Lst_MTime.replace('T', ' ').split('.')[0];
-                return newItem;
-              });
-            });
-
-            // const responseList = [
-            //   {
-            //     Lst_MTime: '2020-06-05T14:40:59.927',
-            //     Lst_Name: 'QA-轉JDB',
-            //     Lst_WalletLimit: '1180',
-            //     Lst_Bonus: 10.0,
-            //   },
-            // ];
-
-            // this.list = [
-            //   {
-            //     id: '000',
-            //     activity: 'ฝากเพิ่มรับสูงสุด 88,888',
-            //     bindWallet: 'Wallet',
-            //     issue: 10,
-            //     datetime: '2020-07-21 11:13:42',
-            //   },
-            // ];
-            this.isSearchActive = false;
             this.isPageActive = true;
             break;
           }
           case 'lottery': {
-            const requestDataRecordLottery = { Page: 2, SiteID: 'C', Account: 'test' };
-
-            getRecordLottery(requestDataRecordLottery).then(result => {
-              console.log('[RecordLottery]', result.RetObj);
-
-              this.list = result.RetObj.Rows.map(item => {
-                const newItem = {};
-                // newItem.id = item.Lst_TransID;
-                // newItem.isSuccess = item.Lst_PrizeName;
-                newItem.prize = item.Lst_PrizeName;
-                newItem.status = item.Lst_GiveoutStatus;
-                newItem.type = item.Lst_PrizeType;
-                newItem.datetime = item.Lst_CTime.replace('T', ' ').split('.')[0];
-                return newItem;
-              });
-            });
-
-            // const responseList = [
-            //   {
-            //     Lst_CTime: '2020-05-15T10:14:26.427',
-            //     Lst_PrizeName: 'TestPrize5',
-            //     Lst_GiveoutStatus: '已发放',
-            //     Lst_PrizeType: '金额',
-            //   },
-            // ];
-
-            // this.list = [
-            //   {
-            //     id: '000',
-            //     isSuccess: false,
-            //     prize: '88',
-            //     status: 'Undelivered',
-            //     type: 'Prize',
-            //     datetime: '2020-07-21 11:41:52',
-            //   },
-            // ];
-            this.detailKey = 'lotteryStatus';
-            this.isSearchActive = false;
             this.isPageActive = true;
             break;
           }
           case 'withdrawalRestriction': {
-            const requestDataRecordWithdrawalRestriction = { Page: 1 };
-
-            getRecordWithdrawalRestriction(requestDataRecordWithdrawalRestriction).then(result => {
-              console.log('[RecordWithdrawalRestriction]', result.RetObj);
-              this.list = result.RetObj.Rows.map(item => {
-                const newItem = {};
-                newItem.Procudtid = item.Lst_Procudt_id;
-                newItem.BonusCode = item.Lst_Bonus_Code;
-                newItem.WashCodeType = item.Lst_WashCodeType;
-                newItem.type = item.Lst_WashCodeTypeStr;
-                newItem.restriction = item.Lst_Procudt_Name;
-                newItem.notRolloverExchange = item.Lst_Need_Washcode;
-                newItem.rolloverDeadline = item.Lst_Ctime.split('T')[0];
-                return newItem;
-              });
-            });
-
-            // const responseList = [
-            //   {
-            //     Lst_Ctime: '2023-05-14T14:30:59.16',
-            //     Lst_WashCodeType: 0,
-            //     Lst_WashCodeTypeStr: '一般洗碼',
-            //     Lst_Procudt_Name: '取款-我的錢包',
-            //     Lst_Need_Washcode: 300.0,
-            //     Lst_Bonus_Code: 'CWCM200810000001',
-            //     Lst_Procudt_id: 9999,
-            //   },
-            // ];
-
-            // this.list = [
-            //   {
-            //     id: '000',
-            //     type: 'General washing code',
-            //     restriction: 'Withdrawal Bouns-Wallet',
-            //     notRolloverExchange: 13120,
-            //     rolloverDeadline: '2021-2-6',
-            //   },
-            // ];
             this.detailKey = 'restriction';
-            this.isSearchActive = false;
             this.isPageActive = true;
             break;
           }
           case 'adjustment': {
-            const requestDataRecordAdjustment = { Page: 1 };
-
-            getRecordAdjustment(requestDataRecordAdjustment).then(result => {
-              console.log('[RecordAdjustment]', result.RetObj);
-              this.list = result.RetObj.Rows.map(item => {
-                const newItem = {};
-                // newItem.id = item.Lst_TransID;
-                // newItem.isSuccess = item.Lst_PrizeName;
-                newItem.status = item.Lst_PaymentType;
-                newItem.description = item.Lst_Memo;
-                newItem.point = item.Lst_Amount;
-                newItem.datetime = item.Lst_TransTime.replace('T', ' ').split('.')[0];
-                return newItem;
-              });
-            });
-
-            // const responseList = [
-            //   {
-            //     Lst_TransTime: '2020-08-14T13:22:52.72',
-            //     Lst_PaymentType: '补点',
-            //     Lst_Memo: 'test',
-            //     Lst_Amount: 50.0,
-            //   },
-            // ];
-
-            // this.list = [
-            //   {
-            //     id: '000',
-            //     status: 'Deduction from Points',
-            //     description: 'description',
-            //     point: -1000,
-            //     datetime: '2020-07-21 11:20:24',
-            //   },
-            // ];
-            this.isSearchActive = false;
             this.isPageActive = true;
             break;
           }
