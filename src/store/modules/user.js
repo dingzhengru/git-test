@@ -1,7 +1,7 @@
 import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
 import numeral from 'numeral';
-import { register, login, logout, getUserInfo } from '@/api/user';
+import { register, login, logout, getUserInfo, getAllGamePoint } from '@/api/user';
 
 const state = {
   isLoggedIn: false,
@@ -28,12 +28,25 @@ const mutations = {
     setPublicKey(publicKey);
   },
   setUserInfo(state, info) {
+    console.log('[SetUserInfo]', info);
+
     //* 設置 userinfo
     state.isAccessed = info.RetObj.Lst_Account_Open; // * 設置是否已開通
     state.username = info.RetObj.Lst_Account;
-    state.total = numeral(info.RetObj.Lst_Point).format('0,0.00');
     state.roll = info.RetObj.Lst_PI_BetAmount;
     state.vip = info.RetObj.Lst_PI_Level;
+    // state.total = numeral(info.RetObj.Lst_Point).format('0,0.00');
+
+    //* 上方的總餘額是指錢包的餘額
+    getAllGamePoint().then(result => {
+      console.log('[SetUserInfo AllGamePoint]', result.RetObj);
+      const wallet = result.RetObj.find(item => item.Product_id == 9999);
+
+      //* 之後改成下面
+      // const wallet = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999);
+
+      state.total = numeral(wallet.Point).format('0,0.00');
+    });
   },
   setIsAccessed(state, isAccessed) {
     state.isAccessed = isAccessed;
@@ -63,8 +76,8 @@ const mutations = {
 const actions = {
   async getInfo({ commit }) {
     const responseDataUserInfo = await getUserInfo();
-    console.log('[UserInfo]', responseDataUserInfo.RetObj);
     commit('setUserInfo', responseDataUserInfo);
+    console.log('[UserInfo]', responseDataUserInfo.RetObj);
   },
   async register({ commit }, data) {
     const responseDataRegister = await register(data);
