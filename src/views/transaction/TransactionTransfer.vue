@@ -10,9 +10,14 @@
               {{ product.Product_Name }}
             </option>
 
-            <!-- <template v-if="product.children && product.children.length > 0">
-              <optgroup v-for="(child, index) in product.children" :key="index" :label="child"></optgroup>
-            </template> -->
+            <template v-for="child in productDetailList">
+              <option
+                disabled
+                :key="product.Product_id + child.Lst_Proxy_Product_Key"
+                v-if="child.Lst_Product_id == product.Product_id && child.Lst_Name != product.Product_Name"
+                v-html="`&nbsp;&nbsp;&nbsp;&nbsp;☑${child.Lst_Name}`"
+              ></option>
+            </template>
           </template>
         </select>
 
@@ -73,7 +78,7 @@
         <tr class="transfer__account-table__tr">
           <td colspan="2">
             <div class="transfer__button-div">
-              <button class="transfer__button--reflash ui-btn ui-btn-long" @click="reflash()">
+              <button class="transfer__button--reflash ui-btn ui-btn-long" type="button" @click="getAllGamePoint()">
                 {{ $t('transaction.transfer.button.refresh') }}
               </button>
             </div>
@@ -121,6 +126,7 @@ export default {
       idMapper: idMapper,
       numeral: numeral,
       productList: [],
+      productDetailList: [],
       gamePointList: [],
       from: 9999,
       to: -1,
@@ -133,6 +139,18 @@ export default {
     };
   },
   methods: {
+    async getAllGamePoint() {
+      this.$store.commit('setIsLoading', true);
+      const result = await getAllGamePoint();
+      console.log('[AllGamePoint]', result.RetObj);
+      this.gamePointList = result.RetObj;
+      this.updateRangeMax();
+      this.$store.commit('setIsLoading', false);
+
+      //* 之後會改成下面
+      // this.gamePointList = result.RetObj.GameSitePoints;
+      // this.rangeOptions.max = Math.floor(result.RetObj.TotalBalance);
+    },
     submitTransfer() {
       console.log('submitTransfer');
     },
@@ -198,17 +216,10 @@ export default {
         getTransferInfo().then(result => {
           console.log('[Transfer]', result.RetObj);
           this.productList = result.RetObj.Add_SourceList;
+          this.productDetailList = result.RetObj.MenuMemberDetailItemList;
         });
 
-        getAllGamePoint().then(result => {
-          console.log('[AllGamePoint]', result.RetObj);
-          this.gamePointList = result.RetObj;
-          this.updateRangeMax();
-
-          //* 之後會改成下面
-          // this.gamePointList = result.RetObj.GameSitePoints;
-          // this.rangeOptions.max = Math.floor(result.RetObj.TotalBalance);
-        });
+        this.getAllGamePoint();
       },
     },
     from() {
@@ -255,10 +266,16 @@ export default {
   background-color: #979797;
 }
 
-.transfer__wallet__select optgroup {
+.transfer__wallet__select option:disabled {
   color: white;
   background-color: #2e2e2e;
+  font-size: 1.2rem;
 }
+
+/* .transfer__wallet__select optgroup {
+  color: white;
+  background-color: #2e2e2e;
+} */
 
 .transfer__amount-table-div {
   padding-top: 20px;

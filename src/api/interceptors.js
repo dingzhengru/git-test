@@ -39,6 +39,9 @@ axios.interceptors.response.use(
     return res;
   },
   error => {
+    //* 取消 loading
+    store.commit('setIsLoading', false);
+
     console.log('[interceptors response error]', error);
     console.log('[interceptors response error] [url]', error.response.config.url);
     console.log('[interceptors response error] [status]', error.response.status);
