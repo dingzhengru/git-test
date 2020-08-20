@@ -183,7 +183,7 @@ export default {
       pagination: {
         page: 1,
         pagesize: 10,
-        dataLength: 1,
+        dataLength: 0,
       },
     };
   },
@@ -440,6 +440,9 @@ export default {
           case 'adjustment': {
             this.isPageActive = true;
             break;
+          }
+          default: {
+            this.$router.replace({ name: 'TransactionRecordHome' });
           }
         }
       },
