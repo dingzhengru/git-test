@@ -30,15 +30,11 @@
             v-for="category in categoryList"
             :key="category.Lst_Category"
             :class="{ 'game-lobby__category__ul__li--active': $route.query.category == category.Lst_Category }"
-            @click="getGameList({ Tag: productTag, Category: category.Lst_Category })"
           >
-            <router-link
+            <a
               class="game-lobby__category__ul__li__link"
-              :to="{
-                name: 'GameLobby',
-                params: { id: $route.params.id, key: $route.params.key },
-                query: { category: category.Lst_Category },
-              }"
+              href="javascript:;"
+              @click="changeCategory(category.Lst_Category)"
             >
               <template v-if="category.Lst_GameName == 'all' || category.Lst_GameName == 'hot'">
                 {{ $t(`game.category.${category.Lst_GameName}`) }}
@@ -47,7 +43,7 @@
               <template v-else>
                 {{ category.Lst_GameName }}
               </template>
-            </router-link>
+            </a>
           </li>
         </ul>
       </div>
@@ -71,9 +67,9 @@
       <tbody>
         <tr
           class="game-lobby__table__tr"
-          v-for="game in pageData"
-          :key="game.Lst_GameID"
-          @click="getGameUrl({ Tag: productTag, Gameid: game.Lst_GameID, Freeplay: '0' })"
+          v-for="(game, index) in gameList"
+          :key="game.Lst_GameID + index"
+          @click="openGame(game, 0)"
         >
           <td class="game-lobby__table__tr__td-1st">
             <img class="game-lobby__table__tr__td__img" :src="game.imagePath" />
@@ -86,21 +82,47 @@
             <a
               href="javascript:;"
               class="game-lobby__table__tr__td__link--freeplay"
-              @click.capture.stop="getGameUrl({ Tag: productTag, Gameid: game.Lst_GameID, Freeplay: '1' })"
+              @click.capture.stop="openGame(game, 0)"
+              v-if="$route.params.type == 2"
             >
               {{ $t('game.link.free') }}
             </a>
-            <a href="javascript:;" class="game-lobby__table__tr__td__link--favorites">{{ $t('game.link.fav') }}</a>
+            <a href="javascript:;" class="game-lobby__table__tr__td__link--favorites" v-if="$route.params.type == 2">{{
+              $t('game.link.fav')
+            }}</a>
           </td>
         </tr>
       </tbody>
     </table>
     <AppPagination
-      :length="gameList.length"
+      :length="pagination.dataLength"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
     />
+
+    <div class="ui-overlay" v-if="isShowLiveGameEnterDialog"></div>
+    <div class="enter-dialog-container" v-if="isShowLiveGameEnterDialog" @click="isShowLiveGameEnterDialog = false">
+      <div class="enter-dialog">
+        <div class="ui-box-close"></div>
+
+        <template v-for="(gameLimit, index) in gameLimitBetList">
+          <button
+            class="enter-dialog__button ui-btn"
+            :key="index"
+            @click.capture.stop="openLiveGame(gameLimit.Lst_TemplatesId, index + 1)"
+            v-if="gameLimit.Lst_ProductGameId == game.Lst_Category"
+          >
+            <template v-if="gameLimit.Lst_TemplatesId == 0">
+              {{ $t('game.button.enterGame') }}
+            </template>
+            <template v-else>
+              {{ `${gameLimit.Lst_LimitMin}-${gameLimit.Lst_LimitMax}` }}
+            </template>
+          </button>
+        </template>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -126,21 +148,10 @@ export default {
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
     },
-    searchData() {
-      if (!this.search.text) {
-        return this.gameList;
-      }
-      return this.gameList.filter(item => item.name.toLowerCase().includes(this.search.text.toLowerCase()));
-    },
-    pageData() {
-      const startAt = this.pagination.pagesize * (this.pagination.page - 1);
-      const endAt = startAt + this.pagination.pagesize;
-      return this.searchData.slice(startAt, endAt) || [];
-    },
   },
   data() {
     return {
-      guid: '',
+      game: {}, //* 現在選取的遊戲，因真人遊戲是兩階段開啟遊戲的
       productList: [],
       categoryList: [],
       gameList: [],
@@ -166,7 +177,11 @@ export default {
       pagination: {
         page: 1,
         pagesize: 6,
+        dataLength: 1,
       },
+      guid: '', //* 真人遊戲會用到的 guid，於 getGameCategory 取得
+      gameLimitBetList: [], //* 真人遊戲的範本列表
+      isShowLiveGameEnterDialog: false, //* 真人遊戲開遊戲的列表
     };
   },
   async mounted() {
@@ -224,30 +239,40 @@ export default {
         });
       console.log('[GameLobby Product]', this.productList);
     },
-    async getGameCategory(data) {
+    async getGameCategory() {
       let result = {};
+      const requestData = { Tag: this.productTag };
       if (this.$route.params.type == 1) {
-        result = await getLiveGameLobbyCategory(data);
+        result = await getLiveGameLobbyCategory(requestData);
         this.categoryList = this.defaultCategoryListLiveGame.concat(result.RetObj.gameCategoryList);
         this.guid = result.RetObj.H3GUID;
       } else if (this.$route.params.type == 2) {
-        result = await getGameLobbyCategory(data);
+        result = await getGameLobbyCategory(requestData);
         this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
       }
       console.log('[GameLobby Category]', result.RetObj);
       return result;
     },
-    async getGameList(data) {
+    async getGameList() {
+      this.$store.commit('setIsLoading', true);
       let result = {};
+      const requestData = {
+        Tag: this.productTag,
+        Category: this.$route.query.category,
+        Page: this.pagination.page,
+      };
       if (this.$route.params.type == 1) {
-        data.H3GUID = this.guid;
-        result = await getLiveGameLobbyGameList(data);
+        requestData.H3GUID = this.guid;
+        result = await getLiveGameLobbyGameList(requestData);
         this.gameList = result.RetObj.JsonGameList || [];
+        this.gameLimitBetList = result.RetObj.GameLimitBet;
       } else if (this.$route.params.type == 2) {
-        result = await getGameLobbyGameList(data);
+        result = await getGameLobbyGameList(requestData);
         this.gameList = result.RetObj.JsonGameList || [];
       }
       console.log('[GameLobby GameList]', result.RetObj);
+      this.pagination.dataLength = result.RetObj.DataCnt;
+      this.$store.commit('setIsLoading', false);
     },
     async getGameUrl(data) {
       this.$store.commit('setIsLoading', true);
@@ -258,8 +283,45 @@ export default {
       }
       this.$store.commit('setIsLoading', false);
     },
+    async openGame(game, freePlay) {
+      //* 因應真人遊戲兩階段開遊戲
+      console.log('openGame', game, freePlay);
+      this.game = game;
+      if (this.$route.params.type == 1) {
+        this.isShowLiveGameEnterDialog = true;
+      } else if (this.$route.params.type == 2) {
+        this.$store.commit('setIsLoading', true);
+        const requestData = { Tag: this.productTag, Gameid: game.Lst_GameID, Freeplay: freePlay };
+        const result = await getGameUrl(requestData);
+        console.log('[GameLobby OpenGame]', result);
+        if (result.Code == 200) {
+          window.open(result.RetObj.RedirectUrl);
+        }
+        this.$store.commit('setIsLoading', false);
+      }
+    },
+    async openLiveGame(templatesId, order) {
+      const requestData = {
+        Tag: this.productTag,
+        Gameid: this.game.Lst_GameID,
+        Freeplay: 0,
+        Template: templatesId,
+        LibOrder: order,
+      };
+      const result = await getGameUrl(requestData);
+      console.log('[OpenLiveGame]', result);
+    },
+    changeCategory(category) {
+      if (this.$route.query.category == category) {
+        return;
+      }
+      this.$router.push({ name: 'GameLobby', params: this.$route.params, query: { category } });
+      this.pagination.page = 1;
+      this.getGameList();
+    },
     changePage(page) {
       this.pagination.page = page;
+      this.getGameList();
     },
   },
   watch: {
@@ -283,11 +345,12 @@ export default {
       immediate: true,
       async handler() {
         //* 這裡是切換遊戲分類時觸發
-        const requestDataGetGameLobbyCategory = { Tag: this.productTag };
-        await this.getGameCategory(requestDataGetGameLobbyCategory);
 
-        const requestDataGetGameLobbyGameList = { Tag: this.productTag };
-        this.getGameList(requestDataGetGameLobbyGameList);
+        this.pagination.page = 1;
+
+        await this.getGameCategory();
+
+        this.getGameList();
       },
     },
   },
@@ -459,6 +522,47 @@ export default {
   line-height: 205px;
   margin: 0 10px;
   background-repeat: no-repeat;
+}
+
+/**
+ ** 真人遊戲的開遊戲視窗
+*/
+
+.enter-dialog-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+}
+
+.enter-dialog {
+  width: 576px;
+  min-height: 189px;
+  max-height: 50%;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  border: 2px solid #c1ae71;
+  overflow: auto;
+}
+
+.enter-dialog__button {
+  margin-top: 30px;
+}
+
+.enter-dialog__button:first-of-type {
+  margin-top: 100px;
+}
+
+.enter-dialog__button:last-of-type {
+  margin-bottom: 100px;
 }
 
 /*

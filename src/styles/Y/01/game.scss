@@ -13,6 +13,10 @@ $type: 'Y/01';
   background-color: #181b23;
 }
 
+.enter-dialog {
+  background: black;
+}
+
 /*
  ! 語系
 */
@@ -31,6 +35,11 @@ $type: 'Y/01';
 /*
   ! 圖片路徑
 */
+
+.enter-dialog__button {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+
 .game-lobby__supply {
   background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
 }

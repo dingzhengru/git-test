@@ -652,7 +652,8 @@
       "search": "Search"
     },
     "button": {
-      "transferNow": "Transfer Now"
+      "transferNow": "Transfer Now",
+      "enterGame": "Enter"
     },
     "link": {
       "play": "Play Now",

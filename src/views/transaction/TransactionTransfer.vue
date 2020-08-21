@@ -154,13 +154,9 @@ export default {
       this.$store.commit('setIsLoading', true);
       const result = await getAllGamePoint();
       console.log('[AllGamePoint]', result.RetObj);
-      this.gamePointList = result.RetObj;
+      this.gamePointList = result.RetObj.GameSitePoints;
       this.updateRangeMax();
       this.$store.commit('setIsLoading', false);
-
-      //* 之後會改成下面
-      // this.gamePointList = result.RetObj.GameSitePoints;
-      // this.rangeOptions.max = Math.floor(result.RetObj.TotalBalance);
     },
     async transferPoint() {
       this.$store.commit('setIsLoading', true);

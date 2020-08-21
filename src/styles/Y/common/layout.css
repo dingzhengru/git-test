@@ -59,7 +59,29 @@ ul.cpn-inBlock-row > li {
 /*===================================================================================================================*/
 /*                                                        UI                                                         */
 /*===================================================================================================================*/
-/* tag */
+
+.ui-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: black;
+  opacity: 0.8;
+  z-index: 9999;
+}
+
+.ui-box-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: url(~@/assets/common/imgs/ui/colorbox_close.png) no-repeat center;
+  width: 20px;
+  height: 20px;
+  text-indent: -9999px;
+}
 
 /* input */
 .ui-ipt {

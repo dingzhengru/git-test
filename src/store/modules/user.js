@@ -40,11 +40,7 @@ const mutations = {
     //* 上方的總餘額是指錢包的餘額
     getAllGamePoint().then(result => {
       console.log('[SetUserInfo AllGamePoint]', result.RetObj);
-      const wallet = result.RetObj.find(item => item.Product_id == 9999);
-
-      //* 之後改成下面
-      // const wallet = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999);
-
+      const wallet = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999);
       state.total = numeral(wallet.Point).format('0,0.00');
     });
   },

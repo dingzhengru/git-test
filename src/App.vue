@@ -17,8 +17,8 @@
       <router-view />
     </div>
 
-    <AppFooter :isLoggedIn="isLoggedIn"></AppFooter>
-    <AppLoadingOverlay :isLoading="isLoading"></AppLoadingOverlay>
+    <AppFooter :isLoggedIn="isLoggedIn" />
+    <AppLoadingOverlay :isLoading="isLoading" />
   </div>
 </template>
 

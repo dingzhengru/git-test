@@ -1,6 +1,6 @@
 <template>
   <div class="game">
-    <div class="game__jackpot">
+    <div class="game__jackpot" v-if="jackpot">
       <span class="game__jackpot__text">{{ jackpot }}</span>
     </div>
     <router-view />
@@ -23,13 +23,15 @@ export default {
     };
   },
   mounted() {
-    const requestDataGetJackpotTotal = { Tag: this.productTag };
-    getJackpotTotal(requestDataGetJackpotTotal).then(result => {
-      console.log('[Jackpot]', result.RetObj);
-      if (result.Code == 200) {
-        this.jackpot = numeral(result.RetObj).format('0,0');
-      }
-    });
+    if (this.$route.params.type == 2) {
+      const requestDataGetJackpotTotal = { Tag: this.productTag };
+      getJackpotTotal(requestDataGetJackpotTotal).then(result => {
+        console.log('[Jackpot]', result.RetObj);
+        if (result.Code == 200) {
+          this.jackpot = numeral(result.RetObj).format('0,0');
+        }
+      });
+    }
   },
 };
 </script>

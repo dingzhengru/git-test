@@ -652,7 +652,8 @@
       "search": "搜寻游戏"
     },
     "button": {
-      "transferNow": "立即转帐"
+      "transferNow": "立即转帐",
+      "enterGame": "进入游戏"
     },
     "link": {
       "play": "立即开始",
