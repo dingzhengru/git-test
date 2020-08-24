@@ -74,6 +74,7 @@
           type="submit"
           class="transfer__button--transfer ui-btn ui-btn-long"
           :id="idMapper.transaction.transfer.button.transfer"
+          :disabled="!validateForm()"
         >
           {{ $t('transaction.transfer.button.transfer') }}
         </button>
@@ -168,10 +169,10 @@ export default {
       console.log('[TransferPoint]', result);
 
       if (result.Code == 200) {
-        window.alert('Transfer Successful');
-
         //* 更新遊戲點數列表、使用者總餘額
-        this.getAllGamePoint();
+        this.gamePointList = result.RetObj.GameSitePoints;
+        this.updateRangeMax();
+        window.alert('Transfer Successful');
       }
       this.$store.commit('setIsLoading', false);
     },
@@ -353,6 +354,11 @@ export default {
   display: block;
   margin: 0 auto;
 }
+
+.transfer__button-div button:disabled {
+  opacity: 0.6;
+}
+
 /*
  * Table
 */
@@ -427,5 +433,4 @@ export default {
   font-size: 2.5rem;
   width: 40%;
 }
-
 </style>
