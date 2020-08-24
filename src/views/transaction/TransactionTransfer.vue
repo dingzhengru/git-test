@@ -355,10 +355,6 @@ export default {
   margin: 0 auto;
 }
 
-.transfer__button-div button:disabled {
-  opacity: 0.6;
-}
-
 /*
  * Table
 */

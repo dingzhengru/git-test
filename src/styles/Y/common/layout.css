@@ -113,6 +113,11 @@ ul.cpn-inBlock-row > li {
   line-height: 97px;
 }
 
+.ui-btn:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 /* .ui-btn--red {
   background-image: url('../../../assets/common/imgs/ui/btn--red.jpg');
 }
