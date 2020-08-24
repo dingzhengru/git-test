@@ -364,13 +364,14 @@
       "title": "Trade Center",
       "hightLightMessage": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount 500 THB",
       "field": {
+        "bankSelect": "Select Bank",
         "Lst_Account": "Account",
         "Lst_Currency": "Specific Currency",
         "Lst_Point": "wallet balance",
         "Add_WithdrswalsPoint": "Withdrawal Amount",
-        "Lst_Bank_name_1": "Name of Bank",
-        "Lst_BankAccount_1": "Bank Account",
-        "Lst_Bank_Branches_1": "Name of Branch",
+        "Lst_Bank_name": "Name of Bank",
+        "Lst_BankAccount": "Bank Account",
+        "Lst_Bank_Branches": "Name of Branch",
         "Add_RealName": "Account Name of Bank",
         "password": "Password for Withdrawal"
       },

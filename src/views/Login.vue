@@ -166,12 +166,15 @@ export default {
     async login() {
       console.log('[login]', this.user);
       this.$store.commit('setIsLoading', true);
-      const resultLogin = await this.$store.dispatch('user/login', this.user);
+      const result = await this.$store.dispatch('user/login', this.user);
       this.$store.commit('setIsLoading', false);
 
-      //* 203: CaptchaError
-      if (resultLogin.Code == 203) {
-        this.error = resultLogin.ErrMsg;
+      if (result.Code == 201) {
+        //* 帳密錯誤
+        this.error = result.ErrMsg;
+      } else if (result.Code == 203 || result.Code == 599) {
+        //* 驗證碼錯誤
+        this.error = result.ErrMsg;
         this.changeCaptcha();
       }
     },

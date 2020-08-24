@@ -61,7 +61,7 @@ $type: 'Y/02';
 .game-lobby__table__tr__td__link--favorites {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites.png);
 }
-.game-lobby__table__tr__td__link--favorites-active {
+.game-lobby__table__tr__td__link--favorites.active {
   background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites_active.png);
 }
 

@@ -12,6 +12,7 @@ const AUTH_API_LIST = [
   'Siteinfo/MGetPITTLBet',
   'Member/MemInfo',
   'Operator/MWithdrawalsInfo',
+  'Operator/MWithdrawals',
   'Operator/MTransferInfo',
   'Operator/MTransferPoint',
   'Operator/MPointTransferForAllGame',
@@ -32,6 +33,7 @@ const AUTH_API_LIST = [
   'Game/MLiveLobby',
   'Game/MGetLiveLobbyMenu',
   'Game/MGetLiveLobbyList',
+  'Game/MemberCollectionEdit',
   'Siteinfo/MGetLotteryCount',
   'Proxy/PlayLottery',
 ];
@@ -40,7 +42,7 @@ const AUTH_API_LIST = [
 const CRYPTO_API_LIST = ['Member/LoginIn'];
 
 //* 需使用"大數據加密"的 API
-const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister'];
+const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister', 'Operator/MWithdrawals'];
 
 //* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
 const AUTH_ROUTE_LIST = [

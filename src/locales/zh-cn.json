@@ -364,13 +364,14 @@
       "title": "交易中心",
       "hightLightMessage": "取款金额，请填整百数，最低取款金额 500 铢",
       "field": {
+        "bankSelect": "Select Bank",
         "Lst_Account": "帐号",
         "Lst_Currency": "币别",
         "Lst_Point": "我的钱包额度",
         "Add_WithdrswalsPoint": "取款金额",
-        "Lst_Bank_name_1": "银行名称",
-        "Lst_BankAccount_1": "银行帐号",
-        "Lst_Bank_Branches_1": "支行名称",
+        "Lst_Bank_name": "银行名称",
+        "Lst_BankAccount": "银行帐号",
+        "Lst_Bank_Branches": "支行名称",
         "Add_RealName": "银行户名",
         "password": "取款密碼"
       },

@@ -34,6 +34,12 @@ export async function getGameLobbyGameList(data) {
   return result.data;
 }
 
+//* 收藏遊戲 (目前只有電子有此功能)
+export async function setGameLike(data) {
+  const result = await axios.post(API_URL + '/Game/MemberCollectionEdit', data);
+  return result.data;
+}
+
 /**
  ** 真人遊戲
  */

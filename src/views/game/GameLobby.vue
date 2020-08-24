@@ -87,9 +87,15 @@
             >
               {{ $t('game.link.free') }}
             </a>
-            <a href="javascript:;" class="game-lobby__table__tr__td__link--favorites" v-if="$route.params.type == 2">{{
-              $t('game.link.fav')
-            }}</a>
+            <a
+              href="javascript:;"
+              class="game-lobby__table__tr__td__link--favorites"
+              :class="{ active: game.Lst_IsLike }"
+              @click.capture.stop="likeGame(game)"
+              v-if="$route.params.type == 2"
+            >
+              {{ $t('game.link.fav') }}
+            </a>
           </td>
         </tr>
       </tbody>
@@ -136,6 +142,7 @@ import {
   getLiveGameLobbyProduct,
   getLiveGameLobbyCategory,
   getLiveGameLobbyGameList,
+  setGameLike,
 } from '@/api/game';
 
 export default {
@@ -310,6 +317,14 @@ export default {
       };
       const result = await getGameUrl(requestData);
       console.log('[OpenLiveGame]', result);
+    },
+    async likeGame(game) {
+      const requestData = {
+        Gameid: game.Lst_GameID,
+      };
+      const result = await setGameLike(requestData);
+
+      console.log('[SetGameLike]', result);
     },
     changeCategory(category) {
       if (this.$route.query.category == category) {
