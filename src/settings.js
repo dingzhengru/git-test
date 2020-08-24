@@ -24,6 +24,7 @@ const AUTH_API_LIST = [
   'PointRecord/MActivityWashcode',
   'PointRecord/MAdjustment',
   'PointRecord/MActivityWashcodeDetail',
+  'PointRecord/MBetHistory',
   'Game/MGameRedirectUrl',
   'Game/MGetJackpotTotal',
   'Game/MLobbyGameRedirect',

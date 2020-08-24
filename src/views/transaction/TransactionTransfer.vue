@@ -159,6 +159,9 @@ export default {
       this.$store.commit('setIsLoading', false);
     },
     async transferPoint() {
+      if (!this.validateForm()) {
+        return;
+      }
       this.$store.commit('setIsLoading', true);
       const requestData = { Add_Source: this.from, Add_Destination: this.to, Add_TransferPoint: this.amount };
       const result = await transferPoint(requestData);
@@ -166,6 +169,9 @@ export default {
 
       if (result.Code == 200) {
         window.alert('Transfer Successful');
+
+        //* 更新遊戲點數列表、使用者總餘額
+        this.getAllGamePoint();
       }
       this.$store.commit('setIsLoading', false);
     },
@@ -207,6 +213,17 @@ export default {
         this.amount = 0;
       } else if (this.amount > this.rangeOptions.max) {
         this.amount = this.rangeOptions.max;
+      }
+    },
+    validateForm() {
+      if (this.amount <= 0 || this.amount > this.rangeOptions.max || !Number.isInteger(this.amount)) {
+        return false;
+      } else if (this.from == 9999 && this.to == 9999) {
+        return false;
+      } else if (this.to <= -1) {
+        return false;
+      } else {
+        return true;
       }
     },
   },
@@ -332,7 +349,7 @@ export default {
 }
 
 .transfer__button-div button {
-  font-size: 2.5rem;
+  font-size: 3rem;
   display: block;
   margin: 0 auto;
 }
@@ -410,4 +427,5 @@ export default {
   font-size: 2.5rem;
   width: 40%;
 }
+
 </style>

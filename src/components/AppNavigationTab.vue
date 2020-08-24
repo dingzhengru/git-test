@@ -9,9 +9,11 @@
         },
       ]"
       :id="
-        route.id.split('.').reduce((item, key) => {
-          return item[key];
-        }, idMapper)
+        route.id == undefined
+          ? ''
+          : route.id.split('.').reduce((item, key) => {
+              return item[key];
+            }, idMapper)
       "
       v-for="route in list"
       :key="route.name"

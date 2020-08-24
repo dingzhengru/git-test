@@ -19,6 +19,9 @@
 
 <script>
 import numeral from 'numeral';
+import dayjs from 'dayjs';
+
+import { getBetHistory } from '@/api/report';
 export default {
   name: 'ReportUnsettleBet',
   data() {
@@ -41,8 +44,13 @@ export default {
     };
   },
   mounted() {
-    //* 關掉 loading
-    this.$store.commit('setIsLoading', false);
+    this.$store.commit('setIsLoading', false); //* 關掉 loading
+
+    const requestData = { Tag: 'NoneFinal', Day: dayjs().format(dayjs().format('YYYY-MM-DD')) };
+
+    getBetHistory(requestData).then(result => {
+      console.log(result);
+    });
   },
 };
 </script>

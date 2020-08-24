@@ -1,6 +1,5 @@
 import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
-import numeral from 'numeral';
 import { register, login, logout, getUserInfo, getAllGamePoint } from '@/api/user';
 
 const state = {
@@ -40,8 +39,7 @@ const mutations = {
     //* 上方的總餘額是指錢包的餘額
     getAllGamePoint().then(result => {
       console.log('[SetUserInfo AllGamePoint]', result.RetObj);
-      const wallet = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999);
-      state.total = numeral(wallet.Point).format('0,0.00');
+      state.total = result.RetObj.TotalBalance;
     });
   },
   setIsAccessed(state, isAccessed) {

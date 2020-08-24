@@ -19,6 +19,7 @@ export default {
           text: 'report.nav.unsettleBet',
           link: 'ReportUnsettleBet',
           class: 'ui-li-tabs-uns',
+          id: '',
           otherActivePath: [],
         },
         {
@@ -26,6 +27,7 @@ export default {
           text: 'report.nav.betRecord',
           link: 'ReportBetRecord',
           class: 'ui-li-tabs-bethistory',
+          id: '',
           otherActivePath: ['ReportBetRecordDetail'],
         },
       ],

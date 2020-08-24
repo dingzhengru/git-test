@@ -4,7 +4,7 @@
       <div class="header-menu-auth__member__block" v-for="infoKey in userInfoKeyList" :key="infoKey">
         {{ $t(infoKey) }}：
         <template v-if="infoKey == 'header.user.username'">{{ username }}</template>
-        <template v-else-if="infoKey == 'header.user.total'">{{ total }}</template>
+        <template v-else-if="infoKey == 'header.user.total'">{{ numeral(total).format('0,0.00') }}</template>
         <template v-else-if="infoKey == 'header.user.vip'">{{ vip }}</template>
         <template v-else-if="infoKey == 'header.user.roll'">{{ roll }}</template>
       </div>
@@ -70,7 +70,7 @@
 
 <script>
 import idMapper from '@/idMapper';
-
+import numeral from 'numeral';
 export default {
   name: 'HeaderMenuAuth',
   props: {
@@ -101,6 +101,7 @@ export default {
   },
   data() {
     return {
+      numeral: numeral,
       idMapper: idMapper,
       isShowMenu: false,
       routeList: [
