@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <!-- 123123123123 -->
     <div class="theme-errorMsg" v-if="error">
       <span class="theme-txt-errorMsg">{{ error }}</span>
     </div>
@@ -10,11 +11,11 @@
           class="login__form__field__input"
           :id="idMapper.login.input.username"
           type="text"
-          tabindex="1"
+          :placeholder="$t('login.placeholder.username')"
           required
           minlength="3"
           maxlength="15"
-          :placeholder="$t('login.placeholder.username')"
+          pattern="^[a-zA-Z]{1}[a-zA-Z0-9]*$"
           v-model="user.UserName"
         />
       </div>
@@ -23,11 +24,11 @@
           class="login__form__field__input"
           :id="idMapper.login.input.password"
           type="password"
-          tabindex="2"
+          :placeholder="$t('login.placeholder.password')"
           required
           minlength="6"
           maxlength="30"
-          :placeholder="$t('login.placeholder.password')"
+          pattern="^[a-zA-Z0-9]*$"
           v-model="user.Password"
         />
       </div>
@@ -36,13 +37,12 @@
           class="login__form__field__input login__form__field__input--code"
           :id="idMapper.login.input.captcha"
           type="tel"
-          tabindex="3"
+          :placeholder="$t('login.placeholder.captcha')"
           required
           minlength="4"
           maxlength="4"
           pattern="^[0-9]*$"
           autocomplete="off"
-          :placeholder="$t('login.placeholder.captcha')"
           v-model="user.CaptchaValue"
         />
         <img
@@ -56,13 +56,7 @@
         />
       </div>
       <div class="login__form__field login__form__field--remember-me">
-        <input
-          class="login__form__field__checkbox"
-          id="RememberMe"
-          tabindex="4"
-          type="checkbox"
-          v-model="user.RememberMe"
-        />
+        <input class="login__form__field__checkbox" id="RememberMe" type="checkbox" v-model="user.RememberMe" />
         <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">{{ $t('login.rememberMe') }}</label>
       </div>
       <div class="login__form__link-div">
@@ -164,6 +158,9 @@ export default {
   },
   methods: {
     async login() {
+      if (!this.validateForm()) {
+        return;
+      }
       console.log('[login]', this.user);
       this.$store.commit('setIsLoading', true);
       const result = await this.$store.dispatch('user/login', this.user);
@@ -184,6 +181,18 @@ export default {
       console.log('[Captcha]', result.RetObj);
       if (result.Code == 200) {
         this.captchaImage = result.RetObj;
+      }
+    },
+    validateForm() {
+      console.log('[ValidateForm]', this.user);
+      if (this.user.UserName == '' || this.user.UserName.length < 3 || this.user.UserName.length > 15) {
+        return false;
+      } else if (this.user.Password == '' || this.user.Password.length < 6) {
+        return false;
+      } else if (this.user.CaptchaValue == '' || this.user.CaptchaValue.length != 4) {
+        return false;
+      } else {
+        return true;
       }
     },
   },

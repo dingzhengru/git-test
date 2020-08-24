@@ -320,11 +320,17 @@ export default {
     },
     async likeGame(game) {
       const requestData = {
-        Gameid: game.Lst_GameID,
+        Add_ProductID: this.$route.params.id,
+        Add_ProductKey: this.$route.params.key,
+        Add_GameID: game.Lst_GameID,
       };
       const result = await setGameLike(requestData);
 
-      console.log('[SetGameLike]', result);
+      if (result.Code == 200) {
+        game.Lst_IsLike = !game.Lst_IsLike;
+      }
+
+      console.log('[LikeGame]', result);
     },
     changeCategory(category) {
       if (this.$route.query.category == category) {

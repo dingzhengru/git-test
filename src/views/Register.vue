@@ -9,7 +9,6 @@
               v-if="field.name != 'Add_BankId1'"
               class="register__form__field__input"
               :id="idMapper.register.input[field.name]"
-              :ref="field.ref"
               :type="field.type"
               :placeholder="$t(`register.${field.name}.placeholder`)"
               :required="field.isRequired"
@@ -128,7 +127,6 @@ export default {
         },
         {
           name: 'Add_Account',
-          ref: 'Add_Account',
           class: 'register__form__field--account',
           type: 'text',
           error: '',
