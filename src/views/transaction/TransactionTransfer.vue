@@ -169,7 +169,6 @@ export default {
       console.log('[TransferPoint]', result);
 
       if (result.Code == 200) {
-        //* 更新遊戲點數列表、使用者總餘額
         this.gamePointList = result.RetObj.GameSitePoints;
         this.updateRangeMax();
         window.alert('Transfer Successful');
@@ -182,6 +181,9 @@ export default {
       const result = await transferAllGamePointToMain();
       this.$store.commit('setIsLoading', false);
       if (result.Code == 200) {
+        console.log('[TransferToMain]', result.RetObj);
+        this.gamePointList = result.RetObj.GameSitePoints;
+        this.updateRangeMax();
         window.alert(result.RetObj.MsgString);
       }
     },

@@ -5,8 +5,8 @@
         <span class="withdrawal__ul__li__title theme-dataView-header">
           {{ $t(`transaction.withdrawal.field.${item.name}`) }}
         </span>
-        <p class="withdrawal__ul__li__content theme-dataView-data" v-if="item.content">
-          {{ typeof item.content == 'number' ? numeral(item.content).format('0,0.00') : item.content }}
+        <p class="withdrawal__ul__li__content theme-dataView-data" v-if="item.value">
+          {{ typeof item.value == 'number' ? numeral(item.value).format('0,0.00') : item.value }}
         </p>
 
         <template v-if="item.name == 'bankSelect'">
@@ -18,8 +18,8 @@
           </select>
         </template>
 
-        <template v-if="item.name == 'walletBalance'">
-          <button type="button" class="withdrawal__ul__li__button ui-btn ui-btn-long" @click="allGamePointBackToMain">
+        <template v-if="item.name == 'Lst_Point'">
+          <button type="button" class="withdrawal__ul__li__button ui-btn ui-btn-long" @click="transferToMain">
             {{ $t('transaction.withdrawal.button.allToMyWallet') }}
           </button>
         </template>
@@ -29,9 +29,13 @@
             class="withdrawal__ul__li__input ui-ipt theme-ipt-dataview"
             :id="idMapper.transaction.withdrawal.field[item.name]"
             type="number"
+            step="100"
+            min="0"
             max="30000"
             placeholder="Please enter amount of withdrawal"
+            autocomplete="false"
             v-model.number="amount"
+            @input="inputAmount"
           />
         </template>
 
@@ -59,6 +63,7 @@
         type="submit"
         class="withdrawal__button-div__submit ui-btn ui-btn-long"
         :id="idMapper.transaction.withdrawal.button.submit"
+        :disabled="!validateForm()"
       >
         {{ $t('ui.button.submit') }}
       </button>
@@ -72,6 +77,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getWithdrawal, Withdrawal } from '@/api/transaction-withdrawal';
+import { transferAllGamePointToMain } from '@/api/transaction-transfer';
 
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
@@ -88,43 +94,43 @@ export default {
       accountInfoList: [
         {
           name: 'bankSelect',
-          content: '',
+          value: '',
         },
         {
           name: 'Lst_Account',
-          content: '',
+          value: '',
         },
         {
           name: 'Lst_Currency',
-          content: '',
+          value: '',
         },
         {
           name: 'Lst_Point',
-          content: '',
+          value: '',
         },
         {
           name: 'Add_WithdrswalsPoint',
-          content: '',
+          value: '',
         },
         {
           name: 'Lst_Bank_name',
-          content: '',
+          value: '',
         },
         {
           name: 'Lst_BankAccount',
-          content: '',
+          value: '',
         },
         {
           name: 'Lst_Bank_Branches',
-          content: '',
+          value: '',
         },
         {
           name: 'Add_RealName',
-          content: '',
+          value: '',
         },
         {
           name: 'password',
-          content: '',
+          value: '',
         },
       ],
       noticeList: ['transaction.withdrawal.notice.contact'],
@@ -135,15 +141,23 @@ export default {
     };
   },
   methods: {
-    allGamePointBackToMain() {
-      console.log('allGamePointBackToMain');
+    async transferToMain() {
+      this.$store.commit('setIsLoading', true);
+      const result = await transferAllGamePointToMain();
+      if (result.Code == 200) {
+        console.log('[TransferToMain]', result.RetObj);
+        const wallet = this.accountInfoList.find(item => item.name == 'Lst_Point');
+        wallet.value = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999).Point;
+        window.alert(result.RetObj.MsgString);
+      }
+      this.$store.commit('setIsLoading', false);
     },
     async submitWithdrawal() {
-      if (!this.bank || this.amount <= 0 || !this.password) {
+      if (!this.validateForm()) {
         return;
       }
       const requestData = {
-        Add_RealName: this.accountInfoList.find(item => item.name == 'Add_RealName').content,
+        Add_RealName: this.accountInfoList.find(item => item.name == 'Add_RealName').value,
         Add_MemberBankID: this.bank.Lst_BankID,
         Add_MemberBankName: this.bank.Lst_Bank_name,
         Add_MemberBankBranchesName: this.bank.Lst_Bank_Branches,
@@ -167,9 +181,28 @@ export default {
       }
       this.accountInfoList.map(item => {
         if (this.bank[item.name]) {
-          item.content = this.bank[item.name];
+          item.value = this.bank[item.name];
         }
       });
+    },
+    inputAmount() {
+      const walletAmount = this.accountInfoList.find(item => item.name == 'Lst_Point').value;
+      if (this.amount > walletAmount || this.amount > 30000) {
+        this.amount = walletAmount < 30000 ? walletAmount : 30000;
+      } else if (this.amount < 0) {
+        this.amount = 0;
+      }
+    },
+    validateForm() {
+      if (this.amount < 100 || this.amount > 30000 || this.amount % 100 != 0) {
+        return false;
+      } else if (this.bank == '') {
+        return false;
+      } else if (this.password == '' || this.password.length < 6) {
+        return false;
+      } else {
+        return true;
+      }
     },
   },
   watch: {
@@ -198,7 +231,7 @@ export default {
 
           this.accountInfoList.map(item => {
             if (result.RetObj[item.name]) {
-              item.content = result.RetObj[item.name];
+              item.value = result.RetObj[item.name];
             }
           });
         });
