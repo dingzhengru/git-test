@@ -100,13 +100,15 @@ const actions = {
     }
     return responseDataLogin;
   },
-  async logout({ commit }) {
-    await logout();
+  logout({ commit }) {
+    // await logout();
 
-    commit('setIsLoggedIn', false);
-    commit('removeToken');
-    commit('removePublicKey');
-    window.location.replace('/login');
+    logout().finally(() => {
+      commit('setIsLoggedIn', false);
+      commit('removeToken');
+      commit('removePublicKey');
+      window.location.replace('/login');
+    });
   },
 };
 

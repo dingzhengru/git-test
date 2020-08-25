@@ -49,16 +49,22 @@
       </div>
     </div>
     <div class="game-lobby__inquire">
-      <div class="game-lobby__inquire__input-div">
+      <form class="game-lobby__inquire-form" @submit.prevent="getGameList">
         <input
           class="game-lobby__inquire__search"
           type="search"
           v-model="search.text"
           :placeholder="$t('game.placeholder.search')"
         />
-        <button class="game-lobby__inquire__search-icon"></button>
-      </div>
-      <input class="game-lobby__inquire__favorites" type="submit" title="My Favorites" v-if="$route.params.type == 2" />
+        <button class="game-lobby__inquire__search-icon" type="submit"></button>
+      </form>
+      <input
+        class="game-lobby__inquire__favorites"
+        type="submit"
+        title="My Favorites"
+        @click="searchLikeGame"
+        v-if="$route.params.type == 2"
+      />
       <button class="game-lobby__inquire__button--transfer-now" @click="isShowTransferDialog = true">
         {{ $t('game.button.transferNow') }}
       </button>
@@ -249,6 +255,7 @@ export default {
       ],
       search: {
         text: '',
+        isLike: false,
       },
       pagination: {
         page: 1,
@@ -340,6 +347,8 @@ export default {
         Tag: this.productTag,
         Category: this.$route.query.category,
         Page: this.pagination.page,
+        GameName: this.search.text,
+        IsLike: this.search.isLike ? 1 : 0,
       };
       if (this.$route.params.type == 1) {
         requestData.H3GUID = this.guid;
@@ -426,12 +435,17 @@ export default {
         window.alert('Transfer Successful');
       }
     },
+    searchLikeGame() {
+      this.search.isLike = !this.search.isLike;
+      this.getGameList();
+    },
     changeCategory(category) {
       if (this.$route.query.category == category) {
         return;
       }
       this.$router.push({ name: 'GameLobby', params: this.$route.params, query: { category } });
       this.pagination.page = 1;
+      this.search.text = '';
       this.getGameList();
     },
     changePage(page) {
@@ -465,6 +479,7 @@ export default {
         //* 這裡是切換遊戲分類時觸發
 
         this.pagination.page = 1;
+        this.search.text = '';
 
         await this.getGameCategory();
 
@@ -549,7 +564,7 @@ export default {
   position: relative;
 }
 
-.game-lobby__inquire__input-div {
+.game-lobby__inquire-form {
   display: inline-block;
   position: relative;
 }
