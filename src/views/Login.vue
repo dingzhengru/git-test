@@ -161,6 +161,7 @@ export default {
       } else if (result.Code == 203 || result.Code == 599) {
         //* 驗證碼錯誤
         this.error = result.ErrMsg;
+        this.user.CaptchaValue = '';
         this.changeCaptcha();
       }
     },

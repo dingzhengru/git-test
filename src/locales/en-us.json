@@ -564,10 +564,9 @@
     },
     "unsettleBet": {
       "table": {
-        "number": "NO.",
-        "game": "Arena of Games",
-        "count": "Total Bet Count",
-        "amount": "Total Bet Amount"
+        "Lst_ProductName": "Arena of Games",
+        "Lst_BetCount": "Total Bet Count",
+        "Lst_TTLBet": "Total Bet Amount"
       }
     },
     "betRecord": {
@@ -585,18 +584,18 @@
       "title": "Account detail",
       "table": {
         "total": {
-          "count": "Total Bet Count",
-          "amount": "Total Bet Amount",
-          "totalWinLose": "Total Win-lose",
-          "prize": "Total Prize"
+          "BetCount": "Total Bet Count",
+          "TTLBet": "Total Bet Amount",
+          "TTLNetWin": "Total Win-lose",
+          "JackpotScore": "Total Prize"
         },
         "recordList": {
-          "game": "Arena of Games",
-          "count": "Total Bet Count",
-          "totalAmount": "Total Bet Amount",
-          "validAmount": "Valid Bet Amount",
-          "totalWinLose": "Total Win-lose",
-          "prize": "Total Prize"
+          "Lst_ProductName": "Arena of Games",
+          "Lst_BetCount": "Total Bet Count",
+          "Lst_TTLBet": "Total Bet Amount",
+          "Lst_TTLNetBet": "Valid Bet Amount",
+          "Lst_MemberTTLNetWin": "Total Win-lose",
+          "Lst_JackpotScore": "Total Prize"
         }
       },
       "button": {

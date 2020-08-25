@@ -12,7 +12,8 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import numeral from 'numeral';
+import { getBetHistoryDay } from '@/api/report';
+
 export default {
   name: 'ReportBetRecordDetail',
   components: {
@@ -23,28 +24,8 @@ export default {
   },
   data() {
     return {
-      numeral: numeral,
       title: '',
-      recordList: [
-        {
-          id: '00000',
-          game: 'RNG-RG電子',
-          count: 3,
-          totalAmount: 240,
-          validAmount: 240,
-          totalWinLose: -216,
-          prize: 0,
-        },
-        {
-          id: '11111',
-          game: 'RNG-CQ9 RNG',
-          count: 1,
-          totalAmount: 40,
-          validAmount: 40,
-          totalWinLose: 8228,
-          prize: 0,
-        },
-      ],
+      recordList: [],
     };
   },
   mounted() {
@@ -53,12 +34,40 @@ export default {
   watch: {
     siteID: {
       immediate: true,
-      handler() {
+      async handler() {
         if (!this.siteID) {
           return;
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
+
+        //* 取投注明細
+        this.recordList = [
+          {
+            Lst_ProductName: 'RNG-RG電子',
+            Lst_BetCount: 3,
+            Lst_TTLBet: 240,
+            Lst_TTLNetBet: 240,
+            Lst_MemberTTLNetWin: -216,
+            Lst_JackpotScore: 0,
+          },
+          {
+            Lst_ProductName: 'RNG-CQ9 RNG',
+            Lst_BetCount: 1,
+            Lst_TTLBet: 40,
+            Lst_TTLNetBet: 40,
+            Lst_MemberTTLNetWin: 8228,
+            Lst_JackpotScore: 0,
+          },
+        ];
+
+        const requestData = {
+          Tag: 'DayOfWeek',
+          Day: `${this.$route.params.date.split(' ')[0]} 12:00:00`,
+        };
+
+        const result = await getBetHistoryDay(requestData);
+        console.log('[BetHistoryDay]', result);
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);

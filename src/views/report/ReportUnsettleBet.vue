@@ -19,9 +19,8 @@
 
 <script>
 import numeral from 'numeral';
-import dayjs from 'dayjs';
 
-import { getBetHistory } from '@/api/report';
+import { getBetHistoryUnsettle } from '@/api/report';
 export default {
   name: 'ReportUnsettleBet',
   data() {
@@ -29,16 +28,14 @@ export default {
       numeral: numeral,
       list: [
         {
-          number: '000',
-          game: 'Sports-SBO Sports',
-          count: 0,
-          amount: 100,
+          Lst_ProductName: 'Sports-SBO Sports',
+          Lst_BetCount: 0,
+          Lst_TTLBet: 100,
         },
         {
-          number: '111',
-          game: 'Sports-SBO Sports',
-          count: 0,
-          amount: 100,
+          Lst_ProductName: 'Sports-SBO Sports',
+          Lst_BetCount: 0,
+          Lst_TTLBet: 100,
         },
       ],
     };
@@ -46,10 +43,9 @@ export default {
   mounted() {
     this.$store.commit('setIsLoading', false); //* 關掉 loading
 
-    const requestData = { Tag: 'NoneFinal', Day: dayjs().format(dayjs().format('YYYY-MM-DD')) };
-
-    getBetHistory(requestData).then(result => {
+    getBetHistoryUnsettle().then(result => {
       console.log(result);
+      this.list = result.RetObj.Rows;
     });
   },
 };

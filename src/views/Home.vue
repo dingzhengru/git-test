@@ -3,7 +3,7 @@
     <HomeSwiper :list="swiperList" :resourceUrl="resourceUrl" :siteIsNewPromotion="siteIsNewPromotion" />
 
     <div class="home-game">
-      <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" />
+      <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="isLoggedIn" />
 
       <HomeGameBlock
         :list="productList"
@@ -162,7 +162,7 @@ export default {
       }
     },
     openLotteryGame(lottery) {
-      console.log('[OpenLotteryGame]', lottery.name);
+      console.log('[OpenLotteryGame]', lottery);
     },
   },
   watch: {
@@ -183,7 +183,9 @@ export default {
         this.getMessageList();
 
         //* 取得抽獎列表
-        this.getLotteryList();
+        if (this.isLoggedIn) {
+          this.getLotteryList();
+        }
       },
     },
     lang() {

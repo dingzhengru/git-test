@@ -73,4 +73,25 @@ export default {
 .lottery1 .lottery__icon {
   background: url(~@/assets/common/imgs/main/luckyDrawIcn.png) left center no-repeat;
 }
+
+@keyframes colorchange {
+  0% {
+    color: #fff;
+  }
+  20% {
+    color: #fc0;
+  }
+  40% {
+    color: #fff;
+  }
+  60% {
+    color: #fc0;
+  }
+  80% {
+    color: #fff;
+  }
+  100% {
+    color: #fc0;
+  }
+}
 </style>

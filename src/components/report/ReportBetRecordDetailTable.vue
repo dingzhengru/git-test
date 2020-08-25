@@ -8,7 +8,7 @@
 
       <table class="report-bet-record__total-table ui-table03">
         <tbody>
-          <tr v-for="(value, key) in total" :key="key">
+          <tr v-for="(value, key) in totalObject" :key="key">
             <th class="report-bet-record__total-table__th-1st th-1st">
               {{ $t(`report.betRecordDetail.table.total.${key}`) }}
             </th>
@@ -23,13 +23,13 @@
       </table>
       <div
         class="report-bet-record__box report-bet-record__box--inner theme-content-box"
-        v-for="record in recordList"
-        :key="record.id"
+        v-for="(record, index) in recordList"
+        :key="index"
       >
         <table class="report-bet-record__detail-table ui-table02">
           <tbody>
             <tr class="report-bet-record__detail-table__tr" v-for="(value, key) in record" :key="key">
-              <template v-if="key != 'id'">
+              <template>
                 <th class="th-1st">
                   {{ $t(`report.betRecordDetail.table.recordList.${key}`) }}
                 </th>
@@ -61,6 +61,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    totalObject: {
+      type: Object,
+      default: () => {},
+    },
   },
   computed: {
     isPositive: () => (key, value) => {
@@ -69,20 +73,20 @@ export default {
     isNegative: () => (key, value) => {
       return key == 'totalWinLose' && value < 0;
     },
-    total() {
-      const totalObject = {};
-      totalObject.count = this.recordList.length;
-      totalObject.amount = 0;
-      totalObject.totalWinLose = 0;
-      totalObject.prize = 0;
+    // total() {
+    //   const totalObject = {};
+    //   totalObject.BetCount = this.recordList.length;
+    //   totalObject.TTLBet = 0;
+    //   totalObject.TTLNetWin = 0;
+    //   totalObject.JackpotScore = 0;
 
-      this.recordList.forEach(item => {
-        totalObject.amount = totalObject.amount + item.totalAmount
-        totalObject.totalWinLose = totalObject.totalWinLose + item.totalWinLose
-        totalObject.prize = totalObject.prize + item.prize
-      });
-      return totalObject;
-    },
+    //   this.recordList.forEach(item => {
+    //     totalObject.TTLBet = totalObject.amount + item.totalAmount;
+    //     totalObject.TTLNetWin = totalObject.totalWinLose + item.totalWinLose;
+    //     totalObject.JackpotScore = totalObject.prize + item.prize;
+    //   });
+    //   return totalObject;
+    // },
   },
   data() {
     return {

@@ -19,17 +19,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="report-bet-record__table__tr" v-for="item in weekList" :key="item.date">
-            <td class="report-bet-record__table__td-1st td-1st">{{ item.date }}</td>
+          <tr class="report-bet-record__table__tr" v-for="item in weekList" :key="item.Lst_ReportDate">
+            <td class="report-bet-record__table__td-1st td-1st">{{ item.Lst_ReportDate }}</td>
             <td
               class="report-bet-record__table__td-2nd td-2nd"
-              :class="{ 'ui-txt-positive': item.winLose > 0, 'ui-txt-negative': item.winLose < 0 }"
+              :class="{
+                'ui-txt-positive': item.Lst_MemberTTLNetWin > 0,
+                'ui-txt-negative': item.Lst_MemberTTLNetWin < 0,
+              }"
             >
-              {{ numeral(item.winLose).format('0,0.00') }}
+              {{ numeral(item.Lst_MemberTTLNetWin).format('0,0.00') }}
               <router-link
                 class="ui-lnk-detail"
-                :to="{ name: 'ReportBetRecordDetail', params: { date: item.date } }"
-                v-if="item.hasDetail"
+                :to="{ name: 'ReportBetRecordDetail', params: { date: item.Lst_ReportDate } }"
+                v-if="item.Lst_BetCount > 0"
               />
             </td>
           </tr>
@@ -39,6 +42,7 @@
 
     <ReportBetRecordDetailTable
       :title="$t(`report.betRecord.dateRange.${dateRange.name}`)"
+      :totalObject="totalObject"
       :recordList="recordList"
       v-if="dateRange.name == 'today'"
     />
@@ -48,6 +52,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import numeral from 'numeral';
+import { getBetHistoryDay, getBetHistoryWeek } from '@/api/report';
 export default {
   name: 'ReportBetRecord',
   components: {
@@ -62,30 +67,20 @@ export default {
       dateRangeList: [
         {
           name: 'today',
-          value: 'today',
+          value: 'Today',
         },
         {
           name: 'thisWeek',
-          value: 'thisWeek',
+          value: 'ThisWeek',
         },
         {
           name: 'lastWeek',
-          value: 'lastWeek',
+          value: 'LastWeek',
         },
       ],
-      weekList: [
-        {
-          date: '2020-07-27 (GMT+8)',
-          winLose: -216,
-          hasDetail: true,
-        },
-        {
-          date: '2020-07-28 (GMT+8)',
-          winLose: 8228,
-          hasDetail: true,
-        },
-      ],
-      dateRange: { name: 'today', value: 'today' },
+      weekList: [],
+      dateRange: { name: 'today', value: 'Today' },
+      totalObject: {},
       recordList: [],
     };
   },
@@ -110,29 +105,81 @@ export default {
     },
     dateRange: {
       immediate: true,
-      handler() {
+      async handler() {
         console.log('[ReportBetRecord]:', this.dateRange.name);
         if (this.dateRange.name == 'today') {
           this.recordList = [
             {
-              id: '00000',
-              game: 'RNG-RG電子',
-              count: 3,
-              totalAmount: 240,
-              validAmount: 240,
-              totalWinLose: -216,
-              prize: 0,
+              Lst_ProductName: 'RNG-RG電子',
+              Lst_BetCount: 3,
+              Lst_TTLBet: 240,
+              Lst_TTLNetBet: 240,
+              Lst_MemberTTLNetWin: -216,
+              Lst_JackpotScore: 0,
             },
             {
-              id: '11111',
-              game: 'RNG-CQ9 RNG',
-              count: 1,
-              totalAmount: 40,
-              validAmount: 40,
-              totalWinLose: 8228,
-              prize: 0,
+              Lst_ProductName: 'RNG-CQ9 RNG',
+              Lst_BetCount: 1,
+              Lst_TTLBet: 40,
+              Lst_TTLNetBet: 40,
+              Lst_MemberTTLNetWin: 8228,
+              Lst_JackpotScore: 0,
             },
           ];
+
+          this.totalObject = {
+            BetCount: 111,
+            TTLBet: 2222,
+            TTLNetWin: 33333,
+            JackpotScore: 4444,
+          };
+
+          const requestData = { Tag: this.dateRange.value };
+          const result = await getBetHistoryDay(requestData);
+          console.log('[BetHistoryDay]', result);
+        } else {
+          this.weekList = [
+            {
+              Lst_BetCount: 4,
+              Lst_MemberTTLNetWin: 0.0,
+              Lst_ReportDate: '2020-08-24 (GMT+8)',
+            },
+            {
+              Lst_BetCount: 0,
+              Lst_MemberTTLNetWin: 0.0,
+              Lst_ReportDate: '2020-08-25 (GMT+8)',
+            },
+            {
+              Lst_BetCount: 0,
+              Lst_MemberTTLNetWin: 0.0,
+              Lst_ReportDate: '2020-08-26 (GMT+8)',
+            },
+            {
+              Lst_BetCount: 0,
+              Lst_MemberTTLNetWin: 0.0,
+              Lst_ReportDate: '2020-08-27 (GMT+8)',
+            },
+            {
+              Lst_BetCount: 0,
+              Lst_MemberTTLNetWin: 0.0,
+              Lst_ReportDate: '2020-08-28 (GMT+8)',
+            },
+            {
+              Lst_BetCount: 0,
+              Lst_MemberTTLNetWin: 0.0,
+              Lst_ReportDate: '2020-08-29 (GMT+8)',
+            },
+            {
+              Lst_BetCount: 0,
+              Lst_MemberTTLNetWin: 0.0,
+              Lst_ReportDate: '2020-08-30 (GMT+8)',
+            },
+          ];
+
+          const requestData = { Tag: this.dateRange.value };
+          const result = await getBetHistoryWeek(requestData);
+
+          console.log('[BetHistoryWeek]', result);
         }
       },
     },

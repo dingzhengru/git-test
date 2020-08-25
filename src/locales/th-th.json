@@ -564,10 +564,9 @@
     },
     "unsettleBet": {
       "table": {
-        "number": "NO.",
-        "game": "สาขาเกมส์",
-        "count": "จำนวนบิล",
-        "amount": "ยอดเดิมพันทั้งหมด"
+        "Lst_ProductName": "สาขาเกมส์",
+        "Lst_BetCount": "จำนวนบิล",
+        "Lst_TTLBet": "ยอดเดิมพันทั้งหมด"
       }
     },
     "betRecord": {
@@ -585,18 +584,18 @@
       "title": "รายละเอียดบัญชี",
       "table": {
         "total": {
-          "count": "จำนวนบิล",
-          "amount": "ยอดเดิมพันทั้งหมด",
-          "totalWinLose": "ยอดได้เสีย",
-          "prize": "ยอดแจ็คพอต"
+          "BetCount": "จำนวนบิล",
+          "TTLBet": "ยอดเดิมพันทั้งหมด",
+          "TTLNetWin": "ยอดได้เสีย",
+          "JackpotScore": "ยอดแจ็คพอต"
         },
         "recordList": {
-          "game": "สาขาเกมส์",
-          "count": "จำนวนบิล",
-          "totalAmount": "ยอดเดิมพันทั้งหมด",
-          "validAmount": "ยอดโรลลิ่ง",
-          "totalWinLose": "ยอดได้เสีย",
-          "prize": "ยอดแจ็คพอต"
+          "Lst_ProductName": "สาขาเกมส์",
+          "Lst_BetCount": "จำนวนบิล",
+          "Lst_TTLBet": "ยอดเดิมพันทั้งหมด",
+          "Lst_TTLNetBet": "ยอดโรลลิ่ง",
+          "Lst_MemberTTLNetWin": "ยอดได้เสีย",
+          "Lst_JackpotScore": "ยอดแจ็คพอต"
         }
       },
       "button": {
