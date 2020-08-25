@@ -253,16 +253,11 @@ export default {
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
-            // newItem.id = item.Lst_TransID;
-            newItem.date = item.Lst_TransTime.split('T')[0];
+            newItem.id = item.Lst_TransID;
+            newItem.date = item.Lst_TransDate;
             newItem.game = item.Lst_ProductName;
-            newItem.type = item.Lst_ProductName;
-
-            if (item.Lst_PointIncome == 0) {
-              newItem.amount = item.Lst_Final_Point;
-            } else {
-              newItem.amount = item.Lst_PointPayment;
-            }
+            newItem.type = item.Lst_TransType;
+            newItem.amount = item.Lst_Point;
 
             return newItem;
           });
