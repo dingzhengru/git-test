@@ -16,7 +16,4 @@ export async function transferAllGamePointToMain() {
   return result.data;
 }
 
-export async function transferProductList() {
-  const result = await axios.post(API_URL + '/Product/MemProductList');
-  return result.data;
-}
+

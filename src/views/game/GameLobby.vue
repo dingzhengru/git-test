@@ -180,6 +180,14 @@
             </template>
           </button>
         </template>
+
+        <button
+          class="game-dialog__button ui-btn"
+          @click.capture.stop="openLiveGame(0, '')"
+          v-if="gameLimitBetList.length <= 0"
+        >
+          {{ $t('game.button.enterGame') }}
+        </button>
       </div>
     </div>
   </div>
@@ -608,11 +616,12 @@ export default {
   height: 65px;
   /* font-size: 21px; */
   padding: 10px 10px 10px 48px;
-  margin: 22px 0 0 10px;
+  margin: 22px 10px 0 0;
   color: #fedebe;
   vertical-align: top;
   background: url(~@/assets/common/imgs/ui/btn_transferNow.png) left center no-repeat;
   border: none;
+  float: right;
 }
 
 .game-lobby__table {

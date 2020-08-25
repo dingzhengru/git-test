@@ -11,7 +11,7 @@
       </table>
     </div>
     <div class="user-profile__button-div">
-      <button type="button" class="user-profile__button--instant ui-btn ui-btn-long" @click="instantAccess">
+      <button class="user-profile__button--instant ui-btn ui-btn-long" @click="instantAccess">
         {{ $t('user.profile.notAccessed.button.access') }}
       </button>
     </div>
@@ -35,15 +35,15 @@ export default {
       noticeList: [
         {
           name: 'access',
-          content: 'user.profile.notAccessed.notice.access'
+          content: 'user.profile.notAccessed.notice.access',
         },
         {
           name: 'suggest',
-          content: 'user.profile.notAccessed.notice.suggest'
+          content: 'user.profile.notAccessed.notice.suggest',
         },
         {
           name: 'contact',
-          content: 'user.profile.notAccessed.notice.contact'
+          content: 'user.profile.notAccessed.notice.contact',
         },
       ],
     };
@@ -64,4 +64,6 @@ export default {
   margin: 40px 0;
   text-align: center;
 }
+
+
 </style>

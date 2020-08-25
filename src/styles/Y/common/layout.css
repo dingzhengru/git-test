@@ -105,7 +105,8 @@ ul.cpn-inBlock-row > li {
   height: 97px;
   display: inline-block;
   color: #fff;
-  font-size: 3.23em;
+  /* font-size: 3.23em; */
+  font-size: 3rem;
   text-align: center;
   border-radius: 10px;
   border: none;
@@ -716,20 +717,20 @@ ul.cpn-inBlock-row > li {
 } */
 /* .li-prizeNum, */
 /* .li-prizeDsc { */
-  /* font-size: 36px; */
-  /* font-weight: bold; */
-  /* line-height: 52px; */
-  /* text-indent: 8px; */
-  /* background: -webkit-linear-gradient(top, #f1c579 0, #c47b00 100%); -webkit-background-clip: text;  -webkit-text-fill-color: transparent; */ /*漸層字*/
-  /* -webkit-filter: drop-shadow(5px 1px 1px #272727); */
-  /* filter: drop-shadow(0px 1px 1px #272727); */
-  /* color: #fff; */
-  /*文字閃動*/
-  /* animation: colorchange 1s infinite alternate; */
-  /* -webkit-animation: colorchange 1s infinite alternate; */
-  /* -moz-animation: colorchange 1s infinite alternate; */
-  /* -o-animation: colorchange 1s infinite alternate; */
-  /* -ms-animation: colorchange 1s infinite alternate;  */
+/* font-size: 36px; */
+/* font-weight: bold; */
+/* line-height: 52px; */
+/* text-indent: 8px; */
+/* background: -webkit-linear-gradient(top, #f1c579 0, #c47b00 100%); -webkit-background-clip: text;  -webkit-text-fill-color: transparent; */ /*漸層字*/
+/* -webkit-filter: drop-shadow(5px 1px 1px #272727); */
+/* filter: drop-shadow(0px 1px 1px #272727); */
+/* color: #fff; */
+/*文字閃動*/
+/* animation: colorchange 1s infinite alternate; */
+/* -webkit-animation: colorchange 1s infinite alternate; */
+/* -moz-animation: colorchange 1s infinite alternate; */
+/* -o-animation: colorchange 1s infinite alternate; */
+/* -ms-animation: colorchange 1s infinite alternate;  */
 /* } */
 /* .li-prizeNum {} */
 /* .li-prizeDsc {} */
@@ -759,19 +760,19 @@ ul.cpn-inBlock-row > li {
 } */
 /* .li-luckyDrawNum, */
 /* .li-luckyDrawDsc { */
-  /* font-size: 36px; */
-  /* font-weight: bold; */
-  /* line-height: 52px; */
-  /* text-indent: 8px; */
-  /* background: -webkit-linear-gradient(top, #f1c579 0, #c47b00 100%); -webkit-background-clip: text;  -webkit-text-fill-color: transparent; */ /*漸層字*/
-  /* -webkit-filter: drop-shadow(5px 1px 1px #272727); */
-  /* filter: drop-shadow(0px 1px 1px #272727); */
-  /* color: #fff; */
-  /* animation: colorchange 1s infinite alternate; */
-  /* -webkit-animation: colorchange 1s infinite alternate; */
-  /* -moz-animation: colorchange 1s infinite alternate; */
-  /* -o-animation: colorchange 1s infinite alternate; */
-  /* -ms-animation: colorchange 1s infinite alternate; 文字閃動 */
+/* font-size: 36px; */
+/* font-weight: bold; */
+/* line-height: 52px; */
+/* text-indent: 8px; */
+/* background: -webkit-linear-gradient(top, #f1c579 0, #c47b00 100%); -webkit-background-clip: text;  -webkit-text-fill-color: transparent; */ /*漸層字*/
+/* -webkit-filter: drop-shadow(5px 1px 1px #272727); */
+/* filter: drop-shadow(0px 1px 1px #272727); */
+/* color: #fff; */
+/* animation: colorchange 1s infinite alternate; */
+/* -webkit-animation: colorchange 1s infinite alternate; */
+/* -moz-animation: colorchange 1s infinite alternate; */
+/* -o-animation: colorchange 1s infinite alternate; */
+/* -ms-animation: colorchange 1s infinite alternate; 文字閃動 */
 /* } */
 /* .li-luckyDrawNum {} */
 /* .li-luckyDrawDsc {} */

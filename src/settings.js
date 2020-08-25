@@ -8,9 +8,10 @@ const DEFAULT_LANG = 'th-th';
 const AUTH_API_LIST = [
   'Member/LoginIn',
   'Member/SimpleRegister',
+  'Member/MemInfo',
   'Siteinfo/MGetAllGamePoint',
   'Siteinfo/MGetPITTLBet',
-  'Member/MemInfo',
+  'Product/MemProductList',
   'Operator/MWithdrawalsInfo',
   'Operator/MWithdrawals',
   'Operator/MTransferInfo',
