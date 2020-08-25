@@ -24,7 +24,7 @@ import { i18n, loadLanguageAsync } from '@/i18n-lazy'; // 載入語言
 
 //* API
 import { getSiteInfo } from '@/api/site';
-import { getTokenAndPublicKey } from '@/api/user';
+import { getTokenAndPublicKey, keepUserOnline } from '@/api/user';
 
 //* Page Title
 document.title = 'H3 手機版 前後端分離';
@@ -88,9 +88,22 @@ getSiteInfo(requestData)
         console.log('[i18n]', 'load:', result);
       });
     }
+
+    //* 心跳
+    setInterval(async () => {
+      if (!document.hasFocus()) {
+        return;
+      }
+      const result = await keepUserOnline();
+      console.log('[KeepUserOnline]', result.RetObj);
+    }, 50000);
   })
   .catch(() => {
-    store.commit('site/setID', 'C');
+    if (process.env.NODE_ENV === 'production') {
+      location.reload();
+    } else {
+      store.commit('site/setID', 'C');
+    }
   });
 
 new Vue({

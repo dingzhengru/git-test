@@ -145,17 +145,6 @@ export default {
       },
     };
   },
-  mounted() {
-    this.changeCaptcha();
-
-    //* 取得公鑰 & token
-    if (!this.token || !this.publicKey) {
-      getTokenAndPublicKey().then(result => {
-        this.$store.commit('user/setToken', result.RetObj.token);
-        this.$store.commit('user/setPublicKey', result.RetObj.publickey);
-      });
-    }
-  },
   methods: {
     async login() {
       if (!this.validateForm()) {
@@ -205,6 +194,16 @@ export default {
         }
         //* 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/login.scss`);
+
+        this.changeCaptcha();
+
+        //* 取得公鑰 & token
+        if (!this.token || !this.publicKey) {
+          getTokenAndPublicKey().then(result => {
+            this.$store.commit('user/setToken', result.RetObj.token);
+            this.$store.commit('user/setPublicKey', result.RetObj.publickey);
+          });
+        }
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);

@@ -660,6 +660,14 @@
       "play": "Play Now",
       "free": "Free Play",
       "fav": "Favorites"
+    },
+    "transfer": {
+      "title": "Transfer",
+      "from": "From",
+      "to": "To",
+      "transferAll": "Transfer all",
+      "transferByEnter": "Enter by yourself",
+      "submit": "Done"
     }
   },
   "promotionContent": {

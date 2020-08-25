@@ -2,6 +2,7 @@ import store from '@/store';
 import axios from 'axios';
 import { AUTH_API_LIST, CRYPTO_API_LIST, CRYPTO_BIG_DATA_API_LIST } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
+import { getTokenAndPublicKey } from '@/api/user';
 
 axios.interceptors.request.use(
   config => {
@@ -36,6 +37,19 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   res => {
+    if (res.data.Code == 201) {
+      //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
+      console.log('[Logout]', res);
+      store.dispatch('user/logout');
+    } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
+      //* 502: TokenError
+      console.log('[TokenError]', res);
+      getTokenAndPublicKey().then(result => {
+        store.commit('user/setToken', result.RetObj.token);
+        store.commit('user/setPublicKey', result.RetObj.publickey);
+        location.reload();
+      });
+    }
     return res;
   },
   error => {
@@ -46,20 +60,17 @@ axios.interceptors.response.use(
     console.log('[interceptors response error] [url]', error.response.config.url);
     console.log('[interceptors response error] [status]', error.response.status);
     console.log('[interceptors response error] [data]', error.response.data);
-    if (error.response.status == 401 && error.response.data.Code == 201) {
-      console.log('[Logout]', 'status code:401 && data.Code == 201');
+    if (error.response.data.Code == 201) {
+      //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
+      console.log('[Logout]', error.response);
       store.dispatch('user/logout');
-    } else if (
-      error.response.status == 500 &&
-      error.response.data.Code == 500 &&
-      error.response.data.ErrMsg == 'TokenError' &&
-      process.env.NODE_ENV === 'production'
-    ) {
-      store.dispatch('user/logout');
-    } else if (error.response.status == 501 && error.response.data.Code == 615) {
-      store.dispatch('user/logout');
-    } else if (error.response.status == 401) {
-      return error.response;
+    } else if (error.response.data.Code == 502 && process.env.NODE_ENV === 'production') {
+      //* 502: TokenError
+      console.log('[TokenError]', error.response);
+      getTokenAndPublicKey().then(result => {
+        store.commit('user/setToken', result.RetObj.token);
+        store.commit('user/setPublicKey', result.RetObj.publickey);
+      });
     } else {
       return Promise.reject(error);
     }

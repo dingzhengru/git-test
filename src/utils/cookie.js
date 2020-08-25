@@ -16,17 +16,14 @@ const langKey = 'lang'; //! 目前語系
 
 const tokenConfig = {
   sameSite: 'lax',
-  expires: 1 / 24,
 };
 
 const publicKeyConfig = {
   sameSite: 'lax',
-  expires: 1 / 24,
 };
 
 const isLoggedInConfig = {
   sameSite: 'lax',
-  expires: 1,
 };
 
 const langConfig = {

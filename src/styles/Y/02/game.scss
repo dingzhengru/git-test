@@ -16,8 +16,13 @@ $type: 'Y/02';
   background-color: #1c6080;
 }
 
-.enter-dialog {
+.game-dialog {
   background: #1c6080;
+}
+
+.game-dialog__transfer-from span,
+.game-dialog__transfer-to span {
+  color: white;
 }
 
 /*
@@ -37,6 +42,13 @@ $type: 'Y/02';
 /*
   ! 圖片路徑
 */
+.game-dialog__transfer-switch.left {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png);
+}
+.game-dialog__transfer-switch.right {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png);
+}
+
 .game-lobby__supply {
   background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
 }

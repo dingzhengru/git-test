@@ -13,8 +13,13 @@ $type: 'Y/01';
   background-color: #181b23;
 }
 
-.enter-dialog {
+.game-dialog {
   background: black;
+}
+
+.game-dialog__transfer-from span,
+.game-dialog__transfer-to span {
+  color: #d6c388;
 }
 
 /*
@@ -36,8 +41,18 @@ $type: 'Y/01';
   ! 圖片路徑
 */
 
-.enter-dialog__button {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+.game-dialog__transfer-switch.left {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png);
+}
+.game-dialog__transfer-switch.right {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png);
+}
+
+.game-dialog__transfer-switch.left.on {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png);
+}
+.game-dialog__transfer-switch.right.on {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png);
 }
 
 .game-lobby__supply {

@@ -660,6 +660,14 @@
       "play": "เริ่มต้นตอนนี้",
       "free": "ทดลองเล่นฟรี",
       "fav": "เก็บไว้"
+    },
+    "transfer": {
+      "title": "โอนเงิน",
+      "from": "จาก",
+      "to": "ไปยัง",
+      "transferAll": "โอนทั้งหมด",
+      "transferByEnter": "ป้อนด้วยตนเอง",
+      "submit": "แน่ใจ"
     }
   },
   "promotionContent": {

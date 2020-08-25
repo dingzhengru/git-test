@@ -59,7 +59,7 @@
         <button class="game-lobby__inquire__search-icon"></button>
       </div>
       <input class="game-lobby__inquire__favorites" type="submit" title="My Favorites" />
-      <button class="game-lobby__inquire__button--transfer-now" href="javascript:;">
+      <button class="game-lobby__inquire__button--transfer-now" @click="isShowTransferDialog = true">
         {{ $t('game.button.transferNow') }}
       </button>
     </div>
@@ -107,14 +107,61 @@
       @change-page="changePage"
     />
 
-    <div class="ui-overlay" v-if="isShowLiveGameEnterDialog"></div>
-    <div class="enter-dialog-container" v-if="isShowLiveGameEnterDialog" @click="isShowLiveGameEnterDialog = false">
-      <div class="enter-dialog">
+    <!-- 轉帳 Dialog -->
+
+    <div class="ui-overlay" v-if="isShowTransferDialog || isShowLiveGameEnterDialog"></div>
+    <div class="game-dialog-container" v-if="isShowTransferDialog" @click="isShowTransferDialog = false">
+      <div class="game-dialog">
+        <div class="ui-box-close"></div>
+        <div class="game-dialog__title">{{ $t('game.transfer.title') }}</div>
+        <form class="game-dialog__transfer-form" @submit.prevent="transferPoint">
+          <div class="game-dialog__transfer-from">
+            {{ $t('game.transfer.from') }} <span>{{ wallet.Product_Name }}：{{ wallet.Point }}</span>
+          </div>
+          <div class="game-dialog__transfer-to">
+            {{ $t('game.transfer.to') }} <span>{{ currentProduct.Product_Name }}： {{ currentProduct.Point }}</span>
+          </div>
+          <div class="game-dialog__transfer-switch-div">
+            <button
+              class="game-dialog__transfer-switch left"
+              type="button"
+              :class="{ on: isTransferAll }"
+              @click.capture.stop="isTransferAll = true"
+            >
+              {{ $t('game.transfer.transferAll') }}
+            </button>
+            <button
+              class="game-dialog__transfer-switch right"
+              type="button"
+              :class="{ on: !isTransferAll }"
+              @click.capture.stop="isTransferAll = false"
+            >
+              {{ $t('game.transfer.transferByEnter') }}
+            </button>
+            <input
+              class="game-dialog__transfer-input"
+              type="number"
+              v-model.number="transferAmount"
+              v-if="!isTransferAll"
+              @click.capture.stop=""
+            />
+          </div>
+          <button class="game-dialog__transfer-submit ui-btn ui-btn-long" type="submit" @click.capture.stop="">
+            {{ $t('game.transfer.submit') }}
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 真人遊戲 Dialog -->
+
+    <div class="game-dialog-container" v-if="isShowLiveGameEnterDialog" @click="isShowLiveGameEnterDialog = false">
+      <div class="game-dialog">
         <div class="ui-box-close"></div>
 
         <template v-for="(gameLimit, index) in gameLimitBetList">
           <button
-            class="enter-dialog__button ui-btn"
+            class="game-dialog__button ui-btn"
             :key="index"
             @click.capture.stop="openLiveGame(gameLimit.Lst_TemplatesId, index + 1)"
             v-if="gameLimit.Lst_ProductGameId == game.Lst_Category"
@@ -144,6 +191,8 @@ import {
   getLiveGameLobbyGameList,
   setGameLike,
 } from '@/api/game';
+import { transferPoint } from '@/api/transaction-transfer';
+import { getAllGamePoint } from '@/api/user';
 
 export default {
   name: 'GameList',
@@ -154,6 +203,26 @@ export default {
     ...mapGetters(['siteID', 'siteFullCss']),
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
+    },
+    wallet() {
+      if (this.gamePointList.length <= 0) {
+        return {};
+      }
+      console.log(
+        '[Wallet]',
+        this.gamePointList.find(item => item.Product_id == 9999)
+      );
+      return this.gamePointList.find(item => item.Product_id == 9999);
+    },
+    currentProduct() {
+      if (this.gamePointList.length <= 0) {
+        return {};
+      }
+      console.log(
+        '[CurrentProduct]',
+        this.gamePointList.find(item => item.Product_id == this.$route.params.id)
+      );
+      return this.gamePointList.find(item => item.Product_id == this.$route.params.id);
     },
   },
   data() {
@@ -186,6 +255,10 @@ export default {
         pagesize: 6,
         dataLength: 1,
       },
+      gamePointList: [], //* 轉帳會用到
+      transferAmount: 0,
+      isShowTransferDialog: false,
+      isTransferAll: true,
       guid: '', //* 真人遊戲會用到的 guid，於 getGameCategory 取得
       gameLimitBetList: [], //* 真人遊戲的範本列表
       isShowLiveGameEnterDialog: false, //* 真人遊戲開遊戲的列表
@@ -332,6 +405,27 @@ export default {
 
       console.log('[LikeGame]', result);
     },
+    async transferPoint() {
+      if (this.isTransferAll) {
+        this.transferAmount = this.wallet.Point;
+      }
+      if (this.transferAmount <= 0 || this.transferAmount > this.wallet.Point) {
+        return;
+      }
+      const requestData = {
+        Add_Source: 9999,
+        Add_Destination: this.$route.params.id,
+        Add_TransferPoint: this.transferAmount,
+      };
+      const result = await transferPoint(requestData);
+      console.log('[TransferPoint]', result);
+
+      if (result.Code == 200) {
+        this.gamePointList = result.RetObj.GameSitePoints;
+        this.transferAmount = 0;
+        window.alert('Transfer Successful');
+      }
+    },
     changeCategory(category) {
       if (this.$route.query.category == category) {
         return;
@@ -358,8 +452,11 @@ export default {
         // * 根據版型引入 css (pagination)
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
-        //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
+        //* 取得遊戲點數列表
+        getAllGamePoint().then(result => {
+          this.gamePointList = result.RetObj.GameSitePoints;
+          console.log('[GamePointList]', result.RetObj);
+        });
       },
     },
     '$route.params.key': {
@@ -371,7 +468,10 @@ export default {
 
         await this.getGameCategory();
 
-        this.getGameList();
+        await this.getGameList();
+
+        //* 關掉 loading
+        this.$store.commit('setIsLoading', false);
       },
     },
   },
@@ -546,10 +646,10 @@ export default {
 }
 
 /**
- ** 真人遊戲的開遊戲視窗
+ ** 真人遊戲的開遊戲視窗 & 轉帳視窗
 */
 
-.enter-dialog-container {
+.game-dialog-container {
   position: fixed;
   top: 0;
   right: 0;
@@ -558,12 +658,13 @@ export default {
   height: 100%;
   width: 100%;
   z-index: 9999;
+  font-size: 2.5rem;
 }
 
-.enter-dialog {
+.game-dialog {
   width: 576px;
-  min-height: 189px;
-  max-height: 50%;
+  /* min-height: 189px; */
+  /* max-height: 50%; */
   position: absolute;
   top: 25%;
   left: 0;
@@ -574,15 +675,72 @@ export default {
   overflow: auto;
 }
 
-.enter-dialog__button {
+.game-dialog__title {
   margin-top: 30px;
+  font-size: 4rem;
+  font-weight: bold;
 }
 
-.enter-dialog__button:first-of-type {
+.game-dialog__transfer-form {
+  margin-bottom: 60px;
+}
+
+.game-dialog__transfer-from,
+.game-dialog__transfer-to {
+  text-align: left;
+  margin-left: 30px;
+  color: #959595;
+}
+
+.game-dialog__transfer-switch-div {
+  margin-top: 20px;
+}
+
+.game-dialog__transfer-switch {
+  display: inline-block;
+  width: 261px;
+  height: 100px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  font-weight: bold;
+  padding-left: 50px;
+  /* padding: 25px 0px 30px 50px; */
+  color: #686868;
+  border: 0;
+  vertical-align: middle;
+}
+
+.game-dialog__transfer-switch.on {
+  color: black;
+}
+
+.game-dialog__transfer-input {
+  width: 90%;
+  padding: 16px 0 16px 20px;
+  font-size: 34px;
+  background-color: #2d2d2d;
+  border-radius: 6px;
+  border: 1px solid #7e7e7e;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.game-dialog__transfer-submit {
+  margin-top: 30px;
+  font-size: 3rem;
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+
+.game-dialog__button {
+  margin-top: 30px;
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+
+.game-dialog__button:first-of-type {
   margin-top: 100px;
 }
 
-.enter-dialog__button:last-of-type {
+.game-dialog__button:last-of-type {
   margin-bottom: 100px;
 }
 

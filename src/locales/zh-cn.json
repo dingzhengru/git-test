@@ -660,6 +660,14 @@
       "play": "立即开始",
       "free": "免费试玩",
       "fav": "加入收藏"
+    },
+    "transfer": {
+      "title": "转帐",
+      "from": "从",
+      "to": "至",
+      "transferAll": "全部转入",
+      "transferByEnter": "自行输入",
+      "submit": "确定"
     }
   },
   "promotionContent": {
