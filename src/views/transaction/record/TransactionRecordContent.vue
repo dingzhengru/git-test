@@ -3,12 +3,12 @@
     <div class="record-content__box theme-content-box">
       <h3 class="theme-h3-boxTitle">{{ $t(`${i18nKey}.title`) }}</h3>
 
-      <form class="record-content__search-form" @submit.prevent="submitSearchRecordList" v-if="isSearchActive">
+      <form class="record-content__search-form" @submit.prevent="submitSearch" v-if="isSearchActive">
         <div class="record-content__search-form__field">
           <select class="record-content__search-form__field__select--product ui-ddl" v-model="search.product">
             <option value="" selected>{{ $t(`${i18nKey}.placeholder.product`) }}</option>
-            <option :value="product.value" v-for="product in productList" :key="product.sGameID">
-              {{ product.Lst_Name }}
+            <option :value="product.Value" v-for="product in productList" :key="product.Value">
+              {{ product.Text }}
             </option>
           </select>
           <select
@@ -98,7 +98,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getProductList } from '@/api/product';
+import { getMemberProductList } from '@/api/product';
 import {
   getRecordDeposit,
   getRecordWithdrawal,
@@ -108,6 +108,7 @@ import {
   getRecordWithdrawalRestriction,
   getRecordAdjustment,
 } from '@/api/transaction-record';
+
 import numeral from 'numeral';
 import dayjs from 'dayjs';
 export default {
@@ -241,12 +242,10 @@ export default {
         }
         case 'transfer': {
           const requestDataTransfer = {
-            Sidx: 'Lst_TransTime',
-            Sord: 'DESC',
             Page: this.pagination.page,
-            Rows: '10',
-            _Search: 'false',
-            Filters: '',
+            ProductID: this.search.product,
+            StartTime: this.search.dateFrom == '' ? '' : `${this.search.dateFrom} 00:00:00`,
+            EndTime: this.search.dateTo == '' ? '' : `${this.search.dateTo} 23:59:59`,
           };
           const result = await getRecordTransfer(requestDataTransfer);
           console.log('[RecordTransfer]', result.RetObj);
@@ -365,8 +364,10 @@ export default {
       }
       this.$router.push({ name: 'TransactionRecordDetail', query });
     },
-    submitSearchRecordList() {
-      console.log('submitSearchRecordList', this.search);
+    submitSearch() {
+      console.log('submitSearch', this.search);
+      this.pagination.page = 1;
+      this.getRecord();
     },
     changePage(page) {
       this.pagination.page = page;
@@ -415,8 +416,7 @@ export default {
             this.isPageActive = true;
 
             // * 取得遊戲館列表
-            const requestDataProductList = { DeviceType: 1 };
-            getProductList(requestDataProductList).then(result => {
+            getMemberProductList().then(result => {
               if (result.Code == 200) {
                 this.productList = result.RetObj;
                 console.log('[Product]', this.productList);
