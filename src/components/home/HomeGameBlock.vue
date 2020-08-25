@@ -1,27 +1,25 @@
 <template>
-  <div class="home-game">
-    <ul class="cpn-boxzero cpn-inBlock-row home-game__ul">
-      <li
-        class="home-game__ul__li"
-        :id="game.id"
-        v-for="(game, index) in list"
-        :key="index"
-        :style="{ 'background-image': `url(${resourceUrl}/imgs/game/game${game.sGameID}.png)` }"
+  <ul class="home-game__ul">
+    <li
+      class="home-game__ul__li"
+      :id="game.id"
+      v-for="(game, index) in list"
+      :key="index"
+      :style="{ 'background-image': `url(${resourceUrl}/imgs/game/game${game.sGameID}.png)` }"
+    >
+      <router-link
+        v-if="!isLoggedIn"
+        :to="{ name: 'About', query: { scrollTo: gameClassMap[game.sURL] } }"
+        class="home-game__ul__li__link"
       >
-        <router-link
-          v-if="!isLoggedIn"
-          :to="{ name: 'About', query: { scrollTo: gameClassMap[game.sURL] } }"
-          class="home-game__ul__li__link"
-        >
-          {{ game.Lst_Name }}
-        </router-link>
-        <a v-else class="home-game__ul__li__link" href="javascript:;" @click="handleGameLink(game)">
-          {{ game.Lst_Name }}
-          <!-- :to="{ name: 'GameLobby', params: { type: 'gametype01' }, query: { category: 'all' } }" -->
-        </a>
-      </li>
-    </ul>
-  </div>
+        {{ game.Lst_Name }}
+      </router-link>
+      <a v-else class="home-game__ul__li__link" href="javascript:;" @click="handleGameLink(game)">
+        {{ game.Lst_Name }}
+        <!-- :to="{ name: 'GameLobby', params: { type: 'gametype01' }, query: { category: 'all' } }" -->
+      </a>
+    </li>
+  </ul>
 </template>
 
 <script>

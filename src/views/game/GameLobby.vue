@@ -262,10 +262,10 @@ export default {
         pagesize: 6,
         dataLength: 1,
       },
-      gamePointList: [], //* 轉帳會用到
-      transferAmount: 0,
-      isShowTransferDialog: false,
-      isTransferAll: true,
+      gamePointList: [], //* 遊戲點數列表，轉帳會用到
+      transferAmount: 0, //* 轉帳金額
+      isShowTransferDialog: false, //* 轉帳視窗
+      isTransferAll: true, //* 轉帳: 是否全轉
       guid: '', //* 真人遊戲會用到的 guid，於 getGameCategory 取得
       gameLimitBetList: [], //* 真人遊戲的範本列表
       isShowLiveGameEnterDialog: false, //* 真人遊戲開遊戲的列表
@@ -290,11 +290,11 @@ export default {
       console.log('[GameLobby Product]', result.RetObj.ProductList);
       this.productList = result.RetObj.ProductList;
       this.productList = this.productList
-        .filter(item => {
-          //* 篩掉舊的
-          const oldProductList = [701, 402, 1040];
-          return !oldProductList.includes(item.Lst_Proxy_Product_Key);
-        })
+        // .filter(item => {
+        //   //* 篩掉舊的
+        //   const oldProductList = [701, 402, 1040];
+        //   return !oldProductList.includes(item.Lst_Proxy_Product_Key);
+        // })
         .map(item => {
           //* 放置對應的 css
           if (item.Lst_Proxy_Product_Key == 1031) {
@@ -309,13 +309,13 @@ export default {
           } else if (item.Lst_Proxy_Product_Key == 1034) {
             //* 皇家電子
             item.class = 'ui-li-supply-1190';
-          } else if (item.Lst_Proxy_Product_Key == 2200) {
+          } else if (item.Lst_Proxy_Product_Key == 2200 || item.Lst_Proxy_Product_Key == 1040) {
             //* CQ9
             item.class = 'ui-li-supply-1200';
-          } else if (item.Lst_Proxy_Product_Key == 2300) {
+          } else if (item.Lst_Proxy_Product_Key == 2300 || item.Lst_Proxy_Product_Key == 701) {
             //* JDB
             item.class = 'ui-li-supply-1180';
-          } else if (item.Lst_Proxy_Product_Key == 2400) {
+          } else if (item.Lst_Proxy_Product_Key == 2400 || item.Lst_Proxy_Product_Key == 402) {
             //* BBIN
             item.class = 'ui-li-supply-1120';
           } else if (item.Lst_Proxy_Product_Key == 1030) {

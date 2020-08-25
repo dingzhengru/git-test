@@ -1,12 +1,17 @@
 <template>
   <div class="home" @click="isShowNoneLoginPopup = false">
-    <HomeSwiper :list="swiperList" :resourceUrl="resourceUrl" :siteIsNewPromotion="siteIsNewPromotion"></HomeSwiper>
-    <HomeGameBlock
-      :list="productList"
-      :resourceUrl="resourceUrl"
-      :isLoggedIn="isLoggedIn"
-      @handleGameLink="handleGameLink"
-    ></HomeGameBlock>
+    <HomeSwiper :list="swiperList" :resourceUrl="resourceUrl" :siteIsNewPromotion="siteIsNewPromotion" />
+
+    <div class="home-game">
+      <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" />
+
+      <HomeGameBlock
+        :list="productList"
+        :resourceUrl="resourceUrl"
+        :isLoggedIn="isLoggedIn"
+        @handleGameLink="handleGameLink"
+      />
+    </div>
     <transition name="fade">
       <div :id="idMapper.home.noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
     </transition>
@@ -30,12 +35,14 @@ import { getSwiperList } from '@/api/swiper';
 import { getProductList } from '@/api/product';
 import { getGameRedirectUrl } from '@/api/game';
 import { getMessageList } from '@/api/alert';
+import { getLotteryCount } from '@/api/lottery';
 import idMapper from '@/idMapper';
 export default {
   name: 'Home',
   components: {
     HomeSwiper: () => import('@/components/home/HomeSwiper'),
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
+    HomeLotteryGameBlock: () => import('@/components/home/HomeLotteryGameBlock'),
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss', 'lang', 'isLoggedIn', 'resourceUrl', 'siteIsNewPromotion']),
@@ -48,6 +55,7 @@ export default {
       alertMessageList: [],
       swiperList: [],
       productList: [],
+      lotteryList: [],
     };
   },
   mounted() {
@@ -110,6 +118,13 @@ export default {
         console.log('[Product]', this.productList);
       }
     },
+    async getLotteryList() {
+      const result = await getLotteryCount();
+      if (result.Code == 200) {
+        this.lotteryList = result.RetObj;
+      }
+      console.log('[LotteryList]', result.RetObj);
+    },
     async handleGameLink(game) {
       /*
        * Lst_Game_Classify 分類分別是
@@ -146,6 +161,9 @@ export default {
         }
       }
     },
+    openLotteryGame(lottery) {
+      console.log('[OpenLotteryGame]', lottery.name);
+    },
   },
   watch: {
     siteID: {
@@ -163,6 +181,9 @@ export default {
 
         // * 取得訊息列表(msgtype: C 彈出)
         this.getMessageList();
+
+        //* 取得抽獎列表
+        this.getLotteryList();
       },
     },
     lang() {

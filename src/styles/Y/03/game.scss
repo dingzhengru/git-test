@@ -47,6 +47,12 @@ $type: 'Y/03';
 .game-dialog__transfer-switch.right {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png);
 }
+.game-dialog__transfer-switch.left.on {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png);
+}
+.game-dialog__transfer-switch.right.on {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png);
+}
 
 .game-lobby__supply {
   background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;

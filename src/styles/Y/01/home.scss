@@ -12,6 +12,19 @@ $type: 'Y/01';
   background: url(~@/assets/#{$type}/imgs/layout/bg_index2.jpg) no-repeat;
 }
 
+// .prize__icon {
+//   background: url(~@/assets/#{$type}/imgs/main/prizeIcn.png) left center no-repeat;
+// }
+// .prize__ul {
+//   background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
+// }
+// .i-luckyDraw {
+//   background: url(~@/assets/#{$type}/imgs/main/luckyDrawIcn.png) left center no-repeat;
+// }
+// .ul-luckyDraw {
+//   background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
+// }
+
 .noneLoginPopup {
   background: rgba(0, 0, 0, 0.8) url(~@/assets/#{$type}/imgs/main/Bg-noneLoginPopup.jpg) center center no-repeat;
 }
