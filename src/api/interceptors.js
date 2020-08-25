@@ -39,8 +39,13 @@ axios.interceptors.response.use(
   res => {
     if (res.data.Code == 201) {
       //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
-      console.log('[Logout]', res);
-      store.dispatch('user/logout');
+      //* 後端會在觸發就執行登出了，且不允許前端呼叫登出方法，所以只能把 logout 做的事放這了
+      // store.dispatch('user/logout');
+      console.log('[Logout 但不呼叫 API]');
+      store.commit('user/setIsLoggedIn', false);
+      store.commit('user/removeToken');
+      store.commit('user/removePublicKey');
+      window.location.replace('/login');
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
       //* 502: TokenError
       console.log('[TokenError]', res);
@@ -60,16 +65,13 @@ axios.interceptors.response.use(
     console.log('[interceptors response error] [url]', error.response.config.url);
     console.log('[interceptors response error] [status]', error.response.status);
     console.log('[interceptors response error] [data]', error.response.data);
-    if (error.response.data.Code == 201) {
-      //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
-      console.log('[Logout]', error.response);
-      store.dispatch('user/logout');
-    } else if (error.response.data.Code == 502 && process.env.NODE_ENV === 'production') {
+    if (error.response.data.Code == 502 && process.env.NODE_ENV === 'production') {
       //* 502: TokenError
       console.log('[TokenError]', error.response);
       getTokenAndPublicKey().then(result => {
         store.commit('user/setToken', result.RetObj.token);
         store.commit('user/setPublicKey', result.RetObj.publickey);
+        location.reload();
       });
     } else {
       return Promise.reject(error);

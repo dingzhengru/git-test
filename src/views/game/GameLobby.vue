@@ -58,7 +58,7 @@
         />
         <button class="game-lobby__inquire__search-icon"></button>
       </div>
-      <input class="game-lobby__inquire__favorites" type="submit" title="My Favorites" />
+      <input class="game-lobby__inquire__favorites" type="submit" title="My Favorites" v-if="$route.params.type == 2" />
       <button class="game-lobby__inquire__button--transfer-now" @click="isShowTransferDialog = true">
         {{ $t('game.button.transferNow') }}
       </button>
@@ -83,7 +83,7 @@
               href="javascript:;"
               class="game-lobby__table__tr__td__link--freeplay"
               @click.capture.stop="openGame(game, 0)"
-              v-if="$route.params.type == 2"
+              v-if="$route.params.type == 2 && game.Lst_IsDemo"
             >
               {{ $t('game.link.free') }}
             </a>
