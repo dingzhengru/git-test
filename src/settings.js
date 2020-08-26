@@ -79,6 +79,9 @@ const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword'];
 //* 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
 const ACCESS_ROUTE_LIST = [];
 
+//* 回傳為 599 時，但不要 alert 的 API
+const NO_ALERT_API = ['Member/LoginIn', 'Member/SimpleRegister'];
+
 export {
   API_URL,
   DEFAULT_LANG,
@@ -88,6 +91,7 @@ export {
   AUTH_ROUTE_LIST,
   ACCESS_ROUTE_LIST,
   NO_AUTH_ROUTE_LIST,
+  NO_ALERT_API,
 };
 export default {
   API_URL,
@@ -98,4 +102,5 @@ export default {
   AUTH_ROUTE_LIST,
   ACCESS_ROUTE_LIST,
   NO_AUTH_ROUTE_LIST,
+  NO_ALERT_API,
 };

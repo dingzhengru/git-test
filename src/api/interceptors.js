@@ -1,6 +1,6 @@
 import store from '@/store';
 import axios from 'axios';
-import { AUTH_API_LIST, CRYPTO_API_LIST, CRYPTO_BIG_DATA_API_LIST } from '@/settings';
+import { AUTH_API_LIST, CRYPTO_API_LIST, CRYPTO_BIG_DATA_API_LIST, NO_ALERT_API } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 import { getTokenAndPublicKey } from '@/api/user';
 
@@ -55,6 +55,13 @@ axios.interceptors.response.use(
         store.commit('user/setPublicKey', result.RetObj.publickey);
         location.reload();
       });
+    } else if (res.data.Code == 599 && process.env.NODE_ENV === 'production') {
+      //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
+
+      //* 篩選掉不要 alert 的 api
+      if (!NO_ALERT_API.find(item => res.config.url.includes(item))) {
+        alert(res.data.ErrMsg);
+      }
     }
     return res;
   },
@@ -66,16 +73,6 @@ axios.interceptors.response.use(
     console.log('[interceptors response error] [url]', error.response.config.url);
     console.log('[interceptors response error] [status]', error.response.status);
     console.log('[interceptors response error] [data]', error.response.data);
-    if (error.response.data.Code == 502 && process.env.NODE_ENV === 'production') {
-      //* 502: TokenError
-      console.log('[TokenError]', error.response);
-      getTokenAndPublicKey().then(result => {
-        store.commit('user/setToken', result.RetObj.token);
-        store.commit('user/setPublicKey', result.RetObj.publickey);
-        location.reload();
-      });
-    } else {
-      return Promise.reject(error);
-    }
+    return Promise.reject(error);
   }
 );
