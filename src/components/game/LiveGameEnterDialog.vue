@@ -72,30 +72,6 @@ export default {
   font-size: 2rem;
   padding: 60px 30px 60px 30px;
 }
-.live-game-enter-dialog__title {
-  margin-bottom: 30px;
-  font-size: 2.5rem;
-  text-align: center;
-  font-weight: bold;
-}
-.live-game-enter-dialog__ul {
-  text-align: left;
-  list-style: decimal;
-  color: #f1cb80;
-  margin: 0;
-}
-/* .live-game-enter-dialog__li {} */
-.live-game-enter-dialog__footer {
-  margin-top: 20px;
-  color: #f1cb80;
-}
-.live-game-enter-dialog__footer__phone {
-  font-size: 4rem;
-  margin-top: 20px;
-}
-.live-game-enter-dialog__footer__phone > a {
-  color: #fffeb3;
-}
 .live-game-enter-dialog__button-div button {
   margin-top: 30px;
 }

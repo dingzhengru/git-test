@@ -13,13 +13,14 @@ $type: 'Y/03';
   background-color: #181b23;
 }
 
-.game-dialog {
+.game-transfer-dialog {
+  border: 2px solid #c1ae71;
   background: black;
 }
 
-.game-dialog__transfer-from span,
-.game-dialog__transfer-to span {
-  color: #d6c388;
+.live-game-enter-dialog {
+  border: 2px solid #c1ae71;
+  background: black;
 }
 
 /*
@@ -40,6 +41,18 @@ $type: 'Y/03';
 /*
   ! 圖片路徑
 */
+.game-transfer-dialog__form-switch.left {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png);
+}
+.game-transfer-dialog__form-switch.right {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png);
+}
+.game-transfer-dialog__form-switch.left.on {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png);
+}
+.game-transfer-dialog__form-switch.right.on {
+  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png);
+}
 
 .game-dialog__transfer-switch.left {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png);

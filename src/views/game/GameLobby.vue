@@ -113,51 +113,15 @@
       @change-page="changePage"
     />
 
-    <!-- 轉帳 Dialog -->
-
-    <!-- <div class="ui-overlay" v-if="isShowTransferDialog || isShowLiveGameEnterDialog"></div> -->
-    <div class="game-dialog-container" v-if="isShowTransferDialog" @click="isShowTransferDialog = false">
-      <div class="game-dialog">
-        <div class="ui-box-close"></div>
-        <div class="game-dialog__title">{{ $t('game.transfer.title') }}</div>
-        <form class="game-dialog__transfer-form" @submit.prevent="transferPoint">
-          <div class="game-dialog__transfer-from">
-            {{ $t('game.transfer.from') }} <span>{{ wallet.Product_Name }}：{{ wallet.Point }}</span>
-          </div>
-          <div class="game-dialog__transfer-to">
-            {{ $t('game.transfer.to') }} <span>{{ currentProduct.Product_Name }}： {{ currentProduct.Point }}</span>
-          </div>
-          <div class="game-dialog__transfer-switch-div">
-            <button
-              class="game-dialog__transfer-switch left"
-              type="button"
-              :class="{ on: isTransferAll }"
-              @click.capture.stop="isTransferAll = true"
-            >
-              {{ $t('game.transfer.transferAll') }}
-            </button>
-            <button
-              class="game-dialog__transfer-switch right"
-              type="button"
-              :class="{ on: !isTransferAll }"
-              @click.capture.stop="isTransferAll = false"
-            >
-              {{ $t('game.transfer.transferByEnter') }}
-            </button>
-            <input
-              class="game-dialog__transfer-input"
-              type="number"
-              v-model.number="transferAmount"
-              v-if="!isTransferAll"
-              @click.capture.stop=""
-            />
-          </div>
-          <button class="game-dialog__transfer-submit ui-btn ui-btn-long" type="submit" @click.capture.stop="">
-            {{ $t('game.transfer.submit') }}
-          </button>
-        </form>
-      </div>
-    </div>
+    <GameTransferDialog
+      :amount.sync="transferAmount"
+      :wallet="wallet"
+      :currentProduct="currentProduct"
+      :isTransferAll.sync="isTransferAll"
+      @submit-transfer="transferPoint"
+      @close="isShowTransferDialog = false"
+      v-if="isShowTransferDialog"
+    />
 
     <LiveGameEnterDialog
       :gameLimitBetList="gameLimitBetList"
@@ -189,6 +153,7 @@ export default {
   components: {
     AppPagination: () => import('@/components/AppPagination'),
     LiveGameEnterDialog: () => import('@/components/game/LiveGameEnterDialog'),
+    GameTransferDialog: () => import('@/components/game/GameTransferDialog'),
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
@@ -203,7 +168,7 @@ export default {
         '[Wallet]',
         this.gamePointList.find(item => item.Product_id == 9999)
       );
-      return this.gamePointList.find(item => item.Product_id == 9999);
+      return this.gamePointList.find(item => item.Product_id == 9999) || {};
     },
     currentProduct() {
       if (this.gamePointList.length <= 0) {
@@ -213,7 +178,7 @@ export default {
         '[CurrentProduct]',
         this.gamePointList.find(item => item.Product_id == this.$route.params.id)
       );
-      return this.gamePointList.find(item => item.Product_id == this.$route.params.id);
+      return this.gamePointList.find(item => item.Product_id == this.$route.params.id) || {};
     },
   },
   data() {
@@ -399,17 +364,19 @@ export default {
 
       console.log('[LikeGame]', result);
     },
-    async transferPoint() {
-      if (this.isTransferAll) {
-        this.transferAmount = this.wallet.Point;
-      }
-      if (this.transferAmount <= 0 || this.transferAmount > this.wallet.Point) {
+    async transferPoint(isTransferAll, amount) {
+      console.log('[TransferPoint]', isTransferAll, amount);
+
+      if (isTransferAll) {
+        amount = this.wallet.Point;
+      } else if (amount <= 0 || amount > this.wallet.Point) {
         return;
       }
+
       const requestData = {
         Add_Source: 9999,
         Add_Destination: this.$route.params.id,
-        Add_TransferPoint: this.transferAmount,
+        Add_TransferPoint: amount,
       };
       const result = await transferPoint(requestData);
       console.log('[TransferPoint]', result);
@@ -644,105 +611,6 @@ export default {
   line-height: 205px;
   margin: 0 10px;
   background-repeat: no-repeat;
-}
-
-/**
- ** 真人遊戲的開遊戲視窗 & 轉帳視窗
-*/
-
-.game-dialog-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 9999;
-  font-size: 2.5rem;
-}
-
-.game-dialog {
-  width: 576px;
-  /* min-height: 189px; */
-  /* max-height: 50%; */
-  position: absolute;
-  top: 25%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  border: 2px solid #c1ae71;
-  overflow: auto;
-}
-
-.game-dialog__title {
-  margin-top: 30px;
-  font-size: 4rem;
-  font-weight: bold;
-}
-
-.game-dialog__transfer-form {
-  margin-bottom: 60px;
-}
-
-.game-dialog__transfer-from,
-.game-dialog__transfer-to {
-  text-align: left;
-  margin-left: 30px;
-  color: #959595;
-}
-
-.game-dialog__transfer-switch-div {
-  margin-top: 20px;
-}
-
-.game-dialog__transfer-switch {
-  display: inline-block;
-  width: 261px;
-  height: 100px;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  font-weight: bold;
-  padding-left: 50px;
-  /* padding: 25px 0px 30px 50px; */
-  color: #686868;
-  border: 0;
-  vertical-align: middle;
-}
-
-.game-dialog__transfer-switch.on {
-  color: black;
-}
-
-.game-dialog__transfer-input {
-  width: 90%;
-  padding: 16px 0 16px 20px;
-  font-size: 34px;
-  background-color: #2d2d2d;
-  border-radius: 6px;
-  border: 1px solid #7e7e7e;
-  margin-top: 20px;
-  box-sizing: border-box;
-}
-
-.game-dialog__transfer-submit {
-  margin-top: 30px;
-  font-size: 3rem;
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
-}
-
-.game-dialog__button {
-  margin-top: 30px;
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
-}
-
-.game-dialog__button:first-of-type {
-  margin-top: 100px;
-}
-
-.game-dialog__button:last-of-type {
-  margin-bottom: 100px;
 }
 
 /*
