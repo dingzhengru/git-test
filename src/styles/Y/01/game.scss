@@ -22,6 +22,11 @@ $type: 'Y/01';
   color: #d6c388;
 }
 
+.live-game-enter-dialog {
+  border: 2px solid #c1ae71;
+  background: black;
+}
+
 /*
  ! 語系
 */
@@ -40,6 +45,8 @@ $type: 'Y/01';
 /*
   ! 圖片路徑
 */
+
+
 
 .game-dialog__transfer-switch.left {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png);

@@ -115,7 +115,7 @@
 
     <!-- 轉帳 Dialog -->
 
-    <div class="ui-overlay" v-if="isShowTransferDialog || isShowLiveGameEnterDialog"></div>
+    <!-- <div class="ui-overlay" v-if="isShowTransferDialog || isShowLiveGameEnterDialog"></div> -->
     <div class="game-dialog-container" v-if="isShowTransferDialog" @click="isShowTransferDialog = false">
       <div class="game-dialog">
         <div class="ui-box-close"></div>
@@ -159,37 +159,13 @@
       </div>
     </div>
 
-    <!-- 真人遊戲 Dialog -->
-
-    <div class="game-dialog-container" v-if="isShowLiveGameEnterDialog" @click="isShowLiveGameEnterDialog = false">
-      <div class="game-dialog">
-        <div class="ui-box-close"></div>
-
-        <template v-for="(gameLimit, index) in gameLimitBetList">
-          <button
-            class="game-dialog__button ui-btn"
-            :key="index"
-            @click.capture.stop="openLiveGame(gameLimit.Lst_TemplatesId, index + 1)"
-            v-if="gameLimit.Lst_ProductGameId == game.Lst_Category"
-          >
-            <template v-if="gameLimit.Lst_TemplatesId == 0">
-              {{ $t('game.button.enterGame') }}
-            </template>
-            <template v-else>
-              {{ `${gameLimit.Lst_LimitMin}-${gameLimit.Lst_LimitMax}` }}
-            </template>
-          </button>
-        </template>
-
-        <button
-          class="game-dialog__button ui-btn"
-          @click.capture.stop="openLiveGame(0, '')"
-          v-if="gameLimitBetList.length <= 0"
-        >
-          {{ $t('game.button.enterGame') }}
-        </button>
-      </div>
-    </div>
+    <LiveGameEnterDialog
+      :gameLimitBetList="gameLimitBetList"
+      :selectedGame="game"
+      @open-live-game="openLiveGame"
+      @close="isShowLiveGameEnterDialog = false"
+      v-if="isShowLiveGameEnterDialog"
+    />
   </div>
 </template>
 
@@ -212,6 +188,7 @@ export default {
   name: 'GameList',
   components: {
     AppPagination: () => import('@/components/AppPagination'),
+    LiveGameEnterDialog: () => import('@/components/game/LiveGameEnterDialog'),
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
