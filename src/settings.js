@@ -12,6 +12,7 @@ const AUTH_API_LIST = [
   'Siteinfo/MGetAllGamePoint',
   'Siteinfo/MGetPITTLBet',
   'Product/MemProductList',
+  'Operator/MSingleDepositInfo',
   'Operator/MWithdrawalsInfo',
   'Operator/MWithdrawals',
   'Operator/MTransferInfo',

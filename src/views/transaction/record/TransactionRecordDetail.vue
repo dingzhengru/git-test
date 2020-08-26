@@ -53,6 +53,7 @@ import { mapGetters } from 'vuex';
 import numeral from 'numeral';
 
 import {
+  getRecordDepositDetail,
   getRecordWithdrawalDetail,
   getRecordTransferDetail,
   getRecordDetailWithdrawalRestriction,
@@ -94,80 +95,71 @@ export default {
   mounted() {
     switch (this.$route.params.name) {
       case 'deposit': {
-        this.list = [
-          {
-            bank: 'SCB-VIP',
-            rollinPoint: 1000,
-            createdDate: '2020-07-21',
-            submitDate: '2020-07-21',
-            transactionTime: '11:41:26',
-            paymentMethod: 'WebATM',
-            transactionNumber: this.$route.query.TransID,
-            activity: '輪盤測試',
-          },
-        ];
-        this.title = 'Deposit Details';
+        // this.list = [
+        //   {
+        //     bank: 'SCB-VIP',
+        //     rollinPoint: 1000,
+        //     createdDate: '2020-07-21',
+        //     submitDate: '2020-07-21',
+        //     transactionTime: '11:41:26',
+        //     paymentMethod: 'WebATM',
+        //     transactionNumber: this.$route.query.TransID,
+        //     activity: '輪盤測試',
+        //   },
+        // ];
+        getRecordDepositDetail(this.$route.query).then(result => {
+          console.log('[RecordWithdrawalDetail]', result);
+
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.bank = item.Lst_BankName;
+            newItem.rollinPoint = item.Lst_Money;
+            newItem.createdDate = item.Lst_CreateTime;
+            newItem.submitDate = item.Lst_Mtime.split(' ')[0];
+            newItem.transactionTime = item.Lst_Mtime.split(' ')[1];
+            newItem.paymentMethod = item.Lst_DMTitle;
+            newItem.transactionNumber = item.Lst_TransID;
+            newItem.activity = item.Lst_ActivityName;
+            return newItem;
+          });
+        });
+
         break;
       }
       case 'withdrawal': {
-        this.list = [
-          {
-            amount: -500,
-            serviceCharge: '5',
-            createdDate: '2020-07-21',
-            submitDate: '2020-07-21',
-            transactionTime: '11:41:26',
-            transactionNumber: this.$route.query.TransID,
-          },
-        ];
-
         getRecordWithdrawalDetail(this.$route.query).then(result => {
           console.log('[RecordWithdrawalDetail]', result);
 
-          // this.list = result.RetObj.map(item => {
-          //   const newItem = {};
-          //   newItem.amount = item.Lst_Activty_Name;
-          //   newItem.serviceCharge = item.Lst_Bonus;
-          //   newItem.createdDate = item.Lst_CreateTime;
-          //   newItem.submitDate = item.Lst_CasherTime.split(' ')[0];
-          //   newItem.transactionTime = item.Lst_CasherTime.split(' ')[1];
-          //   newItem.transactionNumber = item.Lst_TransID;
-          //   return newItem;
-          // });
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.amount = item.Lst_MoneyPayment;
+            newItem.serviceCharge = item.Lst_Charges;
+            newItem.createdDate = item.Lst_CreateTime;
+            newItem.submitDate = item.Lst_CasherTime.split(' ')[0];
+            newItem.transactionTime = item.Lst_CasherTime.split(' ')[1];
+            newItem.transactionNumber = item.Lst_TransID;
+            return newItem;
+          });
         });
         break;
       }
       case 'transfer': {
-        this.list = [
-          {
-            game: 'Royal Gaming',
-            rollinPoint: 0,
-            rolloutPoint: -767,
-            accountingDate: '2020-07-21',
-            transactionTime: '11:05:38',
-            beforeWallet: 8933,
-            afterWallet: 9700,
-            beforeGameAccount: 767,
-            afterGameAccount: 0,
-          },
-        ];
-
         getRecordTransferDetail(this.$route.query).then(result => {
           console.log('[RecordTransferDetail]', result);
 
-          // this.list = result.RetObj.map(item => {
-          //   const newItem = {};
-          //   newItem.game = item.Lst_ProductName;
-          //   newItem.rollinPoint = item.Lst_PointIncome;
-          //   newItem.rolloutPoint = item.Lst_PointPayment;
-          //   newItem.accountingDate = item.Lst_TransTime.split(' ')[0];
-          //   newItem.transactionTime = item.Lst_TransTime.split(' ')[1];
-          //   newItem.beforeWallet = item.Lst_Org_Point;
-          //   newItem.afterWallet = item.Lst_Final_Point;
-          //   newItem.beforeGameAccount = item.Lst_Org_Game_Point;
-          //   newItem.afterGameAccount = item.Lst_Final_Game_Point;
-          //   return newItem;
-          // });
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.game = item.Lst_ProductName;
+            newItem.rollinPoint = item.Lst_PointIncome;
+            newItem.rolloutPoint = item.Lst_PointPayment;
+            newItem.accountingDate = item.Lst_TransTime.split(' ')[0];
+            newItem.transactionTime = item.Lst_TransTime.split(' ')[1];
+            newItem.beforeWallet = item.Lst_Org_Point;
+            newItem.afterWallet = item.Lst_Final_Point;
+            newItem.beforeGameAccount = item.Lst_Org_Game_Point;
+            newItem.afterGameAccount = item.Lst_Final_Game_Point;
+            return newItem;
+          });
         });
         break;
       }
@@ -191,23 +183,6 @@ export default {
             return newItem;
           });
         });
-
-        // const responseList = [
-        //   {
-        //     Lst_Activty_Name: '測試紅利100R50',
-        //     Lst_Bonus: 10.0,
-        //     Lst_Mtime: '2020-08-17T14:10:49.517',
-        //   },
-        // ];
-
-        // this.list = [
-        //   {
-        //     id: '000',
-        //     activity: 'Cash Flow',
-        //     bonusIssue: 0,
-        //     datetime: '2020-07-21 11:41:35',
-        //   },
-        // ];
         break;
       }
       // case 'adjustment': {

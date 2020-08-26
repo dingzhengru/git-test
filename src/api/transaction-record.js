@@ -39,6 +39,12 @@ export async function getRecordAdjustment(data) {
 /**
  ** Detail
  */
+
+export async function getRecordDepositDetail(data) {
+  const result = await axios.post(API_URL + '/PointRecord/MDepositDetail', data);
+  return result.data;
+}
+
 export async function getRecordWithdrawalDetail(data) {
   const result = await axios.post(API_URL + '/PointRecord/MWithdrawalsDetail', data);
   return result.data;

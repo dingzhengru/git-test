@@ -227,7 +227,7 @@ export default {
             newItem.isSuccess = item.Lst_Status == 2;
             newItem.date = item.Lst_CreateTime.split('T')[0];
             newItem.bank = item.Lst_MemberBankName;
-            newItem.amount = item.Lst_Money;
+            newItem.amount = item.Lst_MoneyPayment;
 
             if (item.Lst_Status == 1) {
               newItem.detail = this.$t('transaction.recordContent.statusText.underReview');

@@ -126,6 +126,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import idMapper from '@/idMapper';
+import { getDepositInfo } from '@/api/transaction-deposit';
 
 export default {
   name: 'TransactionDeposit',
@@ -307,6 +308,11 @@ export default {
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/deposit.scss`);
+
+        //* 取得存款資訊
+        getDepositInfo().then(result => {
+          console.log(result);
+        });
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);
