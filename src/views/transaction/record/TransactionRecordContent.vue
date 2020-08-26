@@ -258,7 +258,6 @@ export default {
             newItem.game = item.Lst_ProductName;
             newItem.type = item.Lst_TransType;
             newItem.amount = item.Lst_Point;
-
             return newItem;
           });
           break;
@@ -290,8 +289,6 @@ export default {
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
-            // newItem.id = item.Lst_TransID;
-            // newItem.isSuccess = item.Lst_PrizeName;
             newItem.prize = item.Lst_PrizeName;
             newItem.status = item.Lst_GiveoutStatus;
             newItem.type = item.Lst_PrizeType;
@@ -327,8 +324,6 @@ export default {
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
-            // newItem.id = item.Lst_TransID;
-            // newItem.isSuccess = item.Lst_PrizeName;
             newItem.status = item.Lst_PaymentType;
             newItem.description = item.Lst_Memo;
             newItem.point = item.Lst_Amount;

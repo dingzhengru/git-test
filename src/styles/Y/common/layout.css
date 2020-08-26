@@ -83,6 +83,23 @@ ul.cpn-inBlock-row > li {
   text-indent: -9999px;
 }
 
+.ui-icon {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.ui-icon-phone {
+  background: url(~@/assets/common/imgs/ui/icon_phone.png);
+  width: 40px;
+  height: 40px;
+}
+
+.ui-icon-24 {
+  background: url(~@/assets/common/imgs/ui/icon_24.png) no-repeat center;
+  width: 55px;
+  height: 40px;
+}
+
 /* input */
 .ui-ipt {
   background-color: #2e2e2e;
