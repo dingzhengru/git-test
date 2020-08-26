@@ -39,6 +39,16 @@ export async function getRecordAdjustment(data) {
 /**
  ** Detail
  */
+export async function getRecordWithdrawalDetail(data) {
+  const result = await axios.post(API_URL + '/PointRecord/MWithdrawalsDetail', data);
+  return result.data;
+}
+
+export async function getRecordTransferDetail(data) {
+  const result = await axios.post(API_URL + '/PointRecord/MTransferDetail', data);
+  return result.data;
+}
+
 export async function getRecordDetailWithdrawalRestriction(data) {
   const result = await axios.post(API_URL + '/PointRecord/MActivityWashcodeDetail', data);
   return result.data;

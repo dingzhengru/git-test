@@ -350,7 +350,7 @@ export default {
           WashCodeType: record.WashCodeType,
         };
       } else {
-        query = { id: record.id };
+        query = { TransID: record.id };
       }
       this.$router.push({ name: 'TransactionRecordDetail', query });
     },

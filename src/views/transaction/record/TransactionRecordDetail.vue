@@ -52,7 +52,11 @@
 import { mapGetters } from 'vuex';
 import numeral from 'numeral';
 
-import { getRecordDetailWithdrawalRestriction } from '@/api/transaction-record';
+import {
+  getRecordWithdrawalDetail,
+  getRecordTransferDetail,
+  getRecordDetailWithdrawalRestriction,
+} from '@/api/transaction-record';
 
 export default {
   name: 'TransactionRecordDetail',
@@ -98,7 +102,7 @@ export default {
             submitDate: '2020-07-21',
             transactionTime: '11:41:26',
             paymentMethod: 'WebATM',
-            transactionNumber: this.$route.query.id,
+            transactionNumber: this.$route.query.TransID,
             activity: '輪盤測試',
           },
         ];
@@ -113,16 +117,29 @@ export default {
             createdDate: '2020-07-21',
             submitDate: '2020-07-21',
             transactionTime: '11:41:26',
-            transactionNumber: this.$route.query.id,
+            transactionNumber: this.$route.query.TransID,
           },
         ];
-        this.title = 'Withdrawals Record';
+
+        getRecordWithdrawalDetail(this.$route.query).then(result => {
+          console.log('[RecordWithdrawalDetail]', result);
+
+          // this.list = result.RetObj.map(item => {
+          //   const newItem = {};
+          //   newItem.amount = item.Lst_Activty_Name;
+          //   newItem.serviceCharge = item.Lst_Bonus;
+          //   newItem.createdDate = item.Lst_CreateTime;
+          //   newItem.submitDate = item.Lst_CasherTime.split(' ')[0];
+          //   newItem.transactionTime = item.Lst_CasherTime.split(' ')[1];
+          //   newItem.transactionNumber = item.Lst_TransID;
+          //   return newItem;
+          // });
+        });
         break;
       }
       case 'transfer': {
         this.list = [
           {
-            id: '000',
             game: 'Royal Gaming',
             rollinPoint: 0,
             rolloutPoint: -767,
@@ -134,7 +151,24 @@ export default {
             afterGameAccount: 0,
           },
         ];
-        this.title = 'Transfer Details';
+
+        getRecordTransferDetail(this.$route.query).then(result => {
+          console.log('[RecordTransferDetail]', result);
+
+          // this.list = result.RetObj.map(item => {
+          //   const newItem = {};
+          //   newItem.game = item.Lst_ProductName;
+          //   newItem.rollinPoint = item.Lst_PointIncome;
+          //   newItem.rolloutPoint = item.Lst_PointPayment;
+          //   newItem.accountingDate = item.Lst_TransTime.split(' ')[0];
+          //   newItem.transactionTime = item.Lst_TransTime.split(' ')[1];
+          //   newItem.beforeWallet = item.Lst_Org_Point;
+          //   newItem.afterWallet = item.Lst_Final_Point;
+          //   newItem.beforeGameAccount = item.Lst_Org_Game_Point;
+          //   newItem.afterGameAccount = item.Lst_Final_Game_Point;
+          //   return newItem;
+          // });
+        });
         break;
       }
       // case 'bonus': {
@@ -142,7 +176,6 @@ export default {
       // }
       // case 'lottery': {
       //   this.list = [];
-      //   this.title = 'Lottery Details';
       //   break;
       // }
       case 'withdrawalRestriction': {
@@ -175,7 +208,6 @@ export default {
         //     datetime: '2020-07-21 11:41:35',
         //   },
         // ];
-        this.title = 'Withdrawal Restriction Details';
         break;
       }
       // case 'adjustment': {

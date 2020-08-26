@@ -24,6 +24,8 @@ const AUTH_API_LIST = [
   'PointRecord/MLuckyWheelLotteryResult',
   'PointRecord/MActivityWashcode',
   'PointRecord/MAdjustment',
+  'PointRecord/MWithdrawalsDetail',
+  'PointRecord/MTransferDetail',
   'PointRecord/MActivityWashcodeDetail',
   'PointRecord/MBetHistory',
   'PointRecord/MBetHistory_Day',
