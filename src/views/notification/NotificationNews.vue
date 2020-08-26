@@ -1,14 +1,14 @@
 <template>
   <div class="notification-news">
-    <div class="notification-news__box theme-content-box" v-for="item in pageData" :key="item.datetime">
+    <div class="notification-news__box theme-content-box" v-for="item in list" :key="item.Lst_StartDateTime">
       <p class="notification-news__box__date">
-        2020-07-29 10:27:52
+        {{ item.Lst_StartDateTime }}
       </p>
-      <div v-html="item.content"></div>
+      <div v-html="item.Lst_Content"></div>
     </div>
 
     <AppPagination
-      :length="list.length"
+      :length="pagination.dataLength"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
@@ -18,7 +18,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-
+import { getNews } from '@/api/notification';
 export default {
   name: 'NotificationNews',
   components: {
@@ -26,33 +26,37 @@ export default {
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
-    pageData() {
-      const startAt = this.pagination.pagesize * (this.pagination.page - 1);
-      const endAt = startAt + this.pagination.pagesize;
-      return this.list.slice(startAt, endAt) || [];
-    },
   },
   data() {
     return {
       list: [
         {
-          datetime: '2020-07-29 10:27:52',
-          content: `<h2>test</h2>`,
+          Lst_StartDateTime: '2020-07-29 10:27:52',
+          Lst_Content: `<h2>test</h2>`,
         },
         {
-          datetime: '2018-03-29 20:05:03',
-          content: `<h2>3/29 測試消息內容</h2>`,
+          Lst_StartDateTime: '2018-03-29 20:05:03',
+          Lst_Content: `<h2>3/29 測試消息內容</h2>`,
         },
       ],
       pagination: {
         page: 1,
-        pagesize: 1,
+        pagesize: 10,
+        dataLength: 0,
       },
     };
   },
   methods: {
+    async getNews() {
+      const requestData = { Page: this.pagination.page };
+      const result = await getNews(requestData);
+      console.log('[News]', result);
+
+      // this.pagination.dataLength = result.RetObj.Records;
+    },
     changePage(page) {
       this.pagination.page = page;
+      this.getNews();
     },
   },
   watch: {
@@ -67,6 +71,9 @@ export default {
 
         // * 根據版型引入 css (pagination)
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
+
+        //* 取得最新消息
+        this.getNews();
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);

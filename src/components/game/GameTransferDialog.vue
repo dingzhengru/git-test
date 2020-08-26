@@ -118,6 +118,10 @@ export default {
   color: #959595;
 }
 
+.game-transfer-dialog__form__text span {
+  color: #d6c388;
+}
+
 .game-transfer-dialog__form-switch-div {
   margin-top: 20px;
 }

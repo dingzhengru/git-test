@@ -43,6 +43,7 @@ const AUTH_API_LIST = [
   'Siteinfo/MGetLotteryCount',
   'Proxy/PlayLottery',
   'Siteinfo/MGetLotteryCount',
+  'Msg/MessageList',
 ];
 
 //* 需加密的 API

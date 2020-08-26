@@ -213,9 +213,7 @@ export default {
         dataLength: 1,
       },
       gamePointList: [], //* 遊戲點數列表，轉帳會用到
-      transferAmount: 0, //* 轉帳金額
       isShowTransferDialog: false, //* 轉帳視窗
-      isTransferAll: true, //* 轉帳: 是否全轉
       guid: '', //* 真人遊戲會用到的 guid，於 getGameCategory 取得
       gameLimitBetList: [], //* 真人遊戲的範本列表
       isShowLiveGameEnterDialog: false, //* 真人遊戲開遊戲的列表
@@ -324,7 +322,6 @@ export default {
     },
     async openGame(game, freePlay) {
       //* 因應真人遊戲兩階段開遊戲
-      console.log('openGame', game, freePlay);
       this.game = game;
       if (this.$route.params.type == 1) {
         this.isShowLiveGameEnterDialog = true;
@@ -349,6 +346,10 @@ export default {
       };
       const result = await getGameUrl(requestData);
       console.log('[OpenLiveGame]', result);
+
+      if (result.Code == 200) {
+        window.open(result.RetObj.RedirectUrl);
+      }
     },
     async likeGame(game) {
       const requestData = {
