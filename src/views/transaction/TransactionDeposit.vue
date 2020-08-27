@@ -8,7 +8,9 @@
           <span
             class="deposit__main__field__title theme-input-header"
             v-if="
-              field.name != 'bankDepositAccount' || (field.name == 'bankDepositAccount' && bankDepositList.length <= 0)
+              field.name != 'bankDepositAccount' ||
+                (field.name == 'bankDepositAccount' &&
+                  JSON.stringify(bankDepositList) === JSON.stringify(bankTransferList))
             "
           >
             {{ $t(`transaction.deposit.field.${field.name}`) }}
@@ -37,7 +39,11 @@
             </template>
           </template>
 
-          <template v-if="field.name == 'bankDepositAccount' && bankDepositList.length <= 0">
+          <template
+            v-if="
+              field.name == 'bankDepositAccount' && JSON.stringify(bankDepositList) === JSON.stringify(bankTransferList)
+            "
+          >
             <input
               class="ui-ipt"
               :id="idMapper.transaction.deposit.field[field.name]"
@@ -71,7 +77,7 @@
               v-model="method"
             >
               <option :value="{}">{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option>
-              <option :value="method" v-for="methodItem in methodList" :key="methodItem.Value">
+              <option :value="methodItem" v-for="methodItem in methodList" :key="methodItem.Value">
                 {{ methodItem.Text }}
               </option>
             </select>
@@ -127,7 +133,11 @@
             </select>
           </template>
 
-          <p class="deposit__main__field__notice" v-html="$t(`transaction.deposit.hint.${field.name}`)"></p>
+          <p
+            class="deposit__main__field__notice"
+            v-html="$t(`transaction.deposit.hint.${field.name}`)"
+            v-if="promotion == -1"
+          ></p>
         </div>
 
         <ol class="ui-ol-memberNotice">
@@ -137,7 +147,7 @@
         </ol>
       </div>
       <div class="deposit__button-div">
-        <button class="ui-btn deposit__button-div--submit" type="submit">
+        <button class="ui-btn deposit__button-div--submit" type="submit" :disabled="!validateForm()">
           {{ $t('ui.button.submit') }}
         </button>
         <router-link class="ui-btn deposit__button-div--cancel" :to="{ name: 'Home' }">
@@ -214,17 +224,15 @@ export default {
   },
   methods: {
     submitDeposit() {
-      console.log('submitDeposit');
-      console.log(`
-        bankDeposit: ${this.bankDeposit}
-        bankTransfer: ${this.bankTransfer}
-        datetime: ${this.datetime}
-        method: ${this.method}
-        amount: ${this.amount}
-        receipt: ${this.receipt}
-        remark: ${this.remark}
-        promotion: ${this.promotion}
-      `);
+      if (!this.validateForm()) {
+        return;
+      }
+      console.log('[SubmitDeposit]', this.bankDeposit, this.bankTransfer);
+
+      if (JSON.stringify(this.bankDepositList) === JSON.stringify(this.bankTransferList)) {
+        //* 代表回傳的 bankDepositList 是空的，需使用者自行輸入銀行帳戶
+        console.log('使用者自行輸入銀行帳戶', this.bankDepositAccount);
+      }
     },
     inputAmount() {
       if (this.amount < this.depositLimit.min) {
@@ -251,6 +259,21 @@ export default {
       };
       reader.readAsDataURL(file);
     },
+    validateForm() {
+      if (Object.keys(this.bankDeposit).length === 0) {
+        return false;
+      } else if (Object.keys(this.bankTransfer).length === 0) {
+        return false;
+      } else if (this.datetime == '') {
+        return false;
+      } else if (Object.keys(this.method).length === 0) {
+        return false;
+      } else if (this.amount < this.depositLimit.min || this.amount > this.depositLimit.max) {
+        return false;
+      }
+
+      return true;
+    },
   },
   watch: {
     siteID: {
@@ -268,13 +291,18 @@ export default {
 
         //* 250_23223223323299||2||250||SCB||23223223323299||test1111||test1111||SICOTHBK
 
-        this.bankDepositList = result.RetObj.BankAccount.map(item => {
-          item.bank = item.Value.split('||')[3];
-          item.bankBranch = item.Value.split('||')[6];
-          item.bankAccountName = item.Value.split('||')[5];
-          item.bankAccount = item.Value.split('||')[4];
-          return item;
-        });
+        if (result.RetObj.BankAccount.length > 0) {
+          this.bankDepositList = result.RetObj.BankAccount.map(item => {
+            item.bank = item.Value.split('||')[3];
+            item.bankBranch = item.Value.split('||')[6];
+            item.bankAccountName = item.Value.split('||')[5];
+            item.bankAccount = item.Value.split('||')[4];
+            return item;
+          });
+        } else {
+          this.bankDepositList = result.RetObj.BankURL;
+        }
+
         this.bankTransferList = result.RetObj.BankURL;
         this.methodList = result.RetObj.DepositMethod;
         this.promotionList = result.RetObj.AllActivityList;
