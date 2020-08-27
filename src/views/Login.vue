@@ -1,6 +1,5 @@
 <template>
   <div class="login">
-    <!-- 123123123123 -->
     <div class="theme-errorMsg" v-if="error">
       <span class="theme-txt-errorMsg">{{ error }}</span>
     </div>

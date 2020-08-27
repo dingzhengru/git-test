@@ -1,16 +1,16 @@
 <template>
   <form class="withdrawal" @submit.prevent="submitWithdrawal">
     <ul class="withdrawal__ul theme-content-box">
-      <li class="withdrawal__ul__li theme-li-dataView" v-for="item in accountInfoList" :key="item.name">
-        <span class="withdrawal__ul__li__title theme-dataView-header">
+      <li class="withdrawal__li theme-li-dataView" v-for="item in accountInfoList" :key="item.name">
+        <span class="withdrawal__li__title theme-dataView-header">
           {{ $t(`transaction.withdrawal.field.${item.name}`) }}
         </span>
-        <p class="withdrawal__ul__li__content theme-dataView-data" v-if="item.value">
+        <p class="withdrawal__li__content theme-dataView-data" v-if="item.value">
           {{ typeof item.value == 'number' ? numeral(item.value).format('0,0.00') : item.value }}
         </p>
 
         <template v-if="item.name == 'bankSelect'">
-          <select class="withdrawal__ul__li__select ui-ddl" v-model="bank" @change="changeBank">
+          <select class="withdrawal__li__select ui-ddl" v-model="bank" @change="changeBank">
             <option value="" selected>請選擇</option>
             <option :value="bankItem" v-for="bankItem in bankList" :key="bankItem.Lst_Bank_name">
               {{ bankItem.Text }}
@@ -19,14 +19,14 @@
         </template>
 
         <template v-if="item.name == 'Lst_Point'">
-          <button type="button" class="withdrawal__ul__li__button ui-btn ui-btn-long" @click="transferToMain">
+          <button type="button" class="withdrawal__li__button ui-btn ui-btn-long" @click="transferToMain">
             {{ $t('transaction.withdrawal.button.allToMyWallet') }}
           </button>
         </template>
 
         <template v-if="item.name == 'Add_WithdrswalsPoint'">
           <input
-            class="withdrawal__ul__li__input ui-ipt theme-ipt-dataview"
+            class="withdrawal__li__input ui-ipt theme-ipt-dataview"
             :id="idMapper.transaction.withdrawal.field[item.name]"
             type="number"
             step="100"
@@ -41,7 +41,7 @@
 
         <template v-if="item.name == 'password'">
           <input
-            class="withdrawal__ul__li__input ui-ipt theme-ipt-dataview"
+            class="withdrawal__li__input ui-ipt theme-ipt-dataview"
             :id="idMapper.transaction.withdrawal.field[item.name]"
             type="password"
             required
@@ -61,7 +61,7 @@
     <div class="withdrawal__button-div">
       <button
         type="submit"
-        class="withdrawal__button-div__submit ui-btn ui-btn-long"
+        class="withdrawal__button--submit ui-btn ui-btn-long"
         :id="idMapper.transaction.withdrawal.button.submit"
         :disabled="!validateForm()"
       >
@@ -246,16 +246,16 @@ export default {
   margin: 40px 0;
 }
 
-.withdrawal__ul__li {
+.withdrawal__li {
   list-style: none;
 }
 
-.withdrawal__ul__li__select {
+.withdrawal__li__select {
   padding: 0 1.5%;
   width: 100%;
 }
 
-.withdrawal__ul__li__button {
+.withdrawal__li__button {
   display: block;
   margin: 0 auto;
 }

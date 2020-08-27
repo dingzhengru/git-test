@@ -1,12 +1,12 @@
 <template>
   <div>
     <form class="deposit" @submit.prevent="submitDeposit">
-      <div class="deposit__main theme-content-box">
-        <h3 class="deposit__main__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
+      <div class="theme-content-box">
+        <h3 class="deposit__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
 
-        <div class="deposit__main__field theme-input-box" v-for="field in fieldList" :key="field.name">
+        <div class="deposit__field theme-input-box" v-for="field in fieldList" :key="field.name">
           <span
-            class="deposit__main__field__title theme-input-header"
+            class="deposit__field__title theme-input-header"
             v-if="
               field.name != 'bankDepositAccount' ||
                 (field.name == 'bankDepositAccount' &&
@@ -18,7 +18,7 @@
 
           <template v-if="field.name == 'bankDeposit'">
             <select
-              class="deposit__main__field__select ui-ddl"
+              class="deposit__field__select ui-ddl"
               :id="idMapper.transaction.deposit.field[field.name]"
               v-model="bankDeposit"
             >
@@ -29,10 +29,10 @@
             </select>
             <template v-for="(value, key) in bankDeposit">
               <div v-if="key != 'Value' && key != 'Text'" :key="key">
-                <span class="deposit__main__field__info__header theme-input-header">
+                <span class="deposit__field__info__header theme-input-header">
                   {{ $t(`transaction.deposit.field.${key}`) }}
                 </span>
-                <p class="deposit__main__field__info__text">
+                <p class="deposit__field__info__text">
                   {{ value }}
                 </p>
               </div>
@@ -54,7 +54,7 @@
 
           <template v-if="field.name == 'bankTransfer'">
             <select
-              class="deposit__main__field__select ui-ddl"
+              class="deposit__field__select ui-ddl"
               :id="idMapper.transaction.deposit.field[field.name]"
               v-model="bankTransfer"
             >
@@ -71,7 +71,7 @@
 
           <template v-if="field.name == 'method'">
             <select
-              class="deposit__main__field__select ui-ddl"
+              class="deposit__field__select ui-ddl"
               :id="idMapper.transaction.deposit.field[field.name]"
               required
               v-model="method"
@@ -111,7 +111,7 @@
                 @change="onFileChange"
               />
             </label>
-            <p class="deposit__main__field__notice deposit__main__field__notice--receipt-upload">
+            <p class="deposit__field__notice deposit__field__notice--receipt-upload">
               {{ receipt.name }}
             </p>
           </template>
@@ -122,7 +122,7 @@
 
           <template v-if="field.name == 'promotion'">
             <select
-              class="deposit__main__field__select ui-ddl"
+              class="deposit__field__select ui-ddl"
               :id="idMapper.transaction.deposit.field[field.name]"
               v-model="promotion"
             >
@@ -134,7 +134,7 @@
           </template>
 
           <p
-            class="deposit__main__field__notice"
+            class="deposit__field__notice"
             v-html="$t(`transaction.deposit.hint.${field.name}`)"
             v-if="promotion == -1"
           ></p>
@@ -322,18 +322,18 @@ export default {
   margin-top: 40px;
 }
 
-.deposit__main__field {
+.deposit__field {
   margin: 20px 0;
 }
 
-.deposit__main__field__select {
+.deposit__field__select {
   padding: 0 1.5%;
 }
 
-.deposit__main__field__info {
+.deposit__field__info {
   margin: 20px 0;
 }
-.deposit__main__field__info__text {
+.deposit__field__info__text {
   margin: 0 0 20px;
   font-size: 2.307em;
 }
@@ -357,11 +357,11 @@ export default {
   display: none;
 }
 
-.deposit__main__field__notice {
+.deposit__field__notice {
   margin: 10px 0;
   font-size: 2.153em;
 }
-.deposit__main__field__notice--receipt-upload {
+.deposit__field__notice--receipt-upload {
   text-align: center;
 }
 
