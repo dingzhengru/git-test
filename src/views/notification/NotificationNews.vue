@@ -52,7 +52,8 @@ export default {
       const result = await getNews(requestData);
       console.log('[News]', result);
 
-      // this.pagination.dataLength = result.RetObj.Records;
+      this.list = result.RetObj.Rows;
+      this.pagination.dataLength = result.RetObj.Records;
     },
     changePage(page) {
       this.pagination.page = page;
@@ -62,7 +63,7 @@ export default {
   watch: {
     siteID: {
       immediate: true,
-      handler() {
+      async handler() {
         if (!this.siteID) {
           return;
         }
@@ -73,7 +74,7 @@ export default {
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
         //* 取得最新消息
-        this.getNews();
+        await this.getNews();
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);
