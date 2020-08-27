@@ -28,7 +28,10 @@
               </option>
             </select>
             <template v-for="(value, key) in bankDeposit">
-              <div v-if="key != 'Value' && key != 'Text'" :key="key">
+              <div
+                v-if="key == 'BankName' || key == 'BankBranchName' || key == 'BankAccountName' || key == 'BankAccount'"
+                :key="key"
+              >
                 <span class="deposit__field__info__header theme-input-header">
                   {{ $t(`transaction.deposit.field.${key}`) }}
                 </span>
@@ -292,13 +295,7 @@ export default {
         //* 250_23223223323299||2||250||SCB||23223223323299||test1111||test1111||SICOTHBK
 
         if (result.RetObj.BankAccount.length > 0) {
-          this.bankDepositList = result.RetObj.BankAccount.map(item => {
-            item.bank = item.Value.split('||')[3];
-            item.bankBranch = item.Value.split('||')[6];
-            item.bankAccountName = item.Value.split('||')[5];
-            item.bankAccount = item.Value.split('||')[4];
-            return item;
-          });
+          this.bankDepositList = result.RetObj.BankAccount;
         } else {
           this.bankDepositList = result.RetObj.BankURL;
         }
