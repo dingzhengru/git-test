@@ -5,7 +5,14 @@
         <h3 class="deposit__main__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
 
         <div class="deposit__main__field theme-input-box" v-for="field in fieldList" :key="field.name">
-          <span class="deposit__main__field__title theme-input-header">{{ $t(field.title) }}</span>
+          <span
+            class="deposit__main__field__title theme-input-header"
+            v-if="
+              field.name != 'bankDepositAccount' || (field.name == 'bankDepositAccount' && bankDepositList.length <= 0)
+            "
+          >
+            {{ $t(`transaction.deposit.field.${field.name}`) }}
+          </span>
 
           <template v-if="field.name == 'bankDeposit'">
             <select
@@ -13,19 +20,30 @@
               :id="idMapper.transaction.deposit.field[field.name]"
               v-model="bankDeposit"
             >
-              <option :value="{}" selected>{{ $t(field.placeholder) }}</option>
+              <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option>
               <option :value="bank" v-for="bank in bankDepositList" :key="bank.value">
-                {{ bank.bank }}
+                {{ bank.Text }}
               </option>
             </select>
             <template v-for="(value, key) in bankDeposit">
-              <span class="deposit__main__field__info__header theme-input-header" :key="key" v-if="key != 'value'">
-                {{ $t(`transaction.deposit.field.${key}`) }}
-              </span>
-              <p class="deposit__main__field__info__text" :key="value" v-if="key != 'value'">
-                {{ value }}
-              </p>
+              <div v-if="key != 'Value' && key != 'Text'" :key="key">
+                <span class="deposit__main__field__info__header theme-input-header">
+                  {{ $t(`transaction.deposit.field.${key}`) }}
+                </span>
+                <p class="deposit__main__field__info__text">
+                  {{ value }}
+                </p>
+              </div>
             </template>
+          </template>
+
+          <template v-if="field.name == 'bankDepositAccount' && bankDepositList.length <= 0">
+            <input
+              class="ui-ipt"
+              :id="idMapper.transaction.deposit.field[field.name]"
+              type="text"
+              v-model="bankDepositAccount"
+            />
           </template>
 
           <template v-if="field.name == 'bankTransfer'">
@@ -34,26 +52,27 @@
               :id="idMapper.transaction.deposit.field[field.name]"
               v-model="bankTransfer"
             >
-              <option :value="{}" selected>{{ $t(field.placeholder) }}</option>
-              <option :value="bank" v-for="bank in bankTransferList" :key="bank.value">
-                {{ bank.name }}
+              <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option>
+              <option :value="bank" v-for="bank in bankTransferList" :key="bank.Value">
+                {{ bank.Text }}
               </option>
             </select>
           </template>
 
           <template v-if="field.name == 'datetime'">
-            <input class="ui-ipt" type="datetime-local" v-model="datetime" />
+            <input required class="ui-ipt" type="datetime-local" v-model="datetime" />
           </template>
 
           <template v-if="field.name == 'method'">
             <select
               class="deposit__main__field__select ui-ddl"
               :id="idMapper.transaction.deposit.field[field.name]"
+              required
               v-model="method"
             >
-              <option :value="{}">{{ $t(field.placeholder) }}</option>
-              <option :value="method" v-for="methodItem in methodList" :key="methodItem.value">
-                {{ methodItem.name }}
+              <option :value="{}">{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option>
+              <option :value="method" v-for="methodItem in methodList" :key="methodItem.Value">
+                {{ methodItem.Text }}
               </option>
             </select>
           </template>
@@ -63,13 +82,20 @@
               class="ui-ipt"
               :id="idMapper.transaction.deposit.field[field.name]"
               type="number"
-              step="0.01"
-              v-model="amount"
+              required
+              :min="depositLimit.min"
+              :max="depositLimit.max"
+              step="100"
+              v-model.number="amount"
+              @input="inputAmount"
             />
           </template>
 
           <template v-if="field.name == 'receipt'">
-            <label class="deposit__receipt-upload__label ui-btn ui-btn-long" for="deposit__receipt-upload__input">
+            <label
+              class="deposit__receipt-upload__label ui-btn ui-btn-long"
+              :for="idMapper.transaction.deposit.button.upload"
+            >
               {{ $t('transaction.deposit.button.upload') }}
               <input
                 class="deposit__receipt-upload__input"
@@ -94,19 +120,19 @@
               :id="idMapper.transaction.deposit.field[field.name]"
               v-model="promotion"
             >
-              <option :value="{}">{{ $t(field.placeholder) }}</option>
-              <option :value="promotion" v-for="promotionItem in promotionList" :key="promotionItem.value">
-                {{ promotionItem.name }}
+              <!-- <option :value="{}">{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option> -->
+              <option :value="promotionItem.Value" v-for="promotionItem in promotionList" :key="promotionItem.Value">
+                {{ promotionItem.Text }}
               </option>
             </select>
           </template>
 
-          <p class="deposit__main__field__notice" v-html="$t(field.hint)"></p>
+          <p class="deposit__main__field__notice" v-html="$t(`transaction.deposit.hint.${field.name}`)"></p>
         </div>
 
         <ol class="ui-ol-memberNotice">
           <li v-for="(notice, index) in noticeList" :key="`memberNotice${index}`">
-            <span v-html="$t(notice)"></span>
+            <span v-html="$t(`transaction.deposit.notice.${notice}`)"></span>
           </li>
         </ol>
       </div>
@@ -142,127 +168,47 @@ export default {
       fieldList: [
         {
           name: 'bankDeposit',
-          title: 'transaction.deposit.field.selectDepositBank',
-          placeholder: 'transaction.deposit.placeholder.depositBank',
-          hint: '',
+        },
+        {
+          name: 'bankDepositAccount',
         },
         {
           name: 'bankTransfer',
-          title: 'transaction.deposit.field.selectTransferBank',
-          placeholder: 'transaction.deposit.placeholder.transferBank',
-          hint: '',
         },
         {
           name: 'datetime',
-          title: 'transaction.deposit.field.datetime',
-          hint: '',
         },
         {
           name: 'method',
-          title: 'transaction.deposit.field.method',
-          placeholder: 'transaction.deposit.placeholder.method',
-          hint: '',
         },
         {
           name: 'amount',
-          title: 'transaction.deposit.field.amount',
-          hint: 'transaction.deposit.hint.amount',
         },
         {
           name: 'receipt',
-          title: 'transaction.deposit.field.receipt',
-          hint: 'transaction.deposit.hint.receipt',
         },
         {
           name: 'remark',
-          title: 'transaction.deposit.field.remark',
-          hint: '',
         },
         {
           name: 'promotion',
-          title: 'transaction.deposit.field.promotion',
-          placeholder: 'transaction.deposit.placeholder.promotion',
-          hint: 'transaction.deposit.hint.promotion',
         },
       ],
-      bankDepositList: [
-        {
-          bank: 'bank01',
-          bankBranch: 'bank branch 01',
-          bankAccountName: 'account name 01',
-          bankAccount: 'account number 01',
-          value: 'value 01',
-        },
-        {
-          bank: 'bank02',
-          bankBranch: 'bank branch 02',
-          bankAccountName: 'account name 02',
-          bankAccount: 'account number 02',
-          value: 'value 02',
-        },
-      ],
-      bankTransferList: [
-        {
-          name: 'Transfer Bank01',
-          value: 'value 01',
-        },
-        {
-          name: 'Transfer Bank02',
-          value: 'value 02',
-        },
-      ],
-      methodList: [
-        {
-          name: 'WebATM',
-          value: '15',
-        },
-        {
-          name: 'CDM cash',
-          value: '16',
-        },
-        {
-          name: 'ATM',
-          value: '17',
-        },
-        {
-          name: 'WebATM',
-          value: '18',
-        },
-        {
-          name: 'Bank Counter Transfer',
-          value: '19',
-        },
-      ],
-      promotionList: [
-        {
-          name: 'promotion name 01',
-          value: 'promotion value 01',
-        },
-        {
-          name: 'promotion name 02',
-          value: 'promotion value 02',
-        },
-      ],
-      noticeList: [
-        'transaction.deposit.notice.currency',
-        'transaction.deposit.notice.depositLimit01',
-        'transaction.deposit.notice.depositLimit02',
-        'transaction.deposit.notice.userBear01',
-        'transaction.deposit.notice.userBear02',
-        'transaction.deposit.notice.suggest',
-        'transaction.deposit.notice.contact',
-      ],
+      bankDepositList: [],
+      bankTransferList: [],
+      methodList: [],
+      promotionList: [],
+      noticeList: ['currency', 'depositLimit01', 'depositLimit02', 'userBear01', 'userBear02', 'suggest', 'contact'],
       bankDeposit: {},
       bankTransfer: {},
       datetime: '2018-06-12T19:30',
       method: {},
-      amount: '',
-      receipt: {
-        name: '',
-        image: '',
-      },
+      amount: 0,
+      receipt: { name: '', image: '' },
       remark: '',
-      promotion: {},
+      promotion: '-1',
+      bankDepositAccount: '', //* 當存款銀行列表為空時，則要填入此欄位
+      depositLimit: { min: 100, max: 100000 },
       isShowDepositDialog: true,
     };
   },
@@ -279,6 +225,13 @@ export default {
         remark: ${this.remark}
         promotion: ${this.promotion}
       `);
+    },
+    inputAmount() {
+      if (this.amount < this.depositLimit.min) {
+        this.amount = this.depositLimit.min;
+      } else if (this.amount > this.depositLimit.max) {
+        this.amount = this.depositLimit.max;
+      }
     },
     onFileChange(event) {
       const files = event.target.files || event.dataTransfer.files;
@@ -302,7 +255,7 @@ export default {
   watch: {
     siteID: {
       immediate: true,
-      handler() {
+      async handler() {
         if (!this.siteID) {
           return;
         }
@@ -310,9 +263,23 @@ export default {
         import(`@/styles/${this.siteFullCss}/transaction/deposit.scss`);
 
         //* 取得存款資訊
-        getDepositInfo().then(result => {
-          console.log(result);
+        const result = await getDepositInfo();
+        console.log('[DepositInfo]', result.RetObj);
+
+        //* 250_23223223323299||2||250||SCB||23223223323299||test1111||test1111||SICOTHBK
+
+        this.bankDepositList = result.RetObj.BankAccount.map(item => {
+          item.bank = item.Value.split('||')[3];
+          item.bankBranch = item.Value.split('||')[6];
+          item.bankAccountName = item.Value.split('||')[5];
+          item.bankAccount = item.Value.split('||')[4];
+          return item;
         });
+        this.bankTransferList = result.RetObj.BankURL;
+        this.methodList = result.RetObj.DepositMethod;
+        this.promotionList = result.RetObj.AllActivityList;
+        this.depositLimit.min = result.RetObj.DepositDownlimit;
+        this.depositLimit.max = result.RetObj.DepositUplimit;
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);

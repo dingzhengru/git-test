@@ -323,12 +323,13 @@
     "deposit": {
       "title": "Fill in Cash Voucher",
       "field": {
-        "selectDepositBank": "Select Deposit Bank",
+        "bankDeposit": "Select Deposit Bank",
+        "bankDepositAccount": "Account name of deposit",
         "bank": "Bank name of deposit",
         "bankBranch": "Branch Name of Bank",
         "bankAccountName": "Account name of deposit",
         "bankAccount": "Account number of deposit",
-        "selectTransferBank": "Bank Transfer",
+        "bankTransfer": "Bank Transfer",
         "datetime": "Deposit Time",
         "method": "Deposit Method",
         "amount": "Deposit Amount",
@@ -337,14 +338,24 @@
         "promotion": "Favorable Project on Payment"
       },
       "placeholder": {
-        "depositBank": "Select Deposit Bank",
-        "transferBank": "please choose your payment bank.",
+        "bankDeposit": "Select Deposit Bank",
+        "bankTransfer": "please choose your payment bank.",
         "method": "Please select",
         "promotion": "Please select a Promotion"
       },
       "hint": {
+        "bankDeposit": "",
+        "bankDepositAccount": "",
+        "bank": "",
+        "bankBranch": "",
+        "bankAccountName": "",
+        "bankAccount": "",
+        "bankTransfer": "",
+        "datetime": "",
+        "method": "",
         "amount": "Baht Maximum 100000.00 , Minimum 200.00 Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit. ",
         "receipt": "The Format of Image Allow Only JPG / PNG <br /> File size cannot exceed 2MB",
+        "remark": "",
         "promotion": "<span class='ui-txt-mask'>Note: Non-selection regarded as abdication.</span>"
       },
       "notice": {

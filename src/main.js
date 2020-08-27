@@ -26,9 +26,6 @@ import { i18n, loadLanguageAsync } from '@/i18n-lazy'; // 載入語言
 import { getSiteInfo } from '@/api/site';
 import { getTokenAndPublicKey, keepUserOnline } from '@/api/user';
 
-//* Page Title
-document.title = 'H3 手機版 前後端分離';
-
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
 const cssClass = 'Y';
 const cssType = '01';
@@ -70,6 +67,9 @@ getSiteInfo(requestData)
     const siteInfo = result.RetObj;
 
     console.log('[Site]', siteInfo);
+
+    //* Page Title
+    document.title = siteInfo.LS_SiteTitle;
 
     store.commit('site/setID', siteInfo.LS_SiteID);
     // store.commit('site/setCssClass', siteInfo.LS_CSS_Class);

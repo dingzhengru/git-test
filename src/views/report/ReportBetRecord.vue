@@ -108,77 +108,49 @@ export default {
       async handler() {
         console.log('[ReportBetRecord]:', this.dateRange.name);
         if (this.dateRange.name == 'today') {
-          this.recordList = [
-            {
-              Lst_ProductName: 'RNG-RG電子',
-              Lst_BetCount: 3,
-              Lst_TTLBet: 240,
-              Lst_TTLNetBet: 240,
-              Lst_MemberTTLNetWin: -216,
-              Lst_JackpotScore: 0,
-            },
-            {
-              Lst_ProductName: 'RNG-CQ9 RNG',
-              Lst_BetCount: 1,
-              Lst_TTLBet: 40,
-              Lst_TTLNetBet: 40,
-              Lst_MemberTTLNetWin: 8228,
-              Lst_JackpotScore: 0,
-            },
-          ];
+          // this.recordList = [
+          //   {
+          //     Lst_ProductName: 'RNG-RG電子',
+          //     Lst_BetCount: 3,
+          //     Lst_TTLBet: 240,
+          //     Lst_TTLNetBet: 240,
+          //     Lst_MemberTTLNetWin: -216,
+          //     Lst_JackpotScore: 0,
+          //   },
+          //   {
+          //     Lst_ProductName: 'RNG-CQ9 RNG',
+          //     Lst_BetCount: 1,
+          //     Lst_TTLBet: 40,
+          //     Lst_TTLNetBet: 40,
+          //     Lst_MemberTTLNetWin: 8228,
+          //     Lst_JackpotScore: 0,
+          //   },
+          // ];
 
-          this.totalObject = {
-            BetCount: 111,
-            TTLBet: 2222,
-            TTLNetWin: 33333,
-            JackpotScore: 4444,
-          };
+          // this.totalObject = {
+          //   BetCount: 111,
+          //   TTLBet: 2222,
+          //   TTLNetWin: 33333,
+          //   JackpotScore: 4444,
+          // };
 
           const requestData = { Tag: this.dateRange.value };
           const result = await getBetHistoryDay(requestData);
+          if (result.Code == 200) {
+            this.totalObject = {
+              BetCount: result.RetObj.BetCount,
+              TTLBet: result.RetObj.TTLBet,
+              TTLNetWin: result.RetObj.TTLNetWin,
+              JackpotScore: result.RetObj.JackpotScore,
+            };
+            this.recordList = result.RetObj.Rows;
+          }
           console.log('[BetHistoryDay]', result);
         } else {
-          this.weekList = [
-            {
-              Lst_BetCount: 4,
-              Lst_MemberTTLNetWin: 0.0,
-              Lst_ReportDate: '2020-08-24 (GMT+8)',
-            },
-            {
-              Lst_BetCount: 0,
-              Lst_MemberTTLNetWin: 0.0,
-              Lst_ReportDate: '2020-08-25 (GMT+8)',
-            },
-            {
-              Lst_BetCount: 0,
-              Lst_MemberTTLNetWin: 0.0,
-              Lst_ReportDate: '2020-08-26 (GMT+8)',
-            },
-            {
-              Lst_BetCount: 0,
-              Lst_MemberTTLNetWin: 0.0,
-              Lst_ReportDate: '2020-08-27 (GMT+8)',
-            },
-            {
-              Lst_BetCount: 0,
-              Lst_MemberTTLNetWin: 0.0,
-              Lst_ReportDate: '2020-08-28 (GMT+8)',
-            },
-            {
-              Lst_BetCount: 0,
-              Lst_MemberTTLNetWin: 0.0,
-              Lst_ReportDate: '2020-08-29 (GMT+8)',
-            },
-            {
-              Lst_BetCount: 0,
-              Lst_MemberTTLNetWin: 0.0,
-              Lst_ReportDate: '2020-08-30 (GMT+8)',
-            },
-          ];
-
           const requestData = { Tag: this.dateRange.value };
           const result = await getBetHistoryWeek(requestData);
 
+          this.weekList = result.RetObj.Rows;
           console.log('[BetHistoryWeek]', result);
         }
       },

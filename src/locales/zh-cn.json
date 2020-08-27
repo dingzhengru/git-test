@@ -323,12 +323,13 @@
     "deposit": {
       "title": "填写存款申请单",
       "field": {
-        "selectDepositBank": "请选择存入银行",
+        "bankDeposit": "请选择存入银行",
+        "bankDepositAccount": "存入本公司银行帐号名",
         "bank": "存入本公司银行名称",
         "bankBranch": "存入本公司银行支行",
         "bankAccountName": "存入本公司银行帐号名",
         "bankAccount": "存入本公司银行账号",
-        "selectTransferBank": "转帐银行",
+        "bankTransfer": "转帐银行",
         "datetime": "存款时间",
         "method": "存款方式",
         "amount": "存款金额",
@@ -337,14 +338,24 @@
         "promotion": "存款优惠方案"
       },
       "placeholder": {
-        "depositBank": "请选择存入银行",
-        "transferBank": "请选择转帐银行",
+        "bankDeposit": "请选择存入银行",
+        "bankTransfer": "请选择转帐银行",
         "method": "请选择",
         "promotion": "请选择优惠活动"
       },
       "hint": {
+        "bankDeposit": "",
+        "bankDepositAccount": "",
+        "bank": "",
+        "bankBranch": "",
+        "bankAccountName": "",
+        "bankAccount": "",
+        "bankTransfer": "",
+        "datetime": "",
+        "method": "",
         "amount": "泰铢 最高存款100000.00 最低存款200.00 <br/>  提醒您，存款时请勿存入整数额度，请含尾数零头一并存入，以供辨认，避免存款被重复申请",
         "receipt": "图片格式必须是 JPG / PNG <br /> 档案大小不可超过2MB",
+        "remark": "",
         "promotion": "<span class='ui-txt-mask'>您没有选择任何优惠,将视同放弃优惠！</span>"
       },
       "notice": {

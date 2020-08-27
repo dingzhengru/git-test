@@ -602,7 +602,7 @@ ul.cpn-inBlock-row > li {
 
 /* input box */
 /* .theme-input-box {} */
-.theme-input-box > .theme-input-header {
+.theme-input-box .theme-input-header {
   display: block;
   margin-bottom: 5px;
   color: #959595;

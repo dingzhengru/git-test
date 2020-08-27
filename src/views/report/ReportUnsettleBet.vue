@@ -1,5 +1,5 @@
 <template>
-  <div class="report-unsettle-bet">
+  <div class="report-unsettle-bet" v-if="list.length > 0">
     <div class="report-unsettle-bet__box theme-content-box">
       <table class="report-unsettle-bet__table ui-table02" v-for="item in list" :key="item.id">
         <tbody>
@@ -26,18 +26,7 @@ export default {
   data() {
     return {
       numeral: numeral,
-      list: [
-        {
-          Lst_ProductName: 'Sports-SBO Sports',
-          Lst_BetCount: 0,
-          Lst_TTLBet: 100,
-        },
-        {
-          Lst_ProductName: 'Sports-SBO Sports',
-          Lst_BetCount: 0,
-          Lst_TTLBet: 100,
-        },
-      ],
+      list: [],
     };
   },
   mounted() {
