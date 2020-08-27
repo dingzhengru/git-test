@@ -109,6 +109,7 @@
         :id="idMapper.login.button.submit"
         type="submit"
         form="LoginForm"
+        :disabled="!validateForm()"
       >
         {{ $t('login.button.login') }}
       </button>
@@ -160,7 +161,6 @@ export default {
       } else if (result.Code == 203 || result.Code == 599) {
         //* 驗證碼錯誤
         this.error = result.ErrMsg;
-        this.user.CaptchaValue = '';
         this.changeCaptcha();
       }
     },
@@ -170,6 +170,7 @@ export default {
       console.log('[Captcha]', result.RetObj);
       if (result.Code == 200) {
         this.captchaImage = result.RetObj;
+        this.user.CaptchaValue = '';
       }
     },
     validateForm() {

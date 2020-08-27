@@ -108,32 +108,6 @@ export default {
       async handler() {
         console.log('[ReportBetRecord]:', this.dateRange.name);
         if (this.dateRange.name == 'today') {
-          // this.recordList = [
-          //   {
-          //     Lst_ProductName: 'RNG-RG電子',
-          //     Lst_BetCount: 3,
-          //     Lst_TTLBet: 240,
-          //     Lst_TTLNetBet: 240,
-          //     Lst_MemberTTLNetWin: -216,
-          //     Lst_JackpotScore: 0,
-          //   },
-          //   {
-          //     Lst_ProductName: 'RNG-CQ9 RNG',
-          //     Lst_BetCount: 1,
-          //     Lst_TTLBet: 40,
-          //     Lst_TTLNetBet: 40,
-          //     Lst_MemberTTLNetWin: 8228,
-          //     Lst_JackpotScore: 0,
-          //   },
-          // ];
-
-          // this.totalObject = {
-          //   BetCount: 111,
-          //   TTLBet: 2222,
-          //   TTLNetWin: 33333,
-          //   JackpotScore: 4444,
-          // };
-
           const requestData = { Tag: this.dateRange.value };
           const result = await getBetHistoryDay(requestData);
           if (result.Code == 200) {

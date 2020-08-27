@@ -1,6 +1,6 @@
 <template>
   <div class="report-bet-record">
-    <ReportBetRecordDetailTable :title="title" :recordList="recordList" />
+    <ReportBetRecordDetailTable :title="title" :recordList="recordList" :totalObject="totalObject" />
 
     <div class="report-bet-record__button-div">
       <button class="report-bet-record__button--return ui-btn ui-btn-long" @click="$router.go(-1)">
@@ -25,6 +25,7 @@ export default {
   data() {
     return {
       title: '',
+      totalObject: {},
       recordList: [],
     };
   },
@@ -67,6 +68,15 @@ export default {
         };
 
         const result = await getBetHistoryDay(requestData);
+        if (result.Code == 200) {
+          this.totalObject = {
+            BetCount: result.RetObj.BetCount,
+            TTLBet: result.RetObj.TTLBet,
+            TTLNetWin: result.RetObj.TTLNetWin,
+            JackpotScore: result.RetObj.JackpotScore,
+          };
+          this.recordList = result.RetObj.Rows;
+        }
         console.log('[BetHistoryDay]', result);
 
         //* 關掉 loading

@@ -45,7 +45,7 @@
             </select>
           </div>
           <div class="register__form__field__hint">{{ $t(`register.${field.name}.hint`) }}</div>
-          <div class="theme-errorMsg" v-if="field.error">
+          <div class="theme-errorMsg" v-if="field.error && isShowFieldError">
             <span class="theme-txt-errorMsg">{{ field.error }}</span>
           </div>
         </template>
@@ -407,10 +407,6 @@ export default {
         this.$store.commit('user/setPublicKey', result.RetObj.publickey);
       });
     }
-
-    // setInterval(() => {
-    //   this.validateForm();
-    // }, 3000);
   },
   methods: {
     changeCaptcha() {
@@ -419,6 +415,8 @@ export default {
         console.log('[Captcha]', result.RetObj);
         if (result.Code == 200) {
           this.captchaImage = result.RetObj;
+          const captcha = this.fieldList.find(item => item.name == 'CaptchaValue');
+          captcha.value = '';
         }
       });
     },
@@ -430,7 +428,6 @@ export default {
     async register() {
       const requestData = {};
 
-      //* 先用 JS 檢查欄位
       if (!this.validateForm()) {
         return;
       }
@@ -453,6 +450,7 @@ export default {
       this.$store.commit('setIsLoading', false);
     },
     validateForm() {
+      console.log('[ValidateForm]');
       let passwordField, passwordCheckField;
       let withdrawalsPasswordField, withdrawalsPasswordCheckField;
 
