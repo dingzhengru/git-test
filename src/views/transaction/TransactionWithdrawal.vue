@@ -29,13 +29,13 @@
             class="withdrawal__li__input ui-ipt theme-ipt-dataview"
             :id="idMapper.transaction.withdrawal.field[item.name]"
             type="number"
+            :min="amountLimit.min"
+            :max="amountLimit.max"
             step="100"
-            min="0"
-            max="30000"
             placeholder="Please enter amount of withdrawal"
             autocomplete="false"
             v-model.number="amount"
-            @input="inputAmount"
+            @change="changeAmount"
           />
         </template>
 
@@ -138,6 +138,10 @@ export default {
       bank: '',
       amount: 0,
       password: '',
+      amountLimit: {
+        min: 100,
+        max: 10000,
+      },
     };
   },
   methods: {
@@ -185,16 +189,22 @@ export default {
         }
       });
     },
-    inputAmount() {
+    changeAmount() {
       const walletAmount = this.accountInfoList.find(item => item.name == 'Lst_Point').value;
-      if (this.amount > walletAmount || this.amount > 30000) {
-        this.amount = walletAmount < 30000 ? walletAmount : 30000;
-      } else if (this.amount < 0) {
-        this.amount = 0;
+      if (this.amount > walletAmount || this.amount > this.amountLimit.max) {
+        this.amount = walletAmount < this.amountLimit.max ? walletAmount : this.amountLimit.max;
+      } else if (this.amount < this.amountLimit.min) {
+        this.amount = this.amountLimit.min;
+      } else if (this.amount % 100 != 0) {
+        //* 轉換最後兩位為 0
+        const amountStringList = String(this.amount).split('');
+        amountStringList[amountStringList.length - 1] = 0;
+        amountStringList[amountStringList.length - 2] = 0;
+        this.amount = Number(amountStringList.join(''));
       }
     },
     validateForm() {
-      if (this.amount < 100 || this.amount > 30000 || this.amount % 100 != 0) {
+      if (this.amount < this.amountLimit.min || this.amount > this.amountLimit.max || this.amount % 100 != 0) {
         return false;
       } else if (this.bank == '') {
         return false;
@@ -234,6 +244,7 @@ export default {
               item.value = result.RetObj[item.name];
             }
           });
+          this.amountLimit.min = result.RetObj.WithalDownlimit;
         });
       },
     },
