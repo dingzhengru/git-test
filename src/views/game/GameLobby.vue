@@ -1,55 +1,8 @@
 <template>
   <div class="game-lobby">
     <div class="game-lobby__supply">
-      <ul class="game-lobby__supply__ul" :class="{ 'text-center': productList.length == 1 }">
-        <li
-          class="game-lobby__supply__ul__li"
-          :class="[
-            product.class,
-            { 'game-lobby__supply__ul__li--active': $route.params.key == product.Lst_Proxy_Product_Key },
-          ]"
-          v-for="product in productList"
-          :key="product.Lst_Proxy_Product_Key"
-        >
-          <!-- <router-link
-            class="game-lobby__supply__ul__li__link"
-            :to="{
-              name: 'GameLobby',
-              params: { id: product.Lst_Product_id, key: product.Lst_Proxy_Product_Key },
-              query: { category: '' },
-            }"
-          >
-            {{ product.Lst_Name }}
-          </router-link> -->
-          <a class="game-lobby__supply__ul__li__link" href="javascipt:;" @click="changeProduct(product)">
-            {{ product.Lst_Name }}
-          </a>
-        </li>
-      </ul>
-      <div class="game-lobby__category">
-        <ul class="game-lobby__category__ul">
-          <li
-            class="game-lobby__category__ul__li"
-            v-for="category in categoryList"
-            :key="category.Lst_Category"
-            :class="{ 'game-lobby__category__ul__li--active': $route.query.category == category.Lst_Category }"
-          >
-            <a
-              class="game-lobby__category__ul__li__link"
-              href="javascript:;"
-              @click="changeCategory(category.Lst_Category)"
-            >
-              <template v-if="category.Lst_GameName == 'all' || category.Lst_GameName == 'hot'">
-                {{ $t(`game.category.${category.Lst_GameName}`) }}
-              </template>
-
-              <template v-else>
-                {{ category.Lst_GameName }}
-              </template>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <GameProductNavigation :productList="productList" @change-product="changeProduct" />
+      <GameCategoryNavigation :categoryList="categoryList" @change-category="changeCategory" />
     </div>
     <div class="game-lobby__inquire">
       <form class="game-lobby__inquire-form" @submit.prevent="getGameList">
@@ -156,6 +109,8 @@ export default {
   name: 'GameList',
   components: {
     AppPagination: () => import('@/components/AppPagination'),
+    GameProductNavigation: () => import('@/components/game/GameProductNavigation'),
+    GameCategoryNavigation: () => import('@/components/game/GameCategoryNavigation'),
     LiveGameEnterDialog: () => import('@/components/game/LiveGameEnterDialog'),
     GameTransferDialog: () => import('@/components/game/GameTransferDialog'),
   },
@@ -510,66 +465,6 @@ export default {
   height: 182px;
   overflow: hidden;
   position: relative;
-}
-.game-lobby__supply__ul {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 11px 0;
-  white-space: nowrap;
-  overflow: auto;
-}
-
-.game-lobby__supply__ul__li {
-  display: inline-block;
-  letter-spacing: normal;
-  word-spacing: normal;
-  background-position: center top;
-  background-repeat: no-repeat;
-  margin: 0 21px;
-}
-
-.game-lobby__supply__ul__li--active > .game-lobby__supply__ul__li__link {
-  color: #ffbebc;
-  text-shadow: 0px 0px 8px #ff1c59;
-}
-
-.game-lobby__supply__ul__li__link {
-  min-width: 74px;
-  display: block;
-  padding: 56px 0 0 0;
-  font-size: 22px;
-  color: #92a0c0;
-  text-align: center;
-}
-
-.game-lobby__category__ul {
-  width: 100%;
-  margin: 0;
-  padding: 0 15px;
-  white-space: nowrap;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-}
-
-.game-lobby__category__ul__li {
-  font-size: 24px;
-  white-space: nowrap;
-  display: inline-block;
-}
-
-.game-lobby__category__ul__li:last-child {
-  padding-right: 20px;
-}
-
-.game-lobby__category__ul__li__link {
-  display: block;
-  padding: 0 15px;
-  line-height: 74px;
 }
 
 .game-lobby__inquire {
