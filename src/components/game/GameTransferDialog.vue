@@ -11,7 +11,8 @@
             {{ $t('game.transfer.from') }} <span>{{ wallet.Product_Name }}：{{ wallet.Point }}</span>
           </div>
           <div class="game-transfer-dialog__form__text" @click.capture.stop="">
-            {{ $t('game.transfer.to') }} <span>{{ currentProduct.Product_Name }}： {{ currentProduct.Point }}</span>
+            {{ $t('game.transfer.to') }}
+            <span>{{ currentPointProduct.Product_Name }}： {{ currentPointProduct.Point }}</span>
           </div>
 
           <div class="game-transfer-dialog__form-switch-div">
@@ -37,9 +38,16 @@
               v-model.number="amount"
               v-if="!isTransferAll"
               @click.capture.stop=""
+              @focus="focusAmount"
+              @blur="blurAmount"
             />
           </div>
-          <button class="game-transfer-dialog__form__button ui-btn" type="submit" @click.capture.stop="">
+          <button
+            class="game-transfer-dialog__form__button ui-btn"
+            type="submit"
+            @click.capture.stop=""
+            :disabled="!isTransferAll && (amount <= 0 || amount == '')"
+          >
             {{ $t('game.transfer.submit') }}
           </button>
         </form>
@@ -56,7 +64,7 @@ export default {
       type: Object,
       default: () => {},
     },
-    currentProduct: {
+    currentPointProduct: {
       type: Object,
       default: () => {},
     },
@@ -69,8 +77,23 @@ export default {
   },
   methods: {
     submitTransfer() {
-      this.$emit('submit-transfer', this.isTransferAll, this.amount);
+      if (this.isTransferAll) {
+        this.amount = this.wallet.Point;
+      } else if (this.amount > this.wallet.Point || this.amount <= 0 || this.amount == '') {
+        return;
+      }
+      this.$emit('submit-transfer', this.amount);
       this.amount = 0;
+    },
+    focusAmount() {
+      if (this.amount <= 0) {
+        this.amount = '';
+      }
+    },
+    blurAmount() {
+      if (this.amount == '') {
+        this.amount = 0;
+      }
     },
   },
 };

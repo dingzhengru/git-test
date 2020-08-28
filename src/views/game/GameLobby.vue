@@ -11,7 +11,7 @@
           v-for="product in productList"
           :key="product.Lst_Proxy_Product_Key"
         >
-          <router-link
+          <!-- <router-link
             class="game-lobby__supply__ul__li__link"
             :to="{
               name: 'GameLobby',
@@ -20,7 +20,10 @@
             }"
           >
             {{ product.Lst_Name }}
-          </router-link>
+          </router-link> -->
+          <a class="game-lobby__supply__ul__li__link" href="javascipt:;" @click="changeProduct(product)">
+            {{ product.Lst_Name }}
+          </a>
         </li>
       </ul>
       <div class="game-lobby__category">
@@ -116,7 +119,7 @@
     <GameTransferDialog
       :amount.sync="transferAmount"
       :wallet="wallet"
-      :currentProduct="currentProduct"
+      :currentPointProduct="currentPointProduct"
       :isTransferAll.sync="isTransferAll"
       @submit-transfer="transferPoint"
       @close="isShowTransferDialog = false"
@@ -136,6 +139,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import {
+  getGameRedirectUrl,
   getGameLobbyProduct,
   getGameLobbyCategory,
   getGameLobbyGameList,
@@ -160,6 +164,9 @@ export default {
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
     },
+    currentProduct() {
+      return this.productList.find(item => item.Lst_Proxy_Product_Key == this.$route.params.key) || {};
+    },
     wallet() {
       if (this.gamePointList.length <= 0) {
         return {};
@@ -170,12 +177,12 @@ export default {
       );
       return this.gamePointList.find(item => item.Product_id == 9999) || {};
     },
-    currentProduct() {
+    currentPointProduct() {
       if (this.gamePointList.length <= 0) {
         return {};
       }
       console.log(
-        '[CurrentProduct]',
+        '[CurrentPointProduct]',
         this.gamePointList.find(item => item.Product_id == this.$route.params.id)
       );
       return this.gamePointList.find(item => item.Product_id == this.$route.params.id) || {};
@@ -351,6 +358,26 @@ export default {
         window.open(result.RetObj.RedirectUrl);
       }
     },
+    async openGameRedirectUrl() {
+      //* 打開站外連結
+      const requestData = {
+        Pid: this.currentProduct.Lst_Product_id,
+        gameclassify: this.currentProduct.Lst_Game_Classify,
+        proxypid: this.currentProduct.Lst_Proxy_Product_Key,
+      };
+      this.$store.commit('setIsLoading', true);
+      const result = await getGameRedirectUrl(requestData);
+      console.log('[OpenGameRedirectUrl]', result);
+      if (result.Code == 200) {
+        if (result.RetObj.iGameOpenType == 1) {
+          window.open(result.RetObj.RedirectUrl);
+        } else if (result.RetObj.iGameOpenType == 2) {
+          const gameWindow = window.open('');
+          gameWindow.document.write(result.RetObj.RedirectUrl);
+        }
+      }
+      this.$store.commit('setIsLoading', false);
+    },
     async likeGame(game) {
       const requestData = {
         Add_ProductID: this.$route.params.id,
@@ -365,32 +392,67 @@ export default {
 
       console.log('[LikeGame]', result);
     },
-    async transferPoint(isTransferAll, amount) {
-      console.log('[TransferPoint]', isTransferAll, amount);
-
-      if (isTransferAll) {
-        amount = this.wallet.Point;
-      } else if (amount <= 0 || amount > this.wallet.Point) {
-        return;
-      }
+    async transferPoint(amount) {
+      console.log('[TransferPoint]', amount);
 
       const requestData = {
         Add_Source: 9999,
         Add_Destination: this.$route.params.id,
         Add_TransferPoint: amount,
       };
+      this.$store.commit('setIsLoading', true);
       const result = await transferPoint(requestData);
+      this.$store.commit('setIsLoading', false);
+
       console.log('[TransferPoint]', result);
 
       if (result.Code == 200) {
         this.gamePointList = result.RetObj.GameSitePoints;
         this.transferAmount = 0;
         window.alert('Transfer Successful');
+
+        //* 開啟站外連結
+        if (this.currentProduct.GetGameRedirectUrl) {
+          this.openGameRedirectUrl();
+          this.isShowTransferDialog = false;
+          this.$router.go(-1);
+        }
       }
     },
     searchLikeGame() {
       this.search.isLike = !this.search.isLike;
       this.getGameList();
+    },
+    async changeProduct(product) {
+      if (product.Lst_Proxy_Product_Key == this.currentProduct.Lst_Proxy_Product_Key) {
+        return;
+      }
+      console.log('[ChangeProduct]', product);
+
+      this.pagination.page = 1;
+      this.search.text = '';
+
+      this.$router.push({
+        name: 'GameLobby',
+        params: { id: product.Lst_Product_id, key: product.Lst_Proxy_Product_Key },
+        query: { category: '' },
+      });
+
+      if (product.GetGameRedirectUrl) {
+        //* 開啟站外大廳
+        if (this.currentPointProduct.Point == 0) {
+          this.isShowTransferDialog = true;
+        } else {
+          this.openGameRedirectUrl().finally(() => {
+            this.$router.go(-1);
+          });
+        }
+
+        return;
+      } else {
+        await this.getGameCategory();
+        await this.getGameList();
+      }
     },
     changeCategory(category) {
       if (this.$route.query.category == category) {
@@ -409,7 +471,7 @@ export default {
   watch: {
     siteID: {
       immediate: true,
-      handler() {
+      async handler() {
         if (!this.siteID) {
           return;
         }
@@ -424,23 +486,20 @@ export default {
           this.gamePointList = result.RetObj.GameSitePoints;
           console.log('[GamePointList]', result.RetObj);
         });
-      },
-    },
-    '$route.params.key': {
-      immediate: true,
-      async handler() {
-        //* 這裡是切換遊戲分類時觸發
-
-        this.pagination.page = 1;
-        this.search.text = '';
 
         await this.getGameCategory();
-
         await this.getGameList();
 
-        //* 關掉 loading
         this.$store.commit('setIsLoading', false);
       },
+    },
+    productList() {
+      //* 避免直接輸入網址到要去站外大廳的 Product
+      if (this.currentProduct.GetGameRedirectUrl) {
+        this.$store.commit('setIsLoading', false);
+        // this.$router.replace({ name: 'Home' });
+        window.location.replace('/');
+      }
     },
   },
 };
