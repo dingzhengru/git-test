@@ -6,8 +6,9 @@
     </div>
 
     <GameSearchBlock
+      :search="search"
       @change-search="changeSearch"
-      @submit-search-form="getGameList"
+      @submit-search-form="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
     />
 
@@ -366,8 +367,11 @@ export default {
       this.search.text = '';
       this.getGameList();
     },
+    submitSearch() {
+      this.pagination.page = 1;
+      this.getGameList();
+    },
     changeSearch(search) {
-      console.log('changeSearch', search);
       this.search = search;
     },
     changePage(page) {

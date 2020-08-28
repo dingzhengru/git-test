@@ -4,7 +4,7 @@
       <input
         class="game-lobby__inquire__search"
         type="search"
-        v-model="search.text"
+        v-model="cloneSearch.text"
         :placeholder="$t('game.placeholder.search')"
         @input="inputSearchText"
       />
@@ -20,28 +20,31 @@
 <script>
 export default {
   name: 'GameSearchBlock',
+  props: {
+    search: {
+      type: Object,
+      default: () => {},
+    },
+  },
   data() {
     return {
-      search: {
-        text: '',
-        isLike: false,
-      },
+      cloneSearch: this.search,
     };
   },
   methods: {
     inputSearchText() {
-      this.$emit('change-search', this.search);
+      this.$emit('change-search', this.cloneSearch);
     },
     changeSearchIsLike() {
-      this.search.isLike = !this.search.isLike;
-      this.$emit('change-search', this.search);
-      this.$emit('submit-search-form', this.search);
+      this.cloneSearch.isLike = !this.cloneSearch.isLike;
+      this.$emit('change-search', this.cloneSearch);
+      this.$emit('submit-search-form', this.cloneSearch);
     },
     openTransferDialog() {
       this.$emit('open-transfer-dialog');
     },
     submitSearchForm() {
-      this.$emit('submit-search-form', this.search);
+      this.$emit('submit-search-form', this.cloneSearch);
     },
   },
 };
