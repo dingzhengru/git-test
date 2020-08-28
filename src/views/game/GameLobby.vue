@@ -4,64 +4,15 @@
       <GameProductNavigation :productList="productList" @change-product="changeProduct" />
       <GameCategoryNavigation :categoryList="categoryList" @change-category="changeCategory" />
     </div>
-    <div class="game-lobby__inquire">
-      <form class="game-lobby__inquire-form" @submit.prevent="getGameList">
-        <input
-          class="game-lobby__inquire__search"
-          type="search"
-          v-model="search.text"
-          :placeholder="$t('game.placeholder.search')"
-        />
-        <button class="game-lobby__inquire__search-icon" type="submit"></button>
-      </form>
-      <input
-        class="game-lobby__inquire__favorites"
-        type="submit"
-        title="My Favorites"
-        @click="searchLikeGame"
-        v-if="$route.params.type == 2"
-      />
-      <button class="game-lobby__inquire__button--transfer-now" @click="isShowTransferDialog = true">
-        {{ $t('game.button.transferNow') }}
-      </button>
-    </div>
-    <table class="game-lobby__table">
-      <tbody>
-        <tr
-          class="game-lobby__table__tr"
-          v-for="(game, index) in gameList"
-          :key="game.Lst_GameID + index"
-          @click="openGame(game, 0)"
-        >
-          <td class="game-lobby__table__tr__td-1st">
-            <img class="game-lobby__table__tr__td__img" :src="game.imagePath" />
-          </td>
-          <td class="game-lobby__table__tr__td-2nd">{{ game.Lst_GameName }}</td>
-          <td class="game-lobby__table__tr__td-3rd">
-            <a href="javascript:;" class="game-lobby__table__tr__td__link--start">
-              {{ $t('game.link.play') }}
-            </a>
-            <a
-              href="javascript:;"
-              class="game-lobby__table__tr__td__link--freeplay"
-              @click.capture.stop="openGame(game, 0)"
-              v-if="$route.params.type == 2 && game.Lst_IsDemo"
-            >
-              {{ $t('game.link.free') }}
-            </a>
-            <a
-              href="javascript:;"
-              class="game-lobby__table__tr__td__link--favorites"
-              :class="{ active: game.Lst_IsLike }"
-              @click.capture.stop="likeGame(game)"
-              v-if="$route.params.type == 2"
-            >
-              {{ $t('game.link.fav') }}
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+    <GameSearchBlock
+      @change-search="changeSearch"
+      @submit-search-form="getGameList"
+      @open-transfer-dialog="isShowTransferDialog = true"
+    />
+
+    <GameListTable :gameList="gameList" @open-game="openGame" @like-game="likeGame" />
+
     <AppPagination
       :length="pagination.dataLength"
       :page="pagination.page"
@@ -111,6 +62,8 @@ export default {
     AppPagination: () => import('@/components/AppPagination'),
     GameProductNavigation: () => import('@/components/game/GameProductNavigation'),
     GameCategoryNavigation: () => import('@/components/game/GameCategoryNavigation'),
+    GameSearchBlock: () => import('@/components/game/GameSearchBlock'),
+    GameListTable: () => import('@/components/game/GameListTable'),
     LiveGameEnterDialog: () => import('@/components/game/LiveGameEnterDialog'),
     GameTransferDialog: () => import('@/components/game/GameTransferDialog'),
   },
@@ -199,41 +152,35 @@ export default {
       }
       console.log('[GameLobby Product]', result.RetObj.ProductList);
       this.productList = result.RetObj.ProductList;
-      this.productList = this.productList
-        // .filter(item => {
-        //   //* 篩掉舊的
-        //   const oldProductList = [701, 402, 1040];
-        //   return !oldProductList.includes(item.Lst_Proxy_Product_Key);
-        // })
-        .map(item => {
-          //* 放置對應的 css
-          if (item.Lst_Proxy_Product_Key == 1031) {
-            //* RG-PNG電子
-            item.class = 'ui-li-supply-1190';
-          } else if (item.Lst_Proxy_Product_Key == 2602) {
-            //* Mg+電子
-            item.class = 'ui-li-supply-1190';
-          } else if (item.Lst_Proxy_Product_Key == 2100) {
-            //* DS電子
-            item.class = 'ui-li-supply-1190';
-          } else if (item.Lst_Proxy_Product_Key == 1034) {
-            //* 皇家電子
-            item.class = 'ui-li-supply-1190';
-          } else if (item.Lst_Proxy_Product_Key == 2200 || item.Lst_Proxy_Product_Key == 1040) {
-            //* CQ9
-            item.class = 'ui-li-supply-1200';
-          } else if (item.Lst_Proxy_Product_Key == 2300 || item.Lst_Proxy_Product_Key == 701) {
-            //* JDB
-            item.class = 'ui-li-supply-1180';
-          } else if (item.Lst_Proxy_Product_Key == 2400 || item.Lst_Proxy_Product_Key == 402) {
-            //* BBIN
-            item.class = 'ui-li-supply-1120';
-          } else if (item.Lst_Proxy_Product_Key == 1030) {
-            //* 真人
-            item.class = 'ui-li-supply-1190';
-          }
-          return item;
-        });
+      this.productList = this.productList.map(item => {
+        //* 放置對應的 css
+        if (item.Lst_Proxy_Product_Key == 1031) {
+          //* RG-PNG電子
+          item.class = 'ui-li-supply-1190';
+        } else if (item.Lst_Proxy_Product_Key == 2602) {
+          //* Mg+電子
+          item.class = 'ui-li-supply-1190';
+        } else if (item.Lst_Proxy_Product_Key == 2100) {
+          //* DS電子
+          item.class = 'ui-li-supply-1190';
+        } else if (item.Lst_Proxy_Product_Key == 1034) {
+          //* 皇家電子
+          item.class = 'ui-li-supply-1190';
+        } else if (item.Lst_Proxy_Product_Key == 2200 || item.Lst_Proxy_Product_Key == 1040) {
+          //* CQ9
+          item.class = 'ui-li-supply-1200';
+        } else if (item.Lst_Proxy_Product_Key == 2300 || item.Lst_Proxy_Product_Key == 701) {
+          //* JDB
+          item.class = 'ui-li-supply-1180';
+        } else if (item.Lst_Proxy_Product_Key == 2400 || item.Lst_Proxy_Product_Key == 402) {
+          //* BBIN
+          item.class = 'ui-li-supply-1120';
+        } else if (item.Lst_Proxy_Product_Key == 1030) {
+          //* 真人
+          item.class = 'ui-li-supply-1190';
+        }
+        return item;
+      });
       console.log('[GameLobby Product]', this.productList);
     },
     async getGameCategory() {
@@ -374,10 +321,10 @@ export default {
         }
       }
     },
-    searchLikeGame() {
-      this.search.isLike = !this.search.isLike;
-      this.getGameList();
-    },
+    // searchLikeGame() {
+    //   this.search.isLike = !this.search.isLike;
+    //   this.getGameList();
+    // },
     async changeProduct(product) {
       if (product.Lst_Proxy_Product_Key == this.currentProduct.Lst_Proxy_Product_Key) {
         return;
@@ -417,6 +364,10 @@ export default {
       this.pagination.page = 1;
       this.search.text = '';
       this.getGameList();
+    },
+    changeSearch(search) {
+      console.log('changeSearch', search);
+      this.search = search;
     },
     changePage(page) {
       this.pagination.page = page;
@@ -465,122 +416,5 @@ export default {
   height: 182px;
   overflow: hidden;
   position: relative;
-}
-
-.game-lobby__inquire {
-  position: relative;
-}
-
-.game-lobby__inquire-form {
-  display: inline-block;
-  position: relative;
-}
-
-.game-lobby__inquire__search {
-  width: 302px;
-  background-size: cover;
-  -webkit-background-size: cover;
-  background-attachment: fixed;
-  height: 59px;
-  margin: 25px 0 31px 34px;
-  font-size: 24px;
-  border: 0;
-  text-indent: 20px;
-  outline: none;
-}
-
-.game-lobby__inquire__search-icon {
-  top: 19px;
-  /* left: 280px; */
-  right: 0;
-  position: absolute;
-  width: 53px;
-  height: 71px;
-  border: 0;
-}
-
-.game-lobby__inquire__favorites {
-  width: 85px;
-  height: 65px;
-  margin: 0 0 0 85px;
-  font-size: 24px;
-  text-indent: -9999px;
-  border: 0;
-  outline: none;
-}
-
-.game-lobby__inquire__button--transfer-now {
-  display: inline-block;
-  width: 187px;
-  height: 65px;
-  /* font-size: 21px; */
-  padding: 10px 10px 10px 48px;
-  margin: 22px 10px 0 0;
-  color: #fedebe;
-  vertical-align: top;
-  background: url(~@/assets/common/imgs/ui/btn_transferNow.png) left center no-repeat;
-  border: none;
-  float: right;
-}
-
-.game-lobby__table {
-  width: 100%;
-  letter-spacing: -1px;
-  background-color: #181b23;
-}
-
-.game-lobby__table__tr__td-1st {
-  max-width: 152px;
-  padding: 0 10px;
-  overflow: hidden;
-}
-
-.game-lobby__table__tr__td__img {
-  width: 100%;
-}
-
-.game-lobby__table__tr__td-2nd {
-  width: auto;
-  min-width: 208px;
-  padding: 0 5px;
-  font-size: 24px;
-  color: #92a0c0;
-  font-weight: bold;
-  vertical-align: middle;
-  word-break: break-word;
-}
-
-.game-lobby__table__tr__td-3rd {
-  width: auto;
-  padding: 10px 0;
-  white-space: nowrap;
-  text-align: center;
-}
-
-.game-lobby__table__tr__td-3rd > a {
-  display: inline-block;
-  width: 90px;
-  height: 83px;
-  color: #fff;
-  font-size: 21px;
-  line-height: 205px;
-  margin: 0 10px;
-  background-repeat: no-repeat;
-}
-
-/*
- * 語系
-*/
-
-.en-us .game-lobby__inquire__button--transfer-now {
-  font-size: 1.5rem;
-}
-
-.th-th .game-lobby__inquire__button--transfer-now {
-  font-size: 1.5rem;
-}
-
-.zh-cn .game-lobby__inquire__button--transfer-now {
-  font-size: 2.4rem;
 }
 </style>
