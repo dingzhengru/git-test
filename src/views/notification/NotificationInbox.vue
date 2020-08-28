@@ -59,15 +59,18 @@ export default {
   },
   methods: {
     async getInboxList() {
+      this.$store.commit('setIsLoading', true);
       const requestData = { Page: this.pagination.page };
       const result = await getInboxList(requestData);
       console.log('[Inbox]', result);
 
       this.list = result.RetObj.Rows;
       this.pagination.dataLength = result.RetObj.Records;
+      this.$store.commit('setIsLoading', false);
     },
     changePage(page) {
       this.pagination.page = page;
+      this.getNewsList();
     },
   },
   watch: {
@@ -83,10 +86,10 @@ export default {
         // * 根據版型引入 css (pagination)
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
-        await this.getInboxList();
+        this.getInboxList();
 
         //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
+        // this.$store.commit('setIsLoading', false);
       },
     },
   },
