@@ -8,9 +8,9 @@
 
         <template v-if="field.name == 'category'">
           <select class="notification-outbox__field__select ui-ddl" v-model="mail.category">
-            <option :value="{}" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
-            <option :value="category" v-for="category in categoryList" :key="category.value">
-              {{ $t(category.text) }}
+            <option value="" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
+            <option :value="category.Value" v-for="category in categoryList" :key="category.Value">
+              {{ category.Text }}
             </option>
           </select>
         </template>
@@ -37,6 +37,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { getMailCategoryList } from '@/api/notification';
 
 export default {
   name: 'NotificationOutbox',
@@ -45,74 +46,9 @@ export default {
   },
   data() {
     return {
-      categoryList: [
-        {
-          name: 'registerIssue',
-          text: 'notification.outbox.categoryList.registerIssue',
-          value: '01',
-        },
-        {
-          name: 'accountSearch',
-          text: 'notification.outbox.categoryList.accountSearch',
-          value: '02',
-        },
-        {
-          name: 'depositIssue',
-          text: 'notification.outbox.categoryList.depositIssue',
-          value: '03',
-        },
-        {
-          name: 'withdrawalRelated',
-          text: 'notification.outbox.categoryList.withdrawalRelated',
-          value: '04',
-        },
-        {
-          name: 'betIssue',
-          text: 'notification.outbox.categoryList.betIssue',
-          value: '05',
-        },
-        {
-          name: 'gameIssue',
-          text: 'notification.outbox.categoryList.gameIssue',
-          value: '06',
-        },
-        {
-          name: 'limitedGambling',
-          text: 'notification.outbox.categoryList.limitedGambling',
-          value: '07',
-        },
-        {
-          name: 'promotion',
-          text: 'notification.outbox.categoryList.promotion',
-          value: '08',
-        },
-        {
-          name: 'technologyRelated',
-          text: 'notification.outbox.categoryList.technologyRelated',
-          value: '09',
-        },
-        {
-          name: 'aboutUs',
-          text: 'notification.outbox.categoryList.aboutUs',
-          value: '10',
-        },
-      ],
-      fieldList: [
-        {
-          name: 'category',
-          text: 'notification.outbox.category',
-        },
-        {
-          name: 'title',
-          text: 'notification.outbox.title',
-        },
-        {
-          name: 'content',
-          text: 'notification.outbox.content',
-        },
-      ],
+      categoryList: [],
       mail: {
-        category: {},
+        category: '',
         title: '',
         content: '',
       },
@@ -121,6 +57,14 @@ export default {
   methods: {
     submitMail() {
       console.log('submitMail', this.mail);
+    },
+    async getMailCategoryList() {
+      this.$store.commit('setIsLoading', true);
+      const result = await getMailCategoryList();
+      console.log('[MailCategoryList]', result);
+
+      this.categoryList = result.RetObj;
+      this.$store.commit('setIsLoading', false);
     },
   },
   watch: {
@@ -133,8 +77,10 @@ export default {
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/notification/notification-outbox.scss`);
 
+        this.getMailCategoryList();
+
         //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
+        // this.$store.commit('setIsLoading', false);
       },
     },
   },

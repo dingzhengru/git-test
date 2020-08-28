@@ -16,7 +16,7 @@ export async function getInboxDetail(data) {
   return result.data;
 }
 
-export async function getMailCategoryList(data) {
-  const result = await axios.post(API_URL + '/Msg/MailCategoryList', data);
+export async function getMailCategoryList() {
+  const result = await axios.post(API_URL + '/Msg/MailCategoryList');
   return result.data;
 }
