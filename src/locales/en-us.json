@@ -6,6 +6,11 @@
       "cancel": "Cancellation"
     }
   },
+  "alert": {
+    "game": {
+      "maintenance": "Game under maintenance, we apologize for the inconvenience brought to you !!"
+    }
+  },
   "header": {
     "menu": {
       "profile": "Profile",

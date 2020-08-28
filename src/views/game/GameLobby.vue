@@ -321,12 +321,11 @@ export default {
         }
       }
     },
-    // searchLikeGame() {
-    //   this.search.isLike = !this.search.isLike;
-    //   this.getGameList();
-    // },
     async changeProduct(product) {
       if (product.Lst_Proxy_Product_Key == this.currentProduct.Lst_Proxy_Product_Key) {
+        return;
+      } else if (product.Lst_Site_Product_Status != 0) {
+        window.alert(this.$t('alert.game.maintenance'));
         return;
       }
       console.log('[ChangeProduct]', product);
