@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="ui-overlay"></div>
-    <div class="live-game-enter-dialog-wrapper" @click="$emit('close')">
+    <div class="live-game-enter-dialog-wrapper" @click.self="$emit('close')">
       <div class="live-game-enter-dialog">
-        <div class="ui-box-close" @click.capture.stop="$emit('close')"></div>
+        <div class="ui-box-close" @click="$emit('close')"></div>
         <div class="live-game-enter-dialog__button-div" v-for="(gameLimit, index) in gameLimitBetList" :key="index">
           <button
             class="live-game-enter-dialog__button ui-btn"
-            @click.capture.stop="$emit('open-live-game', gameLimit.Lst_TemplatesId, index + 1)"
+            @click="$emit('open-live-game', gameLimit.Lst_TemplatesId, index + 1)"
             v-if="gameLimit.Lst_ProductGameId == selectedGame.Lst_Category"
           >
             <template v-if="gameLimit.Lst_TemplatesId == 0">
@@ -21,7 +21,7 @@
 
         <button
           class="live-game-enter-dialog__button ui-btn"
-          @click.capture.stop="$emit('open-live-game', 0, '')"
+          @click="$emit('open-live-game', 0, '')"
           v-if="gameLimitBetList.length <= 0"
         >
           {{ $t('game.button.enterGame') }}

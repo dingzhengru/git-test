@@ -178,6 +178,8 @@ export default {
         } else if (item.Lst_Proxy_Product_Key == 1030) {
           //* 真人
           item.class = 'ui-li-supply-1190';
+        } else {
+          item.class = 'ui-li-supply-1190';
         }
         return item;
       });

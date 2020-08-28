@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="ui-overlay"></div>
-    <div class="game-transfer-dialog-wrapper" @click="$emit('close')">
+    <div class="game-transfer-dialog-wrapper" @click.self="$emit('close')">
       <div class="game-transfer-dialog">
-        <div class="ui-box-close" @click.capture.stop="$emit('close')"></div>
-        <div class="game-transfer-dialog__title" @click.capture.stop="">{{ $t('game.transfer.title') }}</div>
+        <div class="ui-box-close" @click="$emit('close')"></div>
+        <div class="game-transfer-dialog__title">{{ $t('game.transfer.title') }}</div>
 
         <form class="game-transfer-dialog__form" @submit.prevent="submitTransfer">
-          <div class="game-transfer-dialog__form__text" @click.capture.stop="">
+          <div class="game-transfer-dialog__form__text">
             {{ $t('game.transfer.from') }} <span>{{ wallet.Product_Name }}：{{ wallet.Point }}</span>
           </div>
-          <div class="game-transfer-dialog__form__text" @click.capture.stop="">
+          <div class="game-transfer-dialog__form__text">
             {{ $t('game.transfer.to') }}
             <span>{{ currentPointProduct.Product_Name }}： {{ currentPointProduct.Point }}</span>
           </div>
@@ -37,16 +37,15 @@
               type="number"
               v-model.number="amount"
               v-if="!isTransferAll"
-              @click.capture.stop=""
               @focus="focusAmount"
               @blur="blurAmount"
+              @input="inputAmount"
             />
           </div>
           <button
             class="game-transfer-dialog__form__button ui-btn"
             type="submit"
-            @click.capture.stop=""
-            :disabled="!isTransferAll && (amount <= 0 || amount == '')"
+            :disabled="wallet.Point < 1 || (!isTransferAll && !isValidAmount())"
           >
             {{ $t('game.transfer.submit') }}
           </button>
@@ -77,9 +76,11 @@ export default {
   },
   methods: {
     submitTransfer() {
-      if (this.isTransferAll) {
-        this.amount = this.wallet.Point;
-      } else if (this.amount > this.wallet.Point || this.amount <= 0 || this.amount == '') {
+      if (this.wallet.Point < 1) {
+        return;
+      } else if (this.isTransferAll) {
+        this.amount = Math.floor(this.wallet.Point);
+      } else if (!this.isValidAmount()) {
         return;
       }
       this.$emit('submit-transfer', this.amount);
@@ -94,6 +95,25 @@ export default {
       if (this.amount == '') {
         this.amount = 0;
       }
+    },
+    inputAmount() {
+      if (this.amount > this.wallet.Point) {
+        this.amount = Math.floor(this.wallet.Point);
+      } else if (this.amount < 1) {
+        this.amount = 0;
+      }
+    },
+    isValidAmount() {
+      if (this.amount > this.wallet.Point) {
+        return false;
+      } else if (this.amount < 1) {
+        return false;
+      } else if (!Number.isInteger(this.amount)) {
+        return false;
+      } else if (typeof this.amount != 'number') {
+        return false;
+      }
+      return true;
     },
   },
 };

@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="ui-overlay"></div>
-    <div class="deposit-dialog-wrapper" @click="$emit('close-deposit-dialog')">
+    <div class="deposit-dialog-wrapper" @click.self="$emit('close')">
       <div class="deposit-dialog">
-        <div class="ui-box-close" @click.capture.stop="$emit('close-deposit-dialog')"></div>
-        <div class="deposit-dialog__title" v-html="$t('transaction.deposit.dialog.title')" @click.capture.stop=""></div>
-        <ul class="deposit-dialog__ul" @click.capture.stop="">
+        <div class="ui-box-close" @click="$emit('close')"></div>
+        <div class="deposit-dialog__title" v-html="$t('transaction.deposit.dialog.title')"></div>
+        <ul class="deposit-dialog__ul">
           <li class="deposit-dialog__li" v-html="$t('transaction.deposit.dialog.notice.currency')"></li>
           <li class="deposit-dialog__li" v-html="$t('transaction.deposit.dialog.notice.atm')"></li>
           <li class="deposit-dialog__li" v-html="$t('transaction.deposit.dialog.notice.violate')"></li>
         </ul>
-        <div class="deposit-dialog__footer" @click.capture.stop="">
+        <div class="deposit-dialog__footer">
           <div v-html="$t('transaction.deposit.dialog.footer.content')"></div>
           <div class="deposit-dialog__footer__phone">
             <!-- <span class="ui-icon ui-icon-24"></span> -->

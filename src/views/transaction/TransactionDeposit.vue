@@ -158,7 +158,7 @@
         </router-link>
       </div>
     </form>
-    <DepositDialog v-if="isShowDepositDialog" @close-deposit-dialog="isShowDepositDialog = false" />
+    <DepositDialog v-if="isShowDepositDialog" @close="isShowDepositDialog = false" />
   </div>
 </template>
 
