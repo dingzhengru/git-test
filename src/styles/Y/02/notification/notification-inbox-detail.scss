@@ -1,21 +1,21 @@
 $type: 'Y/02';
 
-.notification-chat-detail__ul__li {
+.notification-inbox-detail__ul__li {
   background-color: #0f445d;
   padding-left: 10px;
 }
 
-.notification-chat-detail__ul__li:nth-child(2),
-.notification-chat-detail__ul__li:nth-child(3) {
+.notification-inbox-detail__ul__li:nth-child(2),
+.notification-inbox-detail__ul__li:nth-child(3) {
   background-color: #1c6080;
 }
 /*
   ! 圖片路徑
 */
-.notification-chat-detail__button--submit {
+.notification-inbox-detail__button--submit {
   background-image: url(~@/assets/common/imgs/ui/btn--yellow-dark.jpg);
 }
 
-.notification-chat-detail__button--cancel {
+.notification-inbox-detail__button--cancel {
   background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
 }

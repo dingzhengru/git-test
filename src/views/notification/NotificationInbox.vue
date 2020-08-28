@@ -76,7 +76,7 @@ export default {
   watch: {
     siteID: {
       immediate: true,
-      async handler() {
+      handler() {
         if (!this.siteID) {
           return;
         }

@@ -1,18 +1,18 @@
 <template>
   <div class="notification-inbox-detail">
-    <div v-for="item in list" :key="item.id">
+    <div v-for="item in list" :key="item.Lst_Key">
       <ul class="notification-inbox-detail__ul">
         <li class="notification-inbox-detail__ul__li">
-          {{ `${$t('notification.inboxDetail.title')}：${item.title}` }}
+          {{ `${$t('notification.inboxDetail.title')}：${item.Lst_Subject}` }}
         </li>
         <li class="notification-inbox-detail__ul__li">
-          {{ `${$t('notification.inboxDetail.sender')}：${item.sender}` }}
+          {{ `${$t('notification.inboxDetail.sender')}：${item.Lst_SenderAccount}` }}
         </li>
         <li class="notification-inbox-detail__ul__li">
-          {{ `${$t('notification.inboxDetail.datetime')}：${item.datetime}` }}
+          {{ `${$t('notification.inboxDetail.datetime')}：${item.Lst_SendTime}` }}
         </li>
       </ul>
-      <div class="theme-content-box notification-inbox-detail__content" v-html="item.content"></div>
+      <div class="theme-content-box notification-inbox-detail__content" v-html="item.Lst_Content"></div>
     </div>
     <form
       class="notification-inbox-detail__replay-box theme-content-box"
@@ -41,6 +41,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { getInboxDetail } from '@/api/notification';
 
 export default {
   name: 'NotificationInboxDetail',
@@ -51,26 +52,64 @@ export default {
     return {
       list: [
         {
-          id: '111',
-          group: 'group-id11111',
-          title: 'ttestt',
-          sender: 'ding01',
-          datetime: '2020-07-29 10:31:26',
-          content: `<h2>test11111</h2>`,
+          Lst_Key: 973,
+          Lst_OwnAccount: 'SysAdmin',
+          Lst_Category: 2,
+          Lst_CategoryName: 'ค้นหายูสเซอร์',
+          Lst_Subject: 'QATEST',
+          Lst_SendTime: '2020-04-01T17:17:20',
+          Lst_SendTime_Date: '2020-04-01',
+          Lst_Content:
+            'QATESTQATESTQATEST\nQATESTQATESTQATEST\nQATESTQATESTQATEST\nQATESTQATESTQATEST\nQATESTQATESTQATEST\n',
+          Lst_SenderAccount: 'ilyir',
         },
         {
-          id: '000',
-          group: 'group-id11111',
-          title: 'ttestt',
-          sender: 'SysAdmin',
-          datetime: '2020-07-29 10:33:28',
-          content: `<h2>test00000</h2>`,
+          Lst_Key: 975,
+          Lst_OwnAccount: 'ilyir',
+          Lst_Category: 2,
+          Lst_CategoryName: 'ค้นหายูสเซอร์',
+          Lst_Subject: '[R]QATEST',
+          Lst_SendTime: '2020-04-08T15:23:55',
+          Lst_SendTime_Date: '2020-04-08',
+          Lst_Content: 'NNNNNNNNNNNNN',
+          Lst_SenderAccount: 'SysAdmin',
+        },
+        {
+          Lst_Key: 1127,
+          Lst_OwnAccount: 'SysAdmin',
+          Lst_Category: 2,
+          Lst_CategoryName: 'ค้นหายูสเซอร์',
+          Lst_Subject: '[R][R]QATEST',
+          Lst_SendTime: '2020-08-27T15:15:06',
+          Lst_SendTime_Date: '2020-08-27',
+          Lst_Content: '55555',
+          Lst_SenderAccount: 'ilyir',
+        },
+        {
+          Lst_Key: 1129,
+          Lst_OwnAccount: 'ilyir',
+          Lst_Category: 2,
+          Lst_CategoryName: 'ค้นหายูสเซอร์',
+          Lst_Subject: '[R][R][R]QATEST',
+          Lst_SendTime: '2020-08-27T15:19:23',
+          Lst_SendTime_Date: '2020-08-27',
+          Lst_Content: '66666666666',
+          Lst_SenderAccount: 'SysAdmin',
         },
       ],
       chat: '',
     };
   },
   methods: {
+    async getInboxDetail() {
+      this.$store.commit('setIsLoading', true);
+      const requestData = { KEY: this.$route.params.key };
+      const result = await getInboxDetail(requestData);
+      console.log('[Inbox]', result);
+
+      this.list = result.RetObj.Rows;
+      this.$store.commit('setIsLoading', false);
+    },
     submitChat() {
       console.log('submitChat', this.chat);
     },
@@ -85,8 +124,10 @@ export default {
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/notification/notification-inbox-detail.scss`);
 
+        this.getInboxDetail();
+
         //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
+        // this.$store.commit('setIsLoading', false);
       },
     },
   },
