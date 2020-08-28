@@ -399,9 +399,16 @@ export default {
       },
     },
     productList() {
-      //* 避免直接輸入網址到要去站外大廳的 Product
+      //* 避免直接輸入網址，到正在維護的 Product
+      if (this.currentProduct.Lst_Site_Product_Status != 0) {
+        // this.$store.commit('setIsLoading', false);
+        window.alert(this.$t('alert.game.maintenance'));
+        window.location.replace('/');
+      }
+
+      //* 避免直接輸入網址，到要去站外大廳的 Product
       if (this.currentProduct.GetGameRedirectUrl) {
-        this.$store.commit('setIsLoading', false);
+        // this.$store.commit('setIsLoading', false);
         // this.$router.replace({ name: 'Home' });
         window.location.replace('/');
       }
