@@ -131,6 +131,10 @@ export default {
        * 1: 真人(站內大廳)，2: 電子(站內大廳)，3: 運動(站外大廳)，4: 皇家彩票(站外大廳)
        */
 
+      if (game.Lst_Site_Product_Status != 0) {
+        return;
+      }
+
       if (game.GetGameRedirectUrl == false) {
         this.$router.push({
           name: 'GameLobby',
