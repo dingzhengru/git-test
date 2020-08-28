@@ -162,7 +162,7 @@ const routes = [
         component: () => import('@/views/notification/NotificationInbox'),
       },
       {
-        path: 'inbox/group/:group',
+        path: 'inbox/key/:key',
         name: 'NotificationInboxDetail',
         component: () => import('@/views/notification/NotificationInboxDetail'),
       },

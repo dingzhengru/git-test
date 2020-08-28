@@ -18,7 +18,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getNews } from '@/api/notification';
+import { getNewsList } from '@/api/notification';
 export default {
   name: 'NotificationNews',
   components: {
@@ -47,9 +47,9 @@ export default {
     };
   },
   methods: {
-    async getNews() {
+    async getNewsList() {
       const requestData = { Page: this.pagination.page };
-      const result = await getNews(requestData);
+      const result = await getNewsList(requestData);
       console.log('[News]', result);
 
       this.list = result.RetObj.Rows;
@@ -57,7 +57,7 @@ export default {
     },
     changePage(page) {
       this.pagination.page = page;
-      this.getNews();
+      this.getNewsList();
     },
   },
   watch: {
@@ -74,7 +74,7 @@ export default {
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
         //* 取得最新消息
-        await this.getNews();
+        await this.getNewsList();
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);
