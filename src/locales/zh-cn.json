@@ -629,12 +629,12 @@
   "notification": {
     "nav": {
       "news": "最新消息",
-      "chat": "站内信",
+      "inbox": "站内信",
       "outbox": "寄件箱"
     },
     "news": {},
-    "chat": {},
-    "chatDetail": {
+    "inbox": {},
+    "inboxDetail": {
       "title": "主旨",
       "sender": "发件人",
       "datetime": "信件日期",

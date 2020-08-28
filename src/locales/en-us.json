@@ -629,12 +629,12 @@
   "notification": {
     "nav": {
       "news": "Latest News",
-      "chat": "Chats",
+      "inbox": "Chats",
       "outbox": "Outbox"
     },
     "news": {},
-    "chat": {},
-    "chatDetail": {
+    "inbox": {},
+    "inboxDetail": {
       "title": "Title",
       "sender": "Contact info",
       "datetime": "Date",

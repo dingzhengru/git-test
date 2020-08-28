@@ -1,6 +1,6 @@
 <template>
-  <div class="notification-chat">
-    <table class="notification-chat__table ui-table01">
+  <div class="notification-inbox">
+    <table class="notification-inbox__table ui-table01">
       <tbody>
         <tr v-for="item in pageData" :key="item.id">
           <td class="td-1st">{{ item.date }}</td>
@@ -8,7 +8,7 @@
             {{ item.title }}
             <router-link
               class="ui-lnk-detail"
-              :to="{ name: 'NotificationChatDetail', params: { group: item.group } }"
+              :to="{ name: 'NotificationInboxDetail', params: { group: item.group } }"
             />
           </td>
         </tr>
@@ -28,7 +28,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'NotificationChat',
+  name: 'NotificationInbox',
   components: {
     AppPagination: () => import('@/components/AppPagination'),
   },
@@ -75,7 +75,7 @@ export default {
           return;
         }
         // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/notification/notification-chat.scss`);
+        import(`@/styles/${this.siteFullCss}/notification/notification-inbox.scss`);
 
         // * 根據版型引入 css (pagination)
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
@@ -89,16 +89,16 @@ export default {
 </script>
 
 <style scoped>
-.notification-chat__table {
+.notification-inbox__table {
   margin-top: 40px;
 }
 
-.notification-chat__table .td-1st {
+.notification-inbox__table .td-1st {
   width: 180px;
   text-align: center;
 }
 
-.notification-chat__table .td-2nd {
+.notification-inbox__table .td-2nd {
   padding-right: 73px;
   color: #fff;
   text-align: center;

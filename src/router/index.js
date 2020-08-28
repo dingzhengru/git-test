@@ -157,14 +157,14 @@ const routes = [
         component: () => import('@/views/notification/NotificationNews'),
       },
       {
-        path: 'chat',
-        name: 'NotificationChat',
-        component: () => import('@/views/notification/NotificationChat'),
+        path: 'inbox',
+        name: 'NotificationInbox',
+        component: () => import('@/views/notification/NotificationInbox'),
       },
       {
-        path: 'chat/group/:group',
-        name: 'NotificationChatDetail',
-        component: () => import('@/views/notification/NotificationChatDetail'),
+        path: 'inbox/group/:group',
+        name: 'NotificationInboxDetail',
+        component: () => import('@/views/notification/NotificationInboxDetail'),
       },
       {
         path: 'outbox',

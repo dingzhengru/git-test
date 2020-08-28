@@ -23,10 +23,10 @@ export default {
         },
         {
           name: 'Chats',
-          text: 'notification.nav.chat',
-          link: 'NotificationChat',
+          text: 'notification.nav.inbox',
+          link: 'NotificationInbox',
           class: 'ui-li-tabs-mail',
-          otherActivePath: ['NotificationChatDetail'],
+          otherActivePath: ['NotificationInboxDetail'],
         },
         {
           name: 'Outbox',

@@ -1,38 +1,38 @@
 <template>
-  <div class="notification-chat-detail">
+  <div class="notification-inbox-detail">
     <div v-for="item in list" :key="item.id">
-      <ul class="notification-chat-detail__ul">
-        <li class="notification-chat-detail__ul__li">
-          {{ `${$t('notification.chatDetail.title')}：${item.title}` }}
+      <ul class="notification-inbox-detail__ul">
+        <li class="notification-inbox-detail__ul__li">
+          {{ `${$t('notification.inboxDetail.title')}：${item.title}` }}
         </li>
-        <li class="notification-chat-detail__ul__li">
-          {{ `${$t('notification.chatDetail.sender')}：${item.sender}` }}
+        <li class="notification-inbox-detail__ul__li">
+          {{ `${$t('notification.inboxDetail.sender')}：${item.sender}` }}
         </li>
-        <li class="notification-chat-detail__ul__li">
-          {{ `${$t('notification.chatDetail.datetime')}：${item.datetime}` }}
+        <li class="notification-inbox-detail__ul__li">
+          {{ `${$t('notification.inboxDetail.datetime')}：${item.datetime}` }}
         </li>
       </ul>
-      <div class="theme-content-box notification-chat-detail__content" v-html="item.content"></div>
+      <div class="theme-content-box notification-inbox-detail__content" v-html="item.content"></div>
     </div>
     <form
-      class="notification-chat-detail__replay-box theme-content-box"
-      id="notification-chat-detail-form"
+      class="notification-inbox-detail__replay-box theme-content-box"
+      id="notification-inbox-detail-form"
       @submit.prevent="submitChat"
     >
       <div class="theme-input-box">
-        <span class="theme-input-header">{{ $t('notification.chatDetail.reply') }}</span>
+        <span class="theme-input-header">{{ $t('notification.inboxDetail.reply') }}</span>
         <textarea class="ui-tar" cols="80" rows="5" v-model="chat"></textarea>
       </div>
     </form>
-    <div class="notification-chat-detail__button-div">
+    <div class="notification-inbox-detail__button-div">
       <button
-        class="notification-chat-detail__button--submit ui-btn"
+        class="notification-inbox-detail__button--submit ui-btn"
         type="submit"
-        form="notification-chat-detail-form"
+        form="notification-inbox-detail-form"
       >
         Submit
       </button>
-      <button class="notification-chat-detail__button--cancel ui-btn">
+      <button class="notification-inbox-detail__button--cancel ui-btn">
         Cancellation
       </button>
     </div>
@@ -43,7 +43,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'NotificationChat',
+  name: 'NotificationInboxDetail',
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
   },
@@ -83,7 +83,7 @@ export default {
           return;
         }
         // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/notification/notification-chat-detail.scss`);
+        import(`@/styles/${this.siteFullCss}/notification/notification-inbox-detail.scss`);
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);
@@ -94,43 +94,43 @@ export default {
 </script>
 
 <style scoped>
-.notification-chat-detail {
+.notification-inbox-detail {
   margin: 30px 0;
 }
-.notification-chat-detail__ul {
+.notification-inbox-detail__ul {
   padding: 0;
   margin: 0;
   font-size: 2.307em;
   list-style: none;
 }
 
-.notification-chat-detail__ul__li {
+.notification-inbox-detail__ul__li {
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px dotted #fff;
 }
 
-.notification-chat-detail__ul__li:last-child {
+.notification-inbox-detail__ul__li:last-child {
   border-bottom: none;
 }
 
-.notification-chat-detail__content {
+.notification-inbox-detail__content {
   margin-bottom: 30px;
   padding-bottom: 30px;
   font-size: 2.769em;
 }
 
-.notification-chat-detail__replay-box {
+.notification-inbox-detail__replay-box {
   margin-bottom: 30px;
   padding: 30px 3%;
 }
 
-.notification-chat-detail__button-div {
+.notification-inbox-detail__button-div {
   margin: 20px 0;
   text-align: center;
 }
 
-.notification-chat-detail__button-div button {
+.notification-inbox-detail__button-div button {
   margin: 0 10px;
 }
 </style>
