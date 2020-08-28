@@ -155,8 +155,7 @@ export default {
       this.$store.commit('setIsLoading', true);
       const result = await getAllGamePoint();
       console.log('[AllGamePoint]', result.RetObj);
-      this.gamePointList = result.RetObj.GameSitePoints;
-      this.updateRangeMax();
+      this.updateGamePoint(result);
       this.$store.commit('setIsLoading', false);
     },
     async transferPoint() {
@@ -169,23 +168,20 @@ export default {
       console.log('[TransferPoint]', result);
 
       if (result.Code == 200) {
-        this.gamePointList = result.RetObj.GameSitePoints;
-        this.updateRangeMax();
+        this.updateGamePoint(result);
         window.alert('Transfer Successful');
       }
       this.$store.commit('setIsLoading', false);
     },
     async transferToMain() {
-      console.log('transferToMain');
       this.$store.commit('setIsLoading', true);
       const result = await transferAllGamePointToMain();
-      this.$store.commit('setIsLoading', false);
+      console.log('[TransferToMain]', result);
       if (result.Code == 200) {
-        console.log('[TransferToMain]', result.RetObj);
-        this.gamePointList = result.RetObj.GameSitePoints;
-        this.updateRangeMax();
+        this.updateGamePoint(result);
         window.alert(result.RetObj.MsgString);
       }
+      this.$store.commit('setIsLoading', false);
     },
     rangeError(type, msg) {
       //* 參考 https://nightcatsama.github.io/vue-slider-component/#/zh-CN/advanced/input
@@ -205,6 +201,11 @@ export default {
           break;
       }
       console.log(msg);
+    },
+    updateGamePoint(result) {
+      this.gamePointList = result.RetObj.GameSitePoints;
+      this.$store.commit('user/setTotal', result.RetObj.TotalBalance);
+      this.updateRangeMax();
     },
     updateRangeMax() {
       const currentProduct = this.gamePointList.find(item => item.Product_id == this.from);
