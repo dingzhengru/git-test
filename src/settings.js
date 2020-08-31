@@ -47,6 +47,7 @@ const AUTH_API_LIST = [
   'Msg/MInbox_Load',
   'Msg/MInbox_LoadDetail',
   'Msg/MailCategoryList',
+  'Msg/MailCompose',
 ];
 
 //* 需加密的 API

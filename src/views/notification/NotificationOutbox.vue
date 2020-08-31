@@ -4,7 +4,7 @@
     <div class="theme-content-box">
       <div class="notification-outbox__field theme-input-box">
         <span class="theme-input-header">{{ $t('notification.outbox.category') }}</span>
-        <select class="notification-outbox__field__select ui-ddl" required v-model="mail.category">
+        <select class="notification-outbox__field__select ui-ddl" required v-model="mail.Add_Category">
           <option value="" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
           <option :value="category.Value" v-for="category in categoryList" :key="category.Value">
             {{ category.Text }}
@@ -14,12 +14,12 @@
 
       <div class="notification-outbox__field theme-input-box">
         <span class="theme-input-header">{{ $t('notification.outbox.title') }}</span>
-        <input class="ui-ipt" type="text" required maxlength="20" v-model="mail.title" />
+        <input class="ui-ipt" type="text" required maxlength="20" v-model="mail.Add_Subject" />
       </div>
 
       <div class="notification-outbox__field theme-input-box">
         <span class="theme-input-header">{{ $t('notification.outbox.content') }}</span>
-        <textarea class="ui-tar" cols="33" rows="5" required v-model="mail.content"></textarea>
+        <textarea class="ui-tar" cols="33" rows="5" required v-model="mail.Add_Content"></textarea>
       </div>
     </div>
     <div class="notification-outbox__button-div">
@@ -35,7 +35,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getMailCategoryList } from '@/api/notification';
+import { getMailCategoryList, sendMail } from '@/api/notification';
 
 export default {
   name: 'NotificationOutbox',
@@ -46,15 +46,23 @@ export default {
     return {
       categoryList: [],
       mail: {
-        category: '',
-        title: '',
-        content: '',
+        Add_Category: '',
+        Add_Subject: '',
+        Add_Content: '',
+        Add_ReplyPath: '',
       },
     };
   },
   methods: {
-    submitMail() {
-      console.log('submitMail', this.mail);
+    async submitMail() {
+      this.$store.commit('setIsLoading', true);
+      const result = await sendMail(this.mail);
+
+      if (result.Code == 200) {
+        console.log('[SendMail]', result);
+        this.resetMail();
+      }
+      this.$store.commit('setIsLoading', false);
     },
     async getMailCategoryList() {
       this.$store.commit('setIsLoading', true);
@@ -63,6 +71,9 @@ export default {
 
       this.categoryList = result.RetObj;
       this.$store.commit('setIsLoading', false);
+    },
+    resetMail() {
+      this.mail = { Add_Category: '', Add_Subject: '', Add_Content: '', Add_ReplyPath: '' };
     },
   },
   watch: {

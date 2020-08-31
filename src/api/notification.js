@@ -20,3 +20,8 @@ export async function getMailCategoryList() {
   const result = await axios.post(API_URL + '/Msg/MailCategoryList');
   return result.data;
 }
+
+export async function sendMail(data) {
+  const result = await axios.post(API_URL + '/Msg/MailCompose', data);
+  return result.data;
+}
