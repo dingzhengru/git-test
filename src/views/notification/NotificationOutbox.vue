@@ -3,7 +3,7 @@
     <form class="notification-outbox__box theme-content-box" id="notification-outbox-form" @submit.prevent="submitMail">
       <div class="notification-outbox__field theme-input-box" v-for="field in fieldList" :key="field.name">
         <span class="theme-input-header">
-          {{ $t(field.text) }}
+          {{ $t(`notification.outbox.${field.name}`) }}
         </span>
 
         <template v-if="field.name == 'category'">
@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       categoryList: [],
+      fieldList: [{ name: 'category' }, { name: 'title' }, { name: 'content' }],
       mail: {
         category: '',
         title: '',

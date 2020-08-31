@@ -69,7 +69,7 @@ export default {
     GameTransferDialog: () => import('@/components/game/GameTransferDialog'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
     },
@@ -135,21 +135,14 @@ export default {
       isShowLiveGameEnterDialog: false, //* 真人遊戲開遊戲的列表
     };
   },
-  async mounted() {
-    /*
-     * API: 電子遊戲 & 真人遊戲，兩者的方法是分開的
-     * 用 this.$route.params.type 來判斷，1: 真人 2: 電子
-     */
-    const requestDataGetGameLobbyProduct = { Tag: this.productTag };
-    this.getGameProduct(requestDataGetGameLobbyProduct);
-  },
   methods: {
-    async getGameProduct(data) {
+    async getGameProduct() {
+      const requestData = { Tag: this.productTag };
       let result = {};
       if (this.$route.params.type == 1) {
-        result = await getLiveGameLobbyProduct(data);
+        result = await getLiveGameLobbyProduct(requestData);
       } else if (this.$route.params.type == 2) {
-        result = await getGameLobbyProduct(data);
+        result = await getGameLobbyProduct(requestData);
       }
       console.log('[GameLobby Product]', result.RetObj.ProductList);
       this.productList = result.RetObj.ProductList;
@@ -398,11 +391,17 @@ export default {
           console.log('[GamePointList]', result.RetObj);
         });
 
-        await this.getGameCategory();
-        await this.getGameList();
+        this.getGameProduct();
+        await this.getGameCategory(); //* 真人遊戲需先從此取得 guid，才能取得遊戲列表
+        this.getGameList();
 
-        this.$store.commit('setIsLoading', false);
+        // this.$store.commit('setIsLoading', false);
       },
+    },
+    async lang() {
+      this.getGameProduct();
+      await this.getGameCategory();
+      this.getGameList();
     },
     productList() {
       //* 避免直接輸入網址，到正在維護的 Product
