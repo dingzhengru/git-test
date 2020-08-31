@@ -17,11 +17,11 @@
     <form
       class="notification-inbox-detail__replay-box theme-content-box"
       id="notification-inbox-detail-form"
-      @submit.prevent="submitChat"
+      @submit.prevent="submitMail"
     >
       <div class="theme-input-box">
         <span class="theme-input-header">{{ $t('notification.inboxDetail.reply') }}</span>
-        <textarea class="ui-tar" cols="80" rows="5" v-model="chat"></textarea>
+        <textarea class="ui-tar" cols="80" rows="5" v-model="content"></textarea>
       </div>
     </form>
     <div class="notification-inbox-detail__button-div">
@@ -41,7 +41,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getInboxDetail } from '@/api/notification';
+import { getInboxDetail, sendMail } from '@/api/notification';
 
 export default {
   name: 'NotificationInboxDetail',
@@ -97,7 +97,7 @@ export default {
           Lst_SenderAccount: 'SysAdmin',
         },
       ],
-      chat: '',
+      content: '',
     };
   },
   methods: {
@@ -110,8 +110,21 @@ export default {
       this.list = result.RetObj.Rows;
       this.$store.commit('setIsLoading', false);
     },
-    submitChat() {
-      console.log('submitChat', this.chat);
+    async submitMail() {
+      this.$store.commit('setIsLoading', true);
+      const requestData = {
+        Add_Category: this.list[0].Lst_Category,
+        Add_Subject: this.list[0].Lst_Subject,
+        Add_Content: this.content,
+        Add_ReplyPath: this.list.map(item => item.Lst_Key).join(':'),
+      };
+      const result = await sendMail(requestData);
+
+      if (result.Code == 200) {
+        console.log('[SendMail]', result);
+        this.resetMail();
+      }
+      this.$store.commit('setIsLoading', false);
     },
   },
   watch: {
