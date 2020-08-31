@@ -40,7 +40,7 @@ import { getMailCategoryList } from '@/api/notification';
 export default {
   name: 'NotificationOutbox',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
   },
   data() {
     return {
@@ -80,6 +80,9 @@ export default {
         //* 關掉 loading
         // this.$store.commit('setIsLoading', false);
       },
+    },
+    lang() {
+      this.getMailCategoryList();
     },
   },
 };

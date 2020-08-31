@@ -399,14 +399,6 @@ export default {
         }
       }
     });
-
-    //* 取得公鑰 & token (登入後才於這取得，登入前放置 Login、Register 頁面)
-    if (!this.token || !this.publicKey) {
-      getTokenAndPublicKey().then(result => {
-        this.$store.commit('user/setToken', result.RetObj.token);
-        this.$store.commit('user/setPublicKey', result.RetObj.publickey);
-      });
-    }
   },
   methods: {
     changeCaptcha() {
@@ -523,12 +515,21 @@ export default {
   watch: {
     siteID: {
       immediate: true,
-      handler() {
+      async handler() {
         if (!this.siteID) {
           return;
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/register.scss`);
+
+        //* 取得公鑰 & token
+        if (!this.token || !this.publicKey) {
+          const result = await getTokenAndPublicKey();
+          console.log('[TokenAndPublicKey]', result);
+
+          this.$store.commit('user/setToken', result.RetObj.token);
+          this.$store.commit('user/setPublicKey', result.RetObj.publickey);
+        }
       },
     },
   },

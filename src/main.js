@@ -50,14 +50,12 @@ store.commit('user/setIsLoggedIn', isLoggedIn);
 if (getToken() && getPublicKey()) {
   store.commit('user/setToken', getToken());
   store.commit('user/setPublicKey', getPublicKey());
-} else {
+} else if (isLoggedIn) {
   //* 只有登入後的狀態才會去跟後端要
-  if (isLoggedIn) {
-    getTokenAndPublicKey().then(result => {
-      store.commit('user/setToken', result.RetObj.token);
-      store.commit('user/setPublicKey', result.RetObj.publickey);
-    });
-  }
+  getTokenAndPublicKey().then(result => {
+    store.commit('user/setToken', result.RetObj.token);
+    store.commit('user/setPublicKey', result.RetObj.publickey);
+  });
 }
 
 //* 取得 site info => 存進 store.state.site

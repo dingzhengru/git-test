@@ -7,7 +7,7 @@ const state = {
   token: null,
   publicKey: null,
   isAccessed: false,
-  username: null, // 用戶名
+  username: null,
   total: null,
   vip: null,
   roll: null,
@@ -29,14 +29,12 @@ const mutations = {
   setUserInfo(state, info) {
     console.log('[SetUserInfo]', info);
 
-    //* 設置 userinfo
-    state.isAccessed = info.RetObj.Lst_Account_Open; // * 設置是否已開通
+    state.isAccessed = info.RetObj.Lst_Account_Open;
     state.username = info.RetObj.Lst_Account;
     state.roll = info.RetObj.Lst_PI_BetAmount;
     state.vip = info.RetObj.Lst_PI_Level;
     // state.total = numeral(info.RetObj.Lst_Point).format('0,0.00');
 
-    //* 上方的總餘額是指錢包的餘額
     getAllGamePoint().then(result => {
       console.log('[SetUserInfo AllGamePoint]', result.RetObj);
       state.total = result.RetObj.TotalBalance;
@@ -104,9 +102,9 @@ const actions = {
     // await logout();
 
     logout().finally(() => {
-      commit('setIsLoggedIn', false);
       commit('removeToken');
       commit('removePublicKey');
+      commit('setIsLoggedIn', false);
       window.location.replace('/login');
     });
   },

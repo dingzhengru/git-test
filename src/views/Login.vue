@@ -189,7 +189,7 @@ export default {
   watch: {
     siteID: {
       immediate: true,
-      handler() {
+      async handler() {
         if (!this.siteID) {
           return;
         }
@@ -200,10 +200,11 @@ export default {
 
         //* 取得公鑰 & token
         if (!this.token || !this.publicKey) {
-          getTokenAndPublicKey().then(result => {
-            this.$store.commit('user/setToken', result.RetObj.token);
-            this.$store.commit('user/setPublicKey', result.RetObj.publickey);
-          });
+          const result = await getTokenAndPublicKey();
+          console.log('[TokenAndPublicKey]', result);
+
+          this.$store.commit('user/setToken', result.RetObj.token);
+          this.$store.commit('user/setPublicKey', result.RetObj.publickey);
         }
 
         //* 關掉 loading
