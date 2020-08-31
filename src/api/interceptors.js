@@ -42,11 +42,6 @@ axios.interceptors.response.use(
       //* 後端會在觸發就執行登出了，且不允許前端呼叫登出方法，所以只能把 logout 做的事放這了
       console.log('[Logout]');
       store.dispatch('user/logout');
-      // console.log('[Logout 但不呼叫 API]');
-      // store.commit('user/setIsLoggedIn', false);
-      // store.commit('user/removeToken');
-      // store.commit('user/removePublicKey');
-      // window.location.replace('/login');
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
       //* 502: TokenError
       console.log('[TokenError]', res);
@@ -61,6 +56,19 @@ axios.interceptors.response.use(
       //* 篩選掉不要 alert 的 api
       if (!NO_ALERT_API.find(item => res.config.url.includes(item))) {
         alert(res.data.ErrMsg);
+      }
+    } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
+      //* 615: JsonError，目前登入偶會出現，推測是公鑰與私鑰對不上
+      console.log('[JsonError]', res);
+
+      //* 這邊可以不用 reload()，而是改成幫會員登入，避免會員重整後又要再登入一次
+      if (res.config.url.includes('LoginIn')) {
+        alert('[JsonError]', '目前登入會碰到此錯誤，推測是公私鑰沒對上');
+        getTokenAndPublicKey().then(result => {
+          store.commit('user/setToken', result.RetObj.token);
+          store.commit('user/setPublicKey', result.RetObj.publickey);
+          location.reload();
+        });
       }
     }
     return res;

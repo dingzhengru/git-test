@@ -292,19 +292,19 @@ export default {
         const result = await getDepositInfo();
         console.log('[DepositInfo]', result.RetObj);
 
-        //* 250_23223223323299||2||250||SCB||23223223323299||test1111||test1111||SICOTHBK
+        if (result.Code == 200) {
+          if (result.RetObj.BankAccount.length > 0) {
+            this.bankDepositList = result.RetObj.BankAccount;
+          } else {
+            this.bankDepositList = result.RetObj.BankURL;
+          }
 
-        if (result.RetObj.BankAccount.length > 0) {
-          this.bankDepositList = result.RetObj.BankAccount;
-        } else {
-          this.bankDepositList = result.RetObj.BankURL;
+          this.bankTransferList = result.RetObj.BankURL;
+          this.methodList = result.RetObj.DepositMethod;
+          this.promotionList = result.RetObj.AllActivityList;
+          this.depositLimit.min = result.RetObj.DepositDownlimit;
+          this.depositLimit.max = result.RetObj.DepositUplimit;
         }
-
-        this.bankTransferList = result.RetObj.BankURL;
-        this.methodList = result.RetObj.DepositMethod;
-        this.promotionList = result.RetObj.AllActivityList;
-        this.depositLimit.min = result.RetObj.DepositDownlimit;
-        this.depositLimit.max = result.RetObj.DepositUplimit;
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);

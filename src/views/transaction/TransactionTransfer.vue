@@ -121,7 +121,7 @@ export default {
     VueSlider,
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'token']),
+    ...mapGetters(['siteID', 'siteFullCss']),
     fromList() {
       return this.productList;
     },
@@ -243,14 +243,6 @@ export default {
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);
-      },
-    },
-    token: {
-      immediate: true,
-      handler() {
-        if (!this.token) {
-          return;
-        }
 
         getTransferInfo().then(result => {
           console.log('[Transfer]', result.RetObj);

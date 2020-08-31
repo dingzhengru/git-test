@@ -84,7 +84,7 @@ import idMapper from '@/idMapper';
 export default {
   name: 'TransactionWithdrawal',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'token']),
+    ...mapGetters(['siteID', 'siteFullCss']),
   },
   data() {
     return {
@@ -218,7 +218,7 @@ export default {
   watch: {
     siteID: {
       immediate: true,
-      handler() {
+      async handler() {
         if (!this.siteID) {
           return;
         }
@@ -226,26 +226,24 @@ export default {
         import(`@/styles/${this.siteFullCss}/transaction/withdrawal.scss`);
 
         //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
-      },
-    },
-    token: {
-      immediate: true,
-      handler() {
-        if (!this.token) {
-          return;
-        }
-        getWithdrawal().then(result => {
-          console.log('[Withdrawal]', result.RetObj);
-          this.bankList = result.RetObj.Add_MemberBankAccountList;
+        // this.$store.commit('setIsLoading', false);
 
-          this.accountInfoList.map(item => {
-            if (result.RetObj[item.name]) {
-              item.value = result.RetObj[item.name];
-            }
-          });
-          this.amountLimit.min = result.RetObj.WithalDownlimit;
+        const result = await getWithdrawal();
+        console.log('[Withdrawal]', result.RetObj);
+        this.bankList = result.RetObj.Add_MemberBankAccountList;
+
+        //* 若會員的 Add_MemberBankAccountList 為空，則轉去會員中心
+        if (this.bankList.length < 0) {
+          this.$router.replace({ name: 'UserProfile' });
+        }
+
+        this.accountInfoList.map(item => {
+          if (result.RetObj[item.name]) {
+            item.value = result.RetObj[item.name];
+          }
         });
+        this.amountLimit.min = result.RetObj.WithalDownlimit;
+        this.$store.commit('setIsLoading', false);
       },
     },
   },

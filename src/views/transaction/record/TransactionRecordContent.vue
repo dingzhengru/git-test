@@ -117,7 +117,7 @@ export default {
     AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'token']),
+    ...mapGetters(['siteID', 'siteFullCss']),
     i18nKey() {
       return `transaction.recordContent.${this.$route.params.name}`;
     },
@@ -379,15 +379,7 @@ export default {
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
         //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
-      },
-    },
-    token: {
-      immediate: true,
-      handler() {
-        if (!this.token) {
-          return;
-        }
+        // this.$store.commit('setIsLoading', false);
 
         this.getRecord();
 
