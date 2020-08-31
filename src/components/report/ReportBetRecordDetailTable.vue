@@ -16,7 +16,7 @@
               class="report-bet-record__total-table__td-2nd td-2nd"
               :class="{ 'ui-txt-positive': isPositive(key, value), 'ui-txt-negative': isNegative(key, value) }"
             >
-              {{ key != 'betCount' ? numeral(value).format('0,0.00') : value }}
+              {{ key != 'Lst_BetCount' ? numeral(value).format('0,0.00') : value }}
             </td>
           </tr>
         </tbody>
@@ -73,20 +73,6 @@ export default {
     isNegative: () => (key, value) => {
       return key == 'totalWinLose' && value < 0;
     },
-    // total() {
-    //   const totalObject = {};
-    //   totalObject.BetCount = this.recordList.length;
-    //   totalObject.TTLBet = 0;
-    //   totalObject.TTLNetWin = 0;
-    //   totalObject.JackpotScore = 0;
-
-    //   this.recordList.forEach(item => {
-    //     totalObject.TTLBet = totalObject.amount + item.totalAmount;
-    //     totalObject.TTLNetWin = totalObject.totalWinLose + item.totalWinLose;
-    //     totalObject.JackpotScore = totalObject.prize + item.prize;
-    //   });
-    //   return totalObject;
-    // },
   },
   data() {
     return {

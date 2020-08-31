@@ -107,8 +107,10 @@ export default {
       immediate: true,
       async handler() {
         console.log('[ReportBetRecord]:', this.dateRange.name);
+        this.$store.commit('setIsLoading', true);
         if (this.dateRange.name == 'today') {
           const requestData = { Tag: this.dateRange.value };
+
           const result = await getBetHistoryDay(requestData);
           if (result.Code == 200) {
             this.totalObject = {
@@ -124,9 +126,14 @@ export default {
           const requestData = { Tag: this.dateRange.value };
           const result = await getBetHistoryWeek(requestData);
 
-          this.weekList = result.RetObj.Rows;
+          this.recordList = [];
+
+          if (result.Code == 200) {
+            this.weekList = result.RetObj.Rows;
+          }
           console.log('[BetHistoryWeek]', result);
         }
+        this.$store.commit('setIsLoading', false);
       },
     },
   },

@@ -1,38 +1,36 @@
 <template>
-  <div class="notification-outbox">
-    <form class="notification-outbox__box theme-content-box" id="notification-outbox-form" @submit.prevent="submitMail">
-      <div class="notification-outbox__field theme-input-box" v-for="field in fieldList" :key="field.name">
-        <span class="theme-input-header">
-          {{ $t(`notification.outbox.${field.name}`) }}
-        </span>
-
-        <template v-if="field.name == 'category'">
-          <select class="notification-outbox__field__select ui-ddl" v-model="mail.category">
-            <option value="" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
-            <option :value="category.Value" v-for="category in categoryList" :key="category.Value">
-              {{ category.Text }}
-            </option>
-          </select>
-        </template>
-
-        <template v-if="field.name == 'title'">
-          <input class="ui-ipt" type="text" maxlength="20" v-model="mail.title" />
-        </template>
-
-        <template v-if="field.name == 'content'">
-          <textarea class="ui-tar" cols="33" rows="5" v-model="mail.content"></textarea>
-        </template>
+  <form class="notification-outbox" @submit.prevent="submitMail">
+    <!-- <form class="notification-outbox__box theme-content-box" id="notification-outbox-form" @submit.prevent="submitMail"> -->
+    <div class="theme-content-box">
+      <div class="notification-outbox__field theme-input-box">
+        <span class="theme-input-header">{{ $t('notification.outbox.category') }}</span>
+        <select class="notification-outbox__field__select ui-ddl" required v-model="mail.category">
+          <option value="" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
+          <option :value="category.Value" v-for="category in categoryList" :key="category.Value">
+            {{ category.Text }}
+          </option>
+        </select>
       </div>
-    </form>
+
+      <div class="notification-outbox__field theme-input-box">
+        <span class="theme-input-header">{{ $t('notification.outbox.title') }}</span>
+        <input class="ui-ipt" type="text" required maxlength="20" v-model="mail.title" />
+      </div>
+
+      <div class="notification-outbox__field theme-input-box">
+        <span class="theme-input-header">{{ $t('notification.outbox.content') }}</span>
+        <textarea class="ui-tar" cols="33" rows="5" required v-model="mail.content"></textarea>
+      </div>
+    </div>
     <div class="notification-outbox__button-div">
-      <button class="notification-outbox__button--submit ui-btn" type="submit" form="notification-outbox-form">
+      <button class="notification-outbox__button--submit ui-btn" type="submit">
         {{ $t('ui.button.submit') }}
       </button>
-      <button class="notification-outbox__button--cancel ui-btn" @click="$router.go(-1)">
+      <button class="notification-outbox__button--cancel ui-btn" @click.prevent="$router.go(-1)">
         {{ $t('ui.button.cancel') }}
       </button>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -47,7 +45,6 @@ export default {
   data() {
     return {
       categoryList: [],
-      fieldList: [{ name: 'category' }, { name: 'title' }, { name: 'content' }],
       mail: {
         category: '',
         title: '',

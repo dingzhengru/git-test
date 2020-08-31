@@ -18,24 +18,38 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import numeral from 'numeral';
-
 import { getBetHistoryUnsettle } from '@/api/report';
+
 export default {
   name: 'ReportUnsettleBet',
+  computed: {
+    ...mapGetters(['siteID', 'siteFullCss']),
+  },
   data() {
     return {
       numeral: numeral,
       list: [],
     };
   },
-  mounted() {
-    this.$store.commit('setIsLoading', false); //* 關掉 loading
+  watch: {
+    siteID: {
+      immediate: true,
+      async handler() {
+        if (!this.siteID) {
+          return;
+        }
 
-    getBetHistoryUnsettle().then(result => {
-      console.log(result);
-      this.list = result.RetObj.Rows;
-    });
+        const result = await getBetHistoryUnsettle();
+        console.log('[BetHistoryUnsettle]', result);
+        if (result.Code == 200) {
+          this.list = result.RetObj.Rows;
+        }
+        //* 關掉 loading
+        this.$store.commit('setIsLoading', false);
+      },
+    },
   },
 };
 </script>
