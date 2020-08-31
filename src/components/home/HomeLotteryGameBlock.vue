@@ -1,11 +1,13 @@
 <template>
   <div class="home-lottery-game">
-    <div class="lottery" :class="`lottery${lottery.Type}`" v-for="lottery in lotteryList" :key="lottery.Type">
-      <i class="lottery__icon"></i>
-      <ul class="lottery__ul" @click="openLotteryGame(lottery)">
-        <li class="lottery__li">{{ lottery.Count }} 次 抽奖机会</li>
-      </ul>
-    </div>
+    <template v-for="lottery in lotteryList">
+      <div class="lottery" :class="`lottery${lottery.Type}`" :key="lottery.Type" v-if="lottery.Count > 0">
+        <i class="lottery__icon"></i>
+        <ul class="lottery__ul" @click="openLotteryGame(lottery)">
+          <li class="lottery__li">{{ lottery.Count }} 次 抽奖机会</li>
+        </ul>
+      </div>
+    </template>
   </div>
 </template>
 
