@@ -17,7 +17,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [numeral](#numeral)
   - [dayjs](#dayjs)
   - [jsencrypt](#jsencrypt)
-  - [encryptlong](#encryptlong)
+  - [JS-RSA 超長加密](#js-rsa-超長加密)
   - [vue-awesome-swiper](#vue-awesome-swiper)
   - [vue-scrollto](#vue-scrollto)
   - [vue-slider-component](#vue-slider-component)
@@ -73,7 +73,13 @@ StarBets 的圖片大小跟其他不同，造成位置不同
 
 ### jsencrypt
 
-### encryptlong
+<!-- ### encryptlong -->
+
+### JS-RSA 超長加密
+
+- 參考 https://www.jianshu.com/p/54cb90e6e183
+- 參考 https://github.com/wangqinglongDo/github_demo/blob/master/libs/jsencrypt.min.js
+- 使用第一個網址裡的 encryptLong2，與第二個網址的 hex2b64
 
 ### vue-awesome-swiper
 
