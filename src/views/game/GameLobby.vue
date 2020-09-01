@@ -316,7 +316,7 @@ export default {
       if (result.Code == 200) {
         this.gamePointList = result.RetObj.GameSitePoints;
         this.transferAmount = 0;
-        window.alert('Transfer Successful');
+        window.alert(this.$t('alert.transfer.success'));
 
         //* 開啟站外連結
         if (this.currentProduct.GetGameRedirectUrl) {

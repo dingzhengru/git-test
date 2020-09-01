@@ -9,6 +9,9 @@
   "alert": {
     "game": {
       "maintenance": "Game under maintenance, we apologize for the inconvenience brought to you !!"
+    },
+    "transfer": {
+      "success": "Transfer success!"
     }
   },
   "header": {

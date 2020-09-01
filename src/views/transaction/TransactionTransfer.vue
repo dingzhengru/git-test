@@ -169,7 +169,7 @@ export default {
 
       if (result.Code == 200) {
         this.updateGamePoint(result);
-        window.alert('Transfer Successful');
+        window.alert(this.$t('alert.transfer.success'));
       }
       this.$store.commit('setIsLoading', false);
     },

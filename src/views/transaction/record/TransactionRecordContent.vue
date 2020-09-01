@@ -202,17 +202,18 @@ export default {
             newItem.id = item.Lst_TransID;
             newItem.isSuccess = item.Lst_Status == 2;
             newItem.date = item.Lst_CreateTime.split('T')[0];
-            newItem.bank = item.Lst_BankName;
-            newItem.amount = item.Lst_Money;
+            newItem.bank = item.Lst_MemberBankName;
+            newItem.amount = item.Lst_MoneyIncome;
             newItem.receipt = item.Lst_Receipt;
+            newItem.detail = item.Lst_StatusName;
 
-            if (item.Lst_Status == 1) {
-              newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
-            } else if (item.Lst_Status == 2) {
-              newItem.detail = this.$t('transaction.recordContent.statusText.success');
-            } else if (item.Lst_Status == 3) {
-              newItem.detail = this.$t('transaction.recordContent.statusText.failure');
-            }
+            // if (item.Lst_Status == 1) {
+            //   newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
+            // } else if (item.Lst_Status == 2) {
+            //   newItem.detail = this.$t('transaction.recordContent.statusText.success');
+            // } else if (item.Lst_Status == 3) {
+            //   newItem.detail = this.$t('transaction.recordContent.statusText.failure');
+            // }
             return newItem;
           });
           break;

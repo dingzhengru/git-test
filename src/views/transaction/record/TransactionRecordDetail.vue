@@ -95,18 +95,6 @@ export default {
   mounted() {
     switch (this.$route.params.name) {
       case 'deposit': {
-        // this.list = [
-        //   {
-        //     bank: 'SCB-VIP',
-        //     rollinPoint: 1000,
-        //     createdDate: '2020-07-21',
-        //     submitDate: '2020-07-21',
-        //     transactionTime: '11:41:26',
-        //     paymentMethod: 'WebATM',
-        //     transactionNumber: this.$route.query.TransID,
-        //     activity: '輪盤測試',
-        //   },
-        // ];
         getRecordDepositDetail(this.$route.query).then(result => {
           console.log('[RecordWithdrawalDetail]', result);
 

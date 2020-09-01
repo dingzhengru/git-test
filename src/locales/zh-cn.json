@@ -9,6 +9,9 @@
   "alert": {
     "game": {
       "maintenance": "游戏维护中，很抱歉造成您的不便！"
+    },
+    "transfer": {
+      "success": "转帐成功!"
     }
   },
   "header": {
