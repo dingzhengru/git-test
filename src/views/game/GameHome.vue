@@ -1,7 +1,7 @@
 <template>
   <div class="game">
     <div class="game__jackpot" v-if="jackpot">
-      <span class="game__jackpot__text">{{ jackpot }}</span>
+      <span class="game__jackpot__text">{{ numeral(jackpot).format('0,0') }}</span>
     </div>
     <router-view />
   </div>
@@ -19,19 +19,32 @@ export default {
   },
   data() {
     return {
+      numeral: numeral,
       jackpot: null,
+      intervalJackpot: null,
     };
   },
   mounted() {
     if (this.$route.params.type == 2) {
-      const requestDataGetJackpotTotal = { Tag: this.productTag };
-      getJackpotTotal(requestDataGetJackpotTotal).then(result => {
-        console.log('[Jackpot]', result.RetObj);
-        if (result.Code == 200) {
-          this.jackpot = numeral(result.RetObj).format('0,0');
-        }
-      });
+      this.getJackpotTotal();
+      this.intervalJackpot = window.setInterval(() => {
+        this.getJackpotTotal();
+      }, 20000);
     }
+  },
+  beforeDestroy() {
+    console.log('[GameHome beforeDestroy]', 'clearInterval');
+    window.clearInterval(this.intervalJackpot);
+  },
+  methods: {
+    async getJackpotTotal() {
+      const requestData = { Tag: this.productTag };
+      const result = await getJackpotTotal(requestData);
+      console.log('[Jackpot]', result.RetObj);
+      if (result.Code == 200) {
+        this.jackpot = result.RetObj;
+      }
+    },
   },
 };
 </script>
