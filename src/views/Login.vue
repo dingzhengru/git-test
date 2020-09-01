@@ -153,7 +153,6 @@ export default {
       console.log('[login]', this.user);
       this.$store.commit('setIsLoading', true);
       const result = await this.$store.dispatch('user/login', this.user);
-      this.$store.commit('setIsLoading', false);
 
       if (result.Code == 201) {
         //* 帳密錯誤
@@ -162,7 +161,15 @@ export default {
         //* 驗證碼錯誤
         this.error = result.ErrMsg;
         this.changeCaptcha();
+      } else if (result.Code == 615) {
+        //* 615: JsonError，目前登入偶會出現，推測是公鑰與私鑰沒對上
+        //* 換取新的公鑰，並重新送出登入請求
+        const result = await getTokenAndPublicKey();
+        this.$store.commit('user/setToken', result.RetObj.token);
+        this.$store.commit('user/setPublicKey', result.RetObj.publickey);
+        this.login();
       }
+      this.$store.commit('setIsLoading', false);
     },
     async changeCaptcha() {
       const requestDataCaptcha = { pageCode: 'MemberLogin' };
