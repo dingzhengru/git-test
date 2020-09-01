@@ -161,12 +161,10 @@ export default {
         //* 驗證碼錯誤
         this.error = result.ErrMsg;
         this.changeCaptcha();
-      } else if (result.Code == 615) {
-        //* 615: JsonError，目前登入偶會出現，推測是公鑰與私鑰沒對上
-        //* 換取新的公鑰，並重新送出登入請求
-        const result = await getTokenAndPublicKey();
-        this.$store.commit('user/setToken', result.RetObj.token);
-        this.$store.commit('user/setPublicKey', result.RetObj.publickey);
+      } else if (result.Code == 502 || result.Code == 615) {
+        //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
+        //* 615: JsonError，推測是公鑰與私鑰沒對上，已於攔截器上換新的公鑰
+        //* 重新送出登入請求
         this.login();
       }
       this.$store.commit('setIsLoading', false);

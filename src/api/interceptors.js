@@ -43,12 +43,17 @@ axios.interceptors.response.use(
       console.log('[Logout]');
       store.dispatch('user/logout');
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
-      //* 502: TokenError
+      //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
       console.log('[TokenError]', res);
       const result = await getTokenAndPublicKey();
       store.commit('user/setToken', result.RetObj.token);
       store.commit('user/setPublicKey', result.RetObj.publickey);
-      location.reload();
+
+      //* 只於登入請求不重整
+      if (res.config.url.includes('LoginIn')) {
+        return res;
+      }
+      window.location.reload();
     } else if (res.data.Code == 599 && process.env.NODE_ENV === 'production') {
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
@@ -56,6 +61,17 @@ axios.interceptors.response.use(
       if (!NO_ALERT_API.find(item => res.config.url.includes(item))) {
         alert(res.data.ErrMsg);
       }
+    } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
+      //* 615: JsonError，推測是公鑰與私鑰對不上，換一把新的公鑰
+      const result = await getTokenAndPublicKey();
+      store.commit('user/setToken', result.RetObj.token);
+      store.commit('user/setPublicKey', result.RetObj.publickey);
+
+      //* 只於登入請求不重整
+      if (res.config.url.includes('LoginIn')) {
+        return res;
+      }
+      window.location.reload();
     }
     return res;
   },
