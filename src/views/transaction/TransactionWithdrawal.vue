@@ -25,6 +25,21 @@
         </template>
 
         <template v-if="item.name == 'Add_WithdrswalsPoint'">
+          <select
+            class="withdrawal__li__select withdrawal__li__select--currency ui-ddl"
+            required
+            v-model="currency"
+            v-if="currencyList.length > 0"
+          >
+            <option value="">{{ $t(`transaction.withdrawal.field.Lst_Currency`) }}</option>
+            <option
+              :value="currencyItem.Lst_CurrencyCode"
+              v-for="currencyItem in currencyList"
+              :key="currencyItem.Lst_CurrencyCode"
+            >
+              {{ currencyItem.Lst_CurrencyName }}
+            </option>
+          </select>
           <input
             class="withdrawal__li__input ui-ipt theme-ipt-dataview"
             :id="idMapper.transaction.withdrawal.field[item.name]"
@@ -136,6 +151,7 @@ export default {
       noticeList: ['transaction.withdrawal.notice.contact'],
       bankList: [],
       bank: '',
+      currency: '',
       amount: 0,
       password: '',
       amountLimit: {
@@ -168,7 +184,7 @@ export default {
         Add_MemberBankAccount: this.bank.Lst_BankAccount,
         Add_WithdrswalsPoint: this.amount,
         Add_Withdrawals_Password: this.password,
-        Add_Request_Currency: 'THB',
+        Add_Request_Currency: this.currency || 'THB',
         Add_Exchange_Rate: 1,
         Add_PayMemo: '',
         Add_SelectBank: this.bank.Value,
@@ -231,6 +247,7 @@ export default {
         const result = await getWithdrawal();
         console.log('[Withdrawal]', result.RetObj);
         this.bankList = result.RetObj.Add_MemberBankAccountList;
+        this.currencyList = result.RetObj.BaseCurrencyItem;
 
         //* 若會員的 Add_MemberBankAccountList 為空，則轉去會員中心
         if (this.bankList.length < 0) {
@@ -262,6 +279,11 @@ export default {
 .withdrawal__li__select {
   padding: 0 1.5%;
   width: 100%;
+}
+
+.withdrawal__li__select--currency {
+  margin-left: 5%;
+  width: 95%;
 }
 
 .withdrawal__li__button {
