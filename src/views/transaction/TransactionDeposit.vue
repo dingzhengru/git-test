@@ -87,6 +87,18 @@
           </template>
 
           <template v-if="field.name == 'amount'">
+            <select
+              class="deposit__field__select ui-ddl"
+              :id="idMapper.transaction.deposit.field[field.name]"
+              required
+              v-model="currency"
+              v-if="currencyList.length > 0"
+            >
+              <option value="">{{ $t(`transaction.deposit.placeholder.currency`) }}</option>
+              <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
+                {{ currencyItem.Text }}
+              </option>
+            </select>
             <input
               class="ui-ipt"
               :id="idMapper.transaction.deposit.field[field.name]"
@@ -210,12 +222,14 @@ export default {
       bankDepositList: [],
       bankTransferList: [],
       methodList: [],
+      currencyList: [],
       promotionList: [],
       noticeList: ['currency', 'depositLimit01', 'depositLimit02', 'userBear01', 'userBear02', 'suggest', 'contact'],
       bankDeposit: {},
       bankTransfer: {},
       datetime: '2018-06-12T19:30',
       method: {},
+      currency: '',
       amount: 0,
       receipt: { name: '', image: '' },
       remark: '',
@@ -301,6 +315,7 @@ export default {
 
           this.bankTransferList = result.RetObj.BankURL;
           this.methodList = result.RetObj.DepositMethod;
+          this.currencyList = result.RetObj.BaseCurrencyItem;
           this.promotionList = result.RetObj.AllActivityList;
           this.depositLimit.min = result.RetObj.DepositDownlimit;
           this.depositLimit.max = result.RetObj.DepositUplimit;

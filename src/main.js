@@ -98,8 +98,8 @@ getSiteInfo(requestData)
   })
   .catch(() => {
     if (process.env.NODE_ENV === 'production') {
-      // location.reload();
-      store.commit('site/setID', 'C');
+      location.reload();
+      // store.commit('site/setID', 'C');
     } else {
       store.commit('site/setID', 'C');
     }

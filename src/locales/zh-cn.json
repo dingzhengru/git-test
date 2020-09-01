@@ -349,6 +349,7 @@
         "bankDeposit": "请选择存入银行",
         "bankTransfer": "请选择转帐银行",
         "method": "请选择",
+        "currency": "币别",
         "promotion": "请选择优惠活动"
       },
       "hint": {
