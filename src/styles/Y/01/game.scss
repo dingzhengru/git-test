@@ -54,10 +54,13 @@ $type: 'Y/01';
 .game-transfer-dialog__form-switch.right.on {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png);
 }
-
 .game-lobby__supply {
+  background-color: #000;
+}
+.game-lobby__category {
   background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
 }
+
 .game-lobby__inquire__search {
   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
 }

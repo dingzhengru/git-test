@@ -1,24 +1,33 @@
 <template>
   <div class="game-lobby">
-    <div class="game-lobby__supply">
-      <GameProductNavigation :productList="productList" @change-product="changeProduct" />
-      <GameCategoryNavigation :categoryList="categoryList" @change-category="changeCategory" />
-    </div>
+    <GameProductNavigation :productList="productList" @change-product="changeProduct" />
+    <GameCategoryNavigation
+      :categoryList="categoryList"
+      @change-category="changeCategory"
+      v-if="currentProduct.Lst_Site_Product_Status == 0"
+    />
 
     <GameSearchBlock
       :search="search"
       @change-search="changeSearch"
       @submit-search-form="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
+      v-if="currentProduct.Lst_Site_Product_Status == 0"
     />
 
-    <GameListTable :gameList="gameList" @open-game="openGame" @like-game="likeGame" />
+    <GameListTable
+      :gameList="gameList"
+      :isCurrentProductEnable="currentProduct.Lst_Site_Product_Status == 0"
+      @open-game="openGame"
+      @like-game="likeGame"
+    />
 
     <AppPagination
       :length="pagination.dataLength"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
+      v-if="currentProduct.Lst_Site_Product_Status == 0"
     />
 
     <GameTransferDialog
@@ -405,11 +414,10 @@ export default {
     },
     productList() {
       //* 避免直接輸入網址，到正在維護的 Product
-      if (this.currentProduct.Lst_Site_Product_Status != 0) {
-        // this.$store.commit('setIsLoading', false);
-        window.alert(this.$t('alert.game.maintenance'));
-        window.location.replace('/');
-      }
+      // if (this.currentProduct.Lst_Site_Product_Status != 0) {
+      //   window.alert(this.$t('alert.game.maintenance'));
+      //   window.location.replace('/');
+      // }
 
       //* 避免直接輸入網址，到要去站外大廳的 Product
       if (this.currentProduct.GetGameRedirectUrl) {
@@ -421,11 +429,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.game-lobby__supply {
-  height: 182px;
-  overflow: hidden;
-  position: relative;
-}
-</style>

@@ -1,22 +1,28 @@
 <template>
-  <ul class="game-lobby__category__ul">
-    <li
-      class="game-lobby__category__ul__li"
-      v-for="category in categoryList"
-      :key="category.Lst_Category"
-      :class="{ 'game-lobby__category__ul__li--active': $route.query.category == category.Lst_Category }"
-    >
-      <a class="game-lobby__category__ul__li__link" href="javascript:;" @click="changeCategory(category.Lst_Category)">
-        <template v-if="category.Lst_GameName == 'all' || category.Lst_GameName == 'hot'">
-          {{ $t(`game.category.${category.Lst_GameName}`) }}
-        </template>
+  <div class="game-lobby__category">
+    <ul class="game-lobby__category__ul">
+      <li
+        class="game-lobby__category__ul__li"
+        v-for="category in categoryList"
+        :key="category.Lst_Category"
+        :class="{ 'game-lobby__category__ul__li--active': $route.query.category == category.Lst_Category }"
+      >
+        <a
+          class="game-lobby__category__ul__li__link"
+          href="javascript:;"
+          @click="changeCategory(category.Lst_Category)"
+        >
+          <template v-if="category.Lst_GameName == 'all' || category.Lst_GameName == 'hot'">
+            {{ $t(`game.category.${category.Lst_GameName}`) }}
+          </template>
 
-        <template v-else>
-          {{ category.Lst_GameName }}
-        </template>
-      </a>
-    </li>
-  </ul>
+          <template v-else>
+            {{ category.Lst_GameName }}
+          </template>
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -37,6 +43,11 @@ export default {
 </script>
 
 <style scoped>
+.game-lobby__category {
+  position: relative;
+  overflow: hidden;
+  height: 74px;
+}
 .game-lobby__category__ul {
   width: 100%;
   margin: 0;

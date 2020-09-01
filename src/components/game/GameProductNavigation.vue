@@ -1,19 +1,21 @@
 <template>
-  <ul class="game-lobby__supply__ul" :class="{ 'text-center': productList.length == 1 }">
-    <li
-      class="game-lobby__supply__ul__li"
-      :class="[
-        product.class,
-        { 'game-lobby__supply__ul__li--active': $route.params.key == product.Lst_Proxy_Product_Key },
-      ]"
-      v-for="product in productList"
-      :key="product.Lst_Proxy_Product_Key"
-    >
-      <a class="game-lobby__supply__ul__li__link" href="javascipt:;" @click="changeProduct(product)">
-        {{ product.Lst_Name }}
-      </a>
-    </li>
-  </ul>
+  <div class="game-lobby__supply">
+    <ul class="game-lobby__supply__ul" :class="{ 'text-center': productList.length == 1 }">
+      <li
+        class="game-lobby__supply__ul__li"
+        :class="[
+          product.class,
+          { 'game-lobby__supply__ul__li--active': $route.params.key == product.Lst_Proxy_Product_Key },
+        ]"
+        v-for="product in productList"
+        :key="product.Lst_Proxy_Product_Key"
+      >
+        <a class="game-lobby__supply__ul__li__link" href="javascipt:;" @click="changeProduct(product)">
+          {{ product.Lst_Name }}
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -34,6 +36,12 @@ export default {
 </script>
 
 <style scoped>
+.game-lobby__supply {
+  height: 108px;
+  overflow: hidden;
+  position: relative;
+}
+
 .game-lobby__supply__ul {
   width: 100%;
   position: absolute;

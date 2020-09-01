@@ -1,41 +1,46 @@
 <template>
-  <table class="game-lobby__table">
-    <tbody>
-      <tr
-        class="game-lobby__table__tr"
-        v-for="(game, index) in gameList"
-        :key="game.Lst_GameID + index"
-        @click="openGame(game, 0)"
-      >
-        <td class="game-lobby__table__tr__td-1st">
-          <img class="game-lobby__table__tr__td__img" :src="game.imagePath" />
-        </td>
-        <td class="game-lobby__table__tr__td-2nd">{{ game.Lst_GameName }}</td>
-        <td class="game-lobby__table__tr__td-3rd">
-          <a href="javascript:;" class="game-lobby__table__tr__td__link--start">
-            {{ $t('game.link.play') }}
-          </a>
-          <a
-            href="javascript:;"
-            class="game-lobby__table__tr__td__link--freeplay"
-            @click.capture.stop="openGame(game, 1)"
-            v-if="$route.params.type == 2 && game.Lst_IsDemo"
-          >
-            {{ $t('game.link.free') }}
-          </a>
-          <a
-            href="javascript:;"
-            class="game-lobby__table__tr__td__link--favorites"
-            :class="{ active: game.Lst_IsLike }"
-            @click.capture.stop="likeGame(game)"
-            v-if="$route.params.type == 2"
-          >
-            {{ $t('game.link.fav') }}
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <div v-if="!isCurrentProductEnable">
+      <h1 class="text-center">{{ $t('alert.game.maintenance') }}</h1>
+    </div>
+    <table class="game-lobby__table" v-else>
+      <tbody>
+        <tr
+          class="game-lobby__table__tr"
+          v-for="(game, index) in gameList"
+          :key="game.Lst_GameID + index"
+          @click="openGame(game, 0)"
+        >
+          <td class="game-lobby__table__tr__td-1st">
+            <img class="game-lobby__table__tr__td__img" :src="game.imagePath" />
+          </td>
+          <td class="game-lobby__table__tr__td-2nd">{{ game.Lst_GameName }}</td>
+          <td class="game-lobby__table__tr__td-3rd">
+            <a href="javascript:;" class="game-lobby__table__tr__td__link--start">
+              {{ $t('game.link.play') }}
+            </a>
+            <a
+              href="javascript:;"
+              class="game-lobby__table__tr__td__link--freeplay"
+              @click.capture.stop="openGame(game, 1)"
+              v-if="$route.params.type == 2 && game.Lst_IsDemo"
+            >
+              {{ $t('game.link.free') }}
+            </a>
+            <a
+              href="javascript:;"
+              class="game-lobby__table__tr__td__link--favorites"
+              :class="{ active: game.Lst_IsLike }"
+              @click.capture.stop="likeGame(game)"
+              v-if="$route.params.type == 2"
+            >
+              {{ $t('game.link.fav') }}
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -45,6 +50,10 @@ export default {
     gameList: {
       type: Array,
       default: () => [],
+    },
+    isCurrentProductEnable: {
+      type: Boolean,
+      default: () => true,
     },
   },
   data() {
@@ -65,7 +74,6 @@ export default {
 .game-lobby__table {
   width: 100%;
   letter-spacing: -1px;
-  background-color: #181b23;
 }
 
 .game-lobby__table__tr__td-1st {
