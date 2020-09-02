@@ -9,6 +9,7 @@ const AUTH_API_LIST = [
   'Member/LoginIn',
   'Member/SimpleRegister',
   'Member/MemInfo',
+  'Member/MChangePassword',
   'Siteinfo/MGetAllGamePoint',
   'Siteinfo/MGetPITTLBet',
   'Product/MemProductList',
@@ -51,7 +52,7 @@ const AUTH_API_LIST = [
 ];
 
 //* 需加密的 API
-const CRYPTO_API_LIST = ['Member/LoginIn'];
+const CRYPTO_API_LIST = ['Member/LoginIn', 'Member/MChangePassword'];
 
 //* 需使用"大數據加密"的 API
 const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister', 'Operator/MWithdrawals'];

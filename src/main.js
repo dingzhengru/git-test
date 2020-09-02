@@ -87,7 +87,8 @@ getSiteInfo(requestData)
       });
     }
 
-    //* 心跳
+    //* 心跳，剛進來也要執行一次
+    keepUserOnline();
     setInterval(async () => {
       if (!document.hasFocus()) {
         return;

@@ -26,19 +26,19 @@ axios.interceptors.request.use(
       };
     }
 
-    //* 判斷是否在加密列表中 (大數據加密)，但並非全部參數都要加密的情況，EX: 存款動作中的匯款收據圖片
-    if (NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST.find(item => config.url.replace('/api/', '') == item)) {
+    //* 判斷是否在加密列表中 (大數據加密)
+    else if (CRYPTO_BIG_DATA_API_LIST.find(item => config.url.includes(item))) {
+      config.data = {
+        rsaMsg: rsaEncryptLong(config.data, store.getters.publicKey),
+      };
+    }
+
+    //* 判斷是否在加密列表中 (大數據加密)，但並非全部參數都要加密的情況，EX: 存款動作
+    else if (NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST.find(item => config.url.replace('/api/', '') == item)) {
       const rsaMsg = rsaEncryptLong(config.data.rsaData, store.getters.publicKey);
       const noRsaData = config.data.noRsaData;
 
       config.data = Object.assign({ rsaMsg }, noRsaData);
-    }
-
-    //* 判斷是否在加密列表中 (大數據加密)
-    if (CRYPTO_BIG_DATA_API_LIST.find(item => config.url.includes(item))) {
-      config.data = {
-        rsaMsg: rsaEncryptLong(config.data, store.getters.publicKey),
-      };
     }
 
     return config;
