@@ -1,6 +1,12 @@
 import store from '@/store';
 import axios from 'axios';
-import { AUTH_API_LIST, CRYPTO_API_LIST, CRYPTO_BIG_DATA_API_LIST, NO_ALERT_API } from '@/settings';
+import {
+  AUTH_API_LIST,
+  CRYPTO_API_LIST,
+  CRYPTO_BIG_DATA_API_LIST,
+  NO_ALERT_API,
+  NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST,
+} from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 import { getTokenAndPublicKey } from '@/api/user';
 
@@ -20,6 +26,14 @@ axios.interceptors.request.use(
       };
     }
 
+    //* 判斷是否在加密列表中 (大數據加密)，但並非全部參數都要加密的情況，EX: 存款動作中的匯款收據圖片
+    if (NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST.find(item => config.url.replace('/api/', '') == item)) {
+      const rsaMsg = rsaEncryptLong(config.data.rsaData, store.getters.publicKey);
+      const noRsaData = config.data.noRsaData;
+
+      config.data = Object.assign({ rsaMsg }, noRsaData);
+    }
+
     //* 判斷是否在加密列表中 (大數據加密)
     if (CRYPTO_BIG_DATA_API_LIST.find(item => config.url.includes(item))) {
       config.data = {
@@ -27,7 +41,6 @@ axios.interceptors.request.use(
       };
     }
 
-    // console.log('[interceptors]', config);
     return config;
   },
   error => {

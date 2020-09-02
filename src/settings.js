@@ -56,6 +56,9 @@ const CRYPTO_API_LIST = ['Member/LoginIn'];
 //* 需使用"大數據加密"的 API
 const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister', 'Operator/MWithdrawals'];
 
+//* 需使用"大數據加密"的 API，但並非全部參數都要加密的情況，EX: 存款動作中的匯款收據圖片
+const NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST = ['Operator/MSingleDeposit'];
+
 //* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
 const AUTH_ROUTE_LIST = [
   'GameHome',
@@ -92,6 +95,7 @@ export {
   AUTH_API_LIST,
   CRYPTO_API_LIST,
   CRYPTO_BIG_DATA_API_LIST,
+  NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST,
   AUTH_ROUTE_LIST,
   ACCESS_ROUTE_LIST,
   NO_AUTH_ROUTE_LIST,
@@ -103,6 +107,7 @@ export default {
   AUTH_API_LIST,
   CRYPTO_API_LIST,
   CRYPTO_BIG_DATA_API_LIST,
+  NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST,
   AUTH_ROUTE_LIST,
   ACCESS_ROUTE_LIST,
   NO_AUTH_ROUTE_LIST,

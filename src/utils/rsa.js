@@ -20,8 +20,6 @@ export function rsaEncryptLong(data, pubKey) {
   // 設公鑰
   encrypt.setPublicKey(pubKey);
 
-  console.log('RSAEncryptLong', JSON.stringify(data));
-
   // 加密
   // return encrypt.encryptLong(JSON.stringify(data));
   return encrypt.encryptLong2(JSON.stringify(data));

@@ -32,12 +32,8 @@
             v-if="currencyList.length > 0"
           >
             <option value="">{{ $t(`transaction.withdrawal.field.Lst_Currency`) }}</option>
-            <option
-              :value="currencyItem.Lst_CurrencyCode"
-              v-for="currencyItem in currencyList"
-              :key="currencyItem.Lst_CurrencyCode"
-            >
-              {{ currencyItem.Lst_CurrencyName }}
+            <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
+              {{ currencyItem.Text }}
             </option>
           </select>
           <input

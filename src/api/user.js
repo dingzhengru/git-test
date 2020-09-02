@@ -45,3 +45,8 @@ export async function logout() {
   const result = await axios.post(API_URL + '/Member/LogOut');
   return result.data;
 }
+
+export async function changePassword(data) {
+  const result = await axios.post(API_URL + '/Member/MChangePassword', data);
+  return result.data;
+}

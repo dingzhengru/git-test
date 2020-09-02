@@ -20,6 +20,7 @@
             <select
               class="deposit__field__select ui-ddl"
               :id="idMapper.transaction.deposit.field[field.name]"
+              required
               v-model="bankDeposit"
             >
               <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option>
@@ -61,8 +62,8 @@
               :id="idMapper.transaction.deposit.field[field.name]"
               v-model="bankTransfer"
             >
-              <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option>
-              <option :value="bank" v-for="bank in bankTransferList" :key="bank.Value">
+              <option value="" selected>{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option>
+              <option :value="bank.Value" v-for="bank in bankTransferList" :key="bank.Value">
                 {{ bank.Text }}
               </option>
             </select>
@@ -79,8 +80,8 @@
               required
               v-model="method"
             >
-              <option :value="{}">{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option>
-              <option :value="methodItem" v-for="methodItem in methodList" :key="methodItem.Value">
+              <option value="">{{ $t(`transaction.deposit.placeholder.${field.name}`) }}</option>
+              <option :value="methodItem.Value" v-for="methodItem in methodList" :key="methodItem.Value">
                 {{ methodItem.Text }}
               </option>
             </select>
@@ -151,7 +152,7 @@
           <p
             class="deposit__field__notice"
             v-html="$t(`transaction.deposit.hint.${field.name}`)"
-            v-if="promotion == -1"
+            v-if="!(field.name == 'promotion' && promotion != -1)"
           ></p>
         </div>
 
@@ -177,7 +178,8 @@
 <script>
 import { mapGetters } from 'vuex';
 import idMapper from '@/idMapper';
-import { getDepositInfo } from '@/api/transaction-deposit';
+import { getDepositInfo, deposit } from '@/api/transaction-deposit';
+import dayjs from 'dayjs';
 
 export default {
   name: 'TransactionDeposit',
@@ -224,32 +226,67 @@ export default {
       methodList: [],
       currencyList: [],
       promotionList: [],
-      noticeList: ['currency', 'depositLimit01', 'depositLimit02', 'userBear01', 'userBear02', 'suggest', 'contact'],
       bankDeposit: {},
-      bankTransfer: {},
-      datetime: '2018-06-12T19:30',
-      method: {},
+      bankTransfer: '',
+      datetime: dayjs().format('YYYY-MM-DDTHH:mm:00'),
+      method: '',
       currency: '',
       amount: 0,
       receipt: { name: '', image: '' },
       remark: '',
       promotion: '-1',
       bankDepositAccount: '', //* 當存款銀行列表為空時，則要填入此欄位
+      hid_MMKtoTHBrate: '', //* MMK:THB 匯率(緬甸:泰銖)
+      hid_THBtoMMKrate: '', //* THB:MMK 匯率(泰銖:緬甸)
       depositLimit: { min: 100, max: 100000 },
+      noticeList: ['currency', 'depositLimit01', 'depositLimit02', 'userBear01', 'userBear02', 'suggest', 'contact'],
       isShowDepositDialog: true,
     };
   },
   methods: {
-    submitDeposit() {
+    async submitDeposit() {
       if (!this.validateForm()) {
         return;
       }
-      console.log('[SubmitDeposit]', this.bankDeposit, this.bankTransfer);
 
-      if (JSON.stringify(this.bankDepositList) === JSON.stringify(this.bankTransferList)) {
-        //* 代表回傳的 bankDepositList 是空的，需使用者自行輸入銀行帳戶
-        console.log('使用者自行輸入銀行帳戶', this.bankDepositAccount);
-      }
+      let requestData = {
+        rsaData: {
+          Add_Company_ServiceKey: this.bankDeposit.Value.split('||')[2] || '',
+          Add_Pay_BankAccount: this.bankDeposit.BankAccount || this.bankDepositAccount,
+          Add_BankAccountName: this.bankDeposit.BankAccountName || '',
+          Add_BankId: this.bankTransfer.split('_')[0],
+          Add_Pay_Date: this.datetime.replace('T', ' '),
+          Add_Pay_Money: this.amount,
+          Add_Activity: this.promotion,
+          Add_Pay_Memo: this.remark,
+          Add_MemberBankName: this.bankTransfer,
+          Add_SDM_Key: this.method,
+          Add_Request_Currency: this.currency,
+          Add_Exchange_Rate: this.currency == 'THB' ? 1 : this.hid_MMKtoTHBrate,
+          Add_Pay_Type: 2, //* 存款單的付款型態(1客服 2存簿)
+        },
+        noRsaData: {
+          upfile_name: this.receipt.name,
+          upfile: this.receipt.image.split(',')[1] || '',
+        },
+      };
+
+      //* 代表回傳的 bankDepositList 是空的，需使用者自行輸入銀行帳戶
+      // if (JSON.stringify(this.bankDepositList) === JSON.stringify(this.bankTransferList)) {
+      //   console.log('使用者自行輸入銀行帳戶', this.bankDepositAccount);
+      // }
+
+      console.log('[SubmitDeposit]', requestData);
+
+      this.$store.commit('setIsLoading', true);
+      const result = await deposit(requestData);
+
+      console.log('[Deposit]', result);
+
+      // if(result.Code == 200) {
+
+      // }
+      this.$store.commit('setIsLoading', false);
     },
     inputAmount() {
       if (this.amount < this.depositLimit.min) {
@@ -277,13 +314,13 @@ export default {
       reader.readAsDataURL(file);
     },
     validateForm() {
-      if (Object.keys(this.bankDeposit).length === 0) {
+      if (Object.keys(this.bankDeposit).length == 0) {
         return false;
-      } else if (Object.keys(this.bankTransfer).length === 0) {
+      } else if (this.bankTransfer == '') {
         return false;
       } else if (this.datetime == '') {
         return false;
-      } else if (Object.keys(this.method).length === 0) {
+      } else if (this.method == '') {
         return false;
       } else if (this.amount < this.depositLimit.min || this.amount > this.depositLimit.max) {
         return false;
@@ -319,6 +356,8 @@ export default {
           this.promotionList = result.RetObj.AllActivityList;
           this.depositLimit.min = result.RetObj.DepositDownlimit;
           this.depositLimit.max = result.RetObj.DepositUplimit;
+          this.hid_MMKtoTHBrate = result.RetObj.hid_MMKtoTHBrate;
+          this.hid_THBtoMMKrate = result.RetObj.hid_THBtoMMKrate;
         }
 
         //* 關掉 loading
