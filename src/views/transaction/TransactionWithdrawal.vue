@@ -146,6 +146,7 @@ export default {
       ],
       noticeList: ['transaction.withdrawal.notice.contact'],
       bankList: [],
+      currencyList: [],
       bank: '',
       currency: '',
       amount: 0,

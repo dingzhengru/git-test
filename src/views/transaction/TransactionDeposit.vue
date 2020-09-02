@@ -249,6 +249,9 @@ export default {
         return;
       }
 
+      //* BankAccoun.length == 0 的時候，會讓使用者自己輸入銀行帳號(this.bankDepositAccount)
+      //* Add_Exchange_Rate，this.currency == 'THB' 是 1，否則是 this.hid_MMKtoTHBrate
+      //* Add_Pay_Type: 存款單的付款型態(1客服 2存簿)，BankAccoun.length > 0 是存簿，否則為客服
       let requestData = {
         rsaData: {
           Add_Company_ServiceKey: this.bankDeposit.Value.split('||')[2] || '',
@@ -263,7 +266,7 @@ export default {
           Add_SDM_Key: this.method,
           Add_Request_Currency: this.currency,
           Add_Exchange_Rate: this.currency == 'THB' ? 1 : this.hid_MMKtoTHBrate,
-          Add_Pay_Type: 2, //* 存款單的付款型態(1客服 2存簿)
+          Add_Pay_Type: this.bankDepositList.length > 0 ? 2 : 1,
         },
         noRsaData: {
           upfile_name: this.receipt.name,
