@@ -170,6 +170,7 @@ export default {
       this.$store.commit('setIsLoading', false);
     },
     async changeCaptcha() {
+      this.$store.commit('setIsLoading', true);
       const requestDataCaptcha = { pageCode: 'MemberLogin' };
       const result = await getCaptcha(requestDataCaptcha);
       console.log('[Captcha]', result.RetObj);
@@ -177,6 +178,7 @@ export default {
         this.captchaImage = result.RetObj;
         this.user.CaptchaValue = '';
       }
+      this.$store.commit('setIsLoading', false);
     },
     validateForm() {
       console.log('[ValidateForm]', this.user);

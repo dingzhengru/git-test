@@ -80,7 +80,7 @@
       </button>
     </div>
     <ol class="withdrawal__notice ui-ol-memberNotice">
-      <li v-for="notice in noticeList" :key="notice">{{ $t(notice) }}</li>
+      <li v-for="notice in noticeList" :key="notice">{{ $t(`transaction.withdrawal.notice.${notice}`) }}</li>
     </ol>
   </form>
 </template>
@@ -144,7 +144,6 @@ export default {
           value: '',
         },
       ],
-      noticeList: ['transaction.withdrawal.notice.contact'],
       bankList: [],
       currencyList: [],
       bank: '',
@@ -155,6 +154,7 @@ export default {
         min: 100,
         max: 10000,
       },
+      noticeList: ['contact'],
     };
   },
   methods: {
@@ -173,6 +173,7 @@ export default {
       if (!this.validateForm()) {
         return;
       }
+      this.$store.commit('setIsLoading', true);
       const requestData = {
         Add_RealName: this.accountInfoList.find(item => item.name == 'Add_RealName').value,
         Add_MemberBankID: this.bank.Lst_BankID,
@@ -191,6 +192,7 @@ export default {
 
       const result = await Withdrawal(requestData);
       console.log(result);
+      this.$store.commit('setIsLoading', false);
     },
     changeBank() {
       if (!this.bank) {

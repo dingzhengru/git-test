@@ -1,6 +1,14 @@
 module.exports = {
   chainWebpack: config => {
-    config.plugins.delete('prefetch'); //* 移除 prefetch 插件
+    config.plugins.delete('preload'); //* 關閉 prefetch 插件
+    config.plugins.delete('prefetch'); //* 關閉 prefetch 插件
+    config.optimization.minimizer('terser').tap(args => {
+      // args[0].terserOptions.compress.drop_console = true;
+      args[0].terserOptions.output = {
+        comments: false,
+      };
+      return args;
+    });
   },
   // css: {
   //   extract: false,
@@ -51,16 +59,6 @@ module.exports = {
   // },
   // },
   // },
-  // },
-
-  // chainWebpack: config => {
-  //   config.optimization.minimizer('terser').tap(args => {
-  //     // args[0].terserOptions.compress.drop_console = true;
-  //     args[0].terserOptions.output = {
-  //       comments: false,
-  //     };
-  //     return args;
-  //   });
   // },
   pluginOptions: {
     i18n: {

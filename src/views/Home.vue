@@ -59,7 +59,6 @@ export default {
     };
   },
   mounted() {
-    this.$store.commit('setIsLoading', false);
     //* 沒登入就顯示 NoneLoginPopup
     this.isShowNoneLoginPopup = !this.isLoggedIn;
 
@@ -68,22 +67,27 @@ export default {
   },
   methods: {
     async getMessageList() {
+      this.$store.commit('setIsLoading', true);
       const requestDataMessageList = { msgtype: 'C' };
       const result = await getMessageList(requestDataMessageList);
       if (result.Code == 200) {
         this.alertMessageList = result.RetObj;
         console.log('[Message]', this.alertMessageList);
       }
+      this.$store.commit('setIsLoading', false);
     },
     async getSwiperList() {
+      this.$store.commit('setIsLoading', true);
       const requestDataSwiperList = { bNewPromotion: this.siteIsNewPromotion };
       const result = await getSwiperList(requestDataSwiperList);
       if (result.Code == 200) {
         this.swiperList = result.RetObj;
         console.log('[Swiper]', this.swiperList);
       }
+      this.$store.commit('setIsLoading', false);
     },
     async getProductList() {
+      this.$store.commit('setIsLoading', true);
       const requestDataProductList = { DeviceType: 1 };
       const result = await getProductList(requestDataProductList);
       if (result.Code == 200) {
@@ -117,19 +121,22 @@ export default {
 
         console.log('[Product]', this.productList);
       }
+      this.$store.commit('setIsLoading', false);
     },
     async getLotteryList() {
+      this.$store.commit('setIsLoading', true);
       const result = await getLotteryCount();
       if (result.Code == 200) {
         this.lotteryList = result.RetObj;
       }
       console.log('[LotteryList]', result.RetObj);
+      this.$store.commit('setIsLoading', false);
     },
     async handleGameLink(game) {
       /*
        * Lst_Game_Classify 分類分別是
        * 1: 真人(站內大廳)，2: 電子(站內大廳)，3: 運動(站外大廳)，4: 皇家彩票(站外大廳)
-       */
+       */ this.$store.commit('setIsLoading', true);
 
       if (game.Lst_Site_Product_Status != 0) {
         window.alert(this.$t('alert.game.maintenance'));
@@ -165,9 +172,12 @@ export default {
           }
         }
       }
+      this.$store.commit('setIsLoading', false);
     },
     openLotteryGame(lottery) {
+      this.$store.commit('setIsLoading', true);
       console.log('[OpenLotteryGame]', lottery);
+      this.$store.commit('setIsLoading', false);
     },
   },
   watch: {
@@ -191,6 +201,8 @@ export default {
         if (this.isLoggedIn) {
           this.getLotteryList();
         }
+
+        this.$store.commit('setIsLoading', false);
       },
     },
     lang() {

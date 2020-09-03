@@ -10,8 +10,17 @@ import {
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 import { getTokenAndPublicKey } from '@/api/user';
 
+//* 針對 502: TokenError，615: JsonError
+//* 看要選擇重整，還是重新發送請求(目前只有登入是重新發送)
+
+//* 重新發送所需的變數
+// let retryRequestData = null;
+
 axios.interceptors.request.use(
   config => {
+    //* 為了重新發送而暫存的資料
+    // retryRequestData = config.data;
+
     //* 判斷是否在認證列表中 (於 header 加上 Authorization: bearer ${token})
     if (AUTH_API_LIST.find(item => config.url.includes(item))) {
       config.headers = {
@@ -76,9 +85,16 @@ axios.interceptors.response.use(
       }
     } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
       //* 615: JsonError，推測是公鑰與私鑰對不上，換一把新的公鑰
+
+      //* 會於取 Token 與 PublicKey 的時候蓋掉 requestData ，所以需另外存進一個變數
+      // const data = retryRequestData;
+
       const result = await getTokenAndPublicKey();
       store.commit('user/setToken', result.RetObj.token);
       store.commit('user/setPublicKey', result.RetObj.publickey);
+
+      //* 所有請求都重新發送
+      // return axios.post(res.config.url, data);
 
       //* 只於登入請求不重整
       if (res.config.url.includes('LoginIn')) {
