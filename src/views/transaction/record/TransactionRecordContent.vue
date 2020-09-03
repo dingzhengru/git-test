@@ -67,6 +67,16 @@
                       {{ numeral(value).format('0,0.00') }}
                     </template>
 
+                    <template v-else-if="key == 'receipt' && item.receiptImageUrl">
+                      <a
+                        href="javascript:;"
+                        :style="{ color: 'blue' }"
+                        @click.prevent="imageDialogUrl = item.receiptImageUrl"
+                      >
+                        {{ value }}
+                      </a>
+                    </template>
+
                     <template v-else>
                       {{ value }}
                     </template>
@@ -93,6 +103,10 @@
       :pagesize="pagination.pagesize"
       @change-page="changePage"
     />
+
+    <RecordImageDialog :imageUrl="imageDialogUrl" @close="imageDialogUrl = ''" v-if="imageDialogUrl" />
+
+    <!-- <RecordImageDialog imageUrl="https://image.freepik.com/free-vector/realistic-receipt-template_23-2147938550.jpg" /> -->
   </div>
 </template>
 
@@ -115,9 +129,10 @@ export default {
   name: 'TransactionRecordContent',
   components: {
     AppPagination: () => import('@/components/AppPagination'),
+    RecordImageDialog: () => import('@/components/transaction/record/RecordImageDialog'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
     i18nKey() {
       return `transaction.recordContent.${this.$route.params.name}`;
     },
@@ -160,7 +175,7 @@ export default {
       isPageActive: false, //* 是否有分頁
       isSearchActive: false, //* 是否有搜尋
       productList: [],
-      notShowKeyList: ['id', 'isSuccess', 'Procudtid', 'BonusCode', 'WashCodeType'],
+      notShowKeyList: ['id', 'isSuccess', 'Procudtid', 'BonusCode', 'WashCodeType', 'receiptImageUrl'],
       searchDateRangeList: [
         {
           name: 'lastWeek',
@@ -186,6 +201,7 @@ export default {
         pagesize: 10,
         dataLength: 0,
       },
+      imageDialogUrl: '', //* 匯款收據的圖片視窗，空值就不顯示
     };
   },
   methods: {
@@ -205,6 +221,7 @@ export default {
             newItem.bank = item.Lst_MemberBankName;
             newItem.amount = item.Lst_MoneyIncome;
             newItem.receipt = item.Lst_Receipt;
+            newItem.receiptImageUrl = item.Lst_ImageUrl;
             newItem.detail = item.Lst_StatusName;
 
             // if (item.Lst_Status == 1) {
@@ -428,7 +445,12 @@ export default {
             this.$router.replace({ name: 'TransactionRecordHome' });
           }
         }
+        //* 關掉 loading
+        this.$store.commit('setIsLoading', false);
       },
+    },
+    lang() {
+      this.getRecord();
     },
   },
 };
