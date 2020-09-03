@@ -138,8 +138,8 @@ export default {
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
             newItem.game = item.Lst_ProductName;
-            newItem.rollinPoint = item.Lst_PointIncome;
-            newItem.rolloutPoint = item.Lst_PointPayment;
+            newItem.rollinPoint = item.Lst_PointPayment;
+            newItem.rolloutPoint = item.Lst_PointIncome;
             newItem.accountingDate = item.Lst_TransTime.split(' ')[0];
             newItem.transactionTime = item.Lst_TransTime.split(' ')[1];
             newItem.beforeWallet = item.Lst_Org_Point;
@@ -173,11 +173,9 @@ export default {
         });
         break;
       }
-      // case 'adjustment': {
-      //   this.list = [];
-      //   this.title = 'Adjustment Details';
-      //   break;
-      // }
+      default: {
+        this.$router.replace({ name: 'TransactionRecordHome' });
+      }
     }
   },
   watch: {
