@@ -7,6 +7,7 @@ const DEFAULT_LANG = 'th-th';
 //* 需要 Authorization bearer token 的 API
 const AUTH_API_LIST = [
   'Member/LoginIn',
+  'Member/LogOut',
   'Member/SimpleRegister',
   'Member/MemInfo',
   'Member/MChangePassword',

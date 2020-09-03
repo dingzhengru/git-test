@@ -16,6 +16,10 @@ import { getTokenAndPublicKey } from '@/api/user';
 //* 重新發送所需的變數
 // let retryRequestData = null;
 
+//* 針對 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
+//* 會因為多個 api 同時觸發 201 ，導致 alert 很多次，因此設置此變數
+// let response201Count = 0;
+
 axios.interceptors.request.use(
   config => {
     //* 為了重新發送而暫存的資料
@@ -65,6 +69,7 @@ axios.interceptors.response.use(
       console.log('[Logout]', '帳號已登出');
       // alert('帳號已登出');
       store.dispatch('user/logout');
+      return;
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
       //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
       console.log('[TokenError]', res);
