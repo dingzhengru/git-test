@@ -62,7 +62,8 @@ axios.interceptors.response.use(
     if (res.data.Code == 201) {
       //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
       //* 後端會在觸發就執行登出了，且不允許前端呼叫登出方法，所以只能把 logout 做的事放這了
-      console.log('[Logout]');
+      console.log('[Logout]', '帳號已登出');
+      // alert('帳號已登出');
       store.dispatch('user/logout');
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
       //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)

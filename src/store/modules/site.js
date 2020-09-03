@@ -1,3 +1,5 @@
+import { getSiteInfo } from '@/api/site';
+
 const state = {
   id: null,
   cssClass: null,
@@ -36,7 +38,24 @@ const mutations = {
   },
 };
 
-const actions = {};
+const actions = {
+  async getInfo({ commit }) {
+    const requestData = { DeviceType: 1 };
+    const result = await getSiteInfo(requestData);
+
+    if (result.Code == 200) {
+      commit('setID', result.RetObj.LS_SiteID);
+      commit('setCssClass', result.RetObj.LS_CSS_Class);
+      commit('setCssVersion', result.RetObj.LS_CSS_Version);
+      commit('setCssType', result.RetObj.LS_CSS_Type);
+      commit('setCssFestival', result.RetObj.LS_CSS_Festival);
+      commit('setMainDomain', result.RetObj.LS_MainDomain);
+      commit('setRemoteCSSUrl', result.RetObj.RemoteCSSUrls);
+      commit('setIsNewPromotion', result.RetObj.bNewPromotion);
+    }
+    return result;
+  },
+};
 
 export default {
   namespaced: true,

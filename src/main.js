@@ -9,21 +9,24 @@ Vue.config.productionTip = false;
 import './routerPermission'; //* 路徑權限
 import '@/api/interceptors.js'; //* 攔截器
 
-import '../node_modules/normalize.css/normalize.css'; // ^3.0.2
+import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
 import '@/styles/Y/common/layout.css';
-import '@/styles/Y/common/layout-zh-cn.scss';
-import '@/styles/Y/common/layout-th-th.scss';
-import '@/styles/Y/common/layout-en-us.scss';
+// import '@/styles/Y/common/layout-zh-cn.scss';
+// import '@/styles/Y/common/layout-th-th.scss';
+// import '@/styles/Y/common/layout-en-us.scss';
 
+//* 此 Library 只能註冊全域
 import VueScrollTo from 'vue-scrollto';
 
 Vue.use(VueScrollTo);
 
+//* Cookie
 import { getLang, getIsLoggedIn, getToken, getPublicKey } from '@/utils/cookie';
-import { i18n, loadLanguageAsync } from '@/i18n-lazy'; // 載入語言
+
+//* 載入語言
+import { i18n, loadLanguageAsync } from '@/i18n-lazy';
 
 //* API
-import { getSiteInfo } from '@/api/site';
 import { getTokenAndPublicKey, keepUserOnline } from '@/api/user';
 
 //* 取得版型(網域判斷或後端給) => 存進 store.state.site
@@ -33,7 +36,6 @@ import { getTokenAndPublicKey, keepUserOnline } from '@/api/user';
 // store.commit('site/setCssType', cssType);
 
 //* 取得語系 => 存進 store.state.lang
-// const browserLang = navigator.language || navigator.userLanguage;
 const lang = getLang();
 if (lang) {
   store.commit('setLang', lang);
@@ -58,28 +60,15 @@ if (getToken() && getPublicKey()) {
   });
 }
 
-//* 取得 site info => 存進 store.state.site
-const requestData = { DeviceType: 1 };
-getSiteInfo(requestData)
+//* 取得站台資訊
+store
+  .dispatch('site/getInfo')
   .then(result => {
-    const siteInfo = result.RetObj;
-
-    console.log('[Site]', siteInfo);
-
     //* Page Title
-    document.title = siteInfo.LS_SiteTitle;
+    document.title = result.RetObj.LS_SiteTitle;
 
-    store.commit('site/setID', siteInfo.LS_SiteID);
-    store.commit('site/setCssClass', siteInfo.LS_CSS_Class);
-    store.commit('site/setCssVersion', siteInfo.LS_CSS_Version);
-    store.commit('site/setCssType', siteInfo.LS_CSS_Type);
-    store.commit('site/setCssFestival', siteInfo.LS_CSS_Festival);
-    store.commit('site/setMainDomain', siteInfo.LS_MainDomain);
-    store.commit('site/setRemoteCSSUrl', siteInfo.RemoteCSSUrls);
-    store.commit('site/setIsNewPromotion', siteInfo.bNewPromotion);
-
+    //* 當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
     if (!store.getters.lang) {
-      //* 當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
       store.commit('setLang', getLang());
 
       loadLanguageAsync(getLang()).then(result => {
@@ -97,18 +86,15 @@ getSiteInfo(requestData)
       console.log('[KeepUserOnline]', result.RetObj);
     }, 50000);
   })
-  .catch(() => {
+  .catch(error => {
     if (process.env.NODE_ENV === 'production') {
-      // location.reload();
-      // store.commit('site/setID', 'C');
       alert('站台資訊取得失敗');
     } else {
-      const cssClass = 'Y';
-      const cssType = '01';
-      store.commit('site/setCssClass', cssClass);
-      store.commit('site/setCssType', cssType);
       store.commit('site/setID', 'C');
+      store.commit('site/setCssClass', 'Y');
+      store.commit('site/setCssType', '01');
     }
+    throw error;
   });
 
 new Vue({
