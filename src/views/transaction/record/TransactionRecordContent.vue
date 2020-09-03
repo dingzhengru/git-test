@@ -246,14 +246,15 @@ export default {
             newItem.date = item.Lst_CreateTime.split('T')[0];
             newItem.bank = item.Lst_MemberBankName;
             newItem.amount = item.Lst_MoneyPayment;
+            newItem.detail = item.Lst_StatusName;
 
-            if (item.Lst_Status == 1) {
-              newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
-            } else if (item.Lst_Status == 2) {
-              newItem.detail = this.$t('transaction.recordContent.statusText.success');
-            } else if (item.Lst_Status == 3) {
-              newItem.detail = this.$t('transaction.recordContent.statusText.failure');
-            }
+            // if (item.Lst_Status == 1) {
+            //   newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
+            // } else if (item.Lst_Status == 2) {
+            //   newItem.detail = this.$t('transaction.recordContent.statusText.success');
+            // } else if (item.Lst_Status == 3) {
+            //   newItem.detail = this.$t('transaction.recordContent.statusText.failure');
+            // }
             return newItem;
           });
           break;
@@ -307,8 +308,9 @@ export default {
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
+            newItem.isSuccess = item.Lst_GiveoutStatus == 1;
             newItem.prize = item.Lst_PrizeName;
-            newItem.status = item.Lst_GiveoutStatus;
+            newItem.status = item.Lst_GiveoutName;
             newItem.type = item.Lst_PrizeType;
             newItem.datetime = item.Lst_CTime.replace('T', ' ').split('.')[0];
             return newItem;

@@ -101,6 +101,7 @@ getSiteInfo(requestData)
     if (process.env.NODE_ENV === 'production') {
       // location.reload();
       // store.commit('site/setID', 'C');
+      alert('站台資訊取得失敗');
     } else {
       const cssClass = 'Y';
       const cssType = '01';
