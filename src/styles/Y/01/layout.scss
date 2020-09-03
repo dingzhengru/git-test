@@ -36,12 +36,12 @@ body {
 body {
   background: #000 url(~@/assets/#{$type}/imgs/layout/bg.jpg) no-repeat center top;
 }
-.ui-btn01 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn01.jpg);
-}
-.ui-btn02 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn02.jpg);
-}
+// .ui-btn01 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/btn01.jpg);
+// }
+// .ui-btn02 {
+//   background-image: url(~@/assets/#{$type}/imgs/ui/btn02.jpg);
+// }
 .ui-ddl {
   background: #2e2e2e url(~@/assets/#{$type}/imgs/ui/ddl_arrow.jpg) no-repeat right top;
 }
