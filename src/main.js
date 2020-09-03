@@ -1,35 +1,26 @@
 import Vue from 'vue';
 import App from './App.vue';
-import './registerServiceWorker';
 import router from './router';
 import store from './store';
+import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 
-import './routerPermission'; //* 路徑權限
-import '@/api/interceptors.js'; //* 攔截器
-
+//* CSS 檔案
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
-import '@/styles/Y/common/layout.css';
-// import '@/styles/Y/common/layout-zh-cn.scss';
-// import '@/styles/Y/common/layout-th-th.scss';
-// import '@/styles/Y/common/layout-en-us.scss';
+import './styles/Y/common/layout.css';
 
-//* 此 Library 只能註冊全域
-import VueScrollTo from 'vue-scrollto';
+import './routerPermission'; //* 路徑權限
+import './api/interceptors.js'; //* 攔截器
 
+import { getLang, getIsLoggedIn, getToken, getPublicKey } from '@/utils/cookie'; //* Cookie
+import { i18n, loadLanguageAsync } from '@/i18n-lazy'; //* 語言載入
+import { getTokenAndPublicKey, keepUserOnline } from '@/api/user'; //* API
+
+import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
 
-//* Cookie
-import { getLang, getIsLoggedIn, getToken, getPublicKey } from '@/utils/cookie';
-
-//* 載入語言
-import { i18n, loadLanguageAsync } from '@/i18n-lazy';
-
-//* API
-import { getTokenAndPublicKey, keepUserOnline } from '@/api/user';
-
-//* 取得版型(網域判斷或後端給) => 存進 store.state.site
+//* 手動設置版型，測試時使用
 // const cssClass = 'Y';
 // const cssType = '01';
 // store.commit('site/setCssClass', cssClass);
@@ -77,7 +68,9 @@ store
     }
 
     //* 心跳，剛進來也要執行一次
-    keepUserOnline();
+    keepUserOnline().then(result => {
+      console.log('[KeepUserOnline]', result.RetObj);
+    });
     setInterval(async () => {
       if (!document.hasFocus()) {
         return;
