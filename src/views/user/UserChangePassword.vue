@@ -108,7 +108,7 @@ export default {
       } else if (this.passwordCheck == '') {
         return false;
       } else if (this.passwordCheck != this.passwordNew) {
-        this.errorPasswordCheck = '確認密碼錯誤';
+        this.errorPasswordCheck = this.$t('user.changePassword.error.passwordCheck');
         return false;
       }
     },
