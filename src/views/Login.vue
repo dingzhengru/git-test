@@ -4,7 +4,7 @@
       <span class="theme-txt-errorMsg">{{ error }}</span>
     </div>
     <h1 class="login__title">{{ $t('login.title') }}</h1>
-    <form class="login__form" id="LoginForm" @submit.prevent="login">
+    <form class="login__form" id="LoginForm" @submit.prevent="submitLogin">
       <div class="login__form__field login__form__field--account">
         <input
           class="login__form__field__input"
@@ -146,7 +146,7 @@ export default {
     };
   },
   methods: {
-    async login() {
+    async submitLogin() {
       if (!this.validateForm()) {
         return;
       }
@@ -165,7 +165,7 @@ export default {
         //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
         //* 615: JsonError，推測是公鑰與私鑰沒對上，已於攔截器上換新的公鑰
         //* 重新送出登入請求
-        this.login();
+        this.submitLogin();
       }
       this.$store.commit('setIsLoading', false);
     },
