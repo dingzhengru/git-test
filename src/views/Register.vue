@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <form class="register__form" id="register-form" @submit.prevent="register">
+    <form class="register__form" id="register-form" @submit.prevent="submitRegister">
       <div class="register__form__field" v-for="field in fieldList" :key="field.name">
         <template v-if="field.isShow">
           <div class="register__form__field__input-div" :class="[field.class]">
@@ -417,7 +417,7 @@ export default {
         field.value = '';
       }
     },
-    async register() {
+    async submitRegister() {
       const requestData = {};
 
       if (!this.validateForm()) {
