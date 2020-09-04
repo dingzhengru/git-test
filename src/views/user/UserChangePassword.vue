@@ -162,17 +162,32 @@ export default {
 /*
  * 左邊標籤(文字)
  * 位置: (按鈕大小 - 標籤大小) / 2 => (320-80) / 2
+ * 但不同語言的標籤大小會不同
 */
-.user-change-password__input-div .vue-js-switch .v-switch-label.v-left {
+.zh-cn .user-change-password__input-div .vue-js-switch .v-switch-label.v-left {
   left: 120px !important;
+}
+
+.en-us .user-change-password__input-div .vue-js-switch .v-switch-label.v-left {
+  left: 82px !important;
+}
+
+.th-th .user-change-password__input-div .vue-js-switch .v-switch-label.v-left {
+  left: 100px !important;
 }
 
 /*
  * 右邊標籤(文字)
  * 位置: 同上
 */
-.user-change-password__input-div .vue-js-switch .v-switch-label.v-right {
+.zh-cn .user-change-password__input-div .vue-js-switch .v-switch-label.v-right {
   right: 120px !important;
+}
+.en-us .user-change-password__input-div .vue-js-switch .v-switch-label.v-right {
+  right: 76px !important;
+}
+.th-th .user-change-password__input-div .vue-js-switch .v-switch-label.v-right {
+  right: 95px !important;
 }
 </style>
 
