@@ -22,7 +22,7 @@ Vue.use(VueScrollTo);
 
 //* 手動設置版型，測試時使用
 // const cssClass = 'Y';
-// const cssType = '01';
+// const cssType = '02';
 // store.commit('site/setCssClass', cssClass);
 // store.commit('site/setCssType', cssType);
 

@@ -122,7 +122,7 @@ export default {
 
       if (result.Code == 200) {
         console.log('[SendMail]', result);
-        this.resetMail();
+        this.content = '';
       }
       this.$store.commit('setIsLoading', false);
     },

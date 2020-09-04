@@ -253,6 +253,11 @@ export default {
 
       //* Add_Exchange_Rate，this.currency == 'THB' 是 1，否則是 this.hid_MMKtoTHBrate
       //* Add_Pay_Type: 存款單的付款型態(1客服 2存簿)，BankAccoun.length > 0 是存簿，否則為客服
+
+      if (this.currencyList.length == 0) {
+        this.currency = 'THB';
+      }
+
       let requestData = {
         rsaData: {
           Add_Company_ServiceKey: this.bankDeposit.Value.split('||')[2] || '',

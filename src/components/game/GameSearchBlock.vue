@@ -76,9 +76,11 @@ export default {
 .game-lobby__inquire__search-icon {
   top: 19px;
   /* left: 280px; */
+  /* top: 25px; */
   right: 0;
   position: absolute;
   width: 53px;
+  /* height: 59px; */
   height: 71px;
   border: 0;
 }

@@ -447,8 +447,6 @@ export default {
             this.$router.replace({ name: 'TransactionRecordHome' });
           }
         }
-        //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
       },
     },
     lang() {

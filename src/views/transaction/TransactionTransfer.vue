@@ -1,5 +1,5 @@
 <template>
-  <form class="transfer" @submit.prevent="transferPoint">
+  <form class="transfer" @submit.prevent="submitTransferPoint">
     <div class="transfer__box theme-content-box">
       <div class="transfer__wallet">
         <span>{{ $t('transaction.transfer.field.from') }} </span>
@@ -158,7 +158,7 @@ export default {
       this.updateGamePoint(result);
       this.$store.commit('setIsLoading', false);
     },
-    async transferPoint() {
+    async submitTransferPoint() {
       if (!this.validateForm()) {
         return;
       }

@@ -43,6 +43,8 @@ const actions = {
     const requestData = { DeviceType: 1 };
     const result = await getSiteInfo(requestData);
 
+    console.log('[SiteInfo]', result);
+
     if (result.Code == 200) {
       commit('setID', result.RetObj.LS_SiteID);
       commit('setCssClass', result.RetObj.LS_CSS_Class);
@@ -53,6 +55,11 @@ const actions = {
       commit('setRemoteCSSUrl', result.RetObj.RemoteCSSUrls);
       commit('setIsNewPromotion', result.RetObj.bNewPromotion);
     }
+
+    //* 手動設置(測試用)
+    // commit('setCssClass', 'Y');
+    // commit('setCssType', '02');
+
     return result;
   },
 };
