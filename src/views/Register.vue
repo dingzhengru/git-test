@@ -45,7 +45,7 @@
             </select>
           </div>
           <div class="register__form__field__hint">{{ $t(`register.${field.name}.hint`) }}</div>
-          <div class="theme-errorMsg" v-if="field.error && isShowFieldError">
+          <div class="theme-errorMsg" v-if="field.error">
             <span class="theme-txt-errorMsg">{{ field.error }}</span>
           </div>
         </template>
@@ -461,7 +461,7 @@ export default {
           passwordCheckField = field;
 
           if (passwordField.value != passwordCheckField.value) {
-            passwordCheckField.error = '密碼確認錯誤';
+            passwordCheckField.error = this.$t('register.Add_PasswordCheck.error.invalid');
             invalidFieldList.push(passwordCheckField);
           }
         } else if (field.name == 'Add_Withdrawals_Password') {
@@ -470,7 +470,7 @@ export default {
           withdrawalsPasswordCheckField = field;
 
           if (withdrawalsPasswordField.value != withdrawalsPasswordCheckField.value) {
-            withdrawalsPasswordCheckField.error = '密碼確認錯誤';
+            withdrawalsPasswordCheckField.error = this.$t('register.Add_Withdrawals_CheckPassword.error.invalid');
             invalidFieldList.push(withdrawalsPasswordCheckField);
           }
         }

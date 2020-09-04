@@ -267,7 +267,7 @@ export default {
           Add_MemberBankName: this.bankTransfer,
           Add_SDM_Key: this.method,
           Add_Request_Currency: this.currency,
-          Add_Exchange_Rate: this.currency == 'THB' ? 1 : this.hid_MMKtoTHBrate,
+          Add_Exchange_Rate: this.currency == 'THB' || this.currency == '' ? 1 : this.hid_MMKtoTHBrate,
           Add_Pay_Type: this.bankDepositList.length > 0 ? 2 : 1,
         },
         noRsaData: {

@@ -241,7 +241,7 @@
       "placeholder": "确认取款密码",
       "hint": "",
       "error": {
-        "invalid": "",
+        "invalid": "确认密码错误",
         "required": "请输入取款密​​码",
         "length": "密码长度最少为6位字元",
         "regex": ""
