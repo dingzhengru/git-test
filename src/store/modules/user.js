@@ -81,9 +81,8 @@ const actions = {
       commit('setUserInfo', responseDataRegister);
 
       router.replace({ name: 'Home' });
-      return '';
     } else {
-      return responseDataRegister.ErrMsg;
+      return responseDataRegister;
     }
   },
   async login({ commit }, user) {

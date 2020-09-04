@@ -81,8 +81,8 @@ axios.interceptors.response.use(
       store.commit('user/setToken', result.RetObj.token);
       store.commit('user/setPublicKey', result.RetObj.publickey);
 
-      //* 只於登入請求不重整
-      if (res.config.url.includes('LoginIn')) {
+      //* 只於登入 & 註冊請求不重整
+      if (res.config.url.includes('LoginIn') || res.config.url.includes('SimpleRegister')) {
         return res;
       }
       window.location.reload();
@@ -106,8 +106,8 @@ axios.interceptors.response.use(
       //* 所有請求都重新發送
       // return axios.post(res.config.url, data);
 
-      //* 只於登入請求不重整
-      if (res.config.url.includes('LoginIn')) {
+      //* 只於登入 & 註冊請求不重整
+      if (res.config.url.includes('LoginIn') || res.config.url.includes('SimpleRegister')) {
         return res;
       }
       window.location.reload();

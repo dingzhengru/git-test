@@ -438,7 +438,17 @@ export default {
 
       console.log('[Register]', requestData);
       this.$store.commit('setIsLoading', true);
-      this.error = await this.$store.dispatch('user/register', requestData);
+      const result = await this.$store.dispatch('user/register', requestData);
+
+      if (result.Code == 500) {
+        this.error = result.ErrMsg;
+      } else if (result.Code == 502 || result.Code == 615) {
+        //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
+        //* 615: JsonError，推測是公鑰與私鑰沒對上，已於攔截器上換新的公鑰
+        //* 重新送出請求
+        this.submitRegister();
+      }
+
       this.$store.commit('setIsLoading', false);
     },
     validateForm() {
