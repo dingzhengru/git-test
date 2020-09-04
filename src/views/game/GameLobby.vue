@@ -36,7 +36,7 @@
       :currentPointProduct="currentPointProduct"
       :isTransferAll.sync="isTransferAll"
       @submit-transfer="transferPoint"
-      @close="isShowTransferDialog = false"
+      @close="closeTransferDialog"
       v-if="isShowTransferDialog"
     />
 
@@ -368,6 +368,12 @@ export default {
       this.pagination.page = 1;
       this.search.text = '';
       this.getGameList();
+    },
+    closeTransferDialog() {
+      if (this.currentProduct.GetGameRedirectUrl) {
+        this.$router.go(-1);
+      }
+      this.isShowTransferDialog = false;
     },
     submitSearch() {
       this.pagination.page = 1;

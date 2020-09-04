@@ -33,6 +33,7 @@ const AUTH_API_LIST = [
   'PointRecord/MBetHistory',
   'PointRecord/MBetHistory_Day',
   'PointRecord/MBetHistory_Week',
+  'Game/MCheckIsOpen',
   'Game/MGameRedirectUrl',
   'Game/MGetJackpotTotal',
   'Game/MLobbyGameRedirect',

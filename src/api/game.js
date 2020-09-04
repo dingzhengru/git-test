@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
+//* 站內遊戲館檢查帳號狀態
+export async function checkGameIsOpen(data) {
+  const result = await axios.post(API_URL + '/Game/MCheckIsOpen', data);
+  return result.data;
+}
+
 //* 導向遊戲大廰(站外連結)
 export async function getGameRedirectUrl(data) {
   const result = await axios.post(API_URL + '/Game/MGameRedirectUrl', data);

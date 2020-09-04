@@ -250,7 +250,7 @@ export default {
       }
 
       //* BankAccoun.length == 0 的時候，會讓使用者自己輸入銀行帳號(this.bankDepositAccount)
-      
+
       //* Add_Exchange_Rate，this.currency == 'THB' 是 1，否則是 this.hid_MMKtoTHBrate
       //* Add_Pay_Type: 存款單的付款型態(1客服 2存簿)，BankAccoun.length > 0 是存簿，否則為客服
       let requestData = {
@@ -284,6 +284,10 @@ export default {
 
       this.$store.commit('setIsLoading', true);
       const result = await deposit(requestData);
+
+      // if (result.Code == 200) {
+      //   this.$store.commit('user/setUserInfo', result);
+      // }
 
       console.log('[Deposit]', result);
 

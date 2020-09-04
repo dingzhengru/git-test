@@ -18,7 +18,7 @@ import { getTokenAndPublicKey } from '@/api/user';
 
 //* 針對 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
 //* 會因為多個 api 同時觸發 201 ，導致 alert 很多次，因此設置此變數
-// let response201Count = 0;
+let isResponded201 = false;
 
 axios.interceptors.request.use(
   config => {
@@ -65,10 +65,14 @@ axios.interceptors.response.use(
   async res => {
     if (res.data.Code == 201) {
       //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
-      //* 後端會在觸發就執行登出了，且不允許前端呼叫登出方法，所以只能把 logout 做的事放這了
-      console.log('[Logout]', '帳號已登出');
-      // alert('帳號已登出');
-      store.dispatch('user/logout');
+
+      //* isResponded201 是避免多次執行 alert 的變數
+      if (!isResponded201) {
+        isResponded201 = true;
+        console.log('[Logout]', '帳號已登出', res.data);
+        alert(res.data.ErrMsg);
+        store.dispatch('user/logout');
+      }
       return;
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
       //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)

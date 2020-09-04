@@ -83,6 +83,9 @@ export default {
   },
   methods: {
     async submitChangePassword() {
+      if (!this.validateForm()) {
+        return;
+      }
       console.log('[SubmitChangePassword]');
 
       const requestData = {
