@@ -379,26 +379,6 @@ export default {
       error: '',
     };
   },
-  mounted() {
-    this.changeCaptcha();
-
-    getRegisterFieldList().then(result => {
-      //* 關掉 loading
-      this.$store.commit('setIsLoading', false);
-
-      this.bankList = result.RetObj.Add_BankList;
-
-      console.log('[Register]', result.RetObj);
-      for (const registerField of result.RetObj.Register) {
-        const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
-
-        if (field) {
-          field.isShow = registerField.Lst_Phase == 1;
-          field.isRequired = registerField.Lst_isRequired;
-        }
-      }
-    });
-  },
   methods: {
     changeCaptcha() {
       const requestDataCaptcha = { pageCode: 'MemberRegister' };
@@ -535,6 +515,25 @@ export default {
         if (!this.token || !this.publicKey) {
           await this.$store.dispatch('user/getTokenAndPublicKey');
         }
+
+        getRegisterFieldList().then(result => {
+          //* 關掉 loading
+          this.$store.commit('setIsLoading', false);
+
+          this.bankList = result.RetObj.Add_BankList;
+
+          console.log('[Register]', result.RetObj);
+          for (const registerField of result.RetObj.Register) {
+            const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
+
+            if (field) {
+              field.isShow = registerField.Lst_Phase == 1;
+              field.isRequired = registerField.Lst_isRequired;
+            }
+          }
+        });
+
+        this.changeCaptcha();
       },
     },
   },

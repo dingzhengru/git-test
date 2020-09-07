@@ -87,9 +87,8 @@ const actions = {
       commit('setUserInfo', responseDataRegister);
 
       router.replace({ name: 'Home' });
-    } else {
-      return responseDataRegister;
     }
+    return responseDataRegister;
   },
   async login({ commit }, user) {
     const responseDataLogin = await login(user);
