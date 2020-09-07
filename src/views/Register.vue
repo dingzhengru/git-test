@@ -517,12 +517,10 @@ export default {
         }
 
         getRegisterFieldList().then(result => {
-          //* 關掉 loading
-          this.$store.commit('setIsLoading', false);
+          console.log('[Register]', result.RetObj);
 
           this.bankList = result.RetObj.Add_BankList;
 
-          console.log('[Register]', result.RetObj);
           for (const registerField of result.RetObj.Register) {
             const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
 
@@ -531,6 +529,9 @@ export default {
               field.isRequired = registerField.Lst_isRequired;
             }
           }
+
+          //* 關掉 loading
+          this.$store.commit('setIsLoading', false);
         });
 
         this.changeCaptcha();

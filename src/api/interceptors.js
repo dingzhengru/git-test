@@ -53,7 +53,7 @@ axios.interceptors.request.use(
       config.data = Object.assign({ rsaMsg }, noRsaData);
     }
 
-    //* 若因公鑰錯誤，而導致加密錯誤({ rsaMsg: false })的錯誤偶而會發生，且無法解決的話，可以考慮在這攔截，重新取得公鑰，再重新發送
+    //* 若因公鑰錯誤，而導致加密錯誤({ rsaMsg: false })的錯誤偶而會發生，且無法解決的話，可以考慮在這攔截，重新取得公鑰，再發送請求
 
     return config;
   },

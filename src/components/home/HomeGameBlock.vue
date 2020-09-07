@@ -72,7 +72,6 @@ export default {
   display: block;
   width: 213px;
   padding-top: 111px;
-  color: #fff;
   font-size: 2.461em;
   text-align: center;
   line-height: 54px;
