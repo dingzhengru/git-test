@@ -397,7 +397,10 @@
     },
     "withdrawal": {
       "title": "交易中心",
-      "hightLightMessage": "取款金额，请填整百数，最低取款金额 500 铢",
+      "hightLightMessage": {
+        "content": "取款金额，请填整百数，最低取款金额",
+        "currency": "铢"
+      },
       "field": {
         "bankSelect": "Select Bank",
         "Lst_Account": "帐号",

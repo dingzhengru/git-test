@@ -10,7 +10,7 @@
         v-for="product in productList"
         :key="product.Lst_Proxy_Product_Key"
       >
-        <a class="game-lobby__supply__ul__li__link" href="javascipt:;" @click="changeProduct(product)">
+        <a class="game-lobby__supply__ul__li__link" href="javascript:;" @click="changeProduct(product)">
           {{ product.Lst_Name }}
         </a>
       </li>

@@ -397,7 +397,10 @@
     },
     "withdrawal": {
       "title": "Trade Center",
-      "hightLightMessage": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount 500 THB",
+      "hightLightMessage": {
+        "content": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount",
+        "currency": "THB"
+      },
       "field": {
         "bankSelect": "Select Bank",
         "Lst_Account": "Account",

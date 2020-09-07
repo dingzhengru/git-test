@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-if="!isCurrentProductEnable">
+  <div v-if="Object.keys(currentProduct).length > 0">
+    <div v-if="currentProduct.Lst_Site_Product_Status != 0">
       <h1 class="text-center">{{ $t('alert.game.maintenance') }}</h1>
     </div>
     <table class="game-lobby__table" v-else>
@@ -51,9 +51,9 @@ export default {
       type: Array,
       default: () => [],
     },
-    isCurrentProductEnable: {
-      type: Boolean,
-      default: () => true,
+    currentProduct: {
+      type: Object,
+      default: () => {},
     },
   },
   data() {

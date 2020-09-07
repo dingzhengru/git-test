@@ -162,7 +162,7 @@ const routes = [
         component: () => import('@/views/notification/NotificationInbox'),
       },
       {
-        path: 'inbox/key/:key',
+        path: 'inbox/:key',
         name: 'NotificationInboxDetail',
         component: () => import('@/views/notification/NotificationInboxDetail'),
       },

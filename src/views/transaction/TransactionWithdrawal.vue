@@ -67,7 +67,9 @@
       </li>
     </ul>
     <div class="withdrawal__light-message">
-      {{ $t('transaction.withdrawal.hightLightMessage') }}
+      {{ $t('transaction.withdrawal.hightLightMessage.content') }}
+      {{ amountLimit.min }}
+      {{ $t('transaction.withdrawal.hightLightMessage.currency') }}
     </div>
     <div class="withdrawal__button-div">
       <button

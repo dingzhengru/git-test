@@ -15,12 +15,7 @@
       v-if="currentProduct.Lst_Site_Product_Status == 0"
     />
 
-    <GameListTable
-      :gameList="gameList"
-      :isCurrentProductEnable="currentProduct.Lst_Site_Product_Status == 0"
-      @open-game="openGame"
-      @like-game="likeGame"
-    />
+    <GameListTable :gameList="gameList" :currentProduct="currentProduct" @open-game="openGame" @like-game="likeGame" />
 
     <AppPagination
       :length="pagination.dataLength"
@@ -236,21 +231,22 @@ export default {
     },
     async openGame(game, freePlay) {
       //* 因應真人遊戲兩階段開遊戲
+      this.$store.commit('setIsLoading', true);
       this.game = game;
       if (this.$route.params.type == 1) {
         this.isShowLiveGameEnterDialog = true;
       } else if (this.$route.params.type == 2) {
-        this.$store.commit('setIsLoading', true);
         const requestData = { Tag: this.productTag, Gameid: game.Lst_GameID, Freeplay: freePlay };
         const result = await getGameUrl(requestData);
         console.log('[GameLobby OpenGame]', result);
         if (result.Code == 200) {
           window.open(result.RetObj.RedirectUrl);
         }
-        this.$store.commit('setIsLoading', false);
       }
+      this.$store.commit('setIsLoading', false);
     },
     async openLiveGame(templatesId, order) {
+      this.$store.commit('setIsLoading', true);
       const requestData = {
         Tag: this.productTag,
         Gameid: this.game.Lst_GameID,
@@ -264,15 +260,16 @@ export default {
       if (result.Code == 200) {
         window.open(result.RetObj.RedirectUrl);
       }
+      this.$store.commit('setIsLoading', false);
     },
     async openGameRedirectUrl() {
       //* 打開站外連結
+      this.$store.commit('setIsLoading', true);
       const requestData = {
         Pid: this.currentProduct.Lst_Product_id,
         gameclassify: this.currentProduct.Lst_Game_Classify,
         proxypid: this.currentProduct.Lst_Proxy_Product_Key,
       };
-      this.$store.commit('setIsLoading', true);
       const result = await getGameRedirectUrl(requestData);
       console.log('[OpenGameRedirectUrl]', result);
       if (result.Code == 200) {
@@ -300,6 +297,7 @@ export default {
       console.log('[LikeGame]', result);
     },
     async transferPoint(amount) {
+      this.$store.commit('setIsLoading', true);
       console.log('[TransferPoint]', amount);
 
       const requestData = {
@@ -307,9 +305,8 @@ export default {
         Add_Destination: this.$route.params.id,
         Add_TransferPoint: amount,
       };
-      this.$store.commit('setIsLoading', true);
+
       const result = await transferPoint(requestData);
-      this.$store.commit('setIsLoading', false);
 
       console.log('[TransferPoint]', result);
 
@@ -325,6 +322,7 @@ export default {
           this.$router.go(-1);
         }
       }
+      this.$store.commit('setIsLoading', false);
     },
     async changeProduct(product) {
       if (product.Lst_Proxy_Product_Key == this.currentProduct.Lst_Proxy_Product_Key) {

@@ -86,6 +86,7 @@ axios.interceptors.response.use(
       if (res.config.url.includes('LoginIn') || res.config.url.includes('SimpleRegister')) {
         return res;
       }
+
       window.location.reload();
     } else if (res.data.Code == 599 && process.env.NODE_ENV === 'production') {
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
