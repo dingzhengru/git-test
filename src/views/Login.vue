@@ -149,8 +149,8 @@ export default {
       if (!this.validateForm()) {
         return;
       }
-      console.log('[login]', this.user);
       this.$store.commit('setIsLoading', true);
+      console.log('[login]', this.user);
       const result = await this.$store.dispatch('user/login', this.user);
 
       if (result.Code == 201) {
@@ -202,15 +202,15 @@ export default {
         //* 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/login.scss`);
 
-        this.changeCaptcha();
-
         //* 取得公鑰 & token
         if (!this.token || !this.publicKey) {
           await this.$store.dispatch('user/getTokenAndPublicKey');
         }
 
+        this.changeCaptcha();
+
         //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
+        // this.$store.commit('setIsLoading', false);
       },
     },
   },

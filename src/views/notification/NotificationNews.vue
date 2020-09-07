@@ -48,12 +48,14 @@ export default {
   },
   methods: {
     async getNewsList() {
+      this.$store.commit('setIsLoading', true);
       const requestData = { Page: this.pagination.page };
       const result = await getNewsList(requestData);
       console.log('[News]', result);
 
       this.list = result.RetObj.Rows;
       this.pagination.dataLength = result.RetObj.Records;
+      this.$store.commit('setIsLoading', false);
     },
     changePage(page) {
       this.pagination.page = page;
@@ -77,7 +79,7 @@ export default {
         await this.getNewsList();
 
         //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
+        // this.$store.commit('setIsLoading', false);
       },
     },
   },

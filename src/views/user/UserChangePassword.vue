@@ -86,7 +86,7 @@ export default {
       if (!this.validateForm()) {
         return;
       }
-      console.log('[SubmitChangePassword]');
+      this.$store.commit('setIsLoading', true);
 
       const requestData = {
         Add_OldPassword: this.passwordOld,
@@ -97,8 +97,11 @@ export default {
       const result = await changePassword(requestData);
       console.log('[ChangePassword]', result);
 
-      // if (result.Code == 200) {
-      // }
+      if (result.Code == 200) {
+        window.alert(this.$t('alert.changePassword.success'));
+        this.resetForm();
+      }
+      this.$store.commit('setIsLoading', false);
     },
     validateForm() {
       if (this.passwordOld == '') {
@@ -111,6 +114,12 @@ export default {
         this.errorPasswordCheck = this.$t('user.changePassword.error.passwordCheck');
         return false;
       }
+      return true;
+    },
+    resetForm() {
+      this.passwordOld = '';
+      this.passwordNew = '';
+      this.passwordCheck = '';
     },
   },
   watch: {

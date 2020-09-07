@@ -202,7 +202,7 @@ export default {
           this.getLotteryList();
         }
 
-        this.$store.commit('setIsLoading', false);
+        // this.$store.commit('setIsLoading', false);
       },
     },
     lang() {

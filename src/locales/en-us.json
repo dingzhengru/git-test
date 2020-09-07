@@ -10,6 +10,9 @@
     "game": {
       "maintenance": "Game under maintenance, we apologize for the inconvenience brought to you !!"
     },
+    "changePassword": {
+      "success": "Profile changed successfully!"
+    },
     "transfer": {
       "success": "Transfer success!"
     }

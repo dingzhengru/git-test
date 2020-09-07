@@ -100,7 +100,7 @@ export default {
         import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
 
         //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
+        // this.$store.commit('setIsLoading', false);
       },
     },
     dateRange: {
@@ -110,8 +110,8 @@ export default {
         this.$store.commit('setIsLoading', true);
         if (this.dateRange.name == 'today') {
           const requestData = { Tag: this.dateRange.value };
-
           const result = await getBetHistoryDay(requestData);
+
           if (result.Code == 200) {
             this.totalObject = {
               BetCount: result.RetObj.BetCount,
