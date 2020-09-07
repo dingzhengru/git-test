@@ -53,6 +53,7 @@ export default {
 .game {
   padding-top: 88px;
   padding-bottom: 119px;
+  min-height: 65vh;
 }
 
 .game__jackpot {
