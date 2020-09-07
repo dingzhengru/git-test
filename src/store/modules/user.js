@@ -1,6 +1,6 @@
 import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
-import { register, login, logout, getUserInfo, getAllGamePoint } from '@/api/user';
+import { register, login, logout, getUserInfo, getTokenAndPublicKey, getAllGamePoint } from '@/api/user';
 
 const state = {
   isLoggedIn: false,
@@ -66,6 +66,12 @@ const mutations = {
 };
 
 const actions = {
+  async getTokenAndPublicKey({ commit }) {
+    const result = await getTokenAndPublicKey();
+    commit('setToken', result.RetObj.token);
+    commit('setPublicKey', result.RetObj.publickey);
+    return result;
+  },
   async getInfo({ commit }) {
     const responseDataUserInfo = await getUserInfo();
     commit('setUserInfo', responseDataUserInfo);

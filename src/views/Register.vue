@@ -90,7 +90,6 @@
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
 import { getRegisterFieldList } from '@/api/register';
-import { getTokenAndPublicKey } from '@/api/user';
 import dayjs from 'dayjs';
 import idMapper from '@/idMapper';
 
@@ -534,11 +533,7 @@ export default {
 
         //* 取得公鑰 & token
         if (!this.token || !this.publicKey) {
-          const result = await getTokenAndPublicKey();
-          console.log('[TokenAndPublicKey]', result);
-
-          this.$store.commit('user/setToken', result.RetObj.token);
-          this.$store.commit('user/setPublicKey', result.RetObj.publickey);
+          await this.$store.dispatch('user/getTokenAndPublicKey');
         }
       },
     },

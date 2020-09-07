@@ -8,7 +8,6 @@ import {
   NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST,
 } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
-import { getTokenAndPublicKey } from '@/api/user';
 
 //* 針對 502: TokenError，615: JsonError
 //* 看要選擇重整，還是重新發送請求(目前只有登入是重新發送)
@@ -54,6 +53,8 @@ axios.interceptors.request.use(
       config.data = Object.assign({ rsaMsg }, noRsaData);
     }
 
+    //* 若因公鑰錯誤，而導致加密錯誤({ rsaMsg: false })的錯誤偶而會發生，且無法解決的話，可以考慮在這攔截，重新取得公鑰，再重新發送
+
     return config;
   },
   error => {
@@ -77,9 +78,9 @@ axios.interceptors.response.use(
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
       //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
       console.log('[TokenError]', res);
-      const result = await getTokenAndPublicKey();
-      store.commit('user/setToken', result.RetObj.token);
-      store.commit('user/setPublicKey', result.RetObj.publickey);
+
+      //* 重新取得 Token 與 公鑰
+      await store.dispatch('user/getTokenAndPublicKey');
 
       //* 只於登入 & 註冊請求不重整
       if (res.config.url.includes('LoginIn') || res.config.url.includes('SimpleRegister')) {
@@ -95,16 +96,13 @@ axios.interceptors.response.use(
       }
     } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
       //* 615: JsonError，推測是公鑰與私鑰對不上，換一把新的公鑰
+      console.log('[JsonError]', res);
 
-      //* 會於取 Token 與 PublicKey 的時候蓋掉 requestData ，所以需另外存進一個變數
-      // const data = retryRequestData;
-
-      const result = await getTokenAndPublicKey();
-      store.commit('user/setToken', result.RetObj.token);
-      store.commit('user/setPublicKey', result.RetObj.publickey);
+      //* 重新取得 Token 與 公鑰
+      await store.dispatch('user/getTokenAndPublicKey');
 
       //* 所有請求都重新發送
-      // return axios.post(res.config.url, data);
+      // return axios.post(res.config.url, retryRequestData);
 
       //* 只於登入 & 註冊請求不重整
       if (res.config.url.includes('LoginIn') || res.config.url.includes('SimpleRegister')) {
