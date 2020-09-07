@@ -196,10 +196,7 @@ export default {
       console.log('[Withdrawal]', result);
       if (result.Code == 200) {
         this.$router.push({ name: 'TransactionRecordContent', params: { name: 'withdrawal' } });
-      } else if (result.Code == 500) {
-        window.alert(result.ErrMsg);
       }
-
       this.$store.commit('setIsLoading', false);
     },
     changeBank() {
