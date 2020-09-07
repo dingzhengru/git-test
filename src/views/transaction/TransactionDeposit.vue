@@ -285,16 +285,14 @@ export default {
 
       this.$store.commit('setIsLoading', true);
       const result = await deposit(requestData);
-
-      // if (result.Code == 200) {
-      //   this.$store.commit('user/setUserInfo', result);
-      // }
-
       console.log('[Deposit]', result);
 
-      // if(result.Code == 200) {
+      if (result.Code == 200) {
+        this.$router.push({ name: 'TransactionRecordContent', params: { name: 'deposit' } });
+      } else if (result.Code == 500) {
+        window.alert(result.ErrMsg);
+      }
 
-      // }
       this.$store.commit('setIsLoading', false);
     },
     inputAmount() {

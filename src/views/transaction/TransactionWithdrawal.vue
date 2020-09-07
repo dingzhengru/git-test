@@ -191,7 +191,13 @@ export default {
       console.log('WithdrawalRequestData', requestData);
 
       const result = await Withdrawal(requestData);
-      console.log(result);
+      console.log('[Withdrawal]', result);
+      if (result.Code == 200) {
+        this.$router.push({ name: 'TransactionRecordContent', params: { name: 'withdrawal' } });
+      } else if (result.Code == 500) {
+        window.alert(result.ErrMsg);
+      }
+
       this.$store.commit('setIsLoading', false);
     },
     changeBank() {
