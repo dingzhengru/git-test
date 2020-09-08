@@ -433,36 +433,12 @@ export default {
     },
     validateForm() {
       console.log('[ValidateForm]');
-      let passwordField, passwordCheckField;
-      let withdrawalsPasswordField, withdrawalsPasswordCheckField;
-
       let invalidFieldList = [];
       for (const field of this.fieldList) {
         //* 檢查欄位自己的屬性(required, minlength, maxlength, min, max)
         const validateReulst = this.validateField(field);
         if (validateReulst != null) {
           invalidFieldList.push(validateReulst);
-        }
-
-        //* 檢查密碼與確認密碼是否相同，passwordCheck 一定會在 password 後面
-        if (field.name == 'Add_Password') {
-          passwordField = field;
-        } else if (field.name == 'Add_PasswordCheck') {
-          passwordCheckField = field;
-
-          if (passwordField.value != passwordCheckField.value) {
-            passwordCheckField.error = this.$t('register.Add_PasswordCheck.error.invalid');
-            invalidFieldList.push(passwordCheckField);
-          }
-        } else if (field.name == 'Add_Withdrawals_Password') {
-          withdrawalsPasswordField = field;
-        } else if (field.name == 'Add_Withdrawals_CheckPassword') {
-          withdrawalsPasswordCheckField = field;
-
-          if (withdrawalsPasswordField.value != withdrawalsPasswordCheckField.value) {
-            withdrawalsPasswordCheckField.error = this.$t('register.Add_Withdrawals_CheckPassword.error.invalid');
-            invalidFieldList.push(withdrawalsPasswordCheckField);
-          }
         }
       }
 
@@ -493,11 +469,23 @@ export default {
         //* 是否為生日欄位 && 是否超過指定最大日期(18歲限制)
         // field.error = `年齡必須超過 18 歲`;
         field.error = this.$t(`register.${field.name}.error.invalid`);
+      } else if (field.name == 'Add_PasswordCheck') {
+        const password = this.fieldList.find(item => item.name == 'Add_Password');
+        if (field.value != password.value) {
+          field.error = this.$t('register.Add_PasswordCheck.error.invalid');
+        } else {
+          field.error = '';
+        }
+      } else if (field.name == 'Add_Withdrawals_CheckPassword') {
+        const passwordWithdrawal = this.fieldList.find(item => item.name == 'Add_Withdrawals_Password');
+        if (field.value != passwordWithdrawal.value) {
+          field.error = this.$t('register.Add_Withdrawals_CheckPassword.error.invalid');
+        } else {
+          field.error = '';
+        }
       } else {
         field.error = '';
       }
-
-      console.log(field);
 
       if (field.error) {
         return field;
