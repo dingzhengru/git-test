@@ -93,6 +93,9 @@ const ACCESS_ROUTE_LIST = [];
 //* 回傳為 599 時，但不要 alert 的 API
 const NO_ALERT_API = ['Member/LoginIn', 'Member/SimpleRegister'];
 
+//* 不顯示 Loading 的 API
+const NO_LOADING_API = ['Siteinfo/KeepUserOnline'];
+
 export {
   API_URL,
   DEFAULT_LANG,
@@ -104,6 +107,7 @@ export {
   ACCESS_ROUTE_LIST,
   NO_AUTH_ROUTE_LIST,
   NO_ALERT_API,
+  NO_LOADING_API,
 };
 export default {
   API_URL,
@@ -116,4 +120,5 @@ export default {
   ACCESS_ROUTE_LIST,
   NO_AUTH_ROUTE_LIST,
   NO_ALERT_API,
+  NO_LOADING_API,
 };

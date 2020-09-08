@@ -109,6 +109,7 @@
 import { mapGetters } from 'vuex';
 import { getAllGamePoint } from '@/api/user';
 import { getTransferInfo, transferPoint, transferAllGamePointToMain } from '@/api/transaction-transfer';
+import { inputAmount, validateAmount } from '@/utils/transfer';
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
 
@@ -207,22 +208,23 @@ export default {
       this.amount = this.rangeOptions.max;
     },
     inputAmount() {
-      if (this.amount < 0 || typeof this.amount != 'number') {
-        this.amount = 0;
-      } else if (this.amount > this.rangeOptions.max) {
-        this.amount = this.rangeOptions.max;
-      }
+      this.amount = inputAmount(this.amount, 1, this.rangeOptions.max);
+      // if (this.amount < 0 || typeof this.amount != 'number') {
+      //   this.amount = 0;
+      // } else if (this.amount > this.rangeOptions.max) {
+      //   this.amount = this.rangeOptions.max;
+      // }
     },
     validateForm() {
-      if (this.amount <= 0 || this.amount > this.rangeOptions.max || !Number.isInteger(this.amount)) {
+      if (!validateAmount(this.amount, 1, this.rangeOptions.max)) {
         return false;
       } else if (this.from == 9999 && this.to == 9999) {
         return false;
       } else if (this.to <= -1) {
         return false;
-      } else {
-        return true;
       }
+
+      return true;
     },
   },
   watch: {

@@ -6,6 +6,7 @@ import {
   CRYPTO_BIG_DATA_API_LIST,
   NO_ALERT_API,
   NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST,
+  NO_LOADING_API,
 } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 
@@ -22,7 +23,9 @@ let isResponded201 = false;
 axios.interceptors.request.use(
   config => {
     //* 放一個進 loading 列表
-    store.commit('pushLoadingRequest');
+    if (!NO_LOADING_API.find(item => config.url.includes(item))) {
+      store.commit('pushLoadingRequest');
+    }
 
     //* 為了重新發送而暫存的資料
     // retryRequestData = config.data;

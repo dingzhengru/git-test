@@ -56,6 +56,8 @@
 </template>
 
 <script>
+import { inputAmount, validateAmount } from '@/utils/transfer';
+
 export default {
   name: 'GameTransferDialog',
   props: {
@@ -97,23 +99,27 @@ export default {
       }
     },
     inputAmount() {
-      if (this.amount > this.wallet.Point) {
-        this.amount = Math.floor(this.wallet.Point);
-      } else if (this.amount < 1) {
-        this.amount = 0;
-      }
+      this.amount = inputAmount(this.amount, 1, this.wallet.Point);
+      // if (this.amount > this.wallet.Point) {
+      //   this.amount = Math.floor(this.wallet.Point);
+      // } else if (this.amount < 1) {
+      //   this.amount = 0;
+      // } else if(Number.isInteger(this.amount)) {
+
+      // }
     },
     isValidAmount() {
-      if (this.amount > this.wallet.Point) {
-        return false;
-      } else if (this.amount < 1) {
-        return false;
-      } else if (!Number.isInteger(this.amount)) {
-        return false;
-      } else if (typeof this.amount != 'number') {
-        return false;
-      }
-      return true;
+      return validateAmount(this.amount, 1, this.wallet.Point);
+      // if (this.amount > this.wallet.Point) {
+      //   return false;
+      // } else if (this.amount < 1) {
+      //   return false;
+      // } else if (!Number.isInteger(this.amount)) {
+      //   return false;
+      // } else if (typeof this.amount != 'number') {
+      //   return false;
+      // }
+      // return true;
     },
   },
 };
