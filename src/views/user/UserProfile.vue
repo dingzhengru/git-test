@@ -105,9 +105,23 @@ export default {
         import(`@/styles/${this.siteFullCss}/user/profile.scss`);
 
         //* 取得使用者資訊
-        const result = await this.$store.dispatch('user/getInfo');
+        // const result = await this.$store.dispatch('user/getInfo');
 
-        console.log('[UserInfo]', result);
+        if (this.isAccessed) {
+          this.list = this.accessList;
+          // this.list = this.accessList.map(item => {
+          //   if (result.RetObj[item.name]) {
+          //     item.value = result.RetObj[item.name];
+          //   }
+          // });
+        } else {
+          this.list = this.notAccessList;
+          // this.list = this.notAccessList.map(item => {
+          //   if (result.RetObj[item.name]) {
+          //     item.value = result.RetObj[item.name];
+          //   }
+          // });
+        }
 
         //* 關掉 loading
         this.$store.commit('setIsLoading', false);
@@ -116,11 +130,11 @@ export default {
     // isAccessed: {
     //   immediate: true,
     //   handler() {
-    //     if (this.isAccessed) {
-    //       this.list = this.accessList;
-    //     } else {
-    //       this.list = this.notAccessList;
-    //     }
+    // if (this.isAccessed) {
+    //   this.list = this.accessList;
+    // } else {
+    //   this.list = this.notAccessList;
+    // }
     //   },
     // },
   },
