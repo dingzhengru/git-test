@@ -15,6 +15,9 @@
     },
     "transfer": {
       "success": "โอนความสำเร็จ"
+    },
+    "inbox": {
+      "success": "ตอบกลับสำเร็จ"
     }
   },
   "header": {

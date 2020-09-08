@@ -15,6 +15,9 @@
     },
     "transfer": {
       "success": "转帐成功!"
+    },
+    "inbox": {
+      "success": "回覆成功"
     }
   },
   "header": {

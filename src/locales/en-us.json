@@ -15,6 +15,9 @@
     },
     "transfer": {
       "success": "Transfer success!"
+    },
+    "inbox": {
+      "success": "Reply as success"
     }
   },
   "header": {

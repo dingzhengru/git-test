@@ -122,6 +122,7 @@ export default {
 
       if (result.Code == 200) {
         console.log('[SendMail]', result);
+        window.alert(this.$t('alert.inbox.success'));
         this.content = '';
       }
       this.$store.commit('setIsLoading', false);
