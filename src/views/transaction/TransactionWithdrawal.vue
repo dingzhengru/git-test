@@ -44,7 +44,7 @@
             :max="amountLimit.max"
             step="100"
             placeholder="Please enter amount of withdrawal"
-            autocomplete="false"
+            autocomplete="off"
             v-model.number="amount"
             @change="changeAmount"
           />
@@ -98,6 +98,9 @@ export default {
   name: 'TransactionWithdrawal',
   computed: {
     ...mapGetters(['siteID', 'siteFullCss']),
+    walletAmount() {
+      return this.accountInfoList.find(item => item.name == 'Lst_Point').value || 0;
+    },
   },
   data() {
     return {
@@ -190,7 +193,7 @@ export default {
         Add_SelectBank: this.bank.Value,
       };
 
-      console.log('WithdrawalRequestData', requestData);
+      console.log('[WithdrawalRequestData]', requestData);
 
       const result = await Withdrawal(requestData);
       console.log('[Withdrawal]', result);
@@ -210,29 +213,34 @@ export default {
       });
     },
     changeAmount() {
-      const walletAmount = this.accountInfoList.find(item => item.name == 'Lst_Point').value;
-      if (this.amount > walletAmount || this.amount > this.amountLimit.max) {
-        this.amount = walletAmount < this.amountLimit.max ? walletAmount : this.amountLimit.max;
+      if (this.amount > this.walletAmount || this.amount > this.amountLimit.max) {
+        this.amount = this.walletAmount < this.amountLimit.max ? this.walletAmount : this.amountLimit.max;
       } else if (this.amount < this.amountLimit.min) {
         this.amount = this.amountLimit.min;
-      } else if (this.amount % 100 != 0) {
-        //* 轉換最後兩位為 0
-        const amountStringList = String(this.amount).split('');
+      }
+
+      //* 取最小整數、並轉換最後兩位為 0
+      if (this.amount % 100 != 0) {
+        const amountStringList = String(Math.floor(this.amount)).split('');
         amountStringList[amountStringList.length - 1] = 0;
         amountStringList[amountStringList.length - 2] = 0;
         this.amount = Number(amountStringList.join(''));
       }
     },
     validateForm() {
-      if (this.amount < this.amountLimit.min || this.amount > this.amountLimit.max || this.amount % 100 != 0) {
+      if (
+        this.amount < this.amountLimit.min ||
+        this.amount > this.amountLimit.max ||
+        this.amount > this.walletAmount ||
+        this.amount % 100 != 0
+      ) {
         return false;
       } else if (this.bank == '') {
         return false;
       } else if (this.password == '' || this.password.length < 6) {
         return false;
-      } else {
-        return true;
       }
+      return true;
     },
   },
   watch: {
@@ -245,9 +253,6 @@ export default {
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/withdrawal.scss`);
 
-        //* 關掉 loading
-        // this.$store.commit('setIsLoading', false);
-
         const result = await getWithdrawal();
         console.log('[Withdrawal]', result.RetObj);
         this.bankList = result.RetObj.Add_MemberBankAccountList;
@@ -258,12 +263,15 @@ export default {
           this.$router.replace({ name: 'UserProfile' });
         }
 
-        this.accountInfoList.map(item => {
+        this.accountInfoList.forEach(item => {
           if (result.RetObj[item.name]) {
             item.value = result.RetObj[item.name];
           }
         });
         this.amountLimit.min = result.RetObj.WithalDownlimit;
+        this.amountLimit.max = result.RetObj.WithalUplimit;
+
+        //* 關掉 loading
         this.$store.commit('setIsLoading', false);
       },
     },
