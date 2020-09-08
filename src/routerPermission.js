@@ -13,7 +13,8 @@ router.beforeEach((to, from, next) => {
     next({ name: 'Home' });
   } else {
     if (to.name != from.name) {
-      store.commit('setIsLoading', true);
+      // store.commit('setIsLoading', true);
+      store.commit('pushLoadingRequest', 'change-route');
     }
     next();
   }

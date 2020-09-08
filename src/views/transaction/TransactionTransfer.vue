@@ -152,11 +152,11 @@ export default {
   },
   methods: {
     async getAllGamePoint() {
-      this.$store.commit('setIsLoading', true);
+      // this.$store.commit('setIsLoading', true);
       const result = await getAllGamePoint();
       console.log('[AllGamePoint]', result.RetObj);
       this.updateGamePoint(result);
-      this.$store.commit('setIsLoading', false);
+      // this.$store.commit('setIsLoading', false);
     },
     async submitTransferPoint() {
       if (!this.validateForm()) {
@@ -241,13 +241,13 @@ export default {
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/transfer.scss`);
 
-        //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
-
         getTransferInfo().then(result => {
           console.log('[Transfer]', result.RetObj);
           this.productList = result.RetObj.Add_SourceList;
           this.productDetailList = result.RetObj.MenuMemberDetailItemList;
+
+          //* 關掉 loading
+          this.$store.commit('setIsLoading', false);
         });
 
         this.getAllGamePoint();

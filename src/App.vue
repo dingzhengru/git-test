@@ -18,7 +18,8 @@
     </div>
 
     <AppFooter :isLoggedIn="isLoggedIn" />
-    <AppLoadingOverlay :isLoading="isLoading" />
+    <!-- <AppLoadingOverlay :isLoading="isLoading" /> -->
+    <AppLoadingOverlay :isLoading="loadingRequestList.length > 0" />
   </div>
 </template>
 
@@ -44,6 +45,7 @@ export default {
       'token',
       'lang',
       'isLoading',
+      'loadingRequestList',
       'pwaInstallStatus',
       'pwaPrompt',
       'isLoggedIn',

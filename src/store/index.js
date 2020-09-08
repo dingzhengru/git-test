@@ -11,6 +11,7 @@ export default new Vuex.Store({
   state: {
     lang: '',
     isLoading: false,
+    loadingRequestList: [],
   },
   mutations: {
     setLang: (state, lang) => {
@@ -21,6 +22,12 @@ export default new Vuex.Store({
     },
     setIsLoading: (state, isLoading) => {
       state.isLoading = isLoading;
+    },
+    pushLoadingRequest: (state, name) => {
+      return state.loadingRequestList.push(name || '');
+    },
+    popLoadingRequest: state => {
+      return state.loadingRequestList.pop();
     },
   },
   actions: {},
