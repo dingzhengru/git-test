@@ -18,6 +18,7 @@
               :max="field.max"
               :pattern="field.regex"
               v-model="field.value"
+              @input="validateField(field)"
             />
 
             <img
@@ -470,6 +471,7 @@ export default {
     validateField(field) {
       if (!field.isRequired && !field.value) {
         //* 非必填 && 空值
+        field.error = '';
         return null;
       } else if (field.isRequired && !field.value) {
         //* 必填 && 空值
@@ -494,6 +496,8 @@ export default {
       } else {
         field.error = '';
       }
+
+      console.log(field);
 
       if (field.error) {
         return field;
@@ -603,13 +607,13 @@ export default {
   right: 15px;
 }
 
-.register__form__field__input:invalid {
+/* .register__form__field__input:invalid {
   color: red;
 }
 
 .register__form__field__input:valid {
   color: green;
-}
+} */
 
 .register__notice__ol {
   margin: 50px 10px 0;

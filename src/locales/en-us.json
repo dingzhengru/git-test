@@ -18,6 +18,9 @@
     },
     "inbox": {
       "success": "Reply as success"
+    },
+    "outbox": {
+      "success": "Mail sent successfully!"
     }
   },
   "header": {

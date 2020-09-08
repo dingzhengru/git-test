@@ -18,6 +18,9 @@
     },
     "inbox": {
       "success": "回覆成功"
+    },
+    "outbox": {
+      "success": "邮件发送成功！"
     }
   },
   "header": {
