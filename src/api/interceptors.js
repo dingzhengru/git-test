@@ -21,6 +21,9 @@ let isResponded201 = false;
 
 axios.interceptors.request.use(
   config => {
+    //* 放一個進 loading 列表
+    store.commit('pushLoadingRequest');
+
     //* 為了重新發送而暫存的資料
     // retryRequestData = config.data;
 
@@ -64,6 +67,8 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   async res => {
+    store.commit('popLoadingRequest');
+
     if (res.data.Code == 201) {
       //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
 
@@ -114,8 +119,7 @@ axios.interceptors.response.use(
     return res;
   },
   error => {
-    //* 取消 loading
-    store.commit('setIsLoading', false);
+    store.commit('popLoadingRequest');
 
     console.log('[interceptors response error]', error);
     console.log('[interceptors response error] [url]', error.response.config.url);

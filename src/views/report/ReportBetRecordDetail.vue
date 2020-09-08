@@ -78,9 +78,6 @@ export default {
           this.recordList = result.RetObj.Rows;
         }
         console.log('[BetHistoryDay]', result);
-
-        //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
       },
     },
   },

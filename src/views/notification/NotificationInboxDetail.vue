@@ -102,16 +102,13 @@ export default {
   },
   methods: {
     async getInboxDetail() {
-      this.$store.commit('setIsLoading', true);
       const requestData = { KEY: this.$route.params.key };
       const result = await getInboxDetail(requestData);
       console.log('[Inbox]', result);
 
       this.list = result.RetObj.Rows;
-      this.$store.commit('setIsLoading', false);
     },
     async submitMail() {
-      this.$store.commit('setIsLoading', true);
       const requestData = {
         Add_Category: this.list[0].Lst_Category,
         Add_Subject: this.list[0].Lst_Subject,
@@ -125,7 +122,6 @@ export default {
         window.alert(this.$t('alert.inbox.success'));
         this.content = '';
       }
-      this.$store.commit('setIsLoading', false);
     },
   },
   watch: {
@@ -139,9 +135,6 @@ export default {
         import(`@/styles/${this.siteFullCss}/notification/notification-inbox-detail.scss`);
 
         this.getInboxDetail();
-
-        //* 關掉 loading
-        // this.$store.commit('setIsLoading', false);
       },
     },
   },

@@ -98,16 +98,12 @@ export default {
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
-
-        //* 關掉 loading
-        // this.$store.commit('setIsLoading', false);
       },
     },
     dateRange: {
       immediate: true,
       async handler() {
         console.log('[ReportBetRecord]:', this.dateRange.name);
-        this.$store.commit('setIsLoading', true);
         if (this.dateRange.name == 'today') {
           const requestData = { Tag: this.dateRange.value };
           const result = await getBetHistoryDay(requestData);
@@ -133,7 +129,6 @@ export default {
           }
           console.log('[BetHistoryWeek]', result);
         }
-        this.$store.commit('setIsLoading', false);
       },
     },
   },

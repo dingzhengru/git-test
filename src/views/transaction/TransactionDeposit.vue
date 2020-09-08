@@ -283,7 +283,6 @@ export default {
 
       console.log('[SubmitDeposit]', requestData);
 
-      this.$store.commit('setIsLoading', true);
       const result = await deposit(requestData);
       console.log('[Deposit]', result);
 
@@ -292,8 +291,6 @@ export default {
       } else if (result.Code == 500) {
         window.alert(result.ErrMsg);
       }
-
-      this.$store.commit('setIsLoading', false);
     },
     inputAmount() {
       if (this.amount < this.depositLimit.min) {
@@ -366,9 +363,6 @@ export default {
           this.hid_MMKtoTHBrate = result.RetObj.hid_MMKtoTHBrate;
           this.hid_THBtoMMKrate = result.RetObj.hid_THBtoMMKrate;
         }
-
-        //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
       },
     },
   },

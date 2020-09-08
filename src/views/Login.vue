@@ -149,7 +149,6 @@ export default {
       if (!this.validateForm()) {
         return;
       }
-      this.$store.commit('setIsLoading', true);
       console.log('[login]', this.user);
       const result = await this.$store.dispatch('user/login', this.user);
 
@@ -166,10 +165,8 @@ export default {
         //* 重新送出登入請求
         this.submitLogin();
       }
-      this.$store.commit('setIsLoading', false);
     },
     async changeCaptcha() {
-      this.$store.commit('setIsLoading', true);
       const requestDataCaptcha = { pageCode: 'MemberLogin' };
       const result = await getCaptcha(requestDataCaptcha);
       console.log('[Captcha]', result.RetObj);
@@ -177,7 +174,6 @@ export default {
         this.captchaImage = result.RetObj;
         this.user.CaptchaValue = '';
       }
-      this.$store.commit('setIsLoading', false);
     },
     validateForm() {
       console.log('[ValidateForm]', this.user);
@@ -208,9 +204,6 @@ export default {
         }
 
         this.changeCaptcha();
-
-        //* 關掉 loading
-        // this.$store.commit('setIsLoading', false);
       },
     },
   },

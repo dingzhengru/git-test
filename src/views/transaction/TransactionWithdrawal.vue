@@ -164,7 +164,6 @@ export default {
   },
   methods: {
     async transferToMain() {
-      this.$store.commit('setIsLoading', true);
       const result = await transferAllGamePointToMain();
       if (result.Code == 200) {
         console.log('[TransferToMain]', result.RetObj);
@@ -172,13 +171,11 @@ export default {
         wallet.value = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999).Point;
         window.alert(result.RetObj.MsgString);
       }
-      this.$store.commit('setIsLoading', false);
     },
     async submitWithdrawal() {
       if (!this.validateForm()) {
         return;
       }
-      this.$store.commit('setIsLoading', true);
       const requestData = {
         Add_RealName: this.accountInfoList.find(item => item.name == 'Add_RealName').value,
         Add_MemberBankID: this.bank.Lst_BankID,
@@ -200,7 +197,6 @@ export default {
       if (result.Code == 200) {
         this.$router.push({ name: 'TransactionRecordContent', params: { name: 'withdrawal' } });
       }
-      this.$store.commit('setIsLoading', false);
     },
     changeBank() {
       if (!this.bank) {
@@ -272,7 +268,6 @@ export default {
         this.amountLimit.max = result.RetObj.WithalUplimit;
 
         //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
       },
     },
   },

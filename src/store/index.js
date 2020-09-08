@@ -10,7 +10,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     lang: '',
-    isLoading: false,
     loadingRequestList: [],
   },
   mutations: {
@@ -19,9 +18,6 @@ export default new Vuex.Store({
       loadLanguageAsync(lang).then(result => {
         console.log('[Lang] loadLanguageAsync', result);
       });
-    },
-    setIsLoading: (state, isLoading) => {
-      state.isLoading = isLoading;
     },
     pushLoadingRequest: (state, name) => {
       return state.loadingRequestList.push(name || '');

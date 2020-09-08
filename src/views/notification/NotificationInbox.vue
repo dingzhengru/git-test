@@ -59,14 +59,12 @@ export default {
   },
   methods: {
     async getInboxList() {
-      this.$store.commit('setIsLoading', true);
       const requestData = { Page: this.pagination.page };
       const result = await getInboxList(requestData);
       console.log('[Inbox]', result);
 
       this.list = result.RetObj.Rows;
       this.pagination.dataLength = result.RetObj.Records;
-      this.$store.commit('setIsLoading', false);
     },
     changePage(page) {
       this.pagination.page = page;
@@ -87,9 +85,6 @@ export default {
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
         this.getInboxList();
-
-        //* 關掉 loading
-        // this.$store.commit('setIsLoading', false);
       },
     },
   },

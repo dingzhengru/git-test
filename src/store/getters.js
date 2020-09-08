@@ -1,6 +1,5 @@
 const getters = {
   lang: state => state.lang,
-  isLoading: state => state.isLoading,
   loadingRequestList: state => state.loadingRequestList,
   pwaInstallStatus: state => state.pwa.status,
   pwaPrompt: state => state.pwa.prompt,

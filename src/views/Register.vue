@@ -381,16 +381,15 @@ export default {
     };
   },
   methods: {
-    changeCaptcha() {
+    async changeCaptcha() {
       const requestDataCaptcha = { pageCode: 'MemberRegister' };
-      getCaptcha(requestDataCaptcha).then(result => {
-        console.log('[Captcha]', result.RetObj);
-        if (result.Code == 200) {
-          this.captchaImage = result.RetObj;
-          const captcha = this.fieldList.find(item => item.name == 'CaptchaValue');
-          captcha.value = '';
-        }
-      });
+      const result = await getCaptcha(requestDataCaptcha);
+      console.log('[Captcha]', result.RetObj);
+      if (result.Code == 200) {
+        this.captchaImage = result.RetObj;
+        const captcha = this.fieldList.find(item => item.name == 'CaptchaValue');
+        captcha.value = '';
+      }
     },
     resetForm() {
       for (const field of this.fieldList) {
@@ -417,7 +416,7 @@ export default {
       }
 
       console.log('[Register]', requestData);
-      this.$store.commit('setIsLoading', true);
+
       const result = await this.$store.dispatch('user/register', requestData);
 
       if (result.Code == 500) {
@@ -428,8 +427,6 @@ export default {
         //* 重新送出請求
         this.submitRegister();
       }
-
-      this.$store.commit('setIsLoading', false);
     },
     validateForm() {
       console.log('[ValidateForm]');
@@ -523,7 +520,6 @@ export default {
           }
 
           //* 關掉 loading
-          this.$store.commit('setIsLoading', false);
         });
 
         this.changeCaptcha();

@@ -207,7 +207,6 @@ export default {
   methods: {
     async getRecord() {
       //* 因換頁都會用到，所以放 methods
-      this.$store.commit('setIsLoading', true);
       switch (this.$route.params.name) {
         case 'deposit': {
           const result = await getRecordDeposit();
@@ -224,15 +223,9 @@ export default {
             newItem.receiptImageUrl = item.Lst_ImageUrl;
             newItem.detail = item.Lst_StatusName;
 
-            // if (item.Lst_Status == 1) {
-            //   newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
-            // } else if (item.Lst_Status == 2) {
-            //   newItem.detail = this.$t('transaction.recordContent.statusText.success');
-            // } else if (item.Lst_Status == 3) {
-            //   newItem.detail = this.$t('transaction.recordContent.statusText.failure');
-            // }
             return newItem;
           });
+          this.detailKey = 'detail';
           break;
         }
         case 'withdrawal': {
@@ -247,16 +240,9 @@ export default {
             newItem.bank = item.Lst_MemberBankName;
             newItem.amount = item.Lst_MoneyPayment;
             newItem.detail = item.Lst_StatusName;
-
-            // if (item.Lst_Status == 1) {
-            //   newItem.detail = this.$t('transaction.recordContent.statusText.underReview');
-            // } else if (item.Lst_Status == 2) {
-            //   newItem.detail = this.$t('transaction.recordContent.statusText.success');
-            // } else if (item.Lst_Status == 3) {
-            //   newItem.detail = this.$t('transaction.recordContent.statusText.failure');
-            // }
             return newItem;
           });
+          this.detailKey = 'detail';
           break;
         }
         case 'transfer': {
@@ -279,6 +265,18 @@ export default {
             newItem.amount = item.Lst_Point;
             return newItem;
           });
+          this.detailKey = 'amount';
+          this.isSearchActive = true;
+          this.isPageActive = true;
+
+          //* 取得產品列表，避免每次換頁都會取一次，所以設立條件
+          if (this.productList.length == 0) {
+            const resultProductList = await getMemberProductList();
+            if (result.Code == 200) {
+              this.productList = resultProductList.RetObj;
+              console.log('[Product]', this.productList);
+            }
+          }
           break;
         }
         case 'bonus': {
@@ -297,6 +295,7 @@ export default {
             newItem.datetime = item.Lst_MTime.replace('T', ' ').split('.')[0];
             return newItem;
           });
+          this.isPageActive = true;
           break;
         }
         case 'lottery': {
@@ -315,6 +314,7 @@ export default {
             newItem.datetime = item.Lst_CTime.replace('T', ' ').split('.')[0];
             return newItem;
           });
+          this.isPageActive = true;
           break;
         }
         case 'withdrawalRestriction': {
@@ -334,6 +334,8 @@ export default {
             newItem.rolloverDeadline = item.Lst_Ctime.split('T')[0];
             return newItem;
           });
+          this.detailKey = 'restriction';
+          this.isPageActive = true;
           break;
         }
         case 'adjustment': {
@@ -350,10 +352,13 @@ export default {
             newItem.datetime = item.Lst_TransTime.replace('T', ' ').split('.')[0];
             return newItem;
           });
+          this.isPageActive = true;
           break;
         }
+        default: {
+          this.$router.replace({ name: 'TransactionRecordHome' });
+        }
       }
-      this.$store.commit('setIsLoading', false);
     },
     changeSearchDateRange() {
       this.search.dateTo = dayjs().format('YYYY-MM-DD');
@@ -392,61 +397,14 @@ export default {
           return;
         }
 
-        // * 根據版型引入 css
+        //* 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/record-content.scss`);
 
-        // * 根據版型引入 css (pagination)
+        //* 根據版型引入 css (pagination)
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
-        //* 關掉 loading
-        // this.$store.commit('setIsLoading', false);
-
+        //* 取得紀錄列表
         this.getRecord();
-
-        switch (this.$route.params.name) {
-          case 'deposit': {
-            this.detailKey = 'detail';
-            break;
-          }
-          case 'withdrawal': {
-            this.detailKey = 'detail';
-            break;
-          }
-          case 'transfer': {
-            this.detailKey = 'amount';
-            this.isSearchActive = true;
-            this.isPageActive = true;
-
-            // * 取得遊戲館列表
-            getMemberProductList().then(result => {
-              if (result.Code == 200) {
-                this.productList = result.RetObj;
-                console.log('[Product]', this.productList);
-              }
-            });
-            break;
-          }
-          case 'bonus': {
-            this.isPageActive = true;
-            break;
-          }
-          case 'lottery': {
-            this.isPageActive = true;
-            break;
-          }
-          case 'withdrawalRestriction': {
-            this.detailKey = 'restriction';
-            this.isPageActive = true;
-            break;
-          }
-          case 'adjustment': {
-            this.isPageActive = true;
-            break;
-          }
-          default: {
-            this.$router.replace({ name: 'TransactionRecordHome' });
-          }
-        }
       },
     },
     lang() {

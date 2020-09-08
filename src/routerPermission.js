@@ -19,3 +19,7 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
+router.afterEach(() => {
+  store.commit('popLoadingRequest');
+});

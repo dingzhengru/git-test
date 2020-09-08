@@ -55,22 +55,18 @@ export default {
   },
   methods: {
     async submitMail() {
-      this.$store.commit('setIsLoading', true);
       const result = await sendMail(this.mail);
 
       if (result.Code == 200) {
         console.log('[SendMail]', result);
         this.resetMail();
       }
-      this.$store.commit('setIsLoading', false);
     },
     async getMailCategoryList() {
-      this.$store.commit('setIsLoading', true);
       const result = await getMailCategoryList();
       console.log('[MailCategoryList]', result);
 
       this.categoryList = result.RetObj;
-      this.$store.commit('setIsLoading', false);
     },
     resetMail() {
       this.mail = { Add_Category: '', Add_Subject: '', Add_Content: '', Add_ReplyPath: '' };
@@ -87,9 +83,6 @@ export default {
         import(`@/styles/${this.siteFullCss}/notification/notification-outbox.scss`);
 
         this.getMailCategoryList();
-
-        //* 關掉 loading
-        // this.$store.commit('setIsLoading', false);
       },
     },
     lang() {

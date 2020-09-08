@@ -198,7 +198,6 @@ export default {
       return result;
     },
     async getGameList() {
-      this.$store.commit('setIsLoading', true);
       let result = {};
       const requestData = {
         Tag: this.productTag,
@@ -218,20 +217,16 @@ export default {
       }
       console.log('[GameLobby GameList]', result.RetObj);
       this.pagination.dataLength = result.RetObj.DataCnt;
-      this.$store.commit('setIsLoading', false);
     },
     async getGameUrl(data) {
-      this.$store.commit('setIsLoading', true);
       const result = await getGameUrl(data);
       console.log('[GameLobby GameUrl]', data, result);
       if (result.Code == 200) {
         window.open(result.RetObj.RedirectUrl);
       }
-      this.$store.commit('setIsLoading', false);
     },
     async openGame(game, freePlay) {
       //* 因應真人遊戲兩階段開遊戲
-      this.$store.commit('setIsLoading', true);
       this.game = game;
       if (this.$route.params.type == 1) {
         this.isShowLiveGameEnterDialog = true;
@@ -243,10 +238,8 @@ export default {
           window.open(result.RetObj.RedirectUrl);
         }
       }
-      this.$store.commit('setIsLoading', false);
     },
     async openLiveGame(templatesId, order) {
-      this.$store.commit('setIsLoading', true);
       const requestData = {
         Tag: this.productTag,
         Gameid: this.game.Lst_GameID,
@@ -260,11 +253,9 @@ export default {
       if (result.Code == 200) {
         window.open(result.RetObj.RedirectUrl);
       }
-      this.$store.commit('setIsLoading', false);
     },
     async openGameRedirectUrl() {
       //* 打開站外連結
-      this.$store.commit('setIsLoading', true);
       const requestData = {
         Pid: this.currentProduct.Lst_Product_id,
         gameclassify: this.currentProduct.Lst_Game_Classify,
@@ -280,7 +271,6 @@ export default {
           gameWindow.document.write(result.RetObj.RedirectUrl);
         }
       }
-      this.$store.commit('setIsLoading', false);
     },
     async likeGame(game) {
       const requestData = {
@@ -297,7 +287,6 @@ export default {
       console.log('[LikeGame]', result);
     },
     async transferPoint(amount) {
-      this.$store.commit('setIsLoading', true);
       console.log('[TransferPoint]', amount);
 
       const requestData = {
@@ -322,7 +311,6 @@ export default {
           this.$router.go(-1);
         }
       }
-      this.$store.commit('setIsLoading', false);
     },
     async changeProduct(product) {
       if (product.Lst_Proxy_Product_Key == this.currentProduct.Lst_Proxy_Product_Key) {
@@ -407,8 +395,6 @@ export default {
         this.getGameProduct();
         await this.getGameCategory(); //* 真人遊戲需先從此取得 guid，才能取得遊戲列表
         this.getGameList();
-
-        // this.$store.commit('setIsLoading', false);
       },
     },
     async lang() {
@@ -425,7 +411,6 @@ export default {
 
       //* 避免直接輸入網址，到要去站外大廳的 Product
       if (this.currentProduct.GetGameRedirectUrl) {
-        // this.$store.commit('setIsLoading', false);
         // this.$router.replace({ name: 'Home' });
         window.location.replace('/');
       }

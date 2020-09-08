@@ -152,17 +152,14 @@ export default {
   },
   methods: {
     async getAllGamePoint() {
-      // this.$store.commit('setIsLoading', true);
       const result = await getAllGamePoint();
       console.log('[AllGamePoint]', result.RetObj);
       this.updateGamePoint(result);
-      // this.$store.commit('setIsLoading', false);
     },
     async submitTransferPoint() {
       if (!this.validateForm()) {
         return;
       }
-      this.$store.commit('setIsLoading', true);
       const requestData = { Add_Source: this.from, Add_Destination: this.to, Add_TransferPoint: this.amount };
       const result = await transferPoint(requestData);
       console.log('[TransferPoint]', result);
@@ -171,17 +168,14 @@ export default {
         this.updateGamePoint(result);
         window.alert(this.$t('alert.transfer.success'));
       }
-      this.$store.commit('setIsLoading', false);
     },
     async transferToMain() {
-      this.$store.commit('setIsLoading', true);
       const result = await transferAllGamePointToMain();
       console.log('[TransferToMain]', result);
       if (result.Code == 200) {
         this.updateGamePoint(result);
         window.alert(result.RetObj.MsgString);
       }
-      this.$store.commit('setIsLoading', false);
     },
     rangeError(type, msg) {
       //* 參考 https://nightcatsama.github.io/vue-slider-component/#/zh-CN/advanced/input
@@ -247,7 +241,6 @@ export default {
           this.productDetailList = result.RetObj.MenuMemberDetailItemList;
 
           //* 關掉 loading
-          this.$store.commit('setIsLoading', false);
         });
 
         this.getAllGamePoint();

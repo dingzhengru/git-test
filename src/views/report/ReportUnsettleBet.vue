@@ -46,8 +46,6 @@ export default {
         if (result.Code == 200) {
           this.list = result.RetObj.Rows;
         }
-        //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
       },
     },
   },
