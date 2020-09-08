@@ -9,7 +9,6 @@ export function inputAmount(amount, min = 0, max = 0) {
     amount = Math.floor(amount);
   }
 
-  console.log(amount);
   return amount;
 }
 
