@@ -15,6 +15,7 @@ const AUTH_API_LIST = [
   'Siteinfo/MGetPITTLBet',
   'Product/MemProductList',
   'Operator/MSingleDepositInfo',
+  'Operator/MSingleDeposit',
   'Operator/MWithdrawalsInfo',
   'Operator/MWithdrawals',
   'Operator/MTransferInfo',
