@@ -241,8 +241,6 @@ export default {
           console.log('[Transfer]', result.RetObj);
           this.productList = result.RetObj.Add_SourceList;
           this.productDetailList = result.RetObj.MenuMemberDetailItemList;
-
-          //* 關掉 loading
         });
 
         this.getAllGamePoint();

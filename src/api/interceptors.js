@@ -70,7 +70,9 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   async res => {
-    store.commit('popLoadingRequest');
+    if (!NO_LOADING_API.find(item => res.config.url.includes(item))) {
+      store.commit('popLoadingRequest');
+    }
 
     if (res.data.Code == 201) {
       //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
@@ -122,7 +124,9 @@ axios.interceptors.response.use(
     return res;
   },
   error => {
-    store.commit('popLoadingRequest');
+    if (!NO_LOADING_API.find(item => error.config.url.includes(item))) {
+      store.commit('popLoadingRequest');
+    }
 
     console.log('[interceptors response error]', error);
     console.log('[interceptors response error] [url]', error.response.config.url);
