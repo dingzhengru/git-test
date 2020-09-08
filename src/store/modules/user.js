@@ -28,7 +28,6 @@ const mutations = {
   },
   setUserInfo(state, info) {
     console.log('[SetUserInfo]', info);
-
     state.isAccessed = info.RetObj.Lst_Account_Open;
     state.username = info.RetObj.Lst_Account;
     state.roll = info.RetObj.Lst_PI_BetAmount;
@@ -76,6 +75,7 @@ const actions = {
     const responseDataUserInfo = await getUserInfo();
     commit('setUserInfo', responseDataUserInfo);
     console.log('[UserInfo]', responseDataUserInfo.RetObj);
+    return responseDataUserInfo;
   },
   async register({ commit }, data) {
     const responseDataRegister = await register(data);

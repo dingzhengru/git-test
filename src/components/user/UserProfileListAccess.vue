@@ -3,7 +3,7 @@
     <div class="user-profile-access__main theme-content-box">
       <ul class="user-profile-access__main__ul theme-ul-dataView">
         <li class="theme-li-dataView" v-for="item in list" :key="item.title">
-          <span class="theme-dataView-header">{{ $t(item.title) }}</span>
+          <span class="theme-dataView-header">{{ $t(`user.profile.accessed.${item.name}`) }}</span>
           <p class="theme-dataView-data">{{ item.content }}</p>
         </li>
         <form class="user-profile-access__main__form" id="formPasswordChange" @submit.prevent="changeWithdrawPassword">

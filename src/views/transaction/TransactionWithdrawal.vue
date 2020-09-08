@@ -154,7 +154,7 @@ export default {
       password: '',
       amountLimit: {
         min: 100,
-        max: 10000,
+        max: 30000,
       },
       noticeList: ['contact'],
     };

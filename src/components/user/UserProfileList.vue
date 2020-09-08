@@ -4,7 +4,7 @@
       <table class="ui-table02">
         <tbody>
           <tr v-for="item in list" :key="item.title">
-            <th>{{ $t(item.title) }}</th>
+            <th>{{ $t(`user.profile.notAccessed.${item.name}`) }}</th>
             <td>{{ item.content }}</td>
           </tr>
         </tbody>
@@ -64,6 +64,4 @@ export default {
   margin: 40px 0;
   text-align: center;
 }
-
-
 </style>
