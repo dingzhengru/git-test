@@ -93,7 +93,7 @@
         "invalid": "",
         "required": "Please enter your password",
         "length": "The length of password must be 6 and above",
-        "regex": ""
+        "regex": "Format False"
       }
     },
     "Add_PasswordCheck": {
@@ -103,7 +103,7 @@
         "invalid": "Confirm password error",
         "required": "Please reconfirm your password",
         "length": "The length of password must be 6 and above",
-        "regex": ""
+        "regex": "Format False"
       }
     },
     "Add_Mobile": {
@@ -243,7 +243,7 @@
         "invalid": "",
         "required": "Please enter a withdrawal password",
         "length": "The length of password must be 6 and above",
-        "regex": ""
+        "regex": "Format False"
       }
     },
     "Add_Withdrawals_CheckPassword": {
@@ -253,7 +253,7 @@
         "invalid": "Confirm the password Error",
         "required": "Please enter a withdrawal password",
         "length": "The length of password must be 6 and above",
-        "regex": ""
+        "regex": "Format False"
       }
     },
     "CaptchaValue": {

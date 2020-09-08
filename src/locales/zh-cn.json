@@ -93,7 +93,7 @@
         "invalid": "",
         "required": "请输入您的密码",
         "length": "密码长度最少为6位字元",
-        "regex": ""
+        "regex": "格式错误"
       }
     },
     "Add_PasswordCheck": {
@@ -243,7 +243,7 @@
         "invalid": "",
         "required": "请输入取款密​​码",
         "length": "密码长度最少为6位字元",
-        "regex": ""
+        "regex": "格式错误"
       }
     },
     "Add_Withdrawals_CheckPassword": {
@@ -253,7 +253,7 @@
         "invalid": "确认密码错误",
         "required": "请输入取款密​​码",
         "length": "密码长度最少为6位字元",
-        "regex": ""
+        "regex": "格式错误"
       }
     },
     "CaptchaValue": {
