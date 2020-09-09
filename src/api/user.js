@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
+//* 帳號開通畫面
+export async function registerAdvanceNew() {
+  const result = await axios.post(API_URL + '/Member/RegisterAdvanceNew');
+  return result.data;
+}
+
 //* 心跳
 export async function keepUserOnline() {
   const result = await axios.post(API_URL + '/Siteinfo/KeepUserOnline');

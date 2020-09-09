@@ -207,6 +207,7 @@
       }
     },
     "Add_BankId1": {
+      "title": "ธนาคาร",
       "placeholder": "โปรดเลือก",
       "hint": "",
       "error": {
@@ -228,6 +229,68 @@
     },
     "Add_BankAccount1": {
       "placeholder": "หมายเลขบัญชีธนาคาร",
+      "hint": "",
+      "error": {
+        "invalid": "มีการใช้บัญชีธนาคาร",
+        "required": "โปรดกรอกบัญชีธนาคาร",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
+    },
+    "Add_BankId2": {
+      "title": "ธนาคาร 2",
+      "placeholder": "โปรดเลือก",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "โปรดเลือกชื่อบัญชีธนาคาร",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_BankBranchName2": {
+      "placeholder": "สาขาธนาคาร 2",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกชื่อสาขา",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
+    },
+    "Add_BankAccount2": {
+      "placeholder": "หมายเลขบัญชีธนาคาร 2",
+      "hint": "",
+      "error": {
+        "invalid": "มีการใช้บัญชีธนาคาร",
+        "required": "โปรดกรอกบัญชีธนาคาร",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
+    },
+    "Add_BankId3": {
+      "title": "ธนาคาร 3",
+      "placeholder": "โปรดเลือก",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "โปรดเลือกชื่อบัญชีธนาคาร",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_BankBranchName3": {
+      "placeholder": "สาขาธนาคาร 3",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "โปรดกรอกชื่อสาขา",
+        "length": "",
+        "regex": "รูปแบบผิดพลาด"
+      }
+    },
+    "Add_BankAccount3": {
+      "placeholder": "หมายเลขบัญชีธนาคาร 3",
       "hint": "",
       "error": {
         "invalid": "มีการใช้บัญชีธนาคาร",
@@ -288,7 +351,7 @@
       "accessed": {
         "username": "ยูสเซอร์",
         "currency": "สกุลเงิน",
-        "datetime": "วันที่ลงทะเบียน",
+        "createdDatetime": "วันที่ลงทะเบียน",
         "fullName": "ชื่อจริง",
         "email": "E-mail",
         "birthday": "วันเกิด",
@@ -303,7 +366,7 @@
       "notAccessed": {
         "username": "ยูสเซอร์",
         "currency": "สกุลเงิน",
-        "datetime": "วันที่ลงทะเบียน",
+        "createdDatetime": "วันที่ลงทะเบียน",
         "button": {
           "access": "เปิดใช้งานในทันที"
         },

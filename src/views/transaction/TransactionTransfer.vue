@@ -209,11 +209,6 @@ export default {
     },
     inputAmount() {
       this.amount = inputAmount(this.amount, 1, this.rangeOptions.max);
-      // if (this.amount < 0 || typeof this.amount != 'number') {
-      //   this.amount = 0;
-      // } else if (this.amount > this.rangeOptions.max) {
-      //   this.amount = this.rangeOptions.max;
-      // }
     },
     validateForm() {
       if (!validateAmount(this.amount, 1, this.rangeOptions.max)) {

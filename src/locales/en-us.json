@@ -207,6 +207,7 @@
       }
     },
     "Add_BankId1": {
+      "title": "Name of Bank",
       "placeholder": "Please select",
       "hint": "",
       "error": {
@@ -217,7 +218,7 @@
       }
     },
     "Add_BankBranchName1": {
-      "placeholder": "Branch Name 1",
+      "placeholder": "Branch Name",
       "hint": "",
       "error": {
         "invalid": "",
@@ -227,7 +228,69 @@
       }
     },
     "Add_BankAccount1": {
-      "placeholder": "Bank Account 1",
+      "placeholder": "Bank Account",
+      "hint": "",
+      "error": {
+        "invalid": "The bank account has been used.",
+        "required": "Please enter your bank account number",
+        "length": "",
+        "regex": "Format False"
+      }
+    },
+    "Add_BankId2": {
+      "title": "Name of Bank 2",
+      "placeholder": "Please select",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "Please select the bank name",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_BankBranchName2": {
+      "placeholder": "Branch Name 2",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "Please enter the branch name",
+        "length": "",
+        "regex": "Format False"
+      }
+    },
+    "Add_BankAccount2": {
+      "placeholder": "Bank Account 2",
+      "hint": "",
+      "error": {
+        "invalid": "The bank account has been used.",
+        "required": "Please enter your bank account number",
+        "length": "",
+        "regex": "Format False"
+      }
+    },
+    "Add_BankId3": {
+      "title": "Name of Bank 3",
+      "placeholder": "Please select",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "Please select the bank name",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_BankBranchName3": {
+      "placeholder": "Branch Name 3",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "Please enter the branch name",
+        "length": "",
+        "regex": "Format False"
+      }
+    },
+    "Add_BankAccount3": {
+      "placeholder": "Bank Account 3",
       "hint": "",
       "error": {
         "invalid": "The bank account has been used.",
@@ -288,7 +351,7 @@
       "accessed": {
         "username": "Account",
         "currency": "Specific Currency",
-        "datetime": "Registration time",
+        "createdDatetime": "Registration time",
         "fullName": "Your real name",
         "email": "E-mail",
         "birthday": "Birthday",
@@ -303,7 +366,7 @@
       "notAccessed": {
         "username": "Account",
         "currency": "Specific Currency",
-        "datetime": "Registration time",
+        "createdDatetime": "Registration time",
         "button": {
           "access": "Instant Access"
         },

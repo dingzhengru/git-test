@@ -1,7 +1,13 @@
 <template>
   <div class="user-profile">
     <!-- 未開通的 -->
-    <UserProfileList :list="list" v-if="!isAccessed" @instantAccess="instantAccess"></UserProfileList>
+    <UserProfileList
+      :profile="{ username, currency, createdDatetime }"
+      :registerList="registerList"
+      :bankList="bankList"
+      v-if="!isAccessed"
+      @instantAccess="submitInstantAccess"
+    ></UserProfileList>
 
     <!-- 開通後的 -->
     <UserProfileListAccess
@@ -14,7 +20,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-
+import { registerAdvanceNew } from '@/api/user';
 export default {
   name: 'Profile',
   components: {
@@ -22,25 +28,12 @@ export default {
     UserProfileListAccess: () => import('../../components/user/UserProfileListAccess'),
   },
   computed: {
-    ...mapGetters(['isAccessed', 'siteID', 'siteFullCss']),
+    ...mapGetters(['isAccessed', 'siteID', 'siteFullCss', 'username', 'currency', 'createdDatetime']),
   },
   data() {
     return {
-      list: [],
-      notAccessList: [
-        {
-          name: 'username',
-          content: 'ding01',
-        },
-        {
-          name: 'currency',
-          content: 'THB',
-        },
-        {
-          name: 'datetime',
-          content: '2020/07/10 15:53:06 (GMT+8)',
-        },
-      ],
+      registerList: [],
+      bankList: [],
       accessList: [
         {
           name: 'username',
@@ -51,7 +44,7 @@ export default {
           content: 'THB',
         },
         {
-          name: 'datetime',
+          name: 'createdDatetime',
           content: '2020/07/10 15:53:06 (GMT+8)',
         },
         {
@@ -86,8 +79,8 @@ export default {
     };
   },
   methods: {
-    instantAccess() {
-      console.log('instantAccess');
+    submitInstantAccess(data) {
+      console.log('[InstantAccess]', data);
     },
     changeWithdrawPassword() {
       console.log('changeWithdrawPassword');
@@ -108,35 +101,28 @@ export default {
         // const result = await this.$store.dispatch('user/getInfo');
 
         if (this.isAccessed) {
-          this.list = this.accessList;
+          this.profileList = this.accessList;
           // this.list = this.accessList.map(item => {
           //   if (result.RetObj[item.name]) {
           //     item.value = result.RetObj[item.name];
           //   }
           // });
         } else {
-          this.list = this.notAccessList;
+          const result = await registerAdvanceNew();
+
+          console.log('[RegisterAdvanceNew]', result);
+
           // this.list = this.notAccessList.map(item => {
           //   if (result.RetObj[item.name]) {
           //     item.value = result.RetObj[item.name];
           //   }
           // });
-        }
 
-        //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
+          this.bankList = result.RetObj.Add_BankList;
+          this.registerList = result.RetObj.Register;
+        }
       },
     },
-    // isAccessed: {
-    //   immediate: true,
-    //   handler() {
-    // if (this.isAccessed) {
-    //   this.list = this.accessList;
-    // } else {
-    //   this.list = this.notAccessList;
-    // }
-    //   },
-    // },
   },
 };
 </script>

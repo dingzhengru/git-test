@@ -25,5 +25,7 @@ const getters = {
   total: state => state.user.total,
   vip: state => state.user.vip,
   roll: state => state.user.roll,
+  currency: state => state.user.currency,
+  createdDatetime: state => state.user.createdDatetime,
 };
 export default getters;

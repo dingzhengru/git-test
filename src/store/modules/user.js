@@ -11,6 +11,8 @@ const state = {
   total: null,
   vip: null,
   roll: null,
+  currency: null,
+  createdDatetime: null,
 };
 
 const mutations = {
@@ -28,11 +30,14 @@ const mutations = {
   },
   setUserInfo(state, info) {
     console.log('[SetUserInfo]', info);
-    state.isAccessed = info.RetObj.Lst_Account_Open;
+    // state.isAccessed = info.RetObj.Lst_Account_Open;
+    state.isAccessed = false;
     state.username = info.RetObj.Lst_Account;
     state.roll = info.RetObj.Lst_PI_BetAmount;
     state.vip = info.RetObj.Lst_PI_Level;
-    // state.total = numeral(info.RetObj.Lst_Point).format('0,0.00');
+
+    state.currency = info.RetObj.Lst_Currency;
+    state.createdDatetime = info.RetObj.Lst_Ctime;
 
     getAllGamePoint().then(result => {
       console.log('[SetUserInfo AllGamePoint]', result.RetObj);

@@ -266,8 +266,6 @@ export default {
         });
         this.amountLimit.min = result.RetObj.WithalDownlimit;
         this.amountLimit.max = result.RetObj.WithalUplimit;
-
-        //* 關掉 loading
       },
     },
   },

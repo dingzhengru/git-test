@@ -42,7 +42,7 @@
               v-model="field.value"
             >
               <!-- <option value="" selected>{{ $t(`register.${field.name}.placeholder`) }}</option> -->
-              <option :value="bank.Value" v-for="bank in bankList" :key="bank.value">{{ bank.Text }}</option>
+              <option :value="bank.Value" v-for="bank in bankList" :key="bank.Value">{{ bank.Text }}</option>
             </select>
           </div>
           <div class="register__form__field__hint">{{ $t(`register.${field.name}.hint`) }}</div>
@@ -91,6 +91,7 @@
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
 import { getRegisterFieldList } from '@/api/register';
+import { validateField } from '@/utils/register';
 import dayjs from 'dayjs';
 import idMapper from '@/idMapper';
 
@@ -346,32 +347,7 @@ export default {
         },
       ],
       noticeList: ['register.notice.required', 'register.notice.recommend', 'register.notice.contact'],
-      bankList: [
-        {
-          name: 'KBANK',
-          value: '210',
-        },
-        {
-          name: 'SCB',
-          value: '211',
-        },
-        {
-          name: 'KTB',
-          value: '212',
-        },
-        {
-          name: 'TMB',
-          value: '213',
-        },
-        {
-          name: 'BangkokBank',
-          value: '214',
-        },
-        {
-          name: 'BAAC ธ.ก.ส.',
-          value: '275',
-        },
-      ],
+      bankList: [],
       captchaImage: {
         Width: 147,
         Height: 58,
@@ -397,14 +373,13 @@ export default {
       }
     },
     async submitRegister() {
-      const requestData = {};
-
       if (!this.validateForm()) {
         return;
       }
+      const requestData = {};
 
       for (const field of this.fieldList) {
-        if (field.value) {
+        if (field.value && field.isShow) {
           requestData[field.name] = field.value;
         }
       }
@@ -434,60 +409,16 @@ export default {
       for (const field of this.fieldList) {
         //* 檢查欄位自己的屬性(required, minlength, maxlength, min, max)
         const validateReulst = this.validateField(field);
-        if (validateReulst != null) {
-          invalidFieldList.push(validateReulst);
+        if (validateReulst != '') {
+          invalidFieldList.push(field);
         }
       }
 
       return invalidFieldList.length == 0;
     },
     validateField(field) {
-      if (!field.isRequired && !field.value) {
-        //* 非必填 && 空值
-        field.error = '';
-        return null;
-      } else if (field.isRequired && !field.value) {
-        //* 必填 && 空值
-        // field.error = '此欄位為必填';
-        field.error = this.$t(`register.${field.name}.error.required`);
-      } else if (!!field.minlength && field.value.length < field.minlength) {
-        //* 是否有最小長度 && 低於最小長度
-        // field.error = `此欄位最少需要輸入字數: ${field.minlength}`;
-        field.error = this.$t(`register.${field.name}.error.length`);
-      } else if (!!field.maxlength && field.value.length > field.maxlength) {
-        //* 是否有最大長度 && 高於最大長度
-        // field.error = `此欄位最多只能輸入字數: ${field.maxlength}`;
-        field.error = this.$t(`register.${field.name}.error.length`);
-      } else if (field.regex && !RegExp(field.regex).test(field.value)) {
-        //* 是否有正規表示式 && 不符合正規表示式
-        // field.error = `格式錯誤`;
-        field.error = this.$t(`register.${field.name}.error.regex`);
-      } else if (field.name == 'Add_Birthday' && dayjs(field.value).isAfter(field.max)) {
-        //* 是否為生日欄位 && 是否超過指定最大日期(18歲限制)
-        // field.error = `年齡必須超過 18 歲`;
-        field.error = this.$t(`register.${field.name}.error.invalid`);
-      } else if (field.name == 'Add_PasswordCheck') {
-        const password = this.fieldList.find(item => item.name == 'Add_Password');
-        if (field.value != password.value) {
-          field.error = this.$t('register.Add_PasswordCheck.error.invalid');
-        } else {
-          field.error = '';
-        }
-      } else if (field.name == 'Add_Withdrawals_CheckPassword') {
-        const passwordWithdrawal = this.fieldList.find(item => item.name == 'Add_Withdrawals_Password');
-        if (field.value != passwordWithdrawal.value) {
-          field.error = this.$t('register.Add_Withdrawals_CheckPassword.error.invalid');
-        } else {
-          field.error = '';
-        }
-      } else {
-        field.error = '';
-      }
-
-      if (field.error) {
-        return field;
-      }
-      return null;
+      field.error = this.$t(validateField(field, this.fieldList));
+      return field.error;
     },
   },
   watch: {
@@ -518,8 +449,6 @@ export default {
               field.isRequired = registerField.Lst_isRequired;
             }
           }
-
-          //* 關掉 loading
         });
 
         this.changeCaptcha();

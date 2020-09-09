@@ -207,6 +207,7 @@
       }
     },
     "Add_BankId1": {
+      "title": "银行名称",
       "placeholder": "请选择",
       "hint": "",
       "error": {
@@ -228,6 +229,68 @@
     },
     "Add_BankAccount1": {
       "placeholder": "银行帐号1",
+      "hint": "",
+      "error": {
+        "invalid": "银行账号已存在",
+        "required": "请输入银行帐号",
+        "length": "",
+        "regex": "格式错误"
+      }
+    },
+    "Add_BankId2": {
+      "title": "银行名称2",
+      "placeholder": "请选择",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "请选择银行名称",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_BankBranchName2": {
+      "placeholder": "支行名称2",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "请输入支行名称",
+        "length": "",
+        "regex": "格式错误"
+      }
+    },
+    "Add_BankAccount2": {
+      "placeholder": "银行帐号2",
+      "hint": "",
+      "error": {
+        "invalid": "银行账号已存在",
+        "required": "请输入银行帐号",
+        "length": "",
+        "regex": "格式错误"
+      }
+    },
+    "Add_BankId3": {
+      "title": "银行名称3",
+      "placeholder": "请选择",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "请选择银行名称",
+        "length": "",
+        "regex": ""
+      }
+    },
+    "Add_BankBranchName3": {
+      "placeholder": "支行名称3",
+      "hint": "",
+      "error": {
+        "invalid": "",
+        "required": "请输入支行名称",
+        "length": "",
+        "regex": "格式错误"
+      }
+    },
+    "Add_BankAccount3": {
+      "placeholder": "银行帐号3",
       "hint": "",
       "error": {
         "invalid": "银行账号已存在",
@@ -288,7 +351,7 @@
       "accessed": {
         "username": "帐号",
         "currency": "币别",
-        "datetime": "注册时间",
+        "createdDatetime": "注册时间",
         "fullName": "真实姓名",
         "email": "E-mail",
         "birthday": "生日",
@@ -303,7 +366,7 @@
       "notAccessed": {
         "username": "帐号",
         "currency": "币别",
-        "datetime": "注册时间",
+        "createdDatetime": "注册时间",
         "button": {
           "access": "立即开通"
         },
