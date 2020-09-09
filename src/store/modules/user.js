@@ -30,8 +30,8 @@ const mutations = {
   },
   setUserInfo(state, info) {
     console.log('[SetUserInfo]', info);
-    // state.isAccessed = info.RetObj.Lst_Account_Open;
-    state.isAccessed = false;
+    state.isAccessed = info.RetObj.Lst_Account_Open;
+    // state.isAccessed = false;
     state.username = info.RetObj.Lst_Account;
     state.roll = info.RetObj.Lst_PI_BetAmount;
     state.vip = info.RetObj.Lst_PI_Level;

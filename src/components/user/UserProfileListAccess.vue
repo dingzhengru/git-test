@@ -2,6 +2,11 @@
   <div class="user-profile-access">
     <div class="user-profile-access__main theme-content-box">
       <ul class="user-profile-access__main__ul theme-ul-dataView">
+        <li class="theme-li-dataView" v-for="(value, key) in profile" :key="key">
+          <span class="theme-dataView-header">{{ $t(`user.profile.accessed.${key}`) }}</span>
+          <p class="theme-dataView-data">{{ value }}</p>
+        </li>
+
         <li class="theme-li-dataView" v-for="item in list" :key="item.title">
           <span class="theme-dataView-header">{{ $t(`user.profile.accessed.${item.name}`) }}</span>
           <p class="theme-dataView-data">{{ item.content }}</p>
@@ -55,6 +60,10 @@
 export default {
   name: 'UserProfileListAccess',
   props: {
+    profile: {
+      type: Object,
+      default: () => {},
+    },
     list: {
       type: Array,
       default: () => [],

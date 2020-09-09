@@ -2,7 +2,7 @@
   <div class="user-profile">
     <!-- 未開通的 -->
     <UserProfileList
-      :profile="{ username, currency, createdDatetime }"
+      :profile="{ username, currency, createdDatetime: createdDatetime.replace('T', ' ') }"
       :registerList="registerList"
       :bankList="bankList"
       v-if="!isAccessed"
@@ -11,7 +11,8 @@
 
     <!-- 開通後的 -->
     <UserProfileListAccess
-      :list="list"
+      :profile="{ username, currency, createdDatetime: createdDatetime.replace('T', ' ') }"
+      :list="accessList"
       v-else-if="isAccessed"
       @changeWithdrawPassword="changeWithdrawPassword"
     ></UserProfileListAccess>
@@ -32,43 +33,32 @@ export default {
   },
   data() {
     return {
+      profile: {},
       registerList: [],
       bankList: [],
       accessList: [
         {
-          name: 'username',
-          content: 'ding01',
-        },
-        {
-          name: 'currency',
-          content: 'THB',
-        },
-        {
-          name: 'createdDatetime',
-          content: '2020/07/10 15:53:06 (GMT+8)',
-        },
-        {
-          name: 'fullName',
+          name: 'Add_RealName',
           content: 'first last',
         },
         {
-          name: 'email',
+          name: 'Add_Email',
           content: 'asdf@gmail.com',
         },
         {
-          name: 'birthday',
+          name: 'Add_Birthday',
           content: '2020/07/14',
         },
         {
-          name: 'bank',
+          name: 'Add_BankId1',
           content: '123',
         },
         {
-          name: 'bankAccount',
+          name: 'Add_BankBranchName1',
           content: '1111111',
         },
         {
-          name: 'bankBrach',
+          name: 'Add_BankAccount1',
           content: '分行00000',
         },
         {
@@ -100,18 +90,18 @@ export default {
         //* 取得使用者資訊
         // const result = await this.$store.dispatch('user/getInfo');
 
+        const result = await registerAdvanceNew();
+
+        console.log('[RegisterAdvanceNew]', result);
+
         if (this.isAccessed) {
-          this.profileList = this.accessList;
+          // this.profileList = this.accessList;
           // this.list = this.accessList.map(item => {
           //   if (result.RetObj[item.name]) {
           //     item.value = result.RetObj[item.name];
           //   }
           // });
         } else {
-          const result = await registerAdvanceNew();
-
-          console.log('[RegisterAdvanceNew]', result);
-
           // this.list = this.notAccessList.map(item => {
           //   if (result.RetObj[item.name]) {
           //     item.value = result.RetObj[item.name];
