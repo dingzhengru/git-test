@@ -5,20 +5,26 @@
       :profile="{ username, currency, createdDatetime: createdDatetime.replace('T', ' ') }"
       :registerList="registerList"
       :bankList="bankList"
-      v-if="!isAccessed"
+      v-if="isAccessed == false"
       @instantAccess="submitInstantAccess"
     ></UserProfileList>
 
     <!-- 開通後的 -->
     <UserProfileListAccess
-      :profile="{ username, currency, createdDatetime: createdDatetime.replace('T', ' ') }"
+      :profile="{
+        username,
+        currency,
+        createdDatetime: createdDatetime.replace('T', ' '),
+        fullName,
+        email,
+        birthday: birthday.split('T')[0],
+      }"
       :list="accessList"
-      v-else-if="isAccessed"
+      v-else-if="isAccessed == true"
       @changeWithdrawPassword="changeWithdrawPassword"
     ></UserProfileListAccess>
   </div>
 </template>
-
 <script>
 import { mapGetters } from 'vuex';
 import { registerAdvanceNew } from '@/api/user';
@@ -29,7 +35,17 @@ export default {
     UserProfileListAccess: () => import('../../components/user/UserProfileListAccess'),
   },
   computed: {
-    ...mapGetters(['isAccessed', 'siteID', 'siteFullCss', 'username', 'currency', 'createdDatetime']),
+    ...mapGetters([
+      'isAccessed',
+      'siteID',
+      'siteFullCss',
+      'username',
+      'currency',
+      'createdDatetime',
+      'fullName',
+      'email',
+      'birthday',
+    ]),
   },
   data() {
     return {
@@ -37,34 +53,34 @@ export default {
       registerList: [],
       bankList: [],
       accessList: [
-        {
-          name: 'Add_RealName',
-          content: 'first last',
-        },
-        {
-          name: 'Add_Email',
-          content: 'asdf@gmail.com',
-        },
-        {
-          name: 'Add_Birthday',
-          content: '2020/07/14',
-        },
-        {
-          name: 'Add_BankId1',
-          content: '123',
-        },
-        {
-          name: 'Add_BankBranchName1',
-          content: '1111111',
-        },
-        {
-          name: 'Add_BankAccount1',
-          content: '分行00000',
-        },
-        {
-          name: 'bankAccountName',
-          content: 'first last',
-        },
+        // {
+        //   name: 'fullName',
+        //   content: 'first last',
+        // },
+        // {
+        //   name: 'email',
+        //   content: 'asdf@gmail.com',
+        // },
+        // {
+        //   name: 'birthday',
+        //   content: '2020/07/14',
+        // },
+        // {
+        //   name: 'bankName',
+        //   content: '123',
+        // },
+        // {
+        //   name: 'bankAccount',
+        //   content: '1111111',
+        // },
+        // {
+        //   name: 'bankBrach',
+        //   content: '分行00000',
+        // },
+        // {
+        //   name: 'bankAccountName',
+        //   content: 'first last',
+        // },
       ],
     };
   },
@@ -86,13 +102,14 @@ export default {
 
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/user/profile.scss`);
-
-        //* 取得使用者資訊
-        // const result = await this.$store.dispatch('user/getInfo');
-
-        const result = await registerAdvanceNew();
-
-        console.log('[RegisterAdvanceNew]', result);
+      },
+    },
+    isAccessed: {
+      immediate: true,
+      async handler() {
+        if (this.isAccessed == null) {
+          return;
+        }
 
         if (this.isAccessed) {
           // this.profileList = this.accessList;
@@ -102,11 +119,8 @@ export default {
           //   }
           // });
         } else {
-          // this.list = this.notAccessList.map(item => {
-          //   if (result.RetObj[item.name]) {
-          //     item.value = result.RetObj[item.name];
-          //   }
-          // });
+          const result = await registerAdvanceNew();
+          console.log('[RegisterAdvanceNew]', result);
 
           this.bankList = result.RetObj.Add_BankList;
           this.registerList = result.RetObj.Register;

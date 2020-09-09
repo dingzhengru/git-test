@@ -7,10 +7,10 @@
           <p class="theme-dataView-data">{{ value }}</p>
         </li>
 
-        <li class="theme-li-dataView" v-for="item in list" :key="item.title">
+        <!-- <li class="theme-li-dataView" v-for="item in list" :key="item.title">
           <span class="theme-dataView-header">{{ $t(`user.profile.accessed.${item.name}`) }}</span>
           <p class="theme-dataView-data">{{ item.content }}</p>
-        </li>
+        </li> -->
         <form class="user-profile-access__main__form" id="formPasswordChange" @submit.prevent="changeWithdrawPassword">
           <li class="theme-li-dataView">
             <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordOld') }}</span>
@@ -20,7 +20,7 @@
               required
               minlength="6"
               pattern="^[a-zA-Z0-9]$"
-              v-model="user.passwordOld"
+              v-model="Add_OldPassword"
             />
           </li>
           <li class="theme-li-dataView">
@@ -31,7 +31,7 @@
               required
               minlength="6"
               pattern="^[a-zA-Z0-9]$"
-              v-model="user.passwordNew"
+              v-model="Add_NewPassword"
             />
           </li>
           <li class="theme-li-dataView">
@@ -42,7 +42,7 @@
               required
               minlength="6"
               pattern="^[a-zA-Z0-9]$"
-              v-model="user.passwordCheck"
+              v-model="Add_PasswordCheck"
             />
           </li>
         </form>
@@ -57,6 +57,8 @@
 </template>
 
 <script>
+// import { registerFieldList, validateField } from '@/utils/register';
+
 export default {
   name: 'UserProfileListAccess',
   props: {
@@ -71,11 +73,9 @@ export default {
   },
   data() {
     return {
-      user: {
-        passwordOld: '',
-        passwordNew: '',
-        passwordCheck: '',
-      },
+      Add_OldPassword: '',
+      Add_NewPassword: '',
+      Add_PasswordCheck: '',
     };
   },
   methods: {

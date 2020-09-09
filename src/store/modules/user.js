@@ -6,13 +6,18 @@ const state = {
   isLoggedIn: false,
   token: null,
   publicKey: null,
-  isAccessed: false,
+  isAccessed: null,
   username: null,
   total: null,
   vip: null,
   roll: null,
   currency: null,
   createdDatetime: null,
+  fullName: null,
+  email: null,
+  birthday: null,
+  bankId: null,
+  bankName: null,
 };
 
 const mutations = {
@@ -38,26 +43,15 @@ const mutations = {
 
     state.currency = info.RetObj.Lst_Currency;
     state.createdDatetime = info.RetObj.Lst_Ctime;
+    state.fullName = info.RetObj.Lst_RealName || '';
+    state.email = info.RetObj.Lst_Email;
+    state.birthday = info.RetObj.Lst_Birthday;
+    state.bankId = info.RetObj.Lst_BankID_1;
 
     getAllGamePoint().then(result => {
       console.log('[SetUserInfo AllGamePoint]', result.RetObj);
       state.total = result.RetObj.TotalBalance;
     });
-  },
-  setIsAccessed(state, isAccessed) {
-    state.isAccessed = isAccessed;
-  },
-  setUsername(state, username) {
-    state.username = username;
-  },
-  setTotal(state, total) {
-    state.total = total;
-  },
-  setVip(state, vip) {
-    state.vip = vip;
-  },
-  setRoll(state, roll) {
-    state.roll = roll;
   },
   removeToken(state) {
     state.token = null;

@@ -355,7 +355,7 @@
         "fullName": "真实姓名",
         "email": "E-mail",
         "birthday": "生日",
-        "bank": "银行名称",
+        "bankName": "银行名称",
         "bankAccount": "银行帐号",
         "bankBrach": "支行名称",
         "bankAccountName": "银行户名",

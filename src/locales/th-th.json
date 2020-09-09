@@ -355,7 +355,7 @@
         "fullName": "ชื่อจริง",
         "email": "E-mail",
         "birthday": "วันเกิด",
-        "bank": "ธนาคาร",
+        "bankName": "ธนาคาร",
         "bankAccount": "รเลขที่บัญชี",
         "bankBrach": "สาขา",
         "bankAccountName": "ชื่อบัญชี",
