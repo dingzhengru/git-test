@@ -382,7 +382,6 @@ export default {
   },
   methods: {
     instantAccess() {
-      console.log('instantAccess');
       if (!this.isShowRegisterList) {
         this.isShowRegisterList = true;
         return;
