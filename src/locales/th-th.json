@@ -474,10 +474,7 @@
     },
     "withdrawal": {
       "title": "ทำรายการฝาก-ถอนเงิน",
-      "hightLightMessage": {
-        "content": "รายการถอนเงินรบกวนทำรายการยอดจำนวนเต็ม เช่นยอด",
-        "currency": "บาท"
-      },
+      "hightLightMessage": "รายการถอนเงินรบกวนทำรายการยอดจำนวนเต็ม เช่นยอด {amountLimitMin} บาท(หลักหน่วย/หลักสิบทางเว็ปไม่ถอนค่ะ)",
       "field": {
         "bankSelect": "เลือกธนาคาร",
         "bankSelectPlaceholder": "โปรดเลือก",

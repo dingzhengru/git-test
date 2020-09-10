@@ -474,10 +474,7 @@
     },
     "withdrawal": {
       "title": "Trade Center",
-      "hightLightMessage": {
-        "content": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount",
-        "currency": "THB"
-      },
+      "hightLightMessage": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal {amountLimitMin} THB",
       "field": {
         "bankSelect": "Select Bank",
         "bankSelectPlaceholder": "Please select",

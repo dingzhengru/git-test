@@ -474,10 +474,7 @@
     },
     "withdrawal": {
       "title": "交易中心",
-      "hightLightMessage": {
-        "content": "取款金额，请填整百数，最低取款金额",
-        "currency": "铢"
-      },
+      "hightLightMessage": "取款金额，请填整百数，最低取款金额 {amountLimitMin} 铢",
       "field": {
         "bankSelect": "选择银行",
         "bankSelectPlaceholder": "请选择",
