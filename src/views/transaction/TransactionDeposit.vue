@@ -115,7 +115,7 @@
               :max="depositLimit.max"
               step="100"
               v-model.number="amount"
-              @input="inputAmount"
+              @change="inputAmount"
             />
           </template>
 
