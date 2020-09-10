@@ -667,7 +667,7 @@
         "table": {
           "activity": "ชื่อโปรโมชั่น",
           "bonusIssue": "แจกโบนัส",
-          "datetime": "Time"
+          "datetime": "เวลา"
         }
       },
       "adjustment": {}
