@@ -187,7 +187,7 @@ export default {
     DepositDialog: () => import('@/components/transaction/deposit/DepositDialog'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
   },
   data() {
     return {
@@ -244,6 +244,27 @@ export default {
     };
   },
   methods: {
+    async getDepositInfo() {
+      const result = await getDepositInfo();
+      console.log('[DepositInfo]', result.RetObj);
+
+      if (result.Code == 200) {
+        if (result.RetObj.BankAccount.length > 0) {
+          this.bankDepositList = result.RetObj.BankAccount;
+        } else {
+          this.bankDepositList = result.RetObj.BankURL;
+        }
+
+        this.bankTransferList = result.RetObj.BankURL;
+        this.methodList = result.RetObj.DepositMethod;
+        this.currencyList = result.RetObj.BaseCurrencyItem;
+        this.promotionList = result.RetObj.AllActivityList;
+        this.depositLimit.min = result.RetObj.DepositDownlimit;
+        this.depositLimit.max = result.RetObj.DepositUplimit;
+        this.hid_MMKtoTHBrate = result.RetObj.hid_MMKtoTHBrate;
+        this.hid_THBtoMMKrate = result.RetObj.hid_THBtoMMKrate;
+      }
+    },
     async submitDeposit() {
       if (!this.validateForm()) {
         return;
@@ -343,27 +364,11 @@ export default {
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/deposit.scss`);
 
-        //* 取得存款資訊
-        const result = await getDepositInfo();
-        console.log('[DepositInfo]', result.RetObj);
-
-        if (result.Code == 200) {
-          if (result.RetObj.BankAccount.length > 0) {
-            this.bankDepositList = result.RetObj.BankAccount;
-          } else {
-            this.bankDepositList = result.RetObj.BankURL;
-          }
-
-          this.bankTransferList = result.RetObj.BankURL;
-          this.methodList = result.RetObj.DepositMethod;
-          this.currencyList = result.RetObj.BaseCurrencyItem;
-          this.promotionList = result.RetObj.AllActivityList;
-          this.depositLimit.min = result.RetObj.DepositDownlimit;
-          this.depositLimit.max = result.RetObj.DepositUplimit;
-          this.hid_MMKtoTHBrate = result.RetObj.hid_MMKtoTHBrate;
-          this.hid_THBtoMMKrate = result.RetObj.hid_THBtoMMKrate;
-        }
+        this.getDepositInfo();
       },
+    },
+    lang() {
+      this.getDepositInfo();
     },
   },
 };
