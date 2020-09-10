@@ -443,7 +443,7 @@
         "bankTransfer": "",
         "datetime": "",
         "method": "",
-        "amount": "Baht Maximum 100000.00 , Minimum 200.00 Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit. ",
+        "amount": "Baht Maximum {amountLimitMax} , Minimum {amountLimitMin} Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit. ",
         "receipt": "The Format of Image Allow Only JPG / PNG <br /> File size cannot exceed 2MB",
         "remark": "",
         "promotion": "<span class='ui-txt-mask'>Note: Non-selection regarded as abdication.</span>"

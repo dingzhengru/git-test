@@ -75,7 +75,7 @@
               class="ui-ipt"
               type="datetime-local"
               v-model="datetime"
-              :max="dayjs().format('YYYY-MM-DDTHH:mm:00')"
+              :max="dayjs().format('YYYY-MM-DDTHH:mm')"
             />
           </template>
 
@@ -157,7 +157,12 @@
 
           <p
             class="deposit__field__notice"
-            v-html="$t(`transaction.deposit.hint.${field.name}`)"
+            v-html="
+              $t(`transaction.deposit.hint.${field.name}`, {
+                amountLimitMin: depositLimit.min,
+                amountLimitMax: depositLimit.max,
+              })
+            "
             v-if="!(field.name == 'promotion' && promotion != -1)"
           ></p>
         </div>
@@ -245,7 +250,7 @@ export default {
       bankDepositAccount: '', //* 當存款銀行列表為空時，則要填入此欄位
       hid_MMKtoTHBrate: '', //* MMK:THB 匯率(緬甸:泰銖)
       hid_THBtoMMKrate: '', //* THB:MMK 匯率(泰銖:緬甸)
-      depositLimit: { min: 100, max: 100000 },
+      depositLimit: { min: 0, max: 0 },
       noticeList: ['currency', 'depositLimit01', 'depositLimit02', 'userBear01', 'userBear02', 'suggest', 'contact'],
       isShowDepositDialog: true,
     };
