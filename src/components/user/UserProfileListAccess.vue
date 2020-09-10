@@ -66,7 +66,7 @@ export default {
       type: Object,
       default: () => {},
     },
-    list: {
+    userBankList: {
       type: Array,
       default: () => [],
     },

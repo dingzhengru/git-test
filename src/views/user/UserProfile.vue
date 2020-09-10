@@ -18,6 +18,10 @@
         fullName,
         email,
         birthday: birthday.split('T')[0],
+        bankName1,
+        bankAccount1,
+        bankBrach1,
+        bankAccountName1,
       }"
       :list="accessList"
       v-else-if="isAccessed == true"
@@ -27,7 +31,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import { registerAdvanceNew } from '@/api/user';
+import { getRegisterAdvanceNew, getBankInfoList } from '@/api/user';
 export default {
   name: 'Profile',
   components: {
@@ -45,6 +49,10 @@ export default {
       'fullName',
       'email',
       'birthday',
+      'bankName1',
+      'bankAccount1',
+      'bankBrach1',
+      'bankAccountName1',
     ]),
   },
   data() {
@@ -118,8 +126,10 @@ export default {
           //     item.value = result.RetObj[item.name];
           //   }
           // });
+          const bankInfoListResult = await getBankInfoList();
+          console.log('[BankInfoList]', bankInfoListResult);
         } else {
-          const result = await registerAdvanceNew();
+          const result = await getRegisterAdvanceNew();
           console.log('[RegisterAdvanceNew]', result);
 
           this.bankList = result.RetObj.Add_BankList;

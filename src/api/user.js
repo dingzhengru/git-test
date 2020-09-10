@@ -1,8 +1,14 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
+//* 銀行資訊
+export async function getBankInfoList() {
+  const result = await axios.post(API_URL + '/Member/MBankInfoList');
+  return result.data;
+}
+
 //* 帳號開通畫面
-export async function registerAdvanceNew() {
+export async function getRegisterAdvanceNew() {
   const result = await axios.post(API_URL + '/Member/RegisterAdvanceNew');
   return result.data;
 }

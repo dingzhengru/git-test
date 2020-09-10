@@ -12,6 +12,7 @@ const AUTH_API_LIST = [
   'Member/MemInfo',
   'Member/MChangePassword',
   'Member/RegisterAdvanceNew',
+  'Member/MBankInfoList',
   'Siteinfo/MGetAllGamePoint',
   'Siteinfo/MGetPITTLBet',
   'Product/MemProductList',

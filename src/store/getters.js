@@ -30,6 +30,10 @@ const getters = {
   fullName: state => state.user.fullName,
   email: state => state.user.email,
   birthday: state => state.user.birthday,
-  bankId: state => state.user.bankId,
+  bankId1: state => state.user.bankId1,
+  bankName1: state => state.user.bankName1,
+  bankAccount1: state => state.user.bankAccount1,
+  bankBrach1: state => state.user.bankBrach1,
+  bankAccountName1: state => state.user.bankAccountName1,
 };
 export default getters;
