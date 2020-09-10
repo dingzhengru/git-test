@@ -97,7 +97,7 @@ export default {
       switch (this.$route.params.name) {
         case 'deposit': {
           const result = await getRecordDepositDetail(this.$route.query);
-          console.log('[RecordWithdrawalDetail]', result);
+          console.log('[RecordDepositDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
