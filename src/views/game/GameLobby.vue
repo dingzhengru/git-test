@@ -140,6 +140,11 @@ export default {
     };
   },
   methods: {
+    async getAllGamePoint() {
+      const result = await getAllGamePoint();
+      this.gamePointList = result.RetObj.GameSitePoints;
+      console.log('[GamePointList]', result.RetObj);
+    },
     async getGameProduct() {
       const requestData = { Tag: this.productTag };
       let result = {};
@@ -387,10 +392,7 @@ export default {
         import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
         //* 取得遊戲點數列表
-        getAllGamePoint().then(result => {
-          this.gamePointList = result.RetObj.GameSitePoints;
-          console.log('[GamePointList]', result.RetObj);
-        });
+        this.getAllGamePoint();
 
         this.getGameProduct();
         await this.getGameCategory(); //* 真人遊戲需先從此取得 guid，才能取得遊戲列表
@@ -398,6 +400,7 @@ export default {
       },
     },
     async lang() {
+      this.getAllGamePoint();
       this.getGameProduct();
       await this.getGameCategory();
       this.getGameList();

@@ -87,9 +87,14 @@ const mutations = {
 
     getBankInfoList().then(result => {
       console.log('[BankInfoList]', result.RetObj);
-      state.bankName1 = result.RetObj.find(item => item.Lst_BankId == state.bankId1).Lst_BankName || '';
-      state.bankName2 = result.RetObj.find(item => item.Lst_BankId == state.bankId2).Lst_BankName || '';
-      state.bankName3 = result.RetObj.find(item => item.Lst_BankId == state.bankId3).Lst_BankName || '';
+
+      const bank1 = result.RetObj.find(item => item.Lst_BankId == state.bankId1) || '';
+      const bank2 = result.RetObj.find(item => item.Lst_BankId == state.bankId2) || '';
+      const bank3 = result.RetObj.find(item => item.Lst_BankId == state.bankId3) || '';
+
+      state.bankName1 = bank1.Lst_BankName || '';
+      state.bankName2 = bank2.Lst_BankName || '';
+      state.bankName3 = bank3.Lst_BankName || '';
     });
 
     getAllGamePoint().then(result => {
