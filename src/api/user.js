@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
+//*
+
 //* 銀行資訊
 export async function getBankInfoList() {
   const result = await axios.post(API_URL + '/Member/MBankInfoList');
@@ -60,5 +62,9 @@ export async function logout() {
 
 export async function changePassword(data) {
   const result = await axios.post(API_URL + '/Member/MChangePassword', data);
+  return result.data;
+}
+export async function changePasswordWithdrawal(data) {
+  const result = await axios.post(API_URL + '/Member/MChgWithdrawalsPwd', data);
   return result.data;
 }

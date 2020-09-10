@@ -19,20 +19,13 @@
               type="password"
               required
               minlength="6"
-              pattern="^[a-zA-Z0-9]$"
-              v-model="Add_OldPassword"
+              pattern="^[a-zA-Z0-9]*$"
+              v-model="OldPassword"
             />
           </li>
           <li class="theme-li-dataView">
             <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordNew') }}</span>
-            <input
-              class="ui-ipt"
-              type="password"
-              required
-              minlength="6"
-              pattern="^[a-zA-Z0-9]$"
-              v-model="Add_NewPassword"
-            />
+            <input class="ui-ipt" type="password" required minlength="6" pattern="^[a-zA-Z0-9]*$" v-model="Password" />
           </li>
           <li class="theme-li-dataView">
             <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordCheck') }}</span>
@@ -41,12 +34,15 @@
               type="password"
               required
               minlength="6"
-              pattern="^[a-zA-Z0-9]$"
-              v-model="Add_PasswordCheck"
+              pattern="^[a-zA-Z0-9]*$"
+              v-model="CheckPassword"
             />
           </li>
         </form>
       </ul>
+    </div>
+    <div class="theme-errorMsg" v-if="error">
+      <span class="theme-txt-errorMsg">{{ error }}</span>
     </div>
     <div class="user-profile-access__button-div">
       <button type="submit" class="user-profile-access__button--submit ui-btn ui-btn-long" form="formPasswordChange">
@@ -66,21 +62,50 @@ export default {
       type: Object,
       default: () => {},
     },
-    userBankList: {
-      type: Array,
-      default: () => [],
-    },
   },
   data() {
     return {
-      Add_OldPassword: '',
-      Add_NewPassword: '',
-      Add_PasswordCheck: '',
+      OldPassword: '',
+      Password: '',
+      CheckPassword: '',
+      error: '',
     };
   },
   methods: {
     changeWithdrawPassword() {
-      console.log('changeWithdrawPassword()');
+      console.log('changeWithdrawPassword');
+
+      if (!this.validateForm()) {
+        return;
+      }
+
+      const requestData = {
+        OldPassword: this.OldPassword,
+        Password: this.Password,
+        CheckPassword: this.CheckPassword,
+      };
+
+      this.$emit('change-withdrawal-password', requestData);
+    },
+    validateForm() {
+      console.log('[ValidateForm]');
+      if (this.OldPassword.length < 6 || this.Password.length < 6 || this.CheckPassword.length < 6) {
+        this.error = this.$t('register.Add_Withdrawals_Password.error.length');
+      } else if (
+        !RegExp('^[a-zA-Z0-9]*$').test(this.OldPassword) ||
+        !RegExp('^[a-zA-Z0-9]*$').test(this.Password) ||
+        !RegExp('^[a-zA-Z0-9]*$').test(this.CheckPassword)
+      ) {
+        this.error = this.$t('register.Add_Withdrawals_Password.error.regex');
+      } else if (this.Password != this.CheckPassword) {
+        this.error = this.$t('register.Add_Withdrawals_CheckPassword.error.invalid');
+      } else if (this.Password != this.CheckPassword) {
+        this.error = this.$t('register.Add_Withdrawals_CheckPassword.error.invalid');
+      } else {
+        this.error = '';
+      }
+
+      return this.error == '';
     },
   },
 };

@@ -23,15 +23,14 @@
         bankBrach1,
         bankAccountName1,
       }"
-      :list="accessList"
       v-else-if="isAccessed == true"
-      @changeWithdrawPassword="changeWithdrawPassword"
+      @change-withdrawal-password="changeWithdrawalPassword"
     ></UserProfileListAccess>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import { getRegisterAdvanceNew, getBankInfoList } from '@/api/user';
+import { getRegisterAdvanceNew, getBankInfoList, changePasswordWithdrawal } from '@/api/user';
 export default {
   name: 'Profile',
   components: {
@@ -60,44 +59,20 @@ export default {
       profile: {},
       registerList: [],
       bankList: [],
-      accessList: [
-        // {
-        //   name: 'fullName',
-        //   content: 'first last',
-        // },
-        // {
-        //   name: 'email',
-        //   content: 'asdf@gmail.com',
-        // },
-        // {
-        //   name: 'birthday',
-        //   content: '2020/07/14',
-        // },
-        // {
-        //   name: 'bankName',
-        //   content: '123',
-        // },
-        // {
-        //   name: 'bankAccount',
-        //   content: '1111111',
-        // },
-        // {
-        //   name: 'bankBrach',
-        //   content: '分行00000',
-        // },
-        // {
-        //   name: 'bankAccountName',
-        //   content: 'first last',
-        // },
-      ],
     };
   },
   methods: {
     submitInstantAccess(data) {
       console.log('[InstantAccess]', data);
     },
-    changeWithdrawPassword() {
-      console.log('changeWithdrawPassword');
+    async changeWithdrawalPassword(data) {
+      console.log('[ChangeWithdrawalPassword]', data);
+      const result = await changePasswordWithdrawal(data);
+
+      console.log('[ChangeWithdrawalPassword]', result);
+      if (result.Code == 200) {
+        window.alert(this.$t('alert.changePassword.success'));
+      }
     },
   },
   watch: {
