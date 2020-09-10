@@ -9,6 +9,7 @@ const state = {
   mainDomain: null,
   remoteCSSUrl: null,
   isNewPromotion: false,
+  siteName: null,
 };
 
 const mutations = {
@@ -36,6 +37,9 @@ const mutations = {
   setIsNewPromotion(state, isNewPromotion) {
     state.isNewPromotion = isNewPromotion;
   },
+  setSiteName(state, siteName) {
+    state.siteName = siteName;
+  },
 };
 
 const actions = {
@@ -54,6 +58,7 @@ const actions = {
       commit('setMainDomain', result.RetObj.LS_MainDomain);
       commit('setRemoteCSSUrl', result.RetObj.RemoteCSSUrls);
       commit('setIsNewPromotion', result.RetObj.bNewPromotion);
+      commit('setSiteName', result.RetObj.LS_SiteName);
     }
 
     //* 手動設置(測試用)

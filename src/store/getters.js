@@ -11,6 +11,7 @@ const getters = {
   siteRemoteCSSUrl: state => state.site.remoteCSSUrl,
   siteMainDomain: state => state.site.mainDomain,
   siteIsNewPromotion: state => state.site.isNewPromotion,
+  siteName: state => state.site.siteName,
   siteFullCss: state => {
     return `${state.site.cssClass}/${state.site.cssType}`;
   },

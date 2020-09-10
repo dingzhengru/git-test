@@ -7,7 +7,7 @@
         <div class="deposit-dialog__title" v-html="$t('transaction.deposit.dialog.title')"></div>
         <ul class="deposit-dialog__ul">
           <li class="deposit-dialog__li" v-html="$t('transaction.deposit.dialog.notice.currency')"></li>
-          <li class="deposit-dialog__li" v-html="$t('transaction.deposit.dialog.notice.atm')"></li>
+          <li class="deposit-dialog__li" v-html="$t('transaction.deposit.dialog.notice.atm', { siteName: siteName })"></li>
           <li class="deposit-dialog__li" v-html="$t('transaction.deposit.dialog.notice.violate')"></li>
         </ul>
         <div class="deposit-dialog__footer">
@@ -28,9 +28,9 @@
 export default {
   name: 'DepositDialog',
   props: {
-    list: {
-      type: Array,
-      default: () => [],
+    siteName: {
+      type: String,
+      default: () => '',
     },
   },
 };

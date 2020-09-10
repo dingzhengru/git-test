@@ -171,7 +171,7 @@
         </router-link>
       </div>
     </form>
-    <DepositDialog v-if="isShowDepositDialog" @close="isShowDepositDialog = false" />
+    <DepositDialog :siteName="siteName" v-if="isShowDepositDialog" @close="isShowDepositDialog = false" />
   </div>
 </template>
 
@@ -187,7 +187,7 @@ export default {
     DepositDialog: () => import('@/components/transaction/deposit/DepositDialog'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'siteName']),
   },
   data() {
     return {
