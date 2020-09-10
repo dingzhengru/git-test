@@ -471,6 +471,7 @@ export default {
 }
 .record-content__ul__li__table__td-2nd {
   position: relative;
+  word-break: break-all;
 }
 .record-content__notice {
   font-size: 2em;
