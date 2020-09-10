@@ -92,10 +92,11 @@ export default {
       notShowKeyList: ['id'],
     };
   },
-  mounted() {
-    switch (this.$route.params.name) {
-      case 'deposit': {
-        getRecordDepositDetail(this.$route.query).then(result => {
+  methods: {
+    async getRecordDetail() {
+      switch (this.$route.params.name) {
+        case 'deposit': {
+          const result = await getRecordDepositDetail(this.$route.query);
           console.log('[RecordWithdrawalDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
@@ -110,12 +111,11 @@ export default {
             newItem.activity = item.Lst_ActivityName;
             return newItem;
           });
-        });
 
-        break;
-      }
-      case 'withdrawal': {
-        getRecordWithdrawalDetail(this.$route.query).then(result => {
+          break;
+        }
+        case 'withdrawal': {
+          const result = await getRecordWithdrawalDetail(this.$route.query);
           console.log('[RecordWithdrawalDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
@@ -128,11 +128,10 @@ export default {
             newItem.transactionNumber = item.Lst_TransID;
             return newItem;
           });
-        });
-        break;
-      }
-      case 'transfer': {
-        getRecordTransferDetail(this.$route.query).then(result => {
+          break;
+        }
+        case 'transfer': {
+          const result = await getRecordTransferDetail(this.$route.query);
           console.log('[RecordTransferDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
@@ -148,18 +147,10 @@ export default {
             newItem.afterGameAccount = item.Lst_Final_Game_Point;
             return newItem;
           });
-        });
-        break;
-      }
-      // case 'bonus': {
-      //   break;
-      // }
-      // case 'lottery': {
-      //   this.list = [];
-      //   break;
-      // }
-      case 'withdrawalRestriction': {
-        getRecordDetailWithdrawalRestriction(this.$route.query).then(result => {
+          break;
+        }
+        case 'withdrawalRestriction': {
+          const result = await getRecordDetailWithdrawalRestriction(this.$route.query);
           console.log('[RecordDetailWithdrawalRestriction]', result);
 
           this.list = result.RetObj.map(item => {
@@ -170,13 +161,13 @@ export default {
 
             return newItem;
           });
-        });
-        break;
+          break;
+        }
+        default: {
+          this.$router.replace({ name: 'TransactionRecordHome' });
+        }
       }
-      default: {
-        this.$router.replace({ name: 'TransactionRecordHome' });
-      }
-    }
+    },
   },
   watch: {
     siteID: {
@@ -188,7 +179,12 @@ export default {
 
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/record-detail.scss`);
+
+        this.getRecordDetail();
       },
+    },
+    lang() {
+      this.getRecordDetail();
     },
   },
 };
