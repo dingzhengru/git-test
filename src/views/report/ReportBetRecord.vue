@@ -59,7 +59,7 @@ export default {
     ReportBetRecordDetailTable: () => import('@/components/report/ReportBetRecordDetailTable'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
   },
   data() {
     return {
@@ -85,8 +85,33 @@ export default {
     };
   },
   methods: {
-    changeDateRange() {
-      console.log('[ReportBetRecord] changeDateRange:', this.dateRange);
+    async getReportBetRecord() {
+      console.log('[ReportBetRecord]', this.dateRange.name);
+      if (this.dateRange.name == 'today') {
+        const requestData = { Tag: this.dateRange.value };
+        const result = await getBetHistoryDay(requestData);
+
+        if (result.Code == 200) {
+          this.totalObject = {
+            BetCount: result.RetObj.BetCount,
+            TTLBet: result.RetObj.TTLBet,
+            TTLNetWin: result.RetObj.TTLNetWin,
+            JackpotScore: result.RetObj.JackpotScore,
+          };
+          this.recordList = result.RetObj.Rows;
+        }
+        console.log('[BetHistoryDay]', result);
+      } else {
+        const requestData = { Tag: this.dateRange.value };
+        const result = await getBetHistoryWeek(requestData);
+
+        this.recordList = [];
+
+        if (result.Code == 200) {
+          this.weekList = result.RetObj.Rows;
+        }
+        console.log('[BetHistoryWeek]', result);
+      }
     },
   },
   watch: {
@@ -103,33 +128,11 @@ export default {
     dateRange: {
       immediate: true,
       async handler() {
-        console.log('[ReportBetRecord]:', this.dateRange.name);
-        if (this.dateRange.name == 'today') {
-          const requestData = { Tag: this.dateRange.value };
-          const result = await getBetHistoryDay(requestData);
-
-          if (result.Code == 200) {
-            this.totalObject = {
-              BetCount: result.RetObj.BetCount,
-              TTLBet: result.RetObj.TTLBet,
-              TTLNetWin: result.RetObj.TTLNetWin,
-              JackpotScore: result.RetObj.JackpotScore,
-            };
-            this.recordList = result.RetObj.Rows;
-          }
-          console.log('[BetHistoryDay]', result);
-        } else {
-          const requestData = { Tag: this.dateRange.value };
-          const result = await getBetHistoryWeek(requestData);
-
-          this.recordList = [];
-
-          if (result.Code == 200) {
-            this.weekList = result.RetObj.Rows;
-          }
-          console.log('[BetHistoryWeek]', result);
-        }
+        this.getReportBetRecord();
       },
+    },
+    lang() {
+      this.getReportBetRecord();
     },
   },
 };

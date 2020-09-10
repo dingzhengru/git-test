@@ -25,13 +25,22 @@ import { getBetHistoryUnsettle } from '@/api/report';
 export default {
   name: 'ReportUnsettleBet',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
   },
   data() {
     return {
       numeral: numeral,
       list: [],
     };
+  },
+  methods: {
+    async getBetHistoryUnsettle() {
+      const result = await getBetHistoryUnsettle();
+      console.log('[BetHistoryUnsettle]', result);
+      if (result.Code == 200) {
+        this.list = result.RetObj.Rows;
+      }
+    },
   },
   watch: {
     siteID: {
@@ -41,12 +50,11 @@ export default {
           return;
         }
 
-        const result = await getBetHistoryUnsettle();
-        console.log('[BetHistoryUnsettle]', result);
-        if (result.Code == 200) {
-          this.list = result.RetObj.Rows;
-        }
+        this.getBetHistoryUnsettle();
       },
+    },
+    lang() {
+      this.getBetHistoryUnsettle();
     },
   },
 };
