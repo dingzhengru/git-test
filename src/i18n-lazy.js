@@ -33,7 +33,6 @@ export async function loadLanguageAsync(lang) {
 
   //* 若是已載入的語言
   if (loadedLanguages.includes(lang)) {
-    console.log(lang, '已載入過');
     return setI18nLanguage(lang);
   }
 

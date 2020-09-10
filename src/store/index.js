@@ -15,8 +15,8 @@ export default new Vuex.Store({
   },
   mutations: {
     setLang: (state, lang) => {
-      state.lang = lang;
       loadLanguageAsync(lang).then(result => {
+        state.lang = lang;
         console.log('[Lang] loadLanguageAsync', result);
       });
     },

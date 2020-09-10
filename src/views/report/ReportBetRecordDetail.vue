@@ -67,6 +67,7 @@ export default {
       },
     },
     lang() {
+      console.log(this.lang, this.$t('report.betRecordDetail.title'));
       this.title = `${this.$t('report.betRecordDetail.title')} ${this.$route.params.date}`;
       this.getBetHistoryDay();
     },

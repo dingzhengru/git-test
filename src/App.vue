@@ -96,17 +96,16 @@ export default {
     });
   },
   methods: {
-    changeLang(lang) {
+    async changeLang(lang) {
       if (this.lang == lang) {
         return;
       }
-      const requestDataChangeLang = { Lang: lang };
-      changeLang(requestDataChangeLang).then(result => {
-        if (result.Code == 200) {
-          this.$store.commit('setLang', lang);
-          console.log('[Lang]', 'changeLang:', lang, result.RetObj);
-        }
-      });
+      const requestData = { Lang: lang };
+      const result = await changeLang(requestData);
+      if (result.Code == 200) {
+        this.$store.commit('setLang', lang);
+        console.log('[Lang]', 'changeLang:', lang, result.RetObj);
+      }
     },
     logout() {
       this.$store.dispatch('user/logout');
