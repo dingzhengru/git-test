@@ -6,7 +6,7 @@
         <template v-if="infoKey == 'header.user.username'">{{ username }}</template>
         <template v-else-if="infoKey == 'header.user.total'">{{ numeral(total).format('0,0.00') }}</template>
         <template v-else-if="infoKey == 'header.user.vip'">{{ vip }}</template>
-        <template v-else-if="infoKey == 'header.user.roll'">{{ roll }}</template>
+        <template v-else-if="infoKey == 'header.user.roll'">{{ numeral(roll).format('0,0.00') }}</template>
       </div>
     </div>
     <a
