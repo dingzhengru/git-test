@@ -480,6 +480,7 @@
       },
       "field": {
         "bankSelect": "Select Bank",
+        "bankSelectPlaceholder": "Please select",
         "Lst_Account": "Account",
         "Lst_Currency": "Specific Currency",
         "Lst_Point": "wallet balance",

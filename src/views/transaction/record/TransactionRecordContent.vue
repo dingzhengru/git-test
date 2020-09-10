@@ -271,11 +271,7 @@ export default {
 
           //* 取得產品列表，避免每次換頁都會取一次，所以設立條件
           if (this.productList.length == 0) {
-            const resultProductList = await getMemberProductList();
-            if (result.Code == 200) {
-              this.productList = resultProductList.RetObj;
-              console.log('[Product]', this.productList);
-            }
+            getMemberProductList();
           }
           break;
         }
@@ -360,6 +356,13 @@ export default {
         }
       }
     },
+    async getMemberProductList() {
+      const result = await getMemberProductList();
+      if (result.Code == 200) {
+        this.productList = result.RetObj;
+        console.log('[Product]', this.productList);
+      }
+    },
     changeSearchDateRange() {
       this.search.dateTo = dayjs().format('YYYY-MM-DD');
       this.search.dateFrom = dayjs()
@@ -409,6 +412,7 @@ export default {
     },
     lang() {
       this.getRecord();
+      this.getMemberProductList();
     },
   },
 };

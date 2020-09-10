@@ -11,7 +11,7 @@
 
         <template v-if="item.name == 'bankSelect'">
           <select class="withdrawal__li__select ui-ddl" v-model="bank" @change="changeBank">
-            <option value="" selected>請選擇</option>
+            <option value="" selected>{{ $t('transaction.withdrawal.field.bankSelectPlaceholder') }}</option>
             <option :value="bankItem" v-for="bankItem in bankList" :key="bankItem.Lst_Bank_name">
               {{ bankItem.Text }}
             </option>
@@ -89,7 +89,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getWithdrawal, Withdrawal } from '@/api/transaction-withdrawal';
+import { getWithdrawalInfo, Withdrawal } from '@/api/transaction-withdrawal';
 import { transferAllGamePointToMain } from '@/api/transaction-transfer';
 
 import numeral from 'numeral';
@@ -97,7 +97,7 @@ import idMapper from '@/idMapper';
 export default {
   name: 'TransactionWithdrawal',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
     walletAmount() {
       return this.accountInfoList.find(item => item.name == 'Lst_Point').value || 0;
     },
@@ -163,6 +163,25 @@ export default {
     };
   },
   methods: {
+    async getWithdrawalInfo() {
+      const result = await getWithdrawalInfo();
+      console.log('[Withdrawal]', result.RetObj);
+      this.bankList = result.RetObj.Add_MemberBankAccountList;
+      this.currencyList = result.RetObj.BaseCurrencyItem;
+
+      //* 若會員的 Add_MemberBankAccountList 為空，則轉去會員中心
+      if (this.bankList.length < 0) {
+        this.$router.replace({ name: 'UserProfile' });
+      }
+
+      this.accountInfoList.forEach(item => {
+        if (result.RetObj[item.name]) {
+          item.value = result.RetObj[item.name];
+        }
+      });
+      this.amountLimit.min = result.RetObj.WithalDownlimit;
+      this.amountLimit.max = result.RetObj.WithalUplimit;
+    },
     async transferToMain() {
       const result = await transferAllGamePointToMain();
       if (result.Code == 200) {
@@ -249,24 +268,11 @@ export default {
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/withdrawal.scss`);
 
-        const result = await getWithdrawal();
-        console.log('[Withdrawal]', result.RetObj);
-        this.bankList = result.RetObj.Add_MemberBankAccountList;
-        this.currencyList = result.RetObj.BaseCurrencyItem;
-
-        //* 若會員的 Add_MemberBankAccountList 為空，則轉去會員中心
-        if (this.bankList.length < 0) {
-          this.$router.replace({ name: 'UserProfile' });
-        }
-
-        this.accountInfoList.forEach(item => {
-          if (result.RetObj[item.name]) {
-            item.value = result.RetObj[item.name];
-          }
-        });
-        this.amountLimit.min = result.RetObj.WithalDownlimit;
-        this.amountLimit.max = result.RetObj.WithalUplimit;
+        this.getWithdrawalInfo();
       },
+    },
+    lang() {
+      this.getWithdrawalInfo();
     },
   },
 };

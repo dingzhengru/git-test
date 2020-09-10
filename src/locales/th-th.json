@@ -479,7 +479,8 @@
         "currency": "บาท"
       },
       "field": {
-        "bankSelect": "Select Bank",
+        "bankSelect": "เลือกธนาคาร",
+        "bankSelectPlaceholder": "โปรดเลือก",
         "Lst_Account": "ยูสเซอร์",
         "Lst_Currency": "สกุลเงิน",
         "Lst_Point": "ยอดเงินในกระเป๋าเงิน",

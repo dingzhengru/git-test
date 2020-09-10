@@ -479,7 +479,8 @@
         "currency": "铢"
       },
       "field": {
-        "bankSelect": "Select Bank",
+        "bankSelect": "选择银行",
+        "bankSelectPlaceholder": "请选择",
         "Lst_Account": "帐号",
         "Lst_Currency": "币别",
         "Lst_Point": "我的钱包额度",

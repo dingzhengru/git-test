@@ -122,7 +122,7 @@ export default {
     VueSlider,
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
     fromList() {
       return this.productList;
     },
@@ -152,6 +152,12 @@ export default {
     };
   },
   methods: {
+    async getTransferInfo() {
+      const result = await getTransferInfo();
+      console.log('[Transfer]', result.RetObj);
+      this.productList = result.RetObj.Add_SourceList;
+      this.productDetailList = result.RetObj.MenuMemberDetailItemList;
+    },
     async getAllGamePoint() {
       const result = await getAllGamePoint();
       console.log('[AllGamePoint]', result.RetObj);
@@ -232,12 +238,7 @@ export default {
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/transaction/transfer.scss`);
 
-        getTransferInfo().then(result => {
-          console.log('[Transfer]', result.RetObj);
-          this.productList = result.RetObj.Add_SourceList;
-          this.productDetailList = result.RetObj.MenuMemberDetailItemList;
-        });
-
+        this.getTransferInfo();
         this.getAllGamePoint();
       },
     },
@@ -251,6 +252,10 @@ export default {
         //* 當 from 選錢包，但 to 也是錢包時
         this.to = -1;
       }
+    },
+    lang() {
+      this.getTransferInfo();
+      this.getAllGamePoint();
     },
   },
 };
