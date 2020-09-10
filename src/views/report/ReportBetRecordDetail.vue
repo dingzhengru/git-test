@@ -20,7 +20,7 @@ export default {
     ReportBetRecordDetailTable: () => import('@/components/report/ReportBetRecordDetailTable'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
   },
   data() {
     return {
@@ -31,6 +31,26 @@ export default {
   },
   mounted() {
     this.title = `${this.$t('report.betRecordDetail.title')} ${this.$route.params.date}`;
+  },
+  methods: {
+    async getBetHistoryDay() {
+      const requestData = {
+        Tag: 'DayOfWeek',
+        Day: `${this.$route.params.date.split(' ')[0]} 12:00:00`,
+      };
+
+      const result = await getBetHistoryDay(requestData);
+      if (result.Code == 200) {
+        this.totalObject = {
+          BetCount: result.RetObj.BetCount,
+          TTLBet: result.RetObj.TTLBet,
+          TTLNetWin: result.RetObj.TTLNetWin,
+          JackpotScore: result.RetObj.JackpotScore,
+        };
+        this.recordList = result.RetObj.Rows;
+      }
+      console.log('[BetHistoryDay]', result);
+    },
   },
   watch: {
     siteID: {
@@ -43,42 +63,11 @@ export default {
         import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
 
         //* 取投注明細
-        this.recordList = [
-          {
-            Lst_ProductName: 'RNG-RG電子',
-            Lst_BetCount: 3,
-            Lst_TTLBet: 240,
-            Lst_TTLNetBet: 240,
-            Lst_MemberTTLNetWin: -216,
-            Lst_JackpotScore: 0,
-          },
-          {
-            Lst_ProductName: 'RNG-CQ9 RNG',
-            Lst_BetCount: 1,
-            Lst_TTLBet: 40,
-            Lst_TTLNetBet: 40,
-            Lst_MemberTTLNetWin: 8228,
-            Lst_JackpotScore: 0,
-          },
-        ];
-
-        const requestData = {
-          Tag: 'DayOfWeek',
-          Day: `${this.$route.params.date.split(' ')[0]} 12:00:00`,
-        };
-
-        const result = await getBetHistoryDay(requestData);
-        if (result.Code == 200) {
-          this.totalObject = {
-            BetCount: result.RetObj.BetCount,
-            TTLBet: result.RetObj.TTLBet,
-            TTLNetWin: result.RetObj.TTLNetWin,
-            JackpotScore: result.RetObj.JackpotScore,
-          };
-          this.recordList = result.RetObj.Rows;
-        }
-        console.log('[BetHistoryDay]', result);
+        this.getBetHistoryDay();
       },
+    },
+    lang() {
+      this.getBetHistoryDay();
     },
   },
 };
