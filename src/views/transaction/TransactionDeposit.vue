@@ -70,7 +70,13 @@
           </template>
 
           <template v-if="field.name == 'datetime'">
-            <input required class="ui-ipt" type="datetime-local" v-model="datetime" />
+            <input
+              required
+              class="ui-ipt"
+              type="datetime-local"
+              v-model="datetime"
+              :max="dayjs().format('YYYY-MM-DDTHH:mm:00')"
+            />
           </template>
 
           <template v-if="field.name == 'method'">
@@ -191,6 +197,7 @@ export default {
   },
   data() {
     return {
+      dayjs: dayjs,
       idMapper: idMapper,
       fieldList: [
         {

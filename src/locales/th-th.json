@@ -672,8 +672,8 @@
   },
   "report": {
     "nav": {
-      "unsettleBet": "Unsettled Betting",
-      "betRecord": "Betting Records"
+      "unsettleBet": "บิลยังไม่ได้คำนวณ",
+      "betRecord": "รายละเอียดรีพอร์ต"
     },
     "unsettleBet": {
       "table": {
