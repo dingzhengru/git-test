@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="deposit" @submit.prevent="submitDeposit">
+    <form class="deposit" @submit.prevent="submitDeposit" novalidate>
       <div class="theme-content-box">
         <h3 class="deposit__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
 
@@ -173,6 +173,7 @@
           </li>
         </ol>
       </div>
+      
       <div class="deposit__button-div">
         <button class="ui-btn deposit__button-div--submit" type="submit" :disabled="!validateForm()">
           {{ $t('ui.button.submit') }}
