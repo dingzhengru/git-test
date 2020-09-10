@@ -271,7 +271,7 @@ export default {
 
           //* 取得產品列表，避免每次換頁都會取一次，所以設立條件
           if (this.productList.length == 0) {
-            getMemberProductList();
+            this.getMemberProductList();
           }
           break;
         }

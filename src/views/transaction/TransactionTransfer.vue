@@ -305,6 +305,8 @@ export default {
 .transfer__amount-table-div {
   padding-top: 20px;
   padding-bottom: 30px;
+  padding-right: 32px;
+  padding-left: 20px;
 }
 
 .transfer__amount-table__th-1st,
@@ -316,6 +318,7 @@ export default {
 
 .transfer__amount-table__th-1st {
   width: 40%;
+  text-align: left;
 }
 
 .transfer__amount-table__td-2nd {
@@ -376,7 +379,7 @@ export default {
 .custom-dot {
   position: absolute;
   top: -18px;
-  left: -24px;
+  left: -16px;
 }
 
 .custom-process {
