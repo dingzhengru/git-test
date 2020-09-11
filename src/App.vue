@@ -9,6 +9,7 @@
       :total="total"
       :vip="vip"
       :roll="roll"
+      :backIconRouteList="['PromotionDetail']"
       @changeLang="changeLang"
       @logout="logout"
     ></AppHeader>

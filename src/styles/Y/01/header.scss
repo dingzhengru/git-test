@@ -16,9 +16,14 @@ $type: 'Y/01';
   background: url(~@/assets/#{$type}/imgs/header/btn_home.png) no-repeat;
 }
 
+.header__link--back {
+  background: url(~@/assets/#{$type}/imgs/header/btn_back.png) no-repeat;
+}
+
 .header-menu__lang-menu {
   background: url(~@/assets/#{$type}/imgs/header/menuBg.png) repeat;
 }
+
 
 /* 
  * 登入後的 menu

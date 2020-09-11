@@ -3,8 +3,17 @@
     <div class="header__logo">
       <img :src="logo" class="header__logo__img" :id="idMapper.header.logo" alt="" />
     </div>
-    <router-link to="/" class="header__link--home" :id="idMapper.header.link.home"></router-link>
-    <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang"></HeaderMenu>
+
+    <router-link
+      to="/"
+      class="header__link header__link--home"
+      :id="idMapper.header.link.home"
+      v-if="!backIconRouteList.includes($route.name)"
+    ></router-link>
+
+    <a class="header__link header__link--back" href="javacript:;" @click="$router.go(-1)" v-else></a>
+
+    <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang" />
     <HeaderMenuAuth
       v-if="isLoggedIn"
       :langList="langList"
@@ -62,6 +71,10 @@ export default {
     roll: {
       type: Number,
       default: () => 0,
+    },
+    backIconRouteList: {
+      type: Array,
+      default: () => [],
     },
   },
   data() {
@@ -125,13 +138,23 @@ export default {
   margin: auto;
 }
 
-.header__link--home {
+.header__link {
   display: inline-block;
-  width: 77px;
-  height: 65px;
   margin-top: -32.5px;
   position: absolute;
+}
+
+.header__link--home {
+  width: 77px;
+  height: 65px;
   top: 50%;
   left: 20px;
+}
+
+.header__link--back {
+  width: 48px;
+  height: 80px;
+  top: 45%;
+  left: 30px;
 }
 </style>
