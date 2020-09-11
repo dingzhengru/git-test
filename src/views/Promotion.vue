@@ -1,14 +1,14 @@
 <template>
   <div class="promotion" :class="{ 'promotion-auth': isLoggedIn }">
     <div class="promotion__bonus">
-      <a class="promotion__bonus__link" href="/Y/StaticPage/NoneLogin/?Tag=PermanentIncome">
+      <a class="promotion__bonus__link" href="javascript:;">
         <i class="promotion__bonus__link__icon"></i>
         <span class="promotion__bonus__link__text">Bonus V.I.P</span>
       </a>
     </div>
     <div class="promotion__list">
       <router-link v-for="(promotion, index) in promotions" :key="index" :to="promotion.link">
-        <img :src="promotion.img" class="promotion__list__img" alt="" />
+        <img :src="promotion.img" class="promotion__list__img" @click="goPromotionContent(promotion)" />
       </router-link>
     </div>
   </div>
@@ -47,6 +47,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    goPromotionContent(promotion) {
+      console.log('[GoPromotionContent]', promotion);
+    },
   },
   watch: {
     siteID: {

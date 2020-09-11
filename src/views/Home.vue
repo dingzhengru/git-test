@@ -36,6 +36,7 @@ import { getProductList } from '@/api/product';
 import { getGameRedirectUrl } from '@/api/game';
 import { getMessageList } from '@/api/alert';
 import { getLotteryCount } from '@/api/lottery';
+import { isIos } from '@/utils/device';
 import idMapper from '@/idMapper';
 export default {
   name: 'Home',
@@ -148,20 +149,36 @@ export default {
           proxypid: game.Lst_Proxy_Product_Key,
         };
 
+        let newWindow = null;
+        if (isIos()) {
+          newWindow = window.open();
+        }
+
         const result = await getGameRedirectUrl(requestDataGameRedirectUrl);
         console.log('[Game Redirect URL]', result.RetObj);
 
         if (result.Code == 200) {
-          /**
-           ** iGameOpenType: 判斷回傳內容類型
-           ** 1: 一般URL，2: HTML
-           */
-          if (result.RetObj.iGameOpenType == 1) {
-            window.open(result.RetObj.RedirectUrl);
-          } else if (result.RetObj.iGameOpenType == 2) {
-            const gameWindow = open('', game.Lst_Name);
-            gameWindow.document.write(result.RetObj.RedirectUrl);
+          //* iGameOpenType: 判斷回傳內容類型，1: 一般URL，2: HTML
+
+          if (result.RetObj.iGameOpenType == 1 && newWindow == null) {
+            newWindow = window.open(result.RetObj.RedirectUrl);
+          } else if (result.RetObj.iGameOpenType == 1 && newWindow != null) {
+            newWindow.location = result.RetObj.RedirectUrl;
+          } else if (result.RetObj.iGameOpenType == 2 && newWindow == null) {
+            newWindow = window.open();
+            newWindow.document.title = game.Lst_Name;
+            newWindow.document.write(result.RetObj.RedirectUrl);
+          } else if (result.RetObj.iGameOpenType == 2 && newWindow != null) {
+            newWindow.document.title = game.Lst_Name;
+            newWindow.document.write(result.RetObj.RedirectUrl);
           }
+
+          // if (result.RetObj.iGameOpenType == 1) {
+          //   window.open(result.RetObj.RedirectUrl);
+          // } else if (result.RetObj.iGameOpenType == 2) {
+          //   const gameWindow = window.open('', game.Lst_Name);
+          //   gameWindow.document.write(result.RetObj.RedirectUrl);
+          // }
         }
       }
     },
