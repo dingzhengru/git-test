@@ -23,6 +23,8 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [vue-scrollto](#vue-scrollto)
   - [vue-slider-component](#vue-slider-component)
   - [vue-js-toggle-button](#vue-js-toggle-button)
+  - [javascript-winwheel](#javascript-winwheel)
+  - [gsap](#gsap)
 
 ## Token & 公鑰
 
@@ -100,3 +102,11 @@ StarBets 的圖片大小跟其他不同，造成位置不同
 ### vue-slider-component
 
 ### vue-js-toggle-button
+
+### javascript-winwheel
+
+- 轉盤，https://github.com/zarocknz/javascript-winwheel
+
+### gsap
+
+- 因轉盤需要用到，https://github.com/zarocknz/javascript-winwheel

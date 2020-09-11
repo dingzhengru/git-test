@@ -72,7 +72,7 @@
 // 引入轉盤套件
 import { Winwheel } from "@/utils/winWheel";
 // API
-import { apiSiteLotteryInfo, apisiteLotteryResult } from "@/apis/site";
+// import { apiSiteLotteryInfo, apisiteLotteryResult } from "@/apis/site";
 
 export default {
   data() {

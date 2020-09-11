@@ -55,6 +55,7 @@ const AUTH_API_LIST = [
   'Msg/MailCategoryList',
   'Msg/MailCompose',
   'Proxy/MPlayLottery',
+  'Proxy/MGetWinPrize',
 ];
 
 //* 需加密的 API

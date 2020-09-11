@@ -26,6 +26,8 @@
         <button class="lnk-boxSubmit" @click="isShowAlertBox = false">OK</button>
       </div>
     </div>
+
+    <!-- <WinWheel /> -->
   </div>
 </template>
 
@@ -44,6 +46,7 @@ export default {
     HomeSwiper: () => import('@/components/home/HomeSwiper'),
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
     HomeLotteryGameBlock: () => import('@/components/home/HomeLotteryGameBlock'),
+    // WinWheel: () => import('@/components/lottery/WinWheel'),
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss', 'lang', 'isLoggedIn', 'resourceUrl', 'siteIsNewPromotion']),
