@@ -18,7 +18,7 @@
               :max="field.max"
               :pattern="field.regex"
               v-model="field.value"
-              @input="validateField(field)"
+              @input="field.error = validateField(field)"
             />
 
             <img
@@ -62,6 +62,7 @@
         class="register__form__send ui-btn"
         :id="idMapper.register.button.submit"
         form="register-form"
+        :disabled="!validateForm()"
       >
         {{ $t('ui.button.submit') }}
       </button>
@@ -200,8 +201,9 @@ export default {
       return invalidFieldList.length == 0;
     },
     validateField(field) {
-      field.error = this.$t(validateField(field, this.fieldList));
-      return field.error;
+      // field.error = this.$t(validateField(field, this.fieldList));
+      // return field.error;
+      return this.$t(validateField(field, this.fieldList));
     },
   },
   watch: {
