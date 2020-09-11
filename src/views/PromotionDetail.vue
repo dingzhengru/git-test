@@ -19,6 +19,8 @@
 
 <script>
 import { mapGetters } from 'vuex';
+// import { getPromotionDetail } from '@/api/promotion';
+
 import event01 from '@/assets/Y/01/imgs/promotion/event01.jpg';
 export default {
   name: 'PromotionDetail',
@@ -47,6 +49,13 @@ export default {
       ],
     };
   },
+  methods: {
+    getPromotionDetail() {
+      console.log('[GetPromotionDetail]', this.$route.params.id);
+
+      
+    },
+  },
   watch: {
     siteID: {
       immediate: true,
@@ -56,6 +65,8 @@ export default {
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/promotion-detail.scss`);
+
+        this.getPromotionDetail();
       },
     },
   },
