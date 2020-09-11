@@ -18,7 +18,7 @@ import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 
 //* 針對 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
 //* 會因為多個 api 同時觸發 201 ，導致 alert 很多次，因此設置此變數
-let isResponded201 = false;
+let Responded201Count = 0;
 
 axios.interceptors.request.use(
   config => {
@@ -78,9 +78,9 @@ axios.interceptors.response.use(
       //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
 
       //* isResponded201 是避免多次執行 alert 的變數
-      if (!isResponded201) {
-        isResponded201 = true;
-        console.log('[Logout]', '帳號已登出', res.data);
+      if (Responded201Count == 0) {
+        Responded201Count++;
+        console.log('[Logout]', '201: 帳號被踢線', res.data);
         alert(res.data.ErrMsg);
         store.dispatch('user/logout');
       }
