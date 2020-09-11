@@ -1,11 +1,11 @@
 $type: 'Y/01';
 
-.promotion-content__main__content__desc ul > li > a {
+.promotion-detail__main__content__desc ul > li > a {
   color: #ffffff;
   background-color: #d40505;
 }
 
-.promotion-content__main__button--back {
+.promotion-detail__main__button--back {
   background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
 }
 
@@ -13,7 +13,7 @@ $type: 'Y/01';
   ! 圖片路徑
 */
 
-.promotion-content__main__content__title {
+.promotion-detail__main__content__title {
   background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
 }
 // .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }

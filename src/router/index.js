@@ -184,8 +184,8 @@ const routes = [
       },
       {
         path: ':id',
-        name: 'PromotionContent',
-        component: () => import('@/views/PromotionContent'),
+        name: 'PromotionDetail',
+        component: () => import('@/views/PromotionDetail'),
       },
     ],
   },

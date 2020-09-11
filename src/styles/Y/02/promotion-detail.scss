@@ -1,26 +1,26 @@
 $type: 'Y/02';
 
-.promotion-content__image__img {
+.promotion-detail__image__img {
   outline: 2px solid #fff;
 }
 
-.promotion-content__main__content__desc {
+.promotion-detail__main__content__desc {
   color: #000;
 }
 
-.promotion-content__main__content__desc ul > li > a {
+.promotion-detail__main__content__desc ul > li > a {
   background-color: #1c6080;
   color: #fff;
 }
 
-.promotion-content__main__button--back {
+.promotion-detail__main__button--back {
   background-image: url(~@/assets/common/imgs/ui/btn--yellow-dark.jpg);
 }
 /*
   ! 圖片路徑
 */
 
-.promotion-content__main__content__title {
+.promotion-detail__main__content__title {
   background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
 }
 // .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }
