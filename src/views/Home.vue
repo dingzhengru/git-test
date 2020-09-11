@@ -35,7 +35,7 @@ import { getSwiperList } from '@/api/swiper';
 import { getProductList } from '@/api/product';
 import { getGameRedirectUrl } from '@/api/game';
 import { getMessageList } from '@/api/alert';
-import { getLotteryCount } from '@/api/lottery';
+import { getLotteryCount, playLottery } from '@/api/lottery';
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 import idMapper from '@/idMapper';
 export default {
@@ -169,8 +169,15 @@ export default {
         }
       }
     },
-    openLotteryGame(lottery) {
+    async openLotteryGame(lottery) {
       console.log('[OpenLotteryGame]', lottery);
+      const requestData = { ActivityType: lottery.Type };
+
+      const result = await playLottery(requestData);
+
+      if (result.Code == 200) {
+        console.log('[PlayLottery]', result);
+      }
     },
   },
   watch: {

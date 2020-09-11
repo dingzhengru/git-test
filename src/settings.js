@@ -49,12 +49,12 @@ const AUTH_API_LIST = [
   'Game/MGetLiveLobbyList',
   'Game/MemberCollectionEdit',
   'Siteinfo/MGetLotteryCount',
-  'Proxy/PlayLottery',
   'Msg/MessageList',
   'Msg/MInbox_Load',
   'Msg/MInbox_LoadDetail',
   'Msg/MailCategoryList',
   'Msg/MailCompose',
+  'Proxy/MPlayLottery',
 ];
 
 //* 需加密的 API

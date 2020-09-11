@@ -72,8 +72,8 @@
       "error": {
         "invalid": "推荐人不存在",
         "required": "",
-        "length": "",
-        "regex": "格式错误"
+        "length": "最少 3 字元，最多 15 字元",
+        "regex": "须为英数格式，字首必须为英文字母，且不可有空白"
       }
     },
     "Add_Account": {
