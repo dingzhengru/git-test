@@ -20,3 +20,23 @@ export function isStandaloneMode() {
     matchMedia('(display-mode: minimal-ui)').matches
   );
 }
+
+export function openNewWindowURL(newWindow, url) {
+  if (newWindow == null || !newWindow) {
+    newWindow = window.open(url);
+  } else {
+    newWindow.location = url;
+  }
+  return newWindow;
+}
+
+export function openNewWindowHTML(newWindow, htmlContent, title = '') {
+  if (newWindow == null || !newWindow) {
+    newWindow = window.open();
+    newWindow.document.title = title;
+    newWindow.document.write(htmlContent);
+  } else {
+    newWindow.document.title = title;
+    newWindow.document.write(htmlContent);
+  }
+}

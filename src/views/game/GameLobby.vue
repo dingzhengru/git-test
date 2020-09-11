@@ -60,6 +60,7 @@ import {
 } from '@/api/game';
 import { transferPoint } from '@/api/transaction-transfer';
 import { getAllGamePoint } from '@/api/user';
+import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 
 export default {
   name: 'GameList',
@@ -223,24 +224,26 @@ export default {
       console.log('[GameLobby GameList]', result.RetObj);
       this.pagination.dataLength = result.RetObj.DataCnt;
     },
-    async getGameUrl(data) {
-      const result = await getGameUrl(data);
-      console.log('[GameLobby GameUrl]', data, result);
-      if (result.Code == 200) {
-        window.open(result.RetObj.RedirectUrl);
-      }
-    },
     async openGame(game, freePlay) {
-      //* 因應真人遊戲兩階段開遊戲
+      //* 因應真人遊戲兩階段開遊戲，這樣才知道現在的遊戲是甚麼
       this.game = game;
       if (this.$route.params.type == 1) {
+        //* 真人遊戲
         this.isShowLiveGameEnterDialog = true;
       } else if (this.$route.params.type == 2) {
+        //* 電子遊戲
+
+        //* 因 IOS 預設會擋非同步後開啟的視窗，所以需於送出請求前打開
+        let newWindow = null;
+        if (isIos()) {
+          newWindow = window.open();
+        }
+
         const requestData = { Tag: this.productTag, Gameid: game.Lst_GameID, Freeplay: freePlay };
         const result = await getGameUrl(requestData);
         console.log('[GameLobby OpenGame]', result);
         if (result.Code == 200) {
-          window.open(result.RetObj.RedirectUrl);
+          openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
         }
       }
     },
@@ -252,11 +255,17 @@ export default {
         Template: templatesId,
         LibOrder: order,
       };
+
+      let newWindow = null;
+      if (isIos()) {
+        newWindow = window.open();
+      }
+
       const result = await getGameUrl(requestData);
       console.log('[OpenLiveGame]', result);
 
       if (result.Code == 200) {
-        window.open(result.RetObj.RedirectUrl);
+        openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
       }
     },
     async openGameRedirectUrl() {
@@ -266,14 +275,19 @@ export default {
         gameclassify: this.currentProduct.Lst_Game_Classify,
         proxypid: this.currentProduct.Lst_Proxy_Product_Key,
       };
+
+      let newWindow = null;
+      if (isIos()) {
+        newWindow = window.open();
+      }
+
       const result = await getGameRedirectUrl(requestData);
       console.log('[OpenGameRedirectUrl]', result);
       if (result.Code == 200) {
         if (result.RetObj.iGameOpenType == 1) {
-          window.open(result.RetObj.RedirectUrl);
+          openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
         } else if (result.RetObj.iGameOpenType == 2) {
-          const gameWindow = window.open('');
-          gameWindow.document.write(result.RetObj.RedirectUrl);
+          openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, this.currentProduct.Lst_Name);
         }
       }
     },
