@@ -18,6 +18,9 @@
         {{ game.Lst_Name }}
         <!-- :to="{ name: 'GameLobby', params: { type: 'gametype01' }, query: { category: 'all' } }" -->
       </a>
+
+      <!-- 維修圖示 -->
+      <a class="home-game__ul__li__link--maintain" href="javascript:;" v-if="game.Lst_Site_Product_Status != 0"></a>
     </li>
   </ul>
 </template>
@@ -62,11 +65,13 @@ export default {
   margin: 0 32px;
 }
 .home-game__ul__li {
+  position: relative;
   display: inline-block;
   vertical-align: top;
   margin: 0 2px 30px;
   background-repeat: no-repeat;
   background-position: center top;
+  opacity: 1;
 }
 .home-game__ul__li__link {
   display: block;
@@ -75,5 +80,15 @@ export default {
   font-size: 2.461em;
   text-align: center;
   line-height: 54px;
+}
+
+.home-game__ul__li__link--maintain {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  z-index: 9999;
 }
 </style>

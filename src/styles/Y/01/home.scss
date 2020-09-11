@@ -4,6 +4,10 @@ $type: 'Y/01';
   color: #fff;
 }
 
+.home-game__ul__li__link--maintain {
+  background: url(~@/assets/#{$type}/imgs/game/btn_maintain.png) no-repeat;
+}
+
 /*
   ! 圖片路徑
 */
