@@ -73,7 +73,7 @@
         "invalid": "推荐人不存在",
         "required": "",
         "length": "",
-        "regex": ""
+        "regex": "格式错误"
       }
     },
     "Add_Account": {

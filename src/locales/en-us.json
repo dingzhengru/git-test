@@ -73,7 +73,7 @@
         "invalid": "Referrer does not exist",
         "required": "",
         "length": "",
-        "regex": ""
+        "regex": "Format False"
       }
     },
     "Add_Account": {

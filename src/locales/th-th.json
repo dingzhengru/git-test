@@ -73,7 +73,7 @@
         "invalid": "ไม่มีผู้แนะนำ",
         "required": "",
         "length": "",
-        "regex": ""
+        "regex": "รูปแบบผิดพลาด"
       }
     },
     "Add_Account": {
