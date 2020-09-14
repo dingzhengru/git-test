@@ -52,8 +52,6 @@ export default {
   methods: {
     getPromotionDetail() {
       console.log('[GetPromotionDetail]', this.$route.params.id);
-
-      
     },
   },
   watch: {
@@ -64,7 +62,7 @@ export default {
           return;
         }
         // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/promotion-detail.scss`);
+        import(`@/styles/${this.siteFullCss}/promotion/promotion-detail.scss`);
 
         this.getPromotionDetail();
       },

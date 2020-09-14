@@ -114,7 +114,7 @@ export default {
           return;
         }
         // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/promotion.scss`);
+        import(`@/styles/${this.siteFullCss}/promotion/promotion.scss`);
 
         this.getPromotionList();
       },

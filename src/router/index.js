@@ -180,12 +180,12 @@ const routes = [
       {
         path: '',
         name: 'Promotion',
-        component: () => import('@/views/Promotion'),
+        component: () => import('@/views/promotion/Promotion'),
       },
       {
         path: ':id',
         name: 'PromotionDetail',
-        component: () => import('@/views/PromotionDetail'),
+        component: () => import('@/views/promotion/PromotionDetail'),
       },
     ],
   },
