@@ -211,7 +211,9 @@ export default {
 
         if (result.Code == 200) {
           this.isShowRememberMe = result.RetObj.Lst_Open_Remember_Option;
-          this.user = result.RetObj.LoginUser;
+          if (this.isShowRememberMe) {
+            this.user = result.RetObj.LoginUser;
+          }
         }
 
         this.changeCaptcha();
