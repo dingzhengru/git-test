@@ -112,7 +112,6 @@ export default {
       this.$emit('instantAccess', requestData);
     },
     validateForm() {
-      console.log('[ValidateForm]');
       let invalidFieldList = [];
       for (const field of this.registerFieldList) {
         //* 檢查欄位自己的屬性(required, minlength, maxlength, min, max)
@@ -135,9 +134,9 @@ export default {
         const field = this.registerFieldList.find(item => item.name == registerField.Lst_Field);
 
         if (field) {
-          field.isShow = registerField.Lst_Phase == 2;
+          field.isShow = registerField.Lst_Phase != 0;
           field.isRequired = registerField.Lst_isRequired;
-          field.isModifiable = registerField.Lst_isModifiable;
+          field.isModifiable = registerField.Lst_isModifiable || registerField.Lst_Phase == 2;
           field.value = registerField.Lst_Value;
         }
       }

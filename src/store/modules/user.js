@@ -1,5 +1,6 @@
 import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
+import i18n from '@/i18n';
 import {
   register,
   login,
@@ -8,6 +9,7 @@ import {
   getTokenAndPublicKey,
   getAllGamePoint,
   getBankInfoList,
+  advancedRegisterNew,
 } from '@/api/user';
 
 const state = {
@@ -110,6 +112,9 @@ const mutations = {
     state.publicKey = null;
     removePublicKey();
   },
+  setIsAccessed(state, isAccessed) {
+    state.isAccessed = isAccessed;
+  },
 };
 
 const actions = {
@@ -120,35 +125,45 @@ const actions = {
     return result;
   },
   async getInfo({ commit }) {
-    const responseDataUserInfo = await getUserInfo();
-    commit('setUserInfo', responseDataUserInfo.RetObj);
-    console.log('[UserInfo]', responseDataUserInfo.RetObj);
-    return responseDataUserInfo;
+    const result = await getUserInfo();
+    commit('setUserInfo', result.RetObj);
+    console.log('[UserInfo]', result.RetObj);
+    return result;
+  },
+  async advancedRegisterNew({ commit }, data) {
+    //* 開通帳號
+
+    const result = await advancedRegisterNew(data);
+    if (result.Code == 200) {
+      commit('setUserInfo', result.RetObj);
+      alert(i18n.t('user.profile.notAccessed.alert.access-success'));
+    }
+    return result;
   },
   async register({ commit }, data) {
-    const responseDataRegister = await register(data);
+    const result = await register(data);
 
-    console.log('[Register Response]', responseDataRegister);
+    console.log('[Register Response]', result);
 
-    if (responseDataRegister.Code == 200) {
+    if (result.Code == 200) {
       commit('setIsLoggedIn', true);
-      commit('setUserInfo', responseDataRegister.RetObj);
+      commit('setUserInfo', result.RetObj);
 
       router.replace({ name: 'Home' });
     }
-    return responseDataRegister;
+    return result;
   },
   async login({ commit }, user) {
-    const responseDataLogin = await login(user);
+    const result = await login(user);
 
-    console.log('[Login Response]', responseDataLogin);
+    console.log('[Login Response]', result);
 
-    if (responseDataLogin.Code == 200) {
+    if (result.Code == 200) {
       commit('setIsLoggedIn', true);
-      commit('setUserInfo', responseDataLogin.RetObj);
+      commit('setUserInfo', result.RetObj);
       router.replace({ name: 'Home' });
     }
-    return responseDataLogin;
+    return result;
   },
   logout({ commit }) {
     // await logout();

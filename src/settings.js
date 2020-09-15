@@ -13,6 +13,7 @@ const AUTH_API_LIST = [
   'Member/MChangePassword',
   'Member/MChgWithdrawalsPwd',
   'Member/RegisterAdvanceNew',
+  'Member/AdvancedRegisterNew',
   'Member/MBankInfoList',
   'Siteinfo/MGetAllGamePoint',
   'Siteinfo/MGetPITTLBet',
@@ -62,7 +63,7 @@ const AUTH_API_LIST = [
 const CRYPTO_API_LIST = ['Member/LoginIn', 'Member/MChangePassword', 'Member/MChgWithdrawalsPwd'];
 
 //* 需使用"大數據加密"的 API
-const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister', 'Operator/MWithdrawals'];
+const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister', 'Operator/MWithdrawals', 'Member/AdvancedRegisterNew'];
 
 //* 需使用"大數據加密"的 API，但並非全部參數都要加密的情況，EX: 存款動作中的匯款收據圖片
 const NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST = ['Operator/MSingleDeposit'];

@@ -21,7 +21,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-// import { getPromotionList } from '@/api/promotion';
+import { getPromotionList } from '@/api/promotion';
 import { isIos, openNewWindowURL } from '@/utils/device';
 import event01 from '@/assets/Y/01/imgs/promotion/event01.jpg';
 
@@ -81,9 +81,9 @@ export default {
         },
       ];
 
-      console.log(this.promotionList);
+      const result = await getPromotionList();
 
-      // const result = await getPromotionList();
+      console.log('[Promotion]', result);
 
       // if (result.Code == 200) {
       //   this.promotionList = result.RetObj;

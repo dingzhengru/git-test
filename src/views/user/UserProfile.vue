@@ -62,8 +62,10 @@ export default {
     };
   },
   methods: {
-    submitInstantAccess(data) {
-      console.log('[InstantAccess]', data);
+    async submitInstantAccess(data) {
+      //* 接收送出開通帳號表單事件
+      console.log('[AdvancedRegisterNew]', data);
+      this.$store.dispatch('user/advancedRegisterNew', data);
     },
     async changeWithdrawalPassword(data) {
       console.log('[ChangeWithdrawalPassword]', data);

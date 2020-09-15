@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
-//*
+//* 帳號開通動作
+export async function advancedRegisterNew(data) {
+  const result = await axios.post(API_URL + '/Member/AdvancedRegisterNew', data);
+  return result.data;
+}
 
 //* 銀行資訊
 export async function getBankInfoList() {

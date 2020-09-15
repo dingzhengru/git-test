@@ -382,6 +382,9 @@
           "access": "Your account has not opened yet, you can only use the limited function currently.",
           "suggest": "For ensuring your rights and benefits, we urge you to open the member account as soon as possible.",
           "contact": "If you have any additional questions about your account details ,please contact our online service."
+        },
+        "alert": {
+          "access-success": "开通成功！开启页面中请等待"
         }
       }
     },
