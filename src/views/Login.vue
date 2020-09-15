@@ -54,7 +54,7 @@
           @click="changeCaptcha"
         />
       </div>
-      <div class="login__form__field login__form__field--remember-me">
+      <div class="login__form__field login__form__field--remember-me" v-if="isShowRememberMe">
         <input class="login__form__field__checkbox" id="RememberMe" type="checkbox" v-model="user.RememberMe" />
         <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">{{ $t('login.rememberMe') }}</label>
       </div>
@@ -143,6 +143,7 @@ export default {
         Height: 58,
         ImgBase64: '',
       },
+      isShowRememberMe: false,
     };
   },
   methods: {
@@ -208,7 +209,8 @@ export default {
         const result = await getRememberInfo();
         console.log('[RememberInfo]', result);
 
-        if (result.Code == 200 && result.RetObj.Lst_Open_Remember_Option) {
+        if (result.Code == 200) {
+          this.isShowRememberMe = result.RetObj.Lst_Open_Remember_Option;
           this.user = result.RetObj.LoginUser;
         }
 
