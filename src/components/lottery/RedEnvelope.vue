@@ -1,76 +1,44 @@
 <template>
   <div class="redEnvelope">
     <div class="redEnvelope__title">
-      <img
-        :src="gameStyle.activityImgUrl"
-        alt=""
-      >
+      <img :src="gameStyle.activityImgUrl" alt="" />
     </div>
-    <div
-      class="redEnvelope__container"
-      v-show="!gamePrize"
-    >
+    <div class="redEnvelope__container" v-show="!gamePrize">
       <div
         class="redEnvelope__card"
         v-for="(item, index) in prizeHolder"
         :key="item.text"
-        :class="{'card-select' : item.selected}"
+        :class="{ 'card-select': item.selected }"
         @click="selectHandeler(item, index)"
       >
         <div class="redEnvelope__card__inner">
           <div class="redEnvelope__card__front">
-            <img
-              :src="gameStyle.cardFrontImgUrl"
-              alt=""
-            >
+            <img :src="gameStyle.cardFrontImgUrl" alt="" />
           </div>
           <div class="redEnvelope__card__back">
-            <img
-              :src="gameStyle.cardBackImgUrl"
-              alt=""
-            >
-            <img
-              class="redEnvelope__loading"
-              :src="gameStyle.envelopeLoadingImgUrl"
-              alt=""
-            >
+            <img :src="gameStyle.cardBackImgUrl" alt="" />
+            <img class="redEnvelope__loading" :src="gameStyle.envelopeLoadingImgUrl" alt="" />
           </div>
         </div>
       </div>
     </div>
-    <div
-      class="redEnvelope__container"
-      v-show="gamePrize"
-    >
+    <div class="redEnvelope__container" v-show="gamePrize">
       <div
         class="redEnvelope__card redEnvelope__card-result"
         v-for="(item, index) in randomResult"
         :key="item.key"
-        :class="{'card-result' : gameSelect == index }"
+        :class="{ 'card-result': gameSelect == index }"
       >
         <div class="redEnvelope__card__inner">
           <div class="redEnvelope__card__front">
-            <img
-              :src="item.image"
-              alt=""
-            >
+            <img :src="item.image" alt="" />
           </div>
         </div>
       </div>
     </div>
-    <div
-      class="overlay"
-      v-show="!prizeList.length"
-    >
-      <p
-        v-if="errMsg"
-        class="redEnvelope__errorMsg"
-      >{{ errMsg }}</p>
-      <img
-        v-else
-        :src="gameStyle.loadingImgUrl"
-        alt=""
-      >
+    <div class="overlay" v-show="!prizeList.length">
+      <p v-if="errMsg" class="redEnvelope__errorMsg">{{ errMsg }}</p>
+      <img v-else :src="gameStyle.loadingImgUrl" alt="" />
     </div>
     <transition name="dialogTransition">
       <div
@@ -81,10 +49,7 @@
         <div v-show="gamePrize">
           <slot name="game-result" />
         </div>
-        <div
-          class="redEnvelope__dialog__btn"
-          @click="startHandler"
-        >
+        <div class="redEnvelope__dialog__btn" @click="startHandler">
           <slot name="game-chance" />
         </div>
       </div>
@@ -124,14 +89,14 @@ export default {
     // 依照回傳獎項數量產出蓋牌紅包列表
     defaultPrizeHandler() {
       this.prizeList.map((item, index) => {
-        let prizeText = "" + (index + 1);
+        let prizeText = '' + (index + 1);
         this.prizeHolder.push({
           text: prizeText,
         });
       });
     },
     // 因回傳的列表為固定位置，隨機化列表
-    randomPrizeHandler(list) {
+    randomPrizeHandler() {
       let sourcePrize = [...this.prizeList];
       let resultLength = sourcePrize.length;
       let arr = [];
@@ -151,26 +116,24 @@ export default {
       this.isModalShow = false;
       this.isGameEnable = true;
 
-      this.prizeHolder.map((item) => {
-        this.$set(item, "selected", false);
+      this.prizeHolder.map(item => {
+        this.$set(item, 'selected', false);
       });
 
-      this.$emit("startHandler");
+      this.$emit('startHandler');
     },
     // 選擇紅包
     selectHandeler(item, index) {
       if (!this.isGameEnable) return;
       this.isGameEnable = false;
       this.gameSelect = index;
-      this.$set(item, "selected", true);
-      this.$emit("selectHandeler");
+      this.$set(item, 'selected', true);
+      this.$emit('selectHandeler');
     },
     // 顯示結果
     resultHandler() {
       // 將抽獎結果的圖片位置與點選的位置做交換
-      let prizeIndex = this.randomResult.findIndex(
-        (item) => item.key == this.gamePrize.key
-      );
+      let prizeIndex = this.randomResult.findIndex(item => item.key == this.gamePrize.key);
       let temp = this.randomResult[prizeIndex];
       this.randomResult[prizeIndex] = this.randomResult[this.gameSelect];
       this.randomResult[this.gameSelect] = temp;
@@ -184,7 +147,7 @@ export default {
   watch: {
     prizeList: {
       deep: true,
-      handler(val, oldVal) {
+      handler() {
         if (this.isFirstTry) {
           this.defaultPrizeHandler();
           this.isFirstTry = false;
@@ -194,7 +157,7 @@ export default {
     },
     gamePrize: {
       deep: true,
-      handler(val, oldVal) {
+      handler(val) {
         if (!val) return;
         this.resultHandler();
       },
@@ -207,8 +170,9 @@ export default {
 .redEnvelope {
   position: relative;
   text-align: center;
-  padding: 150px 50px 50px 50px;
-  width: 800px;
+  // padding: 150px 50px 50px 50px;
+  // width: 800px;
+  height: 100%;
   @media screen and (max-width: 600px) {
     padding: 50px 0px 20px 0px;
   }
@@ -282,7 +246,7 @@ export default {
       transition: transform 0.5s;
       transform-style: preserve-3d;
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         left: 50%;
         top: 50%;
@@ -314,6 +278,10 @@ export default {
     transform: translate(-50%, -50%);
   }
   &__dialog {
+    width: 422px;
+    height: 257px;
+    font-size: 3rem;
+
     position: absolute;
     left: 50%;
     top: 50%;
@@ -322,11 +290,12 @@ export default {
     background-repeat: no-repeat;
     transform: translate(-50%, -60%);
     padding: 40px 50px;
-    min-height: 100px;
+    // min-height: 100px;
     white-space: nowrap;
     &__btn {
-      margin-top: 20px;
-      margin-bottom: 20px;
+      // margin-top: 20px;
+      // margin-bottom: 20px;
+      margin-top: 20%;
       padding: 10px 20px;
       border-radius: 50px;
       line-height: 1;
