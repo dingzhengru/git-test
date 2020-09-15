@@ -121,6 +121,7 @@
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
 import idMapper from '@/idMapper';
+import { getRememberInfo } from '@/api/user';
 
 export default {
   name: 'Login',
@@ -201,6 +202,14 @@ export default {
         //* 取得公鑰 & token
         if (!this.token || !this.publicKey) {
           await this.$store.dispatch('user/getTokenAndPublicKey');
+        }
+
+        //* 取得記憶帳密
+        const result = await getRememberInfo();
+        console.log('[RememberInfo]', result);
+
+        if (result.Code == 200 && result.RetObj.Lst_Open_Remember_Option) {
+          this.user = result.RetObj.LoginUser;
         }
 
         this.changeCaptcha();

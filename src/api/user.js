@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
+//* 會員登入-記住我
+export async function getRememberInfo() {
+  const result = await axios.post(API_URL + '/Member/RememberInfo');
+  return result.data;
+}
+
 //* 帳號開通動作
 export async function advancedRegisterNew(data) {
   const result = await axios.post(API_URL + '/Member/AdvancedRegisterNew', data);
