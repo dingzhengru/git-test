@@ -1,12 +1,9 @@
 <template>
   <div class="vue-winwheel">
-    <div class="vue-winWheel__title">
-      <img
-        :src="wheelStyle.activityImgUrl"
-        alt=""
-      >
+    <div class="vue-winWheel__title" style="text-align: center;">
+      <img :src="wheelStyle.activityImgUrl" alt="" style="width: 100%;" />
     </div>
-    <div class="vue-winwheel__dialog vue-winwheel__dialog-chance">
+    <div class="vue-winwheel__dialog vue-winwheel__dialog-chance" style="margin-top: -4px;">
       <slot name="game-chance" />
     </div>
     <div class="vue-winwheel__wrapper">
@@ -17,60 +14,31 @@
         :width="wheelStyle.width"
         :height="wheelStyle.height"
       >
-        <p
-          style="{color: white}"
-          align="center"
-        >Sorry, your browser doesn't support canvas. Please try Google Chrome.</p>
+        <p style="{color: white}" align="center">
+          Sorry, your browser doesn't support canvas. Please try Google Chrome.
+        </p>
       </canvas>
 
-      <div
-        class="vue-winwheel__btn"
-        @click.prevent="startHandler"
-      >
-        <img
-          v-show="isWheelLoading"
-          :src="wheelStyle.wheelLodaingImgUrl"
-          class="vue-winwheel__loading"
-          alt=""
-        >
-        <img
-          :src="wheelStyle.pointerImgUrl"
-          alt=""
-        >
+      <div class="vue-winwheel__btn" @click.prevent="startHandler">
+        <img v-show="isWheelLoading" :src="wheelStyle.wheelLodaingImgUrl" class="vue-winwheel__loading" alt="" />
+        <img :src="wheelStyle.pointerImgUrl" alt="" />
       </div>
     </div>
     <transition name="modalTransition">
-      <div
-        class="vue-winwheel__dialog vue-winwheel__dialog-prize"
-        v-show="isModalShow"
-      >
-        <div
-          class="close"
-          @click="isModalShow = false"
-        ></div>
+      <div class="vue-winwheel__dialog vue-winwheel__dialog-prize" v-show="isModalShow">
+        <div class="close" @click="isModalShow = false"></div>
         <slot name="game-dialog" />
       </div>
     </transition>
-    <div
-      class="overlay"
-      v-show="!wheelSegmentsPrize.length"
-    >
-      <p
-        v-if="errMsg"
-        class="vue-winwheel__errorMsg"
-      >{{ errMsg }}</p>
-      <img
-        v-else
-        :src="wheelStyle.loadingImgUrl"
-        alt=""
-      >
+    <div class="overlay" v-show="!wheelSegmentsPrize.length">
+      <p v-if="errMsg" class="vue-winwheel__errorMsg">{{ errMsg }}</p>
+      <img v-else :src="wheelStyle.loadingImgUrl" alt="" />
     </div>
   </div>
 </template>
 
-
 <script>
-import { Winwheel } from "@/utils/winWheel";
+import { Winwheel } from '@/utils/winWheel';
 
 export default {
   props: {
@@ -115,7 +83,7 @@ export default {
     // 依照回傳獎項數量產出蓋牌轉盤列表
     defaultSegemetsHandler() {
       this.wheelSegmentsPrize.map((item, index) => {
-        let prizeText = "" + (index + 1);
+        let prizeText = '' + (index + 1);
         this.wheelSegments.push({
           text: prizeText,
           image: this.wheelStyle.prizeImgUrl,
@@ -130,10 +98,10 @@ export default {
       this.isGameEnable = false;
       this.isModalShow = false;
 
-      this.$emit("startHandler");
+      this.$emit('startHandler');
     },
     // 遊戲結束
-    finishHandler(indicatedSegment) {
+    finishHandler() {
       this.revealWheel();
       this.isWheelSpinning = false;
       this.isModalShow = true;
@@ -177,9 +145,7 @@ export default {
           }
         });
 
-        let stopAt =
-          (360 / this.wheelSegmentsPrize.length) * prizeNumber -
-          360 / this.wheelSegmentsPrize.length / 2; // center pin
+        let stopAt = (360 / this.wheelSegmentsPrize.length) * prizeNumber - 360 / this.wheelSegmentsPrize.length / 2; // center pin
 
         this.wheelPrizeAngle = stopAt;
         this.wheelObject.animation.stopAngle = stopAt;
@@ -202,7 +168,7 @@ export default {
   watch: {
     wheelSegmentsPrize: {
       deep: true,
-      handler(val, oldVal) {
+      handler() {
         if (this.isFirstTry) {
           this.defaultSegemetsHandler();
           this.isFirstTry = false;
@@ -211,7 +177,7 @@ export default {
     },
     gamePrize: {
       deep: true,
-      handler(val, oldVal) {
+      handler(val) {
         this.startWheel(val);
       },
     },
@@ -222,6 +188,10 @@ export default {
 <style lang="scss" scoped>
 .vue-winwheel {
   position: relative;
+
+  &__title {
+    text-align: center;
+  }
   &__body {
     margin-left: auto;
     margin-right: auto;
@@ -275,7 +245,7 @@ export default {
       }
       &:before,
       &:after {
-        content: "";
+        content: '';
         display: block;
         width: 16px;
         height: 3px;
