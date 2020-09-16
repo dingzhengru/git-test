@@ -344,7 +344,6 @@ export default {
       this.search.text = '';
 
       this.$router.push({
-        name: 'GameLobby',
         params: { id: product.Lst_Product_id, key: product.Lst_Proxy_Product_Key },
         query: { category: '' },
       });
@@ -369,7 +368,7 @@ export default {
       if (this.$route.query.category == category) {
         return;
       }
-      this.$router.push({ name: 'GameLobby', params: this.$route.params, query: { category } });
+      this.$router.push({ params: this.$route.params, query: { category } });
       this.pagination.page = 1;
       this.search.text = '';
       this.getGameList();
