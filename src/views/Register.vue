@@ -330,6 +330,10 @@ export default {
   color: gray;
 }
 
+.register__form__field__input:disabled::placeholder {
+  color: gray;
+}
+
 .register__notice__ol {
   margin: 50px 10px 0;
   font-size: 2.153em;
