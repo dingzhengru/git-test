@@ -75,7 +75,7 @@ export default {
 
       console.log('[ChangeWithdrawalPassword]', result);
       if (result.Code == 200) {
-        window.alert(this.$t('alert.changePassword.success'));
+        window.alert(this.$t('user.changePassword.alert.success'));
       }
     },
   },

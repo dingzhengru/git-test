@@ -82,7 +82,7 @@ axios.interceptors.response.use(
         Responded201Count++;
         console.log('[Logout]', '201: 帳號被踢線', res.data);
         store.dispatch('user/logout');
-        alert(res.data.ErrMsg);
+        window.alert(res.data.ErrMsg);
       }
       return;
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
@@ -103,7 +103,7 @@ axios.interceptors.response.use(
 
       //* 篩選掉不要 alert 的 api
       if (!NO_ALERT_API.find(item => res.config.url.includes(item))) {
-        alert(res.data.ErrMsg);
+        window.alert(res.data.ErrMsg);
       }
     } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
       //* 615: JsonError，推測是公鑰與私鑰對不上，換一把新的公鑰

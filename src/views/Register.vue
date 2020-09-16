@@ -17,8 +17,9 @@
               :min="field.min"
               :max="field.max"
               :pattern="field.regex"
+              :disabled="!field.isModifiable"
               v-model="field.value"
-              @input="field.error = validateField(field)"
+              @input="inputField(field)"
               @change="changeField(field)"
             />
 
@@ -168,12 +169,6 @@ export default {
           requestData[field.name] = field.value;
         }
       }
-      //* Add_RealName 此欄位有兩種情況
-      //* 1. FirstName 與 LastName 組成
-      //* 2. 直接讓使用者填寫 Add_RealName 這個欄位
-      if (!Object.hasOwnProperty.call(requestData, 'Add_RealName')) {
-        requestData['Add_RealName'] = this.fullName;
-      }
 
       console.log('[Register]', requestData);
 
@@ -202,9 +197,10 @@ export default {
       return invalidFieldList.length == 0;
     },
     validateField(field) {
-      // field.error = this.$t(validateField(field, this.fieldList));
-      // return field.error;
       return this.$t(validateField(field, this.fieldList));
+    },
+    inputField(field) {
+      field.error = this.validateField(field);
     },
     async changeField(field) {
       //* 確認推薦人是否存在
@@ -244,12 +240,17 @@ export default {
             if (field) {
               field.isShow = registerField.Lst_Phase == 1;
               field.isRequired = registerField.Lst_isRequired;
+              field.isModifiable = registerField.Lst_isModifiable;
             }
           }
         });
 
         this.changeCaptcha();
       },
+    },
+    fullName() {
+      const realName = this.fieldList.find(item => item.name == 'Add_RealName');
+      realName.value = this.fullName;
     },
   },
 };
@@ -324,6 +325,10 @@ export default {
 .register__form__field__input:valid {
   color: green;
 } */
+
+.register__form__field__input:disabled {
+  color: gray;
+}
 
 .register__notice__ol {
   margin: 50px 10px 0;
