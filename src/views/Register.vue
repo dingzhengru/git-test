@@ -240,7 +240,13 @@ export default {
             if (field) {
               field.isShow = registerField.Lst_Phase == 1;
               field.isRequired = registerField.Lst_isRequired;
-              field.isModifiable = registerField.Lst_isModifiable;
+
+              //* 只有 Add_RealName 是不可修改
+              if (field.name == 'Add_RealName') {
+                field.isModifiable = false;
+              } else {
+                field.isModifiable = true;
+              }
             }
           }
         });
@@ -328,6 +334,7 @@ export default {
 
 .register__form__field__input:disabled {
   color: gray;
+  pointer-events: none;
 }
 
 .register__form__field__input:disabled::placeholder {
