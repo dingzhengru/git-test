@@ -163,7 +163,7 @@
       "placeholder": "Real Name",
       "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.",
       "error": {
-        "invalid": "",
+        "invalid": "The real name has been used by others, please enter another real name",
         "required": "Please enter your real name",
         "length": "",
         "regex": "Format False"

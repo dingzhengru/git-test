@@ -126,7 +126,15 @@ import { getRememberInfo } from '@/api/user';
 export default {
   name: 'Login',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'token', 'publicKey', 'pwaInstallStatus', 'pwaPrompt']),
+    ...mapGetters([
+      'siteID',
+      'siteFullCss',
+      'token',
+      'publicKey',
+      'pwaInstallStatus',
+      'pwaPrompt',
+      'siteIsOpenRememberMe',
+    ]),
   },
   data() {
     return {
@@ -205,14 +213,16 @@ export default {
           await this.$store.dispatch('user/getTokenAndPublicKey');
         }
 
-        //* 取得記憶帳密
-        const result = await getRememberInfo();
-        console.log('[RememberInfo]', result);
+        //* 取得記憶帳密(先判斷此 Site 是否開放此功能)
+        if (this.siteIsOpenRememberMe) {
+          const result = await getRememberInfo();
+          console.log('[RememberInfo]', result);
 
-        if (result.Code == 200) {
-          this.isShowRememberMe = result.RetObj.Lst_Open_Remember_Option;
-          if (this.isShowRememberMe) {
-            this.user = result.RetObj.LoginUser;
+          if (result.Code == 200) {
+            this.isShowRememberMe = result.RetObj.Lst_Open_Remember_Option;
+            if (this.isShowRememberMe) {
+              this.user = result.RetObj.LoginUser;
+            }
           }
         }
 

@@ -12,6 +12,7 @@ const getters = {
   siteMainDomain: state => state.site.mainDomain,
   siteIsNewPromotion: state => state.site.isNewPromotion,
   siteName: state => state.site.siteName,
+  siteIsOpenRememberMe: state => state.site.isOpenRememberMe,
   siteFullCss: state => {
     return `${state.site.cssClass}/${state.site.cssType}`;
   },

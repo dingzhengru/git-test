@@ -203,6 +203,8 @@ export default {
       field.error = this.validateField(field);
     },
     async changeField(field) {
+      //* 即時驗證欄位資料是否通過
+
       //* 確認推薦人是否存在
       if (field.name == 'Add_RelatedAccount' && this.validateField(field, this.fieldList) == '') {
         const requestData = { RelatedAccount: field.value };
@@ -210,6 +212,20 @@ export default {
         if (result == false) {
           field.value = '';
           alert(this.$t('register.Add_RelatedAccount.error.invalid'));
+        }
+      } else if (field.name == 'Add_Account') {
+        const requestData = { Add_Account: field.value };
+        const result = await checkRelatedAccountExist(requestData);
+        if (result == false) {
+          field.value = '';
+          alert(this.$t('register.Add_Account.error.invalid'));
+        }
+      } else if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
+        const requestData = { Add_RealName: this.fullName };
+        const result = await checkRelatedAccountExist(requestData);
+        if (result == false) {
+          field.value = '';
+          alert(this.$t('register.Add_RealName.error.invalid'));
         }
       }
     },

@@ -163,7 +163,7 @@
       "placeholder": "姓名",
       "hint": "必须与您的银行账户名称相同，否则不能出款",
       "error": {
-        "invalid": "",
+        "invalid": "此真实姓名已他人使用,请输入其他真实姓名",
         "required": "请输入您的姓名",
         "length": "",
         "regex": "格式错误"

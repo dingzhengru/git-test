@@ -10,6 +10,7 @@ const state = {
   remoteCSSUrl: null,
   isNewPromotion: false,
   siteName: null,
+  isOpenRememberMe: false,
 };
 
 const mutations = {
@@ -40,6 +41,9 @@ const mutations = {
   setSiteName(state, siteName) {
     state.siteName = siteName;
   },
+  setIsOpenRememberMe(state, isOpenRememberMe) {
+    state.isOpenRememberMe = isOpenRememberMe;
+  },
 };
 
 const actions = {
@@ -59,6 +63,7 @@ const actions = {
       commit('setRemoteCSSUrl', result.RetObj.RemoteCSSUrls);
       commit('setIsNewPromotion', result.RetObj.bNewPromotion);
       commit('setSiteName', result.RetObj.LS_SiteName);
+      commit('setIsOpenRememberMe', result.RetObj.Lst_Open_Remember_Option);
     }
 
     //* 手動設置(測試用)
