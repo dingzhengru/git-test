@@ -30,7 +30,9 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import { getRegisterAdvanceNew, getBankInfoList, changePasswordWithdrawal } from '@/api/user';
+import { getBankInfoList, changePasswordWithdrawal } from '@/api/user';
+import { getRegisterAdvanceNew } from '@/api/register';
+
 export default {
   name: 'Profile',
   components: {

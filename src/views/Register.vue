@@ -19,6 +19,7 @@
               :pattern="field.regex"
               v-model="field.value"
               @input="field.error = validateField(field)"
+              @change="changeField(field)"
             />
 
             <img
@@ -91,7 +92,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
-import { getRegisterFieldList } from '@/api/register';
+import { getRegisterFieldList, checkRelatedAccountExist } from '@/api/register';
 import { registerFieldList, validateField } from '@/utils/register';
 import idMapper from '@/idMapper';
 
@@ -204,6 +205,17 @@ export default {
       // field.error = this.$t(validateField(field, this.fieldList));
       // return field.error;
       return this.$t(validateField(field, this.fieldList));
+    },
+    async changeField(field) {
+      //* 確認推薦人是否存在
+      if (field.name == 'Add_RelatedAccount' && this.validateField(field, this.fieldList) == '') {
+        const requestData = { RelatedAccount: field.value };
+        const result = await checkRelatedAccountExist(requestData);
+        if (result == false) {
+          field.value = '';
+          alert(this.$t('register.Add_RelatedAccount.error.invalid'));
+        }
+      }
     },
   },
   watch: {
