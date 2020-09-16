@@ -93,7 +93,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
-import { getRegisterFieldList, checkRelatedAccountExist } from '@/api/register';
+import {
+  getRegisterFieldList,
+  checkRelatedAccountExist,
+  checkAccountExist,
+  checkRealNameExist,
+  checkMobileExist,
+} from '@/api/register';
 import { registerFieldList, validateField } from '@/utils/register';
 import idMapper from '@/idMapper';
 
@@ -215,17 +221,24 @@ export default {
         }
       } else if (field.name == 'Add_Account') {
         const requestData = { Add_Account: field.value };
-        const result = await checkRelatedAccountExist(requestData);
+        const result = await checkAccountExist(requestData);
         if (result == false) {
           field.value = '';
           alert(this.$t('register.Add_Account.error.invalid'));
         }
       } else if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
-        const requestData = { Add_RealName: this.fullName };
-        const result = await checkRelatedAccountExist(requestData);
+        const requestData = { Add_Realname: this.fullName };
+        const result = await checkRealNameExist(requestData);
         if (result == false) {
           field.value = '';
           alert(this.$t('register.Add_RealName.error.invalid'));
+        }
+      } else if (field.name == 'Add_Mobile') {
+        const requestData = { Add_Mobile: field.value };
+        const result = await checkMobileExist(requestData);
+        if (result == false) {
+          field.value = '';
+          alert(this.$t('register.Add_Mobile.error.invalid'));
         }
       }
     },

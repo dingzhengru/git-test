@@ -86,6 +86,7 @@ export default {
       };
 
       this.$emit('change-withdrawal-password', requestData);
+      this.resetForm();
     },
     validateForm() {
       console.log('[ValidateForm]');
@@ -106,6 +107,12 @@ export default {
       }
 
       return this.error == '';
+    },
+    resetForm() {
+      this.OldPassword = '';
+      this.Password = '';
+      this.CheckPassword = '';
+      this.error = '';
     },
   },
 };
