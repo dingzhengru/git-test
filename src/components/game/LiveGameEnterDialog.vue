@@ -4,11 +4,10 @@
     <div class="live-game-enter-dialog-wrapper" @click.self="$emit('close')">
       <div class="live-game-enter-dialog">
         <div class="ui-box-close" @click="$emit('close')"></div>
-        <div class="live-game-enter-dialog__button-div" v-for="(gameLimit, index) in gameLimitBetList" :key="index">
+        <div class="live-game-enter-dialog__button-div" v-for="(gameLimit, index) in filterGameLimitBetList" :key="index">
           <button
             class="live-game-enter-dialog__button ui-btn"
             @click="$emit('open-live-game', gameLimit.Lst_TemplatesId, index + 1)"
-            v-if="gameLimit.Lst_ProductGameId == selectedGame.Lst_Category"
           >
             <template v-if="gameLimit.Lst_TemplatesId == 0">
               {{ $t('game.button.enterGame') }}
@@ -42,6 +41,11 @@ export default {
     selectedGame: {
       type: Object,
       default: () => {},
+    },
+  },
+  computed: {
+    filterGameLimitBetList() {
+      return this.gameLimitBetList.filter(gameLimit => gameLimit.Lst_ProductGameId == this.selectedGame.Lst_Category);
     },
   },
 };
