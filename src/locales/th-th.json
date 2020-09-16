@@ -6,23 +6,6 @@
       "cancel": "ยกเลิก"
     }
   },
-  "alert": {
-    "game": {
-      "maintenance": "เกมส์อยู่ในระหว่างการปรับปรุง  ขออภัยในความไม่สะดวก"
-    },
-    "changePassword": {
-      "success": "แก้ไขข้อมูลสำเร็จ！"
-    },
-    "transfer": {
-      "success": "โอนความสำเร็จ"
-    },
-    "inbox": {
-      "success": "ตอบกลับสำเร็จ"
-    },
-    "outbox": {
-      "success": "โปรดเลือกประเภท"
-    }
-  },
   "header": {
     "menu": {
       "profile": "ข้อมูลบัญชี",
@@ -406,6 +389,9 @@
         "passwordOld": "",
         "passwordNew": "",
         "passwordCheck": "พาสเวิร์ดผิดพลาด"
+      },
+      "alert": {
+        "success": "แก้ไขข้อมูลสำเร็จ！"
       }
     }
   },
@@ -512,6 +498,9 @@
         "transfer": "โอนเงิน",
         "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด",
         "refresh": "รีเฟรช"
+      },
+      "alert": {
+        "success": "โอนความสำเร็จ"
       }
     },
     "record": {
@@ -731,7 +720,10 @@
       "title": "หัวข้อ",
       "sender": "ผู้ส่งสาร",
       "datetime": "ที่ส่งจดหมาย",
-      "reply": "ตอบกลับจดหมาย"
+      "reply": "ตอบกลับจดหมาย",
+      "alert": {
+        "success": "ตอบกลับสำเร็จ"
+      }
     },
     "outbox": {
       "category": "ประเภท",
@@ -749,6 +741,9 @@
         "promotion": "โปรโมชั่น",
         "technologyRelated": "ปัญหาทางเทคนิก",
         "aboutUs": "เกี่ยวกับเว็ป"
+      },
+      "alert": {
+        "success": "โปรดเลือกประเภท"
       }
     }
   },
@@ -783,6 +778,9 @@
       "transferAll": "โอนทั้งหมด",
       "transferByEnter": "ป้อนด้วยตนเอง",
       "submit": "แน่ใจ"
+    },
+    "alert": {
+      "maintenance": "เกมส์อยู่ในระหว่างการปรับปรุง  ขออภัยในความไม่สะดวก"
     }
   },
   "promotionDetail": {

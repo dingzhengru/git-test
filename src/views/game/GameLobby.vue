@@ -321,7 +321,7 @@ export default {
       if (result.Code == 200) {
         this.gamePointList = result.RetObj.GameSitePoints;
         this.transferAmount = 0;
-        window.alert(this.$t('alert.transfer.success'));
+        window.alert(this.$t('transaction.transfer.alert.success'));
 
         //* 開啟站外連結
         if (this.currentProduct.GetGameRedirectUrl) {
@@ -335,7 +335,7 @@ export default {
       if (product.Lst_Proxy_Product_Key == this.currentProduct.Lst_Proxy_Product_Key) {
         return;
       } else if (product.Lst_Site_Product_Status != 0) {
-        window.alert(this.$t('alert.game.maintenance'));
+        window.alert(this.$t('game.alert.maintenance'));
         return;
       }
       console.log('[ChangeProduct]', product);
@@ -422,7 +422,7 @@ export default {
     productList() {
       //* 避免直接輸入網址，到正在維護的 Product
       // if (this.currentProduct.Lst_Site_Product_Status != 0) {
-      //   window.alert(this.$t('alert.game.maintenance'));
+      //   window.alert(this.$t('game.alert.maintenance'));
       //   window.location.replace('/');
       // }
 

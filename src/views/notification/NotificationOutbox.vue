@@ -60,6 +60,8 @@ export default {
       if (result.Code == 200) {
         console.log('[SendMail]', result);
         this.resetMail();
+
+        window.alert(this.$t('notification.outbox.alert.success'));
       }
     },
     async getMailCategoryList() {

@@ -173,7 +173,7 @@ export default {
 
       if (result.Code == 200) {
         this.updateGamePoint(result);
-        window.alert(this.$t('alert.transfer.success'));
+        window.alert(this.$t('transaction.transfer.alert.success'));
       }
     },
     async transferToMain() {

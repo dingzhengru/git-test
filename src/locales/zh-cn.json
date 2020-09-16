@@ -6,23 +6,6 @@
       "cancel": "取消"
     }
   },
-  "alert": {
-    "game": {
-      "maintenance": "游戏维护中，很抱歉造成您的不便！"
-    },
-    "changePassword": {
-      "success": "资料更改成功！"
-    },
-    "transfer": {
-      "success": "转帐成功!"
-    },
-    "inbox": {
-      "success": "回覆成功"
-    },
-    "outbox": {
-      "success": "邮件发送成功！"
-    }
-  },
   "header": {
     "menu": {
       "profile": "会员中心",
@@ -406,6 +389,9 @@
         "passwordOld": "",
         "passwordNew": "",
         "passwordCheck": "确认密码错误"
+      },
+      "alert": {
+        "success": "资料更改成功！"
       }
     }
   },
@@ -512,6 +498,9 @@
         "transfer": "转帐",
         "allToMyWallet": "全部转回我的钱包",
         "refresh": "刷新"
+      },
+      "alert": {
+        "success": "转帐成功!"
       }
     },
     "record": {
@@ -731,7 +720,10 @@
       "title": "主旨",
       "sender": "发件人",
       "datetime": "信件日期",
-      "reply": "回覆信件"
+      "reply": "回覆信件",
+      "alert": {
+        "success": "回覆成功"
+      }
     },
     "outbox": {
       "category": "信件类别",
@@ -749,6 +741,9 @@
         "promotion": "优惠活动",
         "technologyRelated": "技术问题",
         "aboutUs": "有关本站"
+      },
+      "alert": {
+        "success": "邮件发送成功！"
       }
     }
   },
@@ -783,6 +778,9 @@
       "transferAll": "全部转入",
       "transferByEnter": "自行输入",
       "submit": "确定"
+    },
+    "alert": {
+      "maintenance": "游戏维护中，很抱歉造成您的不便！"
     }
   },
   "promotionDetail": {

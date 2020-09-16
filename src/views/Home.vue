@@ -248,7 +248,7 @@ export default {
        */
 
       if (game.Lst_Site_Product_Status != 0) {
-        window.alert(this.$t('alert.game.maintenance'));
+        window.alert(this.$t('game.alert.maintenance'));
         return;
       }
 

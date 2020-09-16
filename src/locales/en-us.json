@@ -6,23 +6,6 @@
       "cancel": "Cancellation"
     }
   },
-  "alert": {
-    "game": {
-      "maintenance": "Game under maintenance, we apologize for the inconvenience brought to you !!"
-    },
-    "changePassword": {
-      "success": "Profile changed successfully!"
-    },
-    "transfer": {
-      "success": "Transfer success!"
-    },
-    "inbox": {
-      "success": "Reply as success"
-    },
-    "outbox": {
-      "success": "Mail sent successfully!"
-    }
-  },
   "header": {
     "menu": {
       "profile": "Profile",
@@ -406,6 +389,9 @@
         "passwordOld": "",
         "passwordNew": "",
         "passwordCheck": "Confirm password error"
+      },
+      "alert": {
+        "success": "Profile changed successfully!"
       }
     }
   },
@@ -512,6 +498,9 @@
         "transfer": "Transfer",
         "allToMyWallet": "All to my wallet",
         "refresh": "Refresh"
+      },
+      "alert": {
+        "success": "Transfer success!"
       }
     },
     "record": {
@@ -731,7 +720,10 @@
       "title": "Title",
       "sender": "Contact info",
       "datetime": "Date",
-      "reply": "Reply to mail"
+      "reply": "Reply to mail",
+      "alert": {
+        "success": "Reply as success"
+      }
     },
     "outbox": {
       "category": "Letter Category",
@@ -749,6 +741,9 @@
         "promotion": "Promotions",
         "technologyRelated": "Technology Related",
         "aboutUs": "About us"
+      },
+      "alert": {
+        "success": "Mail sent successfully!"
       }
     }
   },
@@ -783,6 +778,9 @@
       "transferAll": "Transfer all",
       "transferByEnter": "Enter by yourself",
       "submit": "Done"
+    },
+    "alert": {
+      "maintenance": "Game under maintenance, we apologize for the inconvenience brought to you !!"
     }
   },
   "promotionDetail": {
