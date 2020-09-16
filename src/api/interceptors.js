@@ -81,8 +81,8 @@ axios.interceptors.response.use(
       if (Responded201Count == 0) {
         Responded201Count++;
         console.log('[Logout]', '201: 帳號被踢線', res.data);
-        alert(res.data.ErrMsg);
         store.dispatch('user/logout');
+        alert(res.data.ErrMsg);
       }
       return;
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
