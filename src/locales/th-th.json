@@ -680,9 +680,9 @@
         "totalWinLose": "ยอดได้เสีย"
       },
       "dateRange": {
-        "today": "รีพอร์ตวันนี้",
-        "thisWeek": "รีพอร์ตสัปดาห์นี้",
-        "lastWeek": "รีพอร์ตสัปดาห์ก่อน"
+        "Today": "รีพอร์ตวันนี้",
+        "ThisWeek": "รีพอร์ตสัปดาห์นี้",
+        "LastWeek": "รีพอร์ตสัปดาห์ก่อน"
       }
     },
     "betRecordDetail": {

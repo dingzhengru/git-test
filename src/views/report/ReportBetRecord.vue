@@ -2,14 +2,14 @@
   <div class="report-bet-record">
     <div class="report-bet-record__field">
       <select class="report-bet-record__field__select ui-ddl" v-model="dateRange">
-        <option :value="dateRangeItem" v-for="dateRangeItem in dateRangeList" :key="dateRangeItem.value">
-          {{ $t(`report.betRecord.dateRange.${dateRangeItem.name}`) }}
+        <option :value="dateRangeItem" v-for="(dateRangeItem, index) in dateRangeList" :key="index">
+          {{ $t(`report.betRecord.dateRange.${dateRangeItem}`) }}
         </option>
       </select>
     </div>
-    <div class="report-bet-record__box theme-content-box" v-if="dateRange.name != 'today'">
+    <div class="report-bet-record__box theme-content-box" v-if="dateRange != 'Today'">
       <h3 class="report-bet-record__title theme-h3-boxTitle">
-        {{ $t(`report.betRecord.dateRange.${dateRange.name}`) }}
+        {{ $t(`report.betRecord.dateRange.${dateRange}`) }}
       </h3>
       <table class="report-bet-record__table ui-table03">
         <thead>
@@ -41,10 +41,10 @@
     </div>
 
     <ReportBetRecordDetailTable
-      :title="$t(`report.betRecord.dateRange.${dateRange.name}`)"
+      :title="$t(`report.betRecord.dateRange.${dateRange}`)"
       :totalObject="totalObject"
       :recordList="recordList"
-      v-if="dateRange.name == 'today'"
+      v-if="dateRange == 'Today'"
     />
   </div>
 </template>
@@ -64,31 +64,18 @@ export default {
   data() {
     return {
       numeral: numeral,
-      dateRangeList: [
-        {
-          name: 'today',
-          value: 'Today',
-        },
-        {
-          name: 'thisWeek',
-          value: 'ThisWeek',
-        },
-        {
-          name: 'lastWeek',
-          value: 'LastWeek',
-        },
-      ],
+      dateRangeList: ['Today', 'ThisWeek', 'LastWeek'],
       weekList: [],
-      dateRange: { name: 'today', value: 'Today' },
       totalObject: {},
       recordList: [],
+      dateRange: 'Today',
     };
   },
   methods: {
     async getReportBetRecord() {
-      console.log('[ReportBetRecord]', this.dateRange.name);
-      if (this.dateRange.name == 'today') {
-        const requestData = { Tag: this.dateRange.value };
+      console.log('[ReportBetRecord]', this.dateRange);
+      if (this.dateRange == 'Today') {
+        const requestData = { Tag: this.dateRange };
         const result = await getBetHistoryDay(requestData);
 
         if (result.Code == 200) {
@@ -102,7 +89,7 @@ export default {
         }
         console.log('[BetHistoryDay]', result);
       } else {
-        const requestData = { Tag: this.dateRange.value };
+        const requestData = { Tag: this.dateRange };
         const result = await getBetHistoryWeek(requestData);
 
         this.recordList = [];
@@ -123,11 +110,21 @@ export default {
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
+
+        //* 為實現返回頁面還能在，上一次的選擇頁面中，使用 query 達成
+        //* 若 query 的值不在選擇中，則轉到 Today (預設就是用此，所以不用改 dateRange)
+        if (this.dateRangeList.includes(this.$route.query.date)) {
+          this.dateRange = this.$route.query.date;
+        } else {
+          this.$router.push({ query: { date: 'Today' } });
+        }
       },
     },
     dateRange: {
       immediate: true,
       async handler() {
+        this.$router.push({ query: { date: this.dateRange } });
+
         this.getReportBetRecord();
       },
     },

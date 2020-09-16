@@ -680,9 +680,9 @@
         "totalWinLose": "总输赢"
       },
       "dateRange": {
-        "today": "当天帐务",
-        "thisWeek": "本周帐务",
-        "lastWeek": "上周帐务"
+        "Today": "当天帐务",
+        "ThisWeek": "本周帐务",
+        "LastWeek": "上周帐务"
       }
     },
     "betRecordDetail": {

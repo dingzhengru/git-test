@@ -680,9 +680,9 @@
         "totalWinLose": "Total Win-lose"
       },
       "dateRange": {
-        "today": "Accounting of the day",
-        "thisWeek": "Accounting of this week",
-        "lastWeek": "Accounting of last week"
+        "Today": "Accounting of the day",
+        "ThisWeek": "Accounting of this week",
+        "LastWeek": "Accounting of last week"
       }
     },
     "betRecordDetail": {
