@@ -1,9 +1,9 @@
 <template>
   <div class="register">
     <form class="register__form" id="register-form" @submit.prevent="submitRegister">
-      <div class="register__form__field" v-for="field in fieldList" :key="field.name">
+      <div v-for="field in fieldList" :key="field.name">
         <template v-if="field.isShow">
-          <div class="register__form__field__input-div" :class="[field.class]">
+          <div class="register__form__field" :class="[field.class]">
             <span class="register__form__field__star" v-if="field.isRequired">*</span>
             <input
               v-if="field.name != 'Add_BankId1'"
@@ -58,10 +58,10 @@
       </div>
     </form>
 
-    <div class="register__form__button-div">
+    <div class="register__button-div">
       <button
         type="submit"
-        class="register__form__send ui-btn"
+        class="register__button-div__send ui-btn"
         :id="idMapper.register.button.submit"
         form="register-form"
         :disabled="!validateForm()"
@@ -70,7 +70,7 @@
       </button>
       <button
         type="reset"
-        class="register__form__reset ui-btn"
+        class="register__button-div__reset ui-btn"
         :id="idMapper.register.button.reset"
         @click.prevent="resetForm"
       >
@@ -93,13 +93,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
-import {
-  getRegisterFieldList,
-  checkRelatedAccountExist,
-  checkAccountExist,
-  checkRealNameExist,
-  checkMobileExist,
-} from '@/api/register';
+import { getRegisterFieldList, checkRegisterFieldExist } from '@/api/register';
 import { registerFieldList, validateField } from '@/utils/register';
 import idMapper from '@/idMapper';
 
@@ -211,34 +205,29 @@ export default {
     async changeField(field) {
       //* 即時驗證欄位資料是否通過
 
-      //* 確認推薦人是否存在
-      if (field.name == 'Add_RelatedAccount' && this.validateField(field, this.fieldList) == '') {
-        const requestData = { RelatedAccount: field.value };
-        const result = await checkRelatedAccountExist(requestData);
+      if (this.validateField(field, this.fieldList) != '') {
+        return;
+      }
+      if (field.name == 'Add_RelatedAccount') {
+        const requestData = { field: 'Add_RelatedAccount', strValue: field.value };
+        const result = await checkRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
           alert(this.$t('register.Add_RelatedAccount.error.invalid'));
         }
-      } else if (field.name == 'Add_Account') {
-        const requestData = { Add_Account: field.value };
-        const result = await checkAccountExist(requestData);
-        if (result == false) {
-          field.value = '';
-          alert(this.$t('register.Add_Account.error.invalid'));
-        }
       } else if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
-        const requestData = { Add_Realname: this.fullName };
-        const result = await checkRealNameExist(requestData);
+        const requestData = { field: 'Add_Realname', strValue: this.fullName };
+        const result = await checkRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
           alert(this.$t('register.Add_RealName.error.invalid'));
         }
-      } else if (field.name == 'Add_Mobile') {
-        const requestData = { Add_Mobile: field.value };
-        const result = await checkMobileExist(requestData);
+      } else if (field.isOnly == true) {
+        const requestData = { field: field.name, strValue: field.value };
+        const result = await checkRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
-          alert(this.$t('register.Add_Mobile.error.invalid'));
+          alert(this.$t(`register.${field.name}.error.invalid`));
         }
       }
     },
@@ -269,13 +258,15 @@ export default {
             if (field) {
               field.isShow = registerField.Lst_Phase == 1;
               field.isRequired = registerField.Lst_isRequired;
-
+              field.isOnly = registerField.Lst_isOnly;
               //* 只有 Add_RealName 是不可修改
               if (field.name == 'Add_RealName') {
                 field.isModifiable = false;
               } else {
                 field.isModifiable = true;
               }
+
+              console.log(field.name, field.isOnly);
             }
           }
         });
@@ -291,8 +282,101 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .register {
+  padding-bottom: 160px;
+  padding-top: 60px;
+
+  &__form {
+    width: 563px;
+    margin: 0 auto;
+
+    &__field {
+      position: relative;
+      background-repeat: no-repeat;
+      margin-top: 30px;
+      &__star {
+        font-size: 2.5em;
+        position: absolute;
+        top: 20px;
+        left: -25px;
+        color: #cfa972;
+      }
+      &__input {
+        width: 465px;
+        height: 64px;
+        background-color: transparent;
+        margin: 8px 0 9px 80px;
+        border: none;
+        outline: none;
+        font-size: 2.5em;
+      }
+      &__select {
+        width: 465px;
+        height: 64px;
+        font-size: 2.5em;
+        font-weight: normal;
+        background: transparent;
+        margin: 8px 0 9px 80px;
+        border: none;
+        outline: none;
+      }
+      &__select option {
+        color: black;
+        background-color: #979797;
+      }
+      &__image--code {
+        position: absolute;
+        top: 11px;
+        right: 15px;
+      }
+      // &__input:invalid {
+      //   color: red;
+      // }
+      // &__input:valid {
+      //   color: green;
+      // }
+      &__input:disabled {
+        color: gray;
+        pointer-events: none;
+      }
+      &__input:disabled::placeholder {
+        color: gray;
+      }
+      &__input::-webkit-calendar-picker-indicator {
+        filter: invert(1); /* 反轉圖像顏色 */
+      }
+      &__input::before {
+        color: #959595;
+        content: attr(placeholder);
+      }
+      &__hint {
+        display: block;
+        margin: 5px 0;
+        font-size: 2em;
+      }
+    }
+  }
+  &__button-div {
+    text-align: center;
+    margin-top: 50px;
+
+    button {
+      margin: 0 10px;
+    }
+  }
+  &__notice {
+    margin: 0 20px;
+    &__ol {
+      margin: 50px 10px 0;
+      font-size: 2.153em;
+    }
+  }
+}
+</style>
+
+<style scoped>
+/*.register {
   padding-bottom: 160px;
   padding-top: 60px;
 }
@@ -339,7 +423,6 @@ export default {
   margin: 8px 0 9px 80px;
   border: none;
   outline: none;
-  /* background-color: #2e2e2e; */
 }
 
 .register__form__field__select option {
@@ -351,17 +434,17 @@ export default {
   position: absolute;
   top: 11px;
   right: 15px;
-}
+} 
 
-/* .register__form__field__input:invalid {
+.register__form__field__input:invalid {
   color: red;
 }
 
 .register__form__field__input:valid {
   color: green;
-} */
+} 
 
-.register__form__field__input:disabled {
+ .register__form__field__input:disabled {
   color: gray;
   pointer-events: none;
 }
@@ -375,12 +458,12 @@ export default {
   font-size: 2.153em;
 }
 
-.register__form__button-div {
+.register__button-div {
   text-align: center;
   margin-top: 50px;
 }
 
-.register__form__button-div button {
+.register__button-div button {
   margin: 0 10px;
 }
 
@@ -389,11 +472,11 @@ export default {
 }
 
 .register__form__field__input::-webkit-calendar-picker-indicator {
-  filter: invert(1); /* 反轉圖像顏色 */
+  filter: invert(1);
 }
 
 .register__form__field__input::before {
   color: #959595;
   content: attr(placeholder);
-}
+}*/
 </style>

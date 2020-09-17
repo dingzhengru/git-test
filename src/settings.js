@@ -100,7 +100,7 @@ const ACCESS_ROUTE_LIST = [];
 const NO_ALERT_API = ['Member/LoginIn', 'Member/SimpleRegister'];
 
 //* 不顯示 Loading 的 API
-const NO_LOADING_API = ['Siteinfo/KeepUserOnline', 'Game/MGetJackpotTotal'];
+const NO_LOADING_API = ['Siteinfo/KeepUserOnline', 'Game/MGetJackpotTotal', 'Member/CheckField'];
 
 export {
   API_URL,

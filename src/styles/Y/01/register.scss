@@ -10,17 +10,15 @@ $type: 'Y/01';
   color: #959595;
 }
 
-.register__form__send {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
-}
-
-.register__form__reset {
-  background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
-}
-
 /*
   ! 圖片路徑
 */
+.register__button-div__send {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
+.register__button-div__reset {
+  background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
+}
 
 .register__form__field--recommend {
   background-image: url(~@/assets/#{$type}/imgs/main/authBg_recommend.png);

@@ -18,17 +18,17 @@ $type: 'Y/02';
 .register__notice__ol {
   color: #fff;
 }
-.register__form__send {
-  background-image: url(~@/assets/common/imgs/ui/btn--yellow-dark.jpg);
-}
-
-.register__form__reset {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
-}
 
 /*
   ! 圖片路徑
 */
+
+.register__button-div__send {
+  background-image: url(~@/assets/common/imgs/ui/btn--yellow-dark.jpg);
+}
+.register__button-div__reset {
+  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+}
 
 .register__form__field--recommend {
   background: #1c6080 url(~@/assets/#{$type}/imgs/main/authBg_recommend.png) 8px center no-repeat;
