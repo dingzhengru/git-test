@@ -31,17 +31,18 @@ export default {
 };
 </script>
 
-<style scoped>
-.forget-password__title {
-  text-align: center;
-  margin-top: 0px;
-  padding-top: 20px;
-  font-size: 3rem;
-  /* font-weight: bold; */
-}
-.forget-password__desc {
-  padding-top: 316px;
-  font-size: 2.769em;
-  text-align: center;
+<style lang="scss" scoped>
+.forget-password {
+  &__title {
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 20px;
+    font-size: 3rem;
+  }
+  &__desc {
+    padding-top: 316px;
+    font-size: 2.769em;
+    text-align: center;
+  }
 }
 </style>

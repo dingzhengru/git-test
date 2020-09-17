@@ -24,9 +24,12 @@
             >Mobile</a
           >
           <transition name="fade">
-            <div class="contact__content__ul__li__block--tel" v-if="isShowMobileTelephones">
+            <div
+              class="contact__content__ul__li__block contact__content__ul__li__block--tel"
+              v-if="isShowMobileTelephones"
+            >
               <a
-                class="contact__content__ul__li__link--tel"
+                class="contact__content__ul__li__block__link contact__content__ul__li__block__link--tel"
                 :href="`tel:${tel}`"
                 v-for="tel in contact.mobile.telephones"
                 :key="tel"
@@ -43,7 +46,7 @@
         </li>
         <!-- <li class="contact__content__ul__li">
           <a href="javascript:;" class="contact__content__ul__li__link contact__content__ul__li__link--qq">QQ</a>
-          <div class="contact__content__ul__li__block--qq">
+          <div class="contact__content__ul__li__block contact__content__ul__li__block--qq">
             <a href="tencent://message/?uin=1448366105&amp;Menu=yes" class="contact__content__ul__li__link--qq2">1448366105</a><br />
             <a href="tencent://message/?uin=1279982976&amp;Menu=yes" class="contact__content__ul__li__link--qq2">1279982976</a><br />
             <a href="tencent://message/?uin=2272806809&amp;Menu=yes" class="contact__content__ul__li__link--qq2">2272806809</a>
@@ -121,7 +124,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /*
  * fade 顯示 telephones 區塊
 */
@@ -130,11 +133,92 @@ export default {
 .fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
 .contact {
+  padding-bottom: 119px;
+  &-auth {
+    padding-top: 88px;
+  }
+  &__content {
+    margin: 80px;
+    &__ul {
+      padding: 0;
+      margin: 0;
+      &__li {
+        display: inline-block;
+        margin: 31px 20px;
+        vertical-align: top;
+        position: relative;
+
+        &__link {
+          display: block;
+          width: 198px;
+          background-repeat: no-repeat;
+          background-position: center top;
+          padding-top: 115px;
+          font-size: 2.461em;
+          text-align: center;
+          word-break: break-all;
+        }
+        &__block {
+          width: 328px;
+          height: 286px;
+          text-align: center;
+          position: absolute;
+          top: 165px;
+          left: -99px;
+          z-index: 2;
+
+          &__link {
+            font-size: 2.461em;
+            line-height: 65px;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * 共用圖片
+*/
+
+.contact__content__ul__li__link {
+  &--online {
+    background-image: url(~@/assets/common/imgs/main/onlineServicebg.png);
+  }
+  &--service {
+    background-image: url(~@/assets/common/imgs/main/onlineServicebg.png);
+  }
+  &--qq {
+    background-image: url(~@/assets/common/imgs/main/qqBg.png);
+  }
+  &--mobile {
+    background-image: url(~@/assets/common/imgs/main/mobileBg.png);
+  }
+  &--skype {
+    background-image: url(~@/assets/common/imgs/main/skypeBg.png);
+  }
+  &--line {
+    background-image: url(~@/assets/common/imgs/main/lineBg.png);
+  }
+  &--wechat {
+    background-image: url(~@/assets/common/imgs/main/wechatBg.png);
+  }
+  &--facebook {
+    background-image: url(~@/assets/common/imgs/main/FacebookBg.png);
+  }
+}
+</style>
+
+<style scoped>
+
+/* .contact {
   padding-bottom: 119px;
 }
 
@@ -185,41 +269,10 @@ export default {
   font-size: 3.23em;
   line-height: 95px;
 }
-.contact__content__ul__li__link--tel {
+.contact__content__ul__li__block__link {
   font-size: 2.461em;
   line-height: 65px;
   display: block;
-}
-
-/*
- * 共用圖片
-*/
-
-.contact__content__ul__li__link--online {
-  background-image: url(~@/assets/common/imgs/main/onlineServicebg.png);
-}
-/* .li-service-download {
- background-image: url(~@/assets/common/imgs/main/downloadServicebg.png);
 } */
-.contact__content__ul__li__link--service {
-  background-image: url(~@/assets/common/imgs/main/onlineServicebg.png);
-}
-.contact__content__ul__li__link--qq {
-  background-image: url(~@/assets/common/imgs/main/qqBg.png);
-}
-.contact__content__ul__li__link--mobile {
-  background-image: url(~@/assets/common/imgs/main/mobileBg.png);
-}
-.contact__content__ul__li__link--skype {
-  background-image: url(~@/assets/common/imgs/main/skypeBg.png);
-}
-.contact__content__ul__li__link--line {
-  background-image: url(~@/assets/common/imgs/main/lineBg.png);
-}
-.contact__content__ul__li__link--wechat {
-  background-image: url(~@/assets/common/imgs/main/wechatBg.png);
-}
-.contact__content__ul__li__link--facebook {
-  background-image: url(~@/assets/common/imgs/main/FacebookBg.png);
-}
+
 </style>
