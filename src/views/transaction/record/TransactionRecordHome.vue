@@ -2,13 +2,13 @@
   <div class="record-list theme-content-box">
     <h3 class="record-list__title theme-h3-boxTitle">{{ $t('transaction.record.title') }}</h3>
     <ul class="record-list__ul">
-      <li class="record-list__ul__li" v-for="record in recordList" :key="record.name">
+      <li class="record-list__ul__li" v-for="(record, index) in recordList" :key="index">
         <router-link
           class="record-list__ul__li__link"
-          :id="idMapper.transaction.record[record.name]"
-          :to="{ name: 'TransactionRecordContent', params: { name: record.name } }"
+          :id="idMapper.transaction.record[record]"
+          :to="{ name: 'TransactionRecordContent', params: { name: record } }"
         >
-          {{ $t(record.content) }}
+          {{ $t(`transaction.record.${record}`) }}
         </router-link>
       </li>
     </ul>
@@ -27,36 +27,7 @@ export default {
   data() {
     return {
       idMapper: idMapper,
-      recordList: [
-        {
-          name: 'deposit',
-          content: 'transaction.record.deposit',
-        },
-        {
-          name: 'withdrawal',
-          content: 'transaction.record.withdrawal',
-        },
-        {
-          name: 'transfer',
-          content: 'transaction.record.transfer',
-        },
-        {
-          name: 'bonus',
-          content: 'transaction.record.bonus',
-        },
-        {
-          name: 'lottery',
-          content: 'transaction.record.lottery',
-        },
-        {
-          name: 'withdrawalRestriction',
-          content: 'transaction.record.withdrawalRestriction',
-        },
-        {
-          name: 'adjustment',
-          content: 'transaction.record.adjustment',
-        },
-      ],
+      recordList: ['deposit', 'withdrawal', 'transfer', 'bonus', 'lottery', 'withdrawalRestriction', 'adjustment'],
     };
   },
   watch: {
@@ -75,8 +46,33 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .record-list {
+  margin: 30px 0;
+
+  &__ul {
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px 0;
+    list-style: none;
+
+    &__li {
+      padding: 30px 0;
+
+      &__link {
+        display: block;
+        font-size: 3.23em;
+        text-align: center;
+        line-height: 97px;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+</style>
+
+<style scoped>
+/* .record-list {
   margin: 30px 0;
 }
 
@@ -95,5 +91,5 @@ export default {
   text-align: center;
   line-height: 97px;
   border-radius: 10px;
-}
+} */
 </style>
