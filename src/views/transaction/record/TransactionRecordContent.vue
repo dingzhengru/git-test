@@ -23,7 +23,7 @@
           </select>
         </div>
         <div class="record-content__search-form__field">
-          <span class="txt-inquire">{{ $t(`${i18nKey}.field.from`) }}</span>
+          <span class="record-content__search-form__field__title">{{ $t(`${i18nKey}.field.from`) }}</span>
           <input
             class="record-content__search-form__field__input--date-from ui-ipt"
             type="date"
@@ -32,7 +32,7 @@
           />
         </div>
         <div class="record-content__search-form__field">
-          <span class="txt-inquire">{{ $t(`${i18nKey}.field.to`) }}</span>
+          <span class="record-content__search-form__field__title">{{ $t(`${i18nKey}.field.to`) }}</span>
           <input
             class="record-content__search-form__field__input--date-to ui-ipt"
             type="date"
@@ -418,62 +418,129 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .record-content {
   margin: 30px 0;
-}
 
-.record-content__search-form__field {
+  &__search-form {
+    &__field {
+      margin: 30px 0;
+      text-align: center;
+
+      select {
+        width: 49%;
+        display: inline-block;
+        padding-left: 1.5%;
+      }
+      &__select {
+        &--product {
+          margin-right: 10px;
+        }
+        &--date-range {
+          margin-right: 0;
+        }
+      }
+
+      &__input {
+        &--date-from,
+        &--date-to {
+          width: 97%;
+        }
+      }
+      &__title {
+        display: block;
+        font-size: 2.769em;
+        text-align: left;
+      }
+    }
+    &__button {
+      &--search {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    &__li {
+      &__table {
+        text-align: center;
+        &__th-1st {
+          width: 35%;
+        }
+        &__td-2nd {
+          position: relative;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+  &__notice {
+    font-size: 2em;
+  }
+}
+</style>
+
+<style scoped>
+/* .record-content {
+  margin: 30px 0;
+} */
+
+/* .record-content__search-form__field {
   margin: 30px 0;
   text-align: center;
-}
+} */
 
-.record-content__search-form__field select {
+/* .record-content__search-form__field select {
   width: 49%;
   display: inline-block;
   padding-left: 1.5%;
-}
+} */
 
-.record-content__search-form__field__select--product {
+/* .record-content__search-form__field__select--product {
   margin-right: 10px;
-}
-.record-content__search-form__field__select--date-range {
+} */
+/* .record-content__search-form__field__select--date-range {
   margin-right: 0;
-}
+} */
 
-.record-content__search-form__field__input--date-from,
+/* .record-content__search-form__field__input--date-from,
 .record-content__search-form__field__input--date-to {
   width: 97%;
-}
-.txt-inquire {
+} */
+/* .record-content__search-form__field__title {
   display: block;
   font-size: 2.769em;
   text-align: left;
-}
+} */
 
-.record-content__search-form__button--search {
+/* .record-content__search-form__button--search {
   display: block;
   margin: 0 auto;
-}
+} */
 
-.record-content__ul {
+/* .record-content__ul {
   padding: 0;
   margin: 0;
   list-style: none;
-}
+} */
 
-.record-content__ul__li__table {
+/* .record-content__ul__li__table {
   text-align: center;
-}
+} */
 
-.record-content__ul__li__table__th-1st {
+/* .record-content__ul__li__table__th-1st {
   width: 35%;
-}
-.record-content__ul__li__table__td-2nd {
+} */
+
+/* .record-content__ul__li__table__td-2nd {
   position: relative;
   word-break: break-all;
-}
-.record-content__notice {
+} */
+/* .record-content__notice {
   font-size: 2em;
-}
+} */
 </style>
