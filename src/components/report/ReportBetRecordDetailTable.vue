@@ -82,35 +82,58 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .report-bet-record {
   margin-top: 40px;
-}
 
-.report-bet-record__field {
+  &__field {
+    text-align: center;
+
+    &__select {
+      width: 100%;
+      padding: 0 1.5%;
+    }
+  }
+
+  &__box {
+    margin: 30px 0;
+  }
+
+  &__total-table {
+    margin: 30px 0;
+
+    &__th-1st {
+      width: 30%;
+    }
+  }
+}
+</style>
+
+<style scoped>
+/* .report-bet-record {
+  margin-top: 40px;
+} */
+
+/* .report-bet-record__field {
   text-align: center;
-}
+} */
 
-.report-bet-record__field__select {
+/* .report-bet-record__field__select {
   width: 100%;
   padding: 0 1.5%;
-}
+} */
 
-.report-bet-record__box {
+/* .report-bet-record__box {
   margin: 30px 0;
-}
+} */
 
-.report-bet-record__total-table {
+/* .report-bet-record__total-table {
   margin: 30px 0;
-}
+} */
 
-.report-bet-record__total-table {
-  margin: 30px 0;
-}
-
-.report-bet-record__total-table__th-1st {
+/* .report-bet-record__total-table__th-1st {
   width: 30%;
-}
+} */
 
 /* .report-bet-record__button-div {
   text-align: center;
