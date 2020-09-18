@@ -60,11 +60,21 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .report-unsettle-bet {
+  margin-top: 30px;
+
+  &__table {
+    margin-bottom: 10px;
+  }
+}
+</style>
+
+<style scoped>
+/* .report-unsettle-bet {
   margin-top: 30px;
 }
 .report-unsettle-bet__table {
   margin-bottom: 10px;
-}
+} */
 </style>
