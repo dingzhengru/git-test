@@ -13,13 +13,13 @@
       </h3>
       <table class="report-bet-record__table ui-table03">
         <thead>
-          <tr class="report-bet-record__table__tr">
+          <tr>
             <th>{{ $t(`report.betRecord.table.date`) }}</th>
             <th>{{ $t(`report.betRecord.table.totalWinLose`) }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="report-bet-record__table__tr" v-for="item in weekList" :key="item.Lst_ReportDate">
+          <tr v-for="item in weekList" :key="item.Lst_ReportDate">
             <td class="report-bet-record__table__td-1st td-1st">{{ item.Lst_ReportDate }}</td>
             <td
               class="report-bet-record__table__td-2nd td-2nd"
@@ -135,36 +135,70 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .report-bet-record {
   margin-top: 40px;
-}
 
-.report-bet-record__field {
+  &__field {
+    text-align: center;
+
+    &__select {
+      width: 100%;
+      padding: 0 1.5%;
+    }
+  }
+
+  &__box {
+    margin: 30px 0;
+  }
+
+  &__table {
+    margin: 30px 0;
+    position: relative;
+
+    tr {
+      text-align: center;
+    }
+
+    &__td-2nd {
+      padding-right: 48px;
+      text-align: center;
+      position: relative;
+    }
+  }
+}
+</style>
+
+<style scoped>
+/* .report-bet-record {
+  margin-top: 40px;
+} */
+
+/* .report-bet-record__field {
   text-align: center;
-}
+} */
 
-.report-bet-record__field__select {
+/* .report-bet-record__field__select {
   width: 100%;
   padding: 0 1.5%;
-}
+} */
 
-.report-bet-record__box {
+/* .report-bet-record__box {
   margin: 30px 0;
-}
+} */
 
-.report-bet-record__table {
+/* .report-bet-record__table {
   margin: 30px 0;
   position: relative;
-}
+} */
 
-.report-bet-record__table__tr {
+/* .report-bet-record__table__tr {
   text-align: center;
-}
+} */
 
-.report-bet-record__table__td-2nd {
+/* .report-bet-record__table__td-2nd {
   padding-right: 48px;
   text-align: center;
   position: relative;
-}
+} */
 </style>
