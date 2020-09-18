@@ -71,48 +71,101 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .promotion-detail {
   padding-bottom: 160px;
-}
 
-.promotion-detail-auth {
+  &-auth {
+    padding-top: 88px;
+  }
+
+  &__image {
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  &__main {
+    &__content {
+      margin-bottom: 40px;
+      width: 95%;
+      margin: 0 auto;
+
+      &__title {
+        height: 68px;
+        margin: 20px 0;
+        padding: 30px 0 0 95px;
+        font-size: 2.461em;
+        font-weight: normal;
+      }
+
+      &__desc {
+        font-size: 2.307em;
+      }
+
+      .ui-table04 {
+        font-size: 1em;
+      }
+
+      ul > li {
+        margin-bottom: 20px;
+      }
+
+      ul > li > a {
+        border-radius: 6px;
+        padding: 5px 10px;
+        margin: 5px;
+        display: inline-block;
+      }
+    }
+    &__button {
+      text-align: center;
+    }
+  }
+}
+</style>
+
+<style scoped>
+/* .promotion-detail {
+  padding-bottom: 160px;
+} */
+
+/* .promotion-detail-auth {
   padding-top: 88px;
-}
+} */
 
-.promotion-detail__image {
+/* .promotion-detail__image {
   margin: 20px auto;
   text-align: center;
-}
+} */
 
-.promotion-detail__main__content {
+/* .promotion-detail__main__content {
   margin-bottom: 40px;
   width: 95%;
   margin: 0 auto;
-}
-.promotion-detail__main__content .ui-table04 {
+} */
+/* .promotion-detail__main__content .ui-table04 {
   font-size: 1em;
-}
-.promotion-detail__main__content ul > li {
+} */
+/* .promotion-detail__main__content ul > li {
   margin-bottom: 20px;
-}
-.promotion-detail__main__content ul > li > a {
+} */
+/* .promotion-detail__main__content ul > li > a {
   border-radius: 6px;
   padding: 5px 10px;
   margin: 5px;
   display: inline-block;
-}
-.promotion-detail__main__content__title {
+} */
+/* .promotion-detail__main__content__title {
   height: 68px;
   margin: 20px 0;
   padding: 30px 0 0 95px;
   font-size: 2.461em;
   font-weight: normal;
-}
-.promotion-detail__main__content__desc {
+} */
+/* .promotion-detail__main__content__desc {
   font-size: 2.307em;
-}
-.promotion-detail__main__button {
+} */
+/* .promotion-detail__main__button {
   text-align: center;
-}
+} */
 </style>
