@@ -65,11 +65,11 @@ $type: 'Y/02';
 .game-lobby__category {
   background: transparent url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
 }
-.game-lobby__inquire__search {
+.game-lobby__inquire__form__search {
   background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
   // background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire.png) no-repeat;
 }
-.game-lobby__inquire__search-icon {
+.game-lobby__inquire__form__search-icon {
   background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center no-repeat;
 }
 .game-lobby__inquire__favorites {
