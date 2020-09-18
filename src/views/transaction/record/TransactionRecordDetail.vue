@@ -190,27 +190,55 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .record-detail {
   margin: 30px 0;
-}
 
-.record-detail__ol {
+  &__ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__table {
+    &__th-1st {
+      width: 45%;
+      word-break: break-word;
+    }
+    &__td-2nd {
+      white-space: nowrap;
+      text-align: right;
+    }
+  }
+
+  &__button-div {
+    margin: 40px 0 20px;
+    text-align: center;
+  }
+}
+</style>
+
+<style scoped>
+/* .record-detail {
+  margin: 30px 0;
+} */
+
+/* .record-detail__ol {
   padding: 0;
   margin: 0;
   list-style: none;
-}
+} */
 
-.record-detail__table__th-1st {
+/* .record-detail__table__th-1st {
   width: 45%;
   word-break: break-word;
-}
-.record-detail__table__td-2nd {
+} */
+/* .record-detail__table__td-2nd {
   white-space: nowrap;
   text-align: right;
-}
-.record-detail__button-div {
+} */
+/* .record-detail__button-div {
   margin: 40px 0 20px;
   text-align: center;
-}
+} */
 </style>
