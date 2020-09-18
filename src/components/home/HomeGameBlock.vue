@@ -59,12 +59,50 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.home-game {
+  &__ul {
+    padding: 20px 0 0 0;
+    margin: 0 32px;
+
+    &__li {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 2px 30px;
+      background-repeat: no-repeat;
+      background-position: center top;
+      opacity: 1;
+
+      &__link {
+        display: block;
+        width: 213px;
+        padding-top: 111px;
+        font-size: 2.461em;
+        text-align: center;
+        line-height: 54px;
+
+        &--maintain {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0.9;
+          z-index: 9999;
+        }
+      }
+    }
+  }
+}
+</style>
+
 <style scoped>
-.home-game__ul {
+/* .home-game__ul {
   padding: 20px 0 0 0;
   margin: 0 32px;
-}
-.home-game__ul__li {
+} */
+/* .home-game__ul__li {
   position: relative;
   display: inline-block;
   vertical-align: top;
@@ -72,17 +110,17 @@ export default {
   background-repeat: no-repeat;
   background-position: center top;
   opacity: 1;
-}
-.home-game__ul__li__link {
+} */
+/* .home-game__ul__li__link {
   display: block;
   width: 213px;
   padding-top: 111px;
   font-size: 2.461em;
   text-align: center;
   line-height: 54px;
-}
+} */
 
-.home-game__ul__li__link--maintain {
+/* .home-game__ul__li__link--maintain {
   position: absolute;
   left: 0;
   top: 0;
@@ -90,5 +128,5 @@ export default {
   height: 100%;
   opacity: 0.9;
   z-index: 9999;
-}
+} */
 </style>
