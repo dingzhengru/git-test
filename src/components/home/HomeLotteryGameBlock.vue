@@ -1,10 +1,10 @@
 <template>
-  <div class="home-lottery-game">
+  <div class="home-lottery">
     <template v-for="lottery in lotteryList">
       <div class="lottery" :class="`lottery${lottery.Type}`" :key="lottery.Type" v-if="lottery.Count > 0">
         <i class="lottery__icon"></i>
         <ul class="lottery__ul" @click="openLotteryGame(lottery)">
-          <li class="lottery__li">{{ lottery.Count }} 次 抽奖机会</li>
+          <li class="lottery__ul__li">{{ lottery.Count }} 次 抽奖机会</li>
         </ul>
       </div>
     </template>
@@ -28,44 +28,45 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .lottery {
   width: 427px;
   height: 75px;
   line-height: 75px;
   margin: 0 auto;
   text-align: center;
-  cursor: pointer;
+  // cursor: pointer;
   position: relative;
-}
-.lottery__icon {
-  display: inline-block;
-  width: 71px;
-  height: 73px;
-  padding-top: 22px;
-  position: absolute;
-  left: -18px;
-  /* background: url(~@/assets/common/imgs/main/prizeIcn.png) left center no-repeat; */
-}
-.lottery__ul {
-  margin: 0;
-  list-style: none;
-  display: inline-block;
-  width: 409px;
-  height: 71px;
-  padding: 23px 0 0 20px;
-  background: url(~@/assets/common/imgs/main/prizeBg.png) left center no-repeat;
-}
 
-.lottery__li {
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 52px;
-  text-indent: 8px;
-  filter: drop-shadow(0px 1px 1px #272727);
-  color: #fff;
-  /*文字閃動*/
-  animation: colorchange 1s infinite alternate;
+  &__icon {
+    display: inline-block;
+    width: 71px;
+    height: 73px;
+    padding-top: 22px;
+    position: absolute;
+    left: -18px;
+  }
+
+  &__ul {
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    width: 409px;
+    height: 71px;
+    padding: 23px 0 0 20px;
+    background: url(~@/assets/common/imgs/main/prizeBg.png) left center no-repeat;
+
+    &__li {
+      font-size: 36px;
+      font-weight: bold;
+      line-height: 52px;
+      text-indent: 8px;
+      filter: drop-shadow(0px 1px 1px #272727);
+      color: #fff;
+      /*文字閃動*/
+      animation: colorchange 1s infinite alternate;
+    }
+  }
 }
 
 .lottery0 .lottery__icon {
@@ -96,4 +97,51 @@ export default {
     color: #fc0;
   }
 }
+</style>
+
+<style scoped>
+/* .lottery {
+  width: 427px;
+  height: 75px;
+  line-height: 75px;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+} */
+/* .lottery__icon {
+  display: inline-block;
+  width: 71px;
+  height: 73px;
+  padding-top: 22px;
+  position: absolute;
+  left: -18px;
+} */
+/* .lottery__ul {
+  margin: 0;
+  list-style: none;
+  display: inline-block;
+  width: 409px;
+  height: 71px;
+  padding: 23px 0 0 20px;
+  background: url(~@/assets/common/imgs/main/prizeBg.png) left center no-repeat;
+} */
+
+/* .lottery__ul__li {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 52px;
+  text-indent: 8px;
+  filter: drop-shadow(0px 1px 1px #272727);
+  color: #fff;
+  animation: colorchange 1s infinite alternate;
+} */
+
+/* .lottery0 .lottery__icon {
+  background: url(~@/assets/common/imgs/main/prizeIcn.png) left center no-repeat;
+} */
+
+/* .lottery1 .lottery__icon {
+  background: url(~@/assets/common/imgs/main/luckyDrawIcn.png) left center no-repeat;
+} */
 </style>
