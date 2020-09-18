@@ -209,7 +209,7 @@ export default {
         return;
       }
       if (field.name == 'Add_RelatedAccount') {
-        const requestData = { field: 'Add_RelatedAccount', strValue: field.value };
+        const requestData = { field: field.name, strValue: field.value };
         const result = await checkRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
