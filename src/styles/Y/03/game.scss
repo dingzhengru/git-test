@@ -41,16 +41,16 @@ $type: 'Y/03';
 /*
   ! 圖片路徑
 */
-.game-transfer-dialog__form-switch.left {
+.game-transfer-dialog__form__switch.left {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png);
 }
-.game-transfer-dialog__form-switch.right {
+.game-transfer-dialog__form__switch.right {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png);
 }
-.game-transfer-dialog__form-switch.left.on {
+.game-transfer-dialog__form__switch.left.on {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png);
 }
-.game-transfer-dialog__form-switch.right.on {
+.game-transfer-dialog__form__switch.right.on {
   background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png);
 }
 .game-dialog__transfer-switch.left {
