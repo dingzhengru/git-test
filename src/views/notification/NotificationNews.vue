@@ -81,8 +81,24 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .notification-news__box {
+  margin: 20px 0;
+  padding-bottom: 20px;
+  font-size: 2.769em;
+
+  &__date {
+    margin: 20px 0;
+    padding: 0 0 20px 63px;
+    border-bottom: 1px solid #d6c388;
+    font-size: 0.777em;
+    line-height: 43px;
+  }
+}
+</style>
+
+<style scoped>
+/* .notification-news__box {
   margin: 20px 0;
   padding-bottom: 20px;
   font-size: 2.769em;
@@ -93,5 +109,5 @@ export default {
   border-bottom: 1px solid #d6c388;
   font-size: 0.777em;
   line-height: 43px;
-}
+} */
 </style>
