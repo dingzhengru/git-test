@@ -94,25 +94,49 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .notification-outbox {
   margin: 30px 0;
-}
 
-.notification-outbox__field {
+  &__field {
+    margin: 30px 0;
+
+    &__select {
+      padding: 0 1.5%;
+      font-size: 2.5rem;
+    }
+  }
+
+  &__button-div {
+    margin: 40px 0;
+    text-align: center;
+
+    button {
+      margin: 0 10px;
+    }
+  }
+}
+</style>
+
+<style scoped>
+/* .notification-outbox {
   margin: 30px 0;
-}
+} */
 
-.notification-outbox__field__select {
+/* .notification-outbox__field {
+  margin: 30px 0;
+} */
+
+/* .notification-outbox__field__select {
   padding: 0 1.5%;
   font-size: 2.5rem;
-}
+} */
 
-.notification-outbox__button-div {
+/* .notification-outbox__button-div {
   margin: 40px 0;
   text-align: center;
-}
-.notification-outbox__button-div button {
+} */
+/* .notification-outbox__button-div button {
   margin: 0 10px;
-}
+} */
 </style>

@@ -9,7 +9,7 @@
           {{ `${$t('notification.inboxDetail.sender')}：${item.Lst_SenderAccount}` }}
         </li>
         <li class="notification-inbox-detail__ul__li">
-          {{ `${$t('notification.inboxDetail.datetime')}：${item.Lst_SendTime}` }}
+          {{ `${$t('notification.inboxDetail.datetime')}：${item.Lst_SendTime.replace('T', ' ')}` }}
         </li>
       </ul>
       <div class="theme-content-box notification-inbox-detail__content" v-html="item.Lst_Content"></div>
