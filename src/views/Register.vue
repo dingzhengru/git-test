@@ -218,14 +218,14 @@ export default {
       } else if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
         const requestData = { field: 'Add_Realname', strValue: this.fullName };
         const result = await checkRegisterFieldExist(requestData);
-        if (result == false) {
+        if (result == true) {
           field.value = '';
           alert(this.$t('register.Add_RealName.error.invalid'));
         }
       } else if (field.isOnly == true) {
         const requestData = { field: field.name, strValue: field.value };
         const result = await checkRegisterFieldExist(requestData);
-        if (result == false) {
+        if (result == true) {
           field.value = '';
           alert(this.$t(`register.${field.name}.error.invalid`));
         }
