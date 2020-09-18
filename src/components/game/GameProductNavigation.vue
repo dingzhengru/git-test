@@ -35,14 +35,58 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.game-lobby {
+  &__supply {
+    height: 108px;
+    overflow: hidden;
+    position: relative;
+
+    &__ul {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 11px 0;
+      white-space: nowrap;
+      overflow: auto;
+
+      &__li {
+        display: inline-block;
+        letter-spacing: normal;
+        word-spacing: normal;
+        background-position: center top;
+        background-repeat: no-repeat;
+        margin: 0 21px;
+
+        &__link {
+          min-width: 74px;
+          display: block;
+          padding: 56px 0 0 0;
+          font-size: 22px;
+          color: #92a0c0;
+          text-align: center;
+        }
+
+        &--active > .game-lobby__supply__ul__li__link {
+          color: #ffbebc;
+          text-shadow: 0px 0px 8px #ff1c59;
+        }
+      }
+    }
+  }
+}
+</style>
+
 <style scoped>
-.game-lobby__supply {
+/* .game-lobby__supply {
   height: 108px;
   overflow: hidden;
   position: relative;
-}
+} */
 
-.game-lobby__supply__ul {
+/* .game-lobby__supply__ul {
   width: 100%;
   position: absolute;
   top: 0;
@@ -51,28 +95,28 @@ export default {
   padding: 11px 0;
   white-space: nowrap;
   overflow: auto;
-}
+} */
 
-.game-lobby__supply__ul__li {
+/* .game-lobby__supply__ul__li {
   display: inline-block;
   letter-spacing: normal;
   word-spacing: normal;
   background-position: center top;
   background-repeat: no-repeat;
   margin: 0 21px;
-}
+} */
 
-.game-lobby__supply__ul__li--active > .game-lobby__supply__ul__li__link {
+/* .game-lobby__supply__ul__li--active > .game-lobby__supply__ul__li__link {
   color: #ffbebc;
   text-shadow: 0px 0px 8px #ff1c59;
-}
+} */
 
-.game-lobby__supply__ul__li__link {
+/* .game-lobby__supply__ul__li__link {
   min-width: 74px;
   display: block;
   padding: 56px 0 0 0;
   font-size: 22px;
   color: #92a0c0;
   text-align: center;
-}
+} */
 </style>
