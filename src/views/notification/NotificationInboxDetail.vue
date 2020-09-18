@@ -50,53 +50,7 @@ export default {
   },
   data() {
     return {
-      list: [
-        {
-          Lst_Key: 973,
-          Lst_OwnAccount: 'SysAdmin',
-          Lst_Category: 2,
-          Lst_CategoryName: 'ค้นหายูสเซอร์',
-          Lst_Subject: 'QATEST',
-          Lst_SendTime: '2020-04-01T17:17:20',
-          Lst_SendTime_Date: '2020-04-01',
-          Lst_Content:
-            'QATESTQATESTQATEST\nQATESTQATESTQATEST\nQATESTQATESTQATEST\nQATESTQATESTQATEST\nQATESTQATESTQATEST\n',
-          Lst_SenderAccount: 'ilyir',
-        },
-        {
-          Lst_Key: 975,
-          Lst_OwnAccount: 'ilyir',
-          Lst_Category: 2,
-          Lst_CategoryName: 'ค้นหายูสเซอร์',
-          Lst_Subject: '[R]QATEST',
-          Lst_SendTime: '2020-04-08T15:23:55',
-          Lst_SendTime_Date: '2020-04-08',
-          Lst_Content: 'NNNNNNNNNNNNN',
-          Lst_SenderAccount: 'SysAdmin',
-        },
-        {
-          Lst_Key: 1127,
-          Lst_OwnAccount: 'SysAdmin',
-          Lst_Category: 2,
-          Lst_CategoryName: 'ค้นหายูสเซอร์',
-          Lst_Subject: '[R][R]QATEST',
-          Lst_SendTime: '2020-08-27T15:15:06',
-          Lst_SendTime_Date: '2020-08-27',
-          Lst_Content: '55555',
-          Lst_SenderAccount: 'ilyir',
-        },
-        {
-          Lst_Key: 1129,
-          Lst_OwnAccount: 'ilyir',
-          Lst_Category: 2,
-          Lst_CategoryName: 'ค้นหายูสเซอร์',
-          Lst_Subject: '[R][R][R]QATEST',
-          Lst_SendTime: '2020-08-27T15:19:23',
-          Lst_SendTime_Date: '2020-08-27',
-          Lst_Content: '66666666666',
-          Lst_SenderAccount: 'SysAdmin',
-        },
-      ],
+      list: [],
       content: '',
     };
   },
@@ -141,44 +95,86 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .notification-inbox-detail {
   margin: 30px 0;
+
+  &__ul {
+    padding: 0;
+    margin: 0;
+    font-size: 2.307em;
+    list-style: none;
+
+    &__li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px dotted #fff;
+    }
+    &__li:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__content {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    font-size: 2.769em;
+  }
+
+  &__replay-box {
+    margin-bottom: 30px;
+    padding: 30px 3%;
+  }
+
+  &__button-div {
+    margin: 20px 0;
+    text-align: center;
+
+    button {
+      margin: 0 10px;
+    }
+  }
 }
-.notification-inbox-detail__ul {
+</style>
+
+<style scoped>
+/* .notification-inbox-detail {
+  margin: 30px 0;
+} */
+/* .notification-inbox-detail__ul {
   padding: 0;
   margin: 0;
   font-size: 2.307em;
   list-style: none;
-}
+} */
 
-.notification-inbox-detail__ul__li {
+/* .notification-inbox-detail__ul__li {
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px dotted #fff;
-}
+} */
 
-.notification-inbox-detail__ul__li:last-child {
+/* .notification-inbox-detail__ul__li:last-child {
   border-bottom: none;
-}
+} */
 
-.notification-inbox-detail__content {
+/* .notification-inbox-detail__content {
   margin-bottom: 30px;
   padding-bottom: 30px;
   font-size: 2.769em;
-}
+} */
 
-.notification-inbox-detail__replay-box {
+/* .notification-inbox-detail__replay-box {
   margin-bottom: 30px;
   padding: 30px 3%;
-}
+} */
 
-.notification-inbox-detail__button-div {
+/* .notification-inbox-detail__button-div {
   margin: 20px 0;
   text-align: center;
-}
+} */
 
-.notification-inbox-detail__button-div button {
+/* .notification-inbox-detail__button-div button {
   margin: 0 10px;
-}
+} */
 </style>
