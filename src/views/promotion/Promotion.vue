@@ -123,44 +123,89 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .promotion {
   padding-bottom: 160px;
-}
 
-.promotion-auth {
+  &-auth {
+    padding-top: 88px;
+  }
+
+  &__list {
+    text-align: center;
+    margin-top: 20px;
+
+    &__img {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__bonus {
+    &__link {
+      display: block;
+      width: 100%;
+      height: 109px;
+      padding: 20px 0 0 35px;
+      box-sizing: border-box;
+      margin-bottom: 8px;
+
+      &__icon {
+        display: inline-block;
+        width: 70px;
+        height: 64px;
+        text-indent: -999em;
+        vertical-align: top;
+      }
+      &__text {
+        display: inline-block;
+        width: 82%;
+        font-size: 32px;
+        line-height: 72px;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+</style>
+
+<style scoped>
+/* .promotion {
+  padding-bottom: 160px;
+} */
+
+/* .promotion-auth {
   padding-top: 88px;
-}
+} */
 
-.promotion__list {
+/* .promotion__list {
   text-align: center;
   margin-top: 20px;
-}
+} */
 
-.promotion__list__img {
+/* .promotion__list__img {
   margin-bottom: 20px;
-}
+} */
 
-.promotion__bonus__link {
+/* .promotion__bonus__link {
   display: block;
   width: 100%;
   height: 109px;
   padding: 20px 0 0 35px;
   box-sizing: border-box;
   margin-bottom: 8px;
-}
-.promotion__bonus__link__icon {
+} */
+/* .promotion__bonus__link__icon {
   display: inline-block;
   width: 70px;
   height: 64px;
   text-indent: -999em;
   vertical-align: top;
-}
-.promotion__bonus__link__text {
+} */
+/* .promotion__bonus__link__text {
   display: inline-block;
   width: 82%;
   font-size: 32px;
   line-height: 72px;
   padding-left: 20px;
-}
+} */
 </style>
