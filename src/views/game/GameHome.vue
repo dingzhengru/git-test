@@ -49,22 +49,51 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .game {
   padding-top: 88px;
   padding-bottom: 119px;
   min-height: 65vh;
-}
 
-.game__jackpot {
+  &__jackpot {
+    position: relative;
+    height: 71px;
+    margin-bottom: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &__text {
+      position: absolute;
+      left: 246px;
+      top: 3px;
+      font-size: 42px;
+      font-family: Arial Black, sans-serif;
+      font-weight: bold;
+      color: #fffefe;
+      background: linear-gradient(to bottom, #989898 0%, #ffffff 100%);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+</style>
+
+<style>
+/* .game {
+  padding-top: 88px;
+  padding-bottom: 119px;
+  min-height: 65vh;
+} */
+
+/* .game__jackpot {
   position: relative;
   height: 71px;
   margin-bottom: 28px;
   background-repeat: no-repeat;
   background-position: center;
-}
+} */
 
-.game__jackpot__text {
+/* .game__jackpot__text {
   position: absolute;
   left: 246px;
   top: 3px;
@@ -75,5 +104,5 @@ export default {
   background: linear-gradient(to bottom, #989898 0%, #ffffff 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+} */
 </style>
