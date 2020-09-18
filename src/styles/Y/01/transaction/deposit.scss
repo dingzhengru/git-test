@@ -1,9 +1,9 @@
 $type: 'Y/01';
 
-.deposit__field__notice {
+.deposit__field__hint {
   color: #707070;
 }
-.deposit__field__notice--ps {
+.deposit__field__hint--ps {
   color: #f00;
 }
 
@@ -16,7 +16,7 @@ $type: 'Y/01';
   ! 圖片路徑
 */
 
-.deposit__receipt-upload__label {
+.deposit__field__receipt-upload__label {
   background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
 }
 

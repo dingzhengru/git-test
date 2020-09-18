@@ -121,19 +121,19 @@
 
           <template v-if="field.name == 'receipt'">
             <label
-              class="deposit__receipt-upload__label ui-btn ui-btn-long"
+              class="deposit__field__receipt-upload__label ui-btn ui-btn-long"
               :for="idMapper.transaction.deposit.button.upload"
             >
               {{ $t('transaction.deposit.button.upload') }}
               <input
-                class="deposit__receipt-upload__input"
+                class="deposit__field__receipt-upload__input"
                 :id="idMapper.transaction.deposit.button.upload"
                 type="file"
                 accept=".jpg,.png"
                 @change="onFileChange"
               />
             </label>
-            <p class="deposit__field__notice deposit__field__notice--receipt-upload">
+            <p class="deposit__field__hint deposit__field__hint--receipt-upload">
               {{ receipt.name }}
             </p>
           </template>
@@ -156,7 +156,7 @@
           </template>
 
           <p
-            class="deposit__field__notice"
+            class="deposit__field__hint"
             v-html="
               $t(`transaction.deposit.hint.${field.name}`, {
                 amountLimitMin: depositLimit.min,
@@ -173,7 +173,7 @@
           </li>
         </ol>
       </div>
-      
+
       <div class="deposit__button-div">
         <button class="ui-btn deposit__button-div--submit" type="submit" :disabled="!validateForm()">
           {{ $t('ui.button.submit') }}
@@ -387,53 +387,97 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .deposit {
   margin-top: 40px;
-}
+  &__field {
+    margin: 20px 0;
 
-.deposit__field {
+    &__select {
+      padding: 0 1.5%;
+    }
+
+    &__info {
+      margin: 20px 0;
+
+      &__text {
+        margin: 0 0 20px;
+        font-size: 2.307em;
+      }
+    }
+    &__receipt-upload {
+      &__label {
+        display: block;
+        margin: 0 auto;
+      }
+      &__input {
+        display: none;
+      }
+    }
+    &__hint {
+      margin: 10px 0;
+      font-size: 2.153em;
+    }
+  }
+
+  &__button-div {
+    margin: 40px 0;
+    text-align: center;
+
+    button {
+      margin: 0 10px;
+    }
+  }
+}
+</style>
+
+<style scoped>
+/* .deposit {
+  margin-top: 40px;
+} */
+
+/* .deposit__field {
   margin: 20px 0;
-}
+} */
 
-.deposit__field__select {
+/* .deposit__field__select {
   padding: 0 1.5%;
-}
+} */
 
-.deposit__field__info {
+/* .deposit__field__info {
   margin: 20px 0;
-}
-.deposit__field__info__text {
+} */
+/* .deposit__field__info__text {
   margin: 0 0 20px;
   font-size: 2.307em;
-}
+} */
 
-.deposit__button-div {
+/* .deposit__button-div {
   margin: 40px 0;
   text-align: center;
-}
+} */
 
-.deposit__button-div--submit,
+/* .deposit__button-div--submit,
 .deposit__button-div--cancel {
   margin: 0 10px;
-}
+} */
 
-.deposit__receipt-upload__label {
+/* .deposit__field__receipt-upload__label {
   display: block;
   margin: 0 auto;
-}
+} */
 
-.deposit__receipt-upload__input {
+/* .deposit__field__receipt-upload__input {
   display: none;
-}
+} */
 
-.deposit__field__notice {
+/* .deposit__field__hint {
   margin: 10px 0;
   font-size: 2.153em;
-}
-.deposit__field__notice--receipt-upload {
+} */
+/* .deposit__field__hint--receipt-upload {
   text-align: center;
-}
+} */
 
 /* .theme-input-box > .ddl-hour,
 .theme-input-box > .ddl-minute {
