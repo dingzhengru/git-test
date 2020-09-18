@@ -118,21 +118,39 @@ export default {
 };
 </script>
 
-<style scoped>
-.user-profile-access__main {
-  margin: 40px 0;
-}
+<style lang="scss" scoped>
+.user-profile-access {
+  &__main {
+    margin: 40px 0;
 
-.user-profile-access__main__ul {
+    &__ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  }
+  &__button-div {
+    margin: 40px 0;
+    text-align: center;
+  }
+}
+</style>
+
+<style scoped>
+/* .user-profile-access__main {
+  margin: 40px 0;
+} */
+
+/* .user-profile-access__main__ul {
   padding: 0;
   margin: 0;
   list-style: none;
-}
+} */
 
-.user-profile-access__button-div {
+/* .user-profile-access__button-div {
   margin: 40px 0;
   text-align: center;
-}
+} */
 
 /* .are-accountChg {
   margin: 40px 0;

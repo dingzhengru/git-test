@@ -1,5 +1,34 @@
 $type: 'Y/02';
 
+.user-profile {
+  .ui-table02 {
+    tr {
+      border-bottom: 1px solid #7e7e7e;
+    }
+    th {
+      color: #fff;
+    }
+    td {
+      color: #fff;
+    }
+  }
+}
+
+// .table-account .td-2nd {
+//   color: #959595;
+// }
+
+// .are-accountOpen-input {
+//   background: #1c6080;
+// }
+// .ipt-accountOpen {
+//   background-color: #fff;
+// }
+
+/*
+  ! 圖片路徑
+*/
+
 .user-profile__button--instant {
   background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
 }
@@ -7,28 +36,3 @@ $type: 'Y/02';
 .user-profile-access__button--submit {
   background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
 }
-
-.ui-table02 tr {
-  border-bottom: 1px solid #7e7e7e;
-}
-.ui-table02 th {
-  color: #fff;
-}
-.ui-table02 td {
-  color: #fff;
-}
-
-.table-account .td-2nd {
-  color: #959595;
-}
-
-.are-accountOpen-input {
-  background: #1c6080;
-}
-.ipt-accountOpen {
-  background-color: #fff;
-}
-
-/*
-  ! 圖片路徑
-*/

@@ -10,15 +10,23 @@
         </tbody>
       </table>
     </div>
-    <form class="instant-access__form theme-content-box" id="instant-access-form" v-if="isShowRegisterList">
-      <div class="instant-access__form__field theme-input-box" v-for="field in registerFieldList" :key="field.name">
+    <form
+      class="user-profile__instant-access-form theme-content-box"
+      id="instant-access-form"
+      v-if="isShowRegisterList"
+    >
+      <div
+        class="user-profile__instant-access-form__field theme-input-box"
+        v-for="field in registerFieldList"
+        :key="field.name"
+      >
         <template v-if="field.isShow">
-          <span class="instant-access__form__field__title theme-input-header">
+          <span class="user-profile__instant-access-form__field__title theme-input-header">
             {{ field.type != 'select' ? $t(`register.${field.name}.placeholder`) : $t(`register.${field.name}.title`) }}
           </span>
           <input
             v-if="field.type != 'select'"
-            class="instant-access__form__field__input ui-ipt"
+            class="user-profile__instant-access-form__field__input ui-ipt"
             :id="idMapper.register.input[field.name]"
             :type="field.type"
             :required="field.isRequired"
@@ -145,25 +153,50 @@ export default {
 };
 </script>
 
-<style scoped>
-.user-profile__table-div {
-  margin: 40px 0;
+<style lang="scss" scoped>
+.user-profile {
+  &__table-div {
+    margin: 40px 0;
+  }
+  &__instant-access-form {
+    padding: 3%;
+
+    &__field {
+      margin: 20px 0;
+
+      input:disabled {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+    }
+  }
+  &__button-div {
+    margin: 40px 0;
+    text-align: center;
+  }
 }
-.user-profile__button-div {
+</style>
+
+<style scoped>
+/* .user-profile__table-div {
+  margin: 40px 0;
+} */
+
+/* .user-profile__button-div {
   margin: 40px 0;
   text-align: center;
-}
+} */
 
-.instant-access__form {
+/* .user-profile__instant-access-form {
   padding: 3%;
-}
+} */
 
-.instant-access__form__field {
+/* .user-profile__instant-access-form__field {
   margin: 20px 0;
-}
+} */
 
-.instant-access__form__field input:disabled {
+/* .user-profile__instant-access-form__field input:disabled {
   opacity: 0.6;
   pointer-events: none;
-}
+} */
 </style>
