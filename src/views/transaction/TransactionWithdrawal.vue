@@ -276,36 +276,67 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .withdrawal {
   margin: 40px 0;
-}
+  &__li {
+    list-style: none;
+    &__select {
+      padding: 0 1.5%;
+      width: 100%;
 
-.withdrawal__li {
+      &--currency {
+        margin-left: 5%;
+        width: 95%;
+      }
+    }
+    &__button {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  &__light-message {
+    font-size: 2em;
+  }
+
+  &__button-div {
+    margin: 40px 0;
+    text-align: center;
+  }
+}
+</style>
+
+<style scoped>
+/* .withdrawal {
+  margin: 40px 0;
+} */
+
+/* .withdrawal__li {
   list-style: none;
-}
+} */
 
-.withdrawal__li__select {
+/* .withdrawal__li__select {
   padding: 0 1.5%;
   width: 100%;
-}
+} */
 
-.withdrawal__li__select--currency {
+/* .withdrawal__li__select--currency {
   margin-left: 5%;
   width: 95%;
-}
+} */
 
-.withdrawal__li__button {
+/* .withdrawal__li__button {
   display: block;
   margin: 0 auto;
-}
+} */
 
-.withdrawal__button-div {
+/* .withdrawal__button-div {
   margin: 40px 0;
   text-align: center;
-}
+} */
 
-.withdrawal__light-message {
+/* .withdrawal__light-message {
   font-size: 2em;
-}
+} */
 </style>
