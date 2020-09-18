@@ -95,66 +95,81 @@ export default {
 };
 </script>
 
-<style scoped>
-/**
- ** 語系下拉動畫
- */
-.slide-enter-active {
-  transition: all 0.5s ease;
-}
-.slide-leave-active {
-  transition: all 0.5s ease;
-}
-
-.slide-enter-to,
-.slide-leave {
-  max-height: 250px;
-}
-
-.slide-enter,
-.slide-leave-to {
-  max-height: 0;
-}
-
-/*
-  * 刪除了登入後的 header 樣式，只留非登入時的樣式
-  * 可於 common/header.css 或原專案的 layout 與 index2 中取得
-*/
-
+<style lang="scss" scoped>
 .header {
   position: relative;
-}
 
-.header__logo {
+  &__logo {
+    position: relative;
+    height: 144px;
+
+    &__img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    margin-top: -32.5px;
+    position: absolute;
+
+    &--home {
+      width: 77px;
+      height: 65px;
+      top: 50%;
+      left: 20px;
+    }
+
+    &--back {
+      width: 48px;
+      height: 80px;
+      top: 45%;
+      left: 30px;
+    }
+  }
+}
+</style>
+
+<style scoped>
+/* .header {
+  position: relative;
+} */
+
+/* .header__logo {
   position: relative;
   height: 144px;
-}
-.header__logo__img {
+} */
+/* .header__logo__img {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
-}
+} */
 
-.header__link {
+/* .header__link {
   display: inline-block;
   margin-top: -32.5px;
   position: absolute;
-}
+} */
 
-.header__link--home {
+/* .header__link--home {
   width: 77px;
   height: 65px;
   top: 50%;
   left: 20px;
-}
+} */
 
-.header__link--back {
+/* .header__link--back {
   width: 48px;
   height: 80px;
   top: 45%;
   left: 30px;
-}
+} */
 </style>
