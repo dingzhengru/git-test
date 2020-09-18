@@ -12,7 +12,7 @@
           @click="openGame(game, 0)"
         >
           <td class="game-lobby__table__tr__td-1st">
-            <img class="game-lobby__table__tr__td__img" :src="game.imagePath" />
+            <img class="game-lobby__table__tr__td-1st__img" :src="game.imagePath" />
           </td>
           <td class="game-lobby__table__tr__td-2nd">{{ game.Lst_GameName }}</td>
           <td class="game-lobby__table__tr__td-3rd">
@@ -70,23 +70,71 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+.game-lobby {
+  &__table {
+    width: 100%;
+    letter-spacing: -1px;
+
+    &__tr {
+      &__td-1st {
+        max-width: 152px;
+        padding: 0 10px;
+        overflow: hidden;
+
+        &__img {
+          width: 100%;
+        }
+      }
+      &__td-2nd {
+        width: auto;
+        min-width: 208px;
+        padding: 0 5px;
+        font-size: 24px;
+        color: #92a0c0;
+        font-weight: bold;
+        vertical-align: middle;
+        word-break: break-word;
+      }
+      &__td-3rd {
+        width: auto;
+        padding: 10px 0;
+        white-space: nowrap;
+        text-align: center;
+
+        & > a {
+          display: inline-block;
+          width: 90px;
+          height: 83px;
+          color: #fff;
+          font-size: 21px;
+          line-height: 205px;
+          margin: 0 10px;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}
+</style>
+
 <style scoped>
-.game-lobby__table {
+/* .game-lobby__table {
   width: 100%;
   letter-spacing: -1px;
-}
+} */
 
-.game-lobby__table__tr__td-1st {
+/* .game-lobby__table__tr__td-1st {
   max-width: 152px;
   padding: 0 10px;
   overflow: hidden;
-}
+} */
 
-.game-lobby__table__tr__td__img {
+/* .game-lobby__table__tr__td-1st__img {
   width: 100%;
-}
+} */
 
-.game-lobby__table__tr__td-2nd {
+/* .game-lobby__table__tr__td-2nd {
   width: auto;
   min-width: 208px;
   padding: 0 5px;
@@ -95,16 +143,16 @@ export default {
   font-weight: bold;
   vertical-align: middle;
   word-break: break-word;
-}
+} */
 
-.game-lobby__table__tr__td-3rd {
+/* .game-lobby__table__tr__td-3rd {
   width: auto;
   padding: 10px 0;
   white-space: nowrap;
   text-align: center;
-}
+} */
 
-.game-lobby__table__tr__td-3rd > a {
+/* .game-lobby__table__tr__td-3rd > a {
   display: inline-block;
   width: 90px;
   height: 83px;
@@ -113,5 +161,5 @@ export default {
   line-height: 205px;
   margin: 0 10px;
   background-repeat: no-repeat;
-}
+} */
 </style>
