@@ -40,21 +40,21 @@
           </template>
         </select>
       </div>
-      <div class="transfer__amount-table-div">
-        <table class="transfer__amount-table">
+      <div class="transfer__amount">
+        <table class="transfer__amount__table">
           <tbody>
             <tr>
-              <th class="transfer__amount-table__th-1st">{{ $t('transaction.transfer.field.amount') }}</th>
-              <td class="transfer__amount-table__td-2nd">
+              <th class="transfer__amount__table__th-1st">{{ $t('transaction.transfer.field.amount') }}</th>
+              <td class="transfer__amount__table__td-2nd">
                 <input
-                  class="transfer__amount-table__input"
+                  class="transfer__amount__table__input"
                   type="number"
                   max="9999999999"
                   placeholder="Please enter the point transfer amount"
                   v-model.number="amount"
                   @input="inputAmount"
                 />
-                <div class="transfer__amount-table__range">
+                <div class="transfer__amount__table__range">
                   <vue-slider v-model="amount" v-bind="rangeOptions" @error="rangeError" @change="rangeChange">
                     <template v-slot:dot>
                       <img src="~@/assets/common/imgs/main/sliderPoint.png" class="custom-dot" />
@@ -295,11 +295,117 @@ export default {
     }
   }
 
-  &__amount-table-div {
+  &__amount {
     padding-top: 20px;
     padding-bottom: 30px;
     padding-right: 32px;
     padding-left: 20px;
+
+    &__table {
+      &__th-1st {
+        width: 40%;
+        text-align: left;
+      }
+
+      &__td-2nd {
+        padding-left: 20px;
+        padding-top: 10px;
+      }
+      &__input {
+        display: block;
+        width: 446px;
+        height: 77px;
+        margin-bottom: 40px;
+        outline: none;
+        text-align: center;
+        line-height: 77px;
+      }
+      &__range {
+        width: 448px;
+
+        .custom-dot {
+          position: absolute;
+          top: -18px;
+          left: -16px;
+        }
+
+        .custom-process {
+          height: 22px;
+          position: relative;
+          left: 0px;
+          top: -8px;
+          background-image: url(~@/assets/common/imgs/main/sliderBar.png);
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+  }
+  &__button-div {
+    padding: 20px 0;
+
+    button {
+      font-size: 3rem;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  &__account-table {
+    width: 100%;
+    margin: 40px auto;
+
+    &__th-1st,
+    &__td-2nd {
+      padding: 10px;
+    }
+
+    &__th-1st {
+      font-size: 2.5em;
+      font-weight: normal;
+      text-align: left;
+    }
+    &__td-2nd {
+      font-size: 2.769em;
+      text-align: right;
+    }
+  }
+}
+
+.en-us {
+  .transfer {
+    &__wallet {
+      font-size: 2.2rem;
+
+      &__select {
+        font-size: 2.5rem;
+        width: 40%;
+      }
+    }
+  }
+}
+
+.th-th {
+  .transfer {
+    &__wallet {
+      font-size: 1.5rem;
+
+      &__select {
+        font-size: 2.3rem;
+        width: 40%;
+      }
+    }
+  }
+}
+
+.zh-cn {
+  .transfer {
+    &__wallet {
+      font-size: 2.5rem;
+      &__select {
+        font-size: 2.5rem;
+        width: 40%;
+      }
+    }
   }
 }
 </style>
@@ -339,31 +445,24 @@ export default {
   background-color: #2e2e2e;
 } */
 
-/* .transfer__amount-table-div {
+/* .transfer__amount {
   padding-top: 20px;
   padding-bottom: 30px;
   padding-right: 32px;
   padding-left: 20px;
 } */
 
-.transfer__amount-table__th-1st,
-.transfer__amount-table__td-2nd {
-  /* padding: 3px 15px; */
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-.transfer__amount-table__th-1st {
+/* .transfer__amount__table__th-1st {
   width: 40%;
   text-align: left;
-}
+} */
 
-.transfer__amount-table__td-2nd {
+/* .transfer__amount__table__td-2nd {
   padding-left: 20px;
   padding-top: 10px;
-}
+} */
 
-.transfer__amount-table__input {
+/* .transfer__amount__table__input {
   display: block;
   width: 446px;
   height: 77px;
@@ -371,55 +470,55 @@ export default {
   outline: none;
   text-align: center;
   line-height: 77px;
-}
+} */
 
-.transfer__button-div {
+/* .transfer__button-div {
   padding: 20px 0;
-}
+} */
 
-.transfer__button-div button {
+/* .transfer__button-div button {
   font-size: 3rem;
   display: block;
   margin: 0 auto;
-}
+} */
 
 /*
  * Table
 */
 
-.transfer__account-table {
+/* .transfer__account-table {
   width: 100%;
   margin: 40px auto;
-}
-.transfer__account-table__th-1st,
+} */
+/* .transfer__account-table__th-1st,
 .transfer__account-table__td-2nd {
   padding: 10px;
-}
-.transfer__account-table__th-1st {
+} */
+/* .transfer__account-table__th-1st {
   font-size: 2.5em;
   font-weight: normal;
   text-align: left;
-}
-.transfer__account-table__td-2nd {
+} */
+/* .transfer__account-table__td-2nd {
   font-size: 2.769em;
   text-align: right;
-}
+} */
 
 /*
  * Range
 */
 
-.transfer__amount-table__range {
+/* .transfer__amount__table__range {
   width: 448px;
-}
+} */
 
-.custom-dot {
+/* .custom-dot {
   position: absolute;
   top: -18px;
   left: -16px;
-}
+} */
 
-.custom-process {
+/* .custom-process {
   height: 22px;
   position: relative;
   left: 0px;
@@ -427,13 +526,13 @@ export default {
   background-image: url(~@/assets/common/imgs/main/sliderBar.png);
   background-repeat: no-repeat;
   background-position: center;
-}
+} */
 
 /*
  * 語系
 */
 
-.en-us .transfer__wallet {
+/* .en-us .transfer__wallet {
   font-size: 2.2rem;
 }
 
@@ -456,5 +555,5 @@ export default {
 .zh-cn .transfer__wallet__select {
   font-size: 2.5rem;
   width: 40%;
-}
+} */
 </style>
