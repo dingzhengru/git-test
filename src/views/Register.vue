@@ -265,8 +265,6 @@ export default {
               } else {
                 field.isModifiable = true;
               }
-
-              console.log(field.name, field.isOnly);
             }
           }
         });
