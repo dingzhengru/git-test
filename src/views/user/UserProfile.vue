@@ -79,7 +79,7 @@ export default {
         window.alert(this.$t('user.changePassword.alert.success'));
       }
     },
-    async changeRegisterField(field, fieldValidError) {
+    async changeRegisterField(field, fieldValidError, oldField) {
       if (fieldValidError != '') {
         return;
       }
@@ -87,8 +87,8 @@ export default {
       if (field.isOnly) {
         const requestData = { field: field.name, strValue: field.value };
         const result = await checkRegisterFieldExist(requestData);
-        if (result == true) {
-          field.value = '';
+        if (result == false) {
+          field.value = oldField.value;
           alert(this.$t(`register.${field.name}.error.invalid`));
         }
       }

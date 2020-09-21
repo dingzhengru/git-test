@@ -38,7 +38,14 @@
             :disabled="!field.isModifiable"
             v-model="field.value"
             @input="validateField(field)"
-            @change="$emit('change-register-field', field, validateField(field))"
+            @change="
+              $emit(
+                'change-register-field',
+                field,
+                validateField(field),
+                originalRegisterFieldList.find(item => item.name == field.name)
+              )
+            "
           />
 
           <select
@@ -96,6 +103,7 @@ export default {
     return {
       idMapper: idMapper,
       registerFieldList: registerFieldList,
+      originalRegisterFieldList: [], //* 存取原本欄位的值
       isShowRegisterList: false,
       noticeList: ['access', 'suggest', 'contact'],
     };
@@ -150,6 +158,8 @@ export default {
           field.value = registerField.Lst_Value;
         }
       }
+
+      this.originalRegisterFieldList = JSON.parse(JSON.stringify(this.registerFieldList));
     },
   },
 };

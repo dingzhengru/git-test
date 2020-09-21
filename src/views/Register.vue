@@ -216,16 +216,24 @@ export default {
           alert(this.$t('register.Add_RelatedAccount.error.invalid'));
         }
       } else if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
-        const requestData = { field: 'Add_Realname', strValue: this.fullName };
+        const firstNameField = this.fieldList.find(item => item.name == 'Add_FirstName');
+        const lastNameField = this.fieldList.find(item => item.name == 'Add_LastName');
+
+        //* 姓跟名都有填的時候才檢查
+        if (!(firstNameField.value && lastNameField.value)) {
+          return;
+        }
+
+        const requestData = { field: 'Add_RealName', strValue: this.fullName };
         const result = await checkRegisterFieldExist(requestData);
-        if (result == true) {
+        if (result == false) {
           field.value = '';
           alert(this.$t('register.Add_RealName.error.invalid'));
         }
       } else if (field.isOnly == true) {
         const requestData = { field: field.name, strValue: field.value };
         const result = await checkRegisterFieldExist(requestData);
-        if (result == true) {
+        if (result == false) {
           field.value = '';
           alert(this.$t(`register.${field.name}.error.invalid`));
         }
