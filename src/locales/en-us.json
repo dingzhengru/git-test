@@ -34,10 +34,15 @@
   },
   "home": {
     "lottery": {
-      "redEnvelope": {
-        "start": "ลุ้นเปิดอั่งเปา ({count})"
+      "winWheel": {
+        "homeTitle": "{count} Lucky draw",
+        "startButton": "GO"
       },
-      "winWheel": {}
+      "redEnvelope": {
+        "homeTitle": "{count} Lucky draw",
+        "gameTitle": "Lottery activity",
+        "startButton": "Chance to lucky. ({count})"
+      }
     }
   },
   "login": {

@@ -34,11 +34,14 @@
   },
   "home": {
     "lottery": {
-      "redEnvelope": {
-        "start": "剩余抽奖机会 ({count})"
-      },
       "winWheel": {
-
+        "homeTitle": "{count} 次 抽奖机会",
+        "startButton": "开始抽奖"
+      },
+      "redEnvelope": {
+        "homeTitle": "{count} 次 抽奖机会",
+        "gameTitle": "抽奖活动",
+        "startButton": "剩余抽奖机会 ({count})"
       }
     }
   },
