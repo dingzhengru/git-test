@@ -100,18 +100,6 @@ export default {
       default: () => [],
     },
   },
-  fullName() {
-    let fullName = '';
-    const firstName = this.fieldList.find(item => item.name == 'Add_FirstName').value;
-    const lastName = this.fieldList.find(item => item.name == 'Add_LastName').value;
-
-    if (this.lang == 'zh-cn') {
-      fullName = `${lastName}${firstName}`;
-    } else {
-      fullName = `${firstName} ${lastName}`;
-    }
-    return fullName;
-  },
   data() {
     return {
       idMapper: idMapper,
