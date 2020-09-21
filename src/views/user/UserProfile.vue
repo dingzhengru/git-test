@@ -7,6 +7,7 @@
       :bankList="bankList"
       v-if="isAccessed == false"
       @instantAccess="submitInstantAccess"
+      @change-register-field="changeRegisterField"
     ></UserProfileList>
 
     <!-- 開通後的 -->
@@ -31,7 +32,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getBankInfoList, changePasswordWithdrawal } from '@/api/user';
-import { getRegisterAdvanceNew } from '@/api/register';
+import { getRegisterAdvanceNew, checkRegisterFieldExist } from '@/api/register';
 
 export default {
   name: 'Profile',
@@ -76,6 +77,20 @@ export default {
       console.log('[ChangeWithdrawalPassword]', result);
       if (result.Code == 200) {
         window.alert(this.$t('user.changePassword.alert.success'));
+      }
+    },
+    async changeRegisterField(field, fieldValidError) {
+      if (fieldValidError != '') {
+        return;
+      }
+
+      if (field.isOnly) {
+        const requestData = { field: field.name, strValue: field.value };
+        const result = await checkRegisterFieldExist(requestData);
+        if (result == true) {
+          field.value = '';
+          alert(this.$t(`register.${field.name}.error.invalid`));
+        }
       }
     },
   },

@@ -35,9 +35,10 @@
             :min="field.min"
             :max="field.max"
             :pattern="field.regex"
+            :disabled="!field.isModifiable"
             v-model="field.value"
             @input="validateField(field)"
-            :disabled="!field.isModifiable"
+            @change="$emit('change-register-field', field, validateField(field))"
           />
 
           <select
@@ -145,6 +146,7 @@ export default {
           field.isShow = registerField.Lst_Phase != 0;
           field.isRequired = registerField.Lst_isRequired;
           field.isModifiable = registerField.Lst_isModifiable || registerField.Lst_Phase == 2;
+          field.isOnly = registerField.Lst_isOnly;
           field.value = registerField.Lst_Value;
         }
       }

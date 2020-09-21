@@ -32,6 +32,14 @@
     "promotion": "Promotions",
     "contact": "Online Customer"
   },
+  "home": {
+    "lottery": {
+      "redEnvelope": {
+        "start": "ลุ้นเปิดอั่งเปา ({count})"
+      },
+      "winWheel": {}
+    }
+  },
   "login": {
     "title": "Member Login",
     "rememberMe": "Remember Me",
