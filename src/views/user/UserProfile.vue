@@ -114,12 +114,6 @@ export default {
         }
 
         if (this.isAccessed) {
-          // this.profileList = this.accessList;
-          // this.list = this.accessList.map(item => {
-          //   if (result.RetObj[item.name]) {
-          //     item.value = result.RetObj[item.name];
-          //   }
-          // });
           const bankInfoListResult = await getBankInfoList();
           console.log('[BankInfoList]', bankInfoListResult);
         } else {
