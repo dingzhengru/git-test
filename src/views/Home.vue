@@ -41,12 +41,10 @@
         @startHandler="startHandlerWheel"
       >
         <template v-slot:game-chance>
-          <div class="acticityWinwheel__title">剩餘 {{ gameChance }} 次機會</div>
+          <div class="acticityWinwheel__title">{{ $t('home.lottery.winWheel.homeTitle', { count: gameChance }) }}</div>
         </template>
         <template v-slot:game-dialog>
-          <div class="acticityWinwheel__result">
-            恭喜獲得
-          </div>
+          <!-- <div class="acticityWinwheel__result">恭喜獲得</div> -->
           <div class="acticityWinwheel__prize">{{ gamePrize.text }}</div>
         </template>
       </WinWheel>
@@ -64,13 +62,15 @@
       >
         <template v-slot:game-result>
           <div class="acticityRedEnvelepe__result">
-            恭喜獲得獎品
+            {{ $t('home.lottery.redEnvelope.gameResult') }}
             <br />
-            [ {{ gamePrize.text }} ]
+            【 {{ gamePrize.text }} 】
           </div>
         </template>
         <template v-slot:game-chance>
-          <div class="acticityRedEnvelepe__chance">剩餘 {{ gameChance }} 次機會</div>
+          <div class="acticityRedEnvelepe__chance">
+            {{ $t('home.lottery.redEnvelope.startButton', { count: gameChance }) }}
+          </div>
         </template>
       </RedEnvelope>
     </div>
@@ -342,6 +342,8 @@ export default {
 
             //* 顯示
             this.isShowWinWheel = true;
+
+            console.log(this.wheelSegmentsPrize);
           } else {
             this.errMsg = this.msgLibrary.noChance;
           }

@@ -35,13 +35,13 @@
   "home": {
     "lottery": {
       "winWheel": {
-        "homeTitle": "ลุ้นอั่งเปา {count} ครั้ง",
-        "startButton": "GO"
+        "homeTitle": "ลุ้นอั่งเปา {count} ครั้ง"
       },
       "redEnvelope": {
         "homeTitle": "หมุนวงล้อ {count} ครั้ง",
         "gameTitle": "ชิงโชค",
-        "startButton": "ลุ้นเปิดอั่งเปา ({count})"
+        "startButton": "ลุ้นเปิดอั่งเปา ({count})",
+        "gameResult": "ยินดีด้วยคุณได้รับรางวัล"
       }
     }
   },

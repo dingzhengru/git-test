@@ -35,13 +35,13 @@
   "home": {
     "lottery": {
       "winWheel": {
-        "homeTitle": "{count} Lucky draw",
-        "startButton": "GO"
+        "homeTitle": "{count} Lucky draw"
       },
       "redEnvelope": {
         "homeTitle": "{count} Lucky draw",
         "gameTitle": "Lottery activity",
-        "startButton": "Chance to lucky. ({count})"
+        "startButton": "Chance to lucky. ({count})",
+        "gameResult": "Congratulate to won."
       }
     }
   },

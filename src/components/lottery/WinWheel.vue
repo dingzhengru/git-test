@@ -25,7 +25,7 @@
       </div>
     </div>
     <transition name="modalTransition">
-      <div class="vue-winwheel__dialog vue-winwheel__dialog-prize" v-show="isModalShow">
+      <div class="vue-winwheel__dialog vue-winwheel__dialog-prize" v-show="isModalShow && gamePrize">
         <div class="close" @click="isModalShow = false"></div>
         <slot name="game-dialog" />
       </div>
@@ -178,7 +178,9 @@ export default {
     gamePrize: {
       deep: true,
       handler(val) {
-        this.startWheel(val);
+        if (val) {
+          this.startWheel(val);
+        }
       },
     },
   },

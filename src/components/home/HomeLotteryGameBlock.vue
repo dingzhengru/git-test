@@ -4,7 +4,14 @@
       <div class="lottery" :class="`lottery${lottery.Type}`" :key="lottery.Type" v-if="lottery.Count > 0">
         <i class="lottery__icon"></i>
         <ul class="lottery__ul" @click="openLotteryGame(lottery)">
-          <li class="lottery__ul__li">{{ lottery.Count }} 次 抽奖机会</li>
+          <li class="lottery__ul__li">
+            <template v-if="lottery.Type == 0">
+              {{ $t('home.lottery.winWheel.homeTitle', { count: lottery.Count }) }}
+            </template>
+            <template v-else-if="lottery.Type == 1">
+              {{ $t('home.lottery.redEnvelope.homeTitle', { count: lottery.Count }) }}
+            </template>
+          </li>
         </ul>
       </div>
     </template>
