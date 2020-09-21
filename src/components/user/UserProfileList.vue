@@ -17,7 +17,7 @@
     >
       <div
         class="user-profile__instant-access-form__field theme-input-box"
-        v-for="field in registerFieldList"
+        v-for="field in fieldList"
         :key="field.name"
       >
         <template v-if="field.isShow">
@@ -42,6 +42,7 @@
               $emit(
                 'change-register-field',
                 field,
+                fieldList,
                 validateField(field),
                 originalRegisterFieldList.find(item => item.name == field.name)
               )
@@ -99,10 +100,22 @@ export default {
       default: () => [],
     },
   },
+  fullName() {
+    let fullName = '';
+    const firstName = this.fieldList.find(item => item.name == 'Add_FirstName').value;
+    const lastName = this.fieldList.find(item => item.name == 'Add_LastName').value;
+
+    if (this.lang == 'zh-cn') {
+      fullName = `${lastName}${firstName}`;
+    } else {
+      fullName = `${firstName} ${lastName}`;
+    }
+    return fullName;
+  },
   data() {
     return {
       idMapper: idMapper,
-      registerFieldList: registerFieldList,
+      fieldList: registerFieldList,
       originalRegisterFieldList: [], //* 存取原本欄位的值
       isShowRegisterList: false,
       noticeList: ['access', 'suggest', 'contact'],
@@ -120,7 +133,7 @@ export default {
       }
 
       const requestData = {};
-      for (const field of this.registerFieldList) {
+      for (const field of this.fieldList) {
         if (field.value && field.isShow) {
           requestData[field.name] = field.value;
         }
@@ -130,7 +143,7 @@ export default {
     },
     validateForm() {
       let invalidFieldList = [];
-      for (const field of this.registerFieldList) {
+      for (const field of this.fieldList) {
         //* 檢查欄位自己的屬性(required, minlength, maxlength, min, max)
         const validateReulst = this.validateField(field);
         if (validateReulst != '') {
@@ -141,14 +154,14 @@ export default {
       return invalidFieldList.length == 0;
     },
     validateField(field) {
-      field.error = this.$t(validateField(field, this.registerFieldList));
+      field.error = this.$t(validateField(field, this.fieldList));
       return field.error;
     },
   },
   watch: {
     registerList() {
       for (const registerField of this.registerList) {
-        const field = this.registerFieldList.find(item => item.name == registerField.Lst_Field);
+        const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
 
         if (field) {
           field.isShow = registerField.Lst_Phase != 0;
@@ -159,7 +172,7 @@ export default {
         }
       }
 
-      this.originalRegisterFieldList = JSON.parse(JSON.stringify(this.registerFieldList));
+      this.originalRegisterFieldList = JSON.parse(JSON.stringify(this.fieldList));
     },
   },
 };

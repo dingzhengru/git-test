@@ -79,7 +79,7 @@ export default {
         window.alert(this.$t('user.changePassword.alert.success'));
       }
     },
-    async changeRegisterField(field, fieldValidError, oldField) {
+    async changeRegisterField(field, fieldList, fieldValidError, oldField) {
       if (fieldValidError != '') {
         return;
       }
