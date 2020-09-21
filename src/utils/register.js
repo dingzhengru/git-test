@@ -8,7 +8,6 @@ export const registerFieldList = [
     error: '',
     isRequired: false,
     maxlength: 30,
-    regex: '^[a-zA-Z]{1}[a-zA-Z0-9]*$',
     value: '',
     isShow: false,
     isModifiable: false,
