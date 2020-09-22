@@ -208,7 +208,7 @@ export default {
       if (this.validateField(field, this.fieldList) != '') {
         return;
       }
-      if (field.name == 'Add_RelatedAccount') {
+      if (field.name == 'Add_RelatedAccount' && field.value) {
         const requestData = { field: field.name, strValue: field.value };
         const result = await checkRegisterFieldExist(requestData);
         if (result == false) {
@@ -230,7 +230,7 @@ export default {
           field.value = '';
           alert(this.$t('register.Add_RealName.error.invalid'));
         }
-      } else if (field.isOnly == true) {
+      } else if (field.isOnly == true && field.value) {
         const requestData = { field: field.name, strValue: field.value };
         const result = await checkRegisterFieldExist(requestData);
         if (result == false) {
