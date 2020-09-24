@@ -13,6 +13,9 @@ const getters = {
   siteIsNewPromotion: state => state.site.isNewPromotion,
   siteName: state => state.site.siteName,
   siteIsOpenRememberMe: state => state.site.isOpenRememberMe,
+  siteStatus: state => state.site.siteStatus,
+  siteMaintainTimeStart: state => state.site.maintainTimeStart,
+  siteMaintainTimeEnd: state => state.site.maintainTimeEnd,
   siteFullCss: state => {
     return `${state.site.cssClass}/${state.site.cssType}`;
   },

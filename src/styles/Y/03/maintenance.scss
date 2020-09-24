@@ -1,0 +1,32 @@
+$type: 'Y/03';
+
+.maintenance {
+  color: white;
+
+  button {
+    background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  }
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.maintenance__footer__logo1 {
+  background-image: url(~@/assets/#{$type}/imgs/maintenance/footer_logo1.png);
+}
+.maintenance__footer__logo2 {
+  background-image: url(~@/assets/#{$type}/imgs/maintenance/footer_logo2.png);
+}
+// .maintenance__footer__logo3 {
+//   background-image: url(~@/assets/#{$type}/imgs/maintenance/footer_logo3.png);
+// }
+.maintenance__footer__logo4 {
+  background-image: url(~@/assets/#{$type}/imgs/maintenance/footer_logo4.png);
+}
+.maintenance__footer__logo5 {
+  background-image: url(~@/assets/#{$type}/imgs/maintenance/footer_logo5.png);
+}
+.maintenance__footer__logo6 {
+  background-image: url(~@/assets/#{$type}/imgs/maintenance/footer_logo6.png);
+}

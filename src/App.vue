@@ -1,6 +1,7 @@
 <template>
   <div id="app" :class="lang">
     <AppHeader
+      :siteStatus="siteStatus"
       :isLoggedIn="isLoggedIn"
       :langList="langList"
       :lang="lang"
@@ -18,7 +19,7 @@
       <router-view />
     </div>
 
-    <AppFooter :isLoggedIn="isLoggedIn" />
+    <AppFooter :isLoggedIn="isLoggedIn" v-if="siteStatus == 0" />
     <AppLoadingOverlay :isLoading="loadingRequestList.length > 0" />
   </div>
 </template>
@@ -42,11 +43,11 @@ export default {
     ...mapGetters([
       'siteID',
       'siteFullCss',
-      'token',
       'lang',
       'loadingRequestList',
       'pwaInstallStatus',
       'pwaPrompt',
+      'siteStatus',
       'isLoggedIn',
       'resourceUrl',
       'username',
@@ -135,6 +136,16 @@ export default {
         // * 使用 siteInfo 拼湊 logo url
         this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
 
+        //* 確認是否維護
+        if (this.siteStatus && this.$route.name != '') {
+          this.$router.replace({ name: 'Maintenance' });
+        }
+
+        //* 已登入才去取使用者資訊
+        if (this.isLoggedIn) {
+          this.$store.dispatch('user/getInfo');
+        }
+
         // * 取得語系列表
         getLangList().then(result => {
           if (result.Code == 200) {
@@ -143,22 +154,6 @@ export default {
             console.log('[Lang]', this.langList);
           }
         });
-      },
-    },
-    token: {
-      immediate: true,
-      handler() {
-        /*
-         * 這裡放需要 token 且是僅進入頁面才發需求的 API
-         * ex: 使用者的上方資訊欄位
-         */
-        if (!this.token) {
-          return;
-        }
-
-        if (this.isLoggedIn) {
-          this.$store.dispatch('user/getInfo');
-        }
       },
     },
   },

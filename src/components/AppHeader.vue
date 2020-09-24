@@ -4,27 +4,29 @@
       <img :src="logo" class="header__logo__img" :id="idMapper.header.logo" alt="" />
     </div>
 
-    <router-link
-      to="/"
-      class="header__link header__link--home"
-      :id="idMapper.header.link.home"
-      v-if="!backIconRouteList.includes($route.name)"
-    ></router-link>
+    <template v-if="siteStatus == 0">
+      <router-link
+        to="/"
+        class="header__link header__link--home"
+        :id="idMapper.header.link.home"
+        v-if="!backIconRouteList.includes($route.name)"
+      ></router-link>
 
-    <a class="header__link header__link--back" href="javacript:;" @click="$router.go(-1)" v-else></a>
+      <a class="header__link header__link--back" href="javacript:;" @click="$router.go(-1)" v-else></a>
 
-    <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang" />
-    <HeaderMenuAuth
-      v-if="isLoggedIn"
-      :langList="langList"
-      :lang="lang"
-      :username="username"
-      :total="total"
-      :vip="vip"
-      :roll="roll"
-      @changeLang="changeLang"
-      @logout="logout"
-    ></HeaderMenuAuth>
+      <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang" />
+      <HeaderMenuAuth
+        v-if="isLoggedIn"
+        :langList="langList"
+        :lang="lang"
+        :username="username"
+        :total="total"
+        :vip="vip"
+        :roll="roll"
+        @changeLang="changeLang"
+        @logout="logout"
+      ></HeaderMenuAuth>
+    </template>
   </header>
 </template>
 
@@ -40,6 +42,10 @@ export default {
     HeaderMenuAuth: () => import('@/components/HeaderMenuAuth'),
   },
   props: {
+    siteStatus: {
+      type: Number,
+      default: () => 0,
+    },
     isLoggedIn: {
       type: Boolean,
       default: () => false,

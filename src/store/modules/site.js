@@ -11,6 +11,9 @@ const state = {
   isNewPromotion: false,
   siteName: null,
   isOpenRememberMe: false,
+  siteStatus: 0, //* 站台狀態: 0正常 10維護 20停用
+  maintainTimeStart: null,
+  maintainTimeEnd: null,
 };
 
 const mutations = {
@@ -44,6 +47,15 @@ const mutations = {
   setIsOpenRememberMe(state, isOpenRememberMe) {
     state.isOpenRememberMe = isOpenRememberMe;
   },
+  setSiteStatus(state, siteStatus) {
+    state.siteStatus = siteStatus;
+  },
+  setMaintainTimeStart(state, maintainTimeStart) {
+    state.maintainTimeStart = maintainTimeStart;
+  },
+  setMaintainTimeEnd(state, maintainTimeEnd) {
+    state.maintainTimeEnd = maintainTimeEnd;
+  },
 };
 
 const actions = {
@@ -64,11 +76,15 @@ const actions = {
       commit('setIsNewPromotion', result.RetObj.bNewPromotion);
       commit('setSiteName', result.RetObj.LS_SiteName);
       commit('setIsOpenRememberMe', result.RetObj.Lst_Open_Remember_Option);
+      commit('setSiteStatus', result.RetObj.Lst_SiteStatus);
+      commit('setMaintainTimeStart', result.RetObj.Lst_MaintainTimeStart);
+      commit('setMaintainTimeEnd', result.RetObj.Lst_MaintainTimeEnd);
     }
 
     //* 手動設置(測試用)
-    // commit('setCssClass', 'Y');
-    // commit('setCssType', '02');
+    commit('setCssClass', 'Y');
+    commit('setCssType', '02');
+    // commit('setSiteStatus', 10); //* 手動設置維護
 
     return result;
   },

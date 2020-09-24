@@ -199,10 +199,15 @@ const routes = [
     name: 'About',
     component: () => import('@/views/About'),
   },
+  // {
+  //   path: '/agreement',
+  //   name: 'Agreement',
+  //   component: () => import('@/views/Agreement'),
+  // },
   {
-    path: '/agreement',
-    name: 'Agreement',
-    component: () => import('@/views/Agreement'),
+    path: '/maintenance',
+    name: 'Maintenance',
+    component: () => import('@/views/Maintenance'),
   },
   {
     path: '*',
