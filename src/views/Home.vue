@@ -255,14 +255,17 @@ export default {
       }
       console.log('[LotteryList]', result.RetObj);
     },
-    openBanner(swiper) {
-      console.log('[SwiperOpen]', swiper);
-      if (swiper.Lst_LinkType == 1) {
-        window.open(swiper.Lst_LinkUrl, swiper.Lst_Target);
-      } else if (swiper.Lst_LinkType == 2) {
+    openBanner(banner) {
+      console.log('[BannerOpen]', banner);
+
+      const bannerType = this.isLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
+
+      if (bannerType == 1) {
+        window.open(banner.Lst_LinkUrl, banner.Lst_Target);
+      } else if (bannerType == 2) {
         this.$router.push({
           name: 'PromotionDetail',
-          params: { id: swiper.Lst_LinkUrl },
+          params: { id: banner.Lst_LinkUrl },
         });
       }
     },

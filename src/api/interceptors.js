@@ -10,10 +10,10 @@ import {
 } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 
-if (process.env.NODE_ENV === 'development') {
-  console.log('set axios.defaults.withCredentials = true.');
-  axios.defaults.withCredentials = true;
-}
+// if (process.env.NODE_ENV === 'development') {
+//   console.log('set axios.defaults.withCredentials = true.');
+//   axios.defaults.withCredentials = true;
+// }
 
 //* 針對 502: TokenError，615: JsonError
 //* 看要選擇重整，還是重新發送請求(目前只有登入是重新發送)
@@ -27,7 +27,7 @@ let Responded201Count = 0;
 
 axios.interceptors.request.use(
   config => {
-    //* 放一個進 loading 列表
+    //* 放進 loading 列表，篩選掉不會進 loading 的 API
     if (!NO_LOADING_API.find(item => config.url.includes(item))) {
       store.commit('pushLoadingRequest');
     }
@@ -75,6 +75,7 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   async res => {
+    //* 放進 loading 列表，篩選掉不會進 loading 的 API
     if (!NO_LOADING_API.find(item => res.config.url.includes(item))) {
       store.commit('popLoadingRequest');
     }
