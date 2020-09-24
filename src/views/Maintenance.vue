@@ -94,7 +94,7 @@ export default {
   }
 
   &__footer {
-    background-color: transparent;
+    // background-color: transparent;
     padding: 0 0 20px;
 
     &__logo {
