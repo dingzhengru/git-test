@@ -82,8 +82,8 @@ const actions = {
     }
 
     //* 手動設置(測試用)
-    commit('setCssClass', 'Y');
-    commit('setCssType', '02');
+    // commit('setCssClass', 'Y');
+    // commit('setCssType', '02');
     // commit('setSiteStatus', 10); //* 手動設置維護
 
     return result;
