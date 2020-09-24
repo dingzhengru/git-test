@@ -1,6 +1,11 @@
 <template>
   <div class="home" @click="isShowNoneLoginPopup = false">
-    <HomeSwiper :list="swiperList" :resourceUrl="resourceUrl" :siteIsNewPromotion="siteIsNewPromotion" />
+    <HomeSwiper
+      :list="bannerList"
+      :resourceUrl="resourceUrl"
+      :siteIsNewPromotion="siteIsNewPromotion"
+      @open-banner="openBanner"
+    />
 
     <div class="home-game">
       <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="isLoggedIn" />
@@ -37,7 +42,7 @@
         :gameChance="gameChance"
         :gamePrize="gamePrize"
         :isWheelLoading="isWheelLoading"
-        :errMsg="errMsg"
+        :errMsg="lotteryErrorMessage"
         @startHandler="startHandlerWheel"
       >
         <template v-slot:game-chance>
@@ -56,7 +61,7 @@
         :prizeList="redEnvelopePrizeList"
         :gameChance="gameChance"
         :gamePrize="gamePrize"
-        :errMsg="errMsg"
+        :errMsg="lotteryErrorMessage"
         @startHandler="startHandlerRedEnvelope"
         @selectHandeler="lotteryHandlerRedEnvelope"
       >
@@ -79,7 +84,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getSwiperList } from '@/api/swiper';
+import { getBannerListOld, getBannerList } from '@/api/banner';
 import { getProductList } from '@/api/product';
 import { getGameRedirectUrl } from '@/api/game';
 import { getMessageList } from '@/api/alert';
@@ -119,7 +124,7 @@ export default {
       isShowNoneLoginPopup: false,
       isShowAlertBox: false,
       alertMessageList: [],
-      swiperList: [],
+      bannerList: [],
       productList: [],
       lotteryList: [],
 
@@ -171,6 +176,8 @@ export default {
       billNo: '', // (獎項列表API)活動單號，需夾帶給抽獎API
       gameChance: '', //(抽獎API)剩餘抽獎次數
       gamePrize: '', //(抽獎API)回傳獎項
+
+      lotteryErrorMessage: '',
     };
   },
   mounted() {
@@ -189,12 +196,19 @@ export default {
         console.log('[Message]', this.alertMessageList);
       }
     },
-    async getSwiperList() {
-      const requestDataSwiperList = { bNewPromotion: this.siteIsNewPromotion };
-      const result = await getSwiperList(requestDataSwiperList);
-      if (result.Code == 200) {
-        this.swiperList = result.RetObj;
-        console.log('[Swiper]', this.swiperList);
+    async getBannerList() {
+      if (this.siteIsNewPromotion) {
+        const result = await getBannerList();
+        if (result.Code == 200) {
+          this.bannerList = result.RetObj;
+          console.log('[Swiper]', this.bannerList);
+        }
+      } else {
+        const result = await getBannerListOld();
+        if (result.Code == 200) {
+          this.bannerList = result.RetObj;
+          console.log('[Swiper]', this.bannerList);
+        }
       }
     },
     async getProductList() {
@@ -240,6 +254,17 @@ export default {
         this.lotteryList = result.RetObj;
       }
       console.log('[LotteryList]', result.RetObj);
+    },
+    openBanner(swiper) {
+      console.log('[SwiperOpen]', swiper);
+      if (swiper.Lst_LinkType == 1) {
+        window.open(swiper.Lst_LinkUrl, swiper.Lst_Target);
+      } else if (swiper.Lst_LinkType == 2) {
+        this.$router.push({
+          name: 'PromotionDetail',
+          params: { id: swiper.Lst_LinkUrl },
+        });
+      }
     },
     async handleGameLink(game) {
       /*
@@ -345,12 +370,12 @@ export default {
 
             console.log(this.wheelSegmentsPrize);
           } else {
-            this.errMsg = this.msgLibrary.noChance;
+            this.lotteryErrorMessage = this.msgLibrary.noChance;
           }
         })
         .catch(err => {
           console.log('[initHandlerWheel Error]', err);
-          this.errMsg = err;
+          this.lotteryErrorMessage = err;
         });
     },
     // 獲取中獎資料，啟動轉盤遊戲
@@ -372,7 +397,7 @@ export default {
           this.getLotteryCountList();
         })
         .catch(err => {
-          this.errMsg = err;
+          this.lotteryErrorMessage = err;
         });
     },
     startHandlerRedEnvelope() {
@@ -405,11 +430,11 @@ export default {
             this.redEnvelopePrizeList = list;
             this.isShowRedEnvelope = true;
           } else {
-            this.errMsg = this.msgLibrary.noChance;
+            this.lotteryErrorMessage = this.msgLibrary.noChance;
           }
         })
         .catch(err => {
-          this.errMsg = err;
+          this.lotteryErrorMessage = err;
         });
     },
     // 抽獎事件
@@ -429,7 +454,7 @@ export default {
           this.getLotteryCountList();
         })
         .catch(err => {
-          this.errMsg = err;
+          this.lotteryErrorMessage = err;
         });
     },
   },
@@ -445,7 +470,7 @@ export default {
         import(`@/styles/${this.siteFullCss}/home.scss`);
 
         // * 取得輪播列表
-        this.getSwiperList();
+        this.getBannerList();
 
         // * 取得訊息列表(msgtype: C 彈出)
         this.getMessageList();
@@ -458,7 +483,7 @@ export default {
     },
     lang() {
       // * 取得輪播列表
-      this.getSwiperList();
+      this.getBannerList();
 
       //* 取得遊戲館列表
       this.getProductList();

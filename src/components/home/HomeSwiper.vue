@@ -1,10 +1,10 @@
 <template>
   <swiper class="home-swiper" :options="swiperOption">
     <swiper-slide v-for="(slide, index) in list" :key="index">
-      <router-link :to="{ name: 'Home' }">
-        <img v-if="siteIsNewPromotion" :src="slide.ImageUrl" alt="" />
-        <img v-if="!siteIsNewPromotion" :src="`${resourceUrl}/imgs/banner/${slide.ImageUrl}`" alt="" />
-      </router-link>
+      <img
+        :src="siteIsNewPromotion ? slide.Lst_ImgUrl : `${resourceUrl}/imgs/banner/${slide.Lst_ImgUrl}`"
+        @click.prevent="$emit('open-banner', slide)"
+      />
     </swiper-slide>
     <a class="home-swiper__button--previous" slot="button-prev"></a>
     <a class="home-swiper__button--next" slot="button-next"></a>
@@ -14,10 +14,6 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import 'swiper/css/swiper.css';
-
-// import banner16 from '@/assets/Y/01/01/imgs/banner/banner16.jpg';
-// import banner17 from '@/assets/Y/01/01/imgs/banner/banner17.jpg';
-// import banner18 from '@/assets/Y/01/01/imgs/banner/banner18.jpg';
 
 export default {
   name: 'HomeSwiper',

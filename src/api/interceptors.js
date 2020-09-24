@@ -10,6 +10,11 @@ import {
 } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 
+if (process.env.NODE_ENV === 'development') {
+  console.log('set axios.defaults.withCredentials = true.');
+  axios.defaults.withCredentials = true;
+}
+
 //* 針對 502: TokenError，615: JsonError
 //* 看要選擇重整，還是重新發送請求(目前只有登入是重新發送)
 
