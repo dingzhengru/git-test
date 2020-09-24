@@ -11,7 +11,7 @@
         href="javascript:;"
         v-for="promotion in promotionList"
         :key="promotion.Lst_PromotionID"
-        @click.prevent="goPromotionContent(promotion)"
+        @click.prevent="goPromotionDetail(promotion)"
       >
         <img :src="promotion.Lst_ImageUrl" class="promotion__list__img" />
       </a>
@@ -23,7 +23,7 @@
 import { mapGetters } from 'vuex';
 import { getPromotionList } from '@/api/promotion';
 import { isIos, openNewWindowURL } from '@/utils/device';
-import event01 from '@/assets/Y/01/imgs/promotion/event01.jpg';
+// import event01 from '@/assets/Y/01/imgs/promotion/event01.jpg';
 
 export default {
   name: 'Promotion',
@@ -38,59 +38,16 @@ export default {
   methods: {
     async getPromotionList() {
       //* 連結類型，0:無、1:自定義、2:優惠活動、3:遊戲館
-      this.promotionList = [
-        {
-          Lst_PromotionID: 11111,
-          Lst_Title: 'Title11111',
-          Lst_Sort: 0,
-          Lst_ImageUrl: event01,
-          Lst_LinkType: 2,
-          Lst_LinkUrl: '',
-        },
-        {
-          Lst_PromotionID: 22222,
-          Lst_Title: 'Title22222',
-          Lst_Sort: 1,
-          Lst_ImageUrl: event01,
-          Lst_LinkType: 2,
-          Lst_LinkUrl: '',
-        },
-        {
-          Lst_PromotionID: 33333,
-          Lst_Title: 'Title33333',
-          Lst_Sort: 1,
-          Lst_ImageUrl: event01,
-          Lst_LinkType: 1,
-          Lst_LinkUrl: 'http://google.com',
-        },
-        {
-          Lst_PromotionID: 44444,
-          Lst_Title: 'Title44444',
-          Lst_Sort: 1,
-          Lst_ImageUrl: event01,
-          Lst_LinkType: 2,
-          Lst_LinkUrl: '',
-        },
-        {
-          Lst_PromotionID: 55555,
-          Lst_Title: 'Title55555',
-          Lst_Sort: 1,
-          Lst_ImageUrl: event01,
-          Lst_LinkType: 2,
-          Lst_LinkUrl: '',
-        },
-      ];
-
       const result = await getPromotionList();
 
       console.log('[Promotion]', result);
 
-      // if (result.Code == 200) {
-      //   this.promotionList = result.RetObj;
-      // }
+      if (result.Code == 200) {
+        this.promotionList = result.RetObj;
+      }
     },
-    async goPromotionContent(promotion) {
-      console.log('[GoPromotionContent]', promotion);
+    async goPromotionDetail(promotion) {
+      console.log('[GoPromotionDetail]', promotion);
 
       if (promotion.Lst_LinkType == 1) {
         let newWindow;

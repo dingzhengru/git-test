@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_URL } from '@/settings';
 
 export async function getPromotionList() {
-  const result = await axios.post(API_URL + '/Promotion/MPromotionList');
+  const result = await axios.post(API_URL + '/Promotion/PromotionList');
   return result.data;
 }
 
