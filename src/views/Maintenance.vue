@@ -19,9 +19,7 @@
           <li class="maintenance__footer__logo6"></li>
         </ul>
       </div>
-      <div class="maintenance__footer__copyright">
-        Copyright © 2014 {0} All Rights Reserved
-      </div>
+      <div class="maintenance__footer__copyright">Copyright © 2014 {{ siteName }} All Rights Reserved</div>
     </footer>
   </div>
 </template>
@@ -32,7 +30,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Maintenance',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'siteStatus', 'siteMaintainTimeStart', 'siteMaintainTimeEnd']),
+    ...mapGetters(['siteID', 'siteFullCss', 'siteName', 'siteStatus', 'siteMaintainTimeStart', 'siteMaintainTimeEnd']),
   },
   data() {
     return {
@@ -96,7 +94,7 @@ export default {
   }
 
   &__footer {
-    background-color: #fff;
+    background-color: transparent;
     padding: 0 0 20px;
 
     &__logo {

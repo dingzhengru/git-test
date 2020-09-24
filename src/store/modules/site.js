@@ -82,9 +82,11 @@ const actions = {
     }
 
     //* 手動設置(測試用)
+    // if (process.env.NODE_ENV === 'development ') {
     // commit('setCssClass', 'Y');
     // commit('setCssType', '02');
-    // commit('setSiteStatus', 10); //* 手動設置維護
+    commit('setSiteStatus', 10); //* 手動設置維護
+    // }
 
     return result;
   },
