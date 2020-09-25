@@ -5,9 +5,7 @@ import { AUTH_ROUTE_LIST, NO_AUTH_ROUTE_LIST } from './settings';
 router.beforeEach((to, from, next) => {
   const siteStatus = store.getters.siteStatus; //* 站台狀態: 0正常 10維護 20停用
   const isLoggedIn = store.getters.isLoggedIn;
-
-  console.log(from.name, to.name);
-
+  
   //* 當維護時 && 使用者想去其他頁面時
   if (siteStatus == 10 && to.name != 'Maintenance') {
     next({ name: 'Maintenance' });
