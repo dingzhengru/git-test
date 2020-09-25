@@ -139,6 +139,7 @@ export default {
         //* 確認是否維護
         if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {
           this.$router.replace({ name: 'Maintenance' });
+          return;
         }
 
         //* 已登入才去取使用者資訊

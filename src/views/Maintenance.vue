@@ -99,8 +99,6 @@ export default {
 
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/maintenance.scss`);
-
-        console.log(`${this.resourceUrlMaintain}/imgs/footer_logo5.png`);
       },
     },
   },
