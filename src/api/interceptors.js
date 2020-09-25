@@ -4,9 +4,9 @@ import {
   AUTH_API_LIST,
   CRYPTO_API_LIST,
   CRYPTO_BIG_DATA_API_LIST,
-  NO_ALERT_API,
+  NO_ALERT_API_LIST,
   NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST,
-  NO_LOADING_API,
+  NO_LOADING_API_LIST,
 } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 
@@ -28,7 +28,7 @@ let Responded201Count = 0;
 axios.interceptors.request.use(
   config => {
     //* 放進 loading 列表，篩選掉不會進 loading 的 API
-    if (!NO_LOADING_API.find(item => config.url.includes(item))) {
+    if (!NO_LOADING_API_LIST.find(item => config.url.includes(item))) {
       store.commit('pushLoadingRequest');
     }
 
@@ -76,7 +76,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   async res => {
     //* 放進 loading 列表，篩選掉不會進 loading 的 API
-    if (!NO_LOADING_API.find(item => res.config.url.includes(item))) {
+    if (!NO_LOADING_API_LIST.find(item => res.config.url.includes(item))) {
       store.commit('popLoadingRequest');
     }
 
@@ -108,7 +108,7 @@ axios.interceptors.response.use(
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
       //* 篩選掉不要 alert 的 api
-      if (!NO_ALERT_API.find(item => res.config.url.includes(item))) {
+      if (!NO_ALERT_API_LIST.find(item => res.config.url.includes(item))) {
         window.alert(res.data.ErrMsg);
       }
     } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
@@ -130,7 +130,7 @@ axios.interceptors.response.use(
     return res;
   },
   error => {
-    if (!NO_LOADING_API.find(item => error.config.url.includes(item))) {
+    if (!NO_LOADING_API_LIST.find(item => error.config.url.includes(item))) {
       store.commit('popLoadingRequest');
     }
 

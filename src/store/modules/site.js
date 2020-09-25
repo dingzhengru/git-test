@@ -62,9 +62,8 @@ const actions = {
   async getInfo({ commit }) {
     const requestData = { DeviceType: 1 };
     const result = await getSiteInfo(requestData);
-
+    
     console.log('[SiteInfo]', result);
-
     if (result.Code == 200) {
       commit('setID', result.RetObj.LS_SiteID);
       commit('setCssClass', result.RetObj.LS_CSS_Class);

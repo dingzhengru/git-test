@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <title>Document</title>
+
+    <style>
+      /*
+        最後網址都要把 /public 改成 /
+      */
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #1d1e22;
+        color: #fff;
+        font: 13px 'Microsoft YaHei', Arial, Helvetica, sans-serif;
+        letter-spacing: 2px;
+        line-height: 1.5em;
+      }
+      .forbidden {
+        background-image: url(/403-background.png);
+        background-color: black;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        height: 100vh;
+        overflow: hidden;
+        min-height: 600px;
+      }
+      .forbidden__header {
+        background-image: url(/403-header.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        width: 100%;
+        height: 100px;
+        position: relative;
+        left: 0;
+        top: 0;
+        right: 0;
+        margin-top: 10px;
+        /* transform: scale(0.8); */
+      }
+      .forbidden__main {
+        margin-top: 50px;
+        padding: 0 20px;
+      }
+      .forbidden__main__content {
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="forbidden">
+      <header class="forbidden__header"></header>
+      <main class="forbidden__main">
+        <div class="forbidden__main__content">
+          <div id="text-datetime">UTC Time + 8：2020-09-25 15:35:55.616</div>
+          <span>
+            很抱歉！您访问的ip:::CLIENT_IP::(::GEO::)不在游戏的服务地区内请确认您的ip:::CLIENT_IP::(::GEO::)位址
+          </span>
+        </div>
+        <div class="forbidden__main__content">
+          <span>
+            ขออภัย.. IP:::CLIENT_IP::(::GEO::)ของคุณไม่ได้อยู่ในเขตพื้นที่ของบริการ กรุณาตรวจสอบ
+            IP:::CLIENT_IP::(::GEO::)ให้เเน่ชัดอีกครั้ง
+          </span>
+        </div>
+        <div class="forbidden__main__content">
+          <span>
+            Dear valued customer,<br />
+            Your IP:::CLIENT_IP::(::GEO::) address location is not allowed to access our service.<br />
+            We apologize for any inconvenience caused. Thank you !
+          </span>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const datetimeDiv = document.querySelector('#text-datetime');
+
+      const now = new Date();
+      const utcString = now
+        .toTimeString()
+        .split(' ')[1]
+        .replace('00', '');
+      const date = now.toLocaleDateString().replace(/\//g, '-');
+      const time = now.toTimeString().split(' ')[0];
+
+      datetimeDiv.innerHTML = `${utcString}: ${date} ${time}`;
+    </script>
+  </body>
+</html>
