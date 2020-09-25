@@ -137,7 +137,7 @@ export default {
         this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
 
         //* 確認是否維護
-        if (this.siteStatus && this.$route.name != 'Maintenance') {
+        if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {
           this.$router.replace({ name: 'Maintenance' });
         }
 

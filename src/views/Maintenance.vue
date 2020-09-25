@@ -93,7 +93,7 @@ export default {
         }
 
         //* 非維護時，轉去首頁
-        if (this.siteStatus != 10) {
+        if (this.siteStatus == 0) {
           this.$router.replace({ name: 'Home' });
         }
 
