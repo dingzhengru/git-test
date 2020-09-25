@@ -22,6 +22,9 @@ const getters = {
   resourceUrl: state => {
     return `${state.site.remoteCSSUrl}/ContentStyle/${state.site.mainDomain}/Member/${state.site.cssClass}/${state.site.cssVersion}/2/default/css${state.site.cssType}/common`;
   },
+  resourceUrlMaintain: state => {
+    return `${state.site.remoteCSSUrl}/Maintain/${state.site.mainDomain}/Member/${state.site.cssClass}${state.site.cssType}/${state.site.cssVersion}//css`;
+  },
   isLoggedIn: state => state.user.isLoggedIn,
   token: state => state.user.token,
   publicKey: state => state.user.publicKey,

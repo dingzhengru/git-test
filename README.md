@@ -6,9 +6,9 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
 - [Token & 公鑰](#token--公鑰)
 - [其他](#其他)
+  - [維護畫面的 logo](#維護畫面的-logo)
   - [IOS 擋開啟新視窗](#ios-擋開啟新視窗)
   - [點擊輪播無法正常換頁](#點擊輪播無法正常換頁)
-  - [Agreement 頁面的規章頁籤 .active 沒有設定](#agreement-頁面的規章頁籤-active-沒有設定)
   - [登入方式](#登入方式)
   - [取得網站資訊不同步，將處理放置 watch](#取得網站資訊不同步將處理放置-watch)
   - [notification 的 nav 圖片大小不同](#notification-的-nav-圖片大小不同)
@@ -36,6 +36,9 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
 ## 其他
 
+### 維護畫面的 logo
+- logo3 是該站台的 logo，但還沒有 API 可以取得，目前嘗試用拼網址的方式
+
 ### IOS 擋開啟新視窗
 
 - 參考: https://stackoverflow.com/a/39387533/5134658
@@ -44,8 +47,6 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 ### 點擊輪播無法正常換頁
 
 - 解決方法是套件換版本即可: swiper@5.3.6 、vue-awesome-swiper@4.0.4
-
-### Agreement 頁面的規章頁籤 .active 沒有設定
 
 ### 登入方式
 

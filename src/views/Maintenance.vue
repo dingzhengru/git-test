@@ -11,12 +11,30 @@
     <footer class="maintenance__footer">
       <div class="maintenance__footer__logo">
         <ul class="maintenance__footer__ul">
-          <li class="maintenance__footer__logo1"></li>
-          <li class="maintenance__footer__logo2"></li>
-          <li class="maintenance__footer__logo3"></li>
-          <li class="maintenance__footer__logo4"></li>
-          <li class="maintenance__footer__logo5"></li>
-          <li class="maintenance__footer__logo6"></li>
+          <li
+            class="maintenance__footer__logo1"
+            :style="{ 'background-image': `url(${resourceUrlMaintain}/imgs/footer_logo1.png)` }"
+          ></li>
+          <li
+            class="maintenance__footer__logo2"
+            :style="{ 'background-image': `url(${resourceUrlMaintain}/imgs/footer_logo2.png)` }"
+          ></li>
+          <!-- <li
+            class="maintenance__footer__logo3"
+            :style="{ 'background-image': `url(${resourceUrlMaintain}/imgs/footer_logo3.png)` }"
+          ></li> -->
+          <li
+            class="maintenance__footer__logo4"
+            :style="{ 'background-image': `url(${resourceUrlMaintain}/imgs/footer_logo4.png)` }"
+          ></li>
+          <li
+            class="maintenance__footer__logo5"
+            :style="{ 'background-image': `url(${resourceUrlMaintain}/imgs/footer_logo5.png)` }"
+          ></li>
+          <li
+            class="maintenance__footer__logo6"
+            :style="{ 'background-image': `url(${resourceUrlMaintain}/imgs/footer_logo6.png)` }"
+          ></li>
         </ul>
       </div>
       <div class="maintenance__footer__copyright">Copyright © 2014 {{ siteName }} All Rights Reserved</div>
@@ -30,7 +48,15 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Maintenance',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'siteName', 'siteStatus', 'siteMaintainTimeStart', 'siteMaintainTimeEnd']),
+    ...mapGetters([
+      'siteID',
+      'siteFullCss',
+      'resourceUrlMaintain',
+      'siteName',
+      'siteStatus',
+      'siteMaintainTimeStart',
+      'siteMaintainTimeEnd',
+    ]),
   },
   data() {
     return {
@@ -73,6 +99,8 @@ export default {
 
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/maintenance.scss`);
+
+        console.log(`${this.resourceUrlMaintain}/imgs/footer_logo5.png`);
       },
     },
   },
