@@ -118,12 +118,14 @@ export default {
   }
 
   button {
+    margin-top: 35px;
+    margin-bottom: 60px;
     width: 100%;
   }
 
   &__footer {
     // background-color: transparent;
-    padding: 0 0 20px;
+    padding: 0 0 20px 0;
 
     &__logo {
       padding: 20px 10%;
