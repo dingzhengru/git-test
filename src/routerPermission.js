@@ -3,13 +3,7 @@ import store from './store';
 import { AUTH_ROUTE_LIST, NO_AUTH_ROUTE_LIST } from './settings';
 
 router.beforeEach((to, from, next) => {
-  const siteStatus = store.getters.siteStatus; //* 站台狀態: 0正常 10維護 20停用
   const isLoggedIn = store.getters.isLoggedIn;
-
-  //* 當維護時 && 使用者想去其他頁面時
-  if (siteStatus != 0 && to.name != 'Maintenance') {
-    next({ name: 'Maintenance' });
-  }
 
   if (!isLoggedIn && AUTH_ROUTE_LIST.includes(to.name)) {
     //* 未登入 && 需登入才能進入的頁面
