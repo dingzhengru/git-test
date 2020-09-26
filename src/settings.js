@@ -97,10 +97,10 @@ const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword'];
 const ACCESS_ROUTE_LIST = [];
 
 //* 回傳為 599 時，但不要 alert 的 API
-const NO_ALERT_API = ['Member/LoginIn', 'Member/SimpleRegister'];
+const NO_ALERT_API_LIST = ['Member/LoginIn', 'Member/SimpleRegister'];
 
 //* 不顯示 Loading 的 API
-const NO_LOADING_API = ['Siteinfo/KeepUserOnline', 'Game/MGetJackpotTotal', 'Member/CheckField'];
+const NO_LOADING_API_LIST = ['Siteinfo/KeepUserOnline', 'Game/MGetJackpotTotal', 'Member/CheckField'];
 
 export {
   API_URL,
@@ -112,8 +112,8 @@ export {
   AUTH_ROUTE_LIST,
   ACCESS_ROUTE_LIST,
   NO_AUTH_ROUTE_LIST,
-  NO_ALERT_API,
-  NO_LOADING_API,
+  NO_ALERT_API_LIST,
+  NO_LOADING_API_LIST,
 };
 export default {
   API_URL,
@@ -125,6 +125,6 @@ export default {
   AUTH_ROUTE_LIST,
   ACCESS_ROUTE_LIST,
   NO_AUTH_ROUTE_LIST,
-  NO_ALERT_API,
-  NO_LOADING_API,
+  NO_ALERT_API_LIST,
+  NO_LOADING_API_LIST,
 };
