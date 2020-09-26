@@ -16,6 +16,29 @@ $type: 'Y/01';
   background: url(~@/assets/#{$type}/imgs/layout/bg_index2.jpg) no-repeat;
 }
 
+.game-1080 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game-1080.png);
+}
+.game-1230 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game-1230.png);
+}
+.game-1240 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game-1240.png);
+}
+.game-1280 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game-1280.png);
+}
+.game-1290 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game-1290.png);
+}
+.game-1300 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game-1300.png);
+}
+.game-12203100-03 {
+  background-image: url(~@/assets/#{$type}/imgs/game/game-12203100-03.png);
+}
+
+
 // .prize__icon {
 //   background: url(~@/assets/#{$type}/imgs/main/prizeIcn.png) left center no-repeat;
 // }

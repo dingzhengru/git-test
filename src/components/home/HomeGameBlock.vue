@@ -1,11 +1,18 @@
 <template>
   <ul class="home-game__ul">
-    <li
+    <!-- <li
       class="home-game__ul__li"
       :id="game.id"
       v-for="(game, index) in list"
       :key="index"
       :style="{ 'background-image': `url(${resourceUrl}/imgs/game/game${game.sGameID}.png)` }"
+    > -->
+    <li
+      class="home-game__ul__li"
+      :id="game.id"
+      v-for="(game, index) in list"
+      :key="index"
+      :class="`game-${game.sGameID}`"
     >
       <router-link
         v-if="!isLoggedIn"
