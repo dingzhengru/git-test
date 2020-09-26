@@ -201,13 +201,13 @@ export default {
         const result = await getBannerList();
         if (result.Code == 200) {
           this.bannerList = result.RetObj;
-          console.log('[Swiper]', this.bannerList);
+          console.log('[BannerList]', this.bannerList);
         }
       } else {
         const result = await getBannerListOld();
         if (result.Code == 200) {
           this.bannerList = result.RetObj;
-          console.log('[Swiper]', this.bannerList);
+          console.log('[BannerList]', this.bannerList);
         }
       }
     },
@@ -259,13 +259,13 @@ export default {
       console.log('[BannerOpen]', banner);
 
       const bannerType = this.isLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
-
+      const bannerUrl = this.isLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
       if (bannerType == 1) {
         window.open(banner.Lst_LinkUrl, banner.Lst_Target);
       } else if (bannerType == 2) {
         this.$router.push({
           name: 'PromotionDetail',
-          params: { id: banner.Lst_LinkUrl },
+          params: { id: bannerUrl },
         });
       }
     },

@@ -1,7 +1,7 @@
 <template>
-  <swiper class="home-swiper" :options="swiperOption">
+  <swiper class="home-swiper" :options="swiperOption" @click-slide="handleClickSlide">
     <swiper-slide v-for="(slide, index) in list" :key="index">
-      <a class="home-swiper__link" href="javascript:;" @click.prevent="$emit('open-banner', slide)">
+      <a class="home-swiper__link" href="javascript:;">
         <img
           :src="siteIsNewPromotion ? slide.Lst_ImgUrl : `${resourceUrl}/imgs/banner/${slide.Lst_ImgUrl}`"
           onerror="this.style.display = 'none'"
@@ -40,6 +40,7 @@ export default {
   data() {
     return {
       swiperOption: {
+        initialSlide: 1,
         slidesPerView: 1,
         spaceBetween: 0,
         loop: true,
@@ -54,14 +55,17 @@ export default {
         },
         autoplay: {
           delay: 5000,
-          disableOnInteraction: false,
+        },
+        pagination: {
+          clickable: true,
         },
       },
     };
   },
   methods: {
-    handleErrorImg(slide) {
-      slide.isError = true;
+    handleClickSlide(index, reallyIndex) {
+      const slide = this.list[reallyIndex];
+      this.$emit('open-banner', slide);
     },
   },
 };
