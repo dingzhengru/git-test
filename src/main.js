@@ -79,17 +79,18 @@ store
     }
 
     //* 心跳，剛進來也要執行一次
-    keepUserOnline().then(result => {
-      console.log('[KeepUserOnline]', result.RetObj);
-    });
-    setInterval(async () => {
+    if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
+      keepUserOnline().then(result => {
+        console.log('[KeepUserOnline]', result.RetObj);
+      });
+    }
+    setInterval(async function keepUserOnline() {
       //* document.visibilityState & document.hasFocus()
       //* 前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
-      if (document.visibilityState != 'visible' || !store.getters.isLoggedIn) {
-        return;
+      if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
+        const result = await keepUserOnline();
+        console.log('[KeepUserOnline]', result.RetObj);
       }
-      const result = await keepUserOnline();
-      console.log('[KeepUserOnline]', result.RetObj);
     }, 50000);
   })
   .catch(error => {

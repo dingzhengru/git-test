@@ -12,7 +12,7 @@
         v-if="!backIconRouteList.includes($route.name)"
       ></router-link>
 
-      <a class="header__link header__link--back" href="javacript:;" @click="$router.go(-1)" v-else></a>
+      <a class="header__link header__link--back" href="javascript:;" @click="$router.go(-1)" v-else></a>
 
       <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang" />
       <HeaderMenuAuth
