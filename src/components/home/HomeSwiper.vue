@@ -1,10 +1,12 @@
 <template>
   <swiper class="home-swiper" :options="swiperOption">
     <swiper-slide v-for="(slide, index) in list" :key="index">
-      <img
-        :src="siteIsNewPromotion ? slide.Lst_ImgUrl : `${resourceUrl}/imgs/banner/${slide.Lst_ImgUrl}`"
-        @click.prevent="$emit('open-banner', slide)"
-      />
+      <a class="home-swiper__link" href="javascript:;" @click.prevent="$emit('open-banner', slide)">
+        <img
+          :src="siteIsNewPromotion ? slide.Lst_ImgUrl : `${resourceUrl}/imgs/banner/${slide.Lst_ImgUrl}`"
+          onerror="this.style.display = 'none'"
+        />
+      </a>
     </swiper-slide>
     <a class="home-swiper__button--previous" slot="button-prev"></a>
     <a class="home-swiper__button--next" slot="button-next"></a>
@@ -57,12 +59,28 @@ export default {
       },
     };
   },
+  methods: {
+    handleErrorImg(slide) {
+      slide.isError = true;
+    },
+  },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .home-swiper {
   height: 431px;
+
+  &__link {
+    display: block;
+    width: 100%;
+    height: 431px;
+  }
+
+  img {
+    width: 100%;
+    height: 431px;
+  }
 }
 
 .home-swiper__button--previous,
