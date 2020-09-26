@@ -26,6 +26,19 @@ Vue.use(VueScrollTo);
 // store.commit('site/setCssClass', cssClass);
 // store.commit('site/setCssType', cssType);
 
+//* 檢測此頁面可見狀態，離開 & 進入頁面就會觸發
+//* document.visibilityState & document.hasFocus()
+//* 不同點在於，前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
+// document.addEventListener('visibilitychange', function() {
+//   if (document.visibilityState === 'visible') {
+//     //* 進入頁面
+//     console.log(0);
+//   } else {
+//* 離開頁面
+//     console.log(1);
+//   }
+// });
+
 //* 取得語系 => 存進 store.state.lang
 const lang = getLang();
 if (lang) {
@@ -72,7 +85,7 @@ store
       console.log('[KeepUserOnline]', result.RetObj);
     });
     setInterval(async () => {
-      if (!document.hasFocus()) {
+      if (!document.hasFocus() || !store.getters.isLoggedIn) {
         return;
       }
       const result = await keepUserOnline();
