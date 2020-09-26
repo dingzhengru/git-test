@@ -260,13 +260,18 @@ export default {
 
       const bannerType = this.isLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
       const bannerUrl = this.isLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
+
       if (bannerType == 1) {
         window.open(banner.Lst_LinkUrl, banner.Lst_Target);
       } else if (bannerType == 2) {
-        this.$router.push({
-          name: 'PromotionDetail',
-          params: { id: bannerUrl },
-        });
+        if (bannerUrl > 0) {
+          this.$router.push({
+            name: 'PromotionDetail',
+            params: { id: bannerUrl },
+          });
+        } else {
+          this.$router.push({ name: 'Promotion' });
+        }
       }
     },
     async handleGameLink(game) {
