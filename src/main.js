@@ -27,8 +27,6 @@ Vue.use(VueScrollTo);
 // store.commit('site/setCssType', cssType);
 
 //* 檢測此頁面可見狀態，離開 & 進入頁面就會觸發
-//* document.visibilityState & document.hasFocus()
-//* 不同點在於，前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
 // document.addEventListener('visibilitychange', function() {
 //   if (document.visibilityState === 'visible') {
 //     //* 進入頁面
@@ -85,7 +83,9 @@ store
       console.log('[KeepUserOnline]', result.RetObj);
     });
     setInterval(async () => {
-      if (!document.hasFocus() || !store.getters.isLoggedIn) {
+      //* document.visibilityState & document.hasFocus()
+      //* 前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
+      if (document.visibilityState != 'visible' || !store.getters.isLoggedIn) {
         return;
       }
       const result = await keepUserOnline();
