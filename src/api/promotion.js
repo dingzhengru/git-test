@@ -7,6 +7,6 @@ export async function getPromotionList() {
 }
 
 export async function getPromotionDetail(data) {
-  const result = await axios.post(API_URL + '/Promotion/MPromotionDetail', data);
+  const result = await axios.post(API_URL + '/Promotion/PromotionDetail', data);
   return result.data;
 }

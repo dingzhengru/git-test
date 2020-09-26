@@ -19,7 +19,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-// import { getPromotionDetail } from '@/api/promotion';
+import { getPromotionDetail } from '@/api/promotion';
 
 import event01 from '@/assets/Y/01/imgs/promotion/event01.jpg';
 export default {
@@ -50,8 +50,15 @@ export default {
     };
   },
   methods: {
-    getPromotionDetail() {
+    async getPromotionDetail() {
       console.log('[GetPromotionDetail]', this.$route.params.id);
+
+      const requestData = { PromotionId: this.$route.params.id };
+      const result = await getPromotionDetail(requestData);
+      console.log('[PromotionDetail]', result);
+      // if (result.Code == 200) {
+      //   console.log('PromotionDetail', result);
+      // }
     },
   },
   watch: {
