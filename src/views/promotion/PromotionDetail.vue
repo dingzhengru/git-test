@@ -6,11 +6,16 @@
     <div class="promotion-detail__main">
       <div
         class="promotion-detail__main__content"
-        v-for="content in contentList"
-        :key="content.name"
+        v-for="promotionDetail in promotionDetailList"
+        :key="promotionDetail.name"
       >
-        <h3 class="promotion-detail__main__content__title">{{ $t(content.title) }}</h3>
-        <div class="promotion-detail__main__content__desc" v-html="content.content"></div>
+        <h3 class="promotion-detail__main__content__title">
+          {{ $t(promotionDetail.ContentTitle) }}
+        </h3>
+        <div
+          class="promotion-detail__main__content__desc"
+          v-html="promotionDetail.ContentHtml"
+        ></div>
       </div>
       <div class="promotion-detail__main__button">
         <button
@@ -37,6 +42,7 @@ export default {
   data() {
     return {
       image: event01,
+      promotionDetailList: [],
       contentList: [
         {
           name: "date",
@@ -64,9 +70,9 @@ export default {
       const requestData = { PromotionId: Number(this.$route.params.id) };
       const result = await getPromotionDetail(requestData);
       console.log("[PromotionDetail]", result);
-      // if (result.Code == 200) {
-      //   console.log('PromotionDetail', result);
-      // }
+      if (result.Code == 200) {
+        this.promotionDetailList = result.RetObj;
+      }
     },
   },
   watch: {
