@@ -100,31 +100,58 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 // import { getContactList } from "@/api/contact";
 
 export default {
-  name: "Contact",
+  name: 'Contact',
   computed: {
-    ...mapGetters(["isLoggedIn", "siteID", "siteFullCss"]),
+    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
   },
   data() {
     return {
       contactList: [
-        { Lst_ContactID: 50, Lst_ContactType: 1, Lst_Enable: false, Lst_Sort: 1 },
-        { Lst_ContactID: 51, Lst_ContactType: 2, Lst_Enable: false, Lst_Sort: 2 },
-        { Lst_ContactID: 52, Lst_ContactType: 3, Lst_Enable: false, Lst_Sort: 3 },
-        { Lst_ContactID: 53, Lst_ContactType: 4, Lst_Enable: false, Lst_Sort: 4 },
-        { Lst_ContactID: 54, Lst_ContactType: 5, Lst_Enable: false, Lst_Sort: 5 },
-        { Lst_ContactID: 55, Lst_ContactType: 6, Lst_Enable: false, Lst_Sort: 6 },
+        {
+          Lst_ContactID: 50,
+          Lst_ContactType: 1,
+          Lst_Enable: true,
+          Lst_Sort: 1,
+          DetailList: [
+            {
+              Lst_ContactValueID: 19,
+              Lst_ContactID: 50,
+              Lst_ContactValue: 'BBBB@msn.com',
+            },
+          ],
+        },
+        {
+          Lst_ContactID: 51,
+          Lst_ContactType: 2,
+          Lst_Enable: true,
+          Lst_Sort: 2,
+          DetailList: [
+            {
+              Lst_ContactValueID: 20,
+              Lst_ContactID: 51,
+              Lst_ContactValue: 'Line00112233',
+            },
+          ],
+        },
+        {
+          Lst_ContactID: 54,
+          Lst_ContactType: 5,
+          Lst_Enable: true,
+          Lst_Sort: 5,
+          DetailList: [],
+        },
       ],
       contactMapper: {
-        1: "skype",
-        2: "line",
-        3: "mobile",
-        4: "email",
-        5: "whoscall",
-        6: "service",
+        1: 'skype',
+        2: 'line',
+        3: 'mobile',
+        4: 'email',
+        5: 'whoscall',
+        6: 'service',
       },
       contact: {
         service: {
@@ -132,25 +159,25 @@ export default {
         },
         facebook: {
           isActive: true,
-          link: "https://www.facebook.com/pg/lionking88.net/posts/?ref=page_internal",
+          link: 'https://www.facebook.com/pg/lionking88.net/posts/?ref=page_internal',
         },
         mobile: {
           isActive: true,
-          telephones: ["085-459-1000", "085-459-2000", "085-459-3000"],
+          telephones: ['085-459-1000', '085-459-2000', '085-459-3000'],
         },
         skype: {
           isActive: true,
-          link: "skype:info.lionking88?call",
+          link: 'skype:info.lionking88?call',
         },
         line: {
           isActive: true,
-          link: "http://line.me/ti/p/tIOnYUNLTa",
-          name: "lionking_88",
+          link: 'http://line.me/ti/p/tIOnYUNLTa',
+          name: 'lionking_88',
         },
         wechat: {
           isActive: true,
-          link: "http://weixin.qq.com/r/7Vbt4gzEXDIjhx2BnwPJ",
-          name: "lionking_88",
+          link: 'http://weixin.qq.com/r/7Vbt4gzEXDIjhx2BnwPJ',
+          name: 'lionking_88',
         },
       },
       isShowMobileTelephones: false,
@@ -158,17 +185,18 @@ export default {
   },
   methods: {
     clickContactHandler(contact) {
-      if (contact.name == "skype") {
-        window.open("skype:info.lionking88?call", "_self");
-      } else if (contact.name == "line") {
-        window.open("http://line.me/ti/p/tIOnYUNLTa", "_self");
-      } else if (contact.name == "mobile") {
+      if (contact.name == 'skype') {
+        window.open(`skype:${contact.DetailList[0].Lst_ContactValue}?call`, '_self');
+        console.log(`skype:${contact.DetailList[0].Lst_ContactValue}?call`);
+      } else if (contact.name == 'line') {
+        window.open(`http://line.me/ti/p/${contact.DetailList[0].Lst_ContactValue}`, '_self');
+      } else if (contact.name == 'mobile') {
         this.isShowContentList = !this.isShowContentList;
-      } else if (contact.name == "email") {
+      } else if (contact.name == 'email') {
         this.isShowContentList = !this.isShowContentList;
-      } else if (contact.name == "whoscall") {
+      } else if (contact.name == 'whoscall') {
         this.isShowContentList = !this.isShowContentList;
-      } else if (contact.name == "service") {
+      } else if (contact.name == 'service') {
         this.isShowContentList = !this.isShowContentList;
       }
     },
@@ -189,18 +217,18 @@ export default {
 
         this.contactList.map(item => {
           item.name = this.contactMapper[item.Lst_ContactType];
-          if (item.name == "skype") {
-            item.class = "contact__content__ul__li__link--skype";
-          } else if (item.name == "line") {
-            item.class = "contact__content__ul__li__link--line";
-          } else if (item.name == "mobile") {
-            item.class = "contact__content__ul__li__link--mobile";
-          } else if (item.name == "email") {
-            item.class = "contact__content__ul__li__link--service";
-          } else if (item.name == "whoscall") {
-            item.class = "contact__content__ul__li__link--service";
-          } else if (item.name == "service") {
-            item.class = "contact__content__ul__li__link--Whoscall";
+          if (item.name == 'skype') {
+            item.class = 'contact__content__ul__li__link--skype';
+          } else if (item.name == 'line') {
+            item.class = 'contact__content__ul__li__link--line';
+          } else if (item.name == 'mobile') {
+            item.class = 'contact__content__ul__li__link--mobile';
+          } else if (item.name == 'email') {
+            item.class = 'contact__content__ul__li__link--service';
+          } else if (item.name == 'whoscall') {
+            item.class = 'contact__content__ul__li__link--service';
+          } else if (item.name == 'service') {
+            item.class = 'contact__content__ul__li__link--Whoscall';
           }
 
           item.isShowContentList = false;
