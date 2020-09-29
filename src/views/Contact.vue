@@ -101,7 +101,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-// import { getContactList } from "@/api/contact";
+import { getContactList } from "@/api/contact";
 
 export default {
   name: 'Contact',
@@ -211,9 +211,13 @@ export default {
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/contact.scss`);
 
-        // const result = await getContactList();
+        const result = await getContactList();
 
-        // console.log("[ContactList]", result);
+        console.log('[ContactList]', result);
+
+        if (result.Code == 200) {
+          this.contactList = result.RetObj.ServiceList;
+        }
 
         this.contactList.map(item => {
           item.name = this.contactMapper[item.Lst_ContactType];
