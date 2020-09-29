@@ -3,8 +3,11 @@
     <div class="contact__content theme-content-box">
       <ul class="contact__content__ul">
         <li class="contact__content__ul__li" v-if="contact.service.isActive">
-          <a href="javascript:;" class="contact__content__ul__li__link contact__content__ul__li__link--service">
-            {{ $t('contact.service') }}
+          <a
+            href="javascript:;"
+            class="contact__content__ul__li__link contact__content__ul__li__link--service"
+          >
+            {{ $t("contact.service") }}
           </a>
         </li>
         <li class="contact__content__ul__li" v-if="contact.facebook.isActive">
@@ -40,7 +43,9 @@
           </transition>
         </li>
         <li class="contact__content__ul__li" v-if="contact.skype.isActive">
-          <a :href="contact.skype.link" class="contact__content__ul__li__link contact__content__ul__li__link--skype"
+          <a
+            :href="contact.skype.link"
+            class="contact__content__ul__li__link contact__content__ul__li__link--skype"
             >Skype</a
           >
         </li>
@@ -53,9 +58,11 @@
           </div>
         </li> -->
         <li class="contact__content__ul__li" v-if="contact.line.isActive">
-          <a :href="contact.line.link" class="contact__content__ul__li__link contact__content__ul__li__link--line">{{
-            contact.line.name
-          }}</a>
+          <a
+            :href="contact.line.link"
+            class="contact__content__ul__li__link contact__content__ul__li__link--line"
+            >{{ contact.line.name }}</a
+          >
         </li>
         <li class="contact__content__ul__li" v-if="contact.wechat.isActive">
           <a
@@ -70,12 +77,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
+import { getContactList } from "@/api/contact";
 
 export default {
-  name: 'Contact',
+  name: "Contact",
   computed: {
-    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
+    ...mapGetters(["isLoggedIn", "siteID", "siteFullCss"]),
   },
   data() {
     return {
@@ -85,25 +93,25 @@ export default {
         },
         facebook: {
           isActive: true,
-          link: 'https://www.facebook.com/pg/lionking88.net/posts/?ref=page_internal',
+          link: "https://www.facebook.com/pg/lionking88.net/posts/?ref=page_internal",
         },
         mobile: {
           isActive: true,
-          telephones: ['085-459-1000', '085-459-2000', '085-459-3000'],
+          telephones: ["085-459-1000", "085-459-2000", "085-459-3000"],
         },
         skype: {
           isActive: true,
-          link: 'skype:info.lionking88?call',
+          link: "skype:info.lionking88?call",
         },
         line: {
           isActive: true,
-          link: 'http://line.me/ti/p/tIOnYUNLTa',
-          name: 'lionking_88',
+          link: "http://line.me/ti/p/tIOnYUNLTa",
+          name: "lionking_88",
         },
         wechat: {
           isActive: true,
-          link: 'http://weixin.qq.com/r/7Vbt4gzEXDIjhx2BnwPJ',
-          name: 'lionking_88',
+          link: "http://weixin.qq.com/r/7Vbt4gzEXDIjhx2BnwPJ",
+          name: "lionking_88",
         },
       },
       isShowMobileTelephones: false,
@@ -112,12 +120,16 @@ export default {
   watch: {
     siteID: {
       immediate: true,
-      handler() {
+      async handler() {
         if (!this.siteID) {
           return;
         }
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/contact.scss`);
+
+        const result = await getContactList();
+
+        console.log(result);
       },
     },
   },
@@ -217,7 +229,6 @@ export default {
 </style>
 
 <style scoped>
-
 /* .contact {
   padding-bottom: 119px;
 }
@@ -274,5 +285,4 @@ export default {
   line-height: 65px;
   display: block;
 } */
-
 </style>
