@@ -807,6 +807,11 @@
     }
   },
   "contact": {
+    "skype": "Skype",
+    "line": "Line",
+    "mobile": "Mobile",
+    "email": "Email",
+    "whoscall": "whoscall",
     "service": "Online Customer Service"
   },
   "about": {

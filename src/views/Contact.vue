@@ -2,7 +2,38 @@
   <div class="contact" :class="{ 'contact-auth': isLoggedIn }">
     <div class="contact__content theme-content-box">
       <ul class="contact__content__ul">
-        <li class="contact__content__ul__li" v-if="contact.service.isActive">
+        <li
+          class="contact__content__ul__li"
+          v-for="contact in contactList"
+          :key="contact.Lst_ContactID"
+        >
+          <a
+            href="javascript:;"
+            class="contact__content__ul__li__link"
+            :class="contact.class"
+            @click.prevent="clickContactHandler(contact)"
+          >
+            {{ $t(`contact.${contact.name}`) }}
+          </a>
+
+          <!-- <transition name="fade">
+            <div
+              class="contact__content__ul__li__block contact__content__ul__li__block--tel"
+              v-if="isShowMobileTelephones"
+            >
+              <a
+                class="contact__content__ul__li__block__link contact__content__ul__li__block__link--tel"
+                :href="`tel:${tel}`"
+                v-for="tel in contact.mobile.telephones"
+                :key="tel"
+              >
+                {{ tel }}
+              </a>
+            </div>
+          </transition> -->
+        </li>
+
+        <!-- <li class="contact__content__ul__li" v-if="contact.service.isActive">
           <a
             href="javascript:;"
             class="contact__content__ul__li__link contact__content__ul__li__link--service"
@@ -49,14 +80,6 @@
             >Skype</a
           >
         </li>
-        <!-- <li class="contact__content__ul__li">
-          <a href="javascript:;" class="contact__content__ul__li__link contact__content__ul__li__link--qq">QQ</a>
-          <div class="contact__content__ul__li__block contact__content__ul__li__block--qq">
-            <a href="tencent://message/?uin=1448366105&amp;Menu=yes" class="contact__content__ul__li__link--qq2">1448366105</a><br />
-            <a href="tencent://message/?uin=1279982976&amp;Menu=yes" class="contact__content__ul__li__link--qq2">1279982976</a><br />
-            <a href="tencent://message/?uin=2272806809&amp;Menu=yes" class="contact__content__ul__li__link--qq2">2272806809</a>
-          </div>
-        </li> -->
         <li class="contact__content__ul__li" v-if="contact.line.isActive">
           <a
             :href="contact.line.link"
@@ -70,7 +93,7 @@
             class="contact__content__ul__li__link contact__content__ul__li__link--wechat"
             >{{ contact.wechat.name }}</a
           >
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
@@ -78,7 +101,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { getContactList } from "@/api/contact";
+// import { getContactList } from "@/api/contact";
 
 export default {
   name: "Contact",
@@ -87,6 +110,22 @@ export default {
   },
   data() {
     return {
+      contactList: [
+        { Lst_ContactID: 50, Lst_ContactType: 1, Lst_Enable: false, Lst_Sort: 1 },
+        { Lst_ContactID: 51, Lst_ContactType: 2, Lst_Enable: false, Lst_Sort: 2 },
+        { Lst_ContactID: 52, Lst_ContactType: 3, Lst_Enable: false, Lst_Sort: 3 },
+        { Lst_ContactID: 53, Lst_ContactType: 4, Lst_Enable: false, Lst_Sort: 4 },
+        { Lst_ContactID: 54, Lst_ContactType: 5, Lst_Enable: false, Lst_Sort: 5 },
+        { Lst_ContactID: 55, Lst_ContactType: 6, Lst_Enable: false, Lst_Sort: 6 },
+      ],
+      contactMapper: {
+        1: "skype",
+        2: "line",
+        3: "mobile",
+        4: "email",
+        5: "whoscall",
+        6: "service",
+      },
       contact: {
         service: {
           isActive: true,
@@ -117,6 +156,23 @@ export default {
       isShowMobileTelephones: false,
     };
   },
+  methods: {
+    clickContactHandler(contact) {
+      if (contact.name == "skype") {
+        window.open("skype:info.lionking88?call", "_self");
+      } else if (contact.name == "line") {
+        window.open("http://line.me/ti/p/tIOnYUNLTa", "_self");
+      } else if (contact.name == "mobile") {
+        this.isShowContentList = !this.isShowContentList;
+      } else if (contact.name == "email") {
+        this.isShowContentList = !this.isShowContentList;
+      } else if (contact.name == "whoscall") {
+        this.isShowContentList = !this.isShowContentList;
+      } else if (contact.name == "service") {
+        this.isShowContentList = !this.isShowContentList;
+      }
+    },
+  },
   watch: {
     siteID: {
       immediate: true,
@@ -127,9 +183,29 @@ export default {
         // * 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/contact.scss`);
 
-        const result = await getContactList();
+        // const result = await getContactList();
 
-        console.log(result);
+        // console.log("[ContactList]", result);
+
+        this.contactList.map(item => {
+          item.name = this.contactMapper[item.Lst_ContactType];
+          if (item.name == "skype") {
+            item.class = "contact__content__ul__li__link--skype";
+          } else if (item.name == "line") {
+            item.class = "contact__content__ul__li__link--line";
+          } else if (item.name == "mobile") {
+            item.class = "contact__content__ul__li__link--mobile";
+          } else if (item.name == "email") {
+            item.class = "contact__content__ul__li__link--service";
+          } else if (item.name == "whoscall") {
+            item.class = "contact__content__ul__li__link--service";
+          } else if (item.name == "service") {
+            item.class = "contact__content__ul__li__link--Whoscall";
+          }
+
+          item.isShowContentList = false;
+          return item;
+        });
       },
     },
   },
