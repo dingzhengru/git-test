@@ -96,6 +96,10 @@
         </li> -->
       </ul>
     </div>
+
+    <transition name="slide">
+      <ContactServiceDialog v-if="isShowServiceDialog" @close="isShowServiceDialog = false" />
+    </transition>
   </div>
 </template>
 
@@ -105,6 +109,9 @@ import { getContactList } from '@/api/contact';
 
 export default {
   name: 'Contact',
+  components: {
+    ContactServiceDialog: () => import('@/components/contact/ContactServiceDialog'),
+  },
   computed: {
     ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
   },
@@ -181,10 +188,12 @@ export default {
         },
       },
       isShowMobileTelephones: false,
+      isShowServiceDialog: false,
     };
   },
   methods: {
     clickContactHandler(contact) {
+      this.isShowServiceDialog = true;
       if (contact.name == 'skype') {
         window.open(`skype:${contact.DetailList[0].Lst_ContactValue}?call`, '_self');
         console.log(`skype:${contact.DetailList[0].Lst_ContactValue}?call`);
@@ -195,9 +204,9 @@ export default {
       } else if (contact.name == 'email') {
         window.open(`mailto:${contact.DetailList[0].Lst_ContactValue}`, '_self');
       } else if (contact.name == 'wechat') {
-        this.isShowContentList = !this.isShowContentList;
+        window.open(`weixin://dl/chat?${contact.DetailList[0].Lst_ContactValue}`);
       } else if (contact.name == 'service') {
-        this.isShowContentList = !this.isShowContentList;
+        this.isShowServiceDialog = true;
       }
     },
   },
@@ -256,6 +265,17 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.5s ease;
+}
+
+.slide-enter,
+.slide-leave-to {
+  // opacity: 0;
+  transform: translateY(100%);
 }
 
 .contact {
