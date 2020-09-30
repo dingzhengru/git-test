@@ -198,7 +198,11 @@ export default {
       if (contact.name == 'service') {
         this.isShowServiceDialog = true;
       } else {
-        this.contactList.forEach(item => (item.isShowContentList = false));
+        this.contactList.forEach(item => {
+          if (item.Lst_ContactID != contact.Lst_ContactID) {
+            item.isShowContentList = false;
+          }
+        });
         contact.isShowContentList = !contact.isShowContentList;
         this.$forceUpdate();
       }
