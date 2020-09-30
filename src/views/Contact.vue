@@ -117,41 +117,7 @@ export default {
   },
   data() {
     return {
-      contactList: [
-        {
-          Lst_ContactID: 50,
-          Lst_ContactType: 1,
-          Lst_Enable: true,
-          Lst_Sort: 1,
-          DetailList: [
-            {
-              Lst_ContactValueID: 19,
-              Lst_ContactID: 50,
-              Lst_ContactValue: 'BBBB@msn.com',
-            },
-          ],
-        },
-        {
-          Lst_ContactID: 51,
-          Lst_ContactType: 2,
-          Lst_Enable: true,
-          Lst_Sort: 2,
-          DetailList: [
-            {
-              Lst_ContactValueID: 20,
-              Lst_ContactID: 51,
-              Lst_ContactValue: 'Line00112233',
-            },
-          ],
-        },
-        {
-          Lst_ContactID: 54,
-          Lst_ContactType: 5,
-          Lst_Enable: true,
-          Lst_Sort: 5,
-          DetailList: [],
-        },
-      ],
+      contactList: [],
       contactMapper: {
         1: 'skype',
         2: 'line',
@@ -160,33 +126,33 @@ export default {
         5: 'wechat',
         6: 'service',
       },
-      contact: {
-        service: {
-          isActive: true,
-        },
-        facebook: {
-          isActive: true,
-          link: 'https://www.facebook.com/pg/lionking88.net/posts/?ref=page_internal',
-        },
-        mobile: {
-          isActive: true,
-          telephones: ['085-459-1000', '085-459-2000', '085-459-3000'],
-        },
-        skype: {
-          isActive: true,
-          link: 'skype:info.lionking88?call',
-        },
-        line: {
-          isActive: true,
-          link: 'http://line.me/ti/p/tIOnYUNLTa',
-          name: 'lionking_88',
-        },
-        wechat: {
-          isActive: true,
-          link: 'http://weixin.qq.com/r/7Vbt4gzEXDIjhx2BnwPJ',
-          name: 'lionking_88',
-        },
-      },
+      // contact: {
+      //   service: {
+      //     isActive: true,
+      //   },
+      //   facebook: {
+      //     isActive: true,
+      //     link: 'https://www.facebook.com/pg/lionking88.net/posts/?ref=page_internal',
+      //   },
+      //   mobile: {
+      //     isActive: true,
+      //     telephones: ['085-459-1000', '085-459-2000', '085-459-3000'],
+      //   },
+      //   skype: {
+      //     isActive: true,
+      //     link: 'skype:info.lionking88?call',
+      //   },
+      //   line: {
+      //     isActive: true,
+      //     link: 'http://line.me/ti/p/tIOnYUNLTa',
+      //     name: 'lionking_88',
+      //   },
+      //   wechat: {
+      //     isActive: true,
+      //     link: 'http://weixin.qq.com/r/7Vbt4gzEXDIjhx2BnwPJ',
+      //     name: 'lionking_88',
+      //   },
+      // },
       isShowMobileTelephones: false,
       isShowServiceDialog: false,
     };
