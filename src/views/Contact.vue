@@ -193,7 +193,6 @@ export default {
   },
   methods: {
     clickContactHandler(contact) {
-      this.isShowServiceDialog = true;
       if (contact.name == 'skype') {
         window.open(`skype:${contact.DetailList[0].Lst_ContactValue}?call`, '_self');
         console.log(`skype:${contact.DetailList[0].Lst_ContactValue}?call`);
