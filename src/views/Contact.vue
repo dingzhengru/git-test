@@ -204,9 +204,9 @@ export default {
           } else if (item.name == 'email') {
             item.class = 'contact__content__ul__li__link--service';
           } else if (item.name == 'wechat') {
-            item.class = 'contact__content__ul__li__link--service';
-          } else if (item.name == 'service') {
             item.class = 'contact__content__ul__li__link--wechat';
+          } else if (item.name == 'service') {
+            item.class = 'contact__content__ul__li__link--service';
           }
 
           item.isShowContentList = false;
