@@ -257,19 +257,7 @@ export default {
         this.contactList = this.contactList.map(item => {
           item.name = this.contactMapper[item.Lst_ContactType];
           item.isShowContentList = false;
-          if (item.name == 'skype') {
-            item.class = 'contact__content__ul__li__link--skype';
-          } else if (item.name == 'line') {
-            item.class = 'contact__content__ul__li__link--line';
-          } else if (item.name == 'mobile') {
-            item.class = 'contact__content__ul__li__link--mobile';
-          } else if (item.name == 'email') {
-            item.class = 'contact__content__ul__li__link--service';
-          } else if (item.name == 'wechat') {
-            item.class = 'contact__content__ul__li__link--wechat';
-          } else if (item.name == 'service') {
-            item.class = 'contact__content__ul__li__link--service';
-          }
+          item.class = `contact__content__ul__li__link--${item.name}`;
           return item;
         });
       },
@@ -377,6 +365,9 @@ export default {
   }
   &--facebook {
     background-image: url(~@/assets/common/imgs/main/FacebookBg.png);
+  }
+  &--email {
+    background-image: url(~@/assets/common/imgs/main/mail.png);
   }
 }
 </style>
