@@ -221,13 +221,11 @@ export default {
       } else if (contact.name == 'line') {
         window.open(`http://line.me/ti/p/${content.Lst_ContactValue}`, '_self');
       } else if (contact.name == 'mobile') {
-        this.isShowContentList = !this.isShowContentList;
+        window.open(`tel:${content.Lst_ContactValue}`, '_self');
       } else if (contact.name == 'email') {
         window.open(`mailto:${content.Lst_ContactValue}`, '_self');
       } else if (contact.name == 'wechat') {
         window.open(`weixin://dl/chat?${content.Lst_ContactValue}`);
-      } else if (contact.name == 'service') {
-        this.isShowServiceDialog = true;
       }
     },
   },
