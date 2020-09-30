@@ -264,64 +264,13 @@ export default {
   &--email {
     background-image: url(~@/assets/common/imgs/main/mail.png);
   }
-}
-</style>
 
-<style scoped>
-/* .contact {
-  padding-bottom: 119px;
-}
+  &--mobile--jp168 {
+    background-image: url(~@/assets/common/imgs/main/mobileBg--jp168.png);
+  }
 
-.contact-auth {
-  padding-top: 88px;
+  &--line--jp168 {
+    background-image: url(~@/assets/common/imgs/main/lineBg--jp168.png);
+  }
 }
-
-.contact__content {
-  margin: 80px;
-}
-
-.contact__content__ul {
-  padding: 0;
-  margin: 0;
-}
-
-.contact__content__ul__li {
-  display: inline-block;
-  margin: 31px 20px;
-  vertical-align: top;
-  position: relative;
-}
-
-.contact__content__ul__li__link {
-  display: block;
-  width: 198px;
-  background-repeat: no-repeat;
-  background-position: center top;
-  padding-top: 115px;
-  font-size: 2.461em;
-  text-align: center;
-  word-break: break-all;
-}
-
-.contact__content__ul__li__block--qq,
-.contact__content__ul__li__block--skype,
-.contact__content__ul__li__block--tel {
-  width: 328px;
-  height: 286px;
-  text-align: center;
-  position: absolute;
-  top: 165px;
-  left: -99px;
-  z-index: 2;
-}
-.contact__content__ul__li__link--qq2,
-.contact__content__ul__li__link--skype2 {
-  font-size: 3.23em;
-  line-height: 95px;
-}
-.contact__content__ul__li__block__link {
-  font-size: 2.461em;
-  line-height: 65px;
-  display: block;
-} */
 </style>
