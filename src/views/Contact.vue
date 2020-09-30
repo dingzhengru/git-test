@@ -198,7 +198,9 @@ export default {
       if (contact.name == 'service') {
         this.isShowServiceDialog = true;
       } else {
+        this.contactList.forEach(item => (item.isShowContentList = false));
         contact.isShowContentList = !contact.isShowContentList;
+        this.$forceUpdate();
       }
       // if (contact.name == 'skype') {
       //   // window.open(`skype:${contact.DetailList[0].Lst_ContactValue}?call`, '_self');
