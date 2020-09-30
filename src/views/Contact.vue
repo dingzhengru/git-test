@@ -16,21 +16,21 @@
             {{ $t(`contact.${contact.name}`) }}
           </a>
 
-          <!-- <transition name="fade">
+          <transition name="fade">
             <div
               class="contact__content__ul__li__block contact__content__ul__li__block--tel"
-              v-if="isShowMobileTelephones"
+              v-if="contact.isShowContentList && contact.DetailList.length > 0"
             >
               <a
                 class="contact__content__ul__li__block__link contact__content__ul__li__block__link--tel"
-                :href="`tel:${tel}`"
-                v-for="tel in contact.mobile.telephones"
-                :key="tel"
+                :href="`tel:${content.Lst_ContactValue}`"
+                v-for="content in contact.DetailList"
+                :key="content.Lst_ContactValueID"
               >
-                {{ tel }}
+                {{ content.Lst_ContactValue }}
               </a>
             </div>
-          </transition> -->
+          </transition>
         </li>
 
         <!-- <li class="contact__content__ul__li" v-if="contact.service.isActive">
@@ -101,7 +101,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getContactList } from "@/api/contact";
+import { getContactList } from '@/api/contact';
 
 export default {
   name: 'Contact',
@@ -150,7 +150,7 @@ export default {
         2: 'line',
         3: 'mobile',
         4: 'email',
-        5: 'whoscall',
+        5: 'wechat',
         6: 'service',
       },
       contact: {
@@ -193,8 +193,8 @@ export default {
       } else if (contact.name == 'mobile') {
         this.isShowContentList = !this.isShowContentList;
       } else if (contact.name == 'email') {
-        this.isShowContentList = !this.isShowContentList;
-      } else if (contact.name == 'whoscall') {
+        window.open(`mailto:${contact.DetailList[0].Lst_ContactValue}`, '_self');
+      } else if (contact.name == 'wechat') {
         this.isShowContentList = !this.isShowContentList;
       } else if (contact.name == 'service') {
         this.isShowContentList = !this.isShowContentList;
@@ -229,10 +229,10 @@ export default {
             item.class = 'contact__content__ul__li__link--mobile';
           } else if (item.name == 'email') {
             item.class = 'contact__content__ul__li__link--service';
-          } else if (item.name == 'whoscall') {
+          } else if (item.name == 'wechat') {
             item.class = 'contact__content__ul__li__link--service';
           } else if (item.name == 'service') {
-            item.class = 'contact__content__ul__li__link--Whoscall';
+            item.class = 'contact__content__ul__li__link--wechat';
           }
 
           item.isShowContentList = false;
