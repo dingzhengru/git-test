@@ -105,7 +105,6 @@ export default {
   },
   methods: {
     clickContactHandler(contact) {
-      console.log(contact.isShowContentList);
       if (contact.name == 'service') {
         this.isShowServiceDialog = true;
       } else {
