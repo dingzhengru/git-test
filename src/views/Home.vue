@@ -105,7 +105,6 @@ import { getMessageList } from '@/api/alert';
 import { getLotteryCount, playLottery, playLotteryResult } from '@/api/lottery';
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 import idMapper from '@/idMapper';
-import { handlePromotion } from '@/utils/promotion';
 
 //* 轉盤遊戲的圖片
 import lotteryLoadingImage from '@/assets/common/imgs/lottery/loading.svg';
@@ -280,24 +279,21 @@ export default {
     openBanner(banner) {
       console.log('[BannerOpen]', banner);
 
-      handlePromotion(banner);
-
-      // const bannerType = this.isLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
-      // const bannerUrl = this.isLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
-      // if (promotion.Lst_LinkType == 0) {
-      //   window.open(banner.Lst_LinkUrl, banner.Lst_Target);
-      // } else if (bannerType == 1) {
-      //   window.open(banner.Lst_LinkUrl, banner.Lst_Target);
-      // } else if (bannerType == 2) {
-      //   if (bannerUrl > 0) {
-      //     this.$router.push({
-      //       name: 'PromotionDetail',
-      //       params: { id: bannerUrl },
-      //     });
-      //   } else {
-      //     this.$router.push({ name: 'Promotion' });
-      //   }
-      // }
+      const bannerType = this.isLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
+      const bannerUrl = this.isLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
+      
+      if (bannerType == 1) {
+        window.open(banner.Lst_LinkUrl, banner.Lst_Target);
+      } else if (bannerType == 2 || bannerType == 0) {
+        if (bannerUrl > 0) {
+          this.$router.push({
+            name: 'PromotionDetail',
+            params: { id: bannerUrl },
+          });
+        } else {
+          this.$router.push({ name: 'Promotion' });
+        }
+      }
     },
     async handleGameLink(game) {
       /*
