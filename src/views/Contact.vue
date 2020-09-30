@@ -194,6 +194,7 @@ export default {
   },
   methods: {
     clickContactHandler(contact) {
+      console.log(contact.isShowContentList);
       if (contact.name == 'service') {
         this.isShowServiceDialog = true;
       } else {
@@ -247,8 +248,9 @@ export default {
           this.contactList = result.RetObj.ServiceList;
         }
 
-        this.contactList.map(item => {
+        this.contactList = this.contactList.map(item => {
           item.name = this.contactMapper[item.Lst_ContactType];
+          item.isShowContentList = false;
           if (item.name == 'skype') {
             item.class = 'contact__content__ul__li__link--skype';
           } else if (item.name == 'line') {
@@ -262,8 +264,6 @@ export default {
           } else if (item.name == 'service') {
             item.class = 'contact__content__ul__li__link--service';
           }
-
-          item.isShowContentList = false;
           return item;
         });
       },
