@@ -13,13 +13,13 @@
             :class="contact.class"
             @click.prevent="clickContactHandler(contact)"
           >
-            {{ $t(`contact.${contact.name}`) }} {{ contact.isShowContentList }}
+            {{ $t(`contact.${contact.name}`) }}
           </a>
 
           <transition name="fade">
             <div
               class="contact__content__ul__li__block contact__content__ul__li__block--tel"
-              v-if="contact.isShowContentList"
+              v-if="contact.isShowContentList && contact.DetailList.length > 0"
             >
               <a
                 class="contact__content__ul__li__block__link contact__content__ul__li__block__link--tel"
@@ -33,68 +33,6 @@
             </div>
           </transition>
         </li>
-
-        <!-- <li class="contact__content__ul__li" v-if="contact.service.isActive">
-          <a
-            href="javascript:;"
-            class="contact__content__ul__li__link contact__content__ul__li__link--service"
-          >
-            {{ $t("contact.service") }}
-          </a>
-        </li>
-        <li class="contact__content__ul__li" v-if="contact.facebook.isActive">
-          <a
-            :href="contact.facebook.link"
-            target="_blank"
-            class="contact__content__ul__li__link contact__content__ul__li__link--facebook"
-            >Facebook</a
-          >
-        </li>
-        <li class="contact__content__ul__li" v-if="contact.mobile.isActive">
-          <a
-            href="javascript:;"
-            class="contact__content__ul__li__link contact__content__ul__li__link--mobile"
-            @click="isShowMobileTelephones = !isShowMobileTelephones"
-            @blur="isShowMobileTelephones = false"
-            >Mobile</a
-          >
-          <transition name="fade">
-            <div
-              class="contact__content__ul__li__block contact__content__ul__li__block--tel"
-              v-if="isShowMobileTelephones"
-            >
-              <a
-                class="contact__content__ul__li__block__link contact__content__ul__li__block__link--tel"
-                :href="`tel:${tel}`"
-                v-for="tel in contact.mobile.telephones"
-                :key="tel"
-              >
-                {{ tel }}
-              </a>
-            </div>
-          </transition>
-        </li>
-        <li class="contact__content__ul__li" v-if="contact.skype.isActive">
-          <a
-            :href="contact.skype.link"
-            class="contact__content__ul__li__link contact__content__ul__li__link--skype"
-            >Skype</a
-          >
-        </li>
-        <li class="contact__content__ul__li" v-if="contact.line.isActive">
-          <a
-            :href="contact.line.link"
-            class="contact__content__ul__li__link contact__content__ul__li__link--line"
-            >{{ contact.line.name }}</a
-          >
-        </li>
-        <li class="contact__content__ul__li" v-if="contact.wechat.isActive">
-          <a
-            :href="contact.wechat.link"
-            class="contact__content__ul__li__link contact__content__ul__li__link--wechat"
-            >{{ contact.wechat.name }}</a
-          >
-        </li> -->
       </ul>
     </div>
 
@@ -161,33 +99,6 @@ export default {
         5: 'wechat',
         6: 'service',
       },
-      // contact: {
-      //   service: {
-      //     isActive: true,
-      //   },
-      //   facebook: {
-      //     isActive: true,
-      //     link: 'https://www.facebook.com/pg/lionking88.net/posts/?ref=page_internal',
-      //   },
-      //   mobile: {
-      //     isActive: true,
-      //     telephones: ['085-459-1000', '085-459-2000', '085-459-3000'],
-      //   },
-      //   skype: {
-      //     isActive: true,
-      //     link: 'skype:info.lionking88?call',
-      //   },
-      //   line: {
-      //     isActive: true,
-      //     link: 'http://line.me/ti/p/tIOnYUNLTa',
-      //     name: 'lionking_88',
-      //   },
-      //   wechat: {
-      //     isActive: true,
-      //     link: 'http://weixin.qq.com/r/7Vbt4gzEXDIjhx2BnwPJ',
-      //     name: 'lionking_88',
-      //   },
-      // },
       isShowMobileTelephones: false,
       isShowServiceDialog: false,
     };
@@ -206,21 +117,6 @@ export default {
         contact.isShowContentList = !contact.isShowContentList;
         this.$forceUpdate();
       }
-      // if (contact.name == 'skype') {
-      //   // window.open(`skype:${contact.DetailList[0].Lst_ContactValue}?call`, '_self');
-      //   contact.isShowContentList = !contact.isShowContentList;
-      // } else if (contact.name == 'line') {
-      //   // window.open(`http://line.me/ti/p/${contact.DetailList[0].Lst_ContactValue}`, '_self');
-      //   contact.isShowContentList = !contact.isShowContentList;
-      // } else if (contact.name == 'mobile') {
-      //   contact.isShowContentList = !contact.isShowContentList;
-      // } else if (contact.name == 'email') {
-      //   window.open(`mailto:${contact.DetailList[0].Lst_ContactValue}`, '_self');
-      // } else if (contact.name == 'wechat') {
-      //   window.open(`weixin://dl/chat?${contact.DetailList[0].Lst_ContactValue}`);
-      // } else if (contact.name == 'service') {
-      //   this.isShowServiceDialog = true;
-      // }
     },
     openContactLink(contact, content) {
       if (contact.name == 'skype') {
