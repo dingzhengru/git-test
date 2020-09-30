@@ -22,8 +22,8 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getPromotionList } from '@/api/promotion';
-import { isIos, openNewWindowURL } from '@/utils/device';
-// import event01 from '@/assets/Y/01/imgs/promotion/event01.jpg';
+// import { isIos, openNewWindowURL } from '@/utils/device';
+import { handlePromotion } from '@/utils/promotion';
 
 export default {
   name: 'Promotion',
@@ -49,18 +49,20 @@ export default {
     async goPromotionDetail(promotion) {
       console.log('[GoPromotionDetail]', promotion);
 
-      if (promotion.Lst_LinkType == 1) {
-        let newWindow;
-        if (isIos()) {
-          newWindow = window.open();
-        }
-        openNewWindowURL(newWindow, promotion.Lst_LinkUrl);
-      } else if (promotion.Lst_LinkType == 2) {
-        this.$router.push({
-          name: 'PromotionDetail',
-          params: { id: promotion.Lst_PromotionID },
-        });
-      }
+      handlePromotion(promotion);
+
+      // if (promotion.Lst_LinkType == 1) {
+      //   let newWindow;
+      //   if (isIos()) {
+      //     newWindow = window.open();
+      //   }
+      //   openNewWindowURL(newWindow, promotion.Lst_LinkUrl);
+      // } else if (promotion.Lst_LinkType == 2 || promotion.Lst_LinkType == 0) {
+      //   this.$router.push({
+      //     name: 'PromotionDetail',
+      //     params: { id: promotion.Lst_PromotionID },
+      //   });
+      // }
     },
   },
   watch: {

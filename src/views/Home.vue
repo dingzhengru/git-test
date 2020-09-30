@@ -8,7 +8,11 @@
     />
 
     <div class="home-game">
-      <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="isLoggedIn" />
+      <HomeLotteryGameBlock
+        :lotteryList="lotteryList"
+        @openLotteryGame="openLotteryGame"
+        v-if="isLoggedIn"
+      />
 
       <HomeGameBlock
         :list="productList"
@@ -18,7 +22,11 @@
       />
     </div>
     <transition name="fade">
-      <div :id="idMapper.home.noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
+      <div
+        :id="idMapper.home.noneLoginPopup"
+        class="noneLoginPopup"
+        v-if="isShowNoneLoginPopup"
+      ></div>
     </transition>
 
     <div class="Box" v-if="isShowAlertBox && alertMessageList.length > 0">
@@ -32,7 +40,11 @@
       </div>
     </div>
 
-    <div class="ui-overlay" v-if="isShowWinWheel || isShowRedEnvelope" @click.self="closeLotteryGame"></div>
+    <div
+      class="ui-overlay"
+      v-if="isShowWinWheel || isShowRedEnvelope"
+      @click.self="closeLotteryGame"
+    ></div>
     <div class="wheel-container" v-show="isShowWinWheel">
       <!-- <div class="ui-box-close"  @click="closeLotteryGame"></div> -->
       <WinWheel
@@ -46,7 +58,9 @@
         @startHandler="startHandlerWheel"
       >
         <template v-slot:game-chance>
-          <div class="acticityWinwheel__title">{{ $t('home.lottery.winWheel.homeTitle', { count: gameChance }) }}</div>
+          <div class="acticityWinwheel__title">
+            {{ $t('home.lottery.winWheel.homeTitle', { count: gameChance }) }}
+          </div>
         </template>
         <template v-slot:game-dialog>
           <!-- <div class="acticityWinwheel__result">恭喜獲得</div> -->
@@ -91,6 +105,7 @@ import { getMessageList } from '@/api/alert';
 import { getLotteryCount, playLottery, playLotteryResult } from '@/api/lottery';
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 import idMapper from '@/idMapper';
+import { handlePromotion } from '@/utils/promotion';
 
 //* 轉盤遊戲的圖片
 import lotteryLoadingImage from '@/assets/common/imgs/lottery/loading.svg';
@@ -116,7 +131,14 @@ export default {
     RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'isLoggedIn', 'resourceUrl', 'siteIsNewPromotion']),
+    ...mapGetters([
+      'siteID',
+      'siteFullCss',
+      'lang',
+      'isLoggedIn',
+      'resourceUrl',
+      'siteIsNewPromotion',
+    ]),
   },
   data() {
     return {
@@ -258,21 +280,24 @@ export default {
     openBanner(banner) {
       console.log('[BannerOpen]', banner);
 
-      const bannerType = this.isLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
-      const bannerUrl = this.isLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
+      handlePromotion(banner);
 
-      if (bannerType == 1) {
-        window.open(banner.Lst_LinkUrl, banner.Lst_Target);
-      } else if (bannerType == 2) {
-        if (bannerUrl > 0) {
-          this.$router.push({
-            name: 'PromotionDetail',
-            params: { id: bannerUrl },
-          });
-        } else {
-          this.$router.push({ name: 'Promotion' });
-        }
-      }
+      // const bannerType = this.isLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
+      // const bannerUrl = this.isLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
+      // if (promotion.Lst_LinkType == 0) {
+      //   window.open(banner.Lst_LinkUrl, banner.Lst_Target);
+      // } else if (bannerType == 1) {
+      //   window.open(banner.Lst_LinkUrl, banner.Lst_Target);
+      // } else if (bannerType == 2) {
+      //   if (bannerUrl > 0) {
+      //     this.$router.push({
+      //       name: 'PromotionDetail',
+      //       params: { id: bannerUrl },
+      //     });
+      //   } else {
+      //     this.$router.push({ name: 'Promotion' });
+      //   }
+      // }
     },
     async handleGameLink(game) {
       /*
@@ -288,7 +313,11 @@ export default {
       if (game.GetGameRedirectUrl == false) {
         this.$router.push({
           name: 'GameLobby',
-          params: { type: game.Lst_Game_Classify, id: game.Lst_Product_id, key: game.Lst_Proxy_Product_Key },
+          params: {
+            type: game.Lst_Game_Classify,
+            id: game.Lst_Product_id,
+            key: game.Lst_Proxy_Product_Key,
+          },
           query: { category: '' },
         });
       } else if (game.GetGameRedirectUrl == true) {
@@ -363,7 +392,8 @@ export default {
             let prizeApiList = [];
 
             data.prizesList.map((item, index) => {
-              let bgColor = index % 2 == 0 ? this.wheelStyle.wheelColor1 : this.wheelStyle.wheelColor2;
+              let bgColor =
+                index % 2 == 0 ? this.wheelStyle.wheelColor1 : this.wheelStyle.wheelColor2;
               prizeApiList[index] = {
                 image: item.Lst_ImageUrl,
                 text: item.Lst_PrizeName,
