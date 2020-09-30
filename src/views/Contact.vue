@@ -13,19 +13,20 @@
             :class="contact.class"
             @click.prevent="clickContactHandler(contact)"
           >
-            {{ $t(`contact.${contact.name}`) }}
+            {{ $t(`contact.${contact.name}`) }} {{ contact.isShowContentList }}
           </a>
 
           <transition name="fade">
             <div
               class="contact__content__ul__li__block contact__content__ul__li__block--tel"
-              v-if="contact.isShowContentList && contact.DetailList.length > 0"
+              v-if="contact.isShowContentList"
             >
               <a
                 class="contact__content__ul__li__block__link contact__content__ul__li__block__link--tel"
-                :href="`tel:${content.Lst_ContactValue}`"
+                href="javascript:;"
                 v-for="content in contact.DetailList"
                 :key="content.Lst_ContactValueID"
+                @click.prevent="openContactLink(contact, content)"
               >
                 {{ content.Lst_ContactValue }}
               </a>
@@ -117,7 +118,41 @@ export default {
   },
   data() {
     return {
-      contactList: [],
+      contactList: [
+        {
+          Lst_ContactID: 50,
+          Lst_ContactType: 1,
+          Lst_Enable: true,
+          Lst_Sort: 1,
+          DetailList: [
+            {
+              Lst_ContactValueID: 19,
+              Lst_ContactID: 50,
+              Lst_ContactValue: 'BBBB@msn.com',
+            },
+          ],
+        },
+        {
+          Lst_ContactID: 51,
+          Lst_ContactType: 2,
+          Lst_Enable: true,
+          Lst_Sort: 2,
+          DetailList: [
+            {
+              Lst_ContactValueID: 20,
+              Lst_ContactID: 51,
+              Lst_ContactValue: 'Line00112233',
+            },
+          ],
+        },
+        {
+          Lst_ContactID: 54,
+          Lst_ContactType: 5,
+          Lst_Enable: true,
+          Lst_Sort: 5,
+          DetailList: [],
+        },
+      ],
       contactMapper: {
         1: 'skype',
         2: 'line',
@@ -159,17 +194,38 @@ export default {
   },
   methods: {
     clickContactHandler(contact) {
+      if (contact.name == 'service') {
+        this.isShowServiceDialog = true;
+      } else {
+        contact.isShowContentList = !contact.isShowContentList;
+      }
+      // if (contact.name == 'skype') {
+      //   // window.open(`skype:${contact.DetailList[0].Lst_ContactValue}?call`, '_self');
+      //   contact.isShowContentList = !contact.isShowContentList;
+      // } else if (contact.name == 'line') {
+      //   // window.open(`http://line.me/ti/p/${contact.DetailList[0].Lst_ContactValue}`, '_self');
+      //   contact.isShowContentList = !contact.isShowContentList;
+      // } else if (contact.name == 'mobile') {
+      //   contact.isShowContentList = !contact.isShowContentList;
+      // } else if (contact.name == 'email') {
+      //   window.open(`mailto:${contact.DetailList[0].Lst_ContactValue}`, '_self');
+      // } else if (contact.name == 'wechat') {
+      //   window.open(`weixin://dl/chat?${contact.DetailList[0].Lst_ContactValue}`);
+      // } else if (contact.name == 'service') {
+      //   this.isShowServiceDialog = true;
+      // }
+    },
+    openContactLink(contact, content) {
       if (contact.name == 'skype') {
-        window.open(`skype:${contact.DetailList[0].Lst_ContactValue}?call`, '_self');
-        console.log(`skype:${contact.DetailList[0].Lst_ContactValue}?call`);
+        window.open(`skype:${content.Lst_ContactValue}?call`, '_self');
       } else if (contact.name == 'line') {
-        window.open(`http://line.me/ti/p/${contact.DetailList[0].Lst_ContactValue}`, '_self');
+        window.open(`http://line.me/ti/p/${content.Lst_ContactValue}`, '_self');
       } else if (contact.name == 'mobile') {
         this.isShowContentList = !this.isShowContentList;
       } else if (contact.name == 'email') {
-        window.open(`mailto:${contact.DetailList[0].Lst_ContactValue}`, '_self');
+        window.open(`mailto:${content.Lst_ContactValue}`, '_self');
       } else if (contact.name == 'wechat') {
-        window.open(`weixin://dl/chat?${contact.DetailList[0].Lst_ContactValue}`);
+        window.open(`weixin://dl/chat?${content.Lst_ContactValue}`);
       } else if (contact.name == 'service') {
         this.isShowServiceDialog = true;
       }
