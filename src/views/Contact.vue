@@ -107,9 +107,8 @@ export default {
     clickContactHandler(contact) {
       if (contact.name == 'service') {
         // this.isShowServiceDialog = true;
-        console.log('Run', contact.Js_Code);
-        
-        window.eval(contact.Js_Code);
+
+        // window.eval(contact.Js_Code);
 
         if ($zopim.livechat.window.getDisplay() == false) {
           $zopim.livechat.window.toggle();
@@ -191,6 +190,13 @@ export default {
           item.class = `contact__content__ul__li__link--${item.name}`;
           return item;
         });
+
+        // 確認是否有 service 在，在的話就執行 jscode
+        const contactService = this.contactList.find(item => item.name == 'service');
+        if (contactService) {
+          console.log('[Run Js]', contactService.Js_Code);
+          window.eval(contactService.Js_Code);
+        }
       },
     },
   },
