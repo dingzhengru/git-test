@@ -117,14 +117,9 @@ export default {
 
         //* ze-snippet
         console.log('[zE]', zE);
-        zE.show();
-        // if (zE('webWidget:get', 'display') == false) {
-        //   zE('webWidget', 'toggle');
-
-        //   // $('#Embed').show();
-        // } else {
-        //   zE('webWidget', 'toggle');
-        // }
+        if (zE('webWidget:get', 'display') == false) {
+          zE('webWidget', 'show');
+        }
 
         //* 這邊的判斷與內容是直接照舊版的
         // if (contact.Js_Type == 'zopim') {
@@ -233,6 +228,11 @@ export default {
             console.log('[zE]', zE);
 
             if (zE) {
+              window.zESettings = {
+                mobile: {
+                  labelVisible: false,
+                },
+              };
               console.log(document.querySelector('#Embed'));
               // document.querySelector('#Embed').style.display = 'none';
               clearInterval(zeInterval);
