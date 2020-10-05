@@ -194,6 +194,7 @@ export default {
           return item;
         });
 
+        /*eslint-disable no-undef*/
         // 確認是否有 service 在，在的話就執行 jscode
         const contactService = this.contactList.find(item => item.name == 'service');
         if (contactService) {
@@ -203,7 +204,7 @@ export default {
           setTimeout(() => {
             $zopim.livechat.hideAll();
           }, 300);
-        }
+        } /*eslint-enable no-undef*/
       },
     },
   },
