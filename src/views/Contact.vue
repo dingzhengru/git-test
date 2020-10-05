@@ -202,8 +202,9 @@ export default {
           window.eval(contactService.Js_Code);
 
           setTimeout(() => {
+            console.log('$zopim.livechat.hideAll()');
             $zopim.livechat.hideAll();
-          }, 300);
+          }, 1000);
         } /*eslint-enable no-undef*/
       },
     },
