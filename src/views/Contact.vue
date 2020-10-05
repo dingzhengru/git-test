@@ -233,7 +233,8 @@ export default {
             console.log('[zE]', zE);
 
             if (zE) {
-              document.querySelector('#Embed').style.display = 'none';
+              console.log(document.querySelector('#Embed'));
+              // document.querySelector('#Embed').style.display = 'none';
               clearInterval(zeInterval);
             }
           }, 500);
