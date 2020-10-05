@@ -206,7 +206,13 @@ export default {
           // }, 500);
 
           //* ze-snippet
-          document.querySelector('head').append(contactService.Js_Code);
+          // const jsSrc = jscode.split('src="')[1].split('"')[0]
+          const jsSrc =
+            'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
+
+          const scriptElement = document.createElement('script');
+          scriptElement.src = jsSrc;
+          document.querySelector('head').append(scriptElement);
         }
         /*eslint-enable no-undef*/
       },
