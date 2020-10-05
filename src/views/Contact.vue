@@ -109,9 +109,21 @@ export default {
         // this.isShowServiceDialog = true;
         // window.eval(contact.Js_Code);
         /*eslint-disable no-undef*/
+
+        //* zopim
         // if ($zopim && $zopim.livechat.window.getDisplay() == false) {
         //   $zopim.livechat.window.show();
         // }
+
+        //* ze-snippet
+        if (zE('webWidget:get', 'display') == false) {
+          zE('webWidget', 'toggle');
+          $('#Embed').show();
+        } else {
+          $('#Embed').hide();
+          zE('webWidget', 'toggle');
+        }
+
         //* 這邊的判斷與內容是直接照舊版的
         // if (contact.Js_Type == 'zopim') {
         //   if ($zopim.livechat.window.getDisplay() == false) {
@@ -214,13 +226,13 @@ export default {
           scriptElement.src = jsSrc;
           document.querySelector('head').append(scriptElement);
 
-          if (zE('webWidget:get', 'display') == false) {
-            zE('webWidget', 'toggle');
-            $('#Embed').show();
-          } else {
-            $('#Embed').hide();
-            zE('webWidget', 'toggle');
-          }
+          const zeInterval = setInterval(() => {
+            console.log('[zE]', zE);
+
+            if (zE) {
+              clearInterval(zeInterval);
+            }
+          }, 500);
         }
         /*eslint-enable no-undef*/
       },
