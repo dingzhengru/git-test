@@ -235,7 +235,6 @@ export default {
 
 // .slide-enter,
 // .slide-leave-to {
-//   // opacity: 0;
 //   transform: translateY(100%);
 // }
 
