@@ -109,9 +109,11 @@ export default {
         // this.isShowServiceDialog = true;
         // window.eval(contact.Js_Code);
         /*eslint-disable no-undef*/
-        // if ($zopim.livechat.window.getDisplay() == false) {
-        //   $zopim.livechat.window.show();
-        // }
+
+        if ($zopim && $zopim.livechat.window.getDisplay() == false) {
+          $zopim.livechat.window.show();
+        }
+
         //* 這邊的判斷與內容是直接照舊版的
         // if (contact.Js_Type == 'zopim') {
         //   if ($zopim.livechat.window.getDisplay() == false) {
@@ -195,10 +197,8 @@ export default {
 
           const zopimInterval = setInterval(() => {
             if ($zopim) {
-              // console.log('$zopim.livechat.hideAll()');
-              // $zopim.livechat.hideAll();
-              console.log(' $zopim.livechat.button.hide();');
-              $zopim.livechat.button.hide();
+              console.log('[zopim]', 'hideAll');
+              $zopim.livechat.hideAll();
               clearInterval(zopimInterval);
             }
           }, 500);
