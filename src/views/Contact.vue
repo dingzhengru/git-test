@@ -110,6 +110,7 @@ export default {
 
         // window.eval(contact.Js_Code);
 
+        /*eslint-disable no-undef*/
         if ($zopim.livechat.window.getDisplay() == false) {
           $zopim.livechat.window.toggle();
           $("div[class='zopim']").show();
@@ -142,6 +143,8 @@ export default {
         //     LC_API.hide_chat_window();
         //   }
         // }
+
+        /*eslint-enable no-undef*/
       } else {
         this.contactList.forEach(item => {
           if (item.Lst_ContactID != contact.Lst_ContactID) {
