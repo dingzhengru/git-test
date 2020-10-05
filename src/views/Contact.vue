@@ -36,9 +36,6 @@
       </ul>
     </div>
 
-    <transition name="slide">
-      <ContactServiceDialog v-if="isShowServiceDialog" @close="isShowServiceDialog = false" />
-    </transition>
   </div>
 </template>
 
@@ -48,9 +45,6 @@ import { getContactList } from '@/api/contact';
 
 export default {
   name: 'Contact',
-  components: {
-    ContactServiceDialog: () => import('@/components/contact/ContactServiceDialog'),
-  },
   computed: {
     ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
   },
@@ -100,44 +94,22 @@ export default {
         6: 'service',
       },
       isShowMobileTelephones: false,
-      isShowServiceDialog: false,
     };
   },
   methods: {
     clickContactHandler(contact) {
       if (contact.name == 'service') {
-        // this.isShowServiceDialog = true;
-        // window.eval(contact.Js_Code);
         /*eslint-disable no-undef*/
-
-        //* zopim
-        // if ($zopim && $zopim.livechat.window.getDisplay() == false) {
-        //   $zopim.livechat.window.show();
-        // }
-
-        //* ze-snippet
-        console.log('[zE]', zE('webWidget:get', 'display'), zE);
-        zE('webWidget', 'show');
-        zE('webWidget', 'open');
-
-        //* 這邊的判斷與內容是直接照舊版的
-        // if (contact.Js_Type == 'zopim') {
-        //   if ($zopim.livechat.window.getDisplay() == false) {
-        //     $zopim.livechat.window.toggle();
-        //     $("div[class='zopim']").show();
-        //   } else {
-        //     $("div[class='zopim']").hide();
-        //     $zopim.livechat.window.toggle();
-        //   }
-        // } else if (contact.Js_Type == 'ze-snippet') {
-        //   if (zE('webWidget:get', 'display') == false) {
-        //     zE('webWidget', 'toggle');
-        //     $('#Embed').show();
-        //   } else {
-        //     $('#Embed').hide();
-        //     zE('webWidget', 'toggle');
-        //   }
-        // } else if (contact.Js_Type == 'livechatinc') {
+        if (contact.Js_Type == 'zopim') {
+          //* zopim
+          $zopim.livechat.window.show();
+        } else if (contact.Js_Type == 'ze-snippet') {
+          //* ze-snippet
+          console.log('[zE]', zE('webWidget:get', 'display'), zE);
+          zE('webWidget', 'show');
+          zE('webWidget', 'open');
+        }
+        //else if (contact.Js_Type == 'livechatinc') {
         //   if (LC_API.chat_window_hidden()) {
         //     LC_API.open_chat_window();
         //   } else {
@@ -198,42 +170,42 @@ export default {
         // 確認是否有 service 在，在的話就執行 jscode
         const contactService = this.contactList.find(item => item.name == 'service');
         if (contactService) {
-          //* zopim
-          // console.log('[jscode]', contactService.Js_Code);
-          // window.eval(contactService.Js_Code);
+          if (contactService.Js_Type == 'zopim') {
+            //* zopim
+            console.log('[jscode]', contactService.Js_Code);
+            window.eval(contactService.Js_Code);
+            const zopimInterval = setInterval(() => {
+              if ($zopim && $zopim.livechat && $zopim.livechat.window) {
+                $zopim.livechat.hideAll();
+                $zopim.livechat.window.onHide(() => {
+                  $zopim.livechat.hideAll();
+                });
+                clearInterval(zopimInterval);
+              }
+            }, 500);
+          } else if (contactService.Js_Type == 'ze-snippet') {
+            //* ze-snippet
+            // const jsSrc = jscode.split('src="')[1].split('"')[0]
+            const jsSrc =
+              'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
 
-          // const zopimInterval = setInterval(() => {
-          //   if ($zopim && $zopim.livechat && $zopim.livechat.window) {
-          //     $zopim.livechat.hideAll();
+            const scriptElement = document.createElement('script');
+            scriptElement.id = 'ze-snippet';
+            scriptElement.src = jsSrc;
+            document.querySelector('head').append(scriptElement);
 
-          //     $zopim.livechat.window.onHide(() => {
-          //       $zopim.livechat.hideAll();
-          //     });
-          //     clearInterval(zopimInterval);
-          //   }
-          // }, 500);
-
-          //* ze-snippet
-          // const jsSrc = jscode.split('src="')[1].split('"')[0]
-          const jsSrc =
-            'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
-
-          const scriptElement = document.createElement('script');
-          scriptElement.id = 'ze-snippet';
-          scriptElement.src = jsSrc;
-          document.querySelector('head').append(scriptElement);
-
-          const zeInterval = setInterval(() => {
-            if (zE) {
-              zE.hide();
-
-              zE('webWidget:on', 'close', function() {
+            const zeInterval = setInterval(() => {
+              if (zE) {
                 zE.hide();
-              });
 
-              clearInterval(zeInterval);
-            }
-          }, 500);
+                zE('webWidget:on', 'close', function() {
+                  zE.hide();
+                });
+
+                clearInterval(zeInterval);
+              }
+            }, 500);
+          }
         }
         /*eslint-enable no-undef*/
       },
@@ -256,16 +228,16 @@ export default {
   opacity: 0;
 }
 
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.5s ease;
-}
+// .slide-enter-active,
+// .slide-leave-active {
+//   transition: all 0.5s ease;
+// }
 
-.slide-enter,
-.slide-leave-to {
-  // opacity: 0;
-  transform: translateY(100%);
-}
+// .slide-enter,
+// .slide-leave-to {
+//   // opacity: 0;
+//   transform: translateY(100%);
+// }
 
 .contact {
   padding-bottom: 119px;
