@@ -106,7 +106,9 @@ export default {
   methods: {
     clickContactHandler(contact) {
       if (contact.name == 'service') {
-        this.isShowServiceDialog = true;
+        // this.isShowServiceDialog = true;
+        console.log('Run', contact.Js_Code);
+        window.eval(contact.Js_Code);
       } else {
         this.contactList.forEach(item => {
           if (item.Lst_ContactID != contact.Lst_ContactID) {
