@@ -112,11 +112,7 @@ export default {
 
         /*eslint-disable no-undef*/
         if ($zopim.livechat.window.getDisplay() == false) {
-          // $zopim.livechat.window.toggle();
-          $("div[class='zopim']").show();
-        } else {
-          $("div[class='zopim']").hide();
-          // $zopim.livechat.window.toggle();
+          $zopim.livechat.window.show();
         }
 
         //* 這邊的判斷與內容是直接照舊版的
