@@ -117,9 +117,7 @@ export default {
 
         //* ze-snippet
         console.log('[zE]', zE('webWidget:get', 'display'), zE);
-        if (zE('webWidget:get', 'display') == false) {
-          zE('webWidget', 'open');
-        }
+        zE('webWidget', 'show');
 
         //* 這邊的判斷與內容是直接照舊版的
         // if (contact.Js_Type == 'zopim') {
@@ -229,8 +227,10 @@ export default {
 
             if (zE) {
               window.zESettings = {
-                mobile: {
-                  labelVisible: false,
+                webWidget: {
+                  mobile: {
+                    labelVisible: false,
+                  },
                 },
               };
               console.log(document.querySelector('#Embed'));
