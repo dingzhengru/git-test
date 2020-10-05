@@ -195,8 +195,10 @@ export default {
 
           const zopimInterval = setInterval(() => {
             if ($zopim) {
-              console.log('$zopim.livechat.hideAll()');
-              $zopim.livechat.hideAll();
+              // console.log('$zopim.livechat.hideAll()');
+              // $zopim.livechat.hideAll();
+              console.log(' $zopim.livechat.button.hide();');
+              $zopim.livechat.button.hide();
               clearInterval(zopimInterval);
             }
           }, 500);
