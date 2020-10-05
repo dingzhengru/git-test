@@ -116,9 +116,9 @@ export default {
         // }
 
         //* ze-snippet
-        console.log('[zE]', zE);
+        console.log('[zE]', zE('webWidget:get', 'display'), zE);
         if (zE('webWidget:get', 'display') == false) {
-          zE('webWidget', 'show');
+          zE('webWidget', 'open');
         }
 
         //* 這邊的判斷與內容是直接照舊版的
@@ -234,6 +234,10 @@ export default {
                 },
               };
               console.log(document.querySelector('#Embed'));
+              document.querySelectorAll('iframe').forEach(item => {
+                const embedElement = item.contentWindow.document.body.querySelector('#Embed');
+                console.log(embedElement);
+              });
               // document.querySelector('#Embed').style.display = 'none';
               clearInterval(zeInterval);
             }
