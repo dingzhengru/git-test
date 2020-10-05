@@ -107,14 +107,11 @@ export default {
     clickContactHandler(contact) {
       if (contact.name == 'service') {
         // this.isShowServiceDialog = true;
-
         // window.eval(contact.Js_Code);
-
         /*eslint-disable no-undef*/
-        if ($zopim.livechat.window.getDisplay() == false) {
-          $zopim.livechat.window.show();
-        }
-
+        // if ($zopim.livechat.window.getDisplay() == false) {
+        //   $zopim.livechat.window.show();
+        // }
         //* 這邊的判斷與內容是直接照舊版的
         // if (contact.Js_Type == 'zopim') {
         //   if ($zopim.livechat.window.getDisplay() == false) {
@@ -139,7 +136,6 @@ export default {
         //     LC_API.hide_chat_window();
         //   }
         // }
-
         /*eslint-enable no-undef*/
       } else {
         this.contactList.forEach(item => {
@@ -197,10 +193,13 @@ export default {
           console.log('[Run Js]', contactService.Js_Code);
           window.eval(contactService.Js_Code);
 
-          setTimeout(() => {
-            console.log('$zopim.livechat.hideAll()');
-            $zopim.livechat.hideAll();
-          }, 1000);
+          const zopimInterval = setInterval(() => {
+            if ($zopim) {
+              console.log('$zopim.livechat.hideAll()');
+              $zopim.livechat.hideAll();
+              clearInterval(zopimInterval);
+            }
+          }, 500);
         } /*eslint-enable no-undef*/
       },
     },
