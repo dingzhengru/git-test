@@ -225,6 +225,7 @@ export default {
             'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
 
           const scriptElement = document.createElement('script');
+          scriptElement.id = 'ze-snippet';
           scriptElement.src = jsSrc;
           document.querySelector('head').append(scriptElement);
 
