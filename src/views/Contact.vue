@@ -196,6 +196,7 @@ export default {
           window.eval(contactService.Js_Code);
 
           const zopimInterval = setInterval(() => {
+            console.log('[zopim]', $zopim);
             if ($zopim) {
               console.log('[zopim]', 'hideAll');
               $zopim.livechat.hideAll();
