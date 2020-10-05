@@ -213,6 +213,14 @@ export default {
           const scriptElement = document.createElement('script');
           scriptElement.src = jsSrc;
           document.querySelector('head').append(scriptElement);
+
+          if (zE('webWidget:get', 'display') == false) {
+            zE('webWidget', 'toggle');
+            $('#Embed').show();
+          } else {
+            $('#Embed').hide();
+            zE('webWidget', 'toggle');
+          }
         }
         /*eslint-enable no-undef*/
       },
