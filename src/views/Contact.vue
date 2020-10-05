@@ -116,11 +116,13 @@ export default {
         // }
 
         //* ze-snippet
+        console.log('[zE]', zE);
+        zE.show();
         if (zE('webWidget:get', 'display') == false) {
           zE('webWidget', 'toggle');
-          $('#Embed').show();
+          // $('#Embed').show();
         } else {
-          $('#Embed').hide();
+          // $('#Embed').hide();
           zE('webWidget', 'toggle');
         }
 
