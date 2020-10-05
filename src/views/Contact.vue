@@ -224,8 +224,6 @@ export default {
           document.querySelector('head').append(scriptElement);
 
           const zeInterval = setInterval(() => {
-            console.log('[zE]', zE, zE.hide);
-
             if (zE) {
               zE.hide();
 
