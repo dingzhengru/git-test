@@ -112,11 +112,11 @@ export default {
 
         /*eslint-disable no-undef*/
         if ($zopim.livechat.window.getDisplay() == false) {
-          $zopim.livechat.window.toggle();
+          // $zopim.livechat.window.toggle();
           $("div[class='zopim']").show();
         } else {
           $("div[class='zopim']").hide();
-          $zopim.livechat.window.toggle();
+          // $zopim.livechat.window.toggle();
         }
 
         //* 這邊的判斷與內容是直接照舊版的
@@ -196,10 +196,13 @@ export default {
 
         // 確認是否有 service 在，在的話就執行 jscode
         const contactService = this.contactList.find(item => item.name == 'service');
-        console.log(contactService);
         if (contactService) {
           console.log('[Run Js]', contactService.Js_Code);
           window.eval(contactService.Js_Code);
+
+          setTimeout(() => {
+            $zopim.livechat.hideAll();
+          }, 300);
         }
       },
     },
