@@ -117,8 +117,9 @@ export default {
 
         //* ze-snippet
         console.log('[zE]', zE('webWidget:get', 'display'), zE);
-        zE('webWidget', 'open');
         zE('webWidget', 'show');
+        zE('webWidget', 'open');
+
         //* 這邊的判斷與內容是直接照舊版的
         // if (contact.Js_Type == 'zopim') {
         //   if ($zopim.livechat.window.getDisplay() == false) {
@@ -223,7 +224,7 @@ export default {
           document.querySelector('head').append(scriptElement);
 
           const zeInterval = setInterval(() => {
-            console.log('[zE]', zE);
+            console.log('[zE]', zE, zE.hide);
 
             if (zE) {
               zE.hide();
