@@ -109,11 +109,9 @@ export default {
         // this.isShowServiceDialog = true;
         // window.eval(contact.Js_Code);
         /*eslint-disable no-undef*/
-
-        if ($zopim && $zopim.livechat.window.getDisplay() == false) {
-          $zopim.livechat.window.show();
-        }
-
+        // if ($zopim && $zopim.livechat.window.getDisplay() == false) {
+        //   $zopim.livechat.window.show();
+        // }
         //* 這邊的判斷與內容是直接照舊版的
         // if (contact.Js_Type == 'zopim') {
         //   if ($zopim.livechat.window.getDisplay() == false) {
@@ -192,21 +190,25 @@ export default {
         // 確認是否有 service 在，在的話就執行 jscode
         const contactService = this.contactList.find(item => item.name == 'service');
         if (contactService) {
-          console.log('[Run Js]', contactService.Js_Code);
-          window.eval(contactService.Js_Code);
+          //* zopim
+          // console.log('[jscode]', contactService.Js_Code);
+          // window.eval(contactService.Js_Code);
 
-          const zopimInterval = setInterval(() => {
-            console.log('[zopim]', $zopim);
-            if ($zopim && $zopim.livechat && $zopim.livechat.window) {
-              $zopim.livechat.hideAll();
+          // const zopimInterval = setInterval(() => {
+          //   if ($zopim && $zopim.livechat && $zopim.livechat.window) {
+          //     $zopim.livechat.hideAll();
 
-              $zopim.livechat.window.onHide(() => {
-                $zopim.livechat.hideAll();
-              });
-              clearInterval(zopimInterval);
-            }
-          }, 500);
-        } /*eslint-enable no-undef*/
+          //     $zopim.livechat.window.onHide(() => {
+          //       $zopim.livechat.hideAll();
+          //     });
+          //     clearInterval(zopimInterval);
+          //   }
+          // }, 500);
+
+          //* ze-snippet
+          document.querySelector('head').append(contactService.Js_Code);
+        }
+        /*eslint-enable no-undef*/
       },
     },
   },
