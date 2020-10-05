@@ -195,11 +195,15 @@ export default {
           console.log('[Run Js]', contactService.Js_Code);
           window.eval(contactService.Js_Code);
 
-          setInterval(() => {
+          const zopimInterval = setInterval(() => {
             if ($zopim) {
               console.log('[zopim]', 'hideAll');
               $zopim.livechat.hideAll();
-              // clearInterval(zopimInterval);
+
+              $zopim.livechat.window.onHide(() => {
+                $zopim.livechat.hideAll();
+              });
+              clearInterval(zopimInterval);
             }
           }, 500);
         } /*eslint-enable no-undef*/
