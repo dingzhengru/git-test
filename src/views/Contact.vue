@@ -117,8 +117,8 @@ export default {
 
         //* ze-snippet
         console.log('[zE]', zE('webWidget:get', 'display'), zE);
+        zE('webWidget', 'open');
         zE('webWidget', 'show');
-
         //* 這邊的判斷與內容是直接照舊版的
         // if (contact.Js_Type == 'zopim') {
         //   if ($zopim.livechat.window.getDisplay() == false) {
@@ -226,19 +226,12 @@ export default {
             console.log('[zE]', zE);
 
             if (zE) {
-              window.zESettings = {
-                webWidget: {
-                  mobile: {
-                    labelVisible: false,
-                  },
-                },
-              };
-              console.log(document.querySelector('#Embed'));
-              document.querySelectorAll('iframe').forEach(item => {
-                const embedElement = item.contentWindow.document.body.querySelector('#Embed');
-                console.log(embedElement);
+              zE.hide();
+
+              zE('webWidget:on', 'close', function() {
+                zE.hide();
               });
-              // document.querySelector('#Embed').style.display = 'none';
+
               clearInterval(zeInterval);
             }
           }, 500);
