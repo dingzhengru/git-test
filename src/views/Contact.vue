@@ -108,7 +108,41 @@ export default {
       if (contact.name == 'service') {
         // this.isShowServiceDialog = true;
         console.log('Run', contact.Js_Code);
+        
         window.eval(contact.Js_Code);
+
+        if ($zopim.livechat.window.getDisplay() == false) {
+          $zopim.livechat.window.toggle();
+          $("div[class='zopim']").show();
+        } else {
+          $("div[class='zopim']").hide();
+          $zopim.livechat.window.toggle();
+        }
+
+        //* 這邊的判斷與內容是直接照舊版的
+        // if (contact.Js_Type == 'zopim') {
+        //   if ($zopim.livechat.window.getDisplay() == false) {
+        //     $zopim.livechat.window.toggle();
+        //     $("div[class='zopim']").show();
+        //   } else {
+        //     $("div[class='zopim']").hide();
+        //     $zopim.livechat.window.toggle();
+        //   }
+        // } else if (contact.Js_Type == 'ze-snippet') {
+        //   if (zE('webWidget:get', 'display') == false) {
+        //     zE('webWidget', 'toggle');
+        //     $('#Embed').show();
+        //   } else {
+        //     $('#Embed').hide();
+        //     zE('webWidget', 'toggle');
+        //   }
+        // } else if (contact.Js_Type == 'livechatinc') {
+        //   if (LC_API.chat_window_hidden()) {
+        //     LC_API.open_chat_window();
+        //   } else {
+        //     LC_API.hide_chat_window();
+        //   }
+        // }
       } else {
         this.contactList.forEach(item => {
           if (item.Lst_ContactID != contact.Lst_ContactID) {
