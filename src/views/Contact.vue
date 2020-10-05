@@ -193,6 +193,7 @@ export default {
 
         // 確認是否有 service 在，在的話就執行 jscode
         const contactService = this.contactList.find(item => item.name == 'service');
+        console.log(contactService);
         if (contactService) {
           console.log('[Run Js]', contactService.Js_Code);
           window.eval(contactService.Js_Code);
