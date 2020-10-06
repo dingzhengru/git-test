@@ -32,6 +32,8 @@ import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
 import AppLoadingOverlay from '@/components/AppLoadingOverlay';
 
+import { getManifest } from '@/api/manifest';
+
 export default {
   name: 'App',
   components: {
@@ -65,11 +67,16 @@ export default {
     };
   },
   mounted() {
+    //* Manifest
     //* 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     // document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
     // const manifestUrl = 'http://resource.re888show.com/Site_Uploadfile/C/manifest.json'
     const manifestUrl = 'http://api.caza7.re888show.com/api/Siteinfo/ManifestJson';
     document.querySelector('#manifest').setAttribute('href', manifestUrl);
+
+    getManifest().then(result => {
+      console.log(result);
+    });
 
     //* 一秒後沒觸發 beforeinstallprompt 的話，就視為已下載
     setTimeout(() => {
