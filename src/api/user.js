@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
+//* 手機版記憶帳密(修改密碼頁面)
+export async function changeRemember(data) {
+  const result = await axios.post(API_URL + '/Member/MChangeReMember', data);
+  return result.data;
+}
+
 //* 會員登入-記住我
 export async function getRememberInfo() {
   const result = await axios.post(API_URL + '/Member/RememberInfo');

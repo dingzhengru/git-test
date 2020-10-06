@@ -43,5 +43,9 @@ const getters = {
   bankAccount1: state => state.user.bankAccount1,
   bankBrach1: state => state.user.bankBrach1,
   bankAccountName1: state => state.user.bankAccountName1,
+  Lst_IsDemoAccount: state => state.user.Lst_IsDemoAccount,
+  Lst_UsingfirstDeposit: state => state.user.Lst_UsingfirstDeposit,
+  Lst_Enable_Remember_Option: state => state.user.Lst_Enable_Remember_Option,
+  Lst_HasWithdrawalPassWord: state => state.user.Lst_HasWithdrawalPassWord,
 };
 export default getters;
