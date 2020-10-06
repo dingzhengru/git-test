@@ -43,6 +43,7 @@ export default {
     ...mapGetters([
       'siteID',
       'siteFullCss',
+      'siteRemoteCSSUrl',
       'lang',
       'loadingRequestList',
       'pwaInstallStatus',
@@ -64,11 +65,11 @@ export default {
     };
   },
   mounted() {
-    // * 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
+    //* 動態載入 manifest，已將 pubcli/index.html 中新增 <link rel="manifest" id="manifest" />
     // document.querySelector('#manifest').setAttribute('href', '/manifest01.json');
     document
       .querySelector('#manifest')
-      .setAttribute('href', 'http://resource.re888show.com/Site_Uploadfile/C/manifest.jsonn');
+      .setAttribute('href', 'http://resource.re888show.com/Site_Uploadfile/C/manifest.json');
 
     //* 一秒後沒觸發 beforeinstallprompt 的話，就視為已下載
     setTimeout(() => {
@@ -127,17 +128,19 @@ export default {
         const faviconUrl = `${this.resourceUrl}/imgs/favicon/favicon.ico`;
         document.querySelector('#favicon').setAttribute('href', faviconUrl);
 
-        // * 根據版型引入 css
+        //* 根據版型引入 css
         import(`@/styles/${this.siteFullCss}/layout.scss`);
 
-        // * header css
+        //* header css
         import(`@/styles/${this.siteFullCss}/header.scss`);
 
-        // * footer css
+        //* footer css
         import(`@/styles/${this.siteFullCss}/footer.scss`);
 
-        // * 使用 siteInfo 拼湊 logo url
-        this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
+        //* 使用 siteInfo 拼湊 logo url
+        //* EX: http://resource.re888show.com/Site_Uploadfile/C/Logo_0.png
+        // this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
+        this.logo = `${this.siteRemoteCSSUrl}/Site_Uploadfile/${this.siteID}/Logo_0.png`;
 
         //* 確認是否維護
         if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {
@@ -150,7 +153,7 @@ export default {
           this.$store.dispatch('user/getInfo');
         }
 
-        // * 取得語系列表
+        //* 取得語系列表
         getLangList().then(result => {
           if (result.Code == 200) {
             this.langList = result.RetObj;
