@@ -133,8 +133,7 @@ export default {
       const result = await changeRemember(requestData);
 
       console.log('[ChangeRemember]', result);
-      if (result == true) {
-        console.log(123)
+      if (result.Code == 200) {
         this.$store.commit('user/setLst_Enable_Remember_Option', this.isRememberPassword);
         window.alert(this.$t('user.changePassword.alert.success'));
       }
