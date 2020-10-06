@@ -134,6 +134,7 @@ export default {
 
       console.log('[ChangeRemember]', result);
       if (result == true) {
+        console.log(123)
         this.$store.commit('user/setLst_Enable_Remember_Option', this.isRememberPassword);
         window.alert(this.$t('user.changePassword.alert.success'));
       }
