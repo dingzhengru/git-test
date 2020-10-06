@@ -84,7 +84,7 @@ store
         console.log('[KeepUserOnline]', result.RetObj);
       });
     }
-    setInterval(async function keepUserOnline() {
+    setInterval(async () => {
       //* document.visibilityState & document.hasFocus()
       //* 前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
       if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
