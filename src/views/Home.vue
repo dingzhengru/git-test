@@ -323,7 +323,7 @@ export default {
           }
         } else {
           newWindow.close();
-          window.alert(result.data.ErrMsg);
+          window.alert(result.ErrMsg);
         }
       }
     },
