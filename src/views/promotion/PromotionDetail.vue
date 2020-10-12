@@ -12,15 +12,12 @@
         <h3 class="promotion-detail__main__content__title">
           {{ $t(promotionDetail.ContentTitle) }}
         </h3>
-        <div
-          class="promotion-detail__main__content__desc"
-          v-html="promotionDetail.ContentHtml"
-        ></div>
+        <div class="promotion-detail__main__content__desc" v-html="promotionDetail.ContentHtml"></div>
       </div>
       <div class="promotion-detail__main__button">
         <button
           class="promotion-detail__main__button--back ui-btn ui-btn-long"
-          @click="$router.go(-1)"
+          @click="$router.push({ name: 'Promotion' })"
         >
           {{ $t('promotionDetail.button.back') }}
         </button>
@@ -45,8 +42,7 @@ export default {
         {
           name: 'date',
           title: 'promotionDetail.title.date',
-          content:
-            'Starts 07/08/2017 at 11:00 (During the time member second deposit maximum can get 99,999THB.)',
+          content: 'Starts 07/08/2017 at 11:00 (During the time member second deposit maximum can get 99,999THB.)',
         },
         {
           name: 'content',
