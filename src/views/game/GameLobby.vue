@@ -244,6 +244,8 @@ export default {
         console.log('[GameLobby OpenGame]', result);
         if (result.Code == 200) {
           openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
+        } else {
+          newWindow.close();
         }
       }
     },
@@ -266,6 +268,8 @@ export default {
 
       if (result.Code == 200) {
         openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
+      } else {
+        newWindow.close();
       }
     },
     async openGameRedirectUrl() {
@@ -289,6 +293,8 @@ export default {
         } else if (result.RetObj.iGameOpenType == 2) {
           openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, this.currentProduct.Lst_Name);
         }
+      } else {
+        newWindow.close();
       }
     },
     async likeGame(game) {
