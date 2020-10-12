@@ -246,7 +246,7 @@ export default {
           openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
         } else {
           newWindow.close();
-          window.alert(result.ErrMsg);
+          window.setTimeout(() => window.alert(result.ErrMsg), 500);
         }
       }
     },
@@ -271,7 +271,7 @@ export default {
         openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
       } else {
         newWindow.close();
-        window.alert(result.ErrMsg);
+        window.setTimeout(() => window.alert(result.ErrMsg), 500);
       }
     },
     async openGameRedirectUrl() {
@@ -297,7 +297,7 @@ export default {
         }
       } else {
         newWindow.close();
-        window.alert(result.ErrMsg);
+        window.setTimeout(() => window.alert(result.ErrMsg), 500);
       }
     },
     async likeGame(game) {
