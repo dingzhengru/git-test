@@ -245,8 +245,8 @@ export default {
         if (result.Code == 200) {
           openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
         } else {
-          console.log('[window]', 'close');
-          newWindow.addEventListener('load', newWindow.close);
+          newWindow.close();
+          window.alert(result.data.ErrMsg);
         }
       }
     },
@@ -270,8 +270,8 @@ export default {
       if (result.Code == 200) {
         openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
       } else {
-        console.log('[window]', 'close');
-        newWindow.addEventListener('load', newWindow.close);
+        newWindow.close();
+        window.alert(result.data.ErrMsg);
       }
     },
     async openGameRedirectUrl() {
@@ -296,8 +296,8 @@ export default {
           openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, this.currentProduct.Lst_Name);
         }
       } else {
-        console.log('[window]', 'close');
-        newWindow.addEventListener('load', newWindow.close);
+        newWindow.close();
+        window.alert(result.data.ErrMsg);
       }
     },
     async likeGame(game) {

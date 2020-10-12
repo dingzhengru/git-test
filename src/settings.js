@@ -98,7 +98,13 @@ const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword'];
 const ACCESS_ROUTE_LIST = [];
 
 //* 回傳為 599 時，但不要 alert 的 API
-const NO_ALERT_API_LIST = ['Member/LoginIn', 'Member/SimpleRegister'];
+//* 登入、註冊、需開新頁面的 API (避免 alert 中斷)
+const NO_ALERT_API_LIST = [
+  'Member/LoginIn',
+  'Member/SimpleRegister',
+  'Game/MGameRedirectUrl',
+  'Game/MLobbyGameRedirect',
+];
 
 //* 不顯示 Loading 的 API
 const NO_LOADING_API_LIST = [
