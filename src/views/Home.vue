@@ -8,11 +8,7 @@
     />
 
     <div class="home-game">
-      <HomeLotteryGameBlock
-        :lotteryList="lotteryList"
-        @openLotteryGame="openLotteryGame"
-        v-if="isLoggedIn"
-      />
+      <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="isLoggedIn" />
 
       <HomeGameBlock
         :list="productList"
@@ -22,11 +18,7 @@
       />
     </div>
     <transition name="fade">
-      <div
-        :id="idMapper.home.noneLoginPopup"
-        class="noneLoginPopup"
-        v-if="isShowNoneLoginPopup"
-      ></div>
+      <div :id="idMapper.home.noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
     </transition>
 
     <div class="Box" v-if="isShowAlertBox && alertMessageList.length > 0">
@@ -40,11 +32,7 @@
       </div>
     </div>
 
-    <div
-      class="ui-overlay"
-      v-if="isShowWinWheel || isShowRedEnvelope"
-      @click.self="closeLotteryGame"
-    ></div>
+    <div class="ui-overlay" v-if="isShowWinWheel || isShowRedEnvelope" @click.self="closeLotteryGame"></div>
     <div class="wheel-container" v-show="isShowWinWheel">
       <!-- <div class="ui-box-close"  @click="closeLotteryGame"></div> -->
       <WinWheel
@@ -130,14 +118,7 @@ export default {
     RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
   },
   computed: {
-    ...mapGetters([
-      'siteID',
-      'siteFullCss',
-      'lang',
-      'isLoggedIn',
-      'resourceUrl',
-      'siteIsNewPromotion',
-    ]),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'isLoggedIn', 'resourceUrl', 'siteIsNewPromotion']),
   },
   data() {
     return {
@@ -281,7 +262,7 @@ export default {
 
       const bannerType = this.isLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
       const bannerUrl = this.isLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
-      
+
       if (bannerType == 1) {
         window.open(banner.Lst_LinkUrl, banner.Lst_Target);
       } else if (bannerType == 2 || bannerType == 0) {
@@ -340,6 +321,9 @@ export default {
           } else if (result.RetObj.iGameOpenType == 2) {
             openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, game.Lst_Name);
           }
+        } else {
+          newWindow.close();
+          window.alert(result.data.ErrMsg);
         }
       }
     },
@@ -388,8 +372,7 @@ export default {
             let prizeApiList = [];
 
             data.prizesList.map((item, index) => {
-              let bgColor =
-                index % 2 == 0 ? this.wheelStyle.wheelColor1 : this.wheelStyle.wheelColor2;
+              let bgColor = index % 2 == 0 ? this.wheelStyle.wheelColor1 : this.wheelStyle.wheelColor2;
               prizeApiList[index] = {
                 image: item.Lst_ImageUrl,
                 text: item.Lst_PrizeName,
