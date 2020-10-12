@@ -322,8 +322,10 @@ export default {
             openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, game.Lst_Name);
           }
         } else {
-          newWindow.close();
-          window.alert(result.ErrMsg);
+          if (newWindow != null) {
+            newWindow.close();
+          }
+          window.setTimeout(() => window.alert(result.ErrMsg), 500);
         }
       }
     },

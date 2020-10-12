@@ -245,7 +245,10 @@ export default {
         if (result.Code == 200) {
           openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
         } else {
-          newWindow.close();
+          if (newWindow != null) {
+            newWindow.close();
+          }
+
           window.setTimeout(() => window.alert(result.ErrMsg), 500);
         }
       }
@@ -270,7 +273,9 @@ export default {
       if (result.Code == 200) {
         openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
       } else {
-        newWindow.close();
+        if (newWindow != null) {
+          newWindow.close();
+        }
         window.setTimeout(() => window.alert(result.ErrMsg), 500);
       }
     },
@@ -296,7 +301,10 @@ export default {
           openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, this.currentProduct.Lst_Name);
         }
       } else {
-        newWindow.close();
+        if (newWindow != null) {
+          newWindow.close();
+        }
+
         window.setTimeout(() => window.alert(result.ErrMsg), 500);
       }
     },
