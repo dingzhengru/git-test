@@ -1,10 +1,4 @@
-import {
-  setIsLoggedIn,
-  setToken,
-  setPublicKey,
-  removeToken,
-  removePublicKey,
-} from '@/utils/cookie';
+import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
 import i18n from '@/i18n';
 import {
@@ -183,15 +177,15 @@ const actions = {
     }
     return result;
   },
-  logout({ commit }) {
-    // await logout();
-
-    logout().finally(() => {
+  async logout({ commit }) {
+    try {
+      await logout();
+    } finally {
       commit('removeToken');
       commit('removePublicKey');
       commit('setIsLoggedIn', false);
       window.location.replace('/login');
-    });
+    }
   },
 };
 

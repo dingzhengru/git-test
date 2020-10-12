@@ -87,9 +87,8 @@ axios.interceptors.response.use(
       if (Responded201Count == 0) {
         Responded201Count++;
         console.log('[Logout]', '201: 帳號被踢線', res.data);
-        await store.dispatch('user/logout');
         window.alert(res.data.ErrMsg);
-        // window.setTimeout(() => window.alert(res.data.ErrMsg), 500);
+        store.dispatch('user/logout');
       }
       return;
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
@@ -104,7 +103,9 @@ axios.interceptors.response.use(
         return res;
       }
 
-      window.location.reload();
+      //* 先註解掉重整的部分，通常會觸發此情況，會是被踢線的情況，因 token 是無期限的
+      //* 且會妨礙到被踢線的登出流程，會先執行到此重整
+      // window.location.reload();
     } else if (res.data.Code == 599 && process.env.NODE_ENV === 'production') {
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
@@ -126,7 +127,7 @@ axios.interceptors.response.use(
       if (res.config.url.includes('LoginIn') || res.config.url.includes('SimpleRegister')) {
         return res;
       }
-      window.location.reload();
+      // window.location.reload();
     }
     return res;
   },
