@@ -2,11 +2,7 @@
   <div class="contact" :class="{ 'contact-auth': isLoggedIn }">
     <div class="contact__content theme-content-box">
       <ul class="contact__content__ul">
-        <li
-          class="contact__content__ul__li"
-          v-for="contact in contactList"
-          :key="contact.Lst_ContactID"
-        >
+        <li class="contact__content__ul__li" v-for="contact in contactList" :key="contact.Lst_ContactID">
           <a
             href="javascript:;"
             class="contact__content__ul__li__link"
@@ -35,7 +31,6 @@
         </li>
       </ul>
     </div>
-
   </div>
 </template>
 
@@ -131,12 +126,14 @@ export default {
       if (contact.name == 'skype') {
         window.open(`skype:${content.Lst_ContactValue}?call`, '_self');
       } else if (contact.name == 'line') {
-        window.open(`http://line.me/ti/p/${content.Lst_ContactValue}`, '_self');
+        window.open(`https://line.me/ti/p/${content.Lst_ContactValue}`);
       } else if (contact.name == 'mobile') {
         window.open(`tel:${content.Lst_ContactValue}`, '_self');
       } else if (contact.name == 'email') {
         window.open(`mailto:${content.Lst_ContactValue}`, '_self');
       } else if (contact.name == 'wechat') {
+        //* 參考: https://stackoverflow.com/a/41297068/5134658
+        //* weixin:// 的外連方法，已只適用於少數白名單應用程式
         window.open(`weixin://dl/chat?${content.Lst_ContactValue}`);
       }
     },
@@ -186,8 +183,7 @@ export default {
           } else if (contactService.Js_Type == 'ze-snippet') {
             //* ze-snippet
             // const jsSrc = jscode.split('src="')[1].split('"')[0]
-            const jsSrc =
-              'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
+            const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
 
             const scriptElement = document.createElement('script');
             scriptElement.id = 'ze-snippet';
