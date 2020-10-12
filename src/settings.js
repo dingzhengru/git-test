@@ -105,7 +105,6 @@ const NO_LOADING_API_LIST = [
   'Siteinfo/KeepUserOnline',
   'Game/MGetJackpotTotal',
   'Member/CheckField',
-  'Proxy/MPlayLottery',
   'Proxy/MGetWinPrize',
 ];
 
