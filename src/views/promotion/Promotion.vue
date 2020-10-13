@@ -86,12 +86,12 @@ export default {
   &__list {
     text-align: center;
     margin-top: 20px;
-    padding: 0 20px;
 
     &__img {
-      margin-bottom: 20px;
       display: block;
-      width: 100%;
+      width: 600px;
+      height: 190px;
+      margin: 0 auto 20px auto;
     }
   }
 

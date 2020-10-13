@@ -133,8 +133,8 @@ export default {
         window.open(`mailto:${content.Lst_ContactValue}`, '_self');
       } else if (contact.name == 'wechat') {
         //* 參考: https://stackoverflow.com/a/41297068/5134658
-        //* weixin:// 的外連方法，已只適用於少數白名單應用程式
-        window.open(`weixin://dl/chat?${content.Lst_ContactValue}`);
+        //* weixin:// 打開指定用戶方法，已只適用於少數白名單應用程式，最多就用此連結開啟程式
+        window.open(`weixin://`);
       }
     },
   },
