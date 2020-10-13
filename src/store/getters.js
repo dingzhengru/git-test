@@ -19,6 +19,18 @@ const getters = {
   siteFullCss: state => {
     return `${state.site.cssClass}/${state.site.cssType}`;
   },
+  siteLogoUrl: state => {
+    //* Logo: {樣式網址}/Site_Uploadfile/{站台ID}/Logo_{裝置}.png
+    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Logo_1.png`;
+  },
+  siteMainPageNoticeUrl: state => {
+    //* 彈跳首頁圖片: {樣式網址}/Site_Uploadfile/{站台ID}/Notice/{語系}/MainPageNotice.png
+    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Notice/${state.lang}/MainPageNotice.png`;
+  },
+  siteDepositNoticeUrl: state => {
+    //* 存款提示圖片: {樣式網址}/Site_Uploadfile/{站台ID}/Notice/{語系}/DepositNotice.png
+    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Notice/${state.lang}/MainPageNotice.png`;
+  },
   resourceUrl: state => {
     return `${state.site.remoteCSSUrl}/ContentStyle/${state.site.mainDomain}/Member/${state.site.cssClass}/${state.site.cssVersion}/2/default/css${state.site.cssType}/common`;
   },

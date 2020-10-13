@@ -5,7 +5,7 @@
       :isLoggedIn="isLoggedIn"
       :langList="langList"
       :lang="lang"
-      :logo="logo"
+      :logo="siteLogoUrl"
       :username="username"
       :total="total"
       :vip="vip"
@@ -45,7 +45,7 @@ export default {
     ...mapGetters([
       'siteID',
       'siteFullCss',
-      'siteRemoteCSSUrl',
+      'siteLogoUrl',
       'lang',
       'loadingRequestList',
       'pwaInstallStatus',
@@ -61,7 +61,6 @@ export default {
   },
   data() {
     return {
-      logo: '',
       langList: [],
       swiperList: [],
     };
@@ -147,7 +146,7 @@ export default {
         //* 使用 siteInfo 拼湊 logo url
         //* EX: http://resource.re888show.com/Site_Uploadfile/C/Logo_0.png
         // this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
-        this.logo = `${this.siteRemoteCSSUrl}/Site_Uploadfile/${this.siteID}/Logo_0.png`;
+        // this.logo = `${this.siteRemoteCSSUrl}/Site_Uploadfile/${this.siteID}/Logo_0.png`;
 
         //* 確認是否維護
         if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {

@@ -18,7 +18,12 @@
       />
     </div>
     <transition name="fade">
-      <div :id="idMapper.home.noneLoginPopup" class="noneLoginPopup" v-if="isShowNoneLoginPopup"></div>
+      <div
+        :id="idMapper.home.noneLoginPopup"
+        class="noneLoginPopup"
+        :style="{ 'background-image': `url(${siteMainPageNoticeUrl})` }"
+        v-if="isShowNoneLoginPopup"
+      ></div>
     </transition>
 
     <div class="Box" v-if="isShowAlertBox && alertMessageList.length > 0">
@@ -118,7 +123,15 @@ export default {
     RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'isLoggedIn', 'resourceUrl', 'siteIsNewPromotion']),
+    ...mapGetters([
+      'siteID',
+      'siteFullCss',
+      'lang',
+      'isLoggedIn',
+      'resourceUrl',
+      'siteIsNewPromotion',
+      'siteMainPageNoticeUrl',
+    ]),
   },
   data() {
     return {
@@ -523,6 +536,10 @@ export default {
   /* background: rgba(0, 0, 0, 0.8) url(imgs/main/Bg-noneLoginPopup.jpg) center center no-repeat; */
   position: fixed;
   top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: 5;
 }
 

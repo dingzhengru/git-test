@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="isShowDepositNotice = false">
     <form class="deposit" @submit.prevent="submitDeposit" novalidate>
       <div class="theme-content-box">
         <h3 class="deposit__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
@@ -183,7 +183,14 @@
         </router-link>
       </div>
     </form>
-    <DepositDialog :siteName="siteName" v-if="isShowDepositDialog" @close="isShowDepositDialog = false" />
+
+    <transition name="fade">
+      <div
+        class="deposit__deposit-notice"
+        :style="{ 'background-image': `url(${siteDepositNoticeUrl})` }"
+        v-if="isShowDepositNotice"
+      ></div>
+    </transition>
   </div>
 </template>
 
@@ -195,11 +202,8 @@ import dayjs from 'dayjs';
 
 export default {
   name: 'TransactionDeposit',
-  components: {
-    DepositDialog: () => import('@/components/transaction/deposit/DepositDialog'),
-  },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'siteName']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'siteName', 'siteDepositNoticeUrl']),
   },
   data() {
     return {
@@ -253,7 +257,7 @@ export default {
       hid_THBtoMMKrate: '', //* THB:MMK 匯率(泰銖:緬甸)
       depositLimit: { min: 0, max: 0 },
       noticeList: ['currency', 'depositLimit01', 'depositLimit02', 'userBear01', 'userBear02', 'suggest', 'contact'],
-      isShowDepositDialog: true,
+      isShowDepositNotice: true,
     };
   },
   methods: {
@@ -378,6 +382,8 @@ export default {
         import(`@/styles/${this.siteFullCss}/transaction/deposit.scss`);
 
         this.getDepositInfo();
+
+        console.log(this.siteDepositNoticeUrl);
       },
     },
     lang() {
@@ -428,6 +434,26 @@ export default {
       margin: 0 10px;
     }
   }
+  &__deposit-notice {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 5;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
 
