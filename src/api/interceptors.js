@@ -15,6 +15,9 @@ import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 //   axios.defaults.withCredentials = true;
 // }
 
+//* 設置 timeout (預設是 0，代表沒有 timeout)
+axios.defaults.timeout = 10000;
+
 //* 針對 502: TokenError，615: JsonError
 //* 看要選擇重整，還是重新發送請求(目前只有登入是重新發送)
 

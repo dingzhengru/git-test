@@ -2,7 +2,7 @@ const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localho
 //const API_URL = 'http://api.caza7.re888show.com/api',
 
 //* 預設語系 (以後應該會由後端取得)
-const DEFAULT_LANG = 'th-th';
+// const DEFAULT_LANG = 'th-th';
 
 //* 需要 Authorization bearer token 的 API
 const AUTH_API_LIST = [
@@ -116,7 +116,6 @@ const NO_LOADING_API_LIST = [
 
 export {
   API_URL,
-  DEFAULT_LANG,
   AUTH_API_LIST,
   CRYPTO_API_LIST,
   CRYPTO_BIG_DATA_API_LIST,
@@ -129,7 +128,6 @@ export {
 };
 export default {
   API_URL,
-  DEFAULT_LANG,
   AUTH_API_LIST,
   CRYPTO_API_LIST,
   CRYPTO_BIG_DATA_API_LIST,
