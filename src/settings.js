@@ -1,8 +1,8 @@
 const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
 //const API_URL = 'http://api.caza7.re888show.com/api',
 
-//* 預設語系 (以後應該會由後端取得)
-// const DEFAULT_LANG = 'th-th';
+//* http 請求的 timeout
+const REQUEST_TIMEOUT = 10000;
 
 //* 需要 Authorization bearer token 的 API
 const AUTH_API_LIST = [
@@ -115,6 +115,7 @@ const NO_LOADING_API_LIST = [
 ];
 
 export {
+  REQUEST_TIMEOUT,
   API_URL,
   AUTH_API_LIST,
   CRYPTO_API_LIST,
@@ -127,6 +128,7 @@ export {
   NO_LOADING_API_LIST,
 };
 export default {
+  REQUEST_TIMEOUT,
   API_URL,
   AUTH_API_LIST,
   CRYPTO_API_LIST,

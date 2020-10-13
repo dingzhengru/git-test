@@ -1,6 +1,7 @@
 import store from '@/store';
 import axios from 'axios';
 import {
+  REQUEST_TIMEOUT,
   AUTH_API_LIST,
   CRYPTO_API_LIST,
   CRYPTO_BIG_DATA_API_LIST,
@@ -16,7 +17,7 @@ import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 // }
 
 //* 設置 timeout (預設是 0，代表沒有 timeout)
-axios.defaults.timeout = 10000;
+axios.defaults.timeout = REQUEST_TIMEOUT;
 
 //* 針對 502: TokenError，615: JsonError
 //* 看要選擇重整，還是重新發送請求(目前只有登入是重新發送)
