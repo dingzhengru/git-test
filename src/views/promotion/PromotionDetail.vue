@@ -87,6 +87,33 @@ export default {
 };
 </script>
 
+<style lang="scss">
+/**
+ ** 因為 normalize 有設定 font-size，無法寫在 scoped
+ ** 看是要去改 normalize 還是現在這種另外覆蓋寫
+*/
+.promotion-detail__main__content__desc {
+  h1 {
+    font-size: 4.6em;
+  }
+  h2 {
+    font-size: 3.45em;
+  }
+  h3 {
+    font-size: 2.69em;
+  }
+  h4 {
+    font-size: 2.3em;
+  }
+  h5 {
+    font-size: 1.9em;
+  }
+  h6 {
+    font-size: 1.54em;
+  }
+}
+</style>
+
 <style lang="scss" scoped>
 .promotion-detail {
   padding-bottom: 160px;
@@ -115,7 +142,28 @@ export default {
       }
 
       &__desc {
-        font-size: 2.307em;
+        // font-size: 2.307em;
+        font-size: 2.3em;
+        word-break: break-word;
+
+        // h1 {
+        //   font-size: 4em;
+        // }
+        // h2 {
+        //   font-size: 3em;
+        // }
+        // h3 {
+        //   font-size: 2.34em;
+        // }
+        // h4 {
+        //   font-size: 2em;
+        // }
+        // h5 {
+        //   font-size: 1.66em;
+        // }
+        // h6 {
+        //   font-size: 1.34em;
+        // }
       }
 
       .ui-table04 {
