@@ -1,8 +1,6 @@
 <template>
   <div class="promotion-detail" :class="{ 'promotion-detail-auth': isLoggedIn }">
-    <div class="promotion-detail__image">
-      <img class="promotion-detail__image__img" :src="image" alt="" />
-    </div>
+    <img class="promotion-detail__image" :src="image" alt="" />
     <div class="promotion-detail__main">
       <div
         class="promotion-detail__main__content"
@@ -123,8 +121,10 @@ export default {
   }
 
   &__image {
+    display: block;
+    width: 600px;
+    height: 190px;
     margin: 20px auto;
-    text-align: center;
   }
 
   &__main {
