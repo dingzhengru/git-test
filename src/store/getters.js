@@ -25,6 +25,14 @@ const getters = {
     //* Logo: {樣式網址}/Site_Uploadfile/{站台ID}/Logo_{裝置}.png
     return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Logo_1.png`;
   },
+  siteAppIcon: state => size => {
+    //* AppIcon: {樣式網址}/Site_Uploadfile/{站台ID}/AppIcon_{尺寸}.png
+    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/AppIcon_${size}.png`;
+  },
+  siteIOSUrl: state => size => {
+    //* IOS過場: {樣式網址}/Site_Uploadfile/{站台ID}/IOS_{尺寸}.png
+    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/IOS_${size}.png`;
+  },
   siteMainPageNoticeUrl: state => {
     //* 彈跳首頁圖片: {樣式網址}/Site_Uploadfile/{站台ID}/Notice/{語系}/MainPageNotice.png
     return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Notice/${state.lang}/MainPageNotice.png`;

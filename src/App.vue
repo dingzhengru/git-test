@@ -46,6 +46,8 @@ export default {
       'siteID',
       'siteFullCss',
       'siteLogoUrl',
+      'siteAppIcon',
+      'siteIOSUrl',
       'lang',
       'loadingRequestList',
       'pwaInstallStatus',
@@ -147,6 +149,16 @@ export default {
         //* EX: http://resource.re888show.com/Site_Uploadfile/C/Logo_0.png
         // this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
         // this.logo = `${this.siteRemoteCSSUrl}/Site_Uploadfile/${this.siteID}/Logo_0.png`;
+
+        //* 設置 IOS apple-touch-icon
+        document.querySelector('#apple-touch-icon').setAttribute('href', this.siteAppIcon('192x192'));
+
+        //* 設置 IOS apple-touch-startup-image
+        document.querySelector('#apple-touch-startup-image-750x1344').setAttribute('href', this.siteIOSUrl('750x1344'));
+        document.querySelector('#apple-touch-startup-image-828x1792').setAttribute('href', this.siteIOSUrl('828x1792'));
+        document
+          .querySelector('#apple-touch-startup-image-1242x2208')
+          .setAttribute('href', this.siteIOSUrl('1242x2208'));
 
         //* 確認是否維護
         if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {

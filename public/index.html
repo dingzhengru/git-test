@@ -8,13 +8,38 @@
 
     <link rel="icon" id="favicon" />
     <link rel="manifest" id="manifest" crossorigin="anonymous" />
+
+    <!-- IOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" id="apple-touch-icon" />
+    <!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
+    <link
+      rel="apple-touch-startup-image"
+      id="apple-touch-startup-image-750x1344"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+    />
+
+    <!-- iPhone Xr (828px x 1792px) -->
+    <link
+      rel="apple-touch-startup-image"
+      id="apple-touch-startup-image-828x1792"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+    />
+
+    <!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
+    <link
+      rel="apple-touch-startup-image"
+      id="apple-touch-startup-image-1242x2208"
+      media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)"
+    />
+
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <noscript>
       <strong
-        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without
-        JavaScript enabled. Please enable it to continue.</strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
+        enable it to continue.</strong
       >
     </noscript>
     <div id="app"></div>
