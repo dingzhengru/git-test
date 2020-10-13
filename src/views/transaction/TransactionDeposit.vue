@@ -203,7 +203,7 @@ import dayjs from 'dayjs';
 export default {
   name: 'TransactionDeposit',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'siteName', 'siteDepositNoticeUrl']),
+    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'siteName', 'siteDepositNoticeUrl', 'siteIsShowDepositNotice']),
   },
   data() {
     return {
@@ -257,7 +257,7 @@ export default {
       hid_THBtoMMKrate: '', //* THB:MMK 匯率(泰銖:緬甸)
       depositLimit: { min: 0, max: 0 },
       noticeList: ['currency', 'depositLimit01', 'depositLimit02', 'userBear01', 'userBear02', 'suggest', 'contact'],
-      isShowDepositNotice: true,
+      isShowDepositNotice: false,
     };
   },
   methods: {
@@ -383,7 +383,8 @@ export default {
 
         this.getDepositInfo();
 
-        console.log(this.siteDepositNoticeUrl);
+        //* 是否顯示 DepositNotice
+        this.isShowDepositNotice = this.siteIsShowDepositNotice;
       },
     },
     lang() {

@@ -16,6 +16,8 @@ const getters = {
   siteStatus: state => state.site.siteStatus,
   siteMaintainTimeStart: state => state.site.maintainTimeStart,
   siteMaintainTimeEnd: state => state.site.maintainTimeEnd,
+  siteIsShowMainNotice: state => state.site.mainNotice,
+  siteIsShowDepositNotice: state => state.site.depositNotice,
   siteFullCss: state => {
     return `${state.site.cssClass}/${state.site.cssType}`;
   },

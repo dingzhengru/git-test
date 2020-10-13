@@ -14,6 +14,8 @@ const state = {
   siteStatus: 0, //* 站台狀態: 0正常 10維護 20停用
   maintainTimeStart: null,
   maintainTimeEnd: null,
+  mainNotice: null,
+  depositNotice: null,
 };
 
 const mutations = {
@@ -56,6 +58,12 @@ const mutations = {
   setMaintainTimeEnd(state, maintainTimeEnd) {
     state.maintainTimeEnd = maintainTimeEnd;
   },
+  setMainNotice(state, mainNotice) {
+    state.mainNotice = mainNotice;
+  },
+  setDepositNotice(state, depositNotice) {
+    state.depositNotice = depositNotice;
+  },
 };
 
 const actions = {
@@ -79,6 +87,8 @@ const actions = {
       commit('setSiteStatus', result.RetObj.Lst_SiteStatus);
       commit('setMaintainTimeStart', result.RetObj.Lst_MaintainTimeStart);
       commit('setMaintainTimeEnd', result.RetObj.Lst_MaintainTimeEnd);
+      commit('setMainNotice', result.RetObj.MainNotice);
+      commit('setDepositNotice', result.RetObj.DepositNotice);
     }
 
     //* 手動設置(測試用)

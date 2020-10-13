@@ -1,5 +1,5 @@
 <template>
-  <div class="home" @click="isShowNoneLoginPopup = false">
+  <div class="home" @click="isShowMainNotice = false">
     <HomeSwiper
       :list="bannerList"
       :resourceUrl="resourceUrl"
@@ -19,10 +19,10 @@
     </div>
     <transition name="fade">
       <div
-        :id="idMapper.home.noneLoginPopup"
-        class="noneLoginPopup"
+        :id="idMapper.home.MainNotice"
+        class="main-notice"
         :style="{ 'background-image': `url(${siteMainPageNoticeUrl})` }"
-        v-if="isShowNoneLoginPopup"
+        v-if="isShowMainNotice"
       ></div>
     </transition>
 
@@ -131,12 +131,13 @@ export default {
       'resourceUrl',
       'siteIsNewPromotion',
       'siteMainPageNoticeUrl',
+      'siteIsShowMainNotice',
     ]),
   },
   data() {
     return {
       idMapper: idMapper,
-      isShowNoneLoginPopup: false,
+      isShowMainNotice: false,
       isShowAlertBox: false,
       alertMessageList: [],
       bannerList: [],
@@ -196,8 +197,8 @@ export default {
     };
   },
   mounted() {
-    //* 沒登入就顯示 NoneLoginPopup
-    this.isShowNoneLoginPopup = !this.isLoggedIn;
+    //* 沒登入就顯示 MainNotice
+    this.isShowMainNotice = this.siteIsShowMainNotice && !this.isLoggedIn;
 
     //* 取得遊戲館列表，因不需要 siteID 所以放這即可
     this.getProductList();
@@ -526,14 +527,16 @@ export default {
   },
 };
 </script>
-<style scoped>
+
+<style lang="scss" scoped>
+
 .home {
   padding-bottom: 119px;
 }
-.noneLoginPopup {
+
+.main-notice {
   width: 100%;
   height: 100%;
-  /* background: rgba(0, 0, 0, 0.8) url(imgs/main/Bg-noneLoginPopup.jpg) center center no-repeat; */
   position: fixed;
   top: 0;
   left: 0;
