@@ -255,6 +255,7 @@ export default {
           width: 198px;
           background-repeat: no-repeat;
           background-position: center top;
+          background-size: 100px;
           padding-top: 115px;
           font-size: 2.461em;
           text-align: center;
