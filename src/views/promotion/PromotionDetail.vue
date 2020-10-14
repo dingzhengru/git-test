@@ -10,7 +10,11 @@
         <h3 class="promotion-detail__main__content__title">
           {{ $t(promotionDetail.ContentTitle) }}
         </h3>
-        <div class="promotion-detail__main__content__desc" v-html="promotionDetail.ContentHtml"></div>
+        <div class="promotion-detail__main__content__desc ql-container">
+          <div class="ql-editor">
+            <div class="" v-html="promotionDetail.ContentHtml"></div>
+          </div>
+        </div>
       </div>
       <div class="promotion-detail__main__button">
         <button
@@ -27,6 +31,11 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getPromotionDetail } from '@/api/promotion';
+
+// import 'quill/dist/quill.core.css';
+import '@/vender/quill/quill.core.css';
+import '@/vender/quill/quill-better-table.css';
+
 export default {
   name: 'PromotionDetail',
   computed: {
@@ -108,6 +117,11 @@ export default {
   }
   h6 {
     font-size: 1.54em;
+  }
+
+  //* 強制把寬度調成 100%
+  .quill-better-table {
+    width: 100% !important;
   }
 }
 </style>
