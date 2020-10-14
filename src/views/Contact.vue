@@ -1,7 +1,7 @@
 <template>
-  <div class="contact" :class="{ 'contact-auth': isLoggedIn }">
-    <div class="contact__content theme-content-box">
-      <ul class="contact__content__ul">
+  <div class="contact" :class="{ 'contact-auth': isLoggedIn }" @click.self="closeAllContentList">
+    <div class="contact__content theme-content-box" @click.self="closeAllContentList">
+      <ul class="contact__content__ul" @click.self="closeAllContentList">
         <li class="contact__content__ul__li" v-for="contact in contactList" :key="contact.Lst_ContactID">
           <a
             href="javascript:;"
@@ -136,6 +136,12 @@ export default {
         //* weixin:// 打開指定用戶方法，已只適用於少數白名單應用程式，最多就用此連結開啟程式
         window.open(`weixin://`);
       }
+    },
+    closeAllContentList() {
+      this.contactList.forEach(item => {
+        item.isShowContentList = false;
+        this.$forceUpdate();
+      });
     },
   },
   watch: {
