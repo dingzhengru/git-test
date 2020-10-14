@@ -6,7 +6,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
 - [Token & 公鑰](#token--公鑰)
 - [其他](#其他)
-  - [IOS input[type=datetime-local] 自動驗證錯誤](#ios-inputtypedatetime-local-自動驗證錯誤)
+  - [IOS input[type=datetime-local] 自動驗證錯誤(已解決)](#ios-inputtypedatetime-local-自動驗證錯誤已解決)
   - [quill 顯示不一(已解決)](#quill-顯示不一已解決)
   - [Wechat 無法開啟指定用戶](#wechat-無法開啟指定用戶)
   - [維護畫面](#維護畫面)
@@ -39,7 +39,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
 ## 其他
 
-### IOS input[type=datetime-local] 自動驗證錯誤
+### IOS input[type=datetime-local] 自動驗證錯誤(已解決)
 此錯誤發生在存款頁面，即使輸入正確，還是會一直顯示 enter a valid value 
 所以只好於 form 添加 novalidate 關掉自動驗證 
 
