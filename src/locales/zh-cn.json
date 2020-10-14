@@ -348,7 +348,7 @@
         "username": "帐号",
         "currency": "币别",
         "createdDatetime": "注册时间",
-        "fullName": "真实姓名",
+        "realName": "真实姓名",
         "email": "E-mail",
         "birthday": "生日",
         "bankName1": "银行名称",

@@ -348,7 +348,7 @@
         "username": "Account",
         "currency": "Specific Currency",
         "createdDatetime": "Registration time",
-        "fullName": "Your real name",
+        "realName": "Your real name",
         "email": "E-mail",
         "birthday": "Birthday",
         "bankName1": "Name of Bank",

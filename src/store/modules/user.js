@@ -39,7 +39,7 @@ const state = {
   PIBetAmount: 0,
   // point: null,
   // qq: null,
-  fullName: null,
+  realName: null,
   // relatedAccount: null,
   // siteId: null,
   // skype: null,
@@ -106,7 +106,7 @@ const mutations = {
     state.PIBetAmount = info.Lst_PI_BetAmount; //* 累積打碼量
     // state.point = info.Lst_Point; //* 我的錢包點數
     // state.qq = info.Lst_Qq; //*
-    state.fullName = info.Lst_Realname; //* 真實姓名
+    state.realName = info.Lst_Realname; //* 真實姓名
     // state.relatedAccount = info.Lst_RelatedAccount; //* 上層代理(推薦人)
     // state.siteId = info.Lst_Siteid; //* 站台
     // state.skype = info.Lst_Skype; //* Skype
