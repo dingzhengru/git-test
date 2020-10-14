@@ -140,8 +140,8 @@ export default {
     closeAllContentList() {
       this.contactList.forEach(item => {
         item.isShowContentList = false;
-        this.$forceUpdate();
       });
+      this.$forceUpdate();
     },
   },
   watch: {
