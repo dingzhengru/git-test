@@ -92,7 +92,7 @@ export default {
     ToggleButton,
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'Lst_Enable_Remember_Option']),
+    ...mapGetters(['siteID', 'siteFullCss', 'isEnableRememberOption']),
   },
   data() {
     return {
@@ -134,7 +134,7 @@ export default {
 
       console.log('[ChangeRemember]', result);
       if (result.Code == 200) {
-        this.$store.commit('user/setLst_Enable_Remember_Option', this.isRememberPassword);
+        this.$store.commit('user/setIsEnableRememberOption', this.isRememberPassword);
         window.alert(this.$t('user.changePassword.alert.success'));
       }
     },
@@ -171,7 +171,7 @@ export default {
         this.$store.commit('setIsLoading', false);
 
         //* 設置記憶密碼
-        this.isRememberPassword = this.Lst_Enable_Remember_Option;
+        this.isRememberPassword = this.isEnableRememberOption;
       },
     },
     isRememberPassword() {

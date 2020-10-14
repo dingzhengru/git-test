@@ -41,10 +41,10 @@ const state = {
   bankAccount3: null,
   bankBrach3: null,
   bankAccountName3: null,
-  Lst_IsDemoAccount: null, //* 是否為試玩帳號
-  Lst_UsingfirstDeposit: null, //* 是否用過首存優惠
-  Lst_Enable_Remember_Option: null, //* 手機版記憶帳密
-  Lst_HasWithdrawalPassWord: null, //* 是否有登記過取款密碼
+  isDemoAccount: null, //* 是否為試玩帳號
+  isUsingfirstDeposit: null, //* 是否用過首存優惠
+  isEnableRememberOption: null, //* 手機版記憶帳密
+  hasWithdrawalPassWord: null, //* 是否有登記過取款密碼
 };
 
 const mutations = {
@@ -60,8 +60,8 @@ const mutations = {
     state.publicKey = publicKey;
     setPublicKey(publicKey);
   },
-  setLst_Enable_Remember_Option(state, Lst_Enable_Remember_Option) {
-    state.Lst_Enable_Remember_Option = Lst_Enable_Remember_Option;
+  setIsEnableRememberOption(state, isEnableRememberOption) {
+    state.isEnableRememberOption = isEnableRememberOption;
   },
   setUserInfo(state, info) {
     console.log('[SetUserInfo]', info);
@@ -76,10 +76,10 @@ const mutations = {
     state.email = info.Lst_Email;
     state.birthday = info.Lst_Birthday;
 
-    state.Lst_IsDemoAccount = info.Lst_IsDemoAccount; //* 是否為試玩帳號
-    state.Lst_UsingfirstDeposit = info.Lst_UsingfirstDeposit; //* 是否用過首存優惠
-    state.Lst_Enable_Remember_Option = info.Lst_Enable_Remember_Option; //* 手機版記憶帳密
-    state.Lst_HasWithdrawalPassWord = info.Lst_HasWithdrawalPassWord; //* 是否有登記過取款密碼
+    state.isDemoAccount = info.Lst_IsDemoAccount; //* 是否為試玩帳號
+    state.isUsingfirstDeposit = info.Lst_UsingfirstDeposit; //* 是否用過首存優惠
+    state.isEnableRememberOption = info.Lst_Enable_Remember_Option; //* 手機版記憶帳密
+    state.hasWithdrawalPassWord = info.Lst_HasWithdrawalPassWord; //* 是否有登記過取款密碼
 
     state.bankId1 = info.Lst_BankID_1;
     state.bankName1 = info.Lst_BankName_1 || ''; //* 目前無法從會員資訊中取得，需從 銀行ID 搭配 會員銀行資訊 API 來取得
