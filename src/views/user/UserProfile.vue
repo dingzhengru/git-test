@@ -5,7 +5,7 @@
       :profile="{ username, currency, createdDatetime: createdDatetime.replace('T', ' ') }"
       :registerList="registerList"
       :bankList="bankList"
-      v-if="isAccessed == false"
+      v-if="isAccountOpen == false"
       @instantAccess="submitInstantAccess"
       @change-register-field="changeRegisterField"
     ></UserProfileList>
@@ -24,7 +24,7 @@
         bankBrach1,
         bankAccountName1,
       }"
-      v-else-if="isAccessed == true"
+      v-else-if="isAccountOpen == true"
       @change-withdrawal-password="changeWithdrawalPassword"
     ></UserProfileListAccess>
   </div>
@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'isAccessed',
+      'isAccountOpen',
       'siteID',
       'siteFullCss',
       'username',
@@ -106,14 +106,14 @@ export default {
         import(`@/styles/${this.siteFullCss}/user/profile.scss`);
       },
     },
-    isAccessed: {
+    isAccountOpen: {
       immediate: true,
       async handler() {
-        if (this.isAccessed == null) {
+        if (this.isAccountOpen == null) {
           return;
         }
 
-        if (this.isAccessed) {
+        if (this.isAccountOpen) {
           const bankInfoListResult = await getBankInfoList();
           console.log('[BankInfoList]', bankInfoListResult);
         } else {

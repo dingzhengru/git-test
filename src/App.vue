@@ -7,9 +7,9 @@
       :lang="lang"
       :logo="siteLogoUrl"
       :username="username"
-      :total="total"
-      :vip="vip"
-      :roll="roll"
+      :totalBalance="totalBalance"
+      :PILevel="PILevel"
+      :PIBetAmount="PIBetAmount"
       :backIconRouteList="['PromotionDetail']"
       @changeLang="changeLang"
       @logout="logout"
@@ -54,11 +54,11 @@ export default {
       'pwaPrompt',
       'siteStatus',
       'isLoggedIn',
-      'resourceUrl',
+      'totalBalance',
       'username',
-      'total',
-      'vip',
-      'roll',
+      'PILevel',
+      'PIBetAmount',
+      'resourceUrl',
     ]),
   },
   data() {

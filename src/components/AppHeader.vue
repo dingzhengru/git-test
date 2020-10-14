@@ -25,9 +25,9 @@
         :langList="langList"
         :lang="lang"
         :username="username"
-        :total="total"
-        :vip="vip"
-        :roll="roll"
+        :totalBalance="totalBalance"
+        :PILevel="PILevel"
+        :PIBetAmount="PIBetAmount"
         @changeLang="changeLang"
         @logout="logout"
       ></HeaderMenuAuth>
@@ -71,15 +71,15 @@ export default {
       type: String,
       default: () => '',
     },
-    total: {
+    totalBalance: {
       type: Number,
       default: () => 0,
     },
-    vip: {
+    PILevel: {
       type: Number,
       default: () => 0,
     },
-    roll: {
+    PIBetAmount: {
       type: Number,
       default: () => 0,
     },

@@ -16,16 +16,39 @@ const state = {
   isLoggedIn: false,
   token: null,
   publicKey: null,
-  isAccessed: null,
+  totalBalance: null, //* 總點數
+
   username: null,
-  total: null,
-  vip: null,
-  roll: null,
-  currency: null,
-  createdDatetime: null,
-  fullName: null,
-  email: null,
+  isAccountOpen: null,
   birthday: null,
+  createdDatetime: null,
+  currency: null,
+  // depositCount: null,
+  email: null,
+  // isEnablePILevel: null,
+  isEnableRememberOption: null,
+  hasWithdrawalPassWord: null,
+  isDemoAccount: null,
+  // line: null,
+  // ip: null,
+  // mobile: null,
+  newMailCount: 0,
+  // nickname: null,
+  PILevel: 0,
+  // PILevelName: null,
+  PIBetAmount: 0,
+  // point: null,
+  // qq: null,
+  fullName: null,
+  // relatedAccount: null,
+  // siteId: null,
+  // skype: null,
+  // status: null,
+  // totalDeposit: null,
+  // totalWithdrawals: null,
+  isUsingfirstDeposit: null,
+  // vipLevel: null,
+  // withdrawalsNum: null,
   bankId1: null,
   bankName1: null,
   bankAccount1: null,
@@ -41,10 +64,6 @@ const state = {
   bankAccount3: null,
   bankBrach3: null,
   bankAccountName3: null,
-  isDemoAccount: null, //* 是否為試玩帳號
-  isUsingfirstDeposit: null, //* 是否用過首存優惠
-  isEnableRememberOption: null, //* 手機版記憶帳密
-  hasWithdrawalPassWord: null, //* 是否有登記過取款密碼
 };
 
 const mutations = {
@@ -65,21 +84,38 @@ const mutations = {
   },
   setUserInfo(state, info) {
     console.log('[SetUserInfo]', info);
-    state.isAccessed = info.Lst_Account_Open;
-    state.username = info.Lst_Account;
-    state.roll = info.Lst_PI_BetAmount;
-    state.vip = info.Lst_PI_Level;
 
-    state.currency = info.Lst_Currency;
-    state.createdDatetime = info.Lst_Ctime;
-    state.fullName = info.Lst_Realname;
-    state.email = info.Lst_Email;
-    state.birthday = info.Lst_Birthday;
-
-    state.isDemoAccount = info.Lst_IsDemoAccount; //* 是否為試玩帳號
-    state.isUsingfirstDeposit = info.Lst_UsingfirstDeposit; //* 是否用過首存優惠
+    state.username = info.Lst_Account; //* 帳號
+    state.isAccountOpen = info.Lst_Account_Open; //* 帳號是否開通
+    state.birthday = info.Lst_Birthday; //* 生日
+    state.createdDatetime = info.Lst_Ctime; //* 註冊時間
+    state.currency = info.Lst_Currency; //* 幣別
+    // state.depositCount = info.Lst_DepositNum; //* 存款次數
+    state.email = info.Lst_Email; //* Email
+    // state.isEnablePILevel = info.Lst_Enable_PILevel; //* 金管家狀態
     state.isEnableRememberOption = info.Lst_Enable_Remember_Option; //* 手機版記憶帳密
     state.hasWithdrawalPassWord = info.Lst_HasWithdrawalPassWord; //* 是否有登記過取款密碼
+    state.isDemoAccount = info.Lst_IsDemoAccount; //* 是否為試玩帳號
+    // state.line = info.Lst_Line; //* Line
+    // state.ip = info.Lst_Loginip; //* 登入IP
+    // state.mobile = info.Lst_Mobile; //* 手機號碼
+    state.newMailCount = info.Lst_NewMailCount; //* 新信數量
+    // state.nickname = info.Lst_Nickname; //* 暱稱
+    state.PILevel = info.Lst_PILevel; //* 金管家等級
+    // state.PILevelName = info.Lst_PILevelName; //* 金管家等級
+    state.PIBetAmount = info.Lst_PI_BetAmount; //* 累積打碼量
+    // state.point = info.Lst_Point; //* 我的錢包點數
+    // state.qq = info.Lst_Qq; //*
+    state.fullName = info.Lst_Realname; //* 真實姓名
+    // state.relatedAccount = info.Lst_RelatedAccount; //* 上層代理(推薦人)
+    // state.siteId = info.Lst_Siteid; //* 站台
+    // state.skype = info.Lst_Skype; //* Skype
+    // state.status = info.Lst_Status; //* 狀態
+    // state.totalDeposit = info.Lst_TotalDeposit; //* 總存款金額
+    // state.totalWithdrawals = info.Lst_TotalWithdrawals; //* 總取款金額
+    state.isUsingfirstDeposit = info.Lst_UsingfirstDeposit; //* 是否用過首存優惠
+    // state.vipLevel = info.Lst_VIPlevel; //* vip等級
+    // state.withdrawalsNum = info.Lst_WithdrawalsNum; //* 取款次數
 
     state.bankId1 = info.Lst_BankID_1;
     state.bankName1 = info.Lst_BankName_1 || ''; //* 目前無法從會員資訊中取得，需從 銀行ID 搭配 會員銀行資訊 API 來取得
@@ -113,7 +149,7 @@ const mutations = {
 
     getAllGamePoint().then(result => {
       console.log('[SetUserInfo AllGamePoint]', result.RetObj);
-      state.total = result.RetObj.TotalBalance;
+      state.totalBalance = result.RetObj.TotalBalance;
     });
   },
   removeToken(state) {

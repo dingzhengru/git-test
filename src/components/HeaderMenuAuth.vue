@@ -4,9 +4,9 @@
       <div class="header-menu-auth__member__block" v-for="infoKey in userInfoKeyList" :key="infoKey">
         {{ $t(infoKey) }}：
         <template v-if="infoKey == 'header.user.username'">{{ username }}</template>
-        <template v-else-if="infoKey == 'header.user.total'">{{ numeral(total).format('0,0.00') }}</template>
-        <template v-else-if="infoKey == 'header.user.vip'">{{ vip }}</template>
-        <template v-else-if="infoKey == 'header.user.roll'">{{ numeral(roll).format('0,0.00') }}</template>
+        <template v-else-if="infoKey == 'header.user.total'">{{ numeral(totalBalance).format('0,0.00') }}</template>
+        <template v-else-if="infoKey == 'header.user.vip'">{{ PILevel }}</template>
+        <template v-else-if="infoKey == 'header.user.roll'">{{ numeral(PIBetAmount).format('0,0.00') }}</template>
       </div>
     </div>
     <a
@@ -86,15 +86,15 @@ export default {
       type: String,
       default: () => '',
     },
-    total: {
+    totalBalance: {
       type: String,
       default: () => '',
     },
-    vip: {
+    PILevel: {
       type: String,
       default: () => '',
     },
-    roll: {
+    PIBetAmount: {
       type: Number,
       default: () => 0,
     },
