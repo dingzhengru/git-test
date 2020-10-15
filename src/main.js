@@ -23,6 +23,8 @@ import { getTokenAndPublicKey, keepUserOnline } from '@/api/user'; //* API
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
 
+console.log(router.currentRoute);
+
 //* 手動設置版型，測試時使用
 // const cssClass = 'Y';
 // const cssType = '02';
