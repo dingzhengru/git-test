@@ -2,13 +2,11 @@ importScripts('/workbox-sw-5.1.2.js');
 
 workbox.setConfig({ debug: false });
 
-// workbox.routing.registerRoute(
-//   /(\/AlreadyLogin\/|\/NoneLogin\/)(?!LobbyGameRedirect)/,
-//   new workbox.strategies.NetworkFirst({
-//     cacheName: "page-cache",
-//   })
-// );
-
+/**
+ ** cache 頁面
+ ** 1. 只存 / 首頁而已
+ ** 2. 存所有沒有 . 的頁面 (目前註解掉的那個)
+ */
 workbox.routing.registerRoute(
   /^(http|https).*\/$/,
   // /^(http|https)[^\.]+$/,
