@@ -96,6 +96,8 @@ export default {
           width: 100%;
           height: 100%;
           opacity: 0.9;
+          user-select: none;
+          pointer-events: none;
           z-index: 3;
         }
       }
