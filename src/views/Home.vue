@@ -197,9 +197,6 @@ export default {
     };
   },
   mounted() {
-    //* 沒登入就顯示 MainNotice
-    this.isShowMainNotice = this.siteIsShowMainNotice && !this.isLoggedIn;
-
     //* 取得遊戲館列表，因不需要 siteID 所以放這即可
     this.getProductList();
   },
@@ -512,6 +509,9 @@ export default {
         if (this.isLoggedIn) {
           this.getLotteryCountList();
         }
+
+        //* 沒登入就顯示 MainNotice
+        this.isShowMainNotice = this.siteIsShowMainNotice && !this.isLoggedIn;
       },
     },
     lang() {
@@ -529,7 +529,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .home {
   padding-bottom: 119px;
 }
