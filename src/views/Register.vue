@@ -97,6 +97,8 @@ import { getRegisterFieldList, checkRegisterFieldExist } from '@/api/register';
 import { registerFieldList, validateField } from '@/utils/register';
 import idMapper from '@/idMapper';
 
+import { sendProxyCode } from '@/api/site';
+
 export default {
   name: 'Register',
   computed: {
@@ -209,12 +211,18 @@ export default {
         return;
       }
       if (field.name == 'Add_RelatedAccount' && field.value) {
-        const requestData = { field: field.name, strValue: field.value };
-        const result = await checkRegisterFieldExist(requestData);
-        if (result == false) {
-          field.value = '';
-          alert(this.$t('register.Add_RelatedAccount.error.invalid'));
-        }
+        // const requestData = { field: field.name, strValue: field.value };
+        // const result = await checkRegisterFieldExist(requestData);
+        // if (result == false) {
+        //   field.value = '';
+        //   alert(this.$t('register.Add_RelatedAccount.error.invalid'));
+        // }
+
+        //* 測試推廣碼
+        const requestData = { Code: field.value };
+        const result = await sendProxyCode(requestData);
+
+        console.log('[ProxyCode]', result);
       } else if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
         const firstNameField = this.fieldList.find(item => item.name == 'Add_FirstName');
         const lastNameField = this.fieldList.find(item => item.name == 'Add_LastName');
