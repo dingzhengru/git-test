@@ -67,8 +67,8 @@ const mutations = {
 };
 
 const actions = {
-  async getInfo({ commit }) {
-    const requestData = { DeviceType: 1 };
+  async getInfo({ commit }, requestData) {
+    // const requestData = { DeviceType: 1 };
 
     const result = await getSiteInfo(requestData);
 

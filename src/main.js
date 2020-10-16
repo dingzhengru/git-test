@@ -48,9 +48,11 @@ if (getToken() && getPublicKey()) {
   });
 }
 
-//* 取得站台資訊
+//* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
+const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';
+const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode };
 store
-  .dispatch('site/getInfo')
+  .dispatch('site/getInfo', requestDataSiteInfo)
   .then(result => {
     //* Page Title
     document.title = result.RetObj.LS_SiteTitle;
@@ -80,14 +82,14 @@ store
     }, 50000);
   })
   .catch(error => {
-    if (process.env.NODE_ENV === 'production') {
-      alert('站台資訊取得失敗');
-    } else {
-      store.commit('site/setID', 'C');
-      store.commit('site/setCssClass', 'Y');
-      store.commit('site/setCssType', '01');
-    }
+    window.alert('站台資訊取得失敗');
     throw error;
+  })
+  .finally(() => {
+    //* 若網址有推廣碼，則轉址至首頁，無論請求失敗或成功
+    if (proxyCode) {
+      router.replace({ name: 'Home' });
+    }
   });
 
 new Vue({
