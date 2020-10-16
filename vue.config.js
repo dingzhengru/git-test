@@ -1,4 +1,18 @@
+const workboxPlugin = require('workbox-webpack-plugin');
+
 module.exports = {
+  configureWebpack: {
+    plugins: [
+      //* 參數可以參考: https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-webpack-plugin.InjectManifest
+      new workboxPlugin.InjectManifest({
+        swSrc: './src/sw-injectManifest-config.js',
+        swDest: 'sw-injectManifest.js',
+        exclude: [/.*/], //* 設定 precache 要忽略的檔案 (這裡設 /.*/，代表都不要預緩存)
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, //* 設定預緩存能存取的最大檔案大小 (5MB)
+        mode: process.env.NODE_ENV,
+      }),
+    ],
+  },
   chainWebpack: config => {
     config.plugins.delete('preload'); //* 關閉 prefetch 插件
     config.plugins.delete('prefetch'); //* 關閉 prefetch 插件
@@ -10,56 +24,6 @@ module.exports = {
       return args;
     });
   },
-  // css: {
-  //   extract: false,
-  // },
-  // configureWebpack: {
-  //   optimization: {
-  //     splitChunks: false,
-  //   },
-  // },
-
-  // configureWebpack: {
-  //   optimization: {
-  //     splitChunks: {
-  //* https://webpack.js.org/plugins/split-chunks-plugin/
-  //* https://stackoverflow.com/a/55372086/5134658
-
-  // minChunks: 3,
-  // cacheGroups: {
-  // commons: {
-  //   maxAsyncRequests: 1,
-  //   maxInitialRequests: 1,
-  // },
-  // default: false,
-  // //* Custom common chunk
-  // bundle: {
-  //   name: 'commons',
-  //   chunks: 'async',
-  //   // minChunks: 1,
-  //   // maxInitialRequests: 1,
-  //   // maxInitialRequests: 3,
-  //   // reuseExistingChunk: false,
-  // },
-  // //* Customer vendor
-  // // vendors: {
-  // //   chunks: 'initial',
-  // //   name: 'vendors',
-  // //   test: 'vendors',
-  // // },
-  // //* Merge all the CSS into one file
-  // styles: {
-  //   name: 'styles',
-  //   test: /\.s?css$/,
-  //   chunks: 'all',
-  //   minChunks: 3,
-  //   reuseExistingChunk: true,
-  //   enforce: true,
-  // },
-  // },
-  // },
-  // },
-  // },
   pluginOptions: {
     i18n: {
       locale: 'en-us', // The locale of project localization

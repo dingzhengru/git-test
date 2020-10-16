@@ -2,8 +2,11 @@
 
 import { register } from 'register-service-worker';
 
+// const SW_FILE = '/sw.js'
+const SW_FILE = '/sw-injectManifest.js';
+
 if (process.env.NODE_ENV === 'production') {
-  register(`/sw.js`, {
+  register(SW_FILE, {
     ready() {
       console.log('App is being served from cache by a service worker.\n');
     },

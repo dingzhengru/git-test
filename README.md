@@ -5,6 +5,8 @@
 H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
 - [Token & 公鑰](#token--公鑰)
+- [workbox](#workbox)
+  - [workbox 預緩存設定(precache)](#workbox-預緩存設定precache)
 - [其他](#其他)
   - [IOS input[type=datetime-local] 自動驗證錯誤(已解決)](#ios-inputtypedatetime-local-自動驗證錯誤已解決)
   - [quill 顯示不一(已解決)](#quill-顯示不一已解決)
@@ -37,12 +39,28 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 兩者都可直接靠重新獲取來解決，再來就是看要，**重整頁面**或是**重新發送請求**
 不過現在確定 token 與 公鑰沒有期限，所以不會因為過期而觸發這兩個錯誤，只有被踢線時會觸發，所以目前只有**重新取得 token 與 公鑰**
 
+## workbox
+
+- 原本使用 importScript 方式引入，現在改用配合 webpack 引入的方式使用
+- 使用的套件是 workbox-webpack-plugin，引入方法可以參考: https://webpack.docschina.org/guides/progressive-web-application
+- 於 vue.config.js 中引入設定，參考: https://cli.vuejs.org/guide/webpack.html
+- workbox-webpack-plugin 設定的參數，參考以下網址
+  - GenerateSW: https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-webpack-plugin.GenerateSW
+  - InjectManifest: https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-webpack-plugin.InjectManifest
+
+### workbox 預緩存設定(precache)
+
+- 於 vue.config.js 中設定要預緩存的範圍、最大檔案大小
+  - 詳細參數可以參考上面的 workbox-webpack-plugin 設定的參數的網址
+- 使用配合 webpack 方式引入，都強制要使用 precache，預設是會預緩存 dist 底下所有檔案，無法關閉，只能靠設定範圍來不使用
+- 目前是設定 `exclude: [/.*/]` 來不使用預緩存功能
+
 ## 其他
 
 ### IOS input[type=datetime-local] 自動驗證錯誤(已解決)
-此錯誤發生在存款頁面，即使輸入正確，還是會一直顯示 enter a valid value 
-所以只好於 form 添加 novalidate 關掉自動驗證 
 
+此錯誤發生在存款頁面，即使輸入正確，還是會一直顯示 enter a valid value
+所以只好於 form 添加 novalidate 關掉自動驗證
 
 ### quill 顯示不一(已解決)
 
@@ -67,7 +85,6 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 ### 點擊輪播無法正常換頁(已解決)
 
 - 解決方法是套件換版本即可: swiper@5.3.6 、vue-awesome-swiper@4.0.4
-
 
 ### 取得網站資訊不同步，將處理放置 watch(已解決)
 
