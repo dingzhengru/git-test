@@ -88,6 +88,7 @@ store
   .finally(() => {
     //* 若網址有推廣碼，則轉址至首頁，無論請求失敗或成功
     if (proxyCode) {
+      console.log('[ProxyCode]', proxyCode);
       router.replace({ name: 'Home' });
     }
   });
