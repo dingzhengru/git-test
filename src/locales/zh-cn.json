@@ -65,6 +65,7 @@
     "Add_RelatedAccount": {
       "placeholder": "推荐人",
       "hint": "若无推荐人,则不需要填写",
+      "hintHasValue": "推广码: {proxyCode}",
       "error": {
         "invalid": "推荐人不存在",
         "required": "",

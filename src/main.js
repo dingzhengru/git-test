@@ -23,24 +23,14 @@ import { getTokenAndPublicKey, keepUserOnline } from '@/api/user'; //* API
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
 
+console.log(router);
+
 console.log(router.currentRoute);
 
-//* 手動設置版型，測試時使用
-// const cssClass = 'Y';
-// const cssType = '02';
-// store.commit('site/setCssClass', cssClass);
-// store.commit('site/setCssType', cssType);
-
-//* 檢測此頁面可見狀態，離開 & 進入頁面就會觸發
-// document.addEventListener('visibilitychange', function() {
-//   if (document.visibilityState === 'visible') {
-//     //* 進入頁面
-//     console.log(0);
-//   } else {
-//* 離開頁面
-//     console.log(1);
-//   }
-// });
+//* 推廣碼處理，處理完就轉址回首頁
+if (router.currentRoute.query.proxyCode) {
+  console.log('[ProxyCode]', router.currentRoute.query.proxyCode);
+}
 
 //* 取得語系 => 存進 store.state.lang
 const lang = getLang();

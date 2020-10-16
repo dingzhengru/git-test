@@ -65,6 +65,7 @@
     "Add_RelatedAccount": {
       "placeholder": "Referrer",
       "hint": "If there is no referrer,you are not required to fill in",
+      "hintHasValue": "Promotion code: {proxyCode}",
       "error": {
         "invalid": "Referrer does not exist",
         "required": "",

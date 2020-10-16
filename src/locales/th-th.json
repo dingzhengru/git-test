@@ -65,6 +65,7 @@
     "Add_RelatedAccount": {
       "placeholder": "ผู้แนะนำ",
       "hint": "หากไม่มีผู้แนะนำ ก็ไม่ต้องการกรอก",
+      "hintHasValue": "รหัสการโปรโมต: {proxyCode}",
       "error": {
         "invalid": "ไม่มีผู้แนะนำ",
         "required": "",

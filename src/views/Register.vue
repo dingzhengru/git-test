@@ -47,7 +47,15 @@
               <option :value="bank.Value" v-for="bank in bankList" :key="bank.Value">{{ bank.Text }}</option>
             </select>
           </div>
-          <div class="register__form__field__hint">{{ $t(`register.${field.name}.hint`) }}</div>
+
+          <div class="register__form__field__hint">
+            <template v-if="field.name == 'Add_RelatedAccount' && !field.isModifiable">
+              {{ $t(`register.${field.name}.hintHasValue`, { proxyCode: field.value }) }}
+              <br />
+            </template>
+
+            {{ $t(`register.${field.name}.hint`) }}
+          </div>
           <div class="theme-errorMsg" v-if="field.error">
             <span class="theme-txt-errorMsg">{{ field.error }}</span>
           </div>
@@ -96,8 +104,6 @@ import { getCaptcha } from '@/api/captcha';
 import { getRegisterFieldList, checkRegisterFieldExist } from '@/api/register';
 import { registerFieldList, validateField } from '@/utils/register';
 import idMapper from '@/idMapper';
-
-import { sendProxyCode } from '@/api/site';
 
 export default {
   name: 'Register',
@@ -211,18 +217,12 @@ export default {
         return;
       }
       if (field.name == 'Add_RelatedAccount' && field.value) {
-        // const requestData = { field: field.name, strValue: field.value };
-        // const result = await checkRegisterFieldExist(requestData);
-        // if (result == false) {
-        //   field.value = '';
-        //   alert(this.$t('register.Add_RelatedAccount.error.invalid'));
-        // }
-
-        //* 測試推廣碼
-        const requestData = { Code: field.value };
-        const result = await sendProxyCode(requestData);
-
-        console.log('[ProxyCode]', result);
+        const requestData = { field: field.name, strValue: field.value };
+        const result = await checkRegisterFieldExist(requestData);
+        if (result == false) {
+          field.value = '';
+          alert(this.$t('register.Add_RelatedAccount.error.invalid'));
+        }
       } else if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
         const firstNameField = this.fieldList.find(item => item.name == 'Add_FirstName');
         const lastNameField = this.fieldList.find(item => item.name == 'Add_LastName');
@@ -272,11 +272,15 @@ export default {
             const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
 
             if (field) {
+              field.value = registerField.Lst_Value;
               field.isShow = registerField.Lst_Phase == 1;
               field.isRequired = registerField.Lst_isRequired;
               field.isOnly = registerField.Lst_isOnly;
-              //* 只有 Add_RealName 是不可修改
+              //* Add_RealName 是不可修改
+              //* 推薦人若已有值，就也不能修改
               if (field.name == 'Add_RealName') {
+                field.isModifiable = false;
+              } else if (field.name == 'Add_RelatedAccount' && field.value) {
                 field.isModifiable = false;
               } else {
                 field.isModifiable = true;
