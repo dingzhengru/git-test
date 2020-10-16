@@ -19,6 +19,7 @@ const AUTH_API_LIST = [
   'Member/MChangeReMember',
   'Siteinfo/MGetAllGamePoint',
   'Siteinfo/MGetPITTLBet',
+  'Siteinfo/ProxyCode',
   'Product/MemProductList',
   'Operator/MSingleDepositInfo',
   'Operator/MSingleDeposit',
