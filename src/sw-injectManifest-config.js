@@ -1,7 +1,7 @@
 import { skipWaiting, clientsClaim } from 'workbox-core';
-import { precacheAndRoute } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
+import { precacheAndRoute } from 'workbox-precaching';
 
 skipWaiting();
 clientsClaim();
@@ -29,7 +29,7 @@ registerRoute(
 registerRoute(
   /^(http|https):\/\/resource.re888show.com.*$/,
   new StaleWhileRevalidate({
-    cacheName: 'cors-re888show-static-file-catch',
+    cacheName: 'cors-re888show-static-file-cache',
     fetchOptions: {
       mode: 'cors',
       credentials: 'omit',
@@ -40,11 +40,18 @@ registerRoute(
 registerRoute(
   /^(http|https):\/\/resource.thsitea.com.*$/,
   new StaleWhileRevalidate({
-    cacheName: 'cors-thsitea-static-file-catch',
+    cacheName: 'cors-thsitea-static-file-cache',
     fetchOptions: {
       mode: 'cors',
       credentials: 'omit',
     },
+  })
+);
+
+registerRoute(
+  /^(http|https):\/\/.*ManifestJson$/i,
+  new StaleWhileRevalidate({
+    cacheName: 'manifest-cache',
   })
 );
 

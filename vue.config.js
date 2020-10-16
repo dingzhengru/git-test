@@ -3,13 +3,14 @@ const workboxPlugin = require('workbox-webpack-plugin');
 module.exports = {
   configureWebpack: {
     plugins: [
+      //* 目前於開發環境時，引入 workbox-webpack-plugin，每當重新編譯，都會有重複使用的警告(但不影響功能)
       //* 參數可以參考: https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-webpack-plugin.InjectManifest
       new workboxPlugin.InjectManifest({
+        mode: process.env.NODE_ENV,
         swSrc: './src/sw-injectManifest-config.js',
         swDest: 'sw-injectManifest.js',
         exclude: [/.*/], //* 設定 precache 要忽略的檔案 (這裡設 /.*/，代表都不要預緩存)
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, //* 設定預緩存能存取的最大檔案大小 (5MB)
-        mode: process.env.NODE_ENV,
       }),
     ],
   },
