@@ -8,9 +8,6 @@ Vue.config.productionTip = false;
 
 //* CSS 檔案
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
-// import '../node_modules/quill/dist/quill.core.css';
-// import '../node_modules/quill/dist/quill.snow.css';
-// import '../node_modules/quill-better-table/dist/quill-better-table.css';
 import './styles/Y/common/layout.css';
 
 import './routerPermission'; //* 路徑權限

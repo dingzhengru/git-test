@@ -39,7 +39,7 @@ const getters = {
   },
   siteDepositNoticeUrl: state => {
     //* 存款提示圖片: {樣式網址}/Site_Uploadfile/{站台ID}/Notice/{語系}/DepositNotice.png
-    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Notice/${state.lang}/MainPageNotice.png`;
+    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Notice/${state.lang}/DepositNotice.png`;
   },
   resourceUrl: state => {
     return `${state.site.remoteCSSUrl}/ContentStyle/${state.site.mainDomain}/Member/${state.site.cssClass}/${state.site.cssVersion}/2/default/css${state.site.cssType}/common`;
