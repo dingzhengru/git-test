@@ -148,7 +148,7 @@ const mutations = {
     });
 
     getAllGamePoint().then(result => {
-      console.log('[SetUserInfo AllGamePoint]', result.RetObj);
+      console.log('[SetUserInfo AllGamePoint]', result.RetObj.TotalBalance);
       state.totalBalance = result.RetObj.TotalBalance;
     });
   },

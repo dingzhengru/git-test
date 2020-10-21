@@ -139,9 +139,12 @@ export default {
 
         //* 使用 siteInfo 拼湊 logo url
         //* EX: http://resource.re888show.com/Site_Uploadfile/C/Logo_0.png
-        this.logo = this.siteLogoUrl
+        this.logo = this.siteLogoUrl;
         // this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
         // this.logo = `${this.siteRemoteCSSUrl}/Site_Uploadfile/${this.siteID}/Logo_0.png`;
+
+        //* 設置 IOS apple-mobile-web-app-title
+        // document.querySelector('#apple-title').setAttribute('content', 'AppTitle');
 
         //* 設置 IOS apple-touch-icon
         document.querySelector('#apple-touch-icon').setAttribute('href', this.siteAppIcon('192x192'));

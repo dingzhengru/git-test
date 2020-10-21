@@ -348,6 +348,15 @@ export default {
       this.gamePrize = '';
       console.log('[CloseLotteryGame]', this.billNo, this.gameChance, this.gamePrize);
     },
+    endLotteryGame() {
+      //* 結束遊戲後，要執行的程式
+
+      //* 更新取得抽獎次數列表來更新首頁
+      this.getLotteryCountList();
+
+      //* 更新用戶點數
+      this.$store.dispatch('user/getInfo');
+    },
     async openLotteryGame(lottery) {
       console.log('[OpenLotteryGame]', lottery);
 
@@ -423,8 +432,7 @@ export default {
           this.gameChance--;
           this.isWheelLoading = false;
 
-          //* 這段自己加的，再次取得抽獎次數列表來更新首頁
-          this.getLotteryCountList();
+          this.endLotteryGame();
         })
         .catch(err => {
           this.lotteryErrorMessage = err;
@@ -480,8 +488,7 @@ export default {
           };
           this.gameChance--;
 
-          //* 這段自己加的，再次取得抽獎次數列表來更新首頁
-          this.getLotteryCountList();
+          this.endLotteryGame();
         })
         .catch(err => {
           this.lotteryErrorMessage = err;
