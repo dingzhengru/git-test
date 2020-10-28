@@ -1,8 +1,12 @@
 const getters = {
   lang: state => state.lang,
   loadingRequestList: state => state.loadingRequestList,
+
+  //* pwa
   pwaInstallStatus: state => state.pwa.status,
   pwaPrompt: state => state.pwa.prompt,
+
+  //* Site
   siteID: state => state.site.info.LS_SiteID,
   siteCssClass: state => state.site.info.LS_CSS_Class,
   siteCssVersion: state => state.site.info.LS_CSS_Version,
@@ -47,41 +51,41 @@ const getters = {
   resourceUrlMaintain: state => {
     return `${state.site.info.RemoteCSSUrls}/Maintain/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}${state.site.info.LS_CSS_Version}/${state.site.info.LS_CSS_Type}//css`;
   },
+
+  //* User
   isLoggedIn: state => state.user.isLoggedIn,
   token: state => state.user.token,
   publicKey: state => state.user.publicKey,
-  isAccountOpen: state => state.user.isAccountOpen,
-  username: state => state.user.username,
   totalBalance: state => state.user.totalBalance,
-  PILevel: state => state.user.PILevel,
-  PIBetAmount: state => state.user.PIBetAmount,
-  birthday: state => state.user.birthday,
-  createdDatetime: state => state.user.createdDatetime,
-  currency: state => state.user.currency,
-  email: state => state.user.email,
-  isEnableRememberOption: state => state.user.isEnableRememberOption,
-  hasWithdrawalPassWord: state => state.user.hasWithdrawalPassWord,
-  isDemoAccount: state => state.user.isDemoAccount,
-  newMailCount: state => state.user.newMailCount,
-  realName: state => state.user.realName,
-  isUsingfirstDeposit: state => state.user.isUsingfirstDeposit,
 
-  bankId1: state => state.user.bankId1,
-  bankName1: state => state.user.bankName1,
-  bankAccount1: state => state.user.bankAccount1,
-  bankBrach1: state => state.user.bankBrach1,
-  bankAccountName1: state => state.user.bankAccountName1,
-
-  bankId2: state => state.user.bankId2,
-  bankName2: state => state.user.bankName2,
-  bankAccount2: state => state.user.bankAccount2,
-  bankBrach2: state => state.user.bankBrach2,
-  bankAccountName2: state => state.user.bankAccountName2,
-
-  bankId3: state => state.user.bankId3,
-  bankName3: state => state.user.bankName3,
-  bankAccount3: state => state.user.bankAccount3,
-  bankBrach3: state => state.user.bankBrach3,
-  bankAccountName3: state => state.user.bankAccountName3,
+  //* User info
+  username: state => state.user.info.Lst_Account,
+  PILevel: state => state.user.info.Lst_PILevel,
+  PIBetAmount: state => state.user.info.Lst_PI_BetAmount,
+  birthday: state => state.user.info.Lst_Birthday,
+  createdDatetime: state => state.user.info.Lst_Ctime,
+  currency: state => state.user.info.Lst_Currency,
+  email: state => state.user.info.Lst_Email,
+  isAccountOpen: state => state.user.info.Lst_Account_Open,
+  isEnableRememberOption: state => state.user.info.Lst_Enable_Remember_Option,
+  isDemoAccount: state => state.user.info.Lst_IsDemoAccount,
+  newMailCount: state => state.user.info.Lst_NewMailCount,
+  realName: state => state.user.info.Lst_Realname,
+  isUsingfirstDeposit: state => state.user.info.Lst_UsingfirstDeposit,
+  bankId1: state => state.user.info.Lst_BankID_1,
+  bankName1: state => state.user.info.Lst_BankName_1,
+  bankAccount1: state => state.user.info.Lst_BankAccount_1,
+  bankBrach1: state => state.user.info.Lst_Bank_Branches_1,
+  bankAccountName1: state => state.user.info.Lst_BankAccountName_1,
+  bankId2: state => state.user.info.Lst_BankID_2,
+  bankName2: state => state.user.info.Lst_BankName_2,
+  bankAccount2: state => state.user.info.Lst_BankAccount_2,
+  bankBrach2: state => state.user.info.Lst_Bank_Branches_2,
+  bankAccountName2: state => state.user.info.Lst_BankAccountName_2,
+  bankId3: state => state.user.info.Lst_BankID_3,
+  bankName3: state => state.user.info.Lst_BankName_3,
+  bankAccount3: state => state.user.info.Lst_BankAccount_3,
+  bankBrach3: state => state.user.info.Lst_Bank_Branches_3,
+  bankAccountName3: state => state.user.info.Lst_BankAccountName_3,
 };
 export default getters;
