@@ -9,8 +9,8 @@ extend('required', {
   ...required,
   computesRequired: true, //* 會於空值的時候依舊觸發 validate (預設是空值時不會)
   message: name => {
-    return `[${ name }]required: error-message`,
-  }
+    return `[${name}]required: error-message`;
+  },
 });
 
 extend('regex', {
