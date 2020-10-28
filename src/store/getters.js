@@ -51,6 +51,7 @@ const getters = {
   resourceUrlMaintain: state => {
     return `${state.site.info.RemoteCSSUrls}/Maintain/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}${state.site.info.LS_CSS_Version}/${state.site.info.LS_CSS_Type}//css`;
   },
+  siteSeo: state => state.site.seo,
 
   //* User
   isLoggedIn: state => state.user.isLoggedIn,

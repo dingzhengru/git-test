@@ -1,6 +1,6 @@
-import router from './router';
-import store from './store';
-import { AUTH_ROUTE_LIST, NO_AUTH_ROUTE_LIST } from './settings';
+import router from '.';
+import store from '../store';
+import { AUTH_ROUTE_LIST, NO_AUTH_ROUTE_LIST } from '../settings';
 
 router.beforeEach(async (to, from, next) => {
   const isLoggedIn = store.getters.isLoggedIn;
@@ -22,4 +22,5 @@ router.beforeEach(async (to, from, next) => {
 
 router.afterEach(() => {
   store.commit('popLoadingRequest');
+  console.log('[SEO]', store.getters.siteSeo);
 });
