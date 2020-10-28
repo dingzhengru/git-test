@@ -24,9 +24,6 @@ Vue.use(VueScrollTo);
 const lang = getLang();
 if (lang) {
   store.commit('setLang', lang);
-  loadLanguageAsync(lang).then(result => {
-    console.log('[i18n]', 'load:', result);
-  });
 }
 
 //* 用 isLoggedIn 判斷是否登入

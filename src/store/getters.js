@@ -3,49 +3,49 @@ const getters = {
   loadingRequestList: state => state.loadingRequestList,
   pwaInstallStatus: state => state.pwa.status,
   pwaPrompt: state => state.pwa.prompt,
-  siteID: state => state.site.id,
-  siteCssClass: state => state.site.cssClass,
-  siteCssVersion: state => state.site.cssVersion,
-  siteCssType: state => state.site.cssType,
-  siteCssFestival: state => state.site.cssFestival,
-  siteRemoteCSSUrl: state => state.site.remoteCSSUrl,
-  siteMainDomain: state => state.site.mainDomain,
-  siteIsNewPromotion: state => state.site.isNewPromotion,
-  siteName: state => state.site.siteName,
-  siteIsOpenRememberMe: state => state.site.isOpenRememberMe,
-  siteStatus: state => state.site.siteStatus,
-  siteMaintainTimeStart: state => state.site.maintainTimeStart,
-  siteMaintainTimeEnd: state => state.site.maintainTimeEnd,
-  siteIsShowMainNotice: state => state.site.mainNotice,
-  siteIsShowDepositNotice: state => state.site.depositNotice,
+  siteID: state => state.site.info.LS_SiteID,
+  siteCssClass: state => state.site.info.LS_CSS_Class,
+  siteCssVersion: state => state.site.info.LS_CSS_Version,
+  siteCssType: state => state.site.info.LS_CSS_Type,
+  siteCssFestival: state => state.site.info.LS_CSS_Festival,
+  siteRemoteCSSUrl: state => state.site.info.RemoteCSSUrls,
+  siteMainDomain: state => state.site.info.LS_MainDomain,
+  siteIsNewPromotion: state => state.site.info.bNewPromotion,
+  siteName: state => state.site.info.LS_SiteName,
+  siteIsOpenRememberMe: state => state.site.info.Lst_Open_Remember_Option,
+  siteStatus: state => state.site.info.Lst_SiteStatus,
+  siteMaintainTimeStart: state => state.site.info.Lst_MaintainTimeStart,
+  siteMaintainTimeEnd: state => state.site.info.Lst_MaintainTimeEnd,
+  siteIsShowMainNotice: state => state.site.info.MainNotice,
+  siteIsShowDepositNotice: state => state.site.info.DepositNotice,
   siteFullCss: state => {
-    return `${state.site.cssClass}/${state.site.cssType}`;
+    return `${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Type}`;
   },
   siteLogoUrl: state => {
     //* Logo: {樣式網址}/Site_Uploadfile/{站台ID}/Logo_{裝置}.png
-    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Logo_1.png`;
+    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/Logo_1.png`;
   },
   siteAppIcon: state => size => {
     //* AppIcon: {樣式網址}/Site_Uploadfile/{站台ID}/AppIcon_{尺寸}.png
-    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/AppIcon_${size}.png`;
+    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/AppIcon_${size}.png`;
   },
   siteIOSUrl: state => size => {
     //* IOS過場: {樣式網址}/Site_Uploadfile/{站台ID}/IOS_{尺寸}.png
-    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/IOS_${size}.png`;
+    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/IOS_${size}.png`;
   },
   siteMainPageNoticeUrl: state => {
     //* 彈跳首頁圖片: {樣式網址}/Site_Uploadfile/{站台ID}/Notice/{語系}/MainPageNotice.png
-    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Notice/${state.lang}/MainPageNotice.png`;
+    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/Notice/${state.lang}/MainPageNotice.png`;
   },
   siteDepositNoticeUrl: state => {
     //* 存款提示圖片: {樣式網址}/Site_Uploadfile/{站台ID}/Notice/{語系}/DepositNotice.png
-    return `${state.site.remoteCSSUrl}/Site_Uploadfile/${state.site.id}/Notice/${state.lang}/DepositNotice.png`;
+    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/Notice/${state.lang}/DepositNotice.png`;
   },
   resourceUrl: state => {
-    return `${state.site.remoteCSSUrl}/ContentStyle/${state.site.mainDomain}/Member/${state.site.cssClass}/${state.site.cssVersion}/2/default/css${state.site.cssType}/common`;
+    return `${state.site.info.RemoteCSSUrls}/ContentStyle/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Version}/2/default/css${state.site.info.LS_CSS_Type}/common`;
   },
   resourceUrlMaintain: state => {
-    return `${state.site.remoteCSSUrl}/Maintain/${state.site.mainDomain}/Member/${state.site.cssClass}${state.site.cssVersion}/${state.site.cssType}//css`;
+    return `${state.site.info.RemoteCSSUrls}/Maintain/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}${state.site.info.LS_CSS_Version}/${state.site.info.LS_CSS_Type}//css`;
   },
   isLoggedIn: state => state.user.isLoggedIn,
   token: state => state.user.token,
