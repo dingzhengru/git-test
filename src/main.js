@@ -89,7 +89,6 @@ store
 
 //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
 store.dispatch('site/getSeoInfo').then(() => {
-  console.log('[SeoInfo]', router.currentRoute);
   let seoInfo = {};
   if (router.currentRoute.path.includes('promotion')) {
     seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Promotion');
@@ -102,6 +101,8 @@ store.dispatch('site/getSeoInfo').then(() => {
   } else {
     seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Index');
   }
+
+  console.log('[SeoInfo]', seoInfo);
 
   document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
   document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
