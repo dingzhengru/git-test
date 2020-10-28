@@ -74,6 +74,29 @@ store
         console.log('[KeepUserOnline]', result.RetObj);
       }
     }, 50000);
+
+    //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
+    store.dispatch('site/getSeoInfo').then(() => {
+      let seoInfo = {};
+      if (router.currentRoute.path.includes('promotion')) {
+        seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Promotion');
+      } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 1) {
+        //* 真人娛樂
+        seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYCasinos');
+      } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 2) {
+        //* 電子遊戲
+        seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYSlots');
+      } else {
+        seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Index');
+      }
+      document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
+      document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
+
+      //* title 以 seo 的為主，有的話就蓋掉
+      if (seoInfo.Lst_SEO_Info.Title) {
+        document.title = seoInfo.Lst_SEO_Info.Title;
+      }
+    });
   })
   .catch(error => {
     window.alert('站台資訊取得失敗');
@@ -86,24 +109,6 @@ store
       router.replace({ name: 'Home' });
     }
   });
-
-//* 取得 SEO 資訊 (目前是都先設首頁的 seo)
-store.dispatch('site/getSeoInfo').then(() => {
-  let seoInfo = {};
-  if (router.currentRoute.path.includes('promotion')) {
-    seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Promotion');
-  } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 1) {
-    //* 真人娛樂
-    seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYCasinos');
-  } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 2) {
-    //* 電子遊戲
-    seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYSlots');
-  } else {
-    seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Index');
-  }
-  document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
-  document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
-});
 
 new Vue({
   router,

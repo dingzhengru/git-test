@@ -8,6 +8,7 @@ Vue.use(VueRouter);
  * NoneLogin/MainPage | AlreadyLogin/MainPage
  */
 
+/* jshint ignore:start */
 const routes = [
   {
     path: '/',
@@ -215,6 +216,7 @@ const routes = [
     component: () => import('@/views/PageNotFound'),
   },
 ];
+/* jshint ignore:end */
 
 const router = new VueRouter({
   mode: 'history',
