@@ -101,9 +101,6 @@ store.dispatch('site/getSeoInfo').then(() => {
   } else {
     seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Index');
   }
-
-  console.log('[SeoInfo]', seoInfo);
-
   document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
   document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
 });

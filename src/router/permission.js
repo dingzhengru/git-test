@@ -22,5 +22,4 @@ router.beforeEach(async (to, from, next) => {
 
 router.afterEach(() => {
   store.commit('popLoadingRequest');
-  console.log('[SEO]', store.getters.siteSeo);
 });
