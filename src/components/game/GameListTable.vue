@@ -1,7 +1,7 @@
 <template>
   <div v-if="Object.keys(currentProduct).length > 0">
     <div v-if="currentProduct.Lst_Site_Product_Status != 0">
-      <h1 class="text-center">{{ $t('alert.game.maintenance') }}</h1>
+      <h1 class="text-center">{{ $t('game.alert.maintenance') }}</h1>
     </div>
     <table class="game-lobby__table" v-else>
       <tbody>

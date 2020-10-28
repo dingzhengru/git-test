@@ -35,13 +35,68 @@ extend('min', {
 
 extend('image', {
   ...image,
-  message: 'min: error-message',
+  message: 'image: error-message',
 });
 
-extend('nickname-check', {
+extend('check-username', {
   params: ['field'],
   validate: async (value, { field }) => {
-    await timeout(1000);
-    return `[nickname-check] ${field}: ${value}`;
+    return `[username-check] ${field}: ${value}`;
+  },
+});
+
+extend('check-real-name', {
+  params: ['field'],
+  validate: async (value, { field }) => {
+    return `[real-name-check] ${field}: ${value}`;
+  },
+});
+
+extend('check-mobile', {
+  params: ['field'],
+  validate: async (value, { field }) => {
+    return `[mobile-check] ${field}: ${value}`;
+  },
+});
+
+extend('check-email', {
+  params: ['field'],
+  validate: async (value, { field }) => {
+    return `[mobile-check] ${field}: ${value}`;
+  },
+});
+
+extend('check-skype', {
+  params: ['field'],
+  validate: async (value, { field }) => {
+    return `[mobile-check] ${field}: ${value}`;
+  },
+});
+
+extend('check-qq', {
+  params: ['field'],
+  validate: async (value, { field }) => {
+    return `[mobile-check] ${field}: ${value}`;
+  },
+});
+
+extend('check-bank-account-1', {
+  params: ['field'],
+  validate: async (value, { field }) => {
+    return `[mobile-check] ${field}: ${value}`;
+  },
+});
+
+extend('check-bank-account-2', {
+  params: ['field'],
+  validate: async (value, { field }) => {
+    return `[mobile-check] ${field}: ${value}`;
+  },
+});
+
+extend('check-bank-account-3', {
+  params: ['field'],
+  validate: async (value, { field }) => {
+    return `[mobile-check] ${field}: ${value}`;
   },
 });
