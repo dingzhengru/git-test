@@ -1,4 +1,68 @@
 {
+  "validate": {
+    "register": {
+      "required": {
+        "Add_Account": "Please enter your account",
+        "Add_Password": "Please enter your password",
+        "Add_PasswordCheck": "Please reconfirm your password",
+        "Add_Mobile": "Please enter your phone number",
+        "Add_Email": "Please enter your E-mail",
+        "Add_Line": "Please enter your LINE",
+        "Add_Skype": "Please enter your Skype",
+        "Add_QQ": "Please enter your QQ",
+        "Add_FirstName": "Please enter your first name",
+        "Add_LastName": "Please enter your last name",
+        "Add_RealName": "Please enter your real name",
+        "Add_NickName": "lease enter your nickname",
+        "Add_Birthday": "Please enter your birthday",
+        "Add_BankId1": "Please select the bank name",
+        "Add_BankBranchName1": "Please enter the branch name",
+        "Add_BankAccount1": "Please enter your bank account number",
+        "Add_BankId2": "Please select the bank name",
+        "Add_BankBranchName2": "Please enter the branch name",
+        "Add_BankAccount2": "Please enter your bank account number",
+        "Add_BankId3": "Please select the bank name",
+        "Add_BankBranchName3": "Please enter the branch name",
+        "Add_BankAccount3": "Please enter your bank account number",
+        "Add_Withdrawals_Password": "Please enter a withdrawal password",
+        "Add_Withdrawals_CheckPassword": "Please enter a withdrawal password",
+        "CaptchaValue": "Please enter the verification code"
+      },
+      "length": {
+        "Add_RelatedAccount": "At least 3 characters up to 15 characters",
+        "Add_Account": "At least 3 characters up to 15 characters",
+        "Add_Password": "The length of password must be 6 and above",
+        "Add_PasswordCheck": "The length of password must be 6 and above",
+        "Add_Mobile": "At least 5 characters up to 20 characters",
+        "Add_Email": "Maximum length 50 characters",
+        "Add_FirstName": "Maximum length 70 characters",
+        "Add_LastName": "Maximum length 70 characters",
+        "Add_RealName": "Maximum length 70 characters",
+        "Add_NickName": "Maximum length 30 characters",
+        "Add_BankBranchName1": "Maximum length 70 characters",
+        "Add_BankAccount1": "Maximum length 30 characters",
+        "Add_BankBranchName2": "Maximum length 70 characters",
+        "Add_BankAccount2": "Maximum length 30 characters",
+        "Add_BankBranchName3": "Maximum length 70 characters",
+        "Add_BankAccount3": "Maximum length 30 characters",
+        "Add_Withdrawals_Password": "The length of password must be 6 and above",
+        "Add_Withdrawals_CheckPassword": "The length of password must be 6 and above",
+        "CaptchaValue": "must be 4 characters"
+      },
+      "regex": {
+        "common": "Format False",
+        "Add_RelatedAccount": "Alphanumeric format necessary, prefix with a letter, blank not allowed.",
+        "Add_Account": "Alphanumeric format necessary, prefix with a letter, blank not allowed."
+      },
+      "confirmed": {
+        "Add_PasswordCheck": "Please reconfirm your password",
+        "Add_Withdrawals_CheckPassword": "Please reconfirm your withdrawal password"
+      },
+      "date": {
+        "Add_Birthday": "Must be at least 18 years old"
+      }
+    }
+  },
   "ui": {
     "button": {
       "submit": "Submit",
@@ -66,265 +130,103 @@
       "placeholder": "Referrer",
       "hint": "If there is no referrer,you are not required to fill in",
       "hintHasValue": "Promotion code: {proxyCode}",
-      "error": {
-        "invalid": "Referrer does not exist",
-        "required": "",
-        "length": "At least 3 characters up to 15 characters",
-        "regex": "Alphanumeric format necessary, prefix with a letter, blank not allowed."
-      }
+      "invalid": "Referrer does not exist"
     },
     "Add_Account": {
       "placeholder": "Account No.",
-      "hint": "",
-      "error": {
-        "invalid": "The account has been used.",
-        "required": "Please enter your account",
-        "length": "At least 3 characters up to 15 characters",
-        "regex": "Alphanumeric format necessary, prefix with a letter, blank not allowed."
-      }
+      "invalid": "The account has been used."
     },
     "Add_Password": {
-      "placeholder": "Password",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please enter your password",
-        "length": "The length of password must be 6 and above",
-        "regex": "Format False"
-      }
+      "placeholder": "Password"
     },
     "Add_PasswordCheck": {
       "placeholder": "Confirm Password",
-      "hint": "",
-      "error": {
-        "invalid": "Confirm password error",
-        "required": "Please reconfirm your password",
-        "length": "The length of password must be 6 and above",
-        "regex": "Format False"
-      }
+      "invalid": "Confirm password error"
     },
     "Add_Mobile": {
       "placeholder": "Mobile number",
       "hint": "This is for contact channel of account and surprise preferential informing, please kindly provide the real information.",
-      "error": {
-        "invalid": "This cell phone / telephone number has been used by others, please enter other phone / telephone number",
-        "required": "Please enter your phone number",
-        "length": "At least 5 characters up to 20 characters",
-        "regex": "Format False"
-      }
+      "invalid": "This cell phone / telephone number has been used by others, please enter other phone / telephone number"
     },
     "Add_Email": {
       "placeholder": "E-mail",
       "hint": "This is for surprise preferential informing, please kindly provide the real information.",
-      "error": {
-        "invalid": "This mailbox has been used by others, please enter another mailbox",
-        "required": "Please enter your E-mail",
-        "length": "",
-        "regex": "Format False"
-      }
+      "invalid": "This mailbox has been used by others, please enter another mailbox"
     },
     "Add_Line": {
       "placeholder": "ID LINE",
       "hint": "This is for surprise preferential informing, please kindly provide the real information.",
-      "error": {
-        "invalid": "The LINE already exists",
-        "required": "Please enter your LINE",
-        "length": "",
-        "regex": ""
-      }
+      "invalid": "The LINE already exists"
     },
     "Add_Skype": {
       "placeholder": "Skype Account",
-      "hint": "",
-      "error": {
-        "invalid": "The Skype already exists",
-        "required": "Please enter your Skype",
-        "length": "",
-        "regex": ""
-      }
+      "invalid": "The Skype already exists"
     },
     "Add_QQ": {
       "placeholder": "QQ number",
-      "hint": "",
-      "error": {
-        "invalid": "The QQ already exists",
-        "required": "Please enter your QQ",
-        "length": "",
-        "regex": ""
-      }
+      "invalid": "The QQ already exists"
     },
     "Add_FirstName": {
-      "placeholder": "First Name",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please enter your first name",
-        "length": "",
-        "regex": "Format False"
-      }
+      "placeholder": "First Name"
     },
     "Add_LastName": {
       "placeholder": "Last Name",
-      "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.",
-      "error": {
-        "invalid": "",
-        "required": "Please enter your last name",
-        "length": "",
-        "regex": "Format False"
-      }
+      "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance."
     },
     "Add_RealName": {
       "placeholder": "Real Name",
       "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.",
-      "error": {
-        "invalid": "The real name has been used by others, please enter another real name",
-        "required": "Please enter your real name",
-        "length": "",
-        "regex": "Format False"
-      }
+      "invalid": "The real name has been used by others, please enter another real name"
     },
     "Add_NickName": {
-      "placeholder": "Nickname",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please enter your nickname",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "Nickname"
     },
     "Add_Birthday": {
       "placeholder": "Birthday ",
-      "hint": "",
-      "error": {
-        "invalid": "Must be at least 18 years old",
-        "required": "Please enter your birthday",
-        "length": "",
-        "regex": "Format False"
-      }
+      "invalid": "Must be at least 18 years old"
     },
     "Add_BankId1": {
       "title": "Name of Bank",
-      "placeholder": "Please select",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please select the bank name",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "Please select"
     },
     "Add_BankBranchName1": {
-      "placeholder": "Branch Name",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please enter the branch name",
-        "length": "",
-        "regex": "Format False"
-      }
+      "placeholder": "Branch Name"
     },
     "Add_BankAccount1": {
       "placeholder": "Bank Account",
-      "hint": "",
-      "error": {
-        "invalid": "The bank account has been used.",
-        "required": "Please enter your bank account number",
-        "length": "",
-        "regex": "Format False"
-      }
+      "invalid": "The bank account has been used."
     },
     "Add_BankId2": {
       "title": "Name of Bank 2",
-      "placeholder": "Please select",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please select the bank name",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "Please select"
     },
     "Add_BankBranchName2": {
-      "placeholder": "Branch Name 2",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please enter the branch name",
-        "length": "",
-        "regex": "Format False"
-      }
+      "placeholder": "Branch Name 2"
     },
     "Add_BankAccount2": {
       "placeholder": "Bank Account 2",
-      "hint": "",
-      "error": {
-        "invalid": "The bank account has been used.",
-        "required": "Please enter your bank account number",
-        "length": "",
-        "regex": "Format False"
-      }
+      "invalid": "The bank account has been used."
     },
     "Add_BankId3": {
       "title": "Name of Bank 3",
-      "placeholder": "Please select",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please select the bank name",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "Please select"
     },
     "Add_BankBranchName3": {
-      "placeholder": "Branch Name 3",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please enter the branch name",
-        "length": "",
-        "regex": "Format False"
-      }
+      "placeholder": "Branch Name 3"
     },
     "Add_BankAccount3": {
       "placeholder": "Bank Account 3",
-      "hint": "",
-      "error": {
-        "invalid": "The bank account has been used.",
-        "required": "Please enter your bank account number",
-        "length": "",
-        "regex": "Format False"
-      }
+      "invalid": "The bank account has been used."
     },
     "Add_Withdrawals_Password": {
-      "placeholder": "Password for Withdrawal",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please enter a withdrawal password",
-        "length": "The length of password must be 6 and above",
-        "regex": "Format False"
-      }
+      "placeholder": "Password for Withdrawal"
     },
     "Add_Withdrawals_CheckPassword": {
       "placeholder": "Withdrawal Confirm Password",
-      "hint": "",
-      "error": {
-        "invalid": "Confirm the password Error",
-        "required": "Please enter a withdrawal password",
-        "length": "The length of password must be 6 and above",
-        "regex": "Format False"
-      }
+      "invalid": "Confirm the password Error"
     },
     "CaptchaValue": {
-      "placeholder": "Captcha",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "Please enter the verification code",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "Captcha"
     },
     "notice": {
       "required": "Remark with <span class='ui-txt-star'>*</span> are required items, please be sure to fill in them correctly.",

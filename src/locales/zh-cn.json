@@ -1,4 +1,68 @@
 {
+  "validate": {
+    "register": {
+      "required": {
+        "Add_Account": "请输入您的账号",
+        "Add_Password": "请输入您的密码",
+        "Add_PasswordCheck": "请再次确认您的密码",
+        "Add_Mobile": "请输入您的手机号码",
+        "Add_Email": "输入您的E-mail",
+        "Add_Line": "请输入您的LINE",
+        "Add_Skype": "请输入您的Skype",
+        "Add_QQ": "请输入您的QQ",
+        "Add_FirstName": "请输入您的名字",
+        "Add_LastName": "请输入您的姓氏",
+        "Add_RealName": "请输入您的姓名",
+        "Add_NickName": "请输入您的昵称",
+        "Add_Birthday": "请输入您的生日",
+        "Add_BankId1": "请选择银行名称",
+        "Add_BankBranchName1": "请输入支行名称",
+        "Add_BankAccount1": "请输入银行帐号",
+        "Add_BankId2": "请选择银行名称",
+        "Add_BankBranchName2": "请输入支行名称",
+        "Add_BankAccount2": "请输入银行帐号",
+        "Add_BankId3": "请选择银行名称",
+        "Add_BankBranchName3": "请输入支行名称",
+        "Add_BankAccount3": "请输入银行帐号",
+        "Add_Withdrawals_Password": "请输入取款密​​码",
+        "Add_Withdrawals_CheckPassword": "请输入取款密​​码",
+        "CaptchaValue": "请输入验证码"
+      },
+      "length": {
+        "Add_RelatedAccount": "最少 3 字元，最多 15 字元",
+        "Add_Account": "最少 3 字元，最多 15 字元",
+        "Add_Password": "密码长度最少为6位字元",
+        "Add_PasswordCheck": "密码长度最少为6位字元",
+        "Add_Mobile": "最少 5 字元，最多 20 字元",
+        "Add_Email": "最多 50 字元",
+        "Add_FirstName": "最多 70 字元",
+        "Add_LastName": "最多 70 字元",
+        "Add_RealName": "最多 70 字元",
+        "Add_NickName": "最多 30 字元",
+        "Add_BankBranchName1": "最多 70 字元",
+        "Add_BankAccount1": "最多 30 字元",
+        "Add_BankBranchName2": "最多 70 字元",
+        "Add_BankAccount2": "最多 30 字元",
+        "Add_BankBranchName3": "最多 70 字元",
+        "Add_BankAccount3": "最多 30 字元",
+        "Add_Withdrawals_Password": "密码长度最少为6位字元",
+        "Add_Withdrawals_CheckPassword": "密码长度最少为6位字元",
+        "CaptchaValue": "应为4位字元"
+      },
+      "regex": {
+        "common": "格式错误",
+        "Add_RelatedAccount": "须为英数格式，字首必须为英文字母，且不可有空白",
+        "Add_Account": "须为英数格式，字首必须为英文字母，且不可有空白"
+      },
+      "confirmed": {
+        "Add_PasswordCheck": "请再次确认您的密码",
+        "Add_Withdrawals_CheckPassword": "请再次确认您的取款密​​码"
+      },
+      "date": {
+        "Add_Birthday": "需满18岁"
+      }
+    }
+  },
   "ui": {
     "button": {
       "submit": "提交",
@@ -205,14 +269,7 @@
     },
     "Add_BankId1": {
       "title": "银行名称",
-      "placeholder": "请选择",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请选择银行名称",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "请选择银行名称"
     },
     "Add_BankBranchName1": {
       "placeholder": "支行名称1",
@@ -236,14 +293,7 @@
     },
     "Add_BankId2": {
       "title": "银行名称2",
-      "placeholder": "请选择",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请选择银行名称",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "请选择银行名称"
     },
     "Add_BankBranchName2": {
       "placeholder": "支行名称2",
@@ -267,14 +317,7 @@
     },
     "Add_BankId3": {
       "title": "银行名称3",
-      "placeholder": "请选择",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请选择银行名称",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "请选择银行名称"
     },
     "Add_BankBranchName3": {
       "placeholder": "支行名称3",
