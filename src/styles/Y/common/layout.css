@@ -449,7 +449,7 @@ ul.cpn-inBlock-row > li {
   color: #cfa972;
 }
 .ui-txt-mask {
-  color: #f00;
+  color: #f00 !important;
 }
 .ui-txt-negative {
   color: #ff0000 !important;

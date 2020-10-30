@@ -117,17 +117,6 @@ export default {
           this.registerList = result.RetObj.Register;
           this.bankList = result.RetObj.Add_BankList;
         }
-
-        // if (this.isAccountOpen == false) {
-        //   const bankInfoListResult = await getBankInfoList();
-        //   console.log('[BankInfoList]', bankInfoListResult);
-        // } else {
-        //   const result = await getRegisterAdvanceNew();
-        //   console.log('[RegisterAdvanceNew]', result);
-
-        //   this.registerList = result.RetObj.Register;
-        //   this.bankList = result.RetObj.Add_BankList;
-        // }
       },
     },
   },

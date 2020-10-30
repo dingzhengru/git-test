@@ -7,8 +7,6 @@ import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
 
-dayjs().isS;
-
 //* 已寫好可引入的規則: https://logaretm.github.io/vee-validate/guide/rules.html
 
 //* message 可用放方法，且第一個參數會是 name，即可實現根據 name 回傳不同訊息
