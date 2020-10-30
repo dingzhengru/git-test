@@ -10,10 +10,89 @@
         </tbody>
       </table>
     </div>
-    <form
+
+    <div class="user-profile__button-div" v-if="!isShowRegisterForm">
+      <button
+        class="user-profile__button--instant ui-btn ui-btn-long"
+        type="button"
+        @click.prevent="isShowRegisterForm = true"
+      >
+        {{ $t('user.profile.notAccessed.button.access') }}
+      </button>
+    </div>
+
+    <ValidationObserver v-slot="{ invalid, handleSubmit }" tag="div" v-show="isShowRegisterForm">
+      <form
+        class="user-profile__instant-access-form theme-content-box"
+        id="instantAccessForm"
+        @submit.prevent="handleSubmit(instantAccess(invalid))"
+      >
+        <ValidationProvider
+          v-slot="{ errors, invalid }"
+          tag="div"
+          class="user-profile__instant-access-form__field theme-input-box"
+          :class="[field.class]"
+          :name="field.name"
+          :rules="field.rules"
+          v-for="field in fieldList"
+          :key="field.name"
+          v-show="field.isShow"
+        >
+          <span class="user-profile__instant-access-form__field__title theme-input-header">
+            {{ field.type != 'select' ? $t(`register.${field.name}.placeholder`) : $t(`register.${field.name}.title`) }}
+          </span>
+          <input
+            class="user-profile__instant-access-form__field__input ui-ipt"
+            :type="field.type"
+            :placeholder="$t(`register.${field.name}.placeholder`)"
+            :disabled="!field.isModifiable"
+            :min="field.min"
+            :max="field.max"
+            v-model="field.value"
+            @change="
+              $emit(
+                'change-register-field',
+                field,
+                fieldList,
+                invalid,
+                originalRegisterFieldList.find(item => item.name == field.name)
+              )
+            "
+            v-if="field.type != 'select'"
+          />
+
+          <select
+            class="ui-ddl"
+            :class="{ 'register__form__field__select--default': field.value == '' }"
+            :id="idMapper.register.input[field.name]"
+            v-model="field.value"
+            :required="field.rules['register-required']"
+            v-else
+          >
+            <option :value="bank.Value" v-for="bank in bankList" :key="bank.Value">{{ bank.Text }}</option>
+          </select>
+
+          <div class="theme-errorMsg" v-if="errors.length > 0 && errors[0]">
+            <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+      </form>
+      <div class="user-profile__button-div">
+        <button
+          class="user-profile__button--instant ui-btn ui-btn-long"
+          type="submit"
+          form="instantAccessForm"
+          :disabled="invalid"
+        >
+          {{ $t('ui.button.submit') }}
+        </button>
+      </div>
+    </ValidationObserver>
+
+    <!-- <form
       class="user-profile__instant-access-form theme-content-box"
       id="instant-access-form"
-      v-if="isShowRegisterList"
+      v-if="isShowRegisterForm"
     >
       <div
         class="user-profile__instant-access-form__field theme-input-box"
@@ -67,13 +146,13 @@
           </div>
         </template>
       </div>
-    </form>
+    </form> -->
 
-    <div class="user-profile__button-div">
+    <!-- <div class="user-profile__button-div">
       <button class="user-profile__button--instant ui-btn ui-btn-long" type="button" @click.prevent="instantAccess">
-        {{ isShowRegisterList ? $t('ui.button.submit') : $t('user.profile.notAccessed.button.access') }}
+        {{ isShowRegisterForm ? $t('ui.button.submit') : $t('user.profile.notAccessed.button.access') }}
       </button>
-    </div>
+    </div> -->
     <ol class="user-profile__notice ui-ol-memberNotice">
       <li v-for="(notice, index) in noticeList" :key="index">{{ $t(`user.profile.notAccessed.notice.${notice}`) }}</li>
     </ol>
@@ -82,8 +161,9 @@
 
 <script>
 import idMapper from '@/idMapper';
-import { registerFieldList, validateField } from '@/utils/register';
-
+import { registerFieldList } from '@/utils/register';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import '@/utils/vee-validate.js';
 export default {
   name: 'UserProfileList',
   props: {
@@ -100,23 +180,22 @@ export default {
       default: () => [],
     },
   },
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
   data() {
     return {
       idMapper: idMapper,
       fieldList: registerFieldList,
       originalRegisterFieldList: [], //* 存取原本欄位的值
-      isShowRegisterList: false,
+      isShowRegisterForm: false,
       noticeList: ['access', 'suggest', 'contact'],
     };
   },
   methods: {
-    instantAccess() {
-      if (!this.isShowRegisterList) {
-        this.isShowRegisterList = true;
-        return;
-      }
-
-      if (!this.validateForm()) {
+    instantAccess(invalid) {
+      if (invalid) {
         return;
       }
 
@@ -129,22 +208,6 @@ export default {
 
       this.$emit('instantAccess', requestData);
     },
-    validateForm() {
-      let invalidFieldList = [];
-      for (const field of this.fieldList) {
-        //* 檢查欄位自己的屬性(required, minlength, maxlength, min, max)
-        const validateReulst = this.validateField(field);
-        if (validateReulst != '') {
-          invalidFieldList.push(field);
-        }
-      }
-      console.log('[ValidateForm]', invalidFieldList);
-      return invalidFieldList.length == 0;
-    },
-    validateField(field) {
-      field.error = this.$t(validateField(field, this.fieldList));
-      return field.error;
-    },
   },
   watch: {
     registerList() {
@@ -153,10 +216,10 @@ export default {
 
         if (field) {
           field.isShow = registerField.Lst_Phase != 0;
-          field.isRequired = registerField.Lst_isRequired;
           field.isModifiable = registerField.Lst_isModifiable || registerField.Lst_Phase == 2;
           field.isOnly = registerField.Lst_isOnly;
           field.value = registerField.Lst_Value;
+          field.rules['register-required'] = registerField.Lst_isRequired;
         }
       }
 

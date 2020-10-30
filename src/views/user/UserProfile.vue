@@ -2,12 +2,12 @@
   <div class="user-profile">
     <!-- 未開通的 -->
     <UserProfileList
-      :profile="{ username, currency, createdDatetime: createdDatetime.replace('T', ' ') }"
+      :profile="{ username, currency, createdDatetime: createdDatetime ? createdDatetime.replace('T', ' ') : '' }"
       :registerList="registerList"
       :bankList="bankList"
-      v-if="isAccountOpen == false"
       @instantAccess="submitInstantAccess"
       @change-register-field="changeRegisterField"
+      v-if="isAccountOpen == false"
     ></UserProfileList>
 
     <!-- 開通後的 -->
@@ -24,14 +24,14 @@
         bankBrach1,
         bankAccountName1,
       }"
-      v-else-if="isAccountOpen == true"
       @change-withdrawal-password="changeWithdrawalPassword"
+      v-else-if="isAccountOpen == true"
     ></UserProfileListAccess>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import { getBankInfoList, changePasswordWithdrawal } from '@/api/user';
+import { changePasswordWithdrawal } from '@/api/user';
 import { getRegisterAdvanceNew, checkRegisterFieldExist } from '@/api/register';
 
 export default {
@@ -79,8 +79,8 @@ export default {
         window.alert(this.$t('user.changePassword.alert.success'));
       }
     },
-    async changeRegisterField(field, fieldList, fieldValidError, oldField) {
-      if (fieldValidError != '') {
+    async changeRegisterField(field, fieldList, invalid, oldField) {
+      if (invalid || field.value == '') {
         return;
       }
 
@@ -109,20 +109,25 @@ export default {
     isAccountOpen: {
       immediate: true,
       async handler() {
-        if (this.isAccountOpen == null) {
-          return;
-        }
-
-        if (this.isAccountOpen) {
-          const bankInfoListResult = await getBankInfoList();
-          console.log('[BankInfoList]', bankInfoListResult);
-        } else {
+        if (this.isAccountOpen === false) {
+          console.log('[isAccountOpen]', this.isAccountOpen);
           const result = await getRegisterAdvanceNew();
           console.log('[RegisterAdvanceNew]', result);
 
-          this.bankList = result.RetObj.Add_BankList;
           this.registerList = result.RetObj.Register;
+          this.bankList = result.RetObj.Add_BankList;
         }
+
+        // if (this.isAccountOpen == false) {
+        //   const bankInfoListResult = await getBankInfoList();
+        //   console.log('[BankInfoList]', bankInfoListResult);
+        // } else {
+        //   const result = await getRegisterAdvanceNew();
+        //   console.log('[RegisterAdvanceNew]', result);
+
+        //   this.registerList = result.RetObj.Register;
+        //   this.bankList = result.RetObj.Add_BankList;
+        // }
       },
     },
   },

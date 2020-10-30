@@ -16,7 +16,7 @@ export const registerFieldList = [
     class: 'register__form__field--account',
     type: 'text',
     rules: {
-      'register-required': true,
+      'register-required': false,
       'register-min': 3,
       'register-max': 15,
       'register-regex': '^[a-zA-Z]{1}[a-zA-Z0-9]*$',
@@ -31,7 +31,7 @@ export const registerFieldList = [
     class: 'register__form__field--password',
     type: 'password',
     rules: {
-      'register-required': true,
+      'register-required': false,
       'register-min': 6,
       'register-max': 30,
       'register-regex': '^[a-zA-Z0-9]*$',
@@ -46,7 +46,7 @@ export const registerFieldList = [
     class: 'register__form__field--password',
     type: 'password',
     rules: {
-      'register-required': true,
+      'register-required': false,
       'register-min': 6,
       'register-max': 30,
       'register-regex': '^[a-zA-Z0-9]*$',
@@ -182,13 +182,13 @@ export const registerFieldList = [
           .format('YYYY-MM-DD'),
       },
     },
-    isShow: false,
-    isOnly: false,
-    isModifiable: true,
     min: '1900-01-01',
     max: dayjs()
       .subtract(18, 'year')
       .format('YYYY-MM-DD'),
+    isShow: false,
+    isOnly: false,
+    isModifiable: true,
     value: '',
   },
   {
@@ -286,7 +286,7 @@ export const registerFieldList = [
     class: 'register__form__field--password',
     type: 'password',
     rules: {
-      'register-required': true,
+      'register-required': false,
       'register-min': 6,
       'register-max': 30,
       'register-regex': '^[a-zA-Z0-9]*$',
@@ -301,7 +301,7 @@ export const registerFieldList = [
     class: 'register__form__field--password',
     type: 'password',
     rules: {
-      'register-required': true,
+      'register-required': false,
       'register-min': 6,
       'register-max': 30,
       'register-regex': '^[a-zA-Z0-9]*$',
@@ -317,12 +317,12 @@ export const registerFieldList = [
     class: 'register__form__field--code',
     type: 'tel',
     rules: {
-      'register-required': true,
+      'register-required': false,
       'register-min': 4,
       'register-max': 4,
       'register-regex': '^[0-9]*$',
     },
-    isShow: true,
+    isShow: false,
     isOnly: false,
     isModifiable: true,
     value: '',

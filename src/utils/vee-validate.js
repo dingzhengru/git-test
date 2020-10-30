@@ -2,6 +2,12 @@ import { extend } from 'vee-validate';
 import { required, regex, max, min, confirmed } from 'vee-validate/dist/rules';
 import { i18n } from '@/i18n-lazy';
 import dayjs from 'dayjs';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+dayjs.extend(isSameOrBefore);
+dayjs.extend(isSameOrAfter);
+
+dayjs().isS;
 
 //* 已寫好可引入的規則: https://logaretm.github.io/vee-validate/guide/rules.html
 

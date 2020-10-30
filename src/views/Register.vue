@@ -90,10 +90,10 @@ import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
 import { getRegisterFieldList, checkRegisterFieldExist } from '@/api/register';
 import { registerFieldList } from '@/utils/register';
-import idMapper from '@/idMapper';
-
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import '@/utils/vee-validate.js';
+import idMapper from '@/idMapper';
+
 export default {
   name: 'Register',
   components: {
