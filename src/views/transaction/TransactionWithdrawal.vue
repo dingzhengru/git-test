@@ -1,69 +1,126 @@
 <template>
   <form class="withdrawal" @submit.prevent="submitWithdrawal">
     <ul class="withdrawal__ul theme-content-box">
-      <li class="withdrawal__li theme-li-dataView" v-for="item in accountInfoList" :key="item.name">
+      <li class="withdrawal__li theme-li-dataView">
         <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t(`transaction.withdrawal.field.${item.name}`) }}
+          {{ $t('transaction.withdrawal.field.bankSelect') }}
         </span>
-        <p class="withdrawal__li__content theme-dataView-data" v-if="item.value">
-          {{ typeof item.value == 'number' ? numeral(item.value).format('0,0.00') : item.value }}
+        <select class="withdrawal__li__select ui-ddl" v-model="bank">
+          <option :value="{}" selected>{{ $t('transaction.withdrawal.field.bankSelectPlaceholder') }}</option>
+          <option :value="bankItem" v-for="bankItem in bankList" :key="bankItem.Lst_Bank_name">
+            {{ bankItem.Text }}
+          </option>
+        </select>
+      </li>
+
+      <li class="withdrawal__li theme-li-dataView">
+        <span class="withdrawal__li__title theme-dataView-header">
+          {{ $t('transaction.withdrawal.field.Lst_Account') }}
+        </span>
+        <p class="withdrawal__li__content theme-dataView-data">
+          {{ withdrawalInfo.Lst_Account }}
         </p>
+      </li>
 
-        <template v-if="item.name == 'bankSelect'">
-          <select class="withdrawal__li__select ui-ddl" v-model="bank" @change="changeBank">
-            <option value="" selected>{{ $t('transaction.withdrawal.field.bankSelectPlaceholder') }}</option>
-            <option :value="bankItem" v-for="bankItem in bankList" :key="bankItem.Lst_Bank_name">
-              {{ bankItem.Text }}
-            </option>
-          </select>
-        </template>
+      <li class="withdrawal__li theme-li-dataView">
+        <span class="withdrawal__li__title theme-dataView-header">
+          {{ $t('transaction.withdrawal.field.Lst_Currency') }}
+        </span>
+        <p class="withdrawal__li__content theme-dataView-data">
+          {{ withdrawalInfo.Lst_Currency }}
+        </p>
+      </li>
 
-        <template v-if="item.name == 'Lst_Point'">
-          <button type="button" class="withdrawal__li__button ui-btn ui-btn-long" @click="transferToMain">
-            {{ $t('transaction.withdrawal.button.allToMyWallet') }}
-          </button>
-        </template>
+      <li class="withdrawal__li theme-li-dataView">
+        <span class="withdrawal__li__title theme-dataView-header">
+          {{ $t('transaction.withdrawal.field.Lst_Point') }}
+        </span>
+        <button type="button" class="withdrawal__li__button ui-btn ui-btn-long" @click="transferToMain">
+          {{ $t('transaction.withdrawal.button.allToMyWallet') }}
+        </button>
+      </li>
 
-        <template v-if="item.name == 'Add_WithdrswalsPoint'">
-          <select
-            class="withdrawal__li__select withdrawal__li__select--currency ui-ddl"
-            required
-            v-model="currency"
-            v-if="currencyList.length > 0"
-          >
-            <option value="">{{ $t(`transaction.withdrawal.field.Lst_Currency`) }}</option>
-            <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
-              {{ currencyItem.Text }}
-            </option>
-          </select>
-          <input
-            class="withdrawal__li__input ui-ipt theme-ipt-dataview"
-            :id="idMapper.transaction.withdrawal.field[item.name]"
-            type="number"
-            :min="amountLimit.min"
-            :max="amountLimit.max"
-            step="100"
-            placeholder="Please enter amount of withdrawal"
-            autocomplete="off"
-            v-model.number="amount"
-            @change="changeAmount"
-          />
-        </template>
+      <li class="withdrawal__li theme-li-dataView">
+        <span class="withdrawal__li__title theme-dataView-header">
+          {{ $t('transaction.withdrawal.field.Add_WithdrswalsPoint') }}
+        </span>
+        <select
+          class="withdrawal__li__select withdrawal__li__select--currency ui-ddl"
+          required
+          v-model="currency"
+          v-if="currencyList.length > 0"
+        >
+          <option value="">{{ $t('transaction.withdrawal.field.Lst_Currency') }}</option>
+          <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
+            {{ currencyItem.Text }}
+          </option>
+        </select>
+        <input
+          class="withdrawal__li__input ui-ipt theme-ipt-dataview"
+          :id="idMapper.transaction.withdrawal.field.Add_WithdrswalsPoint"
+          type="number"
+          :min="amountLimit.min"
+          :max="amountLimit.max"
+          step="100"
+          placeholder="Please enter amount of withdrawal"
+          autocomplete="off"
+          v-model.number="amount"
+          @change="changeAmount"
+        />
+      </li>
 
-        <template v-if="item.name == 'password'">
-          <input
-            class="withdrawal__li__input ui-ipt theme-ipt-dataview"
-            :id="idMapper.transaction.withdrawal.field[item.name]"
-            type="password"
-            required
-            minlength="6"
-            pattern="^[a-zA-Z0-9]*$"
-            v-model="password"
-          />
-          <div class="theme-errorMsg" v-if="errorPassword">
-            <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
-          </div>
-        </template>
+      <li class="withdrawal__li theme-li-dataView">
+        <span class="withdrawal__li__title theme-dataView-header">
+          {{ $t('transaction.withdrawal.field.Lst_Bank_name') }}
+        </span>
+        <p class="withdrawal__li__content theme-dataView-data">
+          {{ bank.Lst_Bank_name }}
+        </p>
+      </li>
+
+      <li class="withdrawal__li theme-li-dataView">
+        <span class="withdrawal__li__title theme-dataView-header">
+          {{ $t('transaction.withdrawal.field.Lst_BankAccount') }}
+        </span>
+        <p class="withdrawal__li__content theme-dataView-data">
+          {{ bank.Lst_BankAccount }}
+        </p>
+      </li>
+
+      <li class="withdrawal__li theme-li-dataView">
+        <span class="withdrawal__li__title theme-dataView-header">
+          {{ $t('transaction.withdrawal.field.Lst_Bank_Branches') }}
+        </span>
+        <p class="withdrawal__li__content theme-dataView-data">
+          {{ bank.Lst_Bank_Branches }}
+        </p>
+      </li>
+
+      <li class="withdrawal__li theme-li-dataView">
+        <span class="withdrawal__li__title theme-dataView-header">
+          {{ $t('transaction.withdrawal.field.Add_RealName') }}
+        </span>
+        <p class="withdrawal__li__content theme-dataView-data">
+          {{ withdrawalInfo.Add_RealName }}
+        </p>
+      </li>
+
+      <li class="withdrawal__li theme-li-dataView">
+        <span class="withdrawal__li__title theme-dataView-header">
+          {{ $t('transaction.withdrawal.field.password') }}
+        </span>
+        <input
+          class="withdrawal__li__input ui-ipt theme-ipt-dataview"
+          :id="idMapper.transaction.withdrawal.field.password"
+          type="password"
+          required
+          minlength="6"
+          pattern="^[a-zA-Z0-9]*$"
+          v-model="password"
+        />
+        <div class="theme-errorMsg" v-if="errorPassword">
+          <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
+        </div>
       </li>
     </ul>
     <div class="withdrawal__light-message">
@@ -97,59 +154,18 @@ export default {
   computed: {
     ...mapGetters(['siteID', 'siteFullCss', 'lang']),
     walletAmount() {
-      return this.accountInfoList.find(item => item.name == 'Lst_Point').value || 0;
+      return this.withdrawalInfo.Lst_Point || 0;
     },
   },
   data() {
     return {
       idMapper: idMapper,
       numeral: numeral,
+      withdrawalInfo: {},
       errorPassword: '',
-      accountInfoList: [
-        {
-          name: 'bankSelect',
-          value: '',
-        },
-        {
-          name: 'Lst_Account',
-          value: '',
-        },
-        {
-          name: 'Lst_Currency',
-          value: '',
-        },
-        {
-          name: 'Lst_Point',
-          value: '',
-        },
-        {
-          name: 'Add_WithdrswalsPoint',
-          value: '',
-        },
-        {
-          name: 'Lst_Bank_name',
-          value: '',
-        },
-        {
-          name: 'Lst_BankAccount',
-          value: '',
-        },
-        {
-          name: 'Lst_Bank_Branches',
-          value: '',
-        },
-        {
-          name: 'Add_RealName',
-          value: '',
-        },
-        {
-          name: 'password',
-          value: '',
-        },
-      ],
       bankList: [],
       currencyList: [],
-      bank: '',
+      bank: {},
       currency: '',
       amount: 0,
       password: '',
@@ -164,6 +180,7 @@ export default {
     async getWithdrawalInfo() {
       const result = await getWithdrawalInfo();
       console.log('[Withdrawal]', result.RetObj);
+      this.withdrawalInfo = result.RetObj;
       this.bankList = result.RetObj.Add_MemberBankAccountList;
       this.currencyList = result.RetObj.BaseCurrencyItem;
 
@@ -172,11 +189,6 @@ export default {
         this.$router.replace({ name: 'UserProfile' });
       }
 
-      this.accountInfoList.forEach(item => {
-        if (result.RetObj[item.name]) {
-          item.value = result.RetObj[item.name];
-        }
-      });
       this.amountLimit.min = result.RetObj.WithalDownlimit;
       this.amountLimit.max = result.RetObj.WithalUplimit;
     },
@@ -184,7 +196,7 @@ export default {
       const result = await transferAllGamePointToMain();
       if (result.Code == 200) {
         console.log('[TransferToMain]', result.RetObj);
-        const wallet = this.accountInfoList.find(item => item.name == 'Lst_Point');
+        const wallet = this.withdrawalInfo.Lst_Point;
         wallet.value = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999).Point;
         window.alert(result.RetObj.MsgString);
       }
@@ -194,7 +206,7 @@ export default {
         return;
       }
       const requestData = {
-        Add_RealName: this.accountInfoList.find(item => item.name == 'Add_RealName').value,
+        Add_RealName: this.withdrawalInfo.Add_RealName,
         Add_MemberBankID: this.bank.Lst_BankID,
         Add_MemberBankName: this.bank.Lst_Bank_name,
         Add_MemberBankBranchesName: this.bank.Lst_Bank_Branches,
@@ -214,16 +226,6 @@ export default {
       if (result.Code == 200) {
         this.$router.push({ name: 'TransactionRecordContent', params: { name: 'withdrawal' } });
       }
-    },
-    changeBank() {
-      if (!this.bank) {
-        return;
-      }
-      this.accountInfoList.map(item => {
-        if (this.bank[item.name]) {
-          item.value = this.bank[item.name];
-        }
-      });
     },
     changeAmount() {
       if (this.amount > this.walletAmount || this.amount > this.amountLimit.max) {
@@ -248,7 +250,7 @@ export default {
         this.amount % 100 != 0
       ) {
         return false;
-      } else if (this.bank == '') {
+      } else if (this.bank == '' || Object.keys(this.bank).length == 0) {
         return false;
       } else if (this.password == '' || this.password.length < 6) {
         return false;
