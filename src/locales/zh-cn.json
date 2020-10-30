@@ -130,244 +130,99 @@
       "placeholder": "推荐人",
       "hint": "若无推荐人,则不需要填写",
       "hintHasValue": "推广码: {proxyCode}",
-      "error": {
-        "invalid": "推荐人不存在",
-        "required": "",
-        "length": "最少 3 字元，最多 15 字元",
-        "regex": "须为英数格式，字首必须为英文字母，且不可有空白"
-      }
+      "invalid": "推荐人不存在"
     },
     "Add_Account": {
       "placeholder": "帐号",
-      "hint": "",
-      "error": {
-        "invalid": "该账号已存在",
-        "required": "请输入您的账号",
-        "length": "最少 3 字元，最多 15 字元",
-        "regex": "须为英数格式，字首必须为英文字母，且不可有空白"
-      }
+      "invalid": "该账号已存在"
     },
     "Add_Password": {
-      "placeholder": "密码",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请输入您的密码",
-        "length": "密码长度最少为6位字元",
-        "regex": "格式错误"
-      }
+      "placeholder": "密码"
     },
     "Add_PasswordCheck": {
-      "placeholder": "确认密码",
-      "hint": "",
-      "error": {
-        "invalid": "确认密码错误",
-        "required": "请再次确认您的密码",
-        "length": "密码长度最少为6位字元",
-        "regex": "格式错误"
-      }
+      "placeholder": "确认密码"
     },
     "Add_Mobile": {
       "placeholder": "手机号码",
       "hint": "此为账户联系渠道，惊喜优惠通知，请务必真实填入",
-      "error": {
-        "invalid": "此手机/电话号码已他人使用,请输入其他手机/电话号码",
-        "required": "请输入您的手机号码",
-        "length": "最少 5 字元，最多 20 字元",
-        "regex": "格式错误"
-      }
+      "invalid": "此手机/电话号码已他人使用,请输入其他手机/电话号码"
     },
     "Add_Email": {
       "placeholder": "E-mail",
       "hint": "此为公司发送惊喜优惠通知，请务必真实填入",
-      "error": {
-        "invalid": "此信箱已他人使用,请输入其他信箱",
-        "required": "请输入您的E-mail",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "invalid": "此信箱已他人使用,请输入其他信箱"
     },
     "Add_Line": {
       "placeholder": "ID LINE",
       "hint": "此为公司发送惊喜优惠通知，请务必真实填入",
-      "error": {
-        "invalid": "Line帐号已存在",
-        "required": "请输入您的LINE",
-        "length": "",
-        "regex": ""
-      }
+      "invalid": "Line帐号已存在"
     },
     "Add_Skype": {
       "placeholder": "Skype号",
-      "hint": "",
-      "error": {
-        "invalid": "Skype帐号已存在",
-        "required": "请输入您的Skype",
-        "length": "",
-        "regex": ""
-      }
+      "invalid": "Skype帐号已存在"
     },
     "Add_QQ": {
       "placeholder": "QQ号",
-      "hint": "",
-      "error": {
-        "invalid": "该QQ已存在",
-        "required": "请输入您的QQ",
-        "length": "",
-        "regex": ""
-      }
+      "invalid": "该QQ已存在"
     },
     "Add_FirstName": {
-      "placeholder": "名字",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请输入您的名字",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "placeholder": "名字"
     },
     "Add_LastName": {
-      "placeholder": "姓氏",
-      "hint": "必须与您的银行账户名称相同，否则不能出款",
-      "error": {
-        "invalid": "",
-        "required": "请输入您的姓氏",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "placeholder": "姓氏"
     },
     "Add_RealName": {
       "placeholder": "姓名",
       "hint": "必须与您的银行账户名称相同，否则不能出款",
-      "error": {
-        "invalid": "此真实姓名已他人使用,请输入其他真实姓名",
-        "required": "请输入您的姓名",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "invalid": "此真实姓名已他人使用,请输入其他真实姓名"
     },
     "Add_NickName": {
-      "placeholder": "昵称",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请输入您的昵称",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "昵称"
     },
     "Add_Birthday": {
-      "placeholder": "生日",
-      "hint": "",
-      "error": {
-        "invalid": "需满18岁",
-        "required": "请输入您的生日",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "placeholder": "生日"
     },
     "Add_BankId1": {
       "title": "银行名称",
       "placeholder": "请选择银行名称"
     },
     "Add_BankBranchName1": {
-      "placeholder": "支行名称1",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请输入支行名称",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "placeholder": "支行名称1"
     },
     "Add_BankAccount1": {
       "placeholder": "银行帐号1",
-      "hint": "",
-      "error": {
-        "invalid": "银行账号已存在",
-        "required": "请输入银行帐号",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "invalid": "银行账号已存在"
     },
     "Add_BankId2": {
       "title": "银行名称2",
       "placeholder": "请选择银行名称"
     },
     "Add_BankBranchName2": {
-      "placeholder": "支行名称2",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请输入支行名称",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "placeholder": "支行名称2"
     },
     "Add_BankAccount2": {
       "placeholder": "银行帐号2",
-      "hint": "",
-      "error": {
-        "invalid": "银行账号已存在",
-        "required": "请输入银行帐号",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "invalid": "银行账号已存在"
     },
     "Add_BankId3": {
       "title": "银行名称3",
       "placeholder": "请选择银行名称"
     },
     "Add_BankBranchName3": {
-      "placeholder": "支行名称3",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请输入支行名称",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "placeholder": "支行名称3"
     },
     "Add_BankAccount3": {
       "placeholder": "银行帐号3",
-      "hint": "",
-      "error": {
-        "invalid": "银行账号已存在",
-        "required": "请输入银行帐号",
-        "length": "",
-        "regex": "格式错误"
-      }
+      "invalid": "银行账号已存在"
     },
     "Add_Withdrawals_Password": {
-      "placeholder": "取款密碼",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请输入取款密​​码",
-        "length": "密码长度最少为6位字元",
-        "regex": "格式错误"
-      }
+      "placeholder": "取款密碼"
     },
     "Add_Withdrawals_CheckPassword": {
-      "placeholder": "确认取款密码",
-      "hint": "",
-      "error": {
-        "invalid": "确认密码错误",
-        "required": "请输入取款密​​码",
-        "length": "密码长度最少为6位字元",
-        "regex": "格式错误"
-      }
+      "placeholder": "确认取款密码"
     },
     "CaptchaValue": {
-      "placeholder": "验证码",
-      "hint": "",
-      "error": {
-        "invalid": "",
-        "required": "请输入验证码",
-        "length": "",
-        "regex": ""
-      }
+      "placeholder": "验证码"
     },
     "notice": {
       "required": "标记有 <span class='ui-txt-star'>*</span> 为必填字段，请留意并正确填写。",

@@ -181,7 +181,7 @@ export default {
         const result = await checkRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
-          alert(this.$t('register.Add_RelatedAccount.error.invalid'));
+          window.alert(this.$t('register.Add_RelatedAccount.invalid'));
         }
       } else if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
         const firstNameField = this.fieldList.find(item => item.name == 'Add_FirstName');
@@ -194,14 +194,14 @@ export default {
         const result = await checkRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
-          alert(this.$t('register.Add_RealName.error.invalid'));
+          window.alert(this.$t('register.Add_RealName.invalid'));
         }
       } else if (field.isOnly == true && field.value) {
         const requestData = { field: field.name, strValue: field.value };
         const result = await checkRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
-          alert(this.$t(`register.${field.name}.error.invalid`));
+          window.alert(this.$t(`register.${field.name}.invalid`));
         }
       }
     },

@@ -170,8 +170,7 @@
       "placeholder": "First Name"
     },
     "Add_LastName": {
-      "placeholder": "Last Name",
-      "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance."
+      "placeholder": "Last Name"
     },
     "Add_RealName": {
       "placeholder": "Real Name",
