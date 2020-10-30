@@ -1,14 +1,14 @@
 <template>
   <div class="register">
-    <ValidationObserver tag="div" ref="registerForm" v-slot="{ invalid, handleSubmit, reset }">
-      <form class="register__form" @submit.prevent="handleSubmit(submitRegister)" @reset.prevent="reset()">
+    <ValidationObserver v-slot="{ invalid, handleSubmit, reset }" tag="div">
+      <form class="register__form" @submit.prevent="handleSubmit(submitRegister(invalid))" @reset.prevent="reset()">
         <ValidationProvider
+          v-slot="{ errors, invalid }"
           tag="div"
           class="register__form__field"
           :class="[field.class]"
           :name="field.name"
           :rules="field.rules"
-          v-slot="{ errors }"
           v-for="field in fieldList"
           :key="field.name"
           v-show="field.isShow"
@@ -21,6 +21,7 @@
             :min="field.min"
             :max="field.max"
             v-model="field.value"
+            @change="changeField(field, invalid)"
             v-if="field.type != 'select'"
           />
 
@@ -29,8 +30,8 @@
             :class="{ 'register__form__field__select--default': field.value == '' }"
             :id="idMapper.register.input[field.name]"
             v-model="field.value"
-            v-else
             :required="field.rules['register-required']"
+            v-else
           >
             <option :value="bank.Value" v-for="bank in bankList" :key="bank.Value">{{ bank.Text }}</option>
           </select>
@@ -71,91 +72,6 @@
         </div>
       </form>
     </ValidationObserver>
-
-    <!-- <form class="register__form" id="register-form" @submit.prevent="submitRegister">
-      <div v-for="field in fieldList" :key="field.name">
-        <template v-if="field.isShow">
-          <div class="register__form__field" :class="[field.class]">
-            <span class="register__form__field__star" v-if="field.isRequired">*</span>
-            <input
-              v-if="field.name != 'Add_BankId1'"
-              class="register__form__field__input"
-              :id="idMapper.register.input[field.name]"
-              :type="field.type"
-              :placeholder="$t(`register.${field.name}.placeholder`)"
-              :required="field.isRequired"
-              :minlength="field.minlength"
-              :maxlength="field.maxlength"
-              :min="field.min"
-              :max="field.max"
-              :pattern="field.regex"
-              :disabled="!field.isModifiable"
-              v-model="field.value"
-              @input="inputField(field)"
-              @change="changeField(field)"
-            />
-
-            <img
-              v-if="field.name == 'CaptchaValue' && captchaImage.ImgBase64 != ''"
-              class="register__form__field__image--code"
-              :id="idMapper.register.image.captcha"
-              :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
-              alt="MvcCaptcha"
-              title="Refrash Captcha"
-              :width="captchaImage.Width"
-              :height="captchaImage.Height"
-              border="0"
-              @click="changeCaptcha"
-            />
-
-            <select
-              v-if="field.name == 'Add_BankId1'"
-              class="register__form__field__select"
-              :class="{ 'register__form__field__select--default': field.value == '' }"
-              :id="idMapper.register.input[field.name]"
-              v-model="field.value"
-            >
-              <option :value="bank.Value" v-for="bank in bankList" :key="bank.Value">{{ bank.Text }}</option>
-            </select>
-          </div>
-
-          <div class="register__form__field__hint">
-            <template v-if="field.name == 'Add_RelatedAccount' && !field.isModifiable">
-              {{ $t(`register.${field.name}.hintHasValue`, { proxyCode: field.value }) }}
-              <br />
-            </template>
-
-            {{ $t(`register.${field.name}.hint`) }}
-          </div>
-          <div class="theme-errorMsg" v-if="field.error">
-            <span class="theme-txt-errorMsg">{{ field.error }}</span>
-          </div>
-        </template>
-      </div>
-      <div class="theme-errorMsg" v-if="error">
-        <span class="theme-txt-errorMsg">{{ error }}</span>
-      </div>
-    </form> -->
-
-    <!-- <div class="register__button-div">
-      <button
-        type="submit"
-        class="register__button-div__send ui-btn"
-        :id="idMapper.register.button.submit"
-        form="register-form"
-        :disabled="!validateForm()"
-      >
-        {{ $t('ui.button.submit') }}
-      </button>
-      <button
-        type="reset"
-        class="register__button-div__reset ui-btn"
-        :id="idMapper.register.button.reset"
-        @click.prevent="resetForm"
-      >
-        {{ $t('ui.button.reset') }}
-      </button>
-    </div> -->
     <div class="register__notice">
       <ol class="register__notice__ol">
         <li
@@ -172,7 +88,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
-import { getRegisterFieldList } from '@/api/register';
+import { getRegisterFieldList, checkRegisterFieldExist } from '@/api/register';
 // import { registerFieldList, validateField } from '@/utils/register';
 import idMapper from '@/idMapper';
 import dayjs from 'dayjs';
@@ -203,7 +119,6 @@ export default {
   data() {
     return {
       idMapper: idMapper,
-
       fieldList: [
         {
           name: 'Add_RelatedAccount',
@@ -573,8 +488,8 @@ export default {
         field.value = '';
       }
     },
-    async submitRegister() {
-      if (!this.validateForm()) {
+    async submitRegister(invalid) {
+      if (invalid) {
         return;
       }
       const requestData = {};
@@ -596,6 +511,40 @@ export default {
         //* 615: JsonError，推測是公鑰與私鑰沒對上，已於攔截器上換新的公鑰
         //* 重新送出請求
         this.submitRegister();
+      }
+    },
+    async changeField(field, invalid) {
+      //* 即時驗證欄位資料是否通過
+      if (invalid) {
+        return;
+      }
+      if (field.name == 'Add_RelatedAccount' && field.value) {
+        const requestData = { field: field.name, strValue: field.value };
+        const result = await checkRegisterFieldExist(requestData);
+        if (result == false) {
+          field.value = '';
+          alert(this.$t('register.Add_RelatedAccount.error.invalid'));
+        }
+      } else if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
+        const firstNameField = this.fieldList.find(item => item.name == 'Add_FirstName');
+        const lastNameField = this.fieldList.find(item => item.name == 'Add_LastName');
+        //* 姓跟名都有填的時候才檢查
+        if (!(firstNameField.value && lastNameField.value)) {
+          return;
+        }
+        const requestData = { field: 'Add_RealName', strValue: this.fullName };
+        const result = await checkRegisterFieldExist(requestData);
+        if (result == false) {
+          field.value = '';
+          alert(this.$t('register.Add_RealName.error.invalid'));
+        }
+      } else if (field.isOnly == true && field.value) {
+        const requestData = { field: field.name, strValue: field.value };
+        const result = await checkRegisterFieldExist(requestData);
+        if (result == false) {
+          field.value = '';
+          alert(this.$t(`register.${field.name}.error.invalid`));
+        }
       }
     },
   },
