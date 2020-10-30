@@ -13,6 +13,7 @@
           :key="field.name"
           v-show="field.isShow"
         >
+          <span class="register__form__field__star" v-if="field.rules['register-required']">*</span>
           <input
             class="register__form__field__input"
             :type="field.type"
