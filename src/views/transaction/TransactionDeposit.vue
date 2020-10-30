@@ -1,201 +1,224 @@
 <template>
   <div @click="isShowDepositNotice = false">
-    <form class="deposit" @submit.prevent="submitDeposit" novalidate>
-      <div class="theme-content-box">
-        <h3 class="deposit__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
+    <ValidationObserver v-slot="{ invalid, handleSubmit }" tag="div">
+      <form class="deposit" novalidate @submit.prevent="handleSubmit(submitDeposit(invalid))">
+        <div class="theme-content-box">
+          <h3 class="deposit__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
 
-        <div
-          class="deposit__field theme-input-box"
-          v-if="JSON.stringify(bankDepositList) === JSON.stringify(bankTransferList)"
-        >
-          <span class="deposit__field__title theme-input-header">
-            {{ $t('transaction.deposit.field.bankDepositAccount') }}
-          </span>
-          <input class="ui-ipt" type="text" v-model="bankDepositAccount" />
-        </div>
-
-        <div class="deposit__field theme-input-box" v-else>
-          <span class="deposit__field__title theme-input-header">
-            {{ $t('transaction.deposit.field.bankDeposit') }}
-          </span>
-          <select
-            class="deposit__field__select ui-ddl"
-            :id="idMapper.transaction.deposit.field.bankDeposit"
-            required
-            v-model="bankDeposit"
+          <ValidationProvider
+            tag="div"
+            class="deposit__field theme-input-box"
+            :rules="{ required: true }"
+            v-if="JSON.stringify(bankDepositList) === JSON.stringify(bankTransferList)"
           >
-            <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.bankDeposit`) }}</option>
-            <option :value="bank" v-for="bank in bankDepositList" :key="bank.value">
-              {{ bank.Text }}
-            </option>
-          </select>
+            <span class="deposit__field__title theme-input-header">
+              {{ $t('transaction.deposit.field.bankDepositAccount') }}
+            </span>
+            <input class="ui-ipt" type="text" v-model="bankDepositAccount" />
+          </ValidationProvider>
 
-          <div v-if="bankDeposit && Object.keys(bankDeposit).length > 0">
-            <span class="deposit__field__info__header theme-input-header">
-              {{ $t('transaction.deposit.field.BankName') }}
-            </span>
-            <p class="deposit__field__info__text">{{ bankDeposit.BankName }}</p>
-            <span class="deposit__field__info__header theme-input-header">
-              {{ $t('transaction.deposit.field.BankBranchName') }}
-            </span>
-            <p class="deposit__field__info__text">{{ bankDeposit.BankBranchName }}</p>
-            <span class="deposit__field__info__header theme-input-header">
-              {{ $t('transaction.deposit.field.BankAccountName') }}
-            </span>
-            <p class="deposit__field__info__text">{{ bankDeposit.BankAccountName }}</p>
-            <span class="deposit__field__info__header theme-input-header">
-              {{ $t('transaction.deposit.field.BankAccount') }}
-            </span>
-            <p class="deposit__field__info__text">{{ bankDeposit.BankAccount }}</p>
-          </div>
-        </div>
-
-        <div class="deposit__field theme-input-box">
-          <span class="deposit__field__title theme-input-header">
-            {{ $t('transaction.deposit.field.bankTransfer') }}
-          </span>
-          <select
-            class="deposit__field__select ui-ddl"
-            :id="idMapper.transaction.deposit.field.bankTransfer"
-            v-model="bankTransfer"
+          <ValidationProvider
+            tag="div"
+            class="deposit__field theme-input-box"
+            :rules="{ 'object-not-empty': true }"
+            v-else
           >
-            <option value="" selected>{{ $t('transaction.deposit.placeholder.bankTransfer') }}</option>
-            <option :value="bank.Value" v-for="bank in bankTransferList" :key="bank.Value">
-              {{ bank.Text }}
-            </option>
-          </select>
-        </div>
+            <span class="deposit__field__title theme-input-header">
+              {{ $t('transaction.deposit.field.bankDeposit') }}
+            </span>
+            <select
+              class="deposit__field__select ui-ddl"
+              :id="idMapper.transaction.deposit.field.bankDeposit"
+              v-model="bankDeposit"
+            >
+              <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.bankDeposit`) }}</option>
+              <option :value="bank" v-for="bank in bankDepositList" :key="bank.value">
+                {{ bank.Text }}
+              </option>
+            </select>
 
-        <div class="deposit__field theme-input-box">
-          <span class="deposit__field__title theme-input-header">
-            {{ $t('transaction.deposit.field.datetime') }}
-          </span>
-          <input
-            required
-            class="ui-ipt"
-            type="datetime-local"
-            v-model="datetime"
-            :max="dayjs().format('YYYY-MM-DDTHH:mm')"
-          />
-        </div>
+            <div v-if="bankDeposit && Object.keys(bankDeposit).length > 0">
+              <span class="deposit__field__info__header theme-input-header">
+                {{ $t('transaction.deposit.field.BankName') }}
+              </span>
+              <p class="deposit__field__info__text">{{ bankDeposit.BankName }}</p>
+              <span class="deposit__field__info__header theme-input-header">
+                {{ $t('transaction.deposit.field.BankBranchName') }}
+              </span>
+              <p class="deposit__field__info__text">{{ bankDeposit.BankBranchName }}</p>
+              <span class="deposit__field__info__header theme-input-header">
+                {{ $t('transaction.deposit.field.BankAccountName') }}
+              </span>
+              <p class="deposit__field__info__text">{{ bankDeposit.BankAccountName }}</p>
+              <span class="deposit__field__info__header theme-input-header">
+                {{ $t('transaction.deposit.field.BankAccount') }}
+              </span>
+              <p class="deposit__field__info__text">{{ bankDeposit.BankAccount }}</p>
+            </div>
+          </ValidationProvider>
 
-        <div class="deposit__field theme-input-box">
-          <span class="deposit__field__title theme-input-header">
-            {{ $t('transaction.deposit.field.method') }}
-          </span>
-          <select
-            class="deposit__field__select ui-ddl"
-            :id="idMapper.transaction.deposit.field.method"
-            required
-            v-model="method"
+          <ValidationProvider tag="div" class="deposit__field theme-input-box" :rules="{ required: true }">
+            <span class="deposit__field__title theme-input-header">
+              {{ $t('transaction.deposit.field.bankTransfer') }}
+            </span>
+            <select
+              class="deposit__field__select ui-ddl"
+              :id="idMapper.transaction.deposit.field.bankTransfer"
+              v-model="bankTransfer"
+            >
+              <option value="" selected>{{ $t('transaction.deposit.placeholder.bankTransfer') }}</option>
+              <option :value="bank.Value" v-for="bank in bankTransferList" :key="bank.Value">
+                {{ bank.Text }}
+              </option>
+            </select>
+          </ValidationProvider>
+
+          <ValidationProvider
+            tag="div"
+            class="deposit__field theme-input-box"
+            :rules="{ required: true, 'date-max': dayjs().format('YYYY-MM-DDTHH:mm') }"
           >
-            <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
-            <option :value="methodItem.Value" v-for="methodItem in methodList" :key="methodItem.Value">
-              {{ methodItem.Text }}
-            </option>
-          </select>
-        </div>
+            <span class="deposit__field__title theme-input-header">
+              {{ $t('transaction.deposit.field.datetime') }}
+            </span>
+            <input
+              required
+              class="ui-ipt"
+              type="datetime-local"
+              v-model="datetime"
+              :max="dayjs().format('YYYY-MM-DDTHH:mm')"
+            />
+          </ValidationProvider>
 
-        <div class="deposit__field theme-input-box">
-          <span class="deposit__field__title theme-input-header">
-            {{ $t('transaction.deposit.field.amount') }}
-          </span>
-          <select
-            class="deposit__field__select ui-ddl"
-            :id="idMapper.transaction.deposit.field.currency"
-            required
-            v-model="currency"
+          <ValidationProvider tag="div" class="deposit__field theme-input-box" :rules="{ required: true }">
+            <span class="deposit__field__title theme-input-header">
+              {{ $t('transaction.deposit.field.method') }}
+            </span>
+            <select
+              class="deposit__field__select ui-ddl"
+              :id="idMapper.transaction.deposit.field.method"
+              v-model="method"
+            >
+              <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
+              <option :value="methodItem.Value" v-for="methodItem in methodList" :key="methodItem.Value">
+                {{ methodItem.Text }}
+              </option>
+            </select>
+          </ValidationProvider>
+
+          <ValidationProvider
+            tag="div"
+            class="deposit__field theme-input-box"
+            :rules="{ required: true }"
             v-if="currencyList.length > 0"
           >
-            <option value="">{{ $t(`transaction.deposit.placeholder.currency`) }}</option>
-            <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
-              {{ currencyItem.Text }}
-            </option>
-          </select>
-          <input
-            class="ui-ipt"
-            :id="idMapper.transaction.deposit.field.amount"
-            type="number"
-            required
-            :min="depositLimit.min"
-            :max="depositLimit.max"
-            step="100"
-            v-model.number="amount"
-            @change="inputAmount"
-          />
-          <p
-            class="deposit__field__hint"
-            v-html="
-              $t('transaction.deposit.hint.amount', {
-                amountLimitMin: depositLimit.min,
-                amountLimitMax: depositLimit.max,
-              })
-            "
-          ></p>
-        </div>
+            <span class="deposit__field__title theme-input-header">
+              {{ $t('transaction.deposit.field.amount') }}
+            </span>
+            <select
+              class="deposit__field__select ui-ddl"
+              :id="idMapper.transaction.deposit.field.currency"
+              v-model="currency"
+            >
+              <option value="">{{ $t(`transaction.deposit.placeholder.currency`) }}</option>
+              <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
+                {{ currencyItem.Text }}
+              </option>
+            </select>
+          </ValidationProvider>
 
-        <div class="deposit__field theme-input-box">
-          <span class="deposit__field__title theme-input-header">
-            {{ $t('transaction.deposit.field.receipt') }}
-          </span>
-          <label
-            class="deposit__field__receipt-upload__label ui-btn ui-btn-long"
-            :for="idMapper.transaction.deposit.button.upload"
+          <ValidationProvider
+            tag="div"
+            class="deposit__field theme-input-box"
+            :rules="{ required: true, min_value: depositLimit.min, max_value: depositLimit.max }"
           >
-            {{ $t('transaction.deposit.button.upload') }}
             <input
-              class="deposit__field__receipt-upload__input"
-              :id="idMapper.transaction.deposit.button.upload"
-              type="file"
-              accept=".jpg,.png"
-              @change="onFileChange"
+              class="ui-ipt"
+              :id="idMapper.transaction.deposit.field.amount"
+              type="number"
+              step="100"
+              v-model.number="amount"
+              @change="inputAmount"
             />
-          </label>
-          <p class="deposit__field__hint deposit__field__hint--receipt-upload">{{ receipt.name }}</p>
-          <p class="deposit__field__hint">{{ $t('transaction.deposit.hint.receipt') }}</p>
-        </div>
+            <p
+              class="deposit__field__hint"
+              v-html="
+                $t('transaction.deposit.hint.amount', {
+                  amountLimitMin: depositLimit.min,
+                  amountLimitMax: depositLimit.max,
+                })
+              "
+            ></p>
+          </ValidationProvider>
 
-        <div class="deposit__field theme-input-box">
-          <span class="deposit__field__title theme-input-header">
-            {{ $t('transaction.deposit.field.remark') }}
-          </span>
-          <input class="ui-ipt" :id="idMapper.transaction.deposit.field.remark" type="text" v-model="remark" />
-        </div>
-
-        <div class="deposit__field theme-input-box">
-          <span class="deposit__field__title theme-input-header">
-            {{ $t('transaction.deposit.field.promotion') }}
-          </span>
-          <select
-            class="deposit__field__select ui-ddl"
-            :id="idMapper.transaction.deposit.field.promotion"
-            v-model="promotion"
+          <ValidationProvider
+            tag="div"
+            class="deposit__field theme-input-box"
+            :rules="{ image: true }"
+            v-slot="{ validate }"
           >
-            <option :value="promotionItem.Value" v-for="promotionItem in promotionList" :key="promotionItem.Value">
-              {{ promotionItem.Text }}
-            </option>
-          </select>
-          <p class="deposit__field__hint ui-txt-mask" v-if="promotion == -1">
-            {{ $t('transaction.deposit.hint.promotion') }}
-          </p>
+            <span class="deposit__field__title theme-input-header">
+              {{ $t('transaction.deposit.field.receipt') }}
+            </span>
+            <label
+              class="deposit__field__receipt-upload__label ui-btn ui-btn-long"
+              :for="idMapper.transaction.deposit.button.upload"
+            >
+              {{ $t('transaction.deposit.button.upload') }}
+              <input
+                class="deposit__field__receipt-upload__input"
+                :id="idMapper.transaction.deposit.button.upload"
+                type="file"
+                accept=".jpg,.png"
+                @change="onFileChange($event, validate)"
+              />
+            </label>
+            <p class="deposit__field__hint deposit__field__hint--receipt-upload">{{ receipt.name }}</p>
+            <p class="deposit__field__hint">{{ $t('transaction.deposit.hint.receipt') }}</p>
+          </ValidationProvider>
+
+          <ValidationProvider tag="div" class="deposit__field theme-input-box">
+            <span class="deposit__field__title theme-input-header">
+              {{ $t('transaction.deposit.field.remark') }}
+            </span>
+            <input class="ui-ipt" :id="idMapper.transaction.deposit.field.remark" type="text" v-model="remark" />
+          </ValidationProvider>
+
+          <ValidationProvider tag="div" class="deposit__field theme-input-box">
+            <span class="deposit__field__title theme-input-header">
+              {{ $t('transaction.deposit.field.promotion') }}
+            </span>
+            <select
+              class="deposit__field__select ui-ddl"
+              :id="idMapper.transaction.deposit.field.promotion"
+              v-model="promotion"
+            >
+              <option :value="promotionItem.Value" v-for="promotionItem in promotionList" :key="promotionItem.Value">
+                {{ promotionItem.Text }}
+              </option>
+            </select>
+            <p class="deposit__field__hint ui-txt-mask" v-if="promotion == -1">
+              {{ $t('transaction.deposit.hint.promotion') }}
+            </p>
+          </ValidationProvider>
+
+          <ol class="ui-ol-memberNotice">
+            <li v-for="(notice, index) in noticeList" :key="`memberNotice${index}`">
+              <span v-html="$t(`transaction.deposit.notice.${notice}`)"></span>
+            </li>
+          </ol>
+
+          <div class="deposit__button-div">
+            <button class="ui-btn deposit__button-div--submit" type="submit" :disabled="invalid">
+              {{ $t('ui.button.submit') }}
+            </button>
+            <router-link class="ui-btn deposit__button-div--cancel" :to="{ name: 'Home' }">
+              {{ $t('ui.button.cancel') }}
+            </router-link>
+          </div>
         </div>
-        <ol class="ui-ol-memberNotice">
-          <li v-for="(notice, index) in noticeList" :key="`memberNotice${index}`">
-            <span v-html="$t(`transaction.deposit.notice.${notice}`)"></span>
-          </li>
-        </ol>
-      </div>
-
-      <div class="deposit__button-div">
-        <button class="ui-btn deposit__button-div--submit" type="submit" :disabled="!validateForm()">
-          {{ $t('ui.button.submit') }}
-        </button>
-        <router-link class="ui-btn deposit__button-div--cancel" :to="{ name: 'Home' }">
-          {{ $t('ui.button.cancel') }}
-        </router-link>
-      </div>
-    </form>
-
+      </form>
+    </ValidationObserver>
     <transition name="fade">
       <div
         class="deposit__deposit-notice"
@@ -211,9 +234,15 @@ import { mapGetters } from 'vuex';
 import idMapper from '@/idMapper';
 import { getDepositInfo, deposit } from '@/api/transaction-deposit';
 import dayjs from 'dayjs';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import '@/utils/vee-validate.js';
 
 export default {
   name: 'TransactionDeposit',
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss', 'lang', 'siteName', 'siteDepositNoticeUrl', 'siteIsShowDepositNotice']),
   },
@@ -265,8 +294,8 @@ export default {
         this.hid_THBtoMMKrate = result.RetObj.hid_THBtoMMKrate;
       }
     },
-    async submitDeposit() {
-      if (!this.validateForm()) {
+    async submitDeposit(invalid) {
+      if (invalid) {
         return;
       }
 
@@ -320,7 +349,13 @@ export default {
         this.amount = this.depositLimit.max;
       }
     },
-    onFileChange(event) {
+    async onFileChange(event, validate) {
+      //* validate: vee-validate 的函式，根據 rules 檢查(這裡是檢查是否為 image)
+      const validResult = await validate(event);
+      if (!validResult.valid) {
+        return;
+      }
+
       const files = event.target.files || event.dataTransfer.files;
       if (!files.length || files.length <= 0) {
         return;
@@ -338,21 +373,21 @@ export default {
       };
       reader.readAsDataURL(file);
     },
-    validateForm() {
-      if (Object.keys(this.bankDeposit).length == 0) {
-        return false;
-      } else if (this.bankTransfer == '') {
-        return false;
-      } else if (this.datetime == '') {
-        return false;
-      } else if (this.method == '') {
-        return false;
-      } else if (this.amount < this.depositLimit.min || this.amount > this.depositLimit.max) {
-        return false;
-      }
+    // validateForm() {
+    //   if (Object.keys(this.bankDeposit).length == 0) {
+    //     return false;
+    //   } else if (this.bankTransfer == '') {
+    //     return false;
+    //   } else if (this.datetime == '') {
+    //     return false;
+    //   } else if (this.method == '') {
+    //     return false;
+    //   } else if (this.amount < this.depositLimit.min || this.amount > this.depositLimit.max) {
+    //     return false;
+    //   }
 
-      return true;
-    },
+    //   return true;
+    // },
   },
   watch: {
     siteID: {
@@ -407,6 +442,10 @@ export default {
     &__hint {
       margin: 10px 0;
       font-size: 2.153em;
+
+      &--receipt-upload {
+        text-align: center;
+      }
     }
   }
 

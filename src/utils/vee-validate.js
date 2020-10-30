@@ -1,5 +1,5 @@
 import { extend } from 'vee-validate';
-import { required, regex, max, min, confirmed } from 'vee-validate/dist/rules';
+import { required, regex, max, min, confirmed, min_value, max_value, image, mimes } from 'vee-validate/dist/rules';
 import { i18n } from '@/i18n-lazy';
 import dayjs from 'dayjs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
@@ -10,6 +10,40 @@ dayjs.extend(isSameOrAfter);
 //* 已寫好可引入的規則: https://logaretm.github.io/vee-validate/guide/rules.html
 
 //* message 可用放方法，且第一個參數會是 name，即可實現根據 name 回傳不同訊息
+
+extend('required', {
+  ...required,
+});
+
+extend('min_value', {
+  ...min_value,
+});
+
+extend('max_value', {
+  ...max_value,
+});
+
+extend('image', {
+  ...image,
+});
+
+extend('mimes', {
+  ...mimes,
+});
+
+extend('object-not-empty', {
+  validate: value => {
+    return Object.keys(value).length > 0;
+  },
+});
+
+extend('date-max', {
+  params: ['max'],
+  validate: (value, { max }) => {
+    console.log(dayjs(value).isSameOrBefore(max));
+    return dayjs(value).isSameOrBefore(max);
+  },
+});
 
 extend('register-required', {
   ...required,
@@ -73,5 +107,3 @@ extend('register-birthday', {
     return '';
   },
 });
-
-
