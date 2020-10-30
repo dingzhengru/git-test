@@ -40,7 +40,6 @@ extend('object-not-empty', {
 extend('date-max', {
   params: ['max'],
   validate: (value, { max }) => {
-    console.log(dayjs(value).isSameOrBefore(max));
     return dayjs(value).isSameOrBefore(max);
   },
 });
