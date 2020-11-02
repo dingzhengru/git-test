@@ -359,17 +359,6 @@
       },
       "button": {
         "upload": "上传"
-      },
-      "dialog": {
-        "title": "为了预防罪犯麻烦<br />请会员按照此说明操作",
-        "notice": {
-          "currency": "储值/提款 使用的只能是相同的货币",
-          "atm": "透过 ATM-CDM储值发送单据确认并注明是汇款到 {siteName} 也必须跟着会员用户名",
-          "violate": "如果不遵守此通知 本站将不会付款并转回原本的账户"
-        },
-        "footer": {
-          "content": "*如有疑问*<br />联系我们将会获取更多信息"
-        }
       }
     },
     "withdrawal": {
@@ -710,34 +699,7 @@
     "mobile": "Mobile",
     "email": "Email",
     "wechat": "wechat",
-    "service": "在线客服",
-    "dialog": {
-      "title": "支援",
-      "content": " ขออภัย ที่เราทำ ไม่ได้ออนไลน์ กรุณา ฝากข้อความ เราจะติดต่อ คุณเร็ว ๆ นี้ ",
-      "field": {
-        "username": {
-          "label": "介紹自己",
-          "placeholder": "名稱",
-          "error": {
-            "required": "請提供名稱"
-          }
-        },
-        "email": {
-          "label": "",
-          "placeholder": "電子郵件",
-          "error": {
-            "required": "請提供有效的電子郵件"
-          }
-        },
-        "message": {
-          "label": "訊息",
-          "placeholder": "",
-          "error": {
-            "required": "完成此欄位"
-          }
-        }
-      }
-    }
+    "service": "在线客服"
   },
   "about": {
     "title": "关于我们",
