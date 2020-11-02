@@ -1,119 +1,124 @@
 <template>
   <div class="login">
-    <div class="theme-errorMsg" v-if="error">
+    <div class="login__error-message theme-errorMsg" v-if="error">
       <span class="theme-txt-errorMsg">{{ error }}</span>
     </div>
     <h1 class="login__title">{{ $t('login.title') }}</h1>
-    <form class="login__form" id="LoginForm" @submit.prevent="submitLogin">
-      <div class="login__form__field login__form__field--account">
-        <input
-          class="login__form__field__input"
-          :id="idMapper.login.input.username"
-          type="text"
-          :placeholder="$t('login.placeholder.username')"
-          required
-          minlength="3"
-          maxlength="15"
-          pattern="^[a-zA-Z]{1}[a-zA-Z0-9]*$"
-          v-model="user.UserName"
-        />
-      </div>
-      <div class="login__form__field login__form__field--password">
-        <input
-          class="login__form__field__input"
-          :id="idMapper.login.input.password"
-          type="password"
-          :placeholder="$t('login.placeholder.password')"
-          required
-          minlength="6"
-          maxlength="30"
-          pattern="^[a-zA-Z0-9]*$"
-          v-model="user.Password"
-        />
-      </div>
-      <div class="login__form__field login__form__field--code">
-        <input
-          class="login__form__field__input login__form__field__input--code"
-          :id="idMapper.login.input.captcha"
-          type="tel"
-          :placeholder="$t('login.placeholder.captcha')"
-          required
-          minlength="4"
-          maxlength="4"
-          pattern="^[0-9]*$"
-          autocomplete="off"
-          v-model="user.CaptchaValue"
-        />
-        <img
-          class="login__form__field__image--code"
-          :id="idMapper.login.image.captcha"
-          :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
-          :width="captchaImage.Width"
-          :height="captchaImage.Height"
-          v-if="captchaImage.ImgBase64 != ''"
-          @click="changeCaptcha"
-        />
-      </div>
-      <div class="login__form__field login__form__field--remember-me" v-if="siteIsOpenRememberMe">
-        <input class="login__form__field__checkbox" id="RememberMe" type="checkbox" v-model="user.RememberMe" />
-        <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">{{ $t('login.rememberMe') }}</label>
-      </div>
-      <div class="login__form__link-div">
-        <router-link
-          class="login__form__link login__form__link--regist"
-          :id="idMapper.login.link.register"
-          :to="{ name: 'Register' }"
+    <ValidationObserver v-slot="{ invalid, handleSubmit }">
+      <form class="login__form" id="LoginForm" @submit.prevent="handleSubmit(submitLogin)">
+        <ValidationProvider
+          tag="div"
+          class="login__form__field login__form__field--account"
+          :rules="{ required: true, min: 3, max: 15, regex: '^[a-zA-Z]{1}[a-zA-Z0-9]*$' }"
         >
-          {{ $t('login.link.register') }}
-        </router-link>
-        <router-link
-          class="login__form__link login__form__link--forget"
-          :id="idMapper.login.link.forgetPassword"
-          :to="{ name: 'ForgetPassword' }"
-        >
-          {{ $t('login.link.forgetPassword') }}
-        </router-link>
+          <input
+            class="login__form__field__input"
+            :id="idMapper.login.input.username"
+            type="text"
+            :placeholder="$t('login.placeholder.username')"
+            v-model="user.UserName"
+          />
+        </ValidationProvider>
 
-        <a class="login__form__link" href="javascript:;" v-if="pwaInstallStatus == null"></a>
+        <ValidationProvider
+          tag="div"
+          class="login__form__field login__form__field--password"
+          :rules="{ required: true, min: 6, max: 30, regex: '^[a-zA-Z0-9]*$' }"
+        >
+          <input
+            class="login__form__field__input"
+            :id="idMapper.login.input.password"
+            type="password"
+            :placeholder="$t('login.placeholder.password')"
+            v-model="user.Password"
+          />
+        </ValidationProvider>
 
-        <a
-          class="login__form__link login__form__link--download"
-          id="pwaDownload"
-          href="javascript:;"
-          v-if="pwaInstallStatus == 'notInstalled'"
-          @click="pwaPrompt.prompt()"
+        <ValidationProvider
+          tag="div"
+          class="login__form__field login__form__field--code"
+          :rules="{ required: true, min: 4, max: 4, regex: '^[0-9]*$' }"
         >
-          App
-        </a>
-        <a
-          class="login__form__link login__form__link--download"
-          id="pwaDownload"
-          href="javascript:;"
-          v-if="pwaInstallStatus == 'installing'"
-        >
-          Installing
-        </a>
-        <a
-          class="login__form__link login__form__link--open"
-          id="pwaOpen"
-          href="/"
-          target="_blank"
-          v-if="pwaInstallStatus == 'installed'"
-        >
-          Open
-        </a>
-      </div>
+          <input
+            class="login__form__field__input login__form__field__input--code"
+            :id="idMapper.login.input.captcha"
+            type="tel"
+            :placeholder="$t('login.placeholder.captcha')"
+            autocomplete="off"
+            v-model="user.CaptchaValue"
+          />
+          <img
+            class="login__form__field__image--code"
+            :id="idMapper.login.image.captcha"
+            :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
+            :width="captchaImage.Width"
+            :height="captchaImage.Height"
+            v-if="captchaImage.ImgBase64 != ''"
+            @click="changeCaptcha"
+          />
+        </ValidationProvider>
+        <div class="login__form__field login__form__field--remember-me" v-if="siteIsOpenRememberMe">
+          <input class="login__form__field__checkbox" id="RememberMe" type="checkbox" v-model="user.RememberMe" />
+          <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">
+            {{ $t('login.rememberMe') }}
+          </label>
+        </div>
+        <div class="login__form__link-div">
+          <router-link
+            class="login__form__link login__form__link--regist"
+            :id="idMapper.login.link.register"
+            :to="{ name: 'Register' }"
+          >
+            {{ $t('login.link.register') }}
+          </router-link>
+          <router-link
+            class="login__form__link login__form__link--forget"
+            :id="idMapper.login.link.forgetPassword"
+            :to="{ name: 'ForgetPassword' }"
+          >
+            {{ $t('login.link.forgetPassword') }}
+          </router-link>
 
-      <button
-        class="ui-btn ui-btn-long login__form__submit"
-        :id="idMapper.login.button.submit"
-        type="submit"
-        form="LoginForm"
-        :disabled="!validateForm()"
-      >
-        {{ $t('login.button.login') }}
-      </button>
-    </form>
+          <a class="login__form__link" href="javascript:;" v-if="pwaInstallStatus == null"></a>
+
+          <a
+            class="login__form__link login__form__link--download"
+            id="pwaDownload"
+            href="javascript:;"
+            v-if="pwaInstallStatus == 'notInstalled'"
+            @click="pwaPrompt.prompt()"
+          >
+            App
+          </a>
+          <a
+            class="login__form__link login__form__link--download"
+            id="pwaDownload"
+            href="javascript:;"
+            v-if="pwaInstallStatus == 'installing'"
+          >
+            Installing
+          </a>
+          <a
+            class="login__form__link login__form__link--open"
+            id="pwaOpen"
+            href="/"
+            target="_blank"
+            v-if="pwaInstallStatus == 'installed'"
+          >
+            Open
+          </a>
+        </div>
+
+        <button
+          class="ui-btn ui-btn-long login__form__submit"
+          :id="idMapper.login.button.submit"
+          type="submit"
+          :disabled="invalid"
+        >
+          {{ $t('login.button.login') }}
+        </button>
+      </form>
+    </ValidationObserver>
   </div>
 </template>
 
@@ -122,9 +127,15 @@ import { mapGetters } from 'vuex';
 import { getCaptcha } from '@/api/captcha';
 import idMapper from '@/idMapper';
 import { getRememberInfo } from '@/api/user';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import '@/utils/vee-validate.js';
 
 export default {
   name: 'Login',
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
   computed: {
     ...mapGetters([
       'siteID',
@@ -155,9 +166,6 @@ export default {
   },
   methods: {
     async submitLogin() {
-      if (!this.validateForm()) {
-        return;
-      }
       console.log('[login]', this.user);
       const result = await this.$store.dispatch('user/login', this.user);
 
@@ -182,18 +190,6 @@ export default {
       if (result.Code == 200) {
         this.captchaImage = result.RetObj;
         this.user.CaptchaValue = '';
-      }
-    },
-    validateForm() {
-      console.log('[ValidateForm]', this.user);
-      if (this.user.UserName == '' || this.user.UserName.length < 3 || this.user.UserName.length > 15) {
-        return false;
-      } else if (this.user.Password == '' || this.user.Password.length < 6) {
-        return false;
-      } else if (this.user.CaptchaValue == '' || this.user.CaptchaValue.length != 4) {
-        return false;
-      } else {
-        return true;
       }
     },
   },
@@ -232,6 +228,10 @@ export default {
 <style lang="scss" scoped>
 .login {
   padding-bottom: 119px;
+
+  &__error-message {
+    text-align: center;
+  }
 
   &__title {
     color: #fff;
