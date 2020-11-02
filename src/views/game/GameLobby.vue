@@ -32,7 +32,7 @@
       :isTransferAll.sync="isTransferAll"
       @submit-transfer="transferPoint"
       @close="closeTransferDialog"
-      v-if="isShowTransferDialog"
+      v-show="isShowTransferDialog"
     />
 
     <LiveGameEnterDialog
