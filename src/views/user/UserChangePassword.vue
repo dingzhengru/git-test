@@ -30,10 +30,10 @@
           class="user-change-password__form__field theme-input-box"
           :rules="{
             required: true,
+            'change-password-confirmed': 'passwordNew',
             min: 6,
             max: 30,
             regex: '^[a-zA-Z0-9]*$',
-            'change-password-confirmed': 'passwordNew',
           }"
           v-slot="{ failedRules }"
         >
