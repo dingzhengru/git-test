@@ -38,6 +38,7 @@
             type="date"
             v-model="search.dateTo"
             :max="dayjs().format('YYYY-MM-DD')"
+            @change="searchDateRange = ''"
           />
         </div>
         <div class="record-content__search-form__button-div">
