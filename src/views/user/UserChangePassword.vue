@@ -1,79 +1,78 @@
 <template>
   <div class="user-change-password">
-    <form
-      class="theme-content-box user-change-password__form"
-      id="user-change-passowrd-form"
-      @submit.prevent="submitChangePassword"
-    >
-      <div class="user-change-password__form__field theme-input-box">
-        <span class="theme-input-header">{{ $t('user.changePassword.passwordOld') }}</span>
-        <input
-          class="ui-ipt"
-          type="password"
-          required
-          minlength="6"
-          pattern="^[a-zA-Z0-9]*$"
-          v-model="passwordOld"
-        />
-        <div class="theme-errorMsg" v-if="errorPasswordOld">
-          <span class="theme-txt-errorMsg">{{ errorPasswordOld }}</span>
-        </div>
-      </div>
-      <div class="user-change-password__form__field theme-input-box">
-        <span class="theme-input-header">{{ $t('user.changePassword.passwordNew') }}</span>
-        <input
-          class="ui-ipt"
-          type="password"
-          required
-          minlength="6"
-          pattern="^[a-zA-Z0-9]*$"
-          v-model="passwordNew"
-        />
-        <div class="theme-errorMsg" v-if="errorPasswordNew">
-          <span class="theme-txt-errorMsg">{{ errorPasswordNew }}</span>
-        </div>
-      </div>
-      <div class="user-change-password__form__field theme-input-box">
-        <span class="theme-input-header">{{ $t('user.changePassword.passwordCheck') }}</span>
-        <input
-          class="ui-ipt"
-          type="password"
-          required
-          minlength="6"
-          pattern="^[a-zA-Z0-9]*$"
-          v-model="passwordCheck"
-        />
-        <div class="theme-errorMsg" v-if="errorPasswordCheck">
-          <span class="theme-txt-errorMsg">{{ errorPasswordCheck }}</span>
-        </div>
-      </div>
-      <div class="user-change-password__form__field theme-input-box">
-        <span class="theme-input-header">{{ $t('user.changePassword.passwordRemember') }}</span>
-        <toggle-button
-          v-model="isRememberPassword"
-          :width="640"
-          :height="80"
-          :sync="true"
-          :margin="0"
-          :color="{ checked: 'purple', unchecked: 'gray' }"
-          :labels="{
-            checked: $t('user.changePassword.switch.on'),
-            unchecked: $t('user.changePassword.switch.off'),
-          }"
-          :font-size="40"
-          @change="changeRemember"
-        />
-      </div>
-    </form>
-    <div class="user-change-password__button-div">
-      <button
-        class="user-change-password__button--submit ui-btn ui-btn-long"
-        type="submit"
-        form="user-change-passowrd-form"
+    <ValidationObserver v-slot="{ invalid, handleSubmit }">
+      <form
+        class="theme-content-box user-change-password__form"
+        id="user-change-passowrd-form"
+        @submit.prevent="handleSubmit(submitChangePassword)"
       >
-        {{ $t('ui.button.submit') }}
-      </button>
-    </div>
+        <ValidationProvider
+          tag="div"
+          class="user-change-password__form__field theme-input-box"
+          :rules="{ required: true, min: 6, max: 30, regex: '^[a-zA-Z0-9]*$' }"
+        >
+          <span class="theme-input-header">{{ $t('user.changePassword.passwordOld') }}</span>
+          <input class="ui-ipt" type="password" v-model="passwordOld" />
+        </ValidationProvider>
+
+        <ValidationProvider
+          tag="div"
+          class="user-change-password__form__field theme-input-box"
+          :rules="{ required: true, min: 6, max: 30, regex: '^[a-zA-Z0-9]*$' }"
+          name="passwordNew"
+        >
+          <span class="theme-input-header">{{ $t('user.changePassword.passwordNew') }}</span>
+          <input class="ui-ipt" type="password" v-model="passwordNew" />
+        </ValidationProvider>
+
+        <ValidationProvider
+          tag="div"
+          class="user-change-password__form__field theme-input-box"
+          :rules="{
+            required: true,
+            min: 6,
+            max: 30,
+            regex: '^[a-zA-Z0-9]*$',
+            'change-password-confirmed': 'passwordNew',
+          }"
+          v-slot="{ failedRules }"
+        >
+          <span class="theme-input-header">{{ $t('user.changePassword.passwordCheck') }}</span>
+          <input class="ui-ipt" type="password" v-model="passwordCheck" />
+          <div class="theme-errorMsg" v-if="failedRules['change-password-confirmed']">
+            <span class="theme-txt-errorMsg">{{ failedRules['change-password-confirmed'] }}</span>
+          </div>
+        </ValidationProvider>
+
+        <div class="user-change-password__form__field theme-input-box">
+          <span class="theme-input-header">{{ $t('user.changePassword.passwordRemember') }}</span>
+          <toggle-button
+            v-model="isRememberPassword"
+            :width="640"
+            :height="80"
+            :sync="true"
+            :margin="0"
+            :color="{ checked: 'purple', unchecked: 'gray' }"
+            :labels="{
+              checked: $t('user.changePassword.switch.on'),
+              unchecked: $t('user.changePassword.switch.off'),
+            }"
+            :font-size="40"
+            @change="changeRemember"
+          />
+        </div>
+      </form>
+      <div class="user-change-password__button-div">
+        <button
+          class="user-change-password__button--submit ui-btn ui-btn-long"
+          type="submit"
+          form="user-change-passowrd-form"
+          :disabled="invalid"
+        >
+          {{ $t('ui.button.submit') }}
+        </button>
+      </div>
+    </ValidationObserver>
     <ol class="ui-ol-memberNotice">
       <li v-for="(notice, index) in noticeList" :key="index">
         {{ $t(`user.changePassword.notice.${notice}`) }}
@@ -86,19 +85,20 @@
 import { mapGetters } from 'vuex';
 import { ToggleButton } from 'vue-js-toggle-button';
 import { changePassword, changeRemember } from '@/api/user';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import '@/utils/vee-validate.js';
 export default {
   name: 'UserChangePassword',
   components: {
     ToggleButton,
+    ValidationObserver,
+    ValidationProvider,
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss', 'isEnableRememberOption']),
   },
   data() {
     return {
-      errorPasswordOld: '',
-      errorPasswordNew: '',
-      errorPasswordCheck: '',
       passwordOld: '',
       passwordNew: '',
       passwordCheck: '',
@@ -137,19 +137,6 @@ export default {
         this.$store.commit('user/setIsEnableRememberOption', this.isRememberPassword);
         window.alert(this.$t('user.changePassword.alert.success'));
       }
-    },
-    validateForm() {
-      if (this.passwordOld == '') {
-        return false;
-      } else if (this.passwordNew == '') {
-        return false;
-      } else if (this.passwordCheck == '') {
-        return false;
-      } else if (this.passwordCheck != this.passwordNew) {
-        this.errorPasswordCheck = this.$t('user.changePassword.error.passwordCheck');
-        return false;
-      }
-      return true;
     },
     resetForm() {
       this.passwordOld = '';

@@ -61,6 +61,9 @@
       "date": {
         "Add_Birthday": "需满18岁"
       }
+    },
+    "changePassword": {
+      "passwordCheck": "确认密码错误"
     }
   },
   "ui": {
@@ -296,11 +299,6 @@
         "suggest": "为保障您的账号安全，请定期更换您的密码。",
         "rule": "设定新密码必须超过6个字符。",
         "contact": "如果您需要任何协助，请随时联系我们的客服人员，您的个人资料将被保密。"
-      },
-      "error": {
-        "passwordOld": "",
-        "passwordNew": "",
-        "passwordCheck": "确认密码错误"
       },
       "alert": {
         "success": "资料更改成功！"

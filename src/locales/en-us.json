@@ -61,6 +61,9 @@
       "date": {
         "Add_Birthday": "Must be at least 18 years old"
       }
+    },
+    "changePassword": {
+      "passwordCheck": "Confirm password error"
     }
   },
   "ui": {
@@ -299,11 +302,6 @@
         "suggest": "For the security of account, please change your passwords periodically.",
         "rule": "It needs over six characters to set up your new passwords.",
         "contact": "If you have any additional questions about your account details ,please contact our online service."
-      },
-      "error": {
-        "passwordOld": "",
-        "passwordNew": "",
-        "passwordCheck": "Confirm password error"
       },
       "alert": {
         "success": "Profile changed successfully!"
