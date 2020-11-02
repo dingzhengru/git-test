@@ -130,7 +130,6 @@ extend('register-birthday', {
 extend('change-password-confirmed', {
   ...confirmed,
   message: () => {
-    console.log(123);
     return i18n.t(`validate.changePassword.passwordCheck`);
   },
 });
