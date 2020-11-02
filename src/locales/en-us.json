@@ -63,7 +63,14 @@
       }
     },
     "changePassword": {
-      "passwordCheck": "Confirm password error"
+      "required": {
+        "Add_OldPassword": "Please enter your old password",
+        "Add_NewPassword": "Please enter your new password",
+        "Add_PasswordCheck": "Please enter your confirm password"
+      },
+      "length": "Minimum length 6 characters，Maximum length 30 characters",
+      "regex": "Format False",
+      "confirmed": "Confirm password error"
     }
   },
   "ui": {

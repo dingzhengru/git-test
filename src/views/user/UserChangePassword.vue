@@ -9,38 +9,58 @@
         <ValidationProvider
           tag="div"
           class="user-change-password__form__field theme-input-box"
-          :rules="{ required: true, min: 6, max: 30, regex: '^[a-zA-Z0-9]*$' }"
+          :rules="{
+            'change-password-required': true,
+            'change-password-min': 6,
+            'change-password-max': 30,
+            'change-password-regex': '^[a-zA-Z0-9]*$',
+          }"
+          name="Add_OldPassword"
+          v-slot="{ errors }"
         >
           <span class="theme-input-header">{{ $t('user.changePassword.passwordOld') }}</span>
           <input class="ui-ipt" type="password" v-model="passwordOld" />
-        </ValidationProvider>
-
-        <ValidationProvider
-          tag="div"
-          class="user-change-password__form__field theme-input-box"
-          :rules="{ required: true, min: 6, max: 30, regex: '^[a-zA-Z0-9]*$' }"
-          name="passwordNew"
-        >
-          <span class="theme-input-header">{{ $t('user.changePassword.passwordNew') }}</span>
-          <input class="ui-ipt" type="password" v-model="passwordNew" />
+          <div class="theme-errorMsg" v-if="errors[0]">
+            <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
+          </div>
         </ValidationProvider>
 
         <ValidationProvider
           tag="div"
           class="user-change-password__form__field theme-input-box"
           :rules="{
-            required: true,
-            'change-password-confirmed': 'passwordNew',
-            min: 6,
-            max: 30,
-            regex: '^[a-zA-Z0-9]*$',
+            'change-password-required': true,
+            'change-password-min': 6,
+            'change-password-max': 30,
+            'change-password-regex': '^[a-zA-Z0-9]*$',
           }"
-          v-slot="{ failedRules }"
+          name="Add_NewPassword"
+          v-slot="{ errors }"
+        >
+          <span class="theme-input-header">{{ $t('user.changePassword.passwordNew') }}</span>
+          <input class="ui-ipt" type="password" v-model="passwordNew" autocomplete="off" />
+          <div class="theme-errorMsg" v-if="errors[0]">
+            <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+
+        <ValidationProvider
+          tag="div"
+          class="user-change-password__form__field theme-input-box"
+          :rules="{
+            'change-password-required': true,
+            'change-password-confirmed': 'Add_NewPassword',
+            'change-password-min': 6,
+            'change-password-max': 30,
+            'change-password-regex': '^[a-zA-Z0-9]*$',
+          }"
+          name="Add_PasswordCheck"
+          v-slot="{ errors }"
         >
           <span class="theme-input-header">{{ $t('user.changePassword.passwordCheck') }}</span>
-          <input class="ui-ipt" type="password" v-model="passwordCheck" />
-          <div class="theme-errorMsg" v-if="failedRules['change-password-confirmed']">
-            <span class="theme-txt-errorMsg">{{ failedRules['change-password-confirmed'] }}</span>
+          <input class="ui-ipt" type="password" v-model="passwordCheck" autocomplete="off" />
+          <div class="theme-errorMsg" v-if="errors[0]">
+            <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
@@ -108,9 +128,6 @@ export default {
   },
   methods: {
     async submitChangePassword() {
-      if (!this.validateForm()) {
-        return;
-      }
       this.$store.commit('setIsLoading', true);
 
       const requestData = {

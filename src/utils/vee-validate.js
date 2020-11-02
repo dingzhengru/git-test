@@ -127,9 +127,37 @@ extend('register-birthday', {
   },
 });
 
+extend('change-password-required', {
+  ...required,
+  message: name => {
+    return i18n.t(`validate.changePassword.required.${name}`);
+  },
+});
+
+extend('change-password-min', {
+  ...min,
+  message: () => {
+    return i18n.t('validate.changePassword.length');
+  },
+});
+
+extend('change-password-max', {
+  ...max,
+  message: () => {
+    return i18n.t('validate.changePassword.length');
+  },
+});
+
+extend('change-password-regex', {
+  ...regex,
+  message: () => {
+    return i18n.t('validate.changePassword.regex');
+  },
+});
+
 extend('change-password-confirmed', {
   ...confirmed,
   message: () => {
-    return i18n.t(`validate.changePassword.passwordCheck`);
+    return i18n.t('validate.changePassword.confirmed');
   },
 });
