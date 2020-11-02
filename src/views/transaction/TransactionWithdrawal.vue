@@ -37,6 +37,9 @@
             <span class="withdrawal__li__title theme-dataView-header">
               {{ $t('transaction.withdrawal.field.Lst_Point') }}
             </span>
+            <p class="withdrawal__li__content theme-dataView-data">
+              {{ numeral(withdrawalInfo.Lst_Point).format('0,0.00') }}
+            </p>
             <button type="button" class="withdrawal__li__button ui-btn ui-btn-long" @click="transferToMain">
               {{ $t('transaction.withdrawal.button.allToMyWallet') }}
             </button>
@@ -58,7 +61,7 @@
               :rules="{
                 required: true,
                 min_value: withdrawalInfo.WithalDownlimit,
-                max_value: withdrawalInfo.WithalUplimit,
+                max_value: amountMax,
                 integerHundredsDivisible: { number: amount },
               }"
             >
@@ -169,8 +172,11 @@ export default {
   },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss', 'lang']),
-    walletAmount() {
-      return this.withdrawalInfo.Lst_Point || 0;
+    amountMax() {
+      if (this.withdrawalInfo.Lst_Point < this.withdrawalInfo.WithalUplimit) {
+        return this.withdrawalInfo.Lst_Point;
+      }
+      return this.withdrawalInfo.WithalUplimit;
     },
   },
   data() {
@@ -237,12 +243,10 @@ export default {
       }
     },
     changeAmount() {
-      const withdrawalMin = this.withdrawalInfo.WithalDownlimit;
-      const withdrawalMax = this.withdrawalInfo.WithalUplimit;
-      if (this.amount > this.walletAmount || this.amount > withdrawalMax) {
-        this.amount = this.walletAmount < withdrawalMax ? this.walletAmount : withdrawalMax;
-      } else if (this.amount < withdrawalMin) {
-        this.amount = withdrawalMin;
+      if (this.amount > this.amountMax) {
+        this.amount = this.amountMax;
+      } else if (this.amount < this.withdrawalInfo.WithalDownlimit) {
+        this.amount = this.withdrawalInfo.WithalDownlimit;
       }
 
       //* 取最小整數、並轉換最後兩位為 0
@@ -257,7 +261,7 @@ export default {
       if (
         this.amount < this.withdrawalInfo.WithalDownlimit ||
         this.amount > this.withdrawalInfo.WithalUplimit ||
-        this.amount > this.walletAmount ||
+        this.amount > this.withdrawalInfo.Lst_Point ||
         this.amount % 100 != 0
       ) {
         return false;
