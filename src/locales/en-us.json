@@ -68,7 +68,7 @@
         "Add_NewPassword": "Please enter your new password",
         "Add_PasswordCheck": "Please enter your confirm password"
       },
-      "length": "Minimum length 6 characters，Maximum length 30 characters",
+      "length": "At least 6 characters up to 30 characters",
       "regex": "Format False",
       "confirmed": "Confirm password error"
     }
