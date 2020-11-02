@@ -1,7 +1,7 @@
 <template>
   <div @click="isShowDepositNotice = false">
     <ValidationObserver v-slot="{ invalid, handleSubmit }" tag="div">
-      <form class="deposit" novalidate @submit.prevent="handleSubmit(submitDeposit(invalid))">
+      <form class="deposit" novalidate @submit.prevent="handleSubmit(submitDeposit)">
         <div class="theme-content-box">
           <h3 class="deposit__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
 
@@ -294,11 +294,7 @@ export default {
         this.hid_THBtoMMKrate = result.RetObj.hid_THBtoMMKrate;
       }
     },
-    async submitDeposit(invalid) {
-      if (invalid) {
-        return;
-      }
-
+    async submitDeposit() {
       //* BankAccoun.length == 0 的時候，會讓使用者自己輸入銀行帳號(this.bankDepositAccount)
 
       //* Add_Exchange_Rate，this.currency == 'THB' 是 1，否則是 this.hid_MMKtoTHBrate

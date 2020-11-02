@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <ValidationObserver v-slot="{ invalid, handleSubmit, reset }" tag="div">
-      <form class="register__form" @submit.prevent="handleSubmit(submitRegister(invalid))" @reset.prevent="reset()">
+      <form class="register__form" @submit.prevent="handleSubmit(submitRegister)" @reset.prevent="reset()">
         <ValidationProvider
           v-slot="{ errors, invalid }"
           tag="div"
@@ -146,10 +146,7 @@ export default {
         field.value = '';
       }
     },
-    async submitRegister(invalid) {
-      if (invalid) {
-        return;
-      }
+    async submitRegister() {
       const requestData = {};
 
       for (const field of this.fieldList) {

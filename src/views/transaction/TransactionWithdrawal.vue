@@ -1,156 +1,172 @@
 <template>
-  <form class="withdrawal" @submit.prevent="submitWithdrawal">
-    <ul class="withdrawal__ul theme-content-box">
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.bankSelect') }}
-        </span>
-        <select class="withdrawal__li__select ui-ddl" v-model="bank">
-          <option :value="{}" selected>{{ $t('transaction.withdrawal.field.bankSelectPlaceholder') }}</option>
-          <option :value="bankItem" v-for="bankItem in bankList" :key="bankItem.Lst_Bank_name">
-            {{ bankItem.Text }}
-          </option>
-        </select>
-      </li>
+  <div class="withdrawal">
+    <ValidationObserver v-slot="{ invalid, handleSubmit }">
+      <form class="withdrawal__form" id="withdrawal-form" novalidate @submit.prevent="handleSubmit(submitWithdrawal)">
+        <ul class="withdrawal__ul theme-content-box">
+          <ValidationProvider tag="li" class="withdrawal__li theme-li-dataView" :rules="{ 'object-not-empty': true }">
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.bankSelect') }}
+            </span>
+            <select class="withdrawal__li__select ui-ddl" v-model="bank">
+              <option :value="{}" selected>{{ $t('transaction.withdrawal.field.bankSelectPlaceholder') }}</option>
+              <option :value="bankItem" v-for="bankItem in bankList" :key="bankItem.Lst_Bank_name">
+                {{ bankItem.Text }}
+              </option>
+            </select>
+          </ValidationProvider>
 
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.Lst_Account') }}
-        </span>
-        <p class="withdrawal__li__content theme-dataView-data">
-          {{ withdrawalInfo.Lst_Account }}
-        </p>
-      </li>
+          <li class="withdrawal__li theme-li-dataView">
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.Lst_Account') }}
+            </span>
+            <p class="withdrawal__li__content theme-dataView-data">
+              {{ withdrawalInfo.Lst_Account }}
+            </p>
+          </li>
 
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.Lst_Currency') }}
-        </span>
-        <p class="withdrawal__li__content theme-dataView-data">
-          {{ withdrawalInfo.Lst_Currency }}
-        </p>
-      </li>
+          <li class="withdrawal__li theme-li-dataView">
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.Lst_Currency') }}
+            </span>
+            <p class="withdrawal__li__content theme-dataView-data">
+              {{ withdrawalInfo.Lst_Currency }}
+            </p>
+          </li>
 
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.Lst_Point') }}
-        </span>
-        <button type="button" class="withdrawal__li__button ui-btn ui-btn-long" @click="transferToMain">
-          {{ $t('transaction.withdrawal.button.allToMyWallet') }}
-        </button>
-      </li>
+          <li class="withdrawal__li theme-li-dataView">
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.Lst_Point') }}
+            </span>
+            <button type="button" class="withdrawal__li__button ui-btn ui-btn-long" @click="transferToMain">
+              {{ $t('transaction.withdrawal.button.allToMyWallet') }}
+            </button>
+          </li>
 
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.Add_WithdrswalsPoint') }}
-        </span>
-        <select
-          class="withdrawal__li__select withdrawal__li__select--currency ui-ddl"
-          required
-          v-model="currency"
-          v-if="currencyList.length > 0"
-        >
-          <option value="">{{ $t('transaction.withdrawal.field.Lst_Currency') }}</option>
-          <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
-            {{ currencyItem.Text }}
-          </option>
-        </select>
-        <input
-          class="withdrawal__li__input ui-ipt theme-ipt-dataview"
-          :id="idMapper.transaction.withdrawal.field.Add_WithdrswalsPoint"
-          type="number"
-          :min="amountLimit.min"
-          :max="amountLimit.max"
-          step="100"
-          placeholder="Please enter amount of withdrawal"
-          autocomplete="off"
-          v-model.number="amount"
-          @change="changeAmount"
-        />
-      </li>
+          <li class="withdrawal__li theme-li-dataView">
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.Add_WithdrswalsPoint') }}
+            </span>
+            <ValidationProvider :rules="{ required: currencyList.length > 0 }" v-show="currencyList.length > 0">
+              <select class="withdrawal__li__select withdrawal__li__select--currency ui-ddl" v-model="currency">
+                <option value="">{{ $t('transaction.withdrawal.field.Lst_Currency') }}</option>
+                <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
+                  {{ currencyItem.Text }}
+                </option>
+              </select>
+            </ValidationProvider>
+            <ValidationProvider
+              :rules="{
+                required: true,
+                min_value: withdrawalInfo.WithalDownlimit,
+                max_value: withdrawalInfo.WithalUplimit,
+                integerHundredsDivisible: { number: amount },
+              }"
+            >
+              <input
+                class="withdrawal__li__input ui-ipt theme-ipt-dataview"
+                :id="idMapper.transaction.withdrawal.field.Add_WithdrswalsPoint"
+                type="number"
+                step="100"
+                placeholder="Please enter amount of withdrawal"
+                autocomplete="off"
+                v-model.number="amount"
+                @change="changeAmount"
+              />
+            </ValidationProvider>
+          </li>
 
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.Lst_Bank_name') }}
-        </span>
-        <p class="withdrawal__li__content theme-dataView-data">
-          {{ bank.Lst_Bank_name }}
-        </p>
-      </li>
+          <li class="withdrawal__li theme-li-dataView">
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.Lst_Bank_name') }}
+            </span>
+            <p class="withdrawal__li__content theme-dataView-data">
+              {{ bank.Lst_Bank_name }}
+            </p>
+          </li>
 
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.Lst_BankAccount') }}
-        </span>
-        <p class="withdrawal__li__content theme-dataView-data">
-          {{ bank.Lst_BankAccount }}
-        </p>
-      </li>
+          <li class="withdrawal__li theme-li-dataView">
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.Lst_BankAccount') }}
+            </span>
+            <p class="withdrawal__li__content theme-dataView-data">
+              {{ bank.Lst_BankAccount }}
+            </p>
+          </li>
 
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.Lst_Bank_Branches') }}
-        </span>
-        <p class="withdrawal__li__content theme-dataView-data">
-          {{ bank.Lst_Bank_Branches }}
-        </p>
-      </li>
+          <li class="withdrawal__li theme-li-dataView">
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.Lst_Bank_Branches') }}
+            </span>
+            <p class="withdrawal__li__content theme-dataView-data">
+              {{ bank.Lst_Bank_Branches }}
+            </p>
+          </li>
 
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.Add_RealName') }}
-        </span>
-        <p class="withdrawal__li__content theme-dataView-data">
-          {{ withdrawalInfo.Add_RealName }}
-        </p>
-      </li>
+          <li class="withdrawal__li theme-li-dataView">
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.Add_RealName') }}
+            </span>
+            <p class="withdrawal__li__content theme-dataView-data">
+              {{ withdrawalInfo.Add_RealName }}
+            </p>
+          </li>
 
-      <li class="withdrawal__li theme-li-dataView">
-        <span class="withdrawal__li__title theme-dataView-header">
-          {{ $t('transaction.withdrawal.field.password') }}
-        </span>
-        <input
-          class="withdrawal__li__input ui-ipt theme-ipt-dataview"
-          :id="idMapper.transaction.withdrawal.field.password"
-          type="password"
-          required
-          minlength="6"
-          pattern="^[a-zA-Z0-9]*$"
-          v-model="password"
-        />
-        <div class="theme-errorMsg" v-if="errorPassword">
-          <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
+          <ValidationProvider
+            tag="li"
+            class="withdrawal__li theme-li-dataView"
+            :rules="{ required: true, min: 6, regex: '^[a-zA-Z0-9]*$' }"
+          >
+            <span class="withdrawal__li__title theme-dataView-header">
+              {{ $t('transaction.withdrawal.field.password') }}
+            </span>
+            <input
+              class="withdrawal__li__input ui-ipt theme-ipt-dataview"
+              :id="idMapper.transaction.withdrawal.field.password"
+              type="password"
+              v-model="password"
+            />
+            <div class="theme-errorMsg" v-if="errorPassword">
+              <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
+            </div>
+          </ValidationProvider>
+        </ul>
+        <div class="withdrawal__light-message">
+          {{ $t('transaction.withdrawal.hightLightMessage', { amountLimitMin: withdrawalInfo.WithalDownlimit }) }}
         </div>
-      </li>
-    </ul>
-    <div class="withdrawal__light-message">
-      {{ $t('transaction.withdrawal.hightLightMessage', { amountLimitMin: amountLimit.min }) }}
-    </div>
-    <div class="withdrawal__button-div">
-      <button
-        type="submit"
-        class="withdrawal__button--submit ui-btn ui-btn-long"
-        :id="idMapper.transaction.withdrawal.button.submit"
-        :disabled="!validateForm()"
-      >
-        {{ $t('ui.button.submit') }}
-      </button>
-    </div>
-    <ol class="withdrawal__notice ui-ol-memberNotice">
-      <li v-for="notice in noticeList" :key="notice">{{ $t(`transaction.withdrawal.notice.${notice}`) }}</li>
-    </ol>
-  </form>
+        <div class="withdrawal__button-div">
+          <button
+            type="submit"
+            class="withdrawal__button--submit ui-btn ui-btn-long"
+            form="withdrawal-form"
+            :id="idMapper.transaction.withdrawal.button.submit"
+            :disabled="invalid"
+          >
+            {{ $t('ui.button.submit') }}
+          </button>
+        </div>
+        <ol class="withdrawal__notice ui-ol-memberNotice">
+          <li v-for="notice in noticeList" :key="notice">{{ $t(`transaction.withdrawal.notice.${notice}`) }}</li>
+        </ol>
+      </form>
+    </ValidationObserver>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { getWithdrawalInfo, Withdrawal } from '@/api/transaction-withdrawal';
 import { transferAllGamePointToMain } from '@/api/transaction-transfer';
-
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import '@/utils/vee-validate.js';
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
+
 export default {
   name: 'TransactionWithdrawal',
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
   computed: {
     ...mapGetters(['siteID', 'siteFullCss', 'lang']),
     walletAmount() {
@@ -169,10 +185,6 @@ export default {
       currency: '',
       amount: 0,
       password: '',
-      amountLimit: {
-        min: 100,
-        max: 30000,
-      },
       noticeList: ['contact'],
     };
   },
@@ -189,8 +201,8 @@ export default {
         this.$router.replace({ name: 'UserProfile' });
       }
 
-      this.amountLimit.min = result.RetObj.WithalDownlimit;
-      this.amountLimit.max = result.RetObj.WithalUplimit;
+      // this.amountLimit.min = result.RetObj.WithalDownlimit;
+      // this.amountLimit.max = result.RetObj.WithalUplimit;
     },
     async transferToMain() {
       const result = await transferAllGamePointToMain();
@@ -202,9 +214,6 @@ export default {
       }
     },
     async submitWithdrawal() {
-      if (!this.validateForm()) {
-        return;
-      }
       const requestData = {
         Add_RealName: this.withdrawalInfo.Add_RealName,
         Add_MemberBankID: this.bank.Lst_BankID,
@@ -228,10 +237,12 @@ export default {
       }
     },
     changeAmount() {
-      if (this.amount > this.walletAmount || this.amount > this.amountLimit.max) {
-        this.amount = this.walletAmount < this.amountLimit.max ? this.walletAmount : this.amountLimit.max;
-      } else if (this.amount < this.amountLimit.min) {
-        this.amount = this.amountLimit.min;
+      const withdrawalMin = this.withdrawalInfo.WithalDownlimit;
+      const withdrawalMax = this.withdrawalInfo.WithalUplimit;
+      if (this.amount > this.walletAmount || this.amount > withdrawalMax) {
+        this.amount = this.walletAmount < withdrawalMax ? this.walletAmount : withdrawalMax;
+      } else if (this.amount < withdrawalMin) {
+        this.amount = withdrawalMin;
       }
 
       //* 取最小整數、並轉換最後兩位為 0
@@ -244,8 +255,8 @@ export default {
     },
     validateForm() {
       if (
-        this.amount < this.amountLimit.min ||
-        this.amount > this.amountLimit.max ||
+        this.amount < this.withdrawalInfo.WithalDownlimit ||
+        this.amount > this.withdrawalInfo.WithalUplimit ||
         this.amount > this.walletAmount ||
         this.amount % 100 != 0
       ) {

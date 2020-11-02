@@ -141,6 +141,7 @@ axios.interceptors.response.use(
     }
 
     console.log('[interceptors response error]', error);
+    console.log('[interceptors response error] [response]', error.response);
     console.log('[interceptors response error] [url]', error.response.config.url);
     console.log('[interceptors response error] [status]', error.response.status);
     console.log('[interceptors response error] [data]', error.response.data);

@@ -1,5 +1,5 @@
 import { extend } from 'vee-validate';
-import { required, regex, max, min, confirmed, min_value, max_value, image, mimes } from 'vee-validate/dist/rules';
+import { required, regex, max, min, confirmed, min_value, max_value, image } from 'vee-validate/dist/rules';
 import { i18n } from '@/i18n-lazy';
 import dayjs from 'dayjs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
@@ -15,6 +15,14 @@ extend('required', {
   ...required,
 });
 
+extend('min', {
+  ...min,
+});
+
+extend('max', {
+  ...max,
+});
+
 extend('min_value', {
   ...min_value,
 });
@@ -23,12 +31,12 @@ extend('max_value', {
   ...max_value,
 });
 
-extend('image', {
-  ...image,
+extend('regex', {
+  ...regex,
 });
 
-extend('mimes', {
-  ...mimes,
+extend('image', {
+  ...image,
 });
 
 extend('object-not-empty', {
@@ -41,6 +49,14 @@ extend('date-max', {
   params: ['max'],
   validate: (value, { max }) => {
     return dayjs(value).isSameOrBefore(max);
+  },
+});
+
+//* 可以被一百整除的整數
+extend('integerHundredsDivisible', {
+  params: ['number'],
+  validate: (value, { number }) => {
+    return Number.isInteger(number) && number % 100 == 0;
   },
 });
 

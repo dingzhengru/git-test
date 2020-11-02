@@ -2,7 +2,7 @@ const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localho
 //const API_URL = 'http://api.caza7.re888show.com/api',
 
 //* http 請求的 timeout
-const REQUEST_TIMEOUT = 10000;
+const REQUEST_TIMEOUT = 30000;
 
 //* 需要 Authorization bearer token 的 API
 const AUTH_API_LIST = [
