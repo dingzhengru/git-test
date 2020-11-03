@@ -216,11 +216,6 @@ export default {
         border: none;
         outline: none;
         font-size: 2.5em;
-
-        &--code {
-          width: 315px;
-          padding-right: 153px;
-        }
       }
       &--remember-me {
         height: 70px;
@@ -274,102 +269,4 @@ export default {
     width: 180px;
   }
 }
-</style>
-
-<style scoped>
-/* .login {
-  padding-bottom: 119px;
-}
-
-.login__title {
-  color: #fff;
-  font-size: 3.584em;
-  font-weight: normal;
-  text-align: center;
-}
-
-.login__form {
-  width: 563px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.login__form__field {
-  height: 81px;
-  background-repeat: no-repeat;
-  margin-bottom: 30px;
-  padding-left: 80px;
-}
-.login__form__field--code {
-  position: relative;
-}
-
-.login__form__field__image--code {
-  position: absolute;
-  top: 11px;
-  right: 15px;
-}
-
-.login__form__field__input {
-  width: 465px;
-  height: 64px;
-  background-color: transparent;
-  margin: 8px 0 9px;
-  padding: 0 3px;
-  border: none;
-  outline: none;
-  font-size: 2.5em;
-}
-.login__form__field__input--code {
-  width: 315px;
-  padding-right: 153px;
-}
-
-.login__form__field--remember-me {
-  height: 70px;
-  padding: 0;
-  outline: none;
-}
-.login__form__field__checkbox {
-  width: 35px;
-  height: 27px;
-}
-
-.login__form__field__label {
-  font-size: 2.5em;
-}
-
-.login__form__link-div {
-  margin-top: 35px;
-  font-size: 2.46em;
-}
-
-.login__form__link {
-  min-width: 129px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: top center;
-  padding-top: 134px;
-}
-
-.en-us .login__form__link {
-  width: 170px;
-}
-
-.en-us .login__form__link--forget {
-  width: 200px;
-}
-
-.zh-cn .login__form__link {
-  width: 170px;
-}
-
-.th-th .login__form__link {
-  width: 180px;
-}
-
-.login__form__submit {
-  display: block;
-  margin: 20px auto;
-} */
 </style>

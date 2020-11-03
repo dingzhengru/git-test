@@ -207,6 +207,8 @@ a {
   font-size: 2.307em;
   letter-spacing: 2px;
   line-height: 2em;
+
+  border-collapse: separate;
 }
 .ui-table03 tr {
   border: 1px solid #000;
@@ -390,7 +392,7 @@ a {
   width: 100%;
 }
 .theme-input-box > .ui-ipt {
-  width: 97%;
+  width: 100%;
   padding: 0 1.5%;
 }
 

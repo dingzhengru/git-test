@@ -66,8 +66,8 @@ export default {
 
     &__link {
       display: block;
-      min-width: 116px;
-      max-width: 140px;
+      min-width: 160px;
+      max-width: 200px;
       margin: 0;
       padding: 102px 20px 0px 20px;
       /* margin: 0 25px; */

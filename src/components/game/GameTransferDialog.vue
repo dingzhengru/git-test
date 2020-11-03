@@ -163,7 +163,8 @@ export default {
     }
     &__switch {
       display: inline-block;
-      width: 261px;
+      min-width: 250px;
+      max-width: 255px;
       height: 100px;
       background-color: transparent;
       background-repeat: no-repeat;
@@ -173,12 +174,13 @@ export default {
       color: #686868;
       border: 0;
       vertical-align: middle;
+      background-size: contain;
     }
     &__switch.on {
       color: black;
     }
     &__input {
-      width: 90%;
+      width: 98%;
       padding: 16px 0 16px 20px;
       font-size: 34px;
       background-color: #2d2d2d;
@@ -189,7 +191,7 @@ export default {
     }
     &__button {
       margin-top: 30px;
-      width: 90%;
+      width: 98%;
       background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
     }
   }

@@ -445,7 +445,7 @@ export default {
       &__input {
         &--date-from,
         &--date-to {
-          width: 97%;
+          width: 100%;
         }
       }
       &__title {

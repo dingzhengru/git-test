@@ -1,11 +1,40 @@
-export const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
-//export const API_URL = 'http://api.caza7.re888show.com/api',
+//* Route
 
 //* 不顯示 Header 的頁面
 export const NO_HEADER_ROUTE_LIST = ['SignIn'];
 
 //* 不顯示 Footer 的頁面
 export const NO_FOOTER_ROUTE_LIST = ['SignIn'];
+
+//* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
+export const AUTH_ROUTE_LIST = [
+  'GameHome',
+  'GameLobby',
+  'UserProfile',
+  'UserChangePassword',
+  'TransactionDeposit',
+  'TransactionWithdrawal',
+  'TransactionTransfer',
+  'TransactionRecordHome',
+  'TransactionRecordContent',
+  'TransactionRecordDetail',
+  'ReportUnsettleBet',
+  'ReportBetRecord',
+  'ReportBetRecordDetail',
+  'NotificationNews',
+  'NotificationChat',
+  'NotificationChatDetail',
+  'NotificationOutbox',
+];
+//* "不需要"登入才能進入的 route name
+export const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword', 'SignIn'];
+//* 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
+export const ACCESS_ROUTE_LIST = [];
+
+//* API
+
+//* API URL
+export const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
 
 //* http 請求的 timeout
 export const REQUEST_TIMEOUT = 30000;
@@ -79,33 +108,6 @@ export const CRYPTO_BIG_DATA_API_LIST = [
 
 //* 需使用"大數據加密"的 API，但並非全部參數都要加密的情況，EX: 存款動作中的匯款收據圖片
 export const NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST = ['Operator/MSingleDeposit'];
-
-//* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
-export const AUTH_ROUTE_LIST = [
-  'GameHome',
-  'GameLobby',
-  'UserProfile',
-  'UserChangePassword',
-  'TransactionDeposit',
-  'TransactionWithdrawal',
-  'TransactionTransfer',
-  'TransactionRecordHome',
-  'TransactionRecordContent',
-  'TransactionRecordDetail',
-  'ReportUnsettleBet',
-  'ReportBetRecord',
-  'ReportBetRecordDetail',
-  'NotificationNews',
-  'NotificationChat',
-  'NotificationChatDetail',
-  'NotificationOutbox',
-];
-
-//* "不需要"登入才能進入的 route name
-export const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword'];
-
-//* 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
-export const ACCESS_ROUTE_LIST = [];
 
 //* 回傳為 599 時，但不要 alert 的 API
 //* 登入、註冊、需開新頁面的 API (避免 alert 中斷)

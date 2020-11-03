@@ -174,7 +174,7 @@
               />
             </label>
             <p class="deposit__field__hint deposit__field__hint--receipt-upload">{{ receipt.name }}</p>
-            <p class="deposit__field__hint">{{ $t('transaction.deposit.hint.receipt') }}</p>
+            <p class="deposit__field__hint" v-html="$t('transaction.deposit.hint.receipt')"></p>
           </ValidationProvider>
 
           <ValidationProvider tag="div" class="deposit__field theme-input-box">

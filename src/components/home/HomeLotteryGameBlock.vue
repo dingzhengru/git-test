@@ -66,7 +66,7 @@ export default {
     &__li {
       font-size: 36px;
       font-weight: bold;
-      line-height: 52px;
+      line-height: 26px;
       text-indent: 8px;
       filter: drop-shadow(0px 1px 1px #272727);
       color: #fff;
