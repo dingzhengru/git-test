@@ -71,6 +71,12 @@
       "length": "密码长度最少 6 字元，最多 30 字元",
       "regex": "格式错误",
       "confirmed": "确认密码错误"
+    },
+    "changeWithdrawPassword": {
+      "required": "",
+      "length": "密码长度最少 6 字元，最多 30 字元",
+      "regex": "格式错误",
+      "confirmed": "确认密码错误"
     }
   },
   "ui": {

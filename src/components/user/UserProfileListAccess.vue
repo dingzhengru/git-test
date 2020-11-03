@@ -1,62 +1,105 @@
 <template>
   <div class="user-profile-access">
-    <div class="user-profile-access__main theme-content-box">
-      <ul class="user-profile-access__main__ul theme-ul-dataView">
-        <li class="theme-li-dataView" v-for="(value, key) in profile" :key="key">
-          <span class="theme-dataView-header">{{ $t(`user.profile.accessed.${key}`) }}</span>
-          <p class="theme-dataView-data">{{ value }}</p>
-        </li>
+    <ValidationObserver v-slot="{ invalid, handleSubmit }">
+      <div class="user-profile-access__main theme-content-box">
+        <ul class="user-profile-access__main__ul theme-ul-dataView">
+          <li class="theme-li-dataView" v-for="(value, key) in profile" :key="key">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.${key}`) }}</span>
+            <p class="theme-dataView-data">{{ value }}</p>
+          </li>
 
-        <!-- <li class="theme-li-dataView" v-for="item in list" :key="item.title">
+          <!-- <li class="theme-li-dataView" v-for="item in list" :key="item.title">
           <span class="theme-dataView-header">{{ $t(`user.profile.accessed.${item.name}`) }}</span>
           <p class="theme-dataView-data">{{ item.content }}</p>
         </li> -->
-        <form class="user-profile-access__main__form" id="formPasswordChange" @submit.prevent="changeWithdrawPassword">
-          <li class="theme-li-dataView">
-            <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordOld') }}</span>
-            <input
-              class="ui-ipt"
-              type="password"
-              required
-              minlength="6"
-              pattern="^[a-zA-Z0-9]*$"
-              v-model="OldPassword"
-            />
-          </li>
-          <li class="theme-li-dataView">
-            <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordNew') }}</span>
-            <input class="ui-ipt" type="password" required minlength="6" pattern="^[a-zA-Z0-9]*$" v-model="Password" />
-          </li>
-          <li class="theme-li-dataView">
-            <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordCheck') }}</span>
-            <input
-              class="ui-ipt"
-              type="password"
-              required
-              minlength="6"
-              pattern="^[a-zA-Z0-9]*$"
-              v-model="CheckPassword"
-            />
-          </li>
-        </form>
-      </ul>
-    </div>
-    <div class="theme-errorMsg" v-if="error">
-      <span class="theme-txt-errorMsg">{{ error }}</span>
-    </div>
-    <div class="user-profile-access__button-div">
-      <button type="submit" class="user-profile-access__button--submit ui-btn ui-btn-long" form="formPasswordChange">
-        {{ $t('ui.button.submit') }}
-      </button>
-    </div>
+          <form
+            class="user-profile-access__main__form"
+            id="formPasswordChange"
+            @submit.prevent="handleSubmit(submitChangeWithdrawPassword)"
+          >
+            <ValidationProvider
+              tag="li"
+              class="theme-li-dataView"
+              :rules="{
+                'change-withdraw-password-required': true,
+                'change-withdraw-password-min': 6,
+                'change-withdraw-password-max': 30,
+                'change-withdraw-password-regex': '^[a-zA-Z0-9]*$',
+              }"
+              v-slot="{ errors }"
+            >
+              <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordOld') }}</span>
+              <input class="ui-ipt" type="password" v-model="OldPassword" />
+              <div class="theme-errorMsg" v-if="errors[0]">
+                <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
+              </div>
+            </ValidationProvider>
+            <ValidationProvider
+              tag="li"
+              class="theme-li-dataView"
+              :rules="{
+                'change-withdraw-password-required': true,
+                'change-withdraw-password-min': 6,
+                'change-withdraw-password-max': 30,
+                'change-withdraw-password-regex': '^[a-zA-Z0-9]*$',
+              }"
+              v-slot="{ errors }"
+              name="Password"
+            >
+              <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordNew') }}</span>
+              <input class="ui-ipt" type="password" v-model="Password" />
+              <div class="theme-errorMsg" v-if="errors[0]">
+                <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
+              </div>
+            </ValidationProvider>
+            <ValidationProvider
+              tag="li"
+              class="theme-li-dataView"
+              :rules="{
+                'change-withdraw-password-required': true,
+                'change-withdraw-password-confirmed': 'Password',
+                'change-withdraw-password-min': 6,
+                'change-withdraw-password-max': 30,
+                'change-withdraw-password-regex': '^[a-zA-Z0-9]*$',
+              }"
+              v-slot="{ errors }"
+            >
+              <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordCheck') }}</span>
+              <input class="ui-ipt" type="password" v-model="CheckPassword" />
+              <div class="theme-errorMsg" v-if="errors[0]">
+                <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
+              </div>
+            </ValidationProvider>
+          </form>
+        </ul>
+      </div>
+      <div class="theme-errorMsg" v-if="error">
+        <span class="theme-txt-errorMsg">{{ error }}</span>
+      </div>
+      <div class="user-profile-access__button-div">
+        <button
+          type="submit"
+          class="user-profile-access__button--submit ui-btn ui-btn-long"
+          form="formPasswordChange"
+          :disabled="invalid"
+        >
+          {{ $t('ui.button.submit') }}
+        </button>
+      </div>
+    </ValidationObserver>
   </div>
 </template>
 
 <script>
-// import { registerFieldList, validateField } from '@/utils/register';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import '@/utils/vee-validate.js';
 
 export default {
   name: 'UserProfileListAccess',
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
   props: {
     profile: {
       type: Object,
@@ -72,13 +115,7 @@ export default {
     };
   },
   methods: {
-    changeWithdrawPassword() {
-      console.log('changeWithdrawPassword');
-
-      if (!this.validateForm()) {
-        return;
-      }
-
+    submitChangeWithdrawPassword() {
       const requestData = {
         OldPassword: this.OldPassword,
         Password: this.Password,
@@ -87,26 +124,6 @@ export default {
 
       this.$emit('change-withdrawal-password', requestData);
       this.resetForm();
-    },
-    validateForm() {
-      console.log('[ValidateForm]');
-      if (this.OldPassword.length < 6 || this.Password.length < 6 || this.CheckPassword.length < 6) {
-        this.error = this.$t('register.Add_Withdrawals_Password.error.length');
-      } else if (
-        !RegExp('^[a-zA-Z0-9]*$').test(this.OldPassword) ||
-        !RegExp('^[a-zA-Z0-9]*$').test(this.Password) ||
-        !RegExp('^[a-zA-Z0-9]*$').test(this.CheckPassword)
-      ) {
-        this.error = this.$t('register.Add_Withdrawals_Password.error.regex');
-      } else if (this.Password != this.CheckPassword) {
-        this.error = this.$t('register.Add_Withdrawals_CheckPassword.error.invalid');
-      } else if (this.Password != this.CheckPassword) {
-        this.error = this.$t('register.Add_Withdrawals_CheckPassword.error.invalid');
-      } else {
-        this.error = '';
-      }
-
-      return this.error == '';
     },
     resetForm() {
       this.OldPassword = '';

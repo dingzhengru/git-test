@@ -127,6 +127,7 @@ extend('register-birthday', {
   },
 });
 
+//* change-password
 extend('change-password-required', {
   ...required,
   message: name => {
@@ -159,5 +160,41 @@ extend('change-password-confirmed', {
   ...confirmed,
   message: () => {
     return i18n.t('validate.changePassword.confirmed');
+  },
+});
+
+//* change-withdraw-password
+extend('change-withdraw-password-required', {
+  ...required,
+  message: () => {
+    return i18n.t(`validate.changeWithdrawPassword.required`);
+  },
+});
+
+extend('change-withdraw-password-min', {
+  ...min,
+  message: () => {
+    return i18n.t('validate.changeWithdrawPassword.length');
+  },
+});
+
+extend('change-withdraw-password-max', {
+  ...max,
+  message: () => {
+    return i18n.t('validate.changeWithdrawPassword.length');
+  },
+});
+
+extend('change-withdraw-password-regex', {
+  ...regex,
+  message: () => {
+    return i18n.t('validate.changeWithdrawPassword.regex');
+  },
+});
+
+extend('change-withdraw-password-confirmed', {
+  ...confirmed,
+  message: () => {
+    return i18n.t('validate.changeWithdrawPassword.confirmed');
   },
 });

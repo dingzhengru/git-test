@@ -107,6 +107,7 @@ import { ToggleButton } from 'vue-js-toggle-button';
 import { changePassword, changeRemember } from '@/api/user';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import '@/utils/vee-validate.js';
+
 export default {
   name: 'UserChangePassword',
   components: {
