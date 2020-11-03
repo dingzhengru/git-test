@@ -156,7 +156,6 @@ export default {
         document.querySelector('#apple-startup-image-1242x2208').setAttribute('href', this.siteIOSUrl('1242x2208'));
 
         //* 確認是否維護
-        console.log(this.siteStatus);
         if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {
           this.$router.replace({ name: 'Maintenance' });
           return;
