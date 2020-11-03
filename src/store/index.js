@@ -11,6 +11,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     lang: '',
+    langList: [],
     loadingRequestList: [],
   },
   mutations: {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
         state.lang = lang;
         console.log('[Lang] 載入', result);
       });
+    },
+    setLangList: (state, langList) => {
+      state.langList = langList;
     },
     pushLoadingRequest: (state, name) => {
       return state.loadingRequestList.push(name || '');

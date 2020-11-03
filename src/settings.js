@@ -1,11 +1,17 @@
-const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
-//const API_URL = 'http://api.caza7.re888show.com/api',
+export const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
+//export const API_URL = 'http://api.caza7.re888show.com/api',
+
+//* 不顯示 Header 的頁面
+export const NO_HEADER_ROUTE_LIST = ['SignIn'];
+
+//* 不顯示 Footer 的頁面
+export const NO_FOOTER_ROUTE_LIST = ['SignIn'];
 
 //* http 請求的 timeout
-const REQUEST_TIMEOUT = 30000;
+export const REQUEST_TIMEOUT = 30000;
 
 //* 需要 Authorization bearer token 的 API
-const AUTH_API_LIST = [
+export const AUTH_API_LIST = [
   'Member/LoginIn',
   'Member/LogOut',
   'Member/SimpleRegister',
@@ -62,16 +68,20 @@ const AUTH_API_LIST = [
 ];
 
 //* 需加密的 API
-const CRYPTO_API_LIST = ['Member/LoginIn', 'Member/MChangePassword', 'Member/MChgWithdrawalsPwd'];
+export const CRYPTO_API_LIST = ['Member/LoginIn', 'Member/MChangePassword', 'Member/MChgWithdrawalsPwd'];
 
 //* 需使用"大數據加密"的 API
-const CRYPTO_BIG_DATA_API_LIST = ['Member/SimpleRegister', 'Operator/MWithdrawals', 'Member/AdvancedRegisterNew'];
+export const CRYPTO_BIG_DATA_API_LIST = [
+  'Member/SimpleRegister',
+  'Operator/MWithdrawals',
+  'Member/AdvancedRegisterNew',
+];
 
 //* 需使用"大數據加密"的 API，但並非全部參數都要加密的情況，EX: 存款動作中的匯款收據圖片
-const NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST = ['Operator/MSingleDeposit'];
+export const NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST = ['Operator/MSingleDeposit'];
 
 //* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
-const AUTH_ROUTE_LIST = [
+export const AUTH_ROUTE_LIST = [
   'GameHome',
   'GameLobby',
   'UserProfile',
@@ -92,14 +102,14 @@ const AUTH_ROUTE_LIST = [
 ];
 
 //* "不需要"登入才能進入的 route name
-const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword'];
+export const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword'];
 
 //* 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
-const ACCESS_ROUTE_LIST = [];
+export const ACCESS_ROUTE_LIST = [];
 
 //* 回傳為 599 時，但不要 alert 的 API
 //* 登入、註冊、需開新頁面的 API (避免 alert 中斷)
-const NO_ALERT_API_LIST = [
+export const NO_ALERT_API_LIST = [
   'Member/LoginIn',
   'Member/SimpleRegister',
   'Game/MGameRedirectUrl',
@@ -107,36 +117,9 @@ const NO_ALERT_API_LIST = [
 ];
 
 //* 不顯示 Loading 的 API
-const NO_LOADING_API_LIST = [
+export const NO_LOADING_API_LIST = [
   'Siteinfo/KeepUserOnline',
   'Game/MGetJackpotTotal',
   'Member/CheckField',
   'Proxy/MGetWinPrize',
 ];
-
-export {
-  REQUEST_TIMEOUT,
-  API_URL,
-  AUTH_API_LIST,
-  CRYPTO_API_LIST,
-  CRYPTO_BIG_DATA_API_LIST,
-  NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST,
-  AUTH_ROUTE_LIST,
-  ACCESS_ROUTE_LIST,
-  NO_AUTH_ROUTE_LIST,
-  NO_ALERT_API_LIST,
-  NO_LOADING_API_LIST,
-};
-export default {
-  REQUEST_TIMEOUT,
-  API_URL,
-  AUTH_API_LIST,
-  CRYPTO_API_LIST,
-  CRYPTO_BIG_DATA_API_LIST,
-  NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST,
-  AUTH_ROUTE_LIST,
-  ACCESS_ROUTE_LIST,
-  NO_AUTH_ROUTE_LIST,
-  NO_ALERT_API_LIST,
-  NO_LOADING_API_LIST,
-};

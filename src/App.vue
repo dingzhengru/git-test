@@ -13,20 +13,23 @@
       :backIconRouteList="['PromotionDetail']"
       @changeLang="changeLang"
       @logout="logout"
+      v-if="isShowHeader"
     ></AppHeader>
 
     <div class="main">
       <router-view />
     </div>
 
-    <AppFooter :isLoggedIn="isLoggedIn" v-if="siteStatus == 0" />
+    <AppFooter :isLoggedIn="isLoggedIn" v-if="isShowFooter" />
     <AppLoadingOverlay :isLoading="loadingRequestList.length > 0" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import { getLangList, changeLang } from '@/api/lang';
+import { getLangList } from '@/api/lang';
+
+import { NO_HEADER_ROUTE_LIST, NO_FOOTER_ROUTE_LIST } from '@/settings';
 
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
@@ -34,8 +37,11 @@ import AppLoadingOverlay from '@/components/AppLoadingOverlay';
 
 import { getManifestUrl } from '@/api/manifest';
 
+import langMixin  from '@/mixins/lang'
+
 export default {
   name: 'App',
+  mixins: [langMixin],
   components: {
     AppHeader,
     AppFooter,
@@ -49,6 +55,7 @@ export default {
       'siteAppIcon',
       'siteIOSUrl',
       'lang',
+      'langList',
       'loadingRequestList',
       'pwaInstallStatus',
       'pwaPrompt',
@@ -60,11 +67,15 @@ export default {
       'PIBetAmount',
       'resourceUrl',
     ]),
-  },
-  data() {
-    return {
-      langList: [],
-    };
+    isShowHeader() {
+      return !NO_HEADER_ROUTE_LIST.includes(this.$route.name);
+    },
+    isShowFooter() {
+      if (NO_FOOTER_ROUTE_LIST.includes(this.$route.name) || this.siteStatus != 0) {
+        return false;
+      }
+      return true;
+    },
   },
   mounted() {
     //* Manifest
@@ -102,17 +113,6 @@ export default {
     });
   },
   methods: {
-    async changeLang(lang) {
-      if (this.lang == lang) {
-        return;
-      }
-      const requestData = { Lang: lang };
-      const result = await changeLang(requestData);
-      if (result.Code == 200) {
-        this.$store.commit('setLang', lang);
-        console.log('[Lang]', 'changeLang:', lang, result.RetObj);
-      }
-    },
     logout() {
       this.$store.dispatch('user/logout');
     },
@@ -169,7 +169,7 @@ export default {
         //* 取得語系列表
         getLangList().then(result => {
           if (result.Code == 200) {
-            this.langList = result.RetObj;
+            this.$store.commit('setLangList', result.RetObj);
 
             console.log('[Lang]', this.langList);
           }

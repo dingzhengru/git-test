@@ -279,19 +279,19 @@ export default {
 }
 
 .tw.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/header/lang_tw.png);
+  background-image: url(~@/assets/common/imgs/lang/lang_zh-tw.png);
 }
 .cn.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/header/lang_cn.png);
+  background-image: url(~@/assets/common/imgs/lang/lang_zh-cn.png);
 }
 .en.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/header/lang_en.png);
+  background-image: url(~@/assets/common/imgs/lang/lang_en-us.png);
 }
 .th.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/header/lang_th.png);
+  background-image: url(~@/assets/common/imgs/lang/lang_th-th.png);
 }
 .mm.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/header/lang_mm.png);
+  background-image: url(~@/assets/common/imgs/lang/lang_my-mm.png);
 }
 </style>
 
