@@ -5,6 +5,12 @@ import { AUTH_ROUTE_LIST, NO_AUTH_ROUTE_LIST } from '../settings';
 router.beforeEach(async (to, from, next) => {
   const isLoggedIn = store.getters.isLoggedIn;
 
+  //* 判斷是否維護
+  if (store.getters.siteStatus != undefined && store.getters.siteStatus != 0 && to.name != 'Maintenance') {
+    next({ name: 'Maintenance' });
+    return;
+  }
+
   if (!isLoggedIn && AUTH_ROUTE_LIST.includes(to.name)) {
     //* 未登入 && 需登入才能進入的頁面
     next({ name: 'Login' });

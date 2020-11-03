@@ -4,7 +4,7 @@
 export const NO_HEADER_ROUTE_LIST = ['SignIn'];
 
 //* 不顯示 Footer 的頁面
-export const NO_FOOTER_ROUTE_LIST = ['SignIn'];
+export const NO_FOOTER_ROUTE_LIST = ['SignIn', 'Maintenance'];
 
 //* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
 export const AUTH_ROUTE_LIST = [
