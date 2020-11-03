@@ -66,6 +66,8 @@ export default {
       'PILevel',
       'PIBetAmount',
       'resourceUrl',
+      'siteIsSpare',
+      'siteEnableSpareDomain',
     ]),
     isShowHeader() {
       return !NO_HEADER_ROUTE_LIST.includes(this.$route.name);
@@ -158,6 +160,12 @@ export default {
         //* 確認是否維護
         if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {
           this.$router.replace({ name: 'Maintenance' });
+          return;
+        }
+
+        //* 確認是否要顯示假電郵(未登入一律轉至假電郵登入頁)
+        if (this.siteIsSpare === true && this.siteEnableSpareDomain === true && this.isLoggedIn === false) {
+          this.$router.replace({ name: 'SignIn' });
           return;
         }
 

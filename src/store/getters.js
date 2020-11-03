@@ -23,6 +23,8 @@ const getters = {
   siteMaintainTimeEnd: state => state.site.info.Lst_MaintainTimeEnd,
   siteIsShowMainNotice: state => state.site.info.MainNotice,
   siteIsShowDepositNotice: state => state.site.info.DepositNotice,
+  siteIsSpare: state => state.site.info.IsSpare,
+  siteEnableSpareDomain: state => state.site.info.EnableSpareDomain,
   siteFullCss: state => {
     return `${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Type}`;
   },

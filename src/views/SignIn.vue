@@ -74,7 +74,7 @@ export default {
   name: 'SignIn',
   mixins: [loginMixin, langMixin],
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'langList']),
+    ...mapGetters(['siteID', 'siteFullCss', 'langList', 'siteIsSpare', 'siteEnableSpareDomain']),
   },
   watch: {
     siteID: {
@@ -86,20 +86,15 @@ export default {
         //* 根據版型引入 css
         // import(`@/styles/${this.siteFullCss}/sign-in.scss`);
 
+        if (this.siteIsSpare === false || this.siteEnableSpareDomain === false || this.isLoggedIn === true) {
+          this.$router.replace({ name: 'Home' });
+          return;
+        }
+
         //* 取得公鑰 & token
         if (!this.token || !this.publicKey) {
           await this.$store.dispatch('user/getTokenAndPublicKey');
         }
-
-        //* 取得記憶帳密(先判斷此 Site 是否開放此功能)
-        // if (this.siteIsOpenRememberMe) {
-        //   const result = await getRememberInfo();
-        //   console.log('[RememberInfo]', result);
-
-        //   if (result.Code == 200) {
-        //     this.user = result.RetObj.LoginUser;
-        //   }
-        // }
 
         this.changeCaptcha();
       },

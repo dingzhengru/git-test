@@ -14,7 +14,7 @@ import {
 
 const state = {
   info: {},
-  isLoggedIn: false,
+  isLoggedIn: null,
   token: null,
   publicKey: null,
   totalBalance: null, //* 總點數
