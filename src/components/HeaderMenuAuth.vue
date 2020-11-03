@@ -46,13 +46,7 @@
                 href="javascript:;"
                 class="header-menu-auth__menu__lang-ul__li__link"
                 :id="idMapper.header[langItem.Lst_Locales_Code]"
-                :class="{
-                  tw: langItem.Lst_Locales_Code == 'zh-cn',
-                  cn: langItem.Lst_Locales_Code == 'zh-cn',
-                  th: langItem.Lst_Locales_Code == 'th-th',
-                  en: langItem.Lst_Locales_Code == 'en-us',
-                  mm: langItem.Lst_Locales_Code == 'my-mm',
-                }"
+                :class="langItem.Lst_Locales_Code"
                 @click="isShowMenu = false"
               >
                 {{ langItem.Lst_Locales_Name }}
@@ -263,6 +257,22 @@ export default {
           padding-top: 71px;
           color: #fff;
           font-size: 2.153em;
+
+          &.zh-tw {
+            background-image: url(~@/assets/common/imgs/lang/lang_zh-tw.png);
+          }
+          &.zh-cn {
+            background-image: url(~@/assets/common/imgs/lang/lang_zh-cn.png);
+          }
+          &.en-us {
+            background-image: url(~@/assets/common/imgs/lang/lang_en-us.png);
+          }
+          &.th-th {
+            background-image: url(~@/assets/common/imgs/lang/lang_th-th.png);
+          }
+          &.my-mm {
+            background-image: url(~@/assets/common/imgs/lang/lang_my-mm.png);
+          }
         }
       }
     }
@@ -276,21 +286,5 @@ export default {
     font-size: 2.923em;
     line-height: 87px;
   }
-}
-
-.tw.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/lang/lang_zh-tw.png);
-}
-.cn.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/lang/lang_zh-cn.png);
-}
-.en.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/lang/lang_en-us.png);
-}
-.th.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/lang/lang_th-th.png);
-}
-.mm.header-menu-auth__menu__lang-ul__li__link {
-  background-image: url(~@/assets/common/imgs/lang/lang_my-mm.png);
 }
 </style>

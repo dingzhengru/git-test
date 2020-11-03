@@ -15,12 +15,7 @@
               class="header-menu__lang-menu__ul__li__link"
               :id="idMapper.header[langItem.Lst_Locales_Code]"
               v-if="langItem.Lst_Locales_Code != lang && langItem.Lst_Is_Enable"
-              :class="{
-                cn: langItem.Lst_Locales_Code == 'zh-cn',
-                th: langItem.Lst_Locales_Code == 'th-th',
-                en: langItem.Lst_Locales_Code == 'en-us',
-                mm: langItem.Lst_Locales_Code == 'my-mm',
-              }"
+              :class="langItem.Lst_Locales_Code"
               @click="changeLang(langItem.Lst_Locales_Code)"
             ></a>
           </li>
@@ -114,26 +109,26 @@ export default {
           font-size: 2.153em;
           width: 60px;
           padding-top: 65px;
+
+          &.zh-tw {
+            background-image: url(~@/assets/common/imgs/lang/lang_zh-tw_s.png);
+          }
+          &.zh-cn {
+            background-image: url(~@/assets/common/imgs/lang/lang_zh-cn_s.png);
+          }
+          &.en-us {
+            background-image: url(~@/assets/common/imgs/lang/lang_en-us_s.png);
+          }
+          &.th-th {
+            background-image: url(~@/assets/common/imgs/lang/lang_th-th_s.png);
+          }
+          &.my-mm {
+            background-image: url(~@/assets/common/imgs/lang/lang_my-mm_s.png);
+          }
         }
       }
     }
   }
-}
-
-.header-menu__lang-menu__ul__li__link.tw {
-  background-image: url(~@/assets/common/imgs/lang/lang_zh-tw_s.png);
-}
-.header-menu__lang-menu__ul__li__link.cn {
-  background-image: url(~@/assets/common/imgs/lang/lang_zh-cn_s.png);
-}
-.header-menu__lang-menu__ul__li__link.en {
-  background-image: url(~@/assets/common/imgs/lang/lang_en-us_s.png);
-}
-.header-menu__lang-menu__ul__li__link.th {
-  background-image: url(~@/assets/common/imgs/lang/lang_th-th_s.png);
-}
-.header-menu__lang-menu__ul__li__link.mm {
-  background-image: url(~@/assets/common/imgs/lang/lang_my-mm_s.png);
 }
 
 .en-us {
@@ -153,44 +148,4 @@ export default {
     background: url(~@/assets/common/imgs/lang/lang_zh-cn_s.png) center center no-repeat;
   }
 }
-</style>
-
-<style scoped>
-/* .header-menu__lang-toggle {
-  display: inline-block;
-  width: 73px;
-  height: 60px;
-  position: absolute;
-  top: 30%;
-  right: 20px;
-} */
-/* .header-menu__lang-menu {
-  width: 90px;
-  overflow: hidden;
-  position: absolute;
-  top: 141px;
-  right: 12px;
-  z-index: 2;
-} */
-
-/* .header-menu__lang-menu__ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-} */
-
-/* .header-menu__lang-menu__ul__li {
-  display: inline-block;
-  margin: 10px auto;
-} */
-
-/* .header-menu__lang-menu__ul__li__link {
-  display: block;
-  background: no-repeat center top;
-  color: #fff;
-  font-size: 2.153em;
-  width: 60px;
-  padding-top: 65px;
-} */
 </style>
