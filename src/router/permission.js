@@ -20,5 +20,6 @@ router.beforeEach(async (to, from, next) => {
 });
 
 router.afterEach(() => {
-  store.commit('popLoadingRequest');
+  //* 清除所有 change-route
+  store.commit('popAllChangeRouteLoadingRequest');
 });
