@@ -9,7 +9,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [workbox 預緩存設定(precache)](#workbox-預緩存設定precache)
 - [其他](#其他)
   - [vee-validate](#vee-validate)
-    - [ValidationObserver 的 invalid 失效問題](#validationobserver-的-invalid-失效問題)
+    - [ValidationObserver 的 invalid 失效問題(已解決)](#validationobserver-的-invalid-失效問題已解決)
   - [IOS input[type=datetime-local] 自動驗證錯誤(已解決)](#ios-inputtypedatetime-local-自動驗證錯誤已解決)
   - [quill 顯示不一(已解決)](#quill-顯示不一已解決)
   - [Wechat 無法開啟指定用戶](#wechat-無法開啟指定用戶)
@@ -30,6 +30,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [vue-js-toggle-button](#vue-js-toggle-button)
   - [javascript-winwheel](#javascript-winwheel)
   - [gsap](#gsap)
+  - [vee-validate](#vee-validate-1)
 
 ## Token & 公鑰
 
@@ -61,7 +62,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
 ### vee-validate
 
-#### ValidationObserver 的 invalid 失效問題
+#### ValidationObserver 的 invalid 失效問題(已解決)
 
 - 將裡面的使用的 v-if 改成 v-show 即可
 
@@ -146,3 +147,5 @@ StarBets 的圖片大小跟其他不同，造成位置不同
 ### gsap
 
 - 因轉盤需要用到，https://github.com/zarocknz/javascript-winwheel
+
+### vee-validate
