@@ -162,26 +162,15 @@ export default {
       this.passwordCheck = '';
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/user/change-password.scss`);
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/user/change-password.scss`);
 
-        //* 關掉 loading
-        this.$store.commit('setIsLoading', false);
+    //* 關掉 loading
+    this.$store.commit('setIsLoading', false);
 
-        //* 設置記憶密碼
-        this.isRememberPassword = this.isEnableRememberOption;
-      },
-    },
-    isRememberPassword() {
-      console.log('[isRememberPassword]', this.isRememberPassword);
-    },
+    //* 設置記憶密碼
+    this.isRememberPassword = this.isEnableRememberOption;
   },
 };
 </script>

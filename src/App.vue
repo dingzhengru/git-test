@@ -81,6 +81,11 @@ export default {
       return true;
     },
   },
+  methods: {
+    logout() {
+      this.$store.dispatch('user/logout');
+    },
+  },
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
 
@@ -173,11 +178,6 @@ export default {
         }
       });
     });
-  },
-  methods: {
-    logout() {
-      this.$store.dispatch('user/logout');
-    },
   },
 };
 </script>

@@ -203,51 +203,45 @@ export default {
       }
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/register.scss`);
+  async mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/register.scss`);
 
-        //* 取得公鑰 & token
-        if (!this.token || !this.publicKey) {
-          await this.$store.dispatch('user/getTokenAndPublicKey');
-        }
+    //* 取得公鑰 & token
+    if (!this.token || !this.publicKey) {
+      await this.$store.dispatch('user/getTokenAndPublicKey');
+    }
 
-        getRegisterFieldList().then(result => {
-          console.log('[Register]', result.RetObj);
+    getRegisterFieldList().then(result => {
+      console.log('[Register]', result.RetObj);
 
-          this.bankList = result.RetObj.Add_BankList;
+      this.bankList = result.RetObj.Add_BankList;
 
-          for (const registerField of result.RetObj.Register) {
-            const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
+      for (const registerField of result.RetObj.Register) {
+        const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
 
-            if (field) {
-              field.value = registerField.Lst_Value;
-              field.isShow = registerField.Lst_Phase == 1;
-              field.isOnly = registerField.Lst_isOnly;
+        if (field) {
+          field.value = registerField.Lst_Value;
+          field.isShow = registerField.Lst_Phase == 1;
+          field.isOnly = registerField.Lst_isOnly;
 
-              field.rules['register-required'] = registerField.Lst_isRequired;
-              //* Add_RealName 是不可修改
-              //* 推薦人若已有值，就也不能修改
-              if (field.name == 'Add_RealName') {
-                field.isModifiable = false;
-              } else if (field.name == 'Add_RelatedAccount' && field.value) {
-                field.isModifiable = false;
-              } else {
-                field.isModifiable = true;
-              }
-            }
+          field.rules['register-required'] = registerField.Lst_isRequired;
+          //* Add_RealName 是不可修改
+          //* 推薦人若已有值，就也不能修改
+          if (field.name == 'Add_RealName') {
+            field.isModifiable = false;
+          } else if (field.name == 'Add_RelatedAccount' && field.value) {
+            field.isModifiable = false;
+          } else {
+            field.isModifiable = true;
           }
-        });
+        }
+      }
+    });
 
-        this.changeCaptcha();
-      },
-    },
+    this.changeCaptcha();
+  },
+  watch: {
     fullName() {
       const realName = this.fieldList.find(item => item.name == 'Add_RealName');
       realName.value = this.fullName;

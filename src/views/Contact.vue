@@ -144,74 +144,66 @@ export default {
       this.$forceUpdate();
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/contact.scss`);
+  async mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/contact.scss`);
 
-        const result = await getContactList();
+    const result = await getContactList();
 
-        console.log('[ContactList]', result);
+    console.log('[ContactList]', result);
 
-        if (result.Code == 200) {
-          this.contactList = result.RetObj.ServiceList;
-        }
+    if (result.Code == 200) {
+      this.contactList = result.RetObj.ServiceList;
+    }
 
-        this.contactList = this.contactList.map(item => {
-          item.name = this.contactMapper[item.Lst_ContactType];
-          item.isShowContentList = false;
-          item.class = `contact__content__ul__li__link--${item.name}`;
-          return item;
-        });
+    this.contactList = this.contactList.map(item => {
+      item.name = this.contactMapper[item.Lst_ContactType];
+      item.isShowContentList = false;
+      item.class = `contact__content__ul__li__link--${item.name}`;
+      return item;
+    });
 
-        /*eslint-disable no-undef*/
-        // 確認是否有 service 在，在的話就執行 jscode
-        const contactService = this.contactList.find(item => item.name == 'service');
-        if (contactService) {
-          if (contactService.Js_Type == 'zopim') {
-            //* zopim
-            console.log('[jscode]', contactService.Js_Code);
-            window.eval(contactService.Js_Code);
-            const zopimInterval = setInterval(() => {
-              if ($zopim && $zopim.livechat && $zopim.livechat.window) {
-                $zopim.livechat.hideAll();
-                $zopim.livechat.window.onHide(() => {
-                  $zopim.livechat.hideAll();
-                });
-                clearInterval(zopimInterval);
-              }
-            }, 500);
-          } else if (contactService.Js_Type == 'ze-snippet') {
-            //* ze-snippet
-            // const jsSrc = jscode.split('src="')[1].split('"')[0]
-            const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
-
-            const scriptElement = document.createElement('script');
-            scriptElement.id = 'ze-snippet';
-            scriptElement.src = jsSrc;
-            document.querySelector('head').append(scriptElement);
-
-            const zeInterval = setInterval(() => {
-              if (zE) {
-                zE.hide();
-
-                zE('webWidget:on', 'close', function() {
-                  zE.hide();
-                });
-
-                clearInterval(zeInterval);
-              }
-            }, 500);
+    /*eslint-disable no-undef*/
+    // 確認是否有 service 在，在的話就執行 jscode
+    const contactService = this.contactList.find(item => item.name == 'service');
+    if (contactService) {
+      if (contactService.Js_Type == 'zopim') {
+        //* zopim
+        console.log('[jscode]', contactService.Js_Code);
+        window.eval(contactService.Js_Code);
+        const zopimInterval = setInterval(() => {
+          if ($zopim && $zopim.livechat && $zopim.livechat.window) {
+            $zopim.livechat.hideAll();
+            $zopim.livechat.window.onHide(() => {
+              $zopim.livechat.hideAll();
+            });
+            clearInterval(zopimInterval);
           }
-        }
-        /*eslint-enable no-undef*/
-      },
-    },
+        }, 500);
+      } else if (contactService.Js_Type == 'ze-snippet') {
+        //* ze-snippet
+        // const jsSrc = jscode.split('src="')[1].split('"')[0]
+        const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
+
+        const scriptElement = document.createElement('script');
+        scriptElement.id = 'ze-snippet';
+        scriptElement.src = jsSrc;
+        document.querySelector('head').append(scriptElement);
+
+        const zeInterval = setInterval(() => {
+          if (zE) {
+            zE.hide();
+
+            zE('webWidget:on', 'close', function() {
+              zE.hide();
+            });
+
+            clearInterval(zeInterval);
+          }
+        }, 500);
+      }
+    }
+    /*eslint-enable no-undef*/
   },
 };
 </script>

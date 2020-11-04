@@ -29,9 +29,6 @@ export default {
       recordList: [],
     };
   },
-  mounted() {
-    this.title = `${this.$t('report.betRecordDetail.title')} ${this.$route.params.date}`;
-  },
   methods: {
     async getBetHistoryDay() {
       const requestData = {
@@ -52,20 +49,16 @@ export default {
       console.log('[BetHistoryDay]', result);
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
 
-        //* 取投注明細
-        this.getBetHistoryDay();
-      },
-    },
+    //* 取投注明細
+    this.getBetHistoryDay();
+
+    this.title = `${this.$t('report.betRecordDetail.title')} ${this.$route.params.date}`;
+  },
+  watch: {
     lang() {
       console.log(this.lang, this.$t('report.betRecordDetail.title'));
       this.title = `${this.$t('report.betRecordDetail.title')} ${this.$route.params.date}`;

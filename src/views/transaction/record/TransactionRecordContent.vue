@@ -393,24 +393,17 @@ export default {
       this.getRecord();
     },
   },
+  mounted() {
+    //* 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/transaction/record-content.scss`);
+
+    //* 根據版型引入 css (pagination)
+    import(`@/styles/${this.siteFullCss}/pagination.scss`);
+
+    //* 取得紀錄列表
+    this.getRecord();
+  },
   watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
-
-        //* 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/transaction/record-content.scss`);
-
-        //* 根據版型引入 css (pagination)
-        import(`@/styles/${this.siteFullCss}/pagination.scss`);
-
-        //* 取得紀錄列表
-        this.getRecord();
-      },
-    },
     lang() {
       this.getRecord();
       this.getMemberProductList();

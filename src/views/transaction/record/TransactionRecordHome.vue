@@ -30,18 +30,9 @@ export default {
       recordList: ['deposit', 'withdrawal', 'transfer', 'bonus', 'lottery', 'withdrawalRestriction', 'adjustment'],
     };
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
-
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/transaction/record.scss`);
-      },
-    },
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/transaction/record.scss`);
   },
 };
 </script>

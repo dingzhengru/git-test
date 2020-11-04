@@ -408,27 +408,21 @@ export default {
       this.getGameList();
     },
   },
+  async mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/game.scss`);
+
+    // * 根據版型引入 css (pagination)
+    import(`@/styles/${this.siteFullCss}/pagination.scss`);
+
+    //* 取得遊戲點數列表
+    this.getAllGamePoint();
+
+    this.getGameProduct();
+    await this.getGameCategory(); //* 真人遊戲需先從此取得 guid，才能取得遊戲列表
+    this.getGameList();
+  },
   watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/game.scss`);
-
-        // * 根據版型引入 css (pagination)
-        import(`@/styles/${this.siteFullCss}/pagination.scss`);
-
-        //* 取得遊戲點數列表
-        this.getAllGamePoint();
-
-        this.getGameProduct();
-        await this.getGameCategory(); //* 真人遊戲需先從此取得 guid，才能取得遊戲列表
-        this.getGameList();
-      },
-    },
     async lang() {
       this.getAllGamePoint();
       this.getGameProduct();

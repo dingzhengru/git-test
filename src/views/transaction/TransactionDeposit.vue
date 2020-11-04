@@ -385,22 +385,16 @@ export default {
     //   return true;
     // },
   },
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/transaction/deposit.scss`);
+
+    this.getDepositInfo();
+
+    //* 是否顯示 DepositNotice
+    this.isShowDepositNotice = this.siteIsShowDepositNotice;
+  },
   watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/transaction/deposit.scss`);
-
-        this.getDepositInfo();
-
-        //* 是否顯示 DepositNotice
-        this.isShowDepositNotice = this.siteIsShowDepositNotice;
-      },
-    },
     lang() {
       this.getDepositInfo();
     },

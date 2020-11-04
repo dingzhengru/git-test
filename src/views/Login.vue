@@ -140,34 +140,26 @@ export default {
       'siteIsOpenRememberMe',
     ]),
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-        //* 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/login.scss`);
+  async mounted() {
+    //* 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/login.scss`);
 
-        //* 取得公鑰 & token
-        if (!this.token || !this.publicKey) {
-          await this.$store.dispatch('user/getTokenAndPublicKey');
-        }
+    //* 取得公鑰 & token
+    if (!this.token || !this.publicKey) {
+      await this.$store.dispatch('user/getTokenAndPublicKey');
+    }
 
-        //* 取得記憶帳密(先判斷此 Site 是否開放此功能)
-        if (this.siteIsOpenRememberMe) {
-          const result = await getRememberInfo();
-          console.log('[RememberInfo]', result);
+    //* 取得記憶帳密(先判斷此 Site 是否開放此功能)
+    if (this.siteIsOpenRememberMe) {
+      const result = await getRememberInfo();
+      console.log('[RememberInfo]', result);
 
-          if (result.Code == 200) {
-            this.user = result.RetObj.LoginUser;
-          }
-        }
+      if (result.Code == 200) {
+        this.user = result.RetObj.LoginUser;
+      }
+    }
 
-        this.changeCaptcha();
-      },
-    },
+    this.changeCaptcha();
   },
 };
 </script>

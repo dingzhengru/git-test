@@ -196,10 +196,6 @@ export default {
       lotteryErrorMessage: '',
     };
   },
-  mounted() {
-    //* 取得遊戲館列表，因不需要 siteID 所以放這即可
-    this.getProductList();
-  },
   methods: {
     async getMessageList() {
       const requestDataMessageList = { msgtype: 'C' };
@@ -495,32 +491,28 @@ export default {
         });
     },
   },
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/home.scss`);
+
+    //* 取得產品列表
+    this.getProductList();
+
+    // * 取得輪播列表
+    this.getBannerList();
+
+    // * 取得訊息列表(msgtype: C 彈出)
+    this.getMessageList();
+
+    //* 取得抽獎列表
+    if (this.isLoggedIn) {
+      this.getLotteryCountList();
+    }
+
+    //* 沒登入就顯示 MainNotice
+    this.isShowMainNotice = this.siteIsShowMainNotice && !this.isLoggedIn;
+  },
   watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
-
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/home.scss`);
-
-        // * 取得輪播列表
-        this.getBannerList();
-
-        // * 取得訊息列表(msgtype: C 彈出)
-        this.getMessageList();
-
-        //* 取得抽獎列表
-        if (this.isLoggedIn) {
-          this.getLotteryCountList();
-        }
-
-        //* 沒登入就顯示 MainNotice
-        this.isShowMainNotice = this.siteIsShowMainNotice && !this.isLoggedIn;
-      },
-    },
     lang() {
       // * 取得輪播列表
       this.getBannerList();

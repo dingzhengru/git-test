@@ -84,23 +84,14 @@ export default {
       ],
     };
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
+  mounted() {
+    //* 非維護時，轉去首頁
+    if (this.siteStatus == 0) {
+      this.$router.replace({ name: 'Home' });
+    }
 
-        //* 非維護時，轉去首頁
-        if (this.siteStatus == 0) {
-          this.$router.replace({ name: 'Home' });
-        }
-
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/maintenance.scss`);
-      },
-    },
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/maintenance.scss`);
   },
 };
 </script>

@@ -273,19 +273,13 @@ export default {
       return true;
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/transaction/withdrawal.scss`);
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/transaction/withdrawal.scss`);
 
-        this.getWithdrawalInfo();
-      },
-    },
+    this.getWithdrawalInfo();
+  },
+  watch: {
     lang() {
       this.getWithdrawalInfo();
     },

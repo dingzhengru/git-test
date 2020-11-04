@@ -76,29 +76,21 @@ export default {
   computed: {
     ...mapGetters(['siteID', 'siteFullCss', 'langList', 'siteIsSpare', 'siteEnableSpareDomain']),
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-        //* 根據版型引入 css
-        // import(`@/styles/${this.siteFullCss}/sign-in.scss`);
+  async mounted() {
+    //* 根據版型引入 css
+    // import(`@/styles/${this.siteFullCss}/sign-in.scss`);
 
-        if (this.siteIsSpare === false || this.siteEnableSpareDomain === false || this.isLoggedIn === true) {
-          this.$router.replace({ name: 'Home' });
-          return;
-        }
+    if (this.siteIsSpare === false || this.siteEnableSpareDomain === false || this.isLoggedIn === true) {
+      this.$router.replace({ name: 'Home' });
+      return;
+    }
 
-        //* 取得公鑰 & token
-        if (!this.token || !this.publicKey) {
-          await this.$store.dispatch('user/getTokenAndPublicKey');
-        }
+    //* 取得公鑰 & token
+    if (!this.token || !this.publicKey) {
+      await this.$store.dispatch('user/getTokenAndPublicKey');
+    }
 
-        this.changeCaptcha();
-      },
-    },
+    this.changeCaptcha();
   },
 };
 </script>

@@ -101,25 +101,19 @@ export default {
       }
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
 
-        //* 為實現返回頁面還能在，上一次的選擇頁面中，使用 query 達成
-        //* 若 query 的值不在選擇中，則轉到 Today (預設就是用此，所以不用改 dateRange)
-        if (this.dateRangeList.includes(this.$route.query.date)) {
-          this.dateRange = this.$route.query.date;
-        } else {
-          this.$router.push({ query: { date: 'Today' } });
-        }
-      },
-    },
+    //* 為實現返回頁面還能在，上一次的選擇頁面中，使用 query 達成
+    //* 若 query 的值不在選擇中，則轉到 Today (預設就是用此，所以不用改 dateRange)
+    if (this.dateRangeList.includes(this.$route.query.date)) {
+      this.dateRange = this.$route.query.date;
+    } else {
+      this.$router.push({ query: { date: 'Today' } });
+    }
+  },
+  watch: {
     dateRange: {
       immediate: true,
       async handler() {

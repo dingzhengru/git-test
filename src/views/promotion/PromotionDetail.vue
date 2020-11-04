@@ -77,19 +77,11 @@ export default {
       }
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/promotion/promotion-detail.scss`);
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/promotion/promotion-detail.scss`);
 
-        this.getPromotionDetail();
-      },
-    },
+    this.getPromotionDetail();
   },
 };
 </script>

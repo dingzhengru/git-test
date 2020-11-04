@@ -42,17 +42,10 @@ export default {
       }
     },
   },
+  mounted() {
+    this.getBetHistoryUnsettle();
+  },
   watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-
-        this.getBetHistoryUnsettle();
-      },
-    },
     lang() {
       this.getBetHistoryUnsettle();
     },

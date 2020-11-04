@@ -60,23 +60,15 @@ export default {
       this.getNewsList();
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      async handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/notification/notification-news.scss`);
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/notification/notification-news.scss`);
 
-        // * 根據版型引入 css (pagination)
-        import(`@/styles/${this.siteFullCss}/pagination.scss`);
+    // * 根據版型引入 css (pagination)
+    import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
-        //* 取得最新消息
-        await this.getNewsList();
-      },
-    },
+    //* 取得最新消息
+    this.getNewsList();
   },
 };
 </script>

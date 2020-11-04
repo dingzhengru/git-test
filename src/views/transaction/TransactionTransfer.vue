@@ -249,20 +249,14 @@ export default {
       }
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/transaction/transfer.scss`);
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/transaction/transfer.scss`);
 
-        this.getTransferInfo();
-        this.getAllGamePoint();
-      },
-    },
+    this.getTransferInfo();
+    this.getAllGamePoint();
+  },
+  watch: {
     lang() {
       this.getTransferInfo();
       this.getAllGamePoint();

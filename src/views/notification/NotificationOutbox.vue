@@ -74,19 +74,13 @@ export default {
       this.mail = { Add_Category: '', Add_Subject: '', Add_Content: '', Add_ReplyPath: '' };
     },
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/notification/notification-outbox.scss`);
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/notification/notification-outbox.scss`);
 
-        this.getMailCategoryList();
-      },
-    },
+    this.getMailCategoryList();
+  },
+  watch: {
     lang() {
       this.getMailCategoryList();
     },
