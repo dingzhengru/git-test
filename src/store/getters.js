@@ -9,6 +9,7 @@ const getters = {
 
   //* Site
   siteID: state => state.site.info.LS_SiteID,
+  siteTitle: state => state.site.info.LS_SiteTitle,
   siteCssClass: state => state.site.info.LS_CSS_Class,
   siteCssVersion: state => state.site.info.LS_CSS_Version,
   siteCssType: state => state.site.info.LS_CSS_Type,

@@ -42,73 +42,133 @@ if (getToken() && getPublicKey()) {
   });
 }
 
-//* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
-const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';
-const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode };
-store
-  .dispatch('site/getInfo', requestDataSiteInfo)
-  .then(result => {
-    //* Page Title
-    document.title = result.RetObj.LS_SiteTitle;
+(async () => {
+  //* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
+  const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';
+  const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode };
+  await store.dispatch('site/getInfo', requestDataSiteInfo);
 
-    //* 當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
-    if (!store.getters.lang) {
-      store.commit('setLang', getLang());
-    }
+  //* Page Title
+  document.title = store.getters.siteTitle;
 
-    //* 心跳，剛進來也要執行一次
-    if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
-      keepUserOnline().then(result => {
-        console.log('[KeepUserOnline]', result.RetObj);
-      });
-    }
-    setInterval(async () => {
-      //* document.visibilityState & document.hasFocus()
-      //* 前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
-      if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
-        const result = await keepUserOnline();
-        console.log('[KeepUserOnline]', result.RetObj);
-      }
-    }, 50000);
+  //* 當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
+  if (!store.getters.lang) {
+    store.commit('setLang', getLang());
+  }
 
-    //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
-    store.dispatch('site/getSeoInfo').then(() => {
-      let seoInfo = {};
-      if (router.currentRoute.path.includes('promotion')) {
-        seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Promotion');
-      } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 1) {
-        //* 真人娛樂
-        seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYCasinos');
-      } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 2) {
-        //* 電子遊戲
-        seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYSlots');
-      } else {
-        seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Index');
-      }
-      document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
-      document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
-
-      //* title 以 seo 的為主，有的話就蓋掉
-      if (seoInfo.Lst_SEO_Info.Title) {
-        document.title = seoInfo.Lst_SEO_Info.Title;
-      }
+  //* 心跳，剛進來也要執行一次
+  if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
+    keepUserOnline().then(result => {
+      console.log('[KeepUserOnline]', result.RetObj);
     });
-  })
-  // .catch(error => {
-  //   window.alert('站台資訊取得失敗');
-  //   throw error;
-  // })
-  .finally(() => {
-    //* 若網址有推廣碼，則轉址至首頁，無論請求失敗或成功
-    if (proxyCode) {
-      console.log('[ProxyCode]', proxyCode);
-      router.replace({ name: 'Home' });
+  }
+  setInterval(async () => {
+    //* document.visibilityState & document.hasFocus()
+    //* 前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
+    if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
+      const result = await keepUserOnline();
+      console.log('[KeepUserOnline]', result.RetObj);
+    }
+  }, 50000);
+
+  //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
+  store.dispatch('site/getSeoInfo').then(() => {
+    let seoInfo = {};
+    if (router.currentRoute.path.includes('promotion')) {
+      seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Promotion');
+    } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 1) {
+      //* 真人娛樂
+      seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYCasinos');
+    } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 2) {
+      //* 電子遊戲
+      seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYSlots');
+    } else {
+      seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Index');
+    }
+    document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
+    document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
+
+    //* title 以 seo 的為主，有的話就蓋掉
+    if (seoInfo.Lst_SEO_Info.Title) {
+      document.title = seoInfo.Lst_SEO_Info.Title;
     }
   });
+  // .finally(() => {
+  //   //* 若網址有推廣碼，則轉址至首頁，無論請求失敗或成功
+  //   if (proxyCode) {
+  //     console.log('[ProxyCode]', proxyCode);
+  //     router.replace({ name: 'Home' });
+  //   }
+  // });
 
-new Vue({
-  router,
-  store,
-  i18n,
-  render: h => h(App),
-}).$mount('#app');
+  new Vue({
+    router,
+    store,
+    i18n,
+    render: h => h(App),
+  }).$mount('#app');
+})();
+
+// store
+//   .dispatch('site/getInfo', requestDataSiteInfo)
+//   .then(result => {
+//     //* Page Title
+//     document.title = result.RetObj.LS_SiteTitle;
+
+//     //* 當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
+//     if (!store.getters.lang) {
+//       store.commit('setLang', getLang());
+//     }
+
+//     //* 心跳，剛進來也要執行一次
+//     if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
+//       keepUserOnline().then(result => {
+//         console.log('[KeepUserOnline]', result.RetObj);
+//       });
+//     }
+//     setInterval(async () => {
+//       //* document.visibilityState & document.hasFocus()
+//       //* 前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
+//       if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
+//         const result = await keepUserOnline();
+//         console.log('[KeepUserOnline]', result.RetObj);
+//       }
+//     }, 50000);
+
+//     //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
+//     store.dispatch('site/getSeoInfo').then(() => {
+//       let seoInfo = {};
+//       if (router.currentRoute.path.includes('promotion')) {
+//         seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Promotion');
+//       } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 1) {
+//         //* 真人娛樂
+//         seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYCasinos');
+//       } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 2) {
+//         //* 電子遊戲
+//         seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYSlots');
+//       } else {
+//         seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Index');
+//       }
+//       document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
+//       document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
+
+//       //* title 以 seo 的為主，有的話就蓋掉
+//       if (seoInfo.Lst_SEO_Info.Title) {
+//         document.title = seoInfo.Lst_SEO_Info.Title;
+//       }
+//     });
+//   })
+//   .finally(() => {
+//     //* 若網址有推廣碼，則轉址至首頁，無論請求失敗或成功
+//     if (proxyCode) {
+//       console.log('[ProxyCode]', proxyCode);
+//       router.replace({ name: 'Home' });
+//     }
+//   });
+
+// new Vue({
+//   router,
+//   store,
+//   i18n,
+//   render: h => h(App),
+// }).$mount('#app');
