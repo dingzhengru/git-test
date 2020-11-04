@@ -12,7 +12,7 @@
     "changeProfileSuccess": "แก้ไขข้อมูลสำเร็จ！",
     "transferSuccess": "โอนความสำเร็จ!",
     "replaySuccess": "ตอบกลับสำเร็จ",
-    "sendEmailSuccess": "",
+    "sendEmailSuccess": "ส่งอีเมลเรียบร้อยแล้ว",
     "gameMaintenance": "เกมส์อยู่ในระหว่างการปรับปรุง  ขออภัยในความไม่สะดวก"
   },
   "validate": {
