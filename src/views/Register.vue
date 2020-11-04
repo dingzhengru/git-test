@@ -16,6 +16,7 @@
           <span class="register__form__field__star" v-if="field.rules['register-required']">*</span>
           <input
             class="register__form__field__input"
+            :id="idMapper.register.input[field.name]"
             :type="field.type"
             :placeholder="$t(`register.${field.name}.placeholder`)"
             :disabled="!field.isModifiable"

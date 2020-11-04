@@ -20,12 +20,6 @@ import { getTokenAndPublicKey, keepUserOnline } from '@/api/user'; //* API
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
 
-//* 取得語系 => 存進 store.state.lang
-const lang = getLang();
-if (lang) {
-  store.commit('setLang', lang);
-}
-
 //* 用 isLoggedIn 判斷是否登入
 const isLoggedIn = getIsLoggedIn();
 store.commit('user/setIsLoggedIn', isLoggedIn);
@@ -51,10 +45,8 @@ if (getToken() && getPublicKey()) {
   //* Page Title
   document.title = store.getters.siteTitle;
 
-  //* 當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
-  if (!store.getters.lang) {
-    store.commit('setLang', getLang());
-  }
+  //* 載入語系
+  await store.commit('setLang', getLang());
 
   //* 心跳，剛進來也要執行一次
   if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
@@ -93,19 +85,19 @@ if (getToken() && getPublicKey()) {
       document.title = seoInfo.Lst_SEO_Info.Title;
     }
   });
-  // .finally(() => {
-  //   //* 若網址有推廣碼，則轉址至首頁，無論請求失敗或成功
-  //   if (proxyCode) {
-  //     console.log('[ProxyCode]', proxyCode);
-  //     router.replace({ name: 'Home' });
-  //   }
-  // });
 
   new Vue({
     router,
     store,
     i18n,
     render: h => h(App),
+    mounted() {
+      //* 若網址有推廣碼，則轉址至首頁
+      if (proxyCode) {
+        console.log('[ProxyCode]', proxyCode);
+        this.$router.replace({ name: 'Home' });
+      }
+    },
   }).$mount('#app');
 })();
 

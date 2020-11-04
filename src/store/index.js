@@ -25,10 +25,14 @@ export default new Vuex.Store({
       state.langList = langList;
     },
     pushLoadingRequest: (state, name) => {
-      return state.loadingRequestList.push(name || '');
+      state.loadingRequestList.push(name || '');
     },
     popLoadingRequest: state => {
-      return state.loadingRequestList.pop();
+      state.loadingRequestList.pop();
+    },
+    popAllChangeRouteLoadingRequest: state => {
+      //* 清除所有 change-route
+      state.loadingRequestList = state.loadingRequestList.filter(item => item != 'change-route');
     },
   },
   actions: {},

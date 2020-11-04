@@ -37,7 +37,6 @@
 
             <img
               class="login__form__field__image--code"
-              :id="idMapper.login.image.captcha"
               :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
               :width="156"
               :height="56"
