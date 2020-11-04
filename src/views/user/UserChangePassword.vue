@@ -141,7 +141,7 @@ export default {
       console.log('[ChangePassword]', result);
 
       if (result.Code == 200) {
-        window.alert(this.$t('user.changePassword.alert.success'));
+        window.alert(this.$t('alert.changeProfileSuccess'));
         this.resetForm();
       }
       this.$store.commit('setIsLoading', false);
@@ -153,7 +153,7 @@ export default {
       console.log('[ChangeRemember]', result);
       if (result.Code == 200) {
         this.$store.commit('user/setIsEnableRememberOption', this.isRememberPassword);
-        window.alert(this.$t('user.changePassword.alert.success'));
+        window.alert(this.$t('alert.changeProfileSuccess'));
       }
     },
     resetForm() {

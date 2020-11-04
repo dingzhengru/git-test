@@ -13,8 +13,8 @@ import './styles/Y/common/layout.css';
 import './router/permission'; //* 路徑權限
 import './api/interceptors.js'; //* 攔截器
 
+import i18n from '@/i18n-lazy'; //* 語言載入
 import { getLang, getIsLoggedIn, getToken, getPublicKey } from '@/utils/cookie'; //* Cookie
-import { i18n, loadLanguageAsync } from '@/i18n-lazy'; //* 語言載入
 import { getTokenAndPublicKey, keepUserOnline } from '@/api/user'; //* API
 
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
@@ -54,10 +54,6 @@ store
     //* 當前面 cookie 沒有取到 lang 時，後端會在此設定預設語系，就可以在這時候把語系填入了
     if (!store.getters.lang) {
       store.commit('setLang', getLang());
-
-      loadLanguageAsync(getLang()).then(result => {
-        console.log('[i18n]', 'load:', result);
-      });
     }
 
     //* 心跳，剛進來也要執行一次
@@ -98,10 +94,10 @@ store
       }
     });
   })
-  .catch(error => {
-    window.alert('站台資訊取得失敗');
-    throw error;
-  })
+  // .catch(error => {
+  //   window.alert('站台資訊取得失敗');
+  //   throw error;
+  // })
   .finally(() => {
     //* 若網址有推廣碼，則轉址至首頁，無論請求失敗或成功
     if (proxyCode) {

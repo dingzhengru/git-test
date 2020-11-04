@@ -1,26 +1,29 @@
 <template>
   <div id="app" :class="lang">
-    <AppHeader
-      :siteStatus="siteStatus"
-      :isLoggedIn="isLoggedIn"
-      :langList="langList"
-      :lang="lang"
-      :logo="logo"
-      :username="username"
-      :totalBalance="totalBalance"
-      :PILevel="PILevel"
-      :PIBetAmount="PIBetAmount"
-      :backIconRouteList="['PromotionDetail']"
-      @changeLang="changeLang"
-      @logout="logout"
-      v-if="isShowHeader"
-    ></AppHeader>
+    <div v-show="loadingRequestList.length == 0">
+      <AppHeader
+        :siteStatus="siteStatus"
+        :isLoggedIn="isLoggedIn"
+        :langList="langList"
+        :lang="lang"
+        :logo="logo"
+        :username="username"
+        :totalBalance="totalBalance"
+        :PILevel="PILevel"
+        :PIBetAmount="PIBetAmount"
+        :backIconRouteList="['PromotionDetail']"
+        @changeLang="changeLang"
+        @logout="logout"
+        v-if="isShowHeader"
+      ></AppHeader>
 
-    <div class="main">
-      <router-view />
+      <div class="main">
+        <router-view />
+      </div>
+
+      <AppFooter :isLoggedIn="isLoggedIn" v-if="isShowFooter" />
     </div>
 
-    <AppFooter :isLoggedIn="isLoggedIn" v-if="isShowFooter" />
     <AppLoadingOverlay :isLoading="loadingRequestList.length > 0" />
   </div>
 </template>

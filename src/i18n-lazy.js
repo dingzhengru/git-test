@@ -51,3 +51,5 @@ export async function loadLanguageAsync(lang) {
   //   }
   // )
 }
+
+export default i18n;

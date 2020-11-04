@@ -68,7 +68,10 @@ export default {
     async submitInstantAccess(data) {
       //* 接收送出開通帳號表單事件
       console.log('[AdvancedRegisterNew]', data);
-      this.$store.dispatch('user/advancedRegisterNew', data);
+      const result = this.$store.dispatch('user/advancedRegisterNew', data);
+      if (result.Code == 200) {
+        window.alert(this.$t('alert.accessSuccess'));
+      }
     },
     async changeWithdrawalPassword(data) {
       console.log('[ChangeWithdrawalPassword]', data);
@@ -76,7 +79,7 @@ export default {
 
       console.log('[ChangeWithdrawalPassword]', result);
       if (result.Code == 200) {
-        window.alert(this.$t('user.changePassword.alert.success'));
+        window.alert(this.$t('alert.changeProfileSuccess'));
       }
     },
     async changeRegisterField(field, fieldList, invalid, oldField) {

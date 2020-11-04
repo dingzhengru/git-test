@@ -1,6 +1,5 @@
 import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
-import { i18n } from '@/i18n-lazy';
 import {
   register,
   login,
@@ -83,7 +82,6 @@ const actions = {
     const result = await advancedRegisterNew(data);
     if (result.Code == 200) {
       commit('setUserInfo', result.RetObj);
-      alert(i18n.t('user.profile.notAccessed.alert.access-success'));
     }
     return result;
   },

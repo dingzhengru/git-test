@@ -10,6 +10,7 @@ import {
   NO_LOADING_API_LIST,
 } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
+import { i18n } from '@/i18n-lazy';
 
 // if (process.env.NODE_ENV === 'development') {
 //   console.log('set axios.defaults.withCredentials = true.');
@@ -136,7 +137,14 @@ axios.interceptors.response.use(
     return res;
   },
   error => {
-    if (!NO_LOADING_API_LIST.find(item => error.config.url.includes(item))) {
+    if (error.config.url.includes('Siteinfo/getinfo')) {
+      //* 避免載入語言前，就觸發此，所以設一個預設的(en-us)
+      let alertMessage = 'Load failed. Please refresh the page and retry.';
+      if (i18n.te('alert.loadFailed')) {
+        alertMessage = i18n.t('alert.loadFailed');
+      }
+      window.alert(alertMessage);
+    } else if (!NO_LOADING_API_LIST.find(item => error.config.url.includes(item))) {
       store.commit('popLoadingRequest');
     }
 

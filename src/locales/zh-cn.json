@@ -1,4 +1,20 @@
 {
+  "ui": {
+    "button": {
+      "submit": "提交",
+      "reset": "重设",
+      "cancel": "取消"
+    }
+  },
+  "alert": {
+    "loadFailed": "讀取失敗，請重整頁面",
+    "accessSuccess": "开通成功！开启页面中请等待",
+    "changeProfileSuccess": "资料更改成功！",
+    "transferSuccess": "转帐成功!",
+    "replaySuccess": "回覆成功",
+    "sendEmailSuccess": "邮件发送成功！",
+    "gameMaintenance": "游戏维护中，很抱歉造成您的不便！"
+  },
   "validate": {
     "register": {
       "required": {
@@ -77,13 +93,6 @@
       "length": "密码长度最少 6 字元，最多 30 字元",
       "regex": "格式错误",
       "confirmed": "确认密码错误"
-    }
-  },
-  "ui": {
-    "button": {
-      "submit": "提交",
-      "reset": "重设",
-      "cancel": "取消"
     }
   },
   "header": {
@@ -293,9 +302,6 @@
           "access": "您的会员账号尚未开通，目前只能使用有限的功能。",
           "suggest": "为保障您的权益，我们极力建议您尽快开通会员账号。",
           "contact": "如果您需要任何协助，请随时联系我们的客服人员，您的个人资料将被保密。"
-        },
-        "alert": {
-          "access-success": "开通成功！开启页面中请等待"
         }
       }
     },
@@ -312,9 +318,6 @@
         "suggest": "为保障您的账号安全，请定期更换您的密码。",
         "rule": "设定新密码必须超过6个字符。",
         "contact": "如果您需要任何协助，请随时联系我们的客服人员，您的个人资料将被保密。"
-      },
-      "alert": {
-        "success": "资料更改成功！"
       }
     }
   },
@@ -404,9 +407,6 @@
         "transfer": "转帐",
         "allToMyWallet": "全部转回我的钱包",
         "refresh": "刷新"
-      },
-      "alert": {
-        "success": "转帐成功!"
       }
     },
     "record": {
@@ -626,10 +626,7 @@
       "title": "主旨",
       "sender": "发件人",
       "datetime": "信件日期",
-      "reply": "回覆信件",
-      "alert": {
-        "success": "回覆成功"
-      }
+      "reply": "回覆信件"
     },
     "outbox": {
       "category": "信件类别",
@@ -647,9 +644,6 @@
         "promotion": "优惠活动",
         "technologyRelated": "技术问题",
         "aboutUs": "有关本站"
-      },
-      "alert": {
-        "success": "邮件发送成功！"
       }
     }
   },
@@ -684,9 +678,6 @@
       "transferAll": "全部转入",
       "transferByEnter": "自行输入",
       "submit": "确定"
-    },
-    "alert": {
-      "maintenance": "游戏维护中，很抱歉造成您的不便！"
     }
   },
   "promotionDetail": {

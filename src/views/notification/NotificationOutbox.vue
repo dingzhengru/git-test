@@ -61,7 +61,7 @@ export default {
         console.log('[SendMail]', result);
         this.resetMail();
 
-        window.alert(this.$t('notification.outbox.alert.success'));
+        window.alert(this.$t('alert.sendEmailSuccess'));
       }
     },
     async getMailCategoryList() {

@@ -338,7 +338,7 @@ export default {
       if (result.Code == 200) {
         this.gamePointList = result.RetObj.GameSitePoints;
         this.transferAmount = 0;
-        window.alert(this.$t('transaction.transfer.alert.success'));
+        window.alert(this.$t('alert.transferSuccess'));
 
         //* 開啟站外連結
         if (this.currentProduct.GetGameRedirectUrl) {
@@ -352,7 +352,7 @@ export default {
       if (product.Lst_Proxy_Product_Key == this.currentProduct.Lst_Proxy_Product_Key) {
         return;
       } else if (product.Lst_Site_Product_Status != 0) {
-        window.alert(this.$t('game.alert.maintenance'));
+        window.alert(this.$t('alert.gameMaintenance'));
         return;
       }
       console.log('[ChangeProduct]', product);

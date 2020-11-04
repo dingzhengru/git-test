@@ -1,4 +1,20 @@
 {
+  "ui": {
+    "button": {
+      "submit": "Submit",
+      "reset": "Reset",
+      "cancel": "Cancellation"
+    }
+  },
+  "alert": {
+    "loadFailed": "Load failed. Please refresh the page and retry.",
+    "accessSuccess": "Account activated successfully!",
+    "changeProfileSuccess": "Profile changed successfully!",
+    "transferSuccess": "Transfer successfully!",
+    "replaySuccess": "Reply successfully",
+    "sendEmailSuccess": "Mail sent successfully!",
+    "gameMaintenance": "Game under maintenance, we apologize for the inconvenience brought to you!"
+  },
   "validate": {
     "register": {
       "required": {
@@ -77,13 +93,6 @@
       "length": "At least 6 characters up to 30 characters",
       "regex": "Format False",
       "confirmed": "Confirm password error"
-    }
-  },
-  "ui": {
-    "button": {
-      "submit": "Submit",
-      "reset": "Reset",
-      "cancel": "Cancellation"
     }
   },
   "header": {
@@ -296,9 +305,6 @@
           "access": "Your account has not opened yet, you can only use the limited function currently.",
           "suggest": "For ensuring your rights and benefits, we urge you to open the member account as soon as possible.",
           "contact": "If you have any additional questions about your account details ,please contact our online service."
-        },
-        "alert": {
-          "access-success": "开通成功！开启页面中请等待"
         }
       }
     },
@@ -315,9 +321,6 @@
         "suggest": "For the security of account, please change your passwords periodically.",
         "rule": "It needs over six characters to set up your new passwords.",
         "contact": "If you have any additional questions about your account details ,please contact our online service."
-      },
-      "alert": {
-        "success": "Profile changed successfully!"
       }
     }
   },
@@ -407,9 +410,6 @@
         "transfer": "Transfer",
         "allToMyWallet": "All to my wallet",
         "refresh": "Refresh"
-      },
-      "alert": {
-        "success": "Transfer success!"
       }
     },
     "record": {
@@ -629,10 +629,7 @@
       "title": "Title",
       "sender": "Contact info",
       "datetime": "Date",
-      "reply": "Reply to mail",
-      "alert": {
-        "success": "Reply as success"
-      }
+      "reply": "Reply to mail"
     },
     "outbox": {
       "category": "Letter Category",
@@ -650,9 +647,6 @@
         "promotion": "Promotions",
         "technologyRelated": "Technology Related",
         "aboutUs": "About us"
-      },
-      "alert": {
-        "success": "Mail sent successfully!"
       }
     }
   },
@@ -687,9 +681,6 @@
       "transferAll": "Transfer all",
       "transferByEnter": "Enter by yourself",
       "submit": "Done"
-    },
-    "alert": {
-      "maintenance": "Game under maintenance, we apologize for the inconvenience brought to you !!"
     }
   },
   "promotionDetail": {

@@ -16,7 +16,8 @@ const routes = [
     component: () => import('@/views/Home'),
   },
   {
-    path: '/SignIn',
+    path: '/sign-in',
+    alias: ['/SignIn'],
     name: 'SignIn',
     component: () => import('@/views/SignIn'),
   },
