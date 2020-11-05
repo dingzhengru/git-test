@@ -31,6 +31,15 @@ module.exports = {
       return args;
     });
   },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://api.caza7.re888show.com',
+        ws: true,
+        changeOrigin: true,
+      },
+    },
+  },
   pluginOptions: {
     i18n: {
       locale: 'en-us', // The locale of project localization

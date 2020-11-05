@@ -34,7 +34,8 @@ export const ACCESS_ROUTE_LIST = [];
 //* API
 
 //* API URL
-export const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
+// export const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
+export const API_URL = '/api';
 
 //* http 請求的 timeout
 export const REQUEST_TIMEOUT = 30000;
