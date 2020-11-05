@@ -12,7 +12,7 @@
         :key="item.name"
       >
         <router-link :to="{ name: item.link }" class="footer__ul__li__link">
-          {{ $t(`footer.${item.name}`) }}
+          {{ $te(`footer.${item.name}`) ? $t(`footer.${item.name}`) : item.name }}
         </router-link>
       </li>
     </ul>

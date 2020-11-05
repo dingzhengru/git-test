@@ -9,7 +9,7 @@
             :class="contact.class"
             @click.prevent="clickContactHandler(contact)"
           >
-            {{ $t(`contact.${contact.name}`) }}
+            {{ $te(`contact.${contact.name}`) ? $t(`contact.${contact.name}`) : contact.name }}
           </a>
 
           <transition name="fade">
