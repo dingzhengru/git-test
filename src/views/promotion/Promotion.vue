@@ -27,7 +27,7 @@ import { getPromotionList } from '@/api/promotion';
 export default {
   name: 'Promotion',
   computed: {
-    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteFullCss', 'isLoggedIn']),
   },
   data() {
     return {

@@ -133,7 +133,7 @@ export default {
     RecordImageDialog: () => import('@/components/transaction/record/RecordImageDialog'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['lang', 'siteFullCss']),
     i18nKey() {
       return `transaction.recordContent.${this.$route.params.name}`;
     },

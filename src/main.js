@@ -6,7 +6,7 @@ import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 
-//* CSS 檔案
+//* CSS
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
 import './styles/Y/common/layout.css';
 
@@ -14,8 +14,13 @@ import './router/permission'; //* 路徑權限
 import './api/interceptors.js'; //* 攔截器
 
 import i18n from '@/i18n-lazy'; //* 語言載入
-import { getLang, getIsLoggedIn, getToken, getPublicKey } from '@/utils/cookie'; //* Cookie
+
+//* Cookie
+import { getLang, getIsLoggedIn, getToken, getPublicKey } from '@/utils/cookie';
+
+//* API
 import { getTokenAndPublicKey, keepUserOnline } from '@/api/user'; //* API
+import { getLangList } from '@/api/lang';
 
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
@@ -47,6 +52,14 @@ if (getToken() && getPublicKey()) {
 
   //* 載入語系
   await store.commit('setLang', getLang());
+
+  //* 取得語系列表
+  getLangList().then(result => {
+    if (result.Code == 200) {
+      store.commit('setLangList', result.RetObj);
+      console.log('[Lang]', result.RetObj);
+    }
+  });
 
   //* 心跳，剛進來也要執行一次
   if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
@@ -91,7 +104,7 @@ if (getToken() && getPublicKey()) {
     store,
     i18n,
     render: h => h(App),
-    mounted() {
+    beforeCreate() {
       //* 若網址有推廣碼，則轉址至首頁
       if (proxyCode) {
         console.log('[ProxyCode]', proxyCode);

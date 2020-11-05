@@ -41,7 +41,7 @@ import { getContactList } from '@/api/contact';
 export default {
   name: 'Contact',
   computed: {
-    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteFullCss', 'isLoggedIn']),
   },
   data() {
     return {

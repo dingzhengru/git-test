@@ -103,7 +103,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'token', 'publicKey']),
+    ...mapGetters(['siteFullCss', 'lang', 'token', 'publicKey']),
     fullName() {
       let fullName = '';
       const firstName = this.fieldList.find(item => item.name == 'Add_FirstName').value;

@@ -59,7 +59,7 @@ export default {
     ReportBetRecordDetailTable: () => import('@/components/report/ReportBetRecordDetailTable'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['lang', 'siteFullCss']),
   },
   data() {
     return {

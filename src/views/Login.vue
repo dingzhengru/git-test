@@ -130,15 +130,7 @@ import { getRememberInfo } from '@/api/user';
 export default {
   mixins: [loginMixin],
   computed: {
-    ...mapGetters([
-      'siteID',
-      'siteFullCss',
-      'token',
-      'publicKey',
-      'pwaInstallStatus',
-      'pwaPrompt',
-      'siteIsOpenRememberMe',
-    ]),
+    ...mapGetters(['siteFullCss', 'token', 'publicKey', 'pwaInstallStatus', 'pwaPrompt', 'siteIsOpenRememberMe']),
   },
   async mounted() {
     //* 根據版型引入 css

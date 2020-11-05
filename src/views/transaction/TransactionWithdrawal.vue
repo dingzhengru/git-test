@@ -171,7 +171,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['lang', 'siteFullCss']),
     amountMax() {
       if (this.withdrawalInfo.Lst_Point < this.withdrawalInfo.WithalUplimit) {
         return this.withdrawalInfo.Lst_Point;

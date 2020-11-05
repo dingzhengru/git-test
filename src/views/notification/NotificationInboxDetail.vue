@@ -46,7 +46,7 @@ import { getInboxDetail, sendMail } from '@/api/notification';
 export default {
   name: 'NotificationInboxDetail',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteFullCss']),
   },
   data() {
     return {

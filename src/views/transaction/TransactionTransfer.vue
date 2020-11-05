@@ -148,7 +148,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['lang', 'siteFullCss']),
     fromList() {
       return this.productList;
     },

@@ -244,7 +244,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang', 'siteName', 'siteDepositNoticeUrl', 'siteIsShowDepositNotice']),
+    ...mapGetters(['lang', 'siteFullCss', 'siteName', 'siteDepositNoticeUrl', 'siteIsShowDepositNotice']),
   },
   data() {
     return {

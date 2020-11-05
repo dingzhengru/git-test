@@ -22,7 +22,7 @@ import idMapper from '@/idMapper';
 export default {
   name: 'TransactionRecordHome',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteFullCss']),
   },
   data() {
     return {

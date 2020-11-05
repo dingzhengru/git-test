@@ -14,7 +14,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'ForgetPassword',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteFullCss']),
   },
   mounted() {
     // * 根據版型引入 css

@@ -73,7 +73,7 @@ export default {
   name: 'SignIn',
   mixins: [loginMixin, langMixin],
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'langList', 'siteIsSpare', 'siteEnableSpareDomain']),
+    ...mapGetters(['siteFullCss', 'langList', 'siteIsSpare', 'siteEnableSpareDomain']),
   },
   async mounted() {
     //* 根據版型引入 css

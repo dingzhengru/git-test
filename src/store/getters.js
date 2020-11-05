@@ -29,11 +29,15 @@ const getters = {
   siteFullCss: state => {
     return `${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Type}`;
   },
+  siteFaviconUrl: state => {
+    //* Favicon: {siteResourceUrl}/imgs/favicon/favicon.ico
+    return `${state.site.info.RemoteCSSUrls}/ContentStyle/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Version}/2/default/css${state.site.info.LS_CSS_Type}/common/imgs/favicon/favicon.ico`;
+  },
   siteLogoUrl: state => {
     //* Logo: {樣式網址}/Site_Uploadfile/{站台ID}/Logo_{裝置}.png
     return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/Logo_1.png`;
   },
-  siteAppIcon: state => size => {
+  siteAppIconUrl: state => size => {
     //* AppIcon: {樣式網址}/Site_Uploadfile/{站台ID}/AppIcon_{尺寸}.png
     return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/AppIcon_${size}.png`;
   },
@@ -49,10 +53,10 @@ const getters = {
     //* 存款提示圖片: {樣式網址}/Site_Uploadfile/{站台ID}/Notice/{語系}/DepositNotice.png
     return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/Notice/${state.lang}/DepositNotice.png`;
   },
-  resourceUrl: state => {
+  siteResourceUrl: state => {
     return `${state.site.info.RemoteCSSUrls}/ContentStyle/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Version}/2/default/css${state.site.info.LS_CSS_Type}/common`;
   },
-  resourceUrlMaintain: state => {
+  siteResourceUrlMaintain: state => {
     return `${state.site.info.RemoteCSSUrls}/Maintain/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}${state.site.info.LS_CSS_Version}/${state.site.info.LS_CSS_Type}//css`;
   },
   siteSeo: state => state.site.seo,

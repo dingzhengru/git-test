@@ -62,7 +62,7 @@ import {
 export default {
   name: 'TransactionRecordDetail',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['lang', 'siteFullCss']),
     i18nKey() {
       return `transaction.recordDetail.${this.$route.params.name}`;
     },

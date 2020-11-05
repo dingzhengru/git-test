@@ -39,7 +39,7 @@ import '@/vender/quill/quill-better-table.css';
 export default {
   name: 'PromotionDetail',
   computed: {
-    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteFullCss', 'isLoggedIn']),
   },
   data() {
     return {

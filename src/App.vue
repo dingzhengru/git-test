@@ -2,11 +2,11 @@
   <div id="app" :class="lang">
     <div v-show="loadingRequestList.length == 0">
       <AppHeader
+        :lang="lang"
+        :langList="langList"
+        :logo="siteLogoUrl"
         :siteStatus="siteStatus"
         :isLoggedIn="isLoggedIn"
-        :langList="langList"
-        :lang="lang"
-        :logo="logo"
         :username="username"
         :totalBalance="totalBalance"
         :PILevel="PILevel"
@@ -30,16 +30,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getLangList } from '@/api/lang';
-
 import { ROUTE_NO_HEADER_LIST, ROUTE_NO_FOOTER_LIST } from '@/settings';
-
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
 import AppLoadingOverlay from '@/components/AppLoadingOverlay';
-
 import { getManifestUrl } from '@/api/manifest';
-
 import langMixin from '@/mixins/lang';
 
 export default {
@@ -56,20 +51,20 @@ export default {
       'langList',
       'loadingRequestList',
       'siteFullCss',
+      'siteStatus',
+      'siteIsSpare',
+      'siteEnableSpareDomain',
+      'siteFaviconUrl',
       'siteLogoUrl',
-      'siteAppIcon',
+      'siteAppIconUrl',
       'siteIOSUrl',
       'pwaInstallStatus',
       'pwaPrompt',
-      'siteStatus',
       'isLoggedIn',
       'totalBalance',
       'username',
       'PILevel',
       'PIBetAmount',
-      'resourceUrl',
-      'siteIsSpare',
-      'siteEnableSpareDomain',
     ]),
     isShowHeader() {
       return !ROUTE_NO_HEADER_LIST.includes(this.$route.name);
@@ -98,24 +93,17 @@ export default {
     //* footer css
     import(`@/styles/${this.siteFullCss}/footer.scss`);
 
-    const faviconUrl = `${this.resourceUrl}/imgs/favicon/favicon.ico`;
-    document.querySelector('#favicon').setAttribute('href', faviconUrl);
-
-    //* Manifest
-    //* 動態載入 manifest，已將 public/index.html 中新增 <link rel="manifest" id="manifest" />
+    //* 載入 manifest
     document.querySelector('#manifest').setAttribute('href', getManifestUrl());
 
-    //* 使用 siteInfo 拼湊 logo url
-    //* EX: http://resource.re888show.com/Site_Uploadfile/C/Logo_0.png
-    this.logo = this.siteLogoUrl;
-    // this.logo = `${this.resourceUrl}/imgs/header/logo.png`;
-    // this.logo = `${this.siteRemoteCSSUrl}/Site_Uploadfile/${this.siteID}/Logo_0.png`;
+    //* 設置 Favicon
+    document.querySelector('#favicon').setAttribute('href', this.siteFaviconUrl);
 
     //* 設置 IOS apple-mobile-web-app-title
     // document.querySelector('#apple-title').setAttribute('content', 'AppTitle');
 
     //* 設置 IOS apple-touch-icon
-    document.querySelector('#apple-touch-icon').setAttribute('href', this.siteAppIcon('192x192'));
+    document.querySelector('#apple-touch-icon').setAttribute('href', this.siteAppIconUrl('192x192'));
 
     //* 設置 IOS apple-touch-startup-image
     document.querySelector('#apple-startup-image-750x1344').setAttribute('href', this.siteIOSUrl('750x1344'));
@@ -139,15 +127,6 @@ export default {
     if (this.isLoggedIn) {
       this.$store.dispatch('user/getInfo');
     }
-
-    //* 取得語系列表
-    getLangList().then(result => {
-      if (result.Code == 200) {
-        this.$store.commit('setLangList', result.RetObj);
-
-        console.log('[Lang]', this.langList);
-      }
-    });
 
     //* PWA 一秒後沒觸發 beforeinstallprompt 的話，就視為已下載
     setTimeout(() => {

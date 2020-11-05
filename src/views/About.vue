@@ -24,7 +24,7 @@ import imgRNG from '@/assets/common/imgs/game/gameIntro-03.jpg';
 export default {
   name: 'About',
   computed: {
-    ...mapGetters(['isLoggedIn', 'siteID', 'siteFullCss']),
+    ...mapGetters(['siteFullCss', 'isLoggedIn']),
   },
   data() {
     return {

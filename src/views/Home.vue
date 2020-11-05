@@ -2,7 +2,7 @@
   <div class="home" @click="isShowMainNotice = false">
     <HomeSwiper
       :list="bannerList"
-      :resourceUrl="resourceUrl"
+      :siteResourceUrl="siteResourceUrl"
       :siteIsNewPromotion="siteIsNewPromotion"
       @open-banner="openBanner"
     />
@@ -12,7 +12,7 @@
 
       <HomeGameBlock
         :list="productList"
-        :resourceUrl="resourceUrl"
+        :siteResourceUrl="siteResourceUrl"
         :isLoggedIn="isLoggedIn"
         @handleGameLink="handleGameLink"
       />
@@ -124,14 +124,13 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'siteID',
-      'siteFullCss',
       'lang',
-      'isLoggedIn',
-      'resourceUrl',
+      'siteFullCss',
+      'siteResourceUrl',
       'siteIsNewPromotion',
       'siteMainPageNoticeUrl',
       'siteIsShowMainNotice',
+      'isLoggedIn',
     ]),
   },
   data() {

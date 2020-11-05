@@ -25,7 +25,7 @@ import { getBetHistoryUnsettle } from '@/api/report';
 export default {
   name: 'ReportUnsettleBet',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['lang', 'siteFullCss']),
   },
   data() {
     return {

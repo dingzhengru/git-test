@@ -34,7 +34,7 @@ export default {
     AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss']),
+    ...mapGetters(['siteFullCss']),
   },
   data() {
     return {

@@ -40,7 +40,7 @@ import { getMailCategoryList, sendMail } from '@/api/notification';
 export default {
   name: 'NotificationOutbox',
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['lang', 'siteFullCss']),
   },
   data() {
     return {

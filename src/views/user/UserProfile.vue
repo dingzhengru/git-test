@@ -42,9 +42,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'isAccountOpen',
-      'siteID',
       'siteFullCss',
+      'isAccountOpen',
       'username',
       'currency',
       'createdDatetime',

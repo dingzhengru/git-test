@@ -116,7 +116,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'isEnableRememberOption']),
+    ...mapGetters(['siteFullCss', 'isEnableRememberOption']),
   },
   data() {
     return {

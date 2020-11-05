@@ -74,7 +74,7 @@ export default {
     GameTransferDialog: () => import('@/components/game/GameTransferDialog'),
   },
   computed: {
-    ...mapGetters(['siteID', 'siteFullCss', 'lang']),
+    ...mapGetters(['lang', 'siteFullCss']),
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
     },
