@@ -1,13 +1,13 @@
 //* Route
 
 //* 不顯示 Header 的頁面
-export const NO_HEADER_ROUTE_LIST = ['SignIn'];
+export const ROUTE_NO_HEADER_LIST = ['SignIn'];
 
 //* 不顯示 Footer 的頁面
-export const NO_FOOTER_ROUTE_LIST = ['SignIn', 'Maintenance'];
+export const ROUTE_NO_FOOTER_LIST = ['SignIn', 'Maintenance'];
 
 //* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
-export const AUTH_ROUTE_LIST = [
+export const ROUTE_AUTH_LIST = [
   'GameHome',
   'GameLobby',
   'UserProfile',
@@ -27,9 +27,7 @@ export const AUTH_ROUTE_LIST = [
   'NotificationOutbox',
 ];
 //* "不需要"登入才能進入的 route name
-export const NO_AUTH_ROUTE_LIST = ['Login', 'Register', 'ForgetPassword', 'SignIn'];
-//* 需要開通才能進入的 route name (利用 beforeEach & store.getters.isAccessed)
-export const ACCESS_ROUTE_LIST = [];
+export const ROUTE_NO_AUTH_LIST = ['Login', 'Register', 'ForgetPassword', 'SignIn'];
 
 //* API
 
@@ -38,10 +36,10 @@ export const ACCESS_ROUTE_LIST = [];
 export const API_URL = '/api';
 
 //* http 請求的 timeout
-export const REQUEST_TIMEOUT = 30000;
+export const API_REQUEST_TIMEOUT = 30000;
 
 //* 需要 Authorization bearer token 的 API
-export const AUTH_API_LIST = [
+export const API_AUTH_LIST = [
   'Member/LoginIn',
   'Member/LogOut',
   'Member/SimpleRegister',
@@ -98,21 +96,21 @@ export const AUTH_API_LIST = [
 ];
 
 //* 需加密的 API
-export const CRYPTO_API_LIST = ['Member/LoginIn', 'Member/MChangePassword', 'Member/MChgWithdrawalsPwd'];
+export const API_CRYPTO_LIST = ['Member/LoginIn', 'Member/MChangePassword', 'Member/MChgWithdrawalsPwd'];
 
 //* 需使用"大數據加密"的 API
-export const CRYPTO_BIG_DATA_API_LIST = [
+export const API_CRYPTO_BIG_DATA_LIST = [
   'Member/SimpleRegister',
   'Operator/MWithdrawals',
   'Member/AdvancedRegisterNew',
 ];
 
 //* 需使用"大數據加密"的 API，但並非全部參數都要加密的情況，EX: 存款動作中的匯款收據圖片
-export const NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST = ['Operator/MSingleDeposit'];
+export const API_NOT_ALL_PARAMS_CRYPTO_BIG_DATA_LIST = ['Operator/MSingleDeposit'];
 
 //* 回傳為 599 時，但不要 alert 的 API
 //* 登入、註冊、需開新頁面的 API (避免 alert 中斷)
-export const NO_ALERT_API_LIST = [
+export const API_NO_ALERT_LIST = [
   'Member/LoginIn',
   'Member/SimpleRegister',
   'Game/MGameRedirectUrl',
@@ -120,7 +118,7 @@ export const NO_ALERT_API_LIST = [
 ];
 
 //* 不顯示 Loading 的 API
-export const NO_LOADING_API_LIST = [
+export const API_NO_LOADING_LIST = [
   'Siteinfo/KeepUserOnline',
   'Game/MGetJackpotTotal',
   'Member/CheckField',

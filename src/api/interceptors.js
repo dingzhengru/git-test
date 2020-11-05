@@ -1,13 +1,13 @@
 import store from '@/store';
 import axios from 'axios';
 import {
-  REQUEST_TIMEOUT,
-  AUTH_API_LIST,
-  CRYPTO_API_LIST,
-  CRYPTO_BIG_DATA_API_LIST,
-  NO_ALERT_API_LIST,
-  NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST,
-  NO_LOADING_API_LIST,
+  API_REQUEST_TIMEOUT,
+  API_AUTH_LIST,
+  API_CRYPTO_LIST,
+  API_CRYPTO_BIG_DATA_LIST,
+  API_NOT_ALL_PARAMS_CRYPTO_BIG_DATA_LIST,
+  API_NO_ALERT_LIST,
+  API_NO_LOADING_LIST,
 } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 import { i18n } from '@/i18n-lazy';
@@ -18,7 +18,7 @@ import { i18n } from '@/i18n-lazy';
 // }
 
 //* 設置 timeout (預設是 0，代表沒有 timeout)
-axios.defaults.timeout = REQUEST_TIMEOUT;
+axios.defaults.timeout = API_REQUEST_TIMEOUT;
 
 //* 針對 502: TokenError，615: JsonError
 //* 看要選擇重整，還是重新發送請求(目前只有登入是重新發送)
@@ -33,7 +33,7 @@ let Responded201Count = 0;
 axios.interceptors.request.use(
   config => {
     //* 放進 loading 列表，篩選掉不會進 loading 的 API
-    if (!NO_LOADING_API_LIST.find(item => config.url.includes(item))) {
+    if (!API_NO_LOADING_LIST.find(item => config.url.includes(item))) {
       store.commit('pushLoadingRequest');
     }
 
@@ -41,28 +41,28 @@ axios.interceptors.request.use(
     // retryRequestData = config.data;
 
     //* 判斷是否在認證列表中 (於 header 加上 Authorization: bearer ${token})
-    if (AUTH_API_LIST.find(item => config.url.includes(item))) {
+    if (API_AUTH_LIST.find(item => config.url.includes(item))) {
       config.headers = {
         Authorization: `Bearer ${store.getters.token}`,
       };
     }
 
     //* 判斷是否在加密列表中 (一般資料大小)
-    if (CRYPTO_API_LIST.find(item => config.url.includes(item))) {
+    if (API_CRYPTO_LIST.find(item => config.url.includes(item))) {
       config.data = {
         rsaMsg: rsaEncrypt(config.data, store.getters.publicKey),
       };
     }
 
     //* 判斷是否在加密列表中 (大數據加密)
-    else if (CRYPTO_BIG_DATA_API_LIST.find(item => config.url.includes(item))) {
+    else if (API_CRYPTO_BIG_DATA_LIST.find(item => config.url.includes(item))) {
       config.data = {
         rsaMsg: rsaEncryptLong(config.data, store.getters.publicKey),
       };
     }
 
     //* 判斷是否在加密列表中 (大數據加密)，但並非全部參數都要加密的情況，EX: 存款動作
-    else if (NOT_ALL_PARAMS_CRYPTO_BIG_DATA_API_LIST.find(item => config.url.replace('/api/', '') == item)) {
+    else if (API_NOT_ALL_PARAMS_CRYPTO_BIG_DATA_LIST.find(item => config.url.replace('/api/', '') == item)) {
       const rsaMsg = rsaEncryptLong(config.data.rsaData, store.getters.publicKey);
       const noRsaData = config.data.noRsaData;
 
@@ -81,7 +81,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   async res => {
     //* 放進 loading 列表，篩選掉不會進 loading 的 API
-    if (!NO_LOADING_API_LIST.find(item => res.config.url.includes(item))) {
+    if (!API_NO_LOADING_LIST.find(item => res.config.url.includes(item))) {
       store.commit('popLoadingRequest');
     }
 
@@ -115,7 +115,7 @@ axios.interceptors.response.use(
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
       //* 篩選掉不要 alert 的 api
-      if (!NO_ALERT_API_LIST.find(item => res.config.url.includes(item))) {
+      if (!API_NO_ALERT_LIST.find(item => res.config.url.includes(item))) {
         window.alert(res.data.ErrMsg);
       }
     } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
@@ -144,7 +144,7 @@ axios.interceptors.response.use(
         alertMessage = i18n.t('alert.loadFailed');
       }
       window.alert(alertMessage);
-    } else if (!NO_LOADING_API_LIST.find(item => error.config.url.includes(item))) {
+    } else if (!API_NO_LOADING_LIST.find(item => error.config.url.includes(item))) {
       store.commit('popLoadingRequest');
     }
 

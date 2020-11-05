@@ -32,7 +32,7 @@
 import { mapGetters } from 'vuex';
 import { getLangList } from '@/api/lang';
 
-import { NO_HEADER_ROUTE_LIST, NO_FOOTER_ROUTE_LIST } from '@/settings';
+import { ROUTE_NO_HEADER_LIST, ROUTE_NO_FOOTER_LIST } from '@/settings';
 
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
@@ -72,10 +72,10 @@ export default {
       'siteEnableSpareDomain',
     ]),
     isShowHeader() {
-      return !NO_HEADER_ROUTE_LIST.includes(this.$route.name);
+      return !ROUTE_NO_HEADER_LIST.includes(this.$route.name);
     },
     isShowFooter() {
-      if (NO_FOOTER_ROUTE_LIST.includes(this.$route.name) || this.siteStatus != 0) {
+      if (ROUTE_NO_FOOTER_LIST.includes(this.$route.name) || this.siteStatus != 0) {
         return false;
       }
       return true;

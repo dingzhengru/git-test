@@ -37,19 +37,10 @@ export async function loadLanguageAsync(lang) {
   }
 
   //* 載入語言
-  const messages = await import(`@/locales/${lang}.json`);
+  const messages = await import(`@/locales/${lang}.json`); /* jshint ignore:line */
   i18n.setLocaleMessage(lang, messages.default);
   loadedLanguages.push(lang);
   return setI18nLanguage(lang);
-
-  //* 官方原做法
-  // return import(`@/locales/${lang}.json`).then(
-  //   messages => {
-  //     i18n.setLocaleMessage(lang, messages.default)
-  //     loadedLanguages.push(lang)
-  //     return setI18nLanguage(lang)
-  //   }
-  // )
 }
 
 export default i18n;
