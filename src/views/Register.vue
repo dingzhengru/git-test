@@ -32,7 +32,6 @@
             :class="{ 'register__form__field__select--default': field.value == '' }"
             :id="idMapper.register.input[field.name]"
             v-model="field.value"
-            :required="field.rules['register-required']"
             v-else
           >
             <option :value="bank.Value" v-for="bank in bankList" :key="bank.Value">{{ bank.Text }}</option>
@@ -110,10 +109,11 @@ export default {
       const lastName = this.fieldList.find(item => item.name == 'Add_LastName').value;
 
       if (this.lang == 'zh-cn') {
-        fullName = `${lastName}${firstName}`;
+        fullName = `${lastName}${firstName}`.trim();
       } else {
-        fullName = `${firstName} ${lastName}`;
+        fullName = `${firstName} ${lastName}`.trim();
       }
+
       return fullName;
     },
   },
@@ -321,6 +321,12 @@ export default {
         color: #959595;
         content: attr(placeholder);
       }
+
+      &__input:disabled {
+        opacity: 0.6;
+        color: #959595;
+      }
+
       &__hint {
         display: block;
         margin: 5px 0;
