@@ -13,12 +13,6 @@ export async function getRegisterAdvanceNew() {
   return result.data;
 }
 
-//* 查詢推薦人是否存在
-// export async function checkRelatedAccountExist(params) {
-//   const result = await axios.post(API_URL + '/Member/AdvancedCashAgent', {}, { params });
-//   return result.data;
-// }
-
 //* 查詢註冊欄位
 export async function checkRegisterFieldExist(params) {
   const result = await axios.post(API_URL + '/Member/CheckField', {}, { params });

@@ -34,8 +34,8 @@ import { ROUTE_NO_HEADER_LIST, ROUTE_NO_FOOTER_LIST } from '@/settings';
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
 import AppLoadingOverlay from '@/components/AppLoadingOverlay';
-import { getManifestUrl } from '@/api/manifest';
 import langMixin from '@/mixins/lang';
+// import { apiGetManifestUrl } from '@/api/manifest';
 
 export default {
   name: 'App',
@@ -54,6 +54,7 @@ export default {
       'siteStatus',
       'siteIsSpare',
       'siteEnableSpareDomain',
+      'siteManifestUrl',
       'siteFaviconUrl',
       'siteLogoUrl',
       'siteAppIconUrl',
@@ -94,7 +95,7 @@ export default {
     import(`@/styles/${this.siteFullCss}/footer.scss`);
 
     //* 載入 manifest
-    document.querySelector('#manifest').setAttribute('href', getManifestUrl());
+    document.querySelector('link[rel=manifest]').setAttribute('href', this.siteManifestUrl);
 
     //* 設置 Favicon
     document.querySelector('#favicon').setAttribute('href', this.siteFaviconUrl);

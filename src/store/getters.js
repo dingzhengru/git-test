@@ -1,3 +1,5 @@
+import { API_URL } from '@/settings';
+
 const getters = {
   lang: state => state.lang,
   langList: state => state.langList,
@@ -28,6 +30,9 @@ const getters = {
   siteEnableSpareDomain: state => state.site.info.EnableSpareDomain,
   siteFullCss: state => {
     return `${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Type}`;
+  },
+  siteManifestUrl: () => {
+    return `${API_URL}/Siteinfo/ManifestJson`;
   },
   siteFaviconUrl: state => {
     //* Favicon: {siteResourceUrl}/imgs/favicon/favicon.ico
