@@ -6,17 +6,17 @@ const transferConfig = {
   timeout: 20000,
 };
 
-export async function getTransferInfo() {
+export async function apiGetTransferInfo() {
   const result = await axios.post(API_URL + '/Operator/MTransferInfo');
   return result.data;
 }
 
-export async function transferPoint(data) {
+export async function apiTransferPoint(data) {
   const result = await axios.post(API_URL + '/Operator/MTransferPoint', data, transferConfig);
   return result.data;
 }
 
-export async function transferAllGamePointToMain() {
+export async function apiTransferAllGamePointToMain() {
   const result = await axios.post(API_URL + '/Operator/MPointTransferForAllGame', {}, transferConfig);
   return result.data;
 }

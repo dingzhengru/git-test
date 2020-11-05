@@ -31,8 +31,8 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import { changePasswordWithdrawal } from '@/api/user';
-import { getRegisterAdvanceNew, checkRegisterFieldExist } from '@/api/register';
+import { apiChangePasswordWithdrawal } from '@/api/user';
+import { apiGetRegisterAdvanceNew, apiCheckRegisterFieldExist } from '@/api/register';
 
 export default {
   name: 'Profile',
@@ -74,7 +74,7 @@ export default {
     },
     async changeWithdrawalPassword(data) {
       console.log('[ChangeWithdrawalPassword]', data);
-      const result = await changePasswordWithdrawal(data);
+      const result = await apiChangePasswordWithdrawal(data);
 
       console.log('[ChangeWithdrawalPassword]', result);
       if (result.Code == 200) {
@@ -88,7 +88,7 @@ export default {
 
       if (field.isOnly) {
         const requestData = { field: field.name, strValue: field.value };
-        const result = await checkRegisterFieldExist(requestData);
+        const result = await apiCheckRegisterFieldExist(requestData);
         if (result == false) {
           field.value = oldField.value;
           alert(this.$t(`register.${field.name}.error.invalid`));
@@ -106,7 +106,7 @@ export default {
       async handler() {
         if (this.isAccountOpen === false) {
           console.log('[isAccountOpen]', this.isAccountOpen);
-          const result = await getRegisterAdvanceNew();
+          const result = await apiGetRegisterAdvanceNew();
           console.log('[RegisterAdvanceNew]', result);
 
           this.registerList = result.RetObj.Register;

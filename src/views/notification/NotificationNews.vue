@@ -18,7 +18,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getNewsList } from '@/api/notification';
+import { apiGetNewsList } from '@/api/notification';
 export default {
   name: 'NotificationNews',
   components: {
@@ -49,7 +49,7 @@ export default {
   methods: {
     async getNewsList() {
       const requestData = { Page: this.pagination.page };
-      const result = await getNewsList(requestData);
+      const result = await apiGetNewsList(requestData);
       console.log('[News]', result);
 
       this.list = result.RetObj.Rows;

@@ -88,11 +88,14 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getCaptcha } from '@/api/captcha';
-import { getRegisterFieldList, checkRegisterFieldExist } from '@/api/register';
+
+import { apiGetCaptcha } from '@/api/captcha';
+import { apiGetRegisterFieldList, apiCheckRegisterFieldExist } from '@/api/register';
+
 import { registerFieldList } from '@/utils/register';
-import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import '@/utils/vee-validate.js';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+
 import idMapper from '@/idMapper';
 
 export default {
@@ -134,7 +137,7 @@ export default {
   methods: {
     async changeCaptcha() {
       const requestDataCaptcha = { pageCode: 'MemberRegister' };
-      const result = await getCaptcha(requestDataCaptcha);
+      const result = await apiGetCaptcha(requestDataCaptcha);
       console.log('[Captcha]', result.RetObj);
       if (result.Code == 200) {
         this.captchaImage = result.RetObj;
@@ -176,7 +179,7 @@ export default {
       }
       if (field.name == 'Add_RelatedAccount' && field.value) {
         const requestData = { field: field.name, strValue: field.value };
-        const result = await checkRegisterFieldExist(requestData);
+        const result = await apiCheckRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
           window.alert(this.$t('register.Add_RelatedAccount.invalid'));
@@ -189,14 +192,14 @@ export default {
           return;
         }
         const requestData = { field: 'Add_RealName', strValue: this.fullName };
-        const result = await checkRegisterFieldExist(requestData);
+        const result = await apiCheckRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
           window.alert(this.$t('register.Add_RealName.invalid'));
         }
       } else if (field.isOnly == true && field.value) {
         const requestData = { field: field.name, strValue: field.value };
-        const result = await checkRegisterFieldExist(requestData);
+        const result = await apiCheckRegisterFieldExist(requestData);
         if (result == false) {
           field.value = '';
           window.alert(this.$t(`register.${field.name}.invalid`));
@@ -213,7 +216,7 @@ export default {
       await this.$store.dispatch('user/getTokenAndPublicKey');
     }
 
-    getRegisterFieldList().then(result => {
+    apiGetRegisterFieldList().then(result => {
       console.log('[Register]', result.RetObj);
 
       this.bankList = result.RetObj.Add_BankList;

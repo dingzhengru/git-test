@@ -129,8 +129,10 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getAllGamePoint } from '@/api/user';
-import { getTransferInfo, transferPoint, transferAllGamePointToMain } from '@/api/transaction-transfer';
+
+import { apiGetAllGamePoint } from '@/api/user';
+import { apiGetTransferInfo, apiTransferPoint, apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
+
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import '@/utils/vee-validate.js';
 import numeral from 'numeral';
@@ -179,19 +181,19 @@ export default {
   },
   methods: {
     async getTransferInfo() {
-      const result = await getTransferInfo();
+      const result = await apiGetTransferInfo();
       console.log('[Transfer]', result.RetObj);
       this.productList = result.RetObj.Add_SourceList;
       this.productDetailList = result.RetObj.MenuMemberDetailItemList;
     },
     async getAllGamePoint() {
-      const result = await getAllGamePoint();
+      const result = await apiGetAllGamePoint();
       console.log('[AllGamePoint]', result.RetObj);
       this.updateGamePoint(result);
     },
     async submitTransferPoint() {
       const requestData = { Add_Source: this.from, Add_Destination: this.to, Add_TransferPoint: this.amount };
-      const result = await transferPoint(requestData);
+      const result = await apiTransferPoint(requestData);
       console.log('[TransferPoint]', result);
 
       if (result.Code == 200) {
@@ -200,7 +202,7 @@ export default {
       }
     },
     async transferToMain() {
-      const result = await transferAllGamePointToMain();
+      const result = await apiTransferAllGamePointToMain();
       console.log('[TransferToMain]', result);
       if (result.Code == 200) {
         this.updateGamePoint(result);

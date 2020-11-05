@@ -19,8 +19,8 @@ import i18n from '@/i18n-lazy'; //* 語言載入
 import { getLang, getIsLoggedIn, getToken, getPublicKey } from '@/utils/cookie';
 
 //* API
-import { getTokenAndPublicKey, keepUserOnline } from '@/api/user'; //* API
-import { getLangList } from '@/api/lang';
+import { apiGetTokenAndPublicKey, apiKeepUserOnline } from '@/api/user'; //* API
+import { apiGetLangList } from '@/api/lang';
 
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
@@ -35,7 +35,7 @@ if (getToken() && getPublicKey()) {
   store.commit('user/setPublicKey', getPublicKey());
 } else if (isLoggedIn) {
   //* 只有登入後的狀態才會去跟後端要
-  getTokenAndPublicKey().then(result => {
+  apiGetTokenAndPublicKey().then(result => {
     store.commit('user/setToken', result.RetObj.token);
     store.commit('user/setPublicKey', result.RetObj.publickey);
   });
@@ -54,7 +54,7 @@ if (getToken() && getPublicKey()) {
   await store.commit('setLang', getLang());
 
   //* 取得語系列表
-  getLangList().then(result => {
+  apiGetLangList().then(result => {
     if (result.Code == 200) {
       store.commit('setLangList', result.RetObj);
       console.log('[Lang]', result.RetObj);
@@ -63,7 +63,7 @@ if (getToken() && getPublicKey()) {
 
   //* 心跳，剛進來也要執行一次
   if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
-    keepUserOnline().then(result => {
+    apiKeepUserOnline().then(result => {
       console.log('[KeepUserOnline]', result.RetObj);
     });
   }
@@ -71,7 +71,7 @@ if (getToken() && getPublicKey()) {
     //* document.visibilityState & document.hasFocus()
     //* 前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
     if (document.visibilityState == 'visible' && store.getters.isLoggedIn) {
-      const result = await keepUserOnline();
+      const result = await apiKeepUserOnline();
       console.log('[KeepUserOnline]', result.RetObj);
     }
   }, 50000);

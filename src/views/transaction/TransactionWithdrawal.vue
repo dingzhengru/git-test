@@ -157,8 +157,10 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getWithdrawalInfo, Withdrawal } from '@/api/transaction-withdrawal';
-import { transferAllGamePointToMain } from '@/api/transaction-transfer';
+
+import { apiGetWithdrawalInfo, apiWithdrawal } from '@/api/transaction-withdrawal';
+import { apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
+
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import '@/utils/vee-validate.js';
 import numeral from 'numeral';
@@ -196,7 +198,7 @@ export default {
   },
   methods: {
     async getWithdrawalInfo() {
-      const result = await getWithdrawalInfo();
+      const result = await apiGetWithdrawalInfo();
       console.log('[Withdrawal]', result.RetObj);
       this.withdrawalInfo = result.RetObj;
       this.bankList = result.RetObj.Add_MemberBankAccountList;
@@ -211,7 +213,7 @@ export default {
       // this.amountLimit.max = result.RetObj.WithalUplimit;
     },
     async transferToMain() {
-      const result = await transferAllGamePointToMain();
+      const result = await apiTransferAllGamePointToMain();
       if (result.Code == 200) {
         console.log('[TransferToMain]', result.RetObj);
         const wallet = this.withdrawalInfo.Lst_Point;
@@ -236,7 +238,7 @@ export default {
 
       console.log('[WithdrawalRequestData]', requestData);
 
-      const result = await Withdrawal(requestData);
+      const result = await apiWithdrawal(requestData);
       console.log('[Withdrawal]', result);
       if (result.Code == 200) {
         this.$router.push({ name: 'TransactionRecordContent', params: { name: 'withdrawal' } });

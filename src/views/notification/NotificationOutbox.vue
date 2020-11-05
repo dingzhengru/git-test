@@ -35,7 +35,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getMailCategoryList, sendMail } from '@/api/notification';
+import { apiGetMailCategoryList, apiSendMail } from '@/api/notification';
 
 export default {
   name: 'NotificationOutbox',
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     async submitMail() {
-      const result = await sendMail(this.mail);
+      const result = await apiSendMail(this.mail);
 
       if (result.Code == 200) {
         console.log('[SendMail]', result);
@@ -65,7 +65,7 @@ export default {
       }
     },
     async getMailCategoryList() {
-      const result = await getMailCategoryList();
+      const result = await apiGetMailCategoryList();
       console.log('[MailCategoryList]', result);
 
       this.categoryList = result.RetObj;

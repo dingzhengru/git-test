@@ -1,14 +1,14 @@
 import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
 import router from '@/router';
 import {
-  register,
-  login,
-  logout,
-  getUserInfo,
-  getTokenAndPublicKey,
-  getAllGamePoint,
-  getBankInfoList,
-  advancedRegisterNew,
+  apiRegister,
+  apiLogin,
+  apiLogout,
+  apiGetUserInfo,
+  apiGetTokenAndPublicKey,
+  apiGetAllGamePoint,
+  apiGetBankInfoList,
+  apiAdvancedRegisterNew,
 } from '@/api/user';
 
 const state = {
@@ -40,7 +40,7 @@ const mutations = {
 
     state.info = info;
 
-    getBankInfoList().then(result => {
+    apiGetBankInfoList().then(result => {
       console.log('[SetUserInfo BankInfoList]', result.RetObj);
 
       const bank1 = result.RetObj.find(item => item.Lst_BankId == state.bankId1) || '';
@@ -52,7 +52,7 @@ const mutations = {
       state.info.bankName3 = bank3.Lst_BankName || '';
     });
 
-    getAllGamePoint().then(result => {
+    apiGetAllGamePoint().then(result => {
       console.log('[SetUserInfo AllGamePoint]', result.RetObj.TotalBalance);
       state.totalBalance = result.RetObj.TotalBalance;
     });
@@ -69,27 +69,27 @@ const mutations = {
 
 const actions = {
   async getTokenAndPublicKey({ commit }) {
-    const result = await getTokenAndPublicKey();
+    const result = await apiGetTokenAndPublicKey();
     commit('setToken', result.RetObj.token);
     commit('setPublicKey', result.RetObj.publickey);
     return result;
   },
   async getInfo({ commit }) {
-    const result = await getUserInfo();
+    const result = await apiGetUserInfo();
     commit('setUserInfo', result.RetObj);
     return result;
   },
   async advancedRegisterNew({ commit }, data) {
     //* 開通帳號
 
-    const result = await advancedRegisterNew(data);
+    const result = await apiAdvancedRegisterNew(data);
     if (result.Code == 200) {
       commit('setUserInfo', result.RetObj);
     }
     return result;
   },
   async register({ commit }, data) {
-    const result = await register(data);
+    const result = await apiRegister(data);
 
     console.log('[Register Response]', result);
 
@@ -102,7 +102,7 @@ const actions = {
     return result;
   },
   async login({ commit }, user) {
-    const result = await login(user);
+    const result = await apiLogin(user);
 
     console.log('[Login Response]', result);
 
@@ -115,7 +115,7 @@ const actions = {
   },
   async logout({ commit }) {
     try {
-      await logout();
+      await apiLogout();
     } finally {
       commit('removeToken');
       commit('removePublicKey');

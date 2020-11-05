@@ -232,7 +232,9 @@
 <script>
 import { mapGetters } from 'vuex';
 import idMapper from '@/idMapper';
-import { getDepositInfo, deposit } from '@/api/transaction-deposit';
+
+import { apiGetDepositInfo, apiDeposit } from '@/api/transaction-deposit';
+
 import dayjs from 'dayjs';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import '@/utils/vee-validate.js';
@@ -274,7 +276,7 @@ export default {
   },
   methods: {
     async getDepositInfo() {
-      const result = await getDepositInfo();
+      const result = await apiGetDepositInfo();
       console.log('[DepositInfo]', result.RetObj);
 
       if (result.Code == 200) {
@@ -329,7 +331,7 @@ export default {
 
       console.log('[SubmitDeposit]', requestData);
 
-      const result = await deposit(requestData);
+      const result = await apiDeposit(requestData);
       console.log('[Deposit]', result);
 
       if (result.Code == 200) {

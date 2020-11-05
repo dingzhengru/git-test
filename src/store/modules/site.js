@@ -1,4 +1,4 @@
-import { getSiteInfo, getSiteSeoInfo } from '@/api/site';
+import { apiGetSiteInfo, apiGetSiteSeoInfo } from '@/api/site';
 
 const state = {
   info: {},
@@ -16,7 +16,7 @@ const mutations = {
 
 const actions = {
   async getInfo({ commit }, requestData) {
-    const result = await getSiteInfo(requestData);
+    const result = await apiGetSiteInfo(requestData);
 
     console.log('[SiteInfo]', result);
     if (result.Code == 200) {
@@ -33,7 +33,7 @@ const actions = {
     return result;
   },
   async getSeoInfo({ commit }) {
-    const result = await getSiteSeoInfo();
+    const result = await apiGetSiteSeoInfo();
 
     console.log('[SiteSeoInfo]', result);
     if (result.Code == 200) {

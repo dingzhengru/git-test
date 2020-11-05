@@ -12,7 +12,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getBetHistoryDay } from '@/api/report';
+import { apiGetBetHistoryDay } from '@/api/report';
 
 export default {
   name: 'ReportBetRecordDetail',
@@ -36,7 +36,7 @@ export default {
         Day: `${this.$route.params.date.split(' ')[0]} 12:00:00`,
       };
 
-      const result = await getBetHistoryDay(requestData);
+      const result = await apiGetBetHistoryDay(requestData);
       if (result.Code == 200) {
         this.totalObject = {
           BetCount: result.RetObj.BetCount,

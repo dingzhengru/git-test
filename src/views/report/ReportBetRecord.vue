@@ -52,7 +52,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import numeral from 'numeral';
-import { getBetHistoryDay, getBetHistoryWeek } from '@/api/report';
+import { apiGetBetHistoryDay, apiGetBetHistoryWeek } from '@/api/report';
 export default {
   name: 'ReportBetRecord',
   components: {
@@ -76,7 +76,7 @@ export default {
       console.log('[ReportBetRecord]', this.dateRange);
       if (this.dateRange == 'Today') {
         const requestData = { Tag: this.dateRange };
-        const result = await getBetHistoryDay(requestData);
+        const result = await apiGetBetHistoryDay(requestData);
 
         if (result.Code == 200) {
           this.totalObject = {
@@ -90,7 +90,7 @@ export default {
         console.log('[BetHistoryDay]', result);
       } else {
         const requestData = { Tag: this.dateRange };
-        const result = await getBetHistoryWeek(requestData);
+        const result = await apiGetBetHistoryWeek(requestData);
 
         this.recordList = [];
 

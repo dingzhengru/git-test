@@ -104,7 +104,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { ToggleButton } from 'vue-js-toggle-button';
-import { changePassword, changeRemember } from '@/api/user';
+import { apiChangePassword, apiChangeRemember } from '@/api/user';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import '@/utils/vee-validate.js';
 
@@ -137,7 +137,7 @@ export default {
         Add_PasswordCheck: this.passwordCheck,
       };
 
-      const result = await changePassword(requestData);
+      const result = await apiChangePassword(requestData);
       console.log('[ChangePassword]', result);
 
       if (result.Code == 200) {
@@ -148,7 +148,7 @@ export default {
     },
     async changeRemember() {
       const requestData = { ReMember: this.isRememberPassword };
-      const result = await changeRemember(requestData);
+      const result = await apiChangeRemember(requestData);
 
       console.log('[ChangeRemember]', result);
       if (result.Code == 200) {

@@ -125,7 +125,7 @@
 <script>
 import loginMixin from '@/mixins/login';
 import { mapGetters } from 'vuex';
-import { getRememberInfo } from '@/api/user';
+import { apiGetRememberInfo } from '@/api/user';
 
 export default {
   mixins: [loginMixin],
@@ -143,7 +143,7 @@ export default {
 
     //* 取得記憶帳密(先判斷此 Site 是否開放此功能)
     if (this.siteIsOpenRememberMe) {
-      const result = await getRememberInfo();
+      const result = await apiGetRememberInfo();
       console.log('[RememberInfo]', result);
 
       if (result.Code == 200) {

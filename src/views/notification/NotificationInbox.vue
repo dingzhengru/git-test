@@ -26,7 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getInboxList } from '@/api/notification';
+import { apiGetInboxList } from '@/api/notification';
 
 export default {
   name: 'NotificationInbox',
@@ -60,7 +60,7 @@ export default {
   methods: {
     async getInboxList() {
       const requestData = { Page: this.pagination.page };
-      const result = await getInboxList(requestData);
+      const result = await apiGetInboxList(requestData);
       console.log('[Inbox]', result);
 
       this.list = result.RetObj.Rows;

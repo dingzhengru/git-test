@@ -41,7 +41,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getInboxDetail, sendMail } from '@/api/notification';
+import { apiGetInboxDetail, apiSendMail } from '@/api/notification';
 
 export default {
   name: 'NotificationInboxDetail',
@@ -57,7 +57,7 @@ export default {
   methods: {
     async getInboxDetail() {
       const requestData = { KEY: this.$route.params.key };
-      const result = await getInboxDetail(requestData);
+      const result = await apiGetInboxDetail(requestData);
       console.log('[Inbox]', result);
 
       this.list = result.RetObj.Rows;
@@ -69,7 +69,7 @@ export default {
         Add_Content: this.content,
         Add_ReplyPath: this.list.map(item => item.Lst_Key).join(':'),
       };
-      const result = await sendMail(requestData);
+      const result = await apiSendMail(requestData);
 
       if (result.Code == 200) {
         console.log('[SendMail]', result);

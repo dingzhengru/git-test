@@ -35,7 +35,6 @@ import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
 import AppLoadingOverlay from '@/components/AppLoadingOverlay';
 import langMixin from '@/mixins/lang';
-// import { apiGetManifestUrl } from '@/api/manifest';
 
 export default {
   name: 'App',

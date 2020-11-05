@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { getJackpotTotal } from '@/api/game';
+import { apiGetJackpotTotal } from '@/api/game';
 import numeral from 'numeral';
 export default {
   name: 'GameHome',
@@ -39,7 +39,7 @@ export default {
   methods: {
     async getJackpotTotal() {
       const requestData = { Tag: this.productTag };
-      const result = await getJackpotTotal(requestData);
+      const result = await apiGetJackpotTotal(requestData);
       console.log('[Jackpot]', result.RetObj);
       if (result.Code == 200) {
         this.jackpot = result.RetObj;

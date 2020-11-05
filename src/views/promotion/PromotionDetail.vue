@@ -30,7 +30,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getPromotionDetail } from '@/api/promotion';
+import { apiGetPromotionDetail } from '@/api/promotion';
 
 // import 'quill/dist/quill.core.css';
 import '@/vender/quill/quill.core.css';
@@ -69,7 +69,7 @@ export default {
       console.log('[GetPromotionDetail]', this.$route.params.id);
 
       const requestData = { PromotionId: Number(this.$route.params.id) };
-      const result = await getPromotionDetail(requestData);
+      const result = await apiGetPromotionDetail(requestData);
       console.log('[PromotionDetail]', result);
       if (result.Code == 200) {
         this.image = result.RetObj.ImageUrl;

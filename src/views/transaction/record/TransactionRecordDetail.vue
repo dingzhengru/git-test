@@ -53,10 +53,10 @@ import { mapGetters } from 'vuex';
 import numeral from 'numeral';
 
 import {
-  getRecordDepositDetail,
-  getRecordWithdrawalDetail,
-  getRecordTransferDetail,
-  getRecordDetailWithdrawalRestriction,
+  apiGetRecordDepositDetail,
+  apiGetRecordWithdrawalDetail,
+  apiGetRecordTransferDetail,
+  apiGetRecordDetailWithdrawalRestriction,
 } from '@/api/transaction-record';
 
 export default {
@@ -96,7 +96,7 @@ export default {
     async getRecordDetail() {
       switch (this.$route.params.name) {
         case 'deposit': {
-          const result = await getRecordDepositDetail(this.$route.query);
+          const result = await apiGetRecordDepositDetail(this.$route.query);
           console.log('[RecordDepositDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
@@ -115,7 +115,7 @@ export default {
           break;
         }
         case 'withdrawal': {
-          const result = await getRecordWithdrawalDetail(this.$route.query);
+          const result = await apiGetRecordWithdrawalDetail(this.$route.query);
           console.log('[RecordWithdrawalDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
@@ -131,7 +131,7 @@ export default {
           break;
         }
         case 'transfer': {
-          const result = await getRecordTransferDetail(this.$route.query);
+          const result = await apiGetRecordTransferDetail(this.$route.query);
           console.log('[RecordTransferDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
@@ -150,7 +150,7 @@ export default {
           break;
         }
         case 'withdrawalRestriction': {
-          const result = await getRecordDetailWithdrawalRestriction(this.$route.query);
+          const result = await apiGetRecordDetailWithdrawalRestriction(this.$route.query);
           console.log('[RecordDetailWithdrawalRestriction]', result);
 
           this.list = result.RetObj.map(item => {

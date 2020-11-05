@@ -21,7 +21,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getPromotionList } from '@/api/promotion';
+import { apiGetPromotionList } from '@/api/promotion';
 // import { isIos, openNewWindowURL } from '@/utils/device';
 
 export default {
@@ -37,7 +37,7 @@ export default {
   methods: {
     async getPromotionList() {
       //* 連結類型，0:無、1:自定義、2:優惠活動、3:遊戲館
-      const result = await getPromotionList();
+      const result = await apiGetPromotionList();
 
       console.log('[Promotion]', result);
 

@@ -47,19 +47,21 @@
 
 <script>
 import { mapGetters } from 'vuex';
+
 import {
-  getGameRedirectUrl,
-  getGameLobbyProduct,
-  getGameLobbyCategory,
-  getGameLobbyGameList,
-  getGameUrl,
-  getLiveGameLobbyProduct,
-  getLiveGameLobbyCategory,
-  getLiveGameLobbyGameList,
-  setGameLike,
+  apiGetGameRedirectUrl,
+  apiGetGameLobbyProduct,
+  apiGetGameLobbyCategory,
+  apiGetGameLobbyGameList,
+  apiGetGameUrl,
+  apiGetLiveGameLobbyProduct,
+  apiGetLiveGameLobbyCategory,
+  apiGetLiveGameLobbyGameList,
+  apiSetGameLike,
 } from '@/api/game';
-import { transferPoint } from '@/api/transaction-transfer';
-import { getAllGamePoint } from '@/api/user';
+import { apiTransferPoint } from '@/api/transaction-transfer';
+import { apiGetAllGamePoint } from '@/api/user';
+
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 
 export default {
@@ -142,7 +144,7 @@ export default {
   },
   methods: {
     async getAllGamePoint() {
-      const result = await getAllGamePoint();
+      const result = await apiGetAllGamePoint();
       this.gamePointList = result.RetObj.GameSitePoints;
       console.log('[GamePointList]', result.RetObj);
     },
@@ -150,9 +152,9 @@ export default {
       const requestData = { Tag: this.productTag };
       let result = {};
       if (this.$route.params.type == 1) {
-        result = await getLiveGameLobbyProduct(requestData);
+        result = await apiGetLiveGameLobbyProduct(requestData);
       } else if (this.$route.params.type == 2) {
-        result = await getGameLobbyProduct(requestData);
+        result = await apiGetGameLobbyProduct(requestData);
       }
       console.log('[GameLobby Product]', result.RetObj.ProductList);
       this.productList = result.RetObj.ProductList;
@@ -193,11 +195,11 @@ export default {
       let result = {};
       const requestData = { Tag: this.productTag };
       if (this.$route.params.type == 1) {
-        result = await getLiveGameLobbyCategory(requestData);
+        result = await apiGetLiveGameLobbyCategory(requestData);
         this.categoryList = this.defaultCategoryListLiveGame.concat(result.RetObj.gameCategoryList);
         this.guid = result.RetObj.H3GUID;
       } else if (this.$route.params.type == 2) {
-        result = await getGameLobbyCategory(requestData);
+        result = await apiGetGameLobbyCategory(requestData);
         this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
       }
       console.log('[GameLobby Category]', result.RetObj);
@@ -214,11 +216,11 @@ export default {
       };
       if (this.$route.params.type == 1) {
         requestData.H3GUID = this.guid;
-        result = await getLiveGameLobbyGameList(requestData);
+        result = await apiGetLiveGameLobbyGameList(requestData);
         this.gameList = result.RetObj.JsonGameList || [];
         this.gameLimitBetList = result.RetObj.GameLimitBet;
       } else if (this.$route.params.type == 2) {
-        result = await getGameLobbyGameList(requestData);
+        result = await apiGetGameLobbyGameList(requestData);
         this.gameList = result.RetObj.JsonGameList || [];
       }
       console.log('[GameLobby GameList]', result.RetObj);
@@ -240,7 +242,7 @@ export default {
         }
 
         const requestData = { Tag: this.productTag, Gameid: game.Lst_GameID, Freeplay: freePlay };
-        const result = await getGameUrl(requestData);
+        const result = await apiGetGameUrl(requestData);
         console.log('[GameLobby OpenGame]', result);
         if (result.Code == 200) {
           openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
@@ -267,7 +269,7 @@ export default {
         newWindow = window.open();
       }
 
-      const result = await getGameUrl(requestData);
+      const result = await apiGetGameUrl(requestData);
       console.log('[OpenLiveGame]', result);
 
       if (result.Code == 200) {
@@ -292,7 +294,7 @@ export default {
         newWindow = window.open();
       }
 
-      const result = await getGameRedirectUrl(requestData);
+      const result = await apiGetGameRedirectUrl(requestData);
       console.log('[OpenGameRedirectUrl]', result);
       if (result.Code == 200) {
         if (result.RetObj.iGameOpenType == 1) {
@@ -314,7 +316,7 @@ export default {
         Add_ProductKey: this.$route.params.key,
         Add_GameID: game.Lst_GameID,
       };
-      const result = await setGameLike(requestData);
+      const result = await apiSetGameLike(requestData);
 
       if (result.Code == 200) {
         game.Lst_IsLike = !game.Lst_IsLike;
@@ -331,7 +333,7 @@ export default {
         Add_TransferPoint: amount,
       };
 
-      const result = await transferPoint(requestData);
+      const result = await apiTransferPoint(requestData);
 
       console.log('[TransferPoint]', result);
 

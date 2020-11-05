@@ -1,4 +1,4 @@
-import { getCaptcha } from '@/api/captcha';
+import { apiGetCaptcha } from '@/api/captcha';
 import idMapper from '@/idMapper';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import '@/utils/vee-validate.js';
@@ -47,7 +47,7 @@ export default {
     },
     async changeCaptcha() {
       const requestDataCaptcha = { pageCode: 'MemberLogin' };
-      const result = await getCaptcha(requestDataCaptcha);
+      const result = await apiGetCaptcha(requestDataCaptcha);
       console.log('[Captcha]', result.RetObj);
       if (result.Code == 200) {
         this.captchaImage = result.RetObj;

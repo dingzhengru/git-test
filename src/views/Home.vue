@@ -91,11 +91,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getBannerListOld, getBannerList } from '@/api/banner';
-import { getProductList } from '@/api/product';
-import { getGameRedirectUrl } from '@/api/game';
-import { getMessageList } from '@/api/alert';
-import { getLotteryCount, playLottery, playLotteryResult } from '@/api/lottery';
+
+import { apiGetBannerListOld, apiGetBannerList } from '@/api/banner';
+import { apiGetProductList } from '@/api/product';
+import { apiGetGameRedirectUrl } from '@/api/game';
+import { apiGetMessageList } from '@/api/alert';
+import { apiGetLotteryCount, apiPlayLottery, apiPlayLotteryResult } from '@/api/lottery';
+
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 import idMapper from '@/idMapper';
 
@@ -198,7 +200,7 @@ export default {
   methods: {
     async getMessageList() {
       const requestDataMessageList = { msgtype: 'C' };
-      const result = await getMessageList(requestDataMessageList);
+      const result = await apiGetMessageList(requestDataMessageList);
       if (result.Code == 200) {
         this.alertMessageList = result.RetObj;
         console.log('[Message]', this.alertMessageList);
@@ -206,13 +208,13 @@ export default {
     },
     async getBannerList() {
       if (this.siteIsNewPromotion) {
-        const result = await getBannerList();
+        const result = await apiGetBannerList();
         if (result.Code == 200) {
           this.bannerList = result.RetObj;
           console.log('[BannerList]', this.bannerList);
         }
       } else {
-        const result = await getBannerListOld();
+        const result = await apiGetBannerListOld();
         if (result.Code == 200) {
           this.bannerList = result.RetObj;
           console.log('[BannerList]', this.bannerList);
@@ -221,7 +223,7 @@ export default {
     },
     async getProductList() {
       const requestDataProductList = { DeviceType: 1 };
-      const result = await getProductList(requestDataProductList);
+      const result = await apiGetProductList(requestDataProductList);
       if (result.Code == 200) {
         this.productList = result.RetObj;
 
@@ -257,7 +259,7 @@ export default {
       }
     },
     async getLotteryCountList() {
-      const result = await getLotteryCount();
+      const result = await apiGetLotteryCount();
       if (result.Code == 200) {
         this.lotteryList = result.RetObj;
       }
@@ -316,7 +318,7 @@ export default {
           newWindow = window.open();
         }
 
-        const result = await getGameRedirectUrl(requestDataGameRedirectUrl);
+        const result = await apiGetGameRedirectUrl(requestDataGameRedirectUrl);
         console.log('[Game Redirect URL]', result.RetObj);
 
         if (result.Code == 200) {
@@ -374,7 +376,7 @@ export default {
       this.gameChance = '';
       this.gamePrize = '';
       this.isWheelLoading = true;
-      return playLottery({ ActivityType: 0 })
+      return apiPlayLottery({ ActivityType: 0 })
         .then(res => {
           if (res.RetObj) {
             console.log('[PlayLottery]', res);
@@ -416,7 +418,7 @@ export default {
     lotteryHandlerWheel() {
       this.isWheelLoading = true;
       // 呼叫得獎API
-      playLotteryResult({ ActivityType: 0, BillNo: this.billNo })
+      apiPlayLotteryResult({ ActivityType: 0, BillNo: this.billNo })
         .then(res => {
           console.log('[PlayLotteryResult]', res);
 
@@ -441,7 +443,7 @@ export default {
       this.billNo = '';
       this.gameChance = '';
       this.gamePrize = '';
-      return playLottery({ ActivityType: 1 })
+      return apiPlayLottery({ ActivityType: 1 })
         .then(res => {
           console.log('[PlayLottery]', res);
           if (res.RetObj) {
@@ -474,7 +476,7 @@ export default {
     async lotteryHandlerRedEnvelope() {
       await this.initHandlerRedEnvelope();
       // call 抽獎 api 取得抽獎結果
-      playLotteryResult({ ActivityType: 1, BillNo: this.billNo })
+      apiPlayLotteryResult({ ActivityType: 1, BillNo: this.billNo })
         .then(res => {
           console.log('[PlayLotteryResult]', res);
           this.gamePrize = {

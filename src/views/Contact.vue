@@ -36,7 +36,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getContactList } from '@/api/contact';
+import { apiGetContactList } from '@/api/contact';
 
 export default {
   name: 'Contact',
@@ -148,7 +148,7 @@ export default {
     // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/contact.scss`);
 
-    const result = await getContactList();
+    const result = await apiGetContactList();
 
     console.log('[ContactList]', result);
 

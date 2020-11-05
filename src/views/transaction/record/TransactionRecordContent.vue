@@ -113,15 +113,16 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getMemberProductList } from '@/api/product';
+
+import { apiGetMemberProductList } from '@/api/product';
 import {
-  getRecordDeposit,
-  getRecordWithdrawal,
-  getRecordTransfer,
-  getRecordBonus,
-  getRecordLottery,
-  getRecordWithdrawalRestriction,
-  getRecordAdjustment,
+  apiGetRecordDeposit,
+  apiGetRecordWithdrawal,
+  apiGetRecordTransfer,
+  apiGetRecordBonus,
+  apiGetRecordLottery,
+  apiGetRecordWithdrawalRestriction,
+  apiGetRecordAdjustment,
 } from '@/api/transaction-record';
 
 import numeral from 'numeral';
@@ -210,7 +211,7 @@ export default {
       //* 因換頁都會用到，所以放 methods
       switch (this.$route.params.name) {
         case 'deposit': {
-          const result = await getRecordDeposit();
+          const result = await apiGetRecordDeposit();
           console.log('[RecordDeposit]', result.RetObj);
 
           this.list = result.RetObj.Rows.map(item => {
@@ -230,7 +231,7 @@ export default {
           break;
         }
         case 'withdrawal': {
-          const result = await getRecordWithdrawal();
+          const result = await apiGetRecordWithdrawal();
           console.log('[RecordWithdrawal]', result.RetObj);
 
           this.list = result.RetObj.Rows.map(item => {
@@ -253,7 +254,7 @@ export default {
             StartTime: this.search.dateFrom == '' ? '' : `${this.search.dateFrom} 00:00:00`,
             EndTime: this.search.dateTo == '' ? '' : `${this.search.dateTo} 23:59:59`,
           };
-          const result = await getRecordTransfer(requestDataTransfer);
+          const result = await apiGetRecordTransfer(requestDataTransfer);
           console.log('[RecordTransfer]', result.RetObj);
 
           this.pagination.dataLength = result.RetObj.Records;
@@ -279,7 +280,7 @@ export default {
         case 'bonus': {
           const requestDataRecordBonus = { Page: this.pagination.page };
 
-          const result = await getRecordBonus(requestDataRecordBonus);
+          const result = await apiGetRecordBonus(requestDataRecordBonus);
           console.log('[RecordBonus]', result.RetObj);
 
           this.pagination.dataLength = result.RetObj.Records;
@@ -298,7 +299,7 @@ export default {
         case 'lottery': {
           const requestDataRecordLottery = { Page: this.pagination.page };
 
-          const result = await getRecordLottery(requestDataRecordLottery);
+          const result = await apiGetRecordLottery(requestDataRecordLottery);
           console.log('[RecordLottery]', result.RetObj);
 
           this.pagination.dataLength = result.RetObj.Records;
@@ -317,7 +318,7 @@ export default {
         case 'withdrawalRestriction': {
           const requestDataRecordWithdrawalRestriction = { Page: this.pagination.page };
 
-          const result = await getRecordWithdrawalRestriction(requestDataRecordWithdrawalRestriction);
+          const result = await apiGetRecordWithdrawalRestriction(requestDataRecordWithdrawalRestriction);
           console.log('[RecordWithdrawalRestriction]', result.RetObj);
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
@@ -338,7 +339,7 @@ export default {
         case 'adjustment': {
           const requestDataRecordAdjustment = { Page: this.pagination.page };
 
-          const result = await getRecordAdjustment(requestDataRecordAdjustment);
+          const result = await apiGetRecordAdjustment(requestDataRecordAdjustment);
           console.log('[RecordAdjustment]', result.RetObj);
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
@@ -358,7 +359,7 @@ export default {
       }
     },
     async getMemberProductList() {
-      const result = await getMemberProductList();
+      const result = await apiGetMemberProductList();
       if (result.Code == 200) {
         this.productList = result.RetObj;
         console.log('[Product]', this.productList);
