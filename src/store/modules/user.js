@@ -32,6 +32,9 @@ const mutations = {
     state.publicKey = publicKey;
     setPublicKey(publicKey);
   },
+  setTotalBalance(state, totalBalance) {
+    state.totalBalance = totalBalance;
+  },
   setUserInfo(state, info) {
     console.log('[SetUserInfo]', info);
 

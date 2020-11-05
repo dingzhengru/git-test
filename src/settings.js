@@ -36,7 +36,7 @@ export const ROUTE_NO_AUTH_LIST = ['Login', 'Register', 'ForgetPassword', 'SignI
 export const API_URL = '/api';
 
 //* http 請求的 timeout
-export const API_REQUEST_TIMEOUT = 30000;
+export const API_REQUEST_TIMEOUT = 10000;
 
 //* 需要 Authorization bearer token 的 API
 export const API_AUTH_LIST = [

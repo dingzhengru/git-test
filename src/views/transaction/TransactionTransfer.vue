@@ -75,7 +75,6 @@
                           tooltip: 'none',
                         }"
                         @error="rangeError"
-                        @change="rangeChange"
                       >
                         <template v-slot:dot>
                           <img src="~@/assets/common/imgs/main/sliderPoint.png" class="custom-dot" />
@@ -229,7 +228,7 @@ export default {
     },
     updateGamePoint(result) {
       this.gamePointList = result.RetObj.GameSitePoints;
-      this.$store.commit('user/setTotal', result.RetObj.TotalBalance);
+      this.$store.commit('user/setTotalBalance', result.RetObj.TotalBalance);
       this.amount = this.currentProductPoint;
     },
     changeFrom() {
