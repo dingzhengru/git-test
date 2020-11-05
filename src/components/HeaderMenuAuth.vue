@@ -81,12 +81,12 @@ export default {
       default: () => '',
     },
     totalBalance: {
-      type: String,
-      default: () => '',
+      type: Number,
+      default: () => 0,
     },
     PILevel: {
-      type: String,
-      default: () => '',
+      type: Number,
+      default: () => 0,
     },
     PIBetAmount: {
       type: Number,
