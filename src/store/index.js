@@ -5,6 +5,7 @@ import site from './modules/site';
 import pwa from './modules/pwa';
 import getters from './getters';
 import { loadLanguageAsync } from '@/i18n-lazy';
+import { apiChangeLang, apiGetLangList } from '@/api/lang';
 
 Vue.use(Vuex);
 
@@ -16,10 +17,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setLang: (state, lang) => {
-      loadLanguageAsync(lang).then(result => {
-        state.lang = lang;
-        console.log('[Lang] 載入', result);
-      });
+      state.lang = lang;
     },
     setLangList: (state, langList) => {
       state.langList = langList;
@@ -35,7 +33,25 @@ export default new Vuex.Store({
       state.loadingRequestList = state.loadingRequestList.filter(item => item != 'change-route');
     },
   },
-  actions: {},
+  actions: {
+    async changeLang({ commit }, lang) {
+      const requestData = { Lang: lang };
+      const result = await apiChangeLang(requestData);
+      if (result.Code == 200) {
+        await loadLanguageAsync(lang);
+        commit('setLang', lang);
+        console.log('[Lang]', '[ChangeLang]', lang, result.RetObj);
+      }
+      return lang;
+    },
+    async getLangList({ commit }) {
+      const result = await apiGetLangList();
+      if (result.Code == 200) {
+        commit('setLangList', result.RetObj);
+        console.log('[Lang]', '[List]', result.RetObj);
+      }
+    },
+  },
   modules: {
     pwa,
     user,

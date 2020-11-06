@@ -19,8 +19,7 @@ import i18n from '@/i18n-lazy'; //* 語言載入
 import { cookieGetLang, cookieGetIsLoggedIn, cookieGetToken, cookieGetPublicKey } from '@/utils/cookie';
 
 //* API
-import { apiGetTokenAndPublicKey, apiKeepUserOnline } from '@/api/user'; //* API
-import { apiGetLangList } from '@/api/lang';
+import { apiKeepUserOnline } from '@/api/user'; //* API
 
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
@@ -29,16 +28,18 @@ Vue.use(VueScrollTo);
 const isLoggedIn = cookieGetIsLoggedIn();
 store.commit('user/setIsLoggedIn', isLoggedIn);
 
-//* 取得公鑰 & token (已登入才於這取得，未登入只放置 Login、Register 頁面)
+/**
+ ** 取得公鑰 & token (； 頁面取得；已登入 )
+ ** 1. 優先從 Cookie 取得
+ ** 2. 未登入: Cookie 沒有 => 只於 Login、Register 頁面取得
+ ** 3. 已登入: Cookie 沒有 => 不管哪個頁面，直接取得
+ */
+
 if (cookieGetToken() && cookieGetPublicKey()) {
   store.commit('user/setToken', cookieGetToken());
   store.commit('user/setPublicKey', cookieGetPublicKey());
 } else if (isLoggedIn) {
-  //* 只有登入後的狀態才會去跟後端要
-  apiGetTokenAndPublicKey().then(result => {
-    store.commit('user/setToken', result.RetObj.token);
-    store.commit('user/setPublicKey', result.RetObj.publickey);
-  });
+  store.dispatch('user/getTokenAndPublicKey');
 }
 
 (async () => {
@@ -51,15 +52,10 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   document.title = store.getters.siteTitle;
 
   //* 載入語系
-  await store.commit('setLang', cookieGetLang());
+  await store.dispatch('changeLang', cookieGetLang());
 
   //* 取得語系列表
-  apiGetLangList().then(result => {
-    if (result.Code == 200) {
-      store.commit('setLangList', result.RetObj);
-      console.log('[Lang]', result.RetObj);
-    }
-  });
+  store.dispatch('getLangList');
 
   //* 心跳，剛進來也要執行一次
   if (document.visibilityState == 'visible' && store.getters.userIsLoggedIn) {
