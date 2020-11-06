@@ -116,7 +116,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'isEnableRememberOption']),
+    ...mapGetters(['siteFullCss', 'userIsEnableRememberOption']),
   },
   data() {
     return {
@@ -170,7 +170,7 @@ export default {
     this.$store.commit('setIsLoading', false);
 
     //* 設置記憶密碼
-    this.isRememberPassword = this.isEnableRememberOption;
+    this.isRememberPassword = this.userIsEnableRememberOption;
   },
 };
 </script>

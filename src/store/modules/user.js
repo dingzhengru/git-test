@@ -1,4 +1,10 @@
-import { setIsLoggedIn, setToken, setPublicKey, removeToken, removePublicKey } from '@/utils/cookie';
+import {
+  cookieSetIsLoggedIn,
+  cookieSetToken,
+  cookieSetPublicKey,
+  cookieRemoveToken,
+  cookieRemovePublicKey,
+} from '@/utils/cookie';
 import router from '@/router';
 import {
   apiRegister,
@@ -22,15 +28,15 @@ const state = {
 const mutations = {
   setIsLoggedIn(state, isLoggedIn) {
     state.isLoggedIn = isLoggedIn;
-    setIsLoggedIn(isLoggedIn);
+    cookieSetIsLoggedIn(isLoggedIn);
   },
   setToken(state, token) {
     state.token = token;
-    setToken(token);
+    cookieSetToken(token);
   },
   setPublicKey(state, publicKey) {
     state.publicKey = publicKey;
-    setPublicKey(publicKey);
+    cookieSetPublicKey(publicKey);
   },
   setTotalBalance(state, totalBalance) {
     state.totalBalance = totalBalance;
@@ -59,11 +65,11 @@ const mutations = {
   },
   removeToken(state) {
     state.token = null;
-    removeToken();
+    cookieRemoveToken();
   },
   removePublicKey(state) {
     state.publicKey = null;
-    removePublicKey();
+    cookieRemovePublicKey();
   },
 };
 

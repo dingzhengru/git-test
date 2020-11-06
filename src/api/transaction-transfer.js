@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { API_URL } from '@/settings';
+import { API_URL, API_TIMEOUT_TRANSFER } from '@/settings';
 
 //* 轉帳的 timeout: 20秒
 const transferConfig = {
-  timeout: 20000,
+  timeout: API_TIMEOUT_TRANSFER,
 };
 
 export async function apiGetTransferInfo() {

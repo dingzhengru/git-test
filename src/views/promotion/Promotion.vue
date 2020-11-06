@@ -1,5 +1,5 @@
 <template>
-  <div class="promotion" :class="{ 'promotion-auth': isLoggedIn }">
+  <div class="promotion" :class="{ 'promotion-auth': userIsLoggedIn }">
     <div class="promotion__bonus">
       <a class="promotion__bonus__link" href="javascript:;">
         <i class="promotion__bonus__link__icon"></i>
@@ -27,7 +27,7 @@ import { apiGetPromotionList } from '@/api/promotion';
 export default {
   name: 'Promotion',
   computed: {
-    ...mapGetters(['siteFullCss', 'isLoggedIn']),
+    ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
   },
   data() {
     return {

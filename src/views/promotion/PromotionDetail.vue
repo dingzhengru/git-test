@@ -1,5 +1,5 @@
 <template>
-  <div class="promotion-detail" :class="{ 'promotion-detail-auth': isLoggedIn }">
+  <div class="promotion-detail" :class="{ 'promotion-detail-auth': userIsLoggedIn }">
     <img class="promotion-detail__image" :src="image" alt="" />
     <div class="promotion-detail__main">
       <div
@@ -39,7 +39,7 @@ import '@/vender/quill/quill-better-table.css';
 export default {
   name: 'PromotionDetail',
   computed: {
-    ...mapGetters(['siteFullCss', 'isLoggedIn']),
+    ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
   },
   data() {
     return {

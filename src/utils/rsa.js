@@ -1,26 +1,30 @@
 import JSEncrypt from 'jsencrypt';
-// import './jsencrypt-long.js';
-// import JSEncrypt from 'encryptlong';
 
 export function rsaEncrypt(data, pubKey) {
-  // 創建 "公鑰加密" 物件
+  //* 創建 "公鑰加密" 物件
   const encrypt = new JSEncrypt();
 
-  // 設公鑰
+  //* 設公鑰
   encrypt.setPublicKey(pubKey);
 
-  // 加密
+  //* 加密
   return encrypt.encrypt(JSON.stringify(data));
 }
 
+/**
+ ** 大資料加密
+ ** 參考 https://www.jianshu.com/p/54cb90e6e183
+ ** 參考 https://github.com/wangqinglongDo/github_demo/blob/master/libs/jsencrypt.min.js
+ ** 使用第一個網址裡的 encryptLong2，與第二個網址的 hex2b64
+ */
 export function rsaEncryptLong(data, pubKey) {
-  // 創建 "公鑰加密" 物件
+  //* 創建 "公鑰加密" 物件
   const encrypt = new JSEncrypt();
 
-  // 設公鑰
+  //* 設公鑰
   encrypt.setPublicKey(pubKey);
 
-  // 加密
+  //* 加密
   // return encrypt.encryptLong(JSON.stringify(data));
   return encrypt.encryptLong2(JSON.stringify(data));
 }
@@ -44,6 +48,7 @@ function hex2b64(h) {
   while ((ret.length & 3) > 0) ret += b64padchar;
   return ret;
 }
+
 JSEncrypt.prototype.encryptLong2 = function(string) {
   let k = this.getKey();
   try {

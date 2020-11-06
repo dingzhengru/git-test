@@ -6,11 +6,11 @@
         :langList="langList"
         :logo="siteLogoUrl"
         :siteStatus="siteStatus"
-        :isLoggedIn="isLoggedIn"
-        :username="username"
-        :totalBalance="totalBalance"
-        :PILevel="PILevel"
-        :PIBetAmount="PIBetAmount"
+        :isLoggedIn="userIsLoggedIn"
+        :username="userUsername"
+        :totalBalance="userTotalBalance"
+        :PILevel="userPILevel"
+        :PIBetAmount="userPIBetAmount"
         :backIconRouteList="['PromotionDetail']"
         @changeLang="changeLang"
         @logout="logout"
@@ -21,7 +21,7 @@
         <router-view />
       </div>
 
-      <AppFooter :isLoggedIn="isLoggedIn" v-if="isShowFooter" />
+      <AppFooter :isLoggedIn="userIsLoggedIn" v-if="isShowFooter" />
     </div>
 
     <AppLoadingOverlay :isLoading="loadingRequestList.length > 0" />
@@ -49,6 +49,8 @@ export default {
       'lang',
       'langList',
       'loadingRequestList',
+      'pwaInstallStatus',
+      'pwaPrompt',
       'siteFullCss',
       'siteStatus',
       'siteIsSpare',
@@ -58,13 +60,11 @@ export default {
       'siteLogoUrl',
       'siteAppIconUrl',
       'siteIOSUrl',
-      'pwaInstallStatus',
-      'pwaPrompt',
-      'isLoggedIn',
-      'totalBalance',
-      'username',
-      'PILevel',
-      'PIBetAmount',
+      'userIsLoggedIn',
+      'userTotalBalance',
+      'userUsername',
+      'userPILevel',
+      'userPIBetAmount',
     ]),
     isShowHeader() {
       return !ROUTE_NO_HEADER_LIST.includes(this.$route.name);
@@ -118,13 +118,13 @@ export default {
     }
 
     //* 確認是否要顯示假電郵(未登入一律轉至假電郵登入頁)
-    if (this.siteIsSpare === true && this.siteEnableSpareDomain === true && this.isLoggedIn === false) {
+    if (this.siteIsSpare === true && this.siteEnableSpareDomain === true && this.userIsLoggedIn === false) {
       this.$router.replace({ name: 'SignIn' });
       return;
     }
 
     //* 已登入才去取使用者資訊
-    if (this.isLoggedIn) {
+    if (this.userIsLoggedIn) {
       this.$store.dispatch('user/getInfo');
     }
 

@@ -130,14 +130,21 @@ import { apiGetRememberInfo } from '@/api/user';
 export default {
   mixins: [loginMixin],
   computed: {
-    ...mapGetters(['siteFullCss', 'token', 'publicKey', 'pwaInstallStatus', 'pwaPrompt', 'siteIsOpenRememberMe']),
+    ...mapGetters([
+      'siteFullCss',
+      'pwaInstallStatus',
+      'pwaPrompt',
+      'userToken',
+      'userPublicKey',
+      'siteIsOpenRememberMe',
+    ]),
   },
   async mounted() {
     //* 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/login.scss`);
 
     //* 取得公鑰 & token
-    if (!this.token || !this.publicKey) {
+    if (!this.userToken || !this.userPublicKey) {
       await this.$store.dispatch('user/getTokenAndPublicKey');
     }
 

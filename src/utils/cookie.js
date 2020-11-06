@@ -31,50 +31,50 @@ const langConfig = {
   expires: 365,
 };
 
-export function getToken() {
+export function cookieGetToken() {
   return Cookies.get(tokenKey);
 }
 
-export function setToken(token) {
+export function cookieSetToken(token) {
   return Cookies.set(tokenKey, token, tokenConfig);
 }
 
-export function removeToken() {
+export function cookieRemoveToken() {
   return Cookies.remove(tokenKey);
 }
 
-export function getPublicKey() {
+export function cookieGetPublicKey() {
   return Cookies.get(publicKeyKey);
 }
 
-export function setPublicKey(publicKey) {
+export function cookieSetPublicKey(publicKey) {
   return Cookies.set(publicKeyKey, publicKey, publicKeyConfig);
 }
 
-export function removePublicKey() {
+export function cookieRemovePublicKey() {
   return Cookies.remove(publicKeyKey);
 }
 
-export function getIsLoggedIn() {
+export function cookieGetIsLoggedIn() {
   return Cookies.get(isLoggedInKey) == 'true';
 }
 
-export function setIsLoggedIn(isLoggedIn) {
+export function cookieSetIsLoggedIn(isLoggedIn) {
   return Cookies.set(isLoggedInKey, isLoggedIn, isLoggedInConfig);
 }
 
-export function removeIsLoggedIn() {
+export function cookieRemoveIsLoggedIn() {
   return Cookies.remove(isLoggedInKey);
 }
 
-export function getLang() {
+export function cookieGetLang() {
   return Cookies.get(langKey);
 }
 
-export function setLang(lang) {
+export function cookieSetLang(lang) {
   return Cookies.set(langKey, lang, langConfig);
 }
 
-export function removeLang() {
+export function cookieRemoveLang() {
   return Cookies.remove(langKey);
 }

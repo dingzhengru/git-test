@@ -8,12 +8,12 @@
     />
 
     <div class="home-game">
-      <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="isLoggedIn" />
+      <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="userIsLoggedIn" />
 
       <HomeGameBlock
         :list="productList"
         :siteResourceUrl="siteResourceUrl"
-        :isLoggedIn="isLoggedIn"
+        :isLoggedIn="userIsLoggedIn"
         @handleGameLink="handleGameLink"
       />
     </div>
@@ -132,7 +132,7 @@ export default {
       'siteIsNewPromotion',
       'siteMainPageNoticeUrl',
       'siteIsShowMainNotice',
-      'isLoggedIn',
+      'userIsLoggedIn',
     ]),
   },
   data() {
@@ -268,8 +268,8 @@ export default {
     openBanner(banner) {
       console.log('[BannerOpen]', banner);
 
-      const bannerType = this.isLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
-      const bannerUrl = this.isLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
+      const bannerType = this.userIsLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
+      const bannerUrl = this.userIsLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
 
       if (bannerType == 1) {
         window.open(banner.Lst_LinkUrl, banner.Lst_Target);
@@ -506,12 +506,12 @@ export default {
     this.getMessageList();
 
     //* 取得抽獎列表
-    if (this.isLoggedIn) {
+    if (this.userIsLoggedIn) {
       this.getLotteryCountList();
     }
 
     //* 沒登入就顯示 MainNotice
-    this.isShowMainNotice = this.siteIsShowMainNotice && !this.isLoggedIn;
+    this.isShowMainNotice = this.siteIsShowMainNotice && !this.userIsLoggedIn;
   },
   watch: {
     lang() {

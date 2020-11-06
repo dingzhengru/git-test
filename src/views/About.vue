@@ -1,5 +1,5 @@
 <template>
-  <div class="about" :class="{ 'about-auth': isLoggedIn }">
+  <div class="about" :class="{ 'about-auth': userIsLoggedIn }">
     <h2 class="about__title">{{ $t('about.title') }}</h2>
     <div class="about__intro" :id="item.id" v-for="item in aboutList" :key="item.id">
       <img class="about__intro__img" :src="item.img" alt="" />
@@ -24,7 +24,7 @@ import imgRNG from '@/assets/common/imgs/game/gameIntro-03.jpg';
 export default {
   name: 'About',
   computed: {
-    ...mapGetters(['siteFullCss', 'isLoggedIn']),
+    ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
   },
   data() {
     return {

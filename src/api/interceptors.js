@@ -1,6 +1,7 @@
 import store from '@/store';
 import axios from 'axios';
 import {
+  API_URL,
   API_REQUEST_TIMEOUT,
   API_AUTH_LIST,
   API_CRYPTO_LIST,
@@ -37,39 +38,34 @@ axios.interceptors.request.use(
       store.commit('pushLoadingRequest');
     }
 
-    //* 為了重新發送而暫存的資料
-    // retryRequestData = config.data;
-
-    //* 判斷是否在認證列表中 (於 header 加上 Authorization: bearer ${token})
-    if (API_AUTH_LIST.find(item => config.url.includes(item))) {
+    //* Authorization
+    if (API_AUTH_LIST.find(item => `${API_URL}/${item}` == config.url)) {
       config.headers = {
-        Authorization: `Bearer ${store.getters.token}`,
+        Authorization: `Bearer ${store.getters.userToken}`,
       };
     }
 
-    //* 判斷是否在加密列表中 (一般資料大小)
-    if (API_CRYPTO_LIST.find(item => config.url.includes(item))) {
+    //* 加密
+    if (API_CRYPTO_LIST.find(item => `${API_URL}/${item}` == config.url)) {
       config.data = {
-        rsaMsg: rsaEncrypt(config.data, store.getters.publicKey),
+        rsaMsg: rsaEncrypt(config.data, store.getters.userPublicKey),
       };
     }
 
-    //* 判斷是否在加密列表中 (大數據加密)
-    else if (API_CRYPTO_BIG_DATA_LIST.find(item => config.url.includes(item))) {
+    //* 大數據加密
+    else if (API_CRYPTO_BIG_DATA_LIST.find(item => `${API_URL}/${item}` == config.url)) {
       config.data = {
-        rsaMsg: rsaEncryptLong(config.data, store.getters.publicKey),
+        rsaMsg: rsaEncryptLong(config.data, store.getters.userPublicKey),
       };
     }
 
-    //* 判斷是否在加密列表中 (大數據加密)，但並非全部參數都要加密的情況，EX: 存款動作
-    else if (API_NOT_ALL_PARAMS_CRYPTO_BIG_DATA_LIST.find(item => config.url.replace('/api/', '') == item)) {
-      const rsaMsg = rsaEncryptLong(config.data.rsaData, store.getters.publicKey);
+    //* 大數據加密，但並非全部參數都要加密的情況，EX: 存款動作(需加密: rsaData, 不須加密: noRsaData)
+    else if (API_NOT_ALL_PARAMS_CRYPTO_BIG_DATA_LIST.find(item => `${API_URL}/${item}` == config.url)) {
+      const rsaMsg = rsaEncryptLong(config.data.rsaData, store.getters.userPublicKey);
       const noRsaData = config.data.noRsaData;
 
       config.data = Object.assign({ rsaMsg }, noRsaData);
     }
-
-    //* 若因公鑰錯誤，而導致加密錯誤({ rsaMsg: false })的錯誤偶而會發生，且無法解決的話，可以考慮在這攔截，重新取得公鑰，再發送請求
 
     return config;
   },
@@ -81,7 +77,8 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   async res => {
     //* 放進 loading 列表，篩選掉不會進 loading 的 API
-    if (!API_NO_LOADING_LIST.find(item => res.config.url.includes(item))) {
+
+    if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == res.config.url)) {
       store.commit('popLoadingRequest');
     }
 
@@ -115,7 +112,7 @@ axios.interceptors.response.use(
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
       //* 篩選掉不要 alert 的 api
-      if (!API_NO_ALERT_LIST.find(item => res.config.url.includes(item))) {
+      if (!API_NO_ALERT_LIST.find(item => `${API_URL}/${item}` == res.config.url)) {
         window.alert(res.data.ErrMsg);
       }
     } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
@@ -144,7 +141,7 @@ axios.interceptors.response.use(
         alertMessage = i18n.t('alert.loadFailed');
       }
       window.alert(alertMessage);
-    } else if (!API_NO_LOADING_LIST.find(item => error.config.url.includes(item))) {
+    } else if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == error.config.url)) {
       store.commit('popLoadingRequest');
     }
 

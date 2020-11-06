@@ -36,7 +36,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Agreement',
   computed: {
-    ...mapGetters(['lang', 'token', 'siteID', 'siteFullCss']),
+    ...mapGetters(['lang', 'userToken', 'siteFullCss']),
   },
   data() {
     return {
@@ -66,17 +66,9 @@ export default {
       },
     };
   },
-  watch: {
-    siteID: {
-      immediate: true,
-      handler() {
-        if (!this.siteID) {
-          return;
-        }
-        // * 根據版型引入 css
-        import(`@/styles/${this.siteFullCss}/agreement.scss`);
-      },
-    },
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/agreement.scss`);
   },
 };
 </script>

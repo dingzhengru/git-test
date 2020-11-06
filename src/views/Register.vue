@@ -105,7 +105,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'lang', 'token', 'publicKey']),
+    ...mapGetters(['siteFullCss', 'lang', 'userToken', 'userPublicKey']),
     fullName() {
       let fullName = '';
       const firstName = this.fieldList.find(item => item.name == 'Add_FirstName').value;
@@ -212,7 +212,7 @@ export default {
     import(`@/styles/${this.siteFullCss}/register.scss`);
 
     //* 取得公鑰 & token
-    if (!this.token || !this.publicKey) {
+    if (!this.userToken || !this.userPublicKey) {
       await this.$store.dispatch('user/getTokenAndPublicKey');
     }
 

@@ -2,7 +2,11 @@
   <div class="user-profile">
     <!-- 未開通的 -->
     <UserProfileList
-      :profile="{ username, currency, createdDatetime: createdDatetime ? createdDatetime.replace('T', ' ') : '' }"
+      :profile="{
+        userUsername,
+        userCurrency,
+        userCreatedDatetime: userCreatedDatetime ? userCreatedDatetime.replace('T', ' ') : '',
+      }"
       :registerList="registerList"
       :bankList="bankList"
       @instantAccess="submitInstantAccess"
@@ -13,16 +17,16 @@
     <!-- 開通後的 -->
     <UserProfileListAccess
       :profile="{
-        username,
-        currency,
-        createdDatetime: createdDatetime.replace('T', ' '),
-        realName,
-        email,
-        birthday: birthday.split('T')[0],
-        bankName1,
-        bankAccount1,
-        bankBrach1,
-        bankAccountName1,
+        userUsername,
+        userCurrency,
+        userCreatedDatetime: userCreatedDatetime.replace('T', ' '),
+        userRealName,
+        userEmail,
+        userBirthday: userBirthday.split('T')[0],
+        userBankName1,
+        userBankAccount1,
+        userBankBrach1,
+        userBankAccountName1,
       }"
       @change-withdrawal-password="changeWithdrawalPassword"
       v-else-if="isAccountOpen == true"
@@ -43,17 +47,17 @@ export default {
   computed: {
     ...mapGetters([
       'siteFullCss',
-      'isAccountOpen',
-      'username',
-      'currency',
-      'createdDatetime',
-      'realName',
-      'email',
-      'birthday',
-      'bankName1',
-      'bankAccount1',
-      'bankBrach1',
-      'bankAccountName1',
+      'userIsAccountOpen',
+      'userUsername',
+      'userCurrency',
+      'userCreatedDatetime',
+      'userRealName',
+      'userEmail',
+      'userBirthday',
+      'userBankName1',
+      'userBankAccount1',
+      'userBankBrach1',
+      'userBankAccountName1',
     ]),
   },
   data() {
@@ -101,11 +105,11 @@ export default {
     import(`@/styles/${this.siteFullCss}/user/profile.scss`);
   },
   watch: {
-    isAccountOpen: {
+    userIsAccountOpen: {
       immediate: true,
       async handler() {
-        if (this.isAccountOpen === false) {
-          console.log('[isAccountOpen]', this.isAccountOpen);
+        if (this.userIsAccountOpen === false) {
+          console.log('[isAccountOpen]', this.userIsAccountOpen);
           const result = await apiGetRegisterAdvanceNew();
           console.log('[RegisterAdvanceNew]', result);
 

@@ -3,7 +3,7 @@ import store from '@/store';
 import { ROUTE_AUTH_LIST, ROUTE_NO_AUTH_LIST } from '@/settings';
 
 router.beforeEach(async (to, from, next) => {
-  const isLoggedIn = store.getters.isLoggedIn;
+  const isLoggedIn = store.getters.userIsLoggedIn;
 
   if (!isLoggedIn && ROUTE_AUTH_LIST.includes(to.name)) {
     //* 未登入 && 需登入才能進入的頁面

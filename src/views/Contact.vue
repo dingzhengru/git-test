@@ -1,5 +1,5 @@
 <template>
-  <div class="contact" :class="{ 'contact-auth': isLoggedIn }" @click.self="closeAllContentList">
+  <div class="contact" :class="{ 'contact-auth': userIsLoggedIn }" @click.self="closeAllContentList">
     <div class="contact__content theme-content-box" @click.self="closeAllContentList">
       <ul class="contact__content__ul" @click.self="closeAllContentList">
         <li class="contact__content__ul__li" v-for="contact in contactList" :key="contact.Lst_ContactID">
@@ -41,7 +41,7 @@ import { apiGetContactList } from '@/api/contact';
 export default {
   name: 'Contact',
   computed: {
-    ...mapGetters(['siteFullCss', 'isLoggedIn']),
+    ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
   },
   data() {
     return {
