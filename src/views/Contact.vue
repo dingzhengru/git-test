@@ -156,12 +156,20 @@ export default {
       this.contactList = result.RetObj.ServiceList;
     }
 
-    this.contactList = this.contactList.map(item => {
-      item.name = this.contactMapper[item.Lst_ContactType];
-      item.isShowContentList = false;
-      item.class = `contact__content__ul__li__link--${item.name}`;
-      return item;
-    });
+    this.contactList = this.contactList
+      .filter(item => {
+        if (item.Lst_ContactType == 6) {
+          return item.Lst_Enable == true;
+        } else {
+          return item.Lst_Enable == true && item.DetailList.length > 0;
+        }
+      })
+      .map(item => {
+        item.name = this.contactMapper[item.Lst_ContactType];
+        item.isShowContentList = false;
+        item.class = `contact__content__ul__li__link--${item.name}`;
+        return item;
+      });
 
     /*eslint-disable no-undef*/
     // 確認是否有 service 在，在的話就執行 jscode

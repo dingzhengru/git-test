@@ -222,8 +222,7 @@ export default {
       }
     },
     async getProductList() {
-      const requestDataProductList = { DeviceType: 1 };
-      const result = await apiGetProductList(requestDataProductList);
+      const result = await apiGetProductList();
       if (result.Code == 200) {
         this.productList = result.RetObj;
 

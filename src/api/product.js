@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
-export async function apiGetProductList(data) {
-  const result = await axios.post(API_URL + '/Product/GetList', data);
+export async function apiGetProductList() {
+  const result = await axios.post(API_URL + '/Product/GetList');
   return result.data;
 }
 
