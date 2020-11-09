@@ -95,7 +95,7 @@ import { mapGetters } from 'vuex';
 import { apiGetBannerListOld, apiGetBannerList } from '@/api/banner';
 import { apiGetProductList } from '@/api/product';
 import { apiGetGameRedirectUrl } from '@/api/game';
-import { apiGetMessageList } from '@/api/alert';
+import { apiGetMessageList } from '@/api/message';
 import { apiGetLotteryCount, apiPlayLottery, apiPlayLotteryResult } from '@/api/lottery';
 
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
