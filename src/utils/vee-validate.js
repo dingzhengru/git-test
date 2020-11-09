@@ -109,7 +109,7 @@ extend('register-birthday', {
 extend('change-password-required', {
   ...required,
   message: name => {
-    return i18n.t(`validate.changeWithdrawPassword.required.${name}`);
+    return i18n.t(`validate.changePassword.required.${name}`);
   },
 });
 
@@ -144,8 +144,8 @@ extend('change-password-confirmed', {
 //* change-withdraw-password
 extend('change-withdraw-password-required', {
   ...required,
-  message: () => {
-    return i18n.t(`validate.changePassword.required`);
+  message: name => {
+    return i18n.t(`validate.changeWithdrawPassword.required.${name}`);
   },
 });
 
