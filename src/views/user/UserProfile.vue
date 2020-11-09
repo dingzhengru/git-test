@@ -3,33 +3,33 @@
     <!-- 未開通的 -->
     <UserProfileList
       :profile="{
-        userUsername,
-        userCurrency,
-        userCreatedDatetime: userCreatedDatetime ? userCreatedDatetime.replace('T', ' ') : '',
+        username: userUsername,
+        currency: userCurrency,
+        createdDatetime: userCreatedDatetime ? userCreatedDatetime.replace('T', ' ') : '',
       }"
       :registerList="registerList"
       :bankList="bankList"
       @instantAccess="submitInstantAccess"
       @change-register-field="changeRegisterField"
-      v-if="isAccountOpen == false"
+      v-if="userIsAccountOpen == false"
     ></UserProfileList>
 
     <!-- 開通後的 -->
     <UserProfileListAccess
       :profile="{
-        userUsername,
-        userCurrency,
-        userCreatedDatetime: userCreatedDatetime.replace('T', ' '),
-        userRealName,
-        userEmail,
-        userBirthday: userBirthday.split('T')[0],
-        userBankName1,
-        userBankAccount1,
-        userBankBrach1,
-        userBankAccountName1,
+        username: userUsername,
+        currency: userCurrency,
+        createdDatetime: userCreatedDatetime.replace('T', ' '),
+        realName: userRealName,
+        email: userEmail,
+        birthday: userBirthday.split('T')[0],
+        bankName1: userBankName1,
+        bankAccount1: userBankAccount1,
+        bankBrach1: userBankBrach1,
+        bankAccountName1: userBankAccountName1,
       }"
       @change-withdrawal-password="changeWithdrawalPassword"
-      v-else-if="isAccountOpen == true"
+      v-else-if="userIsAccountOpen == true"
     ></UserProfileListAccess>
   </div>
 </template>

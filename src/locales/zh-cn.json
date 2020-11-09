@@ -89,7 +89,11 @@
       "confirmed": "确认密码错误"
     },
     "changeWithdrawPassword": {
-      "required": "",
+      "required": {
+        "OldPassword": "请输入您的旧密码",
+        "Password": "请输入您的新密码",
+        "CheckPassword": "请输入您的确认密码"
+      },
       "length": "密码长度最少 6 字元，最多 30 字元",
       "regex": "格式错误",
       "confirmed": "确认密码错误"

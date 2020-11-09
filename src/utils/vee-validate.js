@@ -11,37 +11,14 @@ dayjs.extend(isSameOrAfter);
 
 //* message 可用放方法，且第一個參數會是 name，即可實現根據 name 回傳不同訊息
 
-extend('required', {
-  ...required,
-});
-
-extend('min', {
-  ...min,
-});
-
-extend('max', {
-  ...max,
-});
-
-extend('min_value', {
-  ...min_value,
-});
-
-extend('max_value', {
-  ...max_value,
-});
-
-extend('regex', {
-  ...regex,
-});
-
-extend('integer', {
-  ...integer,
-});
-
-extend('image', {
-  ...image,
-});
+extend('required', required);
+extend('min', min);
+extend('max', max);
+extend('min_value', min_value);
+extend('max_value', max_value);
+extend('regex', regex);
+extend('integer', integer);
+extend('image', image);
 
 extend('object-not-empty', {
   validate: value => {
@@ -64,6 +41,7 @@ extend('integerHundredsDivisible', {
   },
 });
 
+//* register
 extend('register-required', {
   ...required,
   message: name => {
@@ -131,7 +109,7 @@ extend('register-birthday', {
 extend('change-password-required', {
   ...required,
   message: name => {
-    return i18n.t(`validate.changePassword.required.${name}`);
+    return i18n.t(`validate.changeWithdrawPassword.required.${name}`);
   },
 });
 
@@ -167,7 +145,7 @@ extend('change-password-confirmed', {
 extend('change-withdraw-password-required', {
   ...required,
   message: () => {
-    return i18n.t(`validate.changeWithdrawPassword.required`);
+    return i18n.t(`validate.changePassword.required`);
   },
 });
 

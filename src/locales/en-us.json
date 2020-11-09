@@ -89,7 +89,11 @@
       "confirmed": "Confirm password error"
     },
     "changeWithdrawPassword": {
-      "required": "",
+      "required": {
+        "OldPassword": "Please enter your old password",
+        "Password": "Please enter your new password",
+        "CheckPassword": "Please enter your confirm password"
+      },
       "length": "At least 6 characters up to 30 characters",
       "regex": "Format False",
       "confirmed": "Confirm password error"

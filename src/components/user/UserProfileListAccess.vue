@@ -20,6 +20,7 @@
             <ValidationProvider
               tag="li"
               class="theme-li-dataView"
+              name="OldPassword"
               :rules="{
                 'change-withdraw-password-required': true,
                 'change-withdraw-password-min': 6,
@@ -37,6 +38,7 @@
             <ValidationProvider
               tag="li"
               class="theme-li-dataView"
+              name="Password"
               :rules="{
                 'change-withdraw-password-required': true,
                 'change-withdraw-password-min': 6,
@@ -44,7 +46,6 @@
                 'change-withdraw-password-regex': '^[a-zA-Z0-9]*$',
               }"
               v-slot="{ errors }"
-              name="Password"
             >
               <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordNew') }}</span>
               <input class="ui-ipt" type="password" v-model="Password" />
@@ -55,6 +56,7 @@
             <ValidationProvider
               tag="li"
               class="theme-li-dataView"
+              name="CheckPassword"
               :rules="{
                 'change-withdraw-password-required': true,
                 'change-withdraw-password-confirmed': 'Password',
