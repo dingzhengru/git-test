@@ -203,7 +203,6 @@ export default {
       const result = await apiGetMessageList(requestDataMessageList);
       if (result.Code == 200) {
         this.alertMessageList = result.RetObj;
-        console.log('[Message]', this.alertMessageList);
       }
     },
     async getBannerList() {
@@ -211,13 +210,11 @@ export default {
         const result = await apiGetBannerList();
         if (result.Code == 200) {
           this.bannerList = result.RetObj;
-          console.log('[BannerList]', this.bannerList);
         }
       } else {
         const result = await apiGetBannerListOld();
         if (result.Code == 200) {
           this.bannerList = result.RetObj;
-          console.log('[BannerList]', this.bannerList);
         }
       }
     },
@@ -253,8 +250,6 @@ export default {
           }
           return item;
         });
-
-        console.log('[Product]', this.productList);
       }
     },
     async getLotteryCountList() {
@@ -262,11 +257,8 @@ export default {
       if (result.Code == 200) {
         this.lotteryList = result.RetObj;
       }
-      console.log('[LotteryList]', result.RetObj);
     },
     openBanner(banner) {
-      console.log('[BannerOpen]', banner);
-
       const bannerType = this.userIsLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
       const bannerUrl = this.userIsLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
 
@@ -318,7 +310,6 @@ export default {
         }
 
         const result = await apiGetGameRedirectUrl(requestDataGameRedirectUrl);
-        console.log('[Game Redirect URL]', result.RetObj);
 
         if (result.Code == 200) {
           //* iGameOpenType: 判斷回傳內容類型，1: 一般URL，2: HTML
@@ -342,7 +333,6 @@ export default {
       this.billNo = '';
       this.gameChance = '';
       this.gamePrize = '';
-      console.log('[CloseLotteryGame]', this.billNo, this.gameChance, this.gamePrize);
     },
     endLotteryGame() {
       //* 結束遊戲後，要執行的程式
@@ -354,8 +344,6 @@ export default {
       this.$store.dispatch('user/getInfo');
     },
     async openLotteryGame(lottery) {
-      console.log('[OpenLotteryGame]', lottery);
-
       if (lottery.Type == 0) {
         console.log('[InitWheel]');
         this.initHandlerWheel();
@@ -378,8 +366,6 @@ export default {
       return apiPlayLottery({ ActivityType: 0 })
         .then(res => {
           if (res.RetObj) {
-            console.log('[PlayLottery]', res);
-
             const data = res.RetObj;
 
             this.gameChance = data.LotteryCount;
@@ -402,8 +388,6 @@ export default {
 
             //* 顯示
             this.isShowWinWheel = true;
-
-            console.log(this.wheelSegmentsPrize);
           } else {
             this.lotteryErrorMessage = this.msgLibrary.noChance;
           }
@@ -419,8 +403,6 @@ export default {
       // 呼叫得獎API
       apiPlayLotteryResult({ ActivityType: 0, BillNo: this.billNo })
         .then(res => {
-          console.log('[PlayLotteryResult]', res);
-
           this.gamePrize = {
             text: res.RetObj.Lst_PrizeName,
             key: res.RetObj.Lst_PrizeKey,
@@ -444,7 +426,6 @@ export default {
       this.gamePrize = '';
       return apiPlayLottery({ ActivityType: 1 })
         .then(res => {
-          console.log('[PlayLottery]', res);
           if (res.RetObj) {
             const data = res.RetObj;
 
@@ -477,7 +458,6 @@ export default {
       // call 抽獎 api 取得抽獎結果
       apiPlayLotteryResult({ ActivityType: 1, BillNo: this.billNo })
         .then(res => {
-          console.log('[PlayLotteryResult]', res);
           this.gamePrize = {
             text: res.RetObj.Lst_PrizeName,
             key: res.RetObj.Lst_PrizeKey,

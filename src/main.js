@@ -59,16 +59,13 @@ if (cookieGetToken() && cookieGetPublicKey()) {
 
   //* 心跳，剛進來也要執行一次
   if (document.visibilityState == 'visible' && store.getters.userIsLoggedIn) {
-    apiKeepUserOnline().then(result => {
-      console.log('[KeepUserOnline]', result.RetObj);
-    });
+    apiKeepUserOnline();
   }
-  setInterval(async () => {
+  setInterval(() => {
     //* document.visibilityState & document.hasFocus()
     //* 前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
     if (document.visibilityState == 'visible' && store.getters.userIsLoggedIn) {
-      const result = await apiKeepUserOnline();
-      console.log('[KeepUserOnline]', result.RetObj);
+      apiKeepUserOnline();
     }
   }, 50000);
 

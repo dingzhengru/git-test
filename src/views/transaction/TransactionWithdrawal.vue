@@ -199,7 +199,6 @@ export default {
   methods: {
     async getWithdrawalInfo() {
       const result = await apiGetWithdrawalInfo();
-      console.log('[Withdrawal]', result.RetObj);
       this.withdrawalInfo = result.RetObj;
       this.bankList = result.RetObj.Add_MemberBankAccountList;
       this.currencyList = result.RetObj.BaseCurrencyItem;
@@ -215,7 +214,6 @@ export default {
     async transferToMain() {
       const result = await apiTransferAllGamePointToMain();
       if (result.Code == 200) {
-        console.log('[TransferToMain]', result.RetObj);
         const wallet = this.withdrawalInfo.Lst_Point;
         wallet.value = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999).Point;
         window.alert(result.RetObj.MsgString);
@@ -236,10 +234,7 @@ export default {
         Add_SelectBank: this.bank.Value,
       };
 
-      console.log('[WithdrawalRequestData]', requestData);
-
       const result = await apiWithdrawal(requestData);
-      console.log('[Withdrawal]', result);
       if (result.Code == 200) {
         this.$router.push({ name: 'TransactionRecordContent', params: { name: 'withdrawal' } });
       }

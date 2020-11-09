@@ -18,7 +18,6 @@ const actions = {
   async getInfo({ commit }, requestData) {
     const result = await apiGetSiteInfo(requestData);
 
-    console.log('[SiteInfo]', result);
     if (result.Code == 200) {
       commit('setInfo', result.RetObj);
     }
@@ -35,7 +34,6 @@ const actions = {
   async getSeoInfo({ commit }) {
     const result = await apiGetSiteSeoInfo();
 
-    console.log('[SiteSeoInfo]', result);
     if (result.Code == 200) {
       commit('setSeo', result.RetObj.SeoList);
     }

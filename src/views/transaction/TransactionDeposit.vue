@@ -277,7 +277,6 @@ export default {
   methods: {
     async getDepositInfo() {
       const result = await apiGetDepositInfo();
-      console.log('[DepositInfo]', result.RetObj);
 
       if (result.Code == 200) {
         if (result.RetObj.BankAccount.length > 0) {
@@ -324,15 +323,7 @@ export default {
         },
       };
 
-      //* 代表回傳的 bankDepositList 是空的，需使用者自行輸入銀行帳戶
-      // if (JSON.stringify(this.bankDepositList) === JSON.stringify(this.bankTransferList)) {
-      //   console.log('使用者自行輸入銀行帳戶', this.bankDepositAccount);
-      // }
-
-      console.log('[SubmitDeposit]', requestData);
-
       const result = await apiDeposit(requestData);
-      console.log('[Deposit]', result);
 
       if (result.Code == 200) {
         this.$router.push({ name: 'TransactionRecordContent', params: { name: 'deposit' } });
@@ -367,7 +358,6 @@ export default {
       const reader = new FileReader();
       reader.onload = e => {
         this.receipt.image = e.target.result;
-        console.log(e.target.result);
       };
       reader.readAsDataURL(file);
     },

@@ -46,7 +46,6 @@ export default {
         };
         this.recordList = result.RetObj.Rows;
       }
-      console.log('[BetHistoryDay]', result);
     },
   },
   mounted() {
@@ -60,7 +59,6 @@ export default {
   },
   watch: {
     lang() {
-      console.log(this.lang, this.$t('report.betRecordDetail.title'));
       this.title = `${this.$t('report.betRecordDetail.title')} ${this.$route.params.date}`;
       this.getBetHistoryDay();
     },

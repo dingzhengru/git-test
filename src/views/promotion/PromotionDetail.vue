@@ -66,11 +66,8 @@ export default {
   },
   methods: {
     async getPromotionDetail() {
-      console.log('[GetPromotionDetail]', this.$route.params.id);
-
       const requestData = { PromotionId: Number(this.$route.params.id) };
       const result = await apiGetPromotionDetail(requestData);
-      console.log('[PromotionDetail]', result);
       if (result.Code == 200) {
         this.image = result.RetObj.ImageUrl;
         this.promotionDetailList = result.RetObj.ReturnList;

@@ -33,14 +33,12 @@ export default {
     }
   },
   beforeDestroy() {
-    console.log('[GameHome beforeDestroy]', 'clearInterval');
     window.clearInterval(this.intervalJackpot);
   },
   methods: {
     async getJackpotTotal() {
       const requestData = { Tag: this.productTag };
       const result = await apiGetJackpotTotal(requestData);
-      console.log('[Jackpot]', result.RetObj);
       if (result.Code == 200) {
         this.jackpot = result.RetObj;
       }

@@ -150,8 +150,6 @@ export default {
 
     const result = await apiGetContactList();
 
-    console.log('[ContactList]', result);
-
     if (result.Code == 200) {
       this.contactList = result.RetObj.ServiceList;
     }

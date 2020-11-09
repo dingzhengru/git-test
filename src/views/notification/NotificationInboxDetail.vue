@@ -58,7 +58,6 @@ export default {
     async getInboxDetail() {
       const requestData = { KEY: this.$route.params.key };
       const result = await apiGetInboxDetail(requestData);
-      console.log('[Inbox]', result);
 
       this.list = result.RetObj.Rows;
     },
@@ -72,7 +71,6 @@ export default {
       const result = await apiSendMail(requestData);
 
       if (result.Code == 200) {
-        console.log('[SendMail]', result);
         window.alert(this.$t('alert.replaySuccess'));
         this.content = '';
       }

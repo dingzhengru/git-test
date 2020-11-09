@@ -151,7 +151,6 @@ export default {
     //* 取得記憶帳密(先判斷此 Site 是否開放此功能)
     if (this.siteIsOpenRememberMe) {
       const result = await apiGetRememberInfo();
-      console.log('[RememberInfo]', result);
 
       if (result.Code == 200) {
         this.user = result.RetObj.LoginUser;

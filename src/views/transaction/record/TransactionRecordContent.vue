@@ -212,7 +212,6 @@ export default {
       switch (this.$route.params.name) {
         case 'deposit': {
           const result = await apiGetRecordDeposit();
-          console.log('[RecordDeposit]', result.RetObj);
 
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
@@ -232,7 +231,6 @@ export default {
         }
         case 'withdrawal': {
           const result = await apiGetRecordWithdrawal();
-          console.log('[RecordWithdrawal]', result.RetObj);
 
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
@@ -255,7 +253,6 @@ export default {
             EndTime: this.search.dateTo == '' ? '' : `${this.search.dateTo} 23:59:59`,
           };
           const result = await apiGetRecordTransfer(requestDataTransfer);
-          console.log('[RecordTransfer]', result.RetObj);
 
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
@@ -281,7 +278,6 @@ export default {
           const requestDataRecordBonus = { Page: this.pagination.page };
 
           const result = await apiGetRecordBonus(requestDataRecordBonus);
-          console.log('[RecordBonus]', result.RetObj);
 
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
@@ -300,7 +296,6 @@ export default {
           const requestDataRecordLottery = { Page: this.pagination.page };
 
           const result = await apiGetRecordLottery(requestDataRecordLottery);
-          console.log('[RecordLottery]', result.RetObj);
 
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
@@ -319,7 +314,6 @@ export default {
           const requestDataRecordWithdrawalRestriction = { Page: this.pagination.page };
 
           const result = await apiGetRecordWithdrawalRestriction(requestDataRecordWithdrawalRestriction);
-          console.log('[RecordWithdrawalRestriction]', result.RetObj);
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
@@ -340,7 +334,6 @@ export default {
           const requestDataRecordAdjustment = { Page: this.pagination.page };
 
           const result = await apiGetRecordAdjustment(requestDataRecordAdjustment);
-          console.log('[RecordAdjustment]', result.RetObj);
           this.pagination.dataLength = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
@@ -362,7 +355,6 @@ export default {
       const result = await apiGetMemberProductList();
       if (result.Code == 200) {
         this.productList = result.RetObj;
-        console.log('[Product]', this.productList);
       }
     },
     changeSearchDateRange() {
@@ -385,7 +377,6 @@ export default {
       this.$router.push({ name: 'TransactionRecordDetail', query });
     },
     submitSearch() {
-      console.log('submitSearch', this.search);
       this.pagination.page = 1;
       this.getRecord();
     },

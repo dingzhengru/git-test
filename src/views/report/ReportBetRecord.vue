@@ -73,7 +73,6 @@ export default {
   },
   methods: {
     async getReportBetRecord() {
-      console.log('[ReportBetRecord]', this.dateRange);
       if (this.dateRange == 'Today') {
         const requestData = { Tag: this.dateRange };
         const result = await apiGetBetHistoryDay(requestData);
@@ -87,7 +86,6 @@ export default {
           };
           this.recordList = result.RetObj.Rows;
         }
-        console.log('[BetHistoryDay]', result);
       } else {
         const requestData = { Tag: this.dateRange };
         const result = await apiGetBetHistoryWeek(requestData);
@@ -97,7 +95,6 @@ export default {
         if (result.Code == 200) {
           this.weekList = result.RetObj.Rows;
         }
-        console.log('[BetHistoryWeek]', result);
       }
     },
   },

@@ -70,17 +70,14 @@ export default {
   methods: {
     async submitInstantAccess(data) {
       //* 接收送出開通帳號表單事件
-      console.log('[AdvancedRegisterNew]', data);
       const result = this.$store.dispatch('user/advancedRegisterNew', data);
       if (result.Code == 200) {
         window.alert(this.$t('alert.accessSuccess'));
       }
     },
     async changeWithdrawalPassword(data) {
-      console.log('[ChangeWithdrawalPassword]', data);
       const result = await apiChangePasswordWithdrawal(data);
 
-      console.log('[ChangeWithdrawalPassword]', result);
       if (result.Code == 200) {
         window.alert(this.$t('alert.changeProfileSuccess'));
       }
@@ -109,9 +106,7 @@ export default {
       immediate: true,
       async handler() {
         if (this.userIsAccountOpen === false) {
-          console.log('[isAccountOpen]', this.userIsAccountOpen);
           const result = await apiGetRegisterAdvanceNew();
-          console.log('[RegisterAdvanceNew]', result);
 
           this.registerList = result.RetObj.Register;
           this.bankList = result.RetObj.Add_BankList;

@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     async submitLogin() {
-      console.log('[login]', this.user);
       const result = await this.$store.dispatch('user/login', this.user);
 
       if (result.Code == 201) {
@@ -48,7 +47,6 @@ export default {
     async changeCaptcha() {
       const requestDataCaptcha = { pageCode: 'MemberLogin' };
       const result = await apiGetCaptcha(requestDataCaptcha);
-      console.log('[Captcha]', result.RetObj);
       if (result.Code == 200) {
         this.captchaImage = result.RetObj;
         this.user.CaptchaValue = '';

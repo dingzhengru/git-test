@@ -138,7 +138,6 @@ export default {
       };
 
       const result = await apiChangePassword(requestData);
-      console.log('[ChangePassword]', result);
 
       if (result.Code == 200) {
         window.alert(this.$t('alert.changeProfileSuccess'));
@@ -150,7 +149,6 @@ export default {
       const requestData = { ReMember: this.isRememberPassword };
       const result = await apiChangeRemember(requestData);
 
-      console.log('[ChangeRemember]', result);
       if (result.Code == 200) {
         this.$store.commit('user/setIsEnableRememberOption', this.isRememberPassword);
         window.alert(this.$t('alert.changeProfileSuccess'));

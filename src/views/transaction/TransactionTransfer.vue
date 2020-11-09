@@ -182,19 +182,16 @@ export default {
   methods: {
     async getTransferInfo() {
       const result = await apiGetTransferInfo();
-      console.log('[Transfer]', result.RetObj);
       this.productList = result.RetObj.Add_SourceList;
       this.productDetailList = result.RetObj.MenuMemberDetailItemList;
     },
     async getAllGamePoint() {
       const result = await apiGetAllGamePoint();
-      console.log('[AllGamePoint]', result.RetObj);
       this.updateGamePoint(result);
     },
     async submitTransferPoint() {
       const requestData = { Add_Source: this.from, Add_Destination: this.to, Add_TransferPoint: this.amount };
       const result = await apiTransferPoint(requestData);
-      console.log('[TransferPoint]', result);
 
       if (result.Code == 200) {
         this.updateGamePoint(result);
@@ -203,7 +200,6 @@ export default {
     },
     async transferToMain() {
       const result = await apiTransferAllGamePointToMain();
-      console.log('[TransferToMain]', result);
       if (result.Code == 200) {
         this.updateGamePoint(result);
         window.alert(result.RetObj.MsgString);
@@ -226,7 +222,7 @@ export default {
         case ERROR_TYPE.VALUE:
           break;
       }
-      console.log(msg);
+      return msg;
     },
     updateGamePoint(result) {
       this.gamePointList = result.RetObj.GameSitePoints;

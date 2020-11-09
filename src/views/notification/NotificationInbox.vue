@@ -61,7 +61,6 @@ export default {
     async getInboxList() {
       const requestData = { Page: this.pagination.page };
       const result = await apiGetInboxList(requestData);
-      console.log('[Inbox]', result);
 
       this.list = result.RetObj.Rows;
       this.pagination.dataLength = result.RetObj.Records;

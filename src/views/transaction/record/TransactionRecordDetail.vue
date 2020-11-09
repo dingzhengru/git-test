@@ -97,7 +97,6 @@ export default {
       switch (this.$route.params.name) {
         case 'deposit': {
           const result = await apiGetRecordDepositDetail(this.$route.query);
-          console.log('[RecordDepositDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
@@ -116,7 +115,6 @@ export default {
         }
         case 'withdrawal': {
           const result = await apiGetRecordWithdrawalDetail(this.$route.query);
-          console.log('[RecordWithdrawalDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
@@ -132,7 +130,6 @@ export default {
         }
         case 'transfer': {
           const result = await apiGetRecordTransferDetail(this.$route.query);
-          console.log('[RecordTransferDetail]', result);
 
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
@@ -151,7 +148,6 @@ export default {
         }
         case 'withdrawalRestriction': {
           const result = await apiGetRecordDetailWithdrawalRestriction(this.$route.query);
-          console.log('[RecordDetailWithdrawalRestriction]', result);
 
           this.list = result.RetObj.map(item => {
             const newItem = {};

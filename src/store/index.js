@@ -40,7 +40,6 @@ export default new Vuex.Store({
       if (result.Code == 200) {
         await loadLanguageAsync(lang);
         commit('setLang', lang);
-        console.log('[Lang]', '[ChangeLang]', lang, result.RetObj);
       }
       return lang;
     },
@@ -48,7 +47,6 @@ export default new Vuex.Store({
       const result = await apiGetLangList();
       if (result.Code == 200) {
         commit('setLangList', result.RetObj);
-        console.log('[Lang]', '[List]', result.RetObj);
       }
     },
   },

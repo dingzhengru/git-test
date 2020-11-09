@@ -50,7 +50,6 @@ export default {
     async getNewsList() {
       const requestData = { Page: this.pagination.page };
       const result = await apiGetNewsList(requestData);
-      console.log('[News]', result);
 
       this.list = result.RetObj.Rows;
       this.pagination.dataLength = result.RetObj.Records;

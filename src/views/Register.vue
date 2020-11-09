@@ -136,7 +136,6 @@ export default {
     async changeCaptcha() {
       const requestDataCaptcha = { pageCode: 'MemberRegister' };
       const result = await apiGetCaptcha(requestDataCaptcha);
-      console.log('[Captcha]', result.RetObj);
       if (result.Code == 200) {
         this.captchaImage = result.RetObj;
         const captcha = this.fieldList.find(item => item.name == 'CaptchaValue');
@@ -156,8 +155,6 @@ export default {
           requestData[field.name] = field.value;
         }
       }
-
-      console.log('[Register]', requestData);
 
       const result = await this.$store.dispatch('user/register', requestData);
 
@@ -215,8 +212,6 @@ export default {
     }
 
     apiGetRegisterFieldList().then(result => {
-      console.log('[Register]', result.RetObj);
-
       this.bankList = result.RetObj.Add_BankList;
 
       for (const registerField of result.RetObj.Register) {

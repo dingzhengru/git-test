@@ -36,7 +36,6 @@ export default {
   methods: {
     async getBetHistoryUnsettle() {
       const result = await apiGetBetHistoryUnsettle();
-      console.log('[BetHistoryUnsettle]', result);
       if (result.Code == 200) {
         this.list = result.RetObj.Rows;
       }

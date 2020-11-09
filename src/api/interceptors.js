@@ -13,11 +13,6 @@ import {
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
 import { i18n } from '@/i18n-lazy';
 
-// if (process.env.NODE_ENV === 'development') {
-//   console.log('set axios.defaults.withCredentials = true.');
-//   axios.defaults.withCredentials = true;
-// }
-
 //* 設置 timeout (預設是 0，代表沒有 timeout)
 axios.defaults.timeout = API_REQUEST_TIMEOUT;
 
@@ -76,8 +71,9 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   async res => {
-    //* 放進 loading 列表，篩選掉不會進 loading 的 API
+    console.log(`[${res.config.url.replace('/api', '')}]`, res.data);
 
+    //* 從 loading 列表取出一個
     if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == res.config.url)) {
       store.commit('popLoadingRequest');
     }
@@ -88,26 +84,15 @@ axios.interceptors.response.use(
       //* isResponded201 是避免多次執行 alert 的變數
       if (Responded201Count == 0) {
         Responded201Count++;
-        console.log('[Logout]', '201: 帳號被踢線', res.data);
         window.alert(res.data.ErrMsg);
         store.dispatch('user/logout');
       }
       return;
     } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
       //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
-      console.log('[TokenError]', res);
 
       //* 重新取得 Token 與 公鑰
       await store.dispatch('user/getTokenAndPublicKey');
-
-      //* 只於登入 & 註冊請求不重整
-      // if (res.config.url.includes('LoginIn') || res.config.url.includes('SimpleRegister')) {
-      //   return res;
-      // }
-
-      //* 先註解掉重整的部分，通常會觸發此情況，會是被踢線的情況，因 token 是無期限的
-      //* 且會妨礙到被踢線的登出流程，會先執行到此重整
-      // window.location.reload();
     } else if (res.data.Code == 599 && process.env.NODE_ENV === 'production') {
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
@@ -116,24 +101,17 @@ axios.interceptors.response.use(
         window.alert(res.data.ErrMsg);
       }
     } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
-      //* 615: JsonError，推測是公鑰與私鑰對不上，換一把新的公鑰
-      console.log('[JsonError]', res);
+      //* 615: JsonError，前端不顯示錯誤訊息內容(不正常操作)
 
       //* 重新取得 Token 與 公鑰
       await store.dispatch('user/getTokenAndPublicKey');
-
-      //* 所有請求都重新發送
-      // return axios.post(res.config.url, retryRequestData);
-
-      //* 只於登入 & 註冊請求不重整
-      // if (res.config.url.includes('LoginIn') || res.config.url.includes('SimpleRegister')) {
-      //   return res;
-      // }
-      // window.location.reload();
     }
     return res;
   },
   error => {
+    console.log('[interceptors response error]', error);
+    console.log('[interceptors response error] [response]', error.response);
+
     if (error.config.url.includes('Siteinfo/getinfo')) {
       //* 避免載入語言前，就觸發此，所以設一個預設的(en-us)
       let alertMessage = 'Load failed. Please refresh the page and retry.';
@@ -145,11 +123,6 @@ axios.interceptors.response.use(
       store.commit('popLoadingRequest');
     }
 
-    console.log('[interceptors response error]', error);
-    console.log('[interceptors response error] [response]', error.response);
-    console.log('[interceptors response error] [url]', error.response.config.url);
-    console.log('[interceptors response error] [status]', error.response.status);
-    console.log('[interceptors response error] [data]', error.response.data);
     return Promise.reject(error);
   }
 );

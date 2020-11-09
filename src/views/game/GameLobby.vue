@@ -84,24 +84,16 @@ export default {
       return this.productList.find(item => item.Lst_Proxy_Product_Key == this.$route.params.key) || {};
     },
     wallet() {
-      if (this.gamePointList.length <= 0) {
-        return {};
+      if (this.gamePointList.length > 0) {
+        return this.gamePointList.find(item => item.Product_id == 9999) || {};
       }
-      console.log(
-        '[Wallet]',
-        this.gamePointList.find(item => item.Product_id == 9999)
-      );
-      return this.gamePointList.find(item => item.Product_id == 9999) || {};
+      return {};
     },
     currentPointProduct() {
-      if (this.gamePointList.length <= 0) {
-        return {};
+      if (this.gamePointList.length > 0) {
+        return this.gamePointList.find(item => item.Product_id == this.$route.params.id) || {};
       }
-      console.log(
-        '[CurrentPointProduct]',
-        this.gamePointList.find(item => item.Product_id == this.$route.params.id)
-      );
-      return this.gamePointList.find(item => item.Product_id == this.$route.params.id) || {};
+      return {};
     },
   },
   data() {
@@ -146,7 +138,6 @@ export default {
     async getAllGamePoint() {
       const result = await apiGetAllGamePoint();
       this.gamePointList = result.RetObj.GameSitePoints;
-      console.log('[GamePointList]', result.RetObj);
     },
     async getGameProduct() {
       const requestData = { Tag: this.productTag };
@@ -156,7 +147,6 @@ export default {
       } else if (this.$route.params.type == 2) {
         result = await apiGetGameLobbyProduct(requestData);
       }
-      console.log('[GameLobby Product]', result.RetObj.ProductList);
       this.productList = result.RetObj.ProductList;
       this.productList = this.productList.map(item => {
         //* 放置對應的 css
@@ -189,7 +179,6 @@ export default {
         }
         return item;
       });
-      console.log('[GameLobby Product]', this.productList);
     },
     async getGameCategory() {
       let result = {};
@@ -202,7 +191,6 @@ export default {
         result = await apiGetGameLobbyCategory(requestData);
         this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
       }
-      console.log('[GameLobby Category]', result.RetObj);
       return result;
     },
     async getGameList() {
@@ -223,7 +211,6 @@ export default {
         result = await apiGetGameLobbyGameList(requestData);
         this.gameList = result.RetObj.JsonGameList || [];
       }
-      console.log('[GameLobby GameList]', result.RetObj);
       this.pagination.dataLength = result.RetObj.DataCnt;
     },
     async openGame(game, freePlay) {
@@ -243,7 +230,6 @@ export default {
 
         const requestData = { Tag: this.productTag, Gameid: game.Lst_GameID, Freeplay: freePlay };
         const result = await apiGetGameUrl(requestData);
-        console.log('[GameLobby OpenGame]', result);
         if (result.Code == 200) {
           openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
         } else {
@@ -270,7 +256,6 @@ export default {
       }
 
       const result = await apiGetGameUrl(requestData);
-      console.log('[OpenLiveGame]', result);
 
       if (result.Code == 200) {
         openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
@@ -295,7 +280,6 @@ export default {
       }
 
       const result = await apiGetGameRedirectUrl(requestData);
-      console.log('[OpenGameRedirectUrl]', result);
       if (result.Code == 200) {
         if (result.RetObj.iGameOpenType == 1) {
           openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
@@ -321,12 +305,8 @@ export default {
       if (result.Code == 200) {
         game.Lst_IsLike = !game.Lst_IsLike;
       }
-
-      console.log('[LikeGame]', result);
     },
     async transferPoint(amount) {
-      console.log('[TransferPoint]', amount);
-
       const requestData = {
         Add_Source: 9999,
         Add_Destination: this.$route.params.id,
@@ -334,8 +314,6 @@ export default {
       };
 
       const result = await apiTransferPoint(requestData);
-
-      console.log('[TransferPoint]', result);
 
       if (result.Code == 200) {
         this.gamePointList = result.RetObj.GameSitePoints;
@@ -357,7 +335,6 @@ export default {
         window.alert(this.$t('alert.gameMaintenance'));
         return;
       }
-      console.log('[ChangeProduct]', product);
 
       this.pagination.page = 1;
       this.search.text = '';

@@ -42,13 +42,9 @@ const mutations = {
     state.totalBalance = totalBalance;
   },
   setUserInfo(state, info) {
-    console.log('[SetUserInfo]', info);
-
     state.info = info;
 
     apiGetBankInfoList().then(result => {
-      console.log('[SetUserInfo BankInfoList]', result.RetObj);
-
       const bank1 = result.RetObj.find(item => item.Lst_BankId == state.bankId1) || '';
       const bank2 = result.RetObj.find(item => item.Lst_BankId == state.bankId2) || '';
       const bank3 = result.RetObj.find(item => item.Lst_BankId == state.bankId3) || '';
@@ -59,7 +55,6 @@ const mutations = {
     });
 
     apiGetAllGamePoint().then(result => {
-      console.log('[SetUserInfo AllGamePoint]', result.RetObj.TotalBalance);
       state.totalBalance = result.RetObj.TotalBalance;
     });
   },
@@ -97,8 +92,6 @@ const actions = {
   async register({ commit }, data) {
     const result = await apiRegister(data);
 
-    console.log('[Register Response]', result);
-
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);
       commit('setUserInfo', result.RetObj);
@@ -109,8 +102,6 @@ const actions = {
   },
   async login({ commit }, user) {
     const result = await apiLogin(user);
-
-    console.log('[Login Response]', result);
 
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);

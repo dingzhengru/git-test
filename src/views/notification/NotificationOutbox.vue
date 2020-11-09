@@ -58,7 +58,6 @@ export default {
       const result = await apiSendMail(this.mail);
 
       if (result.Code == 200) {
-        console.log('[SendMail]', result);
         this.resetMail();
 
         window.alert(this.$t('alert.sendEmailSuccess'));
@@ -66,7 +65,6 @@ export default {
     },
     async getMailCategoryList() {
       const result = await apiGetMailCategoryList();
-      console.log('[MailCategoryList]', result);
 
       this.categoryList = result.RetObj;
     },
