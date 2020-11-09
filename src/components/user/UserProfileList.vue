@@ -66,7 +66,6 @@
             :class="{ 'register__form__field__select--default': field.value == '' }"
             :id="idMapper.register.input[field.name]"
             v-model="field.value"
-            :required="field.rules['register-required']"
             v-else
           >
             <option :value="bank.Value" v-for="bank in bankList" :key="bank.Value">{{ bank.Text }}</option>
@@ -218,8 +217,9 @@ export default {
           field.isShow = registerField.Lst_Phase != 0;
           field.isModifiable = registerField.Lst_isModifiable || registerField.Lst_Phase == 2;
           field.isOnly = registerField.Lst_isOnly;
-          field.value = registerField.Lst_Value;
+          field.isRequired = registerField.Lst_isRequired;
           field.rules['register-required'] = registerField.Lst_isRequired;
+          field.value = registerField.Lst_Value;
         }
       }
 

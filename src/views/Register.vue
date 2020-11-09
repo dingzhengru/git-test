@@ -13,7 +13,7 @@
           :key="field.name"
           v-show="field.isShow"
         >
-          <span class="register__form__field__star" v-if="field.rules['register-required']">*</span>
+          <span class="register__form__field__star" v-if="field.isRequired">*</span>
           <input
             class="register__form__field__input"
             :id="idMapper.register.input[field.name]"
@@ -42,8 +42,6 @@
             class="register__form__field__image--code"
             :id="idMapper.register.image.captcha"
             :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
-            alt="MvcCaptcha"
-            title="Refrash Captcha"
             :width="captchaImage.Width"
             :height="captchaImage.Height"
             border="0"
@@ -228,7 +226,7 @@ export default {
           field.value = registerField.Lst_Value;
           field.isShow = registerField.Lst_Phase == 1;
           field.isOnly = registerField.Lst_isOnly;
-
+          field.isRequired = registerField.Lst_isRequired;
           field.rules['register-required'] = registerField.Lst_isRequired;
           //* Add_RealName 是不可修改
           //* 推薦人若已有值，就也不能修改
