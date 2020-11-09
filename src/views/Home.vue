@@ -1,6 +1,6 @@
 <template>
   <div class="home" @click="isShowMainNotice = false">
-    <HomeSwiper
+    <HomeBanner
       :list="bannerList"
       :siteResourceUrl="siteResourceUrl"
       :siteIsNewPromotion="siteIsNewPromotion"
@@ -118,7 +118,7 @@ import envelopeLoadingImgage from '@/assets/common/imgs/lottery/redEnvelope/ecli
 export default {
   name: 'Home',
   components: {
-    HomeSwiper: () => import('@/components/home/HomeSwiper'),
+    HomeBanner: () => import('@/components/home/HomeBanner'),
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
     HomeLotteryGameBlock: () => import('@/components/home/HomeLotteryGameBlock'),
     WinWheel: () => import('@/components/lottery/WinWheel'),
