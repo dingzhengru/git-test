@@ -71,7 +71,7 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   async res => {
-    console.log(`[${res.config.url.replace('/api', '')}]`, res.data);
+    console.log(`[${res.config.url.replace('/api/', '')}]`, res.data);
 
     //* 從 loading 列表取出一個
     if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == res.config.url)) {
