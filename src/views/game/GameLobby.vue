@@ -26,10 +26,8 @@
     />
 
     <GameTransferDialog
-      :amount.sync="transferAmount"
       :wallet="wallet"
       :currentPointProduct="currentPointProduct"
-      :isTransferAll.sync="isTransferAll"
       @submit-transfer="transferPoint"
       @close="closeTransferDialog"
       v-show="isShowTransferDialog"
@@ -60,7 +58,6 @@ import {
   apiSetGameLike,
 } from '@/api/game';
 import { apiTransferPoint } from '@/api/transaction-transfer';
-import { apiGetAllGamePoint } from '@/api/user';
 
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 
@@ -76,7 +73,7 @@ export default {
     GameTransferDialog: () => import('@/components/game/GameTransferDialog'),
   },
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang', 'siteFullCss', 'userGamePointList']),
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
     },
@@ -84,14 +81,14 @@ export default {
       return this.productList.find(item => item.Lst_Proxy_Product_Key == this.$route.params.key) || {};
     },
     wallet() {
-      if (this.gamePointList.length > 0) {
-        return this.gamePointList.find(item => item.Product_id == 9999) || {};
+      if (this.userGamePointList && this.userGamePointList.length > 0) {
+        return this.userGamePointList.find(item => item.Product_id == 9999) || {};
       }
       return {};
     },
     currentPointProduct() {
-      if (this.gamePointList.length > 0) {
-        return this.gamePointList.find(item => item.Product_id == this.$route.params.id) || {};
+      if (this.userGamePointList && this.userGamePointList.length > 0) {
+        return this.userGamePointList.find(item => item.Product_id == this.$route.params.id) || {};
       }
       return {};
     },
@@ -127,7 +124,6 @@ export default {
         pagesize: 6,
         dataLength: 1,
       },
-      gamePointList: [], //* 遊戲點數列表，轉帳會用到
       isShowTransferDialog: false, //* 轉帳視窗
       guid: '', //* 真人遊戲會用到的 guid，於 getGameCategory 取得
       gameLimitBetList: [], //* 真人遊戲的範本列表
@@ -135,10 +131,6 @@ export default {
     };
   },
   methods: {
-    async getAllGamePoint() {
-      const result = await apiGetAllGamePoint();
-      this.gamePointList = result.RetObj.GameSitePoints;
-    },
     async getGameProduct() {
       const requestData = { Tag: this.productTag };
       let result = {};
@@ -316,7 +308,7 @@ export default {
       const result = await apiTransferPoint(requestData);
 
       if (result.Code == 200) {
-        this.gamePointList = result.RetObj.GameSitePoints;
+        this.$store.commit('user/setPointInfo', result.RetObj);
         this.transferAmount = 0;
         window.alert(this.$t('alert.transferSuccess'));
 
@@ -394,16 +386,12 @@ export default {
     // * 根據版型引入 css (pagination)
     import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
-    //* 取得遊戲點數列表
-    this.getAllGamePoint();
-
     this.getGameProduct();
     await this.getGameCategory(); //* 真人遊戲需先從此取得 guid，才能取得遊戲列表
     this.getGameList();
   },
   watch: {
     async lang() {
-      this.getAllGamePoint();
       this.getGameProduct();
       await this.getGameCategory();
       this.getGameList();
