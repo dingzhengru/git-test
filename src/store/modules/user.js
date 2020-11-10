@@ -92,23 +92,25 @@ const actions = {
     }
     return result;
   },
-  async register({ commit }, data) {
+  async register({ commit, dispatch }, data) {
     const result = await apiRegister(data);
 
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);
       commit('setInfo', result.RetObj);
+      dispatch('getPointInfo');
 
       router.replace({ name: 'Home' });
     }
     return result;
   },
-  async login({ commit }, user) {
+  async login({ commit, dispatch }, user) {
     const result = await apiLogin(user);
 
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);
       commit('setInfo', result.RetObj);
+      dispatch('getPointInfo');
       router.replace({ name: 'Home' });
     }
     return result;
