@@ -24,9 +24,14 @@ import { apiKeepUserOnline } from '@/api/user'; //* API
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
 
-//* 用 isLoggedIn 判斷是否登入
+//* 取得是否登入 (Cookie)
 const isLoggedIn = cookieGetIsLoggedIn();
 store.commit('user/setIsLoggedIn', isLoggedIn);
+
+//* 取得使用者資訊 (已登入)
+if (isLoggedIn) {
+  store.dispatch('user/getInfo');
+}
 
 /**
  ** 取得公鑰 & token (； 頁面取得；已登入 )

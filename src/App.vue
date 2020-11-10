@@ -13,7 +13,7 @@
         :PIBetAmount="userPIBetAmount"
         :backIconRouteList="['PromotionDetail']"
         @changeLang="changeLang"
-        @logout="logout"
+        @logout="$store.dispatch('user/logout')"
         v-if="isShowHeader"
       ></AppHeader>
 
@@ -76,11 +76,6 @@ export default {
       return true;
     },
   },
-  methods: {
-    logout() {
-      this.$store.dispatch('user/logout');
-    },
-  },
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
 
@@ -121,11 +116,6 @@ export default {
     if (this.siteIsSpare === true && this.siteEnableSpareDomain === true && this.userIsLoggedIn === false) {
       this.$router.replace({ name: 'SignIn' });
       return;
-    }
-
-    //* 已登入才去取使用者資訊
-    if (this.userIsLoggedIn) {
-      this.$store.dispatch('user/getInfo');
     }
 
     //* PWA 一秒後沒觸發 beforeinstallprompt 的話，就視為已下載
