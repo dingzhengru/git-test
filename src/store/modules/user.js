@@ -80,7 +80,6 @@ const actions = {
   },
   async getPointInfo({ commit }) {
     const result = await apiGetAllGamePoint();
-    state.totalBalance = result.RetObj.TotalBalance;
     commit('setPointInfo', result.RetObj);
     return result;
   },
