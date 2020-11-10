@@ -8,7 +8,7 @@
         :key="promotionDetail.name"
       >
         <h3 class="promotion-detail__main__content__title">
-          {{ $t(promotionDetail.ContentTitle) }}
+          {{ promotionDetail.ContentTitle }}
         </h3>
         <div class="promotion-detail__main__content__desc ql-container">
           <div class="ql-editor">
@@ -39,7 +39,7 @@ import '@/vender/quill/quill-better-table.css';
 export default {
   name: 'PromotionDetail',
   computed: {
-    ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
+    ...mapGetters(['lang', 'siteFullCss', 'userIsLoggedIn']),
   },
   data() {
     return {
@@ -79,6 +79,11 @@ export default {
     import(`@/styles/${this.siteFullCss}/promotion/promotion-detail.scss`);
 
     this.getPromotionDetail();
+  },
+  watch: {
+    lang() {
+      this.getPromotionDetail();
+    },
   },
 };
 </script>
