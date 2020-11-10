@@ -112,13 +112,17 @@
         <tr class="transfer__account-table__tr">
           <td colspan="2">
             <div class="transfer__button-div">
-              <button class="transfer__button--reflash ui-btn ui-btn-long" type="button" @click="getAllGamePoint">
+              <button
+                class="transfer__button--reflash ui-btn ui-btn-long"
+                type="button"
+                @click="$store.dispatch('user/getPointInfo')"
+              >
                 {{ $t('transaction.transfer.button.refresh') }}
               </button>
             </div>
           </td>
         </tr>
-        <tr class="transfer__account-table__tr" v-for="game in gamePointList" :key="game.Product_id">
+        <tr class="transfer__account-table__tr" v-for="game in userGamePointList" :key="game.Product_id">
           <td class="transfer__account-table__th-1st">{{ game.Product_Name }}</td>
           <td class="transfer__account-table__td-2nd">{{ numeral(game.Point).format('0,0.00') }}</td>
         </tr>
@@ -130,7 +134,6 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import { apiGetAllGamePoint } from '@/api/user';
 import { apiGetTransferInfo, apiTransferPoint, apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
 
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
@@ -149,7 +152,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang', 'siteFullCss', 'userGamePointList']),
     fromList() {
       return this.productList;
     },
@@ -161,8 +164,8 @@ export default {
       }
     },
     currentProductPoint() {
-      if (this.gamePointList.find(item => item.Product_id == this.from)) {
-        return Math.floor(this.gamePointList.find(item => item.Product_id == this.from).Point);
+      if (this.userGamePointList) {
+        return Math.floor(this.userGamePointList.find(item => item.Product_id == this.from).Point) || 0;
       }
       return 0;
     },
@@ -173,7 +176,6 @@ export default {
       numeral: numeral,
       productList: [],
       productDetailList: [],
-      gamePointList: [],
       from: 9999,
       to: -1,
       amount: 0,
@@ -185,23 +187,19 @@ export default {
       this.productList = result.RetObj.Add_SourceList;
       this.productDetailList = result.RetObj.MenuMemberDetailItemList;
     },
-    async getAllGamePoint() {
-      const result = await apiGetAllGamePoint();
-      this.updateGamePoint(result);
-    },
     async submitTransferPoint() {
       const requestData = { Add_Source: this.from, Add_Destination: this.to, Add_TransferPoint: this.amount };
       const result = await apiTransferPoint(requestData);
 
       if (result.Code == 200) {
-        this.updateGamePoint(result);
+        this.$store.commit('user/setPointInfo', result.RetObj);
         window.alert(this.$t('alert.transferSuccess'));
       }
     },
     async transferToMain() {
       const result = await apiTransferAllGamePointToMain();
       if (result.Code == 200) {
-        this.updateGamePoint(result);
+        this.$store.commit('user/setPointInfo', result.RetObj);
         window.alert(result.RetObj.MsgString);
       }
     },
@@ -223,11 +221,6 @@ export default {
           break;
       }
       return msg;
-    },
-    updateGamePoint(result) {
-      this.gamePointList = result.RetObj.GameSitePoints;
-      this.$store.commit('user/setTotalBalance', result.RetObj.TotalBalance);
-      this.amount = this.currentProductPoint;
     },
     changeFrom() {
       this.amount = this.currentProductPoint;
@@ -251,12 +244,19 @@ export default {
     import(`@/styles/${this.siteFullCss}/transaction/transfer.scss`);
 
     this.getTransferInfo();
-    this.getAllGamePoint();
   },
   watch: {
     lang() {
       this.getTransferInfo();
-      this.getAllGamePoint();
+    },
+    userGamePointList() {
+      this.amount = this.currentProductPoint;
+    },
+    from: {
+      immediate: true,
+      handler() {
+        this.amount = this.currentProductPoint;
+      },
     },
   },
 };

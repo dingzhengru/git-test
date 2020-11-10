@@ -19,13 +19,30 @@ import {
 
 const state = {
   info: {},
+  pointInfo: {},
   isLoggedIn: null,
   token: null,
   publicKey: null,
-  totalBalance: null, //* 總點數
 };
 
 const mutations = {
+  setInfo(state, info) {
+    state.info = info;
+
+    //* 目前 info 裡面沒提供 bankName，需由 bankList 去找
+    apiGetBankInfoList().then(result => {
+      const bank1 = result.RetObj.find(item => item.Lst_BankId == state.bankId1) || '';
+      const bank2 = result.RetObj.find(item => item.Lst_BankId == state.bankId2) || '';
+      const bank3 = result.RetObj.find(item => item.Lst_BankId == state.bankId3) || '';
+
+      state.info.bankName1 = bank1.Lst_BankName || '';
+      state.info.bankName2 = bank2.Lst_BankName || '';
+      state.info.bankName3 = bank3.Lst_BankName || '';
+    });
+  },
+  setPointInfo(state, pointInfo) {
+    state.pointInfo = pointInfo;
+  },
   setIsLoggedIn(state, isLoggedIn) {
     state.isLoggedIn = isLoggedIn;
     cookieSetIsLoggedIn(isLoggedIn);
@@ -37,26 +54,6 @@ const mutations = {
   setPublicKey(state, publicKey) {
     state.publicKey = publicKey;
     cookieSetPublicKey(publicKey);
-  },
-  setTotalBalance(state, totalBalance) {
-    state.totalBalance = totalBalance;
-  },
-  setUserInfo(state, info) {
-    state.info = info;
-
-    apiGetBankInfoList().then(result => {
-      const bank1 = result.RetObj.find(item => item.Lst_BankId == state.bankId1) || '';
-      const bank2 = result.RetObj.find(item => item.Lst_BankId == state.bankId2) || '';
-      const bank3 = result.RetObj.find(item => item.Lst_BankId == state.bankId3) || '';
-
-      state.info.bankName1 = bank1.Lst_BankName || '';
-      state.info.bankName2 = bank2.Lst_BankName || '';
-      state.info.bankName3 = bank3.Lst_BankName || '';
-    });
-
-    apiGetAllGamePoint().then(result => {
-      state.totalBalance = result.RetObj.TotalBalance;
-    });
   },
   removeToken(state) {
     state.token = null;
@@ -75,9 +72,16 @@ const actions = {
     commit('setPublicKey', result.RetObj.publickey);
     return result;
   },
-  async getInfo({ commit }) {
+  async getInfo({ commit, dispatch }) {
     const result = await apiGetUserInfo();
-    commit('setUserInfo', result.RetObj);
+    commit('setInfo', result.RetObj);
+    dispatch('getPointInfo');
+    return result;
+  },
+  async getPointInfo({ commit }) {
+    const result = await apiGetAllGamePoint();
+    state.totalBalance = result.RetObj.TotalBalance;
+    commit('setPointInfo', result.RetObj);
     return result;
   },
   async advancedRegisterNew({ commit }, data) {
@@ -85,7 +89,7 @@ const actions = {
 
     const result = await apiAdvancedRegisterNew(data);
     if (result.Code == 200) {
-      commit('setUserInfo', result.RetObj);
+      commit('setInfo', result.RetObj);
     }
     return result;
   },
@@ -94,7 +98,7 @@ const actions = {
 
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);
-      commit('setUserInfo', result.RetObj);
+      commit('setInfo', result.RetObj);
 
       router.replace({ name: 'Home' });
     }
@@ -105,7 +109,7 @@ const actions = {
 
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);
-      commit('setUserInfo', result.RetObj);
+      commit('setInfo', result.RetObj);
       router.replace({ name: 'Home' });
     }
     return result;

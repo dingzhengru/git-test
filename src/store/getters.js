@@ -70,7 +70,10 @@ const getters = {
   userIsLoggedIn: state => state.user.isLoggedIn,
   userToken: state => state.user.token,
   userPublicKey: state => state.user.publicKey,
-  userTotalBalance: state => state.user.totalBalance,
+
+  //* User.pointInfo
+  userTotalBalance: state => state.user.pointInfo.TotalBalance,
+  userGamePointList: state => state.user.pointInfo.GameSitePoints,
 
   //* User info
   userUsername: state => state.user.info.Lst_Account,
