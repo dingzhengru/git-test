@@ -65,12 +65,13 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   //* 心跳，剛進來也要執行一次
   //* document.visibilityState & document.hasFocus()，前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
   setInterval(
-    (() => {
+    (function KeepUserOnline() {
       if (document.visibilityState == 'visible' && store.getters.userIsLoggedIn) {
         apiKeepUserOnline();
       }
+      return KeepUserOnline;
     })(),
-    5000
+    50000
   );
 
   //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
