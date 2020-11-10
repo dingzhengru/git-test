@@ -56,23 +56,22 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   //* Page Title
   document.title = store.getters.siteTitle;
 
-  //* 載入語系
-  await store.dispatch('changeLang', cookieGetLang());
-
   //* 取得語系列表
   store.dispatch('getLangList');
 
+  //* 載入語系
+  await store.dispatch('changeLang', cookieGetLang());
+
   //* 心跳，剛進來也要執行一次
-  if (document.visibilityState == 'visible' && store.getters.userIsLoggedIn) {
-    apiKeepUserOnline();
-  }
-  setInterval(() => {
-    //* document.visibilityState & document.hasFocus()
-    //* 前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
-    if (document.visibilityState == 'visible' && store.getters.userIsLoggedIn) {
-      apiKeepUserOnline();
-    }
-  }, 50000);
+  //* document.visibilityState & document.hasFocus()，前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
+  setInterval(
+    (() => {
+      if (document.visibilityState == 'visible' && store.getters.userIsLoggedIn) {
+        apiKeepUserOnline();
+      }
+    })(),
+    5000
+  );
 
   //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
   store.dispatch('site/getSeoInfo').then(() => {
