@@ -19,7 +19,7 @@ import i18n from '@/i18n-lazy'; //* 語言載入
 import { cookieGetLang, cookieGetIsLoggedIn, cookieGetToken, cookieGetPublicKey } from '@/utils/cookie';
 
 //* API
-import { apiKeepUserOnline } from '@/api/user'; //* API
+import { apiKeepUserOnline } from '@/api/user';
 
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
