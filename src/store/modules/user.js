@@ -31,13 +31,13 @@ const mutations = {
 
     //* 目前 info 裡面沒提供 bankName，需由 bankList 去找
     apiGetBankInfoList().then(result => {
-      const bank1 = result.RetObj.find(item => item.Lst_BankId == state.bankId1) || '';
-      const bank2 = result.RetObj.find(item => item.Lst_BankId == state.bankId2) || '';
-      const bank3 = result.RetObj.find(item => item.Lst_BankId == state.bankId3) || '';
+      const bank1 = result.RetObj.find(item => item.Lst_BankId == state.info.Lst_BankID_1) || {};
+      const bank2 = result.RetObj.find(item => item.Lst_BankId == state.info.Lst_BankID_2) || {};
+      const bank3 = result.RetObj.find(item => item.Lst_BankId == state.info.Lst_BankID_3) || {};
 
-      state.info.bankName1 = bank1.Lst_BankName || '';
-      state.info.bankName2 = bank2.Lst_BankName || '';
-      state.info.bankName3 = bank3.Lst_BankName || '';
+      state.info.Lst_BankName_1 = bank1.Lst_BankName || '';
+      state.info.Lst_BankName_2 = bank2.Lst_BankName || '';
+      state.info.Lst_BankName_3 = bank3.Lst_BankName || '';
     });
   },
   setPointInfo(state, pointInfo) {
