@@ -129,8 +129,6 @@ export default {
   },
   methods: {
     async submitChangePassword() {
-      this.$store.commit('setIsLoading', true);
-
       const requestData = {
         Add_OldPassword: this.passwordOld,
         Add_NewPassword: this.passwordNew,
@@ -143,7 +141,6 @@ export default {
         window.alert(this.$t('alert.changeProfileSuccess'));
         this.resetForm();
       }
-      this.$store.commit('setIsLoading', false);
     },
     async changeRemember() {
       const requestData = { ReMember: this.isRememberPassword };
@@ -163,9 +160,6 @@ export default {
   mounted() {
     // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/user/change-password.scss`);
-
-    //* 關掉 loading
-    this.$store.commit('setIsLoading', false);
 
     //* 設置記憶密碼
     this.isRememberPassword = this.userIsEnableRememberOption;
