@@ -300,6 +300,13 @@ export default {
 
       //* Add_Exchange_Rate，this.currency == 'THB' 是 1，否則是 this.hid_MMKtoTHBrate
       //* Add_Pay_Type: 存款單的付款型態(1客服 2存簿)，BankAccoun.length > 0 是存簿，否則為客服
+      //* Add_Request_Currency: 幣別，若幣別列表為空，直接設為空值即可
+
+      //* 匯率判斷
+      let exchangeRage = 1;
+      if (this.currency == 'MMK') {
+        exchangeRage = this.hid_MMKtoTHBrate;
+      }
 
       let requestData = {
         rsaData: {
@@ -307,14 +314,14 @@ export default {
           Add_Pay_BankAccount: this.bankDeposit.BankAccount || this.bankDepositAccount,
           Add_BankAccountName: this.bankDeposit.BankAccountName || '',
           Add_BankId: this.bankTransfer.split('_')[0],
+          Add_MemberBankName: this.bankTransfer,
           Add_Pay_Date: this.datetime.replace('T', ' '),
           Add_Pay_Money: this.amount,
           Add_Activity: this.promotion,
           Add_Pay_Memo: this.remark,
-          Add_MemberBankName: this.bankTransfer,
           Add_SDM_Key: this.method,
           Add_Request_Currency: this.currency,
-          Add_Exchange_Rate: this.currency == 'THB' || this.currency == '' ? 1 : this.hid_MMKtoTHBrate,
+          Add_Exchange_Rate: exchangeRage,
           Add_Pay_Type: this.bankDepositList.length > 0 ? 2 : 1,
         },
         noRsaData: {
@@ -361,21 +368,6 @@ export default {
       };
       reader.readAsDataURL(file);
     },
-    // validateForm() {
-    //   if (Object.keys(this.bankDeposit).length == 0) {
-    //     return false;
-    //   } else if (this.bankTransfer == '') {
-    //     return false;
-    //   } else if (this.datetime == '') {
-    //     return false;
-    //   } else if (this.method == '') {
-    //     return false;
-    //   } else if (this.amount < this.depositLimit.min || this.amount > this.depositLimit.max) {
-    //     return false;
-    //   }
-
-    //   return true;
-    // },
   },
   mounted() {
     // * 根據版型引入 css
