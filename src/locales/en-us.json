@@ -338,13 +338,13 @@
     "deposit": {
       "title": "Fill in Cash Voucher",
       "field": {
-        "bankDeposit": "Select Deposit Bank",
+        "depositBank": "Select Deposit Bank",
         "bankDepositAccount": "Account name of deposit",
-        "BankName": "Bank name of deposit",
-        "BankBranchName": "Branch Name of Bank",
-        "BankAccountName": "Account name of deposit",
-        "BankAccount": "Account number of deposit",
-        "bankTransfer": "Bank Transfer",
+        "bankName": "Bank name of deposit",
+        "bankBranchName": "Branch Name of Bank",
+        "bankAccountName": "Account name of deposit",
+        "bankAccount": "Account number of deposit",
+        "transferBank": "Bank Transfer",
         "datetime": "Deposit Time",
         "method": "Deposit Method",
         "amount": "Deposit Amount",
@@ -353,8 +353,8 @@
         "promotion": "Favorable Project on Payment"
       },
       "placeholder": {
-        "bankDeposit": "Select Deposit Bank",
-        "bankTransfer": "please choose your payment bank.",
+        "depositBank": "Select Deposit Bank",
+        "transferBank": "please choose your payment bank.",
         "method": "Please select",
         "currency": "Specific Currency",
         "promotion": "Please select a Promotion"

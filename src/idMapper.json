@@ -100,8 +100,8 @@
     },
     "deposit": {
       "field": {
-        "bankDeposit": "select_Method2_PayBank",
-        "bankTransfer": "select_Method2_WebATMURL",
+        "depositBank": "select_Method2_PayBank",
+        "transferBank": "select_Method2_WebATMURL",
         "method": "Add_SDM_Key_Method02",
         "amount": "Add_Pay_Money_Method02",
         "remark": "Add_Pay_Memo_Method02",

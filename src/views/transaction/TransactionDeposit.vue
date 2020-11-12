@@ -8,13 +8,13 @@
           <ValidationProvider
             tag="div"
             class="deposit__field theme-input-box"
-            :rules="{ required: true }"
-            v-if="JSON.stringify(bankDepositList) === JSON.stringify(bankTransferList)"
+            :rules="{ required: JSON.stringify(depositBankList) === JSON.stringify(transferBankList) }"
+            v-if="JSON.stringify(depositBankList) === JSON.stringify(transferBankList)"
           >
             <span class="deposit__field__title theme-input-header">
-              {{ $t('transaction.deposit.field.bankDepositAccount') }}
+              {{ $t('transaction.deposit.field.depositBankAccount') }}
             </span>
-            <input class="ui-ipt" type="text" v-model="bankDepositAccount" />
+            <input class="ui-ipt" type="text" v-model="depositBankAccount" />
           </ValidationProvider>
 
           <ValidationProvider
@@ -24,51 +24,51 @@
             v-else
           >
             <span class="deposit__field__title theme-input-header">
-              {{ $t('transaction.deposit.field.bankDeposit') }}
+              {{ $t('transaction.deposit.field.depositBank') }}
             </span>
             <select
               class="deposit__field__select ui-ddl"
-              :id="idMapper.transaction.deposit.field.bankDeposit"
-              v-model="bankDeposit"
+              :id="idMapper.transaction.deposit.field.depositBank"
+              v-model="depositBank"
             >
-              <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.bankDeposit`) }}</option>
-              <option :value="bank" v-for="bank in bankDepositList" :key="bank.value">
-                {{ bank.Text }}
+              <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.depositBank`) }}</option>
+              <option :value="item" v-for="item in depositBankList" :key="item.value">
+                {{ item.Text }}
               </option>
             </select>
 
-            <div v-if="bankDeposit && Object.keys(bankDeposit).length > 0">
+            <div v-if="depositBank && Object.keys(depositBank).length > 0">
               <span class="deposit__field__info__header theme-input-header">
-                {{ $t('transaction.deposit.field.BankName') }}
+                {{ $t('transaction.deposit.field.bankName') }}
               </span>
-              <p class="deposit__field__info__text">{{ bankDeposit.BankName }}</p>
+              <p class="deposit__field__info__text">{{ depositBank.BankName }}</p>
               <span class="deposit__field__info__header theme-input-header">
-                {{ $t('transaction.deposit.field.BankBranchName') }}
+                {{ $t('transaction.deposit.field.bankBranchName') }}
               </span>
-              <p class="deposit__field__info__text">{{ bankDeposit.BankBranchName }}</p>
+              <p class="deposit__field__info__text">{{ depositBank.BankBranchName }}</p>
               <span class="deposit__field__info__header theme-input-header">
-                {{ $t('transaction.deposit.field.BankAccountName') }}
+                {{ $t('transaction.deposit.field.bankAccountName') }}
               </span>
-              <p class="deposit__field__info__text">{{ bankDeposit.BankAccountName }}</p>
+              <p class="deposit__field__info__text">{{ depositBank.BankAccountName }}</p>
               <span class="deposit__field__info__header theme-input-header">
-                {{ $t('transaction.deposit.field.BankAccount') }}
+                {{ $t('transaction.deposit.field.bankAccount') }}
               </span>
-              <p class="deposit__field__info__text">{{ bankDeposit.BankAccount }}</p>
+              <p class="deposit__field__info__text">{{ depositBank.BankAccount }}</p>
             </div>
           </ValidationProvider>
 
-          <ValidationProvider tag="div" class="deposit__field theme-input-box" :rules="{ required: true }">
+          <ValidationProvider tag="div" class="deposit__field theme-input-box" :rules="{ 'object-not-empty': true }">
             <span class="deposit__field__title theme-input-header">
-              {{ $t('transaction.deposit.field.bankTransfer') }}
+              {{ $t('transaction.deposit.field.transferBank') }}
             </span>
             <select
               class="deposit__field__select ui-ddl"
-              :id="idMapper.transaction.deposit.field.bankTransfer"
-              v-model="bankTransfer"
+              :id="idMapper.transaction.deposit.field.transferBank"
+              v-model="transferBank"
             >
-              <option value="" selected>{{ $t('transaction.deposit.placeholder.bankTransfer') }}</option>
-              <option :value="bank.Value" v-for="bank in bankTransferList" :key="bank.Value">
-                {{ bank.Text }}
+              <option :value="{}" selected>{{ $t('transaction.deposit.placeholder.transferBank') }}</option>
+              <option :value="item" v-for="item in transferBankList" :key="item.Value">
+                {{ item.Text }}
               </option>
             </select>
           </ValidationProvider>
@@ -252,13 +252,18 @@ export default {
     return {
       dayjs: dayjs,
       idMapper: idMapper,
-      bankDepositList: [],
-      bankTransferList: [],
+      depositBankList: [],
+      transferBankList: [],
       methodList: [],
       currencyList: [],
       promotionList: [],
-      bankDeposit: {},
-      bankTransfer: '',
+      depositLimit: { min: 0, max: 0 },
+      hid_MMKtoTHBrate: '', //* MMK:THB 匯率(緬甸:泰銖)
+      hid_THBtoMMKrate: '', //* THB:MMK 匯率(泰銖:緬甸)
+      depositBank: {},
+      depositBankAccount: '',
+      transferBank: {},
+      // transferBankName: '',
       datetime: dayjs().format('YYYY-MM-DDTHH:mm:00'),
       method: '',
       currency: '',
@@ -266,10 +271,7 @@ export default {
       receipt: { name: '', image: '' },
       remark: '',
       promotion: '-1',
-      bankDepositAccount: '', //* 當存款銀行列表為空時，則要填入此欄位
-      hid_MMKtoTHBrate: '', //* MMK:THB 匯率(緬甸:泰銖)
-      hid_THBtoMMKrate: '', //* THB:MMK 匯率(泰銖:緬甸)
-      depositLimit: { min: 0, max: 0 },
+
       noticeList: ['currency', 'depositLimit01', 'depositLimit02', 'userBear01', 'userBear02', 'suggest', 'contact'],
       isShowDepositNotice: false,
     };
@@ -280,12 +282,15 @@ export default {
 
       if (result.Code == 200) {
         if (result.RetObj.BankAccount.length > 0) {
-          this.bankDepositList = result.RetObj.BankAccount;
+          this.depositBankList = result.RetObj.BankAccount;
         } else {
-          this.bankDepositList = result.RetObj.BankURL;
+          this.depositBankList = result.RetObj.BankURL;
         }
 
-        this.bankTransferList = result.RetObj.BankURL;
+        this.transferBankList = result.RetObj.BankURL.map(item => {
+          item.BankId = item.Value.split('_')[0];
+          return item;
+        });
         this.methodList = result.RetObj.DepositMethod;
         this.currencyList = result.RetObj.BaseCurrencyItem;
         this.promotionList = result.RetObj.AllActivityList;
@@ -296,11 +301,10 @@ export default {
       }
     },
     async submitDeposit() {
-      //* BankAccoun.length == 0 的時候，會讓使用者自己輸入銀行帳號(this.bankDepositAccount)
+      //* BankAccoun.length == 0 的時候，會讓使用者自己輸入銀行帳號(this.depositBankAccount)
 
-      //* Add_Exchange_Rate，this.currency == 'THB' 是 1，否則是 this.hid_MMKtoTHBrate
-      //* Add_Pay_Type: 存款單的付款型態(1客服 2存簿)，BankAccoun.length > 0 是存簿，否則為客服
       //* Add_Request_Currency: 幣別，若幣別列表為空，直接設為空值即可
+      //* Add_Pay_Type: 存款單的付款型態(1客服 2存簿)，BankAccoun.length > 0 是存簿，否則為客服
 
       //* 匯率判斷
       let exchangeRage = 1;
@@ -310,11 +314,11 @@ export default {
 
       let requestData = {
         rsaData: {
-          Add_Company_ServiceKey: this.bankDeposit.Value.split('||')[2] || '',
-          Add_Pay_BankAccount: this.bankDeposit.BankAccount || this.bankDepositAccount,
-          Add_BankAccountName: this.bankDeposit.BankAccountName || '',
-          Add_BankId: this.bankTransfer.split('_')[0],
-          Add_MemberBankName: this.bankTransfer,
+          Add_Company_ServiceKey: this.depositBank.Value.split('||')[2] || '',
+          Add_Pay_BankAccount: this.depositBank.BankAccount || this.depositBankAccount || '',
+          Add_BankAccountName: this.depositBank.BankAccountName || '',
+          Add_BankId: this.transferBank.BankId || '',
+          Add_MemberBankName: this.transferBank.Value || '',
           Add_Pay_Date: this.datetime.replace('T', ' '),
           Add_Pay_Money: this.amount,
           Add_Activity: this.promotion,
@@ -322,7 +326,7 @@ export default {
           Add_SDM_Key: this.method,
           Add_Request_Currency: this.currency,
           Add_Exchange_Rate: exchangeRage,
-          Add_Pay_Type: this.bankDepositList.length > 0 ? 2 : 1,
+          Add_Pay_Type: this.depositBankList.length > 0 ? 2 : 1,
         },
         noRsaData: {
           upfile_name: this.receipt.name,

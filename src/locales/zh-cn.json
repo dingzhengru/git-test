@@ -335,13 +335,13 @@
     "deposit": {
       "title": "填写存款申请单",
       "field": {
-        "bankDeposit": "请选择存入银行",
+        "depositBank": "请选择存入银行",
         "bankDepositAccount": "存入本公司银行帐号名",
-        "BankName": "存入本公司银行名称",
-        "BankBranchName": "存入本公司银行支行",
-        "BankAccountName": "存入本公司银行帐号名",
-        "BankAccount": "存入本公司银行账号",
-        "bankTransfer": "转帐银行",
+        "bankName": "存入本公司银行名称",
+        "bankBranchName": "存入本公司银行支行",
+        "bankAccountName": "存入本公司银行帐号名",
+        "bankAccount": "存入本公司银行账号",
+        "transferBank": "转帐银行",
         "datetime": "存款时间",
         "method": "存款方式",
         "amount": "存款金额",
@@ -350,8 +350,8 @@
         "promotion": "存款优惠方案"
       },
       "placeholder": {
-        "bankDeposit": "请选择存入银行",
-        "bankTransfer": "请选择转帐银行",
+        "depositBank": "请选择存入银行",
+        "transferBank": "请选择转帐银行",
         "method": "请选择",
         "currency": "币别",
         "promotion": "请选择优惠活动"
