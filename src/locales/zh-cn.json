@@ -376,19 +376,21 @@
     },
     "withdrawal": {
       "title": "交易中心",
-      "hightLightMessage": "取款金额，请填整百数，最低取款金额 {amountLimitMin} 铢",
+      "hightLightMessage": "取款金额，请填整百数，最低取款金额 {min} 铢",
       "field": {
-        "bankSelect": "选择银行",
-        "bankSelectPlaceholder": "请选择",
-        "Lst_Account": "帐号",
-        "Lst_Currency": "币别",
-        "Lst_Point": "我的钱包额度",
-        "Add_WithdrswalsPoint": "取款金额",
-        "Lst_Bank_name": "银行名称",
-        "Lst_BankAccount": "银行帐号",
-        "Lst_Bank_Branches": "支行名称",
-        "Add_RealName": "银行户名",
+        "bank": "选择银行",
+        "account": "帐号",
+        "currency": "币别",
+        "wallet": "我的钱包额度",
+        "amount": "取款金额",
+        "bankName": "银行名称",
+        "bankAccount": "银行帐号",
+        "bankBranch": "支行名称",
+        "bankAccountName": "银行户名",
         "password": "取款密碼"
+      },
+      "placeholder": {
+        "bank": "请选择"
       },
       "button": {
         "allToMyWallet": "全部转回我的钱包"

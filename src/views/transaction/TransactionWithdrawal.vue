@@ -5,10 +5,10 @@
         <ul class="withdrawal__ul theme-content-box">
           <ValidationProvider tag="li" class="withdrawal__li theme-li-dataView" :rules="{ 'object-not-empty': true }">
             <span class="withdrawal__li__title theme-dataView-header">
-              {{ $t('transaction.withdrawal.field.bankSelect') }}
+              {{ $t('transaction.withdrawal.field.bank') }}
             </span>
             <select class="withdrawal__li__select ui-ddl" v-model="bank">
-              <option :value="{}" selected>{{ $t('transaction.withdrawal.field.bankSelectPlaceholder') }}</option>
+              <option :value="{}" selected>{{ $t('transaction.withdrawal.placeholder.bank') }}</option>
               <option :value="bankItem" v-for="bankItem in bankList" :key="bankItem.Lst_Bank_name">
                 {{ bankItem.Text }}
               </option>
@@ -17,7 +17,7 @@
 
           <li class="withdrawal__li theme-li-dataView">
             <span class="withdrawal__li__title theme-dataView-header">
-              {{ $t('transaction.withdrawal.field.Lst_Account') }}
+              {{ $t('transaction.withdrawal.field.account') }}
             </span>
             <p class="withdrawal__li__content theme-dataView-data">
               {{ withdrawalInfo.Lst_Account }}
@@ -26,7 +26,7 @@
 
           <li class="withdrawal__li theme-li-dataView">
             <span class="withdrawal__li__title theme-dataView-header">
-              {{ $t('transaction.withdrawal.field.Lst_Currency') }}
+              {{ $t('transaction.withdrawal.field.currency') }}
             </span>
             <p class="withdrawal__li__content theme-dataView-data">
               {{ withdrawalInfo.Lst_Currency }}
@@ -35,7 +35,7 @@
 
           <li class="withdrawal__li theme-li-dataView">
             <span class="withdrawal__li__title theme-dataView-header">
-              {{ $t('transaction.withdrawal.field.Lst_Point') }}
+              {{ $t('transaction.withdrawal.field.wallet') }}
             </span>
             <p class="withdrawal__li__content theme-dataView-data">
               {{ numeral(withdrawalInfo.Lst_Point).format('0,0.00') }}
@@ -47,11 +47,11 @@
 
           <li class="withdrawal__li theme-li-dataView">
             <span class="withdrawal__li__title theme-dataView-header">
-              {{ $t('transaction.withdrawal.field.Add_WithdrswalsPoint') }}
+              {{ $t('transaction.withdrawal.field.amount') }}
             </span>
             <ValidationProvider :rules="{ required: currencyList.length > 0 }" v-show="currencyList.length > 0">
               <select class="withdrawal__li__select withdrawal__li__select--currency ui-ddl" v-model="currency">
-                <option value="">{{ $t('transaction.withdrawal.field.Lst_Currency') }}</option>
+                <option value="">{{ $t('transaction.withdrawal.field.currency') }}</option>
                 <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
                   {{ currencyItem.Text }}
                 </option>
@@ -80,7 +80,7 @@
 
           <li class="withdrawal__li theme-li-dataView">
             <span class="withdrawal__li__title theme-dataView-header">
-              {{ $t('transaction.withdrawal.field.Lst_Bank_name') }}
+              {{ $t('transaction.withdrawal.field.bankName') }}
             </span>
             <p class="withdrawal__li__content theme-dataView-data">
               {{ bank.Lst_Bank_name }}
@@ -89,7 +89,7 @@
 
           <li class="withdrawal__li theme-li-dataView">
             <span class="withdrawal__li__title theme-dataView-header">
-              {{ $t('transaction.withdrawal.field.Lst_BankAccount') }}
+              {{ $t('transaction.withdrawal.field.bankAccount') }}
             </span>
             <p class="withdrawal__li__content theme-dataView-data">
               {{ bank.Lst_BankAccount }}
@@ -98,7 +98,7 @@
 
           <li class="withdrawal__li theme-li-dataView">
             <span class="withdrawal__li__title theme-dataView-header">
-              {{ $t('transaction.withdrawal.field.Lst_Bank_Branches') }}
+              {{ $t('transaction.withdrawal.field.bankBranch') }}
             </span>
             <p class="withdrawal__li__content theme-dataView-data">
               {{ bank.Lst_Bank_Branches }}
@@ -107,7 +107,7 @@
 
           <li class="withdrawal__li theme-li-dataView">
             <span class="withdrawal__li__title theme-dataView-header">
-              {{ $t('transaction.withdrawal.field.Add_RealName') }}
+              {{ $t('transaction.withdrawal.field.bankAccountName') }}
             </span>
             <p class="withdrawal__li__content theme-dataView-data">
               {{ withdrawalInfo.Add_RealName }}
@@ -134,7 +134,7 @@
           </ValidationProvider>
         </ul>
         <div class="withdrawal__light-message">
-          {{ $t('transaction.withdrawal.hightLightMessage', { amountLimitMin: withdrawalInfo.WithalDownlimit }) }}
+          {{ $t('transaction.withdrawal.hightLightMessage', { min: withdrawalInfo.WithalDownlimit }) }}
         </div>
         <div class="withdrawal__button-div">
           <button
@@ -207,15 +207,11 @@ export default {
       if (this.bankList.length < 0) {
         this.$router.replace({ name: 'UserProfile' });
       }
-
-      // this.amountLimit.min = result.RetObj.WithalDownlimit;
-      // this.amountLimit.max = result.RetObj.WithalUplimit;
     },
     async transferToMain() {
       const result = await apiTransferAllGamePointToMain();
       if (result.Code == 200) {
-        const wallet = this.withdrawalInfo.Lst_Point;
-        wallet.value = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999).Point;
+        this.withdrawalInfo.Lst_Point = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999).Point;
         window.alert(result.RetObj.MsgString);
       }
     },

@@ -376,19 +376,21 @@
     },
     "withdrawal": {
       "title": "ทำรายการฝาก-ถอนเงิน",
-      "hightLightMessage": "รายการถอนเงินรบกวนทำรายการยอดจำนวนเต็ม เช่นยอด {amountLimitMin} บาท(หลักหน่วย/หลักสิบทางเว็ปไม่ถอนค่ะ)",
+      "hightLightMessage": "รายการถอนเงินรบกวนทำรายการยอดจำนวนเต็ม เช่นยอด {min} บาท(หลักหน่วย/หลักสิบทางเว็ปไม่ถอนค่ะ)",
       "field": {
-        "bankSelect": "เลือกธนาคาร",
-        "bankSelectPlaceholder": "โปรดเลือก",
-        "Lst_Account": "ยูสเซอร์",
-        "Lst_Currency": "สกุลเงิน",
-        "Lst_Point": "ยอดเงินในกระเป๋าเงิน",
-        "Add_WithdrswalsPoint": "ยอดเงินที่ถอน",
-        "Lst_Bank_name": "ธนาคาร",
-        "Lst_BankAccount": "เลขที่บัญชี",
-        "Lst_Bank_Branches": "สาขา",
-        "Add_RealName": "ชื่อบัญชี",
+        "bank": "เลือกธนาคาร",
+        "account": "ยูสเซอร์",
+        "currency": "สกุลเงิน",
+        "wallet": "ยอดเงินในกระเป๋าเงิน",
+        "amount": "ยอดเงินที่ถอน",
+        "bankName": "ธนาคาร",
+        "bankAccount": "เลขที่บัญชี",
+        "bankBranch": "สาขา",
+        "bankAccountName": "ชื่อบัญชี",
         "password": "รหัสถอนเงินเว็บไซต์"
+      },
+      "placeholder": {
+        "bank": "โปรดเลือก"
       },
       "button": {
         "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด"

@@ -379,19 +379,21 @@
     },
     "withdrawal": {
       "title": "Trade Center",
-      "hightLightMessage": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal {amountLimitMin} THB",
+      "hightLightMessage": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal {min} THB",
       "field": {
-        "bankSelect": "Select Bank",
-        "bankSelectPlaceholder": "Please select",
-        "Lst_Account": "Account",
-        "Lst_Currency": "Specific Currency",
-        "Lst_Point": "wallet balance",
-        "Add_WithdrswalsPoint": "Withdrawal Amount",
-        "Lst_Bank_name": "Name of Bank",
-        "Lst_BankAccount": "Bank Account",
-        "Lst_Bank_Branches": "Name of Branch",
-        "Add_RealName": "Account Name of Bank",
+        "bank": "Select Bank",
+        "account": "Account",
+        "currency": "Specific Currency",
+        "wallet": "wallet balance",
+        "amount": "Withdrawal Amount",
+        "bankName": "Name of Bank",
+        "bankAccount": "Bank Account",
+        "bankBranch": "Name of Branch",
+        "bankAccountName": "Account Name of Bank",
         "password": "Password for Withdrawal"
+      },
+      "placeholder": {
+        "bank": "Please select"
       },
       "button": {
         "allToMyWallet": "All to my wallet"
