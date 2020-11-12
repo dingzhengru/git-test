@@ -9,7 +9,6 @@
               class="transfer__wallet__select ui-ddl"
               :id="idMapper.transaction.transfer.field.from"
               v-model="from"
-              @change="changeFrom"
             >
               <!-- <option :value="{}" selected>{{ $t('transaction.transfer.placeholder.from') }}</option> -->
               <template v-for="product in fromList">
@@ -222,17 +221,6 @@ export default {
       }
       return msg;
     },
-    changeFrom() {
-      this.amount = this.currentProductPoint;
-
-      if (this.from != 9999) {
-        //* 當 from 選擇非錢包時，to 列表會只剩下錢包
-        this.to = 9999;
-      } else if (this.from == 9999 && this.to == 9999) {
-        //* 當 from 選錢包，但 to 也是錢包時
-        this.to = -1;
-      }
-    },
     changeAmount() {
       if (this.amount > this.currentProductPoint) {
         this.amount = this.currentProductPoint;
@@ -256,6 +244,14 @@ export default {
       immediate: true,
       handler() {
         this.amount = this.currentProductPoint;
+
+        if (this.from != 9999) {
+          //* 當 from 選擇非錢包時，to 列表會只剩下錢包
+          this.to = 9999;
+        } else if (this.from == 9999 && this.to == 9999) {
+          //* 當 from 選錢包，但 to 也是錢包時
+          this.to = -1;
+        }
       },
     },
   },

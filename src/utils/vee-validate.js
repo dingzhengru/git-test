@@ -176,3 +176,32 @@ extend('change-withdraw-password-confirmed', {
     return i18n.t('validate.changeWithdrawPassword.confirmed');
   },
 });
+
+//* 取款頁面，密碼的部分
+extend('withdrawal-password-required', {
+  ...required,
+  message: () => {
+    return i18n.t('validate.common.required.password');
+  },
+});
+
+extend('withdrawal-password-min', {
+  ...min,
+  message: () => {
+    return i18n.t('validate.common.length.password');
+  },
+});
+
+extend('withdrawal-password-max', {
+  ...max,
+  message: () => {
+    return i18n.t('validate.common.length.password');
+  },
+});
+
+extend('withdrawal-password-regex', {
+  ...regex,
+  message: () => {
+    return i18n.t('validate.common.regex.password');
+  },
+});

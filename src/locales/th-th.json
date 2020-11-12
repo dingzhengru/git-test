@@ -16,6 +16,20 @@
     "gameMaintenance": "เกมส์อยู่ในระหว่างการปรับปรุง  ขออภัยในความไม่สะดวก"
   },
   "validate": {
+    "common": {
+      "required": {
+        "password": "กรุณาใส่รหัสผ่าน"
+      },
+      "length": {
+        "password": "อย่างน้อย 6 ตัวอักษร อย่างมาก 30 ตัวอักษร"
+      },
+      "regex": {
+        "password": "รูปแบบผิดพลาด"
+      },
+      "confirmed": {
+        "password": "พาสเวิร์ดผิดพลาด"
+      }
+    },
     "register": {
       "required": {
         "Add_Account": "โปรดกรอกชื่อบัญชีของท่าน",

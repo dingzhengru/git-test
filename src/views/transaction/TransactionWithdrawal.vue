@@ -117,7 +117,12 @@
           <ValidationProvider
             tag="li"
             class="withdrawal__li theme-li-dataView"
-            :rules="{ required: true, min: 6, regex: '^[a-zA-Z0-9]*$' }"
+            :rules="{
+              'withdrawal-password-required': true,
+              'withdrawal-password-min': 6,
+              'withdrawal-password-regex': '^[a-zA-Z0-9]*$',
+            }"
+            v-slot="{ errors }"
           >
             <span class="withdrawal__li__title theme-dataView-header">
               {{ $t('transaction.withdrawal.field.password') }}
@@ -128,8 +133,8 @@
               type="password"
               v-model="password"
             />
-            <div class="theme-errorMsg" v-if="errorPassword">
-              <span class="theme-txt-errorMsg">{{ errorPassword }}</span>
+            <div class="theme-errorMsg" v-if="errors.length > 0">
+              <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
             </div>
           </ValidationProvider>
         </ul>
@@ -186,7 +191,6 @@ export default {
       idMapper: idMapper,
       numeral: numeral,
       withdrawalInfo: {},
-      errorPassword: '',
       bankList: [],
       currencyList: [],
       bank: {},

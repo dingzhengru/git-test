@@ -16,6 +16,20 @@
     "gameMaintenance": "游戏维护中，很抱歉造成您的不便！"
   },
   "validate": {
+    "common": {
+      "required": {
+        "password": "请输入密码"
+      },
+      "length": {
+        "password": "密码长度最少 6 字元，最多 30 字元"
+      },
+      "regex": {
+        "password": "格式错误"
+      },
+      "confirmed": {
+        "password": "确认密码错误"
+      }
+    },
     "register": {
       "required": {
         "Add_Account": "请输入您的账号",

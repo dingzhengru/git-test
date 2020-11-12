@@ -16,6 +16,20 @@
     "gameMaintenance": "Game under maintenance, we apologize for the inconvenience brought to you!"
   },
   "validate": {
+    "common": {
+      "required": {
+        "password": "Please enter your password"
+      },
+      "length": {
+        "password": "At least 6 characters up to 30 characters"
+      },
+      "regex": {
+        "password": "Format False"
+      },
+      "confirmed": {
+        "password": "Please reconfirm your password"
+      }
+    },
     "register": {
       "required": {
         "Add_Account": "Please enter your account",
