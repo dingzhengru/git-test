@@ -1,5 +1,6 @@
 <template>
   <div class="game-lobby">
+    <GameJackpot :jackpot="jackpot" />
     <GameProductNavigation :productList="productList" @change-product="changeProduct" />
     <GameCategoryNavigation
       :categoryList="categoryList"
@@ -47,7 +48,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import mixinGameLobby from '@/mixins/gameLobby';
-import { apiGetGameLobbyProduct, apiGetGameLobbyCategory, apiGetGameLobbyGameList, apiGetGameUrl } from '@/api/game';
+import {
+  apiGetJackpotTotal,
+  apiGetGameLobbyProduct,
+  apiGetGameLobbyCategory,
+  apiGetGameLobbyGameList,
+  apiGetGameUrl,
+} from '@/api/game';
 import { isIos, openNewWindowURL } from '@/utils/device';
 
 export default {
@@ -55,6 +62,7 @@ export default {
   mixins: [mixinGameLobby],
   components: {
     AppPagination: () => import('@/components/AppPagination'),
+    GameJackpot: () => import('@/components/game/GameJackpot'),
     GameProductNavigation: () => import('@/components/game/GameProductNavigation'),
     GameCategoryNavigation: () => import('@/components/game/GameCategoryNavigation'),
     GameSearchBlock: () => import('@/components/game/GameSearchBlock'),
@@ -66,6 +74,8 @@ export default {
   },
   data() {
     return {
+      jackpot: 0,
+      intervalJackpot: null,
       defaultCategoryList: [
         {
           Lst_Category: '',
@@ -79,6 +89,13 @@ export default {
     };
   },
   methods: {
+    async getJackpotTotal() {
+      const requestData = { Tag: this.productTag };
+      const result = await apiGetJackpotTotal(requestData);
+      if (result.Code == 200) {
+        this.jackpot = result.RetObj;
+      }
+    },
     async getGameProductList() {
       const requestData = { Tag: this.productTag };
       let result = {};
@@ -155,9 +172,17 @@ export default {
     },
   },
   mounted() {
+    this.getJackpotTotal();
+    this.intervalJackpot = window.setInterval(() => {
+      this.getJackpotTotal();
+    }, 20000);
+
     this.getGameProductList();
     this.getGameCategoryList();
     this.getGameList();
+  },
+  beforeDestroy() {
+    window.clearInterval(this.intervalJackpot);
   },
   watch: {
     lang() {

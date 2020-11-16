@@ -26,15 +26,15 @@ $type: 'Y/01';
 /*
  ! 語系
 */
-.en-us .game__jackpot {
+.en-us .game-jackpot {
   background-image: url(~@/assets/#{$type}/imgs/theme/bg_jackpot-en-us.png);
 }
 
-.th-th .game__jackpot {
+.th-th .game-jackpot {
   background-image: url(~@/assets/#{$type}/imgs/theme/bg_jackpot-th-th.png);
 }
 
-.zh-cn .game__jackpot {
+.zh-cn .game-jackpot {
   background-image: url(~@/assets/#{$type}/imgs/theme/bg_jackpot-zh-cn.png);
 }
 
