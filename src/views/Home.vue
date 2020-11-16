@@ -286,11 +286,23 @@ export default {
         return;
       }
 
+      //* GetGameRedirectUrl，true: 外部連結
       if (game.GetGameRedirectUrl == false) {
+        let gameLobby = 'GameLobbySlot';
+        switch (game.Lst_Game_Classify) {
+          case 1: {
+            gameLobby = 'GameLobbyLive';
+            break;
+          }
+          case 2: {
+            gameLobby = 'GameLobbySlot';
+            break;
+          }
+        }
+
         this.$router.push({
-          name: 'GameLobby',
+          name: gameLobby,
           params: {
-            type: game.Lst_Game_Classify,
             id: game.Lst_Product_id,
             key: game.Lst_Proxy_Product_Key,
           },

@@ -10,7 +10,7 @@
       />
       <button class="game-lobby__inquire__form__search-icon" type="submit"></button>
     </form>
-    <button class="game-lobby__inquire__favorites" @click="changeSearchIsLike" v-if="$route.params.type == 2"></button>
+    <button class="game-lobby__inquire__favorites" @click="changeSearchIsLike" v-if="isShowLike"></button>
     <button class="game-lobby__inquire__button--transfer-now" @click="openTransferDialog">
       {{ $t('game.button.transferNow') }}
     </button>
@@ -24,6 +24,10 @@ export default {
     search: {
       type: Object,
       default: () => {},
+    },
+    isShowLike: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {

@@ -8,11 +8,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { apiGetJackpotTotal } from '@/api/game';
 import numeral from 'numeral';
+
 export default {
   name: 'GameHome',
   computed: {
+    ...mapGetters(['siteFullCss']),
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
     },
@@ -31,6 +34,12 @@ export default {
         this.getJackpotTotal();
       }, 20000);
     }
+
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/game.scss`);
+
+    // * 根據版型引入 css (pagination)
+    import(`@/styles/${this.siteFullCss}/pagination.scss`);
   },
   beforeDestroy() {
     window.clearInterval(this.intervalJackpot);

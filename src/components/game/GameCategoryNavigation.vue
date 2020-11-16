@@ -3,21 +3,17 @@
     <ul class="game-lobby__category__ul">
       <li
         class="game-lobby__category__ul__li"
-        v-for="category in categoryList"
-        :key="category.Lst_Category"
-        :class="{ 'game-lobby__category__ul__li--active': $route.query.category == category.Lst_Category }"
+        v-for="item in categoryList"
+        :key="item.Lst_Category"
+        :class="{ 'game-lobby__category__ul__li--active': category == item.Lst_Category }"
       >
-        <a
-          class="game-lobby__category__ul__li__link"
-          href="javascript:;"
-          @click="changeCategory(category.Lst_Category)"
-        >
-          <template v-if="category.Lst_GameName == 'all' || category.Lst_GameName == 'hot'">
-            {{ $t(`game.category.${category.Lst_GameName}`) }}
+        <a class="game-lobby__category__ul__li__link" href="javascript:;" @click="changeCategory(item.Lst_Category)">
+          <template v-if="item.Lst_GameName == 'all' || item.Lst_GameName == 'hot'">
+            {{ $t(`game.category.${item.Lst_GameName}`) }}
           </template>
 
           <template v-else>
-            {{ category.Lst_GameName }}
+            {{ item.Lst_GameName }}
           </template>
         </a>
       </li>
@@ -32,6 +28,10 @@ export default {
     categoryList: {
       type: Array,
       default: () => [],
+    },
+    category: {
+      type: String,
+      default: () => '',
     },
   },
   methods: {

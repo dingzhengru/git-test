@@ -23,7 +23,7 @@
               href="javascript:;"
               class="game-lobby__table__tr__td__link--freeplay"
               @click.capture.stop="openGame(game, 1)"
-              v-if="$route.params.type == 2 && game.Lst_IsDemo"
+              v-if="isShowDemo"
             >
               {{ $t('game.link.free') }}
             </a>
@@ -32,7 +32,7 @@
               class="game-lobby__table__tr__td__link--favorites"
               :class="{ active: game.Lst_IsLike }"
               @click.capture.stop="likeGame(game)"
-              v-if="$route.params.type == 2"
+              v-if="isShowLike"
             >
               {{ $t('game.link.fav') }}
             </a>
@@ -54,6 +54,14 @@ export default {
     currentProduct: {
       type: Object,
       default: () => {},
+    },
+    isShowDemo: {
+      type: Boolean,
+      default: false,
+    },
+    isShowLike: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {

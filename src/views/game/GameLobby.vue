@@ -397,12 +397,6 @@ export default {
       this.getGameList();
     },
     productList() {
-      //* 避免直接輸入網址，到正在維護的 Product
-      // if (this.currentProduct.Lst_Site_Product_Status != 0) {
-      //   window.alert(this.$t('game.alert.maintenance'));
-      //   window.location.replace('/');
-      // }
-
       //* 避免直接輸入網址，到要去站外大廳的 Product
       if (this.currentProduct.GetGameRedirectUrl) {
         // this.$router.replace({ name: 'Home' });
