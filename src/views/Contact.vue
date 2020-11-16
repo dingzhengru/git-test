@@ -2,27 +2,27 @@
   <div class="contact" :class="{ 'contact-auth': userIsLoggedIn }" @click.self="closeAllContentList">
     <div class="contact__content theme-content-box" @click.self="closeAllContentList">
       <ul class="contact__content__ul" @click.self="closeAllContentList">
-        <li class="contact__content__ul__li" v-for="contact in contactList" :key="contact.Lst_ContactID">
+        <li class="contact__content__ul__li" v-for="item in contactList" :key="item.Lst_ContactID">
           <a
             href="javascript:;"
             class="contact__content__ul__li__link"
-            :class="contact.class"
-            @click.prevent="clickContactHandler(contact)"
+            :class="item.class"
+            @click.prevent="clickContactHandler(item)"
           >
-            {{ $te(`contact.${contact.name}`) ? $t(`contact.${contact.name}`) : contact.name }}
+            {{ $te(`contact.${item.name}`) ? $t(`contact.${item.name}`) : item.name }}
           </a>
 
           <transition name="fade">
             <div
               class="contact__content__ul__li__block contact__content__ul__li__block--tel"
-              v-if="contact.isShowContentList && contact.DetailList.length > 0"
+              v-if="item.isShowContentList && item.DetailList.length > 0"
             >
               <a
                 class="contact__content__ul__li__block__link contact__content__ul__li__block__link--tel"
                 href="javascript:;"
-                v-for="content in contact.DetailList"
+                v-for="content in item.DetailList"
                 :key="content.Lst_ContactValueID"
-                @click.prevent="openContactLink(contact, content)"
+                @click.prevent="openContactLink(item, content)"
               >
                 {{ content.Lst_ContactValue }}
               </a>
@@ -41,45 +41,22 @@ import { apiGetContactList } from '@/api/contact';
 export default {
   name: 'Contact',
   computed: {
-    ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
+    ...mapGetters(['lang', 'siteFullCss', 'userIsLoggedIn']),
+    service() {
+      return this.contactList.find(item => item.Lst_ContactType == 6);
+    },
   },
   data() {
     return {
-      contactList: [
-        {
-          Lst_ContactID: 50,
-          Lst_ContactType: 1,
-          Lst_Enable: true,
-          Lst_Sort: 1,
-          DetailList: [
-            {
-              Lst_ContactValueID: 19,
-              Lst_ContactID: 50,
-              Lst_ContactValue: 'BBBB@msn.com',
-            },
-          ],
-        },
-        {
-          Lst_ContactID: 51,
-          Lst_ContactType: 2,
-          Lst_Enable: true,
-          Lst_Sort: 2,
-          DetailList: [
-            {
-              Lst_ContactValueID: 20,
-              Lst_ContactID: 51,
-              Lst_ContactValue: 'Line00112233',
-            },
-          ],
-        },
-        {
-          Lst_ContactID: 54,
-          Lst_ContactType: 5,
-          Lst_Enable: true,
-          Lst_Sort: 5,
-          DetailList: [],
-        },
-      ],
+      contactList: [],
+      zopim: undefined,
+      zE: undefined,
+      zopimLangMapper: {
+        'en-us': 'en',
+        'th-th': 'th',
+        'zh-cn': 'zh_CN',
+        'zh-tw': 'zh_TW',
+      },
       contactMapper: {
         1: 'skype',
         2: 'line',
@@ -94,15 +71,14 @@ export default {
   methods: {
     clickContactHandler(contact) {
       if (contact.name == 'service') {
-        /*eslint-disable no-undef*/
-        if (contact.Js_Type == 'zopim') {
+        if (this.zopim) {
           //* zopim
-          $zopim.livechat.window.show();
-        } else if (contact.Js_Type == 'ze-snippet') {
+          this.zopim.livechat.window.show();
+        } else if (this.zE) {
           //* ze-snippet
-          console.log('[zE]', zE('webWidget:get', 'display'), zE);
-          zE('webWidget', 'show');
-          zE('webWidget', 'open');
+          console.log('[zE]', this.zE('webWidget:get', 'display'));
+          this.zE('webWidget', 'show');
+          this.zE('webWidget', 'open');
         }
         //else if (contact.Js_Type == 'livechatinc') {
         //   if (LC_API.chat_window_hidden()) {
@@ -111,7 +87,6 @@ export default {
         //     LC_API.hide_chat_window();
         //   }
         // }
-        /*eslint-enable no-undef*/
       } else {
         this.contactList.forEach(item => {
           if (item.Lst_ContactID != contact.Lst_ContactID) {
@@ -171,22 +146,23 @@ export default {
 
     /*eslint-disable no-undef*/
     // 確認是否有 service 在，在的話就執行 jscode
-    const contactService = this.contactList.find(item => item.name == 'service');
-    if (contactService) {
-      if (contactService.Js_Type == 'zopim') {
+    if (this.service) {
+      if (this.service.Js_Type == 'zopim') {
         //* zopim
-        console.log('[jscode]', contactService.Js_Code);
-        window.eval(contactService.Js_Code);
+        console.log('[jscode]', this.service.Js_Code);
+        window.eval(this.service.Js_Code);
         const zopimInterval = setInterval(() => {
-          if ($zopim && $zopim.livechat && $zopim.livechat.window) {
-            $zopim.livechat.hideAll();
-            $zopim.livechat.window.onHide(() => {
-              $zopim.livechat.hideAll();
+          if ($zopim && $zopim.livechat) {
+            this.zopim = $zopim;
+            this.zopim.livechat.setLanguage(this.zopimLangMapper[this.lang] || 'en');
+            this.zopim.livechat.hideAll();
+            this.zopim.livechat.window.onHide(() => {
+              this.zopim.livechat.hideAll();
             });
             clearInterval(zopimInterval);
           }
         }, 500);
-      } else if (contactService.Js_Type == 'ze-snippet') {
+      } else if (this.service.Js_Type == 'ze-snippet') {
         //* ze-snippet
         // const jsSrc = jscode.split('src="')[1].split('"')[0]
         const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
@@ -198,10 +174,11 @@ export default {
 
         const zeInterval = setInterval(() => {
           if (zE) {
-            zE.hide();
+            this.zE = zE;
+            this.zE.hide();
 
-            zE('webWidget:on', 'close', function() {
-              zE.hide();
+            this.zE('webWidget:on', 'close', function() {
+              this.zE.hide();
             });
 
             clearInterval(zeInterval);
@@ -210,6 +187,15 @@ export default {
       }
     }
     /*eslint-enable no-undef*/
+  },
+  watch: {
+    lang() {
+      if (this.zopim && this.zopim.livechat) {
+        this.zopim.livechat.setLanguage(this.zopimLangMapper[this.lang] || 'en');
+      } else if (this.zE) {
+        this.zE.setLocale(this.lang);
+      }
+    },
   },
 };
 </script>
