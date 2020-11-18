@@ -1,16 +1,15 @@
 <template>
   <div class="game-lobby__inquire">
-    <form class="game-lobby__inquire__form" @submit.prevent="submitSearchForm">
+    <form class="game-lobby__inquire__form" @submit.prevent="submitSearch">
       <input
         class="game-lobby__inquire__form__search"
         type="search"
-        v-model="cloneSearch.text"
+        v-model="search.text"
         :placeholder="$t('game.placeholder.search')"
-        @input="inputSearchText"
       />
       <button class="game-lobby__inquire__form__search-icon" type="submit"></button>
     </form>
-    <button class="game-lobby__inquire__favorites" @click="changeSearchIsLike" v-if="isShowLike"></button>
+    <button class="game-lobby__inquire__favorites" @click="changeIsFav" v-if="isShowLike"></button>
     <button class="game-lobby__inquire__button--transfer-now" @click="openTransferDialog">
       {{ $t('game.button.transferNow') }}
     </button>
@@ -21,10 +20,6 @@
 export default {
   name: 'GameSearchBlock',
   props: {
-    search: {
-      type: Object,
-      default: () => {},
-    },
     isShowLike: {
       type: Boolean,
       default: false,
@@ -32,23 +27,22 @@ export default {
   },
   data() {
     return {
-      cloneSearch: this.search,
+      search: {
+        text: '',
+        isFav: false,
+      },
     };
   },
   methods: {
-    inputSearchText() {
-      this.$emit('change-search', this.cloneSearch);
-    },
-    changeSearchIsLike() {
-      this.cloneSearch.isLike = !this.cloneSearch.isLike;
-      this.$emit('change-search', this.cloneSearch);
-      this.$emit('submit-search-form', this.cloneSearch);
-    },
     openTransferDialog() {
       this.$emit('open-transfer-dialog');
     },
-    submitSearchForm() {
-      this.$emit('submit-search-form', this.cloneSearch);
+    changeIsFav() {
+      this.search.isFav = !this.search.isFav;
+      this.$emit('submit-search', this.search);
+    },
+    submitSearch() {
+      this.$emit('submit-search', this.search);
     },
   },
 };

@@ -1,30 +1,33 @@
 <template>
   <div class="game-lobby">
     <GameJackpot :jackpot="jackpot" />
-    <GameProductNavigation :productList="productList" @change-product="changeProduct" />
+    <GameProductNavigation
+      :productList="productList"
+      :productCurrent="productCurrent"
+      @change-product="changeProduct"
+    />
+
     <GameCategoryNavigation
       :categoryList="categoryList"
-      :category="currentCategory"
+      :categoryCurrent="categoryCurrent"
       @change-category="changeCategory"
-      v-if="currentProduct.Lst_Site_Product_Status == 0"
+      v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
     <GameSearchBlock
-      :search="search"
       :isShowLike="true"
-      @change-search="changeSearch"
-      @submit-search-form="submitSearch"
+      @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
-      v-if="currentProduct.Lst_Site_Product_Status == 0"
+      v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
     <GameListTable
       :gameList="gameList"
-      :currentProduct="currentProduct"
+      :productCurrent="productCurrent"
       :isShowDemo="true"
       :isShowLike="true"
       @open-game="openGame"
-      @like-game="likeGame"
+      @change-game-fav="changeGameFav"
     />
 
     <AppPagination
@@ -32,7 +35,7 @@
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
-      v-if="currentProduct.Lst_Site_Product_Status == 0"
+      v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
     <GameTransferDialog
@@ -141,10 +144,10 @@ export default {
       let result = {};
       const requestData = {
         Tag: this.productTag,
-        Category: this.currentCategory,
+        Category: this.categoryCurrent.Lst_Category,
         Page: this.pagination.page,
         GameName: this.search.text,
-        IsLike: this.search.isLike ? 1 : 0,
+        IsLike: this.search.isFav ? 1 : 0,
       };
 
       result = await apiGetGameLobbyGameList(requestData);
@@ -190,10 +193,14 @@ export default {
       this.getGameCategoryList();
       this.getGameList();
     },
+    productTag() {
+      this.getGameCategoryList();
+      this.getGameList();
+    },
     productList() {
       console.log('[watch][productList]');
       //* 避免直接輸入網址，到要去站外大廳的 Product
-      if (this.currentProduct.GetGameRedirectUrl) {
+      if (this.productCurrent.GetGameRedirectUrl) {
         window.location.replace('/');
       }
     },

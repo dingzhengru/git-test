@@ -1,6 +1,6 @@
 <template>
-  <div v-if="Object.keys(currentProduct).length > 0">
-    <div v-if="currentProduct.Lst_Site_Product_Status != 0">
+  <div v-if="Object.keys(productCurrent).length > 0">
+    <div v-if="productCurrent.Lst_Site_Product_Status != 0">
       <h1 class="text-center">{{ $t('alert.gameMaintenance') }}</h1>
     </div>
     <table class="game-lobby__table" v-else>
@@ -31,7 +31,7 @@
               href="javascript:;"
               class="game-lobby__table__tr__td__link--favorites"
               :class="{ active: game.Lst_IsLike }"
-              @click.capture.stop="likeGame(game)"
+              @click.capture.stop="changeGameFav(game)"
               v-if="isShowLike"
             >
               {{ $t('game.link.fav') }}
@@ -51,7 +51,7 @@ export default {
       type: Array,
       default: () => [],
     },
-    currentProduct: {
+    productCurrent: {
       type: Object,
       default: () => {},
     },
@@ -71,8 +71,8 @@ export default {
     openGame(game, freePlay) {
       this.$emit('open-game', game, freePlay);
     },
-    likeGame(game) {
-      this.$emit('like-game', game);
+    changeGameFav(game) {
+      this.$emit('change-game-fav', game);
     },
   },
 };
@@ -124,50 +124,4 @@ export default {
     }
   }
 }
-</style>
-
-<style scoped>
-/* .game-lobby__table {
-  width: 100%;
-  letter-spacing: -1px;
-} */
-
-/* .game-lobby__table__tr__td-1st {
-  max-width: 152px;
-  padding: 0 10px;
-  overflow: hidden;
-} */
-
-/* .game-lobby__table__tr__td-1st__img {
-  width: 100%;
-} */
-
-/* .game-lobby__table__tr__td-2nd {
-  width: auto;
-  min-width: 208px;
-  padding: 0 5px;
-  font-size: 24px;
-  color: #92a0c0;
-  font-weight: bold;
-  vertical-align: middle;
-  word-break: break-word;
-} */
-
-/* .game-lobby__table__tr__td-3rd {
-  width: auto;
-  padding: 10px 0;
-  white-space: nowrap;
-  text-align: center;
-} */
-
-/* .game-lobby__table__tr__td-3rd > a {
-  display: inline-block;
-  width: 90px;
-  height: 83px;
-  color: #fff;
-  font-size: 21px;
-  line-height: 205px;
-  margin: 0 10px;
-  background-repeat: no-repeat;
-} */
 </style>

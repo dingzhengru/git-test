@@ -55,7 +55,7 @@ import {
   apiGetLiveGameLobbyProduct,
   apiGetLiveGameLobbyCategory,
   apiGetLiveGameLobbyGameList,
-  apiSetGameLike,
+  apiSetGameFav,
 } from '@/api/game';
 import { apiTransferPoint } from '@/api/transaction-transfer';
 
@@ -292,7 +292,7 @@ export default {
         Add_ProductKey: this.$route.params.key,
         Add_GameID: game.Lst_GameID,
       };
-      const result = await apiSetGameLike(requestData);
+      const result = await apiSetGameFav(requestData);
 
       if (result.Code == 200) {
         game.Lst_IsLike = !game.Lst_IsLike;

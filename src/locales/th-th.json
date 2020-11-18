@@ -670,14 +670,7 @@
   "game": {
     "category": {
       "all": "เกมทั้งหมด",
-      "hot": "เกมส์ยอดนิยม",
-      "arcade": "Arcade Games",
-      "fish": "Fish Games",
-      "card": "เกมส์หมากรุก",
-      "lottery": "เกมส์ล็อตเตอรี่",
-      "slot": "เกมส์สล็อต",
-      "table": "Table Games",
-      "other": "Other Games"
+      "hot": "เกมส์ยอดนิยม"
     },
     "placeholder": {
       "search": "ค้นหาเกมส์"

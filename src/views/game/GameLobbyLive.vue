@@ -1,29 +1,31 @@
 <template>
   <div class="game-lobby">
-    <GameProductNavigation :productList="productList" @change-product="changeProduct" />
+    <GameProductNavigation
+      :productList="productList"
+      :productCurrent="productCurrent"
+      @change-product="changeProduct"
+    />
     <GameCategoryNavigation
       :categoryList="categoryList"
-      :category="currentCategory"
+      :categoryCurrent="categoryCurrent"
       @change-category="changeCategory"
-      v-if="currentProduct.Lst_Site_Product_Status == 0"
+      v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
     <GameSearchBlock
-      :search="search"
-      @change-search="changeSearch"
-      @submit-search-form="submitSearch"
+      @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
-      v-if="currentProduct.Lst_Site_Product_Status == 0"
+      v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <GameListTable :gameList="gameList" :currentProduct="currentProduct" @open-game="openGame" @like-game="likeGame" />
+    <GameListTable :gameList="gameList" :productCurrent="productCurrent" @open-game="openGame" @like-game="likeGame" />
 
     <AppPagination
       :length="pagination.dataLength"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
-      v-if="currentProduct.Lst_Site_Product_Status == 0"
+      v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
     <GameTransferDialog
@@ -109,12 +111,12 @@ export default {
       let result = {};
       const requestData = {
         Tag: this.productTag,
-        Category: this.$route.query.category,
+        Category: this.categoryCurrent.Lst_Category,
         Page: this.pagination.page,
         GameName: this.search.text,
-        IsLike: this.search.isLike ? 1 : 0,
+        IsLike: this.search.isFav ? 1 : 0,
+        H3GUID: this.guid,
       };
-      requestData.H3GUID = this.guid;
       result = await apiGetLiveGameLobbyGameList(requestData);
       this.gameList = result.RetObj.JsonGameList || [];
       this.gameLimitBetList = result.RetObj.GameLimitBet;

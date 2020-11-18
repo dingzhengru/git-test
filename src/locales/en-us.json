@@ -673,14 +673,7 @@
   "game": {
     "category": {
       "all": "All Games",
-      "hot": "Hot Games",
-      "arcade": "Arcade Games",
-      "fish": "Fish Games",
-      "card": "Card Games",
-      "lottery": "Lottery Games",
-      "slot": "Slot Games",
-      "table": "Table Games",
-      "other": "Other Games"
+      "hot": "Hot Games"
     },
     "placeholder": {
       "search": "Search"

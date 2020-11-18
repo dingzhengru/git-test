@@ -1,6 +1,6 @@
 import { mapGetters } from 'vuex';
 
-import { apiGetGameRedirectUrl, apiSetGameLike } from '@/api/game';
+import { apiGetGameRedirectUrl, apiSetGameFav } from '@/api/game';
 import { apiTransferPoint } from '@/api/transaction-transfer';
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 
@@ -11,11 +11,12 @@ export default {
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
     },
-    currentProduct() {
+    productCurrent() {
       return this.productList.find(item => item.Lst_Proxy_Product_Key == this.$route.params.key) || {};
     },
-    currentCategory() {
-      return this.$route.query.category;
+    categoryCurrent() {
+      const category = this.$route.query.category || '';
+      return this.categoryList.find(item => item.Lst_Category == category) || {};
     },
     wallet() {
       if (this.userGamePointList && this.userGamePointList.length > 0) {
@@ -37,7 +38,7 @@ export default {
       gameList: [],
       search: {
         text: '',
-        isLike: false,
+        isFav: false,
       },
       pagination: {
         page: 1,
@@ -51,9 +52,9 @@ export default {
     async openGameRedirectUrl() {
       //* 打開站外連結
       const requestData = {
-        Pid: this.currentProduct.Lst_Product_id,
-        gameclassify: this.currentProduct.Lst_Game_Classify,
-        proxypid: this.currentProduct.Lst_Proxy_Product_Key,
+        Pid: this.productCurrent.Lst_Product_id,
+        gameclassify: this.productCurrent.Lst_Game_Classify,
+        proxypid: this.productCurrent.Lst_Proxy_Product_Key,
       };
 
       let newWindow = null;
@@ -66,7 +67,7 @@ export default {
         if (result.RetObj.iGameOpenType == 1) {
           openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
         } else if (result.RetObj.iGameOpenType == 2) {
-          openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, this.currentProduct.Lst_Name);
+          openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, this.productCurrent.Lst_Name);
         }
       } else {
         if (newWindow != null) {
@@ -76,13 +77,13 @@ export default {
         window.setTimeout(() => window.alert(result.ErrMsg), 500);
       }
     },
-    async likeGame(game) {
+    async changeGameFav(game) {
       const requestData = {
         Add_ProductID: this.$route.params.id,
         Add_ProductKey: this.$route.params.key,
         Add_GameID: game.Lst_GameID,
       };
-      const result = await apiSetGameLike(requestData);
+      const result = await apiSetGameFav(requestData);
 
       if (result.Code == 200) {
         game.Lst_IsLike = !game.Lst_IsLike;
@@ -103,7 +104,7 @@ export default {
         window.alert(this.$t('alert.transferSuccess'));
 
         //* 開啟站外連結
-        if (this.currentProduct.GetGameRedirectUrl) {
+        if (this.productCurrent.GetGameRedirectUrl) {
           this.openGameRedirectUrl();
           this.isShowTransferDialog = false;
           this.$router.go(-1);
@@ -111,7 +112,7 @@ export default {
       }
     },
     async changeProduct(product) {
-      if (product.Lst_Proxy_Product_Key == this.currentProduct.Lst_Proxy_Product_Key) {
+      if (product.Lst_Proxy_Product_Key == this.productCurrent.Lst_Proxy_Product_Key) {
         return;
       } else if (product.Lst_Site_Product_Status != 0) {
         window.alert(this.$t('alert.gameMaintenance'));
@@ -137,32 +138,27 @@ export default {
         }
 
         return;
-      } else {
-        await this.getGameCategoryList();
-        await this.getGameList();
       }
     },
     changeCategory(category) {
-      if (this.currentCategory == category) {
+      if (this.categoryCurrent.Lst_Category == category.Lst_Category) {
         return;
       }
-      this.$router.push({ params: this.$route.params, query: { category } });
+      this.$router.push({ query: { category: category.Lst_Category } });
       this.pagination.page = 1;
       this.search.text = '';
       this.getGameList();
     },
     closeTransferDialog() {
-      if (this.currentProduct.GetGameRedirectUrl) {
+      if (this.productCurrent.GetGameRedirectUrl) {
         this.$router.go(-1);
       }
       this.isShowTransferDialog = false;
     },
-    submitSearch() {
+    submitSearch(search) {
+      this.search = search;
       this.pagination.page = 1;
       this.getGameList();
-    },
-    changeSearch(search) {
-      this.search = search;
     },
     changePage(page) {
       this.pagination.page = page;

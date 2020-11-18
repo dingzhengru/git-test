@@ -316,7 +316,7 @@ export default {
         };
 
         //* 因 IOS 預設會擋非同步後開啟的視窗，所以需於送出請求前打開
-        let newWindow;
+        let newWindow = null;
         if (isIos()) {
           newWindow = window.open();
         }

@@ -670,14 +670,7 @@
   "game": {
     "category": {
       "all": "所有游戏",
-      "hot": "热门游戏",
-      "arcade": "街机游戏",
-      "fish": "捕鱼游戏",
-      "card": "棋牌游戏",
-      "lottery": "彩票游戏",
-      "slot": "老虎机游戏",
-      "table": "Table Games",
-      "other": "Other Games"
+      "hot": "热门游戏"
     },
     "placeholder": {
       "search": "搜寻游戏"
