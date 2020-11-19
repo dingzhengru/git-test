@@ -2,38 +2,13 @@
 export const SITE_INFO_LOAD_FAIL_MESSAGE = 'Load failed. Please refresh the page and retry.';
 
 //* Route
-
 //* 不顯示 Header 的頁面
 export const ROUTE_NO_HEADER_LIST = ['SignIn'];
 
 //* 不顯示 Footer 的頁面
 export const ROUTE_NO_FOOTER_LIST = ['SignIn', 'Maintenance'];
 
-//* 需要登入才能進入的 route name(利用 beforeEach & store.getters.isLoggedIn)
-export const ROUTE_AUTH_LIST = [
-  'GameHome',
-  'GameLobby',
-  'UserProfile',
-  'UserChangePassword',
-  'TransactionDeposit',
-  'TransactionWithdrawal',
-  'TransactionTransfer',
-  'TransactionRecordHome',
-  'TransactionRecordContent',
-  'TransactionRecordDetail',
-  'ReportUnsettleBet',
-  'ReportBetRecord',
-  'ReportBetRecordDetail',
-  'NotificationNews',
-  'NotificationChat',
-  'NotificationChatDetail',
-  'NotificationOutbox',
-];
-//* "不需要"登入才能進入的 route name
-export const ROUTE_NO_AUTH_LIST = ['Login', 'Register', 'ForgetPassword', 'SignIn'];
-
 //* API
-
 //* API URL
 // export const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
 export const API_URL = '/api';

@@ -5,7 +5,10 @@ import BlankLayout from '@/components/layout/BlankLayout';
 Vue.use(VueRouter);
 
 /**
- * NoneLogin/MainPage | AlreadyLogin/MainPage
+ ** meta.auth
+ **   true: 需"登入後"才能進入的頁面
+ **   false: 需"不登入"才能進入的頁面
+ **   無設置: 不限制
  */
 
 /* jshint ignore:start */
@@ -20,25 +23,30 @@ const routes = [
     alias: ['/SignIn'],
     name: 'SignIn',
     component: () => import('@/views/SignIn'),
+    meta: { auth: false },
   },
   {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/Login'),
+    meta: { auth: false },
   },
   {
     path: '/register',
     name: 'Register',
     component: () => import('@/views/Register'),
+    meta: { auth: false },
   },
   {
     path: '/forget-password',
     name: 'ForgetPassword',
     component: () => import('@/views/ForgetPassword'),
+    meta: { auth: false },
   },
   {
     path: '/game',
     component: () => import('@/views/game/GameHome'),
+    meta: { auth: true },
     children: [
       {
         path: '',
@@ -61,6 +69,7 @@ const routes = [
   {
     path: '/user',
     component: () => import('@/views/user/UserHome'),
+    meta: { auth: true },
     children: [
       {
         path: '',
@@ -82,6 +91,7 @@ const routes = [
   {
     path: '/transaction',
     component: () => import('@/views/transaction/TransactionHome'),
+    meta: { auth: true },
     children: [
       {
         path: '',
@@ -132,6 +142,7 @@ const routes = [
   {
     path: '/report',
     component: () => import('@/views/report/ReportHome'),
+    meta: { auth: true },
     children: [
       {
         path: '',
@@ -158,6 +169,7 @@ const routes = [
   {
     path: '/notification',
     component: () => import('@/views/notification/NotificationHome'),
+    meta: { auth: true },
     children: [
       {
         path: '',
@@ -212,11 +224,6 @@ const routes = [
     name: 'About',
     component: () => import('@/views/About'),
   },
-  // {
-  //   path: '/agreement',
-  //   name: 'Agreement',
-  //   component: () => import('@/views/Agreement'),
-  // },
   {
     path: '/maintenance',
     name: 'Maintenance',
