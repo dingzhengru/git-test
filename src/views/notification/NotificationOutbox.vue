@@ -1,44 +1,50 @@
 <template>
-  <form class="notification-outbox" @submit.prevent="submitMail">
-    <!-- <form class="notification-outbox__box theme-content-box" id="notification-outbox-form" @submit.prevent="submitMail"> -->
-    <div class="theme-content-box">
-      <div class="notification-outbox__field theme-input-box">
-        <span class="theme-input-header">{{ $t('notification.outbox.category') }}</span>
-        <select class="notification-outbox__field__select ui-ddl" required v-model="mail.Add_Category">
-          <option value="" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
-          <option :value="category.Value" v-for="category in categoryList" :key="category.Value">
-            {{ category.Text }}
-          </option>
-        </select>
-      </div>
+  <ValidationObserver v-slot="{ invalid, handleSubmit, reset }">
+    <form class="notification-outbox" @submit.prevent="handleSubmit(submitMail)" @reset.prevent="reset">
+      <div class="theme-content-box">
+        <ValidationProvider class="notification-outbox__field theme-input-box" tag="div" :rules="{ required: true }">
+          <span class="theme-input-header">{{ $t('notification.outbox.category') }}</span>
+          <select class="notification-outbox__field__select ui-ddl" required v-model="mail.Add_Category">
+            <option value="" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
+            <option :value="category.Value" v-for="category in categoryList" :key="category.Value">
+              {{ category.Text }}
+            </option>
+          </select>
+        </ValidationProvider>
 
-      <div class="notification-outbox__field theme-input-box">
-        <span class="theme-input-header">{{ $t('notification.outbox.title') }}</span>
-        <input class="ui-ipt" type="text" required maxlength="20" v-model="mail.Add_Subject" />
-      </div>
+        <ValidationProvider class="notification-outbox__field theme-input-box" tag="div" :rules="{ required: true }">
+          <span class="theme-input-header">{{ $t('notification.outbox.title') }}</span>
+          <input class="ui-ipt" type="text" required maxlength="20" v-model="mail.Add_Subject" />
+        </ValidationProvider>
 
-      <div class="notification-outbox__field theme-input-box">
-        <span class="theme-input-header">{{ $t('notification.outbox.content') }}</span>
-        <textarea class="ui-tar" cols="33" rows="5" required v-model="mail.Add_Content"></textarea>
+        <ValidationProvider class="notification-outbox__field theme-input-box" tag="div" :rules="{ required: true }">
+          <span class="theme-input-header">{{ $t('notification.outbox.content') }}</span>
+          <textarea class="ui-tar" cols="33" rows="5" required v-model="mail.Add_Content"></textarea>
+        </ValidationProvider>
       </div>
-    </div>
-    <div class="notification-outbox__button-div">
-      <button class="notification-outbox__button--submit ui-btn" type="submit">
-        {{ $t('ui.button.submit') }}
-      </button>
-      <button class="notification-outbox__button--cancel ui-btn" @click.prevent="$router.go(-1)">
-        {{ $t('ui.button.cancel') }}
-      </button>
-    </div>
-  </form>
+      <div class="notification-outbox__button-div">
+        <button class="notification-outbox__button--submit ui-btn" type="submit" :disabled="invalid">
+          {{ $t('ui.button.submit') }}
+        </button>
+        <button class="notification-outbox__button--cancel ui-btn" type="reset" @click="resetForm">
+          {{ $t('ui.button.cancel') }}
+        </button>
+      </div>
+    </form>
+  </ValidationObserver>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { apiGetMailCategoryList, apiSendMail } from '@/api/notification';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'NotificationOutbox',
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
   computed: {
     ...mapGetters(['lang', 'siteFullCss']),
   },
@@ -58,7 +64,7 @@ export default {
       const result = await apiSendMail(this.mail);
 
       if (result.Code == 200) {
-        this.resetMail();
+        this.resetForm();
 
         window.alert(this.$t('alert.sendEmailSuccess'));
       }
@@ -68,7 +74,7 @@ export default {
 
       this.categoryList = result.RetObj;
     },
-    resetMail() {
+    resetForm() {
       this.mail = { Add_Category: '', Add_Subject: '', Add_Content: '', Add_ReplyPath: '' };
     },
   },
