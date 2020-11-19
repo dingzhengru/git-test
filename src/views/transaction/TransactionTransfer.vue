@@ -136,7 +136,6 @@ import { mapGetters } from 'vuex';
 import { apiGetTransferInfo, apiTransferPoint, apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
 
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import '@/utils/vee-validate.js';
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
 

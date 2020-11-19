@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <ValidationObserver v-slot="{ invalid, handleSubmit, reset }" tag="div">
-      <form class="register__form" @submit.prevent="handleSubmit(submitRegister)" @reset.prevent="reset()">
+      <form class="register__form" @submit.prevent="handleSubmit(submitRegister)" @reset.prevent="reset">
         <ValidationProvider
           v-slot="{ errors, invalid }"
           tag="div"
@@ -91,7 +91,6 @@ import { apiGetCaptcha } from '@/api/captcha';
 import { apiGetRegisterFieldList, apiCheckRegisterFieldExist } from '@/api/register';
 
 import { registerFieldList } from '@/utils/register';
-import '@/utils/vee-validate.js';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 import idMapper from '@/idMapper';

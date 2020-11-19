@@ -237,7 +237,6 @@ import { apiGetDepositInfo, apiDeposit } from '@/api/transaction-deposit';
 
 import dayjs from 'dayjs';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import '@/utils/vee-validate.js';
 
 export default {
   name: 'TransactionDeposit',

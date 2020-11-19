@@ -162,7 +162,6 @@
 import idMapper from '@/idMapper';
 import { registerFieldList } from '@/utils/register';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import '@/utils/vee-validate.js';
 export default {
   name: 'UserProfileList',
   props: {

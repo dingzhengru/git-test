@@ -1,7 +1,6 @@
 import { apiGetCaptcha } from '@/api/captcha';
 import idMapper from '@/idMapper';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import '@/utils/vee-validate.js';
 
 export default {
   name: 'LoginMixin',

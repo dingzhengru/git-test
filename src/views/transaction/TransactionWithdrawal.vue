@@ -167,7 +167,6 @@ import { apiGetWithdrawalInfo, apiWithdrawal } from '@/api/transaction-withdrawa
 import { apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
 
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import '@/utils/vee-validate.js';
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
 

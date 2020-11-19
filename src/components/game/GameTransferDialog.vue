@@ -57,7 +57,6 @@
 
 <script>
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import '@/utils/vee-validate.js';
 export default {
   name: 'GameTransferDialog',
   components: {

@@ -106,7 +106,6 @@ import { mapGetters } from 'vuex';
 import { ToggleButton } from 'vue-js-toggle-button';
 import { apiChangePassword, apiChangeRemember } from '@/api/user';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import '@/utils/vee-validate.js';
 
 export default {
   name: 'UserChangePassword',

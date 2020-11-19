@@ -12,8 +12,8 @@ import './styles/Y/common/layout.css';
 
 import './router/permission'; //* 路徑權限
 import './api/interceptors.js'; //* 攔截器
-
 import i18n from '@/i18n-lazy'; //* 語言載入
+import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
 
 //* Cookie
 import { cookieGetLang, cookieGetIsLoggedIn, cookieGetToken, cookieGetPublicKey } from '@/utils/cookie';

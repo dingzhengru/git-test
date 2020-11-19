@@ -14,37 +14,47 @@
       </ul>
       <div class="theme-content-box notification-inbox-detail__content" v-html="item.Lst_Content"></div>
     </div>
-    <form
-      class="notification-inbox-detail__replay-box theme-content-box"
-      id="notification-inbox-detail-form"
-      @submit.prevent="submitMail"
-    >
-      <div class="theme-input-box">
-        <span class="theme-input-header">{{ $t('notification.inboxDetail.reply') }}</span>
-        <textarea class="ui-tar" cols="80" rows="5" v-model="content"></textarea>
-      </div>
-    </form>
-    <div class="notification-inbox-detail__button-div">
-      <button
-        class="notification-inbox-detail__button--submit ui-btn"
-        type="submit"
-        form="notification-inbox-detail-form"
+    <ValidationObserver v-slot="{ invalid, handleSubmit, reset }">
+      <form
+        class="notification-inbox-detail__replay-box theme-content-box"
+        id="notification-inbox-detail-form"
+        @submit.prevent="handleSubmit(submitMail)"
+        @reset.prevent="reset"
       >
-        Submit
-      </button>
-      <button class="notification-inbox-detail__button--cancel ui-btn">
-        Cancellation
-      </button>
-    </div>
+        <ValidationProvider class="theme-input-box" tag="div" :rules="{ required: true }">
+          <span class="theme-input-header">{{ $t('notification.inboxDetail.reply') }}</span>
+          <textarea class="ui-tar" cols="80" rows="5" v-model="content"></textarea>
+        </ValidationProvider>
+      </form>
+
+      <div class="notification-inbox-detail__button-div">
+        <button
+          class="notification-inbox-detail__button--submit ui-btn"
+          type="submit"
+          form="notification-inbox-detail-form"
+          :disabled="invalid"
+        >
+          {{ $t('ui.button.submit') }}
+        </button>
+        <button class="notification-inbox-detail__button--cancel ui-btn" type="reset" @click="resetForm">
+          {{ $t('ui.button.cancel') }}
+        </button>
+      </div>
+    </ValidationObserver>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { apiGetInboxDetail, apiSendMail } from '@/api/notification';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'NotificationInboxDetail',
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
   computed: {
     ...mapGetters(['siteFullCss']),
   },
@@ -74,6 +84,9 @@ export default {
         window.alert(this.$t('alert.replaySuccess'));
         this.content = '';
       }
+    },
+    resetForm() {
+      this.content = '';
     },
   },
   mounted() {
