@@ -1,3 +1,6 @@
+//* Site
+export const SITE_INFO_LOAD_FAIL_MESSAGE = 'Load failed. Please refresh the page and retry.';
+
 //* Route
 
 //* 不顯示 Header 的頁面
@@ -34,6 +37,9 @@ export const ROUTE_NO_AUTH_LIST = ['Login', 'Register', 'ForgetPassword', 'SignI
 //* API URL
 // export const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
 export const API_URL = '/api';
+
+//* 重新發送次數限制
+export const API_RETRY_COUNT_LIMIT = 1;
 
 //* 預設的 timeout (後端指定: 10秒)
 export const API_REQUEST_TIMEOUT = 10000;

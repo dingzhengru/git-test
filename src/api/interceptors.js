@@ -2,6 +2,7 @@ import store from '@/store';
 import axios from 'axios';
 import {
   API_URL,
+  API_RETRY_COUNT_LIMIT,
   API_REQUEST_TIMEOUT,
   API_AUTH_LIST,
   API_CRYPTO_LIST,
@@ -9,25 +10,28 @@ import {
   API_NOT_ALL_PARAMS_CRYPTO_BIG_DATA_LIST,
   API_NO_ALERT_LIST,
   API_NO_LOADING_LIST,
+  SITE_INFO_LOAD_FAIL_MESSAGE,
 } from '@/settings';
 import { rsaEncrypt, rsaEncryptLong } from '@/utils/rsa';
-import { i18n } from '@/i18n-lazy';
 
 //* 設置 timeout (預設是 0，代表沒有 timeout)
 axios.defaults.timeout = API_REQUEST_TIMEOUT;
 
-//* 針對 502: TokenError，615: JsonError
-//* 看要選擇重整，還是重新發送請求(目前只有登入是重新發送)
+//* 紀錄重新發送次數
+let retryCount = 0;
 
 //* 重新發送所需的變數
-// let retryRequestData = null;
+let retryRequestData = null;
 
 //* 針對 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
 //* 會因為多個 api 同時觸發 201 ，導致 alert 很多次，因此設置此變數
-let Responded201Count = 0;
+let Respond201Count = 0;
 
 axios.interceptors.request.use(
   config => {
+    //* 存取重新發送的資料
+    retryRequestData = config.data;
+
     //* 放進 loading 列表，篩選掉不會進 loading 的 API
     if (!API_NO_LOADING_LIST.find(item => config.url.includes(item))) {
       store.commit('pushLoadingRequest');
@@ -82,45 +86,62 @@ axios.interceptors.response.use(
       //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
 
       //* isResponded201 是避免多次執行 alert 的變數
-      if (Responded201Count == 0) {
-        Responded201Count++;
+      if (Respond201Count == 0) {
+        Respond201Count++;
         window.alert(res.data.ErrMsg);
         store.dispatch('user/logout');
       }
       return;
-    } else if (res.data.Code == 502 && process.env.NODE_ENV === 'production') {
-      //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
-
-      //* 重新取得 Token 與 公鑰
-      await store.dispatch('user/getTokenAndPublicKey');
-    } else if (res.data.Code == 599 && process.env.NODE_ENV === 'production') {
+    } else if (res.data.Code == 599) {
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
       //* 篩選掉不要 alert 的 api
       if (!API_NO_ALERT_LIST.find(item => `${API_URL}/${item}` == res.config.url)) {
         window.alert(res.data.ErrMsg);
       }
-    } else if (res.data.Code == 615 && process.env.NODE_ENV === 'production') {
+    } else if (res.data.Code == 502 || res.data.Code == 615) {
+      //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
       //* 615: JsonError，前端不顯示錯誤訊息內容(不正常操作)
+
+      //* 先拿下來存取，避免被 Token 的請求取代
+      res.config.data = retryRequestData;
 
       //* 重新取得 Token 與 公鑰
       await store.dispatch('user/getTokenAndPublicKey');
+
+      //* 重新發送請求
+      if (retryCount < API_RETRY_COUNT_LIMIT) {
+        retryCount++;
+        return axios(res.config);
+      }
+      retryCount = 0;
     }
     return res;
   },
-  error => {
-    console.log('[interceptors response error]', error);
-    console.log('[interceptors response error] [response]', error.response);
+  async error => {
+    console.log('[Response Error]', error);
+    console.log('[Response Error] [error.response]', error.response);
 
-    if (error.config.url.includes('Siteinfo/getinfo')) {
-      //* 避免載入語言前，就觸發此，所以設一個預設的(en-us)
-      let alertMessage = 'Load failed. Please refresh the page and retry.';
-      if (i18n.te('alert.loadFailed')) {
-        alertMessage = i18n.t('alert.loadFailed');
-      }
-      window.alert(alertMessage);
+    //* 判斷是否要 popLoadingRequest
+    if (error.config.url == `${API_URL}/Siteinfo/getinfo`) {
+      window.alert(SITE_INFO_LOAD_FAIL_MESSAGE);
     } else if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == error.config.url)) {
       store.commit('popLoadingRequest');
+    }
+
+    if (error.response.status == 401) {
+      //* 先拿下來存取，避免被 Token 的請求取代
+      error.response.config.data = retryRequestData;
+
+      //* 重新取得 Token 與 公鑰
+      await store.dispatch('user/getTokenAndPublicKey');
+
+      //* 重新發送請求
+      if (retryCount < API_RETRY_COUNT_LIMIT) {
+        retryCount++;
+        return axios(error.response.config);
+      }
+      retryCount = 0;
     }
 
     return Promise.reject(error);
