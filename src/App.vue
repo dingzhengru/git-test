@@ -101,7 +101,7 @@ export default {
     document.querySelector('#apple-touch-icon').setAttribute('href', this.siteAppIconUrl('192x192'));
 
     //* 設置 IOS apple-touch-startup-image
-    document.querySelector('#apple-startup-image-750x1344').setAttribute('href', this.siteIOSUrl('750x1344'));
+    document.querySelector('#apple-startup-image-750x1334').setAttribute('href', this.siteIOSUrl('750x1334'));
     document.querySelector('#apple-startup-image-828x1792').setAttribute('href', this.siteIOSUrl('828x1792'));
     document.querySelector('#apple-startup-image-1125x2436').setAttribute('href', this.siteIOSUrl('1125x2436'));
     document.querySelector('#apple-startup-image-1242x2208').setAttribute('href', this.siteIOSUrl('1242x2208'));
