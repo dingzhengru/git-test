@@ -13,7 +13,7 @@ export default new Vuex.Store({
   state: {
     lang: '',
     langList: [],
-    loadingRequestList: [],
+    loadingList: [],
   },
   mutations: {
     setLang: (state, lang) => {
@@ -22,15 +22,15 @@ export default new Vuex.Store({
     setLangList: (state, langList) => {
       state.langList = langList;
     },
-    pushLoadingRequest: (state, name) => {
-      state.loadingRequestList.push(name || '');
+    pushLoading: (state, name = '') => {
+      state.loadingList.push(name);
     },
-    popLoadingRequest: state => {
-      state.loadingRequestList.pop();
+    popLoading: state => {
+      state.loadingList.pop();
     },
-    popAllChangeRouteLoadingRequest: state => {
+    popLoadingAllChangeRoute: state => {
       //* 清除所有 change-route
-      state.loadingRequestList = state.loadingRequestList.filter(item => item != 'change-route');
+      state.loadingList = state.loadingList.filter(item => item != 'change-route');
     },
   },
   actions: {

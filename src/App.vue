@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="lang">
-    <div v-show="loadingRequestList.length == 0">
+    <div v-show="loadingList.length == 0">
       <AppHeader
         :lang="lang"
         :langList="langList"
@@ -24,7 +24,7 @@
       <AppFooter :isLoggedIn="userIsLoggedIn" v-if="isShowFooter" />
     </div>
 
-    <AppLoadingOverlay :isLoading="loadingRequestList.length > 0" />
+    <AppLoadingOverlay :isLoading="loadingList.length > 0" />
   </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
     ...mapGetters([
       'lang',
       'langList',
-      'loadingRequestList',
+      'loadingList',
       'pwaInstallStatus',
       'pwaPrompt',
       'siteFullCss',

@@ -34,7 +34,7 @@ axios.interceptors.request.use(
 
     //* 放進 loading 列表，篩選掉不會進 loading 的 API
     if (!API_NO_LOADING_LIST.find(item => config.url.includes(item))) {
-      store.commit('pushLoadingRequest');
+      store.commit('pushLoading');
     }
 
     //* Authorization
@@ -79,7 +79,7 @@ axios.interceptors.response.use(
 
     //* 從 loading 列表取出一個
     if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == res.config.url)) {
-      store.commit('popLoadingRequest');
+      store.commit('popLoading');
     }
 
     if (res.data.Code == 201) {
@@ -122,11 +122,11 @@ axios.interceptors.response.use(
     console.log('[Response Error]', error);
     console.log('[Response Error] [error.response]', error.response);
 
-    //* 判斷是否要 popLoadingRequest
+    //* 判斷是否要 popLoading
     if (error.config.url == `${API_URL}/Siteinfo/getinfo`) {
       window.alert(SITE_INFO_LOAD_FAIL_MESSAGE);
     } else if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == error.config.url)) {
-      store.commit('popLoadingRequest');
+      store.commit('popLoading');
     }
 
     if (error.response.status == 401) {

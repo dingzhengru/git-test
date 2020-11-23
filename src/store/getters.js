@@ -3,7 +3,7 @@ import { API_URL } from '@/settings';
 const getters = {
   lang: state => state.lang,
   langList: state => state.langList,
-  loadingRequestList: state => state.loadingRequestList,
+  loadingList: state => state.loadingList,
 
   //* pwa
   pwaInstallStatus: state => state.pwa.status,
