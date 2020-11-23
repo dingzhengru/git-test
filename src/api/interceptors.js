@@ -122,10 +122,14 @@ axios.interceptors.response.use(
     console.log('[Response Error]', error);
     console.log('[Response Error] [error.response]', error.response);
 
-    //* 判斷是否要 popLoading
+    //* siteInfo 取得失敗
     if (error.config.url == `${API_URL}/Siteinfo/getinfo`) {
       window.alert(SITE_INFO_LOAD_FAIL_MESSAGE);
-    } else if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == error.config.url)) {
+      return;
+    }
+
+    //* 判斷是否要 popLoading
+    if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == error.config.url)) {
       store.commit('popLoading');
     }
 
