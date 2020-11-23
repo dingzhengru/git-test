@@ -2,8 +2,6 @@ import router from '.';
 import store from '@/store';
 
 router.beforeEach(async (to, from, next) => {
-  store.commit('pushLoading', 'change-route');
-
   const isLoggedIn = store.getters.userIsLoggedIn;
 
   if (to.matched.some(item => item.meta.auth === true) && !isLoggedIn) {
@@ -11,6 +9,7 @@ router.beforeEach(async (to, from, next) => {
   } else if (to.matched.some(item => item.meta.auth === false) && isLoggedIn) {
     next({ name: 'Home' });
   } else {
+    store.commit('pushLoading', 'change-route');
     next();
   }
 });
