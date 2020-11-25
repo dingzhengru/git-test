@@ -74,6 +74,12 @@ const getters = {
   //* User.pointInfo
   userTotalBalance: state => state.user.pointInfo.TotalBalance,
   userGamePointList: state => state.user.pointInfo.GameSitePoints,
+  userGamePointWallet: state => {
+    return state.user.pointInfo ? state.user.pointInfo.GameSitePoints.find(item => item.Product_id == 9999) : {};
+  },
+  userGamePointById: state => id => {
+    return state.user.pointInfo ? state.user.pointInfo.GameSitePoints.find(item => item.Product_id == id) : {};
+  },
 
   //* User info
   userUsername: state => state.user.info.Lst_Account,

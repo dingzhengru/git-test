@@ -7,7 +7,7 @@ import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 export default {
   name: 'GameList',
   computed: {
-    ...mapGetters(['lang', 'userGamePointList']),
+    ...mapGetters(['lang', 'userGamePointById']),
     productTag() {
       return this.$route.params.id + '-' + this.$route.params.key;
     },
@@ -18,17 +18,8 @@ export default {
       const category = this.$route.query.category || '';
       return this.categoryList.find(item => item.Lst_Category == category) || {};
     },
-    wallet() {
-      if (this.userGamePointList && this.userGamePointList.length > 0) {
-        return this.userGamePointList.find(item => item.Product_id == 9999) || {};
-      }
-      return {};
-    },
-    currentPointProduct() {
-      if (this.userGamePointList && this.userGamePointList.length > 0) {
-        return this.userGamePointList.find(item => item.Product_id == this.$route.params.id) || {};
-      }
-      return {};
+    productPointCurrent() {
+      return this.userGamePointById(this.$route.params.id);
     },
   },
   data() {

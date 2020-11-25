@@ -29,8 +29,8 @@
     />
 
     <GameTransferDialog
-      :wallet="wallet"
-      :currentPointProduct="currentPointProduct"
+      :wallet="userGamePointWallet"
+      :currentPointProduct="productPointCurrent"
       @submit-transfer="transferPoint"
       @close="closeTransferDialog"
       v-show="isShowTransferDialog"
@@ -70,7 +70,7 @@ export default {
     GameTransferDialog: () => import('@/components/game/GameTransferDialog'),
   },
   computed: {
-    ...mapGetters(['lang', 'userGamePointList']),
+    ...mapGetters(['lang', 'userGamePointWallet']),
   },
   data() {
     return {
