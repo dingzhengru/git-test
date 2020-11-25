@@ -95,6 +95,8 @@ import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 import idMapper from '@/idMapper';
 
+console.log(registerFieldList);
+
 export default {
   name: 'Register',
   components: {
@@ -217,7 +219,7 @@ export default {
         const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
 
         if (field) {
-          field.value = registerField.Lst_Value;
+          // field.value = registerField.Lst_Value;
           field.isShow = registerField.Lst_Phase == 1;
           field.isOnly = registerField.Lst_isOnly;
           field.isRequired = registerField.Lst_isRequired;

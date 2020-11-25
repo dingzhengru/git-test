@@ -203,7 +203,9 @@ export const registerFieldList = [
     isShow: false,
     isOnly: false,
     isModifiable: true,
-    value: '',
+    value: dayjs()
+      .subtract(18, 'year')
+      .format('YYYY-MM-DD'),
   },
   {
     name: 'Add_BankId1',
