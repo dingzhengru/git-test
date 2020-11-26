@@ -68,10 +68,15 @@
 import loginMixin from '@/mixins/login';
 import { mapGetters } from 'vuex';
 import langMixin from '@/mixins/lang';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'SignIn',
   mixins: [loginMixin, langMixin],
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
   computed: {
     ...mapGetters(['siteFullCss', 'langList', 'siteIsSpare', 'siteEnableSpareDomain']),
   },

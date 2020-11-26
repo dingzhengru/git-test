@@ -5,7 +5,7 @@ import { apiTransferPoint } from '@/api/transaction-transfer';
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 
 export default {
-  name: 'GameList',
+  name: 'MixinGameLobby',
   computed: {
     ...mapGetters(['lang', 'userGamePointById']),
     productId() {

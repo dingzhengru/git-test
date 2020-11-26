@@ -1,13 +1,8 @@
 import { apiGetCaptcha } from '@/api/captcha';
 import idMapper from '@/idMapper';
-import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
-  name: 'LoginMixin',
-  components: {
-    ValidationObserver,
-    ValidationProvider,
-  },
+  name: 'MixinLogin',
   data() {
     return {
       idMapper: idMapper,

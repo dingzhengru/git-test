@@ -123,12 +123,18 @@
 </template>
 
 <script>
-import loginMixin from '@/mixins/login';
+import mixinLogin from '@/mixins/login';
 import { mapGetters } from 'vuex';
 import { apiGetRememberInfo } from '@/api/user';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
-  mixins: [loginMixin],
+  name: 'SignIn',
+  mixins: [mixinLogin],
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
   computed: {
     ...mapGetters([
       'siteFullCss',
