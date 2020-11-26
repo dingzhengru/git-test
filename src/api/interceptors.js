@@ -27,39 +27,45 @@ let retryRequestData = null;
 //* 會因為多個 api 同時觸發 201 ，導致 alert 很多次，因此設置此變數
 let Respond201Count = 0;
 
+//* 用於檢查 url 是否在列表中
+function checkUrlInList(list, url) {
+  const item = url.replace(`${API_URL}/`, '');
+  return list.includes(item);
+}
+
 axios.interceptors.request.use(
   config => {
     //* 存取重新發送的資料
     retryRequestData = config.data;
 
     //* 放進 loading 列表，篩選掉不會進 loading 的 API
-    if (!API_NO_LOADING_LIST.find(item => config.url.includes(item))) {
+    if (!checkUrlInList(API_NO_LOADING_LIST, config.url)) {
       store.commit('pushLoading');
     }
 
     //* Authorization
-    if (API_AUTH_LIST.find(item => `${API_URL}/${item}` == config.url)) {
+    if (checkUrlInList(API_AUTH_LIST, config.url)) {
       config.headers = {
         Authorization: `Bearer ${store.getters.userToken}`,
       };
     }
 
     //* 加密
-    if (API_CRYPTO_LIST.find(item => `${API_URL}/${item}` == config.url)) {
+    if (checkUrlInList(API_CRYPTO_LIST, config.url)) {
       config.data = {
         rsaMsg: rsaEncrypt(config.data, store.getters.userPublicKey),
       };
     }
 
     //* 大數據加密
-    else if (API_CRYPTO_BIG_DATA_LIST.find(item => `${API_URL}/${item}` == config.url)) {
+    else if (checkUrlInList(API_CRYPTO_BIG_DATA_LIST, config.url)) {
       config.data = {
         rsaMsg: rsaEncryptLong(config.data, store.getters.userPublicKey),
       };
     }
 
     //* 大數據加密，但並非全部參數都要加密的情況，EX: 存款動作(需加密: rsaData, 不須加密: noRsaData)
-    else if (API_NOT_ALL_PARAMS_CRYPTO_BIG_DATA_LIST.find(item => `${API_URL}/${item}` == config.url)) {
+    else if (checkUrlInList(API_NOT_ALL_PARAMS_CRYPTO_BIG_DATA_LIST, config.url)) {
       const rsaMsg = rsaEncryptLong(config.data.rsaData, store.getters.userPublicKey);
       const noRsaData = config.data.noRsaData;
 
@@ -78,7 +84,7 @@ axios.interceptors.response.use(
     console.log(`[${res.config.url.replace('/api/', '')}]`, res.data);
 
     //* 從 loading 列表取出一個
-    if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == res.config.url)) {
+    if (!checkUrlInList(API_NO_LOADING_LIST, res.config.url)) {
       store.commit('popLoading');
     }
 
@@ -96,7 +102,7 @@ axios.interceptors.response.use(
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
       //* 篩選掉不要 alert 的 api
-      if (!API_NO_ALERT_LIST.find(item => `${API_URL}/${item}` == res.config.url)) {
+      if (!checkUrlInList(API_NO_ALERT_LIST, res.config.url)) {
         window.alert(res.data.ErrMsg);
       }
     } else if (res.data.Code == 502 || res.data.Code == 615) {
@@ -129,7 +135,7 @@ axios.interceptors.response.use(
     }
 
     //* 判斷是否要 popLoading
-    if (!API_NO_LOADING_LIST.find(item => `${API_URL}/${item}` == error.config.url)) {
+    if (!checkUrlInList(API_NO_LOADING_LIST, error.config.url)) {
       store.commit('popLoading');
     }
 
