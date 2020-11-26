@@ -55,9 +55,7 @@
               <tr>
                 <th class="transfer__amount__table__th-1st">{{ $t('transaction.transfer.field.amount') }}</th>
                 <td class="transfer__amount__table__td-2nd">
-                  <ValidationProvider
-                    :rules="{ required: true, integer: true, min_value: 1, max_value: currentProductPoint }"
-                  >
+                  <ValidationProvider :rules="{ required: true, integer: true, min_value: 1, max_value: currentPoint }">
                     <input
                       class="transfer__amount__table__input"
                       type="number"
@@ -70,7 +68,7 @@
                         v-model="amount"
                         v-bind="{
                           min: 0,
-                          max: currentProductPoint,
+                          max: currentPoint,
                           tooltip: 'none',
                         }"
                         @error="rangeError"
@@ -150,7 +148,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['lang', 'siteFullCss', 'userGamePointList']),
+    ...mapGetters(['lang', 'siteFullCss', 'userGamePointList', 'userGamePointById']),
     fromList() {
       return this.productList;
     },
@@ -161,11 +159,11 @@ export default {
         return this.productList.filter(item => item.Product_id == 9999);
       }
     },
-    currentProductPoint() {
-      if (this.userGamePointList) {
-        return Math.floor(this.userGamePointList.find(item => item.Product_id == this.from).Point) || 0;
-      }
-      return 0;
+    productPointCurrent() {
+      return this.userGamePointById(this.from);
+    },
+    currentPoint() {
+      return Math.floor(this.productPointCurrent.Point) || 0;
     },
   },
   data() {
@@ -221,8 +219,8 @@ export default {
       return msg;
     },
     changeAmount() {
-      if (this.amount > this.currentProductPoint) {
-        this.amount = this.currentProductPoint;
+      if (this.amount > this.currentPoint) {
+        this.amount = this.currentPoint;
       }
     },
   },
@@ -237,12 +235,12 @@ export default {
       this.getTransferInfo();
     },
     userGamePointList() {
-      this.amount = this.currentProductPoint;
+      this.amount = this.currentPoint;
     },
     from: {
       immediate: true,
       handler() {
-        this.amount = this.currentProductPoint;
+        this.amount = this.currentPoint;
 
         if (this.from != 9999) {
           //* 當 from 選擇非錢包時，to 列表會只剩下錢包
