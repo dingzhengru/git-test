@@ -8,18 +8,26 @@ export default {
   name: 'GameList',
   computed: {
     ...mapGetters(['lang', 'userGamePointById']),
+    productId() {
+      return String(this.$route.params.id);
+    },
+    productKey() {
+      return String(this.$route.params.key);
+    },
     productTag() {
-      return this.$route.params.id + '-' + this.$route.params.key;
+      return this.productId + '-' + this.productKey;
+    },
+    productCategory() {
+      return this.$route.query.category || '';
     },
     productCurrent() {
-      return this.productList.find(item => item.Lst_Proxy_Product_Key == this.$route.params.key) || {};
+      return this.productList.find(item => item.Lst_Proxy_Product_Key == this.productKey) || {};
     },
     categoryCurrent() {
-      const category = this.$route.query.category || '';
-      return this.categoryList.find(item => item.Lst_Category == category) || {};
+      return this.categoryList.find(item => item.Lst_Category == this.productCategory) || {};
     },
     productPointCurrent() {
-      return this.userGamePointById(this.$route.params.id);
+      return this.userGamePointById(this.productId);
     },
   },
   data() {
@@ -70,8 +78,8 @@ export default {
     },
     async changeGameFav(game) {
       const requestData = {
-        Add_ProductID: this.$route.params.id,
-        Add_ProductKey: this.$route.params.key,
+        Add_ProductID: this.productId,
+        Add_ProductKey: this.productKey,
         Add_GameID: game.Lst_GameID,
       };
       const result = await apiSetGameFav(requestData);
@@ -83,7 +91,7 @@ export default {
     async transferPoint(amount) {
       const requestData = {
         Add_Source: 9999,
-        Add_Destination: this.$route.params.id,
+        Add_Destination: this.productId,
         Add_TransferPoint: amount,
       };
 
