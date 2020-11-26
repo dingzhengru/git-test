@@ -3,23 +3,17 @@
     <li
       class="tabs__ul__li"
       :class="[
-        route.class,
+        item.class,
         {
-          active: route.link == $route.name || (route.otherActivePath && route.otherActivePath.includes($route.name)),
+          active: item.link == $route.name || (item.otherActivePath && item.otherActivePath.includes($route.name)),
         },
       ]"
-      :id="
-        route.id == undefined
-          ? ''
-          : route.id.split('.').reduce((item, key) => {
-              return item[key];
-            }, idMapper)
-      "
-      v-for="route in list"
-      :key="route.name"
+      :id="item.id ? getObjectValueByDotString(idMapper, item.id) : ''"
+      v-for="item in list"
+      :key="item.name"
     >
-      <router-link class="tabs__ul__li__link" :to="{ name: route.link }">
-        {{ $t(route.text) }}
+      <router-link class="tabs__ul__li__link" :to="{ name: item.link }">
+        {{ $t(item.text) }}
       </router-link>
     </li>
   </ul>
@@ -27,6 +21,7 @@
 
 <script>
 import idMapper from '@/idMapper';
+import { getObjectValueByDotString } from '@/utils/object';
 
 export default {
   name: 'AppNavigationTab',
@@ -39,6 +34,7 @@ export default {
   data() {
     return {
       idMapper: idMapper,
+      getObjectValueByDotString: getObjectValueByDotString,
     };
   },
 };
