@@ -224,6 +224,12 @@ export default {
           field.isOnly = registerField.Lst_isOnly;
           field.isRequired = registerField.Lst_isRequired;
           field.rules['register-required'] = registerField.Lst_isRequired;
+
+          //* 目前只有 Add_RelatedAccount 有可能需要賦予值
+          if (field.name == 'Add_RelatedAccount') {
+            field.value = registerField.Lst_Value;
+          }
+
           //* Add_RealName 是不可修改
           //* 推薦人若已有值，就也不能修改
           if (field.name == 'Add_RealName') {
