@@ -95,8 +95,6 @@ import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 import idMapper from '@/idMapper';
 
-console.log(registerFieldList);
-
 export default {
   name: 'Register',
   components: {

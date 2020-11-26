@@ -12,7 +12,7 @@
             v-if="JSON.stringify(depositBankList) === JSON.stringify(transferBankList)"
           >
             <span class="deposit__field__title theme-input-header">
-              {{ $t('transaction.deposit.field.depositBankAccount') }}
+              {{ $t('transaction.deposit.field.bankDepositAccount') }}
             </span>
             <input class="ui-ipt" type="text" v-model="depositBankAccount" />
           </ValidationProvider>
@@ -204,7 +204,7 @@
 
           <ol class="ui-ol-memberNotice">
             <li v-for="(notice, index) in noticeList" :key="`memberNotice${index}`">
-              <span v-html="$t(`transaction.deposit.notice.${notice}`)"></span>
+              <span v-html="$t(notice)"></span>
             </li>
           </ol>
 
@@ -271,7 +271,15 @@ export default {
       remark: '',
       promotion: '-1',
 
-      noticeList: ['currency', 'depositLimit01', 'depositLimit02', 'userBear01', 'userBear02', 'suggest', 'contact'],
+      noticeList: [
+        'transaction.deposit.notice.currency',
+        'transaction.deposit.notice.depositLimit01',
+        'transaction.deposit.notice.depositLimit02',
+        'transaction.deposit.notice.userBear01',
+        'transaction.deposit.notice.userBear02',
+        'transaction.deposit.notice.suggest',
+        'transaction.deposit.notice.contact',
+      ],
       isShowDepositNotice: false,
     };
   },

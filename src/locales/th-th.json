@@ -489,8 +489,7 @@
         },
         "button": {
           "search": "ค้นหา"
-        },
-        "notice": ""
+        }
       },
       "bonus": {
         "title": "บันทึกโปรโมชั่น",
@@ -499,8 +498,7 @@
           "bindWallet": "กระเป๋าเงินที่สัมพันธ์",
           "issue": "แจกโบนัส",
           "datetime": "เวลา"
-        },
-        "notice": ""
+        }
       },
       "lottery": {
         "title": "รายการบันทึก",
@@ -509,8 +507,7 @@
           "status": "รางวัลที่แจก",
           "type": "ประเภทรางวัล",
           "datetime": "วันที่จับรางวัล"
-        },
-        "notice": ""
+        }
       },
       "withdrawalRestriction": {
         "title": "ยอดจำกัดการถอน",
@@ -519,8 +516,7 @@
           "restriction": "จำกัด",
           "notRolloverExchange": "เหลือยอดโรลลิ่ง",
           "rolloverDeadline": "กำหนดวันทำโรลลิ่ง"
-        },
-        "notice": ""
+        }
       },
       "adjustment": {
         "title": "บันทึกรายการแก้ไข",
@@ -529,8 +525,7 @@
           "description": "แก้ไขรายละเอียดปัญหา",
           "point": "แก้ไขยอดเงิน",
           "datetime": "แก้ไขเวลา"
-        },
-        "notice": ""
+        }
       }
     },
     "recordDetail": {

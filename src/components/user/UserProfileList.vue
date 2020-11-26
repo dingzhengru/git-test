@@ -87,73 +87,8 @@
         </button>
       </div>
     </ValidationObserver>
-
-    <!-- <form
-      class="user-profile__instant-access-form theme-content-box"
-      id="instant-access-form"
-      v-if="isShowRegisterForm"
-    >
-      <div
-        class="user-profile__instant-access-form__field theme-input-box"
-        v-for="field in fieldList"
-        :key="field.name"
-      >
-        <template v-if="field.isShow">
-          <span class="user-profile__instant-access-form__field__title theme-input-header">
-            {{ field.type != 'select' ? $t(`register.${field.name}.placeholder`) : $t(`register.${field.name}.title`) }}
-          </span>
-          <input
-            v-if="field.type != 'select'"
-            class="user-profile__instant-access-form__field__input ui-ipt"
-            :id="idMapper.register.input[field.name]"
-            :type="field.type"
-            :required="field.isRequired"
-            :minlength="field.minlength"
-            :maxlength="field.maxlength"
-            :min="field.min"
-            :max="field.max"
-            :pattern="field.regex"
-            :disabled="!field.isModifiable"
-            v-model="field.value"
-            @input="validateField(field)"
-            @change="
-              $emit(
-                'change-register-field',
-                field,
-                fieldList,
-                validateField(field),
-                originalRegisterFieldList.find(item => item.name == field.name)
-              )
-            "
-          />
-
-          <select
-            v-if="field.type == 'select'"
-            class="ui-ddl"
-            :id="idMapper.register.input[field.name]"
-            v-model="field.value"
-            @change="validateField(field)"
-            :disabled="!field.isModifiable"
-          >
-            <option :value="bank.Value" :selected="bank.Selected" v-for="bank in bankList" :key="bank.Value">
-              {{ bank.Text }}
-            </option>
-          </select>
-
-          <div class="theme-errorMsg" v-if="field.error">
-            <span class="theme-txt-errorMsg">{{ field.error }}</span>
-          </div>
-        </template>
-      </div>
-    </form> -->
-
-    <!-- <div class="user-profile__button-div">
-      <button class="user-profile__button--instant ui-btn ui-btn-long" type="button" @click.prevent="instantAccess">
-        {{ isShowRegisterForm ? $t('ui.button.submit') : $t('user.profile.notAccessed.button.access') }}
-      </button>
-    </div> -->
     <ol class="user-profile__notice ui-ol-memberNotice">
-      <li v-for="(notice, index) in noticeList" :key="index">{{ $t(`user.profile.notAccessed.notice.${notice}`) }}</li>
+      <li v-for="(notice, index) in noticeList" :key="index">{{ $t(notice) }}</li>
     </ol>
   </div>
 </template>
@@ -188,7 +123,11 @@ export default {
       fieldList: registerFieldList,
       originalRegisterFieldList: [], //* 存取原本欄位的值
       isShowRegisterForm: false,
-      noticeList: ['access', 'suggest', 'contact'],
+      noticeList: [
+        'user.profile.notAccessed.notice.access',
+        'user.profile.notAccessed.notice.suggest',
+        'user.profile.notAccessed.notice.contact',
+      ],
     };
   },
   methods: {

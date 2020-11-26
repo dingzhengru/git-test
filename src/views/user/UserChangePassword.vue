@@ -95,7 +95,7 @@
     </ValidationObserver>
     <ol class="ui-ol-memberNotice">
       <li v-for="(notice, index) in noticeList" :key="index">
-        {{ $t(`user.changePassword.notice.${notice}`) }}
+        {{ $t(notice) }}
       </li>
     </ol>
   </div>
@@ -123,7 +123,11 @@ export default {
       passwordNew: '',
       passwordCheck: '',
       isRememberPassword: false,
-      noticeList: ['suggest', 'rule', 'contact'],
+      noticeList: [
+        'user.changePassword.notice.suggest',
+        'user.changePassword.notice.rule',
+        'user.changePassword.notice.contact',
+      ],
     };
   },
   methods: {

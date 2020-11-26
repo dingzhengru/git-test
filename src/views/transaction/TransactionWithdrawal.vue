@@ -153,7 +153,7 @@
           </button>
         </div>
         <ol class="withdrawal__notice ui-ol-memberNotice">
-          <li v-for="notice in noticeList" :key="notice">{{ $t(`transaction.withdrawal.notice.${notice}`) }}</li>
+          <li v-for="notice in noticeList" :key="notice">{{ $t(notice) }}</li>
         </ol>
       </form>
     </ValidationObserver>
@@ -196,7 +196,7 @@ export default {
       currency: '',
       amount: 0,
       password: '',
-      noticeList: ['contact'],
+      noticeList: ['transaction.withdrawal.notice.contact'],
     };
   },
   methods: {
