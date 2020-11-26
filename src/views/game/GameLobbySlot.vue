@@ -198,7 +198,6 @@ export default {
       this.getGameList();
     },
     productList() {
-      console.log('[watch][productList]');
       //* 避免直接輸入網址，到要去站外大廳的 Product
       if (this.productCurrent.GetGameRedirectUrl) {
         window.location.replace('/');

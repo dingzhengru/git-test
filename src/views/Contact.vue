@@ -149,7 +149,7 @@ export default {
     if (this.service) {
       if (this.service.Js_Type == 'zopim') {
         //* zopim
-        console.log('[jscode]', this.service.Js_Code);
+        console.log('[CustomService]', 'import zopim');
         window.eval(this.service.Js_Code);
         const zopimInterval = setInterval(() => {
           if ($zopim && $zopim.livechat) {
@@ -163,7 +163,7 @@ export default {
           }
         }, 500);
       } else if (this.service.Js_Type == 'ze-snippet') {
-        //* ze-snippet
+        console.log('[CustomService]', 'import ze-snippet');
         // const jsSrc = jscode.split('src="')[1].split('"')[0]
         const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
 
