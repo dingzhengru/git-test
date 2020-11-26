@@ -27,7 +27,7 @@
             @click="isShowMenu = false"
           >
             <router-link class="header-menu-auth__menu__route-ul__li__link" :to="{ name: route.link }">
-              {{ $t(`header.menu.${route.name}`) }}
+              {{ $t(route.name) }}
             </router-link>
           </li>
         </ul>
@@ -100,27 +100,27 @@ export default {
       isShowMenu: false,
       routeList: [
         {
-          name: 'profile',
+          name: 'header.menu.profile',
           link: 'UserProfile',
         },
         {
-          name: 'transaction',
+          name: 'header.menu.transaction',
           link: 'TransactionDeposit',
         },
         {
-          name: 'report',
+          name: 'header.menu.report',
           link: 'ReportHome',
         },
         {
-          name: 'notification',
+          name: 'header.menu.notification',
           link: 'NotificationHome',
         },
         {
-          name: 'promotion',
+          name: 'header.menu.promotion',
           link: 'Promotion',
         },
         {
-          name: 'about',
+          name: 'header.menu.about',
           link: 'About',
         },
       ],
