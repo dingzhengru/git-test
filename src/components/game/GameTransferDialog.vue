@@ -1,58 +1,55 @@
 <template>
-  <div>
-    <div class="ui-overlay"></div>
-    <div class="game-transfer-dialog-wrapper" @click.self="$emit('close')">
-      <div class="game-transfer-dialog">
-        <div class="ui-box-close" @click="$emit('close')"></div>
-        <div class="game-transfer-dialog__title">{{ $t('game.transfer.title') }}</div>
+  <AppModal :isShow="isShow" @close="$emit('close')">
+    <div class="game-transfer-dialog">
+      <div class="ui-box-close" @click="$emit('close')"></div>
+      <div class="game-transfer-dialog__title">{{ $t('game.transfer.title') }}</div>
 
-        <ValidationObserver v-slot="{ invalid, handleSubmit }">
-          <form class="game-transfer-dialog__form" @submit.prevent="handleSubmit(submitTransfer)">
-            <div class="game-transfer-dialog__form__text">
-              {{ $t('game.transfer.from') }} <span>{{ wallet.Product_Name }}：{{ wallet.Point }}</span>
-            </div>
-            <div class="game-transfer-dialog__form__text">
-              {{ $t('game.transfer.to') }}
-              <span>{{ currentPointProduct.Product_Name }}： {{ currentPointProduct.Point }}</span>
-            </div>
+      <ValidationObserver v-slot="{ invalid, handleSubmit }">
+        <form class="game-transfer-dialog__form" @submit.prevent="handleSubmit(submitTransfer)">
+          <div class="game-transfer-dialog__form__text">
+            {{ $t('game.transfer.from') }} <span>{{ wallet.Product_Name }}：{{ wallet.Point }}</span>
+          </div>
+          <div class="game-transfer-dialog__form__text">
+            {{ $t('game.transfer.to') }}
+            <span>{{ currentPointProduct.Product_Name }}： {{ currentPointProduct.Point }}</span>
+          </div>
 
-            <div class="game-transfer-dialog__form__switch-div">
-              <button
-                class="game-transfer-dialog__form__switch left"
-                type="button"
-                :class="{ on: isTransferAll }"
-                @click.capture.stop="isTransferAll = true"
-              >
-                {{ $t('game.transfer.transferAll') }}
-              </button>
-              <button
-                class="game-transfer-dialog__form__switch right"
-                type="button"
-                :class="{ on: !isTransferAll }"
-                @click.capture.stop="isTransferAll = false"
-              >
-                {{ $t('game.transfer.transferByEnter') }}
-              </button>
-              <ValidationProvider :rules="{ required: true, integer: true, min_value: 1, max_value: wallet.Point }">
-                <input
-                  class="game-transfer-dialog__form__input"
-                  type="number"
-                  v-model.number="amount"
-                  v-if="!isTransferAll"
-                  @focus="focusAmount"
-                  @blur="blurAmount"
-                  @change="changeAmount"
-                />
-              </ValidationProvider>
-            </div>
-            <button class="game-transfer-dialog__form__button ui-btn" type="submit" :disabled="invalid">
-              {{ $t('game.transfer.submit') }}
+          <div class="game-transfer-dialog__form__switch-div">
+            <button
+              class="game-transfer-dialog__form__switch left"
+              type="button"
+              :class="{ on: isTransferAll }"
+              @click.capture.stop="isTransferAll = true"
+            >
+              {{ $t('game.transfer.transferAll') }}
             </button>
-          </form>
-        </ValidationObserver>
-      </div>
+            <button
+              class="game-transfer-dialog__form__switch right"
+              type="button"
+              :class="{ on: !isTransferAll }"
+              @click.capture.stop="isTransferAll = false"
+            >
+              {{ $t('game.transfer.transferByEnter') }}
+            </button>
+            <ValidationProvider :rules="{ required: true, integer: true, min_value: 1, max_value: wallet.Point }">
+              <input
+                class="game-transfer-dialog__form__input"
+                type="number"
+                v-model.number="amount"
+                v-if="!isTransferAll"
+                @focus="focusAmount"
+                @blur="blurAmount"
+                @change="changeAmount"
+              />
+            </ValidationProvider>
+          </div>
+          <button class="game-transfer-dialog__form__button ui-btn" type="submit" :disabled="invalid">
+            {{ $t('game.transfer.submit') }}
+          </button>
+        </form>
+      </ValidationObserver>
     </div>
-  </div>
+  </AppModal>
 </template>
 
 <script>
@@ -60,6 +57,7 @@ import { ValidationObserver, ValidationProvider } from 'vee-validate';
 export default {
   name: 'GameTransferDialog',
   components: {
+    AppModal: () => import('@/components/AppModal'),
     ValidationObserver,
     ValidationProvider,
   },
@@ -71,6 +69,10 @@ export default {
     currentPointProduct: {
       type: Object,
       default: () => {},
+    },
+    isShow: {
+      type: Boolean,
+      default: () => false,
     },
   },
   computed: {
@@ -114,16 +116,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.game-transfer-dialog-wrapper {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 9999;
-}
+// .game-transfer-dialog-wrapper {
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   height: 100%;
+//   width: 100%;
+//   z-index: 9999;
+// }
 
 .game-transfer-dialog {
   width: 80%;

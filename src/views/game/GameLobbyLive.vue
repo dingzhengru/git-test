@@ -18,7 +18,7 @@
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <GameListTable :gameList="gameList" :productCurrent="productCurrent" @open-game="openGame" @like-game="likeGame" />
+    <GameListTable :gameList="gameList" :productCurrent="productCurrent" @open-game="openGame" />
 
     <AppPagination
       :length="pagination.dataLength"
@@ -31,6 +31,7 @@
     <GameTransferDialog
       :wallet="userGamePointWallet"
       :currentPointProduct="productPointCurrent"
+      :isShow="isShowTransferDialog"
       @submit-transfer="transferPoint"
       @close="closeTransferDialog"
       v-show="isShowTransferDialog"
@@ -39,9 +40,9 @@
     <LiveGameEnterDialog
       :gameLimitBetList="gameLimitBetList"
       :selectedGame="game"
+      :isShow="isShowLiveGameEnterDialog"
       @open-live-game="openLiveGame"
       @close="isShowLiveGameEnterDialog = false"
-      v-if="isShowLiveGameEnterDialog"
     />
   </div>
 </template>

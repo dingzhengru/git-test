@@ -37,7 +37,6 @@
       </div>
     </div>
 
-    <!-- <div class="ui-overlay" v-if="isShowWinWheel || isShowRedEnvelope" @click.self="closeLotteryGame"></div> -->
     <AppModal :isShow="isShowWinWheel" @close="closeWinWheel">
       <div class="wheel-container">
         <WinWheel

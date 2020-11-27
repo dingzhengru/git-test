@@ -41,9 +41,9 @@
     <GameTransferDialog
       :wallet="userGamePointWallet"
       :currentPointProduct="productPointCurrent"
+      :isShow="isShowTransferDialog"
       @submit-transfer="transferPoint"
       @close="closeTransferDialog"
-      v-show="isShowTransferDialog"
     />
   </div>
 </template>

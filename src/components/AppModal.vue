@@ -23,7 +23,6 @@ export default {
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index: 100;
   width: 100%;
   height: 100%;
   max-width: 100%;
@@ -33,5 +32,6 @@ export default {
   top: 0;
   margin: 0;
   background-color: rgba(#000, 0.6);
+  z-index: 9999;
 }
 </style>

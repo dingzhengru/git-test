@@ -105,7 +105,7 @@
       @change-page="changePage"
     />
 
-    <RecordImageDialog :imageUrl="imageDialogUrl" @close="imageDialogUrl = ''" v-if="imageDialogUrl" />
+    <RecordImageDialog :imageUrl="imageDialogUrl" @close="imageDialogUrl = ''" />
 
     <!-- <RecordImageDialog imageUrl="https://image.freepik.com/free-vector/realistic-receipt-template_23-2147938550.jpg" /> -->
   </div>

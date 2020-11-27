@@ -1,32 +1,36 @@
 <template>
-  <div>
-    <div class="ui-overlay"></div>
-    <div class="record-image-dialog-wrapper" @click.self="$emit('close')">
-      <div class="record-image-dialog">
-        <div class="ui-box-close" @click="$emit('close')"></div>
+  <AppModal :isShow="!!imageUrl" @close="$emit('close')">
+    <div class="record-image-dialog">
+      <div class="ui-box-close" @click="$emit('close')"></div>
 
-        <img :src="imageUrl" width="100%" />
+      <img :src="imageUrl" width="100%" />
 
-        <div class="record-image-dialog__title">汇款收据</div>
-      </div>
+      <div class="record-image-dialog__title">汇款收据</div>
     </div>
-  </div>
+  </AppModal>
 </template>
 
 <script>
 export default {
   name: 'RecordImageDialog',
+  components: {
+    AppModal: () => import('@/components/AppModal'),
+  },
   props: {
     imageUrl: {
       type: String,
       default: () => '',
+    },
+    isShow: {
+      type: Boolean,
+      default: () => false,
     },
   },
 };
 </script>
 
 <style scoped>
-.record-image-dialog-wrapper {
+/* .record-image-dialog-wrapper {
   position: fixed;
   top: 0;
   right: 0;
@@ -35,7 +39,7 @@ export default {
   height: 100%;
   width: 100%;
   z-index: 9999;
-}
+} */
 .record-image-dialog {
   width: 80%;
   /* height: 628px; */
