@@ -96,7 +96,7 @@
         </li>
       </ul>
     </div>
-    <p class="record-content__notice">{{ $t(`${i18nKey}.notice`) }}</p>
+    <p class="record-content__notice">{{ $te(`${i18nKey}.notice`) ? $t(`${i18nKey}.notice`) : '' }}</p>
     <AppPagination
       v-if="isPageActive"
       :length="pagination.dataLength"
