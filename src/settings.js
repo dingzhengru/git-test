@@ -48,6 +48,7 @@ export const API_NO_LOADING_LIST = [
   'Siteinfo/KeepUserOnline',
   'Game/MGetJackpotTotal',
   'Member/CheckField',
+  'Proxy/MPlayLottery',
   'Proxy/MGetWinPrize',
 ];
 

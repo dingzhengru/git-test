@@ -1,7 +1,10 @@
+import mixinLotteryGame from '@/mixins/lotteryGame';
 import { apiPlayLottery, apiPlayLotteryResult } from '@/api/lottery';
 
-//* 轉盤遊戲的圖片
+//* Loading 圖片
 import lotteryLoadingImage from '@/assets/common/imgs/lottery/loading.svg';
+
+//* 轉盤遊戲的圖片
 // import wheelContainerBackgroundImage from '@/assets/common/imgs/lottery/winWheel/container-bg.png';
 import wheelPrizeImage from '@/assets/common/imgs/lottery/winWheel/prize.png';
 import wheelPointerImage from '@/assets/common/imgs/lottery/winWheel/pointercn.png';
@@ -10,6 +13,7 @@ import wheelBackgroundImage from '@/assets/common/imgs/lottery/winWheel/wheel-bg
 
 export default {
   name: 'MixinLotteryWinWheel',
+  mixins: [mixinLotteryGame],
   data() {
     return {
       wheelBillNo: '', // (獎項列表API)活動單號，需夾帶給抽獎API
@@ -19,7 +23,7 @@ export default {
       wheelSegmentsPrize: [], // (獎項列表API)獎項列表，抽獎後接露
 
       isShowWinWheel: false,
-      isWheelLoading: false, //控制抽獎 loading 動畫
+      isWinWheelLoading: false, //控制抽獎 loading 動畫
 
       // 錯誤訊息
       wheelErrorMessage: '',
@@ -55,11 +59,6 @@ export default {
     };
   },
   methods: {
-    async openLotteryGame(lottery) {
-      if (lottery.Type == 0) {
-        this.initWheelHandler();
-      }
-    },
     //* 初始化遊戲、獲取轉盤資料
     async initWheelHandler() {
       this.wheelBillNo = '';
@@ -95,6 +94,9 @@ export default {
     },
     //* 啟動轉盤遊戲、獲取中獎資料
     async startWheelHandler() {
+      //* 為了應付重複遊玩
+      await this.initWheelHandler();
+
       this.isWheelLoading = true;
       const result = await apiPlayLotteryResult({ ActivityType: 0, BillNo: this.wheelBillNo });
       if (result.Code == 200) {
@@ -106,7 +108,7 @@ export default {
         this.isWheelLoading = false;
       }
     },
-    closeLotteryGame() {
+    closeWinWheel() {
       this.isShowWinWheel = false;
       this.wheelBillNo = '';
       this.wheelGameChance = '';

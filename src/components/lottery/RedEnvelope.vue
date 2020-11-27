@@ -9,7 +9,7 @@
         v-for="(item, index) in prizeHolder"
         :key="item.text"
         :class="{ 'card-select': item.selected }"
-        @click="selectHandeler(item, index)"
+        @click="selectHandler(item, index)"
       >
         <div class="redEnvelope__card__inner">
           <div class="redEnvelope__card__front">
@@ -123,12 +123,12 @@ export default {
       this.$emit('startHandler');
     },
     // 選擇紅包
-    selectHandeler(item, index) {
+    selectHandler(item, index) {
       if (!this.isGameEnable) return;
       this.isGameEnable = false;
       this.gameSelect = index;
       this.$set(item, 'selected', true);
-      this.$emit('selectHandeler');
+      this.$emit('selectHandler');
     },
     // 顯示結果
     resultHandler() {

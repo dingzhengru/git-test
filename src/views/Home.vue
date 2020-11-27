@@ -37,55 +37,58 @@
       </div>
     </div>
 
-    <div class="ui-overlay" v-if="isShowWinWheel || isShowRedEnvelope" @click.self="closeLotteryGame"></div>
-    <div class="wheel-container" v-show="isShowWinWheel">
-      <!-- <div class="ui-box-close"  @click="closeLotteryGame"></div> -->
-      <WinWheel
-        :wheelStyle="wheelStyle"
-        :wheelOptions="wheelOptions"
-        :wheelSegmentsPrize="wheelSegmentsPrize"
-        :gameChance="wheelGameChance"
-        :gamePrize="wheelGamePrize"
-        :isWheelLoading="isWheelLoading"
-        :errMsg="wheelErrorMessage"
-        @startHandler="startWheelHandler"
-      >
-        <template v-slot:game-chance>
-          <div class="acticityWinwheel__title">
-            {{ $t('home.lottery.winWheel.homeTitle', { count: wheelGameChance }) }}
-          </div>
-        </template>
-        <template v-slot:game-dialog>
-          <!-- <div class="acticityWinwheel__result">恭喜獲得</div> -->
-          <div class="acticityWinwheel__prize">{{ wheelGamePrize.text }}</div>
-        </template>
-      </WinWheel>
-    </div>
+    <!-- <div class="ui-overlay" v-if="isShowWinWheel || isShowRedEnvelope" @click.self="closeLotteryGame"></div> -->
+    <AppModal :isShow="isShowWinWheel" @close="closeWinWheel">
+      <div class="wheel-container">
+        <WinWheel
+          :wheelStyle="wheelStyle"
+          :wheelOptions="wheelOptions"
+          :wheelSegmentsPrize="wheelSegmentsPrize"
+          :gameChance="wheelGameChance"
+          :gamePrize="wheelGamePrize"
+          :isWheelLoading="isWinWheelLoading"
+          :errMsg="wheelErrorMessage"
+          @startHandler="startWheelHandler"
+        >
+          <template v-slot:game-chance>
+            <div class="acticityWinwheel__title">
+              {{ $t('home.lottery.winWheel.homeTitle', { count: wheelGameChance }) }}
+            </div>
+          </template>
+          <template v-slot:game-dialog>
+            <!-- <div class="acticityWinwheel__result">恭喜獲得</div> -->
+            <div class="acticityWinwheel__prize">{{ wheelGamePrize.text }}</div>
+          </template>
+        </WinWheel>
+      </div>
+    </AppModal>
 
-    <!-- <div class="red-envelope-container" v-show="isShowRedEnvelope">
-      <RedEnvelope
-        :gameStyle="redEnvelopeStyle"
-        :prizeList="redEnvelopePrizeList"
-        :gameChance="gameChance"
-        :gamePrize="gamePrize"
-        :errMsg="lotteryErrorMessage"
-        @startHandler="startHandlerRedEnvelope"
-        @selectHandeler="lotteryHandlerRedEnvelope"
-      >
-        <template v-slot:game-result>
-          <div class="acticityRedEnvelepe__result">
-            {{ $t('home.lottery.redEnvelope.gameResult') }}
-            <br />
-            【 {{ gamePrize.text }} 】
-          </div>
-        </template>
-        <template v-slot:game-chance>
-          <div class="acticityRedEnvelepe__chance">
-            {{ $t('home.lottery.redEnvelope.startButton', { count: gameChance }) }}
-          </div>
-        </template>
-      </RedEnvelope>
-    </div> -->
+    <AppModal :isShow="isShowRedEnvelope" @close="closeRedEnvelope">
+      <div class="red-envelope-container">
+        <RedEnvelope
+          :gameStyle="redEnvelopeStyle"
+          :prizeList="redEnvelopePrizeList"
+          :gameChance="redEnvelopeGameChance"
+          :gamePrize="redEnvelopeGamePrize"
+          :errMsg="redEnvelopeErrorMessage"
+          @startHandler="initHandlerRedEnvelope"
+          @selectHandler="selectRedEnvelopeHandler"
+        >
+          <template v-slot:game-result>
+            <div class="acticityRedEnvelepe__result">
+              {{ $t('home.lottery.redEnvelope.gameResult') }}
+              <br />
+              【 {{ redEnvelopeGamePrize.text }} 】
+            </div>
+          </template>
+          <template v-slot:game-chance>
+            <div class="acticityRedEnvelepe__chance">
+              {{ $t('home.lottery.redEnvelope.startButton', { count: redEnvelopeGameChance }) }}
+            </div>
+          </template>
+        </RedEnvelope>
+      </div>
+    </AppModal>
   </div>
 </template>
 
@@ -103,12 +106,6 @@ import { apiGetLotteryCount /*apiPlayLottery, apiPlayLotteryResult*/ } from '@/a
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 import idMapper from '@/idMapper';
 
-//* 紅包遊戲的圖片
-// import cardFrontImgage from '@/assets/common/imgs/lottery/redEnvelope/lucky--close1.png';
-// import cardBackImgage from '@/assets/common/imgs/lottery/redEnvelope/lucky--open3.png';
-// import dialogImgage from '@/assets/common/imgs/lottery/redEnvelope/bg-winPrize.png';
-// import envelopeLoadingImgage from '@/assets/common/imgs/lottery/redEnvelope/eclipse.svg';
-
 export default {
   name: 'Home',
   mixins: [mixinLotteryRedEnvelope, mixinLotteryWinWheel],
@@ -116,8 +113,9 @@ export default {
     HomeBanner: () => import('@/components/home/HomeBanner'),
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
     HomeLotteryGameBlock: () => import('@/components/home/HomeLotteryGameBlock'),
+    AppModal: () => import('@/components/AppModal'),
     WinWheel: () => import('@/components/lottery/WinWheel'),
-    // RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
+    RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
   },
   computed: {
     ...mapGetters([
@@ -139,25 +137,6 @@ export default {
       bannerList: [],
       productList: [],
       lotteryList: [],
-
-      isShowRedEnvelope: false,
-
-      //* 紅包
-      // redEnvelopeStyle: {
-      //   loadingImgUrl: lotteryLoadingImage, //遊戲loading
-      //   activityImgUrl: '', //(獎項列表API)活動標題圖片
-      //   cardFrontImgUrl: cardFrontImgage, //翻牌前
-      //   cardBackImgUrl: cardBackImgage, //翻牌後
-      //   dialogImgUrl: dialogImgage, //彈跳視窗背景
-      //   envelopeLoadingImgUrl: envelopeLoadingImgage, //紅包loading
-      // },
-      // redEnvelopePrizeList: [],
-
-      // billNo: '', // (獎項列表API)活動單號，需夾帶給抽獎API
-      // gameChance: '', //(抽獎API)剩餘抽獎次數
-      // gamePrize: '', //(抽獎API)回傳獎項
-
-      // lotteryErrorMessage: '',
     };
   },
   methods: {
@@ -302,60 +281,6 @@ export default {
         }
       }
     },
-    // startHandlerRedEnvelope() {
-    //   this.gamePrize = '';
-    // },
-    // // 取得獎項列表
-    // initHandlerRedEnvelope() {
-    //   this.billNo = '';
-    //   this.gameChance = '';
-    //   this.gamePrize = '';
-    //   return apiPlayLottery({ ActivityType: 1 })
-    //     .then(res => {
-    //       if (res.RetObj) {
-    //         const data = res.RetObj;
-
-    //         this.gameChance = data.LotteryCount;
-    //         this.billNo = data.BillNo;
-    //         this.redEnvelopeStyle.activityImgUrl = data.ActivityImageUrl;
-
-    //         let list = [];
-    //         data.prizesList.map((item, index) => {
-    //           list[index] = {
-    //             image: item.Lst_ImageUrl,
-    //             text: item.Lst_PrizeName,
-    //             key: item.Lst_PrizeKey,
-    //           };
-    //         });
-
-    //         this.redEnvelopePrizeList = list;
-    //         this.isShowRedEnvelope = true;
-    //       } else {
-    //         this.lotteryErrorMessage = this.msgLibrary.noChance;
-    //       }
-    //     })
-    //     .catch(err => {
-    //       this.lotteryErrorMessage = err;
-    //     });
-    // },
-    // // 抽獎事件
-    // async lotteryHandlerRedEnvelope() {
-    //   await this.initHandlerRedEnvelope();
-    //   // call 抽獎 api 取得抽獎結果
-    //   apiPlayLotteryResult({ ActivityType: 1, BillNo: this.billNo })
-    //     .then(res => {
-    //       this.gamePrize = {
-    //         text: res.RetObj.Lst_PrizeName,
-    //         key: res.RetObj.Lst_PrizeKey,
-    //       };
-    //       this.gameChance--;
-
-    //       this.endLotteryGame();
-    //     })
-    //     .catch(err => {
-    //       this.lotteryErrorMessage = err;
-    //     });
-    // },
   },
   mounted() {
     // * 根據版型引入 css
