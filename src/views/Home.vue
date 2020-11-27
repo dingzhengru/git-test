@@ -44,25 +44,25 @@
         :wheelStyle="wheelStyle"
         :wheelOptions="wheelOptions"
         :wheelSegmentsPrize="wheelSegmentsPrize"
-        :gameChance="gameChance"
-        :gamePrize="gamePrize"
+        :gameChance="wheelGameChance"
+        :gamePrize="wheelGamePrize"
         :isWheelLoading="isWheelLoading"
-        :errMsg="lotteryErrorMessage"
-        @startHandler="startHandlerWheel"
+        :errMsg="wheelErrorMessage"
+        @startHandler="startWheelHandler"
       >
         <template v-slot:game-chance>
           <div class="acticityWinwheel__title">
-            {{ $t('home.lottery.winWheel.homeTitle', { count: gameChance }) }}
+            {{ $t('home.lottery.winWheel.homeTitle', { count: wheelGameChance }) }}
           </div>
         </template>
         <template v-slot:game-dialog>
           <!-- <div class="acticityWinwheel__result">恭喜獲得</div> -->
-          <div class="acticityWinwheel__prize">{{ gamePrize.text }}</div>
+          <div class="acticityWinwheel__prize">{{ wheelGamePrize.text }}</div>
         </template>
       </WinWheel>
     </div>
 
-    <div class="red-envelope-container" v-show="isShowRedEnvelope">
+    <!-- <div class="red-envelope-container" v-show="isShowRedEnvelope">
       <RedEnvelope
         :gameStyle="redEnvelopeStyle"
         :prizeList="redEnvelopePrizeList"
@@ -85,44 +85,39 @@
           </div>
         </template>
       </RedEnvelope>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 
+import mixinLotteryRedEnvelope from '@/mixins/lotteryRedEnvelope';
+import mixinLotteryWinWheel from '@/mixins/lotteryWinWheel';
+
 import { apiGetBannerListOld, apiGetBannerList } from '@/api/banner';
 import { apiGetProductList } from '@/api/product';
 import { apiGetGameRedirectUrl } from '@/api/game';
 import { apiGetMessageList } from '@/api/message';
-import { apiGetLotteryCount, apiPlayLottery, apiPlayLotteryResult } from '@/api/lottery';
-
+import { apiGetLotteryCount /*apiPlayLottery, apiPlayLotteryResult*/ } from '@/api/lottery';
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 import idMapper from '@/idMapper';
 
-//* 轉盤遊戲的圖片
-import lotteryLoadingImage from '@/assets/common/imgs/lottery/loading.svg';
-// import wheelContainerBackgroundImage from '@/assets/common/imgs/lottery/winWheel/container-bg.png';
-import wheelPrizeImage from '@/assets/common/imgs/lottery/winWheel/prize.png';
-import wheelPointerImage from '@/assets/common/imgs/lottery/winWheel/pointercn.png';
-import wheelLodaingImage from '@/assets/common/imgs/lottery/winWheel/wheel-loading.svg';
-import wheelBackgroundImage from '@/assets/common/imgs/lottery/winWheel/wheel-bg.png';
-
 //* 紅包遊戲的圖片
-import cardFrontImgage from '@/assets/common/imgs/lottery/redEnvelope/lucky--close1.png';
-import cardBackImgage from '@/assets/common/imgs/lottery/redEnvelope/lucky--open3.png';
-import dialogImgage from '@/assets/common/imgs/lottery/redEnvelope/bg-winPrize.png';
-import envelopeLoadingImgage from '@/assets/common/imgs/lottery/redEnvelope/eclipse.svg';
+// import cardFrontImgage from '@/assets/common/imgs/lottery/redEnvelope/lucky--close1.png';
+// import cardBackImgage from '@/assets/common/imgs/lottery/redEnvelope/lucky--open3.png';
+// import dialogImgage from '@/assets/common/imgs/lottery/redEnvelope/bg-winPrize.png';
+// import envelopeLoadingImgage from '@/assets/common/imgs/lottery/redEnvelope/eclipse.svg';
 
 export default {
   name: 'Home',
+  mixins: [mixinLotteryRedEnvelope, mixinLotteryWinWheel],
   components: {
     HomeBanner: () => import('@/components/home/HomeBanner'),
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
     HomeLotteryGameBlock: () => import('@/components/home/HomeLotteryGameBlock'),
     WinWheel: () => import('@/components/lottery/WinWheel'),
-    RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
+    // RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
   },
   computed: {
     ...mapGetters([
@@ -145,56 +140,24 @@ export default {
       productList: [],
       lotteryList: [],
 
-      isShowWinWheel: false,
       isShowRedEnvelope: false,
 
-      //* 轉盤樣式
-      wheelStyle: {
-        width: 580, //轉盤寬度
-        height: 580, //轉盤高度
-        loadingImgUrl: lotteryLoadingImage, //遊戲loading
-        activityImgUrl: '', //(獎項表單API)活動標題圖片
-        prizeImgUrl: wheelPrizeImage, //禮物
-        pointerImgUrl: wheelPointerImage, //開始抽獎按鈕
-        wheelLodaingImgUrl: wheelLodaingImage, //轉盤loading
-        wheelBackgroundImgUrl: wheelBackgroundImage, //轉盤背景
-        wheelColor1: '#FFFFFF', //轉盤顏色1
-        wheelColor2: '#FFF4D6', //轉盤顏色2
-      },
-      //* 轉盤設定
-      wheelOptions: {
-        textFontSize: 18,
-        outerRadius: 255, //外圓半徑
-        innerRadius: 0, //內圓半徑(預設0)
-        lineWidth: 0,
-        drawMode: 'segmentImage', // code: 以文字及style顯示, image: 背景圖片顯示, segmentImage: 每個欄位一張圖片
-        segmentImageBackground: true, // 欄位圖片是否繪製背景色(fillStyle)
-        // wheelImage: "/planes.png", // (選)背景圖片位置
-        animation: {
-          type: 'spinToStop',
-          duration: 2,
-          spins: 5,
-        },
-      },
-      wheelSegmentsPrize: [], // (獎項列表API)獎項列表，抽獎後接露
-      isWheelLoading: false, //控制抽獎 loading 動畫
-
       //* 紅包
-      redEnvelopeStyle: {
-        loadingImgUrl: lotteryLoadingImage, //遊戲loading
-        activityImgUrl: '', //(獎項列表API)活動標題圖片
-        cardFrontImgUrl: cardFrontImgage, //翻牌前
-        cardBackImgUrl: cardBackImgage, //翻牌後
-        dialogImgUrl: dialogImgage, //彈跳視窗背景
-        envelopeLoadingImgUrl: envelopeLoadingImgage, //紅包loading
-      },
-      redEnvelopePrizeList: [],
+      // redEnvelopeStyle: {
+      //   loadingImgUrl: lotteryLoadingImage, //遊戲loading
+      //   activityImgUrl: '', //(獎項列表API)活動標題圖片
+      //   cardFrontImgUrl: cardFrontImgage, //翻牌前
+      //   cardBackImgUrl: cardBackImgage, //翻牌後
+      //   dialogImgUrl: dialogImgage, //彈跳視窗背景
+      //   envelopeLoadingImgUrl: envelopeLoadingImgage, //紅包loading
+      // },
+      // redEnvelopePrizeList: [],
 
-      billNo: '', // (獎項列表API)活動單號，需夾帶給抽獎API
-      gameChance: '', //(抽獎API)剩餘抽獎次數
-      gamePrize: '', //(抽獎API)回傳獎項
+      // billNo: '', // (獎項列表API)活動單號，需夾帶給抽獎API
+      // gameChance: '', //(抽獎API)剩餘抽獎次數
+      // gamePrize: '', //(抽獎API)回傳獎項
 
-      lotteryErrorMessage: '',
+      // lotteryErrorMessage: '',
     };
   },
   methods: {
@@ -339,149 +302,60 @@ export default {
         }
       }
     },
-    closeLotteryGame() {
-      this.isShowWinWheel = false;
-      this.isShowRedEnvelope = false;
-      this.billNo = '';
-      this.gameChance = '';
-      this.gamePrize = '';
-    },
-    endLotteryGame() {
-      //* 結束遊戲後，要執行的程式
+    // startHandlerRedEnvelope() {
+    //   this.gamePrize = '';
+    // },
+    // // 取得獎項列表
+    // initHandlerRedEnvelope() {
+    //   this.billNo = '';
+    //   this.gameChance = '';
+    //   this.gamePrize = '';
+    //   return apiPlayLottery({ ActivityType: 1 })
+    //     .then(res => {
+    //       if (res.RetObj) {
+    //         const data = res.RetObj;
 
-      //* 更新取得抽獎次數列表來更新首頁
-      this.getLotteryCountList();
+    //         this.gameChance = data.LotteryCount;
+    //         this.billNo = data.BillNo;
+    //         this.redEnvelopeStyle.activityImgUrl = data.ActivityImageUrl;
 
-      //* 更新用戶點數
-      this.$store.dispatch('user/getInfo');
-    },
-    async openLotteryGame(lottery) {
-      if (lottery.Type == 0) {
-        console.log('[InitWheel]');
-        this.initHandlerWheel();
-      } else if (lottery.Type == 1) {
-        console.log('[InitRedEnvelope]');
-        this.initHandlerRedEnvelope();
-      }
-    },
-    // 遊戲開始(轉盤)
-    async startHandlerWheel() {
-      await this.initHandlerWheel();
-      this.lotteryHandlerWheel();
-    },
-    // 獲取轉盤資料，初始化遊戲
-    initHandlerWheel() {
-      this.billNo = '';
-      this.gameChance = '';
-      this.gamePrize = '';
-      this.isWheelLoading = true;
-      return apiPlayLottery({ ActivityType: 0 })
-        .then(res => {
-          if (res.RetObj) {
-            const data = res.RetObj;
+    //         let list = [];
+    //         data.prizesList.map((item, index) => {
+    //           list[index] = {
+    //             image: item.Lst_ImageUrl,
+    //             text: item.Lst_PrizeName,
+    //             key: item.Lst_PrizeKey,
+    //           };
+    //         });
 
-            this.gameChance = data.LotteryCount;
-            this.billNo = data.BillNo;
-            this.wheelStyle.activityImgUrl = data.ActivityImageUrl;
-            this.isWheelLoading = false;
+    //         this.redEnvelopePrizeList = list;
+    //         this.isShowRedEnvelope = true;
+    //       } else {
+    //         this.lotteryErrorMessage = this.msgLibrary.noChance;
+    //       }
+    //     })
+    //     .catch(err => {
+    //       this.lotteryErrorMessage = err;
+    //     });
+    // },
+    // // 抽獎事件
+    // async lotteryHandlerRedEnvelope() {
+    //   await this.initHandlerRedEnvelope();
+    //   // call 抽獎 api 取得抽獎結果
+    //   apiPlayLotteryResult({ ActivityType: 1, BillNo: this.billNo })
+    //     .then(res => {
+    //       this.gamePrize = {
+    //         text: res.RetObj.Lst_PrizeName,
+    //         key: res.RetObj.Lst_PrizeKey,
+    //       };
+    //       this.gameChance--;
 
-            let prizeApiList = [];
-
-            data.prizesList.map((item, index) => {
-              let bgColor = index % 2 == 0 ? this.wheelStyle.wheelColor1 : this.wheelStyle.wheelColor2;
-              prizeApiList[index] = {
-                image: item.Lst_ImageUrl,
-                text: item.Lst_PrizeName,
-                key: item.Lst_PrizeKey,
-                fillStyle: bgColor,
-              };
-            });
-            this.wheelSegmentsPrize = prizeApiList;
-
-            //* 顯示
-            this.isShowWinWheel = true;
-          } else {
-            this.lotteryErrorMessage = this.msgLibrary.noChance;
-          }
-        })
-        .catch(err => {
-          console.log('[initHandlerWheel Error]', err);
-          this.lotteryErrorMessage = err;
-        });
-    },
-    // 獲取中獎資料，啟動轉盤遊戲
-    lotteryHandlerWheel() {
-      this.isWheelLoading = true;
-      // 呼叫得獎API
-      apiPlayLotteryResult({ ActivityType: 0, BillNo: this.billNo })
-        .then(res => {
-          this.gamePrize = {
-            text: res.RetObj.Lst_PrizeName,
-            key: res.RetObj.Lst_PrizeKey,
-          };
-          this.gameChance--;
-          this.isWheelLoading = false;
-
-          this.endLotteryGame();
-        })
-        .catch(err => {
-          this.lotteryErrorMessage = err;
-        });
-    },
-    startHandlerRedEnvelope() {
-      this.gamePrize = '';
-    },
-    // 取得獎項列表
-    initHandlerRedEnvelope() {
-      this.billNo = '';
-      this.gameChance = '';
-      this.gamePrize = '';
-      return apiPlayLottery({ ActivityType: 1 })
-        .then(res => {
-          if (res.RetObj) {
-            const data = res.RetObj;
-
-            this.gameChance = data.LotteryCount;
-            this.billNo = data.BillNo;
-            this.redEnvelopeStyle.activityImgUrl = data.ActivityImageUrl;
-
-            let list = [];
-            data.prizesList.map((item, index) => {
-              list[index] = {
-                image: item.Lst_ImageUrl,
-                text: item.Lst_PrizeName,
-                key: item.Lst_PrizeKey,
-              };
-            });
-
-            this.redEnvelopePrizeList = list;
-            this.isShowRedEnvelope = true;
-          } else {
-            this.lotteryErrorMessage = this.msgLibrary.noChance;
-          }
-        })
-        .catch(err => {
-          this.lotteryErrorMessage = err;
-        });
-    },
-    // 抽獎事件
-    async lotteryHandlerRedEnvelope() {
-      await this.initHandlerRedEnvelope();
-      // call 抽獎 api 取得抽獎結果
-      apiPlayLotteryResult({ ActivityType: 1, BillNo: this.billNo })
-        .then(res => {
-          this.gamePrize = {
-            text: res.RetObj.Lst_PrizeName,
-            key: res.RetObj.Lst_PrizeKey,
-          };
-          this.gameChance--;
-
-          this.endLotteryGame();
-        })
-        .catch(err => {
-          this.lotteryErrorMessage = err;
-        });
-    },
+    //       this.endLotteryGame();
+    //     })
+    //     .catch(err => {
+    //       this.lotteryErrorMessage = err;
+    //     });
+    // },
   },
   mounted() {
     // * 根據版型引入 css
