@@ -9,6 +9,11 @@ Vue.use(VueRouter);
  **   true: 需"登入後"才能進入的頁面
  **   false: 需"不登入"才能進入的頁面
  **   無設置: 不限制
+ **
+ ** meta.header、meta.footer
+ **   true: 顯示
+ **   false: 不顯示
+ **   無設置: 顯示
  */
 
 /* jshint ignore:start */
@@ -23,7 +28,7 @@ const routes = [
     alias: ['/SignIn'],
     name: 'SignIn',
     component: () => import('@/views/SignIn'),
-    meta: { auth: false },
+    meta: { auth: false, header: false, footer: false },
   },
   {
     path: '/login',
@@ -228,6 +233,7 @@ const routes = [
     path: '/maintenance',
     name: 'Maintenance',
     component: () => import('@/views/Maintenance'),
+    meta: { footer: false },
   },
   {
     path: '*',

@@ -14,14 +14,14 @@
         :backIconRouteList="['PromotionDetail']"
         @changeLang="changeLang"
         @logout="$store.dispatch('user/logout')"
-        v-if="isShowHeader"
+        v-if="$route.meta.header != false"
       ></AppHeader>
 
       <div class="main">
         <router-view />
       </div>
 
-      <AppFooter :isLoggedIn="userIsLoggedIn" v-if="isShowFooter" />
+      <AppFooter :isLoggedIn="userIsLoggedIn" v-if="$route.meta.footer != false" />
     </div>
 
     <AppLoadingOverlay :isLoading="loadingList.length > 0" />
@@ -30,7 +30,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { ROUTE_NO_HEADER_LIST, ROUTE_NO_FOOTER_LIST } from '@/settings';
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
 import AppLoadingOverlay from '@/components/AppLoadingOverlay';
@@ -66,15 +65,6 @@ export default {
       'userPILevel',
       'userPIBetAmount',
     ]),
-    isShowHeader() {
-      return !ROUTE_NO_HEADER_LIST.includes(this.$route.name);
-    },
-    isShowFooter() {
-      if (ROUTE_NO_FOOTER_LIST.includes(this.$route.name) || this.siteStatus != 0) {
-        return false;
-      }
-      return true;
-    },
   },
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
