@@ -112,6 +112,8 @@ export default {
 
 <style lang="scss" scoped>
 .promotion-detail {
+  padding-left: 15px;
+  padding-right: 15px;
   padding-bottom: 160px;
 
   &-auth {
@@ -127,9 +129,6 @@ export default {
 
   &__main {
     &__content {
-      width: 95%;
-      margin: 0 auto;
-
       &__title {
         height: 98px;
         padding: 34px 0 0 95px;
