@@ -1,4 +1,4 @@
-import { skipWaiting, clientsClaim } from 'workbox-core';
+// import { skipWaiting, clientsClaim } from 'workbox-core';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 import { precacheAndRoute } from 'workbox-precaching';
