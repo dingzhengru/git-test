@@ -89,35 +89,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .live-game-enter-dialog-wrapper {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 9999;
-} */
-/* .live-game-enter-dialog {
-  width: 70%;
-  position: absolute;
-  top: 25%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  overflow: auto;
-  z-index: 9999;
-  font-size: 2rem;
-  padding: 60px 30px 60px 30px;
-} */
-/* .live-game-enter-dialog__button-div button {
-  margin-top: 30px;
-} */
-/* .live-game-enter-dialog__button {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
-} */
-</style>

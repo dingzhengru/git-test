@@ -153,28 +153,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .user-profile-access__main {
-  margin: 40px 0;
-} */
-
-/* .user-profile-access__main__ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-} */
-
-/* .user-profile-access__button-div {
-  margin: 40px 0;
-  text-align: center;
-} */
-
-/* .are-accountChg {
-  margin: 40px 0;
-}
-
-.blk-accountChg-input {
-  margin: 20px 0;
-} */
-</style>

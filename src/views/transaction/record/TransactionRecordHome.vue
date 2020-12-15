@@ -61,26 +61,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .record-list {
-  margin: 30px 0;
-}
-
-.record-list__ul {
-  width: 80%;
-  margin: 0 auto;
-  padding: 30px 0;
-  list-style: none;
-}
-.record-list__ul__li {
-  padding: 30px 0;
-}
-.record-list__ul__li__link {
-  display: block;
-  font-size: 3.23em;
-  text-align: center;
-  line-height: 97px;
-  border-radius: 10px;
-} */
-</style>

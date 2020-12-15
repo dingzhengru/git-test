@@ -87,18 +87,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .notification-news__box {
-  margin: 20px 0;
-  padding-bottom: 20px;
-  font-size: 2.769em;
-}
-.notification-news__box__date {
-  margin: 20px 0;
-  padding: 0 0 20px 63px;
-  border-bottom: 1px solid #d6c388;
-  font-size: 0.777em;
-  line-height: 43px;
-} */
-</style>

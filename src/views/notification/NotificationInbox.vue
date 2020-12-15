@@ -98,21 +98,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .notification-inbox__table {
-  margin-top: 40px;
-}
-
-.notification-inbox__table .td-1st {
-  width: 180px;
-  text-align: center;
-}
-
-.notification-inbox__table .td-2nd {
-  padding-right: 73px;
-  color: #fff;
-  text-align: center;
-  position: relative;
-} */
-</style>

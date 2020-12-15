@@ -71,37 +71,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .game-lobby__category {
-  position: relative;
-  overflow: hidden;
-  height: 74px;
-} */
-/* .game-lobby__category__ul {
-  width: 100%;
-  margin: 0;
-  padding: 0 15px;
-  white-space: nowrap;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-} */
-
-/* .game-lobby__category__ul__li {
-  font-size: 24px;
-  white-space: nowrap;
-  display: inline-block;
-} */
-
-/* .game-lobby__category__ul__li:last-child {
-  padding-right: 20px;
-} */
-
-/* .game-lobby__category__ul__li__link {
-  display: block;
-  padding: 0 15px;
-  line-height: 74px;
-} */
-</style>

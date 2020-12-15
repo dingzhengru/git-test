@@ -159,37 +159,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .report-bet-record {
-  margin-top: 40px;
-} */
-
-/* .report-bet-record__field {
-  text-align: center;
-} */
-
-/* .report-bet-record__field__select {
-  width: 100%;
-  padding: 0 1.5%;
-} */
-
-/* .report-bet-record__box {
-  margin: 30px 0;
-} */
-
-/* .report-bet-record__table {
-  margin: 30px 0;
-  position: relative;
-} */
-
-/* .report-bet-record__table__tr {
-  text-align: center;
-} */
-
-/* .report-bet-record__table__td-2nd {
-  padding-right: 48px;
-  text-align: center;
-  position: relative;
-} */
-</style>

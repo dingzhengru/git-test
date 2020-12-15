@@ -241,18 +241,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .user-change-password__form {
-  margin: 40px 0;
-} */
-
-/* .user-change-password__form__field {
-  margin: 20px 0;
-} */
-
-/* .user-change-password__button-div {
-  margin: 40px 0;
-  text-align: center;
-} */
-</style>

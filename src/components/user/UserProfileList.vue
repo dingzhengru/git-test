@@ -190,27 +190,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .user-profile__table-div {
-  margin: 40px 0;
-} */
-
-/* .user-profile__button-div {
-  margin: 40px 0;
-  text-align: center;
-} */
-
-/* .user-profile__instant-access-form {
-  padding: 3%;
-} */
-
-/* .user-profile__instant-access-form__field {
-  margin: 20px 0;
-} */
-
-/* .user-profile__instant-access-form__field input:disabled {
-  opacity: 0.6;
-  pointer-events: none;
-} */
-</style>

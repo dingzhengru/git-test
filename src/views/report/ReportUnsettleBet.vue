@@ -61,12 +61,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .report-unsettle-bet {
-  margin-top: 30px;
-}
-.report-unsettle-bet__table {
-  margin-bottom: 10px;
-} */
-</style>

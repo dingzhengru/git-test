@@ -115,26 +115,3 @@ export default {
   }
 }
 </style>
-
-<style scoped>
-/* .notification-outbox {
-  margin: 30px 0;
-} */
-
-/* .notification-outbox__field {
-  margin: 30px 0;
-} */
-
-/* .notification-outbox__field__select {
-  padding: 0 1.5%;
-  font-size: 2.5rem;
-} */
-
-/* .notification-outbox__button-div {
-  margin: 40px 0;
-  text-align: center;
-} */
-/* .notification-outbox__button-div button {
-  margin: 0 10px;
-} */
-</style>
