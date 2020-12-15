@@ -120,7 +120,7 @@ export default {
     width: 640px;
     min-height: 612px;
     // height: 90%;
-    background-image: url(~@/assets/common/imgs/sign-in/cm_login_3.png);
+    background-image: url(~@/assets/common/sign-in/cm_login_3.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -191,23 +191,23 @@ export default {
         margin-right: 15px;
 
         &.en-us {
-          background-image: url(~@/assets/common/imgs/lang/lang_en-us_s.png);
+          background-image: url(~@/assets/common/lang/lang_en-us_s.png);
         }
 
         &.th-th {
-          background-image: url(~@/assets/common/imgs/lang/lang_th-th_s.png);
+          background-image: url(~@/assets/common/lang/lang_th-th_s.png);
         }
 
         &.zh-cn {
-          background-image: url(~@/assets/common/imgs/lang/lang_zh-cn_s.png);
+          background-image: url(~@/assets/common/lang/lang_zh-cn_s.png);
         }
 
         &.zh-tw {
-          background-image: url(~@/assets/common/imgs/lang/lang_zh-tw_s.png);
+          background-image: url(~@/assets/common/lang/lang_zh-tw_s.png);
         }
 
         &.my-mm {
-          background-image: url(~@/assets/common/imgs/lang/lang_my-mm_s.png);
+          background-image: url(~@/assets/common/lang/lang_my-mm_s.png);
         }
       }
     }

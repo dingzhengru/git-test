@@ -277,39 +277,39 @@ export default {
 
 .contact__content__ul__li__link {
   &--online {
-    background-image: url(~@/assets/common/imgs/main/onlineServicebg.png);
+    background-image: url(~@/assets/common/main/onlineServicebg.png);
   }
   &--service {
-    background-image: url(~@/assets/common/imgs/main/onlineServicebg.png);
+    background-image: url(~@/assets/common/main/onlineServicebg.png);
   }
   &--qq {
-    background-image: url(~@/assets/common/imgs/main/qqBg.png);
+    background-image: url(~@/assets/common/main/qqBg.png);
   }
   &--mobile {
-    background-image: url(~@/assets/common/imgs/main/mobileBg.png);
+    background-image: url(~@/assets/common/main/mobileBg.png);
   }
   &--skype {
-    background-image: url(~@/assets/common/imgs/main/skypeBg.png);
+    background-image: url(~@/assets/common/main/skypeBg.png);
   }
   &--line {
-    background-image: url(~@/assets/common/imgs/main/lineBg.png);
+    background-image: url(~@/assets/common/main/lineBg.png);
   }
   &--wechat {
-    background-image: url(~@/assets/common/imgs/main/wechatBg.png);
+    background-image: url(~@/assets/common/main/wechatBg.png);
   }
   &--facebook {
-    background-image: url(~@/assets/common/imgs/main/FacebookBg.png);
+    background-image: url(~@/assets/common/main/FacebookBg.png);
   }
   &--email {
-    background-image: url(~@/assets/common/imgs/main/mail.png);
+    background-image: url(~@/assets/common/main/mail.png);
   }
 
   &--mobile--jp168 {
-    background-image: url(~@/assets/common/imgs/main/mobileBg--jp168.png);
+    background-image: url(~@/assets/common/main/mobileBg--jp168.png);
   }
 
   &--line--jp168 {
-    background-image: url(~@/assets/common/imgs/main/lineBg--jp168.png);
+    background-image: url(~@/assets/common/main/lineBg--jp168.png);
   }
 }
 </style>

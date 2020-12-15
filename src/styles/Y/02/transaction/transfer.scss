@@ -1,6 +1,6 @@
-$type: 'Y/02';
+@import '../abstracts';
 
-.transfer__amount__table__input{
+.transfer__amount__table__input {
   color: #000;
   background-color: #fff;
   border: 1px solid #8b8b8b;
@@ -27,11 +27,11 @@ $type: 'Y/02';
 */
 
 .transfer__button--transfer {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
 }
 .transfer__button--all-to-my-wallet {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
 }
 .transfer__button--reflash {
-  background-image: url(~@/assets/common/imgs/ui/btn--yellow-light.jpg);
+  background-image: url(~@/assets/common/ui/btn--yellow-light.jpg);
 }

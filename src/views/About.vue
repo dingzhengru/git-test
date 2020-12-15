@@ -17,9 +17,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import imgSport from '@/assets/common/imgs/game/gameIntro-01.jpg';
-import imgGClub from '@/assets/common/imgs/game/gameIntro-02.jpg';
-import imgRNG from '@/assets/common/imgs/game/gameIntro-03.jpg';
+import imgSport from '@/assets/common/game/gameIntro-01.jpg';
+import imgGClub from '@/assets/common/game/gameIntro-02.jpg';
+import imgRNG from '@/assets/common/game/gameIntro-03.jpg';
 
 export default {
   name: 'About',
@@ -119,7 +119,7 @@ export default {
     &__li {
       width: 70px;
       height: 70px;
-      background: url(~@/assets/common/imgs/ui/gameIntro_sort.png) center top no-repeat;
+      background: url(~@/assets/common/ui/gameIntro_sort.png) center top no-repeat;
       &__link {
         display: block;
         height: 70px;
@@ -185,7 +185,7 @@ export default {
 /* .about__toolbar__li {
   width: 70px;
   height: 70px;
-  background: url(~@/assets/common/imgs/ui/gameIntro_sort.png) center top no-repeat;
+  background: url(~@/assets/common/ui/gameIntro_sort.png) center top no-repeat;
 } */
 /* .about__toolbar__li__link {
   display: block;

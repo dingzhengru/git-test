@@ -13,27 +13,27 @@
         <ul class="maintenance__footer__ul">
           <li
             class="maintenance__footer__logo1"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/imgs/footer_logo1.png)` }"
+            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo1.png)` }"
           ></li>
           <li
             class="maintenance__footer__logo2"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/imgs/footer_logo2.png)` }"
+            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo2.png)` }"
           ></li>
           <!-- <li
             class="maintenance__footer__logo3"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/imgs/footer_logo3.png)` }"
+            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo3.png)` }"
           ></li> -->
           <li
             class="maintenance__footer__logo4"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/imgs/footer_logo4.png)` }"
+            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo4.png)` }"
           ></li>
           <li
             class="maintenance__footer__logo5"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/imgs/footer_logo5.png)` }"
+            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo5.png)` }"
           ></li>
           <li
             class="maintenance__footer__logo6"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/imgs/footer_logo6.png)` }"
+            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo6.png)` }"
           ></li>
         </ul>
       </div>

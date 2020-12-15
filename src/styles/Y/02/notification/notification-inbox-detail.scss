@@ -1,4 +1,4 @@
-$type: 'Y/02';
+@import '../abstracts';
 
 .notification-inbox-detail__ul__li {
   background-color: #0f445d;
@@ -13,9 +13,9 @@ $type: 'Y/02';
   ! 圖片路徑
 */
 .notification-inbox-detail__button--submit {
-  background-image: url(~@/assets/common/imgs/ui/btn--yellow-dark.jpg);
+  background-image: url(~@/assets/common/ui/btn--yellow-dark.jpg);
 }
 
 .notification-inbox-detail__button--cancel {
-  background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
+  background-image: url(~@/assets/common/ui/btn--black.jpg);
 }

@@ -1,6 +1,6 @@
-$type: 'Y/03';
+@import '../abstracts';
 
-.record-list__ul__li__link{
+.record-list__ul__li__link {
   color: #000;
 }
 
@@ -8,6 +8,6 @@ $type: 'Y/03';
   ! 圖片路徑
 */
 
-.record-list__ul__li__link{
-  background: url(~@/assets/#{$type}/imgs/main/lnk_recordlist.jpg) repeat-x;
+.record-list__ul__li__link {
+  background: assetPath('main/lnk_recordlist.jpg') repeat-x;
 }

@@ -84,7 +84,7 @@ export default {
   &__button-div {
     button {
       margin-top: 30px;
-      background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+      background-image: url(~@/assets/common/ui/btn--red.jpg);
     }
   }
 }
@@ -118,6 +118,6 @@ export default {
   margin-top: 30px;
 } */
 /* .live-game-enter-dialog__button {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
 } */
 </style>

@@ -74,7 +74,7 @@
                         @error="rangeError"
                       >
                         <template v-slot:dot>
-                          <img src="~@/assets/common/imgs/main/sliderPoint.png" class="custom-dot" />
+                          <img src="~@/assets/common/main/sliderPoint.png" class="custom-dot" />
                         </template>
                         <template v-slot:process>
                           <div class="custom-process"></div>
@@ -328,7 +328,7 @@ export default {
           position: relative;
           left: 0px;
           top: -8px;
-          background-image: url(~@/assets/common/imgs/main/sliderBar.png);
+          background-image: url(~@/assets/common/main/sliderBar.png);
           background-repeat: no-repeat;
           background-position: center;
         }

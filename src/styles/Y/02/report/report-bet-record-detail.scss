@@ -1,4 +1,4 @@
-$type: 'Y/02';
+@import '../abstracts';
 
 .report-bet-record__detail-table {
   border: 1px solid white;
@@ -12,5 +12,5 @@ $type: 'Y/02';
   ! 圖片路徑
 */
 .report-bet-record__button--return {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
 }

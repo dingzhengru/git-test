@@ -259,19 +259,19 @@ export default {
           font-size: 2.153em;
 
           &.zh-tw {
-            background-image: url(~@/assets/common/imgs/lang/lang_zh-tw.png);
+            background-image: url(~@/assets/common/lang/lang_zh-tw.png);
           }
           &.zh-cn {
-            background-image: url(~@/assets/common/imgs/lang/lang_zh-cn.png);
+            background-image: url(~@/assets/common/lang/lang_zh-cn.png);
           }
           &.en-us {
-            background-image: url(~@/assets/common/imgs/lang/lang_en-us.png);
+            background-image: url(~@/assets/common/lang/lang_en-us.png);
           }
           &.th-th {
-            background-image: url(~@/assets/common/imgs/lang/lang_th-th.png);
+            background-image: url(~@/assets/common/lang/lang_th-th.png);
           }
           &.my-mm {
-            background-image: url(~@/assets/common/imgs/lang/lang_my-mm.png);
+            background-image: url(~@/assets/common/lang/lang_my-mm.png);
           }
         }
       }

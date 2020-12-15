@@ -1,4 +1,4 @@
-$type: 'Y/03';
+@import './abstracts';
 
 .game-lobby__category__ul__li__link {
   color: #657aa6;
@@ -27,144 +27,144 @@ $type: 'Y/03';
  ! 語系
 */
 .en-us .game-jackpot {
-  background-image: url(~@/assets/#{$type}/imgs/theme/bg_jackpot-en-us.png);
+  background-image: assetPath('theme/bg_jackpot-en-us.png');
 }
 
 .th-th .game-jackpot {
-  background-image: url(~@/assets/#{$type}/imgs/theme/bg_jackpot-th-th.png);
+  background-image: assetPath('theme/bg_jackpot-th-th.png');
 }
 
 .zh-cn .game-jackpot {
-  background-image: url(~@/assets/#{$type}/imgs/theme/bg_jackpot-zh-cn.png);
+  background-image: assetPath('theme/bg_jackpot-zh-cn.png');
 }
 
 /*
   ! 圖片路徑
 */
 .game-transfer-dialog__form__switch.left {
-  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png);
+  background-image: assetPath('ui/lnk-trans.png');
 }
 .game-transfer-dialog__form__switch.right {
-  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png);
+  background-image: assetPath('ui/lnk-trans2.png');
 }
 .game-transfer-dialog__form__switch.left.on {
-  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png);
+  background-image: assetPath('ui/lnk-trans-on.png');
 }
 .game-transfer-dialog__form__switch.right.on {
-  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png);
+  background-image: assetPath('ui/lnk-trans2-on.png');
 }
 .game-dialog__transfer-switch.left {
-  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans.png);
+  background-image: assetPath('ui/lnk-trans.png');
 }
 .game-dialog__transfer-switch.right {
-  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2.png);
+  background-image: assetPath('ui/lnk-trans2.png');
 }
 .game-dialog__transfer-switch.left.on {
-  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans-on.png);
+  background-image: assetPath('ui/lnk-trans-on.png');
 }
 .game-dialog__transfer-switch.right.on {
-  background-image: url(~@/assets/#{$type}/imgs/ui/lnk-trans2-on.png);
+  background-image: assetPath('ui/lnk-trans2-on.png');
 }
 .game-lobby__supply {
   background-color: #000;
 }
 .game-lobby__category {
-  background: #000 url(~@/assets/#{$type}/imgs/ui/bg_category.png) bottom center no-repeat;
+  background: #000 assetPath('ui/bg_category.png') bottom center no-repeat;
 }
 .game-lobby__inquire__form__search {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_ipt_inquire-2.png) no-repeat;
+  background: assetPath('ui/bg_ipt_inquire-2.png') no-repeat;
 }
 .game-lobby__inquire__form__search-icon {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_lnk_inquire.png) center no-repeat;
+  background: assetPath('ui/bg_lnk_inquire.png') center no-repeat;
 }
 .game-lobby__inquire__favorites {
-  background: url(~@/assets/#{$type}/imgs/ui/ipt_favorites.png) center no-repeat;
+  background: assetPath('ui/ipt_favorites.png') center no-repeat;
 }
 .game-lobby__table__tr {
-  background: url(~@/assets/#{$type}/imgs/ui/bg_list_line.jpg) no-repeat center bottom;
+  background: assetPath('ui/bg_list_line.jpg') no-repeat center bottom;
 }
 .game-lobby__table__tr__td__link--start {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_start.png);
+  background-image: assetPath('ui/btn_start.png');
 }
 .game-lobby__table__tr__td__link--freeplay {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_freeplay.png);
+  background-image: assetPath('ui/btn_freeplay.png');
 }
 .game-lobby__table__tr__td__link--favorites {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites.png);
+  background-image: assetPath('ui/btn_favorites.png');
 }
 .game-lobby__table__tr__td__link--favorites.active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/btn_favorites_active.png);
+  background-image: assetPath('ui/btn_favorites_active.png');
 }
 
 .ui-li-supply-1180 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1180.png);
+  background-image: assetPath('ui/supply-1180.png');
 }
 .ui-li-supply-1150 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1150.png);
+  background-image: assetPath('ui/supply-1150.png');
 }
 .ui-li-supply-1140 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1140.png);
+  background-image: assetPath('ui/supply-1140.png');
 }
 .ui-li-supply-1120 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1120.png);
+  background-image: assetPath('ui/supply-1120.png');
 }
 .ui-li-supply-1130 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1130.png);
+  background-image: assetPath('ui/supply-1130.png');
 }
 .ui-li-supply-1030 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1030.png);
+  background-image: assetPath('ui/supply-1030.png');
 }
 .ui-li-supply-1190 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190.png);
+  background-image: assetPath('ui/supply-1190.png');
 }
 .ui-li-supply-1010 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1010.png);
+  background-image: assetPath('ui/supply-1010.png');
 }
 .ui-li-supply-1170 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1170.png);
+  background-image: assetPath('ui/supply-1170.png');
 }
 .ui-li-supply-1160 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1160.png);
+  background-image: assetPath('ui/supply-1160.png');
 }
 .ui-li-supply-1200 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1200.png);
+  background-image: assetPath('ui/supply-1200.png');
 }
 .ui-li-supply-1190-02 {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190-02.png);
+  background-image: assetPath('ui/supply-1190-02.png');
 }
 .ui-li-supply-1180.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1180-active.png);
+  background-image: assetPath('ui/supply-1180-active.png');
 }
 .ui-li-supply-1150.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1150-active.png);
+  background-image: assetPath('ui/supply-1150-active.png');
 }
 .ui-li-supply-1140.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1140-active.png);
+  background-image: assetPath('ui/supply-1140-active.png');
 }
 .ui-li-supply-1120.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1120-active.png);
+  background-image: assetPath('ui/supply-1120-active.png');
 }
 .ui-li-supply-1130.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1130-active.png);
+  background-image: assetPath('ui/supply-1130-active.png');
 }
 .ui-li-supply-1030.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1030-active.png);
+  background-image: assetPath('ui/supply-1030-active.png');
 }
 .ui-li-supply-1190.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190-active.png);
+  background-image: assetPath('ui/supply-1190-active.png');
 }
 .ui-li-supply-1190-02.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1190-02-active.png);
+  background-image: assetPath('ui/supply-1190-02-active.png');
 }
 .ui-li-supply-1010.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1010-active.png);
+  background-image: assetPath('ui/supply-1010-active.png');
 }
 .ui-li-supply-1170.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1170-active.png);
+  background-image: assetPath('ui/supply-1170-active.png');
 }
 .ui-li-supply-1160.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1160-active.png);
+  background-image: assetPath('ui/supply-1160-active.png');
 }
 .ui-li-supply-1200.game-lobby__supply__ul__li--active {
-  background-image: url(~@/assets/#{$type}/imgs/ui/supply-1200-active.png);
+  background-image: assetPath('ui/supply-1200-active.png');
 }

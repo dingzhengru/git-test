@@ -1,12 +1,12 @@
-$type: 'Y/02';
+@import '../abstracts';
 
 /*
   ! 圖片路徑
 */
 .notification-outbox__button--submit {
-  background-image: url(~@/assets/common/imgs/ui/btn--yellow-dark.jpg);
+  background-image: url(~@/assets/common/ui/btn--yellow-dark.jpg);
 }
 
 .notification-outbox__button--cancel {
-  background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
+  background-image: url(~@/assets/common/ui/btn--black.jpg);
 }

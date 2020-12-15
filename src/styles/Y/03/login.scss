@@ -1,34 +1,34 @@
-$type: 'Y/03';
+@import './abstracts';
 
 .login__form__link {
   color: #fff;
 }
 
 .login__form__submit {
-  background-image: url(~@/assets/common/imgs/ui/btn--yellow.jpg);
+  background-image: url(~@/assets/common/ui/btn--yellow.jpg);
 }
 /*
   ! 圖片路徑
 */
 
 .login__form__field--account {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
+  background-image: assetPath('main/authBg_account.png');
 }
 .login__form__field--password {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
+  background-image: assetPath('main/authBg_password.png');
 }
 .login__form__field--code {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_code.png);
+  background-image: assetPath('main/authBg_code.png');
 }
 .login__form__link--regist {
-  background-image: url(~@/assets/#{$type}/imgs/main/registerBg.png);
+  background-image: assetPath('main/registerBg.png');
 }
 .login__form__link--forget {
-  background-image: url(~@/assets/#{$type}/imgs/main/forgetBg.png);
+  background-image: assetPath('main/forgetBg.png');
 }
 .login__form__link--open {
-  background-image: url(~@/assets/#{$type}/imgs/main/open.png);
+  background-image: assetPath('main/open.png');
 }
 .login__form__link--download {
-  background-image: url(~@/assets/#{$type}/imgs/main/download.png);
+  background-image: assetPath('main/download.png');
 }

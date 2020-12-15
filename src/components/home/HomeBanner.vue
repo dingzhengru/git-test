@@ -3,7 +3,7 @@
     <swiper-slide v-for="(slide, index) in list" :key="index">
       <a class="home-swiper__link" href="javascript:;">
         <img
-          :src="siteIsNewPromotion ? slide.Lst_ImgUrl : `${resourceUrl}/imgs/banner/${slide.Lst_ImgUrl}`"
+          :src="siteIsNewPromotion ? slide.Lst_ImgUrl : `${resourceUrl}/banner/${slide.Lst_ImgUrl}`"
           onerror="this.style.display = 'none'"
         />
       </a>
@@ -97,11 +97,11 @@ export default {
   z-index: 1;
 }
 .home-swiper__button--previous {
-  background: url(~@/assets/common/imgs/banner/prev.png) no-repeat center center;
+  background: url(~@/assets/common/banner/prev.png) no-repeat center center;
   left: 0;
 }
 .home-swiper__button--next {
-  background: url(~@/assets/common/imgs/banner/next.png) no-repeat center center;
+  background: url(~@/assets/common/banner/next.png) no-repeat center center;
   right: 0;
 }
 </style>

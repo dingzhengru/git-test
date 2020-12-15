@@ -1,4 +1,4 @@
-$type: 'Y/02';
+@import '../abstracts';
 
 .withdrawal__light-message {
   color: #a0a0a0;
@@ -8,8 +8,8 @@ $type: 'Y/02';
 */
 
 .withdrawal__li__button {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
 }
 .withdrawal__button--submit {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
 }

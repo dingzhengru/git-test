@@ -339,7 +339,7 @@ export default {
   left: 5%;
   top: 15%;
   right: 5%;
-  background-image: url('~@/assets/common/imgs/lottery/winWheel/container-bg.png');
+  background-image: url('~@/assets/common/lottery/winWheel/container-bg.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #860103;
@@ -369,7 +369,7 @@ export default {
   left: 5%;
   top: 20%;
   right: 5%;
-  background-image: url('~@/assets/common/imgs/lottery/redEnvelope/bg.jpg');
+  background-image: url('~@/assets/common/lottery/redEnvelope/bg.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #860103;

@@ -61,7 +61,7 @@ export default {
     width: 409px;
     height: 71px;
     padding: 23px 0 0 20px;
-    background: url(~@/assets/common/imgs/main/prizeBg.png) left center no-repeat;
+    background: url(~@/assets/common/main/prizeBg.png) left center no-repeat;
 
     &__li {
       font-size: 36px;
@@ -77,11 +77,11 @@ export default {
 }
 
 .lottery0 .lottery__icon {
-  background: url(~@/assets/common/imgs/main/prizeIcn.png) left center no-repeat;
+  background: url(~@/assets/common/main/prizeIcn.png) left center no-repeat;
 }
 
 .lottery1 .lottery__icon {
-  background: url(~@/assets/common/imgs/main/luckyDrawIcn.png) left center no-repeat;
+  background: url(~@/assets/common/main/luckyDrawIcn.png) left center no-repeat;
 }
 
 @keyframes colorchange {
@@ -131,7 +131,7 @@ export default {
   width: 409px;
   height: 71px;
   padding: 23px 0 0 20px;
-  background: url(~@/assets/common/imgs/main/prizeBg.png) left center no-repeat;
+  background: url(~@/assets/common/main/prizeBg.png) left center no-repeat;
 } */
 
 /* .lottery__ul__li {
@@ -145,10 +145,10 @@ export default {
 } */
 
 /* .lottery0 .lottery__icon {
-  background: url(~@/assets/common/imgs/main/prizeIcn.png) left center no-repeat;
+  background: url(~@/assets/common/main/prizeIcn.png) left center no-repeat;
 } */
 
 /* .lottery1 .lottery__icon {
-  background: url(~@/assets/common/imgs/main/luckyDrawIcn.png) left center no-repeat;
+  background: url(~@/assets/common/main/luckyDrawIcn.png) left center no-repeat;
 } */
 </style>

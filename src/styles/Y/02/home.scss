@@ -1,4 +1,4 @@
-$type: 'Y/02';
+@import './abstracts';
 
 .home-game__ul__li__link {
   color: #2a2a2a;
@@ -13,62 +13,62 @@ $type: 'Y/02';
 */
 
 // .are-game {
-//   background: url(~@/assets/#{$type}/imgs/layout/bg_index2.jpg) no-repeat;
+//   background: assetPath('layout/bg_index2.jpg') no-repeat;
 // }
 
 .game-1080 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1080.png);
+  background-image: assetPath('game/game-1080.png');
 }
 .game-1230 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1230.png);
+  background-image: assetPath('game/game-1230.png');
 }
 .game-1240 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1240.png);
+  background-image: assetPath('game/game-1240.png');
 }
 .game-1250 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1250.png);
+  background-image: assetPath('game/game-1250.png');
 }
 .game-1260 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1260.png);
+  background-image: assetPath('game/game-1260.png');
 }
 .game-1270 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1270.png);
+  background-image: assetPath('game/game-1270.png');
 }
 .game-1280 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1280.png);
+  background-image: assetPath('game/game-1280.png');
 }
 .game-1290 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1290.png);
+  background-image: assetPath('game/game-1290.png');
 }
 .game-1300 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1300.png);
+  background-image: assetPath('game/game-1300.png');
 }
 .game-1310 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1310.png);
+  background-image: assetPath('game/game-1310.png');
 }
 .game-1330 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1330.png);
+  background-image: assetPath('game/game-1330.png');
 }
 .game-1340 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1340.png);
+  background-image: assetPath('game/game-1340.png');
 }
 .game-1350 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-1350.png);
+  background-image: assetPath('game/game-1350.png');
 }
 .game-12203100-03 {
-  background-image: url(~@/assets/#{$type}/imgs/game/game-12203100-03.png);
+  background-image: assetPath('game/game-12203100-03.png');
 }
 
 .ul-prize {
-  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
+  background: assetPath('main/prizeBg.png') left center no-repeat;
 }
 .i-luckyDraw {
-  background: url(~@/assets/#{$type}/imgs/main/luckyDrawIcn.png) left center no-repeat;
+  background: assetPath('main/luckyDrawIcn.png') left center no-repeat;
 }
 .ul-luckyDraw {
-  background: url(~@/assets/#{$type}/imgs/main/prizeBg.png) left center no-repeat;
+  background: assetPath('main/prizeBg.png') left center no-repeat;
 }
 
 // .noneLoginPopup {
-//   background: rgba(0, 0, 0, 0.8) url(~@/assets/#{$type}/imgs/main/Bg-noneLoginPopup.jpg) center center no-repeat;
+//   background: rgba(0, 0, 0, 0.8) assetPath('main/Bg-noneLoginPopup.jpg') center center no-repeat;
 // }

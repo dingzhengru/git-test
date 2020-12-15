@@ -1,4 +1,4 @@
-$type: 'Y/03';
+@import '../abstracts';
 .notification-news__box__date {
   color: #959595;
 }
@@ -7,5 +7,5 @@ $type: 'Y/03';
 */
 
 .notification-news__box__date {
-  background: url(~@/assets/#{$type}/imgs/main/newsDateBg.jpg) no-repeat;
+  background: assetPath('main/newsDateBg.jpg') no-repeat;
 }

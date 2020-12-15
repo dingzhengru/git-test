@@ -1,4 +1,4 @@
-$type: 'Y/03';
+@import './abstracts';
 
 .contact__content__ul__li__link {
   color: #fff;
@@ -13,5 +13,5 @@ $type: 'Y/03';
 */
 
 .contact__content__ul__li__block--tel {
-  background: url(~@/assets/#{$type}/imgs/main/telBg.png) no-repeat;
+  background: assetPath('main/telBg.png') no-repeat;
 }

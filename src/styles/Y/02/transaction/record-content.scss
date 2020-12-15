@@ -1,4 +1,4 @@
-$type: 'Y/02';
+@import '../abstracts';
 
 // .theme-colorBox {
 //   border: 2px solid #c1ae71;
@@ -14,5 +14,5 @@ $type: 'Y/02';
 */
 
 .record-content__search-form__button--search {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
 }

@@ -1,4 +1,4 @@
-$type: 'Y/02';
+@import '../abstracts';
 
 .user-profile {
   .ui-table02 {
@@ -30,9 +30,9 @@ $type: 'Y/02';
 */
 
 .user-profile__button--instant {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
 }
 
 .user-profile-access__button--submit {
-  background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
 }

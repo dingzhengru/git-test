@@ -1,8 +1,4 @@
-$type: 'Y/02';
-
-/*
- ! index2.css
-*/
+@import './abstracts';
 
 .are-header-langMenu {
   background: #1b607f;
@@ -13,19 +9,19 @@ $type: 'Y/02';
 */
 
 .header {
-  background: url(~@/assets/#{$type}/imgs/header/headerBg.jpg) no-repeat top center;
+  background: assetPath('/header/headerBg.jpg') no-repeat top center;
 }
 
 .header__link--home {
-  background: url(~@/assets/#{$type}/imgs/header/btn_home.png) no-repeat;
+  background: assetPath('/header/btn_home.png') no-repeat;
 }
 
 .header__link--back {
-  background: url(~@/assets/#{$type}/imgs/header/btn_back.png) no-repeat;
+  background: assetPath('/header/btn_back.png') no-repeat;
 }
 
 .header-menu__lang-menu {
-  background: url(~@/assets/#{$type}/imgs/header/menuBg.png) repeat;
+  background: assetPath('/header/menuBg.png') repeat;
 }
 
 /* 
@@ -33,26 +29,26 @@ $type: 'Y/02';
 */
 
 .header-menu-auth__member {
-  background: url(~@/assets/#{$type}/imgs/header/memberInfoBg.png) repeat;
+  background: assetPath('/header/memberInfoBg.png') repeat;
 }
 
 .header-menu-auth__button--open {
-  background: url(~@/assets/#{$type}/imgs/header/btn_menuOpen.png) no-repeat;
+  background: assetPath('/header/btn_menuOpen.png') no-repeat;
 }
 .header-menu-auth__button--close {
-  background: url(~@/assets/#{$type}/imgs/header/btn_menuClose.png) no-repeat center;
+  background: assetPath('/header/btn_menuClose.png') no-repeat center;
 }
 
 .header-menu-auth__menu {
-  background: url(~@/assets/#{$type}/imgs/header/menuBg.png) repeat;
+  background: assetPath('/header/menuBg.png') repeat;
 }
 .header-menu-auth__logout {
-  background: url(~@/assets/#{$type}/imgs/header/btn_logout.jpg) repeat-x;
+  background: assetPath('/header/btn_logout.jpg') repeat-x;
 }
 
 // .lnk-header-login {
-//   background: url(~@/assets/#{$type}/imgs/header/btn_login.png) no-repeat;
+//   background: assetPath('/header/btn_login.png') no-repeat;
 // }
 // .lnk-header-back {
-//   background: url(~@/assets/#{$type}/imgs/header/btn_back.png) no-repeat;
+//   background: assetPath('/header/btn_back.png') no-repeat;
 // }

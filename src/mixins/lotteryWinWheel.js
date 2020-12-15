@@ -2,14 +2,14 @@ import mixinLotteryGame from '@/mixins/lotteryGame';
 import { apiPlayLottery, apiPlayLotteryResult } from '@/api/lottery';
 
 //* Loading 圖片
-import lotteryLoadingImage from '@/assets/common/imgs/lottery/loading.svg';
+import lotteryLoadingImage from '@/assets/common/lottery/loading.svg';
 
 //* 轉盤遊戲的圖片
-// import wheelContainerBackgroundImage from '@/assets/common/imgs/lottery/winWheel/container-bg.png';
-import wheelPrizeImage from '@/assets/common/imgs/lottery/winWheel/prize.png';
-import wheelPointerImage from '@/assets/common/imgs/lottery/winWheel/pointercn.png';
-import wheelLodaingImage from '@/assets/common/imgs/lottery/winWheel/wheel-loading.svg';
-import wheelBackgroundImage from '@/assets/common/imgs/lottery/winWheel/wheel-bg.png';
+// import wheelContainerBackgroundImage from '@/assets/common/lottery/winWheel/container-bg.png';
+import wheelPrizeImage from '@/assets/common/lottery/winWheel/prize.png';
+import wheelPointerImage from '@/assets/common/lottery/winWheel/pointercn.png';
+import wheelLodaingImage from '@/assets/common/lottery/winWheel/wheel-loading.svg';
+import wheelBackgroundImage from '@/assets/common/lottery/winWheel/wheel-bg.png';
 
 export default {
   name: 'MixinLotteryWinWheel',

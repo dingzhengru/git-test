@@ -193,7 +193,7 @@ export default {
     &__button {
       margin-top: 30px;
       width: 98%;
-      background-image: url(~@/assets/common/imgs/ui/btn--red.jpg);
+      background-image: url(~@/assets/common/ui/btn--red.jpg);
     }
   }
 }

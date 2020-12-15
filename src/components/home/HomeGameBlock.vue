@@ -5,7 +5,7 @@
       :id="game.id"
       v-for="(game, index) in list"
       :key="index"
-      :style="{ 'background-image': `url(${resourceUrl}/imgs/game/game${game.sGameID}.png)` }"
+      :style="{ 'background-image': `url(${resourceUrl}/game/game${game.sGameID}.png)` }"
     > -->
     <li
       class="home-game__ul__li"

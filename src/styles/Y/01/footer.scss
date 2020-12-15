@@ -4,20 +4,20 @@
 */
 
 .footer {
-  background: assetPath('imgs/footer/footerBg.png') no-repeat center top;
+  background: assetPath('footer/footerBg.png') no-repeat center top;
 }
 .footer__ul {
-  background: assetPath('imgs/footer/toolbarBg.jpg') repeat-x;
+  background: assetPath('footer/toolbarBg.jpg') repeat-x;
 }
 .footer__ul__li {
-  background: assetPath('imgs/footer/toolbarBg.jpg') repeat-x;
+  background: assetPath('footer/toolbarBg.jpg') repeat-x;
 }
 .footer__ul__li--active {
-  background-image: assetPath('imgs/footer/toolbarBgActive.jpg');
+  background-image: assetPath('footer/toolbarBgActive.jpg');
 }
 .footer__ul__li__link {
-  background: assetPath('imgs/footer/lnk_toolbar.png') 0px 6px no-repeat;
+  background: assetPath('footer/lnk_toolbar.png') 0px 6px no-repeat;
 }
 .footer__ul__li:after {
-  background: assetPath('imgs/footer/lnk_line.png') right top no-repeat;
+  background: assetPath('footer/lnk_line.png') right top no-repeat;
 }

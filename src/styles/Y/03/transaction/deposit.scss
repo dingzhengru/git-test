@@ -1,4 +1,4 @@
-$type: 'Y/03';
+@import '../abstracts';
 
 .deposit__field__hint {
   color: #707070;
@@ -16,13 +16,13 @@ $type: 'Y/03';
 */
 
 .deposit__field__receipt-upload__label {
-  background-image: url(~@/assets/common/imgs/ui/btn--yellow.jpg);
+  background-image: url(~@/assets/common/ui/btn--yellow.jpg);
 }
 
 .deposit__button-div--submit {
-  background-image: url(~@/assets/common/imgs/ui/btn--yellow.jpg);
+  background-image: url(~@/assets/common/ui/btn--yellow.jpg);
 }
 
 .deposit__button-div--cancel {
-  background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
+  background-image: url(~@/assets/common/ui/btn--black.jpg);
 }

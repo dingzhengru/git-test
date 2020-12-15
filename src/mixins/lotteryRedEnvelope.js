@@ -2,13 +2,13 @@ import mixinLotteryGame from '@/mixins/lotteryGame';
 import { apiPlayLottery, apiPlayLotteryResult } from '@/api/lottery';
 
 //* Loading 圖片
-import lotteryLoadingImage from '@/assets/common/imgs/lottery/loading.svg';
+import lotteryLoadingImage from '@/assets/common/lottery/loading.svg';
 
 //* 紅包遊戲的圖片
-import cardFrontImgage from '@/assets/common/imgs/lottery/redEnvelope/lucky--close1.png';
-import cardBackImgage from '@/assets/common/imgs/lottery/redEnvelope/lucky--open3.png';
-import dialogImgage from '@/assets/common/imgs/lottery/redEnvelope/bg-winPrize.png';
-import envelopeLoadingImgage from '@/assets/common/imgs/lottery/redEnvelope/eclipse.svg';
+import cardFrontImgage from '@/assets/common/lottery/redEnvelope/lucky--close1.png';
+import cardBackImgage from '@/assets/common/lottery/redEnvelope/lucky--open3.png';
+import dialogImgage from '@/assets/common/lottery/redEnvelope/bg-winPrize.png';
+import envelopeLoadingImgage from '@/assets/common/lottery/redEnvelope/eclipse.svg';
 
 export default {
   name: 'MixinLotteryRedEnvelope',

@@ -51,7 +51,7 @@ a {
   display: inline-block;
   top: 20px;
   right: 20px;
-  background: url(~@/assets/common/imgs/ui/colorbox_close.png) no-repeat center;
+  background: url(~@/assets/common/ui/colorbox_close.png) no-repeat center;
   width: 20px;
   height: 20px;
   /* text-indent: -9999px; */
@@ -64,13 +64,13 @@ a {
 }
 
 .ui-icon-phone {
-  background: url(~@/assets/common/imgs/ui/icon_phone.png);
+  background: url(~@/assets/common/ui/icon_phone.png);
   width: 40px;
   height: 40px;
 }
 
 .ui-icon-24 {
-  background: url(~@/assets/common/imgs/ui/icon_24.png) no-repeat center;
+  background: url(~@/assets/common/ui/icon_24.png) no-repeat center;
   width: 55px;
   height: 40px;
 }

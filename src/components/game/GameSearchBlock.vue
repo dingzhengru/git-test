@@ -97,7 +97,7 @@ export default {
       margin: 22px 10px 0 0;
       color: #fedebe;
       vertical-align: top;
-      background: url(~@/assets/common/imgs/ui/btn_transferNow.png) left center no-repeat;
+      background: url(~@/assets/common/ui/btn_transferNow.png) left center no-repeat;
       border: none;
       float: right;
     }
@@ -176,7 +176,7 @@ export default {
   margin: 22px 10px 0 0;
   color: #fedebe;
   vertical-align: top;
-  background: url(~@/assets/common/imgs/ui/btn_transferNow.png) left center no-repeat;
+  background: url(~@/assets/common/ui/btn_transferNow.png) left center no-repeat;
   border: none;
   float: right;
 } */

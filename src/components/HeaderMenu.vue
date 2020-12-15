@@ -111,19 +111,19 @@ export default {
           padding-top: 65px;
 
           &.zh-tw {
-            background-image: url(~@/assets/common/imgs/lang/lang_zh-tw_s.png);
+            background-image: url(~@/assets/common/lang/lang_zh-tw_s.png);
           }
           &.zh-cn {
-            background-image: url(~@/assets/common/imgs/lang/lang_zh-cn_s.png);
+            background-image: url(~@/assets/common/lang/lang_zh-cn_s.png);
           }
           &.en-us {
-            background-image: url(~@/assets/common/imgs/lang/lang_en-us_s.png);
+            background-image: url(~@/assets/common/lang/lang_en-us_s.png);
           }
           &.th-th {
-            background-image: url(~@/assets/common/imgs/lang/lang_th-th_s.png);
+            background-image: url(~@/assets/common/lang/lang_th-th_s.png);
           }
           &.my-mm {
-            background-image: url(~@/assets/common/imgs/lang/lang_my-mm_s.png);
+            background-image: url(~@/assets/common/lang/lang_my-mm_s.png);
           }
         }
       }
@@ -133,19 +133,19 @@ export default {
 
 .en-us {
   .header-menu__lang-toggle {
-    background: url(~@/assets/common/imgs/lang/lang_en-us_s.png) center center no-repeat;
+    background: url(~@/assets/common/lang/lang_en-us_s.png) center center no-repeat;
   }
 }
 
 .th-th {
   .header-menu__lang-toggle {
-    background: url(~@/assets/common/imgs/lang/lang_th-th_s.png) center center no-repeat;
+    background: url(~@/assets/common/lang/lang_th-th_s.png) center center no-repeat;
   }
 }
 
 .zh-cn {
   .header-menu__lang-toggle {
-    background: url(~@/assets/common/imgs/lang/lang_zh-cn_s.png) center center no-repeat;
+    background: url(~@/assets/common/lang/lang_zh-cn_s.png) center center no-repeat;
   }
 }
 </style>

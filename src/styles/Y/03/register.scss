@@ -1,4 +1,4 @@
-$type: 'Y/03';
+@import './abstracts';
 
 .register__form__field__hint {
   color: #959595;
@@ -14,27 +14,27 @@ $type: 'Y/03';
   ! 圖片路徑
 */
 .register__button-div__send {
-  background-image: url(~@/assets/common/imgs/ui/btn--yellow.jpg);
+  background-image: url(~@/assets/common/ui/btn--yellow.jpg);
 }
 .register__button-div__reset {
-  background-image: url(~@/assets/common/imgs/ui/btn--black.jpg);
+  background-image: url(~@/assets/common/ui/btn--black.jpg);
 }
 
 .register__form__field--recommend {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_recommend.png);
+  background-image: assetPath('main/authBg_recommend.png');
 }
 .register__form__field--account {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
+  background-image: assetPath('main/authBg_account.png');
 }
 .register__form__field--password {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
+  background-image: assetPath('main/authBg_password.png');
 }
 .register__form__field--callphone {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_callphone.png);
+  background-image: assetPath('main/authBg_callphone.png');
 }
 .register__form__field--name {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_name.png);
+  background-image: assetPath('main/authBg_name.png');
 }
 .register__form__field--code {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_code.png);
+  background-image: assetPath('main/authBg_code.png');
 }

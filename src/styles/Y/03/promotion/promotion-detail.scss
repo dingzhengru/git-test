@@ -1,4 +1,4 @@
-$type: 'Y/03';
+@import '../abstracts';
 
 .promotion-detail__main__content__desc ul > li > a {
   color: #ffffff;
@@ -10,7 +10,7 @@ $type: 'Y/03';
 }
 
 .promotion-detail__main__button--back {
-  background-image: url(~@/assets/common/imgs/ui/btn--yellow.jpg);
+  background-image: url(~@/assets/common/ui/btn--yellow.jpg);
 }
 
 /*
@@ -18,6 +18,6 @@ $type: 'Y/03';
 */
 
 .promotion-detail__main__content__title {
-  background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
+  background: assetPath('promotion/descTitle.png') no-repeat;
 }
-// .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }
+// .img-event-poster { background: assetPath('promotion/event-poster.jpg') no-repeat; }
