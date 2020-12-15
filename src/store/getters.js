@@ -29,8 +29,8 @@ const getters = {
   siteIsSpare: state => state.site.info.IsSpare,
   siteEnableSpareDomain: state => state.site.info.EnableSpareDomain,
   siteFullCss: state => {
-    // return 'Y/03'; //* 手動設置版型版號
-    return `${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Type}`;
+    return `${state.site.info.LS_CSS_Class}/02`; //* 手動設置版型版號
+    // return `${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Type}`;
   },
   siteManifestUrl: () => {
     return `${API_URL}/Siteinfo/ManifestJson`;

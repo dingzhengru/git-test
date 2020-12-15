@@ -12,7 +12,7 @@
       :id="game.id"
       v-for="(game, index) in list"
       :key="index"
-      :class="`game-${game.sGameID}`"
+      :style="{ 'background-image': `url(${imgSrc(game)})` }"
     >
       <router-link
         v-if="!isLoggedIn"
@@ -27,12 +27,14 @@
       </a>
 
       <!-- 維修圖示 -->
-      <a class="home-game__ul__li__link--maintain" href="javascript:;" v-if="game.Lst_Site_Product_Status != 0"></a>
+      <a class="home-game__ul__li__link--maintain" href="javascript:;" v-show="game.Lst_Site_Product_Status != 0"></a>
     </li>
   </ul>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'HomeGameBlock',
   props: {
@@ -47,6 +49,16 @@ export default {
     isLoggedIn: {
       type: Boolean,
       default: () => false,
+    },
+  },
+  computed: {
+    ...mapGetters(['siteFullCss']),
+    imgSrc: app => game => {
+      try {
+        return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_Proxy_Tag}.png`);
+      } catch {
+        return '';
+      }
     },
   },
   data() {
@@ -76,7 +88,7 @@ export default {
       position: relative;
       display: inline-block;
       vertical-align: top;
-      margin: 0 2px 30px;
+      margin: 0 2px 10px;
       background-repeat: no-repeat;
       background-position: center top;
       opacity: 1;
@@ -84,10 +96,10 @@ export default {
       &__link {
         display: block;
         width: 213px;
+        height: 170px;
         padding-top: 111px;
-        font-size: 2.461em;
+        font-size: 2.4em;
         text-align: center;
-        line-height: 54px;
 
         &--maintain {
           position: absolute;
@@ -100,42 +112,16 @@ export default {
           pointer-events: none;
           z-index: 3;
         }
+
+        &:lang(en-us) {
+          font-size: 2em;
+        }
+
+        &:lang(th-th) {
+          font-size: 1.5em;
+        }
       }
     }
   }
 }
-</style>
-
-<style scoped>
-/* .home-game__ul {
-  padding: 20px 0 0 0;
-  margin: 0 32px;
-} */
-/* .home-game__ul__li {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  margin: 0 2px 30px;
-  background-repeat: no-repeat;
-  background-position: center top;
-  opacity: 1;
-} */
-/* .home-game__ul__li__link {
-  display: block;
-  width: 213px;
-  padding-top: 111px;
-  font-size: 2.461em;
-  text-align: center;
-  line-height: 54px;
-} */
-
-/* .home-game__ul__li__link--maintain {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.9;
-  z-index: 9999;
-} */
 </style>

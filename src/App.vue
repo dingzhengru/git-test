@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="lang">
+  <div id="app" :lang="lang" :class="lang">
     <div v-show="loadingList.length == 0">
       <AppHeader
         :lang="lang"
