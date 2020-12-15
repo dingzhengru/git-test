@@ -42,7 +42,7 @@
           />
         </div>
         <div class="record-content__search-form__button-div">
-          <button class="record-content__search-form__button--search ui-btn ui-btn-long" type="submit">
+          <button class="record-content__search-form__button--search ui-btn ui-btn--long" type="submit">
             {{ $t(`${i18nKey}.button.search`) }}
           </button>
         </div>

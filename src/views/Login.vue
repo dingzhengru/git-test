@@ -110,7 +110,7 @@
         </div>
 
         <button
-          class="ui-btn ui-btn-long login__form__submit"
+          class="ui-btn ui-btn--long login__form__submit"
           :id="idMapper.login.button.submit"
           type="submit"
           :disabled="invalid"

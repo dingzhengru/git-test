@@ -3,8 +3,8 @@ import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 import { precacheAndRoute } from 'workbox-precaching';
 
-skipWaiting();
-clientsClaim();
+// skipWaiting();
+// clientsClaim();
 
 /**
  ** cache 頁面
@@ -26,6 +26,7 @@ registerRoute(
   })
 );
 
+//* 測試站使用的
 registerRoute(
   /^(http|https):\/\/resource.re888show.com.*$/,
   new StaleWhileRevalidate({
@@ -37,8 +38,9 @@ registerRoute(
   })
 );
 
+//* 正式站使用的
 registerRoute(
-  /^(http|https):\/\/resource.thsitea.com.*$/,
+  /^(http|https):\/\/(resource|resource2).thsitea.com.*$/,
   new StaleWhileRevalidate({
     cacheName: 'cors-thsitea-static-file-cache',
     fetchOptions: {

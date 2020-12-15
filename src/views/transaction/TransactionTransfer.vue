@@ -90,7 +90,7 @@
         <div class="transfer__button-div">
           <button
             type="submit"
-            class="transfer__button--transfer ui-btn ui-btn-long"
+            class="transfer__button--transfer ui-btn ui-btn--long"
             :id="idMapper.transaction.transfer.button.transfer"
             :disabled="invalid"
           >
@@ -98,7 +98,7 @@
           </button>
         </div>
         <div class="transfer__button-div">
-          <button type="button" class="transfer__button--all-to-my-wallet ui-btn ui-btn-long" @click="transferToMain">
+          <button type="button" class="transfer__button--all-to-my-wallet ui-btn ui-btn--long" @click="transferToMain">
             {{ $t('transaction.transfer.button.allToMyWallet') }}
           </button>
         </div>
@@ -110,7 +110,7 @@
           <td colspan="2">
             <div class="transfer__button-div">
               <button
-                class="transfer__button--reflash ui-btn ui-btn-long"
+                class="transfer__button--reflash ui-btn ui-btn--long"
                 type="button"
                 @click="$store.dispatch('user/getPointInfo')"
               >

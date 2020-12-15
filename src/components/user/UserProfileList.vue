@@ -13,7 +13,7 @@
 
     <div class="user-profile__button-div" v-if="!isShowRegisterForm">
       <button
-        class="user-profile__button--instant ui-btn ui-btn-long"
+        class="user-profile__button--instant ui-btn ui-btn--long"
         type="button"
         @click.prevent="isShowRegisterForm = true"
       >
@@ -78,7 +78,7 @@
       </form>
       <div class="user-profile__button-div">
         <button
-          class="user-profile__button--instant ui-btn ui-btn-long"
+          class="user-profile__button--instant ui-btn ui-btn--long"
           type="submit"
           form="instantAccessForm"
           :disabled="invalid"

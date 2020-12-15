@@ -3,7 +3,7 @@
     <ReportBetRecordDetailTable :title="title" :recordList="recordList" :totalObject="totalObject" />
 
     <div class="report-bet-record__button-div">
-      <button class="report-bet-record__button--return ui-btn ui-btn-long" @click="$router.go(-1)">
+      <button class="report-bet-record__button--return ui-btn ui-btn--long" @click="$router.go(-1)">
         {{ $t('report.betRecordDetail.button.back') }}
       </button>
     </div>

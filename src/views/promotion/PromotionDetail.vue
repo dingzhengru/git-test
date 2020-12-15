@@ -18,7 +18,7 @@
       </div>
       <div class="promotion-detail__main__button">
         <button
-          class="promotion-detail__main__button--back ui-btn ui-btn-long"
+          class="promotion-detail__main__button--back ui-btn ui-btn--long"
           @click="$router.push({ name: 'Promotion' })"
         >
           {{ $t('promotionDetail.button.back') }}

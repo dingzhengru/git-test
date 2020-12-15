@@ -161,7 +161,7 @@
               {{ $t('transaction.deposit.field.receipt') }}
             </span>
             <label
-              class="deposit__field__receipt-upload__label ui-btn ui-btn-long"
+              class="deposit__field__receipt-upload__label ui-btn ui-btn--long"
               :for="idMapper.transaction.deposit.button.upload"
             >
               {{ $t('transaction.deposit.button.upload') }}

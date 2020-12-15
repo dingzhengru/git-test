@@ -1,4 +1,4 @@
-$type: 'Y/01';
+@import '../abstracts';
 
 .promotion-detail__main__content__desc ul > li > a {
   color: #ffffff;
@@ -14,6 +14,6 @@ $type: 'Y/01';
 */
 
 .promotion-detail__main__content__title {
-  background: url(~@/assets/#{$type}/imgs/promotion/descTitle.png) no-repeat;
+  background: assetPath('imgs/promotion/descTitle.png') no-repeat;
 }
 // .img-event-poster { background: url(~@/assets/#{$type}/imgs/promotion/event-poster.jpg) no-repeat; }

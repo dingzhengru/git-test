@@ -81,7 +81,7 @@
       <div class="user-profile-access__button-div">
         <button
           type="submit"
-          class="user-profile-access__button--submit ui-btn ui-btn-long"
+          class="user-profile-access__button--submit ui-btn ui-btn--long"
           form="formPasswordChange"
           :disabled="invalid"
         >

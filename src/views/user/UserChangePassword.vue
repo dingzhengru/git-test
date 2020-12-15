@@ -84,7 +84,7 @@
       </form>
       <div class="user-change-password__button-div">
         <button
-          class="user-change-password__button--submit ui-btn ui-btn-long"
+          class="user-change-password__button--submit ui-btn ui-btn--long"
           type="submit"
           form="user-change-passowrd-form"
           :disabled="invalid"

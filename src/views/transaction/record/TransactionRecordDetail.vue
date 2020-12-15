@@ -38,7 +38,7 @@
       <div class="record-detail__button-div">
         <button
           type="button"
-          class="record-detail__button--return ui-btn ui-btn-long"
+          class="record-detail__button--return ui-btn ui-btn--long"
           @click="$router.push({ name: 'TransactionRecordContent', params: { name: $route.params.name } })"
         >
           {{ $t('transaction.recordDetail.button.back') }}

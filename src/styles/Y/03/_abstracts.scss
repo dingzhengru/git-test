@@ -1,0 +1,6 @@
+// 版號變數, function, mixin, extend 等不會產生實際 class 的屬性
+
+// function
+@function assetPath($path) {
+  @return url('~@/assets/Y/03/#{$path}');
+}

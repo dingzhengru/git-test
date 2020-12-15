@@ -111,7 +111,7 @@ a {
   pointer-events: none;
 }
 
-.ui-btn-long {
+.ui-btn--long {
   width: 500px;
 }
 

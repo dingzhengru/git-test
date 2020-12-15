@@ -40,7 +40,7 @@
             <p class="withdrawal__li__content theme-dataView-data">
               {{ numeral(withdrawalInfo.Lst_Point).format('0,0.00') }}
             </p>
-            <button type="button" class="withdrawal__li__button ui-btn ui-btn-long" @click="transferToMain">
+            <button type="button" class="withdrawal__li__button ui-btn ui-btn--long" @click="transferToMain">
               {{ $t('transaction.withdrawal.button.allToMyWallet') }}
             </button>
           </li>
@@ -144,7 +144,7 @@
         <div class="withdrawal__button-div">
           <button
             type="submit"
-            class="withdrawal__button--submit ui-btn ui-btn-long"
+            class="withdrawal__button--submit ui-btn ui-btn--long"
             form="withdrawal-form"
             :id="idMapper.transaction.withdrawal.button.submit"
             :disabled="invalid"

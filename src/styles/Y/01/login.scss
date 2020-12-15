@@ -1,4 +1,4 @@
-$type: 'Y/01';
+@import './abstracts';
 
 .login__form__link {
   color: #fff;
@@ -13,23 +13,23 @@ $type: 'Y/01';
 */
 
 .login__form__field--account {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_account.png);
+  background-image: assetPath('imgs/main/authBg_account.png');
 }
 .login__form__field--password {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_password.png);
+  background-image: assetPath('imgs/main/authBg_password.png');
 }
 .login__form__field--code {
-  background-image: url(~@/assets/#{$type}/imgs/main/authBg_code.png);
+  background-image: assetPath('imgs/main/authBg_code.png');
 }
 .login__form__link--regist {
-  background-image: url(~@/assets/#{$type}/imgs/main/registerBg.png);
+  background-image: assetPath('imgs/main/registerBg.png');
 }
 .login__form__link--forget {
-  background-image: url(~@/assets/#{$type}/imgs/main/forgetBg.png);
+  background-image: assetPath('imgs/main/forgetBg.png');
 }
 .login__form__link--open {
-  background-image: url(~@/assets/#{$type}/imgs/main/open.png);
+  background-image: assetPath('imgs/main/open.png');
 }
 .login__form__link--download {
-  background-image: url(~@/assets/#{$type}/imgs/main/download.png);
+  background-image: assetPath('imgs/main/download.png');
 }

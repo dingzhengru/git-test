@@ -82,7 +82,7 @@ export default {
     document.querySelector('link[rel=manifest]').setAttribute('href', this.siteManifestUrl);
 
     //* 設置 Favicon
-    document.querySelector('#favicon').setAttribute('href', this.siteFaviconUrl);
+    document.querySelector('link[rel=icon]').setAttribute('href', this.siteFaviconUrl);
 
     //* 設置 IOS apple-mobile-web-app-title
     // document.querySelector('#apple-title').setAttribute('content', 'AppTitle');
