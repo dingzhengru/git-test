@@ -10,10 +10,8 @@
         <h3 class="promotion-detail__main__content__title">
           {{ promotionDetail.ContentTitle }}
         </h3>
-        <div class="promotion-detail__main__content__desc ql-container">
-          <div class="ql-editor">
-            <div class="" v-html="promotionDetail.ContentHtml"></div>
-          </div>
+        <div class="promotion-detail__main__content__desc">
+          <div class="fr-view" v-html="promotionDetail.ContentHtml"></div>
         </div>
       </div>
       <div class="promotion-detail__main__button">
@@ -31,10 +29,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { apiGetPromotionDetail } from '@/api/promotion';
-
-// import 'quill/dist/quill.core.css';
-import '@/vender/quill/quill.core.css';
-import '@/vender/quill/quill-better-table.css';
+import 'froala-editor/css/froala_style.min.css';
 
 export default {
   name: 'PromotionDetail',
@@ -112,11 +107,6 @@ export default {
   h6 {
     font-size: 1.54em;
   }
-
-  //* 強制把寬度調成 100%
-  .quill-better-table {
-    width: 100% !important;
-  }
 }
 </style>
 
@@ -137,41 +127,18 @@ export default {
 
   &__main {
     &__content {
-      margin-bottom: 40px;
       width: 95%;
       margin: 0 auto;
 
       &__title {
-        height: 68px;
-        margin: 20px 0;
-        padding: 30px 0 0 95px;
-        font-size: 2.461em;
+        height: 98px;
+        padding: 34px 0 0 95px;
+        font-size: 2.4em;
         font-weight: normal;
       }
 
       &__desc {
-        // font-size: 2.307em;
         font-size: 2.3em;
-        word-break: break-word;
-
-        // h1 {
-        //   font-size: 4em;
-        // }
-        // h2 {
-        //   font-size: 3em;
-        // }
-        // h3 {
-        //   font-size: 2.34em;
-        // }
-        // h4 {
-        //   font-size: 2em;
-        // }
-        // h5 {
-        //   font-size: 1.66em;
-        // }
-        // h6 {
-        //   font-size: 1.34em;
-        // }
       }
 
       .ui-table04 {
@@ -194,50 +161,4 @@ export default {
     }
   }
 }
-</style>
-
-<style scoped>
-/* .promotion-detail {
-  padding-bottom: 160px;
-} */
-
-/* .promotion-detail-auth {
-  padding-top: 88px;
-} */
-
-/* .promotion-detail__image {
-  margin: 20px auto;
-  text-align: center;
-} */
-
-/* .promotion-detail__main__content {
-  margin-bottom: 40px;
-  width: 95%;
-  margin: 0 auto;
-} */
-/* .promotion-detail__main__content .ui-table04 {
-  font-size: 1em;
-} */
-/* .promotion-detail__main__content ul > li {
-  margin-bottom: 20px;
-} */
-/* .promotion-detail__main__content ul > li > a {
-  border-radius: 6px;
-  padding: 5px 10px;
-  margin: 5px;
-  display: inline-block;
-} */
-/* .promotion-detail__main__content__title {
-  height: 68px;
-  margin: 20px 0;
-  padding: 30px 0 0 95px;
-  font-size: 2.461em;
-  font-weight: normal;
-} */
-/* .promotion-detail__main__content__desc {
-  font-size: 2.307em;
-} */
-/* .promotion-detail__main__button {
-  text-align: center;
-} */
 </style>
