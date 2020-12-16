@@ -14,10 +14,12 @@
   color: #333333;
 }
 
+.contact__content__ul__li__block--tel {
+  background: linear-gradient(to bottom, #f5f5f5 0%, #c6dde5 100%);
+  border: 1px solid #2a6a88;
+  box-shadow: black 5px 5px 10px;
+}
+
 /*
   ! 圖片路徑
 */
-
-.contact__content__ul__li__block--tel {
-  background: assetPath('main/telBg.png') no-repeat;
-}

@@ -8,10 +8,10 @@
   color: #fff;
 }
 
+.contact__content__ul__li__block--tel {
+  background: linear-gradient(to bottom, #fd1b1b 0%, #a71313 100%);
+}
+
 /*
   ! 圖片路徑
 */
-
-.contact__content__ul__li__block--tel {
-  background: assetPath('main/telBg.png') no-repeat;
-}

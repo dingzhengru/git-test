@@ -109,7 +109,7 @@ export default {
       } else if (contact.name == 'wechat') {
         //* 參考: https://stackoverflow.com/a/41297068/5134658
         //* weixin:// 打開指定用戶方法，已只適用於少數白名單應用程式，最多就用此連結開啟程式
-        window.open(`weixin://`, '_self');
+        window.open(`http://weixin.qq.com/r/${content.Lst_ContactValue}`);
       }
     },
     closeAllContentList() {
@@ -242,6 +242,7 @@ export default {
 
         &__link {
           display: block;
+          height: auto;
           width: 198px;
           background-repeat: no-repeat;
           background-position: center top;
@@ -253,17 +254,20 @@ export default {
         }
         &__block {
           width: 328px;
-          height: 286px;
+          // min-height: 286px;
           text-align: center;
           position: absolute;
+          border-radius: 6px;
           top: 165px;
           left: -99px;
           z-index: 2;
+          padding: 15px 15px 0px 15px;
+          word-wrap: break-word;
 
           &__link {
             font-size: 2.461em;
-            line-height: 65px;
             display: block;
+            margin-bottom: 15px;
           }
         }
       }
