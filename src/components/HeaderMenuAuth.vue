@@ -3,10 +3,10 @@
     <div class="header-menu-auth__member">
       <div class="header-menu-auth__member__block" v-for="infoKey in userInfoKeyList" :key="infoKey">
         {{ $t(infoKey) }}：
-        <template v-if="infoKey == 'header.user.username'">{{ username }}</template>
-        <template v-else-if="infoKey == 'header.user.total'">{{ numeral(totalBalance).format('0,0.00') }}</template>
-        <template v-else-if="infoKey == 'header.user.vip'">{{ PILevel }}</template>
-        <template v-else-if="infoKey == 'header.user.roll'">{{ numeral(PIBetAmount).format('0,0.00') }}</template>
+        <template v-if="infoKey == 'header.user.username'">{{ userUsername }}</template>
+        <template v-else-if="infoKey == 'header.user.total'">{{ numeral(userTotalBalance).format('0,0.00') }}</template>
+        <template v-else-if="infoKey == 'header.user.vip'">{{ userPILevel }}</template>
+        <template v-else-if="infoKey == 'header.user.roll'">{{ numeral(userPIBetAmount).format('0,0.00') }}</template>
       </div>
     </div>
     <a
@@ -63,35 +63,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import idMapper from '@/idMapper';
 import numeral from 'numeral';
 export default {
   name: 'HeaderMenuAuth',
-  props: {
-    langList: {
-      type: Array,
-      default: () => [],
-    },
-    lang: {
-      type: String,
-      default: () => '',
-    },
-    username: {
-      type: String,
-      default: () => '',
-    },
-    totalBalance: {
-      type: Number,
-      default: () => 0,
-    },
-    PILevel: {
-      type: Number,
-      default: () => 0,
-    },
-    PIBetAmount: {
-      type: Number,
-      default: () => 0,
-    },
+  computed: {
+    ...mapGetters(['userTotalBalance', 'userUsername', 'userPILevel', 'userPIBetAmount']),
   },
   data() {
     return {

@@ -1,33 +1,18 @@
 <template>
   <ul class="home-game__ul">
-    <!-- <li
-      class="home-game__ul__li"
-      :id="game.id"
-      v-for="(game, index) in list"
-      :key="index"
-      :style="{ 'background-image': `url(${resourceUrl}/game/game${game.sGameID}.png)` }"
-    > -->
     <li
       class="home-game__ul__li"
-      :id="game.id"
-      v-for="(game, index) in list"
-      :key="index"
-      :style="{ 'background-image': `url(${imgSrc(game)})` }"
+      :id="item.id"
+      v-for="item in list"
+      :key="item.Lst_Product_Proxy_Tag"
+      :style="{ 'background-image': `url(${imgSrc(item)})` }"
     >
-      <router-link
-        v-if="!isLoggedIn"
-        :to="{ name: 'About', query: { scrollTo: gameClassMap[game.sURL] } }"
-        class="home-game__ul__li__link"
-      >
-        {{ game.Lst_Name }}
-      </router-link>
-      <a v-else class="home-game__ul__li__link" href="javascript:;" @click="handleGameLink(game)">
-        {{ game.Lst_Name }}
-        <!-- :to="{ name: 'GameLobby', params: { type: 'gametype01' }, query: { category: 'all' } }" -->
+      <a class="home-game__ul__li__link" href="javascript:;" @click="handleGameLink(item)">
+        {{ item.Lst_Name }}
       </a>
 
       <!-- 維修圖示 -->
-      <a class="home-game__ul__li__link--maintain" href="javascript:;" v-show="game.Lst_Site_Product_Status != 0"></a>
+      <a class="home-game__ul__li__link--maintain" href="javascript:;" v-show="item.Lst_Site_Product_Status != 0"></a>
     </li>
   </ul>
 </template>
@@ -42,17 +27,9 @@ export default {
       type: Array,
       default: () => [],
     },
-    resourceUrl: {
-      type: String,
-      default: () => '',
-    },
-    isLoggedIn: {
-      type: Boolean,
-      default: () => false,
-    },
   },
   computed: {
-    ...mapGetters(['siteFullCss']),
+    ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
     imgSrc: app => game => {
       try {
         return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_Proxy_Tag}.png`);
@@ -72,7 +49,12 @@ export default {
   },
   methods: {
     handleGameLink(game) {
-      this.$emit('handleGameLink', game);
+      if (this.userIsLoggedIn) {
+        this.$emit('handleGameLink', game);
+        return;
+      }
+
+      this.$router.push({ name: 'About', query: { scrollTo: this.gameClassMap[game.sURL] } });
     },
   },
 };

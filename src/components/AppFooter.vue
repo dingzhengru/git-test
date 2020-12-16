@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer" v-if="!isHideFooter">
+  <footer class="footer">
     <ul class="footer__ul">
       <li
         class="footer__ul__li"
@@ -21,24 +21,16 @@
 
 <script>
 import idMapper from '@/idMapper';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'AppFooter',
-  props: {
-    isLoggedIn: {
-      type: Boolean,
-      default: () => false,
-    },
-  },
   computed: {
-    isHideFooter() {
-      return this.hideFooterList.includes(this.$route.name);
-    },
+    ...mapGetters(['userIsLoggedIn']),
   },
   data() {
     return {
       idMapper: idMapper,
-      hideFooterList: ['Agreement'],
       list: [],
       noAuthList: [
         {
@@ -101,10 +93,10 @@ export default {
     };
   },
   watch: {
-    isLoggedIn: {
+    userIsLoggedIn: {
       immediate: true,
       handler() {
-        if (this.isLoggedIn) {
+        if (this.userIsLoggedIn) {
           this.list = this.authList;
         } else {
           this.list = this.noAuthList;

@@ -6,17 +6,18 @@
       :id="idMapper.header.link.lang"
       @click="isShowLangList = !isShowLangList"
     ></a>
+
     <transition name="slide">
       <div class="header-menu__lang-menu" v-if="isShowLangList">
         <ul class="header-menu__lang-menu__ul cpn-boxzero cpn-inBlock-row">
-          <li class="header-menu__lang-menu__ul__li" v-for="langItem in langList" :key="langItem.Lst_Locales_Code">
+          <li class="header-menu__lang-menu__ul__li" v-for="item in langList" :key="item.Lst_Locales_Code">
             <a
               href="javascript:;"
               class="header-menu__lang-menu__ul__li__link"
-              :id="idMapper.header[langItem.Lst_Locales_Code]"
-              v-if="langItem.Lst_Locales_Code != lang && langItem.Lst_Is_Enable"
-              :class="langItem.Lst_Locales_Code"
-              @click="changeLang(langItem.Lst_Locales_Code)"
+              :id="idMapper.header[item.Lst_Locales_Code]"
+              v-if="item.Lst_Locales_Code != lang && item.Lst_Is_Enable"
+              :class="item.Lst_Locales_Code"
+              @click="changeLang(item.Lst_Locales_Code)"
             ></a>
           </li>
         </ul>
@@ -26,19 +27,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import idMapper from '@/idMapper';
 
 export default {
   name: 'HeaderMenu',
-  props: {
-    langList: {
-      type: Array,
-      default: () => [],
-    },
-    lang: {
-      type: String,
-      default: () => '',
-    },
+  computed: {
+    ...mapGetters(['lang', 'langList']),
   },
   data() {
     return {

@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="isLoading">
+  <div class="container">
     <div class="img-loading">
       <img src="@/assets/common/ui/loading.gif" />
     </div>
@@ -9,12 +9,6 @@
 <script>
 export default {
   name: 'AppLoadingOverlay',
-  props: {
-    isLoading: {
-      type: Boolean,
-      default: () => false,
-    },
-  },
 };
 </script>
 

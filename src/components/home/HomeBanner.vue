@@ -3,7 +3,7 @@
     <swiper-slide v-for="(slide, index) in list" :key="index">
       <a class="home-swiper__link" href="javascript:;">
         <img
-          :src="siteIsNewPromotion ? slide.Lst_ImgUrl : `${resourceUrl}/banner/${slide.Lst_ImgUrl}`"
+          :src="siteIsNewPromotion ? slide.Lst_ImgUrl : `${siteResourceUrl}/banner/${slide.ImageUrl}`"
           onerror="this.style.display = 'none'"
         />
       </a>
@@ -16,6 +16,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import 'swiper/css/swiper.css';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'HomeSwiper',
@@ -28,14 +29,9 @@ export default {
       type: Array,
       default: () => [],
     },
-    resourceUrl: {
-      type: String,
-      default: () => '',
-    },
-    siteIsNewPromotion: {
-      type: Boolean,
-      default: () => false,
-    },
+  },
+  computed: {
+    ...mapGetters(['siteResourceUrl', 'siteIsNewPromotion']),
   },
   data() {
     return {

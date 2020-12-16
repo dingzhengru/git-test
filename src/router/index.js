@@ -10,7 +10,7 @@ Vue.use(VueRouter);
  **   false: 需"不登入"才能進入的頁面
  **   無設置: 不限制
  **
- ** meta.header、meta.footer
+ ** meta.header、meta.footer，meta.header-back-icon
  **   true: 顯示
  **   false: 不顯示
  **   無設置: 顯示
@@ -216,6 +216,7 @@ const routes = [
         path: ':id',
         name: 'PromotionDetail',
         component: () => import('@/views/promotion/PromotionDetail'),
+        meta: { 'header-back-icon': true },
       },
     ],
   },

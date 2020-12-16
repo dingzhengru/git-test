@@ -1,21 +1,10 @@
 <template>
   <div class="home" @click="isShowMainNotice = false">
-    <HomeBanner
-      :list="bannerList"
-      :siteResourceUrl="siteResourceUrl"
-      :siteIsNewPromotion="siteIsNewPromotion"
-      @open-banner="openBanner"
-    />
+    <HomeBanner :list="bannerList" @open-banner="openBanner" />
 
     <div class="home-game">
       <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="userIsLoggedIn" />
-
-      <HomeGameBlock
-        :list="productList"
-        :siteResourceUrl="siteResourceUrl"
-        :isLoggedIn="userIsLoggedIn"
-        @handleGameLink="handleGameLink"
-      />
+      <HomeGameBlock :list="productList" @handleGameLink="handleGameLink" />
     </div>
     <transition name="fade">
       <div
@@ -120,7 +109,6 @@ export default {
     ...mapGetters([
       'lang',
       'siteFullCss',
-      'siteResourceUrl',
       'siteIsNewPromotion',
       'siteMainPageNoticeUrl',
       'siteIsShowMainNotice',

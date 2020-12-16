@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <img :src="logo" class="header__logo__img" :id="idMapper.header.logo" alt="" />
+      <img :src="siteLogoUrl" class="header__logo__img" :id="idMapper.header.logo" alt="" />
     </div>
 
     <template v-if="siteStatus == 0">
@@ -9,28 +9,18 @@
         to="/"
         class="header__link header__link--home"
         :id="idMapper.header.link.home"
-        v-if="!backIconRouteList.includes($route.name)"
+        v-if="$route.meta['header-back-icon'] != true"
       ></router-link>
-
       <a class="header__link header__link--back" href="javascript:;" @click="$router.go(-1)" v-else></a>
 
-      <HeaderMenu v-if="!isLoggedIn" :langList="langList" :lang="lang" @changeLang="changeLang" />
-      <HeaderMenuAuth
-        v-if="isLoggedIn"
-        :langList="langList"
-        :lang="lang"
-        :username="username"
-        :totalBalance="totalBalance"
-        :PILevel="PILevel"
-        :PIBetAmount="PIBetAmount"
-        @changeLang="changeLang"
-        @logout="logout"
-      ></HeaderMenuAuth>
+      <HeaderMenu v-if="!userIsLoggedIn" @changeLang="changeLang" />
+      <HeaderMenuAuth v-else @changeLang="changeLang" @logout="logout" />
     </template>
   </header>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import idMapper from '@/idMapper';
 
 export default {
@@ -40,46 +30,13 @@ export default {
     HeaderMenuAuth: () => import('@/components/HeaderMenuAuth'),
   },
   props: {
-    siteStatus: {
-      type: Number,
-      default: () => 0,
-    },
-    isLoggedIn: {
-      type: Boolean,
-      default: () => false,
-    },
-    langList: {
-      type: Array,
-      default: () => [],
-    },
-    lang: {
-      type: String,
-      default: () => '',
-    },
     logo: {
       type: String,
       default: () => '',
     },
-    username: {
-      type: String,
-      default: () => '',
-    },
-    totalBalance: {
-      type: Number,
-      default: () => 0,
-    },
-    PILevel: {
-      type: Number,
-      default: () => 0,
-    },
-    PIBetAmount: {
-      type: Number,
-      default: () => 0,
-    },
-    backIconRouteList: {
-      type: Array,
-      default: () => [],
-    },
+  },
+  computed: {
+    ...mapGetters(['siteLogoUrl', 'siteStatus', 'userIsLoggedIn']),
   },
   data() {
     return {
@@ -89,7 +46,6 @@ export default {
   methods: {
     changeLang(lang) {
       this.$emit('changeLang', lang);
-      this.isShowLangList = false;
     },
     logout() {
       this.$emit('logout');

@@ -3,8 +3,8 @@ import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 import { precacheAndRoute } from 'workbox-precaching';
 
-// skipWaiting();
-// clientsClaim();
+// self.skipWaiting();
+// self.clients.claim();
 
 /**
  ** cache 頁面

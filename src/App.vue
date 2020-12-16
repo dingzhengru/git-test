@@ -2,16 +2,6 @@
   <div id="app" :lang="lang" :class="lang">
     <div v-show="loadingList.length == 0">
       <AppHeader
-        :lang="lang"
-        :langList="langList"
-        :logo="siteLogoUrl"
-        :siteStatus="siteStatus"
-        :isLoggedIn="userIsLoggedIn"
-        :username="userUsername"
-        :totalBalance="userTotalBalance"
-        :PILevel="userPILevel"
-        :PIBetAmount="userPIBetAmount"
-        :backIconRouteList="['PromotionDetail']"
         @changeLang="changeLang"
         @logout="$store.dispatch('user/logout')"
         v-if="$route.meta.header != false"
@@ -24,7 +14,7 @@
       <AppFooter :isLoggedIn="userIsLoggedIn" v-if="$route.meta.footer != false" />
     </div>
 
-    <AppLoadingOverlay :isLoading="loadingList.length > 0" />
+    <AppLoadingOverlay v-show="loadingList.length > 0" />
   </div>
 </template>
 
@@ -46,7 +36,6 @@ export default {
   computed: {
     ...mapGetters([
       'lang',
-      'langList',
       'loadingList',
       'pwaInstallStatus',
       'pwaPrompt',
@@ -56,14 +45,9 @@ export default {
       'siteEnableSpareDomain',
       'siteManifestUrl',
       'siteFaviconUrl',
-      'siteLogoUrl',
       'siteAppIconUrl',
       'siteIOSUrl',
       'userIsLoggedIn',
-      'userTotalBalance',
-      'userUsername',
-      'userPILevel',
-      'userPIBetAmount',
     ]),
   },
   mounted() {
