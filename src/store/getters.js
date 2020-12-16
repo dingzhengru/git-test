@@ -83,7 +83,7 @@ const getters = {
   },
 
   //* User info
-  userUsername: state => state.user.info.Lst_Account,
+  userAccount: state => state.user.info.Lst_Account,
   userPILevel: state => state.user.info.Lst_PILevel,
   userPIBetAmount: state => state.user.info.Lst_PI_BetAmount,
   userBirthday: state => state.user.info.Lst_Birthday,

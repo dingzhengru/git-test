@@ -3,7 +3,7 @@
     <!-- 未開通的 -->
     <UserProfileList
       :profile="{
-        username: userUsername,
+        username: userAccount,
         currency: userCurrency,
         createdDatetime: userCreatedDatetime ? userCreatedDatetime.replace('T', ' ') : '',
       }"
@@ -17,7 +17,7 @@
     <!-- 開通後的 -->
     <UserProfileListAccess
       :profile="{
-        username: userUsername,
+        username: userAccount,
         currency: userCurrency,
         createdDatetime: userCreatedDatetime.replace('T', ' '),
         realName: userRealName,
@@ -48,7 +48,7 @@ export default {
     ...mapGetters([
       'siteFullCss',
       'userIsAccountOpen',
-      'userUsername',
+      'userAccount',
       'userCurrency',
       'userCreatedDatetime',
       'userRealName',

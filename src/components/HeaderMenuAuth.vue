@@ -3,7 +3,7 @@
     <div class="header-menu-auth__member">
       <div class="header-menu-auth__member__block" v-for="infoKey in userInfoKeyList" :key="infoKey">
         {{ $t(infoKey) }}：
-        <template v-if="infoKey == 'header.user.username'">{{ userUsername }}</template>
+        <template v-if="infoKey == 'header.user.username'">{{ userAccount }}</template>
         <template v-else-if="infoKey == 'header.user.total'">{{ numeral(userTotalBalance).format('0,0.00') }}</template>
         <template v-else-if="infoKey == 'header.user.vip'">{{ userPILevel }}</template>
         <template v-else-if="infoKey == 'header.user.roll'">{{ numeral(userPIBetAmount).format('0,0.00') }}</template>
@@ -69,7 +69,7 @@ import numeral from 'numeral';
 export default {
   name: 'HeaderMenuAuth',
   computed: {
-    ...mapGetters(['userTotalBalance', 'userUsername', 'userPILevel', 'userPIBetAmount']),
+    ...mapGetters(['userTotalBalance', 'userAccount', 'userPILevel', 'userPIBetAmount']),
   },
   data() {
     return {
