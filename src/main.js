@@ -109,5 +109,10 @@ if (cookieGetToken() && cookieGetPublicKey()) {
         this.$router.replace({ name: 'Home' });
       }
     },
+    mounted() {
+      setTimeout(() => {
+        document.dispatchEvent(new Event('custom-render-trigger'));
+      }, 5000);
+    },
   }).$mount('#app');
 })();
