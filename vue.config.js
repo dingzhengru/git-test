@@ -3,6 +3,14 @@ const path = require('path');
 const PrerenderSPAPlugin = require('prerender-spa-plugin');
 const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 
+const proxy = {
+  '/api': {
+    target: 'http://api.caza7.re888show.com',
+    ws: true,
+    changeOrigin: true,
+  },
+};
+
 module.exports = {
   configureWebpack(config) {
     if (process.env.NODE_ENV === 'production') {
@@ -28,15 +36,7 @@ module.exports = {
             maxConcurrentRoutes: 1,
             headless: false,
           }),
-          server: {
-            proxy: {
-              '/api': {
-                target: 'http://api.caza7.re888show.com',
-                ws: true,
-                changeOrigin: true,
-              },
-            },
-          },
+          server: { proxy },
         })
       );
     }
@@ -52,15 +52,7 @@ module.exports = {
       return args;
     });
   },
-  devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://api.caza7.re888show.com',
-        ws: true,
-        changeOrigin: true,
-      },
-    },
-  },
+  devServer: { proxy },
   pluginOptions: {
     i18n: {
       locale: 'en-us', // The locale of project localization
