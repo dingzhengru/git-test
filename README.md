@@ -9,7 +9,7 @@
     - [使用 reset git reset 拆掉 commit，再重新 commit](#使用-reset-git-reset-拆掉-commit再重新-commit)
     - [使用 git rebase 來修改、合併](#使用-git-rebase-來修改合併)
 - [其他指令](#其他指令)
-- [如何設定一次 Push 至多個 Remote Repository](#如何設定一次-push-至多個-remote-repository)
+- [remote](#remote)
 
 參考: https://gitbook.tw/
 
@@ -115,7 +115,7 @@ git reset commit_id # 根據 commit id 回覆到指定版本
 git revert # 撤銷一個提交的同時會創建一個新的提交，參數用法跟 reset 一樣
 ```
 
-## 如何設定一次 Push 至多個 Remote Repository
+## remote
 
 參考: https://blog.yowko.com/git-push-multiple-remote-repository
 參考: https://git-scm.com/docs/git-remote
@@ -123,14 +123,7 @@ git revert # 撤銷一個提交的同時會創建一個新的提交，參數用�
 `git remote` 會列出現在所有的 remote 群組，通常會有預設的 origin
 `git remote -v` 會列出詳細資訊，包含裡面設定的 fetch, push
 
-remote 裡可以設定一個 fetch 與 多個 push，現在就是要為 remote 設定多個 push
-
-指定一個 remote，新增 push remote url (沒有 --push 的話，會是 fetch)
-
-`git remote set-url --add --push origin https://gitserver/repository.git`
-
-指定一個 remote，修改 push remote url (沒有加上 --add 就會是修改)
-`git remote set-url --push origin https://gitserver/repository.git`
+remote 裡可以設定一個 fetch 與 多個 push
 
 新增 remote
 `git remote add origin [remote-url]`
@@ -138,3 +131,16 @@ remote 裡可以設定一個 fetch 與 多個 push，現在就是要為 remote �
 刪除 remote
 
 `git remote remove origin`
+
+push 指定的 remote (假設有個 remote 叫 code-commit)，預設會是 origin
+
+`git push code-commit`
+
+###　如何設定一次 Push 至多個 Remote Repository
+
+指定一個 remote，新增 push remote url (沒有 --push 的話，會是 fetch)
+
+`git remote set-url --add --push origin https://gitserver/repository.git`
+
+指定一個 remote，修改 push remote url (沒有加上 --add 就會是修改)
+`git remote set-url --push origin https://gitserver/repository.git`
