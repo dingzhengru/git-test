@@ -8,7 +8,7 @@
     - [使用 --amend 參數來修改最後一次的 commit](#使用---amend-參數來修改最後一次的-commit)
 - [reset](#reset)
   - [使用 reset 拆掉 commit，再重新 commit](#使用-reset-拆掉-commit再重新-commit)
-- [其他指令](#其他指令)
+- [列出一些指令](#列出一些指令)
 - [remote](#remote)
   - [如何設定一次 Push 至多個 Remote Repository](#如何設定一次-push-至多個-remote-repository)
 
@@ -92,10 +92,15 @@ git-reset: Reset current HEAD to the specified state
 - `git reset --hard commit_id` 用 --hard 是工作目錄跟暫存區都直接變成指定的版本
 - `git push -f` 因為修改已經發生的事實，所以正常來說是推不上去的
 
-## 其他指令
+## 列出一些指令
 
 ```sh
 git status # 查看目前的狀態
+
+git reflog # 查看所有訊息版本 (包含 reset 過後，被刪除的那些 commit)
+
+git log # 查看所有紀錄，越上面越新，enter:往下顯示，q: 離開
+git log --oneline # 查看所有紀錄，且簡化成一行來顯示
 ```
 
 ## remote
