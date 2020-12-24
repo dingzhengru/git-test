@@ -1,13 +1,17 @@
-# Git 測試
+- [名詞解釋](#名詞解釋)
+- [同步方法](#同步方法)
+- [分支(branch)](#分支branch)
+  - [合併分支](#合併分支)
+- [提交(commit)](#提交commit)
+  - [基本提交](#基本提交)
+  - [修改 commit](#修改-commit)
+    - [使用 --amend 參數來修改最後一次的 commit](#使用---amend-參數來修改最後一次的-commit)
+    - [使用 reset git reset 拆掉 commit，再重新 commit](#使用-reset-git-reset-拆掉-commit再重新-commit)
+    - [使用 git rebase 來修改、合併](#使用-git-rebase-來修改合併)
+- [其他指令](#其他指令)
+- [如何設定一次 Push 至多個 Remote Repository](#如何設定一次-push-至多個-remote-repository)
 
-- <a href="#名詞解釋">名詞解釋</a>
-- <a href="#同步方法">同步方法</a>
-  - <a href="#pull">pull</a>
-  - <a href="#fetch-merge">fetch + merge</a>
-  - <a href="#fetch-rebase">fetch + rebase</a>
-- <a href="#分支branch">分支(branch)</a>
-  - <a href="#提交commit">基本提交(commit)</a>
-- <a href="#其他指令">其他指令</a>
+參考: https://gitbook.tw/
 
 ## 名詞解釋
 
@@ -15,6 +19,7 @@
 - origin: 遠端
 - origin master: 遠端分支
 - origin/master: 本地分支
+- HEAD: 是一個指標，指向某一個分支，通常你可以把 HEAD 當做「目前所在分支」看待
 - 使用範例:
   - `git fetch origin master`: 取得遠端分支 master 的資料
   - `git merge origin/master`: 合併本地分支 origin/master 的程式碼
@@ -26,12 +31,11 @@
 - fetch + merge (將 pull 做的事，分成兩步驟，"取得" & "同步")
 - fetch + rebase (rebase:另一種合併方式，會修改到歷史紀錄)
 
-
 ## 分支(branch)
 
 - 分支是為了將修改記錄的整體流程分開儲存，讓分開的分支不受其他分支的影響
 - 查看分支: `git branch`
-- 建立分支: `git branch <branchname>`
+- 建立分支: `git branch <branch-name>`
 - 切換分支: `git checkout <branch>`
 - 合併分支: `git merge <branch>` 或是 `git rebase <branch>` (依你現在所在的 branch 去合併)
 - 刪除分支: `git branch -d <branch>`
@@ -83,13 +87,12 @@
 - 會打開編輯器讓你修改，存檔並離開編輯器，它會開始進行 Rebase
 - 若想放棄這次的 rebase 可以 `git rebase --abort`
 
-
 ## 其他指令
 
 ```sh
 git status # 查看目前的狀態
 
-git reflog # 查看所有訊息版本
+git reflog # 查看所有訊息版本 (包含 reset 過後，被刪除的那些 commit)
 
 git log # 查看所有紀錄，越上面越新，enter:往下顯示，q: 離開
 git log --oneline # 查看所有紀錄，且簡化成一行來顯示
@@ -104,7 +107,7 @@ git log --oneline # 查看所有紀錄，且簡化成一行來顯示
 # 參數: --mixed(預設), --soft, --hard ，跟 commit 拆出來的檔案是否會留在工作目錄有關，
 # --mixed: 工作目錄不變，暫存區丟掉，--soft: 兩者都不變，--hard: 兩者都丟掉
 
-git reset 
+git reset
 git reset HEAD~ # 回復到上一個提交版本
 git reset HEAD~n # 回復之前指定的提交版本，n 等於往上第幾個提交版本
 git reset commit_id # 根據 commit id 回覆到指定版本
@@ -112,3 +115,26 @@ git reset commit_id # 根據 commit id 回覆到指定版本
 git revert # 撤銷一個提交的同時會創建一個新的提交，參數用法跟 reset 一樣
 ```
 
+## 如何設定一次 Push 至多個 Remote Repository
+
+參考: https://blog.yowko.com/git-push-multiple-remote-repository
+參考: https://git-scm.com/docs/git-remote
+
+`git remote` 會列出現在所有的 remote 群組，通常會有預設的 origin
+`git remote -v` 會列出詳細資訊，包含裡面設定的 fetch, push
+
+remote 裡可以設定一個 fetch 與 多個 push，現在就是要為 remote 設定多個 push
+
+指定一個 remote，新增 push remote url (沒有 --push 的話，會是 fetch)
+
+`git remote set-url --add --push origin https://gitserver/repository.git`
+
+指定一個 remote，修改 push remote url (沒有加上 --add 就會是修改)
+`git remote set-url --push origin https://gitserver/repository.git`
+
+新增 remote
+`git remote add origin [remote-url]`
+
+刪除 remote
+
+`git remote remove origin`
