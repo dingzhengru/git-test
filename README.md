@@ -10,6 +10,7 @@
     - [使用 git rebase 來修改、合併](#使用-git-rebase-來修改合併)
 - [其他指令](#其他指令)
 - [remote](#remote)
+  - [如何設定一次 Push 至多個 Remote Repository](#如何設定一次-push-至多個-remote-repository)
 
 參考: https://gitbook.tw/
 
@@ -136,7 +137,7 @@ push 指定的 remote (假設有個 remote 叫 code-commit)，預設通常會是
 
 `git push code-commit`
 
-###　如何設定一次 Push 至多個 Remote Repository
+### 如何設定一次 Push 至多個 Remote Repository
 
 指定一個 remote，新增 push remote url (沒有 --push 的話，會是 fetch)
 
