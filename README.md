@@ -83,6 +83,7 @@ checkout 與 reset 的比較，可以參考: [文章](https://medicineyeh.wordpr
 git-reset: Reset current HEAD to the specified state
 
 修改當前分支(HEAD)所指的 commit，並刪除該 commit 後的紀錄
+後悔的話，可用 git reflog 查看被刪除的紀錄來復原
 
 ### 使用 reset 拆掉 commit，再重新 commit
 
