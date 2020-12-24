@@ -6,8 +6,8 @@
   - [基本提交](#基本提交)
   - [修改 commit](#修改-commit)
     - [使用 --amend 參數來修改最後一次的 commit](#使用---amend-參數來修改最後一次的-commit)
-    - [使用 reset git reset 拆掉 commit，再重新 commit](#使用-reset-git-reset-拆掉-commit再重新-commit)
-    - [使用 git rebase 來修改、合併](#使用-git-rebase-來修改合併)
+- [reset](#reset)
+  - [使用 reset 拆掉 commit，再重新 commit](#使用-reset-拆掉-commit再重新-commit)
 - [其他指令](#其他指令)
 - [remote](#remote)
   - [如何設定一次 Push 至多個 Remote Repository](#如何設定一次-push-至多個-remote-repository)
@@ -75,18 +75,22 @@
 - 雖然說是修改，但實際只是產生一個新的 commit 在其上面而已，**原本的紀錄還是存在**
 - **請記得，雖然這只是改訊息，不管如何它就是修改了一次的歷史，所以請儘量不要在已經 Push 出去之後再修改，否則可能會造成其它人的困擾。**
 
-#### 使用 reset git reset 拆掉 commit，再重新 commit
+## reset
 
-- 可以先用 `git log --oneline` 查看所有紀錄，或是用`git reflog` 查看所有訊息版本
+參考: https://git-scm.com/docs/git-reset
+checkout 與 reset 的比較，可以參考: [文章](https://medicineyeh.wordpress.com/2015/01/22/%E7%B4%B0%E8%AA%AAgit-reset%E5%92%8Cgit-checkout%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E8%99%95)
+
+git-reset: Reset current HEAD to the specified state
+
+修改當前分支(HEAD)所指的 commit，並刪除該 commit 後的紀錄
+
+### 使用 reset 拆掉 commit，再重新 commit
+
+參考: https://gitbook.tw/chapters/using-git/reset-commit.html
+
+- 可以先用 `git log --oneline` 查看所有紀錄，或是用`git reflog` 連被刪除的紀錄也會顯示
 - `git reset --hard commit_id` 用 --hard 是工作目錄跟暫存區都直接變成指定的版本
 - `git push -f` 因為修改已經發生的事實，所以正常來說是推不上去的
-
-#### 使用 git rebase 來修改、合併
-
-- 可以先用 `git log --oneline` 查看所有紀錄，或是用`git reflog` 查看所有訊息版本
-- `git rebase -i commit_id` 指定要修改的範圍(目前 ~ 指定的 commit_id)
-- 會打開編輯器讓你修改，存檔並離開編輯器，它會開始進行 Rebase
-- 若想放棄這次的 rebase 可以 `git rebase --abort`
 
 ## 其他指令
 
