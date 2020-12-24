@@ -120,7 +120,7 @@ git revert # 撤銷一個提交的同時會創建一個新的提交，參數用�
 參考: https://blog.yowko.com/git-push-multiple-remote-repository
 參考: https://git-scm.com/docs/git-remote
 
-`git remote` 會列出現在所有的 remote 群組，通常會有預設的 origin
+`git remote` 會列出現在所有的 remote 群組，通常會有預設的 origin  
 `git remote -v` 會列出詳細資訊，包含裡面設定的 fetch, push
 
 remote 裡可以設定一個 fetch 與 多個 push
@@ -132,7 +132,7 @@ remote 裡可以設定一個 fetch 與 多個 push
 
 `git remote remove origin`
 
-push 指定的 remote (假設有個 remote 叫 code-commit)，預設會是 origin
+push 指定的 remote (假設有個 remote 叫 code-commit)，預設通常會是 origin
 
 `git push code-commit`
 
