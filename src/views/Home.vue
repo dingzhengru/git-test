@@ -1,19 +1,13 @@
 <template>
-  <div class="home" @click="isShowMainNotice = false">
+  <div class="home">
     <HomeBanner :list="bannerList" @open-banner="openBanner" />
 
     <div class="home-game">
       <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="userIsLoggedIn" />
       <HomeGameBlock :list="productList" @handleGameLink="handleGameLink" />
     </div>
-    <transition name="fade">
-      <div
-        :id="idMapper.home.MainNotice"
-        class="main-notice"
-        :style="{ 'background-image': `url(${siteMainPageNoticeUrl})` }"
-        v-if="isShowMainNotice"
-      ></div>
-    </transition>
+
+    <ModalMainNotice v-show="isShowMainNotice" @click.native="isShowMainNotice = false" />
 
     <ModalMessage
       :messageList="messageList"
@@ -97,6 +91,7 @@ export default {
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
     HomeLotteryGameBlock: () => import('@/components/home/HomeLotteryGameBlock'),
     AppModal: () => import('@/components/AppModal'),
+    ModalMainNotice: () => import('@/components/ModalMainNotice'),
     ModalMessage: () => import('@/components/ModalMessage'),
     WinWheel: () => import('@/components/lottery/WinWheel'),
     RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
@@ -313,18 +308,6 @@ export default {
 <style lang="scss" scoped>
 .home {
   padding-bottom: 119px;
-}
-
-.main-notice {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 5;
 }
 
 .wheel-container {
