@@ -11,7 +11,6 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [vee-validate](#vee-validate)
     - [ValidationObserver 的 invalid 失效問題(已解決)](#validationobserver-的-invalid-失效問題已解決)
   - [IOS input[type=datetime-local] 自動驗證錯誤(已解決)](#ios-inputtypedatetime-local-自動驗證錯誤已解決)
-  - [quill 顯示不一(已解決)](#quill-顯示不一已解決)
   - [Wechat 無法開啟指定用戶](#wechat-無法開啟指定用戶)
   - [維護畫面](#維護畫面)
   - [IOS 擋開啟新視窗(已解決)](#ios-擋開啟新視窗已解決)
@@ -70,10 +69,6 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
 此錯誤發生在存款頁面，即使輸入正確，還是會一直顯示 enter a valid value
 所以只好於 form 添加 novalidate 關掉自動驗證
-
-### quill 顯示不一(已解決)
-
-- 因編輯方那邊有設 table 為強制 100% 寬度，這邊也同步設置即可
 
 ### Wechat 無法開啟指定用戶
 

@@ -69,7 +69,7 @@ import numeral from 'numeral';
 export default {
   name: 'HeaderMenuAuth',
   computed: {
-    ...mapGetters(['userTotalBalance', 'userAccount', 'userPILevel', 'userPIBetAmount']),
+    ...mapGetters(['langList', 'userTotalBalance', 'userAccount', 'userPILevel', 'userPIBetAmount']),
   },
   data() {
     return {

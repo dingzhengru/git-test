@@ -13,9 +13,6 @@ footer {
   font: 13px 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
 }
 
-/*===================================================================================================================*/
-/*                                                    Component                                                      */
-/*===================================================================================================================*/
 a {
   text-decoration: none;
   outline: none;
@@ -32,20 +29,6 @@ a {
 /*                                                        UI                                                         */
 /*===================================================================================================================*/
 
-.ui-overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: black;
-  opacity: 0.8;
-  z-index: 9999;
-  pointer-events: all;
-}
-
 .ui-box-close {
   position: absolute;
   display: inline-block;
@@ -56,23 +39,6 @@ a {
   height: 20px;
   /* text-indent: -9999px; */
   z-index: 9999;
-}
-
-.ui-icon {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.ui-icon-phone {
-  background: url(~@/assets/common/ui/icon_phone.png);
-  width: 40px;
-  height: 40px;
-}
-
-.ui-icon-24 {
-  background: url(~@/assets/common/ui/icon_24.png) no-repeat center;
-  width: 55px;
-  height: 40px;
 }
 
 /* input */
@@ -446,106 +412,4 @@ a {
 .txt-errorMsg {
   font-size: 1.5em;
   line-height: 36px;
-}
-
-/*===================================================================================================================*/
-/*                                                       main                                                        */
-/*===================================================================================================================*/
-
-/*partner*/
-.are-partner {
-  color: #fff;
-  margin: 40px 0 20px;
-}
-
-/*===================================================================================================================*/
-/*                                                      Box                                                          */
-/*===================================================================================================================*/
-.Box {
-  width: 100%;
-  height: 100%;
-  padding-top: 35vh;
-  margin: 0 auto;
-  position: absolute;
-  top: 0;
-  padding-top: 35vh;
-  cursor: pointer;
-  z-index: 5;
-}
-.Box .lnk-boxSubmit {
-  display: block;
-  margin: 35px 0 0 auto;
-  padding: 10px 20px;
-  font-size: 20px;
-  color: #000;
-  border: none;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-}
-.Box .boxOverlay {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  opacity: 0.8;
-  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)';
-  filter: alpha(opacity=80);
-  z-index: -1;
-}
-/* .Box.on {  padding-top: 35vh; cursor: pointer; z-index: 5; } */
-.Boxinner {
-  width: 50%;
-  padding: 25px;
-  margin: 0 auto 10%;
-  position: relative;
-  background-color: #fff;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-}
-.Boxinner .h1-tit {
-  text-align: center;
-  color: #636363;
-  font-size: 20px;
-  font-weight: normal;
-  margin: 15px 0 30px;
-}
-
-@media screen and (max-width: 1000px) {
-  .Boxinner {
-    width: 80%;
-    min-width: auto;
-  }
-}
-
-/*===================================================================================================================*/
-/*                                                       Hack                                                        */
-/*===================================================================================================================*/
-/* Safari 7.1+ */
-/*_::-webkit-full-page-media, _:future, :root .lnk-footer-toolbar{ padding: 0 10px 0px 93px;} */
-_::-webkit-full-page-media,
-_:future,
-:root .ui-ipt-inquire {
-  width: 224px;
-  top: -2px;
-}
-_::-webkit-full-page-media,
-_:future,
-:root .ui-lnk-category {
-  padding: 0 12px;
-}
-_::-webkit-full-page-media,
-_:future,
-:root .ui-ipt-favorites-txt {
-  right: 53px;
-}
-
-.tooltipster-base {
-  display: none;
-  visibility: hidden;
 }

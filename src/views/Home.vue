@@ -15,16 +15,11 @@
       ></div>
     </transition>
 
-    <div class="Box" v-if="isShowAlertBox && alertMessageList.length > 0">
-      <div class="Boxinner">
-        <h1 class="h1-tit">
-          <p v-for="(message, index) in alertMessageList" :key="index">
-            {{ message.Lst_Content }}
-          </p>
-        </h1>
-        <button class="lnk-boxSubmit" @click="isShowAlertBox = false">OK</button>
-      </div>
-    </div>
+    <ModalMessage
+      :messageList="messageList"
+      v-show="isShowModalMessage && messageList.length > 0 && !userIsLoggedIn"
+      @close="isShowModalMessage = false"
+    />
 
     <AppModal :isShow="isShowWinWheel" @close="closeWinWheel">
       <div class="wheel-container">
@@ -102,6 +97,7 @@ export default {
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
     HomeLotteryGameBlock: () => import('@/components/home/HomeLotteryGameBlock'),
     AppModal: () => import('@/components/AppModal'),
+    ModalMessage: () => import('@/components/ModalMessage'),
     WinWheel: () => import('@/components/lottery/WinWheel'),
     RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
   },
@@ -119,8 +115,8 @@ export default {
     return {
       idMapper: idMapper,
       isShowMainNotice: false,
-      isShowAlertBox: false,
-      alertMessageList: [],
+      isShowModalMessage: true,
+      messageList: [],
       bannerList: [],
       productList: [],
       lotteryList: [],
@@ -131,7 +127,16 @@ export default {
       const requestDataMessageList = { msgtype: 'C' };
       const result = await apiGetMessageList(requestDataMessageList);
       if (result.Code == 200) {
-        this.alertMessageList = result.RetObj;
+        this.messageList = result.RetObj;
+
+        this.messageList = [
+          {
+            Lst_Content: '测试',
+          },
+          {
+            Lst_Content: '测试2',
+          },
+        ];
       }
     },
     async getBannerList() {
