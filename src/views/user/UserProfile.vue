@@ -2,35 +2,15 @@
   <div class="user-profile">
     <!-- 未開通的 -->
     <UserProfileList
-      :profile="{
-        username: userAccount,
-        currency: userCurrency,
-        createdDatetime: userCreatedDatetime ? userCreatedDatetime.replace('T', ' ') : '',
-      }"
       :registerList="registerList"
       :bankList="bankList"
       @instantAccess="submitInstantAccess"
       @change-register-field="changeRegisterField"
       v-if="userIsAccountOpen == false"
-    ></UserProfileList>
+    />
 
     <!-- 開通後的 -->
-    <UserProfileListAccess
-      :profile="{
-        username: userAccount,
-        currency: userCurrency,
-        createdDatetime: userCreatedDatetime.replace('T', ' '),
-        realName: userRealName,
-        email: userEmail,
-        birthday: userBirthday.split('T')[0],
-        bankName1: userBankName1,
-        bankAccount1: userBankAccount1,
-        bankBrach1: userBankBrach1,
-        bankAccountName1: userBankAccountName1,
-      }"
-      @change-withdrawal-password="changeWithdrawalPassword"
-      v-else-if="userIsAccountOpen == true"
-    ></UserProfileListAccess>
+    <UserProfileListAccess @change-withdrawal-password="changeWithdrawalPassword" v-else />
   </div>
 </template>
 <script>
@@ -41,24 +21,11 @@ import { apiGetRegisterAdvanceNew, apiCheckRegisterFieldExist } from '@/api/regi
 export default {
   name: 'Profile',
   components: {
-    UserProfileList: () => import('../../components/user/UserProfileList'),
-    UserProfileListAccess: () => import('../../components/user/UserProfileListAccess'),
+    UserProfileList: () => import('@/components/user/UserProfileList'),
+    UserProfileListAccess: () => import('@/components/user/UserProfileListAccess'),
   },
   computed: {
-    ...mapGetters([
-      'siteFullCss',
-      'userIsAccountOpen',
-      'userAccount',
-      'userCurrency',
-      'userCreatedDatetime',
-      'userRealName',
-      'userEmail',
-      'userBirthday',
-      'userBankName1',
-      'userBankAccount1',
-      'userBankBrach1',
-      'userBankAccountName1',
-    ]),
+    ...mapGetters(['siteFullCss', 'userIsAccountOpen']),
   },
   data() {
     return {

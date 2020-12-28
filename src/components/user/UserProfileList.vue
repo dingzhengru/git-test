@@ -2,12 +2,18 @@
   <div class="user-profile">
     <div class="user-profile__table-div theme-content-box">
       <table class="ui-table02">
-        <tbody>
-          <tr v-for="(value, key) in profile" :key="key">
-            <th>{{ $t(`user.profile.notAccessed.${key}`) }}</th>
-            <td>{{ value }}</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>{{ $t('user.profile.notAccessed.username') }}</th>
+          <td>{{ userAccount }}</td>
+        </tr>
+        <tr>
+          <th>{{ $t('user.profile.notAccessed.currency') }}</th>
+          <td>{{ userCurrency }}</td>
+        </tr>
+        <tr>
+          <th>{{ $t('user.profile.notAccessed.createdDatetime') }}</th>
+          <td>{{ userCreatedDatetime }}</td>
+        </tr>
       </table>
     </div>
 
@@ -94,15 +100,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { registerFieldList } from '@/utils/register';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 export default {
   name: 'UserProfileList',
   props: {
-    profile: {
-      type: Object,
-      default: () => {},
-    },
     registerList: {
       type: Array,
       default: () => [],
@@ -115,6 +118,9 @@ export default {
   components: {
     ValidationObserver,
     ValidationProvider,
+  },
+  computed: {
+    ...mapGetters(['userAccount', 'userCurrency', 'userCreatedDatetime']),
   },
   data() {
     return {

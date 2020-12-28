@@ -3,15 +3,46 @@
     <ValidationObserver v-slot="{ invalid, handleSubmit }">
       <div class="user-profile-access__main theme-content-box">
         <ul class="user-profile-access__main__ul theme-ul-dataView">
-          <li class="theme-li-dataView" v-for="(value, key) in profile" :key="key">
-            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.${key}`) }}</span>
-            <p class="theme-dataView-data">{{ value }}</p>
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.username`) }}</span>
+            <p class="theme-dataView-data">{{ userAccount }}</p>
           </li>
-
-          <!-- <li class="theme-li-dataView" v-for="item in list" :key="item.title">
-          <span class="theme-dataView-header">{{ $t(`user.profile.accessed.${item.name}`) }}</span>
-          <p class="theme-dataView-data">{{ item.content }}</p>
-        </li> -->
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.currency`) }}</span>
+            <p class="theme-dataView-data">{{ userCurrency }}</p>
+          </li>
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.createdDatetime`) }}</span>
+            <p class="theme-dataView-data">{{ userCreatedDatetime.replace('T', ' ') }}</p>
+          </li>
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.realName`) }}</span>
+            <p class="theme-dataView-data">{{ userRealName }}</p>
+          </li>
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.email`) }}</span>
+            <p class="theme-dataView-data">{{ userEmail }}</p>
+          </li>
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.birthday`) }}</span>
+            <p class="theme-dataView-data">{{ userBirthday.split('T')[0] }}</p>
+          </li>
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.bankName1`) }}</span>
+            <p class="theme-dataView-data">{{ userBankName1 }}</p>
+          </li>
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.bankAccount1`) }}</span>
+            <p class="theme-dataView-data">{{ userBankAccount1 }}</p>
+          </li>
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.bankBrach1`) }}</span>
+            <p class="theme-dataView-data">{{ userBankBrach1 }}</p>
+          </li>
+          <li class="theme-li-dataView">
+            <span class="theme-dataView-header">{{ $t(`user.profile.accessed.bankAccountName1`) }}</span>
+            <p class="theme-dataView-data">{{ userBankAccountName1 }}</p>
+          </li>
           <form
             class="user-profile-access__main__form"
             id="formPasswordChange"
@@ -93,6 +124,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
@@ -106,6 +138,20 @@ export default {
       type: Object,
       default: () => {},
     },
+  },
+  computed: {
+    ...mapGetters([
+      'userAccount',
+      'userCurrency',
+      'userCreatedDatetime',
+      'userRealName',
+      'userEmail',
+      'userBirthday',
+      'userBankName1',
+      'userBankAccount1',
+      'userBankBrach1',
+      'userBankAccountName1',
+    ]),
   },
   data() {
     return {
