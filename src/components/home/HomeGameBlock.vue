@@ -7,7 +7,7 @@
       :key="item.Lst_Product_Proxy_Tag"
       :style="{ 'background-image': `url(${imgSrc(item)})` }"
     >
-      <a class="home-game__ul__li__link" href="javascript:;" @click="handleGameLink(item)">
+      <a class="home-game__ul__li__link" href="javascript:;" @click="handleProductLink(item)">
         {{ item.Lst_Name }}
       </a>
 
@@ -48,9 +48,9 @@ export default {
     };
   },
   methods: {
-    handleGameLink(game) {
+    handleProductLink(game) {
       if (this.userIsLoggedIn) {
-        this.$emit('handleGameLink', game);
+        this.$emit('handle-product-link', game);
         return;
       }
 

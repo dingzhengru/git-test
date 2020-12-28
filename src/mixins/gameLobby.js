@@ -1,11 +1,11 @@
 import { mapGetters } from 'vuex';
-
-import { apiGetGameRedirectUrl, apiSetGameFav } from '@/api/game';
+import mixinProductLinkHandler from '@/mixins/productLinkHandler';
+import { apiSetGameFav } from '@/api/game';
 import { apiTransferPoint } from '@/api/transaction-transfer';
-import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 
 export default {
   name: 'MixinGameLobby',
+  mixins: [mixinProductLinkHandler],
   computed: {
     ...mapGetters(['lang', 'userGamePointById']),
     productId() {
@@ -48,34 +48,6 @@ export default {
     };
   },
   methods: {
-    async openGameRedirectUrl() {
-      //* 打開站外連結
-      const requestData = {
-        Pid: this.productCurrent.Lst_Product_id,
-        gameclassify: this.productCurrent.Lst_Game_Classify,
-        proxypid: this.productCurrent.Lst_Proxy_Product_Key,
-      };
-
-      let newWindow = null;
-      if (isIos()) {
-        newWindow = window.open();
-      }
-
-      const result = await apiGetGameRedirectUrl(requestData);
-      if (result.Code == 200) {
-        if (result.RetObj.iGameOpenType == 1) {
-          openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
-        } else if (result.RetObj.iGameOpenType == 2) {
-          openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, this.productCurrent.Lst_Name);
-        }
-      } else {
-        if (newWindow != null) {
-          newWindow.close();
-        }
-
-        window.setTimeout(() => window.alert(result.ErrMsg), 500);
-      }
-    },
     async changeGameFav(game) {
       const requestData = {
         Add_ProductID: this.productId,
@@ -104,7 +76,7 @@ export default {
 
         //* 開啟站外連結
         if (this.productCurrent.GetGameRedirectUrl) {
-          this.openGameRedirectUrl();
+          this.handleProductLink(this.productCurrent);
           this.isShowTransferDialog = false;
           this.$router.go(-1);
         }
@@ -131,7 +103,7 @@ export default {
         if (this.currentPointProduct.Point == 0) {
           this.isShowTransferDialog = true;
         } else {
-          this.openGameRedirectUrl().finally(() => {
+          this.handleProductLink(this.productCurrent).finally(() => {
             this.$router.go(-1);
           });
         }

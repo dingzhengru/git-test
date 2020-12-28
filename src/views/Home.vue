@@ -4,7 +4,7 @@
 
     <div class="home-game">
       <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="userIsLoggedIn" />
-      <HomeGameBlock :list="productList" @handleGameLink="handleGameLink" />
+      <HomeGameBlock :list="productList" @handle-product-link="handleProductLink" />
     </div>
 
     <ModalMainNotice v-show="isShowMainNotice" @click.native="isShowMainNotice = false" />
@@ -72,19 +72,18 @@
 <script>
 import { mapGetters } from 'vuex';
 
+import mixinProductLinkHandler from '@/mixins/productLinkHandler';
 import mixinLotteryRedEnvelope from '@/mixins/lotteryRedEnvelope';
 import mixinLotteryWinWheel from '@/mixins/lotteryWinWheel';
 
 import { apiGetBannerListOld, apiGetBannerList } from '@/api/banner';
 import { apiGetProductList } from '@/api/product';
-import { apiGetGameRedirectUrl } from '@/api/game';
 import { apiGetMessageList } from '@/api/message';
 import { apiGetLotteryCount } from '@/api/lottery';
-import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 
 export default {
   name: 'Home',
-  mixins: [mixinLotteryRedEnvelope, mixinLotteryWinWheel],
+  mixins: [mixinProductLinkHandler, mixinLotteryRedEnvelope, mixinLotteryWinWheel],
   components: {
     HomeBanner: () => import('@/components/home/HomeBanner'),
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
@@ -171,70 +170,6 @@ export default {
           });
         } else {
           this.$router.push({ name: 'Promotion' });
-        }
-      }
-    },
-    async handleGameLink(game) {
-      /*
-       * Lst_Game_Classify 分類分別是
-       * 1: 真人(站內大廳)，2: 電子(站內大廳)，3: 運動(站外大廳)，4: 皇家彩票(站外大廳)
-       */
-
-      if (game.Lst_Site_Product_Status != 0) {
-        window.alert(this.$t('alert.gameMaintenance'));
-        return;
-      }
-
-      //* GetGameRedirectUrl，true: 外部連結
-      if (game.GetGameRedirectUrl == false) {
-        let gameLobby = 'GameLobbySlot';
-        switch (game.Lst_Game_Classify) {
-          case 1: {
-            gameLobby = 'GameLobbyLive';
-            break;
-          }
-          case 2: {
-            gameLobby = 'GameLobbySlot';
-            break;
-          }
-        }
-
-        this.$router.push({
-          name: gameLobby,
-          params: {
-            id: game.Lst_Product_id,
-            key: game.Lst_Proxy_Product_Key,
-          },
-          query: { category: '' },
-        });
-      } else if (game.GetGameRedirectUrl == true) {
-        const requestDataGameRedirectUrl = {
-          Pid: game.Lst_Product_id,
-          gameclassify: game.Lst_Game_Classify,
-          proxypid: game.Lst_Proxy_Product_Key,
-        };
-
-        //* 因 IOS 預設會擋非同步後開啟的視窗，所以需於送出請求前打開
-        let newWindow = null;
-        if (isIos()) {
-          newWindow = window.open();
-        }
-
-        const result = await apiGetGameRedirectUrl(requestDataGameRedirectUrl);
-
-        if (result.Code == 200) {
-          //* iGameOpenType: 判斷回傳內容類型，1: 一般URL，2: HTML
-
-          if (result.RetObj.iGameOpenType == 1) {
-            openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
-          } else if (result.RetObj.iGameOpenType == 2) {
-            openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, game.Lst_Name);
-          }
-        } else {
-          if (newWindow != null) {
-            newWindow.close();
-          }
-          window.setTimeout(() => window.alert(result.ErrMsg), 500);
         }
       }
     },
