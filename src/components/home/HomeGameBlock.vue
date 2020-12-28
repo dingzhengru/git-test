@@ -7,7 +7,7 @@
       :key="item.Lst_Product_Proxy_Tag"
       :style="{ 'background-image': `url(${imgSrc(item)})` }"
     >
-      <a class="home-game__ul__li__link" href="javascript:;" @click="handleProductLink(item)">
+      <a class="home-game__ul__li__link" href="javascript:;" @click="clickProductItem(item)">
         {{ item.Lst_Name }}
       </a>
 
@@ -18,10 +18,12 @@
 </template>
 
 <script>
+import mixinProductLinkHandler from '@/mixins/productLinkHandler';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'HomeGameBlock',
+  mixins: [mixinProductLinkHandler],
   props: {
     list: {
       type: Array,
@@ -48,13 +50,12 @@ export default {
     };
   },
   methods: {
-    handleProductLink(game) {
+    clickProductItem(product) {
       if (this.userIsLoggedIn) {
-        this.$emit('handle-product-link', game);
-        return;
+        this.handleProductLink(product);
+      } else {
+        this.$router.push({ name: 'About', query: { scrollTo: this.gameClassMap[product.sURL] } });
       }
-
-      this.$router.push({ name: 'About', query: { scrollTo: this.gameClassMap[game.sURL] } });
     },
   },
 };

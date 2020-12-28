@@ -94,8 +94,8 @@
       </div>
     </ValidationObserver>
     <ol class="ui-ol-memberNotice">
-      <li v-for="(notice, index) in noticeList" :key="index">
-        {{ $t(notice) }}
+      <li v-for="item in noticeList" :key="item">
+        {{ $t(item) }}
       </li>
     </ol>
   </div>

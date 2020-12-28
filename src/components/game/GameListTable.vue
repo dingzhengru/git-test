@@ -7,14 +7,14 @@
       <tbody>
         <tr
           class="game-lobby__table__tr"
-          v-for="(game, index) in gameList"
-          :key="game.Lst_GameID + index"
-          @click="openGame(game, 0)"
+          v-for="(item, index) in gameList"
+          :key="item.Lst_GameID + index"
+          @click="openGame(item, 0)"
         >
           <td class="game-lobby__table__tr__td-1st">
-            <img class="game-lobby__table__tr__td-1st__img" :src="game.imagePath" />
+            <img class="game-lobby__table__tr__td-1st__img" :src="item.imagePath" />
           </td>
-          <td class="game-lobby__table__tr__td-2nd">{{ game.Lst_GameName }}</td>
+          <td class="game-lobby__table__tr__td-2nd">{{ item.Lst_GameName }}</td>
           <td class="game-lobby__table__tr__td-3rd">
             <a href="javascript:;" class="game-lobby__table__tr__td__link--start">
               {{ $t('game.link.play') }}
@@ -22,7 +22,7 @@
             <a
               href="javascript:;"
               class="game-lobby__table__tr__td__link--freeplay"
-              @click.capture.stop="openGame(game, 1)"
+              @click.capture.stop="openGame(item, 1)"
               v-if="isShowDemo"
             >
               {{ $t('game.link.free') }}
@@ -30,8 +30,8 @@
             <a
               href="javascript:;"
               class="game-lobby__table__tr__td__link--favorites"
-              :class="{ active: game.Lst_IsLike }"
-              @click.capture.stop="changeGameFav(game)"
+              :class="{ active: item.Lst_IsLike }"
+              @click.capture.stop="changeGameFav(item)"
               v-if="isShowLike"
             >
               {{ $t('game.link.fav') }}

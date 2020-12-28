@@ -9,8 +9,8 @@
             </span>
             <select class="withdrawal__li__select ui-ddl" v-model="bank">
               <option :value="{}" selected>{{ $t('transaction.withdrawal.placeholder.bank') }}</option>
-              <option :value="bankItem" v-for="bankItem in bankList" :key="bankItem.Lst_Bank_name">
-                {{ bankItem.Text }}
+              <option :value="item" v-for="item in bankList" :key="item.Lst_Bank_name">
+                {{ item.Text }}
               </option>
             </select>
           </ValidationProvider>
@@ -52,8 +52,8 @@
             <ValidationProvider :rules="{ required: currencyList.length > 0 }" v-show="currencyList.length > 0">
               <select class="withdrawal__li__select withdrawal__li__select--currency ui-ddl" v-model="currency">
                 <option value="">{{ $t('transaction.withdrawal.field.currency') }}</option>
-                <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
-                  {{ currencyItem.Text }}
+                <option :value="item.Value" v-for="item in currencyList" :key="item.Value">
+                  {{ item.Text }}
                 </option>
               </select>
             </ValidationProvider>
@@ -153,7 +153,7 @@
           </button>
         </div>
         <ol class="withdrawal__notice ui-ol-memberNotice">
-          <li v-for="notice in noticeList" :key="notice">{{ $t(notice) }}</li>
+          <li v-for="item in noticeList" :key="item">{{ $t(item) }}</li>
         </ol>
       </form>
     </ValidationObserver>

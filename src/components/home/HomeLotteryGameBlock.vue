@@ -1,15 +1,15 @@
 <template>
   <div class="home-lottery">
-    <template v-for="lottery in lotteryList">
-      <div class="lottery" :class="`lottery${lottery.Type}`" :key="lottery.Type" v-if="lottery.Count > 0">
+    <template v-for="item in lotteryList">
+      <div class="lottery" :class="`lottery${item.Type}`" :key="item.Type" v-if="item.Count > 0">
         <i class="lottery__icon"></i>
-        <ul class="lottery__ul" @click="openLotteryGame(lottery)">
+        <ul class="lottery__ul" @click="openLotteryGame(item)">
           <li class="lottery__ul__li">
-            <template v-if="lottery.Type == 0">
-              {{ $t('home.lottery.winWheel.homeTitle', { count: lottery.Count }) }}
+            <template v-if="item.Type == 0">
+              {{ $t('home.lottery.winWheel.homeTitle', { count: item.Count }) }}
             </template>
-            <template v-else-if="lottery.Type == 1">
-              {{ $t('home.lottery.redEnvelope.homeTitle', { count: lottery.Count }) }}
+            <template v-else-if="item.Type == 1">
+              {{ $t('home.lottery.redEnvelope.homeTitle', { count: item.Count }) }}
             </template>
           </li>
         </ul>

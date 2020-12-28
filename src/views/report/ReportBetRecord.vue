@@ -2,8 +2,8 @@
   <div class="report-bet-record">
     <div class="report-bet-record__field">
       <select class="report-bet-record__field__select ui-ddl" v-model="dateRange">
-        <option :value="dateRangeItem" v-for="(dateRangeItem, index) in dateRangeList" :key="index">
-          {{ $t(`report.betRecord.dateRange.${dateRangeItem}`) }}
+        <option :value="item" v-for="(item, index) in dateRangeList" :key="index">
+          {{ $t(`report.betRecord.dateRange.${item}`) }}
         </option>
       </select>
     </div>

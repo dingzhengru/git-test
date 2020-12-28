@@ -1,14 +1,12 @@
 <template>
   <div class="header-menu-auth">
     <div class="header-menu-auth__member">
-      <div class="header-menu-auth__member__block" v-for="infoKey in userInfoKeyList" :key="infoKey">
-        {{ $t(infoKey) }}：
-        <template v-if="infoKey == 'header.user.username'">{{ userAccount }}</template>
-        <template v-else-if="infoKey == 'header.user.total'">{{
-          $numeral(userTotalBalance).format('0,0.00')
-        }}</template>
-        <template v-else-if="infoKey == 'header.user.vip'">{{ userPILevel }}</template>
-        <template v-else-if="infoKey == 'header.user.roll'">{{ $numeral(userPIBetAmount).format('0,0.00') }}</template>
+      <div class="header-menu-auth__member__block" v-for="item in userInfoKeyList" :key="item">
+        {{ $t(item) }}：
+        <template v-if="item == 'header.user.username'">{{ userAccount }}</template>
+        <template v-else-if="item == 'header.user.total'">{{ $numeral(userTotalBalance).format('0,0.00') }}</template>
+        <template v-else-if="item == 'header.user.vip'">{{ userPILevel }}</template>
+        <template v-else-if="item == 'header.user.roll'">{{ $numeral(userPIBetAmount).format('0,0.00') }}</template>
       </div>
     </div>
     <a
@@ -23,35 +21,31 @@
         <ul class="header-menu-auth__menu__route-ul">
           <li
             class="header-menu-auth__menu__route-ul__li"
-            :id="$idMapper.header.menu[route.name]"
-            v-for="route in routeList"
-            :key="route.name"
+            :id="$idMapper.header.menu[item.name]"
+            v-for="item in routeList"
+            :key="item.name"
             @click="isShowMenu = false"
           >
-            <router-link class="header-menu-auth__menu__route-ul__li__link" :to="{ name: route.link }">
-              {{ $t(route.name) }}
+            <router-link class="header-menu-auth__menu__route-ul__li__link" :to="{ name: item.link }">
+              {{ $t(item.name) }}
             </router-link>
           </li>
         </ul>
         <ul class="header-menu-auth__menu__lang-ul">
-          <div
-            class="header-menu-auth__menu__lang-ul__div"
-            v-for="langItem in langList"
-            :key="langItem.Lst_Locales_Code"
-          >
+          <div class="header-menu-auth__menu__lang-ul__div" v-for="item in langList" :key="item.Lst_Locales_Code">
             <li
               class="header-menu-auth__menu__lang-ul__li"
-              @click="changeLang(langItem.Lst_Locales_Code)"
-              v-if="langItem.Lst_Is_Enable"
+              @click="changeLang(item.Lst_Locales_Code)"
+              v-if="item.Lst_Is_Enable"
             >
               <a
                 href="javascript:;"
                 class="header-menu-auth__menu__lang-ul__li__link"
-                :id="$idMapper.header[langItem.Lst_Locales_Code]"
-                :class="langItem.Lst_Locales_Code"
+                :id="$idMapper.header[item.Lst_Locales_Code]"
+                :class="item.Lst_Locales_Code"
                 @click="isShowMenu = false"
               >
-                {{ langItem.Lst_Locales_Name }}
+                {{ item.Lst_Locales_Name }}
               </a>
             </li>
           </div>

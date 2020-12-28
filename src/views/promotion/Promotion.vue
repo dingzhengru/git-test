@@ -9,11 +9,11 @@
     <div class="promotion__list">
       <a
         href="javascript:;"
-        v-for="promotion in promotionList"
-        :key="promotion.Lst_PromotionID"
-        @click.prevent="goPromotionDetail(promotion)"
+        v-for="item in promotionList"
+        :key="item.Lst_PromotionID"
+        @click.prevent="goPromotionDetail(item)"
       >
-        <img :src="promotion.Lst_ImageUrl" class="promotion__list__img" />
+        <img :src="item.Lst_ImageUrl" class="promotion__list__img" />
       </a>
     </div>
   </div>

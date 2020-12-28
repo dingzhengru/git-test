@@ -34,7 +34,7 @@
             v-model="field.value"
             v-else
           >
-            <option :value="bank.Value" v-for="bank in bankList" :key="bank.Value">{{ bank.Text }}</option>
+            <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
           </select>
 
           <img
@@ -73,12 +73,7 @@
     </ValidationObserver>
     <div class="register__notice">
       <ol class="register__notice__ol">
-        <li
-          class="register__notice__ol__li"
-          v-for="(notice, index) in noticeList"
-          :key="index"
-          v-html="$t(notice)"
-        ></li>
+        <li class="register__notice__ol__li" v-for="(item, index) in noticeList" :key="index" v-html="$t(item)"></li>
       </ol>
     </div>
   </div>

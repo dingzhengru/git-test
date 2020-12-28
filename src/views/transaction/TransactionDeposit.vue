@@ -100,8 +100,8 @@
               v-model="method"
             >
               <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
-              <option :value="methodItem.Value" v-for="methodItem in methodList" :key="methodItem.Value">
-                {{ methodItem.Text }}
+              <option :value="item.Value" v-for="item in methodList" :key="item.Value">
+                {{ item.Text }}
               </option>
             </select>
           </ValidationProvider>
@@ -121,8 +121,8 @@
               v-model="currency"
             >
               <option value="">{{ $t(`transaction.deposit.placeholder.currency`) }}</option>
-              <option :value="currencyItem.Value" v-for="currencyItem in currencyList" :key="currencyItem.Value">
-                {{ currencyItem.Text }}
+              <option :value="item.Value" v-for="item in currencyList" :key="item.Value">
+                {{ item.Text }}
               </option>
             </select>
           </ValidationProvider>
@@ -193,8 +193,8 @@
               :id="$idMapper.transaction.deposit.field.promotion"
               v-model="promotion"
             >
-              <option :value="promotionItem.Value" v-for="promotionItem in promotionList" :key="promotionItem.Value">
-                {{ promotionItem.Text }}
+              <option :value="item.Value" v-for="item in promotionList" :key="item.Value">
+                {{ item.Text }}
               </option>
             </select>
             <p class="deposit__field__hint ui-txt-mask" v-if="promotion == -1">
@@ -203,8 +203,8 @@
           </ValidationProvider>
 
           <ol class="ui-ol-memberNotice">
-            <li v-for="(notice, index) in noticeList" :key="`memberNotice${index}`">
-              <span v-html="$t(notice)"></span>
+            <li v-for="item in noticeList" :key="item">
+              <span v-html="$t(item)"></span>
             </li>
           </ol>
 

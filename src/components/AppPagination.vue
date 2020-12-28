@@ -3,7 +3,7 @@
     <a href="javascript:;" class="ui-lnk-pagerPreviousMore" id="btnPreviousMore" @click="changePage(1)"></a>
     <a href="javascript:;" class="ui-lnk-pagerPrevious" id="btnPreviousPage" @click="goPreviousPage"></a>
     <select class="ui-ddl ui-ddl-pager" name="NoPage" id="slcPage" v-model="clonePage" @change="changePage(clonePage)">
-      <option :value="p" v-for="p in totalPage" :key="p">{{ p }}</option>
+      <option :value="item" v-for="item in totalPage" :key="item">{{ item }}</option>
     </select>
     <a href="javascript:;" class="ui-lnk-pagerNext" id="btnNextPage" @click="goNextPage"></a>
     <a href="javascript:;" class="ui-lnk-pagerNextMore" id="btnNextMore" @click="changePage(totalPage)"></a>

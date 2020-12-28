@@ -8,8 +8,8 @@
     </div>
 
     <ul class="about__toolbar">
-      <li class="about__toolbar__li" :class="[tool.class]" v-for="tool in toolList" :key="tool.scrollTo">
-        <a class="about__toolbar__li__link" v-scroll-to="{ el: tool.scrollTo }"></a>
+      <li class="about__toolbar__li" :class="[item.class]" v-for="item in toolList" :key="item.scrollTo">
+        <a class="about__toolbar__li__link" v-scroll-to="{ el: item.scrollTo }"></a>
       </li>
     </ul>
   </div>

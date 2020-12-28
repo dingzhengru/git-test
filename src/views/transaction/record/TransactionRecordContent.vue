@@ -7,8 +7,8 @@
         <div class="record-content__search-form__field">
           <select class="record-content__search-form__field__select--product ui-ddl" v-model="search.product">
             <option value="" selected>{{ $t(`${i18nKey}.placeholder.product`) }}</option>
-            <option :value="product.Value" v-for="product in productList" :key="product.Value">
-              {{ product.Text }}
+            <option :value="item.Value" v-for="item in productList" :key="item.Value">
+              {{ item.Text }}
             </option>
           </select>
           <select
@@ -17,8 +17,8 @@
             @change="changeSearchDateRange"
           >
             <option value="" selected>{{ $t(`${i18nKey}.placeholder.dateRange`) }}</option>
-            <option :value="range.value" v-for="range in searchDateRangeList" :key="range.name">
-              {{ $t(`${i18nKey}.dateRange.${range.name}`) }}
+            <option :value="item.value" v-for="item in searchDateRangeList" :key="item.name">
+              {{ $t(`${i18nKey}.dateRange.${item.name}`) }}
             </option>
           </select>
         </div>

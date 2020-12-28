@@ -1,9 +1,9 @@
 <template>
   <swiper class="home-swiper" :options="swiperOption" @click-slide="handleClickSlide">
-    <swiper-slide v-for="(slide, index) in list" :key="index">
+    <swiper-slide v-for="(item, index) in list" :key="index">
       <a class="home-swiper__link" href="javascript:;">
         <img
-          :src="siteIsNewPromotion ? slide.Lst_ImgUrl : `${siteResourceUrl}/banner/${slide.ImageUrl}`"
+          :src="siteIsNewPromotion ? item.Lst_ImgUrl : `${siteResourceUrl}/banner/${item.ImageUrl}`"
           onerror="this.style.display = 'none'"
         />
       </a>

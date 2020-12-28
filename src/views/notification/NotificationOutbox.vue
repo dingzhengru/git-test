@@ -6,8 +6,8 @@
           <span class="theme-input-header">{{ $t('notification.outbox.category') }}</span>
           <select class="notification-outbox__field__select ui-ddl" required v-model="mail.Add_Category">
             <option value="" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
-            <option :value="category.Value" v-for="category in categoryList" :key="category.Value">
-              {{ category.Text }}
+            <option :value="item.Value" v-for="item in categoryList" :key="item.Value">
+              {{ item.Text }}
             </option>
           </select>
         </ValidationProvider>

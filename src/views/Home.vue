@@ -4,7 +4,7 @@
 
     <div class="home-game">
       <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="userIsLoggedIn" />
-      <HomeGameBlock :list="productList" @handle-product-link="handleProductLink" />
+      <HomeGameBlock :list="productList" />
     </div>
 
     <ModalMainNotice v-show="isShowMainNotice" @click.native="isShowMainNotice = false" />
@@ -72,7 +72,6 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import mixinProductLinkHandler from '@/mixins/productLinkHandler';
 import mixinLotteryRedEnvelope from '@/mixins/lotteryRedEnvelope';
 import mixinLotteryWinWheel from '@/mixins/lotteryWinWheel';
 
@@ -83,7 +82,7 @@ import { apiGetLotteryCount } from '@/api/lottery';
 
 export default {
   name: 'Home',
-  mixins: [mixinProductLinkHandler, mixinLotteryRedEnvelope, mixinLotteryWinWheel],
+  mixins: [mixinLotteryRedEnvelope, mixinLotteryWinWheel],
   components: {
     HomeBanner: () => import('@/components/home/HomeBanner'),
     HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
