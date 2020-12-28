@@ -42,7 +42,7 @@ export default {
       pagination: {
         page: 1,
         pagesize: 6,
-        dataLength: 1,
+        count: 1,
       },
       isShowTransferDialog: false, //* 轉帳視窗
     };
