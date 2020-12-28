@@ -21,7 +21,7 @@
     <GameListTable :gameList="gameList" :productCurrent="productCurrent" @open-game="openGame" />
 
     <AppPagination
-      :length="pagination.dataLength"
+      :count="pagination.count"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
@@ -121,7 +121,7 @@ export default {
       result = await apiGetLiveGameLobbyGameList(requestData);
       this.gameList = result.RetObj.JsonGameList || [];
       this.gameLimitBetList = result.RetObj.GameLimitBet;
-      this.pagination.dataLength = result.RetObj.DataCnt;
+      this.pagination.count = result.RetObj.DataCnt;
     },
     async openGame(game) {
       //* 因應真人遊戲兩階段開遊戲，這樣才知道現在的遊戲是甚麼

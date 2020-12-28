@@ -14,7 +14,7 @@
 export default {
   name: 'AppPagination',
   props: {
-    length: {
+    count: {
       type: Number,
       default: () => 0,
     },
@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     totalPage() {
-      return Math.ceil(this.length / this.pagesize);
+      return Math.ceil(this.count / this.pagesize);
     },
   },
   methods: {

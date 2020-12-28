@@ -8,7 +8,7 @@
     </div>
 
     <AppPagination
-      :length="pagination.dataLength"
+      :count="pagination.count"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
@@ -42,7 +42,7 @@ export default {
       pagination: {
         page: 1,
         pagesize: 10,
-        dataLength: 0,
+        count: 0,
       },
     };
   },
@@ -52,7 +52,7 @@ export default {
       const result = await apiGetNewsList(requestData);
 
       this.list = result.RetObj.Rows;
-      this.pagination.dataLength = result.RetObj.Records;
+      this.pagination.count = result.RetObj.Records;
     },
     changePage(page) {
       this.pagination.page = page;

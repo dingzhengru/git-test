@@ -100,7 +100,7 @@
     <p class="record-content__notice">{{ $te(`${i18nKey}.notice`) ? $t(`${i18nKey}.notice`) : '' }}</p>
     <AppPagination
       v-if="isPageActive"
-      :length="pagination.dataLength"
+      :count="pagination.count"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
@@ -198,7 +198,7 @@ export default {
       pagination: {
         page: 1,
         pagesize: 10,
-        dataLength: 0,
+        count: 0,
       },
       imageDialogUrl: '', //* 匯款收據的圖片視窗，空值就不顯示
     };
@@ -251,7 +251,7 @@ export default {
           };
           const result = await apiGetRecordTransfer(requestDataTransfer);
 
-          this.pagination.dataLength = result.RetObj.Records;
+          this.pagination.count = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
             newItem.id = item.Lst_TransID;
@@ -276,7 +276,7 @@ export default {
 
           const result = await apiGetRecordBonus(requestDataRecordBonus);
 
-          this.pagination.dataLength = result.RetObj.Records;
+          this.pagination.count = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
             // newItem.id = item.Lst_TransID;
@@ -294,7 +294,7 @@ export default {
 
           const result = await apiGetRecordLottery(requestDataRecordLottery);
 
-          this.pagination.dataLength = result.RetObj.Records;
+          this.pagination.count = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
             newItem.isSuccess = item.Lst_GiveoutStatus == 1;
@@ -311,7 +311,7 @@ export default {
           const requestDataRecordWithdrawalRestriction = { Page: this.pagination.page };
 
           const result = await apiGetRecordWithdrawalRestriction(requestDataRecordWithdrawalRestriction);
-          this.pagination.dataLength = result.RetObj.Records;
+          this.pagination.count = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
             newItem.Procudtid = item.Lst_Procudt_id;
@@ -331,7 +331,7 @@ export default {
           const requestDataRecordAdjustment = { Page: this.pagination.page };
 
           const result = await apiGetRecordAdjustment(requestDataRecordAdjustment);
-          this.pagination.dataLength = result.RetObj.Records;
+          this.pagination.count = result.RetObj.Records;
           this.list = result.RetObj.Rows.map(item => {
             const newItem = {};
             newItem.status = item.Lst_PaymentType;

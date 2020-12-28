@@ -31,7 +31,7 @@
     />
 
     <AppPagination
-      :length="pagination.dataLength"
+      :count="pagination.count"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
@@ -152,7 +152,7 @@ export default {
 
       result = await apiGetGameLobbyGameList(requestData);
       this.gameList = result.RetObj.JsonGameList || [];
-      this.pagination.dataLength = result.RetObj.DataCnt;
+      this.pagination.count = result.RetObj.DataCnt;
     },
     async openGame(game, freePlay) {
       //* 因 IOS 預設會擋非同步後開啟的視窗，所以需於送出請求前打開
