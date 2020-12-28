@@ -64,7 +64,7 @@
           <select
             class="ui-ddl"
             :class="{ 'register__form__field__select--default': field.value == '' }"
-            :id="idMapper.register.input[field.name]"
+            :id="$idMapper.register.input[field.name]"
             v-model="field.value"
             v-else
           >
@@ -94,7 +94,6 @@
 </template>
 
 <script>
-import idMapper from '@/idMapper';
 import { registerFieldList } from '@/utils/register';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 export default {
@@ -119,7 +118,6 @@ export default {
   },
   data() {
     return {
-      idMapper: idMapper,
       fieldList: registerFieldList,
       originalRegisterFieldList: [], //* 存取原本欄位的值
       isShowRegisterForm: false,

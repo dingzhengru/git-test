@@ -2,7 +2,7 @@
   <ul class="home-game__ul">
     <li
       class="home-game__ul__li"
-      :id="item.id"
+      :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
       v-for="item in list"
       :key="item.Lst_Product_Proxy_Tag"
       :style="{ 'background-image': `url(${imgSrc(item)})` }"

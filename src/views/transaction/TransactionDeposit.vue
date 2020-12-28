@@ -28,7 +28,7 @@
             </span>
             <select
               class="deposit__field__select ui-ddl"
-              :id="idMapper.transaction.deposit.field.depositBank"
+              :id="$idMapper.transaction.deposit.field.depositBank"
               v-model="depositBank"
             >
               <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.depositBank`) }}</option>
@@ -63,7 +63,7 @@
             </span>
             <select
               class="deposit__field__select ui-ddl"
-              :id="idMapper.transaction.deposit.field.transferBank"
+              :id="$idMapper.transaction.deposit.field.transferBank"
               v-model="transferBank"
             >
               <option :value="{}" selected>{{ $t('transaction.deposit.placeholder.transferBank') }}</option>
@@ -76,7 +76,7 @@
           <ValidationProvider
             tag="div"
             class="deposit__field theme-input-box"
-            :rules="{ required: true, 'date-max': dayjs().format('YYYY-MM-DDTHH:mm') }"
+            :rules="{ required: true, 'date-max': $dayjs().format('YYYY-MM-DDTHH:mm') }"
           >
             <span class="deposit__field__title theme-input-header">
               {{ $t('transaction.deposit.field.datetime') }}
@@ -86,7 +86,7 @@
               class="ui-ipt"
               type="datetime-local"
               v-model="datetime"
-              :max="dayjs().format('YYYY-MM-DDTHH:mm')"
+              :max="$dayjs().format('YYYY-MM-DDTHH:mm')"
             />
           </ValidationProvider>
 
@@ -96,7 +96,7 @@
             </span>
             <select
               class="deposit__field__select ui-ddl"
-              :id="idMapper.transaction.deposit.field.method"
+              :id="$idMapper.transaction.deposit.field.method"
               v-model="method"
             >
               <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
@@ -117,7 +117,7 @@
             </span>
             <select
               class="deposit__field__select ui-ddl"
-              :id="idMapper.transaction.deposit.field.currency"
+              :id="$idMapper.transaction.deposit.field.currency"
               v-model="currency"
             >
               <option value="">{{ $t(`transaction.deposit.placeholder.currency`) }}</option>
@@ -134,7 +134,7 @@
           >
             <input
               class="ui-ipt"
-              :id="idMapper.transaction.deposit.field.amount"
+              :id="$idMapper.transaction.deposit.field.amount"
               type="number"
               step="100"
               v-model.number="amount"
@@ -162,12 +162,12 @@
             </span>
             <label
               class="deposit__field__receipt-upload__label ui-btn ui-btn--long"
-              :for="idMapper.transaction.deposit.button.upload"
+              :for="$idMapper.transaction.deposit.button.upload"
             >
               {{ $t('transaction.deposit.button.upload') }}
               <input
                 class="deposit__field__receipt-upload__input"
-                :id="idMapper.transaction.deposit.button.upload"
+                :id="$idMapper.transaction.deposit.button.upload"
                 type="file"
                 accept=".jpg,.png"
                 @change="onFileChange($event, validate)"
@@ -181,7 +181,7 @@
             <span class="deposit__field__title theme-input-header">
               {{ $t('transaction.deposit.field.remark') }}
             </span>
-            <input class="ui-ipt" :id="idMapper.transaction.deposit.field.remark" type="text" v-model="remark" />
+            <input class="ui-ipt" :id="$idMapper.transaction.deposit.field.remark" type="text" v-model="remark" />
           </ValidationProvider>
 
           <ValidationProvider tag="div" class="deposit__field theme-input-box">
@@ -190,7 +190,7 @@
             </span>
             <select
               class="deposit__field__select ui-ddl"
-              :id="idMapper.transaction.deposit.field.promotion"
+              :id="$idMapper.transaction.deposit.field.promotion"
               v-model="promotion"
             >
               <option :value="promotionItem.Value" v-for="promotionItem in promotionList" :key="promotionItem.Value">
@@ -231,11 +231,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import idMapper from '@/idMapper';
 
 import { apiGetDepositInfo, apiDeposit } from '@/api/transaction-deposit';
 
-import dayjs from 'dayjs';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
@@ -249,8 +247,6 @@ export default {
   },
   data() {
     return {
-      dayjs: dayjs,
-      idMapper: idMapper,
       depositBankList: [],
       transferBankList: [],
       methodList: [],
@@ -263,7 +259,7 @@ export default {
       depositBankAccount: '',
       transferBank: {},
       // transferBankName: '',
-      datetime: dayjs().format('YYYY-MM-DDTHH:mm:00'),
+      datetime: this.$dayjs().format('YYYY-MM-DDTHH:mm:00'),
       method: '',
       currency: '',
       amount: 0,

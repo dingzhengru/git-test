@@ -1,22 +1,16 @@
 <template>
   <div class="game-jackpot">
-    <span class="game-jackpot__text">{{ numeral(jackpot).format('0,0') }}</span>
+    <span class="game-jackpot__text">{{ $numeral(jackpot).format('0,0') }}</span>
   </div>
 </template>
 
 <script>
-import numeral from 'numeral';
 export default {
   props: {
     jackpot: {
       type: Number,
       default: () => 0,
     },
-  },
-  data() {
-    return {
-      numeral: numeral,
-    };
   },
 };
 </script>

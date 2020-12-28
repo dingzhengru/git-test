@@ -38,7 +38,7 @@
               {{ $t('transaction.withdrawal.field.wallet') }}
             </span>
             <p class="withdrawal__li__content theme-dataView-data">
-              {{ numeral(withdrawalInfo.Lst_Point).format('0,0.00') }}
+              {{ $numeral(withdrawalInfo.Lst_Point).format('0,0.00') }}
             </p>
             <button type="button" class="withdrawal__li__button ui-btn ui-btn--long" @click="transferToMain">
               {{ $t('transaction.withdrawal.button.allToMyWallet') }}
@@ -67,7 +67,7 @@
             >
               <input
                 class="withdrawal__li__input ui-ipt theme-ipt-dataview"
-                :id="idMapper.transaction.withdrawal.field.Add_WithdrswalsPoint"
+                :id="$idMapper.transaction.withdrawal.field.Add_WithdrswalsPoint"
                 type="number"
                 step="100"
                 placeholder="Please enter amount of withdrawal"
@@ -129,7 +129,7 @@
             </span>
             <input
               class="withdrawal__li__input ui-ipt theme-ipt-dataview"
-              :id="idMapper.transaction.withdrawal.field.password"
+              :id="$idMapper.transaction.withdrawal.field.password"
               type="password"
               v-model="password"
             />
@@ -146,7 +146,7 @@
             type="submit"
             class="withdrawal__button--submit ui-btn ui-btn--long"
             form="withdrawal-form"
-            :id="idMapper.transaction.withdrawal.button.submit"
+            :id="$idMapper.transaction.withdrawal.button.submit"
             :disabled="invalid"
           >
             {{ $t('ui.button.submit') }}
@@ -167,8 +167,6 @@ import { apiGetWithdrawalInfo, apiWithdrawal } from '@/api/transaction-withdrawa
 import { apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
 
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import numeral from 'numeral';
-import idMapper from '@/idMapper';
 
 export default {
   name: 'TransactionWithdrawal',
@@ -187,8 +185,6 @@ export default {
   },
   data() {
     return {
-      idMapper: idMapper,
-      numeral: numeral,
       withdrawalInfo: {},
       bankList: [],
       currencyList: [],

@@ -3,7 +3,7 @@
     <a
       href="javascript:;"
       class="header-menu__lang-toggle"
-      :id="idMapper.header.link.lang"
+      :id="$idMapper.header.link.lang"
       @click="isShowLangList = !isShowLangList"
     ></a>
 
@@ -14,7 +14,7 @@
             <a
               href="javascript:;"
               class="header-menu__lang-menu__ul__li__link"
-              :id="idMapper.header[item.Lst_Locales_Code]"
+              :id="$idMapper.header[item.Lst_Locales_Code]"
               v-if="item.Lst_Locales_Code != lang && item.Lst_Is_Enable"
               :class="item.Lst_Locales_Code"
               @click="changeLang(item.Lst_Locales_Code)"
@@ -28,7 +28,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import idMapper from '@/idMapper';
 
 export default {
   name: 'HeaderMenu',
@@ -37,7 +36,6 @@ export default {
   },
   data() {
     return {
-      idMapper: idMapper,
       isShowLangList: false,
     };
   },

@@ -7,7 +7,7 @@
           { 'footer__ul__li--active': $route.name == item.link || item.otherActivePath.includes($route.name) },
           item.class,
         ]"
-        :id="idMapper.footer[item.name]"
+        :id="$idMapper.footer[item.name]"
         v-for="item in list"
         :key="item.name"
       >
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import idMapper from '@/idMapper';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -30,7 +29,6 @@ export default {
   },
   data() {
     return {
-      idMapper: idMapper,
       list: [],
       noAuthList: [
         {

@@ -1,14 +1,14 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <img :src="siteLogoUrl" class="header__logo__img" :id="idMapper.header.logo" alt="" />
+      <img :src="siteLogoUrl" class="header__logo__img" :id="$idMapper.header.logo" alt="" />
     </div>
 
     <template v-if="siteStatus == 0">
       <router-link
         to="/"
         class="header__link header__link--home"
-        :id="idMapper.header.link.home"
+        :id="$idMapper.header.link.home"
         v-if="$route.meta['header-back-icon'] != true"
       ></router-link>
       <a class="header__link header__link--back" href="javascript:;" @click="$router.go(-1)" v-else></a>
@@ -21,7 +21,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import idMapper from '@/idMapper';
 
 export default {
   name: 'AppHeader',
@@ -37,11 +36,6 @@ export default {
   },
   computed: {
     ...mapGetters(['siteLogoUrl', 'siteStatus', 'userIsLoggedIn']),
-  },
-  data() {
-    return {
-      idMapper: idMapper,
-    };
   },
   methods: {
     changeLang(lang) {

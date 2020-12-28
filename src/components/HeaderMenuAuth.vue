@@ -4,16 +4,18 @@
       <div class="header-menu-auth__member__block" v-for="infoKey in userInfoKeyList" :key="infoKey">
         {{ $t(infoKey) }}：
         <template v-if="infoKey == 'header.user.username'">{{ userAccount }}</template>
-        <template v-else-if="infoKey == 'header.user.total'">{{ numeral(userTotalBalance).format('0,0.00') }}</template>
+        <template v-else-if="infoKey == 'header.user.total'">{{
+          $numeral(userTotalBalance).format('0,0.00')
+        }}</template>
         <template v-else-if="infoKey == 'header.user.vip'">{{ userPILevel }}</template>
-        <template v-else-if="infoKey == 'header.user.roll'">{{ numeral(userPIBetAmount).format('0,0.00') }}</template>
+        <template v-else-if="infoKey == 'header.user.roll'">{{ $numeral(userPIBetAmount).format('0,0.00') }}</template>
       </div>
     </div>
     <a
       href="javascript:;"
       class="header-menu-auth__button"
       :class="{ 'header-menu-auth__button--open': !isShowMenu, 'header-menu-auth__button--close': isShowMenu }"
-      :id="idMapper.header.link.menu"
+      :id="$idMapper.header.link.menu"
       @click="isShowMenu = !isShowMenu"
     ></a>
     <transition name="slide">
@@ -21,7 +23,7 @@
         <ul class="header-menu-auth__menu__route-ul">
           <li
             class="header-menu-auth__menu__route-ul__li"
-            :id="idMapper.header.menu[route.name]"
+            :id="$idMapper.header.menu[route.name]"
             v-for="route in routeList"
             :key="route.name"
             @click="isShowMenu = false"
@@ -45,7 +47,7 @@
               <a
                 href="javascript:;"
                 class="header-menu-auth__menu__lang-ul__li__link"
-                :id="idMapper.header[langItem.Lst_Locales_Code]"
+                :id="$idMapper.header[langItem.Lst_Locales_Code]"
                 :class="langItem.Lst_Locales_Code"
                 @click="isShowMenu = false"
               >
@@ -54,7 +56,7 @@
             </li>
           </div>
         </ul>
-        <button type="button" class="header-menu-auth__logout" :id="idMapper.header.button.logout" @click="logout">
+        <button type="button" class="header-menu-auth__logout" :id="$idMapper.header.button.logout" @click="logout">
           {{ $t('header.button.logout') }}
         </button>
       </div>
@@ -64,8 +66,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import idMapper from '@/idMapper';
-import numeral from 'numeral';
 export default {
   name: 'HeaderMenuAuth',
   computed: {
@@ -73,8 +73,6 @@ export default {
   },
   data() {
     return {
-      numeral: numeral,
-      idMapper: idMapper,
       isShowMenu: false,
       routeList: [
         {

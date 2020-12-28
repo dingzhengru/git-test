@@ -24,6 +24,15 @@ import { apiKeepUserOnline } from '@/api/user';
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
 
+//* set Vue.prototype
+import dayjs from 'dayjs';
+import numeral from 'numeral';
+import idMapper from '@/idMapper';
+
+Vue.prototype.$dayjs = dayjs;
+Vue.prototype.$numeral = numeral;
+Vue.prototype.$idMapper = idMapper;
+
 //* 取得是否登入 (Cookie)
 const isLoggedIn = cookieGetIsLoggedIn();
 store.commit('user/setIsLoggedIn', isLoggedIn);

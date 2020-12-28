@@ -8,7 +8,7 @@
               {{ $t(`report.unsettleBet.table.${key}`) }}
             </th>
             <td class="td-2nd">
-              {{ typeof value == 'number' && key != 'betCount' ? numeral(value).format('0,0.00') : value }}
+              {{ typeof value == 'number' && key != 'betCount' ? $numeral(value).format('0,0.00') : value }}
             </td>
           </tr>
         </tbody>
@@ -19,7 +19,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import numeral from 'numeral';
 import { apiGetBetHistoryUnsettle } from '@/api/report';
 
 export default {
@@ -29,7 +28,6 @@ export default {
   },
   data() {
     return {
-      numeral: numeral,
       list: [],
     };
   },

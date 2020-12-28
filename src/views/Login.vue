@@ -13,7 +13,7 @@
         >
           <input
             class="login__form__field__input"
-            :id="idMapper.login.input.username"
+            :id="$idMapper.login.input.username"
             type="text"
             :placeholder="$t('login.placeholder.username')"
             v-model="user.UserName"
@@ -27,7 +27,7 @@
         >
           <input
             class="login__form__field__input"
-            :id="idMapper.login.input.password"
+            :id="$idMapper.login.input.password"
             type="password"
             :placeholder="$t('login.placeholder.password')"
             v-model="user.Password"
@@ -41,7 +41,7 @@
         >
           <input
             class="login__form__field__input login__form__field__input--code"
-            :id="idMapper.login.input.captcha"
+            :id="$idMapper.login.input.captcha"
             type="tel"
             :placeholder="$t('login.placeholder.captcha')"
             autocomplete="off"
@@ -49,7 +49,7 @@
           />
           <img
             class="login__form__field__image--code"
-            :id="idMapper.login.image.captcha"
+            :id="$idMapper.login.image.captcha"
             :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
             :width="captchaImage.Width"
             :height="captchaImage.Height"
@@ -66,14 +66,14 @@
         <div class="login__form__link-div">
           <router-link
             class="login__form__link login__form__link--regist"
-            :id="idMapper.login.link.register"
+            :id="$idMapper.login.link.register"
             :to="{ name: 'Register' }"
           >
             {{ $t('login.link.register') }}
           </router-link>
           <router-link
             class="login__form__link login__form__link--forget"
-            :id="idMapper.login.link.forgetPassword"
+            :id="$idMapper.login.link.forgetPassword"
             :to="{ name: 'ForgetPassword' }"
           >
             {{ $t('login.link.forgetPassword') }}
@@ -111,7 +111,7 @@
 
         <button
           class="ui-btn ui-btn--long login__form__submit"
-          :id="idMapper.login.button.submit"
+          :id="$idMapper.login.button.submit"
           type="submit"
           :disabled="invalid"
         >

@@ -78,7 +78,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'langList', 'siteIsSpare', 'siteEnableSpareDomain']),
+    ...mapGetters(['langList', 'siteFullCss', 'siteIsSpare', 'siteEnableSpareDomain']),
   },
   async mounted() {
     //* 根據版型引入 css

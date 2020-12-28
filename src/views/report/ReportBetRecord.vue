@@ -28,7 +28,7 @@
                 'ui-txt-negative': item.Lst_MemberTTLNetWin < 0,
               }"
             >
-              {{ numeral(item.Lst_MemberTTLNetWin).format('0,0.00') }}
+              {{ $numeral(item.Lst_MemberTTLNetWin).format('0,0.00') }}
               <router-link
                 class="ui-lnk-detail"
                 :to="{ name: 'ReportBetRecordDetail', params: { date: item.Lst_ReportDate } }"
@@ -51,7 +51,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import numeral from 'numeral';
 import { apiGetBetHistoryDay, apiGetBetHistoryWeek } from '@/api/report';
 export default {
   name: 'ReportBetRecord',
@@ -63,7 +62,6 @@ export default {
   },
   data() {
     return {
-      numeral: numeral,
       dateRangeList: ['Today', 'ThisWeek', 'LastWeek'],
       weekList: [],
       totalObject: {},

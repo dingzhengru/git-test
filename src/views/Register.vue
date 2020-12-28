@@ -16,7 +16,7 @@
           <span class="register__form__field__star" v-if="field.isRequired">*</span>
           <input
             class="register__form__field__input"
-            :id="idMapper.register.input[field.name]"
+            :id="$idMapper.register.input[field.name]"
             :type="field.type"
             :placeholder="$t(`register.${field.name}.placeholder`)"
             :disabled="!field.isModifiable"
@@ -30,7 +30,7 @@
           <select
             class="register__form__field__select"
             :class="{ 'register__form__field__select--default': field.value == '' }"
-            :id="idMapper.register.input[field.name]"
+            :id="$idMapper.register.input[field.name]"
             v-model="field.value"
             v-else
           >
@@ -40,7 +40,7 @@
           <img
             v-if="field.name == 'CaptchaValue' && captchaImage.ImgBase64 != ''"
             class="register__form__field__image--code"
-            :id="idMapper.register.image.captcha"
+            :id="$idMapper.register.image.captcha"
             :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
             :width="captchaImage.Width"
             :height="captchaImage.Height"
@@ -93,8 +93,6 @@ import { apiGetRegisterFieldList, apiCheckRegisterFieldExist } from '@/api/regis
 import { registerFieldList } from '@/utils/register';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
-import idMapper from '@/idMapper';
-
 export default {
   name: 'Register',
   components: {
@@ -102,7 +100,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'lang', 'userToken', 'userPublicKey']),
+    ...mapGetters(['lang', 'siteFullCss', 'userToken', 'userPublicKey']),
     fullName() {
       let fullName = '';
       const firstName = this.fieldList.find(item => item.name == 'Add_FirstName').value;
@@ -119,7 +117,6 @@ export default {
   },
   data() {
     return {
-      idMapper: idMapper,
       fieldList: [...registerFieldList],
       noticeList: ['register.notice.required', 'register.notice.recommend', 'register.notice.contact'],
       bankList: [],

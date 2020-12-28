@@ -5,7 +5,7 @@
       <li class="record-list__ul__li" v-for="(record, index) in recordList" :key="index">
         <router-link
           class="record-list__ul__li__link"
-          :id="idMapper.transaction.record[record]"
+          :id="$idMapper.transaction.record[record]"
           :to="{ name: 'TransactionRecordContent', params: { name: record } }"
         >
           {{ $t(`transaction.record.${record}`) }}
@@ -17,7 +17,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import idMapper from '@/idMapper';
 
 export default {
   name: 'TransactionRecordHome',
@@ -26,7 +25,6 @@ export default {
   },
   data() {
     return {
-      idMapper: idMapper,
       recordList: ['deposit', 'withdrawal', 'transfer', 'bonus', 'lottery', 'withdrawalRestriction', 'adjustment'],
     };
   },

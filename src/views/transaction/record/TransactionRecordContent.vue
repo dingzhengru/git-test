@@ -28,6 +28,7 @@
             class="record-content__search-form__field__input--date-from ui-ipt"
             type="date"
             v-model="search.dateFrom"
+            :max="$dayjs().format('YYYY-MM-DD')"
             @change="searchDateRange = ''"
           />
         </div>
@@ -37,7 +38,7 @@
             class="record-content__search-form__field__input--date-to ui-ipt"
             type="date"
             v-model="search.dateTo"
-            :max="dayjs().format('YYYY-MM-DD')"
+            :max="$dayjs().format('YYYY-MM-DD')"
             @change="searchDateRange = ''"
           />
         </div>
@@ -65,7 +66,7 @@
                     }"
                   >
                     <template v-if="typeof value == 'number'">
-                      {{ numeral(value).format('0,0.00') }}
+                      {{ $numeral(value).format('0,0.00') }}
                     </template>
 
                     <template v-else-if="key == 'receipt' && item.receiptImageUrl">
@@ -125,8 +126,6 @@ import {
   apiGetRecordAdjustment,
 } from '@/api/transaction-record';
 
-import numeral from 'numeral';
-import dayjs from 'dayjs';
 export default {
   name: 'TransactionRecordContent',
   components: {
@@ -170,8 +169,6 @@ export default {
   },
   data() {
     return {
-      numeral: numeral,
-      dayjs: dayjs,
       list: [],
       detailKey: '', //* 放 detail link 的欄位名稱
       isPageActive: false, //* 是否有分頁
@@ -358,8 +355,8 @@ export default {
       }
     },
     changeSearchDateRange() {
-      this.search.dateTo = dayjs().format('YYYY-MM-DD');
-      this.search.dateFrom = dayjs()
+      this.search.dateTo = this.$dayjs().format('YYYY-MM-DD');
+      this.search.dateFrom = this.$dayjs()
         .subtract(this.searchDateRange, 'day')
         .format('YYYY-MM-DD');
     },

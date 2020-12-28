@@ -7,7 +7,7 @@
             <span>{{ $t('transaction.transfer.field.from') }} </span>
             <select
               class="transfer__wallet__select ui-ddl"
-              :id="idMapper.transaction.transfer.field.from"
+              :id="$idMapper.transaction.transfer.field.from"
               v-model="from"
             >
               <!-- <option :value="{}" selected>{{ $t('transaction.transfer.placeholder.from') }}</option> -->
@@ -30,7 +30,7 @@
 
           <ValidationProvider :rules="{ required: true, min_value: 0 }">
             <span> {{ $t('transaction.transfer.field.to') }} </span>
-            <select class="transfer__wallet__select ui-ddl" :id="idMapper.transaction.transfer.field.to" v-model="to">
+            <select class="transfer__wallet__select ui-ddl" :id="$idMapper.transaction.transfer.field.to" v-model="to">
               <option :value="-1" selected v-if="from == 9999">{{ $t('transaction.transfer.placeholder.to') }} </option>
               <template v-for="product in toList">
                 <option :value="product.Product_id" :key="product.Product_id">
@@ -91,7 +91,7 @@
           <button
             type="submit"
             class="transfer__button--transfer ui-btn ui-btn--long"
-            :id="idMapper.transaction.transfer.button.transfer"
+            :id="$idMapper.transaction.transfer.button.transfer"
             :disabled="invalid"
           >
             {{ $t('transaction.transfer.button.transfer') }}
@@ -121,7 +121,7 @@
         </tr>
         <tr class="transfer__account-table__tr" v-for="game in userGamePointList" :key="game.Product_id">
           <td class="transfer__account-table__th-1st">{{ game.Product_Name }}</td>
-          <td class="transfer__account-table__td-2nd">{{ numeral(game.Point).format('0,0.00') }}</td>
+          <td class="transfer__account-table__td-2nd">{{ $numeral(game.Point).format('0,0.00') }}</td>
         </tr>
       </tbody>
     </table>
@@ -134,8 +134,6 @@ import { mapGetters } from 'vuex';
 import { apiGetTransferInfo, apiTransferPoint, apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
 
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import numeral from 'numeral';
-import idMapper from '@/idMapper';
 
 import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/antd.css';
@@ -168,8 +166,6 @@ export default {
   },
   data() {
     return {
-      idMapper: idMapper,
-      numeral: numeral,
       productList: [],
       productDetailList: [],
       from: 9999,

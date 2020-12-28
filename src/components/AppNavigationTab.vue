@@ -8,7 +8,7 @@
           active: item.link == $route.name || (item.otherActivePath && item.otherActivePath.includes($route.name)),
         },
       ]"
-      :id="item.id ? getObjectValueByDotString(idMapper, item.id) : ''"
+      :id="item.id ? getObjectValueByDotString($idMapper, item.id) : ''"
       v-for="item in list"
       :key="item.name"
     >
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import idMapper from '@/idMapper';
 import { getObjectValueByDotString } from '@/utils/object';
 
 export default {
@@ -33,7 +32,6 @@ export default {
   },
   data() {
     return {
-      idMapper: idMapper,
       getObjectValueByDotString: getObjectValueByDotString,
     };
   },

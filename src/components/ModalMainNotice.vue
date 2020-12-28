@@ -2,7 +2,7 @@
   <AppModal>
     <transition name="fade">
       <div
-        :id="idMapper.home.MainNotice"
+        :id="$idMapper.home.MainNotice"
         class="main-notice"
         :style="{ 'background-image': `url(${siteMainPageNoticeUrl})` }"
       ></div>
@@ -12,7 +12,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import idMapper from '@/idMapper';
 
 export default {
   name: 'ModalMessage',
@@ -27,11 +26,6 @@ export default {
   },
   computed: {
     ...mapGetters(['siteMainPageNoticeUrl']),
-  },
-  data() {
-    return {
-      idMapper: idMapper,
-    };
   },
 };
 </script>

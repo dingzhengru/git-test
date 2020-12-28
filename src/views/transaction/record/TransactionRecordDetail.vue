@@ -21,7 +21,7 @@
                       }"
                     >
                       <template v-if="typeof value == 'number'">
-                        {{ numeral(value).format('0,0.00') }}
+                        {{ $numeral(value).format('0,0.00') }}
                       </template>
 
                       <template v-else>
@@ -50,7 +50,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import numeral from 'numeral';
 
 import {
   apiGetRecordDepositDetail,
@@ -86,7 +85,6 @@ export default {
   },
   data() {
     return {
-      numeral: numeral,
       list: [],
       title: '',
       notShowKeyList: ['id'],

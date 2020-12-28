@@ -16,7 +16,7 @@
               class="report-bet-record__total-table__td-2nd td-2nd"
               :class="{ 'ui-txt-positive': isPositive(key, value), 'ui-txt-negative': isNegative(key, value) }"
             >
-              {{ key != 'Lst_BetCount' ? numeral(value).format('0,0.00') : value }}
+              {{ key != 'Lst_BetCount' ? $numeral(value).format('0,0.00') : value }}
             </td>
           </tr>
         </tbody>
@@ -37,7 +37,7 @@
                   class="td-2nd"
                   :class="{ 'ui-txt-positive': isPositive(key, value), 'ui-txt-negative': isNegative(key, value) }"
                 >
-                  {{ typeof value == 'number' && key != 'betCount' ? numeral(value).format('0,0.00') : value }}
+                  {{ typeof value == 'number' && key != 'betCount' ? $numeral(value).format('0,0.00') : value }}
                 </td>
               </template>
             </tr>
@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import numeral from 'numeral';
 export default {
   name: 'ReportBetRecordDetailTable',
   props: {
@@ -73,11 +72,6 @@ export default {
     isNegative: () => (key, value) => {
       return key == 'totalWinLose' && value < 0;
     },
-  },
-  data() {
-    return {
-      numeral: numeral,
-    };
   },
 };
 </script>

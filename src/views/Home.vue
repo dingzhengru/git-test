@@ -81,7 +81,6 @@ import { apiGetGameRedirectUrl } from '@/api/game';
 import { apiGetMessageList } from '@/api/message';
 import { apiGetLotteryCount } from '@/api/lottery';
 import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
-import idMapper from '@/idMapper';
 
 export default {
   name: 'Home',
@@ -108,7 +107,6 @@ export default {
   },
   data() {
     return {
-      idMapper: idMapper,
       isShowMainNotice: false,
       isShowModalMessage: true,
       messageList: [],
@@ -151,34 +149,6 @@ export default {
       const result = await apiGetProductList();
       if (result.Code == 200) {
         this.productList = result.RetObj;
-
-        /* 設置 ID */
-        this.productList = this.productList.map(item => {
-          if (item.sGameID == '1080') {
-            item.id = idMapper.home.product.saba;
-          } else if (item.sGameID == '11902400-02' || item.sGameID == '1270') {
-            item.id = idMapper.home.product.bbin;
-          } else if (item.sGameID == '11902100-02' || item.sGameID == '1240') {
-            item.id = idMapper.home.product.ds;
-          } else if (item.sGameID == '11901030-01' || item.sGameID == '1230') {
-            item.id = idMapper.home.product.liveGame;
-          } else if (item.sGameID == '11902300-02' || item.sGameID == '1260') {
-            item.id = idMapper.home.product.jdb;
-          } else if (item.sGameID == '11902200-02' || item.sGameID == '1250') {
-            item.id = idMapper.home.product.cq9;
-          } else if (item.sGameID == '11901031-02') {
-            item.id = idMapper.home.product.rgSlot;
-          } else if (item.sGameID == '1190-04' || item.sGameID == '1290') {
-            item.id = idMapper.home.product.rgLottery;
-          } else if (item.sGameID == '11902602-02' || item.sGameID == '1280') {
-            item.id = idMapper.home.product.mgplus;
-          } else if (item.sGameID == '12203100-03' || item.sGameID == '1220') {
-            item.id = idMapper.home.product.sbo;
-          } else if (item.sGameID == '1300') {
-            item.id = idMapper.home.product.png;
-          }
-          return item;
-        });
       }
     },
     async getLotteryCountList() {

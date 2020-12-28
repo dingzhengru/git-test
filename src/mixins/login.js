@@ -1,11 +1,9 @@
 import { apiGetCaptcha } from '@/api/captcha';
-import idMapper from '@/idMapper';
 
 export default {
   name: 'MixinLogin',
   data() {
     return {
-      idMapper: idMapper,
       error: '',
       user: {
         UserName: '',

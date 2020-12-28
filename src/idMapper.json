@@ -1,143 +1,150 @@
 {
+  "footer": {
+    "contact": "service",
+    "login": "login",
+    "member": "member",
+    "promotion": "event",
+    "transaction": "deposit"
+  },
   "header": {
-    "logo": "headerLogo",
+    "button": {
+      "logout": "logout"
+    },
     "en-us": "enUs",
-    "zh-cn": "zhCn",
-    "zh-tw": "zhTw",
-    "th-th": "thTh",
-    "my-mm": "myMm",
     "link": {
       "home": "mainPage",
       "lang": "langOpen",
       "menu": "menuOpen"
     },
+    "logo": "headerLogo",
     "menu": {
-      "profile": "changeAdvance",
-      "transaction": "deposit",
-      "report": "betHistory",
+      "about": "gameIntro",
       "notification": "news",
+      "profile": "changeAdvance",
       "promotion": "promotion",
-      "about": "gameIntro"
+      "report": "betHistory",
+      "transaction": "deposit"
     },
-    "button": {
-      "logout": "logout"
-    }
-  },
-  "footer": {
-    "member": "member",
-    "login": "login",
-    "transaction": "deposit",
-    "promotion": "event",
-    "contact": "service"
+    "my-mm": "myMm",
+    "th-th": "thTh",
+    "zh-cn": "zhCn",
+    "zh-tw": "zhTw"
   },
   "home": {
     "noneLoginPopup": "noneLoginPopup",
     "product": {
-      "saba": "SABA",
-      "bbin": "BBIN",
-      "ds": "DS",
-      "liveGame": "liveGame",
-      "jdb": "JDB",
-      "cq9": "CQ9",
-      "rgSlot": "RGSlot",
-      "rgLottery": "RGLottery",
-      "mgplus": "MGPlus",
-      "sbo": "SBO",
-      "png": "PNG"
+      "1220-3100": "SBO",
+      "1230-1101": "liveGame",
+      "1240-2101": "DS",
+      "1250-2201": "CQ9",
+      "1260-2301": "JDB",
+      "1270-2401": "BBIN",
+      "1280-2601": "MGPlus",
+      "1290-5101": "RGLottery",
+      "1300-2501": "PNG",
+      "1310-2110": "AE",
+      "1320-3101": "SBO_RG",
+      "1330-3200": "SABA",
+      "1340-2120": "Gamatron",
+      "1350-2130": "Rich88",
+      "1360-1110": "GClub+",
+      "1370-2140": "Booongo",
+      "1380-2150": "PG",
+      "1390-2160": "Jili"
     }
   },
   "login": {
-    "input": {
-      "username": "UserName",
-      "password": "Password",
-      "captcha": "CaptchaValue"
+    "button": {
+      "submit": "loginbtn"
     },
     "image": {
       "captcha": "MvcCaptcha"
     },
-    "link": {
-      "register": "register",
-      "forgetPassword": "forgetPwd"
+    "input": {
+      "captcha": "CaptchaValue",
+      "password": "Password",
+      "username": "UserName"
     },
-    "button": {
-      "submit": "loginbtn"
+    "link": {
+      "forgetPassword": "forgetPwd",
+      "register": "register"
     }
   },
   "register": {
-    "input": {
-      "Add_RelatedAccount": "Add_RelatedAccount",
-      "Add_Account": "Add_Account",
-      "Add_Password": "Add_Password",
-      "Add_PasswordCheck": "Add_PasswordCheck",
-      "Add_Mobile": "Add_Mobile",
-      "Add_Email": "Add_Email",
-      "Add_Line": "Add_Line",
-      "Add_FirstName": "Add_FirstName",
-      "Add_LastName": "Add_LastName",
-      "Add_RealName": "Add_RealName",
-      "Add_NickName": "Add_NickName",
-      "Add_BankId1": "Add_BankId1",
-      "Add_BankBranchName1": "Add_BankBranchName1",
-      "Add_BankAccount1": "Add_BankAccount1",
-      "Add_Withdrawals_Password": "Add_Withdrawals_Password",
-      "Add_Withdrawals_CheckPassword": "Add_Withdrawals_CheckPassword",
-      "CaptchaValue": "Add_CaptchaValue"
+    "button": {
+      "reset": "btnReset",
+      "submit": "btnSubmit"
     },
     "image": {
       "captcha": "MvcCaptcha"
     },
-    "button": {
-      "submit": "btnSubmit",
-      "reset": "btnReset"
+    "input": {
+      "Add_Account": "Add_Account",
+      "Add_BankAccount1": "Add_BankAccount1",
+      "Add_BankBranchName1": "Add_BankBranchName1",
+      "Add_BankId1": "Add_BankId1",
+      "Add_Email": "Add_Email",
+      "Add_FirstName": "Add_FirstName",
+      "Add_LastName": "Add_LastName",
+      "Add_Line": "Add_Line",
+      "Add_Mobile": "Add_Mobile",
+      "Add_NickName": "Add_NickName",
+      "Add_Password": "Add_Password",
+      "Add_PasswordCheck": "Add_PasswordCheck",
+      "Add_RealName": "Add_RealName",
+      "Add_RelatedAccount": "Add_RelatedAccount",
+      "Add_Withdrawals_CheckPassword": "Add_Withdrawals_CheckPassword",
+      "Add_Withdrawals_Password": "Add_Withdrawals_Password",
+      "CaptchaValue": "Add_CaptchaValue"
     }
   },
   "transaction": {
+    "deposit": {
+      "button": {
+        "submit": "dipositsubmit_Method02",
+        "upload": "upfile"
+      },
+      "field": {
+        "amount": "Add_Pay_Money_Method02",
+        "depositBank": "select_Method2_PayBank",
+        "method": "Add_SDM_Key_Method02",
+        "promotion": "Add_Activity_Method02",
+        "remark": "Add_Pay_Memo_Method02",
+        "transferBank": "select_Method2_WebATMURL"
+      }
+    },
     "nav": {
       "deposit": "deposit",
-      "withdrawal": "withdrawals",
+      "record": "recordList",
       "transfer": "transferPoint",
-      "record": "recordList"
+      "withdrawal": "withdrawals"
     },
-    "deposit": {
-      "field": {
-        "depositBank": "select_Method2_PayBank",
-        "transferBank": "select_Method2_WebATMURL",
-        "method": "Add_SDM_Key_Method02",
-        "amount": "Add_Pay_Money_Method02",
-        "remark": "Add_Pay_Memo_Method02",
-        "promotion": "Add_Activity_Method02"
-      },
-      "button": {
-        "upload": "upfile",
-        "submit": "dipositsubmit_Method02"
-      }
-    },
-    "withdrawal": {
-      "field": {
-        "amount": "Add_WithdrawalsPoint",
-        "password": "Add_Withdrawals_Password"
-      },
-      "button": {
-        "submit": "Withdrawals"
-      }
+    "record": {
+      "adjustment": "adjustmentRecord",
+      "bonus": "activityTransactionRecord",
+      "deposit": "depositRecord",
+      "lottery": "lotteryRecord",
+      "transfer": "transferPointRecord",
+      "withdrawal": "withdrawalsRecord",
+      "withdrawalRestriction": "activityWashcodeList"
     },
     "transfer": {
+      "button": {
+        "transfer": "pointtransfersubmit"
+      },
       "field": {
         "from": "Add_Source",
         "to": "Add_Destination"
-      },
-      "button": {
-        "transfer": "pointtransfersubmit"
       }
     },
-    "record": {
-      "deposit": "depositRecord",
-      "withdrawal": "withdrawalsRecord",
-      "transfer": "transferPointRecord",
-      "bonus": "activityTransactionRecord",
-      "lottery": "lotteryRecord",
-      "withdrawalRestriction": "activityWashcodeList",
-      "adjustment": "adjustmentRecord"
+    "withdrawal": {
+      "button": {
+        "submit": "Withdrawals"
+      },
+      "field": {
+        "amount": "Add_WithdrawalsPoint",
+        "password": "Add_Withdrawals_Password"
+      }
     }
   }
 }
