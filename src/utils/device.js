@@ -21,6 +21,7 @@ export function isStandaloneMode() {
   );
 }
 /* eslint-disable */
+export const newWindowLoadingTitle = 'Loading...';
 export const newWindowLadingHTML = `
 <h1 style="font-size: 10vh;">Loading</h1>
 
