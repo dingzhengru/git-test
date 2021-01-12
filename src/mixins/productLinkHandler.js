@@ -1,5 +1,5 @@
 import { apiGetGameRedirectUrl } from '@/api/game';
-import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
+import { isIos, openNewWindowURL, openNewWindowHTML, newWindowLadingHTML } from '@/utils/device';
 
 export default {
   name: 'MixinGameLinkHandler',
@@ -33,6 +33,7 @@ export default {
       let newWindow = null;
       if (isIos()) {
         newWindow = window.open();
+        newWindow.document.write(newWindowLadingHTML);
       }
 
       const result = await apiGetGameRedirectUrl(requestDataGameRedirectUrl);
