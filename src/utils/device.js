@@ -20,12 +20,14 @@ export function isStandaloneMode() {
     matchMedia('(display-mode: minimal-ui)').matches
   );
 }
-/* eslint-disable */
-export const newWindowLoadingTitle = 'Loading...';
+
 export const newWindowLadingHTML = `
 <h1 style="font-size: 10vh;">Loading</h1>
 
 <script>
+
+document.title = 'Loading...';
+
 setInterval(() => {
   const text = document.querySelector('h1').innerText;
   const dotCount = text.split('.').length - 1;
@@ -38,7 +40,6 @@ setInterval(() => {
 }, 300);
 </script>
 `;
-/* eslint-enable */
 
 export function openNewWindowURL(newWindow, url) {
   if (newWindow == null || !newWindow) {

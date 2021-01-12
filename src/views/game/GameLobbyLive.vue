@@ -56,7 +56,7 @@ import {
   apiGetLiveGameLobbyCategory,
   apiGetLiveGameLobbyGameList,
 } from '@/api/game';
-import { isIos, openNewWindowURL, newWindowLoadingTitle, newWindowLadingHTML } from '@/utils/device';
+import { isIos, openNewWindowURL, newWindowLadingHTML } from '@/utils/device';
 
 export default {
   name: 'GameList',
@@ -141,7 +141,6 @@ export default {
       if (isIos()) {
         newWindow = window.open();
         newWindow.document.write(newWindowLadingHTML);
-        newWindow.document.title = newWindowLoadingTitle;
       }
 
       const result = await apiGetGameUrl(requestData);
