@@ -58,7 +58,7 @@ import {
   apiGetGameLobbyGameList,
   apiGetGameUrl,
 } from '@/api/game';
-import { isIos, openNewWindowURL, newWindowLadingHTML } from '@/utils/device';
+import { isIos, openNewWindowURL } from '@/utils/device';
 
 export default {
   name: 'GameList',
@@ -158,8 +158,8 @@ export default {
       //* 因 IOS 預設會擋非同步後開啟的視窗，所以需於送出請求前打開
       let newWindow = null;
       if (isIos()) {
-        newWindow = window.open();
-        newWindow.document.write(newWindowLadingHTML);
+        newWindow = window.open('/loading.html');
+        // newWindow.document.write(newWindowLadingHTML);
       }
 
       const requestData = { Tag: this.productTag, Gameid: game.Lst_GameID, Freeplay: freePlay };

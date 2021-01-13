@@ -21,26 +21,6 @@ export function isStandaloneMode() {
   );
 }
 
-export const newWindowLadingHTML = `
-<h1 style="font-size: 10vh;">Loading</h1>
-
-<script>
-
-document.title = 'Loading...';
-
-setInterval(() => {
-  const text = document.querySelector('h1').innerText;
-  const dotCount = text.split('.').length - 1;
-
-  if(dotCount >= 3) {
-    document.querySelector('h1').innerText = text.replaceAll('.', '');
-  } else {
-    document.querySelector('h1').innerText = text + '.';
-  }
-}, 300);
-</script>
-`;
-
 export function openNewWindowURL(newWindow, url) {
   if (newWindow == null || !newWindow) {
     newWindow = window.open(url);
@@ -60,3 +40,23 @@ export function openNewWindowHTML(newWindow, htmlContent, title = '') {
     newWindow.document.write(htmlContent);
   }
 }
+
+// export const newWindowLadingHTML = `
+// <h1 style="font-size: 10vh;">Loading</h1>
+
+// <script>
+
+// document.title = 'Loading...';
+
+// setInterval(() => {
+//   const text = document.querySelector('h1').innerText;
+//   const dotCount = text.split('.').length - 1;
+
+//   if(dotCount >= 3) {
+//     document.querySelector('h1').innerText = text.replaceAll('.', '');
+//   } else {
+//     document.querySelector('h1').innerText = text + '.';
+//   }
+// }, 300);
+// </script>
+// `;
