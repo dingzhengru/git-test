@@ -25,7 +25,13 @@ const actions = {
 
     if (result.Code == 200) {
       commit('setInfo', result.RetObj);
-      dispatch('checkStyleExist');
+      const isStyleExist = await dispatch('checkStyleExist');
+      if (!isStyleExist) {
+        commit('setDefaultStyle');
+        console.log(
+          `Style not found (${state.info.LS_CSS_Class}/${state.info.LS_CSS_Type}) => Set default style (${SITE_DEFAULT_STYLE_CLASS}/${SITE_DEFAULT_STYLE_TYPE})`
+        );
+      }
     }
 
     return result;
@@ -39,14 +45,12 @@ const actions = {
 
     return result;
   },
-  checkStyleExist({ state, commit }) {
+  checkStyleExist({ state }) {
     try {
       require(`@/styles/${state.info.LS_CSS_Class}/${state.info.LS_CSS_Type}/_abstracts.scss`);
+      return true;
     } catch (e) {
-      console.log(
-        `Style not found (${state.info.LS_CSS_Class}/${state.info.LS_CSS_Type}) => Set default style (${SITE_DEFAULT_STYLE_CLASS}/${SITE_DEFAULT_STYLE_TYPE})`
-      );
-      commit('setDefaultStyle');
+      return false;
     }
   },
 };
