@@ -1,4 +1,5 @@
 import { apiGetSiteInfo, apiGetSiteSeoInfo } from '@/api/site';
+import { SITE_DEFAULT_STYLE_CLASS, SITE_DEFAULT_STYLE_TYPE } from '@/settings';
 
 const state = {
   info: {},
@@ -12,14 +13,19 @@ const mutations = {
   setSeo(state, seo) {
     state.seo = seo;
   },
+  setDefaultStyle(state) {
+    state.info.LS_CSS_Class = SITE_DEFAULT_STYLE_CLASS;
+    state.info.LS_CSS_Type = SITE_DEFAULT_STYLE_TYPE;
+  },
 };
 
 const actions = {
-  async getInfo({ commit }, requestData) {
+  async getInfo({ commit, dispatch }, requestData) {
     const result = await apiGetSiteInfo(requestData);
 
     if (result.Code == 200) {
       commit('setInfo', result.RetObj);
+      dispatch('checkStyleExist');
     }
 
     return result;
@@ -32,6 +38,16 @@ const actions = {
     }
 
     return result;
+  },
+  checkStyleExist({ state, commit }) {
+    try {
+      require(`@/styles/${state.info.LS_CSS_Class}/${state.info.LS_CSS_Type}/_abstracts.scss`);
+    } catch (e) {
+      console.log(
+        `Style not found (${state.info.LS_CSS_Class}/${state.info.LS_CSS_Type}) => Set default style (${SITE_DEFAULT_STYLE_CLASS}/${SITE_DEFAULT_STYLE_TYPE})`
+      );
+      commit('setDefaultStyle');
+    }
   },
 };
 

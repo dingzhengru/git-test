@@ -1,6 +1,9 @@
 //* Site
 export const SITE_INFO_LOAD_FAIL_MESSAGE = 'Load failed. Please refresh the page and retry.';
 
+export const SITE_DEFAULT_STYLE_CLASS = 'Y';
+export const SITE_DEFAULT_STYLE_TYPE = '01';
+
 //* API
 //* API URL
 // export const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
