@@ -1,5 +1,5 @@
 import { apiGetGameRedirectUrl } from '@/api/game';
-import { isIos, openNewWindowURL, openNewWindowHTML } from '@/utils/device';
+import { openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 
 export default {
   name: 'MixinGameLinkHandler',
@@ -29,11 +29,8 @@ export default {
         proxypid: product.Lst_Proxy_Product_Key,
       };
 
-      //* 因 IOS 預設會擋非同步後開啟的視窗，所以需於送出請求前打開
-      let newWindow = null;
-      if (isIos()) {
-        newWindow = window.open('/loading.html');
-      }
+      //* 因瀏覽器預設會擋非同步後開啟的視窗，所以需於送出請求前打開
+      const newWindow = window.open('/loading.html');
 
       const result = await apiGetGameRedirectUrl(requestDataGameRedirectUrl);
 
@@ -46,9 +43,7 @@ export default {
           openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, product.Lst_Name);
         }
       } else {
-        if (isIos()) {
-          newWindow.close();
-        }
+        newWindow.close();
         window.setTimeout(() => window.alert(result.ErrMsg), 500);
       }
     },

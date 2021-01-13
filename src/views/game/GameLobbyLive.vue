@@ -56,7 +56,7 @@ import {
   apiGetLiveGameLobbyCategory,
   apiGetLiveGameLobbyGameList,
 } from '@/api/game';
-import { isIos, openNewWindowURL } from '@/utils/device';
+import { openNewWindowURL } from '@/utils/device';
 
 export default {
   name: 'GameList',
@@ -137,19 +137,14 @@ export default {
         LibOrder: order,
       };
 
-      let newWindow = null;
-      if (isIos()) {
-        newWindow = window.open('/loading.html');
-      }
+      const newWindow = window.open('/loading.html');
 
       const result = await apiGetGameUrl(requestData);
 
       if (result.Code == 200) {
         openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
       } else {
-        if (newWindow != null) {
-          newWindow.close();
-        }
+        newWindow.close();
         window.setTimeout(() => window.alert(result.ErrMsg), 500);
       }
     },
