@@ -351,6 +351,10 @@
     },
     "deposit": {
       "title": "Fill in Cash Voucher",
+      "nav": {
+        "base": "人工存款",
+        "thirdParty": "自動上分"
+      },
       "field": {
         "depositBank": "Select Deposit Bank",
         "bankDepositAccount": "Account name of deposit",
@@ -364,7 +368,9 @@
         "amount": "Deposit Amount",
         "receipt": "Remittance Receipt",
         "remark": "Remark",
-        "promotion": "Favorable Project on Payment"
+        "promotion": "Favorable Project on Payment",
+        "payMethod": "支付方式",
+        "payPlatform": "支付平台"
       },
       "placeholder": {
         "depositBank": "Select Deposit Bank",

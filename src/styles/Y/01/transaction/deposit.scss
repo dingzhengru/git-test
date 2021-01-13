@@ -1,29 +1,54 @@
 @import '../abstracts';
 
-.deposit__field__hint {
+//* DepositModeNav
+.deposit-mode-nav {
+  button {
+    color: black;
+    background-image: url(~@/assets/common/ui/btn--yellow-light.jpg);
+  }
+
+  button.active {
+    color: white;
+    background-image: url(~@/assets/common/ui/btn--red.jpg);
+  }
+}
+
+//* DepositFormBase
+.deposit-base__field__hint {
   color: #707070;
 }
-.deposit__field__hint--ps {
+.deposit-base__field__hint--ps {
   color: #f00;
 }
 
-.deposit-dialog {
-  border: 1px solid #d6c388;
-  background-color: black;
-}
-
-/*
-  ! 圖片路徑
-*/
-
-.deposit__field__receipt-upload__label {
+.deposit-base__field__receipt-upload__label {
   background-image: url(~@/assets/common/ui/btn--red.jpg);
 }
 
-.deposit__button-div--submit {
+.deposit-base__button-div--submit {
   background-image: url(~@/assets/common/ui/btn--red.jpg);
 }
 
-.deposit__button-div--cancel {
+.deposit-base__button-div--cancel {
+  background-image: url(~@/assets/common/ui/btn--black.jpg);
+}
+
+//* DepositFormBase
+.deposit-third-party__field__hint {
+  color: #707070;
+}
+.deposit-third-party__field__hint--ps {
+  color: #f00;
+}
+
+.deposit-third-party__field__receipt-upload__label {
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
+}
+
+.deposit-third-party__button-div--submit {
+  background-image: url(~@/assets/common/ui/btn--red.jpg);
+}
+
+.deposit-third-party__button-div--cancel {
   background-image: url(~@/assets/common/ui/btn--black.jpg);
 }

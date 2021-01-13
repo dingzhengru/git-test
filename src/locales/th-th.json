@@ -348,6 +348,10 @@
     },
     "deposit": {
       "title": "กรุณากรอกข้อมูลบิลฝาก",
+      "nav": {
+        "base": "人工存款",
+        "thirdParty": "自動上分"
+      },
       "field": {
         "depositBank": "เลือกธนาคารที่ต้องการโอนเข้า",
         "bankDepositAccount": "โอนเข้าชื่อบัญชีของ",
@@ -361,7 +365,9 @@
         "amount": "ยอดเงินที่ฝาก",
         "receipt": "ใบเสร็จรับเงิน",
         "remark": "หมายเหตุ",
-        "promotion": "เลือกโปรโมชั่น"
+        "promotion": "เลือกโปรโมชั่น",
+        "payMethod": "支付方式",
+        "payPlatform": "支付平台"
       },
       "placeholder": {
         "depositBank": "เลือกธนาคารที่ต้องการโอนเข้า",

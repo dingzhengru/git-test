@@ -349,10 +349,10 @@ a {
   color: #959595;
   font-size: 2.307em;
 }
-.theme-input-box > .ui-ddl {
+.theme-input-box .ui-ddl {
   width: 100%;
 }
-.theme-input-box > .ui-ipt {
+.theme-input-box .ui-ipt {
   width: 100%;
   padding: 0 1.5%;
 }
