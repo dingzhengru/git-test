@@ -9,7 +9,10 @@ const getters = {
   pwaInstallStatus: state => state.pwa.status,
   pwaPrompt: state => state.pwa.prompt,
 
-  //* Site
+  //* Site.setting
+  siteSetting: state => state.site.setting,
+
+  //* Site.info
   siteID: state => state.site.info.LS_SiteID,
   siteTitle: state => state.site.info.LS_SiteTitle,
   siteCssClass: state => state.site.info.LS_CSS_Class,

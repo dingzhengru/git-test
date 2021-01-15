@@ -4,6 +4,7 @@ import { SITE_DEFAULT_STYLE_CLASS, SITE_DEFAULT_STYLE_TYPE } from '@/settings';
 const state = {
   info: {},
   seo: {},
+  setting: {},
 };
 
 const mutations = {
@@ -16,6 +17,9 @@ const mutations = {
   setInfoStyle(state, { siteClass, siteType }) {
     state.info.LS_CSS_Class = siteClass;
     state.info.LS_CSS_Type = siteType;
+  },
+  setSetting(state, setting) {
+    state.setting = setting;
   },
 };
 
@@ -58,6 +62,11 @@ const actions = {
     } catch (e) {
       return false;
     }
+  },
+  async loadSetting({ state, commit }) {
+    const setting = await import(`@/setting/${state.info.LS_CSS_Class}`);
+    commit('setSetting', setting.default);
+    return setting.default;
   },
 };
 

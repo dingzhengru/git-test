@@ -1,17 +1,18 @@
 <template>
   <div id="app" :lang="lang" :class="lang">
     <div v-show="loadingList.length == 0">
-      <AppHeader
+      <component
+        :is="AppHeader"
         @changeLang="changeLang"
         @logout="$store.dispatch('user/logout')"
         v-if="$route.meta.header != false"
-      ></AppHeader>
+      ></component>
 
       <div class="main">
         <router-view />
       </div>
 
-      <AppFooter :isLoggedIn="userIsLoggedIn" v-if="$route.meta.footer != false" />
+      <component :is="AppFooter" :isLoggedIn="userIsLoggedIn" v-if="$route.meta.footer != false" />
     </div>
 
     <AppLoading v-show="loadingList.length > 0" />
@@ -20,8 +21,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import AppHeader from '@/components/AppHeader';
-import AppFooter from '@/components/AppFooter';
 import AppLoading from '@/components/AppLoading';
 import langMixin from '@/mixins/lang';
 
@@ -29,8 +28,6 @@ export default {
   name: 'App',
   mixins: [langMixin],
   components: {
-    AppHeader,
-    AppFooter,
     AppLoading,
   },
   computed: {
@@ -39,6 +36,7 @@ export default {
       'loadingList',
       'pwaInstallStatus',
       'pwaPrompt',
+      'siteSetting',
       'siteFullCss',
       'siteStatus',
       'siteIsSpare',
@@ -49,6 +47,12 @@ export default {
       'siteIOSUrl',
       'userIsLoggedIn',
     ]),
+    AppHeader() {
+      return () => import(`@/${this.siteSetting.components.app.AppHeader}`);
+    },
+    AppFooter() {
+      return () => import(`@/${this.siteSetting.components.app.AppFooter}`);
+    },
   },
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);

@@ -62,6 +62,9 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode };
   await store.dispatch('site/getInfo', requestDataSiteInfo);
 
+  //* 設置站台設定檔
+  await store.dispatch('site/loadSetting');
+
   //* Page Title
   document.title = store.getters.siteTitle;
 

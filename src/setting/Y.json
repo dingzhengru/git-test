@@ -1,0 +1,19 @@
+{
+  "components": {
+    "app": {
+      "AppHeader": "components/AppHeader",
+      "AppFooter": "components/AppFooter",
+      "WinWheel": "components/lottery/WinWheel",
+      "RedEnvelope": "components/lottery/RedEnvelope"
+    },
+    "header": {
+      "HeaderMenu": "components/HeaderMenu",
+      "HeaderMenuAuth": "components/HeaderMenuAuth"
+    },
+    "home": {
+      "HomeBanner": "components/home/HomeBanner",
+      "HomeGameBlock": "components/home/HomeGameBlock",
+      "HomeLotteryGameBlock": "components/home/HomeLotteryGameBlock"
+    }
+  }
+}
