@@ -14,7 +14,7 @@
       <AppFooter :isLoggedIn="userIsLoggedIn" v-if="$route.meta.footer != false" />
     </div>
 
-    <AppLoadingOverlay v-show="loadingList.length > 0" />
+    <AppLoading v-show="loadingList.length > 0" />
   </div>
 </template>
 
@@ -22,7 +22,7 @@
 import { mapGetters } from 'vuex';
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
-import AppLoadingOverlay from '@/components/AppLoadingOverlay';
+import AppLoading from '@/components/AppLoading';
 import langMixin from '@/mixins/lang';
 
 export default {
@@ -31,7 +31,7 @@ export default {
   components: {
     AppHeader,
     AppFooter,
-    AppLoadingOverlay,
+    AppLoading,
   },
   computed: {
     ...mapGetters([

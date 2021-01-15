@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'AppLoadingOverlay',
+  name: 'AppLoading',
 };
 </script>
 
