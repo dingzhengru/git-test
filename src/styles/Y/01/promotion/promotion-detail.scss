@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
 .promotion-detail__main__content__desc ul > li > a {
@@ -6,7 +7,7 @@
 }
 
 .promotion-detail__main__button--back {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }
 
 /*

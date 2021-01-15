@@ -1,12 +1,13 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
 /*
   ! 圖片路徑
 */
 .notification-inbox-detail__button--submit {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }
 
 .notification-inbox-detail__button--cancel {
-  background-image: url(~@/assets/common/ui/btn--black.jpg);
+  background-image: $btn-bg-black;
 }

@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
 .transfer__wallet {
@@ -29,16 +30,12 @@
   color: #000;
 }
 
-/*
-  ! 圖片路徑
-*/
-
 .transfer__button--transfer {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }
 .transfer__button--all-to-my-wallet {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }
 .transfer__button--reflash {
-  background-image: url(~@/assets/common/ui/btn--yellow-light.jpg);
+  background-image: $btn-bg-yellow-light;
 }

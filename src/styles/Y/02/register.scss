@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import './abstracts';
 
 .register {
@@ -24,10 +25,10 @@
 */
 
 .register__button-div__send {
-  background-image: url(~@/assets/common/ui/btn--yellow-dark.jpg);
+  background-image: $btn-bg-yellow-dark;
 }
 .register__button-div__reset {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }
 
 .register__form__field--recommend {

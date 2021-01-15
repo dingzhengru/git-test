@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import './abstracts';
 
 .register__form__field__hint {
@@ -14,10 +15,10 @@
   ! 圖片路徑
 */
 .register__button-div__send {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }
 .register__button-div__reset {
-  background-image: url(~@/assets/common/ui/btn--black.jpg);
+  background-image: $btn-bg-black;
 }
 
 .register__form__field--recommend {

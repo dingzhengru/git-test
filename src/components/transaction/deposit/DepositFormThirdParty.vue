@@ -1,13 +1,13 @@
 <template>
   <ValidationObserver v-slot="{ invalid, handleSubmit }" tag="div">
-    <form class="deposit-third-party" novalidate @submit.prevent="handleSubmit(submitDeposit)">
+    <form class="deposit-form" novalidate @submit.prevent="handleSubmit(submitDeposit)">
       <div class="theme-content-box">
-        <ValidationProvider tag="div" class="deposit-third-party__field theme-input-box" :rules="{ required: true }">
-          <span class="deposit-third-party__field__title theme-input-header">
+        <ValidationProvider tag="div" class="deposit-form__field theme-input-box" :rules="{ required: true }">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.payMethod') }}
           </span>
           <select
-            class="deposit-third-party__field__select ui-ddl"
+            class="deposit-form__field__select ui-ddl"
             :id="$idMapper.transaction.deposit.field.method"
             v-model="method"
           >
@@ -18,12 +18,12 @@
           </select>
         </ValidationProvider>
 
-        <ValidationProvider tag="div" class="deposit-third-party__field theme-input-box" :rules="{ required: true }">
-          <span class="deposit-third-party__field__title theme-input-header">
+        <ValidationProvider tag="div" class="deposit-form__field theme-input-box" :rules="{ required: true }">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.payPlatform') }}
           </span>
           <select
-            class="deposit-third-party__field__select ui-ddl"
+            class="deposit-form__field__select ui-ddl"
             :id="$idMapper.transaction.deposit.field.method"
             v-model="method"
           >
@@ -33,13 +33,13 @@
             </option>
           </select>
         </ValidationProvider>
-        <div class="deposit-third-party__field theme-input-box">
-          <span class="deposit-third-party__field__title theme-input-header">
+        <div class="deposit-form__field theme-input-box">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.amount') }}
           </span>
           <ValidationProvider :rules="{ required: true }" v-if="currencyList.length > 0">
             <select
-              class="deposit-third-party__field__select ui-ddl"
+              class="deposit-form__field__select ui-ddl"
               :id="$idMapper.transaction.deposit.field.currency"
               v-model="currency"
             >
@@ -53,7 +53,7 @@
 
         <ValidationProvider
           tag="div"
-          class="deposit-third-party__field theme-input-box"
+          class="deposit-form__field theme-input-box"
           :rules="{ required: true, min_value: depositLimit.min, max_value: depositLimit.max }"
         >
           <input
@@ -65,7 +65,7 @@
             @change="inputAmount"
           />
           <p
-            class="deposit-third-party__field__hint"
+            class="deposit-form__field__hint"
             v-html="
               $t('transaction.deposit.hint.amount', {
                 amountLimitMin: depositLimit.min,
@@ -75,19 +75,19 @@
           ></p>
         </ValidationProvider>
 
-        <ValidationProvider tag="div" class="deposit-third-party__field theme-input-box">
-          <span class="deposit-third-party__field__title theme-input-header">
+        <ValidationProvider tag="div" class="deposit-form__field theme-input-box">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.remark') }}
           </span>
           <input class="ui-ipt" :id="$idMapper.transaction.deposit.field.remark" type="text" v-model="remark" />
         </ValidationProvider>
 
-        <ValidationProvider tag="div" class="deposit-third-party__field theme-input-box">
-          <span class="deposit-third-party__field__title theme-input-header">
+        <ValidationProvider tag="div" class="deposit-form__field theme-input-box">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.promotion') }}
           </span>
           <select
-            class="deposit-third-party__field__select ui-ddl"
+            class="deposit-form__field__select ui-ddl"
             :id="$idMapper.transaction.deposit.field.promotion"
             v-model="promotion"
           >
@@ -95,9 +95,29 @@
               {{ item.Text }}
             </option>
           </select>
-          <p class="deposit-third-party__field__hint ui-txt-mask" v-if="promotion == -1">
+          <p class="deposit-form__field__hint ui-txt-mask" v-if="promotion == -1">
             {{ $t('transaction.deposit.hint.promotion') }}
           </p>
+        </ValidationProvider>
+
+        <ValidationProvider
+          tag="div"
+          class="deposit-form__field theme-input-box"
+          :rules="{ required: true, min: 4, max: 4, regex: '^[0-9]*$' }"
+        >
+          <span class="deposit-form__field__title theme-input-header">
+            {{ $t('ui.label.captcha') }}
+          </span>
+          <input class="ui-ipt" v-model="captcha" />
+          <!-- <img
+            class="img-captcha"
+            :id="$idMapper.login.image.captcha"
+            :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
+            :width="captchaImage.Width"
+            :height="captchaImage.Height"
+            v-if="captchaImage.ImgBase64 != ''"
+            @click="changeCaptcha"
+          /> -->
         </ValidationProvider>
 
         <ol class="ui-ol-memberNotice">
@@ -106,11 +126,11 @@
           </li>
         </ol>
       </div>
-      <div class="deposit-third-party__button-div">
-        <button class="ui-btn deposit-third-party__button-div--submit" type="submit" :disabled="invalid">
+      <div class="deposit-form__button-div">
+        <button class="ui-btn deposit-form__button-div--submit" type="submit" :disabled="invalid">
           {{ $t('ui.button.submit') }}
         </button>
-        <router-link class="ui-btn deposit-third-party__button-div--cancel" :to="{ name: 'Home' }">
+        <router-link class="ui-btn deposit-form__button-div--cancel" :to="{ name: 'Home' }">
           {{ $t('ui.button.cancel') }}
         </router-link>
       </div>
@@ -143,6 +163,7 @@ export default {
       amount: 0,
       remark: '',
       promotion: '-1',
+      captcha: '',
 
       noticeList: [
         'transaction.deposit.notice.currency',
@@ -179,7 +200,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.deposit-third-party {
+.deposit-form {
   margin-top: 40px;
   &__field {
     margin: 20px 0;

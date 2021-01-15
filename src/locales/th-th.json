@@ -1,5 +1,8 @@
 {
   "ui": {
+    "label": {
+      "captcha": "รหัสยืนยัน"
+    },
     "button": {
       "submit": "ส่ง",
       "reset": "ตั้งค่าใหม่",

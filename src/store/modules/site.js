@@ -13,9 +13,9 @@ const mutations = {
   setSeo(state, seo) {
     state.seo = seo;
   },
-  setDefaultStyle(state) {
-    state.info.LS_CSS_Class = SITE_DEFAULT_STYLE_CLASS;
-    state.info.LS_CSS_Type = SITE_DEFAULT_STYLE_TYPE;
+  setInfoStyle(state, { siteClass, siteType }) {
+    state.info.LS_CSS_Class = siteClass;
+    state.info.LS_CSS_Type = siteType;
   },
 };
 
@@ -27,10 +27,16 @@ const actions = {
       commit('setInfo', result.RetObj);
       const isStyleExist = await dispatch('checkStyleExist');
       if (!isStyleExist) {
-        commit('setDefaultStyle');
+        commit('setInfoStyle', { siteClass: SITE_DEFAULT_STYLE_CLASS, siteType: SITE_DEFAULT_STYLE_TYPE });
         console.log(
           `Style not found (${state.info.LS_CSS_Class}/${state.info.LS_CSS_Type}) => Set default style (${SITE_DEFAULT_STYLE_CLASS}/${SITE_DEFAULT_STYLE_TYPE})`
         );
+      }
+
+      //* 手動設置 style
+      if (process.env.NODE_ENV != 'production') {
+        commit('setInfoStyle', { siteClass: 'Y', siteType: '03' });
+        console.log(state.info.LS_CSS_Class, state.info.LS_CSS_Type);
       }
     }
 

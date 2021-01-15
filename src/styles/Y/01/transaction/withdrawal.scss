@@ -1,15 +1,13 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
 .withdrawal__light-message {
   color: #ffff00;
 }
-/*
-  ! 圖片路徑
-*/
 
 .withdrawal__li__button {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }
 .withdrawal__button--submit {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }

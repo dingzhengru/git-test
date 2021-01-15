@@ -1,24 +1,39 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
-.deposit-base__field__hint {
+//* DepositModeNav
+.deposit-mode-nav {
+  button {
+    color: black;
+    background: $btn-bg-yellow-light;
+  }
+
+  button.active {
+    color: white;
+    background: $btn-bg-red;
+  }
+}
+
+//* DepositForm
+.deposit-form__field__hint {
   color: #707070;
 }
-.deposit-base__field__hint--ps {
+.deposit-form__field__hint--ps {
   color: #ffa800;
 }
 
-/*
-  ! 圖片路徑
-*/
-
-.deposit-base__field__receipt-upload__label {
-  background-image: url(~@/assets/common/ui/btn--yellow.jpg);
+.deposit-form-dialog {
+  border: 1px solid #d6c388;
 }
 
-.deposit-base__button-div--submit {
-  background-image: url(~@/assets/common/ui/btn--yellow.jpg);
+.deposit-form__field__receipt-upload__label {
+  background-image: $btn-bg-yellow;
 }
 
-.deposit-base__button-div--cancel {
-  background-image: url(~@/assets/common/ui/btn--black.jpg);
+.deposit-form__button-div--submit {
+  background-image: $btn-bg-yellow;
+}
+
+.deposit-form__button-div--cancel {
+  background-image: $btn-bg-black;
 }

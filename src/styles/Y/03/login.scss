@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import './abstracts';
 
 .login__form__link {
@@ -5,7 +6,7 @@
 }
 
 .login__form__submit {
-  background-image: url(~@/assets/common/ui/btn--yellow.jpg);
+  background-image: $btn-bg-yellow;
 }
 /*
   ! 圖片路徑

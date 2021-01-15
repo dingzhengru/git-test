@@ -1,16 +1,16 @@
 <template>
   <ValidationObserver v-slot="{ invalid, handleSubmit }" tag="div">
-    <form class="deposit-base" novalidate @submit.prevent="handleSubmit(submitDeposit)">
+    <form class="deposit-form" novalidate @submit.prevent="handleSubmit(submitDeposit)">
       <div class="theme-content-box">
-        <h3 class="deposit-base__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
+        <h3 class="deposit-form__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
 
         <ValidationProvider
           tag="div"
-          class="deposit-base__field theme-input-box"
+          class="deposit-form__field theme-input-box"
           :rules="{ required: JSON.stringify(depositBankList) === JSON.stringify(transferBankList) }"
           v-if="JSON.stringify(depositBankList) === JSON.stringify(transferBankList)"
         >
-          <span class="deposit-base__field__title theme-input-header">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.bankDepositAccount') }}
           </span>
           <input class="ui-ipt" type="text" v-model="depositBankAccount" />
@@ -18,15 +18,15 @@
 
         <ValidationProvider
           tag="div"
-          class="deposit-base__field theme-input-box"
+          class="deposit-form__field theme-input-box"
           :rules="{ 'object-not-empty': true }"
           v-else
         >
-          <span class="deposit-base__field__title theme-input-header">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.depositBank') }}
           </span>
           <select
-            class="deposit-base__field__select ui-ddl"
+            class="deposit-form__field__select ui-ddl"
             :id="$idMapper.transaction.deposit.field.depositBank"
             v-model="depositBank"
           >
@@ -37,31 +37,31 @@
           </select>
 
           <div v-if="depositBank && Object.keys(depositBank).length > 0">
-            <span class="deposit-base__field__info__header theme-input-header">
+            <span class="deposit-form__field__info__header theme-input-header">
               {{ $t('transaction.deposit.field.bankName') }}
             </span>
-            <p class="deposit-base__field__info__text">{{ depositBank.BankName }}</p>
-            <span class="deposit-base__field__info__header theme-input-header">
+            <p class="deposit-form__field__info__text">{{ depositBank.BankName }}</p>
+            <span class="deposit-form__field__info__header theme-input-header">
               {{ $t('transaction.deposit.field.bankBranchName') }}
             </span>
-            <p class="deposit-base__field__info__text">{{ depositBank.BankBranchName }}</p>
-            <span class="deposit-base__field__info__header theme-input-header">
+            <p class="deposit-form__field__info__text">{{ depositBank.BankBranchName }}</p>
+            <span class="deposit-form__field__info__header theme-input-header">
               {{ $t('transaction.deposit.field.bankAccountName') }}
             </span>
-            <p class="deposit-base__field__info__text">{{ depositBank.BankAccountName }}</p>
-            <span class="deposit-base__field__info__header theme-input-header">
+            <p class="deposit-form__field__info__text">{{ depositBank.BankAccountName }}</p>
+            <span class="deposit-form__field__info__header theme-input-header">
               {{ $t('transaction.deposit.field.bankAccount') }}
             </span>
-            <p class="deposit-base__field__info__text">{{ depositBank.BankAccount }}</p>
+            <p class="deposit-form__field__info__text">{{ depositBank.BankAccount }}</p>
           </div>
         </ValidationProvider>
 
-        <ValidationProvider tag="div" class="deposit-base__field theme-input-box" :rules="{ 'object-not-empty': true }">
-          <span class="deposit-base__field__title theme-input-header">
+        <ValidationProvider tag="div" class="deposit-form__field theme-input-box" :rules="{ 'object-not-empty': true }">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.transferBank') }}
           </span>
           <select
-            class="deposit-base__field__select ui-ddl"
+            class="deposit-form__field__select ui-ddl"
             :id="$idMapper.transaction.deposit.field.transferBank"
             v-model="transferBank"
           >
@@ -74,10 +74,10 @@
 
         <ValidationProvider
           tag="div"
-          class="deposit-base__field theme-input-box"
+          class="deposit-form__field theme-input-box"
           :rules="{ required: true, 'date-max': $dayjs().format('YYYY-MM-DDTHH:mm') }"
         >
-          <span class="deposit-base__field__title theme-input-header">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.datetime') }}
           </span>
           <input
@@ -89,12 +89,12 @@
           />
         </ValidationProvider>
 
-        <ValidationProvider tag="div" class="deposit-base__field theme-input-box" :rules="{ required: true }">
-          <span class="deposit-base__field__title theme-input-header">
+        <ValidationProvider tag="div" class="deposit-form__field theme-input-box" :rules="{ required: true }">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.method') }}
           </span>
           <select
-            class="deposit-base__field__select ui-ddl"
+            class="deposit-form__field__select ui-ddl"
             :id="$idMapper.transaction.deposit.field.method"
             v-model="method"
           >
@@ -105,13 +105,13 @@
           </select>
         </ValidationProvider>
 
-        <div class="deposit-base__field theme-input-box">
-          <span class="deposit-base__field__title theme-input-header">
+        <div class="deposit-form__field theme-input-box">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.amount') }}
           </span>
           <ValidationProvider :rules="{ required: true }" v-if="currencyList.length > 0">
             <select
-              class="deposit-base__field__select ui-ddl"
+              class="deposit-form__field__select ui-ddl"
               :id="$idMapper.transaction.deposit.field.currency"
               v-model="currency"
             >
@@ -125,7 +125,7 @@
 
         <ValidationProvider
           tag="div"
-          class="deposit-base__field theme-input-box"
+          class="deposit-form__field theme-input-box"
           :rules="{ required: true, min_value: depositLimit.min, max_value: depositLimit.max }"
         >
           <input
@@ -137,7 +137,7 @@
             @change="inputAmount"
           />
           <p
-            class="deposit-base__field__hint"
+            class="deposit-form__field__hint"
             v-html="
               $t('transaction.deposit.hint.amount', {
                 amountLimitMin: depositLimit.min,
@@ -149,43 +149,43 @@
 
         <ValidationProvider
           tag="div"
-          class="deposit-base__field theme-input-box"
+          class="deposit-form__field theme-input-box"
           :rules="{ image: true }"
           v-slot="{ validate }"
         >
-          <span class="deposit-base__field__title theme-input-header">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.receipt') }}
           </span>
           <label
-            class="deposit-base__field__receipt-upload__label ui-btn ui-btn--long"
+            class="deposit-form__field__receipt-upload__label ui-btn ui-btn--long"
             :for="$idMapper.transaction.deposit.button.upload"
           >
             {{ $t('transaction.deposit.button.upload') }}
             <input
-              class="deposit-base__field__receipt-upload__input"
+              class="deposit-form__field__receipt-upload__input"
               :id="$idMapper.transaction.deposit.button.upload"
               type="file"
               accept=".jpg,.png"
               @change="onFileChange($event, validate)"
             />
           </label>
-          <p class="deposit-base__field__hint deposit-base__field__hint--receipt-upload">{{ receipt.name }}</p>
-          <p class="deposit-base__field__hint" v-html="$t('transaction.deposit.hint.receipt')"></p>
+          <p class="deposit-form__field__hint deposit-form__field__hint--receipt-upload">{{ receipt.name }}</p>
+          <p class="deposit-form__field__hint" v-html="$t('transaction.deposit.hint.receipt')"></p>
         </ValidationProvider>
 
-        <ValidationProvider tag="div" class="deposit-base__field theme-input-box">
-          <span class="deposit-base__field__title theme-input-header">
+        <ValidationProvider tag="div" class="deposit-form__field theme-input-box">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.remark') }}
           </span>
           <input class="ui-ipt" :id="$idMapper.transaction.deposit.field.remark" type="text" v-model="remark" />
         </ValidationProvider>
 
-        <ValidationProvider tag="div" class="deposit-base__field theme-input-box">
-          <span class="deposit-base__field__title theme-input-header">
+        <ValidationProvider tag="div" class="deposit-form__field theme-input-box">
+          <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.promotion') }}
           </span>
           <select
-            class="deposit-base__field__select ui-ddl"
+            class="deposit-form__field__select ui-ddl"
             :id="$idMapper.transaction.deposit.field.promotion"
             v-model="promotion"
           >
@@ -193,7 +193,7 @@
               {{ item.Text }}
             </option>
           </select>
-          <p class="deposit-base__field__hint ui-txt-mask" v-if="promotion == -1">
+          <p class="deposit-form__field__hint ui-txt-mask" v-if="promotion == -1">
             {{ $t('transaction.deposit.hint.promotion') }}
           </p>
         </ValidationProvider>
@@ -204,11 +204,11 @@
           </li>
         </ol>
       </div>
-      <div class="deposit-base__button-div">
-        <button class="ui-btn deposit-base__button-div--submit" type="submit" :disabled="invalid">
+      <div class="deposit-form__button-div">
+        <button class="ui-btn deposit-form__button-div--submit" type="submit" :disabled="invalid">
           {{ $t('ui.button.submit') }}
         </button>
-        <router-link class="ui-btn deposit-base__button-div--cancel" :to="{ name: 'Home' }">
+        <router-link class="ui-btn deposit-form__button-div--cancel" :to="{ name: 'Home' }">
           {{ $t('ui.button.cancel') }}
         </router-link>
       </div>
@@ -372,7 +372,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.deposit-base {
+.deposit-form {
   margin-top: 40px;
   &__field {
     margin: 20px 0;

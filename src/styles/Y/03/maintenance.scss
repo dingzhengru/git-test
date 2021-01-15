@@ -1,10 +1,11 @@
+@import '@/styles/global/abstracts';
 @import './abstracts';
 
 .maintenance {
   color: white;
 
   button {
-    background-image: url(~@/assets/common/ui/btn--red.jpg);
+    background-image: $btn-bg-red;
   }
 
   &__footer {

@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
 .promotion-detail__image {
@@ -14,7 +15,7 @@
 }
 
 .promotion-detail__main__button--back {
-  background-image: url(~@/assets/common/ui/btn--yellow-dark.jpg);
+  background-image: $btn-bg-yellow-dark;
 }
 /*
   ! 圖片路徑

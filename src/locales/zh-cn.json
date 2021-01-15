@@ -1,5 +1,8 @@
 {
   "ui": {
+    "label": {
+      "captcha": "验证码"
+    },
     "button": {
       "submit": "提交",
       "reset": "重设",

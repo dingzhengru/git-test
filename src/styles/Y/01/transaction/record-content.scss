@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
 // .theme-colorBox {
@@ -10,10 +11,6 @@
   background-color: black;
 }
 
-/*
-  ! 圖片路徑
-*/
-
 .record-content__search-form__button--search {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }

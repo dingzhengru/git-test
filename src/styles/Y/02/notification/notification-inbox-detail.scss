@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
 .notification-inbox-detail__ul__li {
@@ -13,9 +14,9 @@
   ! 圖片路徑
 */
 .notification-inbox-detail__button--submit {
-  background-image: url(~@/assets/common/ui/btn--yellow-dark.jpg);
+  background-image: $btn-bg-yellow-dark;
 }
 
 .notification-inbox-detail__button--cancel {
-  background-image: url(~@/assets/common/ui/btn--black.jpg);
+  background-image: $btn-bg-black;
 }

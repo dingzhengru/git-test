@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
 .report-bet-record__detail-table {
@@ -8,9 +9,6 @@
   border-top: 1px solid white;
 }
 
-/*
-  ! 圖片路徑
-*/
 .report-bet-record__button--return {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }

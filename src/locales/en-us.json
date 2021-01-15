@@ -1,5 +1,8 @@
 {
   "ui": {
+    "label": {
+      "captcha": "Captcha"
+    },
     "button": {
       "submit": "Submit",
       "reset": "Reset",

@@ -116,6 +116,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/global/abstracts';
 // .game-transfer-dialog-wrapper {
 //   position: fixed;
 //   top: 0;
@@ -193,7 +194,7 @@ export default {
     &__button {
       margin-top: 30px;
       width: 98%;
-      background-image: url(~@/assets/common/ui/btn--red.jpg);
+      background-image: $btn-bg-red;
     }
   }
 }

@@ -1,9 +1,6 @@
+@import '@/styles/global/abstracts';
 @import '../abstracts';
 
-/*
-  ! 圖片路徑
-*/
-
 .record-detail__button--return {
-  background-image: url(~@/assets/common/ui/btn--red.jpg);
+  background-image: $btn-bg-red;
 }
