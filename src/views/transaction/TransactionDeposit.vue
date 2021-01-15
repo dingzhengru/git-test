@@ -1,8 +1,8 @@
 <template>
   <div class="deposit" @click="isShowDepositNotice = false">
-    <DepositModeNav :mode="mode" @change-mode="changeMode" />
-    <DepositFormBase v-if="mode == 'base'" />
-    <DepositFormThirdParty v-else-if="mode == 'thirdParty'" />
+    <component :is="DepositModeNav" :mode="mode" @change-mode="changeMode" />
+    <component :is="DepositFormBase" v-if="mode == 'base'" />
+    <component :is="DepositFormThirdParty" v-else-if="mode == 'thirdParty'" />
 
     <DepositNotice :isShow="isShowDepositNotice" />
   </div>
@@ -14,13 +14,19 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TransactionDeposit',
   components: {
-    DepositModeNav: () => import('@/components/transaction/deposit/DepositModeNav'),
     DepositNotice: () => import('@/components/transaction/deposit/DepositNotice'),
-    DepositFormBase: () => import('@/components/transaction/deposit/DepositFormBase'),
-    DepositFormThirdParty: () => import('@/components/transaction/deposit/DepositFormThirdParty'),
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'siteIsShowDepositNotice']),
+    ...mapGetters(['siteSetting', 'siteFullCss', 'siteIsShowDepositNotice']),
+    DepositModeNav() {
+      return () => import(`@/${this.siteSetting.components.transaction.deposit.DepositModeNav}`);
+    },
+    DepositFormBase() {
+      return () => import(`@/${this.siteSetting.components.transaction.deposit.DepositFormBase}`);
+    },
+    DepositFormThirdParty() {
+      return () => import(`@/${this.siteSetting.components.transaction.deposit.DepositFormThirdParty}`);
+    },
   },
   data() {
     return {

@@ -1,7 +1,8 @@
 <template>
   <div class="user-profile">
     <!-- 未開通的 -->
-    <UserProfileList
+    <component
+      :is="UserProfileList"
       :registerList="registerList"
       :bankList="bankList"
       @instantAccess="submitInstantAccess"
@@ -10,7 +11,7 @@
     />
 
     <!-- 開通後的 -->
-    <UserProfileListAccess @change-withdrawal-password="changeWithdrawalPassword" v-else />
+    <component :is="UserProfileListAccess" @change-withdrawal-password="changeWithdrawalPassword" v-else />
   </div>
 </template>
 <script>
@@ -20,12 +21,14 @@ import { apiGetRegisterAdvanceNew, apiCheckRegisterFieldExist } from '@/api/regi
 
 export default {
   name: 'Profile',
-  components: {
-    UserProfileList: () => import('@/components/user/UserProfileList'),
-    UserProfileListAccess: () => import('@/components/user/UserProfileListAccess'),
-  },
   computed: {
-    ...mapGetters(['siteFullCss', 'userIsAccountOpen']),
+    ...mapGetters(['siteSetting', 'siteFullCss', 'userIsAccountOpen']),
+    UserProfileList() {
+      return () => import(`@/${this.siteSetting.components.user.UserProfileList}`);
+    },
+    UserProfileListAccess() {
+      return () => import(`@/${this.siteSetting.components.user.UserProfileListAccess}`);
+    },
   },
   data() {
     return {

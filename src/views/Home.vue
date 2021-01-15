@@ -1,10 +1,15 @@
 <template>
   <div class="home">
-    <HomeBanner :list="bannerList" @open-banner="openBanner" />
+    <component :is="HomeBanner" :list="bannerList" @open-banner="openBanner" />
 
     <div class="home-game">
-      <HomeLotteryGameBlock :lotteryList="lotteryList" @openLotteryGame="openLotteryGame" v-if="userIsLoggedIn" />
-      <HomeGameBlock :list="productList" />
+      <component
+        :is="HomeLotteryGameBlock"
+        :lotteryList="lotteryList"
+        @openLotteryGame="openLotteryGame"
+        v-if="userIsLoggedIn"
+      />
+      <component :is="HomeGameBlock" :list="productList" />
     </div>
 
     <ModalMainNotice v-show="isShowMainNotice" @click.native="isShowMainNotice = false" />
@@ -84,9 +89,6 @@ export default {
   name: 'Home',
   mixins: [mixinLotteryRedEnvelope, mixinLotteryWinWheel],
   components: {
-    HomeBanner: () => import('@/components/home/HomeBanner'),
-    HomeGameBlock: () => import('@/components/home/HomeGameBlock'),
-    HomeLotteryGameBlock: () => import('@/components/home/HomeLotteryGameBlock'),
     AppModal: () => import('@/components/AppModal'),
     ModalMainNotice: () => import('@/components/ModalMainNotice'),
     ModalMessage: () => import('@/components/ModalMessage'),
@@ -96,12 +98,22 @@ export default {
   computed: {
     ...mapGetters([
       'lang',
+      'siteSetting',
       'siteFullCss',
       'siteIsNewPromotion',
       'siteMainPageNoticeUrl',
       'siteIsShowMainNotice',
       'userIsLoggedIn',
     ]),
+    HomeBanner() {
+      return () => import(`@/${this.siteSetting.components.home.HomeBanner}`);
+    },
+    HomeGameBlock() {
+      return () => import(`@/${this.siteSetting.components.home.HomeGameBlock}`);
+    },
+    HomeLotteryGameBlock() {
+      return () => import(`@/${this.siteSetting.components.home.HomeLotteryGameBlock}`);
+    },
   },
   data() {
     return {

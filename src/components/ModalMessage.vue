@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import AppModal from '@/components/AppModal';
 export default {
   name: 'ModalMessage',
   props: {
@@ -21,7 +22,7 @@ export default {
     },
   },
   components: {
-    AppModal: () => import('@/components/AppModal'),
+    AppModal,
   },
 };
 </script>

@@ -1,27 +1,31 @@
 <template>
   <div class="game-lobby">
-    <GameJackpot :jackpot="jackpot" />
-    <GameProductNavigation
+    <component :is="GameJackpot" :jackpot="jackpot" />
+    <component
+      :is="GameProductNavigation"
       :productList="productList"
       :productCurrent="productCurrent"
       @change-product="changeProduct"
     />
 
-    <GameCategoryNavigation
+    <component
+      :is="GameCategoryNavigation"
       :categoryList="categoryList"
       :categoryCurrent="categoryCurrent"
       @change-category="changeCategory"
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <GameSearchBlock
+    <component
+      :is="GameSearchBlock"
       :isShowLike="true"
       @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <GameListTable
+    <component
+      :is="GameListTable"
       :gameList="gameList"
       :productCurrent="productCurrent"
       :isShowDemo="true"
@@ -38,7 +42,8 @@
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <GameTransferDialog
+    <component
+      :is="GameTransferDialog"
       :wallet="userGamePointWallet"
       :currentPointProduct="productPointCurrent"
       :isShow="isShowTransferDialog"
@@ -65,15 +70,27 @@ export default {
   mixins: [mixinGameLobby],
   components: {
     AppPagination: () => import('@/components/AppPagination'),
-    GameJackpot: () => import('@/components/game/GameJackpot'),
-    GameProductNavigation: () => import('@/components/game/GameProductNavigation'),
-    GameCategoryNavigation: () => import('@/components/game/GameCategoryNavigation'),
-    GameSearchBlock: () => import('@/components/game/GameSearchBlock'),
-    GameListTable: () => import('@/components/game/GameListTable'),
-    GameTransferDialog: () => import('@/components/game/GameTransferDialog'),
   },
   computed: {
-    ...mapGetters(['lang', 'siteFullCss', 'userGamePointWallet']),
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss', 'userGamePointWallet']),
+    GameJackpot() {
+      return () => import(`@/${this.siteSetting.components.game.GameJackpot}`);
+    },
+    GameProductNavigation() {
+      return () => import(`@/${this.siteSetting.components.game.GameProductNavigation}`);
+    },
+    GameCategoryNavigation() {
+      return () => import(`@/${this.siteSetting.components.game.GameCategoryNavigation}`);
+    },
+    GameSearchBlock() {
+      return () => import(`@/${this.siteSetting.components.game.GameSearchBlock}`);
+    },
+    GameListTable() {
+      return () => import(`@/${this.siteSetting.components.game.GameListTable}`);
+    },
+    GameTransferDialog() {
+      return () => import(`@/${this.siteSetting.components.game.GameTransferDialog}`);
+    },
   },
   data() {
     return {

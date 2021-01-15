@@ -3,8 +3,7 @@
     "app": {
       "AppHeader": "components/AppHeader",
       "AppFooter": "components/AppFooter",
-      "WinWheel": "components/lottery/WinWheel",
-      "RedEnvelope": "components/lottery/RedEnvelope"
+      "AppNavigationTab": "components/AppNavigationTab"
     },
     "header": {
       "HeaderMenu": "components/HeaderMenu",
@@ -14,6 +13,32 @@
       "HomeBanner": "components/home/HomeBanner",
       "HomeGameBlock": "components/home/HomeGameBlock",
       "HomeLotteryGameBlock": "components/home/HomeLotteryGameBlock"
+    },
+    "user": {
+      "UserProfileList": "components/user/UserProfileList",
+      "UserProfileListAccess": "components/user/UserProfileListAccess"
+    },
+    "transaction": {
+      "deposit": {
+        "DepositFormBase": "components/transaction/deposit/DepositFormBase",
+        "DepositFormThirdParty": "components/transaction/deposit/DepositFormThirdParty",
+        "DepositModeNav": "components/transaction/deposit/DepositModeNav"
+      },
+      "record": {
+        "RecordImageDialog": "components/transaction/record/RecordImageDialog"
+      }
+    },
+    "game": {
+      "GameCategoryNavigation": "components/game/GameCategoryNavigation",
+      "GameJackpot": "components/game/GameJackpot",
+      "GameListTable": "components/game/GameListTable",
+      "GameProductNavigation": "components/game/GameProductNavigation",
+      "GameSearchBlock": "components/game/GameSearchBlock",
+      "GameTransferDialog": "components/game/GameTransferDialog",
+      "LiveGameEnterDialog": "components/game/LiveGameEnterDialog"
+    },
+    "report": {
+      "ReportBetRecordDetailTable": "components/report/ReportBetRecordDetailTable"
     }
   }
 }

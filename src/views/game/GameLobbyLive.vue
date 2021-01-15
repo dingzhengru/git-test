@@ -1,24 +1,28 @@
 <template>
   <div class="game-lobby">
-    <GameProductNavigation
+    <component
+      :is="GameProductNavigation"
       :productList="productList"
       :productCurrent="productCurrent"
       @change-product="changeProduct"
     />
-    <GameCategoryNavigation
+    
+    <component
+      :is="GameCategoryNavigation"
       :categoryList="categoryList"
       :categoryCurrent="categoryCurrent"
       @change-category="changeCategory"
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <GameSearchBlock
+    <component
+      :is="GameSearchBlock"
       @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <GameListTable :gameList="gameList" :productCurrent="productCurrent" @open-game="openGame" />
+    <component :is="GameListTable" :gameList="gameList" :productCurrent="productCurrent" @open-game="openGame" />
 
     <AppPagination
       :count="pagination.count"
@@ -28,7 +32,8 @@
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <GameTransferDialog
+    <component
+      :is="GameTransferDialog"
       :wallet="userGamePointWallet"
       :currentPointProduct="productPointCurrent"
       :isShow="isShowTransferDialog"
@@ -37,7 +42,8 @@
       v-show="isShowTransferDialog"
     />
 
-    <LiveGameEnterDialog
+    <component
+      :is="LiveGameEnterDialog"
       :gameLimitBetList="gameLimitBetList"
       :selectedGame="game"
       :isShow="isShowLiveGameEnterDialog"
@@ -63,15 +69,27 @@ export default {
   mixins: [mixinGameLobby],
   components: {
     AppPagination: () => import('@/components/AppPagination'),
-    GameProductNavigation: () => import('@/components/game/GameProductNavigation'),
-    GameCategoryNavigation: () => import('@/components/game/GameCategoryNavigation'),
-    GameSearchBlock: () => import('@/components/game/GameSearchBlock'),
-    GameListTable: () => import('@/components/game/GameListTable'),
-    LiveGameEnterDialog: () => import('@/components/game/LiveGameEnterDialog'),
-    GameTransferDialog: () => import('@/components/game/GameTransferDialog'),
   },
   computed: {
-    ...mapGetters(['lang', 'userGamePointWallet']),
+    ...mapGetters(['lang', 'siteSetting', 'userGamePointWallet']),
+    GameProductNavigation() {
+      return () => import(`@/${this.siteSetting.components.game.GameProductNavigation}`);
+    },
+    GameCategoryNavigation() {
+      return () => import(`@/${this.siteSetting.components.game.GameCategoryNavigation}`);
+    },
+    GameSearchBlock() {
+      return () => import(`@/${this.siteSetting.components.game.GameSearchBlock}`);
+    },
+    GameListTable() {
+      return () => import(`@/${this.siteSetting.components.game.GameListTable}`);
+    },
+    LiveGameEnterDialog() {
+      return () => import(`@/${this.siteSetting.components.game.LiveGameEnterDialog}`);
+    },
+    GameTransferDialog() {
+      return () => import(`@/${this.siteSetting.components.game.GameTransferDialog}`);
+    },
   },
   data() {
     return {

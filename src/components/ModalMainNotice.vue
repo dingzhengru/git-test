@@ -12,6 +12,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import AppModal from '@/components/AppModal';
 
 export default {
   name: 'ModalMessage',
@@ -22,7 +23,7 @@ export default {
     },
   },
   components: {
-    AppModal: () => import('@/components/AppModal'),
+    AppModal,
   },
   computed: {
     ...mapGetters(['siteMainPageNoticeUrl']),

@@ -40,7 +40,8 @@
       </table>
     </div>
 
-    <ReportBetRecordDetailTable
+    <component
+      :is="ReportBetRecordDetailTable"
       :title="$t(`report.betRecord.dateRange.${dateRange}`)"
       :totalObject="totalObject"
       :recordList="recordList"
@@ -54,11 +55,11 @@ import { mapGetters } from 'vuex';
 import { apiGetBetHistoryDay, apiGetBetHistoryWeek } from '@/api/report';
 export default {
   name: 'ReportBetRecord',
-  components: {
-    ReportBetRecordDetailTable: () => import('@/components/report/ReportBetRecordDetailTable'),
-  },
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss']),
+    ReportBetRecordDetailTable() {
+      return () => import(`@/${this.siteSetting.components.report.ReportBetRecordDetailTable}`);
+    },
   },
   data() {
     return {

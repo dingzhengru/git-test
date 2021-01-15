@@ -1,15 +1,20 @@
 <template>
   <div class="report">
-    <AppNavigationTab :list="routeList" />
+    <component :is="AppNavigationTab" :list="routeList" />
     <router-view />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'ReportHome',
-  components: {
-    AppNavigationTab: () => import('@/components/AppNavigationTab'),
+  computed: {
+    ...mapGetters(['siteSetting']),
+    AppNavigationTab() {
+      return () => import(`@/${this.siteSetting.components.app.AppNavigationTab}`);
+    },
   },
   data() {
     return {

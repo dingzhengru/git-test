@@ -13,8 +13,8 @@
       ></router-link>
       <a class="header__link header__link--back" href="javascript:;" @click="$router.go(-1)" v-else></a>
 
-      <HeaderMenu v-if="!userIsLoggedIn" @changeLang="changeLang" />
-      <HeaderMenuAuth v-else @changeLang="changeLang" @logout="logout" />
+      <component :is="HeaderMenu" v-if="!userIsLoggedIn" @changeLang="changeLang" />
+      <component :is="HeaderMenuAuth" v-else @changeLang="changeLang" @logout="logout" />
     </template>
   </header>
 </template>
@@ -24,10 +24,6 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'AppHeader',
-  components: {
-    HeaderMenu: () => import('@/components/HeaderMenu'),
-    HeaderMenuAuth: () => import('@/components/HeaderMenuAuth'),
-  },
   props: {
     logo: {
       type: String,
@@ -35,7 +31,13 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['siteLogoUrl', 'siteStatus', 'userIsLoggedIn']),
+    ...mapGetters(['siteSetting', 'siteLogoUrl', 'siteStatus', 'userIsLoggedIn']),
+    HeaderMenu() {
+      return () => import(`@/${this.siteSetting.components.header.HeaderMenu}`);
+    },
+    HeaderMenuAuth() {
+      return () => import(`@/${this.siteSetting.components.header.HeaderMenuAuth}`);
+    },
   },
   methods: {
     changeLang(lang) {

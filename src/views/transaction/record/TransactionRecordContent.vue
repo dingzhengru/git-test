@@ -106,9 +106,12 @@
       @change-page="changePage"
     />
 
-    <RecordImageDialog :imageUrl="imageDialogUrl" @close="imageDialogUrl = ''" :isShow="!!imageDialogUrl" />
-
-    <!-- <RecordImageDialog imageUrl="https://image.freepik.com/free-vector/realistic-receipt-template_23-2147938550.jpg" /> -->
+    <component
+      :is="RecordImageDialog"
+      :imageUrl="imageDialogUrl"
+      @close="imageDialogUrl = ''"
+      :isShow="!!imageDialogUrl"
+    />
   </div>
 </template>
 
@@ -130,10 +133,12 @@ export default {
   name: 'TransactionRecordContent',
   components: {
     AppPagination: () => import('@/components/AppPagination'),
-    RecordImageDialog: () => import('@/components/transaction/record/RecordImageDialog'),
   },
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss']),
+    RecordImageDialog() {
+      return () => import(`@/${this.siteSetting.components.transaction.record.RecordImageDialog}`);
+    },
     i18nKey() {
       return `transaction.recordContent.${this.$route.params.name}`;
     },

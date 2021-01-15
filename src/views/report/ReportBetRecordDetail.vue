@@ -1,6 +1,6 @@
 <template>
   <div class="report-bet-record">
-    <ReportBetRecordDetailTable :title="title" :recordList="recordList" :totalObject="totalObject" />
+    <component :is="ReportBetRecordDetailTable" :title="title" :recordList="recordList" :totalObject="totalObject" />
 
     <div class="report-bet-record__button-div">
       <button class="report-bet-record__button--return ui-btn ui-btn--long" @click="$router.go(-1)">
@@ -16,11 +16,11 @@ import { apiGetBetHistoryDay } from '@/api/report';
 
 export default {
   name: 'ReportBetRecordDetail',
-  components: {
-    ReportBetRecordDetailTable: () => import('@/components/report/ReportBetRecordDetailTable'),
-  },
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss']),
+    ReportBetRecordDetailTable() {
+      return () => import(`@/${this.siteSetting.components.report.ReportBetRecordDetailTable}`);
+    },
   },
   data() {
     return {
