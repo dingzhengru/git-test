@@ -1,44 +1,44 @@
 {
   "components": {
     "app": {
-      "AppHeader": "components/AppHeader",
-      "AppFooter": "components/AppFooter",
-      "AppNavigationTab": "components/AppNavigationTab"
+      "AppHeader": "components/Y/header/AppHeader",
+      "AppFooter": "components/Y/footer/AppFooter",
+      "AppNavigationTab": "components/Y/AppNavigationTab"
     },
     "header": {
-      "HeaderMenu": "components/HeaderMenu",
-      "HeaderMenuAuth": "components/HeaderMenuAuth"
+      "HeaderMenu": "components/Y/header/HeaderMenu",
+      "HeaderMenuAuth": "components/Y/header/HeaderMenuAuth"
     },
     "home": {
-      "HomeBanner": "components/home/HomeBanner",
-      "HomeGameBlock": "components/home/HomeGameBlock",
-      "HomeLotteryGameBlock": "components/home/HomeLotteryGameBlock"
+      "HomeBanner": "components/Y/home/HomeBanner",
+      "HomeGameBlock": "components/Y/home/HomeGameBlock",
+      "HomeLotteryGameBlock": "components/Y/home/HomeLotteryGameBlock"
     },
     "user": {
-      "UserProfileList": "components/user/UserProfileList",
-      "UserProfileListAccess": "components/user/UserProfileListAccess"
+      "UserProfileList": "components/Y/user/UserProfileList",
+      "UserProfileListAccess": "components/Y/user/UserProfileListAccess"
     },
     "transaction": {
       "deposit": {
-        "DepositFormBase": "components/transaction/deposit/DepositFormBase",
-        "DepositFormThirdParty": "components/transaction/deposit/DepositFormThirdParty",
-        "DepositModeNav": "components/transaction/deposit/DepositModeNav"
+        "DepositFormBase": "components/Y/transaction/deposit/DepositFormBase",
+        "DepositFormThirdParty": "components/Y/transaction/deposit/DepositFormThirdParty",
+        "DepositModeNav": "components/Y/transaction/deposit/DepositModeNav"
       },
       "record": {
-        "RecordImageDialog": "components/transaction/record/RecordImageDialog"
+        "RecordImageDialog": "components/Y/transaction/record/RecordImageDialog"
       }
     },
     "game": {
-      "GameCategoryNavigation": "components/game/GameCategoryNavigation",
-      "GameJackpot": "components/game/GameJackpot",
-      "GameListTable": "components/game/GameListTable",
-      "GameProductNavigation": "components/game/GameProductNavigation",
-      "GameSearchBlock": "components/game/GameSearchBlock",
-      "GameTransferDialog": "components/game/GameTransferDialog",
-      "LiveGameEnterDialog": "components/game/LiveGameEnterDialog"
+      "GameCategoryNavigation": "components/Y/game/GameCategoryNavigation",
+      "GameJackpot": "components/Y/game/GameJackpot",
+      "GameListTable": "components/Y/game/GameListTable",
+      "GameProductNavigation": "components/Y/game/GameProductNavigation",
+      "GameSearchBlock": "components/Y/game/GameSearchBlock",
+      "GameTransferDialog": "components/Y/game/GameTransferDialog",
+      "LiveGameEnterDialog": "components/Y/game/LiveGameEnterDialog"
     },
     "report": {
-      "ReportBetRecordDetailTable": "components/report/ReportBetRecordDetailTable"
+      "ReportBetRecordDetailTable": "components/Y/report/ReportBetRecordDetailTable"
     }
   }
 }

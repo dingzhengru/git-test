@@ -1,6 +1,6 @@
 <template>
-  <AppModal :isShow="isShow">
-    <img :src="siteDepositNoticeUrl" alt="" />
+  <AppModal :isShow="isShow" @click.native="$emit('close')">
+    <img :src="image" alt="" />
   </AppModal>
 </template>
 
@@ -8,11 +8,15 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'DepositNotice',
+  name: 'ModalNoticeImage',
   props: {
     isShow: {
       type: Boolean,
       default: false,
+    },
+    image: {
+      type: String,
+      default: () => '',
     },
   },
   components: {

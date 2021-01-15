@@ -12,7 +12,7 @@
       <component :is="HomeGameBlock" :list="productList" />
     </div>
 
-    <ModalMainNotice v-show="isShowMainNotice" @click.native="isShowMainNotice = false" />
+    <ModalNoticeImage :isShow="isShowMainNotice" :image="siteMainPageNoticeUrl" @close="isShowMainNotice = false" />
 
     <ModalMessage
       :messageList="messageList"
@@ -90,10 +90,10 @@ export default {
   mixins: [mixinLotteryRedEnvelope, mixinLotteryWinWheel],
   components: {
     AppModal: () => import('@/components/AppModal'),
-    ModalMainNotice: () => import('@/components/ModalMainNotice'),
     ModalMessage: () => import('@/components/ModalMessage'),
     WinWheel: () => import('@/components/lottery/WinWheel'),
     RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
+    ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
   },
   computed: {
     ...mapGetters([
@@ -104,6 +104,7 @@ export default {
       'siteMainPageNoticeUrl',
       'siteIsShowMainNotice',
       'userIsLoggedIn',
+      'siteMainPageNoticeUrl',
     ]),
     HomeBanner() {
       return () => import(`@/${this.siteSetting.components.home.HomeBanner}`);

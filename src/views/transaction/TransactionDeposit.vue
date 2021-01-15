@@ -1,10 +1,14 @@
 <template>
-  <div class="deposit" @click="isShowDepositNotice = false">
+  <div class="deposit">
     <component :is="DepositModeNav" :mode="mode" @change-mode="changeMode" />
     <component :is="DepositFormBase" v-if="mode == 'base'" />
     <component :is="DepositFormThirdParty" v-else-if="mode == 'thirdParty'" />
 
-    <DepositNotice :isShow="isShowDepositNotice" />
+    <ModalNoticeImage
+      :isShow="isShowDepositNotice"
+      :image="siteDepositNoticeUrl"
+      @close="isShowDepositNotice = false"
+    />
   </div>
 </template>
 
@@ -14,10 +18,10 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TransactionDeposit',
   components: {
-    DepositNotice: () => import('@/components/transaction/deposit/DepositNotice'),
+    ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss', 'siteIsShowDepositNotice']),
+    ...mapGetters(['siteSetting', 'siteFullCss', 'siteIsShowDepositNotice', 'siteDepositNoticeUrl']),
     DepositModeNav() {
       return () => import(`@/${this.siteSetting.components.transaction.deposit.DepositModeNav}`);
     },
