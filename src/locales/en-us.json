@@ -1,6 +1,7 @@
 {
   "ui": {
     "label": {
+      "home": "Home",
       "captcha": "Captcha"
     },
     "button": {

@@ -21,21 +21,25 @@ export default {
       noAuthList: [
         {
           name: 'member',
+          text: 'footer.member',
           link: 'UserProfile',
           otherActivePath: [],
         },
         {
           name: 'login',
+          text: 'footer.login',
           link: 'Login',
           otherActivePath: ['Register'],
         },
         {
           name: 'promotion',
+          text: 'footer.promotion',
           link: 'Promotion',
           otherActivePath: ['PromotionContent'],
         },
         {
           name: 'contact',
+          text: 'footer.contact',
           link: 'Contact',
           otherActivePath: [],
         },
@@ -43,11 +47,13 @@ export default {
       authList: [
         {
           name: 'member',
+          text: 'footer.member',
           link: 'UserProfile',
           otherActivePath: ['UserChangePassword'],
         },
         {
           name: 'transaction',
+          text: 'footer.transaction',
           link: 'TransactionDeposit',
           otherActivePath: [
             'TransactionWithdrawal',
@@ -59,11 +65,13 @@ export default {
         },
         {
           name: 'promotion',
+          text: 'footer.promotion',
           link: 'Promotion',
           otherActivePath: ['PromotionContent'],
         },
         {
           name: 'contact',
+          text: 'footer.contact',
           link: 'Contact',
           otherActivePath: [],
         },

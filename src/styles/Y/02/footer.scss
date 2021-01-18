@@ -17,6 +17,22 @@ $footer-nav-item-border-bg: assetPath('footer/lnk_line.png') no-repeat;
   &__item {
     background: $footer-nav-item-bg;
 
+    &.member {
+      background-position: 0px 6px;
+    }
+    &.login {
+      background-position: 25% 6px;
+    }
+    &.promotion {
+      background-position: 50% 6px;
+    }
+    &.contact {
+      background-position: 75% 6px;
+    }
+    &.transaction {
+      background-position: 97% 6px;
+    }
+
     &:after {
       background: $footer-nav-item-border-bg;
     }

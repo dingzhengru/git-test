@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      isShowLangList: true,
+      isShowLangList: false,
     };
   },
   methods: {

@@ -8,7 +8,7 @@
       :key="item.name"
     >
       <router-link :to="{ name: item.link }" class="footer-nav__item__link">
-        {{ $te(`footer.${item.name}`) ? $t(`footer.${item.name}`) : item.name }}
+        {{ $te(`${item.text}`) ? $t(`${item.text}`) : item.text }}
       </router-link>
     </div>
   </div>
@@ -35,7 +35,6 @@ export default {
     &__link {
       display: block;
       text-align: center;
-      color: #fff;
 
       &:lang(en-us) {
         font-size: 26px;
@@ -51,22 +50,6 @@ export default {
         font-size: 32px;
         line-height: 170px;
       }
-    }
-
-    &.member {
-      background-position: 0px 6px;
-    }
-    &.login {
-      background-position: 25% 6px;
-    }
-    &.promotion {
-      background-position: 50% 6px;
-    }
-    &.contact {
-      background-position: 75% 6px;
-    }
-    &.transaction {
-      background-position: 97% 6px;
     }
 
     &:after {

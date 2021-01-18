@@ -1,6 +1,7 @@
 {
   "ui": {
     "label": {
+      "home": "首页",
       "captcha": "验证码"
     },
     "button": {

@@ -2,7 +2,7 @@
   "components": {
     "app": {
       "AppHeader": "components/Y/header/AppHeader",
-      "AppFooter": "components/Y/footer/AppFooter",
+      "AppFooter": "components/Z/footer/AppFooter",
       "AppNavTab": "components/Y/AppNavTab"
     },
     "header": {
