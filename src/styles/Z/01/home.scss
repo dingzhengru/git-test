@@ -1,0 +1,33 @@
+@import './abstracts';
+
+.home-game__ul__li__link {
+  color: #fff;
+}
+
+.home-game__ul__li__link--maintain {
+  background: assetPath('game/btn_maintain.png') no-repeat;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.home-game {
+  background: assetPath('layout/bg_index2.jpg') no-repeat;
+}
+// .prize__icon {
+//   background: assetPath('main/prizeIcn.png') left center no-repeat;
+// }
+// .prize__ul {
+//   background: assetPath('main/prizeBg.png') left center no-repeat;
+// }
+// .i-luckyDraw {
+//   background: assetPath('main/luckyDrawIcn.png') left center no-repeat;
+// }
+// .ul-luckyDraw {
+//   background: assetPath('main/prizeBg.png') left center no-repeat;
+// }
+
+// .noneLoginPopup {
+//   background: rgba(0, 0, 0, 0.8) assetPath('main/Bg-noneLoginPopup.jpg') center center no-repeat;
+// }

@@ -1,0 +1,41 @@
+@import '@/styles/global/abstracts';
+@import '../abstracts';
+
+.transfer__wallet {
+  border-bottom: 1px solid #d6c388;
+}
+
+.transfer__amount {
+  border-bottom: 1px solid #d6c388;
+}
+
+.transfer__amount__table__input {
+  background-color: #2e2e2e;
+  border: 1px solid #8b8b8b;
+}
+
+.transfer__account-table {
+  border: 1px solid #d6c388;
+}
+
+.transfer__account-table tr {
+  border-bottom: 1px solid #d6c388;
+}
+
+.transfer__account-table__th-1st {
+  color: #959595;
+}
+
+.transfer__button--reflash {
+  color: #000;
+}
+
+.transfer__button--transfer {
+  background-image: $btn-bg-red;
+}
+.transfer__button--all-to-my-wallet {
+  background-image: $btn-bg-red;
+}
+.transfer__button--reflash {
+  background-image: $btn-bg-yellow-light;
+}

@@ -1,0 +1,41 @@
+@import '@/styles/global/abstracts';
+@import './abstracts';
+
+.register__form__field__hint {
+  color: #959595;
+}
+.register__notice__ol {
+  color: #959595;
+}
+.register__form__field__select--default {
+  color: #959595;
+}
+
+/*
+  ! 圖片路徑
+*/
+.register__button-div__send {
+  background-image: $btn-bg-red;
+}
+.register__button-div__reset {
+  background-image: $btn-bg-black;
+}
+
+.register__form__field--recommend {
+  background-image: assetPath('main/authBg_recommend.png');
+}
+.register__form__field--account {
+  background-image: assetPath('main/authBg_account.png');
+}
+.register__form__field--password {
+  background-image: assetPath('main/authBg_password.png');
+}
+.register__form__field--callphone {
+  background-image: assetPath('main/authBg_callphone.png');
+}
+.register__form__field--name {
+  background-image: assetPath('main/authBg_name.png');
+}
+.register__form__field--code {
+  background-image: assetPath('main/authBg_code.png');
+}

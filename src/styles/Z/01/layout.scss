@@ -1,0 +1,189 @@
+@import './abstracts';
+
+/*===================================================================================================================*/
+/*                                                      UI                                                           */
+/*===================================================================================================================*/
+
+body {
+  background: assetPath('layout/bg.jpg') #000 no-repeat center top;
+}
+.ui-ddl {
+  border: 1px solid #8b8b8b;
+}
+
+/*===================================================================================================================*/
+/*                                                      Theme                                                        */
+/*===================================================================================================================*/
+
+.theme-content-box {
+  border: 1px solid #d6c388;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+body {
+  background: assetPath('layout/bg.jpg') #000 no-repeat center top;
+}
+// .ui-btn01 {
+//   background-image: assetPath('ui/btn01.jpg');
+// }
+// .ui-btn02 {
+//   background-image: assetPath('ui/btn02.jpg');
+// }
+.ui-ddl {
+  background: assetPath('ui/ddl_arrow.jpg') #2e2e2e no-repeat right top;
+}
+.ui-table01 {
+  background: assetPath('ui/table01Bg.png') repeat;
+}
+.ui-table01 .ui-lnk-detail {
+  background-image: assetPath('ui/lnk_detail1.png');
+}
+.ui-table03 .ui-lnk-detail {
+  background-image: assetPath('ui/lnk_detail2.png');
+}
+.ui-table04 {
+  background: assetPath('ui/table01Bg.png') repeat;
+}
+.ui-li-tabs-account {
+  background-image: assetPath('ui/tabs_account.png');
+}
+.ui-li-tabs-password {
+  background-image: assetPath('ui/tabs_password.png');
+}
+.ui-li-tabs-deposit {
+  background-image: assetPath('ui/tabs_deposit.png');
+}
+.ui-li-tabs-withdrawal {
+  background-image: assetPath('ui/tabs_withdrawal.png');
+}
+.ui-li-tabs-wallet {
+  background-image: assetPath('ui/tabs_wallet.png');
+}
+.ui-li-tabs-pointrecord {
+  background-image: assetPath('ui/tabs_pointrecord.png');
+}
+.ui-li-tabs-uns {
+  background-image: assetPath('ui/tabs_uns.png');
+}
+.ui-li-tabs-bethistory {
+  background-image: assetPath('ui/tabs_bethistory.png');
+}
+.ui-li-tabs-news {
+  background-image: assetPath('ui/tabs_news.png');
+}
+.ui-li-tabs-mail {
+  background-image: assetPath('ui/tabs_mail.png');
+}
+.ui-li-tabs-sendmail {
+  background-image: assetPath('ui/tabs_sendmail.png');
+}
+.ui-li-tabs-partner1 {
+  background-image: assetPath('ui/tabs_partner1.png');
+}
+.ui-li-tabs-partner2 {
+  background-image: assetPath('ui/tabs_partner2.png');
+}
+.ui-li-tabs-partner3 {
+  background-image: assetPath('ui/tabs_partner3.png');
+}
+.ui-li-tabs-partner4 {
+  background-image: assetPath('ui/tabs_partner4.png');
+}
+.ui-li-tabs-account.active {
+  background-image: assetPath('ui/tabs_accountActive.png');
+}
+.ui-li-tabs-password.active {
+  background-image: assetPath('ui/tabs_passwordActive.png');
+}
+.ui-li-tabs-deposit.active {
+  background-image: assetPath('ui/tabs_depositActive.png');
+}
+.ui-li-tabs-withdrawal.active {
+  background-image: assetPath('ui/tabs_withdrawalActive.png');
+}
+.ui-li-tabs-wallet.active {
+  background-image: assetPath('ui/tabs_walletActive.png');
+}
+.ui-li-tabs-pointrecord.active {
+  background-image: assetPath('ui/tabs_pointrecordActive.png');
+}
+.ui-li-tabs-uns.active {
+  background-image: assetPath('ui/tabs_unsActive.png');
+}
+.ui-li-tabs-bethistory.active {
+  background-image: assetPath('ui/tabs_bethistoryActive.png');
+}
+.ui-li-tabs-news.active {
+  background-image: assetPath('ui/tabs_newsActive.png');
+}
+.ui-li-tabs-mail.active {
+  background-image: assetPath('ui/tabs_mailActive.png');
+}
+.ui-li-tabs-sendmail.active {
+  background-image: assetPath('ui/tabs_sendmailActive.png');
+}
+.ui-li-tabs-sendmail.active {
+  background-image: assetPath('ui/tabs_sendmailActive.png');
+}
+.ui-li-tabs-partner1.active {
+  background-image: assetPath('ui/tabs_partner1Active.png');
+}
+.ui-li-tabs-partner2.active {
+  background-image: assetPath('ui/tabs_partner2Active.png');
+}
+.ui-li-tabs-partner3.active {
+  background-image: assetPath('ui/tabs_partner3Active.png');
+}
+.ui-li-tabs-partner4.active {
+  background-image: assetPath('ui/tabs_partner4Active.png');
+}
+.ui-li-tabs-action {
+  background-image: assetPath('ui/tabs_action.png');
+}
+.ui-li-tabs-action2 {
+  background-image: assetPath('ui/tabs_action2.png');
+}
+.ui-li-tabs-history {
+  background-image: assetPath('ui/tabs_pointrecord.png');
+}
+.ui-li-tabs-action.active {
+  background-image: assetPath('ui/tabs_actionActive.png');
+}
+.ui-li-tabs-action2.active {
+  background-image: assetPath('ui/tabs_action2Active.png');
+}
+.ui-li-tabs-history.active {
+  background-image: assetPath('ui/tabs_pointrecordActive.png');
+}
+
+// .ui-lnk-pagerPreviousMore {
+//   background-image: assetPath('ui/lnk_previousMore.png');
+// }
+// .ui-lnk-pagerPrevious {
+//   background-image: assetPath('ui/lnk_previous.png');
+// }
+// .ui-lnk-pagerNext {
+//   background-image: assetPath('ui/lnk_next.png');
+// }
+// .ui-lnk-pagerNextMore {
+//   background-image: assetPath('ui/lnk_nextMore.png');
+// }
+// .ui-ddl-pager {
+//   background: assetPath('ui/ddl_pager.jpg') no-repeat;
+// }
+
+// .i-prize {
+//   background: assetPath('main/prizeIcn.png') left center no-repeat;
+// }
+// .ul-prize {
+//   background: assetPath('main/prizeBg.png') left center no-repeat;
+// }
+// .i-luckyDraw {
+//   background: assetPath('main/luckyDrawIcn.png') left center no-repeat;
+// }
+// .ul-luckyDraw {
+//   background: assetPath('main/prizeBg.png') left center no-repeat;
+// }

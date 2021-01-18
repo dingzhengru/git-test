@@ -1,0 +1,36 @@
+@import '@/styles/global/abstracts';
+@import './abstracts';
+
+.login__form__link {
+  color: #fff;
+}
+
+.login__form__submit {
+  background-image: $btn-bg-red;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+.login__form__field--account {
+  background-image: assetPath('main/authBg_account.png');
+}
+.login__form__field--password {
+  background-image: assetPath('main/authBg_password.png');
+}
+.login__form__field--code {
+  background-image: assetPath('main/authBg_code.png');
+}
+.login__form__link--regist {
+  background-image: assetPath('main/registerBg.png');
+}
+.login__form__link--forget {
+  background-image: assetPath('main/forgetBg.png');
+}
+.login__form__link--open {
+  background-image: assetPath('main/open.png');
+}
+.login__form__link--download {
+  background-image: assetPath('main/download.png');
+}

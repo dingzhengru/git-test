@@ -1,0 +1,47 @@
+{
+  "components": {
+    "app": {
+      "AppHeader": "components/Y/header/AppHeader",
+      "AppFooter": "components/Y/footer/AppFooter",
+      "AppNavTab": "components/Y/AppNavTab"
+    },
+    "header": {
+      "AppHeaderMenu": "components/Y/header/AppHeaderMenu",
+      "AppHeaderMenuAuth": "components/Y/header/AppHeaderMenuAuth"
+    },
+    "home": {
+      "HomeBanner": "components/Y/home/HomeBanner",
+      "HomeGameBlock": "components/Y/home/HomeGameBlock",
+      "HomeLotteryGameBlock": "components/Y/home/HomeLotteryGameBlock"
+    },
+    "footer": {
+      "AppFooterNav": "components/Y/footer/AppFooterNav"
+    },
+    "user": {
+      "UserProfileList": "components/Y/user/UserProfileList",
+      "UserProfileListAccess": "components/Y/user/UserProfileListAccess"
+    },
+    "transaction": {
+      "deposit": {
+        "DepositFormBase": "components/Y/transaction/deposit/DepositFormBase",
+        "DepositFormThirdParty": "components/Y/transaction/deposit/DepositFormThirdParty",
+        "DepositModeNav": "components/Y/transaction/deposit/DepositModeNav"
+      },
+      "record": {
+        "RecordImageDialog": "components/Y/transaction/record/RecordImageDialog"
+      }
+    },
+    "game": {
+      "GameCategoryNavigation": "components/Y/game/GameCategoryNavigation",
+      "GameJackpot": "components/Y/game/GameJackpot",
+      "GameListTable": "components/Y/game/GameListTable",
+      "GameProductNavigation": "components/Y/game/GameProductNavigation",
+      "GameSearchBlock": "components/Y/game/GameSearchBlock",
+      "GameTransferDialog": "components/Y/game/GameTransferDialog",
+      "LiveGameEnterDialog": "components/Y/game/LiveGameEnterDialog"
+    },
+    "report": {
+      "ReportBetRecordDetailTable": "components/Y/report/ReportBetRecordDetailTable"
+    }
+  }
+}

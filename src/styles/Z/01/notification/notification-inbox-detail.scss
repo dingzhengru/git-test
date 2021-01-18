@@ -1,0 +1,13 @@
+@import '@/styles/global/abstracts';
+@import '../abstracts';
+
+/*
+  ! 圖片路徑
+*/
+.notification-inbox-detail__button--submit {
+  background-image: $btn-bg-red;
+}
+
+.notification-inbox-detail__button--cancel {
+  background-image: $btn-bg-black;
+}

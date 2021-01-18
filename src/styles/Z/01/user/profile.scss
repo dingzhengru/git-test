@@ -1,0 +1,13 @@
+@import '@/styles/global/abstracts';
+@import '../abstracts';
+
+/*
+  ! 圖片路徑
+*/
+.user-profile__button--instant {
+  background-image: $btn-bg-red;
+}
+
+.user-profile-access__button--submit {
+  background-image: $btn-bg-red;
+}
