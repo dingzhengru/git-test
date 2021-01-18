@@ -1,8 +1,6 @@
 <template>
   <header class="header">
-    <div class="header__logo">
-      <img :src="siteLogoUrl" class="header__logo__img" :id="$idMapper.header.logo" alt="" />
-    </div>
+    <img :src="siteLogoUrl" class="header__logo" :id="$idMapper.header.logo" alt="" />
 
     <template v-if="siteStatus == 0">
       <router-link
@@ -53,38 +51,32 @@ export default {
 <style lang="scss" scoped>
 .header {
   position: relative;
-
+  height: 144px;
   &__logo {
-    position: relative;
-    height: 144px;
-
-    &__img {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-      max-width: 425px;
-    }
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 425px;
   }
 
   &__link {
     display: inline-block;
-    margin-top: -32.5px;
     position: absolute;
+
+    top: 35px;
 
     &--home {
       width: 77px;
       height: 65px;
-      top: 50%;
       left: 20px;
     }
 
     &--back {
       width: 48px;
       height: 80px;
-      top: 45%;
       left: 30px;
     }
   }

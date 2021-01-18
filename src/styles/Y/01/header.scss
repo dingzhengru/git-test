@@ -1,32 +1,30 @@
 @import './abstracts';
 
-.are-header-langMenu {
-  background: rgba(0, 0, 0, 0.9);
-}
-
-/*
-  ! 圖片路徑
-*/
+//* AppHeader
+$header-bg: assetPath('header/headerBg.jpg') no-repeat top center;
+$header-link-bg-home: assetPath('header/btn_home.png') no-repeat;
+$header-link-bg-back: assetPath('header/btn_back.png') no-repeat;
 
 .header {
-  background: assetPath('header/headerBg.jpg') no-repeat top center;
+  background: $header-bg;
+
+  &__link--home {
+    background: $header-link-bg-home;
+  }
+
+  &__link--back {
+    background: $header-link-bg-back;
+  }
 }
 
-.header__link--home {
-  background: assetPath('header/btn_home.png') no-repeat;
+//* AppHeaderMenu
+$header-menu-lang-dropdown-bg: black;
+
+.header-menu__lang-dropdown {
+  background: $header-menu-lang-dropdown-bg;
 }
 
-.header__link--back {
-  background: assetPath('header/btn_back.png') no-repeat;
-}
-
-.header-menu__lang-menu {
-  background: assetPath('header/menuBg.png') repeat;
-}
-
-/* 
- * 登入後的 menu
-*/
+//* AppHeaderMenuAuth
 
 .header-menu-auth__member {
   background: assetPath('header/memberInfoBg.png') repeat;
@@ -46,10 +44,3 @@
 .header-menu-auth__logout {
   background: assetPath('header/btn_logout.jpg') repeat-x;
 }
-
-// .lnk-header-login {
-//   background: assetPath('header/btn_login.png') no-repeat;
-// }
-// .lnk-header-back {
-//   background: assetPath('header/btn_back.png') no-repeat;
-// }
