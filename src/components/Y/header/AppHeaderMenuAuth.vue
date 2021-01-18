@@ -1,12 +1,13 @@
 <template>
   <div class="header-menu-auth">
     <div class="header-menu-auth__member">
-      <div class="header-menu-auth__member__block" v-for="item in userInfoKeyList" :key="item">
-        {{ $t(item) }}：
-        <template v-if="item == 'header.user.username'">{{ userAccount }}</template>
-        <template v-else-if="item == 'header.user.total'">{{ $numeral(userTotalBalance).format('0,0.00') }}</template>
-        <template v-else-if="item == 'header.user.vip'">{{ userPILevel }}</template>
-        <template v-else-if="item == 'header.user.roll'">{{ $numeral(userPIBetAmount).format('0,0.00') }}</template>
+      <div class="header-menu-auth__member__item">{{ $t('header.user.username') }}：{{ userAccount }}</div>
+      <div class="header-menu-auth__member__item">
+        {{ $t('header.user.total') }}：{{ $numeral(userTotalBalance).format('0,0.00') }}
+      </div>
+      <div class="header-menu-auth__member__item">{{ $t('header.user.vip') }}：{{ userPILevel }}</div>
+      <div class="header-menu-auth__member__item">
+        {{ $t('header.user.roll') }}：{{ $numeral(userPIBetAmount).format('0,0.00') }}
       </div>
     </div>
     <a
@@ -50,7 +51,12 @@
             </li>
           </div>
         </ul>
-        <button type="button" class="header-menu-auth__logout" :id="$idMapper.header.button.logout" @click="logout">
+        <button
+          type="button"
+          class="header-menu-auth__menu__logout"
+          :id="$idMapper.header.button.logout"
+          @click="logout"
+        >
           {{ $t('header.button.logout') }}
         </button>
       </div>
@@ -94,7 +100,6 @@ export default {
           link: 'About',
         },
       ],
-      userInfoKeyList: ['header.user.username', 'header.user.total', 'header.user.vip', 'header.user.roll'],
     };
   },
   methods: {
@@ -130,23 +135,20 @@ export default {
 
 .header-menu-auth {
   &__member {
-    width: 100%;
-    min-height: 50px;
-    padding: 0 15px;
-    margin-bottom: 30px;
-    font-size: 1.846em;
-    line-height: 40px;
+    display: flex;
+    flex-wrap: wrap;
     position: absolute;
     top: 144px;
     left: 0;
+    font-size: 1.846em;
     z-index: 2;
 
-    &__block {
+    &__item {
       width: 50%;
-      display: inline-block;
+      padding: 3px 10px;
     }
 
-    &__block:nth-child(even) {
+    &__item:nth-child(even) {
       text-align: right;
     }
 
@@ -246,15 +248,14 @@ export default {
         }
       }
     }
-  }
-
-  &__logout {
-    display: block;
-    width: 80%;
-    margin: 0 10%;
-    color: #000;
-    font-size: 2.923em;
-    line-height: 87px;
+    &__logout {
+      display: block;
+      width: 80%;
+      margin: 0 10%;
+      color: #000;
+      font-size: 2.923em;
+      line-height: 87px;
+    }
   }
 }
 </style>

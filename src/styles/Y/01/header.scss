@@ -1,3 +1,4 @@
+@import '@/styles/global/abstracts';
 @import './abstracts';
 
 //* AppHeader
@@ -25,22 +26,32 @@ $header-menu-lang-dropdown-bg: black;
 }
 
 //* AppHeaderMenuAuth
+$header-menu-auth-member-bg: rgba(black, 0.6);
+$header-menu-auth-button-bg-open: assetPath('header/btn_menuOpen.png') no-repeat;
+$header-menu-auth-button-bg-close: assetPath('header/btn_menuClose.png') no-repeat center;
+$header-menu-auth-menu-bg: rgba(black, 0.9);
+$header-menu-auth-menu-logout-bg: $btn-bg-yellow-light repeat-x;
 
-.header-menu-auth__member {
-  background: assetPath('header/memberInfoBg.png') repeat;
-}
+.header-menu-auth {
+  &__member {
+    background: $header-menu-auth-member-bg;
+  }
 
-.header-menu-auth__button--open {
-  background: assetPath('header/btn_menuOpen.png') no-repeat;
-}
-.header-menu-auth__button--close {
-  background: assetPath('header/btn_menuClose.png') no-repeat center;
-}
+  &__button {
+    &--open {
+      background: $header-menu-auth-button-bg-open;
+    }
 
-.header-menu-auth__menu {
-  background: assetPath('header/menuBg.png') repeat;
-}
+    &--close {
+      background: $header-menu-auth-button-bg-close;
+    }
+  }
 
-.header-menu-auth__logout {
-  background: assetPath('header/btn_logout.jpg') repeat-x;
+  &__menu {
+    background: $header-menu-auth-menu-bg;
+
+    &__logout {
+      background: $header-menu-auth-menu-logout-bg;
+    }
+  }
 }
