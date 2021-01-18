@@ -47,38 +47,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.header {
-  position: relative;
-  height: 144px;
-  &__logo {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    max-width: 425px;
-  }
-
-  &__link {
-    display: inline-block;
-    position: absolute;
-
-    top: 35px;
-
-    &--home {
-      width: 77px;
-      height: 65px;
-      left: 20px;
-    }
-
-    &--back {
-      width: 48px;
-      height: 80px;
-      left: 30px;
-    }
-  }
-}
-</style>

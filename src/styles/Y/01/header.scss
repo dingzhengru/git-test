@@ -1,28 +1,31 @@
 @import '@/styles/global/abstracts';
 @import './abstracts';
+@import '@/styles/Y/_default/header';
 
 //* AppHeader
 $header-bg: assetPath('header/headerBg.jpg') no-repeat top center;
-$header-link-bg-home: assetPath('header/btn_home.png') no-repeat;
-$header-link-bg-back: assetPath('header/btn_back.png') no-repeat;
+
+$header-link-home-bg: assetPath('header/btn_home.png') no-repeat;
+$header-link-home-width: 77px;
+$header-link-home-height: 65px;
+$header-link-home-top: 35px;
+$header-link-home-left: 20px;
+
+$header-link-back-bg: assetPath('header/btn_back.png') no-repeat;
+$header-link-back-width: 48px;
+$header-link-back-height: 80px;
+$header-link-back-top: 35px;
+$header-link-back-left: 30px;
 
 .header {
-  background: $header-bg;
-
-  &__link--home {
-    background: $header-link-bg-home;
-  }
-
-  &__link--back {
-    background: $header-link-bg-back;
-  }
+  @include header;
 }
 
 //* AppHeaderMenu
 $header-menu-lang-dropdown-bg: black;
 
-.header-menu__lang-dropdown {
-  background: $header-menu-lang-dropdown-bg;
+.header-menu {
+  @include header-menu;
 }
 
 //* AppHeaderMenuAuth
@@ -33,25 +36,5 @@ $header-menu-auth-menu-bg: rgba(black, 0.9);
 $header-menu-auth-menu-logout-bg: $btn-bg-yellow-light repeat-x;
 
 .header-menu-auth {
-  &__member {
-    background: $header-menu-auth-member-bg;
-  }
-
-  &__button {
-    &--open {
-      background: $header-menu-auth-button-bg-open;
-    }
-
-    &--close {
-      background: $header-menu-auth-button-bg-close;
-    }
-  }
-
-  &__menu {
-    background: $header-menu-auth-menu-bg;
-
-    &__logout {
-      background: $header-menu-auth-menu-logout-bg;
-    }
-  }
+  @include header-menu-auth;
 }

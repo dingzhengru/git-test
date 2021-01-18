@@ -4,3 +4,5 @@
 @function assetPath($path) {
   @return url('~@/assets/Z/01/#{$path}');
 }
+
+$header-height: 130px;
