@@ -26,12 +26,7 @@ body {
 body {
   background: assetPath('layout/bg.jpg') #000 no-repeat center top;
 }
-// .ui-btn01 {
-//   background-image: assetPath('ui/btn01.jpg');
-// }
-// .ui-btn02 {
-//   background-image: assetPath('ui/btn02.jpg');
-// }
+
 .ui-ddl {
   background: assetPath('ui/ddl_arrow.jpg') #2e2e2e no-repeat right top;
 }
@@ -47,6 +42,9 @@ body {
 .ui-table04 {
   background: assetPath('ui/table01Bg.png') repeat;
 }
+
+//* nav-tab
+
 .ui-li-tabs-account {
   background-image: assetPath('ui/tabs_account.png');
 }
@@ -158,32 +156,3 @@ body {
 .ui-li-tabs-history.active {
   background-image: assetPath('ui/tabs_pointrecordActive.png');
 }
-
-// .ui-lnk-pagerPreviousMore {
-//   background-image: assetPath('ui/lnk_previousMore.png');
-// }
-// .ui-lnk-pagerPrevious {
-//   background-image: assetPath('ui/lnk_previous.png');
-// }
-// .ui-lnk-pagerNext {
-//   background-image: assetPath('ui/lnk_next.png');
-// }
-// .ui-lnk-pagerNextMore {
-//   background-image: assetPath('ui/lnk_nextMore.png');
-// }
-// .ui-ddl-pager {
-//   background: assetPath('ui/ddl_pager.jpg') no-repeat;
-// }
-
-// .i-prize {
-//   background: assetPath('main/prizeIcn.png') left center no-repeat;
-// }
-// .ul-prize {
-//   background: assetPath('main/prizeBg.png') left center no-repeat;
-// }
-// .i-luckyDraw {
-//   background: assetPath('main/luckyDrawIcn.png') left center no-repeat;
-// }
-// .ul-luckyDraw {
-//   background: assetPath('main/prizeBg.png') left center no-repeat;
-// }

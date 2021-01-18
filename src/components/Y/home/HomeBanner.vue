@@ -1,15 +1,15 @@
 <template>
-  <swiper class="home-swiper" :options="swiperOption" @click-slide="handleClickSlide">
+  <swiper class="home-banner" :options="swiperOption" @click-slide="handleClickSlide">
     <swiper-slide v-for="(item, index) in list" :key="index">
-      <a class="home-swiper__link" href="javascript:;">
+      <a class="home-banner__link" href="javascript:;">
         <img
           :src="siteIsNewPromotion ? item.Lst_ImgUrl : `${siteResourceUrl}/banner/${item.ImageUrl}`"
           onerror="this.style.display = 'none'"
         />
       </a>
     </swiper-slide>
-    <a class="home-swiper__button--previous" slot="button-prev"></a>
-    <a class="home-swiper__button--next" slot="button-next"></a>
+    <a class="home-banner__button home-banner__button--previous" slot="button-prev"></a>
+    <a class="home-banner__button home-banner__button--next" slot="button-next"></a>
   </swiper>
 </template>
 
@@ -46,8 +46,8 @@ export default {
           enabled: true,
         },
         navigation: {
-          prevEl: '.home-swiper__button--previous',
-          nextEl: '.home-swiper__button--next',
+          prevEl: '.home-banner__button--previous',
+          nextEl: '.home-banner__button--next',
         },
         autoplay: {
           delay: 5000,
@@ -66,38 +66,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.home-swiper {
-  height: 431px;
-
-  &__link {
-    display: block;
-    width: 100%;
-    height: 431px;
-  }
-
-  img {
-    width: 100%;
-    height: 431px;
-  }
-}
-
-.home-swiper__button--previous,
-.home-swiper__button--next {
-  display: inline-block;
-  position: absolute;
-  top: 40%;
-  width: 100px;
-  height: 100px;
-  z-index: 1;
-}
-.home-swiper__button--previous {
-  background: url(~@/assets/common/banner/prev.png) no-repeat center center;
-  left: 0;
-}
-.home-swiper__button--next {
-  background: url(~@/assets/common/banner/next.png) no-repeat center center;
-  right: 0;
-}
-</style>

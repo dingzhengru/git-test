@@ -1,23 +1,31 @@
 @import './abstracts';
+@import '@/styles/Y/_default/home';
 
-.home-game__ul__li__link {
-  color: #2a2a2a;
+@import './abstracts';
+@import '@/styles/Y/_default/home';
+
+.home {
+  @include home;
 }
 
-/*
-  ! 圖片路徑
-*/
+$home-banner-height: 431px;
+$home-banner-button-width: 100px;
+$home-banner-button-height: 100px;
+$home-banner-button-bg-prev: url(~@/assets/common/banner/prev.png) no-repeat center center;
+$home-banner-button-bg-next: url(~@/assets/common/banner/next.png) no-repeat center center;
 
-.ul-prize {
-  background: assetPath('main/prizeBg.png') left center no-repeat;
-}
-.i-luckyDraw {
-  background: assetPath('main/luckyDrawIcn.png') left center no-repeat;
-}
-.ul-luckyDraw {
-  background: assetPath('main/prizeBg.png') left center no-repeat;
+.home-banner {
+  @include home-banner;
 }
 
-// .noneLoginPopup {
-//   background: rgba(0, 0, 0, 0.8) assetPath('main/Bg-noneLoginPopup.jpg') center center no-repeat;
-// }
+$home-game-bg: none;
+$home-game-text-color: #2a2a2a;
+$home-game-maintain-bg: assetPath('game/btn_maintain.png') no-repeat;
+
+.home-game {
+  @include home-game;
+}
+
+.home-lottery {
+  @include home-lottery;
+}

@@ -223,10 +223,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home {
-  padding-bottom: 119px;
-}
-
 .wheel-container {
   position: fixed;
   left: 5%;
@@ -268,14 +264,5 @@ export default {
   background-color: #860103;
   background-position: center;
   z-index: 9999;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>

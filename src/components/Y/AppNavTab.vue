@@ -1,7 +1,7 @@
 <template>
-  <ul class="tabs__ul">
-    <li
-      class="tabs__ul__li"
+  <div class="nav-tab">
+    <div
+      class="nav-tab__item"
       :class="[
         item.class,
         {
@@ -12,15 +12,16 @@
       v-for="item in list"
       :key="item.name"
     >
-      <router-link class="tabs__ul__li__link" :to="{ name: item.link }">
+      <router-link class="nav-tab__item__link" :to="{ name: item.link }">
         {{ $t(item.text) }}
       </router-link>
-    </li>
-  </ul>
+    </div>
+  </div>
 </template>
 
 <script>
 import { getObjectValueByDotString } from '@/utils/object';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'AppNavTab',
@@ -30,49 +31,16 @@ export default {
       default: () => [],
     },
   },
+  computed: {
+    ...mapGetters(['siteFullCss']),
+  },
   data() {
     return {
       getObjectValueByDotString: getObjectValueByDotString,
     };
   },
+  mounted() {
+    import(`@/styles/${this.siteFullCss}/nav-tab.scss`);
+  },
 };
 </script>
-
-<style lang="scss" scoped>
-.tabs__ul {
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  /* 避免換行 */
-  /* white-space: nowrap; */
-  /* word-break: break-word; */
-
-  &__li {
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-position: center top;
-    border-right: 1px dotted #fff;
-    list-style: none;
-    vertical-align: top;
-    /* word-break: break-word; */
-    /* letter-spacing: normal; */
-    /* word-spacing: normal; */
-
-    &__link {
-      display: block;
-      min-width: 160px;
-      max-width: 200px;
-      margin: 0;
-      padding: 102px 20px 0px 20px;
-      /* margin: 0 25px; */
-      /* padding-top: 102px; */
-      color: #fff;
-      font-size: 2.153em;
-      text-align: center;
-    }
-  }
-  &__li:last-child {
-    border-right: none;
-  }
-}
-</style>

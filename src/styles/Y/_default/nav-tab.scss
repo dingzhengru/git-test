@@ -1,0 +1,21 @@
+@mixin nav-tab {
+  display: flex;
+  justify-content: center;
+  &__item {
+    width: 25%;
+    background-repeat: no-repeat;
+    background-position: center top;
+    border-right: 1px dotted #fff;
+    text-align: center;
+    &__link {
+      display: block;
+      margin: 0;
+      padding-top: 102px;
+      color: #fff;
+      font-size: 2.153em;
+    }
+  }
+  &__item:last-child {
+    border-right: none;
+  }
+}
