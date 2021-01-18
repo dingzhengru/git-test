@@ -19,38 +19,33 @@
     ></a>
     <transition name="slide">
       <div class="header-menu-auth__menu" v-if="isShowMenu">
-        <ul class="header-menu-auth__menu__route-ul">
+        <ul class="header-menu-auth__menu__route">
           <li
-            class="header-menu-auth__menu__route-ul__li"
+            class="header-menu-auth__menu__route__item"
             :id="$idMapper.header.menu[item.name]"
             v-for="item in routeList"
             :key="item.name"
             @click="isShowMenu = false"
           >
-            <router-link class="header-menu-auth__menu__route-ul__li__link" :to="{ name: item.link }">
+            <router-link class="header-menu-auth__menu__route__item__link" :to="{ name: item.link }">
               {{ $t(item.name) }}
             </router-link>
           </li>
         </ul>
-        <ul class="header-menu-auth__menu__lang-ul">
-          <div class="header-menu-auth__menu__lang-ul__div" v-for="item in langList" :key="item.Lst_Locales_Code">
-            <li
-              class="header-menu-auth__menu__lang-ul__li"
+        <div class="header-menu-auth__menu__lang">
+          <template v-for="item in langList">
+            <div
+              class="header-menu-auth__menu__lang__item"
               @click="changeLang(item.Lst_Locales_Code)"
+              :key="item.Lst_Locales_Code"
+              :class="item.Lst_Locales_Code"
+              :id="$idMapper.header[item.Lst_Locales_Code]"
               v-if="item.Lst_Is_Enable"
             >
-              <a
-                href="javascript:;"
-                class="header-menu-auth__menu__lang-ul__li__link"
-                :id="$idMapper.header[item.Lst_Locales_Code]"
-                :class="item.Lst_Locales_Code"
-                @click="isShowMenu = false"
-              >
-                {{ item.Lst_Locales_Name }}
-              </a>
-            </li>
-          </div>
-        </ul>
+              {{ item.Lst_Locales_Name }}
+            </div>
+          </template>
+        </div>
         <button
           type="button"
           class="header-menu-auth__menu__logout"
@@ -187,11 +182,11 @@ export default {
     left: 0;
     z-index: 3;
 
-    &__route-ul {
+    &__route {
       margin: 0;
       padding: 20px 0;
 
-      &__li {
+      &__item {
         margin: 35px 0;
 
         &__link {
@@ -208,43 +203,33 @@ export default {
       }
     }
 
-    &__lang-ul {
-      padding: 0;
+    &__lang {
       margin: 0 0 60px 0;
       text-align: center;
-      list-style-type: none;
 
-      &__div {
+      &__item {
         display: inline-block;
-      }
-
-      &__li {
+        width: 116px;
+        height: 108px;
+        line-height: 170px;
+        color: #fff;
+        font-size: 2.153em;
         margin: 0 30px;
 
-        &__link {
-          display: block;
-          width: 116px;
-          background-repeat: no-repeat;
-          background-position: center top;
-          padding-top: 71px;
-          color: #fff;
-          font-size: 2.153em;
-
-          &.zh-tw {
-            background-image: url(~@/assets/common/lang/lang_zh-tw.png);
-          }
-          &.zh-cn {
-            background-image: url(~@/assets/common/lang/lang_zh-cn.png);
-          }
-          &.en-us {
-            background-image: url(~@/assets/common/lang/lang_en-us.png);
-          }
-          &.th-th {
-            background-image: url(~@/assets/common/lang/lang_th-th.png);
-          }
-          &.my-mm {
-            background-image: url(~@/assets/common/lang/lang_my-mm.png);
-          }
+        &.zh-tw {
+          background: url(~@/assets/common/lang/lang_zh-tw.png) top center no-repeat;
+        }
+        &.zh-cn {
+          background: url(~@/assets/common/lang/lang_zh-cn.png) top center no-repeat;
+        }
+        &.en-us {
+          background: url(~@/assets/common/lang/lang_en-us.png) top center no-repeat;
+        }
+        &.th-th {
+          background: url(~@/assets/common/lang/lang_th-th.png) top center no-repeat;
+        }
+        &.my-mm {
+          background: url(~@/assets/common/lang/lang_my-mm.png) top center no-repeat;
         }
       }
     }
