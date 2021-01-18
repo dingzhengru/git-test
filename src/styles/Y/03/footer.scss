@@ -1,23 +1,27 @@
 @import './abstracts';
-/*
-  ! 圖片路徑
-*/
+
+$footer-bg: assetPath('footer/footerBg.png') no-repeat center top;
 
 .footer {
-  background: assetPath('footer/footerBg.png') no-repeat center top;
+  background: $footer-bg;
 }
-.footer__ul {
-  background: assetPath('footer/toolbarBg.jpg') repeat-x;
-}
-.footer__ul__li {
-  background: assetPath('footer/toolbarBg.jpg') repeat-x;
-}
-.footer__ul__li--active {
-  background-image: assetPath('footer/toolbarBgActive.jpg');
-}
-.footer__ul__li__link {
-  background: assetPath('footer/lnk_toolbar.png') 0px 6px no-repeat;
-}
-.footer__ul__li:after {
-  background: assetPath('footer/lnk_line.png') right top no-repeat;
+
+$footer-nav-bg: assetPath('footer/toolbarBg.jpg') repeat-x;
+$footer-nav-item-bg: assetPath('footer/lnk_toolbar.png') no-repeat;
+$footer-nav-item-bg-active: assetPath('footer/lnk_toolbar.png') no-repeat,
+  assetPath('footer/toolbarBgActive.jpg') repeat-x;
+$footer-nav-item-border-bg: assetPath('footer/lnk_line.png') no-repeat;
+
+.footer-nav {
+  background: $footer-nav-bg;
+  &__item {
+    background: $footer-nav-item-bg;
+
+    &:after {
+      background: $footer-nav-item-border-bg;
+    }
+  }
+  &__item.active {
+    background: $footer-nav-item-bg-active;
+  }
 }

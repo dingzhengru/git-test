@@ -13,8 +13,8 @@
       ></router-link>
       <a class="header__link header__link--back" href="javascript:;" @click="$router.go(-1)" v-else></a>
 
-      <component :is="HeaderMenu" v-if="!userIsLoggedIn" @changeLang="changeLang" />
-      <component :is="HeaderMenuAuth" v-else @changeLang="changeLang" @logout="logout" />
+      <component :is="AppHeaderMenu" v-if="!userIsLoggedIn" @changeLang="changeLang" />
+      <component :is="AppHeaderMenuAuth" v-else @changeLang="changeLang" @logout="logout" />
     </template>
   </header>
 </template>
@@ -32,11 +32,11 @@ export default {
   },
   computed: {
     ...mapGetters(['siteSetting', 'siteLogoUrl', 'siteStatus', 'userIsLoggedIn']),
-    HeaderMenu() {
-      return () => import(`@/${this.siteSetting.components.header.HeaderMenu}`);
+    AppHeaderMenu() {
+      return () => import(`@/${this.siteSetting.components.header.AppHeaderMenu}`);
     },
-    HeaderMenuAuth() {
-      return () => import(`@/${this.siteSetting.components.header.HeaderMenuAuth}`);
+    AppHeaderMenuAuth() {
+      return () => import(`@/${this.siteSetting.components.header.AppHeaderMenuAuth}`);
     },
   },
   methods: {

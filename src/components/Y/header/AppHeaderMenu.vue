@@ -30,7 +30,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'HeaderMenu',
+  name: 'AppHeaderMenu',
   computed: {
     ...mapGetters(['lang', 'langList']),
   },

@@ -3,16 +3,19 @@
     "app": {
       "AppHeader": "components/Y/header/AppHeader",
       "AppFooter": "components/Y/footer/AppFooter",
-      "AppNavigationTab": "components/Y/AppNavigationTab"
+      "AppNavTab": "components/Y/AppNavTab"
     },
     "header": {
-      "HeaderMenu": "components/Y/header/HeaderMenu",
-      "HeaderMenuAuth": "components/Y/header/HeaderMenuAuth"
+      "AppHeaderMenu": "components/Y/header/AppHeaderMenu",
+      "AppHeaderMenuAuth": "components/Y/header/AppHeaderMenuAuth"
     },
     "home": {
       "HomeBanner": "components/Y/home/HomeBanner",
       "HomeGameBlock": "components/Y/home/HomeGameBlock",
       "HomeLotteryGameBlock": "components/Y/home/HomeLotteryGameBlock"
+    },
+    "footer": {
+      "AppFooterNav": "components/Y/footer/AppFooterNav"
     },
     "user": {
       "UserProfileList": "components/Y/user/UserProfileList",

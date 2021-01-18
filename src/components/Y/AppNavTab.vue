@@ -23,7 +23,7 @@
 import { getObjectValueByDotString } from '@/utils/object';
 
 export default {
-  name: 'AppNavigationTab',
+  name: 'AppNavTab',
   props: {
     list: {
       type: Array,

@@ -61,7 +61,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-  name: 'HeaderMenuAuth',
+  name: 'AppHeaderMenuAuth',
   computed: {
     ...mapGetters(['langList', 'userTotalBalance', 'userAccount', 'userPILevel', 'userPIBetAmount']),
   },
