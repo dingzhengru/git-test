@@ -92,14 +92,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.footer {
-  width: 100%;
-  padding-top: 3px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 4;
-}
-</style>

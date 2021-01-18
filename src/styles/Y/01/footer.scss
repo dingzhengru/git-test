@@ -1,42 +1,51 @@
 @import './abstracts';
+@import '@/styles/Y/_default/footer';
 
 $footer-bg: assetPath('footer/footerBg.png') no-repeat center top;
 
 .footer {
-  background: $footer-bg;
+  @include footer;
 }
 
 $footer-nav-bg: assetPath('footer/toolbarBg.jpg') repeat-x;
-$footer-nav-item-bg: assetPath('footer/lnk_toolbar.png') no-repeat;
-$footer-nav-item-bg-active: assetPath('footer/lnk_toolbar.png') no-repeat,
-  assetPath('footer/toolbarBgActive.jpg') repeat-x;
+$footer-nav-item-bg: transparent;
+$footer-nav-item-bg-active: assetPath('footer/toolbarBgActive.jpg') repeat-x;
+$footer-nav-link-bg: assetPath('footer/lnk_toolbar.png') no-repeat;
+$footer-nav-link-color: white;
 $footer-nav-item-border-bg: assetPath('footer/lnk_line.png') no-repeat;
 
 .footer-nav {
-  background: $footer-nav-bg;
+  @include footer-nav;
+
   &__item {
-    background: $footer-nav-item-bg;
-    
+    &.active {
+      background: $footer-nav-item-bg-active;
+    }
+
     &.member {
-      background-position: 0px 6px;
+      > a {
+        background-position: 0px 6px;
+      }
     }
     &.login {
-      background-position: 25% 6px;
+      > a {
+        background-position: 25% 6px;
+      }
     }
     &.promotion {
-      background-position: 50% 6px;
+      > a {
+        background-position: 50% 6px;
+      }
     }
     &.contact {
-      background-position: 75% 6px;
+      > a {
+        background-position: 75% 6px;
+      }
     }
     &.transaction {
-      background-position: 97% 6px;
+      > a {
+        background-position: 97% 6px;
+      }
     }
-    &:after {
-      background: $footer-nav-item-border-bg;
-    }
-  }
-  &__item.active {
-    background: $footer-nav-item-bg-active;
   }
 }

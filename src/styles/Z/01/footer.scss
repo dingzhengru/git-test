@@ -1,54 +1,54 @@
 @import './abstracts';
+@import '@/styles/Y/_default/footer';
 
 $footer-bg: none;
 
 .footer {
-  background: $footer-bg;
+  @include footer;
 }
 
 $footer-nav-bg: #cbaa6d;
-$footer-nav-item-bg: assetPath('footer/ui-footer-toolbar.png') no-repeat;
-// $footer-nav-item-bg-active: assetPath('footer/lnk_toolbar.png') no-repeat;
+$footer-nav-item-bg: transparent;
+$footer-nav-item-bg-active: transparent;
+$footer-nav-link-bg: assetPath('footer/lnk_toolbar.png') no-repeat;
 $footer-nav-item-border-bg: none;
+$footer-nav-link-color: white;
 
 .footer-nav {
-  background: $footer-nav-bg;
+  @include footer-nav;
   &__item {
-    background: $footer-nav-item-bg;
-
     &__link {
       color: black;
     }
 
     &.home {
-      background: assetPath('header/btn_home.png') center 10px no-repeat;
+      > a {
+        background: assetPath('header/btn_home.png') center 10px no-repeat;
+      }
     }
     &.login {
-      background-position: center -250px;
       background-color: #462b16;
       > a {
         color: white;
+        background-position: center -250px;
       }
     }
     &.promotion {
-      background-position: center -378px;
+      > a {
+        background-position: center -378px;
+      }
     }
     &.contact {
-      background-position: center -16px;
+      > a {
+        background-position: center -16px;
+      }
     }
     &.transaction {
-      background-position: center -145px;
       background-color: #462b16;
       > a {
         color: white;
+        background-position: center -145px;
       }
     }
-
-    &:after {
-      background: $footer-nav-item-border-bg;
-    }
   }
-  // &__item.active {
-  //   background: $footer-nav-item-bg-active;
-  // }
 }
