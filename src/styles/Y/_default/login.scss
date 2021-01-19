@@ -1,0 +1,99 @@
+@mixin login {
+  padding-bottom: 119px;
+
+  &__error-message {
+    text-align: center;
+  }
+
+  &__title {
+    color: $login-title-color;
+    font-size: 3.584em;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  &__form {
+    width: 563px;
+    margin: 0 auto;
+    text-align: center;
+
+    &__field {
+      color: $login-field-input-color;
+      border: $login-field-border;
+      height: 81px;
+      margin-bottom: 30px;
+      padding-left: 80px;
+
+      &--account {
+        background: $login-field-bg-account;
+      }
+      &--password {
+        background: $login-field-bg-password;
+      }
+      &--code {
+        background: $login-field-bg-code;
+      }
+
+      &--code {
+        position: relative;
+      }
+
+      &__image--code {
+        position: absolute;
+        top: 11px;
+        right: 15px;
+      }
+      &__input {
+        width: 465px;
+        height: 64px;
+        background: transparent;
+        margin: 8px 0 9px;
+        padding: 0 3px;
+        border: none;
+        outline: none;
+        font-size: 2.5em;
+      }
+      &--remember {
+        height: 70px;
+        padding: 0;
+        border: none;
+        outline: none;
+      }
+      &__checkbox {
+        width: 35px;
+        height: 27px;
+      }
+      &__label {
+        font-size: 2.5em;
+      }
+    }
+    &__link-div {
+      margin-top: 35px;
+      font-size: 2.46em;
+    }
+    &__link {
+      color: $login-link-text-color;
+      // min-width: 129px;
+      min-width: 170px;
+      display: inline-block;
+      padding-top: 134px;
+      &--register {
+        background: $login-link-bg-register;
+      }
+      &--forget {
+        background: $login-link-bg-forget;
+      }
+      &--open {
+        background: $login-link-bg-open;
+      }
+      &--download {
+        background: $login-link-bg-download;
+      }
+    }
+    &__submit {
+      background: $login-button-bg-submit;
+      display: block;
+      margin: 20px auto;
+    }
+  }
+}

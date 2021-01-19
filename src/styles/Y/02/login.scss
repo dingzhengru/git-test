@@ -1,21 +1,26 @@
 @import '@/styles/global/abstracts';
 @import './abstracts';
+@import '@/styles/Y/_default/login';
 
-.login__form__field {
-  outline: 3px solid #2b7d9c;
-}
-.login__form__link {
-  color: #1b607f;
-}
+$login-title-color:white;
 
-.login__form__field__input {
-  color: #000;
-}
+$login-field-bg-account: assetPath('main/authBg_account.png') 8px center no-repeat;
+$login-field-bg-password: assetPath('main/authBg_password.png') 8px center no-repeat;
+$login-field-bg-code: assetPath('main/authBg_code.png') 8px center no-repeat;
+$login-field-input-color: black;
+$login-field-border: 3px solid #2b7d9c;
 
-.login__form__submit {
-  background-image: $btn-bg-yellow-dark;
-}
+$login-link-text-color: black;
+$login-link-bg-register: assetPath('main/registerBg.png') no-repeat;
+$login-link-bg-forget: assetPath('main/forgetBg.png') no-repeat;
+$login-link-bg-open: assetPath('main/open.png') no-repeat;
+$login-link-bg-download: assetPath('main/download.png') no-repeat;
 
+$login-button-bg-submit: $btn-bg-yellow-dark;
+
+.login {
+  @include login;
+}
 /*
   ! 圖片路徑
 */

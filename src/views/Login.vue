@@ -57,7 +57,7 @@
             @click="changeCaptcha"
           />
         </ValidationProvider>
-        <div class="login__form__field login__form__field--remember-me" v-if="siteIsOpenRememberMe">
+        <div class="login__form__field login__form__field--remember" v-if="siteIsOpenRememberMe">
           <input class="login__form__field__checkbox" id="RememberMe" type="checkbox" v-model="user.RememberMe" />
           <label class="login__form__field__label" id="lbRememberMe" for="RememberMe">
             {{ $t('login.rememberMe') }}
@@ -65,7 +65,7 @@
         </div>
         <div class="login__form__link-div">
           <router-link
-            class="login__form__link login__form__link--regist"
+            class="login__form__link login__form__link--register"
             :id="$idMapper.login.link.register"
             :to="{ name: 'Register' }"
           >
@@ -167,102 +167,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.login {
-  padding-bottom: 119px;
-
-  &__error-message {
-    text-align: center;
-  }
-
-  &__title {
-    color: #fff;
-    font-size: 3.584em;
-    font-weight: normal;
-    text-align: center;
-  }
-
-  &__form {
-    width: 563px;
-    margin: 0 auto;
-    text-align: center;
-
-    &__field {
-      height: 81px;
-      background-repeat: no-repeat;
-      margin-bottom: 30px;
-      padding-left: 80px;
-
-      &--code {
-        position: relative;
-      }
-
-      &__image--code {
-        position: absolute;
-        top: 11px;
-        right: 15px;
-      }
-      &__input {
-        width: 465px;
-        height: 64px;
-        background-color: transparent;
-        margin: 8px 0 9px;
-        padding: 0 3px;
-        border: none;
-        outline: none;
-        font-size: 2.5em;
-      }
-      &--remember-me {
-        height: 70px;
-        padding: 0;
-        outline: none;
-      }
-      &__checkbox {
-        width: 35px;
-        height: 27px;
-      }
-      &__label {
-        font-size: 2.5em;
-      }
-    }
-    &__link-div {
-      margin-top: 35px;
-      font-size: 2.46em;
-
-      a {
-        min-width: 129px;
-        display: inline-block;
-        background-repeat: no-repeat;
-        background-position: top center;
-        padding-top: 134px;
-      }
-    }
-    &__submit {
-      display: block;
-      margin: 20px auto;
-    }
-  }
-}
-
-.en-us {
-  .login__form__link {
-    width: 170px;
-  }
-  .login__form__link--forget {
-    width: 200px;
-  }
-}
-
-.zh-cn {
-  .login__form__link {
-    width: 170px;
-  }
-}
-
-.th-th {
-  .login__form__link {
-    width: 180px;
-  }
-}
-</style>
