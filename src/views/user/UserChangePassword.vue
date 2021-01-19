@@ -115,7 +115,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'userIsEnableRememberOption']),
+    ...mapGetters(['userIsEnableRememberOption']),
   },
   data() {
     return {
@@ -161,83 +161,8 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/user/change-password.scss`);
-
     //* 設置記憶密碼
     this.isRememberPassword = this.userIsEnableRememberOption;
   },
 };
 </script>
-
-<style>
-/*
- * Switch 開關，width: 640px, height: 100px
-*/
-
-.user-change-password__form__field .v-switch-core {
-  border-radius: 0 !important;
-}
-
-/*
- * 按鈕
-*/
-
-.user-change-password .vue-js-switch .v-switch-core .v-switch-button {
-  width: 320px !important;
-  border-radius: 0 !important;
-}
-
-/*
- * 按鈕在右邊時
- * 位置: (開關寬度/2) + (開關寬度/2 - 按鈕寬度) => (640/2) + (640/2 - 320)
-*/
-.user-change-password .vue-js-switch.toggled .v-switch-core .v-switch-button {
-  transform: translate3d(320px, 0px, 0px) !important;
-}
-/*
- * 左邊標籤(文字)
- * 位置: (按鈕大小 - 標籤大小) / 2 => (320-80) / 2
- * 但不同語言的標籤大小會不同
-*/
-.zh-cn .user-change-password .vue-js-switch .v-switch-label.v-left {
-  left: 120px !important;
-}
-
-.en-us .user-change-password .vue-js-switch .v-switch-label.v-left {
-  left: 82px !important;
-}
-
-.th-th .user-change-password .vue-js-switch .v-switch-label.v-left {
-  left: 100px !important;
-}
-
-/*
- * 右邊標籤(文字)
- * 位置: 同上
-*/
-.zh-cn .user-change-password .vue-js-switch .v-switch-label.v-right {
-  right: 120px !important;
-}
-.en-us .user-change-password .vue-js-switch .v-switch-label.v-right {
-  right: 76px !important;
-}
-.th-th .user-change-password .vue-js-switch .v-switch-label.v-right {
-  right: 95px !important;
-}
-</style>
-
-<style lang="scss" scoped>
-.user-change-password {
-  &__form {
-    margin: 40px 0;
-    &__field {
-      margin: 20px 0;
-    }
-  }
-  &__button-div {
-    margin: 40px 0;
-    text-align: center;
-  }
-}
-</style>

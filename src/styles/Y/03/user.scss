@@ -17,3 +17,9 @@ $user-profile-access-button-bg: $btn-bg-yellow;
 .user-profile-access {
   @include user-profile-access;
 }
+
+$user-change-password-button-bg: $btn-bg-yellow;
+
+.user-change-password {
+  @include user-change-password;
+}
