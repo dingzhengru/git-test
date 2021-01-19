@@ -181,21 +181,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.user-profile-access {
-  &__main {
-    margin: 40px 0;
-
-    &__ul {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-  }
-  &__button-div {
-    margin: 40px 0;
-    text-align: center;
-  }
-}
-</style>

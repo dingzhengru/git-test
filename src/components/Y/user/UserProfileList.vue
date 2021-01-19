@@ -170,27 +170,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.user-profile {
-  &__table-div {
-    margin: 40px 0;
-  }
-  &__instant-access-form {
-    padding: 3%;
-
-    &__field {
-      margin: 20px 0;
-
-      input:disabled {
-        opacity: 0.6;
-        pointer-events: none;
-      }
-    }
-  }
-  &__button-div {
-    margin: 40px 0;
-    text-align: center;
-  }
-}
-</style>

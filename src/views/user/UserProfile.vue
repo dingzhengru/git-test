@@ -67,10 +67,6 @@ export default {
       }
     },
   },
-  mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/user/profile.scss`);
-  },
   watch: {
     userIsAccountOpen: {
       immediate: true,
@@ -86,5 +82,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

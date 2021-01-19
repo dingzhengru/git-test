@@ -1,0 +1,19 @@
+@import '@/styles/global/abstracts';
+@import './abstracts';
+@import '@/styles/Y/_default/user';
+
+.user {
+  @include user;
+}
+
+$user-profile-button-bg: $btn-bg-red;
+
+.user-profile {
+  @include user-profile;
+}
+
+$user-profile-access-button-bg: $btn-bg-red;
+
+.user-profile-access {
+  @include user-profile-access;
+}
