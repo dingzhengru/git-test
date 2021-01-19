@@ -267,7 +267,7 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/transaction/withdrawal.scss`);
+    import(`@/styles/${this.siteFullCss}/transaction-withdrawal.scss`);
 
     this.getWithdrawalInfo();
   },
@@ -278,34 +278,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.withdrawal {
-  margin: 40px 0;
-  &__li {
-    list-style: none;
-    &__select {
-      padding: 0 1.5%;
-      width: 100%;
-
-      &--currency {
-        margin-left: 5%;
-        width: 95%;
-      }
-    }
-    &__button {
-      display: block;
-      margin: 0 auto;
-    }
-  }
-
-  &__light-message {
-    font-size: 2em;
-  }
-
-  &__button-div {
-    margin: 40px 0;
-    text-align: center;
-  }
-}
-</style>

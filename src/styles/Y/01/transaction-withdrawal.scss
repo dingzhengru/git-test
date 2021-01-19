@@ -1,0 +1,11 @@
+@import '@/styles/global/abstracts';
+@import './abstracts';
+@import '@/styles/Y/_default/transaction-withdrawal';
+
+$withdrawal-height-light-color: #ffff00;
+$withdrawal-button-bg-transfer: $btn-bg-red;
+$withdrawal-button-bg-submit: $btn-bg-red;
+
+.withdrawal {
+  @include withdrawal;
+}
