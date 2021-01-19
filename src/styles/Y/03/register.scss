@@ -1,41 +1,24 @@
 @import '@/styles/global/abstracts';
 @import './abstracts';
+@import '@/styles/Y/_default/register';
 
-.register__form__field__hint {
-  color: #959595;
-}
-.register__notice__ol {
-  color: #959595;
-}
-.register__form__field__select--default {
-  color: #959595;
-}
+$register-bg: none;
+$register-placeholder-color: #959595;
+$register-hint-color: #959595;
+$register-notice-color: #959595;
 
-/*
-  ! 圖片路徑
-*/
-.register__button-div__send {
-  background-image: $btn-bg-yellow;
-}
-.register__button-div__reset {
-  background-image: $btn-bg-black;
-}
+$register-input-block-border: none;
 
-.register__form__field--recommend {
-  background-image: assetPath('main/authBg_recommend.png');
-}
-.register__form__field--account {
-  background-image: assetPath('main/authBg_account.png');
-}
-.register__form__field--password {
-  background-image: assetPath('main/authBg_password.png');
-}
-.register__form__field--callphone {
-  background-image: assetPath('main/authBg_callphone.png');
-}
-.register__form__field--name {
-  background-image: assetPath('main/authBg_name.png');
-}
-.register__form__field--code {
-  background-image: assetPath('main/authBg_code.png');
+$register-field-bg-recommend: assetPath('main/authBg_recommend.png') no-repeat;
+$register-field-bg-account: assetPath('main/authBg_account.png') no-repeat;
+$register-field-bg-password: assetPath('main/authBg_password.png') no-repeat;
+$register-field-bg-callphone: assetPath('main/authBg_callphone.png') no-repeat;
+$register-field-bg-name: assetPath('main/authBg_name.png') no-repeat;
+$register-field-bg-code: assetPath('main/authBg_code.png') no-repeat;
+
+$register-button-bg-submit: $btn-bg-yellow;
+$register-button-bg-reset: $btn-bg-black;
+
+.register {
+  @include register;
 }

@@ -13,40 +13,42 @@
           :key="field.name"
           v-show="field.isShow"
         >
-          <span class="register__form__field__star" v-if="field.isRequired">*</span>
-          <input
-            class="register__form__field__input"
-            :id="$idMapper.register.input[field.name]"
-            :type="field.type"
-            :placeholder="$t(`register.${field.name}.placeholder`)"
-            :disabled="!field.isModifiable"
-            :min="field.min"
-            :max="field.max"
-            v-model="field.value"
-            @change="changeField(field, invalid)"
-            v-if="field.type != 'select'"
-          />
+          <div class="register__form__field__input-block">
+            <span class="register__form__field__star" v-if="field.isRequired">*</span>
+            <input
+              class="register__form__field__input"
+              :id="$idMapper.register.input[field.name]"
+              :type="field.type"
+              :placeholder="$t(`register.${field.name}.placeholder`)"
+              :disabled="!field.isModifiable"
+              :min="field.min"
+              :max="field.max"
+              v-model="field.value"
+              @change="changeField(field, invalid)"
+              v-if="field.type != 'select'"
+            />
 
-          <select
-            class="register__form__field__select"
-            :class="{ 'register__form__field__select--default': field.value == '' }"
-            :id="$idMapper.register.input[field.name]"
-            v-model="field.value"
-            v-else
-          >
-            <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
-          </select>
+            <select
+              class="register__form__field__select"
+              :class="{ 'register__form__field__select--default': field.value == '' }"
+              :id="$idMapper.register.input[field.name]"
+              v-model="field.value"
+              v-else
+            >
+              <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
+            </select>
 
-          <img
-            v-if="field.name == 'CaptchaValue' && captchaImage.ImgBase64 != ''"
-            class="register__form__field__image--code"
-            :id="$idMapper.register.image.captcha"
-            :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
-            :width="captchaImage.Width"
-            :height="captchaImage.Height"
-            border="0"
-            @click="changeCaptcha"
-          />
+            <img
+              v-if="field.name == 'CaptchaValue' && captchaImage.ImgBase64 != ''"
+              class="register__form__field__image--code"
+              :id="$idMapper.register.image.captcha"
+              :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
+              :width="captchaImage.Width"
+              :height="captchaImage.Height"
+              border="0"
+              @click="changeCaptcha"
+            />
+          </div>
 
           <div class="register__form__field__hint" v-if="$te(`register.${field.name}.hint`)">
             <template v-if="field.name == 'Add_RelatedAccount' && !field.isModifiable">
@@ -62,7 +64,7 @@
           </div>
         </ValidationProvider>
         <div class="register__button-div">
-          <button class="register__button-div__send ui-btn" type="submit" :disabled="invalid">
+          <button class="register__button-div__submit ui-btn" type="submit" :disabled="invalid">
             {{ $t('ui.button.submit') }}
           </button>
           <button class="register__button-div__reset ui-btn" type="reset" @click="resetForm">
@@ -243,103 +245,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.register {
-  padding-bottom: 160px;
-  padding-top: 60px;
-
-  &__form {
-    // width: 563px;
-    // margin: 0 auto;
-
-    &__field {
-      width: 563px;
-      margin: 0 auto;
-      position: relative;
-      background-repeat: no-repeat;
-      margin-top: 30px;
-      &__star {
-        font-size: 2.5em;
-        position: absolute;
-        top: 20px;
-        left: -25px;
-        color: #cfa972;
-      }
-      &__input {
-        width: 465px;
-        height: 64px;
-        background-color: transparent;
-        margin: 8px 0 9px 80px;
-        border: none;
-        outline: none;
-        font-size: 2.5em;
-      }
-      &__select {
-        width: 465px;
-        height: 64px;
-        font-size: 2.5em;
-        font-weight: normal;
-        background: transparent;
-        margin: 8px 0 9px 80px;
-        border: none;
-        outline: none;
-      }
-      &__select option {
-        color: black;
-        background-color: #979797;
-      }
-      &__image--code {
-        position: absolute;
-        top: 11px;
-        right: 15px;
-      }
-      // &__input:invalid {
-      //   color: red;
-      // }
-      // &__input:valid {
-      //   color: green;
-      // }
-      &__input:disabled {
-        color: gray;
-        pointer-events: none;
-      }
-      &__input:disabled::placeholder {
-        color: gray;
-      }
-      &__input::-webkit-calendar-picker-indicator {
-        filter: invert(1); /* 反轉圖像顏色 */
-      }
-      &__input::before {
-        color: #959595;
-        content: attr(placeholder);
-      }
-
-      &__input:disabled {
-        opacity: 0.6;
-        color: #959595;
-      }
-
-      &__hint {
-        display: block;
-        margin: 5px 0;
-        font-size: 2em;
-      }
-    }
-  }
-  &__button-div {
-    text-align: center;
-    margin-top: 50px;
-    button {
-      margin: 0 10px;
-    }
-  }
-  &__notice {
-    margin: 0 20px;
-    &__ol {
-      margin: 50px 10px 0;
-      font-size: 2.153em;
-    }
-  }
-}
-</style>

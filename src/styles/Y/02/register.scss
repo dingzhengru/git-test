@@ -1,55 +1,24 @@
 @import '@/styles/global/abstracts';
 @import './abstracts';
+@import '@/styles/Y/_default/register';
+
+$register-bg: #04354c;
+$register-placeholder-color: #959595;
+$register-hint-color: white;
+$register-notice-color: white;
+
+$register-input-block-border: 3px solid #2b7d9c;
+
+$register-field-bg-recommend: #1c6080 assetPath('main/authBg_recommend.png') 8px center no-repeat;
+$register-field-bg-account: #1c6080 assetPath('main/authBg_account.png') 8px center no-repeat;
+$register-field-bg-password: #1c6080 assetPath('main/authBg_password.png') 8px center no-repeat;
+$register-field-bg-callphone: #1c6080 assetPath('main/authBg_callphone.png') 8px center no-repeat;
+$register-field-bg-name: #1c6080 assetPath('main/authBg_name.png') 8px center no-repeat;
+$register-field-bg-code: #1c6080 assetPath('main/authBg_code.png') 8px center no-repeat;
+
+$register-button-bg-submit: $btn-bg-yellow-dark;
+$register-button-bg-reset: $btn-bg-red;
 
 .register {
-  background-color: #04354c;
-}
-
-.register__form__field__input-div {
-  outline: 3px solid #2b7d9c;
-}
-
-.register__form__field__input::placeholder {
-  color: #fff;
-}
-
-.register__form__field__hint {
-  color: #fff;
-}
-.register__notice__ol {
-  color: #fff;
-}
-
-/*
-  ! 圖片路徑
-*/
-
-.register__button-div__send {
-  background-image: $btn-bg-yellow-dark;
-}
-.register__button-div__reset {
-  background-image: $btn-bg-red;
-}
-
-.register__form__field--recommend {
-  background: #1c6080 assetPath('main/authBg_recommend.png') 8px center no-repeat;
-}
-.register__form__field--account {
-  background: #1c6080 assetPath('main/authBg_account.png') 8px center no-repeat;
-}
-.register__form__field--password {
-  background: #1c6080 assetPath('main/authBg_password.png') 8px center no-repeat;
-}
-.register__form__field--callphone {
-  background: #1c6080 assetPath('main/authBg_callphone.png') 8px center no-repeat;
-}
-.register__form__field--name {
-  background: #1c6080 assetPath('main/authBg_name.png') 8px center no-repeat;
-}
-.register__form__field--code {
-  background: #1c6080 assetPath('main/authBg_code.png') 8px center no-repeat;
-}
-
-.register__form__reset {
-  background-image: assetPath('ui/btn03.jpg');
+  @include register;
 }
