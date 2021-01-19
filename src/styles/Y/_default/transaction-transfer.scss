@@ -1,0 +1,151 @@
+@mixin transfer {
+  margin-top: 30px;
+
+  &__box {
+    font-size: 2.461em;
+  }
+  &__wallet {
+    border-bottom: $transfer-wallet-border-bottom;
+    padding: 20px 0;
+
+    &__select {
+      padding: 0 1.5%;
+      font-size: 1.125em;
+      width: 40%;
+
+      option {
+        color: black;
+        background-color: #979797;
+      }
+
+      option:disabled {
+        color: white;
+        background-color: #2e2e2e;
+        font-size: 1.2rem;
+      }
+    }
+
+    &:lang(en-us) {
+      font-size: 2.2rem;
+      select {
+        font-size: 2.5rem;
+        width: 40%;
+      }
+    }
+
+    &:lang(th-th) {
+      font-size: 1.5rem;
+      select {
+        font-size: 2.3rem;
+        width: 40%;
+      }
+    }
+
+    &:lang(zh-cn) {
+      font-size: 2.5rem;
+      select {
+        font-size: 2.5rem;
+        width: 40%;
+      }
+    }
+  }
+
+  &__amount {
+    border-bottom: $transfer-amount-border-bottom;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-right: 32px;
+    padding-left: 20px;
+
+    &__table {
+      th {
+        width: 40%;
+        text-align: left;
+      }
+
+      td {
+        padding-left: 20px;
+        padding-top: 10px;
+      }
+      &__input {
+        background: $transfer-input-bg;
+        color: $transfer-input-color;
+        border: $transfer-input-border;
+        display: block;
+        width: 446px;
+        height: 77px;
+        margin-bottom: 40px;
+        outline: none;
+        text-align: center;
+        line-height: 77px;
+      }
+      &__range {
+        width: 448px;
+
+        .custom-dot {
+          position: absolute;
+          top: -18px;
+          left: -16px;
+        }
+
+        .custom-process {
+          height: 22px;
+          position: relative;
+          left: 0px;
+          top: -8px;
+          background-image: url(~@/assets/common/main/sliderBar.png);
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+  }
+  &__button-div {
+    padding: 20px 0;
+
+    button {
+      font-size: 3rem;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  &__button {
+    &--transfer {
+      background: $transfer-button-bg-submit;
+    }
+    &--all-to-my-wallet {
+      background: $transfer-button-bg-transfer-all;
+    }
+    &--refresh {
+      background: $transfer-button-bg-refresh;
+    }
+  }
+  &__account-table {
+    background: $transfer-table-bg;
+    border: $transfer-table-border;
+    width: 100%;
+    margin: 40px auto;
+
+    tr {
+      border-bottom: $transfer-table-tr-border-bottom;
+    }
+
+    th {
+      color: $transfer-table-th-color;
+      font-size: 2.5em;
+      font-weight: normal;
+      text-align: left;
+    }
+
+    td {
+      color: $transfer-table-td-color;
+      font-size: 2.769em;
+      text-align: right;
+    }
+
+    th,
+    td {
+      padding: 10px;
+    }
+  }
+}

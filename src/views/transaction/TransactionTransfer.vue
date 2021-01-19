@@ -110,7 +110,7 @@
           <td colspan="2">
             <div class="transfer__button-div">
               <button
-                class="transfer__button--reflash ui-btn ui-btn--long"
+                class="transfer__button--refresh ui-btn ui-btn--long"
                 type="button"
                 @click="$store.dispatch('user/getPointInfo')"
               >
@@ -120,7 +120,7 @@
           </td>
         </tr>
         <tr class="transfer__account-table__tr" v-for="game in userGamePointList" :key="game.Product_id">
-          <td class="transfer__account-table__th-1st">{{ game.Product_Name }}</td>
+          <th class="transfer__account-table__th-1st">{{ game.Product_Name }}</th>
           <td class="transfer__account-table__td-2nd">{{ $numeral(game.Point).format('0,0.00') }}</td>
         </tr>
       </tbody>
@@ -222,7 +222,7 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/transaction/transfer.scss`);
+    import(`@/styles/${this.siteFullCss}/transaction-transfer.scss`);
 
     this.getTransferInfo();
   },
@@ -258,144 +258,130 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.transfer {
-  margin-top: 30px;
+// .transfer {
+//   margin-top: 30px;
 
-  &__box {
-    font-size: 2.461em;
-  }
-  &__wallet {
-    padding: 20px 0;
+//   &__box {
+//     font-size: 2.461em;
+//   }
+//   &__wallet {
+//     padding: 20px 0;
 
-    &__select {
-      padding: 0 1.5%;
-      font-size: 1.125em;
-      width: 40%;
+//     &__select {
+//       padding: 0 1.5%;
+//       font-size: 1.125em;
+//       width: 40%;
 
-      option {
-        color: black;
-        background-color: #979797;
-      }
+//       option {
+//         color: black;
+//         background-color: #979797;
+//       }
 
-      option:disabled {
-        color: white;
-        background-color: #2e2e2e;
-        font-size: 1.2rem;
-      }
-    }
-  }
+//       option:disabled {
+//         color: white;
+//         background-color: #2e2e2e;
+//         font-size: 1.2rem;
+//       }
+//     }
 
-  &__amount {
-    padding-top: 20px;
-    padding-bottom: 30px;
-    padding-right: 32px;
-    padding-left: 20px;
+//     &:lang(en-us) {
+//       font-size: 2.2rem;
+//       select {
+//         font-size: 2.5rem;
+//         width: 40%;
+//       }
+//     }
 
-    &__table {
-      &__th-1st {
-        width: 40%;
-        text-align: left;
-      }
+//     &:lang(th-th) {
+//       font-size: 1.5rem;
+//       select {
+//         font-size: 2.3rem;
+//         width: 40%;
+//       }
+//     }
 
-      &__td-2nd {
-        padding-left: 20px;
-        padding-top: 10px;
-      }
-      &__input {
-        display: block;
-        width: 446px;
-        height: 77px;
-        margin-bottom: 40px;
-        outline: none;
-        text-align: center;
-        line-height: 77px;
-      }
-      &__range {
-        width: 448px;
+//     &:lang(zh-cn) {
+//       font-size: 2.5rem;
+//       select {
+//         font-size: 2.5rem;
+//         width: 40%;
+//       }
+//     }
+//   }
 
-        .custom-dot {
-          position: absolute;
-          top: -18px;
-          left: -16px;
-        }
+//   &__amount {
+//     padding-top: 20px;
+//     padding-bottom: 30px;
+//     padding-right: 32px;
+//     padding-left: 20px;
 
-        .custom-process {
-          height: 22px;
-          position: relative;
-          left: 0px;
-          top: -8px;
-          background-image: url(~@/assets/common/main/sliderBar.png);
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-      }
-    }
-  }
-  &__button-div {
-    padding: 20px 0;
+//     &__table {
+//       &__th-1st {
+//         width: 40%;
+//         text-align: left;
+//       }
 
-    button {
-      font-size: 3rem;
-      display: block;
-      margin: 0 auto;
-    }
-  }
-  &__account-table {
-    width: 100%;
-    margin: 40px auto;
+//       &__td-2nd {
+//         padding-left: 20px;
+//         padding-top: 10px;
+//       }
+//       &__input {
+//         display: block;
+//         width: 446px;
+//         height: 77px;
+//         margin-bottom: 40px;
+//         outline: none;
+//         text-align: center;
+//         line-height: 77px;
+//       }
+//       &__range {
+//         width: 448px;
 
-    &__th-1st,
-    &__td-2nd {
-      padding: 10px;
-    }
+//         .custom-dot {
+//           position: absolute;
+//           top: -18px;
+//           left: -16px;
+//         }
 
-    &__th-1st {
-      font-size: 2.5em;
-      font-weight: normal;
-      text-align: left;
-    }
-    &__td-2nd {
-      font-size: 2.769em;
-      text-align: right;
-    }
-  }
-}
+//         .custom-process {
+//           height: 22px;
+//           position: relative;
+//           left: 0px;
+//           top: -8px;
+//           background-image: url(~@/assets/common/main/sliderBar.png);
+//           background-repeat: no-repeat;
+//           background-position: center;
+//         }
+//       }
+//     }
+//   }
+//   &__button-div {
+//     padding: 20px 0;
 
-.en-us {
-  .transfer {
-    &__wallet {
-      font-size: 2.2rem;
+//     button {
+//       font-size: 3rem;
+//       display: block;
+//       margin: 0 auto;
+//     }
+//   }
+//   &__account-table {
+//     width: 100%;
+//     margin: 40px auto;
 
-      &__select {
-        font-size: 2.5rem;
-        width: 40%;
-      }
-    }
-  }
-}
+//     &__th-1st,
+//     &__td-2nd {
+//       padding: 10px;
+//     }
 
-.th-th {
-  .transfer {
-    &__wallet {
-      font-size: 1.5rem;
-
-      &__select {
-        font-size: 2.3rem;
-        width: 40%;
-      }
-    }
-  }
-}
-
-.zh-cn {
-  .transfer {
-    &__wallet {
-      font-size: 2.5rem;
-      &__select {
-        font-size: 2.5rem;
-        width: 40%;
-      }
-    }
-  }
-}
+//     &__th-1st {
+//       font-size: 2.5em;
+//       font-weight: normal;
+//       text-align: left;
+//     }
+//     &__td-2nd {
+//       font-size: 2.769em;
+//       text-align: right;
+//     }
+//   }
+// }
 </style>

@@ -1,0 +1,30 @@
+@import '@/styles/global/abstracts';
+@import './abstracts';
+@import '@/styles/Y/_default/transaction-transfer';
+
+$transfer-wallet-border-bottom: 1px solid #d6c388;
+$transfer-amount-border-bottom: 1px solid #d6c388;
+
+$transfer-input-bg: #2e2e2e;
+$transfer-input-color: white;
+$transfer-input-border: 1px solid #8b8b8b;
+
+$transfer-table-bg: none;
+$transfer-table-border: 1px solid #d6c388;
+$transfer-table-tr-border-bottom: 1px solid #d6c388;
+$transfer-table-th-color: #959595;
+$transfer-table-td-color: white;
+
+$transfer-button-bg-submit: $btn-bg-yellow;
+$transfer-button-bg-transfer-all: $btn-bg-yellow;
+$transfer-button-bg-refresh: $btn-bg-yellow-light;
+
+.transfer {
+  @include transfer;
+
+  &__button-div {
+    button {
+      color: #000;
+    }
+  }
+}
