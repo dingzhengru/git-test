@@ -1,0 +1,92 @@
+@mixin contact {
+  padding-bottom: 119px;
+  &-auth {
+    padding-top: 88px;
+  }
+  &__content {
+    background: $contact-content-bg;
+    border: $contact-content-border;
+    margin: 80px;
+    &__ul {
+      padding: 0;
+      margin: 0;
+      &__li {
+        display: inline-block;
+        margin: 31px 20px;
+        vertical-align: top;
+        position: relative;
+
+        &__link {
+          color: $contact-content-text-color;
+          display: block;
+          height: auto;
+          width: 198px;
+          background-repeat: no-repeat;
+          background-position: center top;
+          background-size: 100px;
+          padding-top: 115px;
+          font-size: 2.461em;
+          text-align: center;
+          word-break: break-all;
+
+          &--online {
+            background-image: url(~@/assets/common/main/onlineServicebg.png);
+          }
+          &--service {
+            background-image: url(~@/assets/common/main/onlineServicebg.png);
+          }
+          &--qq {
+            background-image: url(~@/assets/common/main/qqBg.png);
+          }
+          &--mobile {
+            background-image: url(~@/assets/common/main/mobileBg.png);
+          }
+          &--skype {
+            background-image: url(~@/assets/common/main/skypeBg.png);
+          }
+          &--line {
+            background-image: url(~@/assets/common/main/lineBg.png);
+          }
+          &--wechat {
+            background-image: url(~@/assets/common/main/wechatBg.png);
+          }
+          &--facebook {
+            background-image: url(~@/assets/common/main/FacebookBg.png);
+          }
+          &--email {
+            background-image: url(~@/assets/common/main/mail.png);
+          }
+          &--mobile--jp168 {
+            background-image: url(~@/assets/common/main/mobileBg--jp168.png);
+          }
+          &--line--jp168 {
+            background-image: url(~@/assets/common/main/lineBg--jp168.png);
+          }
+        }
+      }
+    }
+  }
+
+  &__detail {
+    background: $contact-detail-bg;
+    border: $contact-detail-border;
+    box-shadow: $contact-detail-shadow;
+    width: 328px;
+    // min-height: 286px;
+    text-align: center;
+    position: absolute;
+    border-radius: 6px;
+    top: 165px;
+    left: -99px;
+    z-index: 2;
+    padding: 15px 15px 0px 15px;
+    word-wrap: break-word;
+
+    &__link {
+      color: $contact-detail-text-color;
+      font-size: 2.461em;
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+}

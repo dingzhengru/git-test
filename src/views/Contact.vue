@@ -14,11 +14,11 @@
 
           <transition name="fade">
             <div
-              class="contact__content__ul__li__block contact__content__ul__li__block--tel"
+              class="contact__detail contact__content__ul__li__block contact__content__ul__li__block--tel"
               v-if="item.isShowContentList && item.DetailList.length > 0"
             >
               <a
-                class="contact__content__ul__li__block__link contact__content__ul__li__block__link--tel"
+                class="contact__detail__link contact__content__ul__li__block__link contact__content__ul__li__block__link--tel"
                 href="javascript:;"
                 v-for="content in item.DetailList"
                 :key="content.Lst_ContactValueID"
@@ -201,9 +201,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/*
- * fade 顯示 telephones 區塊
-*/
+//* fade 顯示 telephones 區塊
 
 .fade-enter-active,
 .fade-leave-active {
@@ -212,108 +210,5 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-}
-
-// .slide-enter-active,
-// .slide-leave-active {
-//   transition: all 0.5s ease;
-// }
-
-// .slide-enter,
-// .slide-leave-to {
-//   transform: translateY(100%);
-// }
-
-.contact {
-  padding-bottom: 119px;
-  &-auth {
-    padding-top: 88px;
-  }
-  &__content {
-    margin: 80px;
-    &__ul {
-      padding: 0;
-      margin: 0;
-      &__li {
-        display: inline-block;
-        margin: 31px 20px;
-        vertical-align: top;
-        position: relative;
-
-        &__link {
-          display: block;
-          height: auto;
-          width: 198px;
-          background-repeat: no-repeat;
-          background-position: center top;
-          background-size: 100px;
-          padding-top: 115px;
-          font-size: 2.461em;
-          text-align: center;
-          word-break: break-all;
-        }
-        &__block {
-          width: 328px;
-          // min-height: 286px;
-          text-align: center;
-          position: absolute;
-          border-radius: 6px;
-          top: 165px;
-          left: -99px;
-          z-index: 2;
-          padding: 15px 15px 0px 15px;
-          word-wrap: break-word;
-
-          &__link {
-            font-size: 2.461em;
-            display: block;
-            margin-bottom: 15px;
-          }
-        }
-      }
-    }
-  }
-}
-
-/*
- * 共用圖片
-*/
-
-.contact__content__ul__li__link {
-  &--online {
-    background-image: url(~@/assets/common/main/onlineServicebg.png);
-  }
-  &--service {
-    background-image: url(~@/assets/common/main/onlineServicebg.png);
-  }
-  &--qq {
-    background-image: url(~@/assets/common/main/qqBg.png);
-  }
-  &--mobile {
-    background-image: url(~@/assets/common/main/mobileBg.png);
-  }
-  &--skype {
-    background-image: url(~@/assets/common/main/skypeBg.png);
-  }
-  &--line {
-    background-image: url(~@/assets/common/main/lineBg.png);
-  }
-  &--wechat {
-    background-image: url(~@/assets/common/main/wechatBg.png);
-  }
-  &--facebook {
-    background-image: url(~@/assets/common/main/FacebookBg.png);
-  }
-  &--email {
-    background-image: url(~@/assets/common/main/mail.png);
-  }
-
-  &--mobile--jp168 {
-    background-image: url(~@/assets/common/main/mobileBg--jp168.png);
-  }
-
-  &--line--jp168 {
-    background-image: url(~@/assets/common/main/lineBg--jp168.png);
-  }
 }
 </style>
