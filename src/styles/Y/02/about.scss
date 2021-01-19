@@ -1,10 +1,8 @@
 @import './abstracts';
+@import '@/styles/Y/_default/about';
 
+$about-text-color: black;
 
 .about {
-  color: #000;
+  @include about;
 }
-
-/*
-  ! 圖片路徑
-*/
