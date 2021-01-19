@@ -85,10 +85,11 @@ export default {
     document.querySelector('#apple-startup-image-1242x2208').setAttribute('href', this.siteIOSUrl('1242x2208'));
 
     //* 確認是否維護
-    if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {
-      this.$router.replace({ name: 'Maintenance' });
-      return;
-    }
+    this.$router.replace({ name: 'Maintenance' });
+    // if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {
+    //   this.$router.replace({ name: 'Maintenance' });
+    //   return;
+    // }
 
     //* 確認是否要顯示假電郵(未登入一律轉至假電郵登入頁)
     if (this.siteIsSpare === true && this.siteEnableSpareDomain === true && this.userIsLoggedIn === false) {

@@ -11,30 +11,15 @@
     <footer class="maintenance__footer">
       <div class="maintenance__footer__logo">
         <ul class="maintenance__footer__ul">
-          <li
-            class="maintenance__footer__logo1"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo1.png)` }"
-          ></li>
-          <li
-            class="maintenance__footer__logo2"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo2.png)` }"
-          ></li>
-          <!-- <li
-            class="maintenance__footer__logo3"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo3.png)` }"
-          ></li> -->
-          <li
-            class="maintenance__footer__logo4"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo4.png)` }"
-          ></li>
+          <li class="maintenance__footer__logo1"></li>
+          <li class="maintenance__footer__logo2"></li>
+          <!-- <li class="maintenance__footer__logo3"></li> -->
+          <li class="maintenance__footer__logo4"></li>
           <li
             class="maintenance__footer__logo5"
             :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo5.png)` }"
           ></li>
-          <li
-            class="maintenance__footer__logo6"
-            :style="{ 'background-image': `url(${siteResourceUrlMaintain}/footer_logo6.png)` }"
-          ></li>
+          <li class="maintenance__footer__logo6"></li>
         </ul>
       </div>
       <div class="maintenance__footer__copyright">Copyright © 2014 {{ siteName }} All Rights Reserved</div>
@@ -85,86 +70,12 @@ export default {
   },
   mounted() {
     //* 非維護時，轉去首頁
-    if (this.siteStatus == 0) {
-      this.$router.replace({ name: 'Home' });
-    }
+    // if (this.siteStatus == 0) {
+    //   this.$router.replace({ name: 'Home' });
+    // }
 
     // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/maintenance.scss`);
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.maintenance {
-  padding: 10px 10%;
-  p {
-    margin-bottom: 30px;
-    line-height: 50px;
-    // font-size: 20px;
-    font-size: 2.5rem;
-  }
-
-  button {
-    margin-top: 35px;
-    margin-bottom: 60px;
-    width: 100%;
-  }
-
-  &__footer {
-    // background-color: transparent;
-    padding: 0 0 20px 0;
-
-    &__logo {
-      padding: 20px 10%;
-
-      ul {
-        text-align: center;
-        padding: 0;
-        margin: 0;
-        li {
-          display: inline-block;
-          vertical-align: top;
-          list-style: none;
-          // height: 49px;
-          height: 73px;
-          background-position: left center;
-          background-repeat: no-repeat;
-          margin: 0 10px;
-
-          transform: scale(1.5); //* 因原網站是用 viewport=480，跟此網站 720 差 1.5 倍
-        }
-      }
-    }
-    &__copyright {
-      color: #575757;
-      font-size: 2.3rem;
-      text-align: center;
-    }
-
-    &__logo1 {
-      // width: 144px;
-      width: 216px;
-    }
-    &__logo2 {
-      // width: 59px;
-      width: 88px;
-    }
-    // &__logo3 {
-    //   width: 56px;
-    // }
-    &__logo4 {
-      // width: 41px;
-      width: 61px;
-    }
-    &__logo5 {
-      // width: 118px;
-      width: 177px;
-    }
-    &__logo6 {
-      // width: 49px;
-      width: 73px;
-    }
-  }
-}
-</style>
