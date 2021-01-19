@@ -1,6 +1,11 @@
 @mixin transfer {
   margin-top: 30px;
 
+  //* 套件 vue-slider
+  .vue-slider-dot {
+    z-index: 2 !important;
+  }
+
   &__box {
     font-size: 2.461em;
   }
