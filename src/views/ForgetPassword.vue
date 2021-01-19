@@ -1,6 +1,7 @@
 <template>
   <div class="forget-password">
     <h1 class="forget-password__title">{{ $t('forgetPassword.title') }}</h1>
+    <img class="forget-password__icon" :src="forgetIcon" />
     <div class="forget-password__desc">
       <span class="txt-note">{{ $t('forgetPassword.notice.title') }}</span> <br />
       {{ $t('forgetPassword.notice.content') }}
@@ -15,6 +16,9 @@ export default {
   name: 'ForgetPassword',
   computed: {
     ...mapGetters(['siteFullCss']),
+    forgetIcon() {
+      return require(`@/assets/${this.siteFullCss}/main/forgetDescBg.png`);
+    },
   },
   mounted() {
     // * 根據版型引入 css
@@ -22,19 +26,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.forget-password {
-  &__title {
-    text-align: center;
-    margin-top: 0px;
-    padding-top: 20px;
-    font-size: 3rem;
-  }
-  &__desc {
-    padding-top: 316px;
-    font-size: 2.769em;
-    text-align: center;
-  }
-}
-</style>
