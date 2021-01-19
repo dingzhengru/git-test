@@ -11,7 +11,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TransactionHome',
   computed: {
-    ...mapGetters(['siteSetting']),
+    ...mapGetters(['siteSetting', 'siteFullCss']),
     AppNavTab() {
       return () => import(`@/${this.siteSetting.components.app.AppNavTab}`);
     },
@@ -54,11 +54,8 @@ export default {
       ],
     };
   },
+  mounted() {
+    import(`@/styles/${this.siteFullCss}/transaction.scss`);
+  },
 };
 </script>
-
-<style scoped>
-.transaction {
-  padding: 88px 20px 160px 20px;
-}
-</style>

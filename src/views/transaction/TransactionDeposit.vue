@@ -44,8 +44,7 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/transaction/deposit.scss`);
+    import(`@/styles/${this.siteFullCss}/transaction-deposit.scss`);
 
     //* 是否顯示 DepositNotice
     this.isShowDepositNotice = this.siteIsShowDepositNotice;

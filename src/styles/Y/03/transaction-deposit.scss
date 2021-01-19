@@ -1,0 +1,26 @@
+@import '@/styles/global/abstracts';
+@import './abstracts';
+@import '@/styles/Y/_default/transaction-deposit';
+
+.deposit {
+  @include deposit;
+}
+
+$deposit-mode-nav-button-color: black;
+$deposit-mode-nav-button-bg: $btn-bg-yellow-light;
+$deposit-mode-nav-button-active-color: white;
+$deposit-mode-nav-button-active-bg: $btn-bg-red;
+
+.deposit-mode-nav {
+  @include deposit-mode-nav;
+}
+
+$deposit-form-hint-color: #707070;
+$deposit-form-hint-color-ps: #ffa800;
+$deposit-form-button-bg-upload: $btn-bg-yellow;
+$deposit-form-button-bg-submit: $btn-bg-yellow;
+$deposit-form-button-bg-cancel: $btn-bg-black;
+
+.deposit-form {
+  @include deposit-form;
+}

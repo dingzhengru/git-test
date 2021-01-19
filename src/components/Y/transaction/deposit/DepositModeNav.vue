@@ -27,18 +27,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.deposit-mode-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-top: 30px;
-
-  button {
-    width: 48%;
-  }
-}
-</style>

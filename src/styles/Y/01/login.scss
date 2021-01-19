@@ -11,10 +11,10 @@ $login-field-input-color: white;
 $login-field-border: none;
 
 $login-link-text-color: white;
-$login-link-bg-register: assetPath('main/registerBg.png') no-repeat;
-$login-link-bg-forget: assetPath('main/forgetBg.png') no-repeat;
-$login-link-bg-open: assetPath('main/open.png') no-repeat;
-$login-link-bg-download: assetPath('main/download.png') no-repeat;
+$login-link-bg-register: assetPath('main/registerBg.png') center top no-repeat;
+$login-link-bg-forget: assetPath('main/forgetBg.png') center top no-repeat;
+$login-link-bg-open: assetPath('main/open.png') center top no-repeat;
+$login-link-bg-download: assetPath('main/download.png') center top no-repeat;
 
 $login-button-bg-submit: $btn-bg-red;
 

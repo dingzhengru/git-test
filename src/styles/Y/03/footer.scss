@@ -22,27 +22,27 @@ $footer-nav-item-border-bg: assetPath('footer/lnk_line.png') no-repeat;
       background: $footer-nav-item-bg-active;
     }
 
-    &.member {
+    &.footer-nav__item--member {
       > a {
         background-position: 0px 6px;
       }
     }
-    &.login {
+    &.footer-nav__item--login {
       > a {
         background-position: 25% 6px;
       }
     }
-    &.promotion {
+    &.footer-nav__item--promotion {
       > a {
         background-position: 50% 6px;
       }
     }
-    &.contact {
+    &.footer-nav__item--contact {
       > a {
         background-position: 75% 6px;
       }
     }
-    &.transaction {
+    &.footer-nav__item--transaction {
       > a {
         background-position: 97% 6px;
       }

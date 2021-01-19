@@ -96,6 +96,7 @@
 @mixin header-menu-auth {
   &__member {
     top: $header-height;
+    height: $header-sub-height;
     background: $header-menu-auth-member-bg;
     display: flex;
     flex-wrap: wrap;

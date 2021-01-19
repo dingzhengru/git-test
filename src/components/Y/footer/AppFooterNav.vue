@@ -2,7 +2,10 @@
   <div class="footer-nav">
     <div
       class="footer-nav__item"
-      :class="[{ active: $route.name == item.link || item.otherActivePath.includes($route.name) }, item.name]"
+      :class="[
+        { active: $route.name == item.link || item.otherActivePath.includes($route.name) },
+        `footer-nav__item--${item.name}`,
+      ]"
       :id="$idMapper.footer[item.name]"
       v-for="item in routerList"
       :key="item.name"
