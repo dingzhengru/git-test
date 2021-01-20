@@ -24,7 +24,7 @@ import { apiGetBetHistoryUnsettle } from '@/api/report';
 export default {
   name: 'ReportUnsettleBet',
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang']),
   },
   data() {
     return {
@@ -49,13 +49,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.report-unsettle-bet {
-  margin-top: 30px;
-
-  &__table {
-    margin-bottom: 10px;
-  }
-}
-</style>

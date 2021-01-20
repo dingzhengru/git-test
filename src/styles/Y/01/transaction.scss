@@ -4,3 +4,30 @@
 .transaction {
   @include transaction;
 }
+.ui-li-tabs-deposit {
+  background: assetPath('ui/tabs_deposit.png') center top no-repeat;
+}
+.ui-li-tabs-deposit.active {
+  background: assetPath('ui/tabs_depositActive.png') center top no-repeat;
+}
+
+.ui-li-tabs-withdrawal {
+  background: assetPath('ui/tabs_withdrawal.png') center top no-repeat;
+}
+.ui-li-tabs-withdrawal.active {
+  background: assetPath('ui/tabs_withdrawalActive.png') center top no-repeat;
+}
+
+.ui-li-tabs-transfer {
+  background: assetPath('ui/tabs_wallet.png') center top no-repeat;
+}
+.ui-li-tabs-transfer.active {
+  background: assetPath('ui/tabs_walletActive.png') center top no-repeat;
+}
+
+.ui-li-tabs-record {
+  background: assetPath('ui/tabs_pointrecord.png') center top no-repeat;
+}
+.ui-li-tabs-record.active {
+  background: assetPath('ui/tabs_pointrecordActive.png') center top no-repeat;
+}

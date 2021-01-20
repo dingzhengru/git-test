@@ -1,0 +1,80 @@
+@mixin report {
+  padding: $header-height 20px 160px 20px;
+}
+
+@mixin report-unsettle-bet {
+  margin-top: 30px;
+
+  &__table {
+    margin-bottom: 10px;
+  }
+}
+
+@mixin report-bet-record {
+  margin-top: 40px;
+
+  &__field {
+    margin-bottom: 40px;
+    text-align: center;
+
+    &__select {
+      width: 100%;
+      padding: 0 1.5%;
+    }
+  }
+
+  &__box {
+    margin: 30px 0;
+  }
+
+  &__table {
+    margin: 30px 0;
+    position: relative;
+
+    tr {
+      text-align: center;
+    }
+
+    &__td-2nd {
+      padding-right: 48px;
+      text-align: center;
+      position: relative;
+    }
+  }
+}
+
+@mixin report-bet-record-detail {
+  &__button-div {
+    text-align: center;
+  }
+  &__button--return {
+    background: $report-bet-record-detail-button-bg-return;
+  }
+}
+
+@mixin report-bet-record-content {
+  table {
+    border: $report-bet-record-content-table-border;
+  }
+
+  &__field {
+    text-align: center;
+
+    &__select {
+      width: 100%;
+      padding: 0 1.5%;
+    }
+  }
+
+  &__box {
+    margin: 30px 0;
+  }
+
+  &__total-table {
+    margin: 30px 0;
+
+    &__th-1st {
+      width: 30%;
+    }
+  }
+}

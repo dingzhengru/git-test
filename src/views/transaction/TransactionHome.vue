@@ -20,7 +20,7 @@ export default {
     return {
       routeList: [
         {
-          name: 'TransactionDeposit',
+          name: 'deposit',
           link: 'TransactionDeposit',
           text: 'transaction.nav.deposit',
           class: 'ui-li-tabs-deposit',
@@ -28,7 +28,7 @@ export default {
           otherActivePath: [],
         },
         {
-          name: 'TransactionWithdrawal',
+          name: 'withdrawal',
           link: 'TransactionWithdrawal',
           text: 'transaction.nav.withdrawal',
           class: 'ui-li-tabs-withdrawal',
@@ -36,18 +36,18 @@ export default {
           otherActivePath: [],
         },
         {
-          name: 'TransactionTransfer',
+          name: 'transfer',
           link: 'TransactionTransfer',
           text: 'transaction.nav.transfer',
-          class: 'ui-li-tabs-wallet',
+          class: 'ui-li-tabs-transfer',
           id: 'transaction.nav.transfer',
           otherActivePath: [],
         },
         {
-          name: 'TransactionRecordHome',
+          name: 'record',
           link: 'TransactionRecordHome',
           text: 'transaction.nav.record',
-          class: 'ui-li-tabs-pointrecord',
+          class: 'ui-li-tabs-record',
           id: 'transaction.nav.record',
           otherActivePath: ['TransactionRecordContent', 'TransactionRecordDetail'],
         },

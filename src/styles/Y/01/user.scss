@@ -23,3 +23,17 @@ $user-change-password-button-bg: $btn-bg-red;
 .user-change-password {
   @include user-change-password;
 }
+
+//* nav-tab
+.ui-li-tabs-account {
+  background: assetPath('ui/tabs_account.png') center top no-repeat;
+}
+.ui-li-tabs-account.active {
+  background: assetPath('ui/tabs_accountActive.png') center top no-repeat;
+}
+.ui-li-tabs-password {
+  background: assetPath('ui/tabs_password.png') center top no-repeat;
+}
+.ui-li-tabs-password.active {
+  background: assetPath('ui/tabs_passwordActive.png') center top no-repeat;
+}

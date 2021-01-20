@@ -11,7 +11,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'ReportHome',
   computed: {
-    ...mapGetters(['siteSetting']),
+    ...mapGetters(['siteSetting', 'siteFullCss']),
     AppNavTab() {
       return () => import(`@/${this.siteSetting.components.app.AppNavTab}`);
     },
@@ -38,11 +38,9 @@ export default {
       ],
     };
   },
+  mounted() {
+    // * 根據版型引入 css
+    import(`@/styles/${this.siteFullCss}/report.scss`);
+  },
 };
 </script>
-
-<style scoped>
-.report {
-  padding: 88px 20px 160px 20px;
-}
-</style>

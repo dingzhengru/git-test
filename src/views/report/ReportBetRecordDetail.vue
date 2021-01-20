@@ -1,9 +1,9 @@
 <template>
-  <div class="report-bet-record">
+  <div class="report-bet-record-detail">
     <component :is="ReportBetRecordDetailTable" :title="title" :recordList="recordList" :totalObject="totalObject" />
 
-    <div class="report-bet-record__button-div">
-      <button class="report-bet-record__button--return ui-btn ui-btn--long" @click="$router.go(-1)">
+    <div class="report-bet-record-detail__button-div">
+      <button class="report-bet-record-detail__button--return ui-btn ui-btn--long" @click="$router.go(-1)">
         {{ $t('report.betRecordDetail.button.back') }}
       </button>
     </div>
@@ -17,7 +17,7 @@ import { apiGetBetHistoryDay } from '@/api/report';
 export default {
   name: 'ReportBetRecordDetail',
   computed: {
-    ...mapGetters(['lang', 'siteSetting', 'siteFullCss']),
+    ...mapGetters(['lang', 'siteSetting']),
     ReportBetRecordDetailTable() {
       return () => import(`@/${this.siteSetting.components.report.ReportBetRecordDetailTable}`);
     },
@@ -49,9 +49,6 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/report/report-bet-record-detail.scss`);
-
     //* 取投注明細
     this.getBetHistoryDay();
 
@@ -65,9 +62,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.report-bet-record__button-div {
-  text-align: center;
-}
-</style>
