@@ -1,8 +1,8 @@
 @mixin promotion {
-  padding-bottom: 160px;
+  padding-bottom: $footer-height;
 
   &-auth {
-    padding-top: 88px;
+    padding-top: $header-sub-height;
   }
 
   &__list {
@@ -51,10 +51,10 @@
 @mixin promotion-detail {
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 160px;
+  padding-bottom: $footer-height;
 
   &-auth {
-    padding-top: 88px;
+    padding-top: $header-sub-height;
   }
 
   &__image {

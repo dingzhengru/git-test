@@ -1,7 +1,7 @@
 @mixin contact {
-  padding-bottom: 119px;
+  padding-bottom: $footer-height;
   &-auth {
-    padding-top: 88px;
+    padding-top: $header-sub-height;
   }
   &__content {
     background: $contact-content-bg;
