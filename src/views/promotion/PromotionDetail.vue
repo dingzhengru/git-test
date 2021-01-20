@@ -50,8 +50,7 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/promotion/promotion-detail.scss`);
+    import(`@/styles/${this.siteFullCss}/promotion.scss`);
 
     this.getPromotionDetail();
   },
@@ -62,82 +61,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-/**
- ** 因為 normalize 有設定 font-size，無法寫在 scoped
- ** 看是要去改 normalize 還是現在這種另外覆蓋寫
-*/
-.promotion-detail__main__content__desc {
-  h1 {
-    font-size: 4.6em;
-  }
-  h2 {
-    font-size: 3.45em;
-  }
-  h3 {
-    font-size: 2.69em;
-  }
-  h4 {
-    font-size: 2.3em;
-  }
-  h5 {
-    font-size: 1.9em;
-  }
-  h6 {
-    font-size: 1.54em;
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-.promotion-detail {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 160px;
-
-  &-auth {
-    padding-top: 88px;
-  }
-
-  &__image {
-    display: block;
-    width: 600px;
-    height: 190px;
-    margin: 20px auto;
-  }
-
-  &__main {
-    &__content {
-      &__title {
-        height: 98px;
-        padding: 34px 0 0 95px;
-        font-size: 2.4em;
-        font-weight: normal;
-      }
-
-      &__desc {
-        font-size: 2.3em;
-      }
-
-      .ui-table04 {
-        font-size: 1em;
-      }
-
-      ul > li {
-        margin-bottom: 20px;
-      }
-
-      ul > li > a {
-        border-radius: 6px;
-        padding: 5px 10px;
-        margin: 5px;
-        display: inline-block;
-      }
-    }
-    &__button {
-      text-align: center;
-    }
-  }
-}
-</style>

@@ -56,57 +56,9 @@ export default {
   },
   mounted() {
     // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/promotion/promotion.scss`);
+    import(`@/styles/${this.siteFullCss}/promotion.scss`);
 
     this.getPromotionList();
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.promotion {
-  padding-bottom: 160px;
-
-  &-auth {
-    padding-top: 88px;
-  }
-
-  &__list {
-    text-align: center;
-    margin-top: 20px;
-
-    &__img {
-      display: block;
-      width: 600px;
-      height: 190px;
-      margin: 0 auto 20px auto;
-    }
-  }
-
-  &__bonus {
-    &__link {
-      display: block;
-      width: 100%;
-      height: 109px;
-      padding: 20px 0 0 35px;
-      box-sizing: border-box;
-      margin-bottom: 8px;
-
-      &__icon {
-        display: inline-block;
-        width: 70px;
-        height: 64px;
-        text-indent: -999em;
-        vertical-align: top;
-      }
-      &__text {
-        display: inline-block;
-        width: 82%;
-        font-size: 32px;
-        line-height: 72px;
-        padding-left: 20px;
-      }
-    }
-  }
-}
-</style>
