@@ -25,16 +25,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import { apiGetInboxList } from '@/api/notification';
 
 export default {
   name: 'NotificationInbox',
   components: {
     AppPagination: () => import('@/components/AppPagination'),
-  },
-  computed: {
-    ...mapGetters(['siteFullCss']),
   },
   data() {
     return {
@@ -71,9 +67,6 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css (pagination)
-    import(`@/styles/${this.siteFullCss}/pagination.scss`);
-
     this.getInboxList();
   },
 };

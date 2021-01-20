@@ -1,5 +1,5 @@
 <template>
-  <div class="lay-are-pager">
+  <div class="pagination">
     <a href="javascript:;" class="ui-lnk-pagerPreviousMore" id="btnPreviousMore" @click="changePage(1)"></a>
     <a href="javascript:;" class="ui-lnk-pagerPrevious" id="btnPreviousPage" @click="goPreviousPage"></a>
     <select class="ui-ddl ui-ddl-pager" name="NoPage" id="slcPage" v-model="clonePage" @change="changePage(clonePage)">
@@ -63,8 +63,8 @@ export default {
 };
 </script>
 
-<style scoped>
-.lay-are-pager {
+<style lang="scss" scoped>
+.pagination {
   margin: 20px 0;
   padding: 25px 0;
   letter-spacing: -0.31em;

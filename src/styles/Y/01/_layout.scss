@@ -1,0 +1,37 @@
+@import './abstracts';
+
+body {
+  background: assetPath('layout/bg.jpg') #000 no-repeat center top;
+}
+
+.ui-ddl {
+  border: 1px solid #8b8b8b;
+}
+
+.theme-content-box {
+  border: 1px solid #d6c388;
+}
+
+/*
+  ! 圖片路徑
+*/
+
+body {
+  background: assetPath('layout/bg.jpg') #000 no-repeat center top;
+}
+
+.ui-ddl {
+  background: assetPath('ui/ddl_arrow.jpg') #2e2e2e no-repeat right top;
+}
+.ui-table01 {
+  background: assetPath('ui/table01Bg.png') repeat;
+}
+.ui-table01 .ui-lnk-detail {
+  background-image: assetPath('ui/lnk_detail1.png');
+}
+.ui-table03 .ui-lnk-detail {
+  background-image: assetPath('ui/lnk_detail2.png');
+}
+.ui-table04 {
+  background: assetPath('ui/table01Bg.png') repeat;
+}

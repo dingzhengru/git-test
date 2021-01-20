@@ -17,15 +17,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import { apiGetNewsList } from '@/api/notification';
 export default {
   name: 'NotificationNews',
   components: {
     AppPagination: () => import('@/components/AppPagination'),
-  },
-  computed: {
-    ...mapGetters(['siteFullCss']),
   },
   data() {
     return {
@@ -60,9 +56,6 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css (pagination)
-    import(`@/styles/${this.siteFullCss}/pagination.scss`);
-
     //* 取得最新消息
     this.getNewsList();
   },

@@ -390,9 +390,6 @@ export default {
   mounted() {
     import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
 
-    //* 根據版型引入 css (pagination)
-    import(`@/styles/${this.siteFullCss}/pagination.scss`);
-
     //* 取得紀錄列表
     this.getRecord();
   },

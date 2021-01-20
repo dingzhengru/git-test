@@ -58,13 +58,10 @@ export default {
     console.log('[SiteFullCss]', this.siteFullCss);
 
     //* 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/layout.scss`);
-
-    //* header css
+    import(`@/styles/${this.siteFullCss}/_layout.scss`);
     import(`@/styles/${this.siteFullCss}/header.scss`);
-
-    //* footer css
     import(`@/styles/${this.siteFullCss}/footer.scss`);
+    import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
     //* 載入 manifest
     document.querySelector('link[rel=manifest]').setAttribute('href', this.siteManifestUrl);
