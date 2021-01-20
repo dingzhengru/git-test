@@ -388,8 +388,7 @@ export default {
     },
   },
   mounted() {
-    //* 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/transaction/record-content.scss`);
+    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
 
     //* 根據版型引入 css (pagination)
     import(`@/styles/${this.siteFullCss}/pagination.scss`);
@@ -407,67 +406,67 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.record-content {
-  margin: 30px 0;
+// .record-content {
+//   margin: 30px 0;
 
-  &__search-form {
-    &__field {
-      margin: 30px 0;
-      text-align: center;
+//   &__search-form {
+//     &__field {
+//       margin: 30px 0;
+//       text-align: center;
 
-      select {
-        width: 49%;
-        display: inline-block;
-        padding-left: 1.5%;
-      }
-      &__select {
-        &--product {
-          margin-right: 10px;
-        }
-        &--date-range {
-          margin-right: 0;
-        }
-      }
+//       select {
+//         width: 49%;
+//         display: inline-block;
+//         padding-left: 1.5%;
+//       }
+//       &__select {
+//         &--product {
+//           margin-right: 10px;
+//         }
+//         &--date-range {
+//           margin-right: 0;
+//         }
+//       }
 
-      &__input {
-        &--date-from,
-        &--date-to {
-          width: 100%;
-        }
-      }
-      &__title {
-        display: block;
-        font-size: 2.769em;
-        text-align: left;
-      }
-    }
-    &__button {
-      &--search {
-        display: block;
-        margin: 0 auto;
-      }
-    }
-  }
+//       &__input {
+//         &--date-from,
+//         &--date-to {
+//           width: 100%;
+//         }
+//       }
+//       &__title {
+//         display: block;
+//         font-size: 2.769em;
+//         text-align: left;
+//       }
+//     }
+//     &__button {
+//       &--search {
+//         display: block;
+//         margin: 0 auto;
+//       }
+//     }
+//   }
 
-  &__ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    &__li {
-      &__table {
-        text-align: center;
-        &__th-1st {
-          width: 35%;
-        }
-        &__td-2nd {
-          position: relative;
-          word-break: break-all;
-        }
-      }
-    }
-  }
-  &__notice {
-    font-size: 2em;
-  }
-}
+//   &__ul {
+//     padding: 0;
+//     margin: 0;
+//     list-style: none;
+//     &__li {
+//       &__table {
+//         text-align: center;
+//         &__th-1st {
+//           width: 35%;
+//         }
+//         &__td-2nd {
+//           position: relative;
+//           word-break: break-all;
+//         }
+//       }
+//     }
+//   }
+//   &__notice {
+//     font-size: 2em;
+//   }
+// }
 </style>

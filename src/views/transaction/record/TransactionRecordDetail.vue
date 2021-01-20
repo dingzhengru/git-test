@@ -38,7 +38,7 @@
       <div class="record-detail__button-div">
         <button
           type="button"
-          class="record-detail__button--return ui-btn ui-btn--long"
+          class="record-detail__button-div--return ui-btn ui-btn--long"
           @click="$router.push({ name: 'TransactionRecordContent', params: { name: $route.params.name } })"
         >
           {{ $t('transaction.recordDetail.button.back') }}
@@ -164,8 +164,7 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/transaction/record-detail.scss`);
+    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
 
     this.getRecordDetail();
   },
@@ -176,31 +175,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.record-detail {
-  margin: 30px 0;
-
-  &__ol {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  &__table {
-    &__th-1st {
-      width: 45%;
-      word-break: break-word;
-    }
-    &__td-2nd {
-      white-space: nowrap;
-      text-align: right;
-    }
-  }
-
-  &__button-div {
-    margin: 40px 0 20px;
-    text-align: center;
-  }
-}
-</style>

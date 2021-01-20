@@ -1,0 +1,141 @@
+@mixin record-list {
+  margin: 30px 0;
+
+  &__ul {
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px 0;
+    list-style: none;
+
+    &__li {
+      padding: 30px 0;
+
+      &__link {
+        background: $record-list-button-bg;
+        color: $record-list-button-color;
+        display: block;
+        font-size: 3.23em;
+        text-align: center;
+        line-height: 97px;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+@mixin record-content {
+  margin: 30px 0;
+  &__search-form {
+    &__field {
+      margin: 30px 0;
+      text-align: center;
+
+      select {
+        width: 49%;
+        display: inline-block;
+        padding-left: 1.5%;
+      }
+      &__select {
+        &--product {
+          margin-right: 10px;
+        }
+        &--date-range {
+          margin-right: 0;
+        }
+      }
+
+      &__input {
+        &--date-from,
+        &--date-to {
+          width: 100%;
+        }
+      }
+      &__title {
+        display: block;
+        font-size: 2.769em;
+        text-align: left;
+      }
+    }
+    &__button {
+      &--search {
+        background: $record-content-button-search;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    &__li {
+      &__table {
+        text-align: center;
+        &__th-1st {
+          width: 35%;
+        }
+        &__td-2nd {
+          position: relative;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+  &__notice {
+    font-size: 2em;
+  }
+}
+
+@mixin record-detail {
+  margin: 30px 0;
+
+  &__ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__table {
+    &__th-1st {
+      width: 45%;
+      word-break: break-word;
+    }
+    &__td-2nd {
+      white-space: nowrap;
+      text-align: right;
+    }
+  }
+
+  &__button-div {
+    margin: 40px 0 20px;
+    text-align: center;
+
+    &--return {
+      background-image: $record-detail-button-bg-return;
+    }
+  }
+}
+
+@mixin record-image-dialog {
+  background: $record-image-dialog-bg;
+  border: $record-image-dialog-border;
+  width: 80%;
+  /* height: 628px; */
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  overflow: auto;
+  z-index: 9999;
+  font-size: 2rem;
+  padding: 60px 30px 30px 30px;
+  &__title {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    text-align: center;
+    color: #fee0a4 !important;
+  }
+}

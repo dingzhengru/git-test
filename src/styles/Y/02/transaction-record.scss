@@ -1,0 +1,29 @@
+@import '@/styles/global/abstracts';
+@import './abstracts';
+@import '@/styles/Y/_default/transaction-record';
+
+$record-list-button-bg: $btn-bg-silver;
+$record-list-button-color: #2a2a2a;
+
+.record-list {
+  @include record-list;
+}
+
+$record-content-button-search: $btn-bg-red;
+
+.record-content {
+  @include record-content;
+}
+
+$record-detail-button-bg-return: $btn-bg-red;
+
+.record-detail {
+  @include record-detail;
+}
+
+$record-image-dialog-bg: #206083;
+$record-image-dialog-border: 1px solid #d6c388;
+
+.record-image-dialog {
+  @include record-image-dialog;
+}

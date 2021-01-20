@@ -29,33 +29,7 @@ export default {
     };
   },
   mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/transaction/record.scss`);
+    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.record-list {
-  margin: 30px 0;
-
-  &__ul {
-    width: 80%;
-    margin: 0 auto;
-    padding: 30px 0;
-    list-style: none;
-
-    &__li {
-      padding: 30px 0;
-
-      &__link {
-        display: block;
-        font-size: 3.23em;
-        text-align: center;
-        line-height: 97px;
-        border-radius: 10px;
-      }
-    }
-  }
-}
-</style>
