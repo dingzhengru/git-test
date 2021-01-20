@@ -1,5 +1,8 @@
 @import './abstracts';
+@import '@/styles/Y/_default/about';
 
-/*
-  ! 圖片路徑
-*/
+$about-text-color: white;
+
+.about {
+  @include about;
+}

@@ -1,33 +1,28 @@
 @import './abstracts';
+@import '@/styles/Y/_default/home';
 
-.home-game__ul__li__link {
-  color: #fff;
+.home {
+  @include home;
 }
 
-.home-game__ul__li__link--maintain {
-  background: assetPath('game/btn_maintain.png') no-repeat;
+$home-banner-height: 431px;
+$home-banner-button-width: 100px;
+$home-banner-button-height: 100px;
+$home-banner-button-bg-prev: url(~@/assets/common/banner/prev.png) no-repeat center center;
+$home-banner-button-bg-next: url(~@/assets/common/banner/next.png) no-repeat center center;
+
+.home-banner {
+  @include home-banner;
 }
 
-/*
-  ! 圖片路徑
-*/
+$home-game-bg: assetPath('layout/bg_index2.jpg') no-repeat;
+$home-game-text-color: white;
+$home-game-maintain-bg: assetPath('game/btn_maintain.png') no-repeat;
 
 .home-game {
-  background: assetPath('layout/bg_index2.jpg') no-repeat;
+  @include home-game;
 }
-// .prize__icon {
-//   background: assetPath('main/prizeIcn.png') left center no-repeat;
-// }
-// .prize__ul {
-//   background: assetPath('main/prizeBg.png') left center no-repeat;
-// }
-// .i-luckyDraw {
-//   background: assetPath('main/luckyDrawIcn.png') left center no-repeat;
-// }
-// .ul-luckyDraw {
-//   background: assetPath('main/prizeBg.png') left center no-repeat;
-// }
 
-// .noneLoginPopup {
-//   background: rgba(0, 0, 0, 0.8) assetPath('main/Bg-noneLoginPopup.jpg') center center no-repeat;
-// }
+.home-lottery {
+  @include home-lottery;
+}

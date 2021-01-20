@@ -1,0 +1,52 @@
+@import '@/styles/global/abstracts';
+@import './abstracts';
+@import '@/styles/Y/_default/notification';
+
+.notification {
+  @include notification;
+}
+
+$notification-news-date-color: #959595;
+$notification-news-date-icon-bg: assetPath('main/newsDateBg.jpg') no-repeat;
+
+.notification-news {
+  @include notification-news;
+}
+
+.notification-inbox {
+  @include notification-inbox;
+}
+
+$notification-inbox-detail-button-bg-submit: $btn-bg-red;
+$notification-inbox-detail-button-bg-cancel: $btn-bg-black;
+
+.notification-inbox-detail {
+  @include notification-inbox-detail;
+}
+
+$notification-outbox-button-bg-submit: $btn-bg-red;
+$notification-outbox-button-bg-cancel: $btn-bg-black;
+
+.notification-outbox {
+  @include notification-outbox;
+}
+
+//* nav-tab
+.ui-li-tabs-news {
+  background: assetPath('ui/tabs_news.png') center top no-repeat;
+}
+.ui-li-tabs-news.active {
+  background: assetPath('ui/tabs_newsActive.png') center top no-repeat;
+}
+.ui-li-tabs-mail {
+  background: assetPath('ui/tabs_mail.png') center top no-repeat;
+}
+.ui-li-tabs-mail.active {
+  background: assetPath('ui/tabs_mailActive.png') center top no-repeat;
+}
+.ui-li-tabs-sendmail {
+  background: assetPath('ui/tabs_sendmail.png') center top no-repeat;
+}
+.ui-li-tabs-sendmail.active {
+  background: assetPath('ui/tabs_sendmailActive.png') center top no-repeat;
+}

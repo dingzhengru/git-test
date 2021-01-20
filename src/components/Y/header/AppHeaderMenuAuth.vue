@@ -1,15 +1,5 @@
 <template>
   <div class="header-menu-auth">
-    <div class="header-menu-auth__member">
-      <div class="header-menu-auth__member__item">{{ $t('header.user.username') }}：{{ userAccount }}</div>
-      <div class="header-menu-auth__member__item">
-        {{ $t('header.user.total') }}：{{ $numeral(userTotalBalance).format('0,0.00') }}
-      </div>
-      <div class="header-menu-auth__member__item">{{ $t('header.user.vip') }}：{{ userPILevel }}</div>
-      <div class="header-menu-auth__member__item">
-        {{ $t('header.user.roll') }}：{{ $numeral(userPIBetAmount).format('0,0.00') }}
-      </div>
-    </div>
     <a
       href="javascript:;"
       class="header-menu-auth__button"
@@ -64,7 +54,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'AppHeaderMenuAuth',
   computed: {
-    ...mapGetters(['langList', 'userTotalBalance', 'userAccount', 'userPILevel', 'userPIBetAmount']),
+    ...mapGetters(['langList']),
   },
   data() {
     return {

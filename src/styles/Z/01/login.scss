@@ -1,36 +1,23 @@
 @import '@/styles/global/abstracts';
 @import './abstracts';
+@import '@/styles/Y/_default/login';
 
-.login__form__link {
-  color: #fff;
-}
+$login-title-color: white;
 
-.login__form__submit {
-  background-image: $btn-bg-red;
-}
+$login-field-bg-account: assetPath('main/authBg_account.png') no-repeat;
+$login-field-bg-password: assetPath('main/authBg_password.png') no-repeat;
+$login-field-bg-code: assetPath('main/authBg_code.png') no-repeat;
+$login-field-input-color: white;
+$login-field-border: none;
 
-/*
-  ! 圖片路徑
-*/
+$login-link-text-color: white;
+$login-link-bg-register: assetPath('main/registerBg.png') center top no-repeat;
+$login-link-bg-forget: assetPath('main/forgetBg.png') center top no-repeat;
+$login-link-bg-open: assetPath('main/open.png') center top no-repeat;
+$login-link-bg-download: assetPath('main/download.png') center top no-repeat;
 
-.login__form__field--account {
-  background-image: assetPath('main/authBg_account.png');
-}
-.login__form__field--password {
-  background-image: assetPath('main/authBg_password.png');
-}
-.login__form__field--code {
-  background-image: assetPath('main/authBg_code.png');
-}
-.login__form__link--regist {
-  background-image: assetPath('main/registerBg.png');
-}
-.login__form__link--forget {
-  background-image: assetPath('main/forgetBg.png');
-}
-.login__form__link--open {
-  background-image: assetPath('main/open.png');
-}
-.login__form__link--download {
-  background-image: assetPath('main/download.png');
+$login-button-bg-submit: $btn-bg-red;
+
+.login {
+  @include login;
 }

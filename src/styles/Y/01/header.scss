@@ -29,12 +29,17 @@ $header-menu-lang-dropdown-bg: black;
 }
 
 //* AppHeaderMenuAuth
-$header-menu-auth-member-bg: rgba(black, 0.6);
 $header-menu-auth-button-bg-open: assetPath('header/btn_menuOpen.png') no-repeat;
 $header-menu-auth-button-bg-close: assetPath('header/btn_menuClose.png') no-repeat center;
 $header-menu-auth-menu-bg: rgba(black, 0.9);
-$header-menu-auth-menu-logout-bg: $btn-bg-yellow-light repeat-x;
+$header-menu-auth-menu-logout-bg: $btn-bg-yellow-light;
 
 .header-menu-auth {
   @include header-menu-auth;
+}
+
+$header-sub-bg: rgba(black, 0.6);
+
+.header-sub {
+  @include header-sub;
 }

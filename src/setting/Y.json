@@ -7,7 +7,8 @@
     },
     "header": {
       "AppHeaderMenu": "components/Y/header/AppHeaderMenu",
-      "AppHeaderMenuAuth": "components/Y/header/AppHeaderMenuAuth"
+      "AppHeaderMenuAuth": "components/Y/header/AppHeaderMenuAuth",
+      "AppHeaderSub": "components/Y/header/AppHeaderSub"
     },
     "home": {
       "HomeBanner": "components/Y/home/HomeBanner",

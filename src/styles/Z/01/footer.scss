@@ -11,8 +11,8 @@ $footer-nav-bg: #cbaa6d;
 $footer-nav-item-bg: transparent;
 $footer-nav-item-bg-active: transparent;
 $footer-nav-link-bg: assetPath('footer/lnk_toolbar.png') no-repeat;
-$footer-nav-item-border-bg: none;
 $footer-nav-link-color: white;
+$footer-nav-item-border-bg: none;
 
 .footer-nav {
   @include footer-nav;
@@ -21,29 +21,29 @@ $footer-nav-link-color: white;
       color: black;
     }
 
-    &.home {
+    &.footer-nav__item--home {
       > a {
         background: assetPath('header/btn_home.png') center 10px no-repeat;
       }
     }
-    &.login {
+    &.footer-nav__item--login {
       background-color: #462b16;
       > a {
         color: white;
         background-position: center -250px;
       }
     }
-    &.promotion {
+    &.footer-nav__item--promotion {
       > a {
         background-position: center -378px;
       }
     }
-    &.contact {
+    &.footer-nav__item--contact {
       > a {
         background-position: center -16px;
       }
     }
-    &.transaction {
+    &.footer-nav__item--transaction {
       background-color: #462b16;
       > a {
         color: white;
