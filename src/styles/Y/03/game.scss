@@ -72,37 +72,6 @@ $live-game-enter-dialog-border: 2px solid #c1ae71;
   @include live-game-enter-dialog;
 }
 
-.game-lobby__supply {
-  background-color: #000;
-}
-.game-lobby-category {
-  background: #000 assetPath('ui/bg_category.png') bottom center no-repeat;
-}
-.game-lobby__inquire__form__search {
-  background: assetPath('ui/bg_ipt_inquire-2.png') no-repeat;
-}
-.game-lobby__inquire__form__search-icon {
-  background: assetPath('ui/bg_lnk_inquire.png') center no-repeat;
-}
-.game-lobby__inquire__favorites {
-  background: assetPath('ui/ipt_favorites.png') center no-repeat;
-}
-.game-lobby__table__tr {
-  background: assetPath('ui/bg_list_line.jpg') no-repeat center bottom;
-}
-.game-lobby__table__tr__td__link--start {
-  background-image: assetPath('ui/btn_start.png');
-}
-.game-lobby__table__tr__td__link--free {
-  background-image: assetPath('ui/btn_freeplay.png');
-}
-.game-lobby__table__tr__td__link--favorites {
-  background-image: assetPath('ui/btn_favorites.png');
-}
-.game-lobby__table__tr__td__link--favorites.active {
-  background-image: assetPath('ui/btn_favorites_active.png');
-}
-
 .ui-li-supply-1180 {
   background-image: assetPath('ui/supply-1180.png');
 }

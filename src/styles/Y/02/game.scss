@@ -63,7 +63,7 @@ $game-lobby-search-transfer-bg: assetPath('ui/btn_transferNow.png') left center 
     height: 59px;
   }
 
-  &__button--transfer-now  {
+  &__button--transfer-now {
     margin-top: 18px;
   }
 }
@@ -87,35 +87,6 @@ $live-game-enter-dialog-border: 2px solid #c1ae71;
 
 .live-game-enter-dialog {
   @include live-game-enter-dialog;
-}
-
-.game-lobby-category {
-  background: transparent assetPath('ui/bg_category.png') bottom center no-repeat;
-}
-.game-lobby__inquire__form__search {
-  background: assetPath('ui/bg_ipt_inquire-2.png') no-repeat;
-  // background: assetPath(ui/bg_ipt_inquire.png) no-repeat;
-}
-.game-lobby__inquire__form__search-icon {
-  background: assetPath('ui/bg_lnk_inquire.png') center no-repeat;
-}
-.game-lobby__inquire__favorites {
-  background: assetPath('ui/ipt_favorites.png') center no-repeat;
-}
-.game-lobby__table__tr {
-  background: assetPath('ui/bg_list_line.jpg') no-repeat center bottom;
-}
-.game-lobby__table__tr__td__link--start {
-  background-image: assetPath('ui/btn_start.png');
-}
-.game-lobby__table__tr__td__link--free {
-  background-image: assetPath('ui/btn_freeplay.png');
-}
-.game-lobby__table__tr__td__link--favorites {
-  background-image: assetPath('ui/btn_favorites.png');
-}
-.game-lobby__table__tr__td__link--favorites.active {
-  background-image: assetPath('ui/btn_favorites_active.png');
 }
 
 .ui-li-supply-1180 {
