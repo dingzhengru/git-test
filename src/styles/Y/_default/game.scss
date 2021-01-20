@@ -54,8 +54,6 @@
       display: inline-block;
       letter-spacing: normal;
       word-spacing: normal;
-      background-position: center top;
-      background-repeat: no-repeat;
       margin: 0 21px;
 
       &__link {
@@ -141,7 +139,7 @@
 
       &__td-1st {
         max-width: 152px;
-        padding: 0 10px;
+        padding: 5px 10px;
         overflow: hidden;
 
         &__img {
@@ -190,8 +188,8 @@
     &__search {
       background: $game-lobby-search-input-bg;
       width: 302px;
-      background-size: cover;
-      background-attachment: fixed;
+      // background-size: cover;
+      // background-attachment: fixed;
       height: 59px;
       margin: 25px 0 31px 34px;
       font-size: 24px;
