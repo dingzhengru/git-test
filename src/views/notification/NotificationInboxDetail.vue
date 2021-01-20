@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import { apiGetInboxDetail, apiSendMail } from '@/api/notification';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
@@ -54,9 +53,6 @@ export default {
   components: {
     ValidationObserver,
     ValidationProvider,
-  },
-  computed: {
-    ...mapGetters(['siteFullCss']),
   },
   data() {
     return {
@@ -92,52 +88,7 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/notification/notification-inbox-detail.scss`);
-
     this.getInboxDetail();
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.notification-inbox-detail {
-  margin: 30px 0;
-
-  &__ul {
-    padding: 0;
-    margin: 0;
-    font-size: 2.307em;
-    list-style: none;
-
-    &__li {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      border-bottom: 1px dotted #fff;
-    }
-    &__li:last-child {
-      border-bottom: none;
-    }
-  }
-
-  &__content {
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    font-size: 2.769em;
-  }
-
-  &__replay-box {
-    margin-bottom: 30px;
-    padding: 30px 3%;
-  }
-
-  &__button-div {
-    margin: 20px 0;
-    text-align: center;
-
-    button {
-      margin: 0 10px;
-    }
-  }
-}
-</style>

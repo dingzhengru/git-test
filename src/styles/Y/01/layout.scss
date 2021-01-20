@@ -42,33 +42,3 @@ body {
 .ui-table04 {
   background: assetPath('ui/table01Bg.png') repeat;
 }
-
-//* nav-tab
-
-.ui-li-tabs-news {
-  background: assetPath('ui/tabs_news.png') center top no-repeat;
-}
-.ui-li-tabs-mail {
-  background: assetPath('ui/tabs_mail.png') center top no-repeat;
-}
-.ui-li-tabs-sendmail {
-  background: assetPath('ui/tabs_sendmail.png') center top no-repeat;
-}
-.ui-li-tabs-news.active {
-  background: assetPath('ui/tabs_newsActive.png') center top no-repeat;
-}
-.ui-li-tabs-mail.active {
-  background: assetPath('ui/tabs_mailActive.png') center top no-repeat;
-}
-.ui-li-tabs-sendmail.active {
-  background: assetPath('ui/tabs_sendmailActive.png') center top no-repeat;
-}
-.ui-li-tabs-sendmail.active {
-  background: assetPath('ui/tabs_sendmailActive.png') center top no-repeat;
-}
-.ui-li-tabs-history {
-  background: assetPath('ui/tabs_pointrecord.png') center top no-repeat;
-}
-.ui-li-tabs-history.active {
-  background: assetPath('ui/tabs_pointrecordActive.png') center top no-repeat;
-}

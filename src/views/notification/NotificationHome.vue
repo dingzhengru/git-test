@@ -11,7 +11,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'NotificationHome',
   computed: {
-    ...mapGetters(['siteSetting']),
+    ...mapGetters(['siteSetting', 'siteFullCss']),
     AppNavTab() {
       return () => import(`@/${this.siteSetting.components.app.AppNavTab}`);
     },
@@ -20,21 +20,21 @@ export default {
     return {
       routeList: [
         {
-          name: 'Latest News',
+          name: 'news',
           text: 'notification.nav.news',
           link: 'NotificationNews',
           class: 'ui-li-tabs-news',
           otherActivePath: [],
         },
         {
-          name: 'Chats',
+          name: 'chats',
           text: 'notification.nav.inbox',
           link: 'NotificationInbox',
           class: 'ui-li-tabs-mail',
           otherActivePath: ['NotificationInboxDetail'],
         },
         {
-          name: 'Outbox',
+          name: 'outbox',
           text: 'notification.nav.outbox',
           link: 'NotificationOutbox',
           class: 'ui-li-tabs-sendmail',
@@ -43,11 +43,8 @@ export default {
       ],
     };
   },
+  mounted() {
+    import(`@/styles/${this.siteFullCss}/notification.scss`);
+  },
 };
 </script>
-
-<style scoped>
-.notification {
-  padding: 88px 20px 160px 20px;
-}
-</style>

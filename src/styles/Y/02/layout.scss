@@ -39,29 +39,3 @@ body {
 .ui-table04 {
   background: assetPath('ui/table01Bg.png') repeat;
 }
-
-.ui-li-tabs-news {
-  background-image: assetPath('ui/tabs_news.png');
-}
-.ui-li-tabs-mail {
-  background-image: assetPath('ui/tabs_mail.png');
-}
-.ui-li-tabs-sendmail {
-  background-image: assetPath('ui/tabs_sendmail.png');
-}
-
-.ui-li-tabs-news.active {
-  background-image: assetPath('ui/tabs_newsActive.png');
-}
-.ui-li-tabs-mail.active {
-  background-image: assetPath('ui/tabs_mailActive.png');
-}
-.ui-li-tabs-sendmail.active {
-  background-image: assetPath('ui/tabs_sendmailActive.png');
-}
-.ui-li-tabs-history {
-  background-image: assetPath('ui/tabs_pointrecord.png');
-}
-.ui-li-tabs-history.active {
-  background-image: assetPath('ui/tabs_pointrecordActive.png');
-}

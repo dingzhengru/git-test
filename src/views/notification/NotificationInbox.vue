@@ -71,9 +71,6 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/notification/notification-inbox.scss`);
-
     // * 根據版型引入 css (pagination)
     import(`@/styles/${this.siteFullCss}/pagination.scss`);
 
@@ -81,20 +78,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.notification-inbox__table {
-  margin-top: 40px;
-
-  .td-1st {
-    width: 180px;
-    text-align: center;
-  }
-  .td-2nd {
-    padding-right: 73px;
-    color: #fff;
-    text-align: center;
-    position: relative;
-  }
-}
-</style>
