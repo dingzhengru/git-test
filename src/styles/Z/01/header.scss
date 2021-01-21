@@ -89,7 +89,7 @@ $header-sub-dropdown-info-content-color: white;
     justify-content: center;
     align-items: center;
 
-    * {
+    &__item {
       font-size: 2em;
     }
 
@@ -148,6 +148,7 @@ $header-sub-dropdown-info-content-color: white;
     padding-bottom: $footer-height + 30;
 
     > button {
+      font-size: 2em;
       background: $header-sub-dropdown-button-bg;
       color: $header-sub-dropdown-button-color;
       margin: 10px 0;
@@ -164,6 +165,11 @@ $header-sub-dropdown-info-content-color: white;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        > div {
+          font-size: 2em;
+        }
+
         &__label {
           color: $header-sub-dropdown-info-label-color;
         }
