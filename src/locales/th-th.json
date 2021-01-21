@@ -127,7 +127,9 @@
       "report": "รายการเดิมพัน",
       "notification": "ข่าวล่าสุด",
       "promotion": "โปรโมชั่น",
-      "about": "เกี่ยวกับเรา"
+      "about": "เกี่ยวกับเรา",
+      "personalInfo": "ข้อมูลส่วนตัว",
+      "mail": "Mail"
     },
     "user": {
       "username": "ชื่อผู้ใช้",

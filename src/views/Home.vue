@@ -12,13 +12,12 @@
       <component :is="HomeGameBlock" :list="productList" />
     </div>
 
-    <ModalNoticeImage :isShow="isShowMainNotice" :image="siteMainPageNoticeUrl" @close="isShowMainNotice = false" />
-
-    <ModalMessage
+    <!-- <ModalNoticeImage :isShow="isShowMainNotice" :image="siteMainPageNoticeUrl" @close="isShowMainNotice = false" /> -->
+    <!-- <ModalMessage
       :messageList="messageList"
       v-show="isShowModalMessage && messageList.length > 0 && !userIsLoggedIn"
       @close="isShowModalMessage = false"
-    />
+    /> -->
 
     <AppModal :isShow="isShowWinWheel" @close="closeWinWheel">
       <div class="wheel-container">

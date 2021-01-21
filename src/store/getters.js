@@ -3,6 +3,8 @@ import { API_URL } from '@/settings';
 const getters = {
   lang: state => state.lang,
   langList: state => state.langList,
+  langName: state =>
+    state.langList ? state.langList.find(item => item.Lst_Locales_Code == state.lang).Lst_Locales_Name : '',
   loadingList: state => state.loadingList,
 
   //* pwa

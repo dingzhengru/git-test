@@ -6,8 +6,7 @@
       "AppNavTab": "components/Y/AppNavTab"
     },
     "header": {
-      "AppHeaderMenu": "components/Y/header/AppHeaderMenu",
-      "AppHeaderMenuAuth": "components/Y/header/AppHeaderMenuAuth",
+      "AppHeaderMenu": "components/Z/header/AppHeaderMenu",
       "AppHeaderSub": "components/Z/header/AppHeaderSub"
     },
     "home": {

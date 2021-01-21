@@ -127,7 +127,9 @@
       "report": "Report",
       "notification": "Latest News",
       "promotion": "Promotions",
-      "about": "About us"
+      "about": "About us",
+      "personalInfo": "Personal Info",
+      "mail": "Mail"
     },
     "user": {
       "username": "Username",

@@ -127,7 +127,9 @@
       "report": "投注纪录",
       "notification": "最新消息",
       "promotion": "优惠活动",
-      "about": "关于我们"
+      "about": "关于我们",
+      "personalInfo": "个人资料",
+      "mail": "站内信件"
     },
     "user": {
       "username": "用户名",
