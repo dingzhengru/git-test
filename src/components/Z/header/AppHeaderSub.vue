@@ -16,8 +16,12 @@
     </div>
     <transition name="slide-dropdown">
       <div class="header-sub__dropdown" v-show="isShowDropdown">
-        <button class="ui-btn ui-btn--long">{{ $t('transaction.transfer.button.refresh') }}</button>
-        <button class="ui-btn ui-btn--long">{{ $t('transaction.transfer.button.allToMyWallet') }}</button>
+        <button class="ui-btn ui-btn--long" @click="refreshWallet">
+          {{ $t('transaction.transfer.button.refresh') }}
+        </button>
+        <button class="ui-btn ui-btn--long" @click="transferAllPointToMain">
+          {{ $t('transaction.transfer.button.allToMyWallet') }}
+        </button>
 
         <div class="header-sub__dropdown__info">
           <div class="header-sub__dropdown__info__item">
@@ -28,12 +32,12 @@
               {{ $numeral(userTotalBalance).format('0,0.00') }}
             </div>
           </div>
-          <div class="header-sub__dropdown__info__item">
+          <div class="header-sub__dropdown__info__item" v-for="item in userGamePointList" :key="item.Product_id">
             <div class="header-sub__dropdown__info__item__label">
-              {{ $t('header.user.total') }}
+              {{ item.Product_Name }}
             </div>
             <div class="header-sub__dropdown__info__item__content">
-              {{ $numeral(userTotalBalance).format('0,0.00') }}
+              {{ $numeral(item.Point).format('0,0.00') }}
             </div>
           </div>
         </div>
@@ -44,10 +48,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import mixinAccountWallet from '@/mixins/accountWallet';
 export default {
   name: 'AppHeaderSub',
+  mixins: [mixinAccountWallet],
   computed: {
-    ...mapGetters(['userIsLoggedIn', 'userAccount', 'userGamePointWallet', 'userTotalBalance']),
+    ...mapGetters(['userIsLoggedIn', 'userAccount', 'userGamePointWallet', 'userTotalBalance', 'userGamePointList']),
   },
   data() {
     return {

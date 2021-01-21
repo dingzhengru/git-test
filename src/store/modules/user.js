@@ -16,6 +16,7 @@ import {
   apiGetBankInfoList,
   apiAdvancedRegisterNew,
 } from '@/api/user';
+import { apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
 
 const state = {
   info: {},
@@ -80,6 +81,11 @@ const actions = {
   },
   async getPointInfo({ commit }) {
     const result = await apiGetAllGamePoint();
+    commit('setPointInfo', result.RetObj);
+    return result;
+  },
+  async transferAllPointToMain({ commit }) {
+    const result = await apiTransferAllGamePointToMain();
     commit('setPointInfo', result.RetObj);
     return result;
   },
