@@ -9,5 +9,22 @@ $header-height: 130px;
 $header-sub-height: 80px;
 $footer-height: 119px;
 
-$btn-z-01-bg-yellow-light: #caad76;
-$btn-z-01-bg-gray: #6d6d6d;
+$text-color-z-01-brown: #462b16;
+$text-color-z-01-yellow-dark: #f9bd06;
+$text-color-z-01-yellow-dark-2: #cbaa6d;
+
+$btn-bg-z-01-yellow-light: #caad76;
+$btn-bg-z-01-gray: #6d6d6d;
+$btn-bg-z-01-brown: #462b16;
+
+$btn-height: 89px;
+
+.ui-btn {
+  height: $btn-height;
+  line-height: 0px;
+  font-size: 2rem;
+}
+
+.ui-btn--long {
+  width: 90%;
+}

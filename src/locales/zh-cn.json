@@ -2,12 +2,15 @@
   "ui": {
     "label": {
       "home": "首页",
-      "captcha": "验证码"
+      "captcha": "验证码",
+      "wallet": "我的钱包"
     },
     "button": {
       "submit": "提交",
       "reset": "重设",
-      "cancel": "取消"
+      "cancel": "取消",
+      "login": "登入",
+      "register": "注册"
     }
   },
   "alert": {

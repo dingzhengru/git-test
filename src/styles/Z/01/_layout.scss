@@ -1,4 +1,9 @@
 @import './abstracts';
+@import '@/styles/Y/_default/_layout';
+
+* {
+  font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
+}
 
 body {
   background: assetPath('layout/bg.jpg') #000 no-repeat center top;

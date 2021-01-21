@@ -2,12 +2,15 @@
   "ui": {
     "label": {
       "home": "Home",
-      "captcha": "Captcha"
+      "captcha": "Captcha",
+      "wallet": "Wallet"
     },
     "button": {
       "submit": "Submit",
       "reset": "Reset",
-      "cancel": "Cancellation"
+      "cancel": "Cancellation",
+      "login": "Login",
+      "register": "Register"
     }
   },
   "alert": {

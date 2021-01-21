@@ -1,1 +1,8 @@
-
+.slide-dropdown-enter-active,
+.slide-dropdown-leave-active {
+  transition: transform 0.3s ease-in-out;
+}
+.slide-dropdown-enter,
+.slide-dropdown-leave-to {
+  transform: scaleY(0);
+}

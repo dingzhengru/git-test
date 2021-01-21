@@ -40,6 +40,136 @@ $header-menu-auth-menu-logout-bg: $btn-bg-yellow-light;
 
 $header-sub-bg: black;
 
+$header-sub-button-height: 65px;
+$header-sub-button-bg-login: $btn-bg-z-01-yellow-light;
+$header-sub-button-color-login: $text-color-z-01-brown;
+$header-sub-button-bg-register: $btn-bg-z-01-gray;
+$header-sub-button-color-register: white;
+
+$header-sub-icon-status-bg: assetPath('ui/ui-status.png');
+$header-sub-icon-status-width: 52px;
+$header-sub-icon-status-height: 52px;
+$header-sub-icon-dropdown-bg: assetPath('ui/ui-arrow2-select.png');
+$header-sub-icon-dropdown-width: 19px;
+$header-sub-icon-dropdown-height: 29px;
+
+$header-sub-dropdown-bg: rgba(0, 0, 0, 0.9);
+$header-sub-dropdown-button-bg: $btn-bg-z-01-brown;
+$header-sub-dropdown-button-color: white;
+
+$header-sub-dropdown-info-bg: #444444;
+$header-sub-dropdown-info-label-color: $text-color-z-01-yellow-dark-2;
+$header-sub-dropdown-info-content-color: white;
+
 .header-sub {
   @include header-sub;
+
+  &__not-logged {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      height: $header-sub-button-height;
+      margin: 0 10px;
+    }
+    &__btn--login {
+      background: $header-sub-button-bg-login;
+      color: $header-sub-button-color-login;
+    }
+    &__btn--register {
+      background: $header-sub-button-bg-register;
+      color: $header-sub-button-color-register;
+    }
+  }
+
+  &__member {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+    &__item--account {
+      text-align: left !important;
+      padding-left: $header-sub-icon-status-width + 20;
+    }
+
+    &__item--wallet {
+      color: $text-color-z-01-yellow-dark;
+      padding-right: $header-sub-icon-dropdown-width + 5;
+    }
+
+    &__icon--status {
+      background: $header-sub-icon-status-bg;
+      width: $header-sub-icon-status-width;
+      height: $header-sub-icon-status-height;
+      position: absolute;
+      left: 10px;
+
+      &.class-1 {
+        background-position: center 0px;
+      }
+      &.class-2 {
+        background-position: center 150px;
+      }
+      &.class-3 {
+        background-position: center 53px;
+      }
+    }
+
+    &__icon--dropdown {
+      background: $header-sub-icon-dropdown-bg;
+      width: $header-sub-icon-dropdown-width;
+      height: $header-sub-icon-dropdown-height;
+      position: absolute;
+      right: 10px;
+    }
+  }
+  &__dropdown {
+    background-color: $header-sub-dropdown-bg;
+    position: absolute;
+    top: $header-sub-height;
+    width: 100%;
+    height: 100vh;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top;
+
+    > button {
+      background: $header-sub-dropdown-button-bg;
+      color: $header-sub-dropdown-button-color;
+      margin: 10px 0;
+    }
+
+    &__info {
+      margin-top: 20px;
+      background: $header-sub-dropdown-info-bg;
+      width: 90%;
+      padding: 30px 20px;
+      border-radius: 5px;
+      &__item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &__label {
+          color: $header-sub-dropdown-info-label-color;
+        }
+        &__content {
+          color: $header-sub-dropdown-info-content-color;
+        }
+
+        &:not(:last-child):after {
+          content: '';
+          background: black;
+          width: 100%;
+          height: 1px;
+          box-shadow: 0px -2px #8b8b8b;
+          margin: 30px 0;
+        }
+      }
+    }
+  }
 }

@@ -39,7 +39,7 @@ const actions = {
 
       //* 手動設置 style
       if (process.env.NODE_ENV != 'production') {
-        commit('setInfoStyle', { siteClass: 'Y', siteType: '02' });
+        commit('setInfoStyle', { siteClass: 'Z', siteType: '01' });
         console.log(state.info.LS_CSS_Class, state.info.LS_CSS_Type);
       }
     }
