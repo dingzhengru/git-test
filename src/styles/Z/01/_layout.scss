@@ -6,7 +6,8 @@
 }
 
 body {
-  background: assetPath('layout/bg.jpg') #000 no-repeat center top;
+  background: white;
+  // background: assetPath('layout/bg.jpg') #000 no-repeat center top;
 }
 
 .ui-ddl {
@@ -21,9 +22,9 @@ body {
   ! 圖片路徑
 */
 
-body {
-  background: assetPath('layout/bg.jpg') #000 no-repeat center top;
-}
+// body {
+//   background: assetPath('layout/bg.jpg') #000 no-repeat center top;
+// }
 
 .ui-ddl {
   background: assetPath('ui/ddl_arrow.jpg') #2e2e2e no-repeat right top;

@@ -12,7 +12,8 @@
     "home": {
       "HomeBanner": "components/Y/home/HomeBanner",
       "HomeGameBlock": "components/Y/home/HomeGameBlock",
-      "HomeLotteryGameBlock": "components/Y/home/HomeLotteryGameBlock"
+      "HomeLotteryGameBlock": "components/Y/home/HomeLotteryGameBlock",
+      "NewsMarquee": "components/Z/NewsMarquee"
     },
     "footer": {
       "AppFooterNav": "components/Y/footer/AppFooterNav"
