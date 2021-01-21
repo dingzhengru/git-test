@@ -1,10 +1,14 @@
 <template>
   <div class="header-sub">
-    <div class="header-sub__not-logged" v-if="!userIsLoggedIn">
-      <button class="header-sub__not-logged__btn--login ui-btn">{{ $t('ui.button.login') }}</button>
-      <button class="header-sub__not-logged__btn--register ui-btn">{{ $t('ui.button.register') }}</button>
+    <div class="header-sub__not-logged" v-show="!userIsLoggedIn && this.$route.name == 'Home'">
+      <button class="header-sub__not-logged__btn--login ui-btn" @click="$router.push({ name: 'Login' })">
+        {{ $t('ui.button.login') }}
+      </button>
+      <button class="header-sub__not-logged__btn--register ui-btn" @click="$router.push({ name: 'Register' })">
+        {{ $t('ui.button.register') }}
+      </button>
     </div>
-    <div class="header-sub__member" @click="isShowDropdown = !isShowDropdown" v-else>
+    <div class="header-sub__member" @click="isShowDropdown = !isShowDropdown" v-show="userIsLoggedIn">
       <i class="header-sub__member__icon--status" :class="'class-2'"></i>
       <div class="header-sub__member__item header-sub__member__item--account">
         {{ userAccount }}

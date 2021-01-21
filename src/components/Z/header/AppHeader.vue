@@ -13,7 +13,7 @@
 
       <component :is="AppHeaderMenu" v-if="!userIsLoggedIn" @changeLang="changeLang" />
       <component :is="AppHeaderMenuAuth" v-if="userIsLoggedIn" @changeLang="changeLang" @logout="logout" />
-      <component :is="AppHeaderSub" />
+      <component :is="AppHeaderSub" v-show="(!userIsLoggedIn && this.$route.name == 'Home') || userIsLoggedIn" />
     </template>
   </header>
 </template>
