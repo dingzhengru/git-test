@@ -12,7 +12,7 @@
       <div class="header-sub__member__item header-sub__member__item--wallet">
         {{ $t('ui.label.wallet') }}：{{ $numeral(userGamePointWallet.Point).format('0,0.00') }}
       </div>
-      <i class="header-sub__member__icon--dropdown"></i>
+      <i class="header-sub__member__icon--dropdown" :class="{ open: isShowDropdown }"></i>
     </div>
     <transition name="slide-dropdown">
       <div class="header-sub__dropdown" v-show="isShowDropdown">
