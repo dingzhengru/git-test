@@ -15,12 +15,17 @@ $home-banner-button-bg-next: url(~@/assets/common/banner/next.png) no-repeat cen
   @include home-banner;
 }
 
-$home-game-bg: assetPath('layout/bg_index2.jpg') no-repeat;
-$home-game-text-color: white;
-$home-game-maintain-bg: assetPath('game/btn_maintain.png') no-repeat;
+$home-main-bg: assetPath('layout/bg_index2.jpg') no-repeat;
 
-.home-game {
-  @include home-game;
+.home-main {
+  @include home-main;
+}
+
+$home-product-text-color: white;
+$home-product-maintain-bg: assetPath('game/btn_maintain.png') no-repeat;
+
+.home-product-block {
+  @include home-product-block;
 }
 
 .home-lottery {

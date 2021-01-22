@@ -11,8 +11,8 @@
     },
     "home": {
       "HomeBanner": "components/Y/home/HomeBanner",
-      "HomeGameBlock": "components/Y/home/HomeGameBlock",
-      "HomeLotteryGameBlock": "components/Y/home/HomeLotteryGameBlock",
+      "HomeProductNav": "components/Z/home/HomeProductNav",
+      "HomeProductBlock": "components/Z/home/HomeProductBlock",
       "NewsMarquee": "components/Z/NewsMarquee"
     },
     "footer": {
@@ -46,7 +46,7 @@
     }
   },
   "views": {
-    "home": "components/Y/home/Home",
+    "home": "components/Z/home/Home",
     "login": "components/Y/login/Login",
     "register": "components/Y/register/Register",
     "forgetPassword": "components/Y/forget-password/ForgetPassword",

@@ -1,5 +1,6 @@
 @import './abstracts';
 @import '@/styles/Y/_default/home';
+@import '@/styles/Z/_default/home';
 
 .home {
   @include home;
@@ -8,21 +9,58 @@
 $home-banner-height: 431px;
 $home-banner-button-width: 100px;
 $home-banner-button-height: 100px;
-$home-banner-button-bg-prev: url(~@/assets/common/banner/prev.png) no-repeat center center;
-$home-banner-button-bg-next: url(~@/assets/common/banner/next.png) no-repeat center center;
+$home-banner-button-bg-prev: assetPath('ui/swiper-button-prev.png') no-repeat center center;
+$home-banner-button-bg-next: assetPath('ui/swiper-button-next.png') no-repeat center center;
 
 .home-banner {
   @include home-banner;
 }
 
-$home-game-bg: assetPath('layout/bg_index2.jpg') no-repeat;
-$home-game-text-color: white;
-$home-game-maintain-bg: assetPath('game/btn_maintain.png') no-repeat;
+$news-marquee-bg: #e5e5e5;
+$news-marquee-label-color: #8b8b8b;
+$news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
+$news-marquee-icon-width: 71px;
+$news-marquee-icon-height: 71px;
+$news-marquee-link-color: #8b8b8b;
 
-.home-game {
-  @include home-game;
+.news-marquee {
+  @include news-marquee-z;
 }
 
-.home-lottery {
-  @include home-lottery;
+$home-product-nav-text-color: #8b8b8b;
+$home-product-nav-text-color-active: #c8aa73;
+$home-product-nav-border-bottom: 5px solid #8b8b8b;
+$home-product-nav-border-bottom-active: 5px solid #c8aa73;
+
+.home-product-nav {
+  @include home-product-nav-z;
+}
+
+$home-main-bg: white;
+
+.home-main {
+  @include home-main;
+}
+
+$home-product-text-color: white;
+$home-product-maintain-bg: assetPath('game/btn_maintain.png') no-repeat;
+
+.home-product-block {
+  @include home-product-block;
+}
+
+// .home-lottery {
+//   @include home-lottery;
+// }
+
+$win-wheel-container-bg: url('~@/assets/common/lottery/winWheel/container-bg.png') #860103 center no-repeat;
+
+.win-wheel-container {
+  @include win-wheel-container;
+}
+
+$red-envelope-container-bg: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
+
+.red-envelope-container {
+  @include red-envelope-container;
 }

@@ -2,14 +2,14 @@
   <div class="home">
     <component :is="HomeBanner" :list="bannerList" @open-banner="openBanner" />
 
-    <div class="home-game">
+    <div class="home-main">
       <component
         :is="HomeLotteryGameBlock"
         :lotteryList="lotteryList"
         @openLotteryGame="openLotteryGame"
         v-if="userIsLoggedIn"
       />
-      <component :is="HomeGameBlock" :list="productList" />
+      <component :is="HomeProductBlock" :list="productList" />
     </div>
 
     <!-- <ModalNoticeImage :isShow="isShowMainNotice" :image="siteMainPageNoticeUrl" @close="isShowMainNotice = false" /> -->
@@ -108,8 +108,8 @@ export default {
     HomeBanner() {
       return () => import(`@/${this.siteSetting.components.home.HomeBanner}`);
     },
-    HomeGameBlock() {
-      return () => import(`@/${this.siteSetting.components.home.HomeGameBlock}`);
+    HomeProductBlock() {
+      return () => import(`@/${this.siteSetting.components.home.HomeProductBlock}`);
     },
     HomeLotteryGameBlock() {
       return () => import(`@/${this.siteSetting.components.home.HomeLotteryGameBlock}`);

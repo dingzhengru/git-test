@@ -1,20 +1,17 @@
 <template>
-  <ul class="home-game__ul">
-    <li
-      class="home-game__ul__li"
+  <div class="home-product-block">
+    <div
+      class="home-product-block__item"
       :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
       v-for="item in list"
       :key="item.Lst_Product_Proxy_Tag"
       :style="{ 'background-image': `url(${imgSrc(item)})` }"
+      @click="clickProductItem(item)"
     >
-      <a class="home-game__ul__li__link" href="javascript:;" @click="clickProductItem(item)">
-        {{ item.Lst_Name }}
-      </a>
-
-      <!-- 維修圖示 -->
-      <a class="home-game__ul__li__link--maintain" href="javascript:;" v-show="item.Lst_Site_Product_Status != 0"></a>
-    </li>
-  </ul>
+      <div class="home-product-block__item__text">{{ item.Lst_Name }}</div>
+      <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -22,7 +19,7 @@ import mixinProductLinkHandler from '@/mixins/productLinkHandler';
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'HomeGameBlock',
+  name: 'HomeProductBlock',
   mixins: [mixinProductLinkHandler],
   props: {
     list: {
@@ -34,8 +31,9 @@ export default {
     ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
     imgSrc: app => game => {
       try {
-        return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_Proxy_Tag}.png`);
+        return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
       } catch {
+        console.log('not found', `@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
         return '';
       }
     },
@@ -51,6 +49,10 @@ export default {
   },
   methods: {
     clickProductItem(product) {
+      if (product.Lst_Site_Product_Status != 0) {
+        return;
+      }
+
       if (this.userIsLoggedIn) {
         this.handleProductLink(product);
       } else {

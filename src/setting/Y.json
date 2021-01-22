@@ -12,7 +12,7 @@
     },
     "home": {
       "HomeBanner": "components/Y/home/HomeBanner",
-      "HomeGameBlock": "components/Y/home/HomeGameBlock",
+      "HomeProductBlock": "components/Y/home/HomeProductBlock",
       "HomeLotteryGameBlock": "components/Y/home/HomeLotteryGameBlock"
     },
     "footer": {
