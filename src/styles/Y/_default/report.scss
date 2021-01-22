@@ -35,6 +35,19 @@
       text-align: center;
     }
 
+    th,
+    td {
+      &:lang(en-us) {
+        font-size: 1.8rem;
+      }
+      &:lang(th-th) {
+        font-size: 2rem;
+      }
+      &:lang(zh-cn) {
+        font-size: 2rem;
+      }
+    }
+
     &__td-2nd {
       padding-right: 48px;
       text-align: center;
@@ -55,6 +68,19 @@
 @mixin report-bet-record-content {
   table {
     border: $report-bet-record-content-table-border;
+  }
+
+  th,
+  td {
+    &:lang(en-us) {
+      font-size: 1.8rem;
+    }
+    &:lang(th-th) {
+      font-size: 2rem;
+    }
+    &:lang(zh-cn) {
+      font-size: 2rem;
+    }
   }
 
   &__field {
