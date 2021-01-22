@@ -1,0 +1,469 @@
+<template>
+  <div class="record-content">
+    <div class="record-content__box theme-content-box">
+      <h3 class="theme-h3-boxTitle">{{ $t(`${i18nKey}.title`) }}</h3>
+
+      <form class="record-content__search-form" @submit.prevent="submitSearch" v-if="isSearchActive">
+        <div class="record-content__search-form__field">
+          <select class="record-content__search-form__field__select--product ui-ddl" v-model="search.product">
+            <option value="" selected>{{ $t(`${i18nKey}.placeholder.product`) }}</option>
+            <option :value="item.Value" v-for="item in productList" :key="item.Value">
+              {{ item.Text }}
+            </option>
+          </select>
+          <select
+            class="record-content__search-form__field__select--date-range ui-ddl"
+            v-model="searchDateRange"
+            @change="changeSearchDateRange"
+          >
+            <option value="" selected>{{ $t(`${i18nKey}.placeholder.dateRange`) }}</option>
+            <option :value="item.value" v-for="item in searchDateRangeList" :key="item.name">
+              {{ $t(`${i18nKey}.dateRange.${item.name}`) }}
+            </option>
+          </select>
+        </div>
+        <div class="record-content__search-form__field">
+          <span class="record-content__search-form__field__title">{{ $t(`${i18nKey}.field.from`) }}</span>
+          <input
+            class="record-content__search-form__field__input--date-from ui-ipt"
+            type="date"
+            v-model="search.dateFrom"
+            :max="$dayjs().format('YYYY-MM-DD')"
+            @change="searchDateRange = ''"
+          />
+        </div>
+        <div class="record-content__search-form__field">
+          <span class="record-content__search-form__field__title">{{ $t(`${i18nKey}.field.to`) }}</span>
+          <input
+            class="record-content__search-form__field__input--date-to ui-ipt"
+            type="date"
+            v-model="search.dateTo"
+            :max="$dayjs().format('YYYY-MM-DD')"
+            @change="searchDateRange = ''"
+          />
+        </div>
+        <div class="record-content__search-form__button-div">
+          <button class="record-content__search-form__button--search ui-btn ui-btn--long" type="submit">
+            {{ $t(`${i18nKey}.button.search`) }}
+          </button>
+        </div>
+      </form>
+
+      <ul class="record-content__ul theme-ul-listView">
+        <li class="record-content__ul__li theme-li-listView" v-for="item in list" :key="item.id">
+          <table class="record-content__ul__li__table ui-table01">
+            <tbody>
+              <tr v-for="(value, key, index) in item" :key="index">
+                <template v-if="!notShowKeyList.includes(key)">
+                  <th class="record-content__ul__li__table__th-1st th-1st">
+                    {{ $t(`${i18nKey}.table.${key}`) }}
+                  </th>
+                  <td
+                    class="record-content__ul__li__table__td-2nd td-2nd"
+                    :class="{
+                      'ui-txt-positive': isPositive(key, value, item),
+                      'ui-txt-negative': isNegative(key, value, item),
+                    }"
+                  >
+                    <template v-if="typeof value == 'number'">
+                      {{ $numeral(value).format('0,0.00') }}
+                    </template>
+
+                    <template v-else-if="key == 'receipt' && item.receiptImageUrl">
+                      <a
+                        href="javascript:;"
+                        :style="{ color: 'blue' }"
+                        @click.prevent="imageDialogUrl = item.receiptImageUrl"
+                      >
+                        {{ value }}
+                      </a>
+                    </template>
+
+                    <template v-else>
+                      {{ value }}
+                    </template>
+
+                    <a
+                      class="ui-lnk-detail"
+                      href="javascript:;"
+                      @click="goRecordDetail(item)"
+                      v-if="isShowDetailLink(key, value, item)"
+                    ></a>
+                  </td>
+                </template>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+    </div>
+    <p class="record-content__notice">{{ $te(`${i18nKey}.notice`) ? $t(`${i18nKey}.notice`) : '' }}</p>
+    <AppPagination
+      v-if="isPageActive"
+      :count="pagination.count"
+      :page="pagination.page"
+      :pagesize="pagination.pagesize"
+      @change-page="changePage"
+    />
+
+    <component
+      :is="RecordImageDialog"
+      :imageUrl="imageDialogUrl"
+      @close="imageDialogUrl = ''"
+      :isShow="!!imageDialogUrl"
+    />
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+import { apiGetMemberProductList } from '@/api/product';
+import {
+  apiGetRecordDeposit,
+  apiGetRecordWithdrawal,
+  apiGetRecordTransfer,
+  apiGetRecordBonus,
+  apiGetRecordLottery,
+  apiGetRecordWithdrawalRestriction,
+  apiGetRecordAdjustment,
+} from '@/api/transaction-record';
+
+export default {
+  name: 'TransactionRecordContent',
+  components: {
+    AppPagination: () => import('@/components/AppPagination'),
+  },
+  computed: {
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss']),
+    RecordImageDialog() {
+      return () => import(`@/${this.siteSetting.components.transaction.record.RecordImageDialog}`);
+    },
+    i18nKey() {
+      return `transaction.recordContent.${this.$route.params.name}`;
+    },
+    isPositive: app => (key, value, item) => {
+      const routeName = app.$route.params.name;
+      return (
+        (routeName == 'deposit' && key == 'amount' && value > 0) ||
+        (routeName == 'deposit' && key == 'detail' && item.isSuccess) ||
+        (routeName == 'withdrawal' && key == 'amount' && value > 0) ||
+        (routeName == 'withdrawal' && key == 'detail' && item.isSuccess) ||
+        (routeName == 'transfer' && key == 'amount' && value > 0) ||
+        (routeName == 'bonus' && key == 'issue' && value > 0) ||
+        (routeName == 'lottery' && key == 'status' && item.isSuccess) ||
+        (routeName == 'adjustment' && key == 'point' && value > 0)
+      );
+    },
+    isNegative: app => (key, value, item) => {
+      const routeName = app.$route.params.name;
+      return (
+        (routeName == 'deposit' && key == 'amount' && value < 0) ||
+        (routeName == 'deposit' && key == 'detail' && !item.isSuccess) ||
+        (routeName == 'withdrawal' && key == 'amount' && value < 0) ||
+        (routeName == 'withdrawal' && key == 'detail' && !item.isSuccess) ||
+        (routeName == 'transfer' && key == 'amount' && value < 0) ||
+        (routeName == 'bonus' && key == 'issue' && value < 0) ||
+        (routeName == 'lottery' && key == 'status' && !item.isSuccess) ||
+        (routeName == 'adjustment' && key == 'point' && value < 0)
+      );
+    },
+    isShowDetailLink: app => (key, value, item) => {
+      return key == app.detailKey && item.isSuccess != false;
+    },
+  },
+  data() {
+    return {
+      list: [],
+      detailKey: '', //* 放 detail link 的欄位名稱
+      isPageActive: false, //* 是否有分頁
+      isSearchActive: false, //* 是否有搜尋
+      productList: [],
+      notShowKeyList: ['id', 'isSuccess', 'Procudtid', 'BonusCode', 'WashCodeType', 'receiptImageUrl'],
+      searchDateRangeList: [
+        {
+          name: 'lastWeek',
+          value: 7,
+        },
+        {
+          name: 'lastTwoWeek',
+          value: 14,
+        },
+        {
+          name: 'lastMonth',
+          value: 30,
+        },
+      ],
+      searchDateRange: '',
+      search: {
+        product: '',
+        dateFrom: '',
+        dateTo: '',
+      },
+      pagination: {
+        page: 1,
+        pagesize: 10,
+        count: 0,
+      },
+      imageDialogUrl: '', //* 匯款收據的圖片視窗，空值就不顯示
+    };
+  },
+  methods: {
+    async getRecord() {
+      //* 因換頁都會用到，所以放 methods
+      switch (this.$route.params.name) {
+        case 'deposit': {
+          const result = await apiGetRecordDeposit();
+
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.id = item.Lst_TransID;
+            newItem.isSuccess = item.Lst_Status == 2;
+            newItem.date = item.Lst_CreateTime.split('T')[0];
+            newItem.bank = item.Lst_MemberBankName;
+            newItem.amount = item.Lst_MoneyIncome;
+            newItem.receipt = item.Lst_Receipt;
+            newItem.receiptImageUrl = item.Lst_ImageUrl;
+            newItem.detail = item.Lst_StatusName;
+
+            return newItem;
+          });
+          this.detailKey = 'detail';
+          break;
+        }
+        case 'withdrawal': {
+          const result = await apiGetRecordWithdrawal();
+
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.id = item.Lst_TransID;
+            newItem.isSuccess = item.Lst_Status == 2;
+            newItem.date = item.Lst_CreateTime.split('T')[0];
+            newItem.bank = item.Lst_MemberBankName;
+            newItem.amount = item.Lst_MoneyPayment;
+            newItem.detail = item.Lst_StatusName;
+            return newItem;
+          });
+          this.detailKey = 'detail';
+          break;
+        }
+        case 'transfer': {
+          const requestDataTransfer = {
+            Page: this.pagination.page,
+            ProductID: this.search.product,
+            StartTime: this.search.dateFrom == '' ? '' : `${this.search.dateFrom} 00:00:00`,
+            EndTime: this.search.dateTo == '' ? '' : `${this.search.dateTo} 23:59:59`,
+          };
+          const result = await apiGetRecordTransfer(requestDataTransfer);
+
+          this.pagination.count = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.id = item.Lst_TransID;
+            newItem.date = item.Lst_TransDate;
+            newItem.game = item.Lst_ProductName;
+            newItem.type = item.Lst_TransType;
+            newItem.amount = item.Lst_Point;
+            return newItem;
+          });
+          this.detailKey = 'amount';
+          this.isSearchActive = true;
+          this.isPageActive = true;
+
+          //* 取得產品列表，避免每次換頁都會取一次，所以設立條件
+          if (this.productList.length == 0) {
+            this.getMemberProductList();
+          }
+          break;
+        }
+        case 'bonus': {
+          const requestDataRecordBonus = { Page: this.pagination.page };
+
+          const result = await apiGetRecordBonus(requestDataRecordBonus);
+
+          this.pagination.count = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            // newItem.id = item.Lst_TransID;
+            newItem.activity = item.Lst_Name;
+            newItem.bindWallet = item.Lst_WalletLimit;
+            newItem.issue = item.Lst_Bonus;
+            newItem.datetime = item.Lst_MTime.replace('T', ' ').split('.')[0];
+            return newItem;
+          });
+          this.isPageActive = true;
+          break;
+        }
+        case 'lottery': {
+          const requestDataRecordLottery = { Page: this.pagination.page };
+
+          const result = await apiGetRecordLottery(requestDataRecordLottery);
+
+          this.pagination.count = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.isSuccess = item.Lst_GiveoutStatus == 1;
+            newItem.prize = item.Lst_PrizeName;
+            newItem.status = item.Lst_GiveoutName;
+            newItem.type = item.Lst_PrizeType;
+            newItem.datetime = item.Lst_CTime.replace('T', ' ').split('.')[0];
+            return newItem;
+          });
+          this.isPageActive = true;
+          break;
+        }
+        case 'withdrawalRestriction': {
+          const requestDataRecordWithdrawalRestriction = { Page: this.pagination.page };
+
+          const result = await apiGetRecordWithdrawalRestriction(requestDataRecordWithdrawalRestriction);
+          this.pagination.count = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.Procudtid = item.Lst_Procudt_id;
+            newItem.BonusCode = item.Lst_Bonus_Code;
+            newItem.WashCodeType = item.Lst_WashCodeType;
+            newItem.type = item.Lst_WashCodeTypeStr;
+            newItem.restriction = item.Lst_Procudt_Name;
+            newItem.notRolloverExchange = item.Lst_Need_Washcode;
+            newItem.rolloverDeadline = item.Lst_Ctime.split('T')[0];
+            return newItem;
+          });
+          this.detailKey = 'restriction';
+          this.isPageActive = true;
+          break;
+        }
+        case 'adjustment': {
+          const requestDataRecordAdjustment = { Page: this.pagination.page };
+
+          const result = await apiGetRecordAdjustment(requestDataRecordAdjustment);
+          this.pagination.count = result.RetObj.Records;
+          this.list = result.RetObj.Rows.map(item => {
+            const newItem = {};
+            newItem.status = item.Lst_PaymentType;
+            newItem.description = item.Lst_Memo;
+            newItem.point = item.Lst_Amount;
+            newItem.datetime = item.Lst_TransTime.replace('T', ' ').split('.')[0];
+            return newItem;
+          });
+          this.isPageActive = true;
+          break;
+        }
+        default: {
+          this.$router.replace({ name: 'TransactionRecordHome' });
+        }
+      }
+    },
+    async getMemberProductList() {
+      const result = await apiGetMemberProductList();
+      if (result.Code == 200) {
+        this.productList = result.RetObj;
+      }
+    },
+    changeSearchDateRange() {
+      this.search.dateTo = this.$dayjs().format('YYYY-MM-DD');
+      this.search.dateFrom = this.$dayjs()
+        .subtract(this.searchDateRange, 'day')
+        .format('YYYY-MM-DD');
+    },
+    goRecordDetail(record) {
+      let query = {};
+      if (this.$route.params.name == 'withdrawalRestriction') {
+        query = {
+          Procudtid: record.Procudtid,
+          BonusCode: record.BonusCode,
+          WashCodeType: record.WashCodeType,
+        };
+      } else {
+        query = { TransID: record.id };
+      }
+      this.$router.push({ name: 'TransactionRecordDetail', query });
+    },
+    submitSearch() {
+      this.pagination.page = 1;
+      this.getRecord();
+    },
+    changePage(page) {
+      this.pagination.page = page;
+      this.getRecord();
+    },
+  },
+  mounted() {
+    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
+
+    //* 取得紀錄列表
+    this.getRecord();
+  },
+  watch: {
+    lang() {
+      this.getRecord();
+      this.getMemberProductList();
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+// .record-content {
+//   margin: 30px 0;
+
+//   &__search-form {
+//     &__field {
+//       margin: 30px 0;
+//       text-align: center;
+
+//       select {
+//         width: 49%;
+//         display: inline-block;
+//         padding-left: 1.5%;
+//       }
+//       &__select {
+//         &--product {
+//           margin-right: 10px;
+//         }
+//         &--date-range {
+//           margin-right: 0;
+//         }
+//       }
+
+//       &__input {
+//         &--date-from,
+//         &--date-to {
+//           width: 100%;
+//         }
+//       }
+//       &__title {
+//         display: block;
+//         font-size: 2.769em;
+//         text-align: left;
+//       }
+//     }
+//     &__button {
+//       &--search {
+//         display: block;
+//         margin: 0 auto;
+//       }
+//     }
+//   }
+
+//   &__ul {
+//     padding: 0;
+//     margin: 0;
+//     list-style: none;
+//     &__li {
+//       &__table {
+//         text-align: center;
+//         &__th-1st {
+//           width: 35%;
+//         }
+//         &__td-2nd {
+//           position: relative;
+//           word-break: break-all;
+//         }
+//       }
+//     }
+//   }
+//   &__notice {
+//     font-size: 2em;
+//   }
+// }
+</style>

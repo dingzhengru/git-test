@@ -1,19 +1,16 @@
 <template>
-  <div class="game">
-    <router-view />
-  </div>
+  <component :is="settingComponent" />
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-
 export default {
   name: 'GameHome',
   computed: {
-    ...mapGetters(['siteFullCss']),
-  },
-  mounted() {
-    import(`@/styles/${this.siteFullCss}/game.scss`);
+    ...mapGetters(['siteSetting']),
+    settingComponent() {
+      return () => import(`@/${this.siteSetting.views.gameHome}`);
+    },
   },
 };
 </script>

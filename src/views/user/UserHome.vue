@@ -1,44 +1,16 @@
 <template>
-  <div class="user">
-    <component :is="AppNavTab" :list="routeList" />
-    <router-view />
-  </div>
+  <component :is="settingComponent" />
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-
 export default {
   name: 'UserHome',
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss']),
-    AppNavTab() {
-      return () => import(`@/${this.siteSetting.components.app.AppNavTab}`);
+    ...mapGetters(['siteSetting']),
+    settingComponent() {
+      return () => import(`@/${this.siteSetting.views.userHome}`);
     },
-  },
-  data() {
-    return {
-      routeList: [
-        {
-          name: 'profile',
-          text: 'user.nav.profile',
-          link: 'UserProfile',
-          class: 'ui-li-tabs-account',
-          otherActivePath: [],
-        },
-        {
-          name: 'changePassword',
-          text: 'user.nav.changePassword',
-          link: 'UserChangePassword',
-          class: 'ui-li-tabs-password',
-          otherActivePath: [],
-        },
-      ],
-    };
-  },
-  mounted() {
-    // * 根據版型引入 css
-    import(`@/styles/${this.siteFullCss}/user.scss`);
   },
 };
 </script>
