@@ -44,5 +44,38 @@
     "report": {
       "ReportBetRecordDetailTable": "components/Y/report/ReportBetRecordDetailTable"
     }
+  },
+  "views": {
+    "home": "components/Y/home/Home",
+    "login": "components/Y/login/Login",
+    "register": "components/Y/register/Register",
+    "forgetPassword": "components/Y/forget-password/ForgetPassword",
+    "gameHome": "components/Y/game/GameHome",
+    "gameLobbySlot": "components/Y/game/GameLobbySlot",
+    "gameLobbyLive": "components/Y/game/GameLobbyLive",
+    "userHome": "components/Y/user/UserHome",
+    "userProfile": "components/Y/user/UserProfile",
+    "userChangePassword": "components/Y/user/UserChangePassword",
+    "transactionHome": "components/Y/transaction/TransactionHome",
+    "transactionDeposit": "components/Y/transaction/TransactionDeposit",
+    "transactionWithdrawal": "components/Y/transaction/TransactionWithdrawal",
+    "transactionTransfer": "components/Y/transaction/TransactionTransfer",
+    "transactionRecordHome": "components/Y/transaction/TransactionRecordHome",
+    "transactionRecordContent": "components/Y/transaction/TransactionRecordContent",
+    "transactionRecordDetail": "components/Y/transaction/TransactionRecordDetail",
+    "reportHome": "components/Y/report/ReportHome",
+    "reportUnsettleBet": "components/Y/report/ReportUnsettleBet",
+    "reportBetRecord": "components/Y/report/ReportBetRecord",
+    "reportBetRecordDetail": "components/Y/report/ReportBetRecordDetail",
+    "notificationHome": "components/Y/notification/NotificationHome",
+    "notificationNews": "components/Y/notification/NotificationNews",
+    "notificationInbox": "components/Y/notification/NotificationInbox",
+    "notificationInboxDetail": "components/Y/notification/NotificationInboxDetail",
+    "notificationOutbox": "components/Y/notification/NotificationOutbox",
+    "promotion": "components/Y/promotion/Promotion",
+    "promotionDetail": "components/Y/promotion/PromotionDetail",
+    "contact": "components/Y/contact/Contact",
+    "about": "components/Y/about/About",
+    "maintenance": "components/Y/maintenance/Maintenance"
   }
 }

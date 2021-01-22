@@ -20,7 +20,7 @@
     /> -->
 
     <AppModal :isShow="isShowWinWheel" @close="closeWinWheel">
-      <div class="wheel-container">
+      <div class="win-wheel-container">
         <WinWheel
           :wheelStyle="wheelStyle"
           :wheelOptions="wheelOptions"
@@ -220,48 +220,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.wheel-container {
-  position: fixed;
-  left: 5%;
-  top: 15%;
-  right: 5%;
-  background-image: url('~@/assets/common/lottery/winWheel/container-bg.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #860103;
-  background-position: center;
-  z-index: 9999;
-}
-
-.acticityWinwheel__title {
-  color: black;
-  font-size: 2rem;
-}
-
-.acticityWinwheel__result {
-  color: red;
-  font-size: 3rem;
-}
-
-.acticityWinwheel__prize {
-  color: black;
-  font-size: 3rem;
-}
-
-.red-envelope-container {
-  position: fixed;
-  height: 50%;
-  /* width: 50%; */
-  left: 5%;
-  top: 20%;
-  right: 5%;
-  background-image: url('~@/assets/common/lottery/redEnvelope/bg.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #860103;
-  background-position: center;
-  z-index: 9999;
-}
-</style>

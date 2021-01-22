@@ -20,10 +20,10 @@
     </div>
     <transition name="slide-dropdown">
       <div class="header-sub__dropdown" v-show="isShowDropdown">
-        <button class="ui-btn ui-btn--long" @click="refreshWallet">
+        <button class="ui-btn ui-btn--block" @click="refreshWallet">
           {{ $t('transaction.transfer.button.refresh') }}
         </button>
-        <button class="ui-btn ui-btn--long" @click="transferAllPointToMain">
+        <button class="ui-btn ui-btn--block" @click="transferAllPointToMain">
           {{ $t('transaction.transfer.button.allToMyWallet') }}
         </button>
 

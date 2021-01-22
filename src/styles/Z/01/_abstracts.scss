@@ -5,8 +5,14 @@
   @return url('~@/assets/Z/01/#{$path}');
 }
 
+$base-bg: white;
+$base-text-color: white;
+$base-font-size: 16px;
+$base-font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
+
 $header-height: 130px;
-$header-sub-height: 80px;
+$header-sub-height: auto;
+
 $footer-height: 119px;
 
 $text-color-z-01-brown: #462b16;
@@ -17,14 +23,16 @@ $btn-bg-z-01-yellow-light: #caad76;
 $btn-bg-z-01-gray: #6d6d6d;
 $btn-bg-z-01-brown: #462b16;
 
-$btn-height: 89px;
-
-.ui-btn {
-  height: $btn-height;
-  line-height: 0px;
+@mixin ui-btn {
+  display: inline-block;
+  height: 89px;
   font-size: 2rem;
+  border-radius: 5px;
+  text-align: center;
+  border: none;
 }
 
-.ui-btn--long {
-  width: 90%;
+@mixin ui-btn--block {
+  display: block;
+  width: 100%;
 }

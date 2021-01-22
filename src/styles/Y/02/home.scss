@@ -29,3 +29,15 @@ $home-game-maintain-bg: assetPath('game/btn_maintain.png') no-repeat;
 .home-lottery {
   @include home-lottery;
 }
+
+$win-wheel-container-bg: url('~@/assets/common/lottery/winWheel/container-bg.png') #860103 center no-repeat;
+
+.win-wheel-container {
+  @include win-wheel-container;
+}
+
+$red-envelope-container-bg: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
+
+.red-envelope-container {
+  @include red-envelope-container;
+}

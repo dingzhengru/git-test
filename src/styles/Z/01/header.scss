@@ -1,6 +1,7 @@
 @import '@/styles/global/abstracts';
 @import './abstracts';
 @import '@/styles/Y/_default/header';
+@import '@/styles/Z/_default/header';
 
 //* AppHeader
 $header-bg: assetPath('header/headerBg.png') no-repeat top center;
@@ -42,169 +43,22 @@ $header-menu-dropdown-lang-dropdown-btn-color: white;
 $header-menu-dropdown-lang-dropdown-btn-border-bottom: 1px #505050 solid;
 
 .header-menu {
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  &__toggle {
-    background: transparent;
-    position: absolute;
-    right: 40px;
-    height: 48px;
-    border: none;
-    outline: none;
-
-    > span {
-      display: block;
-      background-color: #e4ddd2;
-      width: 36px;
-      height: 5px;
-      margin-bottom: 8px;
-      transition: all 0.3s linear;
-    }
-
-    &.open > span {
-      &:nth-child(1) {
-        transform: translateY(4px) rotate(-45deg);
-      }
-      &:nth-child(2) {
-        display: none;
-      }
-      &:nth-child(3) {
-        transform: translateY(-8px) rotate(45deg);
-      }
-    }
-  }
-  &__dropdown {
-    background-color: $header-menu-dropdown-bg;
-    position: absolute;
-    top: $header-height;
-    width: 100%;
-    min-height: 100vh;
-    z-index: 4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform-origin: top;
-    padding-bottom: $footer-height + 30;
-    padding-top: 30px;
-    &__route {
-      width: 100%;
-      &__item {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 0;
-        &__icon {
-          width: 60px;
-          height: 60px;
-          background: $header-menu-dropdown-icon;
-          margin-right: 15px;
-
-          &.icon-about {
-            background-position: center 0px;
-          }
-          &.icon-news {
-            background-position: center -92px;
-          }
-          &.icon-profile {
-            background-position: center -186px;
-          }
-          &.icon-mail {
-            background-position: center -276px;
-          }
-          &.icon-transaction {
-            background-position: center 150px;
-          }
-          &.icon-logout {
-            background-position: center 62px;
-          }
-        }
-        &__link {
-          color: $header-menu-dropdown-link-color;
-          min-width: $header-menu-dropdown-link-width;
-          text-align: center;
-          font-size: 2em;
-        }
-      }
-    }
-
-    &__lang {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      &__toggle {
-        height: $header-menu-dropdown-btn-height !important;
-        width: $header-menu-dropdown-btn-width;
-        background: $header-menu-dropdown-btn-bg;
-        color: $header-menu-dropdown-btn-color;
-        position: relative;
-        margin-top: 30px;
-        border: none;
-        outline: none;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-        &__icon {
-          display: inline-block;
-          background: $header-menu-dropdown-lang-btn-icon-bg;
-          width: $header-menu-dropdown-lang-btn-icon-width;
-          height: $header-menu-dropdown-lang-btn-icon-height;
-          position: absolute;
-          top: 25px;
-          margin-left: 10px;
-          transform: rotate(-90deg);
-          transition: all 0.3s linear;
-          &.open {
-            transform: rotate(0);
-          }
-        }
-      }
-      &__dropdown {
-        width: $header-menu-dropdown-btn-width;
-        position: absolute;
-        top: $header-menu-dropdown-lang-dropdown-position-top;
-        transform-origin: top;
-        &__item {
-          height: $header-menu-dropdown-btn-height !important;
-          width: $header-menu-dropdown-btn-width;
-          background: $header-menu-dropdown-lang-dropdown-btn-bg;
-          color: $header-menu-dropdown-lang-dropdown-btn-color;
-          border-bottom: $header-menu-dropdown-lang-dropdown-btn-border-bottom;
-          border-top-left-radius: 0px;
-          border-top-right-radius: 0px;
-          &:not(:last-child) {
-            border-radius: 0px;
-          }
-        }
-      }
-    }
-  }
-}
-
-//* AppHeaderMenuAuth
-$header-menu-auth-button-bg-open: assetPath('header/btn_menuOpen.png') no-repeat;
-$header-menu-auth-button-bg-close: assetPath('header/btn_menuClose.png') no-repeat center;
-$header-menu-auth-menu-bg: rgba(black, 0.9);
-$header-menu-auth-menu-logout-bg: $btn-bg-yellow-light;
-
-.header-menu-auth {
-  @include header-menu-auth;
+  @include header-menu-z;
 }
 
 $header-sub-bg: black;
 
-$header-sub-button-height: 65px;
+$header-sub-button-height: 70px;
 $header-sub-button-bg-login: $btn-bg-z-01-yellow-light;
 $header-sub-button-color-login: $text-color-z-01-brown;
 $header-sub-button-bg-register: $btn-bg-z-01-gray;
 $header-sub-button-color-register: white;
 
-$header-sub-icon-status-bg: assetPath('ui/ui-status.png');
-$header-sub-icon-status-width: 52px;
-$header-sub-icon-status-height: 52px;
+$header-sub-status-icon-bg: assetPath('ui/ui-status.png');
+$header-sub-status-icon-width: 52px;
+$header-sub-status-icon-height: 52px;
+$header-sub-status--text-color-wallet: $text-color-z-01-yellow-dark;
+
 $header-sub-icon-dropdown-bg: assetPath('ui/ui-arrow2-select.png');
 $header-sub-icon-dropdown-width: 19px;
 $header-sub-icon-dropdown-height: 29px;
@@ -218,130 +72,5 @@ $header-sub-dropdown-info-label-color: $text-color-z-01-yellow-dark-2;
 $header-sub-dropdown-info-content-color: white;
 
 .header-sub {
-  @include header-sub;
-
-  &__not-logged {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    button {
-      height: $header-sub-button-height;
-      margin: 0 10px;
-    }
-    &__btn--login {
-      background: $header-sub-button-bg-login;
-      color: $header-sub-button-color-login;
-    }
-    &__btn--register {
-      background: $header-sub-button-bg-register;
-      color: $header-sub-button-color-register;
-    }
-  }
-
-  &__member {
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-
-    &__item {
-      font-size: 2em;
-    }
-
-    &__item--account {
-      text-align: left !important;
-      padding-left: $header-sub-icon-status-width + 20;
-    }
-
-    &__item--wallet {
-      color: $text-color-z-01-yellow-dark;
-      text-align: right;
-      padding-right: $header-sub-icon-dropdown-width + 20;
-    }
-
-    &__icon--status {
-      background: $header-sub-icon-status-bg;
-      width: $header-sub-icon-status-width;
-      height: $header-sub-icon-status-height;
-      position: absolute;
-      left: 10px;
-
-      &.class-1 {
-        background-position: center 0px;
-      }
-      &.class-2 {
-        background-position: center 150px;
-      }
-      &.class-3 {
-        background-position: center 53px;
-      }
-    }
-
-    &__icon--dropdown {
-      background: $header-sub-icon-dropdown-bg;
-      width: $header-sub-icon-dropdown-width;
-      height: $header-sub-icon-dropdown-height;
-      position: absolute;
-      right: 10px;
-      transition: all 0.3s linear;
-      &.open {
-        transform: rotate(90deg);
-      }
-    }
-  }
-  &__dropdown {
-    background-color: $header-sub-dropdown-bg;
-    position: absolute;
-    top: $header-sub-height;
-    width: 100%;
-    min-height: 100vh;
-    z-index: 4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform-origin: top;
-    padding-bottom: $footer-height + 30;
-
-    > button {
-      font-size: 2em;
-      background: $header-sub-dropdown-button-bg;
-      color: $header-sub-dropdown-button-color;
-      margin: 10px 0;
-    }
-
-    &__info {
-      margin-top: 20px;
-      background: $header-sub-dropdown-info-bg;
-      width: 90%;
-      padding: 30px 20px;
-      border-radius: 5px;
-      &__item {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
-        > div {
-          font-size: 2em;
-        }
-
-        &__label {
-          color: $header-sub-dropdown-info-label-color;
-        }
-        &__content {
-          color: $header-sub-dropdown-info-content-color;
-        }
-
-        &:not(:last-child):after {
-          content: '';
-          background: black;
-          width: 100%;
-          height: 1px;
-          box-shadow: 0px -2px #8b8b8b;
-          margin: 30px 0;
-        }
-      }
-    }
-  }
+  @include header-sub-z;
 }
