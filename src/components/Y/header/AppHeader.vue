@@ -7,13 +7,18 @@
         to="/"
         class="header__link header__link--home"
         :id="$idMapper.header.link.home"
-        v-if="$route.meta['header-back-icon'] != true"
+        v-if="$route.meta['header-back-icon'] != true && siteStatus == 0"
       ></router-link>
       <a class="header__link header__link--back" href="javascript:;" @click="$router.go(-1)" v-else></a>
 
       <component :is="AppHeaderMenu" v-if="!userIsLoggedIn" @changeLang="changeLang" />
-      <component :is="AppHeaderMenuAuth" v-if="userIsLoggedIn" @changeLang="changeLang" @logout="logout" />
-      <component :is="AppHeaderSub" v-if="userIsLoggedIn" />
+      <component
+        :is="AppHeaderMenuAuth"
+        v-if="userIsLoggedIn && siteStatus == 0"
+        @changeLang="changeLang"
+        @logout="logout"
+      />
+      <component :is="AppHeaderSub" v-if="userIsLoggedIn && siteStatus == 0" />
     </template>
   </header>
 </template>

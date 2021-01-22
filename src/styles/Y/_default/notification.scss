@@ -6,7 +6,7 @@
   &__box {
     margin: 20px 0;
     padding-bottom: 20px;
-    font-size: 2.769em;
+    font-size: 2rem;
 
     &__date {
       color: $notification-news-date-color;
@@ -14,7 +14,7 @@
       margin: 20px 0;
       padding: 0 0 20px 63px;
       border-bottom: 1px solid #d6c388;
-      font-size: 0.777em;
+      font-size: 1.5rem;
       line-height: 43px;
     }
   }
@@ -43,8 +43,9 @@
   &__ul {
     padding: 0;
     margin: 0;
-    font-size: 2.307em;
+    font-size: 2rem;
     list-style: none;
+    margin-bottom: 10px;
 
     &__li {
       padding-top: 10px;
@@ -58,13 +59,17 @@
 
   &__content {
     margin-bottom: 30px;
-    padding-bottom: 30px;
-    font-size: 2.769em;
+    padding: 15px;
+    font-size: 2rem;
   }
 
   &__replay-box {
     margin-bottom: 30px;
     padding: 30px 3%;
+
+    textarea {
+      padding: 15px;
+    }
   }
 
   &__button-div {

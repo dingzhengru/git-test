@@ -19,7 +19,7 @@
       }
 
       &__star {
-        font-size: 2.5em;
+        font-size: 2rem;
         position: absolute;
         top: 20px;
         left: -25px;
@@ -32,12 +32,12 @@
         margin: 8px 0 9px 80px;
         border: none;
         outline: none;
-        font-size: 2.5em;
+        font-size: 2rem;
       }
       &__select {
         width: 465px;
         height: 64px;
-        font-size: 2.5em;
+        font-size: 2rem;
         font-weight: normal;
         background: transparent;
         margin: 8px 0 9px 80px;
@@ -86,7 +86,7 @@
         color: $register-hint-color;
         display: block;
         margin: 5px 0;
-        font-size: 2em;
+        font-size: 2rem;
       }
 
       &--recommend {
@@ -139,7 +139,7 @@
     margin: 0 20px;
     &__ol {
       margin: 50px 10px 0;
-      font-size: 2.153em;
+      font-size: 2rem;
     }
   }
 }

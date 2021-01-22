@@ -1,8 +1,6 @@
 * {
   // font: 13px 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
-
   font-family: 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
-  font-size: 13px;
 }
 
 /*===================================================================================================================*/
@@ -27,7 +25,7 @@
   padding: 0 10px;
   border: 1px solid #8b8b8b;
   outline: none;
-  font-size: 2.769em;
+  font-size: 2rem;
   line-height: 77px;
 }
 .ui-ipt-date {
@@ -37,17 +35,15 @@
 
 /* button(/a) */
 .ui-btn {
-  width: 300px;
-  height: 97px;
   display: inline-block;
-  color: #fff;
-  /* font-size: 3.23em; */
-  font-size: 3rem;
   text-align: center;
+  width: 300px;
+  height: 99px;
+  color: #fff;
+  font-size: 2rem;
   border-radius: 10px;
   border: none;
-  /* background-repeat: repeat-x; */
-  line-height: 97px;
+  line-height: 99px;
 }
 
 .ui-btn:disabled {
@@ -67,7 +63,7 @@
   border-right: none;
   outline: none;
   color: #fff;
-  font-size: 2.769em;
+  font-size: 2rem;
   appearance: none;
 }
 .ui-ddl > option {
@@ -82,16 +78,16 @@
   width: 97%;
   padding: 0 1%; /*寫給ad長寬度用*/
   background-color: #2e2e2e;
-  font-size: 2.68em;
+  font-size: 2.68rem;
 }
 
 /* table */
 .ui-table01 {
   width: 100%;
   color: #959595;
-  font-size: 2.153em;
+  font-size: 1.5rem;
   letter-spacing: 2px;
-  line-height: 2em;
+  line-height: 3rem;
 }
 .ui-table01 th,
 .ui-table01 td {
@@ -101,9 +97,9 @@
 }
 .ui-table02 {
   width: 100%;
-  font-size: 2.307em;
+  font-size: 2rem;
   letter-spacing: 2px;
-  line-height: 2em;
+  line-height: 4rem;
 }
 .ui-table02 tr {
   border-bottom: 1px solid #d6c388;
@@ -127,9 +123,9 @@
 }
 .ui-table03 {
   width: 100%;
-  font-size: 2.307em;
+  font-size: 2rem;
   letter-spacing: 2px;
-  line-height: 2em;
+  line-height: 3rem;
 
   border-collapse: separate;
 }
@@ -184,9 +180,9 @@
 .ui-ol-memberNotice {
   padding-left: 24px;
   color: #959595;
-  font-size: 2.153em;
+  font-size: 1.5rem;
   letter-spacing: 2px;
-  line-height: 1.5em;
+  line-height: 3rem;
 }
 .ui-ol-memberNotice > li {
   list-style: disc;
@@ -220,7 +216,7 @@
   padding: 20px 0;
   border-bottom: 1px solid #d6c388;
   color: #d6c388;
-  font-size: 2.923em;
+  font-size: 2.5rem;
   font-weight: normal;
   text-align: center;
 }
@@ -231,7 +227,7 @@
   display: block;
   margin-bottom: 5px;
   color: #959595;
-  font-size: 2.307em;
+  font-size: 2rem;
 }
 .theme-input-box .ui-ddl {
   width: 100%;
@@ -239,6 +235,10 @@
 .theme-input-box .ui-ipt {
   width: 100%;
   padding: 0 1.5%;
+}
+
+.theme-ul-dataView {
+  
 }
 
 /* .theme-ul-listView {} */
@@ -257,13 +257,13 @@
   display: block;
   margin: 10px 0;
   color: #959595;
-  font-size: 2.307em;
+  font-size: 2rem;
 }
 .theme-dataView-data {
   margin: 5px 0;
-  padding-left: 1em;
+  padding-left: 1rem;
   color: #fff;
-  font-size: 2.769em;
+  font-size: 2.2rem;
   font-weight: bolder;
 }
 /* .theme-li-dataView > .ui-ipt { width: 92%; margin-left: 5%; padding: 0 1.5%;} */
@@ -283,9 +283,9 @@
 }
 .theme-txt-errorMsg {
   color: #fff;
-  font-size: 2em;
+  font-size: 2rem;
 }
 .txt-errorMsg {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   line-height: 36px;
 }

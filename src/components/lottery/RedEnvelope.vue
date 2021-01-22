@@ -280,7 +280,7 @@ export default {
   &__dialog {
     width: 422px;
     height: 257px;
-    font-size: 3rem;
+    font-size: 2rem;
 
     position: absolute;
     left: 50%;

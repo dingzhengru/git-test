@@ -6,16 +6,12 @@
     z-index: 2 !important;
   }
 
-  &__box {
-    font-size: 2.461em;
-  }
   &__wallet {
     border-bottom: $transfer-wallet-border-bottom;
     padding: 20px 0;
 
     &__select {
       padding: 0 1.5%;
-      font-size: 1.125em;
       width: 40%;
 
       option {
@@ -26,30 +22,26 @@
       option:disabled {
         color: white;
         background-color: #2e2e2e;
-        font-size: 1.2rem;
       }
     }
 
     &:lang(en-us) {
-      font-size: 2.2rem;
+      font-size: 1.5em;
       select {
-        font-size: 2.5rem;
         width: 40%;
       }
     }
 
     &:lang(th-th) {
-      font-size: 1.5rem;
+      font-size: 1.5em;
       select {
-        font-size: 2.3rem;
         width: 40%;
       }
     }
 
     &:lang(zh-cn) {
-      font-size: 2.5rem;
+      font-size: 1.5em;
       select {
-        font-size: 2.5rem;
         width: 40%;
       }
     }
@@ -61,7 +53,7 @@
     padding-bottom: 30px;
     padding-right: 32px;
     padding-left: 20px;
-
+    font-size: 1.5rem;
     &__table {
       th {
         width: 40%;
@@ -109,7 +101,6 @@
     padding: 20px 0;
 
     button {
-      font-size: 3rem;
       display: block;
       margin: 0 auto;
     }
@@ -137,14 +128,14 @@
 
     th {
       color: $transfer-table-th-color;
-      font-size: 2.5em;
+      font-size: 2rem;
       font-weight: normal;
       text-align: left;
     }
 
     td {
       color: $transfer-table-td-color;
-      font-size: 2.769em;
+      font-size: 2rem;
       text-align: right;
     }
 

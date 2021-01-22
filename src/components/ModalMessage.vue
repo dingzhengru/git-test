@@ -55,7 +55,7 @@ export default {
     &__text {
       text-align: center;
       color: #636363;
-      font-size: 2em;
+      font-size: 2rem;
       margin: 15px 0 15px;
     }
   }

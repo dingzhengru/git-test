@@ -7,8 +7,7 @@
 
   &__title {
     color: $login-title-color;
-    font-size: 3.584em;
-    font-weight: normal;
+    font-size: 3em;
     text-align: center;
   }
 
@@ -51,7 +50,7 @@
         padding: 0 3px;
         border: none;
         outline: none;
-        font-size: 2.5em;
+        font-size: 2em;
       }
       &--remember {
         height: 70px;
@@ -64,12 +63,12 @@
         height: 27px;
       }
       &__label {
-        font-size: 2.5em;
+        font-size: 2em;
       }
     }
     &__link-div {
       margin-top: 35px;
-      font-size: 2.46em;
+      font-size: 2em;
     }
     &__link {
       color: $login-link-text-color;

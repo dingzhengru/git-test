@@ -55,10 +55,11 @@
         color: $home-game-text-color;
         display: block;
         width: 213px;
-        height: 170px;
+        min-height: 180px;
         padding-top: 111px;
-        font-size: 2.4em;
         text-align: center;
+        font-size: 2rem;
+        line-height: 3rem;
 
         &--maintain {
           background: $home-game-maintain-bg;
@@ -71,14 +72,6 @@
           user-select: none;
           pointer-events: none;
           z-index: 3;
-        }
-
-        &:lang(en-us) {
-          font-size: 2em;
-        }
-
-        &:lang(th-th) {
-          font-size: 2em;
         }
       }
     }

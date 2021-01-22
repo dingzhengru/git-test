@@ -4,6 +4,8 @@
 body {
   background: assetPath('layout/bg.jpg') #fff no-repeat center top;
   background-attachment: fixed;
+  color: $base-text-color;
+  font-size: $base-font-size;
 }
 
 .ui-ddl {

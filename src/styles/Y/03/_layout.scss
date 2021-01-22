@@ -3,6 +3,8 @@
 
 body {
   background: assetPath('layout/bg.jpg') #000 no-repeat center top;
+  color: $base-text-color;
+  font-size: $base-font-size;
 }
 
 .ui-ddl {

@@ -67,7 +67,7 @@ export default {
 .pagination {
   margin: 20px 0;
   padding: 25px 0;
-  letter-spacing: -0.31em;
+  letter-spacing: -0.31rem;
   letter-spacing: normal;
   text-align: center;
 }

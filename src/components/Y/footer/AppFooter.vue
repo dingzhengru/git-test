@@ -58,7 +58,7 @@ export default {
           otherActivePath: [
             'TransactionWithdrawal',
             'TransactionTransfer',
-            'TransactionRecord',
+            'TransactionRecordHome',
             'TransactionRecordContent',
             'TransactionRecordDetail',
           ],
