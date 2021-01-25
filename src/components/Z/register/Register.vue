@@ -1,26 +1,105 @@
 <template>
-  <div class="register">
-    
-  </div>
+  <ValidationObserver class="register" tag="div" v-slot="{ invalid, handleSubmit, reset }">
+    <form class="register-form" @submit.prevent="handleSubmit(submitRegister)" @reset.prevent="reset">
+      <ValidationProvider
+        v-slot="{ errors, invalid }"
+        tag="div"
+        class="ui-field"
+        :class="[field.class]"
+        :name="field.name"
+        :rules="field.rules"
+        v-for="field in fieldList"
+        :key="field.name"
+        v-show="field.isShow"
+      >
+        <span class="ui-field__star" v-if="field.isRequired">*</span>
+
+        <div class="ui-field__main" v-if="field.type != 'select'">
+          <label class="ui-field__label">
+            {{ $t(`register.${field.name}.placeholder`) }}
+          </label>
+          <input
+            class="ui-field__input"
+            :id="$idMapper.register.input[field.name]"
+            :type="field.type"
+            :placeholder="$t(`register.${field.name}.placeholder`)"
+            :disabled="!field.isModifiable"
+            :min="field.min"
+            :max="field.max"
+            v-model="field.value"
+            @change="changeField(field, invalid)"
+          />
+        </div>
+
+        <select
+          class="ui-field__select"
+          :id="$idMapper.register.input[field.name]"
+          v-model="field.value"
+          v-if="field.type == 'select'"
+        >
+          <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
+        </select>
+
+        <img
+          class="ui-field__captcha"
+          :id="$idMapper.register.image.captcha"
+          :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
+          :width="captchaImage.Width"
+          :height="captchaImage.Height"
+          border="0"
+          @click="changeCaptcha"
+          v-if="field.name == 'CaptchaValue' && captchaImage.ImgBase64 != ''"
+        />
+
+        <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
+          {{ errors[0] }}
+        </div>
+      </ValidationProvider>
+
+      <div class="register__field--check ui-field">
+        <div class="ui-field__main">
+          <input class="ui-field__checkbox" id="register-remember" type="checkbox" />
+          <label class="" for="register-remember">
+            <span>{{ $t('register.service.read', { site: siteName }) }}</span>
+            <a href="javascript:;" @click="isShowModalServiceTerm = true">{{ $t('register.service.term') }}</a>
+          </label>
+        </div>
+      </div>
+
+      <div class="register__btn">
+        <button class="register__btn--submit ui-btn ui-btn--block" type="submit" :disabled="invalid">
+          {{ $t('register.button.submit') }}
+        </button>
+        <button class="register__btn--reset ui-btn ui-btn--block" type="reset" @click="resetForm">
+          {{ $t('ui.button.reset') }}
+        </button>
+      </div>
+
+      <div class="register__notice ui-notice">
+        <ol>
+          <li v-for="(item, index) in noticeList" :key="index" v-html="$t(item)"></li>
+        </ol>
+      </div>
+    </form>
+    <component :is="ModalServiceTerm" :isShow="isShowModalServiceTerm" @close="isShowModalServiceTerm = false" />
+  </ValidationObserver>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-
 import { apiGetCaptcha } from '@/api/captcha';
 import { apiGetRegisterFieldList, apiCheckRegisterFieldExist } from '@/api/register';
-
 import { registerFieldList } from '@/utils/register';
-// import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'Register',
   components: {
-    // ValidationObserver,
-    // ValidationProvider,
+    ValidationObserver,
+    ValidationProvider,
   },
   computed: {
-    ...mapGetters(['lang', 'siteFullCss', 'userToken', 'userPublicKey']),
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss', 'siteName', 'userToken', 'userPublicKey']),
     fullName() {
       let fullName = '';
       const firstName = this.fieldList.find(item => item.name == 'Add_FirstName').value;
@@ -34,6 +113,10 @@ export default {
 
       return fullName;
     },
+    ModalServiceTerm() {
+      console.log('123', this.siteSetting.components);
+      return () => import(`@/${this.siteSetting.components.register.ModalServiceTerm}`);
+    },
   },
   data() {
     return {
@@ -46,6 +129,7 @@ export default {
         ImgBase64: '',
       },
       error: '',
+      isShowModalServiceTerm: false,
     };
   },
   methods: {

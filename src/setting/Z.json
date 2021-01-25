@@ -18,6 +18,9 @@
     "footer": {
       "AppFooterNav": "components/Y/footer/AppFooterNav"
     },
+    "register": {
+      "ModalServiceTerm": "components/Z/ModalServiceTerm"
+    },
     "user": {
       "UserProfileList": "components/Y/user/UserProfileList",
       "UserProfileListAccess": "components/Y/user/UserProfileListAccess"
@@ -48,7 +51,7 @@
   "views": {
     "home": "components/Z/home/Home",
     "login": "components/Z/login/Login",
-    "register": "components/Y/register/Register",
+    "register": "components/Z/register/Register",
     "forgetPassword": "components/Y/forget-password/ForgetPassword",
     "gameHome": "components/Y/game/GameHome",
     "gameLobbySlot": "components/Y/game/GameLobbySlot",

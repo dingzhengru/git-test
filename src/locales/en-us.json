@@ -10,7 +10,8 @@
       "reset": "Reset",
       "cancel": "Cancellation",
       "login": "Login",
-      "register": "Register"
+      "register": "Register",
+      "close": "关闭"
     }
   },
   "alert": {
@@ -278,6 +279,13 @@
     },
     "CaptchaValue": {
       "placeholder": "Captcha"
+    },
+    "service": {
+      "read": "I have read and agreed with the Online Service {site}",
+      "term": "《Term of Service》"
+    },
+    "button": {
+      "submit": "Register Now"
     },
     "notice": {
       "required": "Remark with <span class='ui-txt-star'>*</span> are required items, please be sure to fill in them correctly.",

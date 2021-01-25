@@ -10,7 +10,8 @@
       "reset": "重设",
       "cancel": "取消",
       "login": "登入",
-      "register": "注册"
+      "register": "注册",
+      "close":"关闭"
     }
   },
   "alert": {
@@ -275,6 +276,13 @@
     },
     "CaptchaValue": {
       "placeholder": "验证码"
+    },
+    "button": {
+      "submit": "立即注册"
+    },
+    "service": {
+      "read": "我已经阅读并同意 {site} 的",
+      "term": "《服务条款》"
     },
     "notice": {
       "required": "标记有 <span class='ui-txt-star'>*</span> 为必填字段，请留意并正确填写。",

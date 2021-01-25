@@ -6,7 +6,7 @@
 }
 
 $base-bg: white;
-$base-text-color: white;
+$base-text-color: black;
 $base-font-size: 16px;
 $base-font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
 
@@ -22,6 +22,21 @@ $text-color-z-01-yellow-dark-2: #cbaa6d;
 $btn-bg-z-01-yellow-light: #caad76;
 $btn-bg-z-01-gray: #6d6d6d;
 $btn-bg-z-01-brown: #462b16;
+
+$field-font-size: 2rem;
+$field-bg: #444444;
+$field-input-color: white;
+$field-input-color-placeholder: rgb(117, 117, 117);
+$field-select-bg: assetPath('ui/ui-arrow-select.png') #444444 97% center no-repeat;
+$field-select-color: #c8aa73;
+$field-label-color: #cbaa6d;
+$field-error-bg: #c8aa73;
+$field-error-color: black;
+$field-star-color: #c8aa73;
+
+$notice-color: #8b8b8b;
+$notice-font-size: 1.8rem;
+$notice-line-height: 2.5rem;
 
 @mixin ui-btn {
   display: inline-block;
@@ -54,33 +69,193 @@ $btn-bg-z-01-brown: #462b16;
 }
 
 @mixin ui-field {
+  background: $field-bg;
+  font-size: $field-font-size;
   // width: 593px;
-  width: 80%;
+  width: 100%;
   min-height: 89px;
-  // margin: 15px auto;
-  background: #444444;
-  padding: 4%;
+  // padding: 30px;
   border-radius: 5px;
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  &__main {
+    width: 100%;
+    padding: 30px;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+  }
 
   &__label {
+    color: $field-label-color;
     min-width: 15%;
-    color: #cbaa6d;
   }
 
   &__input {
-    margin-left: 20px;
     background: transparent;
+    color: $field-input-color;
+    margin-left: 15px;
     border: none;
-    vertical-align: top;
-
     &::placeholder {
-      color: rgb(117, 117, 117);
+      color: $field-input-color-placeholder;
     }
+  }
+
+  &__select {
+    background: $field-select-bg;
+    color: $field-select-color;
+    width: 100%;
+    padding: 30px;
+    border: none;
+    appearance: none;
+
+    option {
+      color: $field-select-color;
+    }
+  }
+
+  &__checkbox {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+  }
+
+  &__error {
+    background: $field-error-bg;
+    color: $field-error-color;
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    padding: 5px;
   }
 
   &__captcha {
     position: absolute;
     right: 30px;
+    top: 20px;
+  }
+
+  &__star {
+    font-size: 3rem;
+    color: $field-star-color;
+    position: absolute;
+    left: -30px;
+    top: 25px;
+    flex-shrink: 0;
+  }
+}
+
+@mixin ui-notice {
+  color: $notice-color;
+  font-size: $notice-font-size;
+  line-height: $notice-line-height;
+}
+
+//* 服務規章視窗
+$service-term-close-color: #cab985;
+$service-term-item-title-icon: assetPath('ui/ui-arrow-select.png');
+$service-term-btn-bg: #462b16;
+$service-term-btn-color: white;
+
+@mixin service-term {
+  background: #ffffff;
+  color: black;
+  width: 95%;
+  min-height: 90vh;
+  padding: 15px 30px;
+  border: 1px solid #c1ae71;
+  border-radius: 5px;
+  position: relative;
+  &__close {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+      position: absolute;
+      left: 24px;
+      content: ' ';
+      height: 48px;
+      width: 4px;
+      background: $service-term-close-color;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__header {
+    &__title {
+      font-size: 3rem;
+      text-align: center;
+      padding-bottom: 30px;
+    }
+    &__content {
+      font-size: 2rem;
+    }
+  }
+
+  &__body {
+    font-size: 2rem;
+    &__item {
+      &__title {
+        background: #503725;
+        color: white;
+        padding: 15px;
+        margin: 15px 0;
+        position: relative;
+
+        &__icon {
+          display: inline-block;
+          width: 35px;
+          height: 23px;
+          background: $service-term-item-title-icon;
+          position: absolute;
+          right: 15px;
+          // top: 50%;
+          // transform: translateY(-50%);
+          top: 30%;
+          transform: translateY(-50%);
+          transition: all 0.3s linear;
+          transform: rotate(-90deg);
+          &.open {
+            transform: rotate(0deg);
+          }
+        }
+      }
+
+      &__content {
+        box-sizing: content-box;
+        transform-origin: top;
+        ul {
+          list-style-type: decimal-leading-zero;
+          margin: 30px;
+
+          li {
+            color: #8b8b8b;
+          }
+        }
+      }
+    }
+  }
+  &__footer {
+    button {
+      background: $service-term-btn-bg;
+      color: $service-term-btn-color;
+    }
   }
 }

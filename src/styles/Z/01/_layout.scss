@@ -17,3 +17,12 @@ body {
 .ui-field {
   @include ui-field;
 }
+
+.ui-notice {
+  @include ui-notice;
+}
+
+//* 服務規章視窗
+.service-term {
+  @include service-term;
+}
