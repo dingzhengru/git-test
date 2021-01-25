@@ -1,0 +1,49 @@
+@mixin login {
+  &-form {
+    font-size: 2rem;
+    padding-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 0;
+    input[type='checkbox'] {
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+      // align-self: flex-end;
+    }
+  }
+
+  button {
+    margin: 15px 0;
+  }
+
+  &__button {
+    &--login {
+      background: $login-btn-bg-login;
+      color: $login-btn-text-color-login;
+      box-shadow: $login-btn-shadow-login;
+    }
+    &--forget {
+      background: $login-btn-bg-forget;
+      color: $login-btn-text-color-forget;
+      box-shadow: $login-btn-shadow-forget;
+    }
+    &--register {
+      background: $login-btn-bg-register;
+      color: $login-btn-text-color-register;
+      box-shadow: $login-btn-shadow-register;
+    }
+  }
+
+  &__text {
+    color: black;
+  }
+}

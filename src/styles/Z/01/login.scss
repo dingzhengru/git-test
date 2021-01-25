@@ -1,22 +1,16 @@
 @import '@/styles/global/abstracts';
 @import './abstracts';
-@import '@/styles/Y/_default/login';
+@import '@/styles/Z/_default/login';
 
-$login-title-color: white;
-
-$login-field-bg-account: assetPath('main/authBg_account.png') no-repeat;
-$login-field-bg-password: assetPath('main/authBg_password.png') no-repeat;
-$login-field-bg-code: assetPath('main/authBg_code.png') no-repeat;
-$login-field-input-color: white;
-$login-field-border: none;
-
-$login-link-text-color: white;
-$login-link-bg-register: assetPath('main/registerBg.png') center top no-repeat;
-$login-link-bg-forget: assetPath('main/forgetBg.png') center top no-repeat;
-$login-link-bg-open: assetPath('main/open.png') center top no-repeat;
-$login-link-bg-download: assetPath('main/download.png') center top no-repeat;
-
-$login-button-bg-submit: $btn-bg-red;
+$login-btn-bg-login: #462b16;
+$login-btn-text-color-login: white;
+$login-btn-shadow-login: none;
+$login-btn-bg-forget: #caad76;
+$login-btn-text-color-forget: black;
+$login-btn-shadow-forget: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+$login-btn-bg-register: #caad76;
+$login-btn-text-color-register: black;
+$login-btn-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 .login {
   @include login;

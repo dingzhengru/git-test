@@ -1,8 +1,8 @@
 <template>
   <div class="login">
-    <div class="login__error-message theme-errorMsg" v-if="error">
+    <!-- <div class="login__error-message theme-errorMsg" v-if="error">
       <span class="theme-txt-errorMsg">{{ error }}</span>
-    </div>
+    </div> -->
     <h1 class="login__title">{{ $t('login.title') }}</h1>
     <ValidationObserver v-slot="{ invalid, handleSubmit }">
       <form class="login__form" id="LoginForm" @submit.prevent="handleSubmit(submitLogin)">

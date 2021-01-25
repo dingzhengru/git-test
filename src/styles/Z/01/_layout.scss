@@ -1,5 +1,9 @@
 @import './abstracts';
 
+* {
+  outline: none;
+}
+
 body {
   background: $base-bg;
   color: $base-text-color;
@@ -10,8 +14,6 @@ body {
 .ui-btn {
   @include ui-btn;
 }
-
-.ui-btn--block {
-  @include ui-btn;
-  @include ui-btn--block;
+.ui-field {
+  @include ui-field;
 }

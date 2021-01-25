@@ -30,9 +30,57 @@ $btn-bg-z-01-brown: #462b16;
   border-radius: 5px;
   text-align: center;
   border: none;
+
+  &--block {
+    display: block;
+    width: 100%;
+
+    &-9 {
+      width: 90%;
+    }
+    &-8 {
+      width: 80%;
+    }
+    &-7 {
+      width: 70%;
+    }
+    &-6 {
+      width: 60%;
+    }
+    &-5 {
+      width: 50%;
+    }
+  }
 }
 
-@mixin ui-btn--block {
-  display: block;
-  width: 100%;
+@mixin ui-field {
+  // width: 593px;
+  width: 80%;
+  min-height: 89px;
+  // margin: 15px auto;
+  background: #444444;
+  padding: 4%;
+  border-radius: 5px;
+  position: relative;
+
+  &__label {
+    min-width: 15%;
+    color: #cbaa6d;
+  }
+
+  &__input {
+    margin-left: 20px;
+    background: transparent;
+    border: none;
+    vertical-align: top;
+
+    &::placeholder {
+      color: rgb(117, 117, 117);
+    }
+  }
+
+  &__captcha {
+    position: absolute;
+    right: 30px;
+  }
 }

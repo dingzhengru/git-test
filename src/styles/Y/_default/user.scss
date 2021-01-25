@@ -11,11 +11,6 @@
 
     &__field {
       margin: 20px 0;
-
-      input:disabled {
-        opacity: 0.6;
-        pointer-events: none;
-      }
     }
   }
   &__button-div {

@@ -47,7 +47,7 @@
   },
   "views": {
     "home": "components/Z/home/Home",
-    "login": "components/Y/login/Login",
+    "login": "components/Z/login/Login",
     "register": "components/Y/register/Register",
     "forgetPassword": "components/Y/forget-password/ForgetPassword",
     "gameHome": "components/Y/game/GameHome",

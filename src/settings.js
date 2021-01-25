@@ -32,12 +32,7 @@ export const API_CRYPTO_BIG_DATA_LIST = [
 export const API_NOT_ALL_PARAMS_CRYPTO_BIG_DATA_LIST = ['Operator/MSingleDeposit'];
 
 //* 回傳為 599 時，但不要 alert 的 API，像是登入、註冊、需開新頁面的 API (避免 alert 中斷)
-export const API_NO_ALERT_LIST = [
-  'Member/LoginIn',
-  'Member/SimpleRegister',
-  'Game/MGameRedirectUrl',
-  'Game/MLobbyGameRedirect',
-];
+export const API_NO_ALERT_LIST = ['Member/SimpleRegister', 'Game/MGameRedirectUrl', 'Game/MLobbyGameRedirect'];
 
 //* 不顯示 Loading 的 API
 export const API_NO_LOADING_LIST = [
