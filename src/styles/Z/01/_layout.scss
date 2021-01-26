@@ -22,6 +22,10 @@ body {
   @include ui-notice;
 }
 
+.nav-tab {
+  @include nav-tab;
+}
+
 //* 服務規章視窗
 .service-term {
   @include service-term;

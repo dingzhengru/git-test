@@ -1,5 +1,5 @@
 <template>
-  <div class="home-product-block">
+  <transition-group class="home-product-block" tag="div" name="zoom" mode="out-in">
     <div
       class="home-product-block__item"
       :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
@@ -11,7 +11,7 @@
       <div class="home-product-block__item__text">{{ item.Lst_Name }}</div>
       <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
     </div>
-  </div>
+  </transition-group>
 </template>
 
 <script>

@@ -21,6 +21,9 @@
     "register": {
       "ModalServiceTerm": "components/Z/ModalServiceTerm"
     },
+    "promotion": {
+      "PromotionNavTab": "components/Z/promotion/PromotionNavTab"
+    },
     "user": {
       "UserProfileList": "components/Y/user/UserProfileList",
       "UserProfileListAccess": "components/Y/user/UserProfileListAccess"
@@ -75,7 +78,7 @@
     "notificationInbox": "components/Y/notification/NotificationInbox",
     "notificationInboxDetail": "components/Y/notification/NotificationInboxDetail",
     "notificationOutbox": "components/Y/notification/NotificationOutbox",
-    "promotion": "components/Y/promotion/Promotion",
+    "promotion": "components/Z/promotion/Promotion",
     "promotionDetail": "components/Y/promotion/PromotionDetail",
     "contact": "components/Y/contact/Contact",
     "about": "components/Y/about/About",

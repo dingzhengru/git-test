@@ -123,6 +123,15 @@ export default {
       });
     });
   },
+  watch: {
+    lang() {
+      if (this.userIsLoggedIn) {
+        this.$store.dispatch('user/getPointInfo');
+      }
+
+      this.$store.dispatch('product/getList');
+    },
+  },
 };
 </script>
 

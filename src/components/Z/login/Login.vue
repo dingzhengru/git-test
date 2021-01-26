@@ -66,7 +66,7 @@
       </ValidationProvider>
       <div class="login__field login__field--remember ui-field">
         <div class="ui-field__main">
-          <input id="login-remember" type="checkbox" v-model="user.RememberMe" />
+          <input class="ui-field__checkbox" id="login-remember" type="checkbox" v-model="user.RememberMe" />
           <label for="login-remember" class="">記住我</label>
         </div>
       </div>

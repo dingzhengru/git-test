@@ -57,6 +57,9 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   store.dispatch('user/getTokenAndPublicKey');
 }
 
+//* 取得遊戲館列表
+store.dispatch('product/getList');
+
 (async () => {
   //* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
   const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';

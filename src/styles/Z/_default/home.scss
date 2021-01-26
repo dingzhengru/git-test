@@ -32,24 +32,3 @@
     }
   }
 }
-
-@mixin home-product-nav-z {
-  width: 100%;
-  padding: 0 30px;
-  display: flex;
-  margin-top: 30px;
-  &__item {
-    width: 25%;
-    font-size: 1.6rem;
-    line-height: 2.5rem;
-    margin-right: 15px;
-    color: $home-product-nav-text-color;
-    border-bottom: $home-product-nav-border-bottom;
-    text-align: center;
-
-    &.active {
-      color: $home-product-nav-text-color-active;
-      border-bottom: $home-product-nav-border-bottom-active;
-    }
-  }
-}

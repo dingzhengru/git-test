@@ -27,14 +27,14 @@ $news-marquee-link-color: #8b8b8b;
   @include news-marquee-z;
 }
 
-$home-product-nav-text-color: #8b8b8b;
-$home-product-nav-text-color-active: #c8aa73;
-$home-product-nav-border-bottom: 5px solid #8b8b8b;
-$home-product-nav-border-bottom-active: 5px solid #c8aa73;
+// $home-product-nav-text-color: #8b8b8b;
+// $home-product-nav-text-color-active: #c8aa73;
+// $home-product-nav-border-bottom: 5px solid #8b8b8b;
+// $home-product-nav-border-bottom-active: 5px solid #c8aa73;
 
-.home-product-nav {
-  @include home-product-nav-z;
-}
+// .home-product-nav {
+//   @include home-product-nav-z;
+// }
 
 $home-main-bg: white;
 

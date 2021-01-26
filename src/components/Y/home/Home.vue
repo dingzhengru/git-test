@@ -80,7 +80,6 @@ import mixinLotteryRedEnvelope from '@/mixins/lotteryRedEnvelope';
 import mixinLotteryWinWheel from '@/mixins/lotteryWinWheel';
 
 import { apiGetBannerListOld, apiGetBannerList } from '@/api/banner';
-import { apiGetProductList } from '@/api/product';
 import { apiGetMessageList } from '@/api/message';
 import { apiGetLotteryCount } from '@/api/lottery';
 
@@ -104,6 +103,7 @@ export default {
       'siteIsShowMainNotice',
       'userIsLoggedIn',
       'siteMainPageNoticeUrl',
+      'productList',
     ]),
     HomeBanner() {
       return () => import(`@/${this.siteSetting.components.home.HomeBanner}`);
@@ -121,7 +121,6 @@ export default {
       isShowModalMessage: true,
       messageList: [],
       bannerList: [],
-      productList: [],
       lotteryList: [],
     };
   },
@@ -153,12 +152,6 @@ export default {
         if (result.Code == 200) {
           this.bannerList = result.RetObj;
         }
-      }
-    },
-    async getProductList() {
-      const result = await apiGetProductList();
-      if (result.Code == 200) {
-        this.productList = result.RetObj;
       }
     },
     async getLotteryCountList() {

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import user from './modules/user';
 import site from './modules/site';
+import product from './modules/product';
 import pwa from './modules/pwa';
 import getters from './getters';
 import { loadLanguageAsync } from '@/i18n-lazy';
@@ -54,6 +55,7 @@ export default new Vuex.Store({
     pwa,
     user,
     site,
+    product,
   },
   getters,
 });

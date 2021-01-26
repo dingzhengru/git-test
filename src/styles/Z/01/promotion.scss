@@ -1,26 +1,21 @@
 @import '@/styles/global/abstracts';
 @import './abstracts';
-@import '@/styles/Y/_default/promotion';
-
-$promotion-bonus-bg: assetPath('main/freeGo-bg.jpg') left top repeat-x;
-$promotion-bonus-icon-bg: assetPath('main/bonusVIP.png') left top no-repeat;
-$promotion-bonus-text-bg: assetPath('main/freeGo-arrow.png') right center no-repeat;
-$promotion-bonus-text-color: #fcf0ca;
+@import '@/styles/Z/_default/promotion';
 
 .promotion {
   @include promotion;
 }
 
-$promotion-detail-title-bg: assetPath('promotion/descTitle.png') no-repeat;
-$promotion-detail-title-color: white;
+$promotion-detail-title-bg: assetPath('ui/ui-event.png') #c8aa73 no-repeat;
+$promotion-detail-title-color: black;
 $promotion-detail-content-text-color: white;
-$promotion-detail-button-bg-back: $btn-bg-red;
+$promotion-detail-button-bg-back: $btn-bg-z-01-brown;
 $promotion-detail-button-text-color-back: white;
 
 .promotion-detail {
   @include promotion-detail;
 
-  &__image {
-    outline: 2px solid #fff;
+  &__main__button--back {
+    width: 80%;
   }
 }

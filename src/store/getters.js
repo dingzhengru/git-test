@@ -120,5 +120,18 @@ const getters = {
   userBankAccount3: state => state.user.info.Lst_BankAccount_3,
   userBankBrach3: state => state.user.info.Lst_Bank_Branches_3,
   userBankAccountName3: state => state.user.info.Lst_BankAccountName_3,
+
+  //* Product
+  productList: state => state.product.list,
+  productListByClassify: state => classify => {
+    if (classify == 0) {
+      return state.product.list;
+    }
+    return state.product.list.filter(item => item.Lst_Game_Classify == classify);
+  },
+  productById: state => id => state.product.list.find(item => item.Lst_Product_id == id) || {},
+  productLiveList: state => state.product.list.filter(item => item.Lst_Game_Classify == 1),
+  productSlotList: state => state.product.list.filter(item => item.Lst_Game_Classify == 2),
+  productSportList: state => state.product.list.filter(item => item.Lst_Game_Classify == 3),
 };
 export default getters;

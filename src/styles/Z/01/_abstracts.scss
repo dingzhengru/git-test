@@ -30,6 +30,7 @@ $field-input-color-placeholder: rgb(117, 117, 117);
 $field-select-bg: assetPath('ui/ui-arrow-select.png') #444444 97% center no-repeat;
 $field-select-color: #c8aa73;
 $field-label-color: #cbaa6d;
+$field-label-color-checkbox: white;
 $field-error-bg: #c8aa73;
 $field-error-color: black;
 $field-star-color: #c8aa73;
@@ -37,6 +38,17 @@ $field-star-color: #c8aa73;
 $notice-color: #8b8b8b;
 $notice-font-size: 1.8rem;
 $notice-line-height: 2.5rem;
+
+$nav-tab-text-color: #8b8b8b;
+$nav-tab-text-color-active: #c8aa73;
+$nav-tab-border-bottom: 5px solid #8b8b8b;
+$nav-tab-border-bottom-active: 5px solid #c8aa73;
+
+//* 服務規章視窗
+$service-term-close-color: #cab985;
+$service-term-item-title-icon: assetPath('ui/ui-arrow-select.png');
+$service-term-btn-bg: #462b16;
+$service-term-btn-color: white;
 
 @mixin ui-btn {
   display: inline-block;
@@ -123,6 +135,10 @@ $notice-line-height: 2.5rem;
     width: 35px;
     height: 35px;
     margin-right: 10px;
+
+    + label {
+      color: $field-label-color-checkbox;
+    }
   }
 
   &__error {
@@ -157,11 +173,26 @@ $notice-line-height: 2.5rem;
   line-height: $notice-line-height;
 }
 
-//* 服務規章視窗
-$service-term-close-color: #cab985;
-$service-term-item-title-icon: assetPath('ui/ui-arrow-select.png');
-$service-term-btn-bg: #462b16;
-$service-term-btn-color: white;
+@mixin nav-tab {
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  margin-top: 30px;
+  &__item {
+    width: 25%;
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+    margin-right: 15px;
+    color: $nav-tab-text-color;
+    border-bottom: $nav-tab-border-bottom;
+    text-align: center;
+
+    &.active {
+      color: $nav-tab-text-color-active;
+      border-bottom: $nav-tab-border-bottom-active;
+    }
+  }
+}
 
 @mixin service-term {
   background: #ffffff;

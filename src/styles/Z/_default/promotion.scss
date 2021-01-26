@@ -1,0 +1,96 @@
+@mixin promotion {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-content: center;
+  width: 100%;
+
+  padding: 15px;
+
+  &-auth {
+    padding-top: $header-sub-height;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+  }
+}
+
+@mixin promotion-detail {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: $footer-height + 30;
+
+  &-auth {
+    padding-top: $header-sub-height;
+  }
+
+  &__image {
+    display: block;
+    width: 600px;
+    height: 190px;
+    margin: 20px auto;
+  }
+
+  &__main {
+    &__content {
+      &__title {
+        background: $promotion-detail-title-bg;
+        color: $promotion-detail-title-color;
+        height: 98px;
+        padding: 25px 0 25px 95px;
+        font-size: 2.4rem;
+        font-weight: normal;
+      }
+
+      &__desc {
+        color: $promotion-detail-content-text-color;
+        font-size: 2rem;
+
+        h1 {
+          font-size: 4rem;
+        }
+        h2 {
+          font-size: 3rem;
+        }
+        h3 {
+          font-size: 2rem;
+        }
+        h4 {
+          font-size: 2.3rem;
+        }
+        h5 {
+          font-size: 1.6rem;
+        }
+        h6 {
+          font-size: 1.3rem;
+        }
+      }
+
+      .ui-table04 {
+        font-size: 1rem;
+      }
+
+      ul > li {
+        margin-bottom: 20px;
+      }
+
+      ul > li > a {
+        border-radius: 6px;
+        padding: 5px 10px;
+        margin: 5px;
+        display: inline-block;
+      }
+    }
+    &__button {
+      text-align: center;
+
+      button {
+        background: $promotion-detail-button-bg-back;
+        color: $promotion-detail-button-text-color-back;
+      }
+    }
+  }
+}
