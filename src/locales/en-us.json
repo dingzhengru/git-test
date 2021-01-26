@@ -11,7 +11,7 @@
       "cancel": "Cancellation",
       "login": "Login",
       "register": "Register",
-      "close": "关闭"
+      "close": "Close"
     }
   },
   "alert": {
@@ -730,7 +730,14 @@
     "mobile": "Mobile",
     "email": "Email",
     "wechat": "wechat",
-    "service": "Online Customer Service"
+    "service": "Online Customer Service",
+    "serviceTitle": "Online Customer Service 7/24",
+    "serviceContent": "Click to start using web customer service",
+    "lineTitle": "Line",
+    "lineContent": "Join {site} customer service friends",
+    "wechatTitle": "Wechat",
+    "wechatContent": "Join {site} customer service friends",
+    "join": "Chat Now"
   },
   "about": {
     "title": "ABOUT US",

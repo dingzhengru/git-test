@@ -80,7 +80,7 @@
     "notificationOutbox": "components/Y/notification/NotificationOutbox",
     "promotion": "components/Z/promotion/Promotion",
     "promotionDetail": "components/Y/promotion/PromotionDetail",
-    "contact": "components/Y/contact/Contact",
+    "contact": "components/Z/contact/Contact",
     "about": "components/Y/about/About",
     "maintenance": "components/Y/maintenance/Maintenance"
   }

@@ -11,7 +11,7 @@
       "cancel": "取消",
       "login": "登入",
       "register": "注册",
-      "close":"关闭"
+      "close": "关闭"
     }
   },
   "alert": {
@@ -727,7 +727,14 @@
     "mobile": "Mobile",
     "email": "Email",
     "wechat": "wechat",
-    "service": "在线客服"
+    "service": "在线客服",
+    "serviceTitle": "线上客服 7/24",
+    "serviceContent": "点击开始使用网页客服服务",
+    "lineTitle": "Line 客服",
+    "lineContent": "加入{site}客服好友",
+    "wechatTitle": "Wechat 客服",
+    "wechatContent": "加入{site}客服好友",
+    "join": "点击加入"
   },
   "about": {
     "title": "关于我们",

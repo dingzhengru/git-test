@@ -8,7 +8,7 @@
   padding: 15px;
 
   &-auth {
-    padding-top: $header-sub-height;
+    padding-top: $header-sub-height-auth;
   }
 
   &__item {
@@ -24,7 +24,7 @@
   padding-bottom: $footer-height + 30;
 
   &-auth {
-    padding-top: $header-sub-height;
+    padding-top: $header-sub-height-auth;
   }
 
   &__image {

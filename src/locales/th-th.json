@@ -727,7 +727,14 @@
     "mobile": "Mobile",
     "email": "Email",
     "wechat": "wechat",
-    "service": "ลูกค้าสัมพันธ์ออนไลน์"
+    "service": "ลูกค้าสัมพันธ์ออนไลน์",
+    "serviceTitle": "ลูกค้าสัมพันธ์ออนไลน์ 7/24",
+    "serviceContent": "คลิกเพื่อเริ่มใช้บริการลูกค้าทางเว็บ",
+    "lineTitle": "Line",
+    "lineContent": "เพื่อนบริการลูกค้า",
+    "wechatTitle": "Wechat",
+    "wechatContent": "เพื่อนบริการลูกค้า",
+    "join": "คลิกเพื่อเข้าร่วม"
   },
   "about": {
     "title": "แนะนำบ่อนคาสิโน",

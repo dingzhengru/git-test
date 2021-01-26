@@ -199,16 +199,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-//* fade 顯示 telephones 區塊
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

@@ -1,0 +1,115 @@
+@mixin contact {
+  padding-bottom: $footer-height + 15;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+
+  &-auth {
+    padding-top: $header-sub-height-auth + 30;
+  }
+
+  &__item {
+    background: #444444;
+    width: 638px;
+    min-height: 120px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    &__icon--contact {
+      background: $contact-icon-contact-bg;
+      width: $contact-icon-contact-width;
+      height: $contact-icon-contact-height;
+      margin-right: 15px;
+      transition: all 0.3s linear;
+      &.icon-service {
+        background-position: center -32px;
+      }
+      &.icon-mobile {
+        background-position: center -250px;
+      }
+      &.icon-skype {
+        background-position: center -470px;
+      }
+      &.icon-line {
+        background-position: center -690px;
+      }
+      &.icon-wechat {
+        background-position: center -910px;
+      }
+    }
+    &__text {
+      &__title {
+        color: white;
+      }
+      &__content {
+        font-size: 1.5rem;
+        color: #b7b7b7;
+      }
+    }
+    &__btn {
+      margin-left: auto;
+      background-color: #cbaa6d;
+      color: #462b16;
+      text-align: center;
+      width: 185px;
+      height: 85px;
+      border-radius: 5px;
+      padding: 10px 15px;
+    }
+    &__icon--dropdown {
+      margin-left: auto;
+      background: $contact-icon-dropdown-bg;
+      width: $contact-icon-dropdown-width;
+      height: $contact-icon-dropdown-height;
+      transform: rotate(-90deg);
+      transition: all 0.3s linear;
+      &.open {
+        transform: rotate(0);
+      }
+    }
+
+    &__detail {
+      width: 100%;
+      border-top: 1px solid #c8aa73;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      &__item {
+        font-size: 1.5rem;
+        color: white;
+        width: 28%;
+        margin-right: 30px;
+      }
+    }
+
+    &__detail-btn {
+      margin-left: auto;
+      width: 85%;
+      border-top: 1px solid #c8aa73;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      transform-origin: top;
+
+      &__item {
+        margin-right: 15px;
+        margin-top: 10px;
+        font-size: 1.5rem;
+        background-color: #cbaa6d;
+        color: #462b16;
+        width: 30%;
+        height: 57px;
+        text-align: center;
+        border-radius: 5px;
+        padding: 10px 15px;
+      }
+    }
+  }
+}
