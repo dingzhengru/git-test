@@ -81,7 +81,7 @@
     "promotion": "components/Z/promotion/Promotion",
     "promotionDetail": "components/Y/promotion/PromotionDetail",
     "contact": "components/Z/contact/Contact",
-    "about": "components/Y/about/About",
+    "about": "components/Z/about/About",
     "maintenance": "components/Y/maintenance/Maintenance"
   }
 }

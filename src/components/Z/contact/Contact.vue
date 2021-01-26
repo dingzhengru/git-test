@@ -141,22 +141,22 @@ export default {
   computed: {
     ...mapGetters(['lang', 'siteName', 'siteFullCss', 'userIsLoggedIn']),
     skype() {
-      return this.contactList.find(item => item.Lst_ContactType == 1);
+      return this.contactList.find(item => item.Lst_ContactType == 1) || {};
     },
     line() {
-      return this.contactList.find(item => item.Lst_ContactType == 2);
+      return this.contactList.find(item => item.Lst_ContactType == 2) || {};
     },
     mobile() {
-      return this.contactList.find(item => item.Lst_ContactType == 3);
+      return this.contactList.find(item => item.Lst_ContactType == 3) || {};
     },
     mail() {
-      return this.contactList.find(item => item.Lst_ContactType == 4);
+      return this.contactList.find(item => item.Lst_ContactType == 4) || {};
     },
     wechat() {
-      return this.contactList.find(item => item.Lst_ContactType == 5);
+      return this.contactList.find(item => item.Lst_ContactType == 5) || {};
     },
     service() {
-      return this.contactList.find(item => item.Lst_ContactType == 6);
+      return this.contactList.find(item => item.Lst_ContactType == 6) || {};
     },
   },
   data() {
@@ -234,7 +234,7 @@ export default {
     /*eslint-disable no-undef*/
     // 確認是否有 service 在，在的話就執行 jscode
     if (this.service) {
-      if (this.service.Js_Type == 'zopim') {
+      if (this.service.Js_Type == 'zopim' && typeof $zopim == 'undefined') {
         //* zopim
         console.log('[CustomService]', 'import zopim');
         window.eval(this.service.Js_Code);
@@ -249,7 +249,7 @@ export default {
             clearInterval(zopimInterval);
           }
         }, 500);
-      } else if (this.service.Js_Type == 'ze-snippet') {
+      } else if (this.service.Js_Type == 'ze-snippet' && typeof zE == 'undefined') {
         console.log('[CustomService]', 'import ze-snippet');
         // const jsSrc = jscode.split('src="')[1].split('"')[0]
         const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';

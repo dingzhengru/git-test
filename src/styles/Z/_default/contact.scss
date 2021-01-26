@@ -44,17 +44,17 @@
     }
     &__text {
       &__title {
-        color: white;
+        color: $contact-title-color;
       }
       &__content {
         font-size: 1.5rem;
-        color: #b7b7b7;
+        color: $contact-content-color;
       }
     }
     &__btn {
       margin-left: auto;
-      background-color: #cbaa6d;
-      color: #462b16;
+      background-color: $contact-btn-bg;
+      color: $contact-btn-color;
       text-align: center;
       width: 185px;
       height: 85px;
@@ -75,7 +75,7 @@
 
     &__detail {
       width: 100%;
-      border-top: 1px solid #c8aa73;
+      border-top: $contact-detail-border-top;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -83,15 +83,17 @@
       &__item {
         font-size: 1.5rem;
         color: white;
-        width: 28%;
-        margin-right: 30px;
+        width: 29%;
+        margin-right: 15px;
+        margin-top: 10px;
+        word-wrap: break-word;
       }
     }
 
     &__detail-btn {
       margin-left: auto;
       width: 85%;
-      border-top: 1px solid #c8aa73;
+      border-top: $contact-detail-border-top;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -102,13 +104,14 @@
         margin-right: 15px;
         margin-top: 10px;
         font-size: 1.5rem;
-        background-color: #cbaa6d;
-        color: #462b16;
+        background-color: $contact-btn-bg;
+        color: $contact-btn-color;
         width: 30%;
-        height: 57px;
+        min-height: 57px;
         text-align: center;
         border-radius: 5px;
         padding: 10px 15px;
+        word-wrap: break-word;
       }
     }
   }

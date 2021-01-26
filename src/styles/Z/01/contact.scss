@@ -1,6 +1,9 @@
 @import './abstracts';
 @import '@/styles/Z/_default/contact';
 
+$contact-title-color: white;
+$contact-content-color: #b7b7b7;
+
 $contact-icon-contact-bg: assetPath('ui/ui-contact.png') no-repeat;
 $contact-icon-contact-width: 84px;
 $contact-icon-contact-height: 84px;
@@ -8,6 +11,11 @@ $contact-icon-contact-height: 84px;
 $contact-icon-dropdown-bg: assetPath('ui/ui-arrow-select.png') no-repeat;
 $contact-icon-dropdown-width: 35px;
 $contact-icon-dropdown-height: 23px;
+
+$contact-btn-bg: #cbaa6d;
+$contact-btn-color: black;
+
+$contact-detail-border-top: 1px solid #c8aa73;
 
 .contact {
   @include contact;
