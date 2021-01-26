@@ -18,12 +18,17 @@
   opacity: 0;
 }
 
-.zoom-enter-active,
-.zoom-leave-active {
+.list-zoom-item {
   transition: all 0.5s ease-in-out;
 }
-.zoom-enter,
-.zoom-leave-to {
+.list-zoom-leave-active {
+  position: absolute !important;
+}
+.list-zoom-enter,
+.list-zoom-leave-to {
   transform: scale(0);
   opacity: 0;
+}
+.list-zoom-move {
+  transition: all transform 0.5s;
 }

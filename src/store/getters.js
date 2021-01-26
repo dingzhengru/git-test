@@ -127,6 +127,7 @@ const getters = {
     if (classify == 0) {
       return state.product.list;
     }
+
     return state.product.list.filter(item => item.Lst_Game_Classify == classify);
   },
   productById: state => id => state.product.list.find(item => item.Lst_Product_id == id) || {},

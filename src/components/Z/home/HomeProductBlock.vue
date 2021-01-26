@@ -1,7 +1,7 @@
 <template>
-  <transition-group class="home-product-block" tag="div" name="zoom" mode="out-in">
+  <transition-group class="home-product-block" tag="div" name="list-zoom">
     <div
-      class="home-product-block__item"
+      class="home-product-block__item list-zoom-item"
       :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
       v-for="item in list"
       :key="item.Lst_Product_Proxy_Tag"
