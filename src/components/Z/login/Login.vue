@@ -1,6 +1,7 @@
 <template>
   <ValidationObserver class="login" tag="div" v-slot="{ invalid, handleSubmit }">
     <form class="login-form" @submit.prevent="handleSubmit(submitLogin)">
+      <div class="login__title">{{ $t('login.title') }}</div>
       <ValidationProvider
         class="login__field ui-field"
         tag="div"

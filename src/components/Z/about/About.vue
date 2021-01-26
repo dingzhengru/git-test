@@ -1,5 +1,6 @@
 <template>
   <div class="about" :class="{ 'about-auth': userIsLoggedIn }">
+    <div class="about__title">{{ $t('about.title') }}</div>
     <div class="about__item">
       <img class="about__item__img" :src="imgSport" alt="" />
       <div class="about__item__title">{{ $t('about.sport.title') }}</div>
@@ -45,13 +46,7 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/about.scss`);
-
-    // * 根據 query 移動到該標籤，若不設延遲，重整會停在較上面的位置
-    setTimeout(() => {
-      this.$scrollTo(this.$route.query.scrollTo);
-    }, 100);
   },
 };
 </script>
