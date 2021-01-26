@@ -3,7 +3,8 @@
     "label": {
       "home": "首页",
       "captcha": "验证码",
-      "wallet": "我的钱包"
+      "wallet": "我的钱包",
+      "account": "帐号"
     },
     "button": {
       "submit": "提交",
@@ -300,7 +301,9 @@
   "user": {
     "nav": {
       "profile": "个人资料",
-      "changePassword": "登入密码"
+      "changePassword": "修改密码",
+      "changePasswordWithdrawal": "修改取款密码",
+      "inbox": "站内信"
     },
     "profile": {
       "accessed": {

@@ -266,7 +266,6 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/transaction-withdrawal.scss`);
 
     this.getWithdrawalInfo();

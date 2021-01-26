@@ -120,7 +120,6 @@ export default {
     },
   },
   async mounted() {
-    // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/contact.scss`);
 
     const result = await apiGetContactList();

@@ -50,7 +50,6 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/promotion.scss`);
 
     this.getPromotionList();

@@ -2,8 +2,7 @@
   "components": {
     "app": {
       "AppHeader": "components/Z/header/AppHeader",
-      "AppFooter": "components/Z/footer/AppFooter",
-      "AppNavTab": "components/Y/AppNavTab"
+      "AppFooter": "components/Z/footer/AppFooter"
     },
     "header": {
       "AppHeaderMenu": "components/Z/header/AppHeaderMenu",
@@ -25,8 +24,7 @@
       "PromotionNavTab": "components/Z/promotion/PromotionNavTab"
     },
     "user": {
-      "UserProfileList": "components/Y/user/UserProfileList",
-      "UserProfileListAccess": "components/Y/user/UserProfileListAccess"
+      "AppNavTab": "components/Z/AppNavTab"
     },
     "transaction": {
       "deposit": {
@@ -59,8 +57,8 @@
     "gameHome": "components/Y/game/GameHome",
     "gameLobbySlot": "components/Y/game/GameLobbySlot",
     "gameLobbyLive": "components/Y/game/GameLobbyLive",
-    "userHome": "components/Y/user/UserHome",
-    "userProfile": "components/Y/user/UserProfile",
+    "userHome": "components/Z/user/UserHome",
+    "userProfile": "components/Z/user/UserProfile",
     "userChangePassword": "components/Y/user/UserChangePassword",
     "transactionHome": "components/Y/transaction/TransactionHome",
     "transactionDeposit": "components/Y/transaction/TransactionDeposit",
@@ -82,6 +80,7 @@
     "promotionDetail": "components/Y/promotion/PromotionDetail",
     "contact": "components/Z/contact/Contact",
     "about": "components/Z/about/About",
+    "news": "components/Z/news/News",
     "maintenance": "components/Y/maintenance/Maintenance"
   }
 }

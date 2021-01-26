@@ -1,0 +1,9 @@
+@mixin user {
+  padding: 30px;
+  padding-top: $header-sub-height-auth + 30;
+}
+
+@mixin user-profile {
+  padding: 30px;
+  background: red;
+}

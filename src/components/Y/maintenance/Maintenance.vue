@@ -74,7 +74,6 @@ export default {
       this.$router.replace({ name: 'Home' });
     }
 
-    // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/maintenance.scss`);
   },
 };

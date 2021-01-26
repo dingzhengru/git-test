@@ -3,7 +3,8 @@
     "label": {
       "home": "หน้าหลัก",
       "captcha": "รหัสยืนยัน",
-      "wallet": "กระเป๋าเงิน"
+      "wallet": "กระเป๋าเงิน",
+      "account": "ยูสเซอร์"
     },
     "button": {
       "submit": "ส่ง",
@@ -300,7 +301,9 @@
   "user": {
     "nav": {
       "profile": "ข้อมูลส่วนตัว",
-      "changePassword": "รหัสผ่าน"
+      "changePassword": "แก้ไขรหัสผ่าน",
+      "changePasswordWithdrawal": "แก้ไขรหัสถอนเงิน",
+      "inbox": "แชท"
     },
     "profile": {
       "accessed": {

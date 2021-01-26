@@ -10,11 +10,11 @@
         <div class="header-menu__dropdown__route">
           <div class="header-menu__dropdown__route__item" @click="changeRoute('About')">
             <i class="header-menu__dropdown__route__item__icon icon-about"></i>
-            <a class="header-menu__dropdown__route__item__link" href="javascript:;" :to="{ name: 'About' }">
+            <a class="header-menu__dropdown__route__item__link" href="javascript:;">
               {{ $t('header.menu.about') }}
             </a>
           </div>
-          <div class="header-menu__dropdown__route__item" @click="changeRoute('NotificationNews')">
+          <div class="header-menu__dropdown__route__item" @click="changeRoute('News')">
             <i class="header-menu__dropdown__route__item__icon icon-news"></i>
             <a class="header-menu__dropdown__route__item__link" href="javascript:;">
               {{ $t('header.menu.notification') }}

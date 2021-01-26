@@ -117,7 +117,6 @@ export default {
     ]),
   },
   async mounted() {
-    //* 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/login.scss`);
 
     //* 取得公鑰 & token

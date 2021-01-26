@@ -68,7 +68,6 @@ export default {
     };
   },
   mounted() {
-    // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/about.scss`);
 
     // * 根據 query 移動到該標籤，若不設延遲，重整會停在較上面的位置

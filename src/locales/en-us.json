@@ -3,7 +3,8 @@
     "label": {
       "home": "Home",
       "captcha": "Captcha",
-      "wallet": "Wallet"
+      "wallet": "Wallet",
+      "account": "Account"
     },
     "button": {
       "submit": "Submit",
@@ -303,7 +304,9 @@
   "user": {
     "nav": {
       "profile": "Personal Info",
-      "changePassword": "Password"
+      "changePassword": "Change Password",
+      "changePasswordWithdrawal": "Change Withdrawal Password",
+      "inbox": "Chats"
     },
     "profile": {
       "accessed": {

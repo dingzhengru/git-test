@@ -1,17 +1,14 @@
+@import '@/styles/global/abstracts';
 @import './abstracts';
+@import '@/styles/Y/_default/pagination';
 
-.ui-lnk-pagerPreviousMore {
-  background-image: assetPath('ui/lnk_previousMore.png');
-}
-.ui-lnk-pagerPrevious {
-  background-image: assetPath('ui/lnk_previous.png');
-}
-.ui-lnk-pagerNext {
-  background-image: assetPath('ui/lnk_next.png');
-}
-.ui-lnk-pagerNextMore {
-  background-image: assetPath('ui/lnk_nextMore.png');
-}
-.ui-ddl-pager {
-  background: assetPath('ui/ddl_pager.jpg') no-repeat !important;
+$pagination-select-bg: assetPath('ui/ddl_pager.jpg') #d70103 no-repeat;
+$pagination-select-color: white;
+$pagination-prev-bg: assetPath('ui/lnk_previous.png') no-repeat;
+$pagination-prev-more-bg: assetPath('ui/lnk_previousMore.png') no-repeat;
+$pagination-next-bg: assetPath('ui/lnk_next.png') no-repeat;
+$pagination-next-more-bg: assetPath('ui/lnk_nextMore.png') no-repeat;
+
+.ui-pagination {
+  @include pagination;
 }

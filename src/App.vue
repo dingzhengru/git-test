@@ -57,7 +57,6 @@ export default {
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
 
-    //* 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/_layout.scss`);
     import(`@/styles/${this.siteFullCss}/header.scss`);
     import(`@/styles/${this.siteFullCss}/footer.scss`);

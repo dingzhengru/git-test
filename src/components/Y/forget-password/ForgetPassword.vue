@@ -21,7 +21,6 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/forget-password.scss`);
   },
 };

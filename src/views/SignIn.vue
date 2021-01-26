@@ -81,7 +81,6 @@ export default {
     ...mapGetters(['langList', 'siteFullCss', 'siteIsSpare', 'siteEnableSpareDomain']),
   },
   async mounted() {
-    //* 根據版型引入 css
     // import(`@/styles/${this.siteFullCss}/sign-in.scss`);
 
     if (this.siteIsSpare === false || this.siteEnableSpareDomain === false || this.isLoggedIn === true) {

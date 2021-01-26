@@ -79,7 +79,6 @@ export default {
     },
   },
   mounted() {
-    // * 根據版型引入 css
     import(`@/styles/${this.siteFullCss}/notification/notification-outbox.scss`);
 
     this.getMailCategoryList();

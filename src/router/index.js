@@ -231,6 +231,11 @@ const routes = [
     component: () => import('@/views/About'),
   },
   {
+    path: '/news',
+    name: 'News',
+    component: () => import('@/views/News'),
+  },
+  {
     path: '/maintenance',
     name: 'Maintenance',
     component: () => import('@/views/Maintenance'),
