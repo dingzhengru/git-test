@@ -41,3 +41,43 @@ $user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 .user-change-password {
   @include user-change-password;
 }
+
+$user-mail-btn-bg-inbox: $btn-bg-z-01-brown;
+$user-mail-btn-color-inbox: white;
+$user-mail-btn-shadow-inbox: none;
+
+$user-mail-btn-bg-add: $btn-bg-z-01-yellow-light;
+$user-mail-btn-color-add: black;
+$user-mail-btn-shadow-add: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$user-mail-item-bg: $field-bg;
+$user-mail-item-color-date: white;
+$user-mail-item-color-title: $btn-bg-z-01-yellow-light;
+$user-mail-item-icon-bg-arrow: assetPath('ui/ui-arrow-select.png') center no-repeat;
+$user-mail-item-icon-width: 35px;
+$user-mail-item-icon-height: 23px;
+
+.user-mail {
+  @include user-mail;
+}
+
+$user-mail-detail-item-bg: $field-bg;
+$user-mail-detail-item-label-color: $btn-bg-z-01-yellow-light;
+$user-mail-detail-item-content-color: white;
+$user-mail-detail-item-content-border-top: 1px solid #c8aa73;
+$user-mail-detail-item-reply-bg: $field-bg;
+$user-mail-detail-item-reply-label-color: #959595;
+$user-mail-detail-item-reply-textarea-bg: #2c2d2e;
+$user-mail-detail-item-reply-textarea-color: white;
+$user-mail-detail-item-reply-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 0, 0.8);
+
+$user-mail-btn-bg-submit: $btn-bg-z-01-brown;
+$user-mail-btn-color-submit: white;
+$user-mail-btn-shadow-submit: none;
+$user-mail-btn-bg-reset: $btn-bg-z-01-yellow-light;
+$user-mail-btn-color-reset: black;
+$user-mail-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+.user-mail-detail {
+  @include user-mail-detail;
+}

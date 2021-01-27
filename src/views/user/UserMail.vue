@@ -5,11 +5,11 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-  name: 'UserInbox',
+  name: 'UserMail',
   computed: {
     ...mapGetters(['siteSetting']),
     settingComponent() {
-      return () => import(`@/${this.siteSetting.views.userInbox}`);
+      return () => import(`@/${this.siteSetting.views.userMail}`);
     },
   },
 };

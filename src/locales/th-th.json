@@ -4,10 +4,18 @@
       "home": "หน้าหลัก",
       "captcha": "รหัสยืนยัน",
       "wallet": "กระเป๋าเงิน",
-      "account": "ยูสเซอร์"
+      "account": "ยูสเซอร์",
+      "date": "วันที่",
+      "time": "เวลา",
+      "title": "หัวข้อ",
+      "subject": "หัวข้อ",
+      "content": "รายละเอียด",
+      "amount": "จำนวน",
+      "other": "อื่นๆ"
     },
     "button": {
       "submit": "ส่ง",
+      "send": "ส่ง",
       "reset": "ตั้งค่าใหม่",
       "cancel": "ยกเลิก",
       "login": "ล็อกอิน",
@@ -303,7 +311,7 @@
       "profile": "ข้อมูลส่วนตัว",
       "changePassword": "แก้ไขรหัสผ่าน",
       "changePasswordWithdrawal": "แก้ไขรหัสถอนเงิน",
-      "inbox": "แชท"
+      "mail": "แชท"
     },
     "profile": {
       "accessed": {
@@ -361,6 +369,15 @@
     "changePasswordWithdrawal": {
       "notice": {
         "first": "ตั้งค่าครั้งแรกไม่ต้องใส่รหัสผ่านเก่า"
+      }
+    },
+    "mail": {
+      "nav": {
+        "inbox": "กล่องขาเข้า",
+        "add": "เขียนจดหมาย"
+      },
+      "label": {
+        "sender": "ผู้ส่ง"
       }
     }
   },

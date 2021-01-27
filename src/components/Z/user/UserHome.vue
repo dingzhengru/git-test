@@ -41,10 +41,10 @@ export default {
         },
         {
           name: 'inbox',
-          text: 'user.nav.inbox',
-          link: 'UserInbox',
+          text: 'user.nav.mail',
+          link: 'UserMail',
           class: '',
-          otherActivePath: [],
+          otherActivePath: ['UserMailDetail'],
         },
       ],
     };

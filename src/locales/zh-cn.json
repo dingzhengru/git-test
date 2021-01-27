@@ -4,10 +4,18 @@
       "home": "首页",
       "captcha": "验证码",
       "wallet": "我的钱包",
-      "account": "帐号"
+      "account": "帐号",
+      "date": "日期",
+      "time": "时间",
+      "title": "标题",
+      "subject": "主旨",
+      "content": "内容",
+      "amount": "金额",
+      "other": "其它"
     },
     "button": {
       "submit": "提交",
+      "send": "送出",
       "reset": "重设",
       "cancel": "取消",
       "login": "登入",
@@ -303,7 +311,7 @@
       "profile": "个人资料",
       "changePassword": "修改密码",
       "changePasswordWithdrawal": "修改取款密码",
-      "inbox": "站内信"
+      "mail": "站内信"
     },
     "profile": {
       "accessed": {
@@ -361,6 +369,17 @@
     "changePasswordWithdrawal": {
       "notice": {
         "first": "第一次设定不用输入旧密码"
+      }
+    },
+    "mail": {
+      "nav": {
+        "inbox": "收件匣",
+        "add": "新增信件"
+      }
+    },
+    "mailDetail": {
+      "label": {
+        "sender": "寄件者"
       }
     }
   },
@@ -672,7 +691,7 @@
       "title": "主旨",
       "sender": "发件人",
       "datetime": "信件日期",
-      "reply": "回覆信件"
+      "reply": "回复邮件"
     },
     "outbox": {
       "category": "信件类别",

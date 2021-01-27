@@ -97,9 +97,14 @@ const routes = [
         component: () => import('@/views/user/UserChangePasswordWithdrawal'),
       },
       {
-        path: 'inbox',
-        name: 'UserInbox',
-        component: () => import('@/views/user/UserInbox'),
+        path: 'mail',
+        name: 'UserMail',
+        component: () => import('@/views/user/UserMail'),
+      },
+      {
+        path: 'mail/:key',
+        name: 'UserMailDetail',
+        component: () => import('@/views/user/UserMailDetail'),
       },
     ],
   },
