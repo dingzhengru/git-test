@@ -44,7 +44,7 @@ export default {
           text: 'user.nav.mail',
           link: 'UserMail',
           class: '',
-          otherActivePath: ['UserMailDetail'],
+          otherActivePath: ['UserMailDetail', 'UserMailSend'],
         },
       ],
     };

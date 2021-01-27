@@ -63,6 +63,7 @@
     "userChangePasswordWithdrawal": "components/Z/user/UserChangePasswordWithdrawal",
     "userMail": "components/Z/user/UserMail",
     "userMailDetail": "components/Z/user/UserMailDetail",
+    "userMailSend": "components/Z/user/UserMailSend",
     "transactionHome": "components/Y/transaction/TransactionHome",
     "transactionDeposit": "components/Y/transaction/TransactionDeposit",
     "transactionWithdrawal": "components/Y/transaction/TransactionWithdrawal",

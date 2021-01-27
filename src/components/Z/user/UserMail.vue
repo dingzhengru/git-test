@@ -1,8 +1,12 @@
 <template>
   <div class="user-mail">
     <div class="user-mail__nav">
-      <button class="ui-btn user-mail__nav--inbox">{{ $t('user.mail.nav.inbox') }}</button>
-      <button class="ui-btn user-mail__nav--add">{{ $t('user.mail.nav.add') }}</button>
+      <button class="ui-btn user-mail__nav--inbox" @click="$router.push({ name: 'UserMail' })">
+        {{ $t('user.mail.nav.inbox') }}
+      </button>
+      <button class="ui-btn user-mail__nav--add" @click="$router.push({ name: 'UserMailSend' })">
+        {{ $t('user.mail.nav.add') }}
+      </button>
     </div>
     <div class="user-mail__main">
       <div class="user-mail__item" v-for="item in list" :key="item.Lst_Key" @click="goMailDetail(item.Lst_Key)">

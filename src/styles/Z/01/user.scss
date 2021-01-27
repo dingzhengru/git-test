@@ -74,10 +74,15 @@ $user-mail-detail-item-reply-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 
 $user-mail-btn-bg-submit: $btn-bg-z-01-brown;
 $user-mail-btn-color-submit: white;
 $user-mail-btn-shadow-submit: none;
+
 $user-mail-btn-bg-reset: $btn-bg-z-01-yellow-light;
 $user-mail-btn-color-reset: black;
 $user-mail-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 .user-mail-detail {
   @include user-mail-detail;
+}
+
+.user-mail-send {
+  @include user-mail-send;
 }

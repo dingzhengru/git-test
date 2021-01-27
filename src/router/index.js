@@ -107,6 +107,12 @@ const routes = [
         component: () => import('@/views/user/UserMailDetail'),
         meta: { 'header-back-icon': true },
       },
+      {
+        path: 'mail-send',
+        name: 'UserMailSend',
+        component: () => import('@/views/user/UserMailSend'),
+        meta: { 'header-back-icon': true },
+      },
     ],
   },
   {

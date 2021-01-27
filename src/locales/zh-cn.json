@@ -378,9 +378,14 @@
       }
     },
     "mailDetail": {
-      "title":"寄件內容",
+      "title": "寄件內容",
       "label": {
         "sender": "寄件者"
+      }
+    },
+    "mailSend": {
+      "label": {
+        "desc": "问题描述"
       }
     }
   },

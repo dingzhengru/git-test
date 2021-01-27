@@ -310,3 +310,53 @@
     }
   }
 }
+
+@mixin user-mail-send {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 60px;
+  font-size: 2rem;
+
+  &__field--textarea {
+    width: 100%;
+    background: $user-mail-detail-item-reply-bg;
+    border-radius: 5px;
+    padding: 15px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      width: 100%;
+      color: $user-mail-detail-item-reply-label-color;
+      padding-bottom: 10px;
+    }
+
+    textarea {
+      background: $user-mail-detail-item-reply-textarea-bg;
+      color: $user-mail-detail-item-reply-textarea-color;
+      box-shadow: $user-mail-detail-item-reply-textarea-shadow;
+      padding: 15px;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    margin-top: 30px;
+
+    button {
+      margin-bottom: 15px;
+    }
+
+    &--submit {
+      background: $user-mail-btn-bg-submit;
+      color: $user-mail-btn-color-submit;
+      box-shadow: $user-mail-btn-shadow-submit;
+    }
+    &--reset {
+      background: $user-mail-btn-bg-reset;
+      color: $user-mail-btn-color-reset;
+      box-shadow: $user-mail-btn-shadow-reset;
+    }
+  }
+}

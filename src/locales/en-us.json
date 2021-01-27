@@ -385,6 +385,11 @@
       "label": {
         "sender": "Sender"
       }
+    },
+    "mailSend": {
+      "label": {
+        "desc": "Question Description"
+      }
     }
   },
   "transaction": {

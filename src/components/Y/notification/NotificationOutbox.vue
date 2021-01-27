@@ -65,7 +65,6 @@ export default {
 
       if (result.Code == 200) {
         this.resetForm();
-
         window.alert(this.$t('alert.sendEmailSuccess'));
       }
     },

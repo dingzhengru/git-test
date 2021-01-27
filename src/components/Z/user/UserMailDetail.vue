@@ -19,9 +19,12 @@
     <ValidationObserver class="user-mail-detail__reply" tag="div" v-slot="{ invalid, handleSubmit, reset }">
       <form class="user-mail-detail__reply-form" @submit.prevent="handleSubmit(submitMail)" @reset.prevent="reset">
         <ValidationProvider class="user-mail-detail__reply__field" tag="div" :rules="{ required: true }">
-          <div class="user-mail-detail__reply__field__label">{{ $t('notification.inboxDetail.reply') }}</div>
+          <label class="user-mail-detail__reply__field__label" for="user-mail-detail-content">{{
+            $t('notification.inboxDetail.reply')
+          }}</label>
           <textarea
             class="user-mail-detail__reply__field__textarea"
+            id="user-mail-detail-content"
             cols="30"
             rows="7"
             v-model="mail.Add_Content"

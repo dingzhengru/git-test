@@ -382,6 +382,11 @@
       "label": {
         "sender": "ผู้ส่ง"
       }
+    },
+    "mailSend": {
+      "label": {
+        "desc": "คำอธิบายปัญหา"
+      }
     }
   },
   "transaction": {
