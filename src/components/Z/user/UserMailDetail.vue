@@ -1,6 +1,6 @@
 <template>
   <div class="user-mail-detail">
-    <div class="user-mail-detail__title">寄件內容</div>
+    <div class="user-mail-detail__title">{{ $t('user.mailDetail.title') }}</div>
     <div class="user-mail-detail__item" v-for="item in list" :key="item.Lst_Key">
       <div class="user-mail-detail__item__date">
         <div class="user-mail-detail__item__date__label">{{ $t('ui.label.time') }}</div>

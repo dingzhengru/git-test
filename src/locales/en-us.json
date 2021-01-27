@@ -381,6 +381,7 @@
       }
     },
     "mailDetail": {
+      "title": "Mail Detail",
       "label": {
         "sender": "Sender"
       }

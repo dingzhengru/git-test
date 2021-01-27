@@ -378,6 +378,7 @@
       }
     },
     "mailDetail": {
+      "title":"寄件內容",
       "label": {
         "sender": "寄件者"
       }

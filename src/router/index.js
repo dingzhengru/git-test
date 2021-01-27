@@ -105,6 +105,7 @@ const routes = [
         path: 'mail/:key',
         name: 'UserMailDetail',
         component: () => import('@/views/user/UserMailDetail'),
+        meta: { 'header-back-icon': true },
       },
     ],
   },
