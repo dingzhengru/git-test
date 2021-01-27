@@ -44,8 +44,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  width: 95%;
-  margin: 30px auto;
+  width: 100%;
   &__item {
     width: 218px;
     height: 180px;
@@ -55,7 +54,9 @@
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 10px;
+
     &__text {
+      color: $home-product-text-color;
       font-size: 1.6rem;
     }
 

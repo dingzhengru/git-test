@@ -24,6 +24,14 @@ $btn-bg-z-01-yellow-light: #caad76;
 $btn-bg-z-01-gray: #6d6d6d;
 $btn-bg-z-01-brown: #462b16;
 
+$btn-bg-submit: $btn-bg-z-01-brown;
+$btn-color-submit: white;
+$btn-shadow-submit: none;
+
+$btn-bg-reset: $btn-bg-z-01-yellow-light;
+$btn-color-reset: black;
+$btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
 $field-font-size: 2rem;
 $field-bg: #444444;
 $field-input-color: white;
@@ -62,24 +70,19 @@ $service-term-btn-color: white;
   &--block {
     display: block;
     width: 100%;
-
-    &-9 {
-      width: 90%;
-    }
-    &-8 {
-      width: 80%;
-    }
-    &-7 {
-      width: 70%;
-    }
-    &-6 {
-      width: 60%;
-    }
-    &-5 {
-      width: 50%;
-    }
   }
 }
+
+// @mixin ui-btn-submit {
+//   background: $user-profile-btn-bg-submit;
+//   color: $user-profile-btn-color-submit;
+//   box-shadow: $user-profile-btn-shadow-submit;
+// }
+// @mixin ui-btn-cancel {
+//   background: $user-profile-btn-bg-reset;
+//   color: $user-profile-btn-color-reset;
+//   box-shadow: $user-profile-btn-shadow-reset;
+// }
 
 @mixin ui-field {
   background: $field-bg;
@@ -179,9 +182,9 @@ $service-term-btn-color: white;
 @mixin nav-tab {
   width: 100%;
   display: flex;
-  margin-top: 30px;
   overflow-x: auto;
   white-space: nowrap;
+  padding: 15px 30px;
   &__item {
     font-size: 1.8rem;
     line-height: 2.5rem;
@@ -203,17 +206,15 @@ $service-term-btn-color: white;
         color: $nav-tab-text-color-active;
       }
     }
-
-    &:lang(en-us) {
-      font-size: 1.5rem;
-    }
-    &:lang(th-th) {
-      font-size: 1.8rem;
-    }
-    &:lang(zh-cn) {
-      font-size: 1.8rem;
-    }
   }
+}
+
+@mixin ui-step {
+  width: 100%;
+  font-size: 1.8rem;
+  border-bottom: 4px solid #c8aa73;
+  padding-bottom: 5px;
+  margin: 30px 0px;
 }
 
 @mixin service-term {

@@ -1,6 +1,7 @@
 <template>
   <div class="user">
     <component :is="AppNavTab" :list="navList" />
+    <router-view />
   </div>
 </template>
 

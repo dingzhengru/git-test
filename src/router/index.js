@@ -91,6 +91,16 @@ const routes = [
         name: 'UserChangePassword',
         component: () => import('@/views/user/UserChangePassword'),
       },
+      {
+        path: 'change-password-withdrawal',
+        name: 'UserChangePasswordWithdrawal',
+        component: () => import('@/views/user/UserChangePasswordWithdrawal'),
+      },
+      {
+        path: 'inbox',
+        name: 'UserInbox',
+        component: () => import('@/views/user/UserInbox'),
+      },
     ],
   },
   {

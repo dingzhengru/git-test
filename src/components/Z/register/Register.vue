@@ -75,7 +75,7 @@
         </button>
       </div>
 
-      <div class="register__notice ui-notice">
+      <div class="ui-notice register__notice">
         <ol>
           <li v-for="(item, index) in noticeList" :key="index" v-html="$t(item)"></li>
         </ol>

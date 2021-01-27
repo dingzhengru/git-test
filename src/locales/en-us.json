@@ -360,6 +360,11 @@
         "rule": "It needs over six characters to set up your new passwords.",
         "contact": "If you have any additional questions about your account details ,please contact our online service."
       }
+    },
+    "changePasswordWithdrawal": {
+      "notice": {
+        "first": "The first time you do not need to enter the old password"
+      }
     }
   },
   "transaction": {

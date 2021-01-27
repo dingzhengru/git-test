@@ -1,9 +1,161 @@
 @mixin user {
-  padding: 30px;
   padding-top: $header-sub-height-auth + 30;
+  padding-bottom: $footer-height + 15;
 }
 
 @mixin user-profile {
   padding: 30px;
-  background: red;
+  width: 100%;
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__field {
+    width: 90%;
+    margin-bottom: 30px;
+  }
+  &__btn {
+    width: 100%;
+
+    button {
+      margin-bottom: 15px;
+    }
+
+    &--submit {
+      background: $user-profile-btn-bg-submit;
+      color: $user-profile-btn-color-submit;
+      box-shadow: $user-profile-btn-shadow-submit;
+    }
+    &--reset {
+      background: $user-profile-btn-bg-reset;
+      color: $user-profile-btn-color-reset;
+      box-shadow: $user-profile-btn-shadow-reset;
+    }
+  }
+}
+
+@mixin user-change-password {
+  padding: 30px;
+  width: 100%;
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__field {
+    width: 90%;
+    margin-bottom: 30px;
+
+    &--remember {
+      .ui-field__label {
+        margin-right: 15px;
+      }
+    }
+
+    &:lang(zh-cn) {
+      * {
+        font-size: 1.8rem;
+      }
+    }
+
+    &:lang(en-us) {
+      * {
+        font-size: 1.6rem;
+      }
+    }
+
+    &:lang(th-th) {
+      * {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  &__notice {
+    width: 100%;
+    ul,
+    li {
+      list-style-type: disc;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+
+    button {
+      margin-bottom: 15px;
+    }
+
+    &--submit {
+      background: $user-change-password-btn-bg-submit;
+      color: $user-change-password-btn-color-submit;
+      box-shadow: $user-change-password-btn-shadow-submit;
+    }
+    &--reset {
+      background: $user-change-password-btn-bg-reset;
+      color: $user-change-password-btn-color-reset;
+      box-shadow: $user-change-password-btn-shadow-reset;
+    }
+  }
+
+  /*
+  * Switch 開關，EX: width: 640px, height: 100px
+  */
+
+  .v-switch-core {
+    border-radius: $user-change-password-switch-radius !important;
+  }
+
+  /*
+  * 按鈕
+  */
+
+  .vue-js-switch .v-switch-core .v-switch-button {
+    border-radius: $user-change-password-switch-radius !important;
+    width: $user-change-password-switch-width-btn !important;
+  }
+
+  /*
+  * 按鈕在右邊時
+  * 位置: (開關寬度/2) + (開關寬度/2 - 按鈕寬度) => (640/2) + (640/2 - 320)
+  */
+  .vue-js-switch.toggled .v-switch-core .v-switch-button {
+    transform: translate3d($user-change-password-switch-width-btn, 0px, 0px) !important;
+  }
+
+  /*
+  * 左邊標籤(文字)
+  * 位置: (按鈕大小 - 標籤大小) / 2 => (320-80) / 2
+  * 但不同語言的標籤大小會不同
+  */
+  .vue-js-switch .v-switch-label.v-left {
+    &:lang(zh-cn) {
+      left: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-left-zh-cn) / 2 !important;
+    }
+    &:lang(en-us) {
+      left: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-left-en-us) / 2 !important;
+    }
+    &:lang(th-th) {
+      left: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-left-th-th) / 2 !important;
+    }
+  }
+
+  /*
+   * 右邊標籤(文字)
+   * 位置: 同上
+  */
+  .vue-js-switch .v-switch-label.v-right {
+    &:lang(zh-cn) {
+      right: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-right-zh-cn) / 2 !important;
+    }
+    &:lang(en-us) {
+      right: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-right-en-us) / 2 !important;
+    }
+    &:lang(th-th) {
+      right: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-right-th-th) / 2 !important;
+    }
+  }
 }

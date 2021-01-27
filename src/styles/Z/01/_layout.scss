@@ -22,6 +22,10 @@ body {
   @include ui-notice;
 }
 
+.ui-step {
+  @include ui-step;
+}
+
 .nav-tab {
   @include nav-tab;
 }
