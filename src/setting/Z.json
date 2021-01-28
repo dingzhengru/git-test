@@ -64,7 +64,7 @@
     "userMail": "components/Z/user/UserMail",
     "userMailDetail": "components/Z/user/UserMailDetail",
     "userMailSend": "components/Z/user/UserMailSend",
-    "transactionHome": "components/Y/transaction/TransactionHome",
+    "transactionHome": "components/Z/transaction/TransactionHome",
     "transactionDeposit": "components/Y/transaction/TransactionDeposit",
     "transactionWithdrawal": "components/Y/transaction/TransactionWithdrawal",
     "transactionTransfer": "components/Y/transaction/TransactionTransfer",

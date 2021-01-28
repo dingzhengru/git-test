@@ -1,17 +1,17 @@
 @mixin pagination {
   margin: 20px 0;
   padding: 25px 0;
-  letter-spacing: -0.31rem;
-  letter-spacing: normal;
-  text-align: center;
   font-size: 2rem;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
 
   select {
+    flex-shrink: 0;
     background: $pagination-select-bg;
     color: $pagination-select-color;
     appearance: none;
     width: 134px;
-    min-width: 0;
     height: 65px;
     border: none;
     padding: 0 67px 0 20px;
@@ -19,13 +19,13 @@
   }
 
   > a {
+    flex-shrink: 0;
     display: inline-block;
     width: 134px;
     zoom: 1;
     height: 65px;
-    letter-spacing: normal;
-    word-spacing: normal;
-    vertical-align: top;
+    padding: 0;
+    margin: 0;
   }
 
   &__prev {
