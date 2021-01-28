@@ -11,19 +11,17 @@
       </ValidationProvider>
 
       <ValidationProvider class="ui-field user-mail-send__field" tag="div" :rules="{ required: true }">
-        <div class="ui-field__main">
-          <label class="ui-field__label" for="user-mail-send-subject">{{ $t('ui.label.subject') }}</label>
-          <input class="ui-field__input" id="user-mail-send-subject" type="text" v-model="mail.Add_Subject" />
+        <div class="ui-field__group">
+          <label class="ui-field__group__label" for="user-mail-send-subject">{{ $t('ui.label.subject') }}</label>
+          <input class="ui-field__group__input" id="user-mail-send-subject" type="text" v-model="mail.Add_Subject" />
         </div>
       </ValidationProvider>
 
-      <ValidationProvider
-        class="user-mail-send__field user-mail-send__field--textarea"
-        tag="div"
-        :rules="{ required: true }"
-      >
-        <label for="user-mail-send-content">{{ $t('user.mailSend.label.desc') }}</label>
-        <textarea id="user-mail-send-content" cols="30" rows="7" v-model="mail.Add_Content"></textarea>
+      <ValidationProvider class="ui-field" tag="div" :rules="{ required: true }">
+        <div class="ui-field__group--textarea">
+          <label for="user-mail-send-content">{{ $t('user.mailSend.label.desc') }}</label>
+          <textarea id="user-mail-send-content" cols="30" rows="7" v-model="mail.Add_Content"></textarea>
+        </div>
       </ValidationProvider>
 
       <div class="user-mail-send__btn">

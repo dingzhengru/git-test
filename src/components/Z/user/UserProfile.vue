@@ -2,19 +2,19 @@
   <div class="user-profile">
     <form class="user-profile__form">
       <div class="user-profile__field ui-field">
-        <div class="ui-field__main">
-          <label class="ui-field__label">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">
             {{ $t(`ui.label.account`) }}
           </label>
-          <input class="ui-field__input" type="text" />
+          <input class="ui-field__group__input" type="text" />
         </div>
       </div>
       <div class="user-profile__field ui-field">
-        <div class="ui-field__main">
-          <label class="ui-field__label">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">
             {{ $t(`ui.label.account`) }}
           </label>
-          <input class="ui-field__input" type="text" />
+          <input class="ui-field__group__input" type="text" />
         </div>
       </div>
 
@@ -26,11 +26,11 @@
         </select>
       </div>
       <div class="user-profile__field ui-field">
-        <div class="ui-field__main">
-          <label class="ui-field__label">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">
             {{ $t(`ui.label.account`) }}
           </label>
-          <input class="ui-field__input" type="text" />
+          <input class="ui-field__group__input" type="text" />
         </div>
       </div>
 

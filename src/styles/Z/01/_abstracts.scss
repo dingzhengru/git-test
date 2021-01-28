@@ -44,6 +44,11 @@ $field-error-bg: #c8aa73;
 $field-error-color: black;
 $field-star-color: #c8aa73;
 
+$field-textarea-label-color: #959595;
+$field-textarea-bg: #2c2d2e;
+$field-textarea-color: white;
+$field-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 0, 0.8);
+
 $notice-color: #8b8b8b;
 $notice-font-size: 1.8rem;
 $notice-line-height: 2.5rem;
@@ -99,27 +104,59 @@ $service-term-btn-color: white;
   flex-wrap: wrap;
   margin-bottom: 20px;
 
-  &__main {
+  &__group {
     width: 100%;
     padding: 30px;
-    margin: 0;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+
+    &__label {
+      color: $field-label-color;
+      min-width: 15%;
+    }
+
+    &__input {
+      background: transparent;
+      color: $field-input-color;
+      margin-left: 15px;
+      border: none;
+      &::placeholder {
+        color: $field-input-color-placeholder;
+      }
+    }
   }
 
-  &__label {
-    color: $field-label-color;
-    min-width: 15%;
+  &__group--checkbox {
+    input[type='checkbox'] {
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+    }
+
+    label {
+      justify-self: flex-start;
+      color: $field-label-color-checkbox;
+    }
   }
 
-  &__input {
-    background: transparent;
-    color: $field-input-color;
-    margin-left: 15px;
-    border: none;
-    &::placeholder {
-      color: $field-input-color-placeholder;
+  &__group--textarea {
+    width: 100%;
+    border-radius: 5px;
+    padding: 15px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    label {
+      width: 100%;
+      justify-self: flex-start;
+      color: $field-textarea-label-color;
+      margin-bottom: 10px;
+    }
+    textarea {
+      width: 100%;
+      background: $field-textarea-bg;
+      color: $field-textarea-color;
+      box-shadow: $field-textarea-shadow;
     }
   }
 
@@ -133,17 +170,6 @@ $service-term-btn-color: white;
 
     option {
       color: $field-select-color;
-    }
-  }
-
-  &__checkbox {
-    width: 35px;
-    height: 35px;
-    margin-right: 10px;
-
-    + label {
-      justify-self: flex-start;
-      color: $field-label-color-checkbox;
     }
   }
 

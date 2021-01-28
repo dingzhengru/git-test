@@ -18,11 +18,11 @@
         v-slot="{ errors }"
       >
         <div class="ui-field__star">*</div>
-        <div class="ui-field__main">
-          <label class="ui-field__label">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">
             {{ $t('user.changePassword.passwordOld') }}
           </label>
-          <input class="ui-field__input" type="password" v-model="passwordOld" />
+          <input class="ui-field__group__input" type="password" v-model="passwordOld" />
         </div>
         <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
           {{ errors[0] }}
@@ -42,11 +42,11 @@
         v-slot="{ errors }"
       >
         <div class="ui-field__star">*</div>
-        <div class="ui-field__main">
-          <label class="ui-field__label">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">
             {{ $t('user.changePassword.passwordNew') }}
           </label>
-          <input class="ui-field__input" type="password" v-model="passwordNew" autocomplete="off" />
+          <input class="ui-field__group__input" type="password" v-model="passwordNew" autocomplete="off" />
         </div>
         <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
           {{ errors[0] }}
@@ -67,11 +67,11 @@
         v-slot="{ errors }"
       >
         <div class="ui-field__star">*</div>
-        <div class="ui-field__main">
-          <label class="ui-field__label">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">
             {{ $t('user.changePassword.passwordCheck') }}
           </label>
-          <input class="ui-field__input" type="password" v-model="passwordCheck" autocomplete="off" />
+          <input class="ui-field__group__input" type="password" v-model="passwordCheck" autocomplete="off" />
         </div>
         <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
           {{ errors[0] }}
@@ -79,8 +79,8 @@
       </ValidationProvider>
 
       <div class="ui-field user-change-password__field user-change-password__field--remember">
-        <div class="ui-field__main">
-          <label class="ui-field__label">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">
             {{ $t('user.changePassword.passwordRemember') }}
           </label>
           <toggle-button

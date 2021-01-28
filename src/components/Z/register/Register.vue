@@ -2,24 +2,24 @@
   <ValidationObserver class="register" tag="div" v-slot="{ invalid, handleSubmit, reset }">
     <form class="register-form" @submit.prevent="handleSubmit(submitRegister)" @reset.prevent="reset">
       <ValidationProvider
-        v-slot="{ errors, invalid }"
-        tag="div"
         class="ui-field"
+        tag="div"
         :class="[field.class]"
         :name="field.name"
         :rules="field.rules"
         v-for="field in fieldList"
         :key="field.name"
+        v-slot="{ errors, invalid }"
         v-show="field.isShow"
       >
         <span class="ui-field__star" v-if="field.isRequired">*</span>
 
-        <div class="ui-field__main" v-if="field.type != 'select'">
-          <label class="ui-field__label">
+        <div class="ui-field__group" v-if="field.type != 'select'">
+          <label class="ui-field__group__label">
             {{ $t(`register.${field.name}.placeholder`) }}
           </label>
           <input
-            class="ui-field__input"
+            class="ui-field__group__input"
             :id="$idMapper.register.input[field.name]"
             :type="field.type"
             :placeholder="$t(`register.${field.name}.placeholder`)"
@@ -56,15 +56,19 @@
         </div>
       </ValidationProvider>
 
-      <div class="register__field--check ui-field">
-        <div class="ui-field__main">
-          <input class="ui-field__checkbox" id="register-remember" type="checkbox" />
-          <label class="" for="register-remember">
+      <ValidationProvider
+        class="ui-field register__field--check"
+        tag="div"
+        :rules="{ required: { allowFalse: false } }"
+      >
+        <div class="ui-field__group ui-field__group--checkbox">
+          <input id="register-remember" type="checkbox" v-model="isAgreeServiceTerm" />
+          <label for="register-remember">
             <span>{{ $t('register.service.read', { site: siteName }) }}</span>
             <a href="javascript:;" @click="isShowModalServiceTerm = true">{{ $t('register.service.term') }}</a>
           </label>
         </div>
-      </div>
+      </ValidationProvider>
 
       <div class="register__btn">
         <button class="register__btn--submit ui-btn ui-btn--block" type="submit" :disabled="invalid">
@@ -129,6 +133,7 @@ export default {
         ImgBase64: '',
       },
       error: '',
+      isAgreeServiceTerm: false,
       isShowModalServiceTerm: false,
     };
   },
