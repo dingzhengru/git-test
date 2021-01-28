@@ -1,16 +1,16 @@
 <template>
   <div class="deposit-mode-nav">
     <button
-      class="deposit-mode-nav__base ui-btn"
-      :class="{ active: mode == 'base' }"
-      @click="$emit('change-mode', 'base')"
+      class="ui-btn deposit-mode-nav__base"
+      :class="{ active: $route.name == 'TransactionDepositBase' }"
+      @click="$router.push({ name: 'TransactionDepositBase' })"
     >
       {{ $t('transaction.deposit.nav.base') }}
     </button>
     <button
-      class="deposit-mode-nav__third-party ui-btn"
-      :class="{ active: mode == 'thirdParty' }"
-      @click="$emit('change-mode', 'thirdParty')"
+      class="ui-btn deposit-mode-nav__third-party"
+      :class="{ active: $route.name == 'TransactionDepositThirdParty' }"
+      @click="$router.push({ name: 'TransactionDepositThirdParty' })"
     >
       {{ $t('transaction.deposit.nav.thirdParty') }}
     </button>
@@ -18,12 +18,5 @@
 </template>
 
 <script>
-export default {
-  props: {
-    mode: {
-      type: String,
-      default: () => 'base',
-    },
-  },
-};
+export default {};
 </script>

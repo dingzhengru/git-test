@@ -125,11 +125,11 @@ const routes = [
         name: 'TransactionHome',
         redirect: { name: 'TransactionDeposit' },
       },
-      {
-        path: 'deposit',
-        name: 'TransactionDeposit',
-        component: () => import('@/views/transaction/TransactionDeposit'),
-      },
+      // {
+      //   path: 'deposit',
+      //   name: 'TransactionDeposit',
+      //   component: () => import('@/views/transaction/TransactionDeposit'),
+      // },
       {
         path: 'deposit',
         component: () => import('@/views/transaction/deposit/TransactionDepositHome'),

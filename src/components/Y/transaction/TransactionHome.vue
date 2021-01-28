@@ -21,7 +21,7 @@ export default {
       routeList: [
         {
           name: 'deposit',
-          link: 'TransactionDeposit',
+          link: 'TransactionDepositBase',
           text: 'transaction.nav.deposit',
           class: 'ui-li-tabs-deposit',
           id: 'transaction.nav.deposit',
