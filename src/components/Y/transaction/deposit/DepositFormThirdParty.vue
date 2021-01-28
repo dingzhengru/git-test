@@ -95,7 +95,7 @@
               {{ item.Text }}
             </option>
           </select>
-          <p class="deposit-form__field__hint ui-txt-mask" v-if="promotion == -1">
+          <p class="deposit-form__field__hint text-red" v-if="promotion == -1">
             {{ $t('transaction.deposit.hint.promotion') }}
           </p>
         </ValidationProvider>

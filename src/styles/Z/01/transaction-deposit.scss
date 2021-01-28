@@ -1,26 +1,48 @@
 @import '@/styles/global/abstracts';
 @import './abstracts';
-@import '@/styles/Y/_default/transaction-deposit';
+@import '@/styles/Z/_default/transaction-deposit';
+
+$deposit-nav-btn-height: 65px;
+$deposit-nav-btn-bg: none;
+$deposit-nav-btn-color: #8b8b8b;
+$deposit-nav-btn-border: 1px solid #c2a46f;
+$deposit-nav-btn-bg-active: $btn-bg-z-01-yellow-light;
+$deposit-nav-btn-color-active: black;
 
 .deposit {
   @include deposit;
 }
 
-$deposit-mode-nav-button-color: black;
-$deposit-mode-nav-button-bg: $btn-bg-yellow-light;
-$deposit-mode-nav-button-active-color: white;
-$deposit-mode-nav-button-active-bg: $btn-bg-red;
+$deposit-base-btn-bg-copy: $btn-bg-z-01-yellow-light;
+$deposit-base-btn-color-copy: black;
 
-.deposit-mode-nav {
-  @include deposit-mode-nav;
+$deposit-base-btn-bg-receipt: $btn-bg-z-01-brown;
+$deposit-base-btn-color-receipt: white;
+
+$deposit-base-bnt-bg-submit: $btn-bg-z-01-brown;
+$deposit-base-bnt-color-submit: white;
+
+$deposit-base-color-currency: #f88d80;
+
+.deposit-base {
+  @include deposit-base;
 }
 
-$deposit-form-hint-color: #707070;
-$deposit-form-hint-color-ps: red;
-$deposit-form-button-bg-upload: $btn-bg-red;
-$deposit-form-button-bg-submit: $btn-bg-red;
-$deposit-form-button-bg-cancel: $btn-bg-black;
+$deposit-third-party-field-btn-height: 65px;
+$deposit-third-party-field-btn-bg: none;
+$deposit-third-party-field-btn-color: #8b8b8b;
+$deposit-third-party-field-btn-border: 1px solid #c2a46f;
+$deposit-third-party-field-btn-bg-active: $btn-bg-z-01-yellow-light;
+$deposit-third-party-field-btn-color-active: black;
 
-.deposit-form {
-  @include deposit-form;
+$deposit-third-party-btn-bg-submit: $btn-bg-z-01-brown;
+$deposit-third-party-btn-color-submit: white;
+$deposit-third-party-btn-shadow-submit: none;
+
+$deposit-third-party-btn-bg-reset: $btn-bg-z-01-yellow-light;
+$deposit-third-party-btn-color-reset: black;
+$deposit-third-party-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+.deposit-third-party {
+  @include deposit-third-party;
 }

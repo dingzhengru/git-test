@@ -20,7 +20,11 @@
       "cancel": "Cancellation",
       "login": "Login",
       "register": "Register",
-      "close": "Close"
+      "close": "Close",
+      "copy": "Copy"
+    },
+    "currency": {
+      "thaiBaht": "Baht"
     }
   },
   "alert": {
@@ -405,6 +409,11 @@
         "base": "人工存款",
         "thirdParty": "自動上分"
       },
+      "step": {
+        "selectDepositBank": "Step1 Select Deposit Bank",
+        "selectTransferBank": "Step2 Please select Bank transfer",
+        "selectDepositInfo": "Step3 Deposit Information"
+      },
       "field": {
         "depositBank": "Select Deposit Bank",
         "bankDepositAccount": "Account name of deposit",
@@ -432,10 +441,14 @@
       "hint": {
         "amount": "Baht Maximum {amountLimitMax} , Minimum {amountLimitMin} Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit. ",
         "receipt": "The Format of Image Allow Only JPG / PNG <br /> File size cannot exceed 2MB",
-        "promotion": "Note: Non-selection regarded as abdication."
+        "promotion": "Note: Non-selection regarded as abdication.",
+        "amount01": "Baht Maximum {amountLimitMax} , Minimum {amountLimitMin}",
+        "amount02": "Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit.",
+        "receipt01": "The Format of Image Allow Only JPG / PNG",
+        "receipt02": "File size cannot exceed 2MB"
       },
       "notice": {
-        "currency": "only for <span class='ui-txt-mask'>Baht</span> transaction.",
+        "currency": "only for <span class='text-height-light'>Baht</span> transaction.",
         "depositLimit01": "Please note that the lowest and highest limitation on Deposit.",
         "depositLimit02": "The minimum and maximum values listed above are to act as a guideline only.",
         "userBear01": "Please conduct deposit according to the deposit method as above, otherwise members shall bear any additional expense by themselves.",

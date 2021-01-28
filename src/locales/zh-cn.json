@@ -20,7 +20,11 @@
       "cancel": "取消",
       "login": "登入",
       "register": "注册",
-      "close": "关闭"
+      "close": "关闭",
+      "copy": "复制"
+    },
+    "currency": {
+      "thaiBaht": "泰銖"
     }
   },
   "alert": {
@@ -402,6 +406,11 @@
         "base": "人工存款",
         "thirdParty": "自動上分"
       },
+      "step": {
+        "selectDepositBank": "Step1 请选择存入银行",
+        "selectTransferBank": "Step2 请选择转帐银行",
+        "selectDepositInfo": "Step3 存款数据"
+      },
       "field": {
         "depositBank": "请选择存入银行",
         "bankDepositAccount": "存入本公司银行帐号名",
@@ -429,10 +438,14 @@
       "hint": {
         "amount": "泰铢 最高存款 {amountLimitMax} 最低存款 {amountLimitMin} <br/>  提醒您，存款时请勿存入整数额度，请含尾数零头一并存入，以供辨认，避免存款被重复申请",
         "receipt": "图片格式必须是 JPG / PNG <br /> 档案大小不可超过2MB",
-        "promotion": "您没有选择任何优惠,将视同放弃优惠！"
+        "promotion": "您没有选择任何优惠,将视同放弃优惠！",
+        "amount01": "最高存款 {amountLimitMax} 最低存款 {amountLimitMin}",
+        "amount02": "提醒您，存款时请勿存入整数额度，请含尾数零头一并存入，以供辨认，避免存款被重复申请",
+        "receipt01": "图片格式必须是 JPG / PNG",
+        "receipt02": "档案大小不可超过2MB"
       },
       "notice": {
-        "currency": "只限用<span class='ui-txt-mask'>泰铢</span>交易",
+        "currency": "只限用<span class='text-height-light'>泰铢</span>交易",
         "depositLimit01": "请注意存款最低及最高限制。",
         "depositLimit02": "上述 最低/最高 金额是根据每一笔汇款资料。",
         "userBear01": "请会员依照以上存款方式进行存款，如有任何额外费用产生，将由会员自行负担。",

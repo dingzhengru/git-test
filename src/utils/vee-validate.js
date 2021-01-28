@@ -1,5 +1,16 @@
 import { extend } from 'vee-validate';
-import { required, max, min, min_value, max_value, regex, integer, confirmed, image } from 'vee-validate/dist/rules';
+import {
+  required,
+  max,
+  min,
+  min_value,
+  max_value,
+  regex,
+  integer,
+  confirmed,
+  image,
+  size,
+} from 'vee-validate/dist/rules';
 import { i18n } from '@/i18n-lazy';
 import dayjs from 'dayjs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
@@ -19,6 +30,7 @@ extend('max_value', max_value);
 extend('regex', regex);
 extend('integer', integer);
 extend('image', image);
+extend('size', size);
 
 extend('object-not-empty', {
   validate: value => {

@@ -1,0 +1,133 @@
+@mixin deposit {
+  padding: 15px;
+  font-size: 1.8rem;
+
+  &__nav {
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+    button {
+      font-size: 1.5rem;
+      height: $deposit-nav-btn-height;
+      margin: 0 10px;
+      background: $deposit-nav-btn-bg;
+      color: $deposit-nav-btn-color;
+      border: $deposit-nav-btn-border;
+
+      &.active {
+        background: $deposit-nav-btn-bg-active;
+        color: $deposit-nav-btn-color-active;
+      }
+    }
+  }
+}
+
+@mixin deposit-base {
+  .ui-field {
+    * {
+      font-size: 1.6rem;
+    }
+  }
+  &__field {
+    &--bank-account {
+      button {
+        background: $deposit-base-btn-bg-copy;
+        color: $deposit-base-btn-color-copy;
+        padding: 15px 30px;
+        height: 75px;
+      }
+    }
+
+    &--amount {
+      span {
+        color: $deposit-base-color-currency;
+      }
+    }
+
+    &--receipt {
+      input[type='file'] {
+        display: none;
+      }
+
+      button {
+        background: $deposit-base-btn-bg-receipt;
+        color: $deposit-base-btn-color-receipt;
+      }
+
+      &__text {
+        text-align: center;
+      }
+    }
+  }
+  &__btn {
+    &--submit {
+      background: $deposit-base-bnt-bg-submit;
+      color: $deposit-base-bnt-color-submit;
+    }
+  }
+}
+
+@mixin deposit-third-party {
+  font-size: 1.5rem;
+
+  &__field {
+    &--btn {
+      width: 100%;
+      margin-bottom: 15px;
+
+      &__title {
+        width: 100%;
+        padding-bottom: 15px;
+        padding-left: 10px;
+      }
+
+      &__option {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        button {
+          font-size: 1.5rem;
+          width: calc(50% - 20px);
+          height: $deposit-third-party-field-btn-height;
+          margin: 10px 10px;
+          background: $deposit-third-party-field-btn-bg;
+          color: $deposit-third-party-field-btn-color;
+          border: $deposit-third-party-field-btn-border;
+
+          &.active {
+            background: $deposit-third-party-field-btn-bg-active;
+            color: $deposit-third-party-field-btn-color-active;
+          }
+        }
+      }
+    }
+    &--amount {
+      .ui-field {
+        font-size: 1.5rem;
+        min-height: 70px;
+        height: 70px;
+        margin-top: 15px;
+
+        &__group {
+          padding: 15px 30px;
+        }
+      }
+    }
+  }
+  &__btn {
+    button {
+      margin: 30px 0;
+    }
+
+    &--submit {
+      background: $deposit-third-party-btn-bg-submit;
+      color: $deposit-third-party-btn-color-submit;
+      box-shadow: $deposit-third-party-btn-shadow-submit;
+    }
+    &--reset {
+      background: $deposit-third-party-btn-bg-reset;
+      color: $deposit-third-party-btn-color-reset;
+      box-shadow: $deposit-third-party-btn-shadow-reset;
+    }
+  }
+}

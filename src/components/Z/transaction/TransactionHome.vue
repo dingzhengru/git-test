@@ -1,7 +1,7 @@
 <template>
   <div class="transaction">
     <component :is="AppNavTab" :list="navList" />
-    <!-- <router-view /> -->
+    <router-view />
   </div>
 </template>
 
@@ -21,11 +21,11 @@ export default {
       navList: [
         {
           name: 'deposit',
-          link: 'TransactionDeposit',
+          link: 'TransactionDepositBase',
           text: 'transaction.nav.deposit',
           class: '',
           id: 'transaction.nav.deposit',
-          otherActivePath: [],
+          otherActivePath: ['TransactionDepositThirdParty'],
         },
         {
           name: 'withdrawal',

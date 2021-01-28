@@ -40,7 +40,7 @@ $home-main-bg: white;
 
 .home-main {
   @include home-main;
-  padding: 15px;
+  padding: 0 15px;
 }
 
 $home-product-text-color: white;

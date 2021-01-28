@@ -54,7 +54,7 @@ export default {
         {
           name: 'transaction',
           text: 'footer.transaction',
-          link: 'TransactionDeposit',
+          link: 'TransactionDepositHome',
           otherActivePath: [
             'TransactionWithdrawal',
             'TransactionTransfer',

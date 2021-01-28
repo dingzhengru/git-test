@@ -131,6 +131,27 @@ const routes = [
         component: () => import('@/views/transaction/TransactionDeposit'),
       },
       {
+        path: 'deposit',
+        component: () => import('@/views/transaction/deposit/TransactionDepositHome'),
+        children: [
+          {
+            path: '',
+            name: 'TransactionDepositHome',
+            redirect: { name: 'TransactionDepositBase' },
+          },
+          {
+            path: 'base',
+            name: 'TransactionDepositBase',
+            component: () => import('@/views/transaction/deposit/TransactionDepositBase'),
+          },
+          {
+            path: 'third-party',
+            name: 'TransactionDepositThirdParty',
+            component: () => import('@/views/transaction/deposit/TransactionDepositThirdParty'),
+          },
+        ],
+      },
+      {
         path: 'withdrawal',
         name: 'TransactionWithdrawal',
         component: () => import('@/views/transaction/TransactionWithdrawal'),

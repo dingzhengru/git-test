@@ -11,21 +11,22 @@ body {
   font-family: $base-font-family;
 }
 
+.text-height-light {
+  color: red;
+}
+
 .ui-btn {
   @include ui-btn;
 }
 .ui-field {
   @include ui-field;
 }
-
 .ui-notice {
   @include ui-notice;
 }
-
 .ui-step {
   @include ui-step;
 }
-
 .nav-tab {
   @include nav-tab;
 }

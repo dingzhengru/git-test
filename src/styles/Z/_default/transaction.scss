@@ -1,17 +1,5 @@
 @mixin transaction {
   padding: 30px;
   padding-top: $header-sub-height-auth + 30;
-  padding-bottom: $footer-height + 15;
-}
-
-@mixin transaction-deposit {
-}
-
-@mixin transaction-withdrawal {
-}
-
-@mixin transaction-transfer {
-}
-
-@mixin transaction-record {
+  padding-bottom: $footer-height + 60;
 }
