@@ -27,6 +27,7 @@
         "DepositModeNav": "components/Y/transaction/deposit/DepositModeNav"
       },
       "record": {
+        "TransactionRecordRouterList": "components/Y/transaction/record/TransactionRecordRouterList",
         "RecordImageDialog": "components/Y/transaction/record/RecordImageDialog"
       }
     },
@@ -63,6 +64,17 @@
     "transactionRecordHome": "components/Y/transaction/TransactionRecordHome",
     "transactionRecordContent": "components/Y/transaction/TransactionRecordContent",
     "transactionRecordDetail": "components/Y/transaction/TransactionRecordDetail",
+    "transactionRecordDeposit": "components/Y/transaction/record/TransactionRecordDeposit",
+    "transactionRecordWithdrawal": "components/Y/transaction/record/TransactionRecordWithdrawal",
+    "transactionRecordTransfer": "components/Y/transaction/record/TransactionRecordTransfer",
+    "transactionRecordBonus": "components/Y/transaction/record/TransactionRecordBonus",
+    "transactionRecordLottery": "components/Y/transaction/record/TransactionRecordLottery",
+    "transactionRecordWithdrawalRestriction": "components/Y/transaction/record/TransactionRecordWithdrawalRestriction",
+    "transactionRecordAdjustment": "components/Y/transaction/record/TransactionRecordAdjustment",
+    "transactionRecordDepositDetail": "components/Y/transaction/record/TransactionRecordDepositDetail",
+    "transactionRecordWithdrawalDetail": "components/Y/transaction/record/TransactionRecordWithdrawalDetail",
+    "transactionRecordTransferDetail": "components/Y/transaction/record/TransactionRecordTransferDetail",
+    "transactionRecordWithdrawalRestrictionDetail": "components/Y/transaction/record/TransactionRecordWithdrawalRestrictionDetail",
     "reportHome": "components/Y/report/ReportHome",
     "reportUnsettleBet": "components/Y/report/ReportUnsettleBet",
     "reportBetRecord": "components/Y/report/ReportBetRecord",

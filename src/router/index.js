@@ -125,11 +125,6 @@ const routes = [
         name: 'TransactionHome',
         redirect: { name: 'TransactionDeposit' },
       },
-      // {
-      //   path: 'deposit',
-      //   name: 'TransactionDeposit',
-      //   component: () => import('@/views/transaction/TransactionDeposit'),
-      // },
       {
         path: 'deposit',
         component: () => import('@/views/transaction/deposit/TransactionDepositHome'),
@@ -163,25 +158,67 @@ const routes = [
       },
       {
         path: 'record',
-        component: BlankLayout,
+        component: () => import('@/views/transaction/record/TransactionRecordHome'),
         children: [
           {
             path: '',
             name: 'TransactionRecordHome',
-            component: () => import('@/views/transaction/record/TransactionRecordHome'),
+            component: BlankLayout,
           },
           {
-            path: ':name',
-            name: 'TransactionRecordContent',
-            component: () => import('@/views/transaction/record/TransactionRecordContent'),
+            path: 'deposit',
+            name: 'TransactionRecordDeposit',
+            component: () => import('@/views/transaction/record/TransactionRecordDeposit'),
           },
           {
-            //* 因提取限制的詳細資料，需要多個參數，所以改成一律用 query
-            //* 其他: id
-            //* 提取限制: productId, bonusCode, typeCode
-            path: ':name/detail',
-            name: 'TransactionRecordDetail',
-            component: () => import('@/views/transaction/record/TransactionRecordDetail'),
+            path: 'withdrawal',
+            name: 'TransactionRecordWithdrawal',
+            component: () => import('@/views/transaction/record/TransactionRecordWithdrawal'),
+          },
+          {
+            path: 'transfer',
+            name: 'TransactionRecordTransfer',
+            component: () => import('@/views/transaction/record/TransactionRecordTransfer'),
+          },
+          {
+            path: 'bonus',
+            name: 'TransactionRecordBonus',
+            component: () => import('@/views/transaction/record/TransactionRecordBonus'),
+          },
+          {
+            path: 'lottery',
+            name: 'TransactionRecordLottery',
+            component: () => import('@/views/transaction/record/TransactionRecordLottery'),
+          },
+          {
+            path: 'withdrawalRestriction',
+            name: 'TransactionRecordWithdrawalRestriction',
+            component: () => import('@/views/transaction/record/TransactionRecordWithdrawalRestriction'),
+          },
+          {
+            path: 'adjustment',
+            name: 'TransactionRecordAdjustment',
+            component: () => import('@/views/transaction/record/TransactionRecordAdjustment'),
+          },
+          {
+            path: 'deposit/detail',
+            name: 'TransactionRecordDepositDetail',
+            component: () => import('@/views/transaction/record/TransactionRecordDepositDetail'),
+          },
+          {
+            path: 'withdrawal/detail',
+            name: 'TransactionRecordWithdrawalDetail',
+            component: () => import('@/views/transaction/record/TransactionRecordWithdrawalDetail'),
+          },
+          {
+            path: 'transfer/detail',
+            name: 'TransactionRecordTransferDetail',
+            component: () => import('@/views/transaction/record/TransactionRecordTransferDetail'),
+          },
+          {
+            path: 'withdrawalRestriction/detail',
+            name: 'TransactionRecordWithdrawalRestrictionDetail',
+            component: () => import('@/views/transaction/record/TransactionRecordWithdrawalRestrictionDetail'),
           },
         ],
       },
