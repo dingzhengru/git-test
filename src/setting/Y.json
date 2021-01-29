@@ -24,8 +24,6 @@
     },
     "transaction": {
       "deposit": {
-        "DepositFormBase": "components/Y/transaction/deposit/DepositFormBase",
-        "DepositFormThirdParty": "components/Y/transaction/deposit/DepositFormThirdParty",
         "DepositModeNav": "components/Y/transaction/deposit/DepositModeNav"
       },
       "record": {

@@ -27,9 +27,6 @@
       "AppNavTab": "components/Z/AppNavTab"
     },
     "transaction": {
-      "deposit": {
-        "DepositModeNav": "components/Y/transaction/deposit/DepositModeNav"
-      },
       "record": {
         "RecordImageDialog": "components/Y/transaction/record/RecordImageDialog"
       }
@@ -66,7 +63,7 @@
     "transactionDepositHome": "components/Z/transaction/deposit/TransactionDepositHome",
     "transactionDepositBase": "components/Z/transaction/deposit/TransactionDepositBase",
     "transactionDepositThirdParty": "components/Z/transaction/deposit/TransactionDepositThirdParty",
-    "transactionWithdrawal": "components/Y/transaction/TransactionWithdrawal",
+    "transactionWithdrawal": "components/Z/transaction/TransactionWithdrawal",
     "transactionTransfer": "components/Y/transaction/TransactionTransfer",
     "transactionRecordHome": "components/Y/transaction/TransactionRecordHome",
     "transactionRecordContent": "components/Y/transaction/TransactionRecordContent",

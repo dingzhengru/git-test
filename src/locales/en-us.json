@@ -482,7 +482,11 @@
         "allToMyWallet": "All to my wallet"
       },
       "notice": {
-        "contact": "If you have any additional questions about your account details ,please contact our online service."
+        "contact": "If you have any additional questions about your account details ,please contact our online service.",
+        "amount": "取款金額，請填整百數，最低取款金額 100 銖",
+        "restrict01": "無法取款？請確認",
+        "restrict02": "提取限制",
+        "restrict03": "中'我的錢包'的解鎖條件。"
       }
     },
     "transfer": {

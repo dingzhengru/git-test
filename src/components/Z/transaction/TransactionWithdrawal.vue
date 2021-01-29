@@ -1,0 +1,108 @@
+<template>
+  <ValidationObserver class="withdrawal" tag="div" v-slot="{ invalid, handleSubmit }">
+    <form class="withdrawal-form" @submit.prevent="handleSubmit(submitWithdrawal)">
+      <ValidationProvider class="ui-field withdrawal__field--transfer" tag="div" :rules="{ 'object-not-empty': true }">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.wallet') }}</label>
+          <span class="ui-field__group__text">{{ userGamePointWallet.Point }}</span>
+        </div>
+        <div class="withdrawal__field--transfer__btn">
+          <button class="ui-btn ui-btn--block" type="button" @click="transferToMain">
+            {{ $t('transaction.withdrawal.button.allToMyWallet') }}
+          </button>
+        </div>
+      </ValidationProvider>
+
+      <ValidationProvider
+        class="ui-field withdrawal__field withdrawal__field--amount"
+        tag="div"
+        :rules="{
+          required: true,
+          min_value: withdrawalInfo.WithalDownlimit,
+          max_value: amountMax,
+          integerHundredsDivisible: { number: amount },
+        }"
+      >
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.amount') }}</label>
+          <input
+            class="ui-field__group__input"
+            type="number"
+            step="100"
+            autocomplete="off"
+            v-model.number="amount"
+            @change="changeAmount"
+          />
+          <span class="ui-field__group__text">{{ $t('ui.currency.thaiBaht') }}</span>
+        </div>
+      </ValidationProvider>
+
+      <div class="ui-field withdrawal__field">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bankName') }}</label>
+          <span class="ui-field__group__text">{{ bank.Lst_Bank_name }}</span>
+        </div>
+      </div>
+
+      <div class="ui-field withdrawal__field">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bankAccount') }}</label>
+          <span class="ui-field__group__text">{{ bank.Lst_BankAccount }}</span>
+        </div>
+      </div>
+
+      <div class="ui-field withdrawal__field">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bankBranch') }}</label>
+          <span class="ui-field__group__text">{{ bank.Lst_Bank_Branches }}</span>
+        </div>
+      </div>
+
+      <div class="ui-field withdrawal__field">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bankAccountName') }}</label>
+          <span class="ui-field__group__text">{{ withdrawalInfo.Add_RealName }}</span>
+        </div>
+      </div>
+
+      <div class="ui-field withdrawal__field">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.password') }}</label>
+          <input class="ui-field__group__input" type="password" :placeholder="$t('login.placeholder.password')" />
+        </div>
+      </div>
+
+      <div class="ui-notice">
+        <ul>
+          <li>{{ $t('transaction.withdrawal.notice.amount') }}</li>
+          <li>
+            {{ $t('transaction.withdrawal.notice.restrict01') }}
+            <a href="javascript:;">{{ $t('transaction.withdrawal.notice.restrict02') }}</a>
+            {{ $t('transaction.withdrawal.notice.restrict03') }}
+          </li>
+          <li>{{ $t('transaction.withdrawal.notice.contact') }}</li>
+        </ul>
+      </div>
+
+      <div class="withdrawal__btn">
+        <button class="ui-btn ui-btn--block withdrawal__btn--submit" type="submit" :disabled="invalid">
+          {{ $t('ui.button.submit') }}
+        </button>
+      </div>
+    </form>
+  </ValidationObserver>
+</template>
+
+<script>
+import mixinTransactionWithdrawal from '@/mixins/transactionWithdrawal';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+
+export default {
+  name: 'TransactionWithdrawal',
+  mixins: [mixinTransactionWithdrawal],
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
+};
+</script>
