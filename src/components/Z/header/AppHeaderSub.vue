@@ -27,20 +27,20 @@
           {{ $t('transaction.transfer.button.allToMyWallet') }}
         </button>
 
-        <div class="header-sub__dropdown__info">
-          <div class="header-sub__dropdown__info__item">
-            <div class="header-sub__dropdown__info__item__label">
+        <div class="ui-point-list">
+          <div class="ui-point-list__item">
+            <div class="ui-point-list__item__label">
               {{ $t('header.user.total') }}
             </div>
-            <div class="header-sub__dropdown__info__item__content">
+            <div class="ui-point-list__item__content">
               {{ $numeral(userTotalBalance).format('0,0.00') }}
             </div>
           </div>
-          <div class="header-sub__dropdown__info__item" v-for="item in userGamePointList" :key="item.Product_id">
-            <div class="header-sub__dropdown__info__item__label">
+          <div class="ui-point-list__item" v-for="item in userGamePointList" :key="item.Product_id">
+            <div class="ui-point-list__item__label">
               {{ item.Product_Name }}
             </div>
-            <div class="header-sub__dropdown__info__item__content">
+            <div class="ui-point-list__item__content">
               {{ $numeral(item.Point).format('0,0.00') }}
             </div>
           </div>

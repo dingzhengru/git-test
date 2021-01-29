@@ -27,6 +27,11 @@ body {
 .ui-step {
   @include ui-step;
 }
+
+.ui-point-list {
+  @include ui-point-list;
+}
+
 .nav-tab {
   @include nav-tab;
 }

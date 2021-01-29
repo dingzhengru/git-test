@@ -1,2 +1,25 @@
 @mixin transfer {
+  font-size: 1.8rem;
+
+  &__field {
+    * {
+      font-size: 1.8rem;
+    }
+    select {
+      padding: 0;
+      margin-left: 30px;
+    }
+  }
+
+  &__btn {
+    margin: 30px 0;
+    &--switch {
+      background: $transfer-btn-bg-switch;
+    }
+    &--submit {
+      background: $transfer-btn-bg-submit;
+      color: $transfer-btn-color-submit;
+      box-shadow: $transfer-btn-shadow-submit;
+    }
+  }
 }

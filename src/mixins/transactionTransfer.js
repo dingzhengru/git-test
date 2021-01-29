@@ -77,6 +77,15 @@ export default {
         this.amount = this.currentPoint;
       }
     },
+    switchProduct() {
+      if (this.from < 0 || this.to < 0) {
+        return;
+      }
+      const from = this.from;
+      const to = this.to;
+      this.from = to;
+      this.to = from;
+    },
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/transaction-transfer.scss`);

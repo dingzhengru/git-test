@@ -67,10 +67,6 @@ $header-sub-dropdown-bg: rgba(0, 0, 0, 0.9);
 $header-sub-dropdown-button-bg: $btn-bg-z-01-brown;
 $header-sub-dropdown-button-color: white;
 
-$header-sub-dropdown-info-bg: #444444;
-$header-sub-dropdown-info-label-color: $text-color-z-01-yellow-dark-2;
-$header-sub-dropdown-info-content-color: white;
-
 .header-sub {
   @include header-sub-z;
 }

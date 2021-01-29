@@ -146,7 +146,7 @@
   width: 100%;
   position: absolute;
   top: $header-height;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   z-index: 2;
 
   &__not-logged {
@@ -243,38 +243,8 @@
       width: 90%;
     }
 
-    &__info {
-      margin-top: 20px;
-      background: $header-sub-dropdown-info-bg;
+    .ui-point-list {
       width: 90%;
-      padding: 30px 20px;
-      border-radius: 5px;
-      &__item {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
-        > div {
-          font-size: 2rem;
-        }
-
-        &__label {
-          color: $header-sub-dropdown-info-label-color;
-        }
-        &__content {
-          color: $header-sub-dropdown-info-content-color;
-        }
-
-        &:not(:last-child):after {
-          content: '';
-          background: black;
-          width: 100%;
-          height: 1px;
-          box-shadow: 0px -2px #8b8b8b;
-          margin: 30px 0;
-        }
-      }
     }
   }
 }

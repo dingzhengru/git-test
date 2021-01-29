@@ -53,6 +53,10 @@ $notice-font-size: 1.8rem;
 $notice-line-height: 2.5rem;
 $notice-text-height-light-color: red;
 
+$point-list-bg: #444444;
+$point-list-label-color: $text-color-z-01-yellow-dark-2;
+$point-list-content-color: white;
+
 $nav-tab-text-color: #8b8b8b;
 $nav-tab-text-color-active: #c8aa73;
 $nav-tab-border-bottom: 5px solid #8b8b8b;
@@ -223,6 +227,44 @@ $service-term-btn-color: white;
   line-height: $notice-line-height;
 }
 
+@mixin ui-step {
+  width: 100%;
+  font-size: 1.8rem;
+  border-bottom: 4px solid #c8aa73;
+  padding-bottom: 5px;
+  margin: 30px 0px;
+}
+
+@mixin ui-point-list {
+  width: 100%;
+  margin-top: 20px;
+  background: $point-list-bg;
+  padding: 30px 20px;
+  border-radius: 5px;
+  &__item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__label {
+      color: $point-list-label-color;
+    }
+    &__content {
+      color: $point-list-content-color;
+    }
+
+    &:not(:last-child):after {
+      content: '';
+      background: black;
+      width: 100%;
+      height: 1px;
+      box-shadow: 0px -2px #8b8b8b;
+      margin: 30px 0;
+    }
+  }
+}
+
 @mixin nav-tab {
   width: 100%;
   display: flex;
@@ -259,14 +301,6 @@ $service-term-btn-color: white;
       }
     }
   }
-}
-
-@mixin ui-step {
-  width: 100%;
-  font-size: 1.8rem;
-  border-bottom: 4px solid #c8aa73;
-  padding-bottom: 5px;
-  margin: 30px 0px;
 }
 
 @mixin service-term {
