@@ -18,7 +18,7 @@
 
 .slide-dropdown-height-enter-active,
 .slide-dropdown-height-leave-active {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s;
   max-height: 10000px;
 }
 .slide-dropdown-height-enter,

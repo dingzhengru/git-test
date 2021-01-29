@@ -76,41 +76,21 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { apiGetRecordDeposit } from '@/api/transaction-record';
+import mixinTransactionRecordDeposit from '@/mixins/transactionRecordDeposit';
 
 export default {
+  name: 'TransactionRecordDeposit',
+  mixins: [mixinTransactionRecordDeposit],
   computed: {
-    ...mapGetters(['lang', 'siteSetting', 'siteFullCss']),
+    ...mapGetters(['siteSetting']),
     RecordImageDialog() {
       return () => import(`@/${this.siteSetting.components.transaction.record.RecordImageDialog}`);
     },
   },
   data() {
     return {
-      recordList: [],
       imageDialogUrl: '',
     };
-  },
-  methods: {
-    async getRecord() {
-      const result = await apiGetRecordDeposit();
-      this.recordList = result.RetObj.Rows;
-    },
-    goRecordDetail(record) {
-      if (record.Lst_Status == 2) {
-        const query = { TransID: record.Lst_TransID };
-        this.$router.push({ name: 'TransactionRecordDepositDetail', query });
-      }
-    },
-  },
-  mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
-    this.getRecord();
-  },
-  watch: {
-    lang() {
-      this.getRecord();
-    },
   },
 };
 </script>

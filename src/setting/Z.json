@@ -26,11 +26,6 @@
     "user": {
       "AppNavTab": "components/Z/AppNavTab"
     },
-    "transaction": {
-      "record": {
-        "RecordImageDialog": "components/Y/transaction/record/RecordImageDialog"
-      }
-    },
     "game": {
       "GameCategoryNavigation": "components/Y/game/GameCategoryNavigation",
       "GameJackpot": "components/Y/game/GameJackpot",
@@ -65,9 +60,18 @@
     "transactionDepositThirdParty": "components/Z/transaction/deposit/TransactionDepositThirdParty",
     "transactionWithdrawal": "components/Z/transaction/TransactionWithdrawal",
     "transactionTransfer": "components/Z/transaction/TransactionTransfer",
-    "transactionRecordHome": "components/Y/transaction/TransactionRecordHome",
-    "transactionRecordContent": "components/Y/transaction/TransactionRecordContent",
-    "transactionRecordDetail": "components/Y/transaction/TransactionRecordDetail",
+    "transactionRecordHome": "components/Z/transaction/record/TransactionRecordHome",
+    "transactionRecordDeposit": "components/Z/transaction/record/TransactionRecordDeposit",
+    "transactionRecordWithdrawal": "components/Y/transaction/record/TransactionRecordWithdrawal",
+    "transactionRecordTransfer": "components/Y/transaction/record/TransactionRecordTransfer",
+    "transactionRecordBonus": "components/Y/transaction/record/TransactionRecordBonus",
+    "transactionRecordLottery": "components/Y/transaction/record/TransactionRecordLottery",
+    "transactionRecordWithdrawalRestriction": "components/Y/transaction/record/TransactionRecordWithdrawalRestriction",
+    "transactionRecordAdjustment": "components/Y/transaction/record/TransactionRecordAdjustment",
+    "transactionRecordDepositDetail": "components/Y/transaction/record/TransactionRecordDepositDetail",
+    "transactionRecordWithdrawalDetail": "components/Y/transaction/record/TransactionRecordWithdrawalDetail",
+    "transactionRecordTransferDetail": "components/Y/transaction/record/TransactionRecordTransferDetail",
+    "transactionRecordWithdrawalRestrictionDetail": "components/Y/transaction/record/TransactionRecordWithdrawalRestrictionDetail",
     "reportHome": "components/Y/report/ReportHome",
     "reportUnsettleBet": "components/Y/report/ReportUnsettleBet",
     "reportBetRecord": "components/Y/report/ReportBetRecord",

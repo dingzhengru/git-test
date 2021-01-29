@@ -74,35 +74,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
-import { apiGetRecordWithdrawalDetail } from '@/api/transaction-record';
+import mixinTransactionRecordWithdrawalDetail from '@/mixins/transactionRecordWithdrawalDetail';
 
 export default {
-  name: 'TransactionRecordDetail',
-  computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
-  },
-  data() {
-    return {
-      detailList: [],
-    };
-  },
-  methods: {
-    async getRecordDetail() {
-      const result = await apiGetRecordWithdrawalDetail(this.$route.query);
-      this.detailList = result.RetObj.Rows;
-    },
-  },
-  mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
-
-    this.getRecordDetail();
-  },
-  watch: {
-    lang() {
-      this.getRecordDetail();
-    },
-  },
+  name: 'TransactionRecordWithdrawalDetail',
+  mixins: [mixinTransactionRecordWithdrawalDetail],
 };
 </script>

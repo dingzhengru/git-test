@@ -1,2 +1,34 @@
 @mixin record {
+  font-size: 1.6rem;
+}
+
+@mixin record-content {
+  &__icon {
+    &--detail {
+      display: inline-block;
+      background: $record-content-icon-bg-detail;
+      width: $record-content-icon-width;
+      height: $record-content-icon-height;
+      &.close {
+        background: $record-content-icon-bg-detail-close;
+      }
+    }
+  }
+
+  &__table {
+    &__tr {
+      &--detail {
+        transform-origin: top;
+        td {
+          text-align: left;
+          padding: 15px;
+        }
+
+        a {
+          color: $record-content-link-color;
+          border-bottom: $record-content-link-border-bottom;
+        }
+      }
+    }
+  }
 }

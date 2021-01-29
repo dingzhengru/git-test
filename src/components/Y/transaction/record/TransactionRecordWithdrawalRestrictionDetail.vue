@@ -47,34 +47,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
-import { apiGetRecordDetailWithdrawalRestriction } from '@/api/transaction-record';
+import mixinTransactionRecordWithdrawalRestrictionDetail from '@/mixins/transactionRecordWithdrawalRestrictionDetail';
 
 export default {
-  name: 'TransactionRecordDetail',
-  computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
-  },
-  data() {
-    return {
-      detailList: [],
-    };
-  },
-  methods: {
-    async getRecordDetail() {
-      const result = await apiGetRecordDetailWithdrawalRestriction(this.$route.query);
-      this.detailList = result.RetObj;
-    },
-  },
-  mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
-    this.getRecordDetail();
-  },
-  watch: {
-    lang() {
-      this.getRecordDetail();
-    },
-  },
+  name: 'TransactionRecordWithdrawalRestrictionDetail',
+  mixins: [mixinTransactionRecordWithdrawalRestrictionDetail],
 };
 </script>

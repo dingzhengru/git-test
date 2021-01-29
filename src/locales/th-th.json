@@ -11,7 +11,8 @@
       "subject": "หัวข้อ",
       "content": "รายละเอียด",
       "amount": "จำนวน",
-      "other": "อื่นๆ"
+      "other": "อื่นๆ",
+      "pleaseSelect": "โปรดเลือก"
     },
     "button": {
       "submit": "ส่ง",
@@ -510,7 +511,8 @@
       "bonus": "บันทึกโปรโมชั่น",
       "lottery": "รายการบันทึก",
       "withdrawalRestriction": "ยอดจำกัดการถอน",
-      "adjustment": "บันทึกรายการแก้ไข"
+      "adjustment": "บันทึกรายการแก้ไข",
+      "bet": "รายการเดิมพัน"
     },
     "recordContent": {
       "statusText": {
@@ -522,6 +524,7 @@
         "title": "บันทึกรายการเติมเงิน",
         "table": {
           "date": "วันที่",
+          "status": "สถานะ",
           "bank": "ธนาคาร",
           "amount": "จำนวน",
           "receipt": "ใบเสร็จรับเงิน",
@@ -533,6 +536,7 @@
         "title": "บันทึกรายการถอนเงิน",
         "table": {
           "date": "วันที่",
+          "status": "สถานะ",
           "bank": "ธนาคาร",
           "amount": "จำนวน",
           "detail": "รายละเอียด"

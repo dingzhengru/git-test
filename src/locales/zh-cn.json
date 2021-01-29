@@ -11,7 +11,8 @@
       "subject": "主旨",
       "content": "内容",
       "amount": "金额",
-      "other": "其它"
+      "other": "其它",
+      "pleaseSelect": "请选择"
     },
     "button": {
       "submit": "提交",
@@ -510,7 +511,8 @@
       "bonus": "红利纪录",
       "lottery": "开奖纪绿",
       "withdrawalRestriction": "提取限制",
-      "adjustment": "调整纪录"
+      "adjustment": "调整纪录",
+      "bet": "投注纪录"
     },
     "recordContent": {
       "statusText": {
@@ -522,6 +524,7 @@
         "title": "存款纪录",
         "table": {
           "date": "日期",
+          "status": "状态",
           "bank": "银行",
           "amount": "金额",
           "receipt": "汇款收据",
@@ -533,6 +536,7 @@
         "title": "取款纪录",
         "table": {
           "date": "日期",
+          "status": "状态",
           "bank": "银行",
           "amount": "金额",
           "detail": "明细"

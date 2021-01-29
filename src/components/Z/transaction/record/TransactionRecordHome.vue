@@ -1,25 +1,28 @@
 <template>
-  <div class="record-list theme-content-box">
-    <h3 class="record-list__title theme-h3-boxTitle">{{ $t('transaction.record.title') }}</h3>
-    <ul class="record-list__ul">
-      <li class="record-list__ul__li" v-for="item in routeList" :key="item.name">
-        <router-link
-          class="record-list__ul__li__link"
-          :id="$idMapper.transaction.record[item.name]"
-          :to="{ name: item.link }"
-        >
+  <div class="record">
+    <div class="ui-field">
+      <select class="ui-field__select" v-model="route">
+        <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
+        <option :value="item" v-for="item in routeList" :key="item.name">
           {{ $t(item.text) }}
-        </router-link>
-      </li>
-    </ul>
+        </option>
+      </select>
+    </div>
+    <router-view />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-  name: 'TransactionRecordRouterList',
+  name: 'TransactionRecordHome',
+  computed: {
+    ...mapGetters(['siteSetting', 'siteFullCss']),
+  },
   data() {
     return {
+      route: {},
       routeList: [
         {
           name: 'deposit',
@@ -56,8 +59,21 @@ export default {
           text: 'transaction.record.adjustment',
           link: 'TransactionRecordAdjustment',
         },
+        {
+          name: 'bet',
+          text: 'transaction.record.bet',
+          link: 'TransactionRecordBet',
+        },
       ],
     };
+  },
+  mounted() {
+    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
+  },
+  watch: {
+    route() {
+      this.$router.push({ name: this.route.link });
+    },
   },
 };
 </script>

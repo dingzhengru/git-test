@@ -54,37 +54,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import { apiGetRecordWithdrawal } from '@/api/transaction-record';
+import mixinTransactionRecordWithdrawal from '@/mixins/transactionRecordWithdrawal';
 
 export default {
-  computed: {
-    ...mapGetters(['lang']),
-  },
-  data() {
-    return {
-      recordList: [],
-    };
-  },
-  methods: {
-    async getRecord() {
-      const result = await apiGetRecordWithdrawal();
-      this.recordList = result.RetObj.Rows;
-    },
-    goRecordDetail(record) {
-      if (record.Lst_Status == 2) {
-        const query = { TransID: record.Lst_TransID };
-        this.$router.push({ name: 'TransactionRecordWithdrawalDetail', query });
-      }
-    },
-  },
-  mounted() {
-    this.getRecord();
-  },
-  watch: {
-    lang() {
-      this.getRecord();
-    },
-  },
+  name: 'TransactionRecordWithdrawal',
+  mixins: [mixinTransactionRecordWithdrawal],
 };
 </script>

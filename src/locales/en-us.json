@@ -10,8 +10,9 @@
       "title": "Title",
       "subject": "Subject",
       "content": "Content",
+      "amount": "Amount",
       "other": "Other",
-      "amount": "Amount"
+      "pleaseSelect": "Please select"
     },
     "button": {
       "submit": "Submit",
@@ -513,7 +514,8 @@
       "bonus": "Bonus Record",
       "lottery": "Lottery Record",
       "withdrawalRestriction": "Withdrawal Restriction",
-      "adjustment": "Adjustment Record"
+      "adjustment": "Adjustment Record",
+      "bet": "Report"
     },
     "recordContent": {
       "statusText": {
@@ -525,6 +527,7 @@
         "title": "Deposit Record",
         "table": {
           "date": "Date",
+          "status": "Status",
           "bank": "Bank",
           "amount": "Amount",
           "receipt": "Remittance Receipt",
@@ -536,6 +539,7 @@
         "title": "Withdrawal Record",
         "table": {
           "date": "Date",
+          "status": "Status",
           "bank": "Bank",
           "amount": "Amount",
           "detail": "Detail"

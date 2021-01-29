@@ -57,6 +57,12 @@ $point-list-bg: #444444;
 $point-list-label-color: $text-color-z-01-yellow-dark-2;
 $point-list-content-color: white;
 
+$table-bg: #444444;
+$table-tr-border-bottom: 1px solid black;
+$table-tr-shadow: 0px -2px #8b8b8b;
+$table-th-color: #cbaa6d;
+$table-td-color: white;
+
 $nav-tab-text-color: #8b8b8b;
 $nav-tab-text-color-active: #c8aa73;
 $nav-tab-border-bottom: 5px solid #8b8b8b;
@@ -262,6 +268,33 @@ $service-term-btn-color: white;
       box-shadow: 0px -2px #8b8b8b;
       margin: 30px 0;
     }
+  }
+}
+
+@mixin ui-table {
+  background: $table-bg;
+  width: 100%;
+  text-align: center;
+  background-color: #444444;
+  border-radius: 5px;
+  margin: 30px 0;
+
+  tr:not(:first-child) {
+    border-bottom: $table-tr-border-bottom;
+    box-shadow: $table-tr-shadow;
+  }
+
+  th,
+  td {
+    padding: 10px 5px;
+  }
+
+  th {
+    color: $table-th-color;
+  }
+
+  td {
+    color: $table-td-color;
   }
 }
 
