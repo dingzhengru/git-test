@@ -1,7 +1,5 @@
 <template>
   <div class="report-bet-record-detail">
-    <!-- <component :is="ReportBetRecordDetailTable" :title="title" :recordList="recordList" :totalObject="totalRecord" /> -->
-
     <div class="report-bet-record-content">
       <div class="report-bet-record-content__box report-bet-record-content__box--outer theme-content-box">
         <h3 class="report-bet-record-content__title theme-h3-boxTitle">
@@ -28,7 +26,13 @@
             <th class="report-bet-record-content__total-table__th-1st th-1st">
               {{ $t('report.betRecordDetail.table.recordList.Lst_MemberTTLNetWin') }}
             </th>
-            <td class="report-bet-record-content__total-table__td-2nd td-2nd">
+            <td
+              class="report-bet-record-content__total-table__td-2nd td-2nd"
+              :class="{
+                'ui-txt-positive': totalRecord.Lst_MemberTTLNetWin > 0,
+                'ui-txt-negative': totalRecord.Lst_MemberTTLNetWin < 0,
+              }"
+            >
               {{ $numeral(totalRecord.Lst_MemberTTLNetWin).format('0,0.00') }}
             </td>
           </tr>
@@ -66,7 +70,15 @@
             </tr>
             <tr class="report-bet-record-content__detail-table__tr">
               <th class="th-1st">{{ $t('report.betRecordDetail.table.recordList.Lst_MemberTTLNetWin') }}</th>
-              <td class="td-2nd">{{ $numeral(item.Lst_MemberTTLNetWin).format('0,0.00') }}</td>
+              <td
+                class="td-2nd"
+                :class="{
+                  'ui-txt-positive': item.Lst_MemberTTLNetWin > 0,
+                  'ui-txt-negative': item.Lst_MemberTTLNetWin < 0,
+                }"
+              >
+                {{ $numeral(item.Lst_MemberTTLNetWin).format('0,0.00') }}
+              </td>
             </tr>
             <tr class="report-bet-record-content__detail-table__tr">
               <th class="th-1st">{{ $t('report.betRecordDetail.table.recordList.Lst_JackpotScore') }}</th>
@@ -94,9 +106,6 @@ export default {
   mixins: [mixinTransactionRecordBetDay],
   computed: {
     ...mapGetters(['lang', 'siteSetting']),
-    // ReportBetRecordDetailTable() {
-    //   return () => import(`@/${this.siteSetting.components.report.ReportBetRecordDetailTable}`);
-    // },
     title() {
       if (this.$route.query.Tag == 'Today') {
         return this.$t('report.betRecord.dateRange.Today');
