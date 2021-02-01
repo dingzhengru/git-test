@@ -26,6 +26,11 @@
     "user": {
       "AppNavTab": "components/Z/AppNavTab"
     },
+    "transaction": {
+      "record": {
+        "RecordImageDialog": "components/Y/transaction/record/RecordImageDialog"
+      }
+    },
     "game": {
       "GameCategoryNavigation": "components/Y/game/GameCategoryNavigation",
       "GameJackpot": "components/Y/game/GameJackpot",
@@ -34,9 +39,6 @@
       "GameSearchBlock": "components/Y/game/GameSearchBlock",
       "GameTransferDialog": "components/Y/game/GameTransferDialog",
       "LiveGameEnterDialog": "components/Y/game/LiveGameEnterDialog"
-    },
-    "report": {
-      "ReportBetRecordDetailTable": "components/Y/report/ReportBetRecordDetailTable"
     }
   },
   "views": {
@@ -62,16 +64,20 @@
     "transactionTransfer": "components/Z/transaction/TransactionTransfer",
     "transactionRecordHome": "components/Z/transaction/record/TransactionRecordHome",
     "transactionRecordDeposit": "components/Z/transaction/record/TransactionRecordDeposit",
-    "transactionRecordWithdrawal": "components/Y/transaction/record/TransactionRecordWithdrawal",
-    "transactionRecordTransfer": "components/Y/transaction/record/TransactionRecordTransfer",
-    "transactionRecordBonus": "components/Y/transaction/record/TransactionRecordBonus",
-    "transactionRecordLottery": "components/Y/transaction/record/TransactionRecordLottery",
-    "transactionRecordWithdrawalRestriction": "components/Y/transaction/record/TransactionRecordWithdrawalRestriction",
-    "transactionRecordAdjustment": "components/Y/transaction/record/TransactionRecordAdjustment",
-    "transactionRecordDepositDetail": "components/Y/transaction/record/TransactionRecordDepositDetail",
-    "transactionRecordWithdrawalDetail": "components/Y/transaction/record/TransactionRecordWithdrawalDetail",
-    "transactionRecordTransferDetail": "components/Y/transaction/record/TransactionRecordTransferDetail",
-    "transactionRecordWithdrawalRestrictionDetail": "components/Y/transaction/record/TransactionRecordWithdrawalRestrictionDetail",
+    "transactionRecordWithdrawal": "components/Z/transaction/record/TransactionRecordWithdrawal",
+    "transactionRecordTransfer": "components/Z/transaction/record/TransactionRecordTransfer",
+    "transactionRecordBonus": "components/Z/transaction/record/TransactionRecordBonus",
+    "transactionRecordLottery": "components/Z/transaction/record/TransactionRecordLottery",
+    "transactionRecordWithdrawalRestriction": "components/Z/transaction/record/TransactionRecordWithdrawalRestriction",
+    "transactionRecordAdjustment": "components/Z/transaction/record/TransactionRecordAdjustment",
+    "transactionRecordBetHome": "components/Z/transaction/record/TransactionRecordBetHome",
+    "transactionRecordBetUnsettle": "components/Z/transaction/record/TransactionRecordBetUnsettle",
+    "transactionRecordBetDay": "components/Z/transaction/record/TransactionRecordBetDay",
+    "transactionRecordBetWeek": "components/Z/transaction/record/TransactionRecordBetWeek",
+    "transactionRecordDepositDetail": "components/Z/transaction/record/TransactionRecordDepositDetail",
+    "transactionRecordWithdrawalDetail": "components/Z/transaction/record/TransactionRecordWithdrawalDetail",
+    "transactionRecordTransferDetail": "components/Z/transaction/record/TransactionRecordTransferDetail",
+    "transactionRecordWithdrawalRestrictionDetail": "components/Z/transaction/record/TransactionRecordWithdrawalRestrictionDetail",
     "reportHome": "components/Y/report/ReportHome",
     "reportUnsettleBet": "components/Y/report/ReportUnsettleBet",
     "reportBetRecord": "components/Y/report/ReportBetRecord",

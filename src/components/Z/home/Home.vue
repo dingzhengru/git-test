@@ -189,9 +189,6 @@ export default {
   mounted() {
     import(`@/styles/${this.siteFullCss}/home.scss`);
 
-    //* 取得產品列表
-    // this.getProductList();
-
     // * 取得輪播列表
     this.getBannerList();
 
@@ -210,9 +207,6 @@ export default {
     lang() {
       // * 取得輪播列表
       this.getBannerList();
-
-      //* 取得遊戲館列表
-      this.getProductList();
 
       // * 取得訊息列表(msgtype: C 彈出)
       this.getMessageList();

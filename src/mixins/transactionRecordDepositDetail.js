@@ -13,19 +13,23 @@ export default {
     };
   },
   methods: {
-    async getRecordDetail() {
-      const result = await apiGetRecordDepositDetail(this.$route.query);
+    async getRecordDetail(query) {
+      const result = await apiGetRecordDepositDetail(query || this.$route.query);
       this.detailList = result.RetObj.Rows;
     },
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
 
-    this.getRecordDetail();
+    if (this.$route.query) {
+      this.getRecordDetail(this.$route.query);
+    }
   },
   watch: {
     lang() {
-      this.getRecordDetail();
+      if (this.$route.query) {
+        this.getRecordDetail(this.$route.query);
+      }
     },
   },
 };

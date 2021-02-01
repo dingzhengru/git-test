@@ -22,7 +22,8 @@
       "login": "登入",
       "register": "注册",
       "close": "关闭",
-      "copy": "复制"
+      "copy": "复制",
+      "search": "查询"
     },
     "currency": {
       "thaiBaht": "泰銖"
@@ -553,7 +554,7 @@
         },
         "field": {
           "from": "起",
-          "to": "迄"
+          "to": "至"
         },
         "placeholder": {
           "product": "选择产品",
@@ -644,7 +645,10 @@
           "beforeWallet": "我的钱包(转帐前)",
           "afterWallet": "我的钱包(转帐后)",
           "beforeGameAccount": "游戏帐户(转帐前)",
-          "afterGameAccount": "游戏帐户(转帐后)"
+          "afterGameAccount": "游戏帐户(转帐后)",
+          "product": "馆别",
+          "datetime": "时间",
+          "status": "状态"
         }
       },
       "bonus": {},
@@ -663,13 +667,22 @@
   "report": {
     "nav": {
       "unsettleBet": "未结算投注",
-      "betRecord": "帐务纪录"
+      "betRecord": "帐务纪录",
+      "recordToday": "当天帐务",
+      "recordThisWeek": "本周帐务",
+      "recordLastWeek": "上周帐务"
     },
     "unsettleBet": {
       "table": {
         "Lst_ProductName": "游戏馆别",
         "Lst_BetCount": "总下注笔数",
-        "Lst_TTLBet": "总下注金额"
+        "Lst_TTLBet": "总下注金额",
+        "product": "馆别",
+        "number": "笔数",
+        "amount": "下注金额",
+        "bindAmount": "绑定金额",
+        "total": "合计",
+        "totalPrize": "总彩金"
       }
     },
     "betRecord": {

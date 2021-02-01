@@ -23,9 +23,9 @@
           </select>
         </div>
         <div class="record-content__search-form__field">
-          <span class="record-content__search-form__field__title">{{
-            $t(`transaction.recordContent.transfer.field.from`)
-          }}</span>
+          <span class="record-content__search-form__field__title">
+            {{ $t(`transaction.recordContent.transfer.field.from`) }}
+          </span>
           <input
             class="record-content__search-form__field__input--date-from ui-ipt"
             type="date"
@@ -35,9 +35,9 @@
           />
         </div>
         <div class="record-content__search-form__field">
-          <span class="record-content__search-form__field__title">{{
-            $t(`transaction.recordContent.transfer.field.to`)
-          }}</span>
+          <span class="record-content__search-form__field__title">
+            {{ $t(`transaction.recordContent.transfer.field.to`) }}
+          </span>
           <input
             class="record-content__search-form__field__input--date-to ui-ipt"
             type="date"

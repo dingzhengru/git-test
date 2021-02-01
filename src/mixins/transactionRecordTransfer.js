@@ -49,7 +49,10 @@ export default {
         EndTime: this.search.dateTo == '' ? '' : `${this.search.dateTo} 23:59:59`,
       };
       const result = await apiGetRecordTransfer(requestData);
-      this.recordList = result.RetObj.Rows;
+      this.recordList = result.RetObj.Rows.map(item => {
+        item.isShowDetail = false;
+        return item;
+      });
       this.pagination.count = result.RetObj.Records;
     },
     async getMemberProductList() {

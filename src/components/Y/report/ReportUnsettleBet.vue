@@ -1,7 +1,7 @@
 <template>
-  <div class="report-unsettle-bet" v-if="list.length > 0">
+  <div class="report-unsettle-bet" v-if="recordList.length > 0">
     <div class="report-unsettle-bet__box theme-content-box">
-      <table class="report-unsettle-bet__table ui-table02" v-for="item in list" :key="item.id">
+      <table class="report-unsettle-bet__table ui-table02" v-for="item in recordList" :key="item.id">
         <tbody>
           <tr v-for="(value, key) in item" :key="key">
             <th class="th-1st">
@@ -18,34 +18,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import { apiGetBetHistoryUnsettle } from '@/api/report';
+import mixinTransactionRecordBetUnsettle from '@/mixins/transactionRecordBetUnsettle';
 
 export default {
   name: 'ReportUnsettleBet',
-  computed: {
-    ...mapGetters(['lang']),
-  },
-  data() {
-    return {
-      list: [],
-    };
-  },
-  methods: {
-    async getBetHistoryUnsettle() {
-      const result = await apiGetBetHistoryUnsettle();
-      if (result.Code == 200) {
-        this.list = result.RetObj.Rows;
-      }
-    },
-  },
-  mounted() {
-    this.getBetHistoryUnsettle();
-  },
-  watch: {
-    lang() {
-      this.getBetHistoryUnsettle();
-    },
-  },
+  mixins: [mixinTransactionRecordBetUnsettle],
 };
 </script>

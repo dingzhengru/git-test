@@ -22,7 +22,8 @@
       "login": "Login",
       "register": "Register",
       "close": "Close",
-      "copy": "Copy"
+      "copy": "Copy",
+      "search": "Search"
     },
     "currency": {
       "thaiBaht": "Baht"
@@ -666,13 +667,21 @@
   "report": {
     "nav": {
       "unsettleBet": "Unsettled Betting",
-      "betRecord": "Betting Records"
+      "betRecord": "Betting Records",
+      "recordToday": "Accounting of the day",
+      "recordThisWeek": "Accounting of this week",
+      "recordLastWeek": "Accounting of last week"
     },
     "unsettleBet": {
       "table": {
         "Lst_ProductName": "Arena of Games",
         "Lst_BetCount": "Total Bet Count",
-        "Lst_TTLBet": "Total Bet Amount"
+        "Lst_TTLBet": "Total Bet Amount",
+        "product": "Product",
+        "number": "Number",
+        "amount": "Amount",
+        "bindAmount": "Binding amount",
+        "total": "Total"
       }
     },
     "betRecord": {

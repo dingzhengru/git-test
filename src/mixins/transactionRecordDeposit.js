@@ -9,18 +9,31 @@ export default {
   data() {
     return {
       recordList: [],
+      receiptImageUrl: '',
     };
   },
   methods: {
     async getRecord() {
       const result = await apiGetRecordDeposit();
-      this.recordList = result.RetObj.Rows
+      this.recordList = result.RetObj.Rows.map(item => {
+        item.isShowDetail = false;
+        return item;
+      });
     },
     goRecordDetail(record) {
       if (record.Lst_Status == 2) {
         const query = { TransID: record.Lst_TransID };
         this.$router.push({ name: 'TransactionRecordDepositDetail', query });
       }
+    },
+    toggleRecordDetail(record) {
+      record.isShowDetail = !record.isShowDetail;
+    },
+    openReceiptImage(record) {
+      this.receiptImageUrl = record.Lst_ImageUrl;
+    },
+    closeReceiptImage() {
+      this.receiptImageUrl = '';
     },
   },
   mounted() {

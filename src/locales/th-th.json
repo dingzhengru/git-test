@@ -22,7 +22,8 @@
       "login": "ล็อกอิน",
       "register": "สมัครสมาชิก",
       "close": "ปิด",
-      "copy": "สำเนา"
+      "copy": "สำเนา",
+      "search": "ค้นหา"
     },
     "currency": {
       "thaiBaht": "บาท"
@@ -663,13 +664,21 @@
   "report": {
     "nav": {
       "unsettleBet": "บิลยังไม่ได้คำนวณ",
-      "betRecord": "รายละเอียดรีพอร์ต"
+      "betRecord": "รายละเอียดรีพอร์ต",
+      "recordToday": "รีพอร์ตวันนี้",
+      "recordThisWeek": "รีพอร์ตสัปดาห์นี้",
+      "recordLastWeek": "รีพอร์ตสัปดาห์ก่อน"
     },
     "unsettleBet": {
       "table": {
         "Lst_ProductName": "สาขาเกมส์",
         "Lst_BetCount": "จำนวนบิล",
-        "Lst_TTLBet": "ยอดเดิมพันทั้งหมด"
+        "Lst_TTLBet": "ยอดเดิมพันทั้งหมด",
+        "product": "โซน",
+        "number": "จำนวนรายการ",
+        "amount": "จำนวนเงินเดิมพัน",
+        "bindAmount": "จำนวนเงิินที่สัมพันธ์",
+        "total": "รวม"
       }
     },
     "betRecord": {

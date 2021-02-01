@@ -30,10 +30,10 @@ export default {
         {
           name: 'betRecord',
           text: 'report.nav.betRecord',
-          link: 'ReportBetRecord',
+          link: 'ReportBetRecordHome',
           class: 'ui-li-tabs-bethistory',
           id: '',
-          otherActivePath: ['ReportBetRecordDetail'],
+          otherActivePath: ['ReportBetRecordDetail', 'ReportBetRecordDay', 'ReportBetRecordWeek'],
         },
       ],
     };

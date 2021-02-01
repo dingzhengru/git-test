@@ -1,4 +1,3 @@
-
 import { mapGetters } from 'vuex';
 import { apiGetRecordWithdrawal } from '@/api/transaction-record';
 
@@ -14,7 +13,10 @@ export default {
   methods: {
     async getRecord() {
       const result = await apiGetRecordWithdrawal();
-      this.recordList = result.RetObj.Rows;
+      this.recordList = result.RetObj.Rows.map(item => {
+        item.isShowDetail = false;
+        return item;
+      });
     },
     goRecordDetail(record) {
       if (record.Lst_Status == 2) {

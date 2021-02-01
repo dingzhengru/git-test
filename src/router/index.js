@@ -220,6 +220,32 @@ const routes = [
             name: 'TransactionRecordWithdrawalRestrictionDetail',
             component: () => import('@/views/transaction/record/TransactionRecordWithdrawalRestrictionDetail'),
           },
+          {
+            path: 'bet',
+            component: () => import('@/views/transaction/record/TransactionRecordBetHome'),
+            children: [
+              {
+                path: '',
+                name: 'TransactionRecordBetHome',
+                component: BlankLayout,
+              },
+              {
+                path: 'unsettle',
+                name: 'TransactionRecordBetUnsettle',
+                component: () => import('@/views/transaction/record/TransactionRecordBetUnsettle'),
+              },
+              {
+                path: 'day',
+                name: 'TransactionRecordBetDay',
+                component: () => import('@/views/transaction/record/TransactionRecordBetDay'),
+              },
+              {
+                path: 'week',
+                name: 'TransactionRecordBetWeek',
+                component: () => import('@/views/transaction/record/TransactionRecordBetWeek'),
+              },
+            ],
+          },
         ],
       },
     ],
@@ -239,15 +265,36 @@ const routes = [
         name: 'ReportUnsettleBet',
         component: () => import('@/views/report/ReportUnsettleBet'),
       },
+      // {
+      //   path: 'bet-record',
+      //   name: 'ReportBetRecord',
+      //   component: () => import('@/views/report/ReportBetRecord'),
+      // },
+      // {
+      //   path: 'bet-record/:date',
+      //   name: 'ReportBetRecordDetail',
+      //   component: () => import('@/views/report/ReportBetRecordDetail'),
+      // },
       {
         path: 'bet-record',
-        name: 'ReportBetRecord',
-        component: () => import('@/views/report/ReportBetRecord'),
-      },
-      {
-        path: 'bet-record/:date',
-        name: 'ReportBetRecordDetail',
-        component: () => import('@/views/report/ReportBetRecordDetail'),
+        component: () => import('@/views/report/ReportBetRecordHome'),
+        children: [
+          {
+            path: '',
+            name: 'ReportBetRecordHome',
+            redirect: { name: 'ReportBetRecordDay', query: { Tag: 'Today' } },
+          },
+          {
+            path: 'day',
+            name: 'ReportBetRecordDay',
+            component: () => import('@/views/report/ReportBetRecordDay'),
+          },
+          {
+            path: 'week',
+            name: 'ReportBetRecordWeek',
+            component: () => import('@/views/report/ReportBetRecordWeek'),
+          },
+        ],
       },
     ],
   },

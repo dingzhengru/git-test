@@ -22,7 +22,11 @@ export default {
     async getRecord() {
       const requestData = { Page: this.pagination.page };
       const result = await apiGetRecordWithdrawalRestriction(requestData);
-      this.recordList = result.RetObj.Rows;
+      this.recordList = result.RetObj.Rows.map(item => {
+        item.isShowDetail = false;
+        return item;
+      });
+
       this.pagination.count = result.RetObj.Records;
     },
     goRecordDetail(record) {
@@ -36,6 +40,9 @@ export default {
     changePage(page) {
       this.pagination.page = page;
       this.getRecord();
+    },
+    toggleRecordDetail(record) {
+      record.isShowDetail = !record.isShowDetail;
     },
   },
   mounted() {

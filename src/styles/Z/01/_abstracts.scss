@@ -124,11 +124,11 @@ $service-term-btn-color: white;
     &__label {
       color: $field-label-color;
       min-width: 15%;
+      margin-right: 15px;
     }
     &__input {
       background: transparent;
       color: $field-input-color;
-      margin-left: 15px;
       border: none;
       &::placeholder {
         color: $field-input-color-placeholder;

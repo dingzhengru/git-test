@@ -38,8 +38,8 @@
               </th>
               <td
                 class="record-content__ul__li__table__td-2nd td-2nd"
-                @click.prevent="imageDialogUrl = item.Lst_ImageUrl"
                 :class="{ 'ui-txt-link': item.Lst_ImageUrl }"
+                @click="openReceiptImage(item)"
               >
                 {{ item.Lst_Receipt }}
               </td>
@@ -67,9 +67,9 @@
 
     <component
       :is="RecordImageDialog"
-      :imageUrl="imageDialogUrl"
-      @close="imageDialogUrl = ''"
-      :isShow="!!imageDialogUrl"
+      :imageUrl="receiptImageUrl"
+      :isShow="!!receiptImageUrl"
+      @close="closeReceiptImage"
     />
   </div>
 </template>
@@ -86,11 +86,6 @@ export default {
     RecordImageDialog() {
       return () => import(`@/${this.siteSetting.components.transaction.record.RecordImageDialog}`);
     },
-  },
-  data() {
-    return {
-      imageDialogUrl: '',
-    };
   },
 };
 </script>

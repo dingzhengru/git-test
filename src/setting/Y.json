@@ -39,9 +39,6 @@
       "GameSearchBlock": "components/Y/game/GameSearchBlock",
       "GameTransferDialog": "components/Y/game/GameTransferDialog",
       "LiveGameEnterDialog": "components/Y/game/LiveGameEnterDialog"
-    },
-    "report": {
-      "ReportBetRecordDetailTable": "components/Y/report/ReportBetRecordDetailTable"
     }
   },
   "views": {
@@ -77,6 +74,11 @@
     "reportUnsettleBet": "components/Y/report/ReportUnsettleBet",
     "reportBetRecord": "components/Y/report/ReportBetRecord",
     "reportBetRecordDetail": "components/Y/report/ReportBetRecordDetail",
+
+    "reportBetRecordHome": "components/Y/report/ReportBetRecordHome",
+    "reportBetRecordDay": "components/Y/report/ReportBetRecordDay",
+    "reportBetRecordWeek": "components/Y/report/ReportBetRecordWeek",
+
     "notificationHome": "components/Y/notification/NotificationHome",
     "notificationNews": "components/Y/notification/NotificationNews",
     "notificationInbox": "components/Y/notification/NotificationInbox",

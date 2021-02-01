@@ -4,6 +4,8 @@
 
 H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
+- [Z 版筆記](#z-版筆記)
+  - [API](#api)
 - [Token & 公鑰](#token--公鑰)
 - [workbox](#workbox)
   - [workbox 預緩存設定(precache)](#workbox-預緩存設定precache)
@@ -30,6 +32,13 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [javascript-winwheel](#javascript-winwheel)
   - [gsap](#gsap)
   - [vee-validate](#vee-validate-1)
+
+## Z 版筆記
+
+### API
+
+- 紀錄: 因跟 Y 版顯示的欄位架構不同，所以缺少各種欄位
+- 投注紀錄-未結算投注: 缺少綁定金額欄位、report 連結 (點擊館別)
 
 ## Token & 公鑰
 

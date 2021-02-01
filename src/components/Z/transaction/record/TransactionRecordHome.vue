@@ -1,7 +1,7 @@
 <template>
   <div class="record">
     <div class="ui-field">
-      <select class="ui-field__select" v-model="route">
+      <select class="ui-field__select" v-model="route" @change="changeRoute">
         <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
         <option :value="item" v-for="item in routeList" :key="item.name">
           {{ $t(item.text) }}
@@ -52,7 +52,7 @@ export default {
         {
           name: 'withdrawalRestriction',
           text: 'transaction.record.withdrawalRestriction',
-          link: 'withdrawalRestriction',
+          link: 'TransactionRecordWithdrawalRestriction',
         },
         {
           name: 'adjustment',
@@ -62,18 +62,29 @@ export default {
         {
           name: 'bet',
           text: 'transaction.record.bet',
-          link: 'TransactionRecordBet',
+          link: 'TransactionRecordBetUnsettle',
         },
       ],
+      betChildrenRouteList: ['TransactionRecordBetDay', 'TransactionRecordBetWeek'],
     };
+  },
+  methods: {
+    updateRoute() {
+      this.route = this.routeList.find(item => item.link == this.$route.name) || {};
+
+      if (this.betChildrenRouteList.includes(this.$route.name)) {
+        this.route = this.routeList.find(item => item.link == 'TransactionRecordBetUnsettle') || {};
+      }
+    },
+    changeRoute() {
+      if (Object.keys(this.route).length > 0 && this.$route.name != this.route.name) {
+        this.$router.push({ name: this.route.link });
+      }
+    },
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
-  },
-  watch: {
-    route() {
-      this.$router.push({ name: this.route.link });
-    },
+    this.updateRoute();
   },
 };
 </script>

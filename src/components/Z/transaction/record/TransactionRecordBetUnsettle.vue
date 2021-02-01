@@ -1,0 +1,41 @@
+<template>
+  <div>
+    <table class="ui-table record-content__table record-content__table--bet">
+      <tr>
+        <th>{{ $t('report.unsettleBet.table.product') }}</th>
+        <th>{{ $t('report.unsettleBet.table.number') }}</th>
+        <th>{{ $t('report.unsettleBet.table.amount') }}</th>
+        <th>{{ $t('report.unsettleBet.table.bindAmount') }}</th>
+      </tr>
+      <template v-for="(item, index) in recordList">
+        <tr :key="item.Lst_TransID + String(index)">
+          <td>
+            <a href="javascript:;">
+              {{ item.Lst_ProductName }}
+            </a>
+          </td>
+          <td>{{ item.Lst_BetCount }}</td>
+          <td>
+            {{ $numeral(item.Lst_TTLBet).format('0,0.00') }}
+          </td>
+          <td></td>
+        </tr>
+      </template>
+      <tr>
+        <td>{{ $t('report.unsettleBet.table.total') }}</td>
+        <td>{{ totalRecord.Lst_BetCount }}</td>
+        <td>{{ $numeral(totalRecord.Lst_TTLBet).format('0,0.00') }}</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</template>
+
+<script>
+import mixinTransactionRecordBetUnsettle from '@/mixins/transactionRecordBetUnsettle';
+
+export default {
+  name: 'TransactionRecordBetUnsettle',
+  mixins: [mixinTransactionRecordBetUnsettle],
+};
+</script>
