@@ -8,15 +8,50 @@ $game-bg: #1c6080;
   @include game;
 }
 
-$game-lobby-jackpot-bg-en-us: assetPath('theme/bg_jackpot-en-us.png') center no-repeat;
-$game-lobby-jackpot-bg-th-th: assetPath('theme/bg_jackpot-th-th.png') center no-repeat;
-$game-lobby-jackpot-bg-zh-cn: assetPath('theme/bg_jackpot-zh-cn.png') center no-repeat;
+$game-lobby-jackpot-bg-en-us: assetPath('game-lobby/bg_jackpot-en-us.png') center no-repeat;
+$game-lobby-jackpot-bg-th-th: assetPath('game-lobby/bg_jackpot-th-th.png') center no-repeat;
+$game-lobby-jackpot-bg-zh-cn: assetPath('game-lobby/bg_jackpot-zh-cn.png') center no-repeat;
+$game-lobby-jackpot-text-color: white;
+$game-lobby-jackpot-text-bg: linear-gradient(to bottom, #989898 0%, #ffffff 100%);
 
 .game-lobby-jackpot {
   @include game-lobby-jackpot;
 }
 
 $game-lobby-product-bg: black;
+$game-lobby-product-item-bg-active: none;
+$game-lobby-product-icon-width: 90px;
+$game-lobby-product-icon-height: 50px;
+$game-lobby-product-icon-bg-1180: assetPath('game-lobby/1260.png') center top no-repeat;
+$game-lobby-product-icon-bg-1180-active: assetPath('game-lobby/1260-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1240: assetPath('game-lobby/1240.png') center top no-repeat;
+$game-lobby-product-icon-bg-1240-active: assetPath('game-lobby/1240-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1250: assetPath('game-lobby/1250.png') center top no-repeat;
+$game-lobby-product-icon-bg-1250-active: assetPath('game-lobby/1250-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1260: assetPath('game-lobby/1260.png') center top no-repeat;
+$game-lobby-product-icon-bg-1260-active: assetPath('game-lobby/1260-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1270: assetPath('game-lobby/1270.png') center top no-repeat;
+$game-lobby-product-icon-bg-1270-active: assetPath('game-lobby/1270-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1280: assetPath('game-lobby/1280.png') center top no-repeat;
+$game-lobby-product-icon-bg-1280-active: assetPath('game-lobby/1280-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1300: assetPath('game-lobby/1300.png') center top no-repeat;
+$game-lobby-product-icon-bg-1300-active: assetPath('game-lobby/1300-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1310: assetPath('game-lobby/1310.png') center top no-repeat;
+$game-lobby-product-icon-bg-1310-active: assetPath('game-lobby/1310-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1340: assetPath('game-lobby/1340.png') center top no-repeat;
+$game-lobby-product-icon-bg-1340-active: assetPath('game-lobby/1340-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1350: assetPath('game-lobby/1350.png') center top no-repeat;
+$game-lobby-product-icon-bg-1350-active: assetPath('game-lobby/1350-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1360: assetPath('game-lobby/1360.png') center top no-repeat;
+$game-lobby-product-icon-bg-1360-active: assetPath('game-lobby/1360-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1370: assetPath('game-lobby/1370.png') center top no-repeat;
+$game-lobby-product-icon-bg-1370-active: assetPath('game-lobby/1370-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1380: assetPath('game-lobby/1380.png') center top no-repeat;
+$game-lobby-product-icon-bg-1380-active: assetPath('game-lobby/1380-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1390: assetPath('game-lobby/1390.png') center top no-repeat;
+$game-lobby-product-icon-bg-1390-active: assetPath('game-lobby/1390-active.png') center top no-repeat;
+$game-lobby-product-icon-bg-1400: assetPath('game-lobby/1400.png') center top no-repeat;
+$game-lobby-product-icon-bg-1400-active: assetPath('game-lobby/1400-active.png') center top no-repeat;
 
 .game-lobby-product {
   @include game-lobby-product;
@@ -32,6 +67,11 @@ $game-lobby-category-text-color-active: #fff100;
 
 $game-lobby-list-table-bg: #1c6080;
 $game-lobby-list-table-tr-bg: assetPath('ui/bg_list_line.jpg') center bottom no-repeat;
+$game-lobby-list-table-tr-border-bottom: none;
+
+$game-lobby-list-table-title-color: white;
+$game-lobby-list-table-content-color: white;
+
 $game-lobby-list-link-bg-start: assetPath('ui/btn_start.png');
 $game-lobby-list-link-bg-free: assetPath('ui/btn_freeplay.png');
 $game-lobby-list-link-bg-fav: assetPath('ui/btn_favorites.png');
@@ -42,42 +82,54 @@ $game-lobby-list-link-bg-fav-active: assetPath('ui/btn_favorites_active.png');
 }
 
 $game-lobby-search-bg: #11516f;
+
 $game-lobby-search-input-bg: black;
-$game-lobby-search-input-icon: assetPath('ui/bg_lnk_inquire.png') transparent center no-repeat;
+$game-lobby-search-input-bg: assetPath('ui/bg_ipt_inquire.png') transparent center no-repeat;
+$game-lobby-search-input-color: white;
+$game-lobby-search-input-width: 200px;
+$game-lobby-search-input-height: 59px;
+
+$game-lobby-search-icon-bg: assetPath('ui/bg_lnk_inquire.png') center no-repeat;
+$game-lobby-search-icon-width: 53px;
+$game-lobby-search-icon-height: 59px;
+
 $game-lobby-search-fav-bg: assetPath('ui/ipt_favorites.png') center no-repeat;
+$game-lobby-search-fav-width: 56px;
+$game-lobby-search-fav-height: 59px;
+
 $game-lobby-search-transfer-bg: assetPath('ui/btn_transferNow.png') left center no-repeat;
+$game-lobby-search-transfer-color: white;
+$game-lobby-search-transfer-width: 187px;
+$game-lobby-search-transfer-height: 59px;
 
 .game-lobby-search {
   @include game-lobby-search;
-  min-height: 100px;
-  &__form {
-    box-sizing: border-box;
-    width: 350px;
-    height: 59px;
-  }
-  input {
-    box-sizing: border-box;
-    height: 53px;
-  }
-  button[type='submit'] {
-    top: 21px;
-    height: 59px;
-  }
 
-  &__button--transfer-now {
-    margin-top: 18px;
+  &__btn {
+    &--transfer {
+      padding-left: 30px;
+    }
   }
 }
-
-$game-transfer-dialog-button-bg-submit: $btn-bg-red;
 
 $game-transfer-dialog-bg: #1c6080;
 $game-transfer-dialog-border: 2px solid #c1ae71;
 
+$game-transfer-dialog-title-color: white;
+$game-transfer-dialog-label-color: #959595;
+$game-transfer-dialog-content-color: #d6c388;
+
+$game-transfer-dialog-switch-width: 261px;
 $game-transfer-dialog-switch-left: assetPath('ui/lnk-trans.png') transparent left no-repeat;
 $game-transfer-dialog-switch-left-on: assetPath('ui/lnk-trans-on.png') transparent left no-repeat;
 $game-transfer-dialog-switch-right: assetPath('ui/lnk-trans2.png') transparent right no-repeat;
 $game-transfer-dialog-switch-right-on: assetPath('ui/lnk-trans2-on.png') transparent right no-repeat;
+
+$game-transfer-dialog-btn-bg-submit: $btn-bg-red;
+$game-transfer-dialog-btn-color-submit: white;
+
+$game-transfer-dialog-input-bg: #2d2d2d;
+$game-transfer-dialog-input-color: white;
 
 .game-transfer-dialog {
   @include game-transfer-dialog;
@@ -85,80 +137,9 @@ $game-transfer-dialog-switch-right-on: assetPath('ui/lnk-trans2-on.png') transpa
 
 $live-game-enter-dialog-bg: #1c6080;
 $live-game-enter-dialog-border: 2px solid #c1ae71;
+$live-game-enter-dialog-btn-bg: $btn-bg-red;
+$live-game-enter-dialog-btn-color: white;
 
 .live-game-enter-dialog {
   @include live-game-enter-dialog;
-}
-
-.ui-li-supply-1180 {
-  background: assetPath('ui/supply-1180.png') center top no-repeat;
-}
-.ui-li-supply-1150 {
-  background: assetPath('ui/supply-1150.png') center top no-repeat;
-}
-.ui-li-supply-1140 {
-  background: assetPath('ui/supply-1140.png') center top no-repeat;
-}
-.ui-li-supply-1120 {
-  background: assetPath('ui/supply-1120.png') center top no-repeat;
-}
-.ui-li-supply-1130 {
-  background: assetPath('ui/supply-1130.png') center top no-repeat;
-}
-.ui-li-supply-1030 {
-  background: assetPath('ui/supply-1030.png') center top no-repeat;
-}
-.ui-li-supply-1190 {
-  background: assetPath('ui/supply-1190.png') center top no-repeat;
-}
-.ui-li-supply-1010 {
-  background: assetPath('ui/supply-1010.png') center top no-repeat;
-}
-.ui-li-supply-1170 {
-  background: assetPath('ui/supply-1170.png') center top no-repeat;
-}
-.ui-li-supply-1160 {
-  background: assetPath('ui/supply-1160.png') center top no-repeat;
-}
-.ui-li-supply-1200 {
-  background: assetPath('ui/supply-1200.png') center top no-repeat;
-}
-.ui-li-supply-1190-02 {
-  background: assetPath('ui/supply-1190-02.png') center top no-repeat;
-}
-.ui-li-supply-1180.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1180-active.png') center top no-repeat;
-}
-.ui-li-supply-1150.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1150-active.png') center top no-repeat;
-}
-.ui-li-supply-1140.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1140-active.png') center top no-repeat;
-}
-.ui-li-supply-1120.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1120-active.png') center top no-repeat;
-}
-.ui-li-supply-1130.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1130-active.png') center top no-repeat;
-}
-.ui-li-supply-1030.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1030-active.png') center top no-repeat;
-}
-.ui-li-supply-1190.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1190-active.png') center top no-repeat;
-}
-.ui-li-supply-1190-02.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1190-02-active.png') center top no-repeat;
-}
-.ui-li-supply-1010.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1010-active.png') center top no-repeat;
-}
-.ui-li-supply-1170.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1170-active.png') center top no-repeat;
-}
-.ui-li-supply-1160.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1160-active.png') center top no-repeat;
-}
-.ui-li-supply-1200.game-lobby__supply__ul__li--active {
-  background: assetPath('ui/supply-1200-active.png') center top no-repeat;
 }

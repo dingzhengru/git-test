@@ -68,6 +68,12 @@ $nav-tab-text-color-active: #c8aa73;
 $nav-tab-border-bottom: 5px solid #8b8b8b;
 $nav-tab-border-bottom-active: 5px solid #c8aa73;
 
+$box-close-bg: #cab985;
+$box-close-size: 48px;
+$box-close-width: 2px;
+$box-close-top: 24px;
+$box-close-right: 24px;
+
 //* 服務規章視窗
 $service-term-close-color: #cab985;
 $service-term-item-title-icon: assetPath('ui/ui-arrow-select.png');
@@ -333,6 +339,31 @@ $service-term-btn-color: white;
         color: $nav-tab-text-color-active;
       }
     }
+  }
+}
+
+@mixin ui-box-close {
+  position: absolute;
+  right: $box-close-top;
+  top: $box-close-right;
+  width: $box-close-size;
+  height: $box-close-size;
+
+  &:before,
+  &:after {
+    background: $box-close-bg;
+    position: absolute;
+    left: $box-close-size / 2;
+    content: ' ';
+    height: $box-close-size;
+    width: $box-close-width;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
   }
 }
 

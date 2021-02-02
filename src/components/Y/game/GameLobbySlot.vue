@@ -121,34 +121,6 @@ export default {
       let result = {};
       result = await apiGetGameLobbyProduct(requestData);
       this.productList = result.RetObj.ProductList;
-      this.productList = this.productList.map(item => {
-        //* 放置對應的 css
-        if (item.Lst_Proxy_Product_Key == 1031) {
-          //* RG-PNG電子
-          item.class = 'ui-li-supply-1190';
-        } else if (item.Lst_Proxy_Product_Key == 2602) {
-          //* Mg+電子
-          item.class = 'ui-li-supply-1190';
-        } else if (item.Lst_Proxy_Product_Key == 2100) {
-          //* DS電子
-          item.class = 'ui-li-supply-1190';
-        } else if (item.Lst_Proxy_Product_Key == 1034) {
-          //* 皇家電子
-          item.class = 'ui-li-supply-1190';
-        } else if (item.Lst_Proxy_Product_Key == 2200 || item.Lst_Proxy_Product_Key == 1040) {
-          //* CQ9
-          item.class = 'ui-li-supply-1200';
-        } else if (item.Lst_Proxy_Product_Key == 2300 || item.Lst_Proxy_Product_Key == 701) {
-          //* JDB
-          item.class = 'ui-li-supply-1180';
-        } else if (item.Lst_Proxy_Product_Key == 2400 || item.Lst_Proxy_Product_Key == 402) {
-          //* BBIN
-          item.class = 'ui-li-supply-1120';
-        } else {
-          item.class = 'ui-li-supply-1190';
-        }
-        return item;
-      });
     },
     async getGameCategoryList() {
       let result = {};

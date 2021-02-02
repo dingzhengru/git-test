@@ -31,18 +31,20 @@
             >
               {{ $t('game.transfer.transferByEnter') }}
             </button>
-            <ValidationProvider :rules="{ required: true, integer: true, min_value: 1, max_value: wallet.Point }">
-              <input
-                class="game-transfer-dialog__form__input"
-                type="number"
-                v-model.number="amount"
-                v-if="!isTransferAll"
-                @focus="focusAmount"
-                @blur="blurAmount"
-                @change="changeAmount"
-              />
-            </ValidationProvider>
           </div>
+
+          <ValidationProvider :rules="{ required: true, integer: true, min_value: 1, max_value: wallet.Point }">
+            <input
+              class="game-transfer-dialog__form__input"
+              type="number"
+              v-model.number="amount"
+              v-if="!isTransferAll"
+              @focus="focusAmount"
+              @blur="blurAmount"
+              @change="changeAmount"
+            />
+          </ValidationProvider>
+
           <button class="game-transfer-dialog__form__button ui-btn" type="submit" :disabled="invalid">
             {{ $t('game.transfer.submit') }}
           </button>

@@ -42,3 +42,7 @@ body {
 .service-term {
   @include service-term;
 }
+
+.ui-box-close {
+  @include ui-box-close;
+}

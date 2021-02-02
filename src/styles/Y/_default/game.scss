@@ -1,6 +1,6 @@
 @mixin game {
   background: $game-bg;
-  padding-top: $header-sub-height + 20;
+  padding-top: $header-sub-height-auth + 30;
   padding-bottom: $footer-height;
   min-height: 65vh;
 }
@@ -17,8 +17,8 @@
     font-size: 42px;
     font-family: Arial Black, sans-serif;
     font-weight: bold;
-    color: #fffefe;
-    background: linear-gradient(to bottom, #989898 0%, #ffffff 100%);
+    color: $game-lobby-jackpot-text-color;
+    background: $game-lobby-jackpot-text-bg;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -37,38 +37,131 @@
 @mixin game-lobby-product {
   background: $game-lobby-product-bg;
   height: 108px;
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
 
-  &__ul {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 11px 0;
-    white-space: nowrap;
-    overflow: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow-x: auto;
 
-    &__li {
-      display: inline-block;
-      letter-spacing: normal;
-      word-spacing: normal;
-      margin: 0 21px;
+  &:before,
+  &:after {
+    content: '';
+    flex-grow: 1;
+  }
 
-      &__link {
-        min-width: 74px;
-        display: block;
-        padding: 56px 0 0 0;
-        font-size: 22px;
-        color: #92a0c0;
-        text-align: center;
+  &__item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+
+    &.active {
+      background: $game-lobby-product-item-bg-active;
+    }
+
+    &__icon {
+      width: $game-lobby-product-icon-width;
+      height: $game-lobby-product-icon-height;
+
+      &--1180 {
+        background: $game-lobby-product-icon-bg-1180;
+        &.active {
+          background: $game-lobby-product-icon-bg-1180-active;
+        }
       }
-
-      &--active > .game-lobby-product__ul__li__link {
-        color: #ffbebc;
-        text-shadow: 0px 0px 8px #ff1c59;
+      &--1240 {
+        background: $game-lobby-product-icon-bg-1240;
+        &.active {
+          background: $game-lobby-product-icon-bg-1240-active;
+        }
       }
+      &--1250 {
+        background: $game-lobby-product-icon-bg-1250;
+        &.active {
+          background: $game-lobby-product-icon-bg-1250-active;
+        }
+      }
+      &--1260 {
+        background: $game-lobby-product-icon-bg-1260;
+        &.active {
+          background: $game-lobby-product-icon-bg-1260-active;
+        }
+      }
+      &--1270 {
+        background: $game-lobby-product-icon-bg-1270;
+        &.active {
+          background: $game-lobby-product-icon-bg-1270-active;
+        }
+      }
+      &--1280 {
+        background: $game-lobby-product-icon-bg-1280;
+        &.active {
+          background: $game-lobby-product-icon-bg-1280-active;
+        }
+      }
+      &--1300 {
+        background: $game-lobby-product-icon-bg-1300;
+        &.active {
+          background: $game-lobby-product-icon-bg-1300-active;
+        }
+      }
+      &--1310 {
+        background: $game-lobby-product-icon-bg-1310;
+        &.active {
+          background: $game-lobby-product-icon-bg-1310-active;
+        }
+      }
+      &--1340 {
+        background: $game-lobby-product-icon-bg-1340;
+        &.active {
+          background: $game-lobby-product-icon-bg-1340-active;
+        }
+      }
+      &--1350 {
+        background: $game-lobby-product-icon-bg-1350;
+        &.active {
+          background: $game-lobby-product-icon-bg-1350-active;
+        }
+      }
+      &--1360 {
+        background: $game-lobby-product-icon-bg-1360;
+        &.active {
+          background: $game-lobby-product-icon-bg-1360-active;
+        }
+      }
+      &--1370 {
+        background: $game-lobby-product-icon-bg-1370;
+        &.active {
+          background: $game-lobby-product-icon-bg-1370-active;
+        }
+      }
+      &--1380 {
+        background: $game-lobby-product-icon-bg-1380;
+        &.active {
+          background: $game-lobby-product-icon-bg-1380-active;
+        }
+      }
+      &--1390 {
+        background: $game-lobby-product-icon-bg-1390;
+        &.active {
+          background: $game-lobby-product-icon-bg-1390-active;
+        }
+      }
+      &--1400 {
+        background: $game-lobby-product-icon-bg-1400;
+        &.active {
+          background: $game-lobby-product-icon-bg-1400-active;
+        }
+      }
+    }
+    &__text {
+      font-size: 1.5rem;
+      color: white;
     }
   }
 }
@@ -119,7 +212,7 @@
 
     &__tr {
       background: $game-lobby-list-table-tr-bg;
-
+      border-bottom: $game-lobby-list-table-tr-border-bottom;
       &__td {
         &__link {
           &--start {
@@ -147,11 +240,12 @@
         }
       }
       &__td-2nd {
+        color: $game-lobby-list-table-title-color;
         width: auto;
         min-width: 208px;
         padding: 0 5px;
         font-size: 24px;
-        color: #92a0c0;
+        // color: #92a0c0;
         font-weight: bold;
         vertical-align: middle;
         word-break: break-word;
@@ -166,7 +260,7 @@
           display: inline-block;
           width: 90px;
           height: 83px;
-          color: #fff;
+          color: $game-lobby-list-table-content-color;
           font-size: 21px;
           line-height: 205px;
           margin: 0 10px;
@@ -179,68 +273,53 @@
 
 @mixin game-lobby-search {
   background: $game-lobby-search-bg;
-  position: relative;
+  padding: 30px 15px;
+  font-size: 1.5rem;
 
   &__form {
-    display: inline-block;
-    position: relative;
-
-    &__search {
-      background: $game-lobby-search-input-bg;
-      width: 302px;
-      // background-size: cover;
-      // background-attachment: fixed;
-      height: 59px;
-      margin: 25px 0 31px 34px;
-      font-size: 24px;
-      border: 0;
-      text-indent: 20px;
-      outline: none;
-
-      &-icon {
-        background: $game-lobby-search-input-icon;
-      }
-    }
-    &__search-icon {
-      top: 19px;
-      right: 0;
-      position: absolute;
-      width: 53px;
-      height: 71px;
-      border: 0;
-    }
+    display: flex;
   }
 
-  &__favorites {
-    background: $game-lobby-search-fav-bg;
-    width: 85px;
-    height: 65px;
-    margin: 0 0 16px 85px;
-    font-size: 24px;
-    border: 0;
-    vertical-align: middle;
+  &__right {
+    margin-left: auto;
+    display: flex;
   }
 
-  &__button--transfer-now {
-    background: $game-lobby-search-transfer-bg;
-    display: block;
-    width: 187px;
-    height: 65px;
-    /* font-size: 21px; */
-    padding: 10px 10px 10px 48px;
-    margin: 22px 10px 0 0;
-    color: #fedebe;
+  &__input {
+    background: $game-lobby-search-input-bg;
+    color: $game-lobby-search-input-color;
+    width: $game-lobby-search-input-width;
+    height: $game-lobby-search-input-height;
     border: none;
-    float: right;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 5px 15px;
+    box-sizing: border-box !important;
+  }
 
-    &:lang(en-us) {
-      font-size: 20px;
+  button {
+    border: none;
+  }
+
+  &__btn {
+    &--submit {
+      background: $game-lobby-search-icon-bg;
+      width: $game-lobby-search-icon-width;
+      height: $game-lobby-search-icon-height;
+      margin-left: -1px;
     }
-    &:lang(th-th) {
-      font-size: 24px;
+    &--fav {
+      background: $game-lobby-search-fav-bg;
+      width: $game-lobby-search-fav-width; // 56px
+      height: $game-lobby-search-fav-height;
+      margin-right: 15px;
     }
-    &:lang(zh-cn) {
-      font-size: 28px;
+    &--transfer {
+      background: $game-lobby-search-transfer-bg;
+      color: $game-lobby-search-transfer-color;
+      width: $game-lobby-search-transfer-width;
+      height: $game-lobby-search-transfer-height;
+      text-align: center;
     }
   }
 }
@@ -248,7 +327,7 @@
 @mixin game-transfer-dialog {
   background: $game-transfer-dialog-bg;
   border: $game-transfer-dialog-border;
-  width: 80%;
+  width: 85%;
   /* height: 628px; */
   position: absolute;
   top: 25%;
@@ -262,32 +341,30 @@
   padding: 40px 30px 40px 30px;
 
   &__title {
+    color: $game-transfer-dialog-title-color;
     margin-bottom: 30px;
     font-size: 3rem;
     text-align: center;
     font-weight: bold;
   }
   &__form {
-    margin-bottom: 60px;
-
     &__text {
       text-align: left;
       margin-left: 30px;
-      color: #959595;
+      color: $game-transfer-dialog-label-color;
 
       span {
-        color: #d6c388;
+        color: $game-transfer-dialog-content-color;
       }
     }
     &__switch-div {
       margin-top: 20px;
+      white-space: nowrap;
     }
     &__switch {
       display: inline-block;
-      min-width: 250px;
-      max-width: 255px;
+      width: $game-transfer-dialog-switch-width;
       height: 100px;
-      font-weight: bold;
       padding-left: 50px;
       /* padding: 25px 0px 30px 50px; */
       color: #686868;
@@ -311,10 +388,11 @@
     }
 
     &__input {
+      background: $game-transfer-dialog-input-bg;
+      color: $game-transfer-dialog-input-color;
       width: 98%;
       padding: 16px 0 16px 20px;
       font-size: 34px;
-      background-color: #2d2d2d;
       border-radius: 6px;
       border: 1px solid #7e7e7e;
       margin-top: 20px;
@@ -323,7 +401,8 @@
     &__button {
       margin-top: 30px;
       width: 98%;
-      background: $game-transfer-dialog-button-bg-submit;
+      background: $game-transfer-dialog-btn-bg-submit;
+      color: $game-transfer-dialog-btn-color-submit;
     }
   }
 }
@@ -347,7 +426,8 @@
   &__button-div {
     button {
       margin-top: 30px;
-      background-image: url(~@/assets/common/ui/btn--red.jpg);
+      background: $live-game-enter-dialog-btn-bg;
+      color: $live-game-enter-dialog-btn-color;
     }
   }
 }

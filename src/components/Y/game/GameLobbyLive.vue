@@ -6,7 +6,7 @@
       :productCurrent="productCurrent"
       @change-product="changeProduct"
     />
-    
+
     <component
       :is="GameCategoryNavigation"
       :categoryList="categoryList"
@@ -111,12 +111,6 @@ export default {
       let result = {};
       result = await apiGetLiveGameLobbyProduct(requestData);
       this.productList = result.RetObj.ProductList;
-      this.productList = this.productList.map(item => {
-        //* 放置對應的 css
-        //* 真人
-        item.class = 'ui-li-supply-1190';
-        return item;
-      });
     },
     async getGameCategoryList() {
       let result = {};

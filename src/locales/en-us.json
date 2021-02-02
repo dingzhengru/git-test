@@ -162,7 +162,8 @@
     "login": "Log in / Register",
     "transaction": "Cashier",
     "promotion": "Promotions",
-    "contact": "Online Customer"
+    "contact": "Online Customer",
+    "transaction-2": "Cashier"
   },
   "home": {
     "lottery": {

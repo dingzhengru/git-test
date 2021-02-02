@@ -162,7 +162,8 @@
     "login": "登入 / 注册",
     "transaction": "出納櫃台",
     "promotion": "优惠活动",
-    "contact": "在线客服"
+    "contact": "在线客服",
+    "transaction-2": "交易中心"
   },
   "home": {
     "lottery": {
@@ -681,8 +682,7 @@
         "number": "笔数",
         "amount": "下注金额",
         "bindAmount": "绑定金额",
-        "total": "合计",
-        "totalPrize": "总彩金"
+        "total": "合计"
       }
     },
     "betRecord": {

@@ -162,7 +162,8 @@
     "login": "เข้าสู่ระบบ / ลงทะเบียน",
     "transaction": "กระเป๋าเงิน",
     "promotion": "โปรโมชั่น",
-    "contact": "ศูนย์ลูกค้า"
+    "contact": "ศูนย์ลูกค้า",
+    "transaction-2": "กระเป๋าเงิน"
   },
   "home": {
     "lottery": {

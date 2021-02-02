@@ -1,17 +1,23 @@
 <template>
   <div class="game-lobby-product">
-    <ul class="game-lobby-product__ul" :class="{ 'text-center': productList.length == 1 }">
-      <li
-        class="game-lobby-product__ul__li"
-        :class="[item.class, { active: item.Lst_Proxy_Product_Key == productCurrent.Lst_Proxy_Product_Key }]"
-        v-for="item in productList"
-        :key="item.Lst_Proxy_Product_Key"
-      >
-        <a class="game-lobby-product__ul__li__link" href="javascript:;" @click="changeProduct(item)">
-          {{ item.Lst_Name }}
-        </a>
-      </li>
-    </ul>
+    <div
+      class="game-lobby-product__item"
+      v-for="item in productList"
+      :key="item.Lst_Product_id"
+      :class="{ active: item.Lst_Product_id == productCurrent.Lst_Product_id }"
+      @click="changeProduct(item)"
+    >
+      <i
+        class="game-lobby-product__item__icon"
+        :class="[
+          `game-lobby-product__item__icon--${item.Lst_Product_id}`,
+          { active: item.Lst_Product_id == productCurrent.Lst_Product_id },
+        ]"
+      ></i>
+      <div class="game-lobby-product__item__text">
+        {{ item.Lst_Name }}
+      </div>
+    </div>
   </div>
 </template>
 

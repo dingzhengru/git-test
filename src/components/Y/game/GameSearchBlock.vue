@@ -2,17 +2,20 @@
   <div class="game-lobby-search">
     <form class="game-lobby-search__form" @submit.prevent="submitSearch">
       <input
-        class="game-lobby-search__form__search"
+        class="game-lobby-search__input"
         type="search"
         v-model="search.text"
         :placeholder="$t('game.placeholder.search')"
       />
-      <button class="game-lobby-search__form__search-icon" type="submit"></button>
+      <button class="game-lobby-search__btn--submit" type="submit"></button>
+
+      <div class="game-lobby-search__right">
+        <button class="game-lobby-search__btn--fav" @click="changeIsFav" v-if="isShowLike"></button>
+        <button class="game-lobby-search__btn--transfer" @click="openTransferDialog">
+          {{ $t('game.button.transferNow') }}
+        </button>
+      </div>
     </form>
-    <button class="game-lobby-search__favorites" @click="changeIsFav" v-if="isShowLike"></button>
-    <button class="game-lobby-search__button--transfer-now" @click="openTransferDialog">
-      {{ $t('game.button.transferNow') }}
-    </button>
   </div>
 </template>
 
