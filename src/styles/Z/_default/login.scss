@@ -1,7 +1,7 @@
 @mixin login {
   font-size: 2rem;
   padding: 30px 60px;
-  padding-bottom: $footer-height;
+  padding-bottom: $footer-height + 30;
   &-form {
     display: flex;
     flex-direction: column;
@@ -35,6 +35,11 @@
       background: $login-btn-bg-register;
       color: $login-btn-text-color-register;
       box-shadow: $login-btn-shadow-register;
+    }
+    &--pwa {
+      background: $login-btn-bg-pwa;
+      color: $login-btn-text-color-pwa;
+      box-shadow: $login-btn-shadow-pwa;
     }
   }
 

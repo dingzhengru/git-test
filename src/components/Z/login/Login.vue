@@ -84,6 +84,21 @@
         <button class="login__btn--forget ui-btn ui-btn--block" @click="$router.push({ name: 'ForgetPassword' })">
           {{ $t('login.link.forgetPassword') }}
         </button>
+
+        <button
+          class="login__btn--pwa ui-btn ui-btn--block"
+          v-if="pwaInstallStatus == 'notInstalled'"
+          @click="pwaPrompt.prompt()"
+        >
+          App
+        </button>
+        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaInstallStatus == 'installing'">
+          Installing
+        </button>
+        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaInstallStatus == 'installed'">
+          Open
+        </button>
+
         <div class="login__text">or</div>
         <button class="login__btn--register ui-btn ui-btn--block" @click="$router.push({ name: 'Register' })">
           {{ $t('login.link.register') }}

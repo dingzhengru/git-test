@@ -1,4 +1,5 @@
 @mixin contact {
+  padding: 30px;
   padding-bottom: $footer-height + 15;
 
   width: 100%;
@@ -13,7 +14,8 @@
 
   &__item {
     background: #444444;
-    width: 638px;
+    // width: 638px;
+    width: 100%;
     min-height: 120px;
     padding: 15px;
     margin-bottom: 15px;
@@ -79,6 +81,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      transform-origin: top;
 
       &__item {
         font-size: 1.5rem;

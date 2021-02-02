@@ -45,7 +45,7 @@ const routes = [
     path: '/forget-password',
     name: 'ForgetPassword',
     component: () => import('@/views/ForgetPassword'),
-    meta: { auth: false },
+    meta: { auth: false, 'header-back-icon': true },
   },
   {
     path: '/game',
