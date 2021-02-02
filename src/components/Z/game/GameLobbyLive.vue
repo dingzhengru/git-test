@@ -24,14 +24,6 @@
 
     <component :is="GameListTable" :gameList="gameList" :productCurrent="productCurrent" @open-game="openGame" />
 
-    <AppPagination
-      :count="pagination.count"
-      :page="pagination.page"
-      :pagesize="pagination.pagesize"
-      @change-page="changePage"
-      v-if="productCurrent.Lst_Site_Product_Status == 0"
-    />
-
     <component
       :is="GameTransferDialog"
       :wallet="userGamePointWallet"
@@ -50,6 +42,10 @@
       @open-live-game="openLiveGame"
       @close="isShowLiveGameEnterDialog = false"
     />
+
+    <intersect @enter="changePageScrollBottom">
+      <div class="game-lobby-bottom-intersect"></div>
+    </intersect>
   </div>
 </template>
 
@@ -63,12 +59,13 @@ import {
   apiGetLiveGameLobbyGameList,
 } from '@/api/game';
 import { openNewWindowURL } from '@/utils/device';
+import Intersect from 'vue-intersect';
 
 export default {
   name: 'GameLobbyLive',
   mixins: [mixinGameLobby],
   components: {
-    AppPagination: () => import('@/components/AppPagination'),
+    Intersect,
   },
   computed: {
     ...mapGetters(['lang', 'siteSetting', 'userGamePointWallet']),
@@ -113,15 +110,13 @@ export default {
       this.productList = result.RetObj.ProductList;
     },
     async getGameCategoryList() {
-      let result = {};
       const requestData = { Tag: this.productTag };
-      result = await apiGetLiveGameLobbyCategory(requestData);
-      this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
+      const result = await apiGetLiveGameLobbyCategory(requestData);
       this.guid = result.RetObj.H3GUID;
+      this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
       return result;
     },
     async getGameList() {
-      let result = {};
       const requestData = {
         Tag: this.productTag,
         Category: this.categoryCurrent.Lst_Category,
@@ -130,8 +125,26 @@ export default {
         IsLike: this.search.isFav ? 1 : 0,
         H3GUID: this.guid,
       };
-      result = await apiGetLiveGameLobbyGameList(requestData);
+      const result = await apiGetLiveGameLobbyGameList(requestData);
       this.gameList = result.RetObj.JsonGameList || [];
+      this.gameLimitBetList = result.RetObj.GameLimitBet;
+      this.pagination.count = result.RetObj.DataCnt;
+    },
+    async getGameListScrollBottom() {
+      if (!this.guid) {
+        return;
+      }
+
+      const requestData = {
+        Tag: this.productTag,
+        Category: this.categoryCurrent.Lst_Category,
+        Page: this.pagination.page,
+        GameName: this.search.text,
+        IsLike: this.search.isFav ? 1 : 0,
+        H3GUID: this.guid,
+      };
+      const result = await apiGetLiveGameLobbyGameList(requestData);
+      this.gameList = this.gameList.concat(result.RetObj.JsonGameList || []);
       this.gameLimitBetList = result.RetObj.GameLimitBet;
       this.pagination.count = result.RetObj.DataCnt;
     },

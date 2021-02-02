@@ -68,7 +68,6 @@ import {
   apiGetGameUrl,
 } from '@/api/game';
 import { openNewWindowURL } from '@/utils/device';
-
 import Intersect from 'vue-intersect';
 
 export default {

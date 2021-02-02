@@ -29,6 +29,9 @@ export default {
     productPointCurrent() {
       return this.userGamePointById(this.productId);
     },
+    totalPage() {
+      return Math.ceil(this.pagination.count / this.pagination.pagesize);
+    },
   },
   data() {
     return {
@@ -136,6 +139,9 @@ export default {
       this.getGameList();
     },
     changePageScrollBottom() {
+      if (this.pagination.page >= this.totalPage) {
+        return;
+      }
       this.pagination.page = this.pagination.page + 1;
       this.getGameListScrollBottom();
     },
