@@ -1,7 +1,7 @@
 <template>
   <div class="forget-password">
     <h1 class="forget-password__title">{{ $t('forgetPassword.title') }}</h1>
-    <img class="forget-password__icon" :src="forgetIcon" />
+    <i class="forget-password__icon"></i>
     <div class="forget-password__desc">
       <span class="txt-note">{{ $t('forgetPassword.notice.title') }}</span> <br />
       {{ $t('forgetPassword.notice.content') }}
@@ -16,9 +16,6 @@ export default {
   name: 'ForgetPassword',
   computed: {
     ...mapGetters(['siteFullCss']),
-    forgetIcon() {
-      return require(`@/assets/${this.siteFullCss}/main/forgetDescBg.png`);
-    },
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/forget-password.scss`);
