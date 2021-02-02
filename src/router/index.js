@@ -16,7 +16,6 @@ Vue.use(VueRouter);
  **   無設置: 顯示
  */
 
-/* jshint ignore:start */
 const routes = [
   {
     path: '/',
@@ -265,16 +264,6 @@ const routes = [
         name: 'ReportUnsettleBet',
         component: () => import('@/views/report/ReportUnsettleBet'),
       },
-      // {
-      //   path: 'bet-record',
-      //   name: 'ReportBetRecord',
-      //   component: () => import('@/views/report/ReportBetRecord'),
-      // },
-      // {
-      //   path: 'bet-record/:date',
-      //   name: 'ReportBetRecordDetail',
-      //   component: () => import('@/views/report/ReportBetRecordDetail'),
-      // },
       {
         path: 'bet-record',
         component: () => import('@/views/report/ReportBetRecordHome'),
@@ -374,7 +363,6 @@ const routes = [
     component: () => import('@/views/PageNotFound'),
   },
 ];
-/* jshint ignore:end */
 
 const router = new VueRouter({
   mode: 'history',

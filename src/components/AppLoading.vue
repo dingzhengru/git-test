@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div class="img-loading">
-      <img src="@/assets/common/ui/loading.gif" />
-    </div>
+    <img src="@/assets/common/ui/loading.gif" />
   </div>
 </template>
 
@@ -12,29 +10,25 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .container {
+  background: black;
+  height: 100%;
+  width: 100%;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  background: #000;
   opacity: 0.8;
   z-index: 9999;
-}
-.img-loading {
-  width: 200px;
-  height: 230px;
+
   display: flex;
+  align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
+  img {
+    width: 200px;
+    height: 230px;
+  }
 }
 </style>

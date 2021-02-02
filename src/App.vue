@@ -1,6 +1,6 @@
 <template>
   <div id="app" :lang="lang" :class="lang">
-    <div v-show="loadingList.length == 0">
+    <div v-show="!isLoadingListSiteInfo">
       <component
         :is="AppHeader"
         @changeLang="changeLang"
@@ -34,6 +34,7 @@ export default {
     ...mapGetters([
       'lang',
       'loadingList',
+      'isLoadingListSiteInfo',
       'pwaInstallStatus',
       'pwaPrompt',
       'siteSetting',

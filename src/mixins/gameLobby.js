@@ -135,5 +135,9 @@ export default {
       this.pagination.page = page;
       this.getGameList();
     },
+    changePageScrollBottom() {
+      this.pagination.page = this.pagination.page + 1;
+      this.getGameListScrollBottom();
+    },
   },
 };

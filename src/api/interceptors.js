@@ -40,7 +40,7 @@ axios.interceptors.request.use(
 
     //* 放進 loading 列表，篩選掉不會進 loading 的 API
     if (!checkUrlInList(API_NO_LOADING_LIST, config.url)) {
-      store.commit('pushLoading');
+      store.commit('pushLoading', config.url);
     }
 
     //* Authorization

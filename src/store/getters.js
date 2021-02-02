@@ -7,6 +7,9 @@ const getters = {
     state.langList ? state.langList.find(item => item.Lst_Locales_Code == state.lang).Lst_Locales_Name : '',
   loadingList: state => state.loadingList,
 
+  //* 當 siteinfo 在 LoadingList 中的時候 (用於判斷是否顯示網頁)
+  isLoadingListSiteInfo: state => state.loadingList.includes('/api/Siteinfo/getinfo'),
+
   //* pwa
   pwaInstallStatus: state => state.pwa.status,
   pwaPrompt: state => state.pwa.prompt,
