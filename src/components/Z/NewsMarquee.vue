@@ -2,9 +2,9 @@
   <div class="news-marquee">
     <i class="news-marquee__icon"></i>
     <span class="news-marquee__label">{{ $t('notification.nav.news') }}:</span>
-    <div class="news-marquee__window">
+    <div class="news-marquee__window" @click="$router.push({ name: 'News' })">
       <DynamicMarquee :direction="'row'" :reverse="true" :speed="{ type: 'pps', number: 50 }" :repeatMargin="50">
-        <a v-for="(item, index) in marqueeList" :key="index" href="javascript:;">
+        <a v-for="(item, index) in marqueeList" :key="index">
           {{ item.text }}
         </a>
       </DynamicMarquee>

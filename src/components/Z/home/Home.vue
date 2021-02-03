@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" :class="{ 'home-auth': userIsLoggedIn }">
     <component :is="HomeBanner" />
     <component :is="NewsMarquee" />
     <div class="home-main">

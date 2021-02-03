@@ -18,40 +18,18 @@
 </template>
 
 <script>
+import mixinNews from '@/mixins/news';
 import { mapGetters } from 'vuex';
 export default {
   name: 'News',
+  mixins: [mixinNews],
   components: {
     AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
     ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
   },
-  data() {
-    return {
-      newsList: [
-        {
-          Lst_StartDateTime: '2020-07-29 10:27:52',
-          Lst_Content: `<h2>test</h2>`,
-        },
-        {
-          Lst_StartDateTime: '2018-03-29 20:05:03',
-          Lst_Content: `<h2>3/29 測試消息內容</h2>`,
-        },
-      ],
-      pagination: {
-        count: 2,
-        page: 1,
-        pagesize: 1,
-      },
-    };
-  },
-  methods: {
-    changePage(page) {
-      this.pagination.page = page;
-    },
-  },
-  async mounted() {
+  mounted() {
     import(`@/styles/${this.siteFullCss}/news.scss`);
   },
 };

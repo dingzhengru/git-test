@@ -1,5 +1,10 @@
 @mixin home {
+  padding-top: $header-sub-height;
   padding-bottom: $footer-height;
+
+  &-auth {
+    padding-top: $header-sub-height-auth;
+  }
 }
 
 @mixin home-banner {

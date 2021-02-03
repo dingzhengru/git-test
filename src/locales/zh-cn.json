@@ -24,10 +24,13 @@
       "close": "关闭",
       "copy": "复制",
       "search": "查询",
-      "lotteryCount": "{count} 次抽奖机会"
+      "lotteryCount": "{count} 次抽奖"
     },
     "currency": {
       "thaiBaht": "泰銖"
+    },
+    "alert": {
+      "notLoggedIn": "请先登录"
     }
   },
   "alert": {
@@ -790,6 +793,14 @@
     }
   },
   "contact": {
+    "type": {
+      "1": "Skype",
+      "2": "Line",
+      "3": "Mobile",
+      "4": "Email",
+      "5": "wechat",
+      "6": "在线客服"
+    },
     "skype": "Skype",
     "line": "Line",
     "mobile": "Mobile",

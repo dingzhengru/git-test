@@ -61,7 +61,7 @@
               v-slot="{ errors }"
             >
               <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordOld') }}</span>
-              <input class="ui-ipt" type="password" v-model="OldPassword" />
+              <input class="ui-ipt" type="password" v-model="passwordOld" />
               <div class="theme-errorMsg" v-if="errors[0]">
                 <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
               </div>
@@ -79,7 +79,7 @@
               v-slot="{ errors }"
             >
               <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordNew') }}</span>
-              <input class="ui-ipt" type="password" v-model="Password" />
+              <input class="ui-ipt" type="password" v-model="passwordNew" />
               <div class="theme-errorMsg" v-if="errors[0]">
                 <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
               </div>
@@ -98,16 +98,13 @@
               v-slot="{ errors }"
             >
               <span class="theme-dataView-header">{{ $t('user.profile.accessed.withdrawalPasswordCheck') }}</span>
-              <input class="ui-ipt" type="password" v-model="CheckPassword" />
+              <input class="ui-ipt" type="password" v-model="passwordCheck" />
               <div class="theme-errorMsg" v-if="errors[0]">
                 <span class="theme-txt-errorMsg">{{ errors[0] }}</span>
               </div>
             </ValidationProvider>
           </form>
         </ul>
-      </div>
-      <div class="theme-errorMsg" v-if="error">
-        <span class="theme-txt-errorMsg">{{ error }}</span>
       </div>
       <div class="user-profile-access__button-div">
         <button
@@ -124,11 +121,13 @@
 </template>
 
 <script>
+import mixinUserChangePasswordWithdrawal from '@/mixins/userChangePasswordWithdrawal';
 import { mapGetters } from 'vuex';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'UserProfileListAccess',
+  mixins: [mixinUserChangePasswordWithdrawal],
   components: {
     ValidationObserver,
     ValidationProvider,
@@ -152,32 +151,6 @@ export default {
       'userBankBrach1',
       'userBankAccountName1',
     ]),
-  },
-  data() {
-    return {
-      OldPassword: '',
-      Password: '',
-      CheckPassword: '',
-      error: '',
-    };
-  },
-  methods: {
-    submitChangeWithdrawPassword() {
-      const requestData = {
-        OldPassword: this.OldPassword,
-        Password: this.Password,
-        CheckPassword: this.CheckPassword,
-      };
-
-      this.$emit('change-withdrawal-password', requestData);
-      this.resetForm();
-    },
-    resetForm() {
-      this.OldPassword = '';
-      this.Password = '';
-      this.CheckPassword = '';
-      this.error = '';
-    },
   },
 };
 </script>

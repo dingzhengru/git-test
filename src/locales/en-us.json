@@ -28,6 +28,9 @@
     },
     "currency": {
       "thaiBaht": "Baht"
+    },
+    "alert": {
+      "notLoggedIn": "Please Login first to continue"
     }
   },
   "alert": {

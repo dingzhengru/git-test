@@ -95,43 +95,15 @@
 </template>
 
 <script>
-import { apiChangePasswordWithdrawal } from '@/api/user';
+import mixinUserChangePasswordWithdrawal from '@/mixins/userChangePasswordWithdrawal';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
-  name: 'UserChangePassword',
+  name: 'UserChangePasswordWithdrawal',
+  mixins: [mixinUserChangePasswordWithdrawal],
   components: {
     ValidationObserver,
     ValidationProvider,
-  },
-  data() {
-    return {
-      passwordOld: '',
-      passwordNew: '',
-      passwordCheck: '',
-      noticeList: ['user.changePasswordWithdrawal.notice.first'],
-    };
-  },
-  methods: {
-    async submitChangeWithdrawPassword() {
-      const requestData = {
-        OldPassword: this.passwordOld,
-        Password: this.passwordNew,
-        CheckPassword: this.passwordCheck,
-      };
-
-      const result = await apiChangePasswordWithdrawal(requestData);
-
-      if (result.Code == 200) {
-        window.alert(this.$t('alert.changeProfileSuccess'));
-        this.resetForm();
-      }
-    },
-    resetForm() {
-      this.passwordOld = '';
-      this.passwordNew = '';
-      this.passwordCheck = '';
-    },
   },
 };
 </script>

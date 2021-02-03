@@ -144,6 +144,10 @@ export default {
       this.pagination.count = result.RetObj.DataCnt;
     },
     async openGame(game, freePlay) {
+      if (!this.userIsLoggedIn) {
+        return window.alert(this.$t('ui.alert.notLoggedIn'));
+      }
+      
       const newWindow = window.open('/loading.html');
 
       const requestData = { Tag: this.productTag, Gameid: game.Lst_GameID, Freeplay: freePlay };

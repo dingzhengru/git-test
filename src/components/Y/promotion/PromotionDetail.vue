@@ -23,41 +23,18 @@
 </template>
 
 <script>
+import mixinPromotionDetail from '@/mixins/promotionDetail';
 import { mapGetters } from 'vuex';
-import { apiGetPromotionDetail } from '@/api/promotion';
 import 'froala-editor/css/froala_style.min.css';
 
 export default {
   name: 'PromotionDetail',
+  mixins: [mixinPromotionDetail],
   computed: {
     ...mapGetters(['lang', 'siteFullCss', 'userIsLoggedIn']),
   },
-  data() {
-    return {
-      image: '',
-      promotionDetailList: [],
-      contentList: [],
-    };
-  },
-  methods: {
-    async getPromotionDetail() {
-      const requestData = { PromotionId: Number(this.$route.params.id) };
-      const result = await apiGetPromotionDetail(requestData);
-      if (result.Code == 200) {
-        this.image = result.RetObj.ImageUrl;
-        this.promotionDetailList = result.RetObj.ReturnList;
-      }
-    },
-  },
   mounted() {
     import(`@/styles/${this.siteFullCss}/promotion.scss`);
-
-    this.getPromotionDetail();
-  },
-  watch: {
-    lang() {
-      this.getPromotionDetail();
-    },
   },
 };
 </script>

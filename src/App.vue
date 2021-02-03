@@ -17,7 +17,7 @@
 
     <AppLoading v-show="loadingList.length > 0" />
     <AppGoTopButton />
-    <AppLotteryButtonBlock />
+    <AppLotteryButtonBlock v-show="userIsLoggedIn" />
     <ModalWinWheel :isShow="modalWinWheelIsShow" />
     <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
   </div>

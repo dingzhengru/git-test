@@ -11,7 +11,7 @@ $base-font-size: 16px;
 $base-font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
 
 $header-height: 130px;
-$header-sub-height: auto;
+$header-sub-height: 90px;
 $header-sub-height-auth: 58px;
 
 $footer-height: 119px;
@@ -393,7 +393,7 @@ $service-term-btn-color: white;
   flex-direction: column;
   align-items: center;
 
-  font-size: 1rem;
+  font-size: 1.2rem;
 
   &__win-wheel {
     background: $lottery-btn-block-win-wheel-bg;

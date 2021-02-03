@@ -144,10 +144,14 @@
 @mixin header-sub-z {
   background: $header-sub-bg;
   width: 100%;
+  position: relative;
   position: absolute;
-  top: $header-height;
   font-size: 1.8rem;
   z-index: 2;
+  height: $header-sub-height;
+  &-auth {
+    height: $header-sub-height-auth;
+  }
 
   &__not-logged {
     padding: 10px;

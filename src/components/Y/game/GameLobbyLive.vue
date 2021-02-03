@@ -71,7 +71,7 @@ export default {
     AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
-    ...mapGetters(['lang', 'siteSetting', 'userGamePointWallet']),
+    ...mapGetters(['lang', 'siteSetting', 'userIsLoggedIn', 'userGamePointWallet']),
     GameProductNavigation() {
       return () => import(`@/${this.siteSetting.components.game.GameProductNavigation}`);
     },
@@ -141,6 +141,10 @@ export default {
       this.isShowLiveGameEnterDialog = true;
     },
     async openLiveGame(templatesId, order) {
+      if (!this.userIsLoggedIn) {
+        return window.alert(this.$t('ui.alert.notLoggedIn'));
+      }
+
       const requestData = {
         Tag: this.productTag,
         Gameid: this.game.Lst_GameID,

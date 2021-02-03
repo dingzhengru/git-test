@@ -50,7 +50,6 @@ const routes = [
   {
     path: '/game',
     component: () => import('@/views/game/GameHome'),
-    meta: { auth: true },
     children: [
       {
         path: '',

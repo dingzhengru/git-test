@@ -1,5 +1,5 @@
 <template>
-  <div class="header-sub">
+  <div class="header-sub" :class="{ 'header-sub-auth': userIsLoggedIn }">
     <div class="header-sub__not-logged" v-show="!userIsLoggedIn && this.$route.name == 'Home'">
       <button class="header-sub__not-logged__btn--login ui-btn" @click="$router.push({ name: 'Login' })">
         {{ $t('ui.button.login') }}
