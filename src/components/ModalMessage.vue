@@ -1,5 +1,5 @@
 <template>
-  <AppModal>
+  <AppModal :isShow="isShow && messageList.length > 0">
     <div class="modal-message">
       <div class="modal-message__inner">
         <p class="modal-message__inner__text" v-for="(item, index) in messageList" :key="index">
@@ -13,12 +13,14 @@
 
 <script>
 import AppModal from '@/components/AppModal';
+import mixinMessageC from '@/mixins/messageC';
 export default {
   name: 'ModalMessage',
+  mixins: [mixinMessageC],
   props: {
-    messageList: {
-      type: Array,
-      default: () => [],
+    isShow: {
+      type: Boolean,
+      default: false,
     },
   },
   components: {

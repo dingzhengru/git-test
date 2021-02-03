@@ -27,7 +27,7 @@ export default {
         },
         {
           name: 'login',
-          text: 'footer.login',
+          text: 'ui.button.login',
           link: 'Login',
           otherActivePath: ['Register'],
         },
@@ -54,8 +54,9 @@ export default {
         {
           name: 'transaction',
           text: 'footer.transaction-2',
-          link: 'TransactionDepositHome',
+          link: 'TransactionDepositBase',
           otherActivePath: [
+            'TransactionDepositThirdParty',
             'TransactionWithdrawal',
             'TransactionTransfer',
             'TransactionRecord',

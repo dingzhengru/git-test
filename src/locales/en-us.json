@@ -23,7 +23,8 @@
       "register": "Register",
       "close": "Close",
       "copy": "Copy",
-      "search": "Search"
+      "search": "Search",
+      "lotteryCount": "{count} Lucky draw"
     },
     "currency": {
       "thaiBaht": "Baht"
@@ -817,5 +818,10 @@
       "title": "RNG",
       "content": "Slot game ... provide more than 100 probability games, including slot machines, table games, arcade games, scratch music and other projects, in recent years more active development of multiplayer online game, wish you all the good luck, visual and acoustical effects Top-level entertainment, 4 level of gold pool and bonus game like a movie, unique style characters with current events, festivals and other topics, just want to give you a fun to enjoy the game experience."
     }
+  },
+  "lottery": {
+    "noChance": "Chance ran out",
+    "winWheel": {},
+    "redEnvelope": {}
   }
 }

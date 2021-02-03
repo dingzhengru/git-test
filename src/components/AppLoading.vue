@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="loading">
     <img src="@/assets/common/ui/loading.gif" />
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-.container {
+.loading {
   background: black;
   height: 100%;
   width: 100%;

@@ -39,7 +39,7 @@
           <div
             class="header-menu__dropdown__route__item"
             v-if="userIsLoggedIn"
-            @click="changeRoute('TransactionDeposit')"
+            @click="changeRoute('TransactionDepositBase')"
           >
             <i class="header-menu__dropdown__route__item__icon icon-transaction"></i>
             <a class="header-menu__dropdown__route__item__link" href="javascript:;">

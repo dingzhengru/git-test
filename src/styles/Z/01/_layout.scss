@@ -38,11 +38,19 @@ body {
   @include nav-tab;
 }
 
+.ui-box-close {
+  @include ui-box-close;
+}
+
+.go-top-btn {
+  @include go-top-btn;
+}
+
+.lottery-btn-block {
+  @include lottery-btn-block;
+}
+
 //* 服務規章視窗
 .service-term {
   @include service-term;
-}
-
-.ui-box-close {
-  @include ui-box-close;
 }

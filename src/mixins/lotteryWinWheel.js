@@ -1,4 +1,4 @@
-import mixinLotteryGame from '@/mixins/lotteryGame';
+import { mapGetters } from 'vuex';
 import { apiPlayLottery, apiPlayLotteryResult } from '@/api/lottery';
 
 //* Loading 圖片
@@ -13,7 +13,9 @@ import wheelBackgroundImage from '@/assets/common/lottery/winWheel/wheel-bg.png'
 
 export default {
   name: 'MixinLotteryWinWheel',
-  mixins: [mixinLotteryGame],
+  computed: {
+    ...mapGetters(['userLotteryCountWinWheel', 'modalWinWheelIsShow']),
+  },
   data() {
     return {
       wheelBillNo: '', // (獎項列表API)活動單號，需夾帶給抽獎API
@@ -22,7 +24,7 @@ export default {
 
       wheelSegmentsPrize: [], // (獎項列表API)獎項列表，抽獎後接露
 
-      isShowWinWheel: false,
+      // isShowWinWheel: false,
       isWinWheelLoading: false, //控制抽獎 loading 動畫
 
       // 錯誤訊息
@@ -66,6 +68,12 @@ export default {
       this.wheelGamePrize = '';
       this.isWheelLoading = true;
 
+      //* 沒有抽獎次數
+      if (this.userLotteryCountWinWheel.Count <= 0) {
+        this.errMsg = this.$t('lottery.noChance');
+        return;
+      }
+
       const result = await apiPlayLottery({ ActivityType: 0 });
       if (result.Code == 200) {
         const data = result.RetObj;
@@ -87,9 +95,6 @@ export default {
           };
         });
         this.wheelSegmentsPrize = prizeApiList;
-
-        //* 顯示
-        this.isShowWinWheel = true;
       }
     },
     //* 啟動轉盤遊戲、獲取中獎資料
@@ -109,7 +114,7 @@ export default {
       }
     },
     closeWinWheel() {
-      this.isShowWinWheel = false;
+      this.$store.commit('setModalWinWheelIsShow', false);
       this.wheelBillNo = '';
       this.wheelGameChance = '';
       this.wheelGamePrize = '';
@@ -117,10 +122,20 @@ export default {
       //* 放這裡避免遊戲中出現 Loading 畫面
 
       //* 更新取得抽獎次數列表來更新首頁
-      this.getLotteryCountList();
+      this.$store.dispatch('user/getLotteryCountList');
 
       //* 更新用戶點數
-      this.$store.dispatch('user/getInfo');
+      this.$store.dispatch('user/getPointInfo');
+    },
+  },
+  watch: {
+    modalWinWheelIsShow: {
+      immediate: true,
+      handler() {
+        if (this.modalWinWheelIsShow) {
+          this.initWheelHandler();
+        }
+      },
     },
   },
 };

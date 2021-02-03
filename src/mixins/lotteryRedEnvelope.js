@@ -1,4 +1,4 @@
-import mixinLotteryGame from '@/mixins/lotteryGame';
+import { mapGetters } from 'vuex';
 import { apiPlayLottery, apiPlayLotteryResult } from '@/api/lottery';
 
 //* Loading 圖片
@@ -12,7 +12,9 @@ import envelopeLoadingImgage from '@/assets/common/lottery/redEnvelope/eclipse.s
 
 export default {
   name: 'MixinLotteryRedEnvelope',
-  mixins: [mixinLotteryGame],
+  computed: {
+    ...mapGetters(['userLotteryCountRedEnvelope', 'modalRedEnvelopeIsShow']),
+  },
   data() {
     return {
       redEnvelopeBillNo: '', // (獎項列表API)活動單號，需夾帶給抽獎API
@@ -21,7 +23,7 @@ export default {
 
       redEnvelopePrizeList: [], // (獎項列表API)獎項列表，抽獎後接露
 
-      isShowRedEnvelope: false,
+      // isShowRedEnvelope: false,
 
       // 錯誤訊息
       redEnvelopeErrorMessage: '',
@@ -44,6 +46,12 @@ export default {
       this.redEnvelopeGameChance = '';
       this.redEnvelopeGamePrize = '';
 
+      //* 沒有抽獎次數
+      if (this.userLotteryCountRedEnvelope.Count <= 0) {
+        this.errMsg = this.$t('lottery.noChance');
+        return;
+      }
+
       const result = await apiPlayLottery({ ActivityType: 1 });
       if (result.Code == 200) {
         const data = result.RetObj;
@@ -61,7 +69,6 @@ export default {
         });
 
         this.redEnvelopePrizeList = prizesList;
-        this.isShowRedEnvelope = true;
       }
     },
     // 抽獎事件
@@ -74,7 +81,7 @@ export default {
       this.redEnvelopeGameChance--;
     },
     closeRedEnvelope() {
-      this.isShowRedEnvelope = false;
+      this.$store.commit('setModalRedEnvelopeIsShow', false);
       this.wheelBillNo = '';
       this.wheelGameChance = '';
       this.wheelGamePrize = '';
@@ -82,10 +89,20 @@ export default {
       //* 放這裡避免遊戲中出現 Loading 畫面
 
       //* 更新取得抽獎次數列表來更新首頁
-      this.getLotteryCountList();
+      this.$store.dispatch('user/getLotteryCountList');
 
       //* 更新用戶點數
-      this.$store.dispatch('user/getInfo');
+      this.$store.dispatch('user/getPointInfo');
+    },
+  },
+  watch: {
+    modalRedEnvelopeIsShow: {
+      immediate: true,
+      handler() {
+        if (this.modalRedEnvelopeIsShow) {
+          this.initHandlerRedEnvelope();
+        }
+      },
     },
   },
 };

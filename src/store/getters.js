@@ -14,6 +14,10 @@ const getters = {
   pwaInstallStatus: state => state.pwa.status,
   pwaPrompt: state => state.pwa.prompt,
 
+  //* modal
+  modalWinWheelIsShow: state => state.modalWinWheelIsShow,
+  modalRedEnvelopeIsShow: state => state.modalRedEnvelopeIsShow,
+
   //* Site.setting
   siteSetting: state => state.site.setting,
 
@@ -93,6 +97,10 @@ const getters = {
       ? state.user.pointInfo.GameSitePoints.find(item => item.Product_id == id)
       : {};
   },
+
+  //* User.lotteryCountList
+  userLotteryCountWinWheel: state => state.user.lotteryCountList.find(item => item.Type == 0) || {},
+  userLotteryCountRedEnvelope: state => state.user.lotteryCountList.find(item => item.Type == 1) || {},
 
   //* User info
   userAccount: state => state.user.info.Lst_Account,

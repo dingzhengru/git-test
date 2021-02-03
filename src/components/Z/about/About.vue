@@ -24,7 +24,6 @@
         {{ $t('about.RNG.content') }}
       </div>
     </div>
-    <div class="about__icon--top" v-scroll-to="{ el: '#app' }"></div>
   </div>
 </template>
 

@@ -14,48 +14,12 @@
 
 <script>
 import DynamicMarquee from 'vue-dynamic-marquee';
-import { apiGetMessageList } from '@/api/message';
-import { mapGetters } from 'vuex';
+import mixinMessageNewsMarquee from '@/mixins/messageNewsMarquee';
 export default {
   name: 'NewsMarquee',
+  mixins: [mixinMessageNewsMarquee],
   components: {
     DynamicMarquee,
-  },
-  computed: {
-    ...mapGetters(['lang']),
-  },
-  data() {
-    return {
-      marqueeList: [
-        {
-          text: '最新消息1',
-        },
-        {
-          text: '最新消息2',
-        },
-        {
-          text: '最新消息3',
-        },
-      ],
-      marqueePaused: false,
-    };
-  },
-  methods: {
-    async getMessageMarqueeList() {
-      const requestDataMessageList = { msgtype: 'B' };
-      await apiGetMessageList(requestDataMessageList);
-      // if (result.Code == 200) {
-      //   this.marqueeList = result.RetObj;
-      // }
-    },
-  },
-  mounted() {
-    this.getMessageMarqueeList();
-  },
-  watch: {
-    lang() {
-      this.getMessageMarqueeList();
-    },
   },
 };
 </script>

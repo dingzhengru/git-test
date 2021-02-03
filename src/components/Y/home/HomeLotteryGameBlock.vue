@@ -1,34 +1,27 @@
 <template>
   <div class="home-lottery">
-    <template v-for="item in lotteryList">
-      <div class="home-lottery__item" :class="`lottery-type-${item.Type}`" :key="item.Type" v-if="item.Count > 0">
-        <i class="home-lottery__item__icon"></i>
-        <div class="home-lottery__item__text" @click="openLotteryGame(item)">
-          <template v-if="item.Type == 0">
-            {{ $t('home.lottery.winWheel.homeTitle', { count: item.Count }) }}
-          </template>
-          <template v-else-if="item.Type == 1">
-            {{ $t('home.lottery.redEnvelope.homeTitle', { count: item.Count }) }}
-          </template>
-        </div>
+    <div class="home-lottery__item" v-if="userLotteryCountWinWheel.Count > 0">
+      <i class="home-lottery__item__icon home-lottery__item__icon--win-wheel"></i>
+      <div class="home-lottery__item__text" @click="$store.commit('setModalWinWheelIsShow', true)">
+        {{ $t('home.lottery.winWheel.homeTitle', { count: userLotteryCountWinWheel.Count }) }}
       </div>
-    </template>
+    </div>
+
+    <div class="home-lottery__item" v-if="userLotteryCountRedEnvelope.Count > 0">
+      <i class="home-lottery__item__icon home-lottery__item__icon--red-envelope"></i>
+      <div class="home-lottery__item__text" @click="$store.commit('setModalRedEnvelopeIsShow', true)">
+        {{ $t('home.lottery.winWheel.homeTitle', { count: userLotteryCountRedEnvelope.Count }) }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: 'HomeLotteryGameBlock',
-  props: {
-    lotteryList: {
-      type: Array,
-      default: () => [],
-    },
-  },
-  methods: {
-    openLotteryGame(lottery) {
-      this.$emit('openLotteryGame', lottery);
-    },
+  computed: {
+    ...mapGetters(['userLotteryCountWinWheel', 'userLotteryCountRedEnvelope']),
   },
 };
 </script>

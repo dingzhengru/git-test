@@ -16,25 +16,34 @@
     </div>
 
     <AppLoading v-show="loadingList.length > 0" />
+    <AppGoTopButton />
+    <AppLotteryButtonBlock />
+    <ModalWinWheel :isShow="modalWinWheelIsShow" />
+    <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import AppLoading from '@/components/AppLoading';
 import langMixin from '@/mixins/lang';
 
 export default {
   name: 'App',
   mixins: [langMixin],
   components: {
-    AppLoading,
+    AppLoading: () => import('@/components/AppLoading'),
+    AppGoTopButton: () => import('@/components/AppGoTopButton'),
+    AppLotteryButtonBlock: () => import('@/components/AppLotteryButtonBlock'),
+    ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
+    ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
   },
   computed: {
     ...mapGetters([
       'lang',
       'loadingList',
       'isLoadingListSiteInfo',
+      'modalWinWheelIsShow',
+      'modalRedEnvelopeIsShow',
       'pwaInstallStatus',
       'pwaPrompt',
       'siteSetting',

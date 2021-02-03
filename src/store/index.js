@@ -15,6 +15,8 @@ export default new Vuex.Store({
     lang: '',
     langList: [],
     loadingList: [],
+    modalWinWheelIsShow: false,
+    modalRedEnvelopeIsShow: false,
   },
   mutations: {
     setLang: (state, lang) => {
@@ -32,6 +34,12 @@ export default new Vuex.Store({
     popLoadingAllChangeRoute: state => {
       //* 清除所有 change-route
       state.loadingList = state.loadingList.filter(item => item != 'change-route');
+    },
+    setModalWinWheelIsShow: (state, isShow) => {
+      state.modalWinWheelIsShow = isShow;
+    },
+    setModalRedEnvelopeIsShow: (state, isShow) => {
+      state.modalRedEnvelopeIsShow = isShow;
     },
   },
   actions: {

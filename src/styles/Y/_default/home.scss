@@ -90,6 +90,13 @@
       padding-top: 22px;
       position: absolute;
       left: -18px;
+
+      &--win-wheel {
+        background: url(~@/assets/common/main/prizeIcn.png) left center no-repeat;
+      }
+      &--red-envelope {
+        background: url(~@/assets/common/main/luckyDrawIcn.png) left center no-repeat;
+      }
     }
 
     &__text {
@@ -104,18 +111,6 @@
       // filter: drop-shadow(0px 1px 1px #272727);
       /*文字閃動*/
       animation: colorchange 1s infinite alternate;
-    }
-  }
-
-  .lottery-type-0 {
-    > i {
-      background: url(~@/assets/common/main/prizeIcn.png) left center no-repeat;
-    }
-  }
-
-  .lottery-type-1 {
-    > i {
-      background: url(~@/assets/common/main/luckyDrawIcn.png) left center no-repeat;
     }
   }
 

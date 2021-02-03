@@ -17,10 +17,12 @@ import {
   apiAdvancedRegisterNew,
 } from '@/api/user';
 import { apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
+import { apiGetLotteryCount } from '@/api/lottery';
 
 const state = {
   info: {},
   pointInfo: {},
+  lotteryCountList: [],
   isLoggedIn: null,
   token: null,
   publicKey: null,
@@ -43,6 +45,9 @@ const mutations = {
   },
   setPointInfo(state, pointInfo) {
     state.pointInfo = pointInfo;
+  },
+  setLotteryCountList(state, list) {
+    state.lotteryCountList = list;
   },
   setIsLoggedIn(state, isLoggedIn) {
     state.isLoggedIn = isLoggedIn;
@@ -77,11 +82,17 @@ const actions = {
     const result = await apiGetUserInfo();
     commit('setInfo', result.RetObj);
     dispatch('getPointInfo');
+    dispatch('getLotteryCountList');
     return result;
   },
   async getPointInfo({ commit }) {
     const result = await apiGetAllGamePoint();
     commit('setPointInfo', result.RetObj);
+    return result;
+  },
+  async getLotteryCountList({ commit }) {
+    const result = await apiGetLotteryCount();
+    commit('setLotteryCountList', result.RetObj);
     return result;
   },
   async transferAllPointToMain({ commit }) {
@@ -105,6 +116,7 @@ const actions = {
       commit('setIsLoggedIn', true);
       commit('setInfo', result.RetObj);
       dispatch('getPointInfo');
+      dispatch('getLotteryCountList');
 
       router.replace({ name: 'Home' });
     }
@@ -117,6 +129,7 @@ const actions = {
       commit('setIsLoggedIn', true);
       commit('setInfo', result.RetObj);
       dispatch('getPointInfo');
+      dispatch('getLotteryCountList');
       router.replace({ name: 'Home' });
     }
     return result;
