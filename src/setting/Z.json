@@ -2,7 +2,9 @@
   "components": {
     "app": {
       "AppHeader": "components/Z/header/AppHeader",
-      "AppFooter": "components/Z/footer/AppFooter"
+      "AppFooter": "components/Z/footer/AppFooter",
+      "AppLotteryButtonBlock": "components/AppLotteryButtonBlock",
+      "AppGoTopButton": "components/AppGoTopButton"
     },
     "header": {
       "AppHeaderMenu": "components/Z/header/AppHeaderMenu",
