@@ -2,13 +2,13 @@
   "components": {
     "app": {
       "AppHeader": "components/Z/header/AppHeader",
+      "AppHeaderSub": "components/Z/header/AppHeaderSub",
       "AppFooter": "components/Z/footer/AppFooter",
       "AppLotteryButtonBlock": "components/AppLotteryButtonBlock",
       "AppGoTopButton": "components/AppGoTopButton"
     },
     "header": {
-      "AppHeaderMenu": "components/Z/header/AppHeaderMenu",
-      "AppHeaderSub": "components/Z/header/AppHeaderSub"
+      "AppHeaderMenu": "components/Z/header/AppHeaderMenu"
     },
     "home": {
       "HomeBanner": "components/Y/home/HomeBanner",

@@ -8,6 +8,8 @@
         v-if="$route.meta.header != false"
       ></component>
 
+      <component :is="AppHeaderSub" v-show="(!userIsLoggedIn && this.$route.name == 'Home') || userIsLoggedIn" />
+
       <div class="main">
         <router-view />
       </div>
@@ -59,6 +61,9 @@ export default {
     ]),
     AppHeader() {
       return () => import(`@/${this.siteSetting.components.app.AppHeader}`);
+    },
+    AppHeaderSub() {
+      return () => import(`@/${this.siteSetting.components.app.AppHeaderSub}`);
     },
     AppFooter() {
       return () => import(`@/${this.siteSetting.components.app.AppFooter}`);

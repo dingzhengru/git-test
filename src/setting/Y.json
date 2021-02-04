@@ -2,13 +2,13 @@
   "components": {
     "app": {
       "AppHeader": "components/Y/header/AppHeader",
+      "AppHeaderSub": "components/Y/header/AppHeaderSub",
       "AppFooter": "components/Y/footer/AppFooter",
       "AppNavTab": "components/Y/AppNavTab"
     },
     "header": {
       "AppHeaderMenu": "components/Y/header/AppHeaderMenu",
-      "AppHeaderMenuAuth": "components/Y/header/AppHeaderMenuAuth",
-      "AppHeaderSub": "components/Y/header/AppHeaderSub"
+      "AppHeaderMenuAuth": "components/Y/header/AppHeaderMenuAuth"
     },
     "home": {
       "HomeBanner": "components/Y/home/HomeBanner",

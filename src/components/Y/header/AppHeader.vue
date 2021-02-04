@@ -18,7 +18,6 @@
         @changeLang="changeLang"
         @logout="logout"
       />
-      <component :is="AppHeaderSub" v-if="userIsLoggedIn && siteIsActive" />
     </template>
   </header>
 </template>
@@ -41,9 +40,6 @@ export default {
     },
     AppHeaderMenuAuth() {
       return () => import(`@/${this.siteSetting.components.header.AppHeaderMenuAuth}`);
-    },
-    AppHeaderSub() {
-      return () => import(`@/${this.siteSetting.components.header.AppHeaderSub}`);
     },
   },
   methods: {

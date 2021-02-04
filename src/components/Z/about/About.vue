@@ -1,6 +1,5 @@
 <template>
   <div class="about" :class="{ 'about-auth': userIsLoggedIn }">
-    <div class="about__title">{{ $t('about.title') }}</div>
     <div class="about__item">
       <img class="about__item__img" :src="imgSport" alt="" />
       <div class="about__item__title">{{ $t('about.sport.title') }}</div>
@@ -46,6 +45,8 @@ export default {
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/about.scss`);
+
+    this.$store.commit('setPageTitle', 'about.title');
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="header-sub">
+  <div class="header-sub" v-if="userIsLoggedIn">
     <div class="header-sub__member">
       <div class="header-sub__member__item">{{ $t('header.user.username') }}：{{ userAccount }}</div>
       <div class="header-sub__member__item">
@@ -18,7 +18,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'AppHeaderSub',
   computed: {
-    ...mapGetters(['userTotalBalance', 'userAccount', 'userPILevel', 'userPIBetAmount']),
+    ...mapGetters(['userIsLoggedIn', 'userTotalBalance', 'userAccount', 'userPILevel', 'userPIBetAmount']),
   },
 };
 </script>
