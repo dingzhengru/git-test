@@ -12,10 +12,7 @@
       ></router-link>
       <a class="header__link header__link--back" href="javascript:;" @click="$router.go(-1)" v-else></a>
 
-      <!-- <component :is="AppHeaderMenu" v-if="!userIsLoggedIn" @changeLang="changeLang" /> -->
-      <!-- <component :is="AppHeaderMenuAuth" v-if="userIsLoggedIn" @changeLang="changeLang" @logout="logout" /> -->
       <component :is="AppHeaderMenu" @changeLang="changeLang" @logout="logout" />
-      <!-- <component :is="AppHeaderSub" v-show="(!userIsLoggedIn && this.$route.name == 'Home') || userIsLoggedIn" /> -->
     </template>
   </header>
 </template>
@@ -39,9 +36,6 @@ export default {
     AppHeaderMenuAuth() {
       return () => import(`@/${this.siteSetting.components.header.AppHeaderMenuAuth}`);
     },
-    // AppHeaderSub() {
-    //   return () => import(`@/${this.siteSetting.components.header.AppHeaderSub}`);
-    // },
   },
   methods: {
     changeLang(lang) {
