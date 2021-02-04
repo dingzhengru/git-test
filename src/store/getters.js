@@ -10,6 +10,9 @@ const getters = {
   //* 當 siteinfo 在 LoadingList 中的時候 (用於判斷是否顯示網頁)
   loadingListIncludeSiteInfo: state => state.loadingList.includes('/api/Siteinfo/getinfo'),
 
+  //* Logo 處的標題 (Z版)
+  pageTitle: state => state.pageTitle,
+
   //* pwa
   pwaInstallStatus: state => state.pwa.status,
   pwaPrompt: state => state.pwa.prompt,

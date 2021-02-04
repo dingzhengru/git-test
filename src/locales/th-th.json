@@ -200,6 +200,7 @@
     }
   },
   "register": {
+    "title": "ลงทะเบียนสมาชิก",
     "Add_RelatedAccount": {
       "placeholder": "ผู้แนะนำ",
       "hint": "หากไม่มีผู้แนะนำ ก็ไม่ต้องการกรอก",
@@ -319,6 +320,7 @@
     }
   },
   "user": {
+    "title": "ข้อมูลบัญชี",
     "nav": {
       "profile": "ข้อมูลส่วนตัว",
       "changePassword": "แก้ไขรหัสผ่าน",
@@ -402,6 +404,7 @@
     }
   },
   "transaction": {
+    "title": "กระเป๋าเงิน",
     "nav": {
       "deposit": "เติมเงิน",
       "withdrawal": "ถอนเงิน",
@@ -753,6 +756,9 @@
         "aboutUs": "เกี่ยวกับเว็ป"
       }
     }
+  },
+  "news": {
+    "title": "ข่าวล่าสุด"
   },
   "game": {
     "category": {

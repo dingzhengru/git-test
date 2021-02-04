@@ -1,7 +1,6 @@
 <template>
   <ValidationObserver class="login" tag="div" v-slot="{ invalid, handleSubmit }">
     <form class="login-form" @submit.prevent="handleSubmit(submitLogin)">
-      <div class="login__title">{{ $t('login.title') }}</div>
       <ValidationProvider
         class="login__field ui-field"
         tag="div"
@@ -123,6 +122,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'pageTitle',
       'siteFullCss',
       'pwaInstallStatus',
       'pwaPrompt',
@@ -133,6 +133,8 @@ export default {
   },
   async mounted() {
     import(`@/styles/${this.siteFullCss}/login.scss`);
+
+    this.$store.commit('setPageTitle', 'login.title');
 
     //* 取得公鑰 & token
     if (!this.userToken || !this.userPublicKey) {

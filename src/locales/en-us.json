@@ -200,6 +200,7 @@
     }
   },
   "register": {
+    "title": "Membership Registration",
     "Add_RelatedAccount": {
       "placeholder": "Referrer",
       "hint": "If there is no referrer,you are not required to fill in",
@@ -322,6 +323,7 @@
     }
   },
   "user": {
+    "title":"Profile",
     "nav": {
       "profile": "Personal Info",
       "changePassword": "Change Password",
@@ -405,6 +407,7 @@
     }
   },
   "transaction": {
+    "title": "ทำรายการฝาก-ถอนเงิน",
     "nav": {
       "deposit": "Deposit",
       "withdrawal": "Withdrawal",
@@ -469,7 +472,7 @@
       }
     },
     "withdrawal": {
-      "title": "Trade Center",
+      "title": "Cashier",
       "hightLightMessage": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal {min} THB",
       "field": {
         "bank": "Select Bank",
@@ -756,6 +759,9 @@
         "aboutUs": "About us"
       }
     }
+  },
+  "news": {
+    "title": "Latest News"
   },
   "game": {
     "category": {

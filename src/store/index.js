@@ -15,6 +15,7 @@ export default new Vuex.Store({
     lang: '',
     langList: [],
     loadingList: [],
+    pageTitle: '',
     modalWinWheelIsShow: false,
     modalRedEnvelopeIsShow: false,
   },
@@ -34,6 +35,9 @@ export default new Vuex.Store({
     popLoadingAllChangeRoute: state => {
       //* 清除所有 change-route
       state.loadingList = state.loadingList.filter(item => item != 'change-route');
+    },
+    setPageTitle: (state, title) => {
+      state.pageTitle = title;
     },
     setModalWinWheelIsShow: (state, isShow) => {
       state.modalWinWheelIsShow = isShow;

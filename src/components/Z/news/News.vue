@@ -33,6 +33,8 @@ export default {
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/news.scss`);
+
+    this.$store.commit('setPageTitle', 'news.title');
   },
 };
 </script>

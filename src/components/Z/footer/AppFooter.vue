@@ -35,7 +35,7 @@ export default {
           name: 'promotion',
           text: 'footer.promotion',
           link: 'Promotion',
-          otherActivePath: ['PromotionContent'],
+          otherActivePath: ['PromotionDetail'],
         },
         {
           name: 'contact',

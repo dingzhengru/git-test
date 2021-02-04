@@ -68,6 +68,8 @@ export default {
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/transaction.scss`);
+
+    this.$store.commit('setPageTitle', 'transaction.title');
   },
 };
 </script>

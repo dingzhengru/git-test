@@ -1,6 +1,7 @@
 <template>
   <header class="header">
-    <img :src="siteLogoUrl" class="header__logo" :id="$idMapper.header.logo" alt="" />
+    <img :src="siteLogoUrl" class="header__logo" :id="$idMapper.header.logo" alt="" v-show="!pageTitle" />
+    <div class="header__title" v-show="pageTitle">{{ $t(pageTitle) }}</div>
 
     <template v-if="siteIsActive">
       <router-link
@@ -31,7 +32,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteLogoUrl', 'siteIsActive', 'userIsLoggedIn']),
+    ...mapGetters(['pageTitle', 'siteSetting', 'siteLogoUrl', 'siteIsActive', 'userIsLoggedIn']),
     AppHeaderMenu() {
       return () => import(`@/${this.siteSetting.components.header.AppHeaderMenu}`);
     },

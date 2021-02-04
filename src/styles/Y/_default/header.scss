@@ -3,12 +3,15 @@
   height: $header-height;
   background: $header-bg;
   position: relative;
+
+  display: flex;
+  align-items: center;
+
   &__logo {
     // width: $header-logo-width;
     // height: $header-logo-height;
     max-width: 425px;
     position: absolute;
-    display: inline-block;
     top: 0;
     bottom: 0;
     left: 0;
@@ -17,14 +20,12 @@
   }
 
   &__link {
-    display: inline-block;
     position: absolute;
 
     &--home {
       background: $header-link-home-bg;
       width: $header-link-home-width;
       height: $header-link-home-height;
-      top: $header-link-home-top;
       left: $header-link-home-left;
     }
 
@@ -32,7 +33,6 @@
       background: $header-link-back-bg;
       width: $header-link-back-width;
       height: $header-link-back-height;
-      top: $header-link-back-top;
       left: $header-link-back-left;
     }
   }

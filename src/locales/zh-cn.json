@@ -200,6 +200,7 @@
     }
   },
   "register": {
+    "title": "会员注册",
     "Add_RelatedAccount": {
       "placeholder": "推荐人",
       "hint": "若无推荐人,则不需要填写",
@@ -319,6 +320,7 @@
     }
   },
   "user": {
+    "title": "会员中心",
     "nav": {
       "profile": "个人资料",
       "changePassword": "修改密码",
@@ -402,6 +404,7 @@
     }
   },
   "transaction": {
+    "title": "交易中心",
     "nav": {
       "deposit": "存款",
       "withdrawal": "取款",
@@ -756,6 +759,9 @@
         "aboutUs": "有关本站"
       }
     }
+  },
+  "news": {
+    "title": "最新消息"
   },
   "game": {
     "category": {

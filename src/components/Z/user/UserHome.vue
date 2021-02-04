@@ -51,6 +51,8 @@ export default {
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/user.scss`);
+
+    this.$store.commit('setPageTitle', 'user.title');
   },
 };
 </script>

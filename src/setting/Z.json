@@ -47,7 +47,7 @@
     "home": "components/Z/home/Home",
     "login": "components/Z/login/Login",
     "register": "components/Z/register/Register",
-    "forgetPassword": "components/Y/forget-password/ForgetPassword",
+    "forgetPassword": "components/Z/forget-password/ForgetPassword",
     "gameHome": "components/Y/game/GameHome",
     "gameLobbySlot": "components/Z/game/GameLobbySlot",
     "gameLobbyLive": "components/Z/game/GameLobbyLive",

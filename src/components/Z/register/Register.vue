@@ -109,6 +109,8 @@ export default {
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/register.scss`);
+
+    this.$store.commit('setPageTitle', 'register.title');
   },
 };
 </script>

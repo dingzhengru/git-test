@@ -18,11 +18,24 @@ $header-link-back-height: 80px;
 $header-link-back-top: 35px;
 $header-link-back-left: 30px;
 
+$header-title-color: white;
+
 .header {
   @include header;
   position: fixed;
   top: 0;
   z-index: 2;
+  display: flex;
+  align-items: center;
+
+  &__title {
+    width: 100%;
+    position: absolute;
+    color: $header-title-color;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+  }
 }
 
 //* AppHeaderMenu
