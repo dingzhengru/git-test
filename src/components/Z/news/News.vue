@@ -2,11 +2,13 @@
   <div class="news" :class="{ 'news-auth': userIsLoggedIn }">
     <div class="news__item" v-for="(item, index) in newsList" :key="index">
       <div class="news__item__date">
-        <div class="news__item__date__label">时间</div>
+        <div class="news__item__date__label">{{ $t('ui.label.time') }}</div>
         <div class="news__item__date__content">{{ item.Lst_StartDateTime }}</div>
       </div>
       <div class="news__item__content">{{ item.Lst_Content }}</div>
     </div>
+
+    <div class="ui-no-data" v-show="newsList.length === 0">{{ $t('ui.label.noData') }}</div>
 
     <AppPagination
       :count="pagination.count"

@@ -4,12 +4,11 @@
   justify-self: center;
   align-content: center;
   width: 100%;
-
   padding: 15px;
   padding-bottom: $footer-height;
 
   &-auth {
-    padding-top: $header-sub-height-auth + 30;
+    padding-top: $header-sub-height-auth + 15;
   }
 
   &__item {
@@ -23,10 +22,6 @@
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: $footer-height + 30;
-
-  &-auth {
-    padding-top: $header-sub-height-auth;
-  }
 
   &__image {
     display: block;

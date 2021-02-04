@@ -3,6 +3,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  top: 0;
   &__toggle {
     background: transparent;
     position: absolute;
@@ -144,10 +145,10 @@
 @mixin header-sub-z {
   background: $header-sub-bg;
   width: 100%;
-  position: relative;
   position: absolute;
   font-size: 1.8rem;
   z-index: 2;
+  top: $header-height;
   height: $header-sub-height;
   &-auth {
     height: $header-sub-height-auth;

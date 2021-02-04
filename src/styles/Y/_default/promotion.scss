@@ -2,7 +2,7 @@
   padding-bottom: $footer-height;
 
   &-auth {
-    padding-top: $header-sub-height;
+    padding-top: $header-sub-height-auth;
   }
 
   &__list {
@@ -53,7 +53,7 @@
   padding-bottom: $footer-height + 30;
 
   &-auth {
-    padding-top: $header-sub-height;
+    padding-top: $header-sub-height-auth;
   }
 
   &__image {

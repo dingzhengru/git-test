@@ -1,8 +1,12 @@
 @mixin header {
+  width: 100%;
   height: $header-height;
   background: $header-bg;
   position: relative;
   &__logo {
+    // width: $header-logo-width;
+    // height: $header-logo-height;
+    max-width: 425px;
     position: absolute;
     display: inline-block;
     top: 0;
@@ -10,7 +14,6 @@
     left: 0;
     right: 0;
     margin: auto;
-    max-width: 425px;
   }
 
   &__link {
@@ -196,7 +199,7 @@
   width: 100%;
   position: absolute;
   top: $header-height;
-  height: $header-sub-height;
+  height: $header-sub-height-auth;
   font-size: 1.5rem;
   z-index: 2;
   &__member {

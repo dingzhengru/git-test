@@ -4,17 +4,45 @@
       <div class="deposit-third-party__field--btn deposit-third-party__field--method">
         <div class="deposit-third-party__field--btn__title">支付方式</div>
         <div class="deposit-third-party__field--btn__option">
-          <button class="ui-btn ui-btn--block" type="button">網關支付</button>
-          <button class="ui-btn ui-btn--block" type="button">QR Code</button>
+          <button class="ui-btn ui-btn--block" type="button" :class="{ active: method == '1' }" @click="method = '1'">
+            網關支付
+          </button>
+          <button class="ui-btn ui-btn--block" type="button" :class="{ active: method == '2' }" @click="method = '2'">
+            QR Code
+          </button>
         </div>
+        <select v-model="method" v-show="false">
+          <option value="">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
       </div>
 
       <div class="deposit-third-party__field--btn deposit-third-party__field--platform">
         <div class="deposit-third-party__field--btn__title">支付平台</div>
         <div class="deposit-third-party__field--btn__option">
-          <button class="ui-btn ui-btn--block" type="button">ThaiPay</button>
-          <button class="ui-btn ui-btn--block" type="button">三味線(維護中)</button>
+          <button
+            class="ui-btn ui-btn--block"
+            type="button"
+            :class="{ active: platform == '1' }"
+            @click="platform = '1'"
+          >
+            ThaiPay
+          </button>
+          <button
+            class="ui-btn ui-btn--block"
+            type="button"
+            :class="{ active: platform == '2' }"
+            @click="platform = '2'"
+          >
+            三味線(維護中)
+          </button>
         </div>
+        <select v-model="platform" v-show="false">
+          <option value="">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
       </div>
 
       <div class="deposit-third-party__field--btn deposit-third-party__field--amount">
@@ -94,7 +122,7 @@
         <button class="ui-btn ui-btn--block deposit-third-party__btn--submit" type="submit">
           {{ $t('ui.button.submit') }}
         </button>
-        <button class="ui-btn ui-btn--block deposit-third-party__btn--reset" type="reset">
+        <button class="ui-btn ui-btn--block deposit-third-party__btn--reset" type="reset" @click="resetForm">
           {{ $t('ui.button.reset') }}
         </button>
       </div>
@@ -140,6 +168,13 @@ export default {
     showInputAmount() {
       this.amount = 0;
       this.isShowInputAmount = true;
+    },
+    resetForm() {
+      this.method = '';
+      this.platform = '';
+      this.amount = 0;
+      this.remark = '';
+      this.promotion = -1;
     },
   },
 };

@@ -102,7 +102,7 @@ export default {
       const result = await apiDeposit(requestData);
 
       if (result.Code == 200) {
-        this.$router.push({ name: 'TransactionRecordContent', params: { name: 'deposit' } });
+        this.$router.push({ name: 'TransactionRecordDeposit' });
       } else if (result.Code == 500) {
         window.alert(result.ErrMsg);
       }

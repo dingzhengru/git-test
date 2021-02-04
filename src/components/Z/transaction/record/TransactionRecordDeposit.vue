@@ -57,7 +57,6 @@ export default {
   computed: {
     ...mapGetters(['siteSetting']),
     RecordImageDialog() {
-      console.log(`@/${this.siteSetting.components.transaction.record.RecordImageDialog}`);
       return () => import(`@/${this.siteSetting.components.transaction.record.RecordImageDialog}`);
     },
   },

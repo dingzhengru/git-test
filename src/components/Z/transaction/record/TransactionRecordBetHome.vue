@@ -64,6 +64,7 @@ export default {
     $route: {
       handler() {
         this.updateRoute();
+        console.log(this.$route.matched);
       },
     },
   },

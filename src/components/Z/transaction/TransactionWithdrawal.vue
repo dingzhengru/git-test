@@ -72,12 +72,14 @@
         </div>
       </div>
 
-      <div class="ui-notice">
+      <div class="ui-notice withdrawal__notice">
         <ul>
-          <li>{{ $t('transaction.withdrawal.notice.amount') }}</li>
+          <li class="ui-notice--height-light">{{ $t('transaction.withdrawal.notice.amount') }}</li>
           <li>
             {{ $t('transaction.withdrawal.notice.restrict01') }}
-            <a href="javascript:;">{{ $t('transaction.withdrawal.notice.restrict02') }}</a>
+            <router-link class="ui-notice--height-light" :to="{ name: 'TransactionRecordWithdrawalRestriction' }">
+              {{ $t('transaction.withdrawal.notice.restrict02') }}
+            </router-link>
             {{ $t('transaction.withdrawal.notice.restrict03') }}
           </li>
           <li>{{ $t('transaction.withdrawal.notice.contact') }}</li>

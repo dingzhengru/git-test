@@ -11,8 +11,8 @@ body {
   font-family: $base-font-family;
 }
 
-.text-height-light {
-  color: red;
+#app {
+  padding-top: $header-height;
 }
 
 .ui-btn {
@@ -48,6 +48,10 @@ body {
 
 .lottery-btn-block {
   @include lottery-btn-block;
+}
+
+.ui-no-data {
+  @include ui-no-data;
 }
 
 //* 服務規章視窗

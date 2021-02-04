@@ -13,6 +13,8 @@ $withdrawal-btn-bg-submit: $btn-bg-z-01-brown;
 $withdrawal-btn-color-submit: white;
 $withdrawal-btn-shadow-submit: none;
 
+$withdrawal-notice-link-underline: underline;
+
 .withdrawal {
   @include withdrawal;
 }

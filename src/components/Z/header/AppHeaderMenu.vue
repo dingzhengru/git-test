@@ -26,11 +26,7 @@
               {{ $t('header.menu.personalInfo') }}
             </a>
           </div>
-          <div
-            class="header-menu__dropdown__route__item"
-            v-if="userIsLoggedIn"
-            @click="changeRoute('NotificationInbox')"
-          >
+          <div class="header-menu__dropdown__route__item" v-if="userIsLoggedIn" @click="changeRoute('UserMail')">
             <i class="header-menu__dropdown__route__item__icon icon-mail"></i>
             <a class="header-menu__dropdown__route__item__link" href="javascript:;">
               {{ $t('header.menu.mail') }}

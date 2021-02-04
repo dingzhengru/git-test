@@ -42,4 +42,10 @@
       box-shadow: $withdrawal-btn-shadow-submit;
     }
   }
+
+  &__notice {
+    a {
+      text-decoration: $withdrawal-notice-link-underline;
+    }
+  }
 }

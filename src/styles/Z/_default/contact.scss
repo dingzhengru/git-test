@@ -2,15 +2,15 @@
   padding: 30px;
   padding-bottom: $footer-height + 15;
 
+  &-auth {
+    padding-top: $header-sub-height-auth + 30;
+  }
+
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 2rem;
-
-  &-auth {
-    padding-top: $header-sub-height-auth + 30;
-  }
 
   &__item {
     background: #444444;

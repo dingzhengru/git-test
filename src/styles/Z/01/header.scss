@@ -20,6 +20,9 @@ $header-link-back-left: 30px;
 
 .header {
   @include header;
+  position: fixed;
+  top: 0;
+  z-index: 2;
 }
 
 //* AppHeaderMenu

@@ -1,7 +1,7 @@
 @mixin user {
   padding: 30px;
-  padding-top: $header-sub-height-auth + 15;
   padding-bottom: $footer-height + 15;
+  padding-top: $header-sub-height-auth;
 }
 
 @mixin user-profile {
@@ -164,6 +164,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  font-size: 2rem;
 
   &__nav {
     display: flex;
@@ -294,7 +295,7 @@
   display: flex;
   flex-direction: column;
   padding: 30px 60px;
-  font-size: 2rem;
+  font-size: 1.8rem;
 
   &__btn {
     width: 100%;

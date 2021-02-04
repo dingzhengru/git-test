@@ -51,7 +51,7 @@ $field-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 0, 0.8);
 $notice-color: #8b8b8b;
 $notice-font-size: 1.8rem;
 $notice-line-height: 2.5rem;
-$notice-text-height-light-color: red;
+$notice-height-light-color: red;
 
 $point-list-bg: #444444;
 $point-list-label-color: $text-color-z-01-yellow-dark-2;
@@ -91,6 +91,11 @@ $lottery-btn-block-red-envelope-width: 124px;
 $lottery-btn-block-red-envelope-height: 126px;
 $lottery-btn-block-red-envelope-text-top: 75px;
 $lottery-btn-block-red-envelope-text-color: white;
+
+//* 尚無資料的部分
+$no-data-bg: none;
+$no-data-color: black;
+$no-data-font-size: 2rem;
 
 //* 服務規章視窗
 $service-term-close-color: #cab985;
@@ -244,6 +249,10 @@ $service-term-btn-color: white;
   color: $notice-color;
   font-size: $notice-font-size;
   line-height: $notice-line-height;
+
+  &--height-light {
+    color: $notice-height-light-color;
+  }
 }
 
 @mixin ui-step {
@@ -421,6 +430,13 @@ $service-term-btn-color: white;
       color: $lottery-btn-block-red-envelope-text-color;
     }
   }
+}
+
+@mixin ui-no-data {
+  background: $no-data-bg;
+  color: $no-data-color;
+  font-size: $no-data-font-size;
+  text-align: center;
 }
 
 @mixin service-term {

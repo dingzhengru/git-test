@@ -12,7 +12,8 @@
       "content": "Content",
       "amount": "Amount",
       "other": "Other",
-      "pleaseSelect": "Please select"
+      "pleaseSelect": "Please select",
+      "noData": "No Data Found"
     },
     "button": {
       "submit": "Submit",

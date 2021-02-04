@@ -320,20 +320,14 @@ const routes = [
   },
   {
     path: '/promotion',
-    component: BlankLayout,
-    children: [
-      {
-        path: '',
-        name: 'Promotion',
-        component: () => import('@/views/promotion/Promotion'),
-      },
-      {
-        path: ':id',
-        name: 'PromotionDetail',
-        component: () => import('@/views/promotion/PromotionDetail'),
-        meta: { 'header-back-icon': true },
-      },
-    ],
+    name: 'Promotion',
+    component: () => import('@/views/promotion/Promotion'),
+  },
+  {
+    path: '/promotion:id',
+    name: 'PromotionDetail',
+    component: () => import('@/views/promotion/PromotionDetail'),
+    meta: { 'header-back-icon': true },
   },
   {
     path: '/contact',

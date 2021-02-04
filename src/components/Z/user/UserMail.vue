@@ -16,6 +16,8 @@
       </div>
     </div>
 
+    <div class="ui-no-data" v-show="list.length === 0">{{ $t('ui.label.noData') }}</div>
+
     <AppPagination
       :count="pagination.count"
       :page="pagination.page"

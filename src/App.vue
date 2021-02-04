@@ -16,11 +16,11 @@
     </div>
 
     <AppLoading v-show="loadingList.length > 0" />
-    <AppGoTopButton />
     <ModalWinWheel :isShow="modalWinWheelIsShow" />
     <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
 
     <component :is="AppLotteryButtonBlock" v-show="userIsLoggedIn" />
+    <component :is="AppGoTopButton" />
   </div>
 </template>
 
@@ -66,6 +66,12 @@ export default {
     AppLotteryButtonBlock() {
       if (this.siteSetting.components.app.AppLotteryButtonBlock) {
         return () => import(`@/${this.siteSetting.components.app.AppLotteryButtonBlock}`);
+      }
+      return '';
+    },
+    AppGoTopButton() {
+      if (this.siteSetting.components.app.AppGoTopButton) {
+        return () => import(`@/${this.siteSetting.components.app.AppGoTopButton}`);
       }
       return '';
     },

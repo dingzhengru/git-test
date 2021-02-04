@@ -12,7 +12,8 @@
       "content": "รายละเอียด",
       "amount": "จำนวน",
       "other": "อื่นๆ",
-      "pleaseSelect": "โปรดเลือก"
+      "pleaseSelect": "โปรดเลือก",
+      "noData": "ไม่พบข้อมูล"
     },
     "button": {
       "submit": "ส่ง",

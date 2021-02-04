@@ -45,13 +45,12 @@ export default {
         },
         {
           name: 'record',
-          link: 'TransactionRecordHome',
+          link: 'TransactionRecordDeposit',
           text: 'transaction.nav.record',
           class: '',
           id: 'transaction.nav.record',
           otherActivePath: [
             'TransactionRecordHome',
-            'TransactionRecordDeposit',
             'TransactionRecordWithdrawal',
             'TransactionRecordTransfer',
             'TransactionRecordBonus',
