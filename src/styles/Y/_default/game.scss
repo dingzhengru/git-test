@@ -1,7 +1,6 @@
 @mixin game {
   background: $game-bg;
-  padding-top: $header-sub-height-auth + 30;
-  padding-bottom: $footer-height;
+  padding-top: $header-sub-height-auth;
   min-height: 65vh;
 }
 

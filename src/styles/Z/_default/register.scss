@@ -1,7 +1,6 @@
 @mixin register {
   font-size: 1.5rem;
   padding: 30px 45px;
-  padding-bottom: $footer-height;
 
   &-form {
     display: flex;

@@ -1,6 +1,6 @@
 <template>
   <div id="app" :lang="lang" :class="lang">
-    <div v-show="!isLoadingListSiteInfo">
+    <div v-show="!loadingListIncludeSiteInfo">
       <component
         :is="AppHeader"
         @changeLang="changeLang"
@@ -19,7 +19,7 @@
     <ModalWinWheel :isShow="modalWinWheelIsShow" />
     <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
 
-    <component :is="AppLotteryButtonBlock" v-show="userIsLoggedIn" />
+    <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
     <component :is="AppGoTopButton" />
   </div>
 </template>
@@ -41,14 +41,14 @@ export default {
     ...mapGetters([
       'lang',
       'loadingList',
-      'isLoadingListSiteInfo',
+      'loadingListIncludeSiteInfo',
       'modalWinWheelIsShow',
       'modalRedEnvelopeIsShow',
       'pwaInstallStatus',
       'pwaPrompt',
       'siteSetting',
       'siteFullCss',
-      'siteStatus',
+      'siteIsActive',
       'siteIsSpare',
       'siteEnableSpareDomain',
       'siteManifestUrl',
@@ -103,7 +103,7 @@ export default {
     document.querySelector('#apple-startup-image-1242x2208').setAttribute('href', this.siteIOSUrl('1242x2208'));
 
     //* 確認是否維護
-    if (this.siteStatus != 0 && this.$route.name != 'Maintenance') {
+    if (!this.siteIsActive && this.$route.name != 'Maintenance') {
       this.$router.replace({ name: 'Maintenance' });
       return;
     }

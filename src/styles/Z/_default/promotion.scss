@@ -5,7 +5,6 @@
   align-content: center;
   width: 100%;
   padding: 15px;
-  padding-bottom: $footer-height;
 
   &-auth {
     padding-top: $header-sub-height-auth + 15;
@@ -19,9 +18,11 @@
 }
 
 @mixin promotion-detail {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: $footer-height + 30;
+  padding: 30px 15px;
+
+  &-auth {
+    padding-top: $header-sub-height-auth + 15;
+  }
 
   &__image {
     display: block;

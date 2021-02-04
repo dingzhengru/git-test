@@ -2,23 +2,23 @@
   <header class="header">
     <img :src="siteLogoUrl" class="header__logo" :id="$idMapper.header.logo" alt="" />
 
-    <template v-if="siteStatus == 0">
+    <template v-if="siteIsActive">
       <router-link
         to="/"
         class="header__link header__link--home"
         :id="$idMapper.header.link.home"
-        v-if="$route.meta['header-back-icon'] != true && siteStatus == 0"
+        v-if="$route.meta['header-back-icon'] != true && siteIsActive"
       ></router-link>
       <a class="header__link header__link--back" href="javascript:;" @click="$router.go(-1)" v-else></a>
 
       <component :is="AppHeaderMenu" v-if="!userIsLoggedIn" @changeLang="changeLang" />
       <component
         :is="AppHeaderMenuAuth"
-        v-if="userIsLoggedIn && siteStatus == 0"
+        v-if="userIsLoggedIn && siteIsActive"
         @changeLang="changeLang"
         @logout="logout"
       />
-      <component :is="AppHeaderSub" v-if="userIsLoggedIn && siteStatus == 0" />
+      <component :is="AppHeaderSub" v-if="userIsLoggedIn && siteIsActive" />
     </template>
   </header>
 </template>
@@ -35,7 +35,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteLogoUrl', 'siteStatus', 'userIsLoggedIn']),
+    ...mapGetters(['siteSetting', 'siteLogoUrl', 'siteIsActive', 'userIsLoggedIn']),
     AppHeaderMenu() {
       return () => import(`@/${this.siteSetting.components.header.AppHeaderMenu}`);
     },

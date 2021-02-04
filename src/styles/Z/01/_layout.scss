@@ -12,7 +12,10 @@ body {
 }
 
 #app {
-  padding-top: $header-height;
+  .main {
+    padding-top: $header-height;
+    padding-bottom: $footer-height;
+  }
 }
 
 .ui-btn {

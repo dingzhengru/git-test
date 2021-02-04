@@ -8,7 +8,7 @@ const getters = {
   loadingList: state => state.loadingList,
 
   //* 當 siteinfo 在 LoadingList 中的時候 (用於判斷是否顯示網頁)
-  isLoadingListSiteInfo: state => state.loadingList.includes('/api/Siteinfo/getinfo'),
+  loadingListIncludeSiteInfo: state => state.loadingList.includes('/api/Siteinfo/getinfo'),
 
   //* pwa
   pwaInstallStatus: state => state.pwa.status,
@@ -20,6 +20,11 @@ const getters = {
 
   //* Site.setting
   siteSetting: state => state.site.setting,
+
+  //* 判斷是否維護
+  siteIsActive: state => state.site.info.Lst_SiteStatus === 0,
+  siteIsMaintain: state => state.site.info.Lst_SiteStatus === 10,
+  siteIsClosed: state => state.site.info.Lst_SiteStatus === 20,
 
   //* Site.info
   siteID: state => state.site.info.LS_SiteID,

@@ -37,7 +37,7 @@ export default {
       'siteFullCss',
       'siteResourceUrlMaintain',
       'siteName',
-      'siteStatus',
+      'siteIsActive',
       'siteMaintainTimeStart',
       'siteMaintainTimeEnd',
     ]),
@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     //* 非維護時，轉去首頁
-    if (this.siteStatus == 0) {
+    if (this.siteIsActive) {
       this.$router.replace({ name: 'Home' });
     }
 

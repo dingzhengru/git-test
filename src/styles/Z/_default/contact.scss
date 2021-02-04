@@ -1,6 +1,5 @@
 @mixin contact {
   padding: 30px;
-  padding-bottom: $footer-height + 15;
 
   &-auth {
     padding-top: $header-sub-height-auth + 30;
@@ -18,7 +17,7 @@
     width: 100%;
     min-height: 120px;
     padding: 15px;
-    margin-bottom: 15px;
+    margin: 10px 0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

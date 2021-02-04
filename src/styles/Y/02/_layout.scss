@@ -8,6 +8,12 @@ body {
   font-size: $base-font-size;
 }
 
+#app {
+  .main {
+    padding-bottom: $footer-height;
+  }
+}
+
 .ui-ddl {
   border: 1px solid #8b8b8b;
 }

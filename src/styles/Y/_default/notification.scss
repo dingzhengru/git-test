@@ -1,5 +1,6 @@
 @mixin notification {
-  padding: $header-height 20px 160px 20px;
+  padding: 30px;
+  padding-top: $header-sub-height-auth;
 }
 
 @mixin notification-news {

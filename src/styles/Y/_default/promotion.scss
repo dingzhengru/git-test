@@ -1,6 +1,4 @@
 @mixin promotion {
-  padding-bottom: $footer-height;
-
   &-auth {
     padding-top: $header-sub-height-auth;
   }
@@ -48,9 +46,7 @@
 }
 
 @mixin promotion-detail {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: $footer-height + 30;
+  padding: 30px 15px;
 
   &-auth {
     padding-top: $header-sub-height-auth;

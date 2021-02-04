@@ -2,6 +2,7 @@
   background: $maintenance-bg;
   color: $maintenance-text-color;
   padding: 10px 10%;
+  margin-bottom: -$footer-height;
   p {
     margin-bottom: 30px;
     line-height: 50px;
@@ -10,6 +11,7 @@
 
   button {
     background: $maintenance-button-bg;
+    color: $maintenance-button-color;
     margin-top: 35px;
     margin-bottom: 60px;
     width: 100%;

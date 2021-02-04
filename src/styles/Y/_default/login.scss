@@ -1,6 +1,5 @@
 @mixin login {
-  padding-bottom: $footer-height;
-
+  padding-bottom: 30px;
   &__error-message {
     text-align: center;
   }

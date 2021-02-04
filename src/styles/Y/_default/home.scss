@@ -1,6 +1,6 @@
 @mixin home {
   padding-top: $header-sub-height;
-  padding-bottom: $footer-height;
+  padding-bottom: 30px;
 
   &-auth {
     padding-top: $header-sub-height-auth;
