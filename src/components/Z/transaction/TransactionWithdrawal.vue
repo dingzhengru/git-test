@@ -37,6 +37,18 @@
         </div>
       </ValidationProvider>
 
+      <ValidationProvider class="ui-field" tag="div" :rules="{ 'object-not-empty': true }" v-show="bankList.length > 1">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bank') }}</label>
+          <select class="ui-field__select" v-model="bank">
+            <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
+            <option :value="item" v-for="item in bankList" :key="item.Lst_BankID">
+              {{ item.Text }}
+            </option>
+          </select>
+        </div>
+      </ValidationProvider>
+
       <div class="ui-field withdrawal__field">
         <div class="ui-field__group">
           <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bankName') }}</label>
@@ -65,12 +77,25 @@
         </div>
       </div>
 
-      <div class="ui-field withdrawal__field">
+      <ValidationProvider
+        class="ui-field withdrawal__field"
+        tag="div"
+        :rules="{
+          'withdrawal-password-required': true,
+          'withdrawal-password-min': 6,
+          'withdrawal-password-regex': '^[a-zA-Z0-9]*$',
+        }"
+      >
         <div class="ui-field__group">
           <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.password') }}</label>
-          <input class="ui-field__group__input" type="password" :placeholder="$t('login.placeholder.password')" />
+          <input
+            class="ui-field__group__input"
+            type="password"
+            :placeholder="$t('login.placeholder.password')"
+            v-model="password"
+          />
         </div>
-      </div>
+      </ValidationProvider>
 
       <div class="ui-notice withdrawal__notice">
         <ul>

@@ -132,6 +132,10 @@ $service-term-btn-color: white;
   flex-wrap: wrap;
   margin-bottom: 20px;
 
+  input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
   &__group {
     width: 100%;
     padding: 30px;
@@ -166,7 +170,7 @@ $service-term-btn-color: white;
     }
 
     label {
-      justify-self: flex-start;
+      width: calc(100% - 45px);
       color: $field-label-color-checkbox;
     }
   }

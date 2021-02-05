@@ -14,7 +14,7 @@
       >
         <span class="ui-field__star" v-if="field.isRequired">*</span>
 
-        <div class="ui-field__group" v-if="field.type != 'select'">
+        <div class="ui-field__group">
           <label class="ui-field__group__label">
             {{ $t(`register.${field.name}.placeholder`) }}
           </label>
@@ -27,18 +27,19 @@
             :min="field.min"
             :max="field.max"
             v-model="field.value"
+            v-if="field.type != 'select'"
             @change="changeField(field, invalid)"
           />
-        </div>
 
-        <select
-          class="ui-field__select"
-          :id="$idMapper.register.input[field.name]"
-          v-model="field.value"
-          v-if="field.type == 'select'"
-        >
-          <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
-        </select>
+          <select
+            class="ui-field__select"
+            :id="$idMapper.register.input[field.name]"
+            v-model="field.value"
+            v-if="field.type == 'select'"
+          >
+            <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
+          </select>
+        </div>
 
         <img
           class="ui-field__captcha"

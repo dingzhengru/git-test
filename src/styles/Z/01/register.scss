@@ -10,6 +10,8 @@ $register-btn-bg-reset: #caad76;
 $register-btn-text-color-reset: black;
 $register-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
+$register-link-color: #75a2ff;
+
 .register {
   @include register;
 }
