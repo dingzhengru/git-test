@@ -10,7 +10,7 @@
       >
         <select class="ui-field__select" v-model="depositBank">
           <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.depositBank`) }}</option>
-          <option :value="item" v-for="item in depositBankList" :key="item.value">
+          <option :value="item" v-for="item in depositInfo.BankAccount" :key="item.Value">
             {{ item.Text }}
           </option>
         </select>
@@ -50,7 +50,7 @@
       >
         <select class="ui-field__select" v-model="transferBank">
           <option :value="{}" selected>{{ $t('transaction.deposit.placeholder.transferBank') }}</option>
-          <option :value="item" v-for="item in transferBankList" :key="item.Value">
+          <option :value="item" v-for="item in depositInfo.BankURL" :key="item.Value">
             {{ item.Text }}
           </option>
         </select>
@@ -65,7 +65,7 @@
       >
         <select class="ui-field__select" v-model="method">
           <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
-          <option :value="item.Value" v-for="item in methodList" :key="item.Value">
+          <option :value="item.Value" v-for="item in depositInfo.DepositMethod" :key="item.Value">
             {{ item.Text }}
           </option>
         </select>
@@ -92,7 +92,7 @@
       <ValidationProvider
         tag="div"
         class="ui-field deposit-base__field deposit-base__field--amount"
-        :rules="{ required: true, min_value: depositLimit.min, max_value: depositLimit.max }"
+        :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
       >
         <div class="ui-field__group">
           <label class="ui-field__group__label" for="deposit-bank-account">
@@ -113,8 +113,8 @@
           <li>
             {{
               $t('transaction.deposit.hint.amount01', {
-                amountLimitMin: depositLimit.min,
-                amountLimitMax: depositLimit.max,
+                amountLimitMin: amountMin,
+                amountLimitMax: amountMax,
               })
             }}
           </li>
@@ -158,7 +158,7 @@
 
       <ValidationProvider class="ui-field deposit-base__field deposit-base__field--bank" tag="div">
         <select class="ui-field__select" v-model="promotion">
-          <option :value="item.Value" v-for="item in promotionList" :key="item.Value">
+          <option :value="item.Value" v-for="item in depositInfo.AllActivityList" :key="item.Value">
             {{ item.Text }}
           </option>
         </select>

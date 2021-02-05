@@ -4,7 +4,7 @@
       <div class="theme-content-box">
         <h3 class="deposit-form__title theme-h3-boxTitle">{{ $t('transaction.deposit.title') }}</h3>
 
-        <ValidationProvider
+        <!-- <ValidationProvider
           tag="div"
           class="deposit-form__field theme-input-box"
           :rules="{ required: JSON.stringify(depositBankList) === JSON.stringify(transferBankList) }"
@@ -14,14 +14,9 @@
             {{ $t('transaction.deposit.field.bankDepositAccount') }}
           </span>
           <input class="ui-ipt" type="text" v-model="depositBankAccount" />
-        </ValidationProvider>
+        </ValidationProvider> -->
 
-        <ValidationProvider
-          tag="div"
-          class="deposit-form__field theme-input-box"
-          :rules="{ 'object-not-empty': true }"
-          v-else
-        >
+        <ValidationProvider tag="div" class="deposit-form__field theme-input-box" :rules="{ 'object-not-empty': true }">
           <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.depositBank') }}
           </span>
@@ -31,7 +26,7 @@
             v-model="depositBank"
           >
             <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.depositBank`) }}</option>
-            <option :value="item" v-for="item in depositBankList" :key="item.value">
+            <option :value="item" v-for="item in depositInfo.BankAccount" :key="item.Value">
               {{ item.Text }}
             </option>
           </select>
@@ -66,7 +61,7 @@
             v-model="transferBank"
           >
             <option :value="{}" selected>{{ $t('transaction.deposit.placeholder.transferBank') }}</option>
-            <option :value="item" v-for="item in transferBankList" :key="item.Value">
+            <option :value="item" v-for="item in depositInfo.BankURL" :key="item.Value">
               {{ item.Text }}
             </option>
           </select>
@@ -99,7 +94,7 @@
             v-model="method"
           >
             <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
-            <option :value="item.Value" v-for="item in methodList" :key="item.Value">
+            <option :value="item.Value" v-for="item in depositInfo.DepositMethod" :key="item.Value">
               {{ item.Text }}
             </option>
           </select>
@@ -109,14 +104,17 @@
           <span class="deposit-form__field__title theme-input-header">
             {{ $t('transaction.deposit.field.amount') }}
           </span>
-          <ValidationProvider :rules="{ required: true }" v-if="currencyList.length > 0">
+          <ValidationProvider
+            :rules="{ required: true }"
+            v-if="depositInfo.BaseCurrencyItem && depositInfo.BaseCurrencyItem.length > 0"
+          >
             <select
               class="deposit-form__field__select ui-ddl"
               :id="$idMapper.transaction.deposit.field.currency"
               v-model="currency"
             >
               <option value="">{{ $t(`transaction.deposit.placeholder.currency`) }}</option>
-              <option :value="item.Value" v-for="item in currencyList" :key="item.Value">
+              <option :value="item.Value" v-for="item in depositInfo.BaseCurrencyItem" :key="item.Value">
                 {{ item.Text }}
               </option>
             </select>
@@ -126,7 +124,7 @@
         <ValidationProvider
           tag="div"
           class="deposit-form__field theme-input-box"
-          :rules="{ required: true, min_value: depositLimit.min, max_value: depositLimit.max }"
+          :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
         >
           <input
             class="ui-ipt"
@@ -140,8 +138,8 @@
             class="deposit-form__field__hint"
             v-html="
               $t('transaction.deposit.hint.amount', {
-                amountLimitMin: depositLimit.min,
-                amountLimitMax: depositLimit.max,
+                amountLimitMin: amountMin,
+                amountLimitMax: amountMax,
               })
             "
           ></p>
@@ -189,7 +187,7 @@
             :id="$idMapper.transaction.deposit.field.promotion"
             v-model="promotion"
           >
-            <option :value="item.Value" v-for="item in promotionList" :key="item.Value">
+            <option :value="item.Value" v-for="item in depositInfo.AllActivityList" :key="item.Value">
               {{ item.Text }}
             </option>
           </select>
