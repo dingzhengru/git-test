@@ -323,7 +323,7 @@
     }
   },
   "user": {
-    "title":"Profile",
+    "title": "Profile",
     "nav": {
       "profile": "Personal Info",
       "changePassword": "Change Password",
@@ -336,7 +336,9 @@
         "currency": "Specific Currency",
         "createdDatetime": "Registration time",
         "realName": "Your real name",
+        "nickname": "Nickname",
         "email": "E-mail",
+        "mobile": "Mobile",
         "birthday": "Birthday",
         "bankName1": "Name of Bank",
         "bankAccount1": "Bank Account",
@@ -366,6 +368,9 @@
           "suggest": "For ensuring your rights and benefits, we urge you to open the member account as soon as possible.",
           "contact": "If you have any additional questions about your account details ,please contact our online service."
         }
+      },
+      "step": {
+        "bank": "Bank information"
       }
     },
     "changePassword": {

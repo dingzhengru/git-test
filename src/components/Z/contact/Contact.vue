@@ -8,17 +8,13 @@
       </div>
     </div>
 
-    <div class="contact__item">
+    <div class="contact__item" @click="isShowDetailMobile = !isShowDetailMobile">
       <i class="contact__item__icon--contact icon-mobile"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.mobile') }}</div>
         <div class="contact__item__text__content"></div>
       </div>
-      <i
-        class="contact__item__icon--dropdown"
-        :class="{ open: isShowDetailMobile }"
-        @click="isShowDetailMobile = !isShowDetailMobile"
-      ></i>
+      <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailMobile }"></i>
       <transition name="slide-dropdown">
         <div class="contact__item__detail" v-show="isShowDetailMobile">
           <div
@@ -33,17 +29,13 @@
       </transition>
     </div>
 
-    <div class="contact__item">
+    <div class="contact__item" @click="isShowDetailSkype = !isShowDetailSkype">
       <i class="contact__item__icon--contact icon-skype"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.skype') }}</div>
         <div class="contact__item__text__content"></div>
       </div>
-      <i
-        class="contact__item__icon--dropdown"
-        :class="{ open: isShowDetailSkype }"
-        @click="isShowDetailSkype = !isShowDetailSkype"
-      ></i>
+      <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailSkype }"></i>
       <transition name="slide-dropdown">
         <div class="contact__item__detail" v-show="isShowDetailSkype">
           <div
@@ -69,17 +61,13 @@
       </button>
     </div>
 
-    <div class="contact__item">
+    <div class="contact__item" @click="isShowDetailLine = !isShowDetailLine">
       <i class="contact__item__icon--contact icon-line"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.line') }}</div>
         <div class="contact__item__text__content"></div>
       </div>
-      <i
-        class="contact__item__icon--dropdown"
-        :class="{ open: isShowDetailLine }"
-        @click="isShowDetailLine = !isShowDetailLine"
-      ></i>
+      <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailLine }"></i>
       <transition name="slide-dropdown">
         <div class="contact__item__detail-btn" v-show="isShowDetailLine">
           <div
@@ -105,17 +93,13 @@
       </button>
     </div>
 
-    <div class="contact__item">
+    <div class="contact__item" @click="isShowDetailWechat = !isShowDetailWechat">
       <i class="contact__item__icon--contact icon-wechat"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.wechat') }}</div>
         <div class="contact__item__text__content"></div>
       </div>
-      <i
-        class="contact__item__icon--dropdown"
-        :class="{ open: isShowDetailWechat }"
-        @click="isShowDetailWechat = !isShowDetailWechat"
-      ></i>
+      <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailWechat }"></i>
       <transition name="slide-dropdown">
         <div class="contact__item__detail-btn" v-show="isShowDetailWechat">
           <button

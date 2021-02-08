@@ -111,6 +111,7 @@ const getters = {
   userLotteryCountRedEnvelope: state => state.user.lotteryCountList.find(item => item.Type == 1) || {},
 
   //* User info
+  userInfo: state => state.user.info,
   userAccount: state => state.user.info.Lst_Account,
   userPILevel: state => state.user.info.Lst_PILevel,
   userPIBetAmount: state => state.user.info.Lst_PI_BetAmount,
@@ -118,11 +119,13 @@ const getters = {
   userCreatedDatetime: state => state.user.info.Lst_Ctime,
   userCurrency: state => state.user.info.Lst_Currency,
   userEmail: state => state.user.info.Lst_Email,
+  userRealName: state => state.user.info.Lst_Realname,
+  userNickname: state => state.user.info.Lst_Nickname,
+  userMobile: state => state.user.info.Lst_Mobile,
   userIsAccountOpen: state => state.user.info.Lst_Account_Open,
   userIsEnableRememberOption: state => state.user.info.Lst_Enable_Remember_Option,
   userIsDemoAccount: state => state.user.info.Lst_IsDemoAccount,
   userNewMailCount: state => state.user.info.Lst_NewMailCount,
-  userRealName: state => state.user.info.Lst_Realname,
   userIsUsingfirstDeposit: state => state.user.info.Lst_UsingfirstDeposit,
   userBankId1: state => state.user.info.Lst_BankID_1,
   userBankName1: state => state.user.info.Lst_BankName_1,

@@ -20,8 +20,16 @@
     </div>
     <transition name="slide-dropdown">
       <div class="header-sub__dropdown" v-show="isShowDropdown">
-        <button class="ui-btn ui-btn--block" @click="refreshWallet">
-          {{ $t('transaction.transfer.button.refresh') }}
+        <button
+          class="ui-btn ui-btn--block"
+          :disabled="refreshTimeCount !== refreshTimeInterval"
+          @click="refreshWallet"
+        >
+          {{
+            refreshTimeCount == refreshTimeInterval
+              ? $t('transaction.transfer.button.refresh')
+              : `(${refreshTimeCount})s`
+          }}
         </button>
         <button class="ui-btn ui-btn--block" @click="transferAllPointToMain">
           {{ $t('transaction.transfer.button.allToMyWallet') }}

@@ -7,7 +7,20 @@ export default {
   },
   methods: {
     refreshWallet() {
+      if (this.refreshTimeCount != this.refreshTimeInterval) {
+        return;
+      }
+
       this.$store.dispatch('user/getPointInfo');
+
+      let countDown = setInterval(() => {
+        this.refreshTimeCount--;
+      }, 1000);
+
+      setTimeout(() => {
+        clearInterval(countDown);
+        this.refreshTimeCount = this.refreshTimeInterval;
+      }, this.refreshTimeInterval * 1000);
     },
     async transferAllPointToMain() {
       const result = await this.$store.dispatch('user/transferAllPointToMain');

@@ -108,9 +108,9 @@ store.dispatch('product/getList');
     document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
 
     //* title 以 seo 的為主，有的話就蓋掉
-    if (seoInfo.Lst_SEO_Info.Title) {
-      document.title = seoInfo.Lst_SEO_Info.Title;
-    }
+    // if (seoInfo.Lst_SEO_Info.Title) {
+    //   document.title = seoInfo.Lst_SEO_Info.Title;
+    // }
   });
 
   new Vue({
