@@ -141,10 +141,10 @@ export default {
         if (choiceResult.outcome === 'accepted') {
           this.$store.commit('pwa/setStatus', 'installing');
 
-          //* 五秒後設為已下載，因目前無事件可以確認是否安裝完成
+          //* 10秒後設為已下載，因目前無事件可以確認是否安裝完成
           setTimeout(() => {
             this.$store.commit('pwa/setStatus', 'installed');
-          }, 5000);
+          }, 10000);
         }
       });
     });

@@ -100,7 +100,7 @@
 
         <div class="login__text">or</div>
         <button class="login__btn--register ui-btn ui-btn--block" @click="$router.push({ name: 'Register' })">
-          {{ $t('login.link.register') }}
+          {{ $t('ui.button.registerNow') }}
         </button>
       </div>
     </form>
