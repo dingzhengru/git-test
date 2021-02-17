@@ -6,7 +6,7 @@
         <th>{{ $t('transaction.recordContent.deposit.table.date') }}</th>
         <th>{{ $t('transaction.recordContent.deposit.table.status') }}</th>
         <th>{{ $t('transaction.recordContent.deposit.table.amount') }}</th>
-        <th>{{ $t('transaction.recordDetail.deposit.table.activity') }}</th>
+        <th>{{ $t('transaction.recordContent.deposit.table.promotion') }}</th>
       </tr>
       <template v-for="(item, index) in recordList">
         <tr :key="item.Lst_TransID + index">
@@ -20,17 +20,23 @@
         </tr>
         <tr class="record-content__table__tr--detail" :key="item.Lst_TransID" v-show="item.isShowDetail">
           <td colspan="5">
+            <div>{{ $t('transaction.recordDetail.deposit.table.bank') }}：</div>
+            <div>{{ $t('transaction.recordDetail.deposit.table.paymentMethod') }}：</div>
             <div>{{ $t('transaction.recordDetail.deposit.table.transactionNumber') }}： {{ item.Lst_TransID }}</div>
             <div>
               {{ $t('transaction.recordContent.deposit.table.receipt') }}：
-              <a href="javascript:;" @click="openReceiptImage(item)">
+              <a href="javascript:;" @click="openReceiptImage(item)" v-if="receiptImageUrl">
                 {{ item.Lst_Receipt }}
               </a>
+              <span v-else>{{ item.Lst_Receipt }}</span>
             </div>
+            <div>{{ $t('transaction.recordDetail.deposit.table.transactionTime') }}：</div>
           </td>
         </tr>
       </template>
     </table>
+
+    <div class="ui-no-data" v-show="recordList.length === 0">{{ $t('ui.label.noData') }}</div>
 
     <div class="ui-notice">
       <ul>

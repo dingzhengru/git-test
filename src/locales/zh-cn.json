@@ -531,18 +531,14 @@
       "bet": "投注纪录"
     },
     "recordContent": {
-      "statusText": {
-        "underReview": "审核中",
-        "success": "成功",
-        "failure": "失败"
-      },
       "deposit": {
         "title": "存款纪录",
         "table": {
-          "date": "日期",
+          "date": "建立时间",
           "status": "状态",
           "bank": "银行",
           "amount": "金额",
+          "promotion": "优惠活动",
           "receipt": "汇款收据",
           "detail": "明细"
         },

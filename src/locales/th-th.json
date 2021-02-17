@@ -531,11 +531,6 @@
       "bet": "รายการเดิมพัน"
     },
     "recordContent": {
-      "statusText": {
-        "underReview": "อยู่ระหว่างรออนุมัติ",
-        "success": "สำเร็จ",
-        "failure": "ความล้มเหลว"
-      },
       "deposit": {
         "title": "บันทึกรายการเติมเงิน",
         "table": {
@@ -543,6 +538,7 @@
           "status": "สถานะ",
           "bank": "ธนาคาร",
           "amount": "จำนวน",
+          "promotion": "โปรโมชั่น",
           "receipt": "ใบเสร็จรับเงิน",
           "detail": "รายละเอียด"
         },

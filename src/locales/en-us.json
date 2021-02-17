@@ -534,11 +534,6 @@
       "bet": "Report"
     },
     "recordContent": {
-      "statusText": {
-        "underReview": "under review",
-        "success": "Successful",
-        "failure": "Failure"
-      },
       "deposit": {
         "title": "Deposit Record",
         "table": {
@@ -546,6 +541,7 @@
           "status": "Status",
           "bank": "Bank",
           "amount": "Amount",
+          "promotion": "Promotions",
           "receipt": "Remittance Receipt",
           "detail": "Detail"
         },

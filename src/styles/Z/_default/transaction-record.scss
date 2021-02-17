@@ -16,6 +16,11 @@
   }
 
   &__table {
+    td,
+    th {
+      word-break: break-word;
+    }
+
     &__tr {
       &--detail {
         transform-origin: top;

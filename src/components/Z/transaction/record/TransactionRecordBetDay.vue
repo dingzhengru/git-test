@@ -23,7 +23,7 @@
           <td>{{ $numeral(item.Lst_JackpotScore).format('0,0.00') }}</td>
         </tr>
       </template>
-      <tr>
+      <tr v-show="recordList.length > 0">
         <td>{{ $t('report.unsettleBet.table.total') }}</td>
         <td>{{ totalRecord.Lst_BetCount }}</td>
         <td>{{ $numeral(totalRecord.Lst_TTLBet).format('0,0.00') }}</td>
@@ -32,6 +32,8 @@
         <td>{{ $numeral(totalRecord.Lst_JackpotScore).format('0,0.00') }}</td>
       </tr>
     </table>
+
+    <div class="ui-no-data" v-show="recordList.length === 0">{{ $t('ui.label.noData') }}</div>
   </div>
 </template>
 
