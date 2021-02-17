@@ -16,6 +16,7 @@ const getters = {
   //* pwa
   pwaInstallStatus: state => state.pwa.status,
   pwaPrompt: state => state.pwa.prompt,
+  pwaInstallTime: state => state.pwa.installTime,
 
   //* modal
   modalWinWheelIsShow: state => state.modalWinWheelIsShow,

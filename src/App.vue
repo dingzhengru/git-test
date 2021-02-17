@@ -48,6 +48,7 @@ export default {
       'modalRedEnvelopeIsShow',
       'pwaInstallStatus',
       'pwaPrompt',
+      'pwaInstallTime',
       'siteSetting',
       'siteFullCss',
       'siteIsActive',
@@ -141,10 +142,10 @@ export default {
         if (choiceResult.outcome === 'accepted') {
           this.$store.commit('pwa/setStatus', 'installing');
 
-          //* 10秒後設為已下載，因目前無事件可以確認是否安裝完成
+          //* X秒後設為已下載，因目前無事件可以確認是否安裝完成
           setTimeout(() => {
             this.$store.commit('pwa/setStatus', 'installed');
-          }, 10000);
+          }, 1000 * this.pwaInstallTime);
         }
       });
     });
