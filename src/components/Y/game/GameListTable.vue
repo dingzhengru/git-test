@@ -23,7 +23,7 @@
               href="javascript:;"
               class="game-lobby-list__table__tr__td__link--free"
               @click.capture.stop="openGame(item, 1)"
-              v-if="isShowDemo"
+              v-if="isShowDemo && item.Lst_IsDemo"
             >
               {{ $t('game.link.free') }}
             </a>
