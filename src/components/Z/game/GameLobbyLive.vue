@@ -17,12 +17,19 @@
 
     <component
       :is="GameSearchBlock"
+      :isShowTransfer="userIsLoggedIn"
       @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <component :is="GameListTable" :gameList="gameList" :productCurrent="productCurrent" @open-game="openGame" />
+    <component
+      :is="GameListTable"
+      :gameList="gameList"
+      :productCurrent="productCurrent"
+      :isShowStart="true"
+      @open-game="openGame"
+    />
 
     <component
       :is="GameTransferDialog"
@@ -43,7 +50,7 @@
       @close="isShowLiveGameEnterDialog = false"
     />
 
-    <intersect @enter="changePageScrollBottom">
+    <intersect @enter="changePageScrollBottom" rootMargin="0px 0px 5px 0px">
       <div class="game-lobby-bottom-intersect"></div>
     </intersect>
   </div>
@@ -68,7 +75,7 @@ export default {
     Intersect,
   },
   computed: {
-    ...mapGetters(['lang', 'siteSetting', 'userGamePointWallet']),
+    ...mapGetters(['lang', 'siteSetting', 'userIsLoggedIn', 'userGamePointWallet']),
     GameProductNavigation() {
       return () => import(`@/${this.siteSetting.components.game.GameProductNavigation}`);
     },

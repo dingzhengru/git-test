@@ -11,7 +11,7 @@
 
       <div class="game-lobby-search__right">
         <button class="game-lobby-search__btn--fav" @click="changeIsFav" v-if="isShowLike"></button>
-        <button class="game-lobby-search__btn--transfer" @click="openTransferDialog">
+        <button class="game-lobby-search__btn--transfer" @click="openTransferDialog" v-if="isShowTransfer">
           {{ $t('game.button.transferNow') }}
         </button>
       </div>
@@ -24,6 +24,10 @@ export default {
   name: 'GameSearchBlock',
   props: {
     isShowLike: {
+      type: Boolean,
+      default: false,
+    },
+    isShowTransfer: {
       type: Boolean,
       default: false,
     },

@@ -1,6 +1,6 @@
 <template>
   <div class="game-lobby">
-    <component :is="GameJackpot" :jackpot="jackpot" />
+    <component :is="GameJackpot" :jackpot="jackpot" v-if="userIsLoggedIn" />
     <component
       :is="GameProductNavigation"
       :productList="productList"
@@ -18,7 +18,8 @@
 
     <component
       :is="GameSearchBlock"
-      :isShowLike="true"
+      :isShowTransfer="userIsLoggedIn"
+      :isShowLike="userIsLoggedIn"
       @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
       v-if="productCurrent.Lst_Site_Product_Status == 0"
@@ -28,6 +29,7 @@
       :is="GameListTable"
       :gameList="gameList"
       :productCurrent="productCurrent"
+      :isShowStart="true"
       :isShowDemo="true"
       :isShowLike="true"
       @open-game="openGame"
@@ -51,7 +53,7 @@
       @close="closeTransferDialog"
     />
 
-    <intersect @enter="changePageScrollBottom">
+    <intersect @enter="changePageScrollBottom" rootMargin="0px 0px 5px 0px">
       <div class="game-lobby-bottom-intersect"></div>
     </intersect>
   </div>
@@ -77,7 +79,7 @@ export default {
     Intersect,
   },
   computed: {
-    ...mapGetters(['lang', 'siteSetting', 'siteFullCss', 'userGamePointWallet']),
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss', 'userIsLoggedIn', 'userGamePointWallet']),
     GameJackpot() {
       return () => import(`@/${this.siteSetting.components.game.GameJackpot}`);
     },

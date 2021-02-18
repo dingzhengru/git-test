@@ -19,6 +19,7 @@
     <component
       :is="GameSearchBlock"
       :isShowLike="true"
+      :isShowTransfer="true"
       @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
       v-if="productCurrent.Lst_Site_Product_Status == 0"
@@ -28,6 +29,7 @@
       :is="GameListTable"
       :gameList="gameList"
       :productCurrent="productCurrent"
+      :isShowStart="true"
       :isShowDemo="true"
       :isShowLike="true"
       @open-game="openGame"
@@ -147,7 +149,7 @@ export default {
       if (!this.userIsLoggedIn) {
         return window.alert(this.$t('ui.alert.notLoggedIn'));
       }
-      
+
       const newWindow = window.open('/loading.html');
 
       const requestData = { Tag: this.productTag, Gameid: game.Lst_GameID, Freeplay: freePlay };

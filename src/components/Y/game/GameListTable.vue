@@ -16,7 +16,7 @@
           </td>
           <td class="game-lobby-list__table__tr__td-2nd">{{ item.Lst_GameName }}</td>
           <td class="game-lobby-list__table__tr__td-3rd">
-            <a href="javascript:;" class="game-lobby-list__table__tr__td__link--start">
+            <a href="javascript:;" class="game-lobby-list__table__tr__td__link--start" v-if="isShowStart">
               {{ $t('game.link.play') }}
             </a>
             <a
@@ -54,6 +54,10 @@ export default {
     productCurrent: {
       type: Object,
       default: () => {},
+    },
+    isShowStart: {
+      type: Boolean,
+      default: false,
     },
     isShowDemo: {
       type: Boolean,

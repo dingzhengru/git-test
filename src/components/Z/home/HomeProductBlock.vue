@@ -44,6 +44,12 @@ export default {
         return;
       }
 
+      //* 外部連結的話，還是需要登入才能進入
+      if (product.GetGameRedirectUrl && !this.userIsLoggedIn) {
+        this.$router.push('Login');
+        return;
+      }
+
       this.handleProductLink(product);
     },
   },

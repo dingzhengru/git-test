@@ -17,12 +17,20 @@
 
     <component
       :is="GameSearchBlock"
+      :isShowLike="false"
+      :isShowTransfer="true"
       @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <component :is="GameListTable" :gameList="gameList" :productCurrent="productCurrent" @open-game="openGame" />
+    <component
+      :is="GameListTable"
+      :gameList="gameList"
+      :productCurrent="productCurrent"
+      :isShowStart="true"
+      @open-game="openGame"
+    />
 
     <AppPagination
       :count="pagination.count"
