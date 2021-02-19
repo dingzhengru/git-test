@@ -34,7 +34,7 @@ module.exports = {
             // renderAfterElementExists: '.main',
             renderAfterDocumentEvent: 'custom-render-trigger',
             maxConcurrentRoutes: 1,
-            headless: false,
+            headless: true,
           }),
           server: { proxy },
         })
