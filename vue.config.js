@@ -1,7 +1,7 @@
 const workboxPlugin = require('workbox-webpack-plugin');
-const path = require('path');
-const PrerenderSPAPlugin = require('prerender-spa-plugin');
-const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
+// const path = require('path');
+// const PrerenderSPAPlugin = require('prerender-spa-plugin');
+// const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 
 const proxy = {
   '/api': {
@@ -26,19 +26,19 @@ module.exports = {
       );
 
       //* prerender-spa-plugin
-      config.plugins.push(
-        new PrerenderSPAPlugin({
-          staticDir: path.join(__dirname, 'dist'),
-          routes: ['/'],
-          renderer: new Renderer({
-            // renderAfterElementExists: '.main',
-            renderAfterDocumentEvent: 'custom-render-trigger',
-            maxConcurrentRoutes: 1,
-            headless: true,
-          }),
-          server: { proxy },
-        })
-      );
+      // config.plugins.push(
+      //   new PrerenderSPAPlugin({
+      //     staticDir: path.join(__dirname, 'dist'),
+      //     routes: ['/'],
+      //     renderer: new Renderer({
+      //       // renderAfterElementExists: '.main',
+      //       renderAfterDocumentEvent: 'custom-render-trigger',
+      //       maxConcurrentRoutes: 1,
+      //       headless: true,
+      //     }),
+      //     server: { proxy },
+      //   })
+      // );
     }
   },
   chainWebpack: config => {
