@@ -6,6 +6,18 @@ import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 
+//* 封站，轉址測試
+const isBlocked = true;
+import { isStandaloneMode } from '@/utils/device';
+if (isBlocked) {
+  if (isStandaloneMode()) {
+    window.location.href = 'https://www.starbets88.com';
+    console.log('PWA 轉址');
+  } else {
+    console.log('Web 轉址');
+  }
+}
+
 //* CSS
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
 import './styles/global/base.scss';
