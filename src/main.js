@@ -43,8 +43,6 @@ if (isLoggedIn) {
   store.dispatch('user/getInfo');
 }
 
-console.log('222222222222222');
-
 /**
  ** 取得公鑰 & token (； 頁面取得；已登入 )
  ** 1. 優先從 Cookie 取得
