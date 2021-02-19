@@ -11,6 +11,7 @@ const isBlocked = true;
 import { isStandaloneMode } from '@/utils/device';
 if (isBlocked) {
   if (isStandaloneMode()) {
+    alert('轉址');
     window.location.href = 'https://www.starbets88.com';
     console.log('PWA 轉址');
   } else {
