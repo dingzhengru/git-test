@@ -4,7 +4,7 @@ const getters = {
   lang: state => state.lang,
   langList: state => state.langList,
   langName: state =>
-    state.langList ? state.langList.find(item => item.Lst_Locales_Code == state.lang).Lst_Locales_Name : '',
+    state.langList.length > 0 ? state.langList.find(item => item.Lst_Locales_Code === state.lang).Lst_Locales_Name : '',
   loadingList: state => state.loadingList,
 
   //* 當 siteinfo 在 LoadingList 中的時候 (用於判斷是否顯示網頁)

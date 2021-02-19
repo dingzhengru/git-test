@@ -43,7 +43,7 @@ if (isLoggedIn) {
   store.dispatch('user/getInfo');
 }
 
-console.log('111111111111111111');
+console.log('222222222222222');
 
 /**
  ** 取得公鑰 & token (； 頁面取得；已登入 )
@@ -128,9 +128,10 @@ store.dispatch('product/getList');
       }
     },
     mounted() {
+      //* api timeout 是 10秒，所以設等待9秒
       setTimeout(() => {
         document.dispatchEvent(new Event('custom-render-trigger'));
-      }, 5000);
+      }, 9000);
     },
   }).$mount('#app');
 })();
