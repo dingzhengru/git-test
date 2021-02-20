@@ -1,12 +1,1 @@
-@function assetPath($path) {
-  @return url('~@/assets/common/#{$path}');
-}
-
-$btn-bg-red: assetPath('ui/btn--red.jpg') repeat-x;
-$btn-bg-yellow: assetPath('ui/btn--yellow.jpg') repeat-x;
-$btn-bg-yellow-light: assetPath('ui/btn--yellow-light.jpg') repeat-x;
-$btn-bg-yellow-light-2: assetPath('ui/btn--yellow-light-2.jpg');
-$btn-bg-yellow-dark: assetPath('ui/btn--yellow-dark.jpg') repeat-x;
-$btn-bg-black: assetPath('ui/btn--black.jpg') repeat-x;
-$btn-bg-gray: assetPath('ui/btn--gray.jpg') repeat-x;
-$btn-bg-silver: assetPath('ui/btn--silver.jpg') repeat-x;
+$viewportWidth: 720px;
