@@ -1,6 +1,5 @@
 {
   "name": "Caesar",
-  "short_name": "Caesar",
   "description": "",
   "theme_color": "#1B607F",
   "icons": [
@@ -8,7 +7,7 @@
       "src": "/images/Caesar_192x192.png",
       "sizes": "192x192",
       "type": "image/png"
-    }, 
+    },
     {
       "src": "/images/Caesar_512x512.png",
       "sizes": "512x512",
@@ -16,7 +15,7 @@
     }
   ],
   "start_url": "http://m.caza7.re888show.com/",
-  "scope":"/",
+  "scope": "/",
   "display": "fullscreen",
   "background_color": "#ffffff"
 }
