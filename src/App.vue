@@ -28,7 +28,9 @@
       <a href="https://www.starbets88.com" target="_blank" style="display:block; margin-bottom: 30px;">
         a link target="_blank"
       </a>
-      <button @click="window.open('https://www.starbets88.com', '_blank')">button onClick to open</button>
+      <button onClick="window.open('https://www.starbets88.com', '_blank');">
+        button onClick to open
+      </button>
     </div>
   </div>
 </template>
