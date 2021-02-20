@@ -1,7 +1,7 @@
 import { register } from 'register-service-worker';
 
-// const SW_FILE = '/sw.js'
-const SW_FILE = '/sw-injectManifest.js';
+const SW_FILE = '/sw.js'
+// const SW_FILE = '/sw-injectManifest.js';
 
 if (process.env.NODE_ENV === 'production') {
   register(SW_FILE, {

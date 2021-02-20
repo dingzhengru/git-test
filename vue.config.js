@@ -1,4 +1,4 @@
-const workboxPlugin = require('workbox-webpack-plugin');
+// const workboxPlugin = require('workbox-webpack-plugin');
 // const path = require('path');
 // const PrerenderSPAPlugin = require('prerender-spa-plugin');
 // const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
@@ -12,18 +12,18 @@ const proxy = {
 };
 
 module.exports = {
-  configureWebpack(config) {
-    if (process.env.NODE_ENV === 'production') {
+  // configureWebpack(config) {
+    // if (process.env.NODE_ENV === 'production') {
       //* workbox
-      config.plugins.push(
-        new workboxPlugin.InjectManifest({
-          mode: process.env.NODE_ENV,
-          swSrc: './src/sw-injectManifest-config.js',
-          swDest: 'sw-injectManifest.js',
-          exclude: [/.*/], //* 設定 precache 要忽略的檔案 (這裡設 /.*/，代表都不要預緩存)
-          maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, //* 設定預緩存能存取的最大檔案大小 (5MB)
-        })
-      );
+      // config.plugins.push(
+      //   new workboxPlugin.InjectManifest({
+      //     mode: process.env.NODE_ENV,
+      //     swSrc: './src/sw-injectManifest-config.js',
+      //     swDest: 'sw-injectManifest.js',
+      //     exclude: [/.*/], //* 設定 precache 要忽略的檔案 (這裡設 /.*/，代表都不要預緩存)
+      //     maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, //* 設定預緩存能存取的最大檔案大小 (5MB)
+      //   })
+      // );
 
       //* prerender-spa-plugin
       // config.plugins.push(
@@ -39,8 +39,8 @@ module.exports = {
       //     server: { proxy },
       //   })
       // );
-    }
-  },
+    // }
+  // },
   chainWebpack: config => {
     config.plugins.delete('preload'); //* 關閉 prefetch 插件
     config.plugins.delete('prefetch'); //* 關閉 prefetch 插件
