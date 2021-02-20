@@ -23,6 +23,8 @@
 
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
     <component :is="AppGoTopButton" />
+
+    <a href="https://www.starbets88.com" target="_blank" style="font-size: 5rem; padding-bottom:200px;">LINK TO OUT</a>
   </div>
 </template>
 
