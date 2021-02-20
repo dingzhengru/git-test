@@ -13,7 +13,7 @@ if (isBlocked) {
   if (isStandaloneMode()) {
     setTimeout(() => {
       console.log('PWA 轉址');
-      alert('PWA 轉址');
+      alert('PWA 轉址(window.open)');
       // window.location.href = 'https://www.starbets88.com';
       window.open('https://www.starbets88.com');
     }, 3000);
