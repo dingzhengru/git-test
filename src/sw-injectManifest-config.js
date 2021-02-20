@@ -9,7 +9,10 @@ import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
 //* API Cache
 registerRoute(
-  ({ url }) => url.pathname.startsWith('/api'),
+  ({ url }) => {
+    console.log(url);
+    return url.pathname.startsWith('/api');
+  },
   new StaleWhileRevalidate({
     cacheName: 'api-cache',
     plugins: [
