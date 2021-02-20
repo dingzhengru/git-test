@@ -1,6 +1,11 @@
-import { apiGetMessageList } from '@/api/message';
+import { apiGetMessageList, apiPostMessageList } from '@/api/message';
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'mixinMessageC',
+  computed: {
+    ...mapGetters(['lang', 'userIsLoggedIn']),
+  },
   data() {
     return {
       messageList: [],
@@ -9,7 +14,12 @@ export default {
   methods: {
     async getMessageList() {
       const requestDataMessageList = { msgtype: 'C' };
-      const result = await apiGetMessageList(requestDataMessageList);
+      let result = {};
+      if (this.userIsLoggedIn) {
+        result = await apiPostMessageList(requestDataMessageList);
+      } else {
+        result = await apiGetMessageList(requestDataMessageList);
+      }
       if (result.Code == 200) {
         this.messageList = result.RetObj;
 

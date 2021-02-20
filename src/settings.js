@@ -1,8 +1,9 @@
 //* Site
 export const SITE_INFO_LOAD_FAIL_MESSAGE = 'Load failed. Please refresh the page and retry.';
 
-export const SITE_DEFAULT_STYLE_CLASS = 'Y';
-export const SITE_DEFAULT_STYLE_TYPE = '01';
+// 預設版型
+// export const SITE_DEFAULT_STYLE_CLASS = 'Z';
+// export const SITE_DEFAULT_STYLE_TYPE = '01';
 
 //* API
 //* API URL

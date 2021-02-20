@@ -1,5 +1,5 @@
-import { apiGetSiteInfo, apiGetSiteSeoInfo } from '@/api/site';
-import { SITE_DEFAULT_STYLE_CLASS, SITE_DEFAULT_STYLE_TYPE } from '@/settings';
+import { apiGetSiteInfo, apiPostSiteInfo, apiGetSiteSeoInfo } from '@/api/site';
+// import { SITE_DEFAULT_STYLE_CLASS, SITE_DEFAULT_STYLE_TYPE } from '@/settings';
 
 const state = {
   info: {},
@@ -24,26 +24,20 @@ const mutations = {
 };
 
 const actions = {
-  async getInfo({ commit, dispatch }, requestData) {
+  async getInfo({ commit }, requestData) {
     const result = await apiGetSiteInfo(requestData);
 
     if (result.Code == 200) {
       commit('setInfo', result.RetObj);
-      const isStyleExist = await dispatch('checkStyleExist');
-      if (!isStyleExist) {
-        commit('setInfoStyle', { siteClass: SITE_DEFAULT_STYLE_CLASS, siteType: SITE_DEFAULT_STYLE_TYPE });
-        console.log(
-          `Style not found (${state.info.LS_CSS_Class}/${state.info.LS_CSS_Type}) => Set default style (${SITE_DEFAULT_STYLE_CLASS}/${SITE_DEFAULT_STYLE_TYPE})`
-        );
-      }
-
-      //* 手動設置 style
-      if (process.env.NODE_ENV != 'production') {
-        commit('setInfoStyle', { siteClass: 'Z', siteType: '01' });
-        console.log(state.info.LS_CSS_Class, state.info.LS_CSS_Type);
-      }
     }
 
+    return result;
+  },
+  async postInfo({ commit }, requestData) {
+    const result = await apiPostSiteInfo(requestData);
+    if (result.Code == 200) {
+      commit('setInfo', result.RetObj);
+    }
     return result;
   },
   async getSeoInfo({ commit }) {

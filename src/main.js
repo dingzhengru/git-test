@@ -75,13 +75,26 @@ if (cookieGetToken() && cookieGetPublicKey()) {
 }
 
 //* 取得遊戲館列表
-store.dispatch('product/getList');
+if (isLoggedIn) {
+  store.dispatch('product/postList');
+} else {
+  store.dispatch('product/getList');
+}
 
 (async () => {
   //* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
   const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';
   const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode };
-  await store.dispatch('site/getInfo', requestDataSiteInfo);
+  if (isLoggedIn) {
+    await store.dispatch('site/postInfo', requestDataSiteInfo);
+  } else {
+    await store.dispatch('site/getInfo', requestDataSiteInfo);
+  }
+
+  //* 手動設置 style
+  if (process.env.NODE_ENV != 'production') {
+    store.commit('site/setInfoStyle', { siteClass: 'Z', siteType: '01' });
+  }
 
   //* 設置站台設定檔
   await store.dispatch('site/loadSetting');
@@ -90,7 +103,11 @@ store.dispatch('product/getList');
   document.title = store.getters.siteTitle;
 
   //* 取得語系列表
-  store.dispatch('getLangList');
+  if (isLoggedIn) {
+    store.dispatch('postLangList');
+  } else {
+    store.dispatch('getLangList');
+  }
 
   //* 載入語系
   await store.dispatch('changeLang', cookieGetLang());

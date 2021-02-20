@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import { apiGetContactList } from '@/api/contact';
+import { apiGetContactList, apiPostContactList } from '@/api/contact';
 
 export default {
   name: 'Contact',
@@ -87,7 +87,12 @@ export default {
     },
   },
   async mounted() {
-    const result = await apiGetContactList();
+    let result = {};
+    if (this.userIsLoggedIn) {
+      result = await apiPostContactList();
+    } else {
+      result = await apiGetContactList();
+    }
 
     if (result.Code == 200) {
       this.contactList = result.RetObj.ServiceList;

@@ -2,15 +2,36 @@
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 import { precacheAndRoute } from 'workbox-precaching';
+import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
 // self.skipWaiting();
 // self.clients.claim();
+
+//* API Cache
+registerRoute(
+  ({ url }) => url.pathname.startsWith('/api'),
+  new StaleWhileRevalidate({
+    cacheName: 'api-cache',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [200],
+      }),
+    ],
+  })
+);
 
 /**
  ** cache 頁面
  ** 1. 只存 / 首頁而已
  ** 2. 存所有沒有 . 的頁面 (目前註解掉的那個)
  */
+
+registerRoute(
+  /^(http|https).*\/$/,
+  new StaleWhileRevalidate({
+    cacheName: 'page-cache',
+  })
+);
 
 registerRoute(
   /^(http|https).*\/$/,

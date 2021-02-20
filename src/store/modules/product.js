@@ -1,4 +1,4 @@
-import { apiGetProductList } from '@/api/product';
+import { apiGetProductList, apiPostProductList } from '@/api/product';
 
 const state = {
   list: [],
@@ -13,6 +13,13 @@ const mutations = {
 const actions = {
   async getList({ commit }) {
     const result = await apiGetProductList();
+    if (result.Code == 200) {
+      commit('setList', result.RetObj);
+    }
+    return result;
+  },
+  async postList({ commit }) {
+    const result = await apiPostProductList();
     if (result.Code == 200) {
       commit('setList', result.RetObj);
     }

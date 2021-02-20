@@ -1,9 +1,9 @@
-import { apiGetBannerListOld, apiGetBannerList } from '@/api/banner';
+import { apiGetBannerListOld, apiPostBannerListOld, apiGetBannerList, apiPostBannerList } from '@/api/banner';
 import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['lang', 'siteIsNewPromotion', 'siteResourceUrl']),
+    ...mapGetters(['lang', 'siteIsNewPromotion', 'siteResourceUrl', 'userIsLoggedIn']),
   },
   data() {
     return {
@@ -46,13 +46,23 @@ export default {
     async getBannerList() {
       if (this.siteIsNewPromotion) {
         //* 新版，Lst_ImgUrl 會直接是完整圖片網址
-        const result = await apiGetBannerList();
+        let result = {};
+        if (this.userIsLoggedIn) {
+          result = await apiPostBannerList();
+        } else {
+          result = await apiGetBannerList();
+        }
         if (result.Code == 200) {
           this.bannerList = result.RetObj;
         }
       } else {
         //* 舊版，只提供檔名，需用組合的方式取得
-        const result = await apiGetBannerListOld();
+        let result = {};
+        if (this.userIsLoggedIn) {
+          result = await apiPostBannerListOld();
+        } else {
+          result = await apiGetBannerListOld();
+        }
         if (result.Code == 200) {
           this.bannerList = result.RetObj.map(item => {
             item.Lst_ImgUrl = `${this.siteResourceUrl}/imgs/banner/${item.ImageUrl}`;

@@ -8,3 +8,8 @@ export async function apiGetContactList() {
   const result = await axios.get(API_URL + '/Siteinfo/ContactInfo');
   return result.data;
 }
+
+export async function apiPostContactList() {
+  const result = await axios.post(API_URL + '/Siteinfo/ContactInfo');
+  return result.data;
+}
