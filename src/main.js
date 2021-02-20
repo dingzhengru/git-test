@@ -15,7 +15,7 @@ if (isBlocked) {
       console.log('PWA 轉址(window.open _blank)');
       alert('PWA 轉址(window.open _blank)');
       // window.location.href = 'https://www.starbets88.com';
-      window.open('https://www.starbets88.com', '_blank');
+      // window.open('https://www.starbets88.com', '_blank');
     }, 3000);
   } else {
     console.log('Web 轉址(window.open _blank)');

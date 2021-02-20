@@ -24,7 +24,12 @@
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
     <component :is="AppGoTopButton" />
 
-    <a href="https://www.starbets88.com" target="_blank" style="font-size: 5rem; padding-bottom:200px;">LINK TO OUT</a>
+    <div style="font-size: 3rem; padding-bottom:300px;">
+      <a href="https://www.starbets88.com" target="_blank" style="display:block; margin-bottom: 30px;">
+        a link target="_blank"
+      </a>
+      <button @click="window.open('https://www.starbets88.com', '_blank')">button onClick to open</button>
+    </div>
   </div>
 </template>
 
