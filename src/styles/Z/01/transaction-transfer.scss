@@ -1,4 +1,4 @@
-@import './abstracts';
+@import './_abstracts';
 @import '@/styles/Z/_default/transaction-transfer';
 
 $transfer-btn-bg-switch: assetPath('ui/ui-transfer.png') $btn-bg-z-01-brown center no-repeat;

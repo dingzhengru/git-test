@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
-export async function apiGetLangList(data) {
-  const result = await axios.post(API_URL + '/lang/GetList', data);
+export async function apiGetLangList() {
+  const result = await axios.get(API_URL + '/lang/GetList');
   return result.data;
 }
 

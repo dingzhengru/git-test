@@ -1,4 +1,4 @@
-// 版號變數, function, mixin, extend 等不會產生實際 class 的屬性
+@import '@/styles/global/abstracts';
 
 // function
 @function assetPath($path) {

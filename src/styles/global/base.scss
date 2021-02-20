@@ -1,4 +1,4 @@
-/* #layout@common */
+@import './abstracts';
 
 * {
   box-sizing: border-box;
@@ -8,7 +8,7 @@ html,
 body,
 header,
 footer {
-  max-width: 720px;
+  max-width: $viewport-width;
   color: #fff;
   // font: 13px 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
 }

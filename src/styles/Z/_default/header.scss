@@ -146,6 +146,7 @@
   background: $header-sub-bg;
   height: 100%;
   width: 100%;
+  max-width: $viewport-width;
   position: absolute;
   font-size: 1.8rem;
   // z-index: 2;
