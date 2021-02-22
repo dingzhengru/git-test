@@ -21,6 +21,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setLang: (state, lang) => {
+      loadLanguageAsync(lang);
       state.lang = lang;
     },
     setLangList: (state, langList) => {
@@ -51,7 +52,7 @@ export default new Vuex.Store({
       const requestData = { Lang: lang };
       const result = await apiChangeLang(requestData);
       if (result.Code == 200) {
-        await loadLanguageAsync(lang);
+        // await loadLanguageAsync(lang);
         commit('setLang', lang);
       }
       return lang;

@@ -110,7 +110,8 @@ if (isLoggedIn) {
   }
 
   //* 載入語系
-  await store.dispatch('changeLang', cookieGetLang());
+  // await store.dispatch('setLang', cookieGetLang());
+  store.commit('setLang', cookieGetLang());
 
   //* 心跳，剛進來也要執行一次
   //* document.visibilityState & document.hasFocus()，前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
