@@ -7,21 +7,21 @@ import './registerServiceWorker';
 Vue.config.productionTip = false;
 
 //* 封站，轉址測試
-const isBlocked = true;
-import { isStandaloneMode } from '@/utils/device';
-if (isBlocked) {
-  if (isStandaloneMode()) {
-    setTimeout(() => {
-      console.log('PWA 轉址(window.open googlechrome)');
-      alert('PWA 轉址(window.open googlechrome)');
-      // window.location.href = 'https://www.starbets88.com';
-      // window.open('https://www.starbets88.com', '_blank');
-      window.open(`googlechrome://navigate?url=https://www.starbets88.com`, '_system');
-    }, 3000);
-  } else {
-    console.log('Web 轉址(window.open googlechrome)');
-  }
-}
+// const isBlocked = true;
+// import { isStandaloneMode } from '@/utils/device';
+// if (isBlocked) {
+//   if (isStandaloneMode()) {
+//     setTimeout(() => {
+//       console.log('PWA 轉址(window.open googlechrome)');
+//       alert('PWA 轉址(window.open googlechrome)');
+//       // window.location.href = 'https://www.starbets88.com';
+//       // window.open('https://www.starbets88.com', '_blank');
+//       window.open(`googlechrome://navigate?url=https://www.starbets88.com`, '_system');
+//     }, 3000);
+//   } else {
+//     console.log('Web 轉址(window.open googlechrome)');
+//   }
+// }
 
 //* CSS
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
@@ -110,7 +110,7 @@ if (isLoggedIn) {
   }
 
   //* 載入語系
-  // await store.dispatch('setLang', cookieGetLang());
+  // await store.dispatch('changeLang', cookieGetLang());
   store.commit('setLang', cookieGetLang());
 
   //* 心跳，剛進來也要執行一次

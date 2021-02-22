@@ -21,8 +21,12 @@ workbox.routing.registerRoute(
  ** 2. 存所有沒有 . 的頁面 (目前註解掉的那個)
  */
 workbox.routing.registerRoute(
-  /^(http|https).*\/$/,
+  // /^(http|https).*\/$/,
   // /^(http|https)[^\.]+$/,
+  ({ url }) => {
+    const pageList = ['/', '/login', '/register', '/promotion', '/contact', '/about', '/news'];
+    return pageList.some(item => url.pathname.startsWith(item));
+  },
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'page-cache',
   })

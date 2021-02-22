@@ -324,7 +324,7 @@ const routes = [
     component: () => import('@/views/promotion/Promotion'),
   },
   {
-    path: '/promotion:id',
+    path: '/promotion/:id',
     name: 'PromotionDetail',
     component: () => import('@/views/promotion/PromotionDetail'),
     meta: { 'header-back-icon': true },
