@@ -123,9 +123,9 @@ export default {
     }
 
     //* PWA
+    console.log(isStandaloneMode(), isIos(), isMobile(), isChrome());
     if (!isStandaloneMode() && !isIos() && isMobile() && isChrome()) {
       this.$store.commit('pwa/setIsShowButton', true);
-      return;
     }
 
     //* PWA 一秒後沒觸發 beforeinstallprompt 的話，就視為已下載
