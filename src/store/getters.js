@@ -33,6 +33,7 @@ const getters = {
   //* Site.info
   siteID: state => state.site.info.LS_SiteID,
   siteTitle: state => state.site.info.LS_SiteTitle,
+  siteLang: state => state.site.info.LS_Language,
   siteCssClass: state => state.site.info.LS_CSS_Class,
   siteCssVersion: state => state.site.info.LS_CSS_Version,
   siteCssType: state => state.site.info.LS_CSS_Type,

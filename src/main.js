@@ -34,7 +34,7 @@ import i18n from '@/i18n-lazy'; //* 語言載入
 import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
 
 //* Cookie
-import { cookieGetLang, cookieGetIsLoggedIn, cookieGetToken, cookieGetPublicKey } from '@/utils/cookie';
+import { cookieGetIsLoggedIn, cookieGetToken, cookieGetPublicKey } from '@/utils/cookie';
 
 //* API
 import { apiKeepUserOnline } from '@/api/user';
@@ -100,7 +100,7 @@ if (isLoggedIn) {
   await store.dispatch('site/loadSetting');
 
   //* Page Title
-  document.title = store.getters.siteTitle;
+  document.title = store.getters.siteInfo;
 
   //* 取得語系列表
   if (isLoggedIn) {
@@ -110,8 +110,8 @@ if (isLoggedIn) {
   }
 
   //* 載入語系
-  // await store.dispatch('changeLang', cookieGetLang());
-  store.commit('setLang', cookieGetLang());
+  // await store.dispatch('changeLang', store.getters.siteLang);
+  store.commit('setLang', store.getters.siteLang);
 
   //* 心跳，剛進來也要執行一次
   //* document.visibilityState & document.hasFocus()，前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true

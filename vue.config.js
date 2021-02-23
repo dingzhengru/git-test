@@ -13,37 +13,43 @@ const proxy = {
 
 module.exports = {
   // configureWebpack(config) {
-    // if (process.env.NODE_ENV === 'production') {
-      //* workbox
-      // config.plugins.push(
-      //   new workboxPlugin.InjectManifest({
-      //     mode: process.env.NODE_ENV,
-      //     swSrc: './src/sw-injectManifest-config.js',
-      //     swDest: 'sw-injectManifest.js',
-      //     exclude: [/.*/], //* 設定 precache 要忽略的檔案 (這裡設 /.*/，代表都不要預緩存)
-      //     maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, //* 設定預緩存能存取的最大檔案大小 (5MB)
-      //   })
-      // );
+  // if (process.env.NODE_ENV === 'production') {
+  //* workbox
+  // config.plugins.push(
+  //   new workboxPlugin.InjectManifest({
+  //     mode: process.env.NODE_ENV,
+  //     swSrc: './src/sw-injectManifest-config.js',
+  //     swDest: 'sw-injectManifest.js',
+  //     exclude: [/.*/], //* 設定 precache 要忽略的檔案 (這裡設 /.*/，代表都不要預緩存)
+  //     maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, //* 設定預緩存能存取的最大檔案大小 (5MB)
+  //   })
+  // );
 
-      //* prerender-spa-plugin
-      // config.plugins.push(
-      //   new PrerenderSPAPlugin({
-      //     staticDir: path.join(__dirname, 'dist'),
-      //     routes: ['/'],
-      //     renderer: new Renderer({
-      //       // renderAfterElementExists: '.main',
-      //       renderAfterDocumentEvent: 'custom-render-trigger',
-      //       maxConcurrentRoutes: 1,
-      //       headless: true,
-      //     }),
-      //     server: { proxy },
-      //   })
-      // );
-    // }
+  //* prerender-spa-plugin
+  // config.plugins.push(
+  //   new PrerenderSPAPlugin({
+  //     staticDir: path.join(__dirname, 'dist'),
+  //     routes: ['/'],
+  //     renderer: new Renderer({
+  //       // renderAfterElementExists: '.main',
+  //       renderAfterDocumentEvent: 'custom-render-trigger',
+  //       maxConcurrentRoutes: 1,
+  //       headless: true,
+  //     }),
+  //     server: { proxy },
+  //   })
+  // );
+  // }
   // },
   chainWebpack: config => {
-    config.plugins.delete('preload'); //* 關閉 prefetch 插件
     config.plugins.delete('prefetch'); //* 關閉 prefetch 插件
+    // config.plugins.delete('preload'); //* 關閉 preload 插件
+
+    config.plugin('preload').tap(args => {
+      args.include = ['app', 'main'];
+      return args;
+    });
+
     config.optimization.minimizer('terser').tap(args => {
       // args[0].terserOptions.compress.drop_console = true;
       args[0].terserOptions.output = {
