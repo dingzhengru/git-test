@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import BlankLayout from '@/components/layout/BlankLayout';
 
 Vue.use(VueRouter);
 
@@ -161,7 +160,7 @@ const routes = [
           {
             path: '',
             name: 'TransactionRecordHome',
-            component: BlankLayout,
+            component: () => import('@/components/layout/BlankLayout'),
           },
           {
             path: 'deposit',
@@ -225,7 +224,7 @@ const routes = [
               {
                 path: '',
                 name: 'TransactionRecordBetHome',
-                component: BlankLayout,
+                component: () => import('@/components/layout/BlankLayout'),
               },
               {
                 path: 'unsettle',

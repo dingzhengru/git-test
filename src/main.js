@@ -100,7 +100,7 @@ if (isLoggedIn) {
   await store.dispatch('site/loadSetting');
 
   //* Page Title
-  document.title = store.getters.siteInfo;
+  document.title = store.getters.siteTitle;
 
   //* 取得語系列表
   if (isLoggedIn) {
