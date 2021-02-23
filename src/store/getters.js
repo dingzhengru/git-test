@@ -13,6 +13,9 @@ const getters = {
   //* Logo 處的標題 (Z版)
   pageTitle: state => state.pageTitle,
 
+  //* 是否顯示至頂的按鈕
+  isShowGoTopButton: state => state.isShowGoTopButton,
+
   //* pwa
   pwaInstallStatus: state => state.pwa.status,
   pwaPrompt: state => state.pwa.prompt,

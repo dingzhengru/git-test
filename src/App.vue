@@ -1,5 +1,12 @@
 <template>
   <div id="app" :lang="lang" :class="lang">
+    <intersect
+      @enter="$store.commit('setIsShowGoTopButton', false)"
+      @leave="$store.commit('setIsShowGoTopButton', true)"
+    >
+      <div></div>
+    </intersect>
+
     <div v-show="!loadingListIncludeSiteInfo">
       <component
         :is="AppHeader"
@@ -22,7 +29,7 @@
     <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
 
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
-    <component :is="AppGoTopButton" />
+    <component :is="AppGoTopButton" v-show="isShowGoTopButton" />
   </div>
 </template>
 
@@ -30,6 +37,7 @@
 import { mapGetters } from 'vuex';
 import langMixin from '@/mixins/lang';
 import { isStandaloneMode, isIos, isMobile, isChrome } from '@/utils/device';
+import Intersect from 'vue-intersect';
 
 export default {
   name: 'App',
@@ -39,6 +47,7 @@ export default {
     AppGoTopButton: () => import('@/components/AppGoTopButton'),
     ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
     ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
+    Intersect,
   },
   computed: {
     ...mapGetters([
@@ -47,6 +56,7 @@ export default {
       'loadingListIncludeSiteInfo',
       'modalWinWheelIsShow',
       'modalRedEnvelopeIsShow',
+      'isShowGoTopButton',
       'pwaInstallStatus',
       'pwaPrompt',
       'pwaInstallTime',

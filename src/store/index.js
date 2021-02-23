@@ -18,6 +18,7 @@ export default new Vuex.Store({
     pageTitle: '',
     modalWinWheelIsShow: false,
     modalRedEnvelopeIsShow: false,
+    isShowGoTopButton: false,
   },
   mutations: {
     setLang: (state, lang) => {
@@ -45,6 +46,9 @@ export default new Vuex.Store({
     },
     setModalRedEnvelopeIsShow: (state, isShow) => {
       state.modalRedEnvelopeIsShow = isShow;
+    },
+    setIsShowGoTopButton: (state, isShow) => {
+      state.isShowGoTopButton = isShow;
     },
   },
   actions: {
