@@ -17,8 +17,6 @@ workbox.routing.registerRoute(
 
 /**
  ** cache 頁面
- ** 1. 只存 / 首頁而已
- ** 2. 存所有沒有 . 的頁面 (目前註解掉的那個)
  */
 workbox.routing.registerRoute(
   // /^(http|https).*\/$/,
