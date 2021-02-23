@@ -26,8 +26,6 @@ Vue.config.productionTip = false;
 //* CSS
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
 import './styles/global/base.scss';
-import './styles/global/transition.scss';
-
 import './router/permission'; //* 路徑權限
 import './api/interceptors.js'; //* 攔截器
 import i18n from '@/i18n-lazy'; //* 語言載入

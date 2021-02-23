@@ -86,15 +86,15 @@
 
         <button
           class="login__btn--pwa ui-btn ui-btn--block"
-          v-if="pwaInstallStatus == 'notInstalled'"
+          v-if="pwaIsShowButton && pwaInstallStatus == 'notInstalled'"
           @click="pwaPrompt.prompt()"
         >
           App
         </button>
-        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaInstallStatus == 'installing'">
+        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaIsShowButton && pwaInstallStatus == 'installing'">
           Installing
         </button>
-        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaInstallStatus == 'installed'">
+        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaIsShowButton && pwaInstallStatus == 'installed'">
           Open
         </button>
 
@@ -126,6 +126,7 @@ export default {
       'siteFullCss',
       'pwaInstallStatus',
       'pwaPrompt',
+      'pwaIsShowButton',
       'userToken',
       'userPublicKey',
       'siteIsOpenRememberMe',

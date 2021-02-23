@@ -29,6 +29,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import langMixin from '@/mixins/lang';
+import { isStandaloneMode, isIos, isMobile, isChrome } from '@/utils/device';
 
 export default {
   name: 'App',
@@ -121,6 +122,12 @@ export default {
       return;
     }
 
+    //* PWA
+    if (!isStandaloneMode() && !isIos() && isMobile() && isChrome()) {
+      this.$store.commit('pwa/setIsShowButton', true);
+      return;
+    }
+
     //* PWA 一秒後沒觸發 beforeinstallprompt 的話，就視為已下載
     setTimeout(() => {
       if (this.pwaInstallStatus == null) {
@@ -128,7 +135,7 @@ export default {
       }
     }, 1000);
 
-    //* PWA
+    //* beforeinstallprompt
     window.addEventListener('beforeinstallprompt', event => {
       console.log('beforeinstallprompt event');
 

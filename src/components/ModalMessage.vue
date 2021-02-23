@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import AppModal from '@/components/AppModal';
 import mixinMessageC from '@/mixins/messageC';
 export default {
   name: 'ModalMessage',
@@ -24,7 +23,7 @@ export default {
     },
   },
   components: {
-    AppModal,
+    AppModal: () => import('@/components/AppModal'),
   },
 };
 </script>

@@ -2,6 +2,7 @@ const state = {
   status: null,
   prompt: null,
   installTime: 10, //* X秒後設為已下載，因目前無事件可以確認是否安裝完成
+  isShowButton: false,
 };
 
 const mutations = {
@@ -14,6 +15,9 @@ const mutations = {
   },
   setInstallTime(state, time) {
     state.installTime = time;
+  },
+  setIsShowButton(state, isShow) {
+    state.isShowButton = isShow;
   },
 };
 
