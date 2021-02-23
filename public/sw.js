@@ -24,8 +24,13 @@ workbox.routing.registerRoute(
   // /^(http|https).*\/$/,
   // /^(http|https)[^\.]+$/,
   ({ url }) => {
-    const pageList = ['/', '/login', '/register', '/promotion', '/contact', '/about', '/news'];
-    return pageList.some(item => url.pathname.startsWith(item));
+    const pageList = ['/', '/contact', '/about', '/news'];
+    const pageListStartWith = ['/promotion'];
+
+    return (
+      pageList.some(item => url.pathname === item && url.search === '') ||
+      pageListStartWith.some(item => url.pathname.startsWith(item))
+    );
   },
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'page-cache',
