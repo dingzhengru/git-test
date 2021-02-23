@@ -1,3 +1,6 @@
+//* Offline Message
+export const OFFLINE_MESSAGE = 'Offline Alert';
+
 //* Site
 export const SITE_INFO_LOAD_FAIL_MESSAGE = 'Load failed. Please refresh the page and retry.';
 

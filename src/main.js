@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
+import { OFFLINE_MESSAGE } from '@/settings';
 
 Vue.config.productionTip = false;
 
@@ -22,6 +23,11 @@ Vue.config.productionTip = false;
 //     console.log('Web 轉址(window.open googlechrome)');
 //   }
 // }
+
+//* 離線通知
+if (!window.navigator.onLine) {
+  alert(OFFLINE_MESSAGE);
+}
 
 //* CSS
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
