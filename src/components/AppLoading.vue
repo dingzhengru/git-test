@@ -1,6 +1,6 @@
 <template>
   <div class="loading">
-    <img src="@/assets/common/ui/loading.gif" />
+    <img src="@/assets/common/ui/loading.gif" width="200" height="230" />
   </div>
 </template>
 
@@ -26,9 +26,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  img {
-    width: 200px;
-    height: 230px;
-  }
 }
 </style>

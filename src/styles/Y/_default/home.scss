@@ -10,6 +10,11 @@
 @mixin home-banner {
   height: $home-banner-height; // 431px
 
+  .swiper-lazy-preloader {
+    border: 4px solid $home-banner-preloader-color;
+    border-top-color: transparent;
+  }
+
   &__link {
     display: block;
     width: 100%;

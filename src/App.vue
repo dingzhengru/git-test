@@ -25,8 +25,11 @@
     </div>
 
     <AppLoading v-show="loadingList.length > 0" />
-    <ModalWinWheel :isShow="modalWinWheelIsShow" />
-    <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
+
+    <div v-if="userIsLoggedIn">
+      <ModalWinWheel :isShow="modalWinWheelIsShow" />
+      <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
+    </div>
 
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
     <component :is="AppGoTopButton" v-show="isShowGoTopButton" />

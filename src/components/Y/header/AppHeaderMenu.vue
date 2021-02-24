@@ -7,7 +7,7 @@
       @click="isShowLangList = !isShowLangList"
     ></a>
 
-    <transition name="slide">
+    <transition name="slide-dropdown">
       <div class="header-menu__lang-dropdown" v-if="isShowLangList">
         <template v-for="item in langList">
           <div
@@ -45,23 +45,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-//* 語系下拉動畫
-.slide-enter-active {
-  transition: all 0.5s ease;
-}
-.slide-leave-active {
-  transition: all 0.5s ease;
-}
-
-.slide-enter-to,
-.slide-leave {
-  max-height: 250px;
-}
-
-.slide-enter,
-.slide-leave-to {
-  max-height: 0;
-}
-</style>

@@ -71,6 +71,7 @@
     position: absolute;
     right: 12px;
     z-index: 2;
+    transform-origin: top;
     &__item {
       display: block;
       width: 60px;
@@ -130,6 +131,7 @@
     top: $header-height;
     left: 0;
     z-index: 3;
+    transform-origin: top;
 
     &__route {
       margin: 0;

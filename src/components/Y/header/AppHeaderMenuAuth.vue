@@ -7,7 +7,7 @@
       :id="$idMapper.header.link.menu"
       @click="isShowMenu = !isShowMenu"
     ></a>
-    <transition name="slide">
+    <transition name="slide-dropdown">
       <div class="header-menu-auth__menu" v-if="isShowMenu">
         <ul class="header-menu-auth__menu__route">
           <li
@@ -98,23 +98,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-//* 語系下拉動畫
-.slide-enter-active {
-  transition: all 0.5s ease;
-}
-.slide-leave-active {
-  transition: all 0.5s ease;
-}
-
-.slide-enter-to,
-.slide-leave {
-  max-height: 1000px;
-}
-
-.slide-enter,
-.slide-leave-to {
-  max-height: 0;
-}
-</style>

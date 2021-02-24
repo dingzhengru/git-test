@@ -243,7 +243,7 @@ export default {
       width: 100%;
       height: 100%;
       text-align: center;
-      transition: transform 0.5s;
+      transition: transform 0.3s;
       transform-style: preserve-3d;
       &:after {
         content: '';

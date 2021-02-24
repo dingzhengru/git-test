@@ -1,6 +1,6 @@
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.3s;
 }
 .fade-enter,
 .fade-leave-to {
@@ -18,7 +18,7 @@
 
 .slide-dropdown-height-enter-active,
 .slide-dropdown-height-leave-active {
-  transition: all 0.5s;
+  transition: all 0.3s;
   max-height: 10000px;
 }
 .slide-dropdown-height-enter,
@@ -28,7 +28,7 @@
 }
 
 .list-zoom-item {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .list-zoom-leave-active {
   position: absolute !important;
@@ -39,5 +39,5 @@
   opacity: 0;
 }
 .list-zoom-move {
-  transition: all transform 0.5s;
+  transition: all transform 0.3s;
 }
