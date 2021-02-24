@@ -84,18 +84,16 @@
           {{ $t('login.link.forgetPassword') }}
         </button>
 
-        <button
-          class="login__btn--pwa ui-btn ui-btn--block"
-          v-if="pwaIsShowButton && pwaInstallStatus == 'notInstalled'"
-          @click="pwaPrompt.prompt()"
-        >
-          App
-        </button>
-        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaIsShowButton && pwaInstallStatus == 'installing'">
-          Installing
-        </button>
-        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaIsShowButton && pwaInstallStatus == 'installed'">
-          Open
+        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaIsShowButton" @click="clickPwaHandler">
+          <template v-if="pwaInstallStatus === 'notInstalled'">
+            App
+          </template>
+          <template v-else-if="pwaInstallStatus === 'installing'">
+            Installing
+          </template>
+          <template v-else-if="pwaInstallStatus === 'installed'">
+            Open
+          </template>
         </button>
 
         <div class="login__text">or</div>
@@ -109,13 +107,14 @@
 
 <script>
 import mixinLogin from '@/mixins/login';
+import mixinPwa from '@/mixins/pwa';
 import { mapGetters } from 'vuex';
 import { apiGetRememberInfo } from '@/api/user';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'Login',
-  mixins: [mixinLogin],
+  mixins: [mixinLogin, mixinPwa],
   components: {
     ValidationObserver,
     ValidationProvider,
@@ -124,8 +123,6 @@ export default {
     ...mapGetters([
       'pageTitle',
       'siteFullCss',
-      'pwaInstallStatus',
-      'pwaPrompt',
       'pwaIsShowButton',
       'userToken',
       'userPublicKey',

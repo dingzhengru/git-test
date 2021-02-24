@@ -35,13 +35,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import langMixin from '@/mixins/lang';
-import { isStandaloneMode, isIos, isMobile, isChrome } from '@/utils/device';
+import mixinLang from '@/mixins/lang';
+import mixinPwa from '@/mixins/pwa';
 import Intersect from 'vue-intersect';
 
 export default {
   name: 'App',
-  mixins: [langMixin],
+  mixins: [mixinLang, mixinPwa],
   components: {
     AppLoading: () => import('@/components/AppLoading'),
     AppGoTopButton: () => import('@/components/AppGoTopButton'),
@@ -57,9 +57,6 @@ export default {
       'modalWinWheelIsShow',
       'modalRedEnvelopeIsShow',
       'isShowGoTopButton',
-      'pwaInstallStatus',
-      'pwaPrompt',
-      'pwaInstallTime',
       'siteSetting',
       'siteFullCss',
       'siteIsActive',
@@ -133,40 +130,7 @@ export default {
     }
 
     //* PWA
-    console.log(isStandaloneMode(), isIos(), isMobile(), isChrome());
-    if (!isStandaloneMode() && !isIos() && isMobile() && isChrome()) {
-      this.$store.commit('pwa/setIsShowButton', true);
-    }
-
-    //* PWA 一秒後沒觸發 beforeinstallprompt 的話，就視為已下載
-    setTimeout(() => {
-      if (this.pwaInstallStatus == null) {
-        this.$store.commit('pwa/setStatus', 'installed');
-      }
-    }, 1000);
-
-    //* beforeinstallprompt
-    window.addEventListener('beforeinstallprompt', event => {
-      console.log('beforeinstallprompt event');
-
-      //* 能進來此事件代表: 未安裝 pwa
-      this.$store.commit('pwa/setStatus', 'notInstalled');
-
-      event.preventDefault();
-      this.$store.commit('pwa/setPrompt', event);
-
-      // pwa下載視窗的選擇處理
-      this.pwaPrompt.userChoice.then(choiceResult => {
-        if (choiceResult.outcome === 'accepted') {
-          this.$store.commit('pwa/setStatus', 'installing');
-
-          //* X秒後設為已下載，因目前無事件可以確認是否安裝完成
-          setTimeout(() => {
-            this.$store.commit('pwa/setStatus', 'installed');
-          }, 1000 * this.pwaInstallTime);
-        }
-      });
-    });
+    this.initPwa();
   },
   watch: {
     lang() {
