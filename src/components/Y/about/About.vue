@@ -17,9 +17,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import imgSport from '@/assets/common/game/gameIntro-01.jpg';
-import imgGClub from '@/assets/common/game/gameIntro-02.jpg';
-import imgRNG from '@/assets/common/game/gameIntro-03.jpg';
+import imgSport from '@/assets/common/about/gameIntro-01.jpg';
+import imgGClub from '@/assets/common/about/gameIntro-02.jpg';
+import imgRNG from '@/assets/common/about/gameIntro-03.jpg';
 
 export default {
   name: 'About',

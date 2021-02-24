@@ -34,13 +34,13 @@ export default {
   computed: {
     ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
     imgSport() {
-      return require('@/assets/common/game/gameIntro-01.jpg');
+      return require('@/assets/common/about/gameIntro-01.jpg');
     },
     imgGClub() {
-      return require('@/assets/common/game/gameIntro-02.jpg');
+      return require('@/assets/common/about/gameIntro-02.jpg');
     },
     imgRNG() {
-      return require('@/assets/common/game/gameIntro-03.jpg');
+      return require('@/assets/common/about/gameIntro-03.jpg');
     },
   },
   mounted() {

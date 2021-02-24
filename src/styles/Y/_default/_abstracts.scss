@@ -1,5 +1,5 @@
 @function assetPathGlobal($path) {
-  @return url('~@/assets/common/#{$path}');
+  @return url('~@/assets/Y/global/#{$path}');
 }
 
 $btn-bg-red: assetPathGlobal('ui/btn--red.jpg') repeat-x;

@@ -61,58 +61,14 @@ module.exports = {
     // return args;
     // });
 
-    // config.optimization.minimizer([
-    //   new TerserPlugin({
-    //     terserOptions: {
-    //       mangle: true, // 混淆，默认也是开的，mangle也是可以配置很多选项的，具体看后面的链接
-    //       compress: {
-    //         drop_console: true, //传true就是干掉所有的console.*这些函数的调用.
-    //         drop_debugger: true, //干掉那些debugger;
-    //         pure_funcs: ['console.log'], // 如果你要干掉特定的函数比如console.info ，又想删掉后保留其参数中的副作用，那用pure_funcs来处理
-    //       },
-    //     },
-    //   }),
-    // ]);
-
-    // config.optimization.minimizer('terser').tap(args => {
-    //   console.log(args[0]);
-    //   console.log(args[0].terserOptions);
-    //   // args[0].terserOptions.compress.drop_console = true;
-    //   args[0].terserOptions.output = {
-    //     ...args[0].terserOptions.output,
-    //     comments: false,
-    //   };
-    //   return args;
-    // });
-
-    // console.log(config.optimization.get('splitChunks'));
-
-    // config.optimization.splitChunks({
-    //   chunks: 'all', // 必须三选一： "initial" | "all"(推荐) | "async" (默认就是async)
-    //   minSize: 30000, // 最小尺寸，30000
-    //   minChunks: 6, // 最小 chunk ，默认1
-    //   name: false,
-    //   // maxAsyncRequests: 5, // 最大异步请求数， 默认5
-    //   // maxInitialRequests: 3, // 最大初始化请求书，默认3
-    //   // automaticNameDelimiter: '~', // 打包分隔符
-    //   // name: function() {}, // 打包后的名称，此选项可接收 function
-    //   // cacheGroups: {
-    //   //   // 这里开始设置缓存的 chunks
-    //   //   priority: 0, // 缓存组优先级
-    //   //   vendor: {
-    //   //     // key 为entry中定义的 入口名称
-    //   //     chunks: 'initial', // 必须三选一： "initial" | "all" | "async"(默认就是async)
-    //   //     test: /react|lodash/, // 正则规则验证，如果符合就提取 chunk
-    //   //     name: 'vendor', // 要缓存的 分隔出来的 chunk 名称
-    //   //     minSize: 30000,
-    //   //     minChunks: 1,
-    //   //     enforce: true,
-    //   //     maxAsyncRequests: 5, // 最大异步请求数， 默认1
-    //   //     maxInitialRequests: 3, // 最大初始化请求书，默认1
-    //   //     reuseExistingChunk: true, // 可设置是否重用该chunk
-    //   //   },
-    //   // },
-    // });
+    config.optimization.minimizer('terser').tap(args => {
+      // args[0].terserOptions.compress.drop_console = true;
+      args[0].terserOptions.output = {
+        ...args[0].terserOptions.output,
+        comments: false,
+      };
+      return args;
+    });
 
     // console.log(config.optimization.get('splitChunks'));
   },

@@ -74,7 +74,7 @@
                         @error="rangeError"
                       >
                         <template v-slot:dot>
-                          <img src="~@/assets/common/main/sliderPoint.png" class="custom-dot" />
+                          <img :src="amountSliderDot" class="custom-dot" />
                         </template>
                         <template v-slot:process>
                           <div class="custom-process"></div>
@@ -141,6 +141,11 @@ export default {
     VueSlider,
     ValidationObserver,
     ValidationProvider,
+  },
+  computed: {
+    amountSliderDot() {
+      return require('@/assets/Y/global/ui/sliderPoint.png');
+    },
   },
 };
 </script>
