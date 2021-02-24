@@ -1,10 +1,23 @@
 <template>
   <div class="about" :class="{ 'about-auth': userIsLoggedIn }">
     <h2 class="about__title">{{ $t('about.title') }}</h2>
-    <div class="about__intro" :id="item.id" v-for="item in aboutList" :key="item.id">
-      <img class="about__intro__img" :src="item.img" alt="" />
-      <h2 class="about__intro__title">{{ $t(item.title) }}</h2>
-      <span class="about__intro__content">{{ $t(item.content) }}</span>
+
+    <div class="about__intro" id="gameSport">
+      <img class="about__intro__img" :src="imgSport" />
+      <h2 class="about__intro__title">{{ $t('about.sport.title') }}</h2>
+      <span class="about__intro__content">{{ $t('about.sport.content') }}</span>
+    </div>
+
+    <div class="about__intro" id="gameGclub">
+      <img class="about__intro__img" :src="imgGClub" />
+      <h2 class="about__intro__title">{{ $t('about.GClub.title') }}</h2>
+      <span class="about__intro__content">{{ $t('about.GClub.content') }}</span>
+    </div>
+
+    <div class="about__intro" id="gameRNG">
+      <img class="about__intro__img" :src="imgRNG" />
+      <h2 class="about__intro__title">{{ $t('about.RNG.title') }}</h2>
+      <span class="about__intro__content">{{ $t('about.RNG.content') }}</span>
     </div>
 
     <ul class="about__toolbar">
@@ -17,40 +30,23 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import imgSport from '@/assets/common/about/gameIntro-01.jpg';
-import imgGClub from '@/assets/common/about/gameIntro-02.jpg';
-import imgRNG from '@/assets/common/about/gameIntro-03.jpg';
 
 export default {
   name: 'About',
   computed: {
     ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
+    imgSport() {
+      return require('@/assets/common/about/gameIntro-01.jpg');
+    },
+    imgGClub() {
+      return require('@/assets/common/about/gameIntro-02.jpg');
+    },
+    imgRNG() {
+      return require('@/assets/common/about/gameIntro-03.jpg');
+    },
   },
   data() {
     return {
-      imgSport: imgSport,
-      imgGClub: imgGClub,
-      imgRNG: imgRNG,
-      aboutList: [
-        {
-          id: 'gameSport',
-          img: imgSport,
-          title: 'about.sport.title',
-          content: 'about.sport.content',
-        },
-        {
-          id: 'gameGclub',
-          img: imgGClub,
-          title: 'about.GClub.title',
-          content: 'about.GClub.content',
-        },
-        {
-          id: 'gameRNG',
-          img: imgRNG,
-          title: 'about.RNG.title',
-          content: 'about.RNG.content',
-        },
-      ],
       toolList: [
         {
           scrollTo: '#gameSport',
