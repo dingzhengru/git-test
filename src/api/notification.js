@@ -1,7 +1,12 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
-export async function apiGetNewsList(data) {
+export async function apiGetNewsList(params) {
+  const result = await axios.get(API_URL + '/Msg/MessageList', { params });
+  return result.data;
+}
+
+export async function apiPostNewsList(data) {
   const result = await axios.post(API_URL + '/Msg/MessageList', data);
   return result.data;
 }
