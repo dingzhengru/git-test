@@ -82,13 +82,6 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   store.dispatch('user/getTokenAndPublicKey');
 }
 
-//* 取得遊戲館列表
-if (isLoggedIn) {
-  store.dispatch('product/postList');
-} else {
-  store.dispatch('product/getList');
-}
-
 (async () => {
   //* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
   const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';
@@ -121,6 +114,14 @@ if (isLoggedIn) {
   // await store.dispatch('changeLang', store.getters.siteLang);
   store.commit('setLang', store.getters.siteLang);
 
+  //* 取得遊戲館列表
+  if (isLoggedIn) {
+    store.dispatch('product/postList');
+  } else {
+    const requestDataProductList = { Lang: store.getters.siteLang };
+    store.dispatch('product/getList', requestDataProductList);
+  }
+
   //* 心跳，剛進來也要執行一次
   //* document.visibilityState & document.hasFocus()，前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
   setInterval(
@@ -134,26 +135,8 @@ if (isLoggedIn) {
   );
 
   //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
-  const requestDataSeo = { LANG: store.getters.siteLang };
-  store.dispatch('site/getSeoInfo', requestDataSeo).then(() => {
-    let seoInfo = {};
-    if (router.currentRoute.path.includes('promotion')) {
-      seoInfo = store.getters.siteSeoList.find(item => item.Lst_Code == 'pub_Promotion');
-    } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 1) {
-      //* 真人娛樂
-      seoInfo = store.getters.siteSeoList.find(item => item.Lst_Code == 'RYCasinos');
-    } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 2) {
-      //* 電子遊戲
-      seoInfo = store.getters.siteSeoList.find(item => item.Lst_Code == 'RYSlots');
-    } else {
-      seoInfo = store.getters.siteSeoList.find(item => item.Lst_Code == 'pub_Index');
-    }
-    document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
-    document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
-
-    //* Page Title
-    document.title = store.getters.siteSeoTitle;
-  });
+  const requestDataSeo = { Lang: store.getters.siteLang };
+  store.dispatch('site/getSeoInfo', requestDataSeo);
 
   new Vue({
     router,

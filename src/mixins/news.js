@@ -37,7 +37,7 @@ export default {
         const requestData = { Page: this.pagination.page };
         result = await apiPostNewsList(requestData);
       } else {
-        const requestData = { Page: this.pagination.page, lang: this.lang };
+        const requestData = { Page: this.pagination.page, Lang: this.lang };
         result = await apiGetNewsList(requestData);
       }
       if (result.Code == 200) {

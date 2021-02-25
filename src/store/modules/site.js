@@ -1,3 +1,4 @@
+import router from '@/router';
 import { apiGetSiteInfo, apiPostSiteInfo, apiGetSiteSeoInfo } from '@/api/site';
 // import { SITE_DEFAULT_STYLE_CLASS, SITE_DEFAULT_STYLE_TYPE } from '@/settings';
 
@@ -45,6 +46,24 @@ const actions = {
 
     if (result.Code == 200) {
       commit('setSeo', result.RetObj);
+
+      //* Page Title
+      document.title = result.RetObj.LS_SiteTitle;
+
+      let seoInfo = {};
+      if (router.currentRoute.path.includes('promotion')) {
+        seoInfo = result.RetObj.SeoList.find(item => item.Lst_Code == 'pub_Promotion');
+      } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 1) {
+        //* 真人娛樂
+        seoInfo = result.RetObj.SeoList.find(item => item.Lst_Code == 'RYCasinos');
+      } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 2) {
+        //* 電子遊戲
+        seoInfo = result.RetObj.SeoList.find(item => item.Lst_Code == 'RYSlots');
+      } else {
+        seoInfo = result.RetObj.SeoList.find(item => item.Lst_Code == 'pub_Index');
+      }
+      document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
+      document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
     }
 
     return result;

@@ -50,7 +50,8 @@ export default {
         if (this.userIsLoggedIn) {
           result = await apiPostBannerList();
         } else {
-          result = await apiGetBannerList();
+          const requestData = { Lang: this.lang };
+          result = await apiGetBannerList(requestData);
         }
         if (result.Code == 200) {
           this.bannerList = result.RetObj;
@@ -61,7 +62,8 @@ export default {
         if (this.userIsLoggedIn) {
           result = await apiPostBannerListOld();
         } else {
-          result = await apiGetBannerListOld();
+          const requestData = { Lang: this.lang };
+          result = await apiGetBannerListOld(requestData);
         }
         if (result.Code == 200) {
           this.bannerList = result.RetObj.map(item => {

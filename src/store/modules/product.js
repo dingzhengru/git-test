@@ -11,8 +11,8 @@ const mutations = {
 };
 
 const actions = {
-  async getList({ commit }) {
-    const result = await apiGetProductList();
+  async getList({ commit }, requestData) {
+    const result = await apiGetProductList(requestData);
     if (result.Code == 200) {
       commit('setList', result.RetObj);
     }

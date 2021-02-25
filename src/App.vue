@@ -141,7 +141,11 @@ export default {
         this.$store.dispatch('user/getPointInfo');
       }
 
-      this.$store.dispatch('product/getList');
+      const requestDataProductList = { Lang: this.lang };
+      this.$store.dispatch('product/getList', requestDataProductList);
+
+      const requestDataSeo = { Lang: this.lang };
+      this.$store.dispatch('site/getSeoInfo', requestDataSeo);
     },
   },
 };
