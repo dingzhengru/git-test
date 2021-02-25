@@ -52,6 +52,7 @@
             type="code"
             :placeholder="$t('login.placeholder.captcha')"
             v-model="user.CaptchaValue"
+            autocomplete="off"
           />
           <img
             class="ui-field__captcha"
