@@ -19,30 +19,45 @@ export async function apiGetJackpotTotal(data) {
   return result.data;
 }
 
+//* 收藏遊戲 (目前只有電子有此功能)
+export async function apiSetGameFav(data) {
+  const result = await axios.post(API_URL + '/Game/MemberCollectionEdit', data);
+  return result.data;
+}
+
 //* 取得遊戲網址
 export async function apiGetGameUrl(data) {
   const result = await axios.post(API_URL + '/Game/MLobbyGameRedirect', data);
   return result.data;
 }
 
-export async function apiGetGameLobbyProduct(data) {
+export async function apiGetGameLobbyProduct(params) {
+  const result = await axios.get(API_URL + '/Game/GetGameLobbyProduct', { params });
+  return result.data;
+}
+
+export async function apiPostGameLobbyProduct(data) {
   const result = await axios.post(API_URL + '/Game/MGetGameLobbyProduct', data);
   return result.data;
 }
 
-export async function apiGetGameLobbyCategory(data) {
+export async function apiGetGameLobbyCategory(params) {
+  const result = await axios.get(API_URL + '/Game/GetGameLobbyMenu', { params });
+  return result.data;
+}
+
+export async function apiPostGameLobbyCategory(data) {
   const result = await axios.post(API_URL + '/Game/MGetGameLobbyMenu', data);
   return result.data;
 }
 
-export async function apiGetGameLobbyGameList(data) {
-  const result = await axios.post(API_URL + '/Game/MGetGameLobbyList', data);
+export async function apiGetGameLobbyGameList(params) {
+  const result = await axios.get(API_URL + '/Game/GetGameLobbyList', { params });
   return result.data;
 }
 
-//* 收藏遊戲 (目前只有電子有此功能)
-export async function apiSetGameFav(data) {
-  const result = await axios.post(API_URL + '/Game/MemberCollectionEdit', data);
+export async function apiPostGameLobbyGameList(data) {
+  const result = await axios.post(API_URL + '/Game/MGetGameLobbyList', data);
   return result.data;
 }
 
@@ -50,17 +65,32 @@ export async function apiSetGameFav(data) {
  ** 真人遊戲
  */
 
-export async function apiGetLiveGameLobbyProduct(data) {
+export async function apiGetLiveGameLobbyProduct(params) {
+  const result = await axios.get(API_URL + '/Game/MLiveLobby', { params });
+  return result.data;
+}
+
+export async function apiPostLiveGameLobbyProduct(data) {
   const result = await axios.post(API_URL + '/Game/MLiveLobby', data);
   return result.data;
 }
 
-export async function apiGetLiveGameLobbyCategory(data) {
+export async function apiGetLiveGameLobbyCategory(params) {
+  const result = await axios.get(API_URL + '/Game/MGetLiveLobbyMenu', { params });
+  return result.data;
+}
+
+export async function apiPostLiveGameLobbyCategory(data) {
   const result = await axios.post(API_URL + '/Game/MGetLiveLobbyMenu', data);
   return result.data;
 }
 
-export async function apiGetLiveGameLobbyGameList(data) {
+export async function apiGetLiveGameLobbyGameList(params) {
+  const result = await axios.get(API_URL + '/Game/MGetLiveLobbyList', { params });
+  return result.data;
+}
+
+export async function apiPostLiveGameLobbyGameList(data) {
   const result = await axios.post(API_URL + '/Game/MGetLiveLobbyList', data);
   return result.data;
 }

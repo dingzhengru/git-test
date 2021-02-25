@@ -12,7 +12,8 @@
   &__text {
     position: absolute;
     left: 246px;
-    top: 3px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 42px;
     font-family: Arial Black, sans-serif;
     font-weight: bold;

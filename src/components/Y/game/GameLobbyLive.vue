@@ -62,24 +62,17 @@
 </template>
 
 <script>
+import mixinGameLobbyLive from '@/mixins/gameLobbyLive';
 import { mapGetters } from 'vuex';
-import mixinGameLobby from '@/mixins/gameLobby';
-import {
-  apiGetGameUrl,
-  apiGetLiveGameLobbyProduct,
-  apiGetLiveGameLobbyCategory,
-  apiGetLiveGameLobbyGameList,
-} from '@/api/game';
-import { openNewWindowURL } from '@/utils/device';
 
 export default {
   name: 'GameLobbyLive',
-  mixins: [mixinGameLobby],
+  mixins: [mixinGameLobbyLive],
   components: {
     AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
-    ...mapGetters(['lang', 'siteSetting', 'userIsLoggedIn', 'userGamePointWallet']),
+    ...mapGetters(['siteSetting', 'userGamePointWallet']),
     GameProductNavigation() {
       return () => import(`@/${this.siteSetting.components.game.GameProductNavigation}`);
     },
@@ -97,96 +90,6 @@ export default {
     },
     GameTransferDialog() {
       return () => import(`@/${this.siteSetting.components.game.GameTransferDialog}`);
-    },
-  },
-  data() {
-    return {
-      defaultCategoryList: [
-        {
-          Lst_Category: '',
-          Lst_GameName: 'all',
-        },
-      ],
-      game: {}, //* 現在選取的遊戲，因真人遊戲是兩階段開啟遊戲的
-      guid: '', //* 真人遊戲會用到的 guid，於 getGameCategoryList 取得
-      gameLimitBetList: [], //* 真人遊戲的範本列表
-      isShowLiveGameEnterDialog: false, //* 真人遊戲開遊戲的列表
-    };
-  },
-  methods: {
-    async getGameProductList() {
-      const requestData = { Tag: this.productTag };
-      let result = {};
-      result = await apiGetLiveGameLobbyProduct(requestData);
-      this.productList = result.RetObj.ProductList;
-    },
-    async getGameCategoryList() {
-      let result = {};
-      const requestData = { Tag: this.productTag };
-      result = await apiGetLiveGameLobbyCategory(requestData);
-      this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
-      this.guid = result.RetObj.H3GUID;
-      return result;
-    },
-    async getGameList() {
-      let result = {};
-      const requestData = {
-        Tag: this.productTag,
-        Category: this.categoryCurrent.Lst_Category,
-        Page: this.pagination.page,
-        GameName: this.search.text,
-        IsLike: this.search.isFav ? 1 : 0,
-        H3GUID: this.guid,
-      };
-      result = await apiGetLiveGameLobbyGameList(requestData);
-      this.gameList = result.RetObj.JsonGameList || [];
-      this.gameLimitBetList = result.RetObj.GameLimitBet;
-      this.pagination.count = result.RetObj.DataCnt;
-    },
-    async openGame(game) {
-      //* 因應真人遊戲兩階段開遊戲，這樣才知道現在的遊戲是甚麼
-      this.game = game;
-      this.isShowLiveGameEnterDialog = true;
-    },
-    async openLiveGame(templatesId, order) {
-      if (!this.userIsLoggedIn) {
-        return window.alert(this.$t('ui.alert.notLoggedIn'));
-      }
-
-      const requestData = {
-        Tag: this.productTag,
-        Gameid: this.game.Lst_GameID,
-        Freeplay: 0,
-        Template: templatesId,
-        LibOrder: order,
-      };
-
-      const newWindow = window.open('/loading.html');
-
-      const result = await apiGetGameUrl(requestData);
-
-      if (result.Code == 200) {
-        openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
-      } else {
-        newWindow.close();
-        window.setTimeout(() => window.alert(result.ErrMsg), 500);
-      }
-    },
-  },
-  async mounted() {
-    this.getGameProductList();
-    await this.getGameCategoryList(); //* 真人遊戲需先從此取得 guid，才能取得遊戲列表
-    this.getGameList();
-  },
-  watch: {
-    async lang() {
-      this.getGameProductList();
-      await this.getGameCategoryList();
-      this.getGameList();
-    },
-    async productTag() {
-      await this.getGameCategoryList();
-      this.getGameList();
     },
   },
 };
