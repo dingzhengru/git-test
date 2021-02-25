@@ -108,7 +108,7 @@ if (isLoggedIn) {
   await store.dispatch('site/loadSetting');
 
   //* Page Title
-  document.title = store.getters.siteTitle;
+  // document.title = store.getters.siteTitle;
 
   //* 取得語系列表
   if (isLoggedIn) {
@@ -134,26 +134,25 @@ if (isLoggedIn) {
   );
 
   //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
-  store.dispatch('site/getSeoInfo').then(() => {
+  const requestDataSeo = { LANG: store.getters.siteLang };
+  store.dispatch('site/getSeoInfo', requestDataSeo).then(() => {
     let seoInfo = {};
     if (router.currentRoute.path.includes('promotion')) {
-      seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Promotion');
+      seoInfo = store.getters.siteSeoList.find(item => item.Lst_Code == 'pub_Promotion');
     } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 1) {
       //* 真人娛樂
-      seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYCasinos');
+      seoInfo = store.getters.siteSeoList.find(item => item.Lst_Code == 'RYCasinos');
     } else if (router.currentRoute.name == 'GameLobby' && router.currentRoute.params.type == 2) {
       //* 電子遊戲
-      seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'RYSlots');
+      seoInfo = store.getters.siteSeoList.find(item => item.Lst_Code == 'RYSlots');
     } else {
-      seoInfo = store.getters.siteSeo.find(item => item.Lst_Code == 'pub_Index');
+      seoInfo = store.getters.siteSeoList.find(item => item.Lst_Code == 'pub_Index');
     }
     document.querySelector('meta[name=description]').setAttribute('content', seoInfo.Lst_SEO_Info.Description);
     document.querySelector('meta[name=keywords]').setAttribute('content', seoInfo.Lst_SEO_Info.Keyword);
 
-    //* title 以 seo 的為主，有的話就蓋掉
-    // if (seoInfo.Lst_SEO_Info.Title) {
-    //   document.title = seoInfo.Lst_SEO_Info.Title;
-    // }
+    //* Page Title
+    document.title = store.getters.siteSeoTitle;
   });
 
   new Vue({

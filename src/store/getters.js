@@ -97,6 +97,8 @@ const getters = {
     return `${state.site.info.RemoteCSSUrls}/ContentStyle/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Version}/2/default/css${state.site.info.LS_CSS_Type}/common/imgs/game/game${product.Lst_Product_id}-0${product.Lst_Game_Classify}-01.png`;
   },
   siteSeo: state => state.site.seo,
+  siteSeoList: state => state.site.seo.SeoList,
+  siteSeoTitle: state => state.site.seo.LS_SiteTitle,
 
   //* User
   userIsLoggedIn: state => state.user.isLoggedIn,

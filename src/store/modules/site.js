@@ -40,11 +40,11 @@ const actions = {
     }
     return result;
   },
-  async getSeoInfo({ commit }) {
-    const result = await apiGetSiteSeoInfo();
+  async getSeoInfo({ commit }, requestData) {
+    const result = await apiGetSiteSeoInfo(requestData);
 
     if (result.Code == 200) {
-      commit('setSeo', result.RetObj.SeoList);
+      commit('setSeo', result.RetObj);
     }
 
     return result;

@@ -2,8 +2,8 @@ import axios from 'axios';
 import { API_URL } from '@/settings';
 
 //* SEO資訊
-export async function apiGetSiteSeoInfo() {
-  const result = await axios.get(API_URL + '/SiteInfo/SeoInfo');
+export async function apiGetSiteSeoInfo(params) {
+  const result = await axios.get(API_URL + '/SiteInfo/SeoInfo', { params });
   return result.data;
 }
 
