@@ -91,6 +91,9 @@ const getters = {
   siteResourceUrlMaintain: state => {
     return `${state.site.info.RemoteCSSUrls}/Maintain/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}${state.site.info.LS_CSS_Version}/${state.site.info.LS_CSS_Type}//css`;
   },
+  siteProductImage: state => product => {
+    return `${state.site.info.RemoteCSSUrls}/ContentStyle/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Version}/2/default/css${state.site.info.LS_CSS_Type}/common/imgs/game/game${product.Lst_Product_id}-0${product.Lst_Game_Classify}-01.png`;
+  },
   siteSeo: state => state.site.seo,
 
   //* User

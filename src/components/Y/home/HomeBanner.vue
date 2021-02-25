@@ -2,7 +2,7 @@
   <swiper class="home-banner" :options="swiperOption" @click-slide="handleClickSlide">
     <swiper-slide v-for="(item, index) in banner" :key="index">
       <a class="home-banner__link" href="javascript:;">
-        <img class="swiper-lazy" :data-src="item.Lst_ImgUrl" width="720" />
+        <img class="swiper-lazy" :data-src="item.Lst_ImgUrl" width="720" height="431" />
         <div class="swiper-lazy-preloader"></div>
       </a>
 

@@ -5,7 +5,7 @@
       :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
       v-for="item in list"
       :key="item.Lst_Product_Proxy_Tag"
-      :style="{ 'background-image': `url(${imgSrc(item)})` }"
+      :style="{ 'background-image': `url(${siteProductImage(item)})` }"
       @click="clickProductItem(item)"
     >
       <div class="home-product-block__item__text">{{ item.Lst_Name }}</div>
@@ -28,7 +28,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
+    ...mapGetters(['siteFullCss', 'siteProductImage', 'userIsLoggedIn']),
     imgSrc: app => game => {
       try {
         return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
