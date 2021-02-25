@@ -62,8 +62,10 @@ const getters = {
     return `${API_URL}/Siteinfo/ManifestJson`;
   },
   siteFaviconUrl: state => {
-    //* Favicon: {siteResourceUrl}/imgs/favicon/favicon.ico
-    return `${state.site.info.RemoteCSSUrls}/ContentStyle/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Version}/2/default/css${state.site.info.LS_CSS_Type}/common/imgs/favicon/favicon.ico`;
+    //* Favicon: {siteResourceUrl}/imgs/favicon/favicon.ico (舊)
+    //* Favicon: {樣式網址}/Site_Uploadfile/{站台ID}/FavoriteIcon.png
+    // return `${state.site.info.RemoteCSSUrls}/ContentStyle/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Version}/2/default/css${state.site.info.LS_CSS_Type}/common/imgs/favicon/favicon.ico`;
+    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/FavoriteIcon.png`;
   },
   siteLogoUrl: state => {
     //* Logo: {樣式網址}/Site_Uploadfile/{站台ID}/Logo_{裝置}.png

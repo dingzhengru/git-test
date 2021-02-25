@@ -7,6 +7,10 @@ import { OFFLINE_MESSAGE } from '@/settings';
 
 Vue.config.productionTip = false;
 
+//* version 不要 cache (.json 檔案)，判斷是否更新並清掉cache
+import { version } from '@/version';
+console.log(`version: ${version}`);
+
 //* 封站，轉址測試
 // const isBlocked = true;
 // import { isStandaloneMode } from '@/utils/device';

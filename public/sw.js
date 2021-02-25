@@ -19,8 +19,6 @@ workbox.routing.registerRoute(
  ** cache 頁面
  */
 workbox.routing.registerRoute(
-  // /^(http|https).*\/$/,
-  // /^(http|https)[^\.]+$/,
   ({ url }) => {
     const pageList = ['/', '/contact', '/about', '/news'];
     const pageListStartWith = ['/promotion'];
@@ -32,6 +30,11 @@ workbox.routing.registerRoute(
   },
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'page-cache',
+    plugins: [
+      new workbox.cacheableResponse.CacheableResponsePlugin({
+        statuses: [200, 403],
+      }),
+    ],
   })
 );
 
