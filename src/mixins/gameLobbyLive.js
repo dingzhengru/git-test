@@ -56,6 +56,7 @@ export default {
       if (this.userIsLoggedIn) {
         result = await apiPostLiveGameLobbyProduct(requestData);
       } else {
+        requestData.Lang = this.lang;
         result = await apiGetLiveGameLobbyProduct(requestData);
       }
       this.productList = result.RetObj.ProductList;
@@ -66,6 +67,7 @@ export default {
       if (this.userIsLoggedIn) {
         result = await apiPostLiveGameLobbyCategory(requestData);
       } else {
+        requestData.Lang = this.lang;
         result = await apiGetLiveGameLobbyCategory(requestData);
       }
       this.guid = result.RetObj.H3GUID;
@@ -85,6 +87,7 @@ export default {
       if (this.userIsLoggedIn) {
         result = await apiPostLiveGameLobbyGameList(requestData);
       } else {
+        requestData.Lang = this.lang;
         result = await apiGetLiveGameLobbyGameList(requestData);
       }
       this.gameList = result.RetObj.JsonGameList || [];
@@ -108,6 +111,7 @@ export default {
       if (this.userIsLoggedIn) {
         result = await apiPostLiveGameLobbyGameList(requestData);
       } else {
+        requestData.Lang = this.lang;
         result = await apiGetLiveGameLobbyGameList(requestData);
       }
       this.gameList = this.gameList.concat(result.RetObj.JsonGameList || []);

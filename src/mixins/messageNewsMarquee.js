@@ -22,12 +22,13 @@ export default {
   },
   methods: {
     async getMessageMarqueeList() {
-      const requestDataMessageList = { msgtype: 'B' };
+      const requestData = { msgtype: 'B' };
       let result = {};
       if (this.userIsLoggedIn) {
-        result = await apiPostMessageList(requestDataMessageList);
+        result = await apiPostMessageList(requestData);
       } else {
-        result = await apiGetMessageList(requestDataMessageList);
+        requestData.Lang = this.lang;
+        result = await apiGetMessageList(requestData);
       }
       if (result.Code == 200) {
         // this.marqueeList = result.RetObj;
