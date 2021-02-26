@@ -24,7 +24,11 @@ export default {
         slidesPerView: 1,
         spaceBetween: 0,
         loop: true,
-        lazy: true,
+        // lazy: true,
+        lazy: {
+          loadPrevNext: true,
+          loadPrevNextAmount: 2,
+        },
         touchRatio: 0.5,
         keyboard: {
           enabled: true,
