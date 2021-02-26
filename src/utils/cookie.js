@@ -5,28 +5,28 @@ import Cookies from 'js-cookie';
 // import settings from '@/settings';
 
 const tokenKey = 'token';
-const publicKeyKey = 'publicKey';
-const isLoggedInKey = 'isLoggedIn';
-const langKey = 'lang'; //! 目前語系
-
-/**
- * ? sameSite  設定跨網域是否給予存取此 cookie 的規則，有三種設定，Strict | Lax | None，參考: https://medium.com/@ChibaKuma/chrome-80-samesite-cookie-%E7%9A%84%E5%BD%B1%E9%9F%BF-dce3ecff732a
- * ? expires   天數，不過可用小數設置一天以下 ex: 0.5 代表半天, 1/48 代表半小時
- */
-
 const tokenConfig = {
   sameSite: 'lax',
 };
 
+const publicKeyKey = 'publicKey';
 const publicKeyConfig = {
   sameSite: 'lax',
 };
 
+const isLoggedInKey = 'isLoggedIn';
 const isLoggedInConfig = {
   sameSite: 'lax',
 };
 
+const langKey = 'lang';
 const langConfig = {
+  sameSite: 'lax',
+  expires: 365,
+};
+
+const versionKey = 'version';
+const versionConfig = {
   sameSite: 'lax',
   expires: 365,
 };
@@ -77,4 +77,16 @@ export function cookieSetLang(lang) {
 
 export function cookieRemoveLang() {
   return Cookies.remove(langKey);
+}
+
+export function cookieGetVersion() {
+  return Cookies.get(versionKey);
+}
+
+export function cookieSetVersion(version) {
+  return Cookies.set(versionKey, version, versionConfig);
+}
+
+export function cookieRemoveVersion() {
+  return Cookies.remove(versionKey);
 }

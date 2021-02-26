@@ -4,12 +4,20 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 import { OFFLINE_MESSAGE } from '@/settings';
+import { cookieGetVersion, cookieSetVersion } from '@/utils/cookie';
 
 Vue.config.productionTip = false;
 
-//* version 不要 cache (.json 檔案)，判斷是否更新並清掉cache
-import { version } from '@/version';
-console.log(`version: ${version}`);
+//* version 不要 cache，判斷是否更新並清掉cache
+import version from '@/version.txt';
+const versionCookie = cookieGetVersion();
+cookieSetVersion(version);
+if (version !== versionCookie) {
+  window.caches.keys().then(keyList => {
+    keyList.forEach(key => caches.delete(key));
+  });
+  window.location.reload();
+}
 
 //* 封站，轉址測試
 // const isBlocked = true;
