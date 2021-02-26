@@ -56,13 +56,13 @@ export default {
       }
     },
     handleClickSlide(index, reallyIndex) {
-      const banner = this.list[reallyIndex];
+      const banner = this.bannerList[reallyIndex];
 
       const bannerType = this.userIsLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
       const bannerUrl = this.userIsLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
 
       if (bannerType == 1) {
-        window.open(banner.Lst_LinkUrl, banner.Lst_Target);
+        window.open(bannerUrl, banner.Lst_Target);
       } else if (bannerType == 2 || bannerType == 0) {
         if (bannerUrl > 0) {
           this.$router.push({
