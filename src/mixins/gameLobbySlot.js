@@ -143,10 +143,12 @@ export default {
     },
   },
   mounted() {
-    this.getJackpotTotal();
-    this.intervalJackpot = window.setInterval(() => {
+    if (this.userIsLoggedIn) {
       this.getJackpotTotal();
-    }, 20000);
+      this.intervalJackpot = window.setInterval(() => {
+        this.getJackpotTotal();
+      }, 20000);
+    }
 
     this.getGameProductList();
     this.getGameCategoryList();

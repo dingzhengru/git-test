@@ -5,13 +5,6 @@
         <img class="swiper-lazy" :data-src="item.Lst_ImgUrl" width="720" height="431" />
         <div class="swiper-lazy-preloader"></div>
       </a>
-
-      <!-- <a class="home-banner__link" href="javascript:;">
-        <img
-          :src="siteIsNewPromotion ? item.Lst_ImgUrl : `${siteResourceUrl}/banner/${item.ImageUrl}`"
-          onerror="this.style.display = 'none'"
-        />
-      </a> -->
     </swiper-slide>
     <a class="home-banner__button home-banner__button--previous" slot="button-prev"></a>
     <a class="home-banner__button home-banner__button--next" slot="button-next"></a>
@@ -32,7 +25,7 @@ export default {
     SwiperSlide,
   },
   computed: {
-    ...mapGetters(['siteResourceUrl', 'siteIsNewPromotion']),
+    ...mapGetters(['siteResourceUrl']),
   },
 };
 </script>

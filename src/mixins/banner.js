@@ -1,9 +1,9 @@
-import { apiGetBannerListOld, apiPostBannerListOld, apiGetBannerList, apiPostBannerList } from '@/api/banner';
+import { apiGetBannerList, apiPostBannerList } from '@/api/banner';
 import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['lang', 'siteIsNewPromotion', 'siteResourceUrl', 'userIsLoggedIn']),
+    ...mapGetters(['lang', 'siteResourceUrl', 'userIsLoggedIn']),
   },
   data() {
     return {
@@ -44,33 +44,15 @@ export default {
   },
   methods: {
     async getBannerList() {
-      if (this.siteIsNewPromotion) {
-        //* 新版，Lst_ImgUrl 會直接是完整圖片網址
-        let result = {};
-        if (this.userIsLoggedIn) {
-          result = await apiPostBannerList();
-        } else {
-          const requestData = { Lang: this.lang };
-          result = await apiGetBannerList(requestData);
-        }
-        if (result.Code == 200) {
-          this.bannerList = result.RetObj;
-        }
+      let result = {};
+      if (this.userIsLoggedIn) {
+        result = await apiPostBannerList();
       } else {
-        //* 舊版，只提供檔名，需用組合的方式取得
-        let result = {};
-        if (this.userIsLoggedIn) {
-          result = await apiPostBannerListOld();
-        } else {
-          const requestData = { Lang: this.lang };
-          result = await apiGetBannerListOld(requestData);
-        }
-        if (result.Code == 200) {
-          this.bannerList = result.RetObj.map(item => {
-            item.Lst_ImgUrl = `${this.siteResourceUrl}/imgs/banner/${item.ImageUrl}`;
-            return item;
-          });
-        }
+        const requestData = { Lang: this.lang };
+        result = await apiGetBannerList(requestData);
+      }
+      if (result.Code == 200) {
+        this.bannerList = result.RetObj;
       }
     },
     handleClickSlide(index, reallyIndex) {

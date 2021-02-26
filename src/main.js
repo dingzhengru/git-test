@@ -12,12 +12,15 @@ Vue.config.productionTip = false;
 import version from '@/version.txt';
 const versionCookie = cookieGetVersion();
 cookieSetVersion(version);
-if (version !== versionCookie) {
-  window.caches.keys().then(keyList => {
-    keyList.forEach(key => caches.delete(key));
-  });
-  window.location.reload();
-}
+(async () => {
+  const cacheKeyList = await window.caches.keys();
+  if (cacheKeyList.length > 0 && version !== versionCookie) {
+    console.log(version, versionCookie);
+    cacheKeyList.forEach(key => caches.delete(key));
+    alert('版本更新，將重整');
+    window.location.reload();
+  }
+})();
 
 //* 封站，轉址測試
 // const isBlocked = true;
