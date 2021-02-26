@@ -20,6 +20,7 @@ export default {
       if (this.userIsLoggedIn) {
         result = await apiPostPromotionDetail(requestData);
       } else {
+        requestData.Lang = this.lang;
         result = await apiGetPromotionDetail(requestData);
       }
 

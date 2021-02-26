@@ -4,7 +4,7 @@ import { apiGetPromotionList, apiPostPromotionList } from '@/api/promotion';
 export default {
   name: 'MixinPromotion',
   computed: {
-    ...mapGetters(['userIsLoggedIn']),
+    ...mapGetters(['lang', 'userIsLoggedIn']),
   },
   data() {
     return {
@@ -18,7 +18,8 @@ export default {
       if (this.userIsLoggedIn) {
         result = await apiPostPromotionList();
       } else {
-        result = await apiGetPromotionList();
+        const requestData = { Lang: this.lang };
+        result = await apiGetPromotionList(requestData);
       }
 
       if (result.Code == 200) {
@@ -38,5 +39,10 @@ export default {
   },
   mounted() {
     this.getPromotionList();
+  },
+  watch: {
+    lang() {
+      this.getPromotionList();
+    },
   },
 };
