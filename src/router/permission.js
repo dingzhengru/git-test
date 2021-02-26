@@ -13,12 +13,12 @@ router.beforeEach(async (to, from, next) => {
   } else if (to.matched.some(item => item.meta.auth === false) && isLoggedIn) {
     next({ name: 'Home' });
   } else {
-    store.commit('pushLoading', 'change-route');
+    // store.commit('pushLoading', 'change-route');
     next();
   }
 });
 
 router.afterEach(() => {
   //* 清除所有 change-route
-  store.commit('popLoadingAllChangeRoute');
+  // store.commit('popLoadingAllChangeRoute');
 });

@@ -13,9 +13,9 @@ import version from '@/version.txt';
 const versionCookie = cookieGetVersion();
 cookieSetVersion(version);
 (async () => {
-  const cacheKeyList = await window.caches.keys();
-  if (cacheKeyList.length > 0 && version !== versionCookie) {
+  if (window.caches && version !== versionCookie) {
     console.log(version, versionCookie);
+    const cacheKeyList = await window.caches.keys();
     cacheKeyList.forEach(key => caches.delete(key));
     alert('版本更新，將重整');
     window.location.reload();
