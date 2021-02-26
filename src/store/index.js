@@ -54,11 +54,12 @@ export default new Vuex.Store({
   actions: {
     async changeLang({ commit }, lang) {
       const requestData = { Lang: lang };
-      const result = await apiChangeLang(requestData);
-      if (result.Code == 200) {
-        // await loadLanguageAsync(lang);
+      try {
+        await apiChangeLang(requestData);
+      } finally {
         commit('setLang', lang);
       }
+
       return lang;
     },
     async getLangList({ commit }) {

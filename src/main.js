@@ -44,7 +44,7 @@ cookieSetVersion(version);
 
 //* 離線通知
 if (!window.navigator.onLine) {
-  alert(OFFLINE_MESSAGE);
+  console.log(OFFLINE_MESSAGE);
 }
 
 //* CSS
@@ -121,8 +121,7 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   store.dispatch('getLangList');
 
   //* 載入語系
-  // await store.dispatch('changeLang', store.getters.siteLang);
-  store.commit('setLang', store.getters.siteLang);
+  store.dispatch('changeLang', store.getters.siteLang);
 
   //* 取得遊戲館列表
   if (isLoggedIn) {
