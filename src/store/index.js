@@ -6,7 +6,7 @@ import product from './modules/product';
 import pwa from './modules/pwa';
 import getters from './getters';
 import { loadLanguageAsync } from '@/i18n-lazy';
-import { apiChangeLang, apiGetLangList, apiPostLangList } from '@/api/lang';
+import { apiChangeLang, apiGetLangList } from '@/api/lang';
 
 Vue.use(Vuex);
 
@@ -63,13 +63,6 @@ export default new Vuex.Store({
     },
     async getLangList({ commit }) {
       const result = await apiGetLangList();
-      if (result.Code == 200) {
-        commit('setLangList', result.RetObj);
-      }
-    },
-
-    async postLangList({ commit }) {
-      const result = await apiPostLangList();
       if (result.Code == 200) {
         commit('setLangList', result.RetObj);
       }

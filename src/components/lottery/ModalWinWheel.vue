@@ -1,6 +1,7 @@
 <template>
   <AppModal :isShow="isShow" @close="closeWinWheel">
     <div class="win-wheel-container">
+      <div class="ui-box-close" @click="closeWinWheel"></div>
       <WinWheel
         :wheelStyle="wheelStyle"
         :wheelOptions="wheelOptions"

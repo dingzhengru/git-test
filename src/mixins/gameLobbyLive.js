@@ -77,7 +77,7 @@ export default {
     async getGameList() {
       const requestData = {
         Tag: this.productTag,
-        Category: this.categoryCurrent.Lst_Category,
+        Category: this.categoryCurrent.Lst_Category || '',
         Page: this.pagination.page,
         GameName: this.search.text,
         IsLike: this.search.isFav ? 1 : 0,
@@ -101,7 +101,7 @@ export default {
 
       const requestData = {
         Tag: this.productTag,
-        Category: this.categoryCurrent.Lst_Category,
+        Category: this.categoryCurrent.Lst_Category || '',
         Page: this.pagination.page,
         GameName: this.search.text,
         IsLike: this.search.isFav ? 1 : 0,

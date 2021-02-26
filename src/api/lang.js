@@ -6,11 +6,6 @@ export async function apiGetLangList() {
   return result.data;
 }
 
-export async function apiPostLangList() {
-  const result = await axios.post(API_URL + '/lang/GetList');
-  return result.data;
-}
-
 export async function apiChangeLang(data) {
   const result = await axios.post(API_URL + '/lang/ChangeCulture', data);
   return result.data;

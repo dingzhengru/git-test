@@ -115,11 +115,7 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   // document.title = store.getters.siteTitle;
 
   //* 取得語系列表
-  if (isLoggedIn) {
-    store.dispatch('postLangList');
-  } else {
-    store.dispatch('getLangList');
-  }
+  store.dispatch('getLangList');
 
   //* 載入語系
   // await store.dispatch('changeLang', store.getters.siteLang);
