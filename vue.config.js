@@ -54,14 +54,6 @@ module.exports = {
     //   return args;
     // });
 
-    //* 新增 .txt rule
-    config.module
-      .rule('txt')
-      .test(/\.txt$/i)
-      .use('raw-loader')
-      .loader('raw-loader')
-      .end();
-
     config.optimization.minimizer('terser').tap(args => {
       // args[0].terserOptions.compress.drop_console = true;
       args[0].terserOptions.output = {

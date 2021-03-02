@@ -24,6 +24,7 @@ import i18n from '@/i18n-lazy'; //* 語言載入
 import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
 
 //* API
+import { apiGetVersion } from '@/api/version';
 import { apiKeepUserOnline } from '@/api/user';
 
 //* set Vue.prototype
@@ -39,23 +40,27 @@ Vue.prototype.$idMapper = idMapper;
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
 
-//* Version (不要 cache，判斷是否更新並清掉cache)
-import version from '@/version.txt';
-
 Vue.config.productionTip = false;
 
-const versionCookie = cookieGetVersion();
-cookieSetVersion(version);
+//* Version (目前設置於 public/version)
 (async () => {
   if (!window.caches) {
     return;
   }
+  const version = await apiGetVersion();
+  const versionCookie = cookieGetVersion();
+  console.log(version, versionCookie);
+  if (!versionCookie) {
+    cookieSetVersion(version);
+  }
   const cacheKeyList = await window.caches.keys();
   if (cacheKeyList.length > 0 && version !== versionCookie) {
-    console.log(version, versionCookie);
+    cookieSetVersion(version);
     cacheKeyList.forEach(key => caches.delete(key));
-    alert('版本更新，將重整');
-    window.location.reload();
+    setTimeout(() => {
+      alert('版本更新，將重整');
+      window.location.reload();
+    }, 1000);
   }
 })();
 
