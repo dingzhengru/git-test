@@ -12,7 +12,7 @@
     <div class="news-marquee__window" @click="$router.push({ name: 'News' })">
       <MarqueeText>
         <a href="javascript:;" v-for="(item, index) in marqueeList" :key="index">
-          {{ item.text }}
+          {{ item.Lst_Content }}
         </a>
       </MarqueeText>
     </div>

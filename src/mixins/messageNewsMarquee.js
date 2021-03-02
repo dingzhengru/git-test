@@ -9,13 +9,13 @@ export default {
     return {
       marqueeList: [
         {
-          text: '最新消息1',
+          Lst_Content: '最新消息1',
         },
         {
-          text: '最新消息2',
+          Lst_Content: '最新消息2',
         },
         {
-          text: '最新消息3',
+          Lst_Content: '最新消息3',
         },
       ],
     };
@@ -31,7 +31,7 @@ export default {
         result = await apiGetMessageList(requestData);
       }
       if (result.Code == 200) {
-        // this.marqueeList = result.RetObj;
+        this.marqueeList = result.RetObj;
       }
     },
   },
