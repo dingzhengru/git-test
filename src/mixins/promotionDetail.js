@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import { apiGetPromotionDetail, apiPostPromotionDetail } from '@/api/promotion';
+import { apiGetPromotionDetail } from '@/api/promotion';
 
 export default {
   name: 'MixinPromotionDetail',
@@ -15,14 +15,8 @@ export default {
   },
   methods: {
     async getPromotionDetail() {
-      const requestData = { PromotionId: Number(this.$route.params.id) };
-      let result = {};
-      if (this.userIsLoggedIn) {
-        result = await apiPostPromotionDetail(requestData);
-      } else {
-        requestData.Lang = this.lang;
-        result = await apiGetPromotionDetail(requestData);
-      }
+      const requestData = { PromotionId: Number(this.$route.params.id), Lang: this.lang };
+      const result = await apiGetPromotionDetail(requestData);
 
       if (result.Code == 200) {
         this.image = result.RetObj.ImageUrl;

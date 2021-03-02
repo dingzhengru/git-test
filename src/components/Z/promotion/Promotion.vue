@@ -1,14 +1,22 @@
 <template>
   <div class="promotion" :class="{ 'promotion-auth': userIsLoggedIn }">
-    <component :is="PromotionNavTab" />
-    <div
-      class="promotion__item"
-      v-for="item in promotionList"
-      :key="item.Lst_PromotionID"
-      @click="goPromotionDetail(item)"
-    >
-      <img :src="item.Lst_ImageUrl" />
-    </div>
+    <component
+      :is="PromotionNavTab"
+      :category="category"
+      :categoryList="categoryList"
+      @change-category="changeCategory"
+    />
+
+    <transition-group name="list-zoom">
+      <div
+        class="promotion__item list-zoom-item"
+        v-for="item in promotionListByCategory"
+        :key="item.Lst_PromotionID"
+        @click="goPromotionDetail(item)"
+      >
+        <img :src="item.Lst_ImageUrl" />
+      </div>
+    </transition-group>
   </div>
 </template>
 
