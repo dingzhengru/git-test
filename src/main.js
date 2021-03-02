@@ -57,10 +57,8 @@ Vue.config.productionTip = false;
   if (cacheKeyList.length > 0 && version !== versionCookie) {
     cookieSetVersion(version);
     cacheKeyList.forEach(key => caches.delete(key));
-    setTimeout(() => {
-      alert('版本更新，將重整');
-      window.location.reload();
-    }, 1000);
+    alert('版本更新，將重整');
+    window.location.reload();
   }
 })();
 
@@ -112,9 +110,10 @@ if (cookieGetToken() && cookieGetPublicKey()) {
 (async () => {
   //* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
   const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';
-  const lang = cookieGetLang() || '';
-  const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode, Lang: lang };
+  const lang = cookieGetLang() || 'th-th';
+  const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode };
   if (isLoggedIn) {
+    requestDataSiteInfo.Lang = lang;
     await store.dispatch('site/postInfo', requestDataSiteInfo);
   } else {
     await store.dispatch('site/getInfo', requestDataSiteInfo);
@@ -135,14 +134,14 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   store.dispatch('getLangList');
 
   //* 載入語系
-  store.commit('setLang', store.getters.siteLang);
+  store.commit('setLang', lang);
   // store.dispatch('changeLang', store.getters.siteLang);
 
   //* 取得遊戲館列表
   if (isLoggedIn) {
     store.dispatch('product/postList');
   } else {
-    const requestDataProductList = { Lang: store.getters.siteLang };
+    const requestDataProductList = { Lang: lang };
     store.dispatch('product/getList', requestDataProductList);
   }
 
@@ -159,7 +158,7 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   );
 
   //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
-  const requestDataSeo = { Lang: store.getters.siteLang };
+  const requestDataSeo = { Lang: lang };
   store.dispatch('site/getSeoInfo', requestDataSeo);
 
   new Vue({
