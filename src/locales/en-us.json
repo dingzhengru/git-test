@@ -799,6 +799,11 @@
       "submit": "Done"
     }
   },
+  "promotion": {
+    "nav": {
+      "all": "All promotion"
+    }
+  },
   "promotionDetail": {
     "title": {
       "date": "Activity time",

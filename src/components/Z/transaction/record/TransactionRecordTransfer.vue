@@ -56,14 +56,15 @@
           <td>{{ $numeral(item.Lst_PointPayment).format('0,0.00') }}</td>
           <td>{{ $numeral(item.Lst_PointIncome).format('0,0.00') }}</td>
           <td>
-            {{ item.Lst_TransDate }}
+            {{ item.Lst_TransTime }}
           </td>
-          <td></td>
+          <td>
+            {{ item.Lst_CheckOK }}
+          </td>
         </tr>
       </template>
     </table>
 
-    
     <div class="ui-no-data" v-show="recordList.length === 0">{{ $t('ui.label.noData') }}</div>
 
     <AppPagination

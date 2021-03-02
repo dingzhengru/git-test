@@ -796,6 +796,11 @@
       "submit": "แน่ใจ"
     }
   },
+  "promotion": {
+    "nav": {
+      "all": "โปรทั้งหมด"
+    }
+  },
   "promotionDetail": {
     "title": {
       "date": "เวลากิจกรรม",

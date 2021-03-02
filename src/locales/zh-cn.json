@@ -799,6 +799,11 @@
       "submit": "确定"
     }
   },
+  "promotion": {
+    "nav": {
+      "all": "全部优惠"
+    }
+  },
   "promotionDetail": {
     "title": {
       "date": "活动时间",
