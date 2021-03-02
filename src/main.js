@@ -107,10 +107,26 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   store.dispatch('user/getTokenAndPublicKey');
 }
 
+//* 取得目前語系
+const lang = cookieGetLang() || 'th-th';
+
+//* 載入語系
+store.commit('setLang', lang);
+
+//* 取得語系列表
+store.dispatch('getLangList');
+
+//* 取得遊戲館列表
+if (isLoggedIn) {
+  store.dispatch('product/postList');
+} else {
+  const requestDataProductList = { Lang: lang };
+  store.dispatch('product/getList', requestDataProductList);
+}
+
 (async () => {
   //* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
   const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';
-  const lang = cookieGetLang() || 'th-th';
   const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode };
   if (isLoggedIn) {
     requestDataSiteInfo.Lang = lang;
@@ -126,24 +142,6 @@ if (cookieGetToken() && cookieGetPublicKey()) {
 
   //* 設置站台設定檔
   await store.dispatch('site/loadSetting');
-
-  //* Page Title
-  // document.title = store.getters.siteTitle;
-
-  //* 取得語系列表
-  store.dispatch('getLangList');
-
-  //* 載入語系
-  store.commit('setLang', lang);
-  // store.dispatch('changeLang', store.getters.siteLang);
-
-  //* 取得遊戲館列表
-  if (isLoggedIn) {
-    store.dispatch('product/postList');
-  } else {
-    const requestDataProductList = { Lang: lang };
-    store.dispatch('product/getList', requestDataProductList);
-  }
 
   //* 心跳，剛進來也要執行一次
   //* document.visibilityState & document.hasFocus()，前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
