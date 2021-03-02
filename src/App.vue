@@ -15,7 +15,7 @@
         v-if="$route.meta.header != false"
       ></component>
 
-      <component :is="AppHeaderSub" v-show="(!userIsLoggedIn && this.$route.name == 'Home') || userIsLoggedIn" />
+      <component :is="AppHeaderSub" v-show="(!userIsLoggedIn && this.$route.name === 'Home') || userIsLoggedIn" />
 
       <div class="main">
         <router-view />

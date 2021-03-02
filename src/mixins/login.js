@@ -1,4 +1,5 @@
 import { apiGetCaptcha } from '@/api/captcha';
+import { cookieGetLang } from '@/utils/cookie';
 
 export default {
   name: 'MixinLogin',
@@ -22,18 +23,17 @@ export default {
     async submitLogin() {
       const result = await this.$store.dispatch('user/login', this.user);
 
-      if (result.Code == 201) {
+      if (result.Code === 200) {
+        const lang = cookieGetLang() || '';
+        const requestDataSiteInfo = { DeviceType: 1, Lang: lang };
+        this.$store.dispatch('site/postInfo', requestDataSiteInfo);
+      } else if (result.Code === 201) {
         //* 帳密錯誤
         this.error = result.ErrMsg;
-      } else if (result.Code == 203 || result.Code == 599) {
+      } else if (result.Code === 203 || result.Code === 599) {
         //* 驗證碼錯誤
         this.error = result.ErrMsg;
         this.changeCaptcha();
-      } else if (result.Code == 502 || result.Code == 615) {
-        //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
-        //* 615: JsonError，推測是公鑰與私鑰沒對上，已於攔截器上換新的公鑰
-        //* 重新送出請求 (現在放在攔截器)
-        // this.submitLogin();
       }
     },
     async changeCaptcha() {

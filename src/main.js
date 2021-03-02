@@ -4,12 +4,46 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 import { OFFLINE_MESSAGE } from '@/settings';
-import { cookieGetVersion, cookieSetVersion } from '@/utils/cookie';
+import {
+  cookieGetVersion,
+  cookieSetVersion,
+  cookieGetIsLoggedIn,
+  cookieGetToken,
+  cookieGetPublicKey,
+  cookieGetLang,
+} from '@/utils/cookie';
+
+//* CSS
+import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
+import './styles/global/base.scss';
+
+//* JS
+import './router/permission'; //* 路徑權限
+import './api/interceptors.js'; //* 攔截器
+import i18n from '@/i18n-lazy'; //* 語言載入
+import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
+
+//* API
+import { apiKeepUserOnline } from '@/api/user';
+
+//* set Vue.prototype
+import dayjs from 'dayjs';
+import numeral from 'numeral';
+import idMapper from '@/idMapper';
+
+Vue.prototype.$dayjs = dayjs;
+Vue.prototype.$numeral = numeral;
+Vue.prototype.$idMapper = idMapper;
+
+//* Vue Global Component
+import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
+Vue.use(VueScrollTo);
+
+//* Version (不要 cache，判斷是否更新並清掉cache)
+import version from '@/version.txt';
 
 Vue.config.productionTip = false;
 
-//* version 不要 cache，判斷是否更新並清掉cache
-import version from '@/version.txt';
 const versionCookie = cookieGetVersion();
 cookieSetVersion(version);
 (async () => {
@@ -47,32 +81,6 @@ if (!window.navigator.onLine) {
   console.log(OFFLINE_MESSAGE);
 }
 
-//* CSS
-import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
-import './styles/global/base.scss';
-import './router/permission'; //* 路徑權限
-import './api/interceptors.js'; //* 攔截器
-import i18n from '@/i18n-lazy'; //* 語言載入
-import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
-
-//* Cookie
-import { cookieGetIsLoggedIn, cookieGetToken, cookieGetPublicKey } from '@/utils/cookie';
-
-//* API
-import { apiKeepUserOnline } from '@/api/user';
-
-import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
-Vue.use(VueScrollTo);
-
-//* set Vue.prototype
-import dayjs from 'dayjs';
-import numeral from 'numeral';
-import idMapper from '@/idMapper';
-
-Vue.prototype.$dayjs = dayjs;
-Vue.prototype.$numeral = numeral;
-Vue.prototype.$idMapper = idMapper;
-
 //* 取得是否登入 (Cookie)
 const isLoggedIn = cookieGetIsLoggedIn();
 store.commit('user/setIsLoggedIn', isLoggedIn);
@@ -99,7 +107,8 @@ if (cookieGetToken() && cookieGetPublicKey()) {
 (async () => {
   //* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
   const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';
-  const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode };
+  const lang = cookieGetLang() || '';
+  const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode, Lang: lang };
   if (isLoggedIn) {
     await store.dispatch('site/postInfo', requestDataSiteInfo);
   } else {
@@ -121,7 +130,8 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   store.dispatch('getLangList');
 
   //* 載入語系
-  store.dispatch('changeLang', store.getters.siteLang);
+  store.commit('setLang', store.getters.siteLang);
+  // store.dispatch('changeLang', store.getters.siteLang);
 
   //* 取得遊戲館列表
   if (isLoggedIn) {
@@ -135,7 +145,7 @@ if (cookieGetToken() && cookieGetPublicKey()) {
   //* document.visibilityState & document.hasFocus()，前者只要頁面是停留此頁就是 visible，後者一定要 focus 在頁面上才會是 true
   setInterval(
     (function KeepUserOnline() {
-      if (document.visibilityState == 'visible' && store.getters.userIsLoggedIn) {
+      if (document.visibilityState === 'visible' && store.getters.userIsLoggedIn) {
         apiKeepUserOnline();
       }
       return KeepUserOnline;

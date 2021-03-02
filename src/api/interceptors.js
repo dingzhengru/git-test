@@ -88,24 +88,24 @@ axios.interceptors.response.use(
       store.commit('popLoading');
     }
 
-    if (res.data.Code == 201) {
+    if (res.data.Code === 201) {
       //* 201: 帳號被踢線，登出(清除SESSION資訊)，前端ALERT 顯示訊息(多語系文字)
 
       //* isResponded201 是避免多次執行 alert 的變數
-      if (Respond201Count == 0) {
+      if (Respond201Count === 0) {
         Respond201Count++;
         window.alert(res.data.ErrMsg);
         store.dispatch('user/logout');
       }
       return;
-    } else if (res.data.Code == 599) {
+    } else if (res.data.Code === 599) {
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
       //* 篩選掉不要 alert 的 api
       if (!checkUrlInList(API_NO_ALERT_LIST, res.config.url)) {
         window.alert(res.data.ErrMsg);
       }
-    } else if (res.data.Code == 502 || res.data.Code == 615) {
+    } else if (res.data.Code === 502 || res.data.Code === 615) {
       //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
       //* 615: JsonError，前端不顯示錯誤訊息內容(不正常操作)
 
@@ -129,7 +129,7 @@ axios.interceptors.response.use(
     console.log('[Response Error] [error.response]', error.response);
 
     //* siteInfo 取得失敗
-    if (error.config.url == `${API_URL}/Siteinfo/getinfo`) {
+    if (error.config.url === `${API_URL}/Siteinfo/getinfo`) {
       window.alert(SITE_INFO_LOAD_FAIL_MESSAGE);
       return;
     }
@@ -139,7 +139,7 @@ axios.interceptors.response.use(
       store.commit('popLoading');
     }
 
-    if (error.response.status == 401) {
+    if (error.response.status === 401) {
       //* 先拿下來存取，避免被 Token 的請求取代
       error.response.config.data = retryRequestData;
 

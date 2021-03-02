@@ -2,6 +2,7 @@ import { mapGetters } from 'vuex';
 import { apiGetCaptcha } from '@/api/captcha';
 import { apiGetRegisterFieldList, apiCheckRegisterFieldExist } from '@/api/register';
 import { registerFieldList } from '@/utils/register';
+import { cookieGetLang } from '@/utils/cookie';
 
 export default {
   name: 'MixinRegister',
@@ -62,13 +63,12 @@ export default {
 
       const result = await this.$store.dispatch('user/register', requestData);
 
-      if (result.Code == 500) {
+      if (result.Code === 200) {
+        const lang = cookieGetLang() || '';
+        const requestDataSiteInfo = { DeviceType: 1, Lang: lang };
+        this.$store.dispatch('site/postInfo', requestDataSiteInfo);
+      } else if (result.Code === 500) {
         this.error = result.ErrMsg;
-      } else if (result.Code == 502 || result.Code == 615) {
-        //* 502: TokenError，前端不顯示錯誤訊息內容(不正常操作)
-        //* 615: JsonError，推測是公鑰與私鑰沒對上，已於攔截器上換新的公鑰
-        //* 重新送出請求 (現在放在攔截器)
-        // this.submitRegister();
       }
     },
     async changeField(field, invalid) {
@@ -79,7 +79,7 @@ export default {
       if (field.name == 'Add_RelatedAccount' && field.value) {
         const requestData = { field: field.name, strValue: field.value };
         const result = await apiCheckRegisterFieldExist(requestData);
-        if (result == false) {
+        if (result === false) {
           field.value = '';
           window.alert(this.$t('register.Add_RelatedAccount.invalid'));
         }
@@ -92,14 +92,14 @@ export default {
         }
         const requestData = { field: 'Add_RealName', strValue: this.fullName };
         const result = await apiCheckRegisterFieldExist(requestData);
-        if (result == false) {
+        if (result === false) {
           field.value = '';
           window.alert(this.$t('register.Add_RealName.invalid'));
         }
-      } else if (field.isOnly == true && field.value) {
+      } else if (field.isOnly && field.value) {
         const requestData = { field: field.name, strValue: field.value };
         const result = await apiCheckRegisterFieldExist(requestData);
-        if (result == false) {
+        if (result === false) {
           field.value = '';
           window.alert(this.$t(`register.${field.name}.invalid`));
         }
