@@ -7,7 +7,7 @@
       :key="item.classify"
       @click="$emit('change-product-nav', item.classify)"
     >
-      {{ item.text }}
+      {{ $t(item.text) }}
     </div>
   </div>
 </template>
@@ -27,19 +27,19 @@ export default {
       productNavList: [
         {
           classify: 0,
-          text: '所有遊戲',
+          text: 'home.product.nav.all',
         },
         {
           classify: 1,
-          text: '真人娛樂',
+          text: 'home.product.nav.live',
         },
         {
           classify: 2,
-          text: '電子遊戲',
+          text: 'home.product.nav.slot',
         },
         {
           classify: 3,
-          text: '體育投注',
+          text: 'home.product.nav.sport',
         },
       ],
     };

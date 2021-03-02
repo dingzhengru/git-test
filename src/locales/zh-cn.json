@@ -172,6 +172,14 @@
     "transaction-2": "交易中心"
   },
   "home": {
+    "product": {
+      "nav": {
+        "all": "所有游戏",
+        "live": "真人娱乐",
+        "slot": "电子游戏",
+        "sport": "体育投注"
+      }
+    },
     "lottery": {
       "winWheel": {
         "homeTitle": "{count} 次 抽奖机会"

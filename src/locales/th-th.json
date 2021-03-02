@@ -172,6 +172,14 @@
     "transaction-2": "กระเป๋าเงิน"
   },
   "home": {
+    "product": {
+      "nav": {
+        "all": "เกมทั้งหมด",
+        "live": "เกมส์ถ่ายทอดสด",
+        "slot": "สล็อต",
+        "sport": "กีฬา"
+      }
+    },
     "lottery": {
       "winWheel": {
         "homeTitle": "หมุนวงล้อ {count} ครั้ง"
