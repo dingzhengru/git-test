@@ -7,7 +7,7 @@
       @change-category="changeCategory"
     />
 
-    <transition-group name="list-zoom">
+    <transition-group tag="div" class="promotion__group" name="list-zoom">
       <div
         class="promotion__item list-zoom-item"
         v-for="item in promotionListByCategory"
