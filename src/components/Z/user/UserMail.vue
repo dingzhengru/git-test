@@ -1,10 +1,10 @@
 <template>
   <div class="user-mail">
     <div class="user-mail__nav">
-      <button class="ui-btn user-mail__nav--inbox" @click="$router.push({ name: 'UserMail' })">
+      <button class="ui-btn user-mail__nav--inbox" @click="$router.push({ name: 'UserMail' }).catch(() => {})">
         {{ $t('user.mail.nav.inbox') }}
       </button>
-      <button class="ui-btn user-mail__nav--add" @click="$router.push({ name: 'UserMailSend' })">
+      <button class="ui-btn user-mail__nav--add" @click="$router.push({ name: 'UserMailSend' }).catch(() => {})">
         {{ $t('user.mail.nav.add') }}
       </button>
     </div>
