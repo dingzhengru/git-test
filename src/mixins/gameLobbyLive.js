@@ -82,6 +82,7 @@ export default {
         GameName: this.search.text,
         IsLike: this.search.isFav ? 1 : 0,
         H3GUID: this.guid,
+        GameClassify: 1,
       };
       let result = {};
       if (this.userIsLoggedIn) {
@@ -106,6 +107,7 @@ export default {
         GameName: this.search.text,
         IsLike: this.search.isFav ? 1 : 0,
         H3GUID: this.guid,
+        GameClassify: 1,
       };
       let result = {};
       if (this.userIsLoggedIn) {
@@ -120,7 +122,6 @@ export default {
     },
     async openGame(game) {
       if (!this.userIsLoggedIn) {
-        console.log(123);
         return this.$router.push({ name: 'Login' });
       }
 

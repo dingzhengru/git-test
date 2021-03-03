@@ -16,12 +16,12 @@
           <td>{{ item.Lst_CreateTime }}</td>
           <td>{{ item.Lst_StatusName }}</td>
           <td>{{ $numeral(item.Lst_MoneyIncome).format('0,0.00') }}</td>
-          <td>再存5%</td>
+          <td>{{ item.Lst_ActivityName }}</td>
         </tr>
         <tr class="record-content__table__tr--detail" :key="item.Lst_TransID" v-show="item.isShowDetail">
           <td colspan="5">
-            <div>{{ $t('transaction.recordDetail.deposit.table.bank') }}：</div>
-            <div>{{ $t('transaction.recordDetail.deposit.table.paymentMethod') }}：</div>
+            <div>{{ $t('transaction.recordDetail.deposit.table.bank') }}：{{ item.Lst_MemberBankName }}</div>
+            <div>{{ $t('transaction.recordDetail.deposit.table.paymentMethod') }}：{{ item.Lst_DMTitle }}</div>
             <div>{{ $t('transaction.recordDetail.deposit.table.transactionNumber') }}： {{ item.Lst_TransID }}</div>
             <div>
               {{ $t('transaction.recordContent.deposit.table.receipt') }}：
@@ -30,7 +30,7 @@
               </a>
               <span v-else>{{ item.Lst_Receipt }}</span>
             </div>
-            <div>{{ $t('transaction.recordDetail.deposit.table.transactionTime') }}：</div>
+            <div>{{ $t('transaction.recordDetail.deposit.table.transactionTime') }}：{{ item.Lst_CreateTime }}</div>
           </td>
         </tr>
       </template>
