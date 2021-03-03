@@ -4,10 +4,10 @@ import {
   apiGetGameUrl,
   apiGetLiveGameLobbyProduct,
   apiPostLiveGameLobbyProduct,
-  apiGetLiveGameLobbyCategory,
-  apiPostLiveGameLobbyCategory,
-  apiGetLiveGameLobbyGameList,
-  apiPostLiveGameLobbyGameList,
+  apiGetGameLobbyCategory,
+  apiPostGameLobbyCategory,
+  apiGetGameLobbyGameList,
+  apiPostGameLobbyGameList,
 } from '@/api/game';
 import { openNewWindowURL } from '@/utils/device';
 
@@ -65,10 +65,10 @@ export default {
       const requestData = { Tag: this.productTag };
       let result = {};
       if (this.userIsLoggedIn) {
-        result = await apiPostLiveGameLobbyCategory(requestData);
+        result = await apiPostGameLobbyCategory(requestData);
       } else {
         requestData.Lang = this.lang;
-        result = await apiGetLiveGameLobbyCategory(requestData);
+        result = await apiGetGameLobbyCategory(requestData);
       }
       this.guid = result.RetObj.H3GUID;
       this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
@@ -85,10 +85,10 @@ export default {
       };
       let result = {};
       if (this.userIsLoggedIn) {
-        result = await apiPostLiveGameLobbyGameList(requestData);
+        result = await apiPostGameLobbyGameList(requestData);
       } else {
         requestData.Lang = this.lang;
-        result = await apiGetLiveGameLobbyGameList(requestData);
+        result = await apiGetGameLobbyGameList(requestData);
       }
       this.gameList = result.RetObj.JsonGameList || [];
       this.gameLimitBetList = result.RetObj.GameLimitBet;
@@ -109,16 +109,21 @@ export default {
       };
       let result = {};
       if (this.userIsLoggedIn) {
-        result = await apiPostLiveGameLobbyGameList(requestData);
+        result = await apiPostGameLobbyGameList(requestData);
       } else {
         requestData.Lang = this.lang;
-        result = await apiGetLiveGameLobbyGameList(requestData);
+        result = await apiGetGameLobbyGameList(requestData);
       }
       this.gameList = this.gameList.concat(result.RetObj.JsonGameList || []);
       this.gameLimitBetList = result.RetObj.GameLimitBet;
       this.pagination.count = result.RetObj.DataCnt;
     },
     async openGame(game) {
+      if (!this.userIsLoggedIn) {
+        console.log(123);
+        return this.$router.push({ name: 'Login' });
+      }
+
       //* 因應真人遊戲兩階段開遊戲，這樣才知道現在的遊戲是甚麼
       this.game = game;
       this.isShowLiveGameEnterDialog = true;

@@ -5,6 +5,14 @@ $game-bg: none;
 
 .game {
   @include game;
+
+  padding-top: 0;
+
+  &-lobby {
+    &-auth {
+      padding-top: $header-sub-height-auth;
+    }
+  }
 }
 
 $game-lobby-jackpot-bg-en-us: assetPath('game-lobby/bg_jackpot.png') center no-repeat;

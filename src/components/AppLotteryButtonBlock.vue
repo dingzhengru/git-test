@@ -3,6 +3,7 @@
     <div
       class="lottery-btn-block__win-wheel"
       v-show="userLotteryCountWinWheel.Count > 0"
+      :style="{ 'background-image': `url(${siteLotteryButtonBgWinWheel})` }"
       @click="$store.commit('setModalWinWheelIsShow', true)"
     >
       <span class="lottery-btn-block__win-wheel__text">
@@ -12,6 +13,7 @@
     <div
       class="lottery-btn-block__red-envelope"
       v-show="userLotteryCountRedEnvelope.Count > 0"
+      :style="{ 'background-image': `url(${siteLotteryButtonBgredEnvelope})` }"
       @click="$store.commit('setModalRedEnvelopeIsShow', true)"
     >
       <span class="lottery-btn-block__red-envelope__text">
@@ -26,7 +28,12 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'AppLotteryButtonBlock',
   computed: {
-    ...mapGetters(['userLotteryCountWinWheel', 'userLotteryCountRedEnvelope']),
+    ...mapGetters([
+      'userLotteryCountWinWheel',
+      'userLotteryCountRedEnvelope',
+      'siteLotteryButtonBgWinWheel',
+      'siteLotteryButtonBgredEnvelope',
+    ]),
   },
 };
 </script>

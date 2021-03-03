@@ -127,7 +127,7 @@ export default {
     },
     async openGame(game, freePlay) {
       if (!this.userIsLoggedIn) {
-        return window.alert(this.$t('ui.alert.notLoggedIn'));
+        return this.$router.push({ name: 'Login' });
       }
 
       const newWindow = window.open('/loading.html');

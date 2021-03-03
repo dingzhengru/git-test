@@ -1,5 +1,5 @@
 <template>
-  <div class="game-lobby">
+  <div class="game-lobby" :class="{ 'game-lobby-auth': userIsLoggedIn }">
     <component
       :is="GameProductNavigation"
       :productList="productList"

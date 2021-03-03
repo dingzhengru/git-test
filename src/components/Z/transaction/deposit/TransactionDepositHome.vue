@@ -4,14 +4,14 @@
       <button
         class="ui-btn ui-btn--block deposit__nav--base"
         :class="{ active: $route.name == 'TransactionDepositBase' }"
-        @click="$router.push({ name: 'TransactionDepositBase' })"
+        @click="$router.push({ name: 'TransactionDepositBase' }).catch(() => {})"
       >
         {{ $t('transaction.deposit.nav.base') }}
       </button>
       <button
         class="ui-btn ui-btn--block deposit__nav--third-party"
         :class="{ active: $route.name == 'TransactionDepositThirdParty' }"
-        @click="$router.push({ name: 'TransactionDepositThirdParty' })"
+        @click="$router.push({ name: 'TransactionDepositThirdParty' }).catch(() => {})"
       >
         {{ $t('transaction.deposit.nav.thirdParty') }}
       </button>

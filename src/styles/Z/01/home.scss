@@ -45,7 +45,7 @@ $home-main-bg: white;
 }
 
 $home-product-text-color: white;
-$home-product-maintain-bg: assetPath('game/btn_maintain.png') no-repeat;
+$home-product-maintain-bg: assetPath('home/btn_maintain.png') no-repeat;
 
 .home-product-block {
   @include home-product-block;

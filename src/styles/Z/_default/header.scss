@@ -82,7 +82,7 @@
         }
         &__link {
           color: $header-menu-dropdown-link-color;
-          min-width: $header-menu-dropdown-link-width;
+          flex-basis: $header-menu-dropdown-link-width;
           text-align: center;
           font-size: 2rem;
         }

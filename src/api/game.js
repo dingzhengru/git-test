@@ -66,7 +66,7 @@ export async function apiPostGameLobbyGameList(data) {
  */
 
 export async function apiGetLiveGameLobbyProduct(params) {
-  const result = await axios.get(API_URL + '/Game/MLiveLobby', { params });
+  const result = await axios.get(API_URL + '/Game/LiveLobby', { params });
   return result.data;
 }
 
@@ -76,7 +76,7 @@ export async function apiPostLiveGameLobbyProduct(data) {
 }
 
 export async function apiGetLiveGameLobbyCategory(params) {
-  const result = await axios.get(API_URL + '/Game/MGetLiveLobbyMenu', { params });
+  const result = await axios.get(API_URL + '/Game/GetLiveLobbyMenu', { params });
   return result.data;
 }
 
@@ -86,7 +86,7 @@ export async function apiPostLiveGameLobbyCategory(data) {
 }
 
 export async function apiGetLiveGameLobbyGameList(params) {
-  const result = await axios.get(API_URL + '/Game/MGetLiveLobbyList', { params });
+  const result = await axios.get(API_URL + '/Game/GetLiveLobbyList', { params });
   return result.data;
 }
 

@@ -95,6 +95,12 @@ const getters = {
   siteProductImage: (state, getters) => product => {
     return `${getters.siteResourceUrl}/imgs/game/game${product.Lst_Product_id}-0${product.Lst_Game_Classify}-01.png`;
   },
+  siteLotteryButtonBgWinWheel: (state, getters) => {
+    return `${getters.siteResourceUrl}/imgs/ad/rotaryTable.png`;
+  },
+  siteLotteryButtonBgredEnvelope: (state, getters) => {
+    return `${getters.siteResourceUrl}/imgs/ad/luckyDraw.png`;
+  },
   siteSeo: state => state.site.seo,
   siteSeoList: state => state.site.seo.SeoList,
   siteSeoTitle: state => state.site.seo.LS_SiteTitle,

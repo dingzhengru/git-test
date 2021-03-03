@@ -81,12 +81,12 @@ $go-top-btn-right: 30px;
 
 $lottery-btn-block-bottom: $footer-height + 30;
 $lottery-btn-block-left: 0px;
-$lottery-btn-block-win-wheel-bg: assetPath('lottery/rotaryTable.png') center no-repeat;
+// $lottery-btn-block-win-wheel-bg: assetPath('lottery/rotaryTable.png') center no-repeat;
 $lottery-btn-block-win-wheel-width: 144px;
 $lottery-btn-block-win-wheel-height: 138px;
 $lottery-btn-block-win-wheel-text-top: 42px;
 $lottery-btn-block-win-wheel-text-color: white;
-$lottery-btn-block-red-envelope-bg: assetPath('lottery/luckyDraw.png') center no-repeat;
+// $lottery-btn-block-red-envelope-bg: assetPath('lottery/luckyDraw.png') center no-repeat;
 $lottery-btn-block-red-envelope-width: 124px;
 $lottery-btn-block-red-envelope-height: 126px;
 $lottery-btn-block-red-envelope-text-top: 75px;
@@ -145,7 +145,7 @@ $service-term-btn-color: white;
 
     &__label {
       color: $field-label-color;
-      min-width: 15%;
+      // flex-basis: 150px;
       margin-right: 15px;
     }
     &__input {
@@ -164,13 +164,15 @@ $service-term-btn-color: white;
 
   &__group--checkbox {
     input[type='checkbox'] {
+      flex-basis: 70px;
       width: 35px;
       height: 35px;
       margin-right: 10px;
     }
 
     label {
-      width: calc(100% - 45px);
+      word-break: break-word;
+      // width: calc(100% - 45px);
       color: $field-label-color-checkbox;
     }
   }
@@ -338,7 +340,6 @@ $service-term-btn-color: white;
   }
 
   &__item {
-    // min-width: 21%;
     flex-basis: 20%;
     font-size: 1.8rem;
     line-height: 2.5rem;
@@ -410,7 +411,7 @@ $service-term-btn-color: white;
   font-size: 1.2rem;
 
   &__win-wheel {
-    background: $lottery-btn-block-win-wheel-bg;
+    // background: $lottery-btn-block-win-wheel-bg;
     width: $lottery-btn-block-win-wheel-width;
     height: $lottery-btn-block-win-wheel-height;
     position: relative;
@@ -423,7 +424,7 @@ $service-term-btn-color: white;
     }
   }
   &__red-envelope {
-    background: $lottery-btn-block-red-envelope-bg;
+    // background: $lottery-btn-block-red-envelope-bg;
     width: $lottery-btn-block-red-envelope-width;
     height: $lottery-btn-block-red-envelope-height;
     position: relative;
