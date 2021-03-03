@@ -8,6 +8,9 @@ export default {
   mixins: [mixinProductLinkHandler],
   computed: {
     ...mapGetters(['lang', 'userGamePointById']),
+    // productClassify() {
+    //   return String(this.$route.params.classify);
+    // },
     productId() {
       return String(this.$route.params.id);
     },

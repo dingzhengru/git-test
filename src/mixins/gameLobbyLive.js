@@ -62,7 +62,7 @@ export default {
       this.productList = result.RetObj.ProductList;
     },
     async getGameCategoryList() {
-      const requestData = { Tag: this.productTag };
+      const requestData = { Tag: this.productTag, GameClassify: 1 };
       let result = {};
       if (this.userIsLoggedIn) {
         result = await apiPostGameLobbyCategory(requestData);
