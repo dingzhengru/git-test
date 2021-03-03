@@ -13,7 +13,7 @@
     <div
       class="lottery-btn-block__red-envelope"
       v-show="userLotteryCountRedEnvelope.Count > 0"
-      :style="{ 'background-image': `url(${siteLotteryButtonBgredEnvelope})` }"
+      :style="{ 'background-image': `url(${siteLotteryButtonBgRedEnvelope})` }"
       @click="$store.commit('setModalRedEnvelopeIsShow', true)"
     >
       <span class="lottery-btn-block__red-envelope__text">
@@ -32,7 +32,7 @@ export default {
       'userLotteryCountWinWheel',
       'userLotteryCountRedEnvelope',
       'siteLotteryButtonBgWinWheel',
-      'siteLotteryButtonBgredEnvelope',
+      'siteLotteryButtonBgRedEnvelope',
     ]),
   },
 };

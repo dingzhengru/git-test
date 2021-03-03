@@ -75,22 +75,22 @@ export async function apiPostLiveGameLobbyProduct(data) {
   return result.data;
 }
 
-export async function apiGetLiveGameLobbyCategory(params) {
-  const result = await axios.get(API_URL + '/Game/GetLiveLobbyMenu', { params });
-  return result.data;
-}
+// export async function apiGetLiveGameLobbyCategory(params) {
+//   const result = await axios.get(API_URL + '/Game/GetLiveLobbyMenu', { params });
+//   return result.data;
+// }
 
-export async function apiPostLiveGameLobbyCategory(data) {
-  const result = await axios.post(API_URL + '/Game/MGetLiveLobbyMenu', data);
-  return result.data;
-}
+// export async function apiPostLiveGameLobbyCategory(data) {
+//   const result = await axios.post(API_URL + '/Game/MGetLiveLobbyMenu', data);
+//   return result.data;
+// }
 
-export async function apiGetLiveGameLobbyGameList(params) {
-  const result = await axios.get(API_URL + '/Game/GetLiveLobbyList', { params });
-  return result.data;
-}
+// export async function apiGetLiveGameLobbyGameList(params) {
+//   const result = await axios.get(API_URL + '/Game/GetLiveLobbyList', { params });
+//   return result.data;
+// }
 
-export async function apiPostLiveGameLobbyGameList(data) {
-  const result = await axios.post(API_URL + '/Game/MGetLiveLobbyList', data);
-  return result.data;
-}
+// export async function apiPostLiveGameLobbyGameList(data) {
+//   const result = await axios.post(API_URL + '/Game/MGetLiveLobbyList', data);
+//   return result.data;
+// }
