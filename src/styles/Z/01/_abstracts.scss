@@ -338,7 +338,8 @@ $service-term-btn-color: white;
   }
 
   &__item {
-    min-width: 21%;
+    // min-width: 21%;
+    flex-basis: 20%;
     font-size: 1.8rem;
     line-height: 2.5rem;
     margin-right: 15px;

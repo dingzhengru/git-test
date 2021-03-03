@@ -7,8 +7,8 @@
       <component :is="HomeProductBlock" :list="productListByClassify(productClassifyCurrent)" />
     </div>
 
-    <!-- <ModalNoticeImage :isShow="isShowMainNotice" :image="siteMainPageNoticeUrl" @close="isShowMainNotice = false" /> -->
-    <!-- <ModalMessage :isShow="isShowModalMessage && !userIsLoggedIn" @close="isShowModalMessage = false" /> -->
+    <ModalNoticeImage :isShow="isShowMainNotice" :image="siteMainPageNoticeUrl" @close="isShowMainNotice = false" />
+    <ModalMessage :isShow="isShowModalMessage && !userIsLoggedIn" @close="isShowModalMessage = false" />
   </div>
 </template>
 

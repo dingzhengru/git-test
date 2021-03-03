@@ -23,15 +23,6 @@ export default {
       }
       if (result.Code == 200) {
         this.messageList = result.RetObj;
-
-        this.messageList = [
-          {
-            Lst_Content: '测试',
-          },
-          {
-            Lst_Content: '测试2',
-          },
-        ];
       }
     },
   },
