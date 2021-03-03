@@ -18,6 +18,9 @@ export default {
         return item;
       });
     },
+    toggleRecordDetail(record) {
+      record.isShowDetail = !record.isShowDetail;
+    },
     goRecordDetail(record) {
       if (record.Lst_Status == 2) {
         const query = { TransID: record.Lst_TransID };

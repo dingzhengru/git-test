@@ -98,7 +98,7 @@ const getters = {
   siteLotteryButtonBgWinWheel: (state, getters) => {
     return `${getters.siteResourceUrl}/imgs/ad/rotaryTable.png`;
   },
-  siteLotteryButtonBgredEnvelope: (state, getters) => {
+  siteLotteryButtonBgRedEnvelope: (state, getters) => {
     return `${getters.siteResourceUrl}/imgs/ad/luckyDraw.png`;
   },
   siteSeo: state => state.site.seo,

@@ -19,11 +19,12 @@
           </td>
           <td>{{ item.Lst_StatusName }}</td>
           <td>{{ $numeral(item.Lst_MoneyPayment).format('0,0.00') }}</td>
-          <td>手續費</td>
+          <td>{{ item.Lst_Charges }}</td>
         </tr>
         <tr class="record-content__table__tr--detail" :key="item.Lst_TransID" v-show="item.isShowDetail">
           <td colspan="5">
             {{ $t('transaction.recordDetail.withdrawal.table.transactionNumber') }}： {{ item.Lst_TransID }} <br />
+            N/A
           </td>
         </tr>
       </template>
