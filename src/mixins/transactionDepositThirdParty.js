@@ -4,6 +4,7 @@ import {
   apiGetDepositAllActivityList,
   apiGetDepositThirdPartyInfo,
   apiDepositThirdParty,
+  apiDepositCheckOrderStatus,
 } from '@/api/transaction-deposit';
 export default {
   name: 'MixinTransactionDepositThirdParty',
@@ -45,6 +46,13 @@ export default {
         Width: 147,
         Height: 60,
       },
+
+      iframe: {
+        isShow: true,
+        src:
+          'https://cash.jsapq5279.com/ppayVN2/deposit/msg?IsSuccess=1&Message=done&oid=202103031541531334088784&bankAccount=0852666447&bankCode=KBANK&bankName=KBANK&branchName=%25E0%25B8%25AA%25E0%25B8%25B3%25E0%25B9%2582%25E0%25B8%25A3%25E0%25B8%2587&bankAccountName=%25E0%25B8%258A%25E0%25B8%25B1%25E0%25B8%25A2%25E0%25B8%2598%25E0%25B8%2599%25E0%25B8%25B1%25E0%25B8%2599%25E0%25B8%2597%25E0%25B9%258C%2B%2B%25E0%25B8%2581%25E0%25B8%25B8%25E0%25B8%25A5%25E0%25B8%259E%25E0%25B8%25B4%25E0%25B8%259E%25E0%25B8%25B1%25E0%25B8%2592%25E0%25B8%2599%25E0%25B9%258C%25E0%25B8%259C%25E0%25B8%25A5&noteNo=W3302S&orig_money=1.00&money=0.16&lang=tl&cardNumber=&cardIndex=&pay_page_type=PromptPay',
+      },
+
       noticeList: [
         'transaction.deposit.notice.currency',
         'transaction.deposit.notice.depositLimit01',
@@ -76,14 +84,22 @@ export default {
       };
 
       const result = await apiDepositThirdParty(requestData);
-      console.log(result);
       if (result.Code === 200) {
-        console.log(200);
+        this.iframe.isShow = true;
+        this.iframe.src = result.RetObj.PayUrl;
+        // setInterval(() => {
+        //   this.checkDepositCheckOrderStatus(result.Lst_TransID);
+        // }, 2000);
       } else if (result.Code === 203 || result.Code === 599) {
         //* 驗證碼錯誤
         alert(result.ErrMsg);
         this.changeCaptcha();
       }
+    },
+    async checkDepositCheckOrderStatus(Lst_TransID) {
+      const requestData = { Lst_TransID };
+      const result = await apiDepositCheckOrderStatus(requestData);
+      console.log(result);
     },
     changeAmountByButton(amount) {
       this.amount = amount;
@@ -108,6 +124,15 @@ export default {
         this.user.CaptchaValue = '';
       }
     },
+    receiveMessageHandler(event) {
+      console.log('Get Message');
+      console.log(event);
+    },
+    closeIframe() {
+      console.log('closeIframe');
+      this.iframe.isShow = false;
+      this.iframe.src = '';
+    },
     resetForm() {
       this.method = '';
       this.platform = {};
@@ -120,5 +145,14 @@ export default {
     this.getDepositThirdPartyInfo();
     this.getDepositAllActivityList();
     this.changeCaptcha();
+
+    window.addEventListener('message', this.receiveMessageHandler);
+
+    setTimeout(() => {
+      this.iframe.src = '/deposit/ThirdPartyReturn';
+    }, 1000);
+  },
+  beforeDestroy() {
+    window.removeEventListener('message', this.receiveMessageHandler);
   },
 };

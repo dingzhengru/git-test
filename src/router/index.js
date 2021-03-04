@@ -350,6 +350,12 @@ const routes = [
     meta: { footer: false },
   },
   {
+    path: '/deposit/ThirdPartyReturn',
+    name: 'DepositThirdPartyReturn',
+    component: () => import('@/views/DepositThirdPartyReturn'),
+    meta: { header: false, footer: false },
+  },
+  {
     path: '*',
     name: 'PageNotFound',
     component: () => import('@/views/PageNotFound'),

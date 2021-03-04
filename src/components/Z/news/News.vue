@@ -15,6 +15,7 @@
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
+      v-show="newsList.length > 0"
     />
   </div>
 </template>

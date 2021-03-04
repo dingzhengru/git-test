@@ -143,6 +143,13 @@
         </button>
       </div>
     </form>
+    <ModalDepositThirdParty
+      :isShow="iframe.isShow"
+      :src="iframe.src"
+      :width="depositInfo.sp_MobileWidth"
+      :height="depositInfo.sp_MobileHeight"
+      @close="closeIframe"
+    />
   </ValidationObserver>
 </template>
 
@@ -155,6 +162,7 @@ export default {
   components: {
     ValidationObserver,
     ValidationProvider,
+    ModalDepositThirdParty: () => import('@/components/ModalDepositThirdParty'),
   },
 };
 </script>

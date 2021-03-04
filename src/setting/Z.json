@@ -94,6 +94,7 @@
     "contact": "components/Z/contact/Contact",
     "about": "components/Z/about/About",
     "news": "components/Z/news/News",
-    "maintenance": "components/Y/maintenance/Maintenance"
+    "maintenance": "components/Y/maintenance/Maintenance",
+    "depositThirdPartyReturn": "components/Z/DepositThirdPartyReturn"
   }
 }

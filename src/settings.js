@@ -69,6 +69,7 @@ export const API_AUTH_LIST = [
   'Operator/MSingleDeposit',
   'Operator/MThirdParty',
   'Operator/MDepositThirdParty',
+  'Operator/CheckOrderStatus',
   'Operator/MWithdrawalsInfo',
   'Operator/MWithdrawals',
   'Operator/MTransferInfo',

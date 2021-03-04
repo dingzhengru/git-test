@@ -555,7 +555,7 @@
       "withdrawal": {
         "title": "取款纪录",
         "table": {
-          "date": "日期",
+          "date": "送单时间",
           "status": "状态",
           "bank": "银行",
           "amount": "金额",

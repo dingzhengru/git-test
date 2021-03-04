@@ -26,3 +26,8 @@ export async function apiDepositThirdParty(data) {
   const result = await axios.post(API_URL + '/Operator/MDepositThirdParty', data);
   return result.data;
 }
+
+export async function apiDepositCheckOrderStatus(data) {
+  const result = await axios.post(API_URL + '/Operator/CheckOrderStatus', data);
+  return result.data;
+}

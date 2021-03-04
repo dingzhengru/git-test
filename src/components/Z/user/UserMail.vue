@@ -23,6 +23,7 @@
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
+      v-show="list.length > 0"
     />
   </div>
 </template>

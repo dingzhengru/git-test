@@ -21,6 +21,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+
+    &--no-wrap {
+      flex-wrap: nowrap;
+    }
+
     &__icon--contact {
       background: $contact-icon-contact-bg;
       width: $contact-icon-contact-width;

@@ -10,7 +10,7 @@
       <template v-for="(item, index) in recordList">
         <tr :key="item.Lst_TransID + String(index)">
           <td>
-            <a href="javascript:;">
+            <a :href="item.Lst_ReportURL" target="_blank">
               {{ item.Lst_ProductName }}
             </a>
           </td>
