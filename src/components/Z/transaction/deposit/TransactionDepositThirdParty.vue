@@ -38,9 +38,10 @@
             :class="{ active: platform === item }"
             v-for="item in getPlatformListByMethod"
             :key="item.spp_key"
+            :disabled="item.isMaintenance"
             @click="platform = item"
           >
-            {{ item.dm_title }}
+            {{ item.st_service_name }}
           </button>
         </div>
         <select v-model="platform" v-show="false">
@@ -55,7 +56,7 @@
         :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
       >
         <div class="deposit-third-party__field--btn__title">{{ $t('transaction.deposit.field.amount') }}</div>
-        <div class="deposit-third-party__field--btn__option">
+        <div class="deposit-third-party__field--btn__option" v-show="Object.keys(platform).length > 0">
           <button
             class="ui-btn ui-btn--block"
             type="button"
@@ -158,8 +159,9 @@
       <ModalDepositThirdParty
         :isShow="iframe.isShow"
         :src="iframe.src"
-        :width="platform.sp_MobileWidth || 0"
-        :height="platform.sp_MobileHeight || 0"
+        :width="platform.sp_MobileWidth || 720"
+        :height="platform.sp_MobileHeight || 720"
+        :isOrderSuccess="isOrderSuccess"
         @close="closeIframe"
       />
     </div>

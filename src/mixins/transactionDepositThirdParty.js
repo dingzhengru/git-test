@@ -54,6 +54,7 @@ export default {
       },
 
       intervalCheckOrderStatus: null,
+      isOrderSuccess: false,
 
       noticeList: [
         'transaction.deposit.notice.currency',
@@ -105,11 +106,12 @@ export default {
       const result = await apiDepositCheckOrderStatus(requestData);
       if (result.Code === 200 && result.RetObj === true) {
         window.clearInterval(this.intervalCheckOrderStatus);
+        this.isOrderSuccess = true;
       }
     },
     changeMethod(method) {
       this.method = method.Value;
-      this.platform = {};
+      this.platform = this.getPlatformListByMethod[0];
     },
     changeAmountByButton(amount) {
       this.amount = amount;
@@ -139,9 +141,10 @@ export default {
         return;
       }
       console.log('Receive Message', event);
+      this.closeIframe();
     },
     closeIframe() {
-      console.log('closeIframe');
+      window.clearInterval(this.intervalCheckOrderStatus);
       this.iframe.isShow = false;
       this.iframe.src = '';
     },
