@@ -14,7 +14,8 @@
       "other": "其它",
       "pleaseSelect": "请选择",
       "noData": "尚无资料",
-      "baht": "泰铢"
+      "baht": "泰铢",
+      "underMaintenance": "维护中"
     },
     "button": {
       "submit": "提交",

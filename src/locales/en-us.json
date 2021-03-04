@@ -14,7 +14,8 @@
       "other": "Other",
       "pleaseSelect": "Please select",
       "noData": "No Data Found",
-      "baht": "Baht"
+      "baht": "Baht",
+      "underMaintenance": "Maintenance"
     },
     "button": {
       "submit": "Submit",

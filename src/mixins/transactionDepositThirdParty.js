@@ -76,7 +76,7 @@ export default {
     async getDepositThirdPartyInfo() {
       const result = await apiGetDepositThirdPartyInfo();
       this.depositInfo = result.RetObj;
-      this.method = this.depositInfo.paymentSelect[0].Value;
+      this.changeMethod(this.depositInfo.paymentSelect[0]);
     },
     async submitDeposit() {
       const requestData = {
@@ -97,7 +97,6 @@ export default {
         }, 2000);
       } else if (result.Code === 203 || result.Code === 599) {
         //* 驗證碼錯誤
-        alert(result.ErrMsg);
         this.changeCaptcha();
       }
     },
@@ -111,7 +110,13 @@ export default {
     },
     changeMethod(method) {
       this.method = method.Value;
-      this.platform = this.getPlatformListByMethod[0];
+      this.platform = this.getPlatformListByMethod.find(item => !item.isMaintenance) || {};
+    },
+    changePlatform(platform) {
+      if (platform.isisMaintenance) {
+        return;
+      }
+      this.platform = platform;
     },
     changeAmountByButton(amount) {
       this.amount = amount;

@@ -39,9 +39,10 @@
             v-for="item in getPlatformListByMethod"
             :key="item.spp_key"
             :disabled="item.isMaintenance"
-            @click="platform = item"
+            @click="changePlatform(item)"
           >
             {{ item.st_service_name }}
+            <span v-if="item.isMaintenance">({{ $t('ui.label.underMaintenance') }})</span>
           </button>
         </div>
         <select v-model="platform" v-show="false">
