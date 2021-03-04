@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <div class="contact__item" @click="isShowDetailMobile = !isShowDetailMobile" v-if="Object.keys(service).length > 0">
+    <div class="contact__item" @click="isShowDetailMobile = !isShowDetailMobile" v-if="Object.keys(mobile).length > 0">
       <i class="contact__item__icon--contact icon-mobile"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.mobile') }}</div>
@@ -29,7 +29,7 @@
       </transition>
     </div>
 
-    <div class="contact__item" @click="isShowDetailSkype = !isShowDetailSkype" v-if="Object.keys(service).length > 0">
+    <div class="contact__item" @click="isShowDetailSkype = !isShowDetailSkype" v-if="Object.keys(skype).length > 0">
       <i class="contact__item__icon--contact icon-skype"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.skype') }}</div>
@@ -50,7 +50,7 @@
       </transition>
     </div>
 
-    <div class="contact__item contact__item--no-wrap" v-if="Object.keys(service).length > 0">
+    <div class="contact__item contact__item--no-wrap" v-if="Object.keys(line).length > 0">
       <i class="contact__item__icon--contact icon-line"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.lineTitle') }}</div>
@@ -61,7 +61,7 @@
       </button>
     </div>
 
-    <div class="contact__item" @click="isShowDetailLine = !isShowDetailLine" v-if="Object.keys(service).length > 0">
+    <div class="contact__item" @click="isShowDetailLine = !isShowDetailLine" v-if="Object.keys(line).length > 0">
       <i class="contact__item__icon--contact icon-line"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.line') }}</div>
@@ -82,7 +82,7 @@
       </transition>
     </div>
 
-    <div class="contact__item contact__item--no-wrap" v-if="Object.keys(service).length > 0">
+    <div class="contact__item contact__item--no-wrap" v-if="Object.keys(wechat).length > 0">
       <i class="contact__item__icon--contact icon-wechat"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.wechatTitle') }}</div>
@@ -93,7 +93,7 @@
       </button>
     </div>
 
-    <div class="contact__item" @click="isShowDetailWechat = !isShowDetailWechat" v-if="Object.keys(service).length > 0">
+    <div class="contact__item" @click="isShowDetailWechat = !isShowDetailWechat" v-if="Object.keys(wechat).length > 0">
       <i class="contact__item__icon--contact icon-wechat"></i>
       <div class="contact__item__text">
         <div class="contact__item__text__title">{{ $t('contact.wechat') }}</div>

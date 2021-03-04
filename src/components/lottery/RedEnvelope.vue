@@ -139,7 +139,7 @@ export default {
       this.randomResult[this.gameSelect] = temp;
 
       // 彈跳獎項視窗
-      setTimeout(() => {
+      window.setTimeout(() => {
         this.isModalShow = true;
       }, 2500);
     },

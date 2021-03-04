@@ -68,7 +68,11 @@
 }
 
 @mixin deposit-third-party {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+
+  .ui-field {
+    font-size: 1.6rem;
+  }
 
   &__field {
     &--btn {
@@ -86,7 +90,7 @@
         display: flex;
         flex-wrap: wrap;
         button {
-          font-size: 1.5rem;
+          font-size: 1.6rem;
           width: calc(50% - 20px);
           height: $deposit-third-party-field-btn-height;
           margin: 10px 10px;
@@ -103,14 +107,7 @@
     }
     &--amount {
       .ui-field {
-        font-size: 1.5rem;
-        min-height: 70px;
-        height: 70px;
         margin-top: 15px;
-
-        &__group {
-          padding: 15px 30px;
-        }
       }
     }
   }

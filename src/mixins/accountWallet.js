@@ -17,8 +17,8 @@ export default {
         this.refreshTimeCount--;
       }, 1000);
 
-      setTimeout(() => {
-        clearInterval(countDown);
+      window.setTimeout(() => {
+        window.clearInterval(countDown);
         this.refreshTimeCount = this.refreshTimeInterval;
       }, this.refreshTimeInterval * 1000);
     },

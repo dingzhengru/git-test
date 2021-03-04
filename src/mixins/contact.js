@@ -108,7 +108,7 @@ export default {
             this.zopim.livechat.window.onHide(() => {
               this.zopim.livechat.hideAll();
             });
-            clearInterval(zopimInterval);
+            window.clearInterval(zopimInterval);
           }
         }, 500);
       } else if (this.service.Js_Type == 'ze-snippet' && typeof zE == 'undefined') {
@@ -130,7 +130,7 @@ export default {
               this.zE.hide();
             });
 
-            clearInterval(zeInterval);
+            window.clearInterval(zeInterval);
           }
         }, 500);
       }

@@ -45,6 +45,7 @@ export const API_NO_LOADING_LIST = [
   'Member/CheckField',
   'Proxy/MPlayLottery',
   'Proxy/MGetWinPrize',
+  'Operator/CheckOrderStatus',
 ];
 
 //* 需要 Authorization bearer token 的 API

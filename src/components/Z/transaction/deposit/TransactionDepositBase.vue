@@ -110,14 +110,15 @@
       </ValidationProvider>
       <div class="ui-notice">
         <ul>
-          <li>
-            {{
+          <li
+            v-html="
               $t('transaction.deposit.hint.amount01', {
+                currency: $t('ui.label.baht'),
                 amountLimitMin: amountMin,
                 amountLimitMax: amountMax,
               })
-            }}
-          </li>
+            "
+          ></li>
           <li>{{ $t('transaction.deposit.hint.amount02') }}</li>
         </ul>
       </div>
@@ -168,9 +169,7 @@
       </ValidationProvider>
       <div class="ui-notice">
         <ul class="ui-ol-memberNotice">
-          <li v-for="item in noticeList" :key="item">
-            <span v-html="$t(item)"></span>
-          </li>
+          <li v-for="item in noticeList" :key="item" v-html="$t(item)"></li>
         </ul>
       </div>
 

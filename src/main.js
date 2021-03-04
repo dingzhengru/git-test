@@ -173,7 +173,7 @@ if (isLoggedIn) {
     },
     mounted() {
       //* api timeout 是 10秒，所以設等待9秒
-      setTimeout(() => {
+      window.setTimeout(() => {
         document.dispatchEvent(new Event('custom-render-trigger'));
       }, 9000);
     },

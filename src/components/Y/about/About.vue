@@ -67,7 +67,7 @@ export default {
     import(`@/styles/${this.siteFullCss}/about.scss`);
 
     // * 根據 query 移動到該標籤，若不設延遲，重整會停在較上面的位置
-    setTimeout(() => {
+    window.setTimeout(() => {
       this.$scrollTo(this.$route.query.scrollTo);
     }, 100);
   },

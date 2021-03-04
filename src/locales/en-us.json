@@ -13,7 +13,8 @@
       "amount": "Amount",
       "other": "Other",
       "pleaseSelect": "Please select",
-      "noData": "No Data Found"
+      "noData": "No Data Found",
+      "baht": "Baht"
     },
     "button": {
       "submit": "Submit",
@@ -421,7 +422,7 @@
     }
   },
   "transaction": {
-    "title": "ทำรายการฝาก-ถอนเงิน",
+    "title": "Trade Center",
     "nav": {
       "deposit": "Deposit",
       "withdrawal": "Withdrawal",
@@ -431,8 +432,8 @@
     "deposit": {
       "title": "Fill in Cash Voucher",
       "nav": {
-        "base": "人工存款",
-        "thirdParty": "自動上分"
+        "base": "Deposit by people",
+        "thirdParty": "Automatic score"
       },
       "step": {
         "selectDepositBank": "Step1 Select Deposit Bank",
@@ -453,8 +454,8 @@
         "receipt": "Remittance Receipt",
         "remark": "Remark",
         "promotion": "Favorable Project on Payment",
-        "payMethod": "支付方式",
-        "payPlatform": "支付平台"
+        "payMethod": "payment",
+        "payPlatform": "payment platform"
       },
       "placeholder": {
         "depositBank": "Select Deposit Bank",
@@ -467,13 +468,13 @@
         "amount": "Baht Maximum {amountLimitMax} , Minimum {amountLimitMin} Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit. ",
         "receipt": "The Format of Image Allow Only JPG / PNG <br /> File size cannot exceed 2MB",
         "promotion": "Note: Non-selection regarded as abdication.",
-        "amount01": "Baht Maximum {amountLimitMax} , Minimum {amountLimitMin}",
+        "amount01": "<span class='ui-notice--height-light'>{currency}</span> Maximum {amountLimitMax} , Minimum {amountLimitMin}",
         "amount02": "Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit.",
         "receipt01": "The Format of Image Allow Only JPG / PNG",
         "receipt02": "File size cannot exceed 2MB"
       },
       "notice": {
-        "currency": "only for <span class='text-height-light'>Baht</span> transaction.",
+        "currency": "only for <span class='ui-notice--height-light'>Baht</span> transaction.",
         "depositLimit01": "Please note that the lowest and highest limitation on Deposit.",
         "depositLimit02": "The minimum and maximum values listed above are to act as a guideline only.",
         "userBear01": "Please conduct deposit according to the deposit method as above, otherwise members shall bear any additional expense by themselves.",

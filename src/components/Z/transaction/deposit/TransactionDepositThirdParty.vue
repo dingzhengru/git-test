@@ -6,7 +6,7 @@
         tag="div"
         :rules="{ required: true }"
       >
-        <div class="deposit-third-party__field--btn__title">支付方式</div>
+        <div class="deposit-third-party__field--btn__title">{{ $t('transaction.deposit.field.payMethod') }}</div>
         <div class="deposit-third-party__field--btn__option">
           <button
             class="ui-btn ui-btn--block"
@@ -14,15 +14,14 @@
             :class="{ active: method == item.Value }"
             v-for="item in depositInfo.paymentSelect"
             :key="item.Value"
-            @click="method = item.Value"
+            @click="changeMethod(item)"
           >
             {{ item.Text }}
           </button>
         </div>
         <select v-model="method" v-show="false">
-          <option value="">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
+          <option value=""></option>
+          <option :value="item.Value" v-for="item in depositInfo.paymentSelect" :key="item.Value"></option>
         </select>
       </ValidationProvider>
 
@@ -31,7 +30,7 @@
         tag="div"
         :rules="{ 'object-not-empty': true }"
       >
-        <div class="deposit-third-party__field--btn__title">支付平台</div>
+        <div class="deposit-third-party__field--btn__title">{{ $t('transaction.deposit.field.payPlatform') }}</div>
         <div class="deposit-third-party__field--btn__option">
           <button
             class="ui-btn ui-btn--block"
@@ -45,9 +44,8 @@
           </button>
         </div>
         <select v-model="platform" v-show="false">
-          <option value="">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
+          <option :value="{}"></option>
+          <option :value="item" v-for="item in getPlatformListByMethod" :key="item.spp_key"></option>
         </select>
       </ValidationProvider>
 
@@ -56,7 +54,7 @@
         tag="div"
         :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
       >
-        <div class="deposit-third-party__field--btn__title">存款金額</div>
+        <div class="deposit-third-party__field--btn__title">{{ $t('transaction.deposit.field.amount') }}</div>
         <div class="deposit-third-party__field--btn__option">
           <button
             class="ui-btn ui-btn--block"
@@ -88,6 +86,19 @@
               @change="inputAmount"
             />
           </div>
+        </div>
+        <div class="ui-notice">
+          <ul>
+            <li
+              v-html="
+                $t('transaction.deposit.hint.amount01', {
+                  currency: $t('ui.label.baht'),
+                  amountLimitMin: $numeral(amountMin).format('0,0.00'),
+                  amountLimitMax: $numeral(amountMax).format('0,0.00'),
+                })
+              "
+            ></li>
+          </ul>
         </div>
       </ValidationProvider>
 
@@ -130,7 +141,7 @@
 
       <div class="ui-notice">
         <ul>
-          <li v-for="item in noticeList" :key="item" v-html="$t(item)"></li>
+          <li v-for="item in noticeList" :key="item" v-html="$t(item, { currency: $t('ui.label.baht') })"></li>
         </ul>
       </div>
 
@@ -143,13 +154,15 @@
         </button>
       </div>
     </form>
-    <ModalDepositThirdParty
-      :isShow="iframe.isShow"
-      :src="iframe.src"
-      :width="depositInfo.sp_MobileWidth"
-      :height="depositInfo.sp_MobileHeight"
-      @close="closeIframe"
-    />
+    <div v-if="iframe.isShow">
+      <ModalDepositThirdParty
+        :isShow="iframe.isShow"
+        :src="iframe.src"
+        :width="platform.sp_MobileWidth || 0"
+        :height="platform.sp_MobileHeight || 0"
+        @close="closeIframe"
+      />
+    </div>
   </ValidationObserver>
 </template>
 

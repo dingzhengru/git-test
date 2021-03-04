@@ -12,7 +12,7 @@ export default {
       }
 
       //* PWA 一秒後沒觸發 beforeinstallprompt 的話，就視為已下載
-      setTimeout(() => {
+      window.setTimeout(() => {
         if (!this.pwaInstallStatus) {
           this.$store.commit('pwa/setStatus', 'installed');
         }
@@ -34,7 +34,7 @@ export default {
             this.$store.commit('pwa/setStatus', 'installing');
 
             //* X秒後設為已下載，因目前無事件可以確認是否安裝完成
-            setTimeout(() => {
+            window.setTimeout(() => {
               this.$store.commit('pwa/setStatus', 'installed');
             }, 1000 * this.pwaInstallTime);
           }
