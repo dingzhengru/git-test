@@ -125,8 +125,10 @@ export default {
       }
     },
     receiveMessageHandler(event) {
-      console.log('Get Message');
-      console.log(event);
+      if (event.origin !== window.location.origin) {
+        return;
+      }
+      console.log('Receive Message', event);
     },
     closeIframe() {
       console.log('closeIframe');
