@@ -5,7 +5,7 @@
 <script>
 export default {
   name: 'DepositThirdPartyReturn',
-  mounted() {
+  beforeCreate() {
     window.parent.postMessage('DepositThirdPartyReturn Message', window.location.origin);
   },
 };
