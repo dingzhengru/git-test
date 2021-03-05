@@ -106,6 +106,7 @@ export default {
       if (result.Code === 200 && result.RetObj === true) {
         window.clearInterval(this.intervalCheckOrderStatus);
         this.isOrderSuccess = true;
+        this.resetForm();
       }
     },
     changeMethod(method) {
