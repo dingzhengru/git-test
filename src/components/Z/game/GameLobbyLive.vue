@@ -12,7 +12,7 @@
       :categoryList="categoryList"
       :categoryCurrent="categoryCurrent"
       @change-category="changeCategory"
-      v-if="productCurrent.Lst_Site_Product_Status == 0"
+      v-if="productCurrent.Lst_Site_Product_Status == 0 && productCurrent !== productLiveEVO"
     />
 
     <component
@@ -20,15 +20,17 @@
       :isShowTransfer="userIsLoggedIn"
       @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
-      v-if="productCurrent.Lst_Site_Product_Status == 0"
+      v-if="productCurrent.Lst_Site_Product_Status == 0 && productCurrent !== productLiveEVO"
     />
 
+    <component :is="GameListIcon" v-if="productCurrent === productLiveEVO" />
     <component
       :is="GameListTable"
       :gameList="gameList"
       :productCurrent="productCurrent"
       :isShowStart="true"
       @open-game="openGame"
+      v-else
     />
 
     <component
@@ -80,6 +82,9 @@ export default {
     },
     GameListTable() {
       return () => import(`@/${this.siteSetting.components.game.GameListTable}`);
+    },
+    GameListIcon() {
+      return () => import(`@/${this.siteSetting.components.game.GameListIcon}`);
     },
     LiveGameEnterDialog() {
       return () => import(`@/${this.siteSetting.components.game.LiveGameEnterDialog}`);

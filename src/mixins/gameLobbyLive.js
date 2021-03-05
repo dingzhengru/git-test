@@ -15,24 +15,12 @@ export default {
   name: 'GameLobbyLive',
   mixins: [mixinGameLobby],
   computed: {
-    ...mapGetters(['lang', 'siteSetting', 'userIsLoggedIn', 'userGamePointWallet']),
-    GameProductNavigation() {
-      return () => import(`@/${this.siteSetting.components.game.GameProductNavigation}`);
+    ...mapGetters(['lang', 'userIsLoggedIn']),
+    productLiveRCG() {
+      return this.productList.find(item => item.Lst_Product_id === 1360);
     },
-    GameCategoryNavigation() {
-      return () => import(`@/${this.siteSetting.components.game.GameCategoryNavigation}`);
-    },
-    GameSearchBlock() {
-      return () => import(`@/${this.siteSetting.components.game.GameSearchBlock}`);
-    },
-    GameListTable() {
-      return () => import(`@/${this.siteSetting.components.game.GameListTable}`);
-    },
-    LiveGameEnterDialog() {
-      return () => import(`@/${this.siteSetting.components.game.LiveGameEnterDialog}`);
-    },
-    GameTransferDialog() {
-      return () => import(`@/${this.siteSetting.components.game.GameTransferDialog}`);
+    productLiveEVO() {
+      return this.productList.find(item => item.Lst_Product_id === 1400);
     },
   },
   data() {

@@ -13,6 +13,12 @@ export async function apiGetRememberInfo() {
   return result.data;
 }
 
+//* 個人資料畫面
+export async function apiGetRegisterAdvanceNew() {
+  const result = await axios.post(API_URL + '/Member/RegisterAdvanceNew');
+  return result.data;
+}
+
 //* 帳號開通動作
 export async function apiAdvancedRegisterNew(data) {
   const result = await axios.post(API_URL + '/Member/AdvancedRegisterNew', data);

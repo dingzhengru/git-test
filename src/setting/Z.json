@@ -37,6 +37,7 @@
       "GameCategoryNavigation": "components/Y/game/GameCategoryNavigation",
       "GameJackpot": "components/Y/game/GameJackpot",
       "GameListTable": "components/Y/game/GameListTable",
+      "GameListIcon": "components/Z/game/GameListIcon",
       "GameProductNavigation": "components/Y/game/GameProductNavigation",
       "GameSearchBlock": "components/Y/game/GameSearchBlock",
       "GameTransferDialog": "components/Y/game/GameTransferDialog",

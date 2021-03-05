@@ -7,7 +7,7 @@ export async function apiGetRegisterFieldList() {
   return result.data;
 }
 
-//* 帳號開通畫面
+//* 個人資料畫面
 export async function apiGetRegisterAdvanceNew() {
   const result = await axios.post(API_URL + '/Member/RegisterAdvanceNew');
   return result.data;

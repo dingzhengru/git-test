@@ -101,8 +101,7 @@ const actions = {
     return result;
   },
   async advancedRegisterNew({ commit }, data) {
-    //* 開通帳號
-
+    //* 修改會員資料
     const result = await apiAdvancedRegisterNew(data);
     if (result.Code == 200) {
       commit('setInfo', result.RetObj);

@@ -95,6 +95,7 @@ export default {
     changeLang(lang) {
       this.$emit('changeLang', lang);
       this.isShowMenu = false;
+      this.isShowLangList = false;
     },
     logout() {
       this.$emit('logout');

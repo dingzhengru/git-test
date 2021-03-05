@@ -1,5 +1,5 @@
 @mixin register {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   padding: 30px 45px;
 
   &-form {
@@ -19,8 +19,10 @@
         }
       }
       &__select {
+        font-size: 1.8rem;
         color: $field-input-color;
         padding: 0;
+        width: 60%;
       }
     }
 
@@ -37,7 +39,7 @@
       // }
       a,
       label {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
     }
   }
