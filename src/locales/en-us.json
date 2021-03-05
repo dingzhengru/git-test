@@ -176,10 +176,7 @@
   "home": {
     "product": {
       "nav": {
-        "all": "All games",
-        "live": "Live Casino",
-        "slot": "RNG",
-        "sport": "Sports"
+        "all": "All games"
       }
     },
     "lottery": {

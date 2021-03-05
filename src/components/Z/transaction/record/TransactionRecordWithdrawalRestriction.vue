@@ -28,7 +28,7 @@
             <div>{{ $t('transaction.recordDetail.withdrawalRestriction.table.bonusIssue') }}：{{ item.Lst_Bonus }}</div>
             <div>
               {{ $t('transaction.recordDetail.withdrawalRestriction.table.datetime') }}：
-              <!-- {{ item.Lst_Mtime.split('T')[0] }} -->
+              {{ item.Lst_Ctime.replace('T', ' ').split('.')[0] }}
             </div>
           </td>
         </tr>

@@ -2,47 +2,29 @@
   <div class="home-product-nav nav-tab">
     <div
       class="nav-tab__item"
-      :class="{ active: item.classify == classify }"
-      v-for="item in productNavList"
-      :key="item.classify"
-      @click="$emit('change-product-nav', item.classify)"
+      :class="{ active: item.Lst_Game_Classify === classify }"
+      v-for="item in productClassifyList"
+      :key="item.Lst_Game_Classify"
+      @click="$emit('change-product-nav', item.Lst_Game_Classify)"
     >
-      {{ $t(item.text) }}
+      {{ $te(item.Lst_Game_Classify_Name) ? $t(item.Lst_Game_Classify_Name) : item.Lst_Game_Classify_Name }}
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'HomeProductNav',
+  computed: {
+    ...mapGetters(['productClassifyList']),
+  },
   props: {
     classify: {
       type: Number,
       default: 0,
     },
-  },
-  data() {
-    return {
-      // productNavList: ['所有遊戲', '真人娛樂', '電子遊戲', '體育投注'],
-      productNavList: [
-        {
-          classify: 0,
-          text: 'home.product.nav.all',
-        },
-        {
-          classify: 1,
-          text: 'home.product.nav.live',
-        },
-        {
-          classify: 2,
-          text: 'home.product.nav.slot',
-        },
-        {
-          classify: 3,
-          text: 'home.product.nav.sport',
-        },
-      ],
-    };
   },
 };
 </script>

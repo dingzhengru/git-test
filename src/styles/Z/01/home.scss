@@ -59,10 +59,30 @@ $win-wheel-container-bg: url('~@/assets/common/lottery/winWheel/container-bg.png
 
 .win-wheel-container {
   @include win-wheel-container;
+
+  .ui-box-close {
+    background: gray;
+    z-index: 2;
+
+    &::after,
+    &::before {
+      background: white;
+    }
+  }
 }
 
 $red-envelope-container-bg: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
 
 .red-envelope-container {
   @include red-envelope-container;
+
+  .ui-box-close {
+    background: gray;
+    z-index: 2;
+
+    &::after,
+    &::before {
+      background: white;
+    }
+  }
 }

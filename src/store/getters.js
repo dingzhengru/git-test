@@ -174,5 +174,28 @@ const getters = {
   productLiveList: state => state.product.list.filter(item => item.Lst_Game_Classify == 1),
   productSlotList: state => state.product.list.filter(item => item.Lst_Game_Classify == 2),
   productSportList: state => state.product.list.filter(item => item.Lst_Game_Classify == 3),
+  productP2PList: state => state.product.list.filter(item => item.Lst_Game_Classify == 5),
+  productClassifyList: state => {
+    const classifyList = [
+      {
+        Lst_Game_Classify: 0,
+        Lst_Game_Classify_Name: 'home.product.nav.all',
+      },
+    ];
+    const classifyNumberList = state.product.list
+      .map(item => item.Lst_Game_Classify)
+      .filter((item, index, arr) => arr.indexOf(item) === index)
+      .sort();
+
+    classifyNumberList.forEach(classify => {
+      const product = state.product.list.find(item => item.Lst_Game_Classify === classify);
+      classifyList.push({
+        Lst_Game_Classify: product.Lst_Game_Classify,
+        Lst_Game_Classify_Name: product.Lst_Game_Classify_Name,
+      });
+    });
+
+    return classifyList;
+  },
 };
 export default getters;
