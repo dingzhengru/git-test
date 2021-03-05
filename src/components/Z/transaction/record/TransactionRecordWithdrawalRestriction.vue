@@ -21,14 +21,19 @@
           <td>{{ item.Lst_Ctime.split('T')[0] }}</td>
         </tr>
         <tr class="record-content__table__tr--detail" :key="item.Lst_TransID" v-show="item.isShowDetail">
-          <td colspan="5">
-            <div>
-              {{ $t('transaction.recordDetail.withdrawalRestriction.table.activity') }}： {{ item.Lst_Activty_Name }}
-            </div>
-            <div>{{ $t('transaction.recordDetail.withdrawalRestriction.table.bonusIssue') }}：{{ item.Lst_Bonus }}</div>
-            <div>
-              {{ $t('transaction.recordDetail.withdrawalRestriction.table.datetime') }}：
-              {{ item.Lst_Ctime.replace('T', ' ').split('.')[0] }}
+          <td colspan="5" class="record-content__table__tr--detail__list">
+            <div v-for="(detail, index) in item.DetailItems" :key="index">
+              <div>
+                {{ $t('transaction.recordDetail.withdrawalRestriction.table.activity') }}：
+                {{ detail.Lst_Activty_Name }}
+              </div>
+              <div>
+                {{ $t('transaction.recordDetail.withdrawalRestriction.table.bonusIssue') }}：{{ detail.Lst_Bonus }}
+              </div>
+              <div>
+                {{ $t('transaction.recordDetail.withdrawalRestriction.table.datetime') }}：
+                {{ detail.Lst_Mtime.replace('T', ' ').split('.')[0] }}
+              </div>
             </div>
           </td>
         </tr>

@@ -34,6 +34,12 @@
           color: $record-content-link-color;
           border-bottom: $record-content-link-border-bottom;
         }
+
+        &__list {
+          > div:not(:last-child) {
+            margin-bottom: 15px;
+          }
+        }
       }
     }
 
