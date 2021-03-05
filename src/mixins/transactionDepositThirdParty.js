@@ -107,6 +107,7 @@ export default {
         window.clearInterval(this.intervalCheckOrderStatus);
         this.isOrderSuccess = true;
         this.resetForm();
+        this.changeCaptcha();
       }
     },
     changeMethod(method) {
@@ -160,6 +161,7 @@ export default {
       this.amount = 0;
       this.remark = '';
       this.promotion = '-1';
+      this.captcha = '';
     },
   },
   mounted() {

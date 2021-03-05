@@ -19,11 +19,11 @@
 
     <router-view />
 
-    <!-- <ModalNoticeImage
+    <ModalNoticeImage
       :isShow="isShowDepositNotice"
       :image="siteDepositNoticeUrl"
       @close="isShowDepositNotice = false"
-    /> -->
+    />
   </div>
 </template>
 
@@ -33,7 +33,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'TransactionDeposit',
   components: {
-    // ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
+    ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
   },
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss', 'siteIsShowDepositNotice', 'siteDepositNoticeUrl']),
