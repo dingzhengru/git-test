@@ -28,6 +28,9 @@ export default {
       }
       return this.platform.spp_up_limit;
     },
+    iframeRatio() {
+      return window.innerWidth / screen.width;
+    },
   },
   data() {
     return {
@@ -143,9 +146,6 @@ export default {
       }
     },
     receiveMessageHandler(event) {
-      if (event.origin !== window.location.origin) {
-        return;
-      }
       console.log('Receive Message', event);
       this.closeIframe();
     },

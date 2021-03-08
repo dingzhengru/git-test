@@ -143,13 +143,15 @@
 }
 
 @mixin header-sub-z {
+  position: fixed;
   background: $header-sub-bg;
   height: 100%;
   width: 100%;
   max-width: $viewport-width;
-  position: absolute;
   font-size: 1.8rem;
-  // z-index: 2;
+  z-index: 2;
+  left: 0;
+  right: 0;
   top: $header-height;
   height: $header-sub-height;
   &-auth {
@@ -233,24 +235,28 @@
     background-color: $header-sub-dropdown-bg;
     position: absolute;
     width: 100%;
-    min-height: 100vh;
-    z-index: 4;
+    height: calc(100vh - #{$footer-height} - #{$header-height} - #{$header-sub-height-auth});
     display: flex;
     flex-direction: column;
     align-items: center;
     transform-origin: top;
     padding: 30px 0;
-    padding-bottom: $footer-height + 30;
+    z-index: 4;
+    overflow-y: scroll;
 
     > button {
+      width: 90%;
+      height: auto;
+      line-height: 89px;
       font-size: 2rem;
       background: $header-sub-dropdown-button-bg;
       color: $header-sub-dropdown-button-color;
       margin: 10px 0;
-      width: 90%;
     }
 
     .ui-point-list {
+      display: flex;
+      flex-direction: column;
       width: 90%;
     }
   }
