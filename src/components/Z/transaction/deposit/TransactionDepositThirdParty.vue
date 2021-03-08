@@ -75,7 +75,7 @@
             :class="{ active: isShowInputAmount }"
             @click="showInputAmount"
           >
-            自行輸入
+            {{ $t('transaction.deposit.third-party.amountEnter') }}
           </button>
         </div>
         <div class="ui-field" v-show="isShowInputAmount">

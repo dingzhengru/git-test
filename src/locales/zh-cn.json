@@ -427,7 +427,8 @@
       "title": "填写存款申请单",
       "third-party": {
         "success": "自动上分 成功",
-        "failed": "自动上分 失败"
+        "failed": "自动上分 失败",
+        "amountEnter": "自行输入"
       },
       "nav": {
         "base": "人工存款",

@@ -431,7 +431,8 @@
       "title": "Fill in Cash Voucher",
       "third-party": {
         "success": "Automatic score success",
-        "failed": "Automatic score failed"
+        "failed": "Automatic score failed",
+        "amountEnter": "Enter by yourself"
       },
       "nav": {
         "base": "Deposit by people",
