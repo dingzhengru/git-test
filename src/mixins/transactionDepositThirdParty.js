@@ -62,7 +62,6 @@ export default {
         'transaction.deposit.notice.depositLimit02',
         'transaction.deposit.notice.userBear01',
         'transaction.deposit.notice.userBear02',
-        'transaction.deposit.notice.suggest',
         'transaction.deposit.notice.contact',
       ],
     };

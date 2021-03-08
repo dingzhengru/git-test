@@ -136,6 +136,7 @@
             :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
             :width="captchaImage.Width"
             :height="captchaImage.Height"
+            @click="changeCaptcha"
             v-if="captchaImage.ImgBase64 != ''"
           />
         </div>
