@@ -25,8 +25,6 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-width: 100%;
   overflow-y: auto;
   left: 0;
   top: 0;
