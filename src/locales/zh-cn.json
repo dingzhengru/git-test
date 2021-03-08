@@ -425,6 +425,10 @@
     },
     "deposit": {
       "title": "填写存款申请单",
+      "third-party": {
+        "success": "自动上分 成功",
+        "failed": "自动上分 失败"
+      },
       "nav": {
         "base": "人工存款",
         "thirdParty": "自動上分"

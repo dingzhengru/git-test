@@ -65,6 +65,7 @@
             :key="item"
             :class="{ active: amount == item && !isShowInputAmount }"
             @click="changeAmountByButton(item)"
+            v-show="item >= amountMin && item <= amountMax"
           >
             {{ item }}
           </button>

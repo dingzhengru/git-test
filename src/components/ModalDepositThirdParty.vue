@@ -4,7 +4,7 @@
       <div class="ui-box-close" @click="$emit('close')"></div>
       <iframe id="deposit-iframe" :src="src" width="100%" height="100%" v-show="!isOrderSuccess"></iframe>
       <div class="modal-deposit-third-party__content" v-show="isOrderSuccess">
-        上分成功，請確認您的額度
+        {{ $t('transaction.deposit.third-party.success') }}
       </div>
     </div>
   </AppModal>
