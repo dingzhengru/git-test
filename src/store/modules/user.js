@@ -21,6 +21,7 @@ import { apiGetLotteryCount } from '@/api/lottery';
 
 const state = {
   info: {},
+  bankList: [],
   pointInfo: {},
   lotteryCountList: [],
   isLoggedIn: null,
@@ -31,17 +32,9 @@ const state = {
 const mutations = {
   setInfo(state, info) {
     state.info = info;
-
-    //* 目前 info 裡面沒提供 bankName，需由 bankList 去找
-    apiGetBankInfoList().then(result => {
-      const bank1 = result.RetObj.find(item => item.Lst_BankId == state.info.Lst_BankID_1) || {};
-      const bank2 = result.RetObj.find(item => item.Lst_BankId == state.info.Lst_BankID_2) || {};
-      const bank3 = result.RetObj.find(item => item.Lst_BankId == state.info.Lst_BankID_3) || {};
-
-      state.info.Lst_BankName_1 = bank1.Lst_BankName || '';
-      state.info.Lst_BankName_2 = bank2.Lst_BankName || '';
-      state.info.Lst_BankName_3 = bank3.Lst_BankName || '';
-    });
+  },
+  setBankList(state, bankList) {
+    state.bankList = bankList;
   },
   setPointInfo(state, pointInfo) {
     state.pointInfo = pointInfo;
@@ -81,8 +74,14 @@ const actions = {
   async getInfo({ commit, dispatch }) {
     const result = await apiGetUserInfo();
     commit('setInfo', result.RetObj);
+    dispatch('getBankList');
     dispatch('getPointInfo');
     dispatch('getLotteryCountList');
+    return result;
+  },
+  async getBankList({ commit }) {
+    const result = await apiGetBankInfoList();
+    commit('setBankList', result.RetObj);
     return result;
   },
   async getPointInfo({ commit }) {
@@ -100,11 +99,12 @@ const actions = {
     commit('setPointInfo', result.RetObj);
     return result;
   },
-  async advancedRegisterNew({ commit }, data) {
+  async changeUserProfile({ commit, dispatch }, data) {
     //* 修改會員資料
     const result = await apiAdvancedRegisterNew(data);
-    if (result.Code == 200) {
+    if (result.Code === 200) {
       commit('setInfo', result.RetObj);
+      dispatch('getBankList');
     }
     return result;
   },
@@ -114,6 +114,7 @@ const actions = {
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);
       commit('setInfo', result.RetObj);
+      dispatch('getBankList');
       dispatch('getPointInfo');
       dispatch('getLotteryCountList');
 
@@ -127,6 +128,7 @@ const actions = {
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);
       commit('setInfo', result.RetObj);
+      dispatch('getBankList');
       dispatch('getPointInfo');
       dispatch('getLotteryCountList');
       router.replace({ name: 'Home' });

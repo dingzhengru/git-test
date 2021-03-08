@@ -40,7 +40,7 @@ export default {
   methods: {
     async submitInstantAccess(data) {
       //* 接收送出開通帳號表單事件
-      const result = this.$store.dispatch('user/advancedRegisterNew', data);
+      const result = this.$store.dispatch('user/changeUserProfile', data);
       if (result.Code == 200) {
         window.alert(this.$t('alert.accessSuccess'));
       }

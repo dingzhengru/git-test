@@ -1,7 +1,18 @@
 <template>
   <ValidationObserver class="user-profile" tag="div" v-slot="{ invalid, handleSubmit, reset }">
     <form class="user-profile__form" @submit.prevent="handleSubmit(submitUserProfile)" @reset.prevent="reset">
-      <div v-for="field in fieldList" :key="field.name">
+      <div class="user-profile__field-box">
+        <div class="ui-field user-profile__field">
+          <div class="ui-field__group">
+            <label class="ui-field__group__label">
+              {{ $t('user.profile.accessed.createdDatetime') }}
+            </label>
+            <input class="ui-field__group__input" type="text" :value="userCreatedDatetime" />
+          </div>
+        </div>
+      </div>
+
+      <div class="user-profile__field-box" v-for="field in fieldList" :key="field.name">
         <div class="ui-step" v-if="field.name === 'Add_BankId1'">{{ $t('user.profile.step.bank') }}</div>
 
         <ValidationProvider
@@ -11,6 +22,7 @@
           :name="field.name"
           :rules="field.rules"
           v-show="field.isShow"
+          v-slot="{ errors, invalid }"
         >
           <div class="ui-field__group">
             <label class="ui-field__group__label">
@@ -25,7 +37,7 @@
               :max="field.max"
               v-model="field.value"
               @change="changeField(field, invalid)"
-              v-if="field.type != 'select' && field.isModifiable"
+              v-if="field.type !== 'select' && field.isModifiable"
             />
 
             <input
@@ -38,14 +50,14 @@
               :readonly="!field.isModifiable"
               :value="field.value"
               @change="changeField(field, invalid)"
-              v-else-if="field.type != 'select' && !field.isModifiable"
+              v-else-if="field.type !== 'select' && !field.isModifiable"
             />
 
             <select
               class="ui-field__select"
               :id="$idMapper.register.input[field.name]"
               v-model="field.value"
-              v-else-if="field.type == 'select' && field.isModifiable"
+              v-else-if="field.type === 'select' && field.isModifiable"
             >
               <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
             </select>
@@ -56,9 +68,12 @@
               type="text"
               :placeholder="$t(`register.${field.name}.placeholder`)"
               :readonly="!field.isModifiable"
-              :value="bankList.find(bank => field.value === bank.Value).Text"
-              v-else-if="field.type == 'select' && !field.isModifiable"
+              :value="userBankById(field.value).Lst_BankName"
+              v-else-if="field.type === 'select' && !field.isModifiable"
             />
+          </div>
+          <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
+            {{ errors[0] }}
           </div>
         </ValidationProvider>
       </div>

@@ -5,7 +5,7 @@ import { registerFieldList } from '@/utils/register';
 export default {
   name: 'MixinUserProfile',
   computed: {
-    ...mapGetters(['lang']),
+    ...mapGetters(['lang', 'userCreatedDatetime', 'userBankById', 'userBankName1']),
     getDatetime: () => datetime => {
       return `${datetime.split('.')[0].replace('T', ' ')} (GMT+8)`;
     },
@@ -49,7 +49,11 @@ export default {
         }
       }
 
-      console.log(requestData);
+      const result = await this.$store.dispatch('user/changeUserProfile', requestData);
+      if (result.Code == 200) {
+        this.getRegisterAdvanceNew();
+        window.alert(this.$t('alert.changeProfileSuccess'));
+      }
     },
     async changeField(field, invalid) {
       //* 即時驗證欄位資料是否通過

@@ -19,7 +19,7 @@ export async function apiGetRegisterAdvanceNew() {
   return result.data;
 }
 
-//* 帳號開通動作
+//* 個人資料更新
 export async function apiAdvancedRegisterNew(data) {
   const result = await axios.post(API_URL + '/Member/AdvancedRegisterNew', data);
   return result.data;
