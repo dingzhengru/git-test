@@ -80,7 +80,7 @@
         </div>
         <div class="ui-field" v-show="isShowInputAmount">
           <div class="ui-field__group">
-            <label class="ui-field__group__label">存款金額</label>
+            <label class="ui-field__group__label">{{ $t('transaction.deposit.field.amount') }}</label>
             <input
               class="ui-field__group__input"
               type="number"
