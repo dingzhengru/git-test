@@ -23,7 +23,7 @@ $header-title-color: white;
   @include header;
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 3;
 
   &__title {
     width: 100%;
