@@ -30,6 +30,6 @@ export async function apiPostSiteSeoInfo() {
 
 //* 2.76 取得健康網域
 export async function apiGetDomainInfo(params) {
-  const result = await axios.get('https://api.starbets.re888show.com/api/Siteinfo/DomainInfo', { params });
+  const result = await axios.get('http://api.starbets.re888show.com/api/Siteinfo/DomainInfo', { params });
   return result.data;
 }
