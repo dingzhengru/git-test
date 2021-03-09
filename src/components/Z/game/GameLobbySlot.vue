@@ -18,6 +18,7 @@
 
     <component
       :is="GameSearchBlock"
+      :isShowSearch="true"
       :isShowTransfer="userIsLoggedIn"
       :isShowLike="userIsLoggedIn"
       @submit-search="submitSearch"

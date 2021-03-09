@@ -17,13 +17,21 @@
 
     <component
       :is="GameSearchBlock"
+      :isShowSearch="false"
       :isShowTransfer="userIsLoggedIn"
       @submit-search="submitSearch"
       @open-transfer-dialog="isShowTransferDialog = true"
-      v-if="productCurrent.Lst_Site_Product_Status == 0 && productCurrent !== productLiveEVO"
+      v-if="productCurrent.Lst_Site_Product_Status == 0"
     />
 
-    <component :is="GameListIcon" v-if="productCurrent === productLiveEVO" />
+    <component
+      :is="GameListIcon"
+      :gameList="gameList"
+      :productCurrent="productCurrent"
+      @open-game="openGame"
+      v-if="productCurrent === productLiveEVO"
+    />
+
     <component
       :is="GameListTable"
       :gameList="gameList"

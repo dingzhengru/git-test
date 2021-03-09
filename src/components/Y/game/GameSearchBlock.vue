@@ -1,14 +1,15 @@
 <template>
   <div class="game-lobby-search">
     <form class="game-lobby-search__form" @submit.prevent="submitSearch">
-      <input
-        class="game-lobby-search__input"
-        type="search"
-        v-model="search.text"
-        :placeholder="$t('game.placeholder.search')"
-      />
-      <button class="game-lobby-search__btn--submit" type="submit"></button>
-
+      <template v-if="isShowSearch">
+        <input
+          class="game-lobby-search__input"
+          type="search"
+          v-model="search.text"
+          :placeholder="$t('game.placeholder.search')"
+        />
+        <button class="game-lobby-search__btn--submit" type="submit"></button>
+      </template>
       <div class="game-lobby-search__right">
         <button class="game-lobby-search__btn--fav" @click="changeIsFav" v-if="isShowLike"></button>
         <button class="game-lobby-search__btn--transfer" @click="openTransferDialog" v-if="isShowTransfer">
@@ -23,6 +24,10 @@
 export default {
   name: 'GameSearchBlock',
   props: {
+    isShowSearch: {
+      type: Boolean,
+      default: false,
+    },
     isShowLike: {
       type: Boolean,
       default: false,

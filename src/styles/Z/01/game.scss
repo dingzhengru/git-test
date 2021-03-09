@@ -1,5 +1,6 @@
 @import './_abstracts';
 @import '@/styles/Y/_default/game';
+@import '@/styles/Z/_default/game';
 
 $game-bg: none;
 
@@ -117,6 +118,8 @@ $game-lobby-list-link-bg-fav-active: assetPath('ui/btn_favorites_active.png');
 .game-lobby-list {
   @include game-lobby-list;
 }
+
+$game-lobby-list-icon-item-text-color: black;
 
 .game-lobby-list-icon {
   @include game-lobby-list-icon;

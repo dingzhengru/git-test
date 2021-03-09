@@ -44,6 +44,7 @@ export default {
 
       if (result.Code == 200) {
         this.depositInfo = result.RetObj;
+        this.$parent.$emit('baseBankInfo', this.depositInfo);
       }
     },
     async submitDeposit() {

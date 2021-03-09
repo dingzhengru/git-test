@@ -1,6 +1,6 @@
 <template>
   <div class="deposit">
-    <div class="deposit__nav">
+    <div class="deposit__nav" v-if="baseBankInfo.IsShowThirdPartyBtn === true">
       <button
         class="ui-btn ui-btn--block deposit__nav--base"
         :class="{ active: $route.name == 'TransactionDepositBase' }"
@@ -17,7 +17,7 @@
       </button>
     </div>
 
-    <router-view />
+    <router-view @baseBankInfo="baseBankInfoHandler"></router-view>
 
     <ModalNoticeImage
       :isShow="isShowDepositNotice"
@@ -31,34 +31,22 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'TransactionDeposit',
+  name: 'TransactionDepositHome',
   components: {
     ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
   },
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss', 'siteIsShowDepositNotice', 'siteDepositNoticeUrl']),
-    DepositModeNav() {
-      return () => import(`@/${this.siteSetting.components.transaction.deposit.DepositModeNav}`);
-    },
-    DepositFormBase() {
-      return () => import(`@/${this.siteSetting.components.transaction.deposit.DepositFormBase}`);
-    },
-    DepositFormThirdParty() {
-      return () => import(`@/${this.siteSetting.components.transaction.deposit.DepositFormThirdParty}`);
-    },
   },
   data() {
     return {
-      mode: 'base',
       isShowDepositNotice: false,
+      baseBankInfo: {},
     };
   },
   methods: {
-    changeMode(mode) {
-      this.mode = mode;
-    },
-    uploadReceipt() {
-      this.$refs.receipt.click();
+    baseBankInfoHandler(bankInfo) {
+      this.baseBankInfo = bankInfo;
     },
   },
   mounted() {

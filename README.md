@@ -4,14 +4,9 @@
 
 H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
-- [Z 版筆記](#z-版筆記)
-  - [API](#api)
-    - [需修改的 API](#需修改的-api)
-    - [未有的 API](#未有的-api)
 - [Token & 公鑰](#token--公鑰)
-- [workbox](#workbox)
-  - [workbox 預緩存設定(precache)](#workbox-預緩存設定precache)
 - [其他](#其他)
+  - [子路徑傳值給父路徑](#子路徑傳值給父路徑)
   - [vee-validate](#vee-validate)
     - [ValidationObserver 的 invalid 失效問題(已解決)](#validationobserver-的-invalid-失效問題已解決)
   - [IOS input[type=datetime-local] 自動驗證錯誤(已解決)](#ios-inputtypedatetime-local-自動驗證錯誤已解決)
@@ -19,8 +14,6 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [維護畫面](#維護畫面)
   - [IOS 擋開啟新視窗(已解決)](#ios-擋開啟新視窗已解決)
   - [點擊輪播無法正常換頁(已解決)](#點擊輪播無法正常換頁已解決)
-  - [取得網站資訊不同步，將處理放置 watch(已解決)](#取得網站資訊不同步將處理放置-watch已解決)
-  - [notification 的 nav 圖片大小不同](#notification-的-nav-圖片大小不同)
 - [Library](#library)
   - [axios](#axios)
   - [numeral](#numeral)
@@ -35,25 +28,6 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [gsap](#gsap)
   - [vee-validate](#vee-validate-1)
 
-## Z 版筆記
-
-### API
-
-#### 需修改的 API
-
-- 2.61 優惠活動-列表: 需要一個分類的欄位
-- 2.42 投注紀錄-未結算投注: 缺少綁定金額欄位、report 連結 (點擊館別)
-- 遊戲列表相關: 改成非登入也能取得列表
-- 各個紀錄(出納櫃台): 因跟 Y 版顯示的欄位架構不同，所以缺少各種欄位
-- 2.49 交易中心-存款頁: 多一個判斷讓使用者自己輸入帳號的欄位
-
-#### 未有的 API
-
-- 修改個人資料頁面
-- 修改個人資料
-- 自動上分頁面
-- 自動上分
-
 ## Token & 公鑰
 
 - 存 cookie
@@ -64,23 +38,14 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 兩者都可直接靠重新獲取來解決，再來就是看要，**重整頁面**或是**重新發送請求**
 不過現在確定 token 與 公鑰沒有期限，所以不會因為過期而觸發這兩個錯誤，只有被踢線時會觸發，所以目前只有**重新取得 token 與 公鑰**
 
-## workbox
-
-- 原本使用 importScript 方式引入，現在改用配合 webpack 引入的方式使用
-- 使用的套件是 workbox-webpack-plugin，引入方法可以參考: https://webpack.docschina.org/guides/progressive-web-application
-- 於 vue.config.js 中引入設定，參考: https://cli.vuejs.org/guide/webpack.html
-- workbox-webpack-plugin 設定的參數，參考以下網址
-  - GenerateSW: https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-webpack-plugin.GenerateSW
-  - InjectManifest: https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-webpack-plugin.InjectManifest
-
-### workbox 預緩存設定(precache)
-
-- 於 vue.config.js 中設定要預緩存的範圍、最大檔案大小
-  - 詳細參數可以參考上面的 workbox-webpack-plugin 設定的參數的網址
-- 使用配合 webpack 方式引入，都強制要使用 precache，預設是會預緩存 dist 底下所有檔案，無法關閉，只能靠設定範圍來不使用
-- 目前是設定 `exclude: [/.*/]` 來不使用預緩存功能
-
 ## 其他
+
+### 子路徑傳值給父路徑
+
+參考: https://stackoverflow.com/questions/42446809/child-component-to-use-parent-function-in-vue-js
+
+父路徑，設置 `<view-router @event-name />`
+子路徑，使用 `this.$parent.$emit('event-name')` 傳送
 
 ### vee-validate
 
@@ -112,23 +77,6 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 ### 點擊輪播無法正常換頁(已解決)
 
 - 解決方法是套件換版本即可: swiper@5.3.6 、vue-awesome-swiper@4.0.4
-
-### 取得網站資訊不同步，將處理放置 watch(已解決)
-
-將關於需要用到 siteInfo 的處理都放置 watch，避免還沒取得 siteInfo (預設值是 null)，就去使用 API 或 去組靜態資源 URL
-
-```js
-watch: {
-  siteID: {
-    immediate: true,
-    handler() {},
-  },
-},
-```
-
-### notification 的 nav 圖片大小不同
-
-StarBets 的圖片大小跟其他不同，造成位置不同
 
 ## Library
 
