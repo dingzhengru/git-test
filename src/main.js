@@ -160,7 +160,7 @@ if (isLoggedIn) {
   store.dispatch('site/getSeoInfo', requestDataSeo);
 
   //* 取得健康網域
-  const requestDataDomainInfo = { SiteID: store.getters.siteID };
+  const requestDataDomainInfo = { SiteID: store.getters.siteID, Domain: window.location.hostname };
   apiGetDomainInfo(requestDataDomainInfo);
 
   new Vue({
