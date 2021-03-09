@@ -46,6 +46,7 @@ export const API_NO_LOADING_LIST = [
   'Proxy/MPlayLottery',
   'Proxy/MGetWinPrize',
   'Operator/CheckOrderStatus',
+  'Siteinfo/DomainInfo',
 ];
 
 //* 需要 Authorization bearer token 的 API

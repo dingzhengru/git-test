@@ -29,7 +29,8 @@ let Respond201Count = 0;
 
 //* 用於檢查 url 是否在列表中
 function checkUrlInList(list, url) {
-  const item = url.replace(`${API_URL}/`, '');
+  // const item = url.replace(`${API_URL}/`, '');
+  const item = url.split(`${API_URL}/`)[1] || url;
   return list.includes(item);
 }
 
