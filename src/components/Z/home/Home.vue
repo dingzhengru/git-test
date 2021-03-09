@@ -8,7 +8,7 @@
     </div>
 
     <ModalNoticeImage :isShow="isShowMainNotice" :image="siteMainPageNoticeUrl" @close="isShowMainNotice = false" />
-    <ModalMessage :isShow="isShowModalMessage && !userIsLoggedIn" @close="isShowModalMessage = false" />
+    <ModalMessageC :isShow="isShowModalMessage && !userIsLoggedIn" @close="isShowModalMessage = false" />
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   name: 'Home',
   components: {
     ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
-    ModalMessage: () => import('@/components/ModalMessage'),
+    ModalMessageC: () => import('@/components/ModalMessageC'),
   },
   computed: {
     ...mapGetters([

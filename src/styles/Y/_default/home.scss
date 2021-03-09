@@ -63,12 +63,12 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 10px;
 
     &__text {
       color: $home-product-text-color;
       text-align: center;
       font-size: 1.6rem;
+      padding-bottom: 10px;
     }
 
     &__overlay--maintain {

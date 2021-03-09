@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
+//* msgtype 要取出的消息型態 (A一般 B跑馬燈 C彈出 Z重要)
 export async function apiGetMessageList(params) {
   const result = await axios.get(API_URL + '/Msg/GetList', { params });
   return result.data;
