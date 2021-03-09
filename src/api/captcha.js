@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_URL } from '@/settings';
 
 /**
- ** 驗證碼
+ ** 2.7  CAPTCHA -取得驗證碼
  ** pageCode
  **  MemberLogin: 登入頁面
  **  MemberRegister: 註冊頁面

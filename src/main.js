@@ -26,6 +26,7 @@ import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
 //* API
 import { apiGetVersion } from '@/api/version';
 import { apiKeepUserOnline } from '@/api/user';
+import { apiGetDomainInfo } from '@/api/site';
 
 //* set Vue.prototype
 import dayjs from 'dayjs';
@@ -49,7 +50,6 @@ Vue.config.productionTip = false;
   }
   const version = await apiGetVersion();
   const versionCookie = cookieGetVersion();
-  console.log(version, versionCookie);
   if (!versionCookie) {
     cookieSetVersion(version);
   }
@@ -158,6 +158,10 @@ if (isLoggedIn) {
   //* 取得 SEO 資訊 (目前是都先設首頁的 seo)
   const requestDataSeo = { Lang: lang };
   store.dispatch('site/getSeoInfo', requestDataSeo);
+
+  //* 取得健康網域
+  const requestDataDomainInfo = { SiteID: store.getters.siteID };
+  apiGetDomainInfo(requestDataDomainInfo);
 
   new Vue({
     router,

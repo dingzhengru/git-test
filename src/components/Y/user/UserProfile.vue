@@ -17,7 +17,8 @@
 <script>
 import { mapGetters } from 'vuex';
 import { apiChangePasswordWithdrawal } from '@/api/user';
-import { apiGetRegisterAdvanceNew, apiCheckRegisterFieldExist } from '@/api/register';
+import { apiCheckRegisterFieldExist } from '@/api/register';
+import { apiGetRegisterAdvanceNew } from '@/api/user';
 
 export default {
   name: 'UserProfile',

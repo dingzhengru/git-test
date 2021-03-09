@@ -17,7 +17,7 @@ import {
   apiAdvancedRegisterNew,
 } from '@/api/user';
 import { apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
-import { apiGetLotteryCount } from '@/api/lottery';
+import { apiGetLotteryCount } from '@/api/user';
 
 const state = {
   info: {},
