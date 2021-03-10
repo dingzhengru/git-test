@@ -109,21 +109,10 @@ export default {
       this.pagination.count = result.RetObj.DataCnt;
     },
     async openGame(game) {
-      if (!this.userIsLoggedIn) {
-        return this.$router.push({ name: 'Login' });
-      }
-
-      //* 因應真人遊戲兩階段開遊戲，這樣才知道現在的遊戲是甚麼
-      this.game = game;
-      this.isShowLiveGameEnterDialog = true;
-    },
-    async openLiveGame(templatesId, order) {
       const requestData = {
         Tag: this.productTag,
-        Gameid: this.game.Lst_GameID,
+        Gameid: game.Lst_GameID,
         Freeplay: 0,
-        Template: templatesId,
-        LibOrder: order,
       };
 
       const newWindow = window.open('/loading.html');

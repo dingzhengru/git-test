@@ -28,7 +28,13 @@ export async function apiPostSiteSeoInfo() {
   return result.data;
 }
 
-//* 2.76 取得健康網域
+/**
+ ** 2.76 取得健康網域
+ ** 1. 此網域為健康，就會回傳此網域
+ ** 2. 若此網域不健康，另外有網域是健康的，則會回傳那個健康網域
+ ** 3. 若所有網域都不健康 => 空值
+ ** 4. DomainName 跟 Referer 對不上的話 => 空值
+ */
 export async function apiGetDomainInfo(params) {
   const result = await axios.get('https://api.starbets.re888show.com/api/Siteinfo/DomainInfo', { params });
   return result.data;

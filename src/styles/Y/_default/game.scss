@@ -59,6 +59,7 @@
     justify-content: center;
     align-items: center;
     padding: 0 15px;
+    flex-basis: 33%;
 
     &.active {
       background: $game-lobby-product-item-bg-active;
@@ -172,34 +173,20 @@
   overflow: hidden;
   height: 74px;
 
-  &__ul {
-    width: 100%;
-    margin: 0;
+  display: flex;
+
+  &__item {
+    display: flex;
+    align-items: center;
     padding: 0 15px;
-    white-space: nowrap;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    overflow: auto;
 
-    &__li {
-      font-size: 24px;
-      white-space: nowrap;
-      display: inline-block;
-
-      &__link {
-        color: $game-lobby-category-text-color;
-        display: block;
-        padding: 0 15px;
-        line-height: 74px;
-      }
-
-      &--active > a {
-        color: $game-lobby-category-text-color-active;
-      }
+    &__text {
+      color: $game-lobby-category-text-color;
+      font-size: 1.5rem;
     }
-    &__li:last-child {
-      padding-right: 20px;
+
+    &__text.active {
+      color: $game-lobby-category-text-color-active;
     }
   }
 }
@@ -423,11 +410,11 @@
   font-size: 2rem;
   padding: 60px 30px 60px 30px;
 
-  &__button-div {
-    button {
-      margin-top: 30px;
-      background: $live-game-enter-dialog-btn-bg;
-      color: $live-game-enter-dialog-btn-color;
-    }
+  button {
+    margin-top: 30px;
+    padding: 15px;
+    width: 100%;
+    background: $live-game-enter-dialog-btn-bg;
+    color: $live-game-enter-dialog-btn-color;
   }
 }

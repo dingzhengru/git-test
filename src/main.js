@@ -162,6 +162,12 @@ if (isLoggedIn) {
   //* 取得健康網域
   const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
   apiGetDomainInfo(requestDataDomainInfo);
+  // apiGetDomainInfo(requestDataDomainInfo).then(result => {
+  //   //* 不是空值、回傳值非此網域 => 轉址
+  //   if (result && result !== window.location.hostname) {
+  //     window.location.href = `https://${result}`;
+  //   }
+  // });
 
   new Vue({
     router,
