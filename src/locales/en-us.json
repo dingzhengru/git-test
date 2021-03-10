@@ -321,6 +321,219 @@
       "required": "Remark with <span class='ui-txt-star'>*</span> are required items, please be sure to fill in them correctly.",
       "recommend": "Customer who knows our website through our client introduction, please kindly write the referee code at referral column.",
       "contact": "Any questions toward member registration, please feel free to contact our online service."
+    },
+    "modalServiceTerm": {
+      "title": "《Term of Service》",
+      "subTitle": "请仔细阅读本条款，并确认您已完全理解其内容。如果对于本条款所产生的权利和义务有任何疑问，请向您所属法律管辖区域内的法律顾问寻求说明。",
+      "definition": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": ""
+      },
+      "agreement": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": ""
+      },
+      "amendment": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": ""
+      },
+      "bet": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": ""
+      },
+      "condition": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "10": "",
+        "11": "",
+        "12": "",
+        "13": "",
+        "14": "",
+        "15": "",
+        "16": "",
+        "17": ""
+      },
+      "openBettingAccount": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": ""
+      },
+      "betAcceptance": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "10": "",
+        "11": "",
+        "12": "",
+        "13": "",
+        "14": "",
+        "15": "",
+        "16": "",
+        "17": "",
+        "18": "",
+        "19": "",
+        "20": "",
+        "21": ""
+      },
+      "bettingSoftwareRight": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": ""
+      },
+      "transactionSettlement": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": ""
+      },
+      "jackpot": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": ""
+      },
+      "promotion": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": ""
+      },
+      "compensation": {
+        "title": "",
+        "subTitle": "",
+        "1": ""
+      },
+      "disclaimer": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": ""
+      },
+      "closeService": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "10": "",
+        "11": "",
+        "12": "",
+        "13": "",
+        "14": ""
+      },
+      "externalWebsite": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": ""
+      },
+      "linkOrFrame": {
+        "title": "",
+        "subTitle": "",
+        "1": ""
+      },
+      "addOrSuspendBetting": {
+        "title": "",
+        "subTitle": "",
+        "1": ""
+      },
+      "violation": {
+        "title": "",
+        "subTitle": "",
+        "1": ""
+      },
+      "priority": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": ""
+      },
+      "forceMajeure": {
+        "title": "",
+        "subTitle": "",
+        "1": ""
+      },
+      "abstention": {
+        "title": "",
+        "subTitle": "",
+        "1": ""
+      },
+      "severability": {
+        "title": "",
+        "subTitle": "",
+        "1": ""
+      },
+      "governingLawAndJurisdiction": {
+        "title": "",
+        "subTitle": "",
+        "1": "",
+        "2": ""
+      }
     }
   },
   "forgetPassword": {

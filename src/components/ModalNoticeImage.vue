@@ -1,6 +1,9 @@
 <template>
   <AppModal :isShow="isShow" @click.native="$emit('close')">
-    <img :src="image" alt="" />
+    <div class="modal-notice-image">
+      <div class="ui-box-close" @click="$emit('close')"></div>
+      <img :src="image" alt="" />
+    </div>
   </AppModal>
 </template>
 
@@ -28,4 +31,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.modal-notice-image {
+  position: relative;
+}
+</style>

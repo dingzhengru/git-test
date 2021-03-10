@@ -51,18 +51,9 @@
       v-show="isShowTransferDialog"
     />
 
-    <component
-      :is="LiveGameEnterDialog"
-      :gameLimitBetList="gameLimitBetList"
-      :selectedGame="game"
-      :isShow="isShowLiveGameEnterDialog"
-      @open-live-game="openLiveGame"
-      @close="isShowLiveGameEnterDialog = false"
-    />
-
-    <intersect @enter="changePageScrollBottom" rootMargin="0px 0px 5px 0px">
+    <!-- <intersect @enter="changePageScrollBottom" rootMargin="0px 0px 5px 0px">
       <div class="game-lobby-bottom-intersect"></div>
-    </intersect>
+    </intersect> -->
   </div>
 </template>
 
@@ -93,9 +84,6 @@ export default {
     },
     GameListIcon() {
       return () => import(`@/${this.siteSetting.components.game.GameListIcon}`);
-    },
-    LiveGameEnterDialog() {
-      return () => import(`@/${this.siteSetting.components.game.LiveGameEnterDialog}`);
     },
     GameTransferDialog() {
       return () => import(`@/${this.siteSetting.components.game.GameTransferDialog}`);

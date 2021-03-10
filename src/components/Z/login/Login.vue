@@ -68,7 +68,7 @@
       <div class="login__field login__field--remember ui-field">
         <div class="ui-field__group ui-field__group--checkbox">
           <input id="login-remember" type="checkbox" v-model="user.RememberMe" />
-          <label for="login-remember" class="">記住我</label>
+          <label for="login-remember" class="">{{ $t('login.rememberMe') }}</label>
         </div>
       </div>
 

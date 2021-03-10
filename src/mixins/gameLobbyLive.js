@@ -31,10 +31,6 @@ export default {
           Lst_GameName: 'all',
         },
       ],
-      game: {}, //* 現在選取的遊戲，因真人遊戲是兩階段開啟遊戲的
-      guid: '', //* 真人遊戲會用到的 guid，於 getGameCategoryList 取得
-      gameLimitBetList: [], //* 真人遊戲的範本列表
-      isShowLiveGameEnterDialog: false, //* 真人遊戲開遊戲的列表
     };
   },
   methods: {
@@ -58,7 +54,6 @@ export default {
         requestData.Lang = this.lang;
         result = await apiGetGameLobbyCategory(requestData);
       }
-      this.guid = result.RetObj.H3GUID;
       this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
       return result;
     },
@@ -69,7 +64,6 @@ export default {
         Page: this.pagination.page,
         GameName: this.search.text,
         IsLike: this.search.isFav ? 1 : 0,
-        H3GUID: this.guid,
         GameClassify: 1,
       };
       let result = {};
@@ -80,21 +74,15 @@ export default {
         result = await apiGetGameLobbyGameList(requestData);
       }
       this.gameList = result.RetObj.JsonGameList || [];
-      this.gameLimitBetList = result.RetObj.GameLimitBet;
       this.pagination.count = result.RetObj.DataCnt;
     },
     async getGameListScrollBottom() {
-      if (!this.guid) {
-        return;
-      }
-
       const requestData = {
         Tag: this.productTag,
         Category: this.categoryCurrent.Lst_Category || '',
         Page: this.pagination.page,
         GameName: this.search.text,
         IsLike: this.search.isFav ? 1 : 0,
-        H3GUID: this.guid,
         GameClassify: 1,
       };
       let result = {};
@@ -129,17 +117,17 @@ export default {
   },
   async mounted() {
     this.getGameProductList();
-    await this.getGameCategoryList(); //* 真人遊戲需先從此取得 guid，才能取得遊戲列表
+    this.getGameCategoryList();
     this.getGameList();
   },
   watch: {
     async lang() {
       this.getGameProductList();
-      await this.getGameCategoryList();
+      this.getGameCategoryList();
       this.getGameList();
     },
     async productTag() {
-      await this.getGameCategoryList();
+      this.getGameCategoryList();
       this.getGameList();
     },
   },
