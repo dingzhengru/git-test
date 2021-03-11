@@ -1,5 +1,6 @@
 // import jsonp from 'jsonp';
-import axios from 'axios-jsonp-pro';
+// import axios from 'axios-jsonp-pro';
+import jquery from 'jquery';
 
 export function getIP() {
   // return new Promise((resolve, reject) => {
@@ -11,7 +12,12 @@ export function getIP() {
   //     }
   //   });
   // });
-  axios.jsonp('https://api.ipify.org/?format=jsonp').then(result => {
+  // axios.jsonp('https://api.ipify.org/?format=jsonp').then(result => {
+  //   console.log(result);
+  // });
+  console.log(jquery);
+
+  jquery.getJSON('https://api.ipify.org/?format=json', result => {
     console.log(result);
   });
 }
