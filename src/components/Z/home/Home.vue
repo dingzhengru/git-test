@@ -64,9 +64,7 @@ export default {
     import(`@/styles/${this.siteFullCss}/home.scss`);
 
     //* 沒登入就顯示 MainNotice
-    // this.isShowMainNotice = this.siteIsShowMainNotice && !this.userIsLoggedIn;
-
-    this.isShowMainNotice = true;
+    this.isShowMainNotice = this.siteIsShowMainNotice && !this.userIsLoggedIn;
   },
 };
 </script>
