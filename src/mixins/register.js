@@ -112,36 +112,45 @@ export default {
       await this.$store.dispatch('user/getTokenAndPublicKey');
     }
 
-    apiGetRegisterFieldList().then(result => {
-      this.bankList = result.RetObj.Add_BankList;
+    const result = await apiGetRegisterFieldList();
 
-      for (const registerField of result.RetObj.Register) {
-        const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
+    this.bankList = result.RetObj.Add_BankList;
 
-        if (field) {
-          // field.value = registerField.Lst_Value;
-          field.isShow = registerField.Lst_Phase == 1;
-          field.isOnly = registerField.Lst_isOnly;
-          field.isRequired = registerField.Lst_isRequired;
-          field.rules['register-required'] = registerField.Lst_isRequired;
+    for (const registerField of result.RetObj.Register) {
+      const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
 
-          //* 目前只有 Add_RelatedAccount 有可能需要賦予值
-          if (field.name == 'Add_RelatedAccount') {
+      if (field) {
+        // field.value = registerField.Lst_Value;
+        field.isShow = registerField.Lst_Phase == 1;
+        field.isOnly = registerField.Lst_isOnly;
+        field.isRequired = registerField.Lst_isRequired;
+        field.rules['register-required'] = registerField.Lst_isRequired;
+
+        //* 目前只有 Add_RelatedAccount 有可能需要賦予值
+        if (field.name == 'Add_RelatedAccount') {
+          const proxyCode = this.$route.query.proxyCode;
+          if (registerField.Lst_Value) {
             field.value = registerField.Lst_Value;
-          }
-
-          //* Add_RealName 是不可修改
-          //* 推薦人若已有值，就也不能修改
-          if (field.name == 'Add_RealName') {
-            field.isModifiable = false;
-          } else if (field.name == 'Add_RelatedAccount' && field.value) {
-            field.isModifiable = false;
-          } else {
-            field.isModifiable = true;
+          } else if (proxyCode) {
+            const requestDataProxyCode = { field: field.name, strValue: proxyCode };
+            const resultProxyCode = await apiCheckRegisterFieldExist(requestDataProxyCode);
+            if (resultProxyCode === true) {
+              field.value = proxyCode;
+            }
           }
         }
+
+        //* Add_RealName 是不可修改
+        //* 推薦人若已有值，就也不能修改
+        if (field.name == 'Add_RealName') {
+          field.isModifiable = false;
+        } else if (field.name == 'Add_RelatedAccount' && field.value) {
+          field.isModifiable = false;
+        } else {
+          field.isModifiable = true;
+        }
       }
-    });
+    }
 
     this.changeCaptcha();
   },

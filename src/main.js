@@ -185,7 +185,6 @@ if (isLoggedIn) {
     beforeCreate() {
       //* 若網址有推廣碼，則轉址至首頁
       if (proxyCode) {
-        console.log('[ProxyCode]', proxyCode);
         this.$router.replace({ name: 'Home' });
       }
     },
