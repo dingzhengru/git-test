@@ -136,6 +136,8 @@ export default {
             const resultProxyCode = await apiCheckRegisterFieldExist(requestDataProxyCode);
             if (resultProxyCode === true) {
               field.value = proxyCode;
+            } else {
+              window.alert(this.$t('register.Add_RelatedAccount.invalid'));
             }
           }
         }
