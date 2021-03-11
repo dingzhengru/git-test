@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.xccoin",
+      "sha256_cert_fingerprints": ["E6:36:BD:95:83:7B:5E:E3:0E:00:A5:1E:76:21:94:45:94:41:64:93:DA:0D:FA:07:1F:5F:27:E2:04:32:07:B7"]
+    }
+  }
+]
