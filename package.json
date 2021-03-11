@@ -21,6 +21,7 @@
     "gsap": "^3.5.1",
     "js-cookie": "^2.2.1",
     "jsencrypt": "^3.0.0-rc.1",
+    "jsonp": "^0.2.1",
     "normalize.css": "^3.0.2",
     "numeral": "^2.0.6",
     "prerender-spa-plugin": "^3.4.0",
