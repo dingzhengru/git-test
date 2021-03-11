@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { API_URL } from '@/settings';
 
+//* 檢查此網域是否健康
+export async function checkSite() {
+  const result = await axios.get('/');
+  return result.data;
+}
+
 //* 2.1  Siteinfo取得站台資訊
 export async function apiGetSiteInfo(params) {
   const result = await axios.get(API_URL + '/Siteinfo/getinfo', { params });

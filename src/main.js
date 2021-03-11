@@ -26,7 +26,7 @@ import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
 //* API
 import { apiGetVersion } from '@/api/version';
 import { apiKeepUserOnline } from '@/api/user';
-import { apiGetDomainInfo } from '@/api/site';
+import { apiGetDomainInfo, checkSite } from '@/api/site';
 
 //* set Vue.prototype
 import dayjs from 'dayjs';
@@ -159,15 +159,23 @@ if (isLoggedIn) {
   const requestDataSeo = { Lang: lang };
   store.dispatch('site/getSeoInfo', requestDataSeo);
 
-  //* 取得健康網域
-  const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
-  apiGetDomainInfo(requestDataDomainInfo);
-  // apiGetDomainInfo(requestDataDomainInfo).then(result => {
-  //   //* 不是空值、回傳值非此網域 => 轉址
-  //   if (result && result !== window.location.hostname) {
-  //     window.location.href = `https://${result}`;
-  //   }
-  // });
+  //* 檢查網域是否正常
+  checkSite().then(result => {
+    const parser = new DOMParser();
+    const htmlDoc = parser.parseFromString(result, 'text/html');
+    const isBlocked = htmlDoc.querySelector('#KeywordForITDetection') === null;
+
+    if (isBlocked) {
+      const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
+      apiGetDomainInfo(requestDataDomainInfo);
+      // apiGetDomainInfo(requestDataDomainInfo).then(result => {
+      //   //* 不是空值、回傳值非此網域 => 轉址
+      //   if (result && result !== window.location.hostname) {
+      //     window.location.href = `https://${result}`;
+      //   }
+      // });
+    }
+  });
 
   new Vue({
     router,
