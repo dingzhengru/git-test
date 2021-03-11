@@ -35,8 +35,6 @@ import dayjs from 'dayjs';
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
 
-getIP();
-
 Vue.prototype.$dayjs = dayjs;
 Vue.prototype.$numeral = numeral;
 Vue.prototype.$idMapper = idMapper;
@@ -184,6 +182,11 @@ if (isLoggedIn) {
     if (isBlocked) {
       const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
       // apiGetDomainInfo(requestDataDomainInfo);
+
+      //* 取得 IP
+      getIP().then(result => {
+        console.log(result);
+      });
 
       apiGetDomainInfo(requestDataDomainInfo).then(result => {
         //* 不是空值、回傳值非此網域 => 轉址
