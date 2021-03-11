@@ -128,18 +128,7 @@ export default {
 
         //* 目前只有 Add_RelatedAccount 有可能需要賦予值
         if (field.name == 'Add_RelatedAccount') {
-          const proxyCode = this.$route.query.proxyCode;
-          if (registerField.Lst_Value) {
-            field.value = registerField.Lst_Value;
-          } else if (proxyCode) {
-            const requestDataProxyCode = { field: field.name, strValue: proxyCode };
-            const resultProxyCode = await apiCheckRegisterFieldExist(requestDataProxyCode);
-            if (resultProxyCode === true) {
-              field.value = proxyCode;
-            } else {
-              window.alert(this.$t('register.Add_RelatedAccount.invalid'));
-            }
-          }
+          field.value = registerField.Lst_Value;
         }
 
         //* Add_RealName 是不可修改

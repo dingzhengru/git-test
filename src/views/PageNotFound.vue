@@ -10,8 +10,8 @@ export default {
     const proxyCode = location.pathname.split('/')[1];
     const requestData = { Code: proxyCode };
     const result = await apiSendProxyCode(requestData);
-    if (result.Code === 200 && result.RetObj) {
-      this.$router.replace({ name: 'Register', query: { proxyCode } });
+    if (result.Code === 200 && result.RetObj === true) {
+      this.$router.replace({ name: 'Register' });
     } else {
       this.$router.replace({ name: 'Home' });
     }
