@@ -64,6 +64,11 @@ Vue.config.productionTip = false;
   }
 })();
 
+//* 取得 IP
+getIP().then(result => {
+  console.log(result);
+});
+
 //* 封站，轉址測試
 // const isBlocked = true;
 // import { isStandaloneMode } from '@/utils/device';
