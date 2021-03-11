@@ -166,15 +166,14 @@ if (isLoggedIn) {
   //* 檢查網域是否正常
   const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
   apiGetDomainInfo(requestDataDomainInfo).then(result => {
-    console.log(result);
     //* 不是空值、回傳值非此網域 => 轉址
-    // if (result && result.RetObj !== window.location.hostname) {
-    //   if (isStandaloneMode()) {
-    //     window.open(store.getters.siteAPKUrl(result.RetObj));
-    //   } else {
-    //     window.location.href = `https://${result.RetObj}`;
-    //   }
-    // }
+    if (result && result.RetObj !== window.location.hostname) {
+      if (isStandaloneMode()) {
+        window.open(store.getters.siteAPKUrl(result.RetObj));
+      } else {
+        window.location.href = `https://${result.RetObj}`;
+      }
+    }
   });
 
   checkSite().then(result => {
