@@ -26,6 +26,7 @@
             :min="field.min"
             :max="field.max"
             :readonly="!field.isModifiable"
+            autocomplete="off"
             v-model="field.value"
             v-if="field.type != 'select'"
             @change="changeField(field, invalid)"

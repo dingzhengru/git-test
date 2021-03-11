@@ -130,6 +130,7 @@
             class="ui-field__group__input"
             type="code"
             :placeholder="$t('login.placeholder.captcha')"
+            autocomplete="off"
             v-model="captcha"
           />
           <img
