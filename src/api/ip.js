@@ -1,15 +1,18 @@
-import jsonp from 'jsonp';
+// import jsonp from 'jsonp';
+import axios from 'axios-jsonp-pro';
 
 export function getIP() {
-  return new Promise((resolve, reject) => {
-    jsonp('https://api.ipify.org/?format=jsonp', null, (err, data) => {
-      if (err) {
-        console.error(err.message);
-        reject(err.message);
-      } else {
-        resolve(data);
-      }
-    });
+  // return new Promise((resolve, reject) => {
+  //   jsonp('https://api.ipify.org/?format=jsonp', null, (err, data) => {
+  //     if (err) {
+  //       reject(err.message);
+  //     } else {
+  //       resolve(data);
+  //     }
+  //   });
+  // });
+  axios.jsonp('https://api.ipify.org/?format=jsonp').then(result => {
+    console.log(result);
   });
 }
 

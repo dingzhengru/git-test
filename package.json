@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "axios-jsonp-pro": "^1.1.8",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "dayjs": "^1.8.32",
