@@ -3,8 +3,20 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "xyz.appmaker.xccoin",
-      "sha256_cert_fingerprints": ["E6:36:BD:95:83:7B:5E:E3:0E:00:A5:1E:76:21:94:45:94:41:64:93:DA:0D:FA:07:1F:5F:27:E2:04:32:07:B7"]
+      "package_name": "xyz.appmaker.irurjr",
+      "sha256_cert_fingerprints": [
+        "A6:41:30:88:CB:B8:C1:7D:AB:46:CD:19:5F:FE:A8:75:35:1C:5E:AD:A5:CA:E5:E6:D3:9F:DC:C4:AF:E5:9B:86"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.nssfwx",
+      "sha256_cert_fingerprints": [
+        "68:0E:0F:BA:F6:96:F4:BB:47:09:BC:49:68:40:9C:C8:90:C5:61:A5:48:E2:7D:0C:31:45:06:75:79:91:DA:4F"
+      ]
     }
   }
 ]

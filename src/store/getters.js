@@ -101,6 +101,10 @@ const getters = {
   siteLotteryButtonBgRedEnvelope: (state, getters) => {
     return `${getters.siteResourceUrl}/imgs/ad/luckyDraw.png`;
   },
+  siteAPKUrl: (state, getters) => site => {
+    site = site.replace('.', '');
+    return `${getters.siteRemoteCSSUrl}/APP/${getters.siteMainDomain}/${site}.apk`;
+  },
   siteSeo: state => state.site.seo,
   siteSeoList: state => state.site.seo.SeoList,
   siteSeoTitle: state => state.site.seo.LS_SiteTitle,

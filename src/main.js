@@ -12,6 +12,7 @@ import {
   cookieGetPublicKey,
   cookieGetLang,
 } from '@/utils/cookie';
+import { isStandaloneMode } from '@/utils/device';
 
 //* CSS
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
@@ -27,11 +28,14 @@ import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
 import { apiGetVersion } from '@/api/version';
 import { apiKeepUserOnline } from '@/api/user';
 import { apiGetDomainInfo, checkSite } from '@/api/site';
+import { getIP } from '@/api/ip';
 
 //* set Vue.prototype
 import dayjs from 'dayjs';
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
+
+getIP();
 
 Vue.prototype.$dayjs = dayjs;
 Vue.prototype.$numeral = numeral;
@@ -160,6 +164,19 @@ if (isLoggedIn) {
   store.dispatch('site/getSeoInfo', requestDataSeo);
 
   //* 檢查網域是否正常
+  const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
+  apiGetDomainInfo(requestDataDomainInfo).then(result => {
+    console.log(result);
+    //* 不是空值、回傳值非此網域 => 轉址
+    // if (result && result.RetObj !== window.location.hostname) {
+    //   if (isStandaloneMode()) {
+    //     window.open(store.getters.siteAPKUrl(result.RetObj));
+    //   } else {
+    //     window.location.href = `https://${result.RetObj}`;
+    //   }
+    // }
+  });
+
   checkSite().then(result => {
     const parser = new DOMParser();
     const htmlDoc = parser.parseFromString(result, 'text/html');
@@ -167,13 +184,18 @@ if (isLoggedIn) {
 
     if (isBlocked) {
       const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
-      apiGetDomainInfo(requestDataDomainInfo);
-      // apiGetDomainInfo(requestDataDomainInfo).then(result => {
-      //   //* 不是空值、回傳值非此網域 => 轉址
-      //   if (result && result !== window.location.hostname) {
-      //     window.location.href = `https://${result}`;
-      //   }
-      // });
+      // apiGetDomainInfo(requestDataDomainInfo);
+
+      apiGetDomainInfo(requestDataDomainInfo).then(result => {
+        //* 不是空值、回傳值非此網域 => 轉址
+        if (result && result.RetObj !== window.location.hostname) {
+          if (isStandaloneMode()) {
+            window.open(store.getters.siteAPKUrl(result.RetObj));
+          } else {
+            window.location.href = `https://${result.RetObj}`;
+          }
+        }
+      });
     }
   });
 

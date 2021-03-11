@@ -97,6 +97,9 @@ export default {
       this.pagination.count = result.RetObj.DataCnt;
     },
     async openGame(game) {
+      if (!this.userIsLoggedIn) {
+        return this.$router.push({ name: 'Login' });
+      }
       const requestData = {
         Tag: this.productTag,
         Gameid: game.Lst_GameID,
