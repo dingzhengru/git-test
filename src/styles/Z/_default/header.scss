@@ -247,7 +247,7 @@
     > button {
       width: 90%;
       height: auto;
-      line-height: 89px;
+      line-height: $btn-height;
       font-size: 2rem;
       background: $header-sub-dropdown-button-bg;
       color: $header-sub-dropdown-button-color;

@@ -2,30 +2,32 @@
   <AppModal :isShow="isShow" @close="$emit('close')">
     <div class="service-term">
       <div class="service-term__close" @click="$emit('close')"></div>
-      <div class="service-term__header">
-        <div class="service-term__header__title">{{ $t('register.modalServiceTerm.title') }}</div>
-        <div class="service-term__header__content" v-html="$t('register.modalServiceTerm.subTitle')"></div>
-      </div>
-      <div class="service-term__body">
-        <div class="service-term__body__item" v-for="item in termList" :key="item.title">
-          <div class="service-term__body__item__title" @click="openTerm(item)">
-            {{ $t(`register.modalServiceTerm.${item.name}.title`) }}
-            <i class="service-term__body__item__title__icon" :class="{ open: item.isOpen }"></i>
-          </div>
-          <transition name="slide-dropdown-height">
-            <div class="service-term__body__item__content" v-show="item.isOpen">
-              <p v-if="$te(`register.modalServiceTerm.${item.name}.subTitle`)">
-                {{ $t(`register.modalServiceTerm.${item.name}.subTitle`) }}
-              </p>
-              <ul>
-                <li
-                  v-for="index in item.count"
-                  :key="index"
-                  v-html="$t(`register.modalServiceTerm.${item.name}.${index}`, { siteOrigin, site: siteName })"
-                ></li>
-              </ul>
+      <div class="service-term__container">
+        <div class="service-term__header">
+          <div class="service-term__header__title">{{ $t('register.modalServiceTerm.title') }}</div>
+          <div class="service-term__header__content" v-html="$t('register.modalServiceTerm.subTitle')"></div>
+        </div>
+        <div class="service-term__body">
+          <div class="service-term__body__item" v-for="item in termList" :key="item.title">
+            <div class="service-term__body__item__title" @click="openTerm(item)">
+              {{ $t(`register.modalServiceTerm.${item.name}.title`) }}
+              <i class="service-term__body__item__title__icon" :class="{ open: item.isOpen }"></i>
             </div>
-          </transition>
+            <transition name="slide-dropdown-height">
+              <div class="service-term__body__item__content" v-show="item.isOpen">
+                <p v-if="$te(`register.modalServiceTerm.${item.name}.subTitle`)">
+                  {{ $t(`register.modalServiceTerm.${item.name}.subTitle`) }}
+                </p>
+                <ul>
+                  <li
+                    v-for="index in item.count"
+                    :key="index"
+                    v-html="$t(`register.modalServiceTerm.${item.name}.${index}`, { siteOrigin, site: siteName })"
+                  ></li>
+                </ul>
+              </div>
+            </transition>
+          </div>
         </div>
       </div>
       <div class="service-term__footer">
