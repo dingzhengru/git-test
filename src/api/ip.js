@@ -1,6 +1,17 @@
-// import jsonp from 'jsonp';
-// import axios from 'axios-jsonp-pro';
-import jquery from 'jquery';
+function getJSON(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.responseType = 'json';
+  xhr.onload = function() {
+    var status = xhr.status;
+    if (status === 200) {
+      callback(null, xhr.response);
+    } else {
+      callback(status, xhr.response);
+    }
+  };
+  xhr.send();
+}
 
 export function getIP() {
   // return new Promise((resolve, reject) => {
@@ -15,10 +26,9 @@ export function getIP() {
   // axios.jsonp('https://api.ipify.org/?format=jsonp').then(result => {
   //   console.log(result);
   // });
-  console.log(jquery);
 
-  jquery.getJSON('https://api.ipify.org/?format=json', result => {
-    console.log(result);
+  getJSON('https://api.ipify.org/?format=json', (err, data) => {
+    console.log(data);
   });
 }
 
