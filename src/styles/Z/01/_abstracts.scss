@@ -494,15 +494,14 @@ $service-term-btn-color: white;
     margin-bottom: 30px;
   }
 
-  &__header {
-    &__title {
-      font-size: 3rem;
-      text-align: center;
-      padding-bottom: 30px;
-    }
-    &__content {
-      font-size: 2rem;
-    }
+  &__title {
+    font-size: 3rem;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+
+  &__sub-title {
+    font-size: 2rem;
   }
 
   &__body {

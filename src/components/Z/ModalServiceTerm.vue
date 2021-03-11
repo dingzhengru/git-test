@@ -2,9 +2,9 @@
   <AppModal :isShow="isShow" @close="$emit('close')">
     <div class="service-term">
       <div class="service-term__close" @click="$emit('close')"></div>
+      <div class="service-term__title">{{ $t('register.modalServiceTerm.title') }}</div>
       <div class="service-term__container">
-        <div class="service-term__header">
-          <div class="service-term__header__title">{{ $t('register.modalServiceTerm.title') }}</div>
+        <div class="service-term__sub-title">
           <div class="service-term__header__content" v-html="$t('register.modalServiceTerm.subTitle')"></div>
         </div>
         <div class="service-term__body">
