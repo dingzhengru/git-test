@@ -1,3 +1,6 @@
+//* Lang
+export const LANG_DEFAULT = 'th-th';
+
 //* Offline Message
 export const OFFLINE_MESSAGE = 'Offline Alert';
 

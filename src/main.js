@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
-import { OFFLINE_MESSAGE } from '@/settings';
+import { LANG_DEFAULT, OFFLINE_MESSAGE } from '@/settings';
 import {
   cookieGetVersion,
   cookieSetVersion,
@@ -109,7 +109,7 @@ if (cookieGetToken() && cookieGetPublicKey()) {
 }
 
 //* 取得目前語系
-const lang = cookieGetLang() || 'th-th';
+const lang = cookieGetLang() || LANG_DEFAULT;
 
 //* 載入語系
 store.commit('setLang', lang);
