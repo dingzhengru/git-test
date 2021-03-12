@@ -27,7 +27,6 @@ import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
 import { apiGetVersion } from '@/api/version';
 import { apiKeepUserOnline } from '@/api/user';
 import { apiGetDomainInfo, checkSite } from '@/api/site';
-import { getIP } from '@/api/ip';
 
 //* set Vue.prototype
 import dayjs from 'dayjs';
@@ -160,27 +159,18 @@ if (isLoggedIn) {
   const requestDataSeo = { Lang: lang };
   store.dispatch('site/getSeoInfo', requestDataSeo);
 
-  //* 取得 IP
-  let ClientIP = '';
-  getIP()
-    .then(result => {
-      ClientIP = result.ip;
-    })
-    .finally(() => {
-      //* 檢查網域是否正常
-      const requestDataDomainInfo = {
-        SiteID: store.getters.siteID,
-        DomainName: window.location.hostname,
-        ClientIP,
-      };
-      apiGetDomainInfo(requestDataDomainInfo).then(result => {
-        //* 不是空值、回傳值非此網域 => 轉址
-        if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
-          store.commit('site/setDomainRedirect', result.RetObj);
-          store.commit('setModalSiteBlockedMessageIsShow', true);
-        }
-      });
-    });
+  //* 檢查網域是否正常
+  const requestDataDomainInfo = {
+    SiteID: store.getters.siteID,
+    DomainName: window.location.hostname,
+  };
+  apiGetDomainInfo(requestDataDomainInfo).then(result => {
+    //* 不是空值、回傳值非此網域 => 轉址
+    if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
+      store.commit('site/setDomainRedirect', result.RetObj);
+      store.commit('setModalSiteBlockedMessageIsShow', true);
+    }
+  });
 
   checkSite().then(result => {
     const parser = new DOMParser();
@@ -191,27 +181,18 @@ if (isLoggedIn) {
       // const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
       // apiGetDomainInfo(requestDataDomainInfo);
 
-      //* 取得 IP
-      let ClientIP = '';
-      getIP()
-        .then(result => {
-          ClientIP = result.ip;
-        })
-        .finally(() => {
-          //* 檢查網域是否正常
-          const requestDataDomainInfo = {
-            SiteID: store.getters.siteID,
-            DomainName: window.location.hostname,
-            ClientIP,
-          };
-          apiGetDomainInfo(requestDataDomainInfo).then(result => {
-            //* 不是空值、回傳值非此網域 => 轉址
-            if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
-              store.commit('site/setDomainRedirect', result.RetObj);
-              store.commit('setModalSiteBlockedMessageIsShow', true);
-            }
-          });
-        });
+      //* 檢查網域是否正常
+      const requestDataDomainInfo = {
+        SiteID: store.getters.siteID,
+        DomainName: window.location.hostname,
+      };
+      apiGetDomainInfo(requestDataDomainInfo).then(result => {
+        //* 不是空值、回傳值非此網域 => 轉址
+        if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
+          store.commit('site/setDomainRedirect', result.RetObj);
+          store.commit('setModalSiteBlockedMessageIsShow', true);
+        }
+      });
     }
   });
 
