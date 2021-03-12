@@ -25,6 +25,7 @@ const getters = {
   //* modal
   modalWinWheelIsShow: state => state.modalWinWheelIsShow,
   modalRedEnvelopeIsShow: state => state.modalRedEnvelopeIsShow,
+  modalSiteBlockedMessageIsShow: state => state.modalSiteBlockedMessageIsShow,
 
   //* Site.setting
   siteSetting: state => state.site.setting,
@@ -105,9 +106,12 @@ const getters = {
     site = site.replace('.', '');
     return `${getters.siteRemoteCSSUrl}/APP/${getters.siteMainDomain}/${site}.apk`;
   },
+  //* site.seo
   siteSeo: state => state.site.seo,
   siteSeoList: state => state.site.seo.SeoList,
   siteSeoTitle: state => state.site.seo.LS_SiteTitle,
+  //* site.domainRedirect
+  siteDomainRedirect: state => state.site.domainRedirect,
 
   //* User
   userIsLoggedIn: state => state.user.isLoggedIn,

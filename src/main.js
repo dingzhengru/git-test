@@ -12,7 +12,6 @@ import {
   cookieGetPublicKey,
   cookieGetLang,
 } from '@/utils/cookie';
-import { isStandaloneMode } from '@/utils/device';
 
 //* CSS
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
@@ -63,12 +62,6 @@ Vue.config.productionTip = false;
     window.location.reload();
   }
 })();
-
-//* 取得 IP
-getIP();
-// getIP().then(result => {
-//   console.log(result);
-// });
 
 //* 封站，轉址測試
 // const isBlocked = true;
@@ -171,12 +164,9 @@ if (isLoggedIn) {
   const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
   apiGetDomainInfo(requestDataDomainInfo).then(result => {
     //* 不是空值、回傳值非此網域 => 轉址
-    if (result && result.RetObj !== window.location.hostname) {
-      if (isStandaloneMode()) {
-        window.open(store.getters.siteAPKUrl(result.RetObj));
-      } else {
-        window.location.href = `https://${result.RetObj}`;
-      }
+    if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
+      store.commit('site/setDomainRedirect', result.RetObj);
+      store.commit('setModalSiteBlockedMessageIsShow', true);
     }
   });
 
@@ -196,12 +186,9 @@ if (isLoggedIn) {
 
       apiGetDomainInfo(requestDataDomainInfo).then(result => {
         //* 不是空值、回傳值非此網域 => 轉址
-        if (result && result.RetObj !== window.location.hostname) {
-          if (isStandaloneMode()) {
-            window.open(store.getters.siteAPKUrl(result.RetObj));
-          } else {
-            window.location.href = `https://${result.RetObj}`;
-          }
+        if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
+          store.commit('site/setDomainRedirect', result.RetObj);
+          store.commit('setModalSiteBlockedMessageIsShow', true);
         }
       });
     }

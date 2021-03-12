@@ -37,6 +37,7 @@
 
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
     <component :is="AppGoTopButton" v-show="isShowGoTopButton" />
+    <ModalSiteBlockedMessage :isShow="modalSiteBlockedMessageIsShow" />
   </div>
 </template>
 
@@ -54,6 +55,7 @@ export default {
     AppGoTopButton: () => import('@/components/AppGoTopButton'),
     ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
     ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
+    ModalSiteBlockedMessage: () => import('@/components/ModalSiteBlockedMessage'),
     Intersect,
   },
   computed: {
@@ -63,6 +65,7 @@ export default {
       'loadingListIncludeSiteInfo',
       'modalWinWheelIsShow',
       'modalRedEnvelopeIsShow',
+      'modalSiteBlockedMessageIsShow',
       'isShowGoTopButton',
       'siteSetting',
       'siteFullCss',

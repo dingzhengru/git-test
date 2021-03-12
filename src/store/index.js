@@ -18,6 +18,7 @@ export default new Vuex.Store({
     pageTitle: '',
     modalWinWheelIsShow: false,
     modalRedEnvelopeIsShow: false,
+    modalSiteBlockedMessageIsShow: false,
     isShowGoTopButton: false,
   },
   mutations: {
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     },
     setIsShowGoTopButton: (state, isShow) => {
       state.isShowGoTopButton = isShow;
+    },
+    setModalSiteBlockedMessageIsShow: (state, isShow) => {
+      state.modalSiteBlockedMessageIsShow = isShow;
     },
   },
   actions: {

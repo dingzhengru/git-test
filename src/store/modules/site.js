@@ -6,6 +6,7 @@ const state = {
   info: {},
   seo: {},
   setting: {},
+  domainRedirect: '', //* 當此網域被封後，要轉移的網域
 };
 
 const mutations = {
@@ -21,6 +22,9 @@ const mutations = {
   },
   setSetting(state, setting) {
     state.setting = setting;
+  },
+  setDomainRedirect(state, domain) {
+    state.domainRedirect = domain;
   },
 };
 
