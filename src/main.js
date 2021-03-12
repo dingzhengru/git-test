@@ -161,21 +161,26 @@ if (isLoggedIn) {
   store.dispatch('site/getSeoInfo', requestDataSeo);
 
   //* 取得 IP
-  getIP().then(result => {
-    //* 檢查網域是否正常
-    const requestDataDomainInfo = {
-      SiteID: store.getters.siteID,
-      DomainName: window.location.hostname,
-      ClientIP: result.ip,
-    };
-    apiGetDomainInfo(requestDataDomainInfo).then(result => {
-      //* 不是空值、回傳值非此網域 => 轉址
-      if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
-        store.commit('site/setDomainRedirect', result.RetObj);
-        store.commit('setModalSiteBlockedMessageIsShow', true);
-      }
+  let ClientIP = '';
+  getIP()
+    .then(result => {
+      ClientIP = result.ip;
+    })
+    .finally(() => {
+      //* 檢查網域是否正常
+      const requestDataDomainInfo = {
+        SiteID: store.getters.siteID,
+        DomainName: window.location.hostname,
+        ClientIP,
+      };
+      apiGetDomainInfo(requestDataDomainInfo).then(result => {
+        //* 不是空值、回傳值非此網域 => 轉址
+        if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
+          store.commit('site/setDomainRedirect', result.RetObj);
+          store.commit('setModalSiteBlockedMessageIsShow', true);
+        }
+      });
     });
-  });
 
   checkSite().then(result => {
     const parser = new DOMParser();
