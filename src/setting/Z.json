@@ -11,13 +11,13 @@
       "AppHeaderMenu": "components/Z/header/AppHeaderMenu"
     },
     "home": {
-      "HomeBanner": "components/Y/home/HomeBanner",
+      "HomeBanner": "components/Z/home/HomeBanner",
       "HomeProductNav": "components/Z/home/HomeProductNav",
       "HomeProductBlock": "components/Z/home/HomeProductBlock",
       "NewsMarquee": "components/Z/NewsMarquee"
     },
     "footer": {
-      "AppFooterNav": "components/Y/footer/AppFooterNav"
+      "AppFooterNav": "components/Z/footer/AppFooterNav"
     },
     "register": {
       "ModalServiceTerm": "components/Z/ModalServiceTerm"
@@ -30,18 +30,18 @@
     },
     "transaction": {
       "record": {
-        "RecordImageDialog": "components/Y/transaction/record/RecordImageDialog"
+        "RecordImageDialog": "components/Z/transaction/record/RecordImageDialog"
       }
     },
     "game": {
-      "GameCategoryNavigation": "components/Y/game/GameCategoryNavigation",
-      "GameJackpot": "components/Y/game/GameJackpot",
-      "GameListTable": "components/Y/game/GameListTable",
+      "GameCategoryNavigation": "components/Z/game/GameCategoryNavigation",
+      "GameJackpot": "components/Z/game/GameJackpot",
+      "GameListTable": "components/Z/game/GameListTable",
       "GameListIcon": "components/Z/game/GameListIcon",
-      "GameProductNavigation": "components/Y/game/GameProductNavigation",
-      "GameSearchBlock": "components/Y/game/GameSearchBlock",
-      "GameTransferDialog": "components/Y/game/GameTransferDialog",
-      "LiveGameEnterDialog": "components/Y/game/LiveGameEnterDialog"
+      "GameProductNavigation": "components/Z/game/GameProductNavigation",
+      "GameSearchBlock": "components/Z/game/GameSearchBlock",
+      "GameTransferDialog": "components/Z/game/GameTransferDialog",
+      "LiveGameEnterDialog": "components/Z/game/LiveGameEnterDialog"
     }
   },
   "views": {
@@ -49,7 +49,7 @@
     "login": "components/Z/login/Login",
     "register": "components/Z/register/Register",
     "forgetPassword": "components/Z/forget-password/ForgetPassword",
-    "gameHome": "components/Y/game/GameHome",
+    "gameHome": "components/Z/game/GameHome",
     "gameLobbySlot": "components/Z/game/GameLobbySlot",
     "gameLobbyLive": "components/Z/game/GameLobbyLive",
     "userHome": "components/Z/user/UserHome",
@@ -82,11 +82,11 @@
     "transactionRecordTransferDetail": "components/Z/transaction/record/TransactionRecordTransferDetail",
     "transactionRecordWithdrawalRestrictionDetail": "components/Z/transaction/record/TransactionRecordWithdrawalRestrictionDetail",
     "promotion": "components/Z/promotion/Promotion",
-    "promotionDetail": "components/Y/promotion/PromotionDetail",
+    "promotionDetail": "components/Z/promotion/PromotionDetail",
     "contact": "components/Z/contact/Contact",
     "about": "components/Z/about/About",
     "news": "components/Z/news/News",
-    "maintenance": "components/Y/maintenance/Maintenance",
+    "maintenance": "components/Z/maintenance/Maintenance",
     "depositThirdPartyReturn": "components/Z/DepositThirdPartyReturn"
   }
 }

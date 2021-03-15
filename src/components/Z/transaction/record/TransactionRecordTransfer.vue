@@ -42,14 +42,14 @@
 
     <table class="ui-table record-content__table">
       <tr>
-        <th>{{ $t('transaction.recordDetail.transfer.table.product') }}</th>
-        <th>{{ $t('transaction.recordDetail.transfer.table.rollinPoint') }}</th>
-        <th>{{ $t('transaction.recordDetail.transfer.table.rolloutPoint') }}</th>
-        <th>{{ $t('transaction.recordDetail.transfer.table.datetime') }}</th>
-        <th>{{ $t('transaction.recordDetail.transfer.table.status') }}</th>
+        <th>{{ $t('transaction.recordContent.transfer.table.product') }}</th>
+        <th>{{ $t('transaction.recordContent.transfer.table.rollinPoint') }}</th>
+        <th>{{ $t('transaction.recordContent.transfer.table.rolloutPoint') }}</th>
+        <th>{{ $t('transaction.recordContent.transfer.table.datetime') }}</th>
+        <th>{{ $t('transaction.recordContent.transfer.table.status') }}</th>
       </tr>
       <template v-for="(item, index) in recordList">
-        <tr :key="item.Lst_TransID + index">
+        <tr :key="item.Lst_TransID + String(index)">
           <td>
             {{ item.Lst_ProductName }}
           </td>

@@ -1,0 +1,58 @@
+@mixin footer {
+  background: $footer-bg;
+  width: 100%;
+  padding-top: 3px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
+}
+
+@mixin footer-nav {
+  background: $footer-nav-bg;
+  display: flex;
+  height: $footer-height;
+  &__item {
+    background: $footer-nav-item-bg;
+    width: 25%;
+
+    &.active {
+      background: $footer-nav-item-bg-active;
+    }
+
+    &__link {
+      color: $footer-nav-link-color;
+      background: $footer-nav-link-bg;
+      display: block;
+      text-align: center;
+
+      &:lang(en-us) {
+        font-size: 26px;
+        line-height: 170px;
+      }
+
+      &:lang(th-th) {
+        font-size: 30px;
+        line-height: 170px;
+      }
+
+      &:lang(zh-cn) {
+        font-size: 32px;
+        line-height: 170px;
+      }
+    }
+
+    &:after {
+      background: $footer-nav-item-border-bg;
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 119px;
+      position: absolute;
+      top: 0;
+    }
+    &:first-child:after {
+      background: none;
+    }
+  }
+}

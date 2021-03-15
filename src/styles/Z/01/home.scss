@@ -1,5 +1,4 @@
 @import './_abstracts';
-@import '@/styles/Y/_default/home';
 @import '@/styles/Z/_default/home';
 
 .home {
@@ -25,7 +24,7 @@ $news-marquee-icon-height: 71px;
 $news-marquee-link-color: #8b8b8b;
 
 .news-marquee {
-  @include news-marquee-z;
+  @include news-marquee;
 }
 
 // $home-product-nav-text-color: #8b8b8b;

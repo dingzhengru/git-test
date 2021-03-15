@@ -762,10 +762,11 @@
       "transfer": {
         "title": "转账纪录",
         "table": {
-          "date": "日期",
-          "game": "游戏",
-          "type": "类型",
-          "amount": "金额"
+          "product": "馆别",
+          "rollinPoint": "点数转入",
+          "rolloutPoint": "点数转出",
+          "datetime": "时间",
+          "status": "状态"
         },
         "field": {
           "from": "起",
@@ -847,23 +848,6 @@
           "submitDate": "送单时间",
           "transactionTime": "成功交易时间",
           "transactionNumber": "交易编号"
-        }
-      },
-      "transfer": {
-        "title": "转账明细",
-        "table": {
-          "game": "游戏",
-          "rollinPoint": "点数转入",
-          "rolloutPoint": "点数转出",
-          "accountingDate": "帐务日期",
-          "transactionTime": "交易时间",
-          "beforeWallet": "我的钱包(转帐前)",
-          "afterWallet": "我的钱包(转帐后)",
-          "beforeGameAccount": "游戏帐户(转帐前)",
-          "afterGameAccount": "游戏帐户(转帐后)",
-          "product": "馆别",
-          "datetime": "时间",
-          "status": "状态"
         }
       },
       "bonus": {},

@@ -1,5 +1,4 @@
 @import './_abstracts';
-@import '@/styles/Y/_default/header';
 @import '@/styles/Z/_default/header';
 
 //* AppHeader
@@ -56,7 +55,7 @@ $header-menu-dropdown-lang-dropdown-btn-color: white;
 $header-menu-dropdown-lang-dropdown-btn-border-bottom: 1px #505050 solid;
 
 .header-menu {
-  @include header-menu-z;
+  @include header-menu;
 }
 
 $header-sub-bg: black;
@@ -82,5 +81,5 @@ $header-sub-dropdown-button-bg: $btn-bg-z-01-brown;
 $header-sub-dropdown-button-color: white;
 
 .header-sub {
-  @include header-sub-z;
+  @include header-sub;
 }

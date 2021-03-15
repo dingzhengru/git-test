@@ -1,4 +1,44 @@
-@mixin header-menu-z {
+@mixin header {
+  width: 100%;
+  height: $header-height;
+  background: $header-bg;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    // width: $header-logo-width;
+    // height: $header-logo-height;
+    max-width: 425px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  &__link {
+    position: absolute;
+
+    &--home {
+      background: $header-link-home-bg;
+      width: $header-link-home-width;
+      height: $header-link-home-height;
+      left: $header-link-home-left;
+    }
+
+    &--back {
+      background: $header-link-back-bg;
+      width: $header-link-back-width;
+      height: $header-link-back-height;
+      left: $header-link-back-left;
+    }
+  }
+}
+
+@mixin header-menu {
   width: 100%;
 
   display: flex;
@@ -142,7 +182,7 @@
   }
 }
 
-@mixin header-sub-z {
+@mixin header-sub {
   position: fixed;
   background: $header-sub-bg;
   height: 100%;

@@ -764,10 +764,11 @@
       "transfer": {
         "title": "บันทึกรายการโอนเงิน",
         "table": {
-          "date": "วันที่",
-          "game": "เกมส์",
-          "type": "ประเภท",
-          "amount": "Amount"
+          "product": "โซน",
+          "rollinPoint": "ยอดเงินโอนเข้า",
+          "rolloutPoint": "ยอดเงินโอนออก",
+          "datetime": "เวลา",
+          "status": "สถานะ"
         },
         "field": {
           "from": "From",

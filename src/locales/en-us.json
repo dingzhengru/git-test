@@ -766,10 +766,11 @@
       "transfer": {
         "title": "Transfer Record",
         "table": {
-          "date": "Date",
-          "game": "Game",
-          "type": "Type",
-          "amount": "Amount"
+          "product": "Product",
+          "rollinPoint": "Roll-in of Points",
+          "rolloutPoint": "Roll-out of Points",
+          "datetime": "Time",
+          "status": "Status"
         },
         "field": {
           "from": "From",
@@ -851,20 +852,6 @@
           "submitDate": "Submit Time",
           "transactionTime": "Transaction Time",
           "transactionNumber": "Transaction No."
-        }
-      },
-      "transfer": {
-        "title": "Transfer Detail",
-        "table": {
-          "game": "Game",
-          "rollinPoint": "Roll-in of Points",
-          "rolloutPoint": "Roll-out of Points",
-          "accountingDate": "Accounting Date",
-          "transactionTime": "Transaction Time",
-          "beforeWallet": "Wallet(Before transfer)",
-          "afterWallet": "Wallet(After transfer)",
-          "beforeGameAccount": "Game Account(Before transfer)",
-          "afterGameAccount": "Game Account(After transfer)"
         }
       },
       "bonus": {},
