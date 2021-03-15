@@ -43,7 +43,7 @@
         :rules="{ required: true, min: 4, max: 4, regex: '^[0-9]*$' }"
       >
         <div class="ui-field__group">
-          <label class="ui-field__group__label" :for="$idMapper.login.input.password">
+          <label class="ui-field__group__label" :for="$idMapper.login.input.captcha">
             {{ $t('login.placeholder.captcha') }}
           </label>
           <input
