@@ -62,6 +62,12 @@ Vue.config.productionTip = false;
   }
 })();
 
+import axios from 'axios';
+
+axios.get('/.well-known/assetlinks.json').then(result => {
+  console.log(result.data);
+});
+
 //* 封站，轉址測試
 // const isBlocked = true;
 // import { isStandaloneMode } from '@/utils/device';
