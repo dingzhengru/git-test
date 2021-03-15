@@ -43,7 +43,17 @@ Vue.use(VueScrollTo);
 
 Vue.config.productionTip = false;
 
+//* 取得目前語系
+const lang = cookieGetLang() || LANG_DEFAULT;
+
+//* 載入語系
+store.commit('setLang', lang);
+
+//* 取得語系列表
+store.dispatch('getLangList');
+
 //* Version (目前設置於 public/version)
+
 (async () => {
   if (!window.caches) {
     return;
@@ -57,33 +67,13 @@ Vue.config.productionTip = false;
   if (cacheKeyList.length > 0 && version !== versionCookie) {
     cookieSetVersion(version);
     cacheKeyList.forEach(key => caches.delete(key));
-    alert('版本更新，將重整');
-    window.location.reload();
+
+    setTimeout(() => {
+      alert(i18n.t('alert.versionUpdate'));
+      window.location.reload();
+    }, 1000);
   }
 })();
-
-import axios from 'axios';
-
-axios.get('/.well-known/assetlinks.json').then(result => {
-  console.log(result.data);
-});
-
-//* 封站，轉址測試
-// const isBlocked = true;
-// import { isStandaloneMode } from '@/utils/device';
-// if (isBlocked) {
-//   if (isStandaloneMode()) {
-//     setTimeout(() => {
-//       console.log('PWA 轉址(window.open googlechrome)');
-//       alert('PWA 轉址(window.open googlechrome)');
-//       // window.location.href = 'https://www.starbets88.com';
-//       // window.open('https://www.starbets88.com', '_blank');
-//       window.open(`googlechrome://navigate?url=https://www.starbets88.com`, '_system');
-//     }, 3000);
-//   } else {
-//     console.log('Web 轉址(window.open googlechrome)');
-//   }
-// }
 
 //* 離線通知
 if (!window.navigator.onLine) {
@@ -112,15 +102,6 @@ if (cookieGetToken() && cookieGetPublicKey()) {
 } else if (isLoggedIn) {
   store.dispatch('user/getTokenAndPublicKey');
 }
-
-//* 取得目前語系
-const lang = cookieGetLang() || LANG_DEFAULT;
-
-//* 載入語系
-store.commit('setLang', lang);
-
-//* 取得語系列表
-store.dispatch('getLangList');
 
 //* 取得遊戲館列表
 if (isLoggedIn) {

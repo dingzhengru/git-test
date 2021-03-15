@@ -44,7 +44,8 @@
     "transferSuccess": "Transfer successfully!",
     "replaySuccess": "Reply successfully",
     "sendEmailSuccess": "Mail sent successfully!",
-    "gameMaintenance": "Game under maintenance, we apologize for the inconvenience brought to you!"
+    "gameMaintenance": "Game under maintenance, we apologize for the inconvenience brought to you!",
+    "versionUpdate": "New version update, reload now"
   },
   "validate": {
     "common": {
