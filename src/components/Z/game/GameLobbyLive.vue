@@ -29,7 +29,7 @@
       :gameList="gameList"
       :productCurrent="productCurrent"
       @open-game="openGame"
-      v-if="productCurrent === productLiveEVO"
+      v-if="productCategoryEntry === 1"
     />
 
     <component

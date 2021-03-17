@@ -20,24 +20,6 @@ export default {
   },
   computed: {
     ...mapGetters(['lang', 'siteSetting', 'siteFullCss', 'userIsLoggedIn', 'userGamePointWallet']),
-    GameJackpot() {
-      return () => import(`@/${this.siteSetting.components.game.GameJackpot}`);
-    },
-    GameProductNavigation() {
-      return () => import(`@/${this.siteSetting.components.game.GameProductNavigation}`);
-    },
-    GameCategoryNavigation() {
-      return () => import(`@/${this.siteSetting.components.game.GameCategoryNavigation}`);
-    },
-    GameSearchBlock() {
-      return () => import(`@/${this.siteSetting.components.game.GameSearchBlock}`);
-    },
-    GameListTable() {
-      return () => import(`@/${this.siteSetting.components.game.GameListTable}`);
-    },
-    GameTransferDialog() {
-      return () => import(`@/${this.siteSetting.components.game.GameTransferDialog}`);
-    },
   },
   data() {
     return {

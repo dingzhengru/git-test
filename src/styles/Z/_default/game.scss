@@ -170,10 +170,11 @@
 @mixin game-lobby-category {
   background: $game-lobby-category-bg;
   position: relative;
-  overflow: hidden;
   height: 74px;
 
   display: flex;
+  word-break: keep-all;
+  overflow-x: auto;
 
   &__item {
     display: flex;
