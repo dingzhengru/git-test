@@ -3,13 +3,13 @@
     <div v-if="productCurrent.Lst_Site_Product_Status != 0">
       <h1 class="text-center">{{ $t('alert.gameMaintenance') }}</h1>
     </div>
-    <div class="game-lobby-list-icon__item" v-for="item in gameList" :key="item.Lst_GameID">
+    <div class="game-lobby-list-icon__item" v-for="item in gameList" :key="item.Lst_GameID" @click="openGame(item)">
       <!-- <div class="game-lobby-list-icon__item__icon" :style="{ 'background-image': `url(${GameImagePopular})` }"></div> -->
-      <img class="game-lobby-list-icon__item__icon" :src="GameImagePopular" alt="" />
+      <img class="game-lobby-list-icon__item__icon" :src="item.imagePath" alt="" />
       <div class="game-lobby-list-icon__item__text">
-        熱門遊戲
+        {{ item.Lst_GameName }}
       </div>
-      <div class="game-lobby-list-icon__item__new">New!</div>
+      <!-- <div class="game-lobby-list-icon__item__new">New!</div> -->
     </div>
   </div>
 </template>
@@ -48,11 +48,8 @@ export default {
     return {};
   },
   methods: {
-    openGame(game, freePlay) {
-      this.$emit('open-game', game, freePlay);
-    },
-    changeGameFav(game) {
-      this.$emit('change-game-fav', game);
+    openGame(game) {
+      this.$emit('open-game', game);
     },
   },
 };

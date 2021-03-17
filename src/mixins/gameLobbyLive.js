@@ -25,6 +25,10 @@ export default {
   },
   data() {
     return {
+      //* 以類別進入大廳會使用到的參數 (真人、戰棋)
+      productCategoryStatus: null,
+      productCategoryEntry: null,
+
       defaultCategoryList: [
         {
           Lst_Category: '',
@@ -55,6 +59,8 @@ export default {
         result = await apiGetGameLobbyCategory(requestData);
       }
       this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
+      this.productCategoryStatus = result.RetObj.ProductStatus;
+      this.productCategoryEntry = result.RetObj.ProductEntry;
       return result;
     },
     async getGameList() {
@@ -64,7 +70,8 @@ export default {
         Page: this.pagination.page,
         GameName: this.search.text,
         IsLike: this.search.isFav ? 1 : 0,
-        GameClassify: 1,
+        GameClassify: this.productClassify,
+        Entrance: this.productCategoryEntry,
       };
       let result = {};
       if (this.userIsLoggedIn) {
@@ -83,7 +90,7 @@ export default {
         Page: this.pagination.page,
         GameName: this.search.text,
         IsLike: this.search.isFav ? 1 : 0,
-        GameClassify: 1,
+        GameClassify: this.productClassify,
       };
       let result = {};
       if (this.userIsLoggedIn) {
@@ -104,6 +111,7 @@ export default {
         Tag: this.productTag,
         Gameid: game.Lst_GameID,
         Freeplay: 0,
+        GameClassify: this.productClassify,
       };
 
       const newWindow = window.open('/loading.html');
@@ -120,17 +128,17 @@ export default {
   },
   async mounted() {
     this.getGameProductList();
-    this.getGameCategoryList();
+    await this.getGameCategoryList();
     this.getGameList();
   },
   watch: {
     async lang() {
       this.getGameProductList();
-      this.getGameCategoryList();
+      await this.getGameCategoryList();
       this.getGameList();
     },
     async productTag() {
-      this.getGameCategoryList();
+      await this.getGameCategoryList();
       this.getGameList();
     },
   },

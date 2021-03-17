@@ -16,6 +16,7 @@ export default {
       this.$router.push({
         name: gameLobby,
         params: {
+          classify: product.Lst_Game_Classify,
           id: product.Lst_Product_id,
           key: product.Lst_Proxy_Product_Key,
         },

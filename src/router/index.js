@@ -56,13 +56,12 @@ const routes = [
         redirect: { name: 'GameList' },
       },
       {
-        path: 'slot/:id/:key',
+        path: 'slot/:classify/:id/:key',
         name: 'GameLobbySlot',
         component: () => import('@/views/game/GameLobbySlot'),
       },
-
       {
-        path: 'live/:id/:key',
+        path: 'live/:classify/:id/:key',
         name: 'GameLobbyLive',
         component: () => import('@/views/game/GameLobbyLive'),
       },

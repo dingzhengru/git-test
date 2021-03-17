@@ -8,9 +8,9 @@ export default {
   mixins: [mixinProductLinkHandler],
   computed: {
     ...mapGetters(['lang', 'userGamePointById']),
-    // productClassify() {
-    //   return String(this.$route.params.classify);
-    // },
+    productClassify() {
+      return String(this.$route.params.classify);
+    },
     productId() {
       return String(this.$route.params.id);
     },
@@ -41,6 +41,7 @@ export default {
       productList: [],
       categoryList: [],
       gameList: [],
+
       search: {
         text: '',
         isFav: false,
