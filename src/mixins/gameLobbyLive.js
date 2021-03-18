@@ -29,10 +29,21 @@ export default {
       productCategoryStatus: null,
       productCategoryEntry: null,
 
-      defaultCategoryList: [
+      defaultCategoryListLive: [
         {
           Lst_Category: '',
           Lst_GameName: 'all',
+        },
+      ],
+
+      defaultCategoryListSlot: [
+        {
+          Lst_Category: '',
+          Lst_GameName: 'all',
+        },
+        {
+          Lst_Category: 'Hot Games',
+          Lst_GameName: 'hot',
         },
       ],
     };
@@ -58,7 +69,13 @@ export default {
         requestData.Lang = this.lang;
         result = await apiGetGameLobbyCategory(requestData);
       }
-      this.categoryList = this.defaultCategoryList.concat(result.RetObj.gameCategoryList);
+
+      if (this.productClassify === 1) {
+        this.categoryList = this.defaultCategoryListLive.concat(result.RetObj.gameCategoryList);
+      } else if (this.productClassify === 2) {
+        this.categoryList = this.defaultCategoryListSlot.concat(result.RetObj.gameCategoryList);
+      }
+
       this.productCategoryStatus = result.RetObj.ProductStatus;
       this.productCategoryEntry = result.RetObj.ProductEntry;
       return result;

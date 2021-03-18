@@ -56,15 +56,20 @@ const routes = [
         redirect: { name: 'GameList' },
       },
       {
-        path: 'slot/:classify/:id/:key',
-        name: 'GameLobbySlot',
-        component: () => import('@/views/game/GameLobbySlot'),
+        path: ':classify/:id/:key',
+        name: 'GameLobby',
+        component: () => import('@/views/game/GameLobby'),
       },
-      {
-        path: 'live/:classify/:id/:key',
-        name: 'GameLobbyLive',
-        component: () => import('@/views/game/GameLobbyLive'),
-      },
+      // {
+      //   path: 'slot/:classify/:id/:key',
+      //   name: 'GameLobbySlot',
+      //   component: () => import('@/views/game/GameLobbySlot'),
+      // },
+      // {
+      //   path: 'live/:classify/:id/:key',
+      //   name: 'GameLobbyLive',
+      //   component: () => import('@/views/game/GameLobbyLive'),
+      // },
     ],
   },
   {

@@ -31,7 +31,7 @@
             class="game-lobby-list__table__tr__td__link--favorites"
             :class="{ active: item.Lst_IsLike }"
             @click.capture.stop="changeGameFav(item)"
-            v-if="isShowLike"
+            v-if="isShowFav"
           >
             {{ $t('game.link.fav') }}
           </a>
@@ -61,7 +61,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    isShowLike: {
+    isShowFav: {
       type: Boolean,
       default: false,
     },

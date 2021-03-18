@@ -5,16 +5,16 @@ export default {
   name: 'MixinGameLinkHandler',
   methods: {
     goInnerLobby(product) {
-      let gameLobby = 'GameLobbySlot';
+      // let gameLobby = 'GameLobbySlot';
 
-      if (product.Lst_Game_Classify == 1) {
-        gameLobby = 'GameLobbyLive';
-      } else if (product.Lst_Game_Classify == 2) {
-        gameLobby = 'GameLobbySlot';
-      }
+      // if (product.Lst_Game_Classify == 1) {
+      //   gameLobby = 'GameLobbyLive';
+      // } else if (product.Lst_Game_Classify == 2) {
+      //   gameLobby = 'GameLobbySlot';
+      // }
 
       this.$router.push({
-        name: gameLobby,
+        name: 'GameLobby',
         params: {
           classify: product.Lst_Game_Classify,
           id: product.Lst_Product_id,

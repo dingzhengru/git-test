@@ -63,7 +63,7 @@
       @close="closeTransferDialog"
     />
 
-    <intersect @enter="changePageScrollBottom" rootMargin="0px 0px 5px 0px">
+    <intersect @enter="changePageScrollBottom" rootMargin="0px 0px 5px 0px" v-if="isChangePageScroll">
       <div class="game-lobby-bottom-intersect"></div>
     </intersect>
   </div>

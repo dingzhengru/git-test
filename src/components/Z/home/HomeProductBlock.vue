@@ -33,7 +33,6 @@ export default {
       try {
         return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
       } catch {
-        console.log('not found', `@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
         return '';
       }
     },
