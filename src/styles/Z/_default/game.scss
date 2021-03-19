@@ -324,6 +324,7 @@
     margin: 0 5px 60px 5px;
 
     &__icon {
+      height: $game-lobby-list-icon-item-img-height;
       display: block;
       margin: 0 auto;
     }

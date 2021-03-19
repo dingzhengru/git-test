@@ -93,7 +93,7 @@
             Installing
           </template>
           <template v-else-if="pwaInstallStatus === 'installed'">
-            Open
+            Open App
           </template>
         </button>
 

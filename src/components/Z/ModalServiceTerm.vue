@@ -1,7 +1,8 @@
 <template>
   <AppModal :isShow="isShow" @close="$emit('close')">
     <div class="service-term">
-      <div class="service-term__close" @click="$emit('close')"></div>
+      <!-- <div class="service-term__close" @click="$emit('close')"></div> -->
+      <div class="ui-box-close" @click="$emit('close')"></div>
       <div class="service-term__title">{{ $t('register.modalServiceTerm.title') }}</div>
       <div class="service-term__container">
         <div class="service-term__sub-title">

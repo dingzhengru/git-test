@@ -12,7 +12,7 @@
   font-size: 2rem;
 
   &__item {
-    background: #444444;
+    background: $contact-item-bg;
     // width: 638px;
     width: 100%;
     min-height: 120px;
@@ -51,17 +51,18 @@
     }
     &__text {
       &__title {
-        color: $contact-title-color;
+        color: $contact-item-title-color;
       }
       &__content {
         font-size: 1.5rem;
-        color: $contact-content-color;
+        color: $contact-item-content-color;
       }
     }
     &__btn {
       margin-left: auto;
-      background-color: $contact-btn-bg;
+      background: $contact-btn-bg;
       color: $contact-btn-color;
+      border: $contact-btn-border;
       text-align: center;
       width: 185px;
       height: 85px;
@@ -80,10 +81,10 @@
       background: $contact-icon-dropdown-bg;
       width: $contact-icon-dropdown-width;
       height: $contact-icon-dropdown-height;
-      transform: rotate(-90deg);
+      transform: $contact-icon-dropdown-transform;
       transition: all 0.3s linear;
       &.open {
-        transform: rotate(0);
+        transform: $contact-icon-dropdown-transform-open;
       }
     }
 

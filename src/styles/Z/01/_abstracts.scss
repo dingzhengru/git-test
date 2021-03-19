@@ -16,23 +16,7 @@ $header-sub-height-auth: 58px;
 
 $footer-height: 119px;
 
-$text-color-z-01-brown: #462b16;
-$text-color-z-01-yellow-dark: #f9bd06;
-$text-color-z-01-yellow-dark-2: #cbaa6d;
-
 $btn-height: 89px;
-
-$btn-bg-z-01-yellow-light: #caad76;
-$btn-bg-z-01-gray: #6d6d6d;
-$btn-bg-z-01-brown: #462b16;
-
-$btn-bg-submit: $btn-bg-z-01-brown;
-$btn-color-submit: white;
-$btn-shadow-submit: none;
-
-$btn-bg-reset: $btn-bg-z-01-yellow-light;
-$btn-color-reset: black;
-$btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 $field-font-size: 2rem;
 $field-bg: #444444;
@@ -49,6 +33,7 @@ $field-textarea-label-color: #959595;
 $field-textarea-bg: #2c2d2e;
 $field-textarea-color: white;
 $field-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 0, 0.8);
+$field-textarea-border-radius: 0px;
 
 $notice-color: #8b8b8b;
 $notice-font-size: 1.8rem;
@@ -56,12 +41,15 @@ $notice-line-height: 2.5rem;
 $notice-height-light-color: red;
 
 $point-list-bg: #444444;
-$point-list-label-color: $text-color-z-01-yellow-dark-2;
+$point-list-label-color: #cbaa6d;
 $point-list-content-color: white;
+$point-list-border-bg: black;
+$point-list-border-shadow: 0px -2px #8b8b8b;
 
 $table-bg: #444444;
 $table-tr-border-bottom: 1px solid black;
 $table-tr-shadow: 0px -2px #8b8b8b;
+$table-th-bg: #444444;
 $table-th-color: #cbaa6d;
 $table-td-color: white;
 
@@ -70,11 +58,13 @@ $nav-tab-text-color-active: #c8aa73;
 $nav-tab-border-bottom: 5px solid #8b8b8b;
 $nav-tab-border-bottom-active: 5px solid #c8aa73;
 
-$box-close-bg: #cab985;
+$box-close-bg: gray;
 $box-close-size: 48px;
-$box-close-width: 2px;
 $box-close-top: 24px;
 $box-close-right: 24px;
+$box-close-line-color: white;
+$box-close-line-width: 2px;
+
 $go-top-btn-bg: assetPath('ui/goTOP.png') center no-repeat;
 $go-top-btn-width: 58px;
 $go-top-btn-height: 58px;
@@ -100,7 +90,6 @@ $no-data-color: black;
 $no-data-font-size: 2rem;
 
 //* 服務規章視窗
-$service-term-close-color: #cab985;
 $service-term-item-title-icon: assetPath('ui/ui-arrow-select.png');
 $service-term-btn-bg: #462b16;
 $service-term-btn-color: white;
@@ -198,6 +187,7 @@ $service-term-btn-color: white;
     }
     textarea {
       width: 100%;
+      padding: 15px;
       background: $field-textarea-bg;
       color: $field-textarea-color;
       box-shadow: $field-textarea-shadow;
@@ -297,10 +287,10 @@ $service-term-btn-color: white;
 
     &:not(:last-child):after {
       content: '';
-      background: black;
+      background: $point-list-border-bg;
+      box-shadow: $point-list-border-shadow;
       width: 100%;
       height: 1px;
-      box-shadow: 0px -2px #8b8b8b;
       margin: 30px 0;
     }
   }
@@ -310,7 +300,6 @@ $service-term-btn-color: white;
   background: $table-bg;
   width: 100%;
   text-align: center;
-  background-color: #444444;
   border-radius: 5px;
   margin: 30px 0;
 
@@ -325,6 +314,7 @@ $service-term-btn-color: white;
   }
 
   th {
+    background: $table-th-bg;
     color: $table-th-color;
   }
 
@@ -372,6 +362,7 @@ $service-term-btn-color: white;
 }
 
 @mixin ui-box-close {
+  background: $box-close-bg;
   position: absolute;
   right: $box-close-top;
   top: $box-close-right;
@@ -380,12 +371,12 @@ $service-term-btn-color: white;
 
   &:before,
   &:after {
-    background: $box-close-bg;
+    background: $box-close-line-color;
     position: absolute;
     left: $box-close-size / 2;
     content: ' ';
     height: $box-close-size;
-    width: $box-close-width;
+    width: $box-close-line-width;
   }
 
   &:before {
@@ -462,34 +453,10 @@ $service-term-btn-color: white;
   border: 1px solid #c1ae71;
   border-radius: 5px;
   position: relative;
-  &__close {
-    position: absolute;
-    right: 30px;
-    top: 15px;
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-
-    &:before,
-    &:after {
-      position: absolute;
-      left: 24px;
-      content: ' ';
-      height: 48px;
-      width: 4px;
-      background: $service-term-close-color;
-    }
-
-    &:before {
-      transform: rotate(45deg);
-    }
-    &:after {
-      transform: rotate(-45deg);
-    }
-  }
 
   &__container {
-    height: calc(100% - #{$btn-height} - 45px);
+    height: 80%;
+    // height: calc(90vh - #{$btn-height} - 160px);
     overflow-y: scroll;
     margin-bottom: 30px;
   }

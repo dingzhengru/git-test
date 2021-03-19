@@ -210,12 +210,13 @@ export default {
         }
       } else {
         requestData.Lang = this.lang;
-        if (this.isProductClassifyLive && this.isProductClassifyP2P) {
+        if (this.isProductClassifyLive || this.isProductClassifyP2P) {
           result = await apiGetLiveGameLobbyProduct(requestData);
         } else if (this.isProductClassifySlot) {
           result = await apiGetGameLobbyProduct(requestData);
         }
       }
+      console.log('result', result);
       this.productList = result.RetObj.ProductList;
     },
     async getGameCategoryList() {

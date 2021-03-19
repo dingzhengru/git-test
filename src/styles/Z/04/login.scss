@@ -1,0 +1,22 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/login';
+
+$login-btn-bg-login: #462b16;
+$login-btn-text-color-login: white;
+$login-btn-shadow-login: none;
+
+$login-btn-bg-forget: #caad76;
+$login-btn-text-color-forget: black;
+$login-btn-shadow-forget: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$login-btn-bg-register: #caad76;
+$login-btn-text-color-register: black;
+$login-btn-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$login-btn-bg-pwa: #345e92;
+$login-btn-text-color-pwa: white;
+$login-btn-shadow-pwa: 0 2px 2px 0px rgb(0 0 0 / 80%);
+
+.login {
+  @include login;
+}

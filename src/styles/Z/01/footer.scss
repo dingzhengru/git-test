@@ -14,16 +14,16 @@ $footer-nav-link-bg: assetPath('footer/lnk_toolbar.png') no-repeat;
 $footer-nav-link-color: black;
 $footer-nav-link-color-active: white;
 $footer-nav-item-border-bg: none;
-$footer-nav-item-icon-home-bg: assetPath('ui/ui-footer-toolbar-home.png') center -25px no-repeat;
-$footer-nav-item-icon-home-bg-active: assetPath('ui/ui-footer-toolbar-home.png') center -145px no-repeat;
-$footer-nav-item-icon-login-bg: assetPath('ui/ui-footer-toolbar-registOrlogin.png') center -25px no-repeat;
-$footer-nav-item-icon-login-bg-active: assetPath('ui/ui-footer-toolbar-registOrlogin.png') center -145px no-repeat;
-$footer-nav-item-icon-promotion-bg: assetPath('ui/ui-footer-toolbar-event.png') center -25px no-repeat;
-$footer-nav-item-icon-promotion-bg-active: assetPath('ui/ui-footer-toolbar-event.png') center -145px no-repeat;
-$footer-nav-item-icon-contact-bg: assetPath('ui/ui-footer-toolbar-contact.png') center -25px no-repeat;
-$footer-nav-item-icon-contact-bg-active: assetPath('ui/ui-footer-toolbar-contact.png') center -145px no-repeat;
-$footer-nav-item-icon-transaction-bg: assetPath('ui/ui-footer-toolbar-trading.png') center -25px no-repeat;
-$footer-nav-item-icon-transaction-bg-active: assetPath('ui/ui-footer-toolbar-trading.png') center -145px no-repeat;
+$footer-nav-item-icon-home-bg: assetPath('footer/ui-footer-toolbar-home.png') center -25px no-repeat;
+$footer-nav-item-icon-home-bg-active: assetPath('footer/ui-footer-toolbar-home.png') center -145px no-repeat;
+$footer-nav-item-icon-login-bg: assetPath('footer/ui-footer-toolbar-registOrlogin.png') center -25px no-repeat;
+$footer-nav-item-icon-login-bg-active: assetPath('footer/ui-footer-toolbar-registOrlogin.png') center -145px no-repeat;
+$footer-nav-item-icon-promotion-bg: assetPath('footer/ui-footer-toolbar-event.png') center -25px no-repeat;
+$footer-nav-item-icon-promotion-bg-active: assetPath('footer/ui-footer-toolbar-event.png') center -145px no-repeat;
+$footer-nav-item-icon-contact-bg: assetPath('footer/ui-footer-toolbar-contact.png') center -25px no-repeat;
+$footer-nav-item-icon-contact-bg-active: assetPath('footer/ui-footer-toolbar-contact.png') center -145px no-repeat;
+$footer-nav-item-icon-transaction-bg: assetPath('footer/ui-footer-toolbar-trading.png') center -25px no-repeat;
+$footer-nav-item-icon-transaction-bg-active: assetPath('footer/ui-footer-toolbar-trading.png') center -145px no-repeat;
 
 .footer-nav {
   @include footer-nav;

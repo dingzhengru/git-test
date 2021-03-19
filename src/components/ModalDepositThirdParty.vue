@@ -54,14 +54,14 @@ export default {
   justify-items: center;
   align-items: center;
 
-  .ui-box-close {
-    background: gray;
+  // .ui-box-close {
+  //   background: gray;
 
-    &::after,
-    &::before {
-      background: white;
-    }
-  }
+  //   &::after,
+  //   &::before {
+  //     background: white;
+  //   }
+  // }
 
   &__content {
     width: 100%;
