@@ -40,21 +40,21 @@ $header-menu-toggle-line-bg: linear-gradient(to bottom, #9f7f4b 0%, #ba9559 100%
 $header-menu-dropdown-bg: rgba(0, 0, 0, 0.9);
 $header-menu-dropdown-icon: assetPath('ui/ui-collapse.png');
 $header-menu-dropdown-link-width: 250px;
-$header-menu-dropdown-link-color: #cbaa6d;
+$header-menu-dropdown-link-color: white;
 
 $header-menu-dropdown-btn-width: 500px;
 $header-menu-dropdown-btn-height: 70px;
-$header-menu-dropdown-btn-bg: #caad76;
-$header-menu-dropdown-btn-color: black;
+$header-menu-dropdown-btn-bg: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$header-menu-dropdown-btn-color: white;
 
 $header-menu-dropdown-lang-btn-icon-bg: assetPath('ui/ui-arrow-select.png') no-repeat;
 $header-menu-dropdown-lang-btn-icon-width: 35px;
 $header-menu-dropdown-lang-btn-icon-height: 23px;
 
 $header-menu-dropdown-lang-dropdown-position-top: $header-menu-dropdown-btn-height + 30;
-$header-menu-dropdown-lang-dropdown-btn-bg: black;
+$header-menu-dropdown-lang-dropdown-btn-bg: #213931;
 $header-menu-dropdown-lang-dropdown-btn-color: white;
-$header-menu-dropdown-lang-dropdown-btn-border-bottom: 1px #505050 solid;
+$header-menu-dropdown-lang-dropdown-btn-border-bottom: 1px solid #1d5343;
 
 .header-menu {
   @include header-menu;
