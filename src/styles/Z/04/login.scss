@@ -15,15 +15,15 @@ $login-btn-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 $login-btn-bg-pwa-install: linear-gradient(to bottom, #a17b3f, #644817);
 $login-btn-text-color-pwa-install: white;
-$login-btn-shadow-pwa-install: 0 2px 2px 0px rgb(0 0 0 / 80%);
+$login-btn-shadow-pwa-install: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 $login-btn-bg-pwa-installing: linear-gradient(to bottom, #a17b3f, #644817);
 $login-btn-text-color-pwa-installing: white;
-$login-btn-shadow-pwa-installing: 0 2px 2px 0px rgb(0 0 0 / 80%);
+$login-btn-shadow-pwa-installing: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 $login-btn-bg-pwa-installed: linear-gradient(to bottom, #396397, #285286);
 $login-btn-text-color-pwa-installed: white;
-$login-btn-shadow-pwa-installed: 0 2px 2px 0px rgb(0 0 0 / 80%);
+$login-btn-shadow-pwa-installed: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 .login {
   @include login;
