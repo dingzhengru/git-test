@@ -17,6 +17,7 @@
     right: 0;
     img {
       max-width: 100%;
+      border: $promotion-img-border;
     }
   }
 
@@ -37,6 +38,7 @@
     width: 600px;
     height: 190px;
     margin: 20px auto;
+    border: $promotion-detail-img-border;
   }
 
   &__main {
@@ -95,6 +97,7 @@
       button {
         background: $promotion-detail-button-bg-back;
         color: $promotion-detail-button-text-color-back;
+        box-shadow: $promotion-detail-button-shadow-back;
       }
     }
   }

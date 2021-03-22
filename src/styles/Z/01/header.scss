@@ -63,10 +63,14 @@ $header-menu-dropdown-lang-dropdown-btn-border-bottom: 1px #505050 solid;
 $header-sub-bg: black;
 
 $header-sub-button-height: 70px;
+
 $header-sub-button-bg-login: #caad76;
 $header-sub-button-color-login: #462b16;
+$header-sub-button-shadow-login: none;
+
 $header-sub-button-bg-register: #6d6d6d;
 $header-sub-button-color-register: white;
+$header-sub-button-shadow-register: none;
 
 // $header-sub-status-icon-bg: assetPath('ui/ui-status.png');
 // $header-sub-status-icon-width: 52px;

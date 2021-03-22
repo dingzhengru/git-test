@@ -210,12 +210,14 @@
     &__btn--login {
       background: $header-sub-button-bg-login;
       color: $header-sub-button-color-login;
+      box-shadow: $header-sub-button-shadow-login;
       width: 49%;
       margin: 0 5px 0 10px;
     }
     &__btn--register {
       background: $header-sub-button-bg-register;
       color: $header-sub-button-color-register;
+      box-shadow: $header-sub-button-shadow-register;
       width: 49%;
       margin: 0 10px 0 5px;
     }

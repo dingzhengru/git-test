@@ -63,10 +63,14 @@ $header-menu-dropdown-lang-dropdown-btn-border-bottom: 1px #505050 solid;
 $header-sub-bg: black;
 
 $header-sub-button-height: 70px;
-$header-sub-button-bg-login: #caad76;
-$header-sub-button-color-login: #462b16;
-$header-sub-button-bg-register: #6d6d6d;
+
+$header-sub-button-bg-login: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$header-sub-button-color-login: white;
+$header-sub-button-shadow-login: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$header-sub-button-bg-register: linear-gradient(to bottom, #941719 0%, #4f0708 100%);
 $header-sub-button-color-register: white;
+$header-sub-button-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 // $header-sub-status-icon-bg: assetPath('ui/ui-status.png');
 // $header-sub-status-icon-width: 52px;
