@@ -16,12 +16,12 @@ $home-banner-preloader-color: gray;
   @include home-banner;
 }
 
-$news-marquee-bg: #e5e5e5;
-$news-marquee-label-color: #8b8b8b;
+$news-marquee-bg: linear-gradient(to bottom, #6ab09b, #133c30);
+$news-marquee-label-color: white;
 $news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
 $news-marquee-icon-width: 71px;
 $news-marquee-icon-height: 71px;
-$news-marquee-link-color: #8b8b8b;
+$news-marquee-link-color: white;
 
 .news-marquee {
   @include news-marquee;
@@ -36,7 +36,7 @@ $news-marquee-link-color: #8b8b8b;
 //   @include home-product-nav-z;
 // }
 
-$home-main-bg: white;
+$home-main-bg: none;
 
 .home-main {
   @include home-main;
