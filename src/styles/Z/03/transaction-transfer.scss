@@ -1,0 +1,18 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/transaction-transfer';
+
+$transfer-btn-bg-switch: assetPath('ui/ui-transfer.png') center no-repeat,
+  linear-gradient(to bottom, #941719 0%, #4f0708 100%);
+$transfer-btn-shadow-switch: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$transfer-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$transfer-btn-color-submit: white;
+$transfer-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+.transfer {
+  @include transfer;
+
+  .ui-point-list {
+    background: #213931;
+  }
+}

@@ -2,38 +2,38 @@
 
 // function
 @function assetPath($path) {
-  @return url('~@/assets/Z/01/#{$path}');
+  @return url('~@/assets/Z/03/#{$path}');
 }
 
-$base-bg: white;
-$base-text-color: black;
+$base-bg: assetPath('ui/ui-indexBg.jpg') center center no-repeat #101010 fixed;
+$base-text-color: white;
 $base-font-size: 16px;
 $base-font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
 
-$header-height: 130px;
+$header-height: 131px;
 $header-sub-height: 90px;
 $header-sub-height-auth: 58px;
 
-$footer-height: 119px;
+$footer-height: 106px;
 
 $btn-height: 89px;
 
 $field-font-size: 2rem;
-$field-bg: #444444;
+$field-bg: #6c593a;
 $field-input-color: white;
-$field-input-color-placeholder: rgb(117, 117, 117);
-$field-select-bg: assetPath('ui/ui-arrow-select.png') #444444 97% center no-repeat;
-$field-select-color: #c8aa73;
-$field-label-color: #cbaa6d;
+$field-input-color-placeholder: #ffffff82;
+$field-select-bg: assetPath('ui/ui-arrow-select.png') #6c593a 97% center no-repeat;
+$field-select-color: #edebc0;
+$field-label-color: #edebc0;
 $field-label-color-checkbox: white;
-$field-error-bg: #c8aa73;
-$field-error-color: black;
+$field-error-bg: none;
+$field-error-color: white;
 $field-star-color: #c8aa73;
 $field-textarea-label-color: #959595;
 $field-textarea-bg: #2c2d2e;
 $field-textarea-color: white;
 $field-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 0, 0.8);
-$field-textarea-border-radius: 0px;
+$field-textarea-border-radius: 5px;
 
 $notice-color: #8b8b8b;
 $notice-font-size: 1.8rem;
@@ -43,24 +43,24 @@ $notice-height-light-color: red;
 $step-color: white;
 $step-border: 4px solid #c8aa73;
 
-$point-list-bg: #444444;
-$point-list-label-color: #cbaa6d;
+$point-list-bg: #6c593a;
+$point-list-label-color: #edebc0;
 $point-list-content-color: white;
-$point-list-border-bg: black;
-$point-list-border-shadow: 0px -2px #8b8b8b;
+$point-list-border-bg: #8b744f;
+$point-list-border-shadow: 0px -2px #4a3a1f;
 
-$table-bg: #444444;
-$table-th-bg: #444444;
-$table-th-color: #cbaa6d;
-$table-tr-border-bottom: 1px solid black;
+$table-bg: #6c593a;
+$table-th-bg: #56452b;
+$table-th-color: white;
+$table-tr-border-bottom: 0px solid #000;
 $table-tr-shadow: 0px -2px #8b8b8b;
 $table-td-color: white;
-$table-td-border: 2px solid #555;
+$table-td-border: 2px solid #7f6a47;
 
-$nav-tab-text-color: #8b8b8b;
-$nav-tab-text-color-active: #c8aa73;
-$nav-tab-border-bottom: 5px solid #8b8b8b;
-$nav-tab-border-bottom-active: 5px solid #c8aa73;
+$nav-tab-text-color: white;
+$nav-tab-text-color-active: #f9a91c;
+$nav-tab-border-bottom: 5px solid #e5e4e4;
+$nav-tab-border-bottom-active: 5px solid #f9a91c;
 
 $box-close-bg: gray;
 $box-close-size: 48px;
@@ -90,7 +90,7 @@ $lottery-btn-block-red-envelope-text-color: white;
 
 //* 尚無資料的部分
 $no-data-bg: none;
-$no-data-color: black;
+$no-data-color: white;
 $no-data-font-size: 2rem;
 
 //* 服務規章視窗
@@ -195,6 +195,7 @@ $service-term-btn-color: white;
       background: $field-textarea-bg;
       color: $field-textarea-color;
       box-shadow: $field-textarea-shadow;
+      border-radius: $field-textarea-border-radius;
     }
   }
 
@@ -293,9 +294,9 @@ $service-term-btn-color: white;
     &:not(:last-child):after {
       content: '';
       background: $point-list-border-bg;
-      box-shadow: $point-list-border-shadow;
       width: 100%;
       height: 1px;
+      box-shadow: $point-list-border-shadow;
       margin: 30px 0;
     }
   }

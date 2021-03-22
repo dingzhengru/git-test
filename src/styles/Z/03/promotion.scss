@@ -1,0 +1,24 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/promotion';
+
+$promotion-img-border: 3px solid #82704f;
+
+.promotion {
+  @include promotion;
+}
+
+$promotion-detail-img-border: 3px solid #82704f;
+$promotion-detail-title-bg: assetPath('ui/ui-event.png') #488472 no-repeat;
+$promotion-detail-title-color: white;
+$promotion-detail-content-text-color: white;
+$promotion-detail-button-bg-back: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$promotion-detail-button-text-color-back: white;
+$promotion-detail-button-shadow-back: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+.promotion-detail {
+  @include promotion-detail;
+
+  &__main__button--back {
+    width: 80%;
+  }
+}

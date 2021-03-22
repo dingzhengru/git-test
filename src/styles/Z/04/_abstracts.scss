@@ -50,11 +50,12 @@ $point-list-border-bg: #1d5343;
 $point-list-border-shadow: 0px -2px #0e3427;
 
 $table-bg: none;
-$table-tr-border-bottom: 1px solid black;
-$table-tr-shadow: 0px -2px #8b8b8b;
 $table-th-bg: #0c1b16;
 $table-th-color: white;
+$table-tr-border-bottom: 1px solid black;
+$table-tr-shadow: 0px -2px #8b8b8b;
 $table-td-color: white;
+$table-td-border: 2px solid #555;
 
 $nav-tab-text-color: white;
 $nav-tab-text-color-active: #f9a91c;
@@ -316,6 +317,7 @@ $service-term-btn-color: white;
   th,
   td {
     padding: 10px 5px;
+    border: $table-td-border;
   }
 
   th {
