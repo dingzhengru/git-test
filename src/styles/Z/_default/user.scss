@@ -185,21 +185,31 @@
     display: flex;
     margin-bottom: 30px;
 
-    button {
+    > button {
       width: 50%;
       margin: 0 5px;
+
+      background: $user-mail-btn-bg;
+      color: $user-mail-btn-color;
+      box-shadow: $user-mail-btn-shadow;
+
+      &.active {
+        background: $user-mail-btn-bg-active;
+        color: $user-mail-btn-color-active;
+        box-shadow: $user-mail-btn-shadow-active;
+      }
     }
 
-    &--inbox {
-      background: $user-mail-btn-bg-inbox;
-      color: $user-mail-btn-color-inbox;
-      box-shadow: $user-mail-btn-shadow-inbox;
-    }
-    &--add {
-      background: $user-mail-btn-bg-add;
-      color: $user-mail-btn-color-add;
-      box-shadow: $user-mail-btn-shadow-add;
-    }
+    // &--inbox {
+    //   background: $user-mail-btn-bg-inbox;
+    //   color: $user-mail-btn-color-inbox;
+    //   box-shadow: $user-mail-btn-shadow-inbox;
+    // }
+    // &--add {
+    //   background: $user-mail-btn-bg-add;
+    //   color: $user-mail-btn-color-add;
+    //   box-shadow: $user-mail-btn-shadow-add;
+    // }
   }
 
   &__main {

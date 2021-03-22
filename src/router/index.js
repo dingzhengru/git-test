@@ -101,6 +101,31 @@ const routes = [
         path: 'mail',
         name: 'UserMail',
         component: () => import('@/views/user/UserMail'),
+        // children: [
+        //   {
+        //     path: '',
+        //     name: 'UserMailHome',
+        //     redirect: { name: 'UserMailInbox' },
+        //   },
+        //   {
+        //     path: 'inbox',
+        //     name: 'UserMailInbox',
+        //     component: () => import('@/views/user/UserMailInbox'),
+        //     meta: { 'header-back-icon': true },
+        //   },
+        //   {
+        //     path: 'inbox/:key',
+        //     name: 'UserMailDetail',
+        //     component: () => import('@/views/user/UserMailDetail'),
+        //     meta: { 'header-back-icon': true },
+        //   },
+        //   {
+        //     path: 'send',
+        //     name: 'UserMailSend',
+        //     component: () => import('@/views/user/UserMailSend'),
+        //     meta: { 'header-back-icon': true },
+        //   },
+        // ],
       },
       {
         path: 'mail/:key',

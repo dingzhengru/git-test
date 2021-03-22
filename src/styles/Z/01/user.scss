@@ -41,13 +41,13 @@ $user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
   @include user-change-password;
 }
 
-$user-mail-btn-bg-inbox: #462b16;
-$user-mail-btn-color-inbox: white;
-$user-mail-btn-shadow-inbox: none;
+$user-mail-btn-bg: #462b16;
+$user-mail-btn-color: white;
+$user-mail-btn-shadow: none;
 
-$user-mail-btn-bg-add: #caad76;
-$user-mail-btn-color-add: black;
-$user-mail-btn-shadow-add: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+$user-mail-btn-bg-active: #caad76;
+$user-mail-btn-color-active: black;
+$user-mail-btn-shadow-active: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 $user-mail-item-bg: $field-bg;
 $user-mail-item-color-date: white;
