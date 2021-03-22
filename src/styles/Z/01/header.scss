@@ -35,6 +35,8 @@ $header-title-color: white;
 }
 
 //* AppHeaderMenu
+$header-menu-toggle-line-bg: #e4ddd2;
+
 $header-menu-dropdown-bg: rgba(0, 0, 0, 0.9);
 $header-menu-dropdown-icon: assetPath('ui/ui-collapse.png');
 $header-menu-dropdown-link-width: 250px;
@@ -66,9 +68,9 @@ $header-sub-button-color-login: #462b16;
 $header-sub-button-bg-register: #6d6d6d;
 $header-sub-button-color-register: white;
 
-$header-sub-status-icon-bg: assetPath('ui/ui-status.png');
-$header-sub-status-icon-width: 52px;
-$header-sub-status-icon-height: 52px;
+// $header-sub-status-icon-bg: assetPath('ui/ui-status.png');
+// $header-sub-status-icon-width: 52px;
+// $header-sub-status-icon-height: 52px;
 $header-sub-status--text-color-account: white;
 $header-sub-status--text-color-wallet: #f9bd06;
 
@@ -77,8 +79,14 @@ $header-sub-icon-dropdown-width: 19px;
 $header-sub-icon-dropdown-height: 29px;
 
 $header-sub-dropdown-bg: rgba(0, 0, 0, 0.9);
-$header-sub-dropdown-button-bg: #462b16;
-$header-sub-dropdown-button-color: white;
+
+$header-sub-dropdown-button-refresh-bg: #462b16;
+$header-sub-dropdown-button-refresh-color: white;
+$header-sub-dropdown-button-refresh-shadow: none;
+
+$header-sub-dropdown-button-transfer-all-bg: #462b16;
+$header-sub-dropdown-button-transfer-all-color: white;
+$header-sub-dropdown-button-transfer-all-shadow: none;
 
 .header-sub {
   @include header-sub;

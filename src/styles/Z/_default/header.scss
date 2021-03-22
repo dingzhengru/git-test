@@ -55,7 +55,7 @@
 
     > span {
       display: block;
-      background-color: #e4ddd2;
+      background: $header-menu-toggle-line-bg;
       width: 36px;
       height: 5px;
       margin-bottom: 8px;
@@ -233,7 +233,8 @@
 
     &__item--account {
       color: $header-sub-status--text-color-account;
-      padding-left: $header-sub-status-icon-width + 20;
+      padding-left: 15px;
+      // padding-left: $header-sub-status-icon-width + 20;
     }
 
     &__item--wallet {
@@ -241,23 +242,23 @@
       padding-right: $header-sub-icon-dropdown-width + 20;
     }
 
-    &__icon--status {
-      background: $header-sub-status-icon-bg;
-      width: $header-sub-status-icon-width;
-      height: $header-sub-status-icon-height;
-      position: absolute;
-      left: 10px;
+    // &__icon--status {
+    //   background: $header-sub-status-icon-bg;
+    //   width: $header-sub-status-icon-width;
+    //   height: $header-sub-status-icon-height;
+    //   position: absolute;
+    //   left: 10px;
 
-      &.class-1 {
-        background-position: center 0px;
-      }
-      &.class-2 {
-        background-position: center 150px;
-      }
-      &.class-3 {
-        background-position: center 53px;
-      }
-    }
+    //   &.class-1 {
+    //     background-position: center 0px;
+    //   }
+    //   &.class-2 {
+    //     background-position: center 150px;
+    //   }
+    //   &.class-3 {
+    //     background-position: center 53px;
+    //   }
+    // }
 
     &__icon--dropdown {
       background: $header-sub-icon-dropdown-bg;
@@ -289,9 +290,22 @@
       height: auto;
       line-height: $btn-height;
       font-size: 2rem;
-      background: $header-sub-dropdown-button-bg;
-      color: $header-sub-dropdown-button-color;
+      // background: $header-sub-dropdown-button-bg;
+      // color: $header-sub-dropdown-button-color;
       margin: 10px 0;
+    }
+
+    &__btn {
+      &--refresh {
+        background: $header-sub-dropdown-button-refresh-bg;
+        color: $header-sub-dropdown-button-refresh-color;
+        box-shadow: $header-sub-dropdown-button-refresh-shadow;
+      }
+      &--transfer-all {
+        background: $header-sub-dropdown-button-transfer-all-bg;
+        color: $header-sub-dropdown-button-transfer-all-color;
+        box-shadow: $header-sub-dropdown-button-transfer-all-shadow;
+      }
     }
 
     .ui-point-list {

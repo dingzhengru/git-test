@@ -9,7 +9,7 @@
       </button>
     </div>
     <div class="header-sub__member" @click="isShowDropdown = !isShowDropdown" v-show="userIsLoggedIn">
-      <i class="header-sub__member__icon--status" :class="'class-2'"></i>
+      <!-- <i class="header-sub__member__icon--status" :class="'class-2'"></i> -->
       <div class="header-sub__member__item header-sub__member__item--account">
         {{ userAccount }}
       </div>
@@ -21,7 +21,7 @@
     <transition name="slide-dropdown">
       <div class="header-sub__dropdown" v-show="isShowDropdown">
         <button
-          class="ui-btn ui-btn--block"
+          class="ui-btn ui-btn--block header-sub__dropdown__btn--refresh"
           :disabled="refreshTimeCount !== refreshTimeInterval"
           @click="refreshWallet"
         >
@@ -31,7 +31,7 @@
               : `(${refreshTimeCount})s`
           }}
         </button>
-        <button class="ui-btn ui-btn--block" @click="transferAllPointToMain">
+        <button class="ui-btn ui-btn--block header-sub__dropdown__btn--transfer-all" @click="transferAllPointToMain">
           {{ $t('transaction.transfer.button.allToMyWallet') }}
         </button>
 
