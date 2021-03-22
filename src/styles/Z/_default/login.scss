@@ -36,10 +36,21 @@
       color: $login-btn-text-color-register;
       box-shadow: $login-btn-shadow-register;
     }
-    &--pwa {
-      background: $login-btn-bg-pwa;
-      color: $login-btn-text-color-pwa;
-      box-shadow: $login-btn-shadow-pwa;
+
+    &--pwa-install {
+      background: $login-btn-bg-pwa-install;
+      color: $login-btn-text-color-pwa-install;
+      box-shadow: $login-btn-shadow-pwa-install;
+    }
+    &--pwa-installing {
+      background: $login-btn-bg-pwa-installing;
+      color: $login-btn-text-color-pwa-installing;
+      box-shadow: $login-btn-shadow-pwa-installing;
+    }
+    &--pwa-installed {
+      background: $login-btn-bg-pwa-installed;
+      color: $login-btn-text-color-pwa-installed;
+      box-shadow: $login-btn-shadow-pwa-installed;
     }
   }
 

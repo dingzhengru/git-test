@@ -85,7 +85,16 @@
           {{ $t('login.link.forgetPassword') }}
         </button>
 
-        <button class="login__btn--pwa ui-btn ui-btn--block" v-if="pwaIsShowButton" @click="clickPwaHandler">
+        <button
+          class="ui-btn ui-btn--block"
+          :class="{
+            'login__btn--pwa-install': pwaInstallStatus === 'notInstalled',
+            'login__btn--pwa-installing': pwaInstallStatus === 'installing',
+            'login__btn--pwa-installed': pwaInstallStatus === 'installed',
+          }"
+          v-if="pwaIsShowButton"
+          @click="clickPwaHandler"
+        >
           <template v-if="pwaInstallStatus === 'notInstalled'">
             App
           </template>
