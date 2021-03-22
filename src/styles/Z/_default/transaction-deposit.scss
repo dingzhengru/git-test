@@ -10,13 +10,17 @@
       font-size: 1.5rem;
       height: $deposit-nav-btn-height;
       margin: 0 10px;
+
       background: $deposit-nav-btn-bg;
       color: $deposit-nav-btn-color;
+      box-shadow: $deposit-nav-btn-shadow;
       border: $deposit-nav-btn-border;
 
       &.active {
         background: $deposit-nav-btn-bg-active;
         color: $deposit-nav-btn-color-active;
+        box-shadow: $deposit-nav-btn-shadow-active;
+        border: $deposit-nav-btn-border-active;
       }
     }
   }
@@ -33,6 +37,7 @@
       button {
         background: $deposit-base-btn-bg-copy;
         color: $deposit-base-btn-color-copy;
+        box-shadow: $deposit-base-btn-shadow-copy;
         padding: 15px 30px;
         height: 75px;
       }
@@ -52,6 +57,7 @@
       button {
         background: $deposit-base-btn-bg-receipt;
         color: $deposit-base-btn-color-receipt;
+        box-shadow: $deposit-base-btn-shadow-receipt;
       }
 
       &__text {
@@ -63,6 +69,7 @@
     &--submit {
       background: $deposit-base-bnt-bg-submit;
       color: $deposit-base-bnt-color-submit;
+      box-shadow: $deposit-base-bnt-shadow-submit;
     }
   }
 }
@@ -96,11 +103,14 @@
           margin: 10px 10px;
           background: $deposit-third-party-field-btn-bg;
           color: $deposit-third-party-field-btn-color;
+          box-shadow: $deposit-third-party-field-btn-shadow;
           border: $deposit-third-party-field-btn-border;
 
           &.active {
             background: $deposit-third-party-field-btn-bg-active;
             color: $deposit-third-party-field-btn-color-active;
+            box-shadow: $deposit-third-party-field-btn-shadow-active;
+            border: $deposit-third-party-field-btn-border-active;
           }
         }
       }
