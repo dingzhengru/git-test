@@ -122,11 +122,6 @@ if (isLoggedIn) {
     await store.dispatch('site/getInfo', requestDataSiteInfo);
   }
 
-  //* 手動設置 style
-  if (process.env.NODE_ENV != 'production') {
-    store.commit('site/setInfoStyle', { siteClass: 'Z', siteType: '01' });
-  }
-
   //* 設置站台設定檔
   await store.dispatch('site/loadSetting');
 
@@ -182,6 +177,11 @@ if (isLoggedIn) {
       });
     }
   });
+
+  //* 手動設置 style
+  if (process.env.NODE_ENV != 'production') {
+    store.commit('site/setInfoStyle', { siteClass: 'Z', siteType: '04' });
+  }
 
   new Vue({
     router,

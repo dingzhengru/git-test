@@ -75,6 +75,17 @@ export async function apiSetGameFav(data) {
   return result.data;
 }
 
+//* 2.77   取得對戰大廳選單資訊(館別列表)
+export async function apiGetFightLobby(params) {
+  const result = await axios.get(API_URL + '/Game/FightLobby', { params });
+  return result.data;
+}
+
+export async function apiPostFightLobby(data) {
+  const result = await axios.post(API_URL + '/Game/MFightLobby', data);
+  return result.data;
+}
+
 // export async function apiGetLiveGameLobbyCategory(params) {
 //   const result = await axios.get(API_URL + '/Game/GetLiveLobbyMenu', { params });
 //   return result.data;

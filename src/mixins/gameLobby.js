@@ -6,6 +6,8 @@ import {
   apiPostGameLobbyProduct,
   apiGetLiveGameLobbyProduct,
   apiPostLiveGameLobbyProduct,
+  apiGetFightLobby,
+  apiPostFightLobby,
   apiGetGameLobbyCategory,
   apiPostGameLobbyCategory,
   apiGetGameLobbyGameList,
@@ -203,20 +205,23 @@ export default {
       const requestData = { Tag: this.productTag };
       let result = {};
       if (this.userIsLoggedIn) {
-        if (this.isProductClassifyLive || this.isProductClassifyP2P) {
+        if (this.isProductClassifyLive) {
           result = await apiPostLiveGameLobbyProduct(requestData);
         } else if (this.isProductClassifySlot) {
           result = await apiPostGameLobbyProduct(requestData);
+        } else if (this.isProductClassifyP2P) {
+          result = await apiPostFightLobby(requestData);
         }
       } else {
         requestData.Lang = this.lang;
-        if (this.isProductClassifyLive || this.isProductClassifyP2P) {
+        if (this.isProductClassifyLive) {
           result = await apiGetLiveGameLobbyProduct(requestData);
         } else if (this.isProductClassifySlot) {
           result = await apiGetGameLobbyProduct(requestData);
+        } else if (this.isProductClassifyP2P) {
+          result = await apiGetFightLobby(requestData);
         }
       }
-      console.log('result', result);
       this.productList = result.RetObj.ProductList;
     },
     async getGameCategoryList() {

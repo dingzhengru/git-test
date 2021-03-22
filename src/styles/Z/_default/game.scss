@@ -61,104 +61,13 @@
     padding: 0 15px;
     flex-basis: 33%;
 
-    &.active {
-      background: $game-lobby-product-item-bg-active;
-    }
+    // &.active {
+    //   background: $game-lobby-product-item-bg-active;
+    // }
 
-    &__icon {
+    > img {
       width: $game-lobby-product-icon-width;
       height: $game-lobby-product-icon-height;
-
-      &--1180 {
-        background: $game-lobby-product-icon-bg-1180;
-        &.active {
-          background: $game-lobby-product-icon-bg-1180-active;
-        }
-      }
-      &--1240 {
-        background: $game-lobby-product-icon-bg-1240;
-        &.active {
-          background: $game-lobby-product-icon-bg-1240-active;
-        }
-      }
-      &--1250 {
-        background: $game-lobby-product-icon-bg-1250;
-        &.active {
-          background: $game-lobby-product-icon-bg-1250-active;
-        }
-      }
-      &--1260 {
-        background: $game-lobby-product-icon-bg-1260;
-        &.active {
-          background: $game-lobby-product-icon-bg-1260-active;
-        }
-      }
-      &--1270 {
-        background: $game-lobby-product-icon-bg-1270;
-        &.active {
-          background: $game-lobby-product-icon-bg-1270-active;
-        }
-      }
-      &--1280 {
-        background: $game-lobby-product-icon-bg-1280;
-        &.active {
-          background: $game-lobby-product-icon-bg-1280-active;
-        }
-      }
-      &--1300 {
-        background: $game-lobby-product-icon-bg-1300;
-        &.active {
-          background: $game-lobby-product-icon-bg-1300-active;
-        }
-      }
-      &--1310 {
-        background: $game-lobby-product-icon-bg-1310;
-        &.active {
-          background: $game-lobby-product-icon-bg-1310-active;
-        }
-      }
-      &--1340 {
-        background: $game-lobby-product-icon-bg-1340;
-        &.active {
-          background: $game-lobby-product-icon-bg-1340-active;
-        }
-      }
-      &--1350 {
-        background: $game-lobby-product-icon-bg-1350;
-        &.active {
-          background: $game-lobby-product-icon-bg-1350-active;
-        }
-      }
-      &--1360 {
-        background: $game-lobby-product-icon-bg-1360;
-        &.active {
-          background: $game-lobby-product-icon-bg-1360-active;
-        }
-      }
-      &--1370 {
-        background: $game-lobby-product-icon-bg-1370;
-        &.active {
-          background: $game-lobby-product-icon-bg-1370-active;
-        }
-      }
-      &--1380 {
-        background: $game-lobby-product-icon-bg-1380;
-        &.active {
-          background: $game-lobby-product-icon-bg-1380-active;
-        }
-      }
-      &--1390 {
-        background: $game-lobby-product-icon-bg-1390;
-        &.active {
-          background: $game-lobby-product-icon-bg-1390-active;
-        }
-      }
-      &--1400 {
-        background: $game-lobby-product-icon-bg-1400;
-        &.active {
-          background: $game-lobby-product-icon-bg-1400-active;
-        }
-      }
     }
     &__text {
       font-size: 1.5rem;
@@ -236,6 +145,8 @@
       margin-right: 15px;
     }
     &--transfer {
+      padding-right: 20px;
+      padding-left: $game-lobby-search-transfer-icon-width;
       background: $game-lobby-search-transfer-bg;
       color: $game-lobby-search-transfer-color;
       width: $game-lobby-search-transfer-width;
@@ -363,25 +274,39 @@
   overflow: auto;
   z-index: 9999;
   font-size: 2.5rem;
-  padding: 40px 30px 40px 30px;
+  // padding: 15px 30px 40px 30px;
+
+  &__header {
+    background: $game-transfer-dialog-header-bg;
+    padding: 15px 0px;
+  }
+
+  &__body {
+    padding: 15px 30px;
+  }
 
   &__title {
     color: $game-transfer-dialog-title-color;
-    margin-bottom: 30px;
     font-size: 3rem;
     text-align: center;
     font-weight: bold;
   }
   &__form {
-    &__text {
+    &__content {
       text-align: left;
-      margin-left: 30px;
-      color: $game-transfer-dialog-label-color;
-
-      span {
-        color: $game-transfer-dialog-content-color;
-      }
+      padding-left: 15px;
     }
+    &__label {
+      color: $game-transfer-dialog-label-color;
+    }
+    &__wallet {
+      color: $game-transfer-dialog-wallet-color;
+      margin-left: 15px;
+    }
+    &__amount {
+      color: $game-transfer-dialog-amount-color;
+    }
+
     &__switch-div {
       margin-top: 20px;
       white-space: nowrap;
@@ -392,12 +317,12 @@
       height: 100px;
       padding-left: 50px;
       /* padding: 25px 0px 30px 50px; */
-      color: #686868;
+      color: $game-transfer-dialog-switch-color;
       border: 0;
       vertical-align: middle;
     }
     &__switch.on {
-      color: black;
+      color: $game-transfer-dialog-switch-color-active;
     }
     &__switch.left {
       background: $game-transfer-dialog-switch-left;
