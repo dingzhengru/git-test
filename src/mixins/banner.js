@@ -1,4 +1,4 @@
-import { apiGetBannerList } from '@/api/banner';
+import { apiGetBannerList, apiPostBannerList } from '@/api/banner';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -48,8 +48,13 @@ export default {
   },
   methods: {
     async getBannerList() {
-      const requestData = { Lang: this.lang };
-      const result = await apiGetBannerList(requestData);
+      let result = {};
+      if (this.userIsLoggedIn) {
+        result = await apiPostBannerList();
+      } else {
+        const requestData = { Lang: this.lang };
+        result = await apiGetBannerList(requestData);
+      }
       if (result.Code === 200) {
         this.bannerList = result.RetObj;
       }

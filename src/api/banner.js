@@ -6,3 +6,8 @@ export async function apiGetBannerList(params) {
   const result = await axios.get(API_URL + '/Banner/GetPromotionBanner', { params });
   return result.data;
 }
+
+export async function apiPostBannerList() {
+  const result = await axios.post(API_URL + '/Banner/GetPromotionBanner');
+  return result.data;
+}
