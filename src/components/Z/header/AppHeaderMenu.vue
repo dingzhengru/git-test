@@ -69,6 +69,8 @@
             </div>
           </transition>
         </div>
+
+        <PreviewButton v-if="siteIsPreview" />
       </div>
     </transition>
   </div>
@@ -78,8 +80,11 @@
 import { mapGetters } from 'vuex';
 export default {
   name: 'AppHeaderMenu',
+  components: {
+    PreviewButton: () => import('@/components/PreviewButton'),
+  },
   computed: {
-    ...mapGetters(['lang', 'langList', 'langName', 'userIsLoggedIn']),
+    ...mapGetters(['lang', 'langList', 'langName', 'userIsLoggedIn', 'siteIsPreview']),
   },
   data() {
     return {

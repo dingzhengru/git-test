@@ -110,8 +110,10 @@ const getters = {
   siteSeo: state => state.site.seo,
   siteSeoList: state => state.site.seo.SeoList,
   siteSeoTitle: state => state.site.seo.LS_SiteTitle,
-  //* site.domainRedirect
+
   siteDomainRedirect: state => state.site.domainRedirect,
+
+  siteIsPreview: state => state.site.isPreview,
 
   //* User
   userIsLoggedIn: state => state.user.isLoggedIn,

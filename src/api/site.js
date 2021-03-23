@@ -45,3 +45,9 @@ export async function apiGetDomainInfo(params) {
   const result = await axios.get('https://api.starbets.re888show.com/api/Siteinfo/DomainInfo', { params });
   return result.data;
 }
+
+//* 2.78  預覽模式開關
+export async function apiPreviewModeSwitch(data) {
+  const result = await axios.post(API_URL + '/Siteinfo/PreviewModeSwitch', data);
+  return result.data;
+}

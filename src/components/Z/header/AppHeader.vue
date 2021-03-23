@@ -33,9 +33,6 @@ export default {
     AppHeaderMenu() {
       return () => import(`@/${this.siteSetting.components.header.AppHeaderMenu}`);
     },
-    AppHeaderMenuAuth() {
-      return () => import(`@/${this.siteSetting.components.header.AppHeaderMenuAuth}`);
-    },
   },
   methods: {
     changeLang(lang) {

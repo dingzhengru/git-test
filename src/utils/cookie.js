@@ -5,19 +5,13 @@ import Cookies from 'js-cookie';
 // import settings from '@/settings';
 
 const tokenKey = 'token';
-const tokenConfig = {
-  sameSite: 'lax',
-};
+const tokenConfig = { sameSite: 'lax' };
 
 const publicKeyKey = 'publicKey';
-const publicKeyConfig = {
-  sameSite: 'lax',
-};
+const publicKeyConfig = { sameSite: 'lax' };
 
 const isLoggedInKey = 'isLoggedIn';
-const isLoggedInConfig = {
-  sameSite: 'lax',
-};
+const isLoggedInConfig = { sameSite: 'lax' };
 
 const langKey = 'lang';
 const langConfig = {
@@ -26,10 +20,10 @@ const langConfig = {
 };
 
 const versionKey = 'version';
-const versionConfig = {
-  sameSite: 'lax',
-  expires: 365,
-};
+const versionConfig = { sameSite: 'lax' };
+
+const isPreviewKey = 'isPreview';
+const isPreviewConfig = { sameSite: 'lax' };
 
 export function cookieGetToken() {
   return Cookies.get(tokenKey);
@@ -56,7 +50,7 @@ export function cookieRemovePublicKey() {
 }
 
 export function cookieGetIsLoggedIn() {
-  return Cookies.get(isLoggedInKey) == 'true';
+  return Cookies.get(isLoggedInKey) === 'true';
 }
 
 export function cookieSetIsLoggedIn(isLoggedIn) {
@@ -89,4 +83,16 @@ export function cookieSetVersion(version) {
 
 export function cookieRemoveVersion() {
   return Cookies.remove(versionKey);
+}
+
+export function cookieGetIsPreview() {
+  return Cookies.get(isPreviewKey) === 'true';
+}
+
+export function cookieSetIsPreview(isPreview) {
+  return Cookies.set(isPreviewKey, isPreview, isPreviewConfig);
+}
+
+export function cookieRemoveIsPreview() {
+  return Cookies.remove(isPreviewKey);
 }

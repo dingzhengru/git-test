@@ -1,5 +1,6 @@
 import router from '@/router';
-import { apiGetSiteInfo, apiPostSiteInfo, apiGetSiteSeoInfo } from '@/api/site';
+import { apiGetSiteInfo, apiPostSiteInfo, apiGetSiteSeoInfo, apiPreviewModeSwitch } from '@/api/site';
+import { cookieSetIsPreview, cookieRemoveIsPreview } from '@/utils/cookie';
 // import { SITE_DEFAULT_STYLE_CLASS, SITE_DEFAULT_STYLE_TYPE } from '@/settings';
 
 const state = {
@@ -7,6 +8,7 @@ const state = {
   seo: {},
   setting: {},
   domainRedirect: '', //* 當此網域被封後，要轉移的網域
+  isPreview: false,
 };
 
 const mutations = {
@@ -25,6 +27,14 @@ const mutations = {
   },
   setDomainRedirect(state, domain) {
     state.domainRedirect = domain;
+  },
+  setIsPreview(state, isPreview) {
+    state.isPreview = isPreview;
+    cookieSetIsPreview(isPreview);
+  },
+  removeIsPreview(state) {
+    state.isPreview = false;
+    cookieRemoveIsPreview();
   },
 };
 
@@ -84,6 +94,16 @@ const actions = {
     const setting = await import(`@/setting/${state.info.LS_CSS_Class}`);
     commit('setSetting', setting.default);
     return setting.default;
+  },
+
+  async closePreview({ commit }) {
+    const requestData = { PreviewMode: false };
+    const result = await apiPreviewModeSwitch(requestData);
+
+    if (result.Code === 200) {
+      commit('setIsPreview', false);
+      window.location.reload();
+    }
   },
 };
 

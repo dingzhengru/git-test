@@ -11,6 +11,7 @@ import {
   cookieGetToken,
   cookieGetPublicKey,
   cookieGetLang,
+  cookieGetIsPreview,
 } from '@/utils/cookie';
 
 //* CSS
@@ -22,11 +23,12 @@ import './router/permission'; //* 路徑權限
 import './api/interceptors.js'; //* 攔截器
 import i18n from '@/i18n-lazy'; //* 語言載入
 import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
+import { getQueryValueByKey, checkQueryByKeyMultiple } from '@/utils/url';
 
 //* API
 import { apiGetVersion } from '@/api/version';
 import { apiKeepUserOnline } from '@/api/user';
-import { apiGetDomainInfo, checkSite } from '@/api/site';
+import { apiGetDomainInfo, checkSite, apiPreviewModeSwitch } from '@/api/site';
 
 //* set Vue.prototype
 import dayjs from 'dayjs';
@@ -42,6 +44,9 @@ import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
 Vue.use(VueScrollTo);
 
 Vue.config.productionTip = false;
+
+//* 取得是否為預覽模式
+store.commit('site/setIsPreview', cookieGetIsPreview());
 
 //* 取得目前語系
 const lang = cookieGetLang() || LANG_DEFAULT;
@@ -112,10 +117,24 @@ if (isLoggedIn) {
 }
 
 (async () => {
+  //* 確認是否要開啟預覽模式
+  if (checkQueryByKeyMultiple('Port', 'SiteID', 'User', 'PreviewMode')) {
+    const requestDataPreview = {
+      Port: getQueryValueByKey('Port'),
+      SiteID: getQueryValueByKey('SiteID'),
+      User: getQueryValueByKey('User'),
+      PreviewMode: getQueryValueByKey('PreviewMode'),
+    };
+    const resultPreview = await apiPreviewModeSwitch(requestDataPreview);
+    if (resultPreview.Code === 200 && resultPreview.RetObj === true) {
+      store.commit('site/setIsPreview', true);
+    }
+  }
+
   //* 取得站台資訊(Code: 推廣碼，若有推廣碼，則將轉址至首頁)
-  const proxyCode = new URLSearchParams(window.location.search).get('proxyCode') || '';
+  const proxyCode = getQueryValueByKey('proxyCode');
   const requestDataSiteInfo = { DeviceType: 1, Code: proxyCode };
-  if (isLoggedIn) {
+  if (isLoggedIn || store.getters.siteIsPreview === true) {
     requestDataSiteInfo.Lang = lang;
     await store.dispatch('site/postInfo', requestDataSiteInfo);
   } else {
