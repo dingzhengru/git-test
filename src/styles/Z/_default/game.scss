@@ -309,7 +309,6 @@
 
     &__switch-div {
       margin-top: 20px;
-      white-space: nowrap;
     }
     &__switch {
       display: inline-block;
@@ -320,6 +319,7 @@
       color: $game-transfer-dialog-switch-color;
       border: 0;
       vertical-align: middle;
+      line-height: 2.5rem;
     }
     &__switch.on {
       color: $game-transfer-dialog-switch-color-active;

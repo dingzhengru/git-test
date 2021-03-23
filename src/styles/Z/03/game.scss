@@ -25,8 +25,8 @@ $game-lobby-jackpot-text-bg: white;
   @include game-lobby-jackpot;
 }
 
-$game-lobby-product-bg: #213931;
-$game-lobby-product-item-bg-active: #462b16;
+$game-lobby-product-bg: #1f1f1f;
+$game-lobby-product-item-bg-active: #1f1f1f;
 $game-lobby-product-icon-width: 90px;
 $game-lobby-product-icon-height: 50px;
 
@@ -34,7 +34,7 @@ $game-lobby-product-icon-height: 50px;
   @include game-lobby-product;
 }
 
-$game-lobby-category-bg: linear-gradient(to bottom, #013021, #011e15);
+$game-lobby-category-bg: linear-gradient(to bottom, #a9884f, #7e5612);
 $game-lobby-category-text-color: white;
 $game-lobby-category-text-color-active: #edebc0;
 
@@ -42,14 +42,14 @@ $game-lobby-category-text-color-active: #edebc0;
   @include game-lobby-category;
 }
 
-$game-lobby-search-bg: #213931;
+$game-lobby-search-bg: #1f1f1f;
 
 $game-lobby-search-input-width: 255px;
 $game-lobby-search-input-color: white;
-$game-lobby-search-input-bg: #13231e;
+$game-lobby-search-input-bg: #121212;
 $game-lobby-search-input-height: 53px;
 
-$game-lobby-search-icon-bg: assetPath('game-lobby/bg_lnk_inquire2.png') #13231e center no-repeat;
+$game-lobby-search-icon-bg: assetPath('game-lobby/bg_lnk_inquire2.png') #121212 center no-repeat;
 $game-lobby-search-icon-width: 53px;
 $game-lobby-search-icon-height: 53px;
 
@@ -61,12 +61,16 @@ $game-lobby-search-transfer-bg: assetPath('game-lobby/btnTrans.png') left center
   assetPath('game-lobby/bg_Trans.png') repeat-x;
 $game-lobby-search-transfer-icon-width: 59px;
 $game-lobby-search-transfer-icon-height: 59px;
-$game-lobby-search-transfer-color: white;
+$game-lobby-search-transfer-color: black;
 $game-lobby-search-transfer-width: auto;
 $game-lobby-search-transfer-height: 59px;
 
 .game-lobby-search {
   @include game-lobby-search;
+
+  input::placeholder {
+    color: #b89461;
+  }
 
   &__btn {
     &--transfer {
@@ -105,11 +109,11 @@ $game-lobby-list-icon-item-text-color: white;
 $game-transfer-dialog-bg: white;
 $game-transfer-dialog-border: 1px solid #c1ae71;
 
-$game-transfer-dialog-header-bg: #1c5745;
+$game-transfer-dialog-header-bg: #6c593a;
 $game-transfer-dialog-title-color: white;
-$game-transfer-dialog-label-color: black;
+$game-transfer-dialog-label-color: #c6a96d;
 $game-transfer-dialog-wallet-color: black;
-$game-transfer-dialog-amount-color: #0b664a;
+$game-transfer-dialog-amount-color: #8b8b8b;
 
 $game-transfer-dialog-switch-width: 271px;
 $game-transfer-dialog-switch-color: white;
@@ -119,10 +123,10 @@ $game-transfer-dialog-switch-left-on: assetPath('ui/lnk-trans-on.png') transpare
 $game-transfer-dialog-switch-right: assetPath('ui/lnk-trans2.png') transparent right no-repeat;
 $game-transfer-dialog-switch-right-on: assetPath('ui/lnk-trans2-on.png') transparent right no-repeat;
 
-$game-transfer-dialog-input-bg: #1b5341;
+$game-transfer-dialog-input-bg: #514126;
 $game-transfer-dialog-input-color: white;
 
-$game-transfer-dialog-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$game-transfer-dialog-btn-bg-submit: #4b3120;
 $game-transfer-dialog-btn-color-submit: white;
 
 .game-transfer-dialog {

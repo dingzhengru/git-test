@@ -44,17 +44,17 @@ $header-menu-dropdown-link-color: white;
 
 $header-menu-dropdown-btn-width: 500px;
 $header-menu-dropdown-btn-height: 70px;
-$header-menu-dropdown-btn-bg: linear-gradient(to bottom, #397b67 0%, #023929 100%);
-$header-menu-dropdown-btn-color: white;
+$header-menu-dropdown-btn-bg: assetPath('header/ui-langBg.jpg');
+$header-menu-dropdown-btn-color: black;
 
 $header-menu-dropdown-lang-btn-icon-bg: assetPath('ui/ui-arrow-select.png') no-repeat;
 $header-menu-dropdown-lang-btn-icon-width: 35px;
 $header-menu-dropdown-lang-btn-icon-height: 23px;
 
 $header-menu-dropdown-lang-dropdown-position-top: $header-menu-dropdown-btn-height + 30;
-$header-menu-dropdown-lang-dropdown-btn-bg: #213931;
-$header-menu-dropdown-lang-dropdown-btn-color: white;
-$header-menu-dropdown-lang-dropdown-btn-border-bottom: 1px solid #1d5343;
+$header-menu-dropdown-lang-dropdown-btn-bg: black;
+$header-menu-dropdown-lang-dropdown-btn-color: #8b8b8b;
+$header-menu-dropdown-lang-dropdown-btn-border-bottom: 1px solid #505050;
 
 .header-menu {
   @include header-menu;
@@ -64,11 +64,11 @@ $header-sub-bg: black;
 
 $header-sub-button-height: 70px;
 
-$header-sub-button-bg-login: linear-gradient(to bottom, #397b67 0%, #023929 100%);
-$header-sub-button-color-login: white;
+$header-sub-button-bg-login: linear-gradient(to bottom, #ffe97c 0%, #af843c 100%);
+$header-sub-button-color-login: black;
 $header-sub-button-shadow-login: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$header-sub-button-bg-register: linear-gradient(to bottom, #941719 0%, #4f0708 100%);
+$header-sub-button-bg-register: linear-gradient(to bottom, #ff5b55 0%, #d83b37 100%);
 $header-sub-button-color-register: white;
 $header-sub-button-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -76,7 +76,7 @@ $header-sub-button-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 // $header-sub-status-icon-width: 52px;
 // $header-sub-status-icon-height: 52px;
 $header-sub-status--text-color-account: white;
-$header-sub-status--text-color-wallet: white;
+$header-sub-status--text-color-wallet: #f9bd06;
 
 $header-sub-icon-dropdown-bg: assetPath('ui/ui-arrow2-select.png');
 $header-sub-icon-dropdown-width: 19px;
@@ -84,13 +84,13 @@ $header-sub-icon-dropdown-height: 29px;
 
 $header-sub-dropdown-bg: rgba(0, 0, 0, 0.9);
 
-$header-sub-dropdown-button-refresh-bg: linear-gradient(to bottom, #941719 0%, #4f0708 100%);
+$header-sub-dropdown-button-refresh-bg: linear-gradient(to bottom, #ff5b55 0%, #d83b37 100%);
 $header-sub-dropdown-button-refresh-color: white;
-$header-sub-dropdown-button-refresh-shadow: none;
+$header-sub-dropdown-button-refresh-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$header-sub-dropdown-button-transfer-all-bg: linear-gradient(to bottom, #397b67 0%, #023929 100%);
-$header-sub-dropdown-button-transfer-all-color: white;
-$header-sub-dropdown-button-transfer-all-shadow: none;
+$header-sub-dropdown-button-transfer-all-bg: linear-gradient(to bottom, #ffe97c 0%, #af843c 100%);
+$header-sub-dropdown-button-transfer-all-color: black;
+$header-sub-dropdown-button-transfer-all-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 .header-sub {
   @include header-sub;
