@@ -64,11 +64,11 @@ $header-sub-bg: black;
 
 $header-sub-button-height: 70px;
 
-$header-sub-button-bg-login: linear-gradient(to bottom, #ffe97c 0%, #af843c 100%);
+$header-sub-button-bg-login: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
 $header-sub-button-color-login: black;
 $header-sub-button-shadow-login: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$header-sub-button-bg-register: linear-gradient(to bottom, #ff5b55 0%, #d83b37 100%);
+$header-sub-button-bg-register: linear-gradient(to bottom, #f59898 3%, #ff5b55 4%, #d83b37 100%);
 $header-sub-button-color-register: white;
 $header-sub-button-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -84,11 +84,11 @@ $header-sub-icon-dropdown-height: 29px;
 
 $header-sub-dropdown-bg: rgba(0, 0, 0, 0.9);
 
-$header-sub-dropdown-button-refresh-bg: linear-gradient(to bottom, #ff5b55 0%, #d83b37 100%);
+$header-sub-dropdown-button-refresh-bg: linear-gradient(to bottom, #f59898 3%, #ff5b55 4%, #d83b37 100%);
 $header-sub-dropdown-button-refresh-color: white;
 $header-sub-dropdown-button-refresh-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$header-sub-dropdown-button-transfer-all-bg: linear-gradient(to bottom, #ffe97c 0%, #af843c 100%);
+$header-sub-dropdown-button-transfer-all-bg: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
 $header-sub-dropdown-button-transfer-all-color: black;
 $header-sub-dropdown-button-transfer-all-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

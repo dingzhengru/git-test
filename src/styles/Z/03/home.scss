@@ -16,7 +16,7 @@ $home-banner-preloader-color: gray;
   @include home-banner;
 }
 
-$news-marquee-bg: linear-gradient(to bottom, #6ab09b, #133c30);
+$news-marquee-bg: linear-gradient(to bottom, #a9884f, #7e5612);
 $news-marquee-label-color: white;
 $news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
 $news-marquee-icon-width: 71px;

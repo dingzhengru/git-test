@@ -1,17 +1,17 @@
 @import './_abstracts';
 @import '@/styles/Z/_default/transaction-withdrawal';
 
-$withdrawal-transfer-bg: #13231e;
+$withdrawal-transfer-bg: $field-bg;
 
 $withdrawal-transfer-label-color: white;
 
-$withdrawal-transfer-btn-bg: linear-gradient(to bottom, #941719 0%, #4f0708 100%);
-$withdrawal-transfer-btn-color: white;
+$withdrawal-transfer-btn-bg: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
+$withdrawal-transfer-btn-color: black;
 $withdrawal-transfer-btn-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 $withdrawal-amount-currency-color: #f88d80;
 
-$withdrawal-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$withdrawal-btn-bg-submit: linear-gradient(to bottom, #f59898 3%, #ff5b55 4%, #d83b37 100%);
 $withdrawal-btn-color-submit: white;
 $withdrawal-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

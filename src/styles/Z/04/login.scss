@@ -21,9 +21,11 @@ $login-btn-bg-pwa-installing: linear-gradient(to bottom, #a17b3f, #644817);
 $login-btn-text-color-pwa-installing: white;
 $login-btn-shadow-pwa-installing: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$login-btn-bg-pwa-installed: linear-gradient(to bottom, #396397, #285286);
+$login-btn-bg-pwa-installed: linear-gradient(to bottom, #9babfb 3%, #396397 4%, #285286 100%);
 $login-btn-text-color-pwa-installed: white;
 $login-btn-shadow-pwa-installed: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$login-text-color: white;
 
 .login {
   @include login;

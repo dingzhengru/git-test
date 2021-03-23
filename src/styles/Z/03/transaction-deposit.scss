@@ -3,13 +3,13 @@
 
 $deposit-nav-btn-height: 65px;
 
-$deposit-nav-btn-bg: linear-gradient(to bottom, #9c9c9c 0%, #565656 100%);
-$deposit-nav-btn-color: white;
+$deposit-nav-btn-bg: linear-gradient(to bottom, #e3e3e3 0%, #969696 50%, #818181 100%);
+$deposit-nav-btn-color: black;
 $deposit-nav-btn-shadow: none;
 $deposit-nav-btn-border: none;
 
-$deposit-nav-btn-bg-active: linear-gradient(to bottom, #397b67 0%, #023929 100%);
-$deposit-nav-btn-color-active: white;
+$deposit-nav-btn-bg-active: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
+$deposit-nav-btn-color-active: black;
 $deposit-nav-btn-shadow-active: none;
 $deposit-nav-btn-border-active: none;
 
@@ -21,11 +21,11 @@ $deposit-base-btn-bg-copy: linear-gradient(to bottom, #9f6623 39%, #8a581f 40%, 
 $deposit-base-btn-color-copy: white;
 $deposit-base-btn-shadow-copy: none;
 
-$deposit-base-btn-bg-receipt: linear-gradient(to bottom, #397b67 0%, #023929 100%);
-$deposit-base-btn-color-receipt: white;
+$deposit-base-btn-bg-receipt: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
+$deposit-base-btn-color-receipt: black;
 $deposit-base-btn-shadow-receipt: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$deposit-base-bnt-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$deposit-base-bnt-bg-submit: linear-gradient(to bottom, #f59898 3%, #ff5b55 4%, #d83b37 100%);
 $deposit-base-bnt-color-submit: white;
 $deposit-base-bnt-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -42,17 +42,17 @@ $deposit-third-party-field-btn-color: black;
 $deposit-third-party-field-btn-shadow: none;
 $deposit-third-party-field-btn-border: 2px solid #ffffff;
 
-$deposit-third-party-field-btn-bg-active: #347561;
-$deposit-third-party-field-btn-color-active: white;
+$deposit-third-party-field-btn-bg-active: #b38741;
+$deposit-third-party-field-btn-color-active: black;
 $deposit-third-party-field-btn-shadow-active: none;
-$deposit-third-party-field-btn-border-active: 2px solid #42957d;
+$deposit-third-party-field-btn-border-active: 2px solid #dba550;
 
-$deposit-third-party-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$deposit-third-party-btn-bg-submit: linear-gradient(to bottom, #f59898 3%, #ff5b55 4%, #d83b37 100%);
 $deposit-third-party-btn-color-submit: white;
 $deposit-third-party-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$deposit-third-party-btn-bg-reset: linear-gradient(to bottom, #941719 0%, #4f0708 100%);
-$deposit-third-party-btn-color-reset: white;
+$deposit-third-party-btn-bg-reset: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
+$deposit-third-party-btn-color-reset: black;
 $deposit-third-party-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 .deposit-third-party {

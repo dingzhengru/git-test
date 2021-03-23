@@ -5,12 +5,12 @@
   @include user;
 }
 
-$user-profile-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
-$user-profile-btn-color-submit: white;
+$user-profile-btn-bg-submit: $btn-bg-yellow;
+$user-profile-btn-color-submit: black;
 $user-profile-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$user-profile-btn-bg-reset: linear-gradient(to bottom, #9c9c9c 0%, #565656 100%);
-$user-profile-btn-color-reset: white;
+$user-profile-btn-bg-reset: $btn-bg-silver;
+$user-profile-btn-color-reset: black;
 $user-profile-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 .user-profile {
@@ -29,11 +29,11 @@ $user-change-password-switch-width-label-right-en-us: 140px;
 $user-change-password-switch-width-label-left-th-th: 94px;
 $user-change-password-switch-width-label-right-th-th: 105px;
 
-$user-change-password-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
-$user-change-password-btn-color-submit: white;
+$user-change-password-btn-bg-submit: $btn-bg-yellow;
+$user-change-password-btn-color-submit: black;
 $user-change-password-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$user-change-password-btn-bg-reset: linear-gradient(to bottom, #9c9c9c 0%, #565656 100%);
+$user-change-password-btn-bg-reset: $btn-bg-silver;
 $user-change-password-btn-color-reset: black;
 $user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -41,17 +41,17 @@ $user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
   @include user-change-password;
 }
 
-$user-mail-btn-bg: linear-gradient(to bottom, #584527 0%, #3a2b13 100%);
+$user-mail-btn-bg: #89672d;
 $user-mail-btn-color: white;
 $user-mail-btn-shadow: none;
 
-$user-mail-btn-bg-active: linear-gradient(to bottom, #a27c40 0%, #634716 100%);
+$user-mail-btn-bg-active: #655336;
 $user-mail-btn-color-active: white;
 $user-mail-btn-shadow-active: none;
 
 $user-mail-item-bg: $field-bg;
 $user-mail-item-color-date: white;
-$user-mail-item-color-title: #caad76;
+$user-mail-item-color-title: #cbaa6d;
 $user-mail-item-icon-bg-arrow: assetPath('ui/ui-arrow-select.png') center no-repeat;
 $user-mail-item-icon-width: 35px;
 $user-mail-item-icon-height: 23px;
@@ -67,11 +67,11 @@ $user-mail-detail-item-content-border-top: 1px solid #c8aa73;
 $user-mail-detail-item-reply-bg: $field-bg;
 $user-mail-detail-item-reply-label-color: #959595;
 
-$user-mail-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
-$user-mail-btn-color-submit: white;
+$user-mail-btn-bg-submit: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
+$user-mail-btn-color-submit: black;
 $user-mail-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$user-mail-btn-bg-reset: linear-gradient(to bottom, #9c9c9c 0%, #565656 100%);
+$user-mail-btn-bg-reset: linear-gradient(to bottom, #e3e3e3 0%, #969696 50%, #818181 100%);
 $user-mail-btn-color-reset: black;
 $user-mail-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

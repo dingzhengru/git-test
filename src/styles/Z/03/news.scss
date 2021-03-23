@@ -1,7 +1,7 @@
 @import './_abstracts';
 @import '@/styles/Z/_default/news';
 
-$news-item-bg: #13231e;
+$news-item-bg: $field-bg;
 $news-item-color: white;
 $news-date-label-color: #cbaa6d;
 
