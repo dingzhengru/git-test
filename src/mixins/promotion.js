@@ -1,10 +1,10 @@
 import { mapGetters } from 'vuex';
-import { apiGetPromotionList } from '@/api/promotion';
+import { apiGetPromotionList, apiPostPromotionList } from '@/api/promotion';
 
 export default {
   name: 'MixinPromotion',
   computed: {
-    ...mapGetters(['lang', 'userIsLoggedIn']),
+    ...mapGetters(['lang', 'userIsLoggedIn', 'siteIsPreview']),
     promotionListByCategory() {
       if (this.category == 0) {
         return this.promotionList;
@@ -23,8 +23,13 @@ export default {
   methods: {
     async getPromotionList() {
       //* 連結類型，0:無、1:自定義、2:優惠活動、3:遊戲館
-      const requestData = { Lang: this.lang };
-      const result = await apiGetPromotionList(requestData);
+      let result = {};
+      if (this.userIsLoggedIn || this.siteIsPreview) {
+        result = await apiPostPromotionList();
+      } else {
+        const requestData = { Lang: this.lang };
+        result = await apiGetPromotionList(requestData);
+      }
 
       if (result.Code == 200) {
         this.promotionList = result.RetObj.PromotionList;

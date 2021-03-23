@@ -3,7 +3,7 @@ import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['lang', 'siteResourceUrl', 'userIsLoggedIn']),
+    ...mapGetters(['lang', 'siteResourceUrl', 'userIsLoggedIn', 'siteIsPreview']),
   },
   data() {
     return {
@@ -49,7 +49,7 @@ export default {
   methods: {
     async getBannerList() {
       let result = {};
-      if (this.userIsLoggedIn) {
+      if (this.userIsLoggedIn || this.siteIsPreview) {
         result = await apiPostBannerList();
       } else {
         const requestData = { Lang: this.lang };
