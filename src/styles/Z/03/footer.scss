@@ -7,13 +7,13 @@ $footer-bg: none;
   @include footer;
 }
 
-$footer-nav-bg: linear-gradient(to bottom, #215c4a 0%, #023929 100%);
+$footer-nav-bg: linear-gradient(to bottom, #4c4c4c 4%, #171717 26%);
 $footer-nav-item-bg: transparent;
 $footer-nav-item-bg-active: assetPath('footer/ui-footer-toolbar-bg.jpg') center center no-repeat;
 $footer-nav-link-bg: assetPath('footer/lnk_toolbar.png') no-repeat;
 $footer-nav-link-color: white;
 $footer-nav-link-color-active: white;
-$footer-nav-item-border-bg: none;
+$footer-nav-item-border-bg: assetPath('footer/ui-footer-toolbar-line.png');
 $footer-nav-item-icon-home-bg: assetPath('footer/ui-footer-toolbar-home.png') center -25px no-repeat;
 $footer-nav-item-icon-home-bg-active: assetPath('footer/ui-footer-toolbar-home.png') center -145px no-repeat;
 $footer-nav-item-icon-login-bg: assetPath('footer/ui-footer-toolbar-registOrlogin.png') center -25px no-repeat;
