@@ -128,6 +128,7 @@ if (isLoggedIn) {
     const resultPreview = await apiPreviewModeSwitch(requestDataPreview);
     if (resultPreview.Code === 200 && resultPreview.RetObj === true) {
       store.commit('site/setIsPreview', true);
+      router.replace({ name: 'Home', query: {} }).catch(() => {});
     }
   }
 
@@ -199,7 +200,7 @@ if (isLoggedIn) {
 
   //* 手動設置 style
   if (process.env.NODE_ENV != 'production') {
-    store.commit('site/setInfoStyle', { siteClass: 'Z', siteType: '03' });
+    store.commit('site/setInfoStyle', { siteClass: 'Z', siteType: '01' });
   }
 
   new Vue({

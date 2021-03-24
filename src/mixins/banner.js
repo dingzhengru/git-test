@@ -20,18 +20,13 @@ export default {
         },
       ],
       swiperOption: {
-        initialSlide: 1,
+        initialSlide: 0,
         slidesPerView: 1,
-        spaceBetween: 0,
         loop: true,
         // lazy: true,
         lazy: {
           loadPrevNext: true,
           loadPrevNextAmount: 2,
-        },
-        touchRatio: 0.5,
-        keyboard: {
-          enabled: true,
         },
         navigation: {
           prevEl: '.home-banner__button--previous',
@@ -57,6 +52,7 @@ export default {
       }
       if (result.Code === 200) {
         this.bannerList = result.RetObj;
+        // this.$refs.bannerSwiper.$swiper.init();
       }
     },
     handleClickSlide(index, reallyIndex) {
@@ -85,6 +81,9 @@ export default {
   watch: {
     lang() {
       this.getBannerList();
+    },
+    bannerList() {
+      console.log(this.bannerList);
     },
   },
 };
