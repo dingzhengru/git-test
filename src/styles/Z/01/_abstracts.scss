@@ -61,11 +61,11 @@ $nav-tab-text-color: #8b8b8b;
 $nav-tab-text-color-active: #c8aa73;
 $nav-tab-border-bottom: 5px solid #8b8b8b;
 $nav-tab-border-bottom-active: 5px solid #c8aa73;
-$nav-tab-arrow-width: 18px;
+$nav-tab-arrow-width: 50px;
 $nav-tab-arrow-bg-left: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
   assetPath('ui/bg-maskLeft.png') left no-repeat;
-$nav-tab-arrow-bg-right: assetPath('ui/ui-arrow-maskRight.png') center no-repeat,
-  assetPath('ui/bg-maskRight.png') left no-repeat;
+$nav-tab-arrow-bg-right: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
+  assetPath('ui/bg-maskRight.png') right no-repeat;
 
 $box-close-bg: gray;
 $box-close-size: 48px;

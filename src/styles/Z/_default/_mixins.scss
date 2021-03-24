@@ -283,12 +283,12 @@
 
   &__left {
     background: $nav-tab-arrow-bg-left;
-    left: 0;
+    left: -1px;
   }
 
   &__right {
     background: $nav-tab-arrow-bg-right;
-    right: 0;
+    right: -1px;
   }
 
   &__intersect {
