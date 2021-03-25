@@ -1,0 +1,10 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/about';
+
+$about-item-title-bg: #1c6080;
+$about-item-title-color: white;
+$about-item-content-color: #4b4b4b;
+
+.about {
+  @include about;
+}

@@ -5,13 +5,13 @@ $withdrawal-transfer-bg: $field-bg;
 
 $withdrawal-transfer-label-color: white;
 
-$withdrawal-transfer-btn-bg: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
+$withdrawal-transfer-btn-bg: $btn-bg-yellow;
 $withdrawal-transfer-btn-color: black;
 $withdrawal-transfer-btn-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 $withdrawal-amount-currency-color: #f88d80;
 
-$withdrawal-btn-bg-submit: linear-gradient(to bottom, #f59898 3%, #ff5b55 4%, #d83b37 100%);
+$withdrawal-btn-bg-submit: $btn-bg-red;
 $withdrawal-btn-color-submit: white;
 $withdrawal-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

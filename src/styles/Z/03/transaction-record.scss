@@ -13,7 +13,7 @@ $record-content-icon-height: 35px;
 $record-content-link-color: #75a2ff;
 $record-content-link-border-bottom: 2px solid #75a2ff;
 
-$record-content-search-btn-bg-submit: linear-gradient(to bottom, #f59898 3%, #ff5b55 4%, #d83b37 100%);
+$record-content-search-btn-bg-submit: $btn-bg-red;
 $record-content-search-btn-text-color-submit: white;
 $record-content-search-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

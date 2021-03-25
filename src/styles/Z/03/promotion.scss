@@ -11,7 +11,7 @@ $promotion-detail-img-border: 3px solid #82704f;
 $promotion-detail-title-bg: assetPath('ui/ui-event.png') #6c593a no-repeat;
 $promotion-detail-title-color: white;
 $promotion-detail-content-text-color: white;
-$promotion-detail-button-bg-back: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
+$promotion-detail-button-bg-back: $btn-bg-yellow;
 $promotion-detail-button-text-color-back: black;
 $promotion-detail-button-shadow-back: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

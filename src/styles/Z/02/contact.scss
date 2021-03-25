@@ -1,0 +1,27 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/contact';
+
+$contact-item-bg: $field-bg;
+$contact-item-title-color: white;
+$contact-item-content-color: #b7b7b7;
+
+$contact-icon-contact-bg: assetPath('contact/ui-contact.png') no-repeat;
+$contact-icon-contact-width: 84px;
+$contact-icon-contact-height: 84px;
+
+$contact-icon-dropdown-bg: assetPath('ui/ui-arrow.png') right top no-repeat;
+$contact-icon-dropdown-width: 35px;
+$contact-icon-dropdown-height: 34px;
+$contact-icon-dropdown-transform: none;
+$contact-icon-dropdown-transform-open: rotate(90deg);
+
+$contact-btn-bg: $btn-bg-blue;
+$contact-btn-color: white;
+$contact-btn-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+$contact-btn-border: none;
+
+$contact-detail-border-top: 1px solid #c8aa73;
+
+.contact {
+  @include contact;
+}

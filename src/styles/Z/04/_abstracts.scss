@@ -99,6 +99,12 @@ $no-data-color: white;
 $no-data-font-size: 2rem;
 
 //* 服務規章視窗
+$service-term-bg: white;
+$service-term-color: black;
+$service-term-item-title-color: white;
+$service-term-item-title-bg: #503725;
 $service-term-item-title-icon: assetPath('ui/ui-arrow-select.png');
+$service-term-item-content-color: black;
 $service-term-btn-bg: #462b16;
 $service-term-btn-color: white;
+$service-term-btn-shadow: none;

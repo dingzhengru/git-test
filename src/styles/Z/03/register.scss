@@ -1,11 +1,11 @@
 @import './_abstracts';
 @import '@/styles/Z/_default/register';
 
-$register-btn-bg-submit: linear-gradient(to bottom, #ffe97c 0%, #dca650 50%, #af843c 100%);
+$register-btn-bg-submit: $btn-bg-yellow;
 $register-btn-text-color-submit: black;
 $register-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$register-btn-bg-reset: linear-gradient(to bottom, #e3e3e3 0%, #969696 50%, #818181 100%);
+$register-btn-bg-reset: $btn-bg-silver;
 $register-btn-text-color-reset: black;
 $register-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

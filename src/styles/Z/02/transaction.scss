@@ -1,0 +1,9 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/transaction';
+
+.transaction {
+  @include transaction;
+
+  background: $base-inner-bg;
+  min-height: 100vh;
+}

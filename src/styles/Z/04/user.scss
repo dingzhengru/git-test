@@ -61,9 +61,10 @@ $user-mail-item-icon-height: 23px;
 }
 
 $user-mail-detail-item-bg: $field-bg;
-$user-mail-detail-item-label-color: #caad76;
+$user-mail-detail-item-border: none;
+$user-mail-detail-item-label-color: $field-label-color;
 $user-mail-detail-item-content-color: white;
-$user-mail-detail-item-content-border-top: 1px solid #c8aa73;
+$user-mail-detail-item-content-border-top: 1px solid #1d5343;
 $user-mail-detail-item-reply-bg: $field-bg;
 $user-mail-detail-item-reply-label-color: #959595;
 

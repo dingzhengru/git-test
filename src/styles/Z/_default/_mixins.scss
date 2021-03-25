@@ -208,10 +208,15 @@
   border-radius: 5px;
   margin: 30px 0;
 
-  tr:not(:first-child) {
+  tr {
     border-bottom: $table-tr-border-bottom;
     box-shadow: $table-tr-shadow;
   }
+
+  // tr:not(:first-child) {
+  //   border-bottom: $table-tr-border-bottom;
+  //   box-shadow: $table-tr-shadow;
+  // }
 
   th,
   td {
@@ -230,9 +235,18 @@
 }
 
 @mixin nav-tab {
+  width: 100%;
   margin: 30px 0;
   display: flex;
   position: relative;
+  white-space: nowrap;
+  overflow-x: scroll;
+
+  &:before,
+  &:after {
+    content: '';
+    flex-grow: 1;
+  }
 
   &__container {
     width: 100%;
@@ -383,8 +397,8 @@
 }
 
 @mixin service-term {
-  background: #ffffff;
-  color: black;
+  background: $service-term-bg;
+  color: $service-term-color;
   width: 95%;
   height: 90vh;
   padding: 15px 30px;
@@ -413,8 +427,8 @@
     font-size: 2rem;
     &__item {
       &__title {
-        background: #503725;
-        color: white;
+        background: $service-term-item-title-bg;
+        color: $service-term-item-title-color;
         padding: 15px;
         margin: 15px 0;
         position: relative;
@@ -439,6 +453,7 @@
       }
 
       &__content {
+        color: $service-term-item-content-color;
         box-sizing: content-box;
         transform-origin: top;
         ul {
@@ -446,7 +461,7 @@
           margin: 30px;
 
           li {
-            color: #8b8b8b;
+            color: $service-term-item-content-color;
           }
         }
       }
@@ -456,6 +471,7 @@
     button {
       background: $service-term-btn-bg;
       color: $service-term-btn-color;
+      box-shadow: $service-term-btn-shadow;
     }
   }
 }

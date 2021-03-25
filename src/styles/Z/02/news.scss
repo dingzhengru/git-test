@@ -1,0 +1,24 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/news';
+
+$news-item-bg: $field-bg;
+$news-item-color: white;
+$news-date-label-color: white;
+
+.news {
+  @include news;
+  background: $base-inner-bg;
+  min-height: 100vh;
+
+  .ui-no-data {
+    color: white;
+  }
+
+  &__item {
+    &__date {
+      &__content {
+        color: #fff100;
+      }
+    }
+  }
+}

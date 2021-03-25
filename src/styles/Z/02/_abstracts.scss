@@ -1,0 +1,116 @@
+@import '@/styles/global/abstracts';
+
+// function
+@function assetPath($path) {
+  @return url('~@/assets/Z/02/#{$path}');
+}
+
+$base-bg: assetPath('ui/ui-indexBg.jpg') bottom center no-repeat #ddebf7;
+$base-text-color: #4b4b4b;
+$base-font-size: 16px;
+$base-font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
+
+$base-inner-bg: assetPath('ui/ui-page-bg.jpg') center top no-repeat #ffffff;
+
+$header-height: 131px;
+$header-sub-height: 90px;
+$header-sub-height-auth: 58px;
+
+$footer-height: 106px;
+
+$btn-height: 89px;
+
+$btn-bg-yellow: linear-gradient(to bottom, #ffca43 0%, #c07d14 33%, #ac6304 34%, #bd6e07 100%);
+$btn-bg-red: linear-gradient(to bottom, #fc1414 0%, #e72a2a 33%, #dd0505 34%, #8f1111 100%);
+$btn-bg-blue: linear-gradient(to bottom, #1baaf7 0%, #2aa5e8 33%, #1293d9 34%, #0e6b9e 100%);
+
+$field-font-size: 2rem;
+$field-bg: #1c6080;
+$field-input-color: white;
+$field-input-color-placeholder: #ffffff82;
+$field-select-bg: assetPath('ui/ui-arrow-select.png') #1c6080 97% center no-repeat;
+$field-select-color: #fff100;
+$field-label-color: #fff100;
+$field-label-color-checkbox: white;
+$field-error-bg: #53bfec;
+$field-error-color: #0e3040;
+$field-star-color: #ffbf4a;
+$field-textarea-label-color: white;
+$field-textarea-bg: white;
+$field-textarea-color: black;
+$field-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 0, 0.8);
+$field-textarea-border-radius: 5px;
+
+$notice-color: #4b4b4b;
+$notice-font-size: 1.8rem;
+$notice-line-height: 2.5rem;
+$notice-height-light-color: red;
+
+$step-color: #1c6080;
+$step-border: 4px solid #1c6080;
+
+$point-list-bg: #1c6080;
+$point-list-label-color: #fff100;
+$point-list-content-color: white;
+$point-list-border-bg: black;
+$point-list-border-shadow: 0px -2px #8b8b8b;
+
+$table-bg: #1c6080;
+$table-th-bg: #1c6080;
+$table-th-color: white;
+$table-tr-border-bottom: 1px solid #45a5d2;
+$table-tr-shadow: 0px -2px #8b8b8b;
+$table-td-color: white;
+$table-td-border: none;
+
+$nav-tab-text-color: white;
+$nav-tab-text-color-active: #1c6080;
+$nav-tab-border-bottom: 5px solid white;
+$nav-tab-border-bottom-active: 5px solid #1c6080;
+$nav-tab-arrow-width: 50px;
+$nav-tab-arrow-bg-left: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
+  assetPath('ui/bg-maskLeft.png') left no-repeat;
+$nav-tab-arrow-bg-right: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
+  assetPath('ui/bg-maskRight.png') right no-repeat;
+
+$box-close-bg: gray;
+$box-close-size: 48px;
+$box-close-top: 24px;
+$box-close-right: 24px;
+$box-close-line-color: white;
+$box-close-line-width: 2px;
+
+$go-top-btn-bg: assetPath('ui/goTOP.png') center no-repeat;
+$go-top-btn-width: 58px;
+$go-top-btn-height: 58px;
+$go-top-btn-bottom: $footer-height + 30;
+$go-top-btn-right: 30px;
+
+$lottery-btn-block-bottom: $footer-height + 30;
+$lottery-btn-block-left: 0px;
+// $lottery-btn-block-win-wheel-bg: assetPath('lottery/rotaryTable.png') center no-repeat;
+$lottery-btn-block-win-wheel-width: 144px;
+$lottery-btn-block-win-wheel-height: 138px;
+$lottery-btn-block-win-wheel-text-top: 42px;
+$lottery-btn-block-win-wheel-text-color: white;
+// $lottery-btn-block-red-envelope-bg: assetPath('lottery/luckyDraw.png') center no-repeat;
+$lottery-btn-block-red-envelope-width: 124px;
+$lottery-btn-block-red-envelope-height: 126px;
+$lottery-btn-block-red-envelope-text-top: 75px;
+$lottery-btn-block-red-envelope-text-color: white;
+
+//* 尚無資料的部分
+$no-data-bg: none;
+$no-data-color: black;
+$no-data-font-size: 2rem;
+
+//* 服務規章視窗
+$service-term-bg: white;
+$service-term-color: #462b16;
+$service-term-item-title-color: white;
+$service-term-item-title-bg: #144b64;
+$service-term-item-title-icon: assetPath('ui/ui-arrow-select.png');
+$service-term-item-content-color: #4b4b4b;
+$service-term-btn-bg: $btn-bg-red;
+$service-term-btn-color: white;
+$service-term-btn-shadow: none;

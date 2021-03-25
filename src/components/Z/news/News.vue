@@ -3,7 +3,7 @@
     <div class="news__item" v-for="(item, index) in newsList" :key="index">
       <div class="news__item__date">
         <div class="news__item__date__label">{{ $t('ui.label.time') }}</div>
-        <div class="news__item__date__content">{{ item.Lst_StartDateTime }}</div>
+        <div class="news__item__date__content">{{ getDateTime(item.Lst_StartDateTime) }}</div>
       </div>
       <div class="news__item__content">{{ item.Lst_Content }}</div>
     </div>
@@ -31,6 +31,9 @@ export default {
   },
   computed: {
     ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
+    getDateTime: () => datetime => {
+      return datetime.replace('T', ' ');
+    },
   },
   mounted() {
     import(`@/styles/${this.siteFullCss}/news.scss`);

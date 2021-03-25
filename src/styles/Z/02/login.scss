@@ -1,0 +1,32 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/login';
+
+$login-btn-bg-login: $btn-bg-yellow;
+$login-btn-text-color-login: white;
+$login-btn-shadow-login: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$login-btn-bg-forget: $btn-bg-blue;
+$login-btn-text-color-forget: white;
+$login-btn-shadow-forget: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$login-btn-bg-register: $btn-bg-blue;
+$login-btn-text-color-register: white;
+$login-btn-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$login-btn-bg-pwa-install: linear-gradient(to bottom, #f32066 0%, #ea2a69 33%, #d2104f 34%, #a30e3f 100%);
+$login-btn-text-color-pwa-install: white;
+$login-btn-shadow-pwa-install: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$login-btn-bg-pwa-installing: linear-gradient(to bottom, #f32066 0%, #ea2a69 33%, #d2104f 34%, #a30e3f 100%);
+$login-btn-text-color-pwa-installing: white;
+$login-btn-shadow-pwa-installing: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$login-btn-bg-pwa-installed: $btn-bg-blue;
+$login-btn-text-color-pwa-installed: white;
+$login-btn-shadow-pwa-installed: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$login-text-color: $base-text-color;
+
+.login {
+  @include login;
+}

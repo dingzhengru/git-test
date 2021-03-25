@@ -1,0 +1,87 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/home';
+
+.home {
+  @include home;
+}
+
+$home-banner-height: 432px;
+$home-banner-button-width: 100px;
+$home-banner-button-height: 100px;
+$home-banner-button-bg-prev: assetPath('ui/swiper-button-prev.png') no-repeat center center;
+$home-banner-button-bg-next: assetPath('ui/swiper-button-next.png') no-repeat center center;
+$home-banner-preloader-color: gray;
+
+.home-banner {
+  @include home-banner;
+}
+
+$news-marquee-bg: linear-gradient(to bottom, #fbb544 0%, #e88c27 15%, #bf5e09 100%);
+$news-marquee-label-color: white;
+$news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
+$news-marquee-icon-width: 71px;
+$news-marquee-icon-height: 71px;
+$news-marquee-link-color: white;
+
+.news-marquee {
+  @include news-marquee;
+}
+
+// $home-product-nav-text-color: #8b8b8b;
+// $home-product-nav-text-color-active: #c8aa73;
+// $home-product-nav-border-bottom: 5px solid #8b8b8b;
+// $home-product-nav-border-bottom-active: 5px solid #c8aa73;
+
+// .home-product-nav {
+//   @include home-product-nav-z;
+// }
+
+$home-main-bg: none;
+
+.home-main {
+  @include home-main;
+  padding: 0 15px;
+}
+
+$home-product-text-color: white;
+$home-product-maintain-bg: assetPath('home/btn_maintain.png') no-repeat;
+
+.home-product-block {
+  @include home-product-block;
+}
+
+// .home-lottery {
+//   @include home-lottery;
+// }
+
+$win-wheel-container-bg: url('~@/assets/common/lottery/winWheel/container-bg.png') #860103 center no-repeat;
+
+.win-wheel-container {
+  @include win-wheel-container;
+
+  .ui-box-close {
+    background: gray;
+    z-index: 2;
+
+    &::after,
+    &::before {
+      background: white;
+    }
+  }
+}
+
+$red-envelope-container-bg: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
+
+.red-envelope-container {
+  @include red-envelope-container;
+
+  .ui-box-close {
+    background: gray;
+    z-index: 2;
+
+    &::after,
+    &::before {
+      background: white;
+    }
+  }
+}

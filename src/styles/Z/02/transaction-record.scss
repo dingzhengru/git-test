@@ -1,0 +1,22 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/transaction-record';
+
+.record {
+  @include record;
+}
+
+$record-content-icon-bg-detail: assetPath('ui/icon-tdControl.png') center 0px no-repeat;
+$record-content-icon-bg-detail-close: assetPath('ui/icon-tdControl.png') center -69px no-repeat;
+$record-content-icon-width: 35px;
+$record-content-icon-height: 35px;
+
+$record-content-link-color: #75a2ff;
+$record-content-link-border-bottom: 2px solid #75a2ff;
+
+$record-content-search-btn-bg-submit: $btn-bg-yellow;
+$record-content-search-btn-text-color-submit: white;
+$record-content-search-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+.record-content {
+  @include record-content;
+}
