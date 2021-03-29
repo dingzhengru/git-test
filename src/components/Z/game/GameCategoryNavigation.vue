@@ -1,6 +1,5 @@
 <template>
   <div class="game-lobby-category">
-    <div class="nav-tab__left nav-tab__left--game-category" v-show="isShowArrowLeft"></div>
     <div class="game-lobby-category__container">
       <intersect @enter="leftEnter" @leave="leftLeave">
         <div class="nav-tab__intersect nav-tab__intersect--left"></div>
@@ -25,6 +24,7 @@
         <div class="nav-tab__intersect nav-tab__intersect--right"></div>
       </intersect>
     </div>
+    <div class="nav-tab__left nav-tab__left--game-category" v-show="isShowArrowLeft"></div>
     <div class="nav-tab__right nav-tab__right--game-category" v-show="isShowArrowRight"></div>
   </div>
 </template>
