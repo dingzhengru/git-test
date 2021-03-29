@@ -9,7 +9,7 @@ $user-profile-btn-bg-submit: $btn-bg-green;
 $user-profile-btn-color-submit: white;
 $user-profile-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$user-profile-btn-bg-reset: linear-gradient(to bottom, #9c9c9c 0%, #565656 100%);
+$user-profile-btn-bg-reset: $btn-bg-silver;
 $user-profile-btn-color-reset: white;
 $user-profile-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -33,7 +33,7 @@ $user-change-password-btn-bg-submit: $btn-bg-green;
 $user-change-password-btn-color-submit: white;
 $user-change-password-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$user-change-password-btn-bg-reset: linear-gradient(to bottom, #9c9c9c 0%, #565656 100%);
+$user-change-password-btn-bg-reset: $btn-bg-silver;
 $user-change-password-btn-color-reset: black;
 $user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -72,7 +72,7 @@ $user-mail-btn-bg-submit: $btn-bg-green;
 $user-mail-btn-color-submit: white;
 $user-mail-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$user-mail-btn-bg-reset: linear-gradient(to bottom, #9c9c9c 0%, #565656 100%);
+$user-mail-btn-bg-reset: $btn-bg-silver;
 $user-mail-btn-color-reset: black;
 $user-mail-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
