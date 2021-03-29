@@ -1,5 +1,5 @@
 <template>
-  <ValidationObserver class="register" tag="div" v-slot="{ invalid, handleSubmit, reset, errors }">
+  <ValidationObserver class="register" tag="div" v-slot="{ invalid, handleSubmit, reset }">
     <form
       class="register-form"
       @submit.prevent="handleSubmit(submitRegister)"
