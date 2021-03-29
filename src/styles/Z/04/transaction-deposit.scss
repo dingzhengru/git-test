@@ -8,7 +8,7 @@ $deposit-nav-btn-color: white;
 $deposit-nav-btn-shadow: none;
 $deposit-nav-btn-border: none;
 
-$deposit-nav-btn-bg-active: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$deposit-nav-btn-bg-active: $btn-bg-green;
 $deposit-nav-btn-color-active: white;
 $deposit-nav-btn-shadow-active: none;
 $deposit-nav-btn-border-active: none;
@@ -21,11 +21,11 @@ $deposit-base-btn-bg-copy: linear-gradient(to bottom, #9f6623 39%, #8a581f 40%, 
 $deposit-base-btn-color-copy: white;
 $deposit-base-btn-shadow-copy: none;
 
-$deposit-base-btn-bg-receipt: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$deposit-base-btn-bg-receipt: $btn-bg-green;
 $deposit-base-btn-color-receipt: white;
 $deposit-base-btn-shadow-receipt: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$deposit-base-bnt-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$deposit-base-bnt-bg-submit: $btn-bg-green;
 $deposit-base-bnt-color-submit: white;
 $deposit-base-bnt-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -47,11 +47,11 @@ $deposit-third-party-field-btn-color-active: white;
 $deposit-third-party-field-btn-shadow-active: none;
 $deposit-third-party-field-btn-border-active: 2px solid #42957d;
 
-$deposit-third-party-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$deposit-third-party-btn-bg-submit: $btn-bg-green;
 $deposit-third-party-btn-color-submit: white;
 $deposit-third-party-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$deposit-third-party-btn-bg-reset: linear-gradient(to bottom, #941719 0%, #4f0708 100%);
+$deposit-third-party-btn-bg-reset: $btn-bg-red;
 $deposit-third-party-btn-color-reset: white;
 $deposit-third-party-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

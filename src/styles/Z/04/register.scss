@@ -1,7 +1,7 @@
 @import './_abstracts';
 @import '@/styles/Z/_default/register';
 
-$register-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$register-btn-bg-submit: $btn-bg-green;
 $register-btn-text-color-submit: white;
 $register-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

@@ -44,7 +44,7 @@ $header-menu-dropdown-link-color: white;
 
 $header-menu-dropdown-btn-width: 500px;
 $header-menu-dropdown-btn-height: 70px;
-$header-menu-dropdown-btn-bg: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$header-menu-dropdown-btn-bg: $btn-bg-green;
 $header-menu-dropdown-btn-color: white;
 
 $header-menu-dropdown-lang-btn-icon-bg: assetPath('ui/ui-arrow-select.png') no-repeat;
@@ -64,11 +64,11 @@ $header-sub-bg: black;
 
 $header-sub-button-height: 70px;
 
-$header-sub-button-bg-login: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$header-sub-button-bg-login: $btn-bg-green;
 $header-sub-button-color-login: white;
 $header-sub-button-shadow-login: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$header-sub-button-bg-register: linear-gradient(to bottom, #941719 0%, #4f0708 100%);
+$header-sub-button-bg-register: $btn-bg-red;
 $header-sub-button-color-register: white;
 $header-sub-button-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -84,11 +84,11 @@ $header-sub-icon-dropdown-height: 29px;
 
 $header-sub-dropdown-bg: rgba(0, 0, 0, 0.9);
 
-$header-sub-dropdown-button-refresh-bg: linear-gradient(to bottom, #941719 0%, #4f0708 100%);
+$header-sub-dropdown-button-refresh-bg: $btn-bg-red;
 $header-sub-dropdown-button-refresh-color: white;
 $header-sub-dropdown-button-refresh-shadow: none;
 
-$header-sub-dropdown-button-transfer-all-bg: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$header-sub-dropdown-button-transfer-all-bg: $btn-bg-green;
 $header-sub-dropdown-button-transfer-all-color: white;
 $header-sub-dropdown-button-transfer-all-shadow: none;
 

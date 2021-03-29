@@ -5,7 +5,7 @@
   @include user;
 }
 
-$user-profile-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$user-profile-btn-bg-submit: $btn-bg-green;
 $user-profile-btn-color-submit: white;
 $user-profile-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -29,7 +29,7 @@ $user-change-password-switch-width-label-right-en-us: 140px;
 $user-change-password-switch-width-label-left-th-th: 94px;
 $user-change-password-switch-width-label-right-th-th: 105px;
 
-$user-change-password-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$user-change-password-btn-bg-submit: $btn-bg-green;
 $user-change-password-btn-color-submit: white;
 $user-change-password-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -68,7 +68,7 @@ $user-mail-detail-item-content-border-top: 1px solid #1d5343;
 $user-mail-detail-item-reply-bg: $field-bg;
 $user-mail-detail-item-reply-label-color: #959595;
 
-$user-mail-btn-bg-submit: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$user-mail-btn-bg-submit: $btn-bg-green;
 $user-mail-btn-color-submit: white;
 $user-mail-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 

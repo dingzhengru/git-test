@@ -1,15 +1,15 @@
 @import './_abstracts';
 @import '@/styles/Z/_default/login';
 
-$login-btn-bg-login: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$login-btn-bg-login: $btn-bg-green;
 $login-btn-text-color-login: white;
 $login-btn-shadow-login: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$login-btn-bg-forget: linear-gradient(to bottom, #397b67 0%, #023929 100%);
+$login-btn-bg-forget: $btn-bg-green;
 $login-btn-text-color-forget: white;
 $login-btn-shadow-forget: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$login-btn-bg-register: linear-gradient(to bottom, #941719 0%, #4f0708 100%);
+$login-btn-bg-register: $btn-bg-red;
 $login-btn-text-color-register: white;
 $login-btn-shadow-register: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
