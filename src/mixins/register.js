@@ -32,7 +32,6 @@ export default {
         Height: 58,
         ImgBase64: '',
       },
-      error: '',
       isAgreeServiceTerm: false,
       isShowModalServiceTerm: false,
     };
@@ -68,7 +67,8 @@ export default {
         const requestDataSiteInfo = { DeviceType: 1, Lang: lang };
         this.$store.dispatch('site/postInfo', requestDataSiteInfo);
       } else if (result.Code === 500) {
-        this.error = result.ErrMsg;
+        window.alert(result.ErrMsg);
+        this.changeCaptcha();
       }
     },
     async changeField(field, invalid) {
