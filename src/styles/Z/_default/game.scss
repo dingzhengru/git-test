@@ -46,6 +46,13 @@
   white-space: nowrap;
   overflow-x: auto;
 
+  &__container {
+    width: 100%;
+    display: flex;
+    white-space: nowrap;
+    overflow-x: scroll;
+  }
+
   &:before,
   &:after {
     content: '';
@@ -82,13 +89,19 @@
   height: 74px;
 
   display: flex;
-  word-break: keep-all;
-  overflow-x: auto;
+
+  &__container {
+    width: 100%;
+    display: flex;
+    white-space: nowrap;
+    overflow-x: scroll;
+  }
 
   &__item {
     display: flex;
     align-items: center;
     padding: 0 15px;
+    position: relative;
 
     &__text {
       color: $game-lobby-category-text-color;

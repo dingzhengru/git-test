@@ -67,36 +67,49 @@ const mutations = {
 const actions = {
   async getTokenAndPublicKey({ commit }) {
     const result = await apiGetTokenAndPublicKey();
-    commit('setToken', result.RetObj.token);
-    commit('setPublicKey', result.RetObj.publickey);
+    if (result.Code === 200) {
+      commit('setToken', result.RetObj.token);
+      commit('setPublicKey', result.RetObj.publickey);
+    }
     return result;
   },
   async getInfo({ commit, dispatch }) {
     const result = await apiGetUserInfo();
-    commit('setInfo', result.RetObj);
-    dispatch('getBankList');
-    dispatch('getPointInfo');
-    dispatch('getLotteryCountList');
+    if (result.Code === 200) {
+      commit('setInfo', result.RetObj);
+      dispatch('getBankList');
+      dispatch('getPointInfo');
+      dispatch('getLotteryCountList');
+    }
     return result;
   },
   async getBankList({ commit }) {
     const result = await apiGetBankInfoList();
-    commit('setBankList', result.RetObj);
+    if (result.Code === 200) {
+      commit('setBankList', result.RetObj);
+    }
     return result;
   },
   async getPointInfo({ commit }) {
     const result = await apiGetAllGamePoint();
-    commit('setPointInfo', result.RetObj);
+    if (result.Code === 200) {
+      commit('setPointInfo', result.RetObj);
+    }
     return result;
   },
   async getLotteryCountList({ commit }) {
     const result = await apiGetLotteryCount();
-    commit('setLotteryCountList', result.RetObj);
+    if (result.Code === 200) {
+      commit('setLotteryCountList', result.RetObj);
+    }
     return result;
   },
   async transferAllPointToMain({ commit }) {
     const result = await apiTransferAllGamePointToMain();
-    commit('setPointInfo', result.RetObj);
+    if (result.Code === 200) {
+      commit('setPointInfo', result.RetObj);
+      window.alert(result.RetObj.MsgString);
+    }
     return result;
   },
   async changeUserProfile({ commit, dispatch }, data) {

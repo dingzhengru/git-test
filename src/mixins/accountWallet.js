@@ -23,10 +23,7 @@ export default {
       }, this.refreshTimeInterval * 1000);
     },
     async transferAllPointToMain() {
-      const result = await this.$store.dispatch('user/transferAllPointToMain');
-      if (result.Code == 200) {
-        window.alert(result.RetObj.MsgString);
-      }
+      this.$store.dispatch('user/transferAllPointToMain');
     },
   },
 };
