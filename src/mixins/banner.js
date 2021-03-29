@@ -82,8 +82,5 @@ export default {
     lang() {
       this.getBannerList();
     },
-    bannerList() {
-      console.log(this.bannerList);
-    },
   },
 };
