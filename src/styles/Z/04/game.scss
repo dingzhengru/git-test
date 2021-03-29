@@ -26,9 +26,10 @@ $game-lobby-jackpot-text-bg: white;
 }
 
 $game-lobby-product-bg: #213931;
-$game-lobby-product-item-bg-active: #462b16;
+$game-lobby-product-item-bg-active: #213931;
 $game-lobby-product-icon-width: 90px;
 $game-lobby-product-icon-height: 50px;
+$game-lobby-product-border-arrow-color: #013021;
 
 .game-lobby-product {
   @include game-lobby-product;
