@@ -22,14 +22,11 @@
       <div class="header-sub__dropdown" v-show="isShowDropdown">
         <button
           class="ui-btn ui-btn--block header-sub__dropdown__btn--refresh"
-          :disabled="refreshTimeCount !== refreshTimeInterval"
+          :disabled="refreshButtonIsLoading"
           @click="refreshWallet"
         >
-          {{
-            refreshTimeCount == refreshTimeInterval
-              ? $t('transaction.transfer.button.refresh')
-              : `(${refreshTimeCount})s`
-          }}
+          {{ $t('transaction.transfer.button.refresh') }}
+          <template v-if="refreshButtonIsLoading">{{ `(${getCountdownTimeoutSecondCurrent}s)` }}</template>
         </button>
         <button class="ui-btn ui-btn--block header-sub__dropdown__btn--transfer-all" @click="transferAllPointToMain">
           {{ $t('transaction.transfer.button.allToMyWallet') }}

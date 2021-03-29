@@ -1,26 +1,29 @@
+import mixinCountdown from '@/mixins/countdown';
 export default {
+  mixins: [mixinCountdown],
   data() {
     return {
-      refreshTimeCount: 60,
-      refreshTimeInterval: 60,
+      refreshButtonIsLoading: false,
     };
   },
   methods: {
-    refreshWallet() {
-      if (this.refreshTimeCount != this.refreshTimeInterval) {
+    async refreshWallet() {
+      if (this.refreshButtonIsLoading) {
         return;
       }
 
-      this.$store.dispatch('user/getPointInfo');
+      this.refreshButtonIsLoading = true;
 
-      let countDown = setInterval(() => {
-        this.refreshTimeCount--;
-      }, 1000);
+      const result = await this.$store.dispatch('user/getPointInfo');
 
-      window.setTimeout(() => {
-        window.clearInterval(countDown);
-        this.refreshTimeCount = this.refreshTimeInterval;
-      }, this.refreshTimeInterval * 1000);
+      if (result.Code === 200) {
+        this.setCountdownSecond(60);
+        this.startCountdown(() => {
+          this.refreshButtonIsLoading = false;
+        });
+      } else {
+        this.refreshButtonIsLoading = false;
+      }
     },
     async transferAllPointToMain() {
       this.$store.dispatch('user/transferAllPointToMain');
