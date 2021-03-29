@@ -1,6 +1,11 @@
 <template>
-  <ValidationObserver class="register" tag="div" v-slot="{ invalid, handleSubmit, reset }">
-    <form class="register-form" @submit.prevent="handleSubmit(submitRegister)" @reset.prevent="reset">
+  <ValidationObserver class="register" tag="div" v-slot="{ invalid, handleSubmit, reset, errors }">
+    <form
+      class="register-form"
+      @submit.prevent="handleSubmit(submitRegister)"
+      @reset.prevent="reset"
+      autocomplete="off"
+    >
       <ValidationProvider
         class="ui-field"
         tag="div"
@@ -12,10 +17,10 @@
         v-slot="{ errors, invalid }"
         v-show="field.isShow"
       >
-        <span class="ui-field__star" v-if="field.isRequired">*</span>
+        <span class="ui-field__star" v-show="field.isRequired">*</span>
 
         <div class="ui-field__group">
-          <label class="ui-field__group__label">
+          <label class="ui-field__group__label" :for="$idMapper.register.input[field.name]">
             {{ $t(`register.${field.name}.placeholder`) }}
           </label>
           <input
@@ -26,7 +31,8 @@
             :min="field.min"
             :max="field.max"
             :readonly="!field.isModifiable"
-            autocomplete="off"
+            :autocomplete="field.type === 'password' ? 'new-password' : 'off'"
+            :name="field.name"
             v-model="field.value"
             v-if="field.type != 'select'"
             @change="changeField(field, invalid)"
@@ -88,6 +94,8 @@
       </div>
     </form>
     <component :is="ModalServiceTerm" :isShow="isShowModalServiceTerm" @close="isShowModalServiceTerm = false" />
+
+    {{ errors ? [] : errors.filter(item => item.length > 0) }}
   </ValidationObserver>
 </template>
 
