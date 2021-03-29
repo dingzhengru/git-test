@@ -94,8 +94,6 @@
       </div>
     </form>
     <component :is="ModalServiceTerm" :isShow="isShowModalServiceTerm" @close="isShowModalServiceTerm = false" />
-
-    {{ errors ? [] : errors.filter(item => item.length > 0) }}
   </ValidationObserver>
 </template>
 
