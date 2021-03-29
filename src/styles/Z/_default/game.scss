@@ -44,12 +44,13 @@
   display: flex;
   align-items: center;
   white-space: nowrap;
+  overflow-x: scroll;
 
   &__container {
     width: 100%;
     height: 100%;
     display: flex;
-    overflow: scroll;
+    overflow-x: scroll;
   }
 
   &:before,
@@ -102,12 +103,13 @@
   height: 74px;
   display: flex;
   white-space: nowrap;
+  overflow-x: scroll;
 
   &__container {
     width: 100%;
     height: 100%;
     display: flex;
-    overflow: scroll;
+    overflow-x: scroll;
   }
 
   &__item {

@@ -1,6 +1,6 @@
 <template>
   <div class="home-product-nav nav-tab">
-    <div class="nav-tab__left" v-show="isShowArrowLeft"></div>
+    <div class="nav-tab__left nav-tab__left--home" v-show="isShowArrowLeft"></div>
 
     <div class="nav-tab__container">
       <intersect @enter="leftEnter" @leave="leftLeave">
@@ -20,7 +20,7 @@
       </intersect>
     </div>
 
-    <div class="nav-tab__right" v-show="isShowArrowRight"></div>
+    <div class="nav-tab__right nav-tab__right--home" v-show="isShowArrowRight"></div>
   </div>
 </template>
 

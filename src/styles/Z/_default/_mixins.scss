@@ -296,13 +296,35 @@
   }
 
   &__left {
-    background: $nav-tab-arrow-bg-left;
     left: -1px;
+    &--home {
+      background: $nav-tab-arrow-bg-left-home;
+    }
+    &--promotion {
+      background: $nav-tab-arrow-bg-left-promotion;
+    }
+    &--game-product {
+      background: $nav-tab-arrow-bg-left-game-product;
+    }
+    &--game-category {
+      background: $nav-tab-arrow-bg-left-game-category;
+    }
   }
 
   &__right {
-    background: $nav-tab-arrow-bg-right;
     right: -2px;
+    &--home {
+      background: $nav-tab-arrow-bg-right-home;
+    }
+    &--promotion {
+      background: $nav-tab-arrow-bg-right-promotion;
+    }
+    &--game-product {
+      background: $nav-tab-arrow-bg-right-game-product;
+    }
+    &--game-category {
+      background: $nav-tab-arrow-bg-right-game-category;
+    }
   }
 
   &__intersect {

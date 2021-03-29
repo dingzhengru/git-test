@@ -1,6 +1,6 @@
 <template>
   <div class="game-lobby-product">
-    <div class="nav-tab__left" v-show="isShowArrowLeft"></div>
+    <div class="nav-tab__left nav-tab__left--game-product" v-show="isShowArrowLeft"></div>
     <div class="game-lobby-product__container">
       <intersect @enter="leftEnter" @leave="leftLeave">
         <div class="nav-tab__intersect nav-tab__intersect--left"></div>
@@ -30,7 +30,7 @@
         <div class="nav-tab__intersect nav-tab__intersect--right"></div>
       </intersect>
     </div>
-    <div class="nav-tab__right" v-show="isShowArrowRight"></div>
+    <div class="nav-tab__right nav-tab__right--game-product" v-show="isShowArrowRight"></div>
   </div>
 </template>
 
