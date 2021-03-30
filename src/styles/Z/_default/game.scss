@@ -51,12 +51,12 @@
     display: flex;
     white-space: nowrap;
     overflow-x: scroll;
-  }
 
-  &:before,
-  &:after {
-    content: '';
-    flex-grow: 1;
+    &:before,
+    &:after {
+      content: '';
+      flex-grow: 1;
+    }
   }
 
   &__item {

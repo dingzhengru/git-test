@@ -65,13 +65,13 @@
 
   &__group--checkbox {
     input[type='checkbox'] {
-      flex-basis: 70px;
       width: 35px;
       height: 35px;
-      margin-right: 10px;
+      margin-right: 15px;
     }
 
     label {
+      flex-grow: 1;
       word-break: break-word;
       // width: calc(100% - 45px);
       color: $field-label-color-checkbox;
