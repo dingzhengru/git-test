@@ -30,7 +30,7 @@
       background: $contact-icon-contact-bg;
       width: $contact-icon-contact-width;
       height: $contact-icon-contact-height;
-      flex-shrink: 0;
+      // flex-shrink: 0;
       margin-right: 15px;
       // transition: all 0.3s linear;
       &.icon-service {
@@ -50,6 +50,7 @@
       }
     }
     &__text {
+      flex-grow: 1;
       &__title {
         color: $contact-item-title-color;
       }
@@ -121,7 +122,7 @@
         margin-right: 15px;
         margin-top: 10px;
         font-size: 1.5rem;
-        background-color: $contact-btn-bg;
+        background: $contact-btn-bg;
         color: $contact-btn-color;
         width: 30%;
         min-height: 57px;
@@ -129,6 +130,7 @@
         border-radius: 5px;
         padding: 10px 15px;
         word-wrap: break-word;
+        border: none;
       }
     }
   }

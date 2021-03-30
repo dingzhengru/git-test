@@ -6,6 +6,18 @@ $promotion-img-border: 3px solid #ffffff;
 .promotion {
   @include promotion;
   background: $base-inner-bg;
+
+  .nav-tab {
+    &__item {
+      color: white;
+      border-bottom-color: white;
+
+      &.active {
+        color: #1c6080;
+        border-bottom-color: #1c6080;
+      }
+    }
+  }
 }
 
 $promotion-detail-img-border: 3px solid #ffffff;

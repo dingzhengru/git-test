@@ -38,7 +38,7 @@ $header-title-color: white;
 $header-menu-toggle-line-bg: linear-gradient(to bottom, #9f7f4b 0%, #ba9559 100%);
 
 $header-menu-dropdown-bg: rgba(0, 0, 0, 0.9);
-$header-menu-dropdown-icon: assetPath('ui/ui-collapse.png');
+$header-menu-dropdown-icon: assetPath('ui/ui-collapse.png') no-repeat;
 $header-menu-dropdown-link-width: 250px;
 $header-menu-dropdown-link-color: white;
 

@@ -5,6 +5,22 @@
   @include user;
   background: $base-inner-bg;
   min-height: 100vh;
+
+  .nav-tab {
+    &__item {
+      border-bottom-color: white;
+      > a {
+        color: white;
+      }
+
+      &.active {
+        border-bottom-color: #1c6080;
+        > a {
+          color: #1c6080;
+        }
+      }
+    }
+  }
 }
 
 $user-profile-btn-bg-submit: $btn-bg-yellow;

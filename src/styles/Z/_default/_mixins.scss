@@ -49,6 +49,7 @@
       margin-right: 15px;
     }
     &__input {
+      flex-grow: 1;
       background: transparent;
       color: $field-input-color;
       border: none;
@@ -116,7 +117,7 @@
   &__select {
     background: $field-select-bg;
     color: $field-select-color;
-    width: 100%;
+    flex-grow: 1;
     padding: 30px;
     border: none;
     appearance: none;
@@ -148,7 +149,6 @@
     position: absolute;
     left: -30px;
     top: 25px;
-    flex-shrink: 0;
   }
 }
 

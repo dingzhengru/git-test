@@ -75,7 +75,7 @@
     }
   }
   &__dropdown {
-    background-color: $header-menu-dropdown-bg;
+    background: $header-menu-dropdown-bg;
     position: absolute;
     top: $header-height;
     width: 100%;
@@ -275,7 +275,7 @@
     }
   }
   &__dropdown {
-    background-color: $header-sub-dropdown-bg;
+    background: $header-sub-dropdown-bg;
     position: absolute;
     width: 100%;
     height: calc(100vh - #{$footer-height} - #{$header-height} - #{$header-sub-height-auth});

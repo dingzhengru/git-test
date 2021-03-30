@@ -11,8 +11,4 @@ $transfer-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 .transfer {
   @include transfer;
-
-  .ui-point-list {
-    background: #213931;
-  }
 }
