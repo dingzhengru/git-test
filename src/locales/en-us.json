@@ -595,6 +595,7 @@
       }
     },
     "mail": {
+      "title": "Chats",
       "nav": {
         "inbox": "Inbox",
         "add": "New letters"
@@ -607,6 +608,7 @@
       }
     },
     "mailSend": {
+      "title": "新增信件",
       "label": {
         "desc": "Question Description"
       }

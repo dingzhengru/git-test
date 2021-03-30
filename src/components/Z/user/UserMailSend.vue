@@ -47,5 +47,8 @@ export default {
     ValidationObserver,
     ValidationProvider,
   },
+  mounted() {
+    this.$store.commit('setPageTitle', 'user.mailSend.title');
+  },
 };
 </script>

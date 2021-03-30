@@ -49,5 +49,8 @@ export default {
       return datetime.split('T')[0];
     },
   },
+  mounted() {
+    this.$store.commit('setPageTitle', 'user.mail.title');
+  },
 };
 </script>
