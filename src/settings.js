@@ -80,6 +80,7 @@ export const API_AUTH_LIST = [
   'Operator/MTransferInfo',
   'Operator/MTransferPoint',
   'Operator/MPointTransferForAllGame',
+  'Operator/MGame_GetGameName',
   'PointRecord/MDeposit',
   'PointRecord/MWithdrawals',
   'PointRecord/MTransfer',

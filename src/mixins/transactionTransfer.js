@@ -1,5 +1,6 @@
 import { mapGetters } from 'vuex';
 import { apiGetTransferInfo, apiTransferPoint, apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
+import { apiGetProductPromotionList } from '@/api/product';
 
 export default {
   name: 'TransactionTransfer',
@@ -112,6 +113,16 @@ export default {
           this.to = -1;
         }
       },
+    },
+    async to() {
+      if (this.to < 0) {
+        return;
+      }
+
+      const requestData = { Add_Destination: this.to };
+      const result = await apiGetProductPromotionList(requestData);
+
+      console.log(result);
     },
   },
 };

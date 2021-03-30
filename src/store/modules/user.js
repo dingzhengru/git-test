@@ -62,6 +62,9 @@ const mutations = {
     state.publicKey = null;
     cookieRemovePublicKey();
   },
+  setIsEnableRememberOption(state, isRemember) {
+    state.info.Lst_Enable_Remember_Option = isRemember;
+  },
 };
 
 const actions = {
