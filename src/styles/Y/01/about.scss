@@ -1,8 +1,0 @@
-@import './_abstracts';
-@import '@/styles/Y/_default/about';
-
-$about-text-color: white;
-
-.about {
-  @include about;
-}
