@@ -79,11 +79,15 @@
     }
     &__text {
       font-size: 1.5rem;
-      color: white;
+      color: $game-lobby-product-item-color;
     }
 
     &.active {
       background: $game-lobby-product-item-bg-active;
+
+      > div {
+        color: $game-lobby-product-item-color-active;
+      }
 
       &:before {
         content: '';

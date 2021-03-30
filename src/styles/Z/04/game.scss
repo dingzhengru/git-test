@@ -29,6 +29,8 @@ $game-lobby-product-bg: #213931;
 $game-lobby-product-item-bg-active: none;
 $game-lobby-product-icon-width: 90px;
 $game-lobby-product-icon-height: 50px;
+$game-lobby-product-item-color: #a0a2a1;
+$game-lobby-product-item-color-active: #b89461;
 $game-lobby-product-border-arrow-color: #013021;
 
 .game-lobby-product {
@@ -37,7 +39,7 @@ $game-lobby-product-border-arrow-color: #013021;
 
 $game-lobby-category-bg: linear-gradient(to bottom, #013021, #011e15);
 $game-lobby-category-text-color: white;
-$game-lobby-category-text-color-active: #edebc0;
+$game-lobby-category-text-color-active: #f6ac19;
 
 .game-lobby-category {
   @include game-lobby-category;

@@ -29,6 +29,8 @@ $game-lobby-product-bg: #11516f;
 $game-lobby-product-item-bg-active: none;
 $game-lobby-product-icon-width: 90px;
 $game-lobby-product-icon-height: 50px;
+$game-lobby-product-item-color: #7a8fae;
+$game-lobby-product-item-color-active: #edb3b4;
 $game-lobby-product-border-arrow-color: #56c1ee;
 
 .game-lobby-product {
@@ -110,11 +112,11 @@ $game-lobby-list-icon-item-text-color: white;
 $game-transfer-dialog-bg: white;
 $game-transfer-dialog-border: 1px solid #c1ae71;
 
-$game-transfer-dialog-header-bg: #6c593a;
+$game-transfer-dialog-header-bg: #0f445d;
 $game-transfer-dialog-title-color: white;
-$game-transfer-dialog-label-color: #c6a96d;
-$game-transfer-dialog-wallet-color: black;
-$game-transfer-dialog-amount-color: #8b8b8b;
+$game-transfer-dialog-label-color: #1c6080;
+$game-transfer-dialog-wallet-color: #444444;
+$game-transfer-dialog-amount-color: $base-text-color;
 
 $game-transfer-dialog-switch-width: 271px;
 $game-transfer-dialog-switch-color: white;
@@ -124,10 +126,10 @@ $game-transfer-dialog-switch-left-on: assetPath('ui/lnk-trans-on.png') transpare
 $game-transfer-dialog-switch-right: assetPath('ui/lnk-trans2.png') transparent right no-repeat;
 $game-transfer-dialog-switch-right-on: assetPath('ui/lnk-trans2-on.png') transparent right no-repeat;
 
-$game-transfer-dialog-input-bg: #514126;
+$game-transfer-dialog-input-bg: $field-bg;
 $game-transfer-dialog-input-color: white;
 
-$game-transfer-dialog-btn-bg-submit: #4b3120;
+$game-transfer-dialog-btn-bg-submit: $btn-bg-blue;
 $game-transfer-dialog-btn-color-submit: white;
 
 .game-transfer-dialog {

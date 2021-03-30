@@ -1,6 +1,6 @@
 <template>
-  <div class="home-product-nav nav-tab">
-    <div class="nav-tab__container">
+  <div class="home-product-nav nav-tab" ref="navTab">
+    <div class="nav-tab__container" ref="navTabContainer">
       <intersect @enter="leftEnter" @leave="leftLeave">
         <div class="nav-tab__intersect nav-tab__intersect--left"></div>
       </intersect>
