@@ -16,6 +16,8 @@ export default new Vuex.Store({
     langList: [],
     loadingList: [],
     pageTitle: '',
+    modalTransferIsShow: false,
+    modalTransferProduct: {},
     modalWinWheelIsShow: false,
     modalRedEnvelopeIsShow: false,
     modalSiteBlockedMessageIsShow: false,
@@ -41,6 +43,12 @@ export default new Vuex.Store({
     },
     setPageTitle: (state, title) => {
       state.pageTitle = title;
+    },
+    setModalTransferIsShow: (state, isShow) => {
+      state.modalTransferIsShow = isShow;
+    },
+    setModalTransferProduct: (state, product) => {
+      state.modalTransferProduct = product;
     },
     setModalWinWheelIsShow: (state, isShow) => {
       state.modalWinWheelIsShow = isShow;
@@ -71,6 +79,17 @@ export default new Vuex.Store({
       if (result.Code == 200) {
         commit('setLangList', result.RetObj);
       }
+    },
+    openModalTransfer({ commit }, product) {
+      commit('setModalTransferProduct', product);
+      commit('setModalTransferIsShow', true);
+    },
+    closeModalTransfer({ commit }) {
+      commit('setModalTransferIsShow', false);
+
+      setTimeout(() => {
+        commit('setModalTransferProduct', {});
+      }, 500);
     },
   },
   modules: {

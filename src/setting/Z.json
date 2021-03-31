@@ -40,7 +40,6 @@
       "GameListIcon": "components/Z/game/GameListIcon",
       "GameProductNavigation": "components/Z/game/GameProductNavigation",
       "GameSearchBlock": "components/Z/game/GameSearchBlock",
-      "GameTransferDialog": "components/Z/game/GameTransferDialog",
       "LiveGameEnterDialog": "components/Z/game/LiveGameEnterDialog"
     }
   },

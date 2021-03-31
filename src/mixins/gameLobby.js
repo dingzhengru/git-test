@@ -107,7 +107,7 @@ export default {
         pagesize: 6,
         count: 1,
       },
-      isShowTransferDialog: false, //* 轉帳視窗
+      // isShowTransferDialog: false, //* 轉帳視窗
 
       productCategoryStatus: null, //* 是否顯示 Category (0啟用10維護20未啟用30即將推出40關閉50產品下架)
       productCategoryEntry: null, //* 是否以類別進入遊戲大廳 (0: 不是類別,1:是類別)
@@ -147,27 +147,6 @@ export default {
 
       if (result.Code == 200) {
         game.Lst_IsLike = !game.Lst_IsLike;
-      }
-    },
-    async transferPoint(amount, promotion) {
-      const requestData = {
-        Add_Source: 9999,
-        Add_Destination: this.productId,
-        Add_TransferPoint: amount,
-        Add_ActivityID: promotion,
-      };
-
-      const result = await this.$store.dispatch('user/transferPoint', requestData);
-
-      if (result.Code === 200) {
-        this.transferAmount = 0;
-
-        //* 開啟站外連結
-        if (this.productCurrent.GetGameRedirectUrl) {
-          this.handleProductLink(this.productCurrent);
-          this.isShowTransferDialog = false;
-          this.$router.go(-1);
-        }
       }
     },
     async changeProduct(product) {

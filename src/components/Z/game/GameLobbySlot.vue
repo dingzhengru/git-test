@@ -54,15 +54,6 @@
       v-if="productCurrent.Lst_Site_Product_Status == 0"
     /> -->
 
-    <component
-      :is="GameTransferDialog"
-      :wallet="userGamePointWallet"
-      :currentPointProduct="productPointCurrent"
-      :isShow="isShowTransferDialog"
-      @submit-transfer="transferPoint"
-      @close="closeTransferDialog"
-    />
-
     <intersect @enter="changePageScrollBottom" rootMargin="0px 0px 5px 0px">
       <div class="game-lobby-bottom-intersect"></div>
     </intersect>
@@ -100,9 +91,6 @@ export default {
     },
     GameListIcon() {
       return () => import(`@/${this.siteSetting.components.game.GameListIcon}`);
-    },
-    GameTransferDialog() {
-      return () => import(`@/${this.siteSetting.components.game.GameTransferDialog}`);
     },
   },
 };

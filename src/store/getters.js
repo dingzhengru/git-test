@@ -23,6 +23,8 @@ const getters = {
   pwaIsShowButton: state => state.pwa.isShowButton,
 
   //* modal
+  modalTransferIsShow: state => state.modalTransferIsShow,
+  modalTransferProduct: state => state.modalTransferProduct,
   modalWinWheelIsShow: state => state.modalWinWheelIsShow,
   modalRedEnvelopeIsShow: state => state.modalRedEnvelopeIsShow,
   modalSiteBlockedMessageIsShow: state => state.modalSiteBlockedMessageIsShow,

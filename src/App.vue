@@ -31,6 +31,7 @@
     <AppLoading v-show="loadingList.length > 0" />
 
     <div v-if="userIsLoggedIn">
+      <ModalTransfer :isShow="modalTransferIsShow" />
       <ModalWinWheel :isShow="modalWinWheelIsShow" />
       <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
     </div>
@@ -53,6 +54,7 @@ export default {
   components: {
     AppLoading: () => import('@/components/AppLoading'),
     AppGoTopButton: () => import('@/components/AppGoTopButton'),
+    ModalTransfer: () => import('@/components/ModalTransfer'),
     ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
     ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
     ModalSiteBlockedMessage: () => import('@/components/ModalSiteBlockedMessage'),
@@ -63,6 +65,7 @@ export default {
       'lang',
       'loadingList',
       'loadingListIncludeSiteInfo',
+      'modalTransferIsShow',
       'modalWinWheelIsShow',
       'modalRedEnvelopeIsShow',
       'modalSiteBlockedMessageIsShow',

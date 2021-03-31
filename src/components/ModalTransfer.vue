@@ -1,7 +1,7 @@
 <template>
-  <AppModal :isShow="isShow" @close="closeDialog">
+  <AppModal :isShow="isShow" @close="closeModalTransfer">
     <div class="game-transfer-dialog">
-      <div class="ui-box-close" @click="closeDialog"></div>
+      <div class="ui-box-close" @click="closeModalTransfer"></div>
 
       <div class="game-transfer-dialog__header">
         <div class="game-transfer-dialog__title">{{ $t('game.transfer.title') }}</div>
@@ -11,13 +11,13 @@
         <form class="game-transfer-dialog__form" @submit.prevent="handleSubmit(submitTransfer)">
           <div class="game-transfer-dialog__form__content">
             <span class="game-transfer-dialog__form__label">{{ $t('game.transfer.from') }}</span>
-            <span class="game-transfer-dialog__form__wallet">{{ wallet.Product_Name }}：</span>
-            <span class="game-transfer-dialog__form__amount">{{ wallet.Point }}</span>
+            <span class="game-transfer-dialog__form__wallet">{{ userGamePointWallet.Product_Name }}：</span>
+            <span class="game-transfer-dialog__form__amount">{{ userGamePointWallet.Point }}</span>
           </div>
           <div class="game-transfer-dialog__form__content">
             <span class="game-transfer-dialog__form__label">{{ $t('game.transfer.to') }}</span>
-            <span class="game-transfer-dialog__form__wallet">{{ currentPointProduct.Product_Name }}：</span>
-            <span class="game-transfer-dialog__form__amount">{{ currentPointProduct.Point }}</span>
+            <span class="game-transfer-dialog__form__wallet">{{ productPointCurrent.Product_Name }}：</span>
+            <span class="game-transfer-dialog__form__amount">{{ productPointCurrent.Point }}</span>
           </div>
 
           <ValidationProvider tag="div" v-show="promotionList.length > 0">
@@ -54,7 +54,9 @@
             </button>
           </div>
 
-          <ValidationProvider :rules="{ required: true, integer: true, min_value: 1, max_value: wallet.Point }">
+          <ValidationProvider
+            :rules="{ required: true, integer: true, min_value: 1, max_value: userGamePointWallet.Point }"
+          >
             <input
               class="game-transfer-dialog__form__input"
               type="number"
@@ -88,7 +90,7 @@
 import mixinModalTransfer from '@/mixins/modalTransfer';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 export default {
-  name: 'GameTransferDialog',
+  name: 'ModalTransfer',
   mixins: [mixinModalTransfer],
   components: {
     AppModal: () => import('@/components/AppModal'),
