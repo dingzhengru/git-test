@@ -4,6 +4,7 @@
 
 H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
+- [分支](#分支)
 - [Token & 公鑰](#token--公鑰)
 - [其他](#其他)
   - [子路徑傳值給父路徑](#子路徑傳值給父路徑)
@@ -27,6 +28,12 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [javascript-winwheel](#javascript-winwheel)
   - [gsap](#gsap)
   - [vee-validate](#vee-validate-1)
+
+## 分支
+
+master: 正式站
+release: 測試站
+dev: show 站
 
 ## Token & 公鑰
 
