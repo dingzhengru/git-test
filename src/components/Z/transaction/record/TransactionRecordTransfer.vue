@@ -35,7 +35,9 @@
         </div>
 
         <div class="record-content__search__btn">
-          <button class="ui-btn ui-btn--block record-content__search__btn--submit">{{ $t('ui.button.search') }}</button>
+          <button class="ui-btn ui-btn--block record-content__search__btn--submit" type="submit">
+            {{ $t('ui.button.search') }}
+          </button>
         </div>
       </form>
     </div>

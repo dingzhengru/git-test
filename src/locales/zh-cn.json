@@ -15,7 +15,8 @@
       "pleaseSelect": "请选择",
       "noData": "尚无资料",
       "baht": "泰铢",
-      "underMaintenance": "维护中"
+      "underMaintenance": "维护中",
+      "promotion": "优惠活动"
     },
     "button": {
       "submit": "提交",

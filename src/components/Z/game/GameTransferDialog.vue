@@ -1,7 +1,7 @@
 <template>
-  <AppModal :isShow="isShow" @close="$emit('close')">
+  <AppModal :isShow="isShow" @close="closeDialog">
     <div class="game-transfer-dialog">
-      <div class="ui-box-close" @click="$emit('close')"></div>
+      <div class="ui-box-close" @click="closeDialog"></div>
 
       <div class="game-transfer-dialog__header">
         <div class="game-transfer-dialog__title">{{ $t('game.transfer.title') }}</div>
@@ -19,6 +19,21 @@
             <span class="game-transfer-dialog__form__wallet">{{ currentPointProduct.Product_Name }}：</span>
             <span class="game-transfer-dialog__form__amount">{{ currentPointProduct.Point }}</span>
           </div>
+
+          <ValidationProvider tag="div" v-show="promotionList.length > 0">
+            <div class="game-transfer-dialog__form__content game-transfer-dialog__form__content--promotion">
+              <span class="game-transfer-dialog__form__label">{{ $t('ui.label.promotion') }}</span>
+            </div>
+
+            <div class="ui-field">
+              <select class="ui-field__select" v-model="promotion">
+                <option value="">{{ $t('ui.label.pleaseSelect') }}</option>
+                <option :value="item.Value" v-for="item in promotionList" :key="item.Value">
+                  {{ item.Text }}
+                </option>
+              </select>
+            </div>
+          </ValidationProvider>
 
           <div class="game-transfer-dialog__form__switch-div">
             <button
@@ -70,6 +85,7 @@
 </template>
 
 <script>
+import { apiGetProductPromotionList } from '@/api/product';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 export default {
   name: 'GameTransferDialog',
@@ -96,10 +112,15 @@ export default {
     walletPoint() {
       return Math.floor(this.wallet.Point);
     },
+    productId() {
+      return this.currentPointProduct.Product_id;
+    },
   },
   data() {
     return {
+      promotionList: [],
       amount: 0,
+      promotion: '',
       isTransferAll: true,
     };
   },
@@ -108,7 +129,7 @@ export default {
       if (this.isTransferAll) {
         this.amount = this.walletPoint;
       }
-      this.$emit('submit-transfer', this.amount);
+      this.$emit('submit-transfer', this.amount, this.promotion);
       this.amount = 0;
 
       console.log(this.amount);
@@ -132,6 +153,29 @@ export default {
     },
     switchTransferAll(isTransferAll) {
       this.isTransferAll = isTransferAll;
+    },
+    closeDialog() {
+      this.$emit('close');
+      this.resetForm();
+    },
+    resetForm() {
+      this.promotionList = [];
+      this.amount = 0;
+      this.promotion = '';
+    },
+  },
+  watch: {
+    async isShow() {
+      if (!this.isShow) {
+        return;
+      }
+
+      const requestData = { Add_Destination: this.productId };
+      const result = await apiGetProductPromotionList(requestData);
+
+      if (result.Code === 200) {
+        this.promotionList = result.RetObj.ActivityList;
+      }
     },
   },
 };

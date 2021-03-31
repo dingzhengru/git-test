@@ -44,6 +44,7 @@
     align-items: center;
 
     &__label {
+      flex-shrink: 0;
       color: $field-label-color;
       // flex-basis: 150px;
       margin-right: 15px;
@@ -60,6 +61,10 @@
     &__text {
       color: $field-input-color;
       margin-left: 15px;
+    }
+
+    select {
+      padding: 0;
     }
   }
 
@@ -117,13 +122,14 @@
   &__select {
     background: $field-select-bg;
     color: $field-select-color;
-    flex-grow: 1;
     padding: 30px;
     border: none;
     appearance: none;
+    flex-grow: 1;
 
     option {
       color: $field-select-color;
+      font-size: 1rem;
     }
   }
 

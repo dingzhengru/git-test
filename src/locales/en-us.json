@@ -15,7 +15,8 @@
       "pleaseSelect": "Please select",
       "noData": "No Data Found",
       "baht": "Baht",
-      "underMaintenance": "Maintenance"
+      "underMaintenance": "Maintenance",
+      "promotion": "Promotions"
     },
     "button": {
       "submit": "Submit",

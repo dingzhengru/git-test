@@ -11,8 +11,13 @@
         <button class="game-lobby-search__btn--submit" type="submit"></button>
       </template>
       <div class="game-lobby-search__right">
-        <button class="game-lobby-search__btn--fav" @click="changeIsFav" v-if="isShowFav"></button>
-        <button class="game-lobby-search__btn--transfer" @click="openTransferDialog" v-if="isShowTransfer">
+        <button class="game-lobby-search__btn--fav" type="button" @click="changeIsFav" v-if="isShowFav"></button>
+        <button
+          class="game-lobby-search__btn--transfer"
+          type="button"
+          @click="openTransferDialog"
+          v-if="isShowTransfer"
+        >
           {{ $t('game.button.transferNow') }}
         </button>
       </div>

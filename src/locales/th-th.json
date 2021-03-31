@@ -15,7 +15,8 @@
       "pleaseSelect": "โปรดเลือก",
       "noData": "ไม่พบข้อมูล",
       "baht": "บาท",
-      "underMaintenance": "ปิดปรับปรุง"
+      "underMaintenance": "ปิดปรับปรุง",
+      "promotion": "โปรโมชั่น"
     },
     "button": {
       "submit": "ส่ง",

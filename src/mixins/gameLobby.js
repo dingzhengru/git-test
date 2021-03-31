@@ -15,7 +15,6 @@ import {
   apiSetGameFav,
   apiGetJackpotTotal,
 } from '@/api/game';
-import { apiTransferPoint } from '@/api/transaction-transfer';
 import { openNewWindowURL } from '@/utils/device';
 
 export default {
@@ -150,19 +149,18 @@ export default {
         game.Lst_IsLike = !game.Lst_IsLike;
       }
     },
-    async transferPoint(amount) {
+    async transferPoint(amount, promotion) {
       const requestData = {
         Add_Source: 9999,
         Add_Destination: this.productId,
         Add_TransferPoint: amount,
+        Add_ActivityID: promotion,
       };
 
-      const result = await apiTransferPoint(requestData);
+      const result = await this.$store.dispatch('user/transferPoint', requestData);
 
-      if (result.Code == 200) {
-        this.$store.commit('user/setPointInfo', result.RetObj);
+      if (result.Code === 200) {
         this.transferAmount = 0;
-        window.alert(this.$t('alert.transferSuccess'));
 
         //* 開啟站外連結
         if (this.productCurrent.GetGameRedirectUrl) {

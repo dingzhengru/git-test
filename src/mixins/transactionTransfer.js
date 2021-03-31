@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import { apiGetTransferInfo, apiTransferPoint, apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
+import { apiGetTransferInfo } from '@/api/transaction-transfer';
 import { apiGetProductPromotionList } from '@/api/product';
 
 export default {
@@ -27,9 +27,11 @@ export default {
     return {
       productList: [],
       productDetailList: [],
+      productPromotionList: [],
       from: 9999,
       to: -1,
       amount: 0,
+      promotion: '',
     };
   },
   methods: {
@@ -38,40 +40,15 @@ export default {
       this.productList = result.RetObj.Add_SourceList;
       this.productDetailList = result.RetObj.MenuMemberDetailItemList;
     },
-    async submitTransferPoint() {
-      const requestData = { Add_Source: this.from, Add_Destination: this.to, Add_TransferPoint: this.amount };
-      const result = await apiTransferPoint(requestData);
-
-      if (result.Code == 200) {
-        this.$store.commit('user/setPointInfo', result.RetObj);
-        window.alert(this.$t('alert.transferSuccess'));
-      }
-    },
-    async transferToMain() {
-      const result = await apiTransferAllGamePointToMain();
-      if (result.Code == 200) {
-        this.$store.commit('user/setPointInfo', result.RetObj);
-        window.alert(result.RetObj.MsgString);
-      }
-    },
-    rangeError(type, msg) {
-      //* 參考 https://nightcatsama.github.io/vue-slider-component/#/zh-CN/advanced/input
-      const ERROR_TYPE = {
-        VALUE: 1,
-        INTERVAL: 2,
-        MIN: 3,
-        MAX: 4,
-        ORDER: 5,
+    submitTransferPoint() {
+      const requestData = {
+        Add_Source: this.from,
+        Add_Destination: this.to,
+        Add_TransferPoint: this.amount,
+        Add_ActivityID: this.promotion,
       };
-      switch (type) {
-        case ERROR_TYPE.MIN:
-          break;
-        case ERROR_TYPE.MAX:
-          break;
-        case ERROR_TYPE.VALUE:
-          break;
-      }
-      return msg;
+
+      this.$store.dispatch('user/transferPoint', requestData);
     },
     changeAmount() {
       if (this.amount > this.currentPoint) {
@@ -118,11 +95,14 @@ export default {
       if (this.to < 0) {
         return;
       }
+      this.promotion = '';
 
       const requestData = { Add_Destination: this.to };
       const result = await apiGetProductPromotionList(requestData);
 
-      console.log(result);
+      if (result.Code === 200) {
+        this.productPromotionList = result.RetObj.ActivityList;
+      }
     },
   },
 };

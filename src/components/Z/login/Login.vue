@@ -75,18 +75,23 @@
       <div class="login__btn">
         <button
           class="login__btn--login ui-btn ui-btn--block"
-          :id="$idMapper.login.button.submit"
           type="submit"
+          :id="$idMapper.login.button.submit"
           :disabled="invalid"
         >
           {{ $t('login.button.login') }}
         </button>
-        <button class="login__btn--forget ui-btn ui-btn--block" @click="$router.push({ name: 'ForgetPassword' })">
+        <button
+          class="login__btn--forget ui-btn ui-btn--block"
+          type="button"
+          @click="$router.push({ name: 'ForgetPassword' })"
+        >
           {{ $t('login.link.forgetPassword') }}
         </button>
 
         <button
           class="ui-btn ui-btn--block"
+          type="button"
           :class="{
             'login__btn--pwa-install': pwaInstallStatus === 'notInstalled',
             'login__btn--pwa-installing': pwaInstallStatus === 'installing',
@@ -107,7 +112,11 @@
         </button>
 
         <div class="login__text">or</div>
-        <button class="login__btn--register ui-btn ui-btn--block" @click="$router.push({ name: 'Register' })">
+        <button
+          class="login__btn--register ui-btn ui-btn--block"
+          type="button"
+          @click="$router.push({ name: 'Register' })"
+        >
           {{ $t('ui.button.registerNow') }}
         </button>
       </div>

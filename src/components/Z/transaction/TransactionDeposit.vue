@@ -30,7 +30,7 @@
           <div class="ui-field__group ui-field__group--btn">
             <label class="ui-field__group__label" for="deposit-bank-account">存入本公司银行账号</label>
             <span class="ui-field__group__text">08555546669</span>
-            <button class="ui-btn ">复制</button>
+            <button class="ui-btn" type="button">复制</button>
           </div>
         </div>
 
@@ -70,7 +70,9 @@
         </div>
 
         <div class="deposit__field deposit__field--receipt">
-          <button class="ui-btn ui-btn--block deposit__field--receipt__btn" @click="uploadReceipt">汇款收据</button>
+          <button class="ui-btn ui-btn--block deposit__field--receipt__btn" type="button" @click="uploadReceipt">
+            汇款收据
+          </button>
           <input class="deposit__field--receipt__input" ref="receipt" type="file" />
         </div>
         <div class="ui-notice">

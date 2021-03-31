@@ -9,8 +9,8 @@
         <div class="ui-field__group">
           <span class="ui-field__group__label">{{ $t('transaction.transfer.field.from') }}</span>
           <select class="ui-field__select" v-model="from">
-            <option :value="product.Product_id" v-for="product in fromList" :key="product.Product_id">
-              {{ product.Product_Name }}
+            <option :value="item.Product_id" v-for="item in fromList" :key="item.Product_id">
+              {{ item.Product_Name }}
             </option>
           </select>
         </div>
@@ -29,8 +29,24 @@
           <span class="ui-field__group__label">{{ $t('transaction.transfer.field.to') }}</span>
           <select class="ui-field__select" v-model="to">
             <option :value="-1" selected v-if="from == 9999">{{ $t('transaction.transfer.placeholder.to') }}</option>
-            <option :value="product.Product_id" v-for="product in toList" :key="product.Product_id">
-              {{ product.Product_Name }}
+            <option :value="item.Product_id" v-for="item in toList" :key="item.Product_id">
+              {{ item.Product_Name }}
+            </option>
+          </select>
+        </div>
+      </ValidationProvider>
+
+      <ValidationProvider
+        class="ui-field transfer__field transfer__field--promotion"
+        tag="div"
+        v-show="productPromotionList.length > 0"
+      >
+        <div class="ui-field__group">
+          <span class="ui-field__group__label">{{ $t('ui.label.promotion') }}</span>
+          <select class="ui-field__select" v-model="promotion">
+            <option value="">{{ $t('ui.label.pleaseSelect') }}</option>
+            <option :value="item.Value" v-for="item in productPromotionList" :key="item.Value">
+              {{ item.Text }}
             </option>
           </select>
         </div>

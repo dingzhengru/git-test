@@ -43,13 +43,14 @@ export const API_NO_ALERT_LIST = ['Member/SimpleRegister', 'Game/MGameRedirectUr
 
 //* 不顯示 Loading 的 API
 export const API_NO_LOADING_LIST = [
-  'Siteinfo/KeepUserOnline',
-  'Game/MGetJackpotTotal',
   'Member/CheckField',
+  'Siteinfo/KeepUserOnline',
+  'Siteinfo/DomainInfo',
+  'Game/MGetJackpotTotal',
+  'Operator/CheckOrderStatus',
+  'Operator/MGame_GetGameName',
   'Proxy/MPlayLottery',
   'Proxy/MGetWinPrize',
-  'Operator/CheckOrderStatus',
-  'Siteinfo/DomainInfo',
 ];
 
 //* 需要 Authorization bearer token 的 API

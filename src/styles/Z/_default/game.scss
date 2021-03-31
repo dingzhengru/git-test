@@ -327,7 +327,11 @@
   &__form {
     &__content {
       text-align: left;
-      padding-left: 15px;
+      // padding-left: 15px;
+
+      &--promotion {
+        margin-top: 15px;
+      }
     }
     &__label {
       color: $game-transfer-dialog-label-color;

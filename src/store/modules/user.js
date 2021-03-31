@@ -1,3 +1,4 @@
+import i18n from '@/i18n-lazy';
 import {
   cookieSetIsLoggedIn,
   cookieSetToken,
@@ -16,7 +17,7 @@ import {
   apiGetBankInfoList,
   apiAdvancedRegisterNew,
 } from '@/api/user';
-import { apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
+import { apiTransferAllGamePointToMain, apiTransferPoint } from '@/api/transaction-transfer';
 import { apiGetLotteryCount } from '@/api/user';
 
 const state = {
@@ -112,6 +113,14 @@ const actions = {
     if (result.Code === 200) {
       commit('setPointInfo', result.RetObj);
       window.alert(result.RetObj.MsgString);
+    }
+    return result;
+  },
+  async transferPoint({ commit }, data) {
+    const result = await apiTransferPoint(data);
+    if (result.Code === 200) {
+      commit('setPointInfo', result.RetObj);
+      window.alert(i18n.t('alert.transferSuccess'));
     }
     return result;
   },
