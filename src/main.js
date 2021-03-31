@@ -205,7 +205,7 @@ if (isLoggedIn) {
 
   //* 手動設置 style
   if (process.env.NODE_ENV != 'production') {
-    store.commit('site/setInfoStyle', { siteClass: 'Z', siteType: '02' });
+    store.commit('site/setInfoStyle', { siteClass: 'Z', siteType: '01' });
   }
 
   new Vue({
