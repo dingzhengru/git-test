@@ -91,7 +91,7 @@ export default {
         this.amount % 100 != 0
       ) {
         return false;
-      } else if (this.bank == '' || Object.keys(this.bank).length == 0) {
+      } else if (this.bank == '' || this.$isObjEmpty(this.bank)) {
         return false;
       } else if (this.password == '' || this.password.length < 6) {
         return false;

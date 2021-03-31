@@ -4,3 +4,11 @@ export function getObjectValueByDotString(obj, dotString) {
     return item[currentValue];
   }, obj);
 }
+
+export function isObjEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
+export function deepClone(data) {
+  return JSON.parse(JSON.stringify(data));
+}

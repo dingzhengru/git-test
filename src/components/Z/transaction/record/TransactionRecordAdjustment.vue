@@ -8,7 +8,7 @@
         <th>{{ $t('transaction.recordContent.adjustment.table.datetime') }}</th>
       </tr>
       <template v-for="(item, index) in recordList">
-        <tr :key="item.Lst_TransID + index">
+        <tr :key="item.Lst_TransID + String(index)">
           <td>
             {{ item.Lst_PaymentType }}
           </td>

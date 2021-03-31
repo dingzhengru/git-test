@@ -77,7 +77,7 @@ export default {
       }
     },
     changeRoute() {
-      if (Object.keys(this.route).length > 0 && this.$route.name != this.route.name) {
+      if (!this.$isObjEmpty(this.route) && this.$route.name != this.route.name) {
         this.$router.push({ name: this.route.link });
       }
     },

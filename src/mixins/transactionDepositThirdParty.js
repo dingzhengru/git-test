@@ -11,19 +11,19 @@ export default {
   computed: {
     ...mapGetters(['lang']),
     getPlatformListByMethod() {
-      if (Object.keys(this.depositInfo).length === 0) {
+      if (this.$isObjEmpty(this.depositInfo)) {
         return [];
       }
       return this.depositInfo.paymentListJson.filter(item => item.dm_Guid === this.method);
     },
     amountMin() {
-      if (Object.keys(this.platform).length === 0) {
+      if (this.$isObjEmpty(this.platform)) {
         return 0;
       }
       return this.platform.spp_down_limit;
     },
     amountMax() {
-      if (Object.keys(this.platform).length === 0) {
+      if (this.$isObjEmpty(this.platform)) {
         return 0;
       }
       return this.platform.spp_up_limit;

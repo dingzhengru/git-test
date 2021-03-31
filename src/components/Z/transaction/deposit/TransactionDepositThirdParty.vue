@@ -57,7 +57,7 @@
         :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
       >
         <div class="deposit-third-party__field--btn__title">{{ $t('transaction.deposit.field.amount') }}</div>
-        <div class="deposit-third-party__field--btn__option" v-show="Object.keys(platform).length > 0">
+        <div class="deposit-third-party__field--btn__option" v-show="!$isObjEmpty(platform)">
           <button
             class="ui-btn ui-btn--block"
             type="button"

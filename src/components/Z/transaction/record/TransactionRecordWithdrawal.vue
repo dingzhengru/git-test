@@ -9,7 +9,7 @@
         <th>{{ $t('transaction.recordDetail.withdrawal.table.serviceCharge') }}</th>
       </tr>
       <template v-for="(item, index) in recordList">
-        <tr :key="item.Lst_TransID + index">
+        <tr :key="item.Lst_TransID + String(index)">
           <td @click="toggleRecordDetail(item)">
             <i class="record-content__icon--detail" :class="{ close: item.isShowDetail }"></i>
           </td>

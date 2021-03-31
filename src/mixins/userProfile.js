@@ -38,7 +38,7 @@ export default {
             registerField.Lst_Phase === 2 || (registerField.Lst_Phase === 1 && registerField.Lst_isModifiable);
         }
       }
-      this.fieldListOld = JSON.parse(JSON.stringify(this.fieldList));
+      this.fieldListOld = this.$deepClone(this.fieldList);
     },
     async submitUserProfile() {
       const requestData = {};
@@ -83,7 +83,7 @@ export default {
       }
     },
     resetForm() {
-      this.fieldList = JSON.parse(JSON.stringify(this.fieldListOld));
+      this.fieldList = this.$deepClone(this.fieldListOld);
     },
   },
   mounted() {

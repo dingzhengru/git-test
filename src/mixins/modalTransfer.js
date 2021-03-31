@@ -20,9 +20,15 @@ export default {
       'productById',
     ]),
     productPointCurrent() {
+      if (this.$isObjEmpty(this.modalTransferProduct)) {
+        return {};
+      }
       return this.userGamePointById(this.modalTransferProduct.Product_id);
     },
     productCurrent() {
+      if (this.$isObjEmpty(this.modalTransferProduct)) {
+        return {};
+      }
       return this.productById(this.modalTransferProduct.Product_id);
     },
     walletPoint() {

@@ -1,5 +1,5 @@
 <template>
-  <div class="game-lobby-list" v-if="Object.keys(productCurrent).length > 0">
+  <div class="game-lobby-list" v-if="!$isObjEmpty(productCurrent)">
     <div v-if="productCurrent.Lst_Site_Product_Status != 0">
       <h1 class="text-center">{{ $t('alert.gameMaintenance') }}</h1>
     </div>

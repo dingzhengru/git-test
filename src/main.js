@@ -34,10 +34,15 @@ import { apiGetDomainInfo, checkSite, apiPreviewModeSwitch } from '@/api/site';
 import dayjs from 'dayjs';
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
+import { isObjEmpty, deepClone, getObjectValueByDotString } from '@/utils/object';
 
 Vue.prototype.$dayjs = dayjs;
 Vue.prototype.$numeral = numeral;
 Vue.prototype.$idMapper = idMapper;
+
+Vue.prototype.$isObjEmpty = isObjEmpty;
+Vue.prototype.$deepClone = deepClone;
+Vue.prototype.$getObjectValueByDotString = getObjectValueByDotString;
 
 //* Vue Global Component
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域

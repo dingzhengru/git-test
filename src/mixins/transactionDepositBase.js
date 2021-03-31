@@ -124,7 +124,7 @@ export default {
       reader.readAsDataURL(file);
     },
     copyBankAccount() {
-      if (Object.keys(this.depositBank).length === 0) {
+      if (this.$isObjEmpty(this.depositBank)) {
         return;
       }
 

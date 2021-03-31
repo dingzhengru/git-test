@@ -8,7 +8,7 @@
           active: item.link == $route.name || (item.otherActivePath && item.otherActivePath.includes($route.name)),
         },
       ]"
-      :id="item.id ? getObjectValueByDotString($idMapper, item.id) : ''"
+      :id="item.id ? $getObjectValueByDotString($idMapper, item.id) : ''"
       v-for="item in list"
       :key="item.name"
     >
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { getObjectValueByDotString } from '@/utils/object';
 export default {
   name: 'AppNavTab',
   props: {
@@ -28,11 +27,6 @@ export default {
       type: Array,
       default: () => [],
     },
-  },
-  data() {
-    return {
-      getObjectValueByDotString: getObjectValueByDotString,
-    };
   },
 };
 </script>
