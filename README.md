@@ -69,6 +69,8 @@ hotfix(由 master 分支，馬上修正 bug)
 
 #### 方法一
 
+設定合併衝突時的策略，再故意製造衝突
+
 1. 創建 .gitattributes 檔案
 
 ```
@@ -82,7 +84,10 @@ hotfix(由 master 分支，馬上修正 bug)
 
 #### 方法二
 
-合併後，利用 git reset <指定檔案> 來恢復檔案即可
+直接使用 reset 指令返回目標檔案
+
+合併後，利用 `git reset <目標檔案>` 來恢復檔案即可 (目標檔案 ex: src/settings-no-merge.js)
+或是 `git checkout HEAD^ <目標檔案>` 也可以
 
 ### 子路徑傳值給父路徑
 
