@@ -8,38 +8,15 @@
     <transition name="slide-dropdown">
       <div class="header-menu__dropdown" v-show="isShowMenu">
         <div class="header-menu__dropdown__route">
-          <div class="header-menu__dropdown__route__item" @click="changeRoute('About')">
-            <i class="header-menu__dropdown__route__item__icon icon-about"></i>
-            <a class="header-menu__dropdown__route__item__link" href="javascript:;">
-              {{ $t('header.menu.about') }}
-            </a>
-          </div>
-          <div class="header-menu__dropdown__route__item" @click="changeRoute('News')">
-            <i class="header-menu__dropdown__route__item__icon icon-news"></i>
-            <a class="header-menu__dropdown__route__item__link" href="javascript:;">
-              {{ $t('header.menu.notification') }}
-            </a>
-          </div>
-          <div class="header-menu__dropdown__route__item" v-if="userIsLoggedIn" @click="changeRoute('UserProfile')">
-            <i class="header-menu__dropdown__route__item__icon icon-profile"></i>
-            <a class="header-menu__dropdown__route__item__link" href="javascript:;">
-              {{ $t('header.menu.personalInfo') }}
-            </a>
-          </div>
-          <div class="header-menu__dropdown__route__item" v-if="userIsLoggedIn" @click="changeRoute('UserMail')">
-            <i class="header-menu__dropdown__route__item__icon icon-mail"></i>
-            <a class="header-menu__dropdown__route__item__link" href="javascript:;">
-              {{ $t('header.menu.mail') }}
-            </a>
-          </div>
           <div
             class="header-menu__dropdown__route__item"
-            v-if="userIsLoggedIn"
-            @click="changeRoute('TransactionDepositBase')"
+            v-for="item in routeListCurrent"
+            :key="item.route"
+            @click="$router.push({ name: item.route }).catch(() => {})"
           >
-            <i class="header-menu__dropdown__route__item__icon icon-transaction"></i>
+            <i class="header-menu__dropdown__route__item__icon" :class="item.name"></i>
             <a class="header-menu__dropdown__route__item__link" href="javascript:;">
-              {{ $t('header.menu.transaction') }}
+              {{ $t(`header.menu.${item.name}`) }}
             </a>
           </div>
           <div class="header-menu__dropdown__route__item" v-if="userIsLoggedIn" @click="logout">
@@ -85,18 +62,54 @@ export default {
   },
   computed: {
     ...mapGetters(['lang', 'langList', 'langName', 'userIsLoggedIn', 'siteIsPreview']),
+    routeListCurrent() {
+      if (this.userIsLoggedIn) {
+        return this.routeAuthList;
+      }
+      return this.routeList;
+    },
   },
   data() {
     return {
       isShowMenu: false,
       isShowLangList: false,
+
+      routeList: [
+        {
+          name: 'about',
+          route: 'About',
+        },
+        {
+          name: 'news',
+          route: 'News',
+        },
+      ],
+
+      routeAuthList: [
+        {
+          name: 'about',
+          route: 'About',
+        },
+        {
+          name: 'news',
+          route: 'News',
+        },
+        {
+          name: 'profile',
+          route: 'UserProfile',
+        },
+        {
+          name: 'mail',
+          route: 'UserMail',
+        },
+        {
+          name: 'transaction',
+          route: 'TransactionDepositBase',
+        },
+      ],
     };
   },
   methods: {
-    changeRoute(name) {
-      this.$router.push({ name });
-      this.isShowMenu = false;
-    },
     changeLang(lang) {
       this.$emit('changeLang', lang);
       this.isShowMenu = false;
@@ -104,6 +117,14 @@ export default {
     },
     logout() {
       this.$emit('logout');
+    },
+  },
+  watch: {
+    $route: {
+      deep: true,
+      handler() {
+        this.isShowMenu = false;
+      },
     },
   },
 };

@@ -101,22 +101,22 @@
           background: $header-menu-dropdown-icon;
           margin-right: 15px;
 
-          &.icon-about {
+          &.about {
             background-position: center 0px;
           }
-          &.icon-news {
+          &.news {
             background-position: center -95px;
           }
-          &.icon-profile {
+          &.profile {
             background-position: center -185px;
           }
-          &.icon-mail {
+          &.mail {
             background-position: center -275px;
           }
-          &.icon-transaction {
+          &.transaction {
             background-position: center -365px;
           }
-          &.icon-logout {
+          &.logout {
             background-position: center -450px;
           }
         }
