@@ -72,8 +72,9 @@ hotfix(由 master 分支，馬上修正 bug)
 文件2 merge=ours
 ```
 
-2.輸入命令啟用合併策略
-`git config --global merge.ours.driver true`
+2. 輸入命令啟用合併策略 `git config --global merge.ours.driver true`
+
+3. 需要有衝突才會進行忽略，所以需要故意製造衝突，每當要合併的時候，就去修改註解
 
 ### 子路徑傳值給父路徑
 
