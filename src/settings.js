@@ -1,3 +1,9 @@
+import { BRANCH } from '@/settings-no-merge';
+
+//* 檢查是否為健康網域的 API 網域
+export const DOMAIN_INFO_URL =
+  BRANCH === 'master' ? 'https://api.starbets.re888show.com' : 'https://api.starbets.re888show.com';
+
 //* Lang
 export const LANG_DEFAULT = 'th-th';
 

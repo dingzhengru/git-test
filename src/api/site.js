@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '@/settings';
+import { API_URL, DOMAIN_INFO_URL } from '@/settings';
 
 //* 檢查此網域是否健康
 export async function checkSite() {
@@ -42,7 +42,7 @@ export async function apiPostSiteSeoInfo() {
  ** 4. DomainName 跟 Referer 對不上的話 => 空值
  */
 export async function apiGetDomainInfo(params) {
-  const result = await axios.get('https://api.starbets.re888show.com/api/Siteinfo/DomainInfo', { params });
+  const result = await axios.get(DOMAIN_INFO_URL + '/api/Siteinfo/DomainInfo', { params });
   return result.data;
 }
 

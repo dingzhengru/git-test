@@ -9,6 +9,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [次要分支](#次要分支)
 - [Token & 公鑰](#token--公鑰)
 - [其他](#其他)
+  - [合併分支時忽略部分文件](#合併分支時忽略部分文件)
   - [子路徑傳值給父路徑](#子路徑傳值給父路徑)
   - [vee-validate](#vee-validate)
     - [ValidationObserver 的 invalid 失效問題(已解決)](#validationobserver-的-invalid-失效問題已解決)
@@ -58,6 +59,21 @@ hotfix(由 master 分支，馬上修正 bug)
 不過現在確定 token 與 公鑰沒有期限，所以不會因為過期而觸發這兩個錯誤，只有被踢線時會觸發，所以目前只有**重新取得 token 與 公鑰**
 
 ## 其他
+
+### 合併分支時忽略部分文件
+
+參考: https://www.1024yun.com/2019/06/03/git%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E6%97%B6%E5%BF%BD%E7%95%A5%E5%90%88%E5%B9%B6%E9%83%A8%E5%88%86%E6%96%87%E4%BB%B6/
+參考: https://blog.yowko.com/git-attributes-merge-strategy/
+
+1. 創建 .gitattributes 檔案
+
+```
+文件1 merge=ours
+文件2 merge=ours
+```
+
+2.輸入命令啟用合併策略
+`git config --global merge.ours.driver true`
 
 ### 子路徑傳值給父路徑
 

@@ -166,7 +166,7 @@ if (isLoggedIn) {
   const requestDataSeo = { Lang: lang };
   store.dispatch('site/getSeoInfo', requestDataSeo);
 
-  //* 檢查網域是否正常
+  //* 檢查網域是否正常 (測試 API 用的區塊)
   const requestDataDomainInfo = {
     SiteID: store.getters.siteID,
     DomainName: window.location.hostname,
@@ -179,6 +179,7 @@ if (isLoggedIn) {
     }
   });
 
+  //* 檢查網域是否正常
   checkSite().then(result => {
     const parser = new DOMParser();
     const htmlDoc = parser.parseFromString(result, 'text/html');
@@ -188,7 +189,6 @@ if (isLoggedIn) {
       // const requestDataDomainInfo = { SiteID: store.getters.siteID, DomainName: window.location.hostname };
       // apiGetDomainInfo(requestDataDomainInfo);
 
-      //* 檢查網域是否正常
       const requestDataDomainInfo = {
         SiteID: store.getters.siteID,
         DomainName: window.location.hostname,
@@ -227,3 +227,5 @@ if (isLoggedIn) {
     },
   }).$mount('#app');
 })();
+
+console.log(process.env.VUE_APP_I18N_LOCALE, '123123');
