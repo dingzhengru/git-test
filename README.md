@@ -10,6 +10,8 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 - [Token & 公鑰](#token--公鑰)
 - [其他](#其他)
   - [合併分支時忽略部分文件](#合併分支時忽略部分文件)
+    - [方法一](#方法一)
+    - [方法二](#方法二)
   - [子路徑傳值給父路徑](#子路徑傳值給父路徑)
   - [vee-validate](#vee-validate)
     - [ValidationObserver 的 invalid 失效問題(已解決)](#validationobserver-的-invalid-失效問題已解決)
@@ -65,6 +67,8 @@ hotfix(由 master 分支，馬上修正 bug)
 參考: https://www.1024yun.com/2019/06/03/git%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E6%97%B6%E5%BF%BD%E7%95%A5%E5%90%88%E5%B9%B6%E9%83%A8%E5%88%86%E6%96%87%E4%BB%B6/
 參考: https://blog.yowko.com/git-attributes-merge-strategy/
 
+#### 方法一
+
 1. 創建 .gitattributes 檔案
 
 ```
@@ -75,6 +79,10 @@ hotfix(由 master 分支，馬上修正 bug)
 2. 輸入命令啟用合併策略 `git config --global merge.ours.driver true`
 
 3. 需要有衝突才會進行忽略，所以需要故意製造衝突，每當要合併的時候，就去修改註解
+
+#### 方法二
+
+合併後，利用 git reset <指定檔案> 來恢復檔案即可
 
 ### 子路徑傳值給父路徑
 
