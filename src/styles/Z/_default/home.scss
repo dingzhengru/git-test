@@ -8,6 +8,7 @@
 }
 
 @mixin home-banner {
+  width: 100%;
   height: $home-banner-height; // 432px
 
   .swiper-lazy-preloader {

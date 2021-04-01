@@ -5,6 +5,8 @@
 H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
 - [分支](#分支)
+  - [主要分支](#主要分支)
+  - [次要分支](#次要分支)
 - [Token & 公鑰](#token--公鑰)
 - [其他](#其他)
   - [子路徑傳值給父路徑](#子路徑傳值給父路徑)
@@ -31,9 +33,19 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 
 ## 分支
 
+參考: https://gitbook.tw/chapters/gitflow/why-need-git-flow.html
+參考: https://blog.wu-boy.com/2011/03/git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-branch-model-%E5%88%86%E6%94%AF%E6%A8%A1%E7%B5%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/comment-page-1/
+
+### 主要分支
+
 master: 正式站
-release: 測試站
-dev: show 站
+develope: show 站
+
+### 次要分支
+
+release(由 develop 分支，開發下一版 Release): 測試站
+feature(由 develop 分支，開發新功能)
+hotfix(由 master 分支，馬上修正 bug)
 
 ## Token & 公鑰
 
