@@ -1,0 +1,1 @@
+git reset src/settings-no-merge.js
