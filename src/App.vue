@@ -44,13 +44,14 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinLang from '@/mixins/lang';
 import mixinPwa from '@/mixins/pwa';
 import Intersect from 'vue-intersect';
 
 export default {
   name: 'App',
-  mixins: [mixinLang, mixinPwa],
+  mixins: [mixinStyleLoader, mixinLang, mixinPwa],
   components: {
     AppLoading: () => import('@/components/AppLoading'),
     AppGoTopButton: () => import('@/components/AppGoTopButton'),
@@ -106,10 +107,14 @@ export default {
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
 
-    import(`@/styles/${this.siteFullCss}/_layout.scss`);
-    import(`@/styles/${this.siteFullCss}/header.scss`);
-    import(`@/styles/${this.siteFullCss}/footer.scss`);
-    import(`@/styles/${this.siteFullCss}/pagination.scss`);
+    // import(`@/styles/${this.siteFullCss}/_layout.scss`);
+    // import(`@/styles/${this.siteFullCss}/header.scss`);
+    // import(`@/styles/${this.siteFullCss}/footer.scss`);
+    // import(`@/styles/${this.siteFullCss}/pagination.scss`);
+    this.importStyleByFilename('_layout');
+    this.importStyleByFilename('header');
+    this.importStyleByFilename('footer');
+    this.importStyleByFilename('pagination');
 
     //* 載入 manifest
     // document.querySelector('link[rel=manifest]').setAttribute('href', '/manifest01.json');

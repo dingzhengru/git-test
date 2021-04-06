@@ -21,11 +21,12 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinNews from '@/mixins/news';
 import { mapGetters } from 'vuex';
 export default {
   name: 'News',
-  mixins: [mixinNews],
+  mixins: [mixinStyleLoader, mixinNews],
   components: {
     AppPagination: () => import('@/components/AppPagination'),
   },
@@ -36,7 +37,8 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/news.scss`);
+    // import(`@/styles/${this.siteFullCss}/news.scss`);
+    this.importStyleByFilename('news');
 
     this.$store.commit('setPageTitle', 'news.title');
   },

@@ -28,11 +28,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import mixinStyleLoader from '@/mixins/_styleLoader';
 
 export default {
   name: 'About',
+  mixins: [mixinStyleLoader],
   computed: {
-    ...mapGetters(['siteFullCss', 'userIsLoggedIn']),
+    ...mapGetters(['userIsLoggedIn']),
     imgSport() {
       return require('@/assets/common/about/gameIntro-01.jpg');
     },
@@ -44,7 +46,8 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/about.scss`);
+    // import(`@/styles/${this.siteFullCss}/about.scss`);
+    this.importStyleByFilename('about');
 
     this.$store.commit('setPageTitle', 'about.title');
   },

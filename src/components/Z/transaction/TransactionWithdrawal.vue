@@ -121,15 +121,24 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinTransactionWithdrawal from '@/mixins/transactionWithdrawal';
+import { mapGetters } from 'vuex';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'TransactionWithdrawal',
-  mixins: [mixinTransactionWithdrawal],
+  mixins: [mixinStyleLoader, mixinTransactionWithdrawal],
   components: {
     ValidationObserver,
     ValidationProvider,
+  },
+  computed: {
+    ...mapGetters(['siteFullCss']),
+  },
+  mounted() {
+    // import(`@/styles/${this.siteFullCss}/transaction-withdrawal.scss`);
+    this.importStyleByFilename('transaction-withdrawal');
   },
 };
 </script>

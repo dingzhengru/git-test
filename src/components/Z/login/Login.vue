@@ -125,6 +125,7 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinLogin from '@/mixins/login';
 import mixinPwa from '@/mixins/pwa';
 import { mapGetters } from 'vuex';
@@ -133,7 +134,7 @@ import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'Login',
-  mixins: [mixinLogin, mixinPwa],
+  mixins: [mixinStyleLoader, mixinLogin, mixinPwa],
   components: {
     ValidationObserver,
     ValidationProvider,
@@ -149,7 +150,8 @@ export default {
     ]),
   },
   async mounted() {
-    import(`@/styles/${this.siteFullCss}/login.scss`);
+    // import(`@/styles/${this.siteFullCss}/login.scss`);
+    this.importStyleByFilename('login');
 
     this.$store.commit('setPageTitle', 'login.title');
 

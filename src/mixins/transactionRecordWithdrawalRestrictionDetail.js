@@ -5,7 +5,7 @@ import { apiGetRecordDetailWithdrawalRestriction } from '@/api/transaction-recor
 export default {
   name: 'TransactionRecordDetail',
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang']),
   },
   data() {
     return {
@@ -19,7 +19,6 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
     this.getRecordDetail();
   },
   watch: {

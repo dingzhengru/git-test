@@ -80,15 +80,24 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinTransactionTransfer from '@/mixins/transactionTransfer';
+import { mapGetters } from 'vuex';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'TransactionTransfer',
-  mixins: [mixinTransactionTransfer],
+  mixins: [mixinStyleLoader, mixinTransactionTransfer],
   components: {
     ValidationObserver,
     ValidationProvider,
+  },
+  computed: {
+    ...mapGetters(['siteFullCss']),
+  },
+  mounted() {
+    // import(`@/styles/${this.siteFullCss}/transaction-transfer.scss`);
+    this.importStyleByFilename('transaction-transfer');
   },
 };
 </script>

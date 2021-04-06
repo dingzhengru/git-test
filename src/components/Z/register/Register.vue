@@ -98,13 +98,14 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinRegister from '@/mixins/register';
 import { mapGetters } from 'vuex';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'Register',
-  mixins: [mixinRegister],
+  mixins: [mixinStyleLoader, mixinRegister],
   components: {
     ValidationObserver,
     ValidationProvider,
@@ -116,7 +117,8 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/register.scss`);
+    // import(`@/styles/${this.siteFullCss}/register.scss`);
+    this.importStyleByFilename('register');
 
     this.$store.commit('setPageTitle', 'register.title');
   },

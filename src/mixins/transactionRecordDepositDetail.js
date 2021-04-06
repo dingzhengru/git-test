@@ -5,7 +5,7 @@ import { apiGetRecordDepositDetail } from '@/api/transaction-record';
 export default {
   name: 'TransactionRecordDetail',
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang']),
   },
   data() {
     return {
@@ -19,8 +19,6 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
-
     if (this.$route.query) {
       this.getRecordDetail(this.$route.query);
     }

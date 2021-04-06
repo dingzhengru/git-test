@@ -13,10 +13,12 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'Home',
+  mixins: [mixinStyleLoader],
   components: {
     ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
     ModalMessageC: () => import('@/components/ModalMessageC'),
@@ -61,7 +63,8 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/home.scss`);
+    // import(`@/styles/${this.siteFullCss}/home.scss`);
+    this.importStyleByFilename('home');
 
     //* 沒登入就顯示 MainNotice
     this.isShowMainNotice = this.siteIsShowMainNotice && !this.userIsLoggedIn;

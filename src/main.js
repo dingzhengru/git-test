@@ -35,6 +35,7 @@ import dayjs from 'dayjs';
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
 import { isObjEmpty, deepClone, getObjectValueByDotString } from '@/utils/object';
+import { isStandaloneMode } from '@/utils/device';
 
 Vue.prototype.$dayjs = dayjs;
 Vue.prototype.$numeral = numeral;
@@ -43,6 +44,7 @@ Vue.prototype.$idMapper = idMapper;
 Vue.prototype.$isObjEmpty = isObjEmpty;
 Vue.prototype.$deepClone = deepClone;
 Vue.prototype.$getObjectValueByDotString = getObjectValueByDotString;
+Vue.prototype.$isStandaloneMode = isStandaloneMode;
 
 //* Vue Global Component
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域

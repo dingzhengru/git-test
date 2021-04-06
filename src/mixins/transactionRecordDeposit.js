@@ -4,7 +4,7 @@ import { apiGetRecordDeposit } from '@/api/transaction-record';
 export default {
   name: 'MixinTransactionRecordDeposit',
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang']),
   },
   data() {
     return {
@@ -37,7 +37,6 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
     this.getRecord();
   },
   watch: {

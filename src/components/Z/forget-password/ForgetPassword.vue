@@ -9,15 +9,18 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'ForgetPassword',
+  mixins: [mixinStyleLoader],
   computed: {
     ...mapGetters(['siteFullCss']),
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/forget-password.scss`);
+    // import(`@/styles/${this.siteFullCss}/forget-password.scss`);
+    this.importStyleByFilename('forget-password');
 
     this.$store.commit('setPageTitle', 'forgetPassword.title');
   },

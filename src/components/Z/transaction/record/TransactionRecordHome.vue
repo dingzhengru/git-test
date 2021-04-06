@@ -13,10 +13,12 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'TransactionRecordHome',
+  mixins: [mixinStyleLoader],
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss']),
   },
@@ -83,7 +85,8 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
+    // import(`@/styles/${this.siteFullCss}/transaction-record.scss`);
+    this.importStyleByFilename('transaction-record');
     this.updateRoute();
   },
 };

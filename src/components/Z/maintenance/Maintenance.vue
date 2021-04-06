@@ -28,10 +28,12 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'Maintenance',
+  mixins: [mixinStyleLoader],
   computed: {
     ...mapGetters([
       'siteFullCss',
@@ -74,7 +76,8 @@ export default {
       this.$router.replace({ name: 'Home' });
     }
 
-    import(`@/styles/${this.siteFullCss}/maintenance.scss`);
+    // import(`@/styles/${this.siteFullCss}/maintenance.scss`);
+    this.importStyleByFilename('maintenance');
   },
 };
 </script>

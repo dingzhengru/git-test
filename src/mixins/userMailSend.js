@@ -4,7 +4,7 @@ import { apiGetMailCategoryList, apiSendMail } from '@/api/notification';
 export default {
   name: 'MixinUserMailSend',
   computed: {
-    ...mapGetters(['lang', 'siteFullCss']),
+    ...mapGetters(['lang']),
   },
   data() {
     return {
@@ -36,8 +36,6 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/notification/notification-outbox.scss`);
-
     this.getMailCategoryList();
   },
   watch: {

@@ -21,12 +21,13 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinPromotion from '@/mixins/promotion';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'Promotion',
-  mixins: [mixinPromotion],
+  mixins: [mixinStyleLoader, mixinPromotion],
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss', 'userIsLoggedIn']),
     PromotionNavTab() {
@@ -34,7 +35,8 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/promotion.scss`);
+    // import(`@/styles/${this.siteFullCss}/promotion.scss`);
+    this.importStyleByFilename('promotion');
   },
 };
 </script>

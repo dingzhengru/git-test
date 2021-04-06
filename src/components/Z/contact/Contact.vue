@@ -152,17 +152,19 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinContact from '@/mixins/contact';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'Contact',
-  mixins: [mixinContact],
+  mixins: [mixinStyleLoader, mixinContact],
   computed: {
     ...mapGetters(['siteName', 'siteFullCss', 'userIsLoggedIn']),
   },
   async mounted() {
-    import(`@/styles/${this.siteFullCss}/contact.scss`);
+    // import(`@/styles/${this.siteFullCss}/contact.scss`);
+    this.importStyleByFilename('contact');
   },
 };
 </script>

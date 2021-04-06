@@ -28,10 +28,12 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'TransactionDepositHome',
+  mixins: [mixinStyleLoader],
   components: {
     ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
   },
@@ -50,7 +52,8 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-deposit.scss`);
+    // import(`@/styles/${this.siteFullCss}/transaction-deposit.scss`);
+    this.importStyleByFilename('transaction-deposit');
 
     //* 是否顯示 DepositNotice
     this.isShowDepositNotice = this.siteIsShowDepositNotice;

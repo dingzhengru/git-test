@@ -6,9 +6,11 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 export default {
   name: 'UserHome',
+  mixins: [mixinStyleLoader],
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss']),
     AppNavTab() {
@@ -50,7 +52,8 @@ export default {
     };
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/user.scss`);
+    // import(`@/styles/${this.siteFullCss}/user.scss`);
+    this.importStyleByFilename('user');
 
     this.$store.commit('setPageTitle', 'user.title');
   },

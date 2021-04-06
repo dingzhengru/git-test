@@ -5,7 +5,7 @@ import { apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
 export default {
   name: 'TransactionWithdrawal',
   computed: {
-    ...mapGetters(['lang', 'siteFullCss', 'userGamePointWallet']),
+    ...mapGetters(['lang', 'userGamePointWallet']),
     amountMax() {
       if (this.withdrawalInfo.Lst_Point < this.withdrawalInfo.WithalUplimit) {
         return this.withdrawalInfo.Lst_Point;
@@ -100,8 +100,6 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-withdrawal.scss`);
-
     this.getWithdrawalInfo();
   },
   watch: {

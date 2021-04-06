@@ -1,7 +1,7 @@
 <template>
   <ModalMessage :isShow="isShow">
     <div class="modal-message-c">
-      <div v-if="isStandaloneMode">
+      <div v-if="$isStandaloneMode()">
         <p class="modal-message-c__text">被封網域訊息(下載 APK)</p>
         <button @click="downloadAPK">Download APK</button>
       </div>
@@ -16,7 +16,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { isStandaloneMode } from '@/utils/device';
 export default {
   name: 'ModalSiteBlockedMessage',
   props: {
@@ -30,9 +29,6 @@ export default {
   },
   computed: {
     ...mapGetters(['siteDomainRedirect', 'siteAPKUrl']),
-    isStandaloneMode() {
-      return isStandaloneMode();
-    },
   },
   methods: {
     redirectDomain() {

@@ -6,10 +6,12 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'TransactionHome',
+  mixins: [mixinStyleLoader],
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss']),
     AppNavTab() {
@@ -67,7 +69,8 @@ export default {
     };
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction.scss`);
+    // import(`@/styles/${this.siteFullCss}/transaction.scss`);
+    this.importStyleByFilename('transaction');
 
     this.$store.commit('setPageTitle', 'transaction.title');
   },

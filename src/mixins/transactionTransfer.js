@@ -5,7 +5,7 @@ import { apiGetProductPromotionList } from '@/api/product';
 export default {
   name: 'TransactionTransfer',
   computed: {
-    ...mapGetters(['lang', 'siteFullCss', 'userGamePointList', 'userGamePointById']),
+    ...mapGetters(['lang', 'userGamePointList', 'userGamePointById']),
     fromList() {
       return this.productList;
     },
@@ -66,8 +66,6 @@ export default {
     },
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/transaction-transfer.scss`);
-
     this.getTransferInfo();
   },
   watch: {

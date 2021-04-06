@@ -23,18 +23,20 @@
 </template>
 
 <script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinPromotionDetail from '@/mixins/promotionDetail';
 import { mapGetters } from 'vuex';
 import 'froala-editor/css/froala_style.min.css';
 
 export default {
   name: 'PromotionDetail',
-  mixins: [mixinPromotionDetail],
+  mixins: [mixinStyleLoader, mixinPromotionDetail],
   computed: {
     ...mapGetters(['lang', 'siteFullCss', 'userIsLoggedIn']),
   },
   mounted() {
-    import(`@/styles/${this.siteFullCss}/promotion.scss`);
+    this.importStyleByFilename('promotion');
+    // import(`@/styles/${this.siteFullCss}/promotion.scss`);
   },
 };
 </script>
