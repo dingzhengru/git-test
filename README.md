@@ -12,7 +12,6 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [合併分支時忽略部分文件](#合併分支時忽略部分文件)
   - [方法一](#方法一)
     - [方法二](#方法二)
-    - [方法三](#方法三)
   - [子路徑傳值給父路徑](#子路徑傳值給父路徑)
   - [vee-validate](#vee-validate)
     - [ValidationObserver 的 invalid 失效問題(已解決)](#validationobserver-的-invalid-失效問題已解決)
@@ -72,10 +71,19 @@ hotfix(由 master 分支，馬上修正 bug)
 
 參考: https://stackoverflow.com/a/16455853/5134658
 
-利用 reset 返回指定檔案
+利用 reset 返回指定檔案 & checkout -- 放棄未提交的更改
 
-此指令 `checkout -- <filename>`，參考: https://stackoverflow.com/a/6561160/5134658
-discard uncommitted changes to the file，放棄指定檔案未提交的更改
+- `--no-ff`，參考: https://tzuhui.github.io/2019/06/20/Git/fast-forward
+
+  - 關閉快速合併(Fast forward)，完整保留每一個分支的 commit 紀錄
+
+- `--no-commit`，參考: https://gitbook.tw/posts/2018-07-20-git-merge-dry-run
+
+  - 這個參數會假裝這次的合併失敗，並且不會產生新的 commit，讓使用者有機會可以在 commit 前再做一些事
+  - 要注意的是，這個地方如果沒有加上 `--no-ff` 的話，雖然不會產生 Commit，但還是因為 Fast forward 而完成合併。
+
+- `checkout -- <filename>`，參考: https://stackoverflow.com/a/6561160/5134658
+  - discard uncommitted changes to the file，放棄指定檔案未提交的更改
 
 ```sh
 git merge --no-ff --no-commit <merge-branch>
@@ -98,13 +106,6 @@ git commit -m "merged <merge-branch>"
 2. 輸入命令啟用合併策略 `git config --global merge.ours.driver true`
 
 3. 需要有衝突才會進行忽略，所以需要故意製造衝突，每當要合併的時候，就去修改註解
-
-#### 方法三
-
-直接使用 reset 指令返回目標檔案
-
-合併後，利用 `git reset <目標檔案>` 來恢復檔案即可 (目標檔案 ex: src/settings-no-merge.js)
-或是 `git checkout HEAD^ <目標檔案>` 也可以
 
 ### 子路徑傳值給父路徑
 
