@@ -1,11 +1,11 @@
 <template>
   <div class="contact" :class="{ 'contact-auth': userIsLoggedIn }">
-    <template v-for="item in contactList">
+    <template v-for="contactItem in contactList">
       <div
         class="contact__item"
-        :key="item.Lst_ContactID"
+        :key="contactItem.Lst_ContactID"
         @click="clickServiceHandler"
-        v-if="item === service && !$isObjEmpty(service)"
+        v-if="contactItem === service && !$isObjEmpty(service)"
       >
         <i class="contact__item__icon--contact icon-service"></i>
         <div class="contact__item__text">
@@ -16,9 +16,9 @@
 
       <div
         class="contact__item"
-        :key="item.Lst_ContactID"
+        :key="contactItem.Lst_ContactID"
         @click="isShowDetailMobile = !isShowDetailMobile"
-        v-if="item === mobile && !$isObjEmpty(mobile)"
+        v-if="contactItem === mobile && !$isObjEmpty(mobile)"
       >
         <i class="contact__item__icon--contact icon-mobile"></i>
         <div class="contact__item__text">
@@ -42,9 +42,9 @@
 
       <div
         class="contact__item"
-        :key="item.Lst_ContactID"
+        :key="contactItem.Lst_ContactID"
         @click="isShowDetailSkype = !isShowDetailSkype"
-        v-if="item === skype && !$isObjEmpty(skype)"
+        v-if="contactItem === skype && !$isObjEmpty(skype)"
       >
         <i class="contact__item__icon--contact icon-skype"></i>
         <div class="contact__item__text">
@@ -68,24 +68,29 @@
 
       <div
         class="contact__item contact__item--no-wrap"
-        :key="item.Lst_ContactID"
-        v-if="item === line && !$isObjEmpty(line)"
+        :key="'contactItemButton' + String(contactItem.Lst_ContactID)"
+        v-if="contactItem === line && !$isObjEmpty(line)"
       >
         <i class="contact__item__icon--contact icon-line"></i>
         <div class="contact__item__text">
           <div class="contact__item__text__title">{{ $t('contact.lineTitle') }}</div>
-          <div class="contact__item__text__content">{{ $t('contact.lineContent', { site: siteName }) }}</div>
+          <div class="contact__item__text__content">
+            {{ $t('contact.lineContent', { site: line.DetailList[0].Lst_ContactValue }) }}
+          </div>
         </div>
-        <button class="contact__item__btn" @click="openLink('http://line.me/ti/p/PylqIPpa3B')">
+        <button
+          class="contact__item__btn"
+          @click="openLink(`http://line.me/ti/p/${line.DetailList[0].Lst_ContactValue}`)"
+        >
           {{ $t('contact.join') }}
         </button>
       </div>
 
       <div
         class="contact__item"
-        :key="item.Lst_ContactID"
+        :key="contactItem.Lst_ContactID"
         @click="isShowDetailLine = !isShowDetailLine"
-        v-if="item === line && !$isObjEmpty(line)"
+        v-if="contactItem === line && !$isObjEmpty(line) && line.DetailList.length > 1"
       >
         <i class="contact__item__icon--contact icon-line"></i>
         <div class="contact__item__text">
@@ -97,7 +102,7 @@
           <div class="contact__item__detail-btn" v-show="isShowDetailLine">
             <div
               class="contact__item__detail-btn__item"
-              v-for="item in line.DetailList"
+              v-for="item in line.DetailList.slice(1)"
               :key="item.Lst_ContactValueID"
               @click="openContactLink(line, item)"
             >
@@ -109,24 +114,29 @@
 
       <div
         class="contact__item contact__item--no-wrap"
-        :key="item.Lst_ContactID"
-        v-if="item === wechat && !$isObjEmpty(wechat)"
+        :key="'contactItemButton' + String(contactItem.Lst_ContactID)"
+        v-if="contactItem === wechat && !$isObjEmpty(wechat)"
       >
         <i class="contact__item__icon--contact icon-wechat"></i>
         <div class="contact__item__text">
           <div class="contact__item__text__title">{{ $t('contact.wechatTitle') }}</div>
-          <div class="contact__item__text__content">{{ $t('contact.wechatContent', { site: siteName }) }}</div>
+          <div class="contact__item__text__content">
+            {{ $t('contact.wechatContent', { site: wechat.DetailList[0].Lst_ContactValue }) }}
+          </div>
         </div>
-        <button class="contact__item__btn" @click="openLink('https://weixin.qq.com/r/W4G4oOPEY74crafD99RJ')">
+        <button
+          class="contact__item__btn"
+          @click="openLink(`https://weixin.qq.com/r/${wechat.DetailList[0].Lst_ContactValue}`)"
+        >
           {{ $t('contact.join') }}
         </button>
       </div>
 
       <div
         class="contact__item"
-        :key="item.Lst_ContactID"
+        :key="contactItem.Lst_ContactID"
         @click="isShowDetailWechat = !isShowDetailWechat"
-        v-if="item === wechat && !$isObjEmpty(wechat)"
+        v-if="contactItem === wechat && !$isObjEmpty(wechat) && wechat.DetailList.length > 1"
       >
         <i class="contact__item__icon--contact icon-wechat"></i>
         <div class="contact__item__text">
@@ -138,7 +148,7 @@
           <div class="contact__item__detail-btn" v-show="isShowDetailWechat">
             <button
               class="contact__item__detail-btn__item"
-              v-for="item in wechat.DetailList"
+              v-for="item in wechat.DetailList.slice(1)"
               :key="item.Lst_ContactValueID"
               @click="openContactLink(wechat, item)"
             >
