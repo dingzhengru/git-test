@@ -100,6 +100,11 @@ export default {
         }
       },
     },
+    to() {
+      if (this.to !== this.promotion.game) {
+        this.promotion = {}; //* 當 to 改變，其優惠活動不含此
+      }
+    },
     promotion() {
       if (this.$isObjEmpty(this.promotion)) {
         return;
