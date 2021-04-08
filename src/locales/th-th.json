@@ -152,10 +152,11 @@
       "transaction": "ทำรายการฝาก-ถอนเงิน",
       "report": "รายการเดิมพัน",
       "notification": "ข่าวล่าสุด",
+      "news": "ข่าวล่าสุด",
       "promotion": "โปรโมชั่น",
       "about": "เกี่ยวกับเรา",
       "personalInfo": "ข้อมูลส่วนตัว",
-      "mail": "Mail"
+      "mail": "แชท"
     },
     "user": {
       "username": "ชื่อผู้ใช้",
