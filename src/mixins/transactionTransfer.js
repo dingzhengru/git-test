@@ -31,7 +31,7 @@ export default {
       from: 9999,
       to: -1,
       amount: 0,
-      promotion: '',
+      promotion: {},
     };
   },
   methods: {
@@ -40,12 +40,21 @@ export default {
       this.productList = result.RetObj.Add_SourceList;
       this.productDetailList = result.RetObj.MenuMemberDetailItemList;
     },
+    async getTransferPromotionList() {
+      const requestData = {
+        Add_Destination: this.productList.filter(item => item.Product_id !== 9999).map(item => item.Product_id),
+      };
+      const result = await apiGetProductPromotionList(requestData);
+      if (result.Code === 200) {
+        this.productPromotionList = result.RetObj.ActivityList;
+      }
+    },
     submitTransferPoint() {
       const requestData = {
         Add_Source: this.from,
         Add_Destination: this.to,
         Add_TransferPoint: this.amount,
-        Add_ActivityID: this.promotion,
+        Add_ActivityID: this.promotion.Value,
       };
 
       this.$store.dispatch('user/transferPoint', requestData);
@@ -65,12 +74,14 @@ export default {
       this.to = from;
     },
   },
-  mounted() {
-    this.getTransferInfo();
+  async mounted() {
+    await this.getTransferInfo();
+    this.getTransferPromotionList();
   },
   watch: {
-    lang() {
-      this.getTransferInfo();
+    async lang() {
+      await this.getTransferInfo();
+      this.getTransferPromotionList();
     },
     userGamePointList() {
       this.amount = this.currentPoint;
@@ -81,25 +92,21 @@ export default {
         this.amount = this.currentPoint;
 
         if (this.from != 9999) {
-          //* 當 from 選擇非錢包時，to 列表會只剩下錢包
-          this.to = 9999;
+          this.to = 9999; //* 當 from 選擇非錢包時，to 列表會只剩下錢包
+          this.promotion = {}; //* 當 from 選擇非錢包時，不會有優惠活動
         } else if (this.from == 9999 && this.to == 9999) {
           //* 當 from 選錢包，但 to 也是錢包時
           this.to = -1;
         }
       },
     },
-    async to() {
-      if (this.to < 0) {
+    promotion() {
+      if (this.$isObjEmpty(this.promotion)) {
         return;
       }
-      this.promotion = '';
 
-      const requestData = { Add_Destination: this.to };
-      const result = await apiGetProductPromotionList(requestData);
-
-      if (result.Code === 200) {
-        this.productPromotionList = result.RetObj.ActivityList;
+      if (this.from === 9999) {
+        this.to = this.promotion.game;
       }
     },
   },

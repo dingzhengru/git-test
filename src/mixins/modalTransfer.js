@@ -101,7 +101,7 @@ export default {
         return;
       }
 
-      const requestData = { Add_Destination: this.productPointCurrent.Product_id };
+      const requestData = { Add_Destination: [this.productPointCurrent.Product_id] };
       const result = await apiGetProductPromotionList(requestData);
 
       if (result.Code === 200) {

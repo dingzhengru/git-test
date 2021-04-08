@@ -39,13 +39,13 @@
       <ValidationProvider
         class="ui-field transfer__field transfer__field--promotion"
         tag="div"
-        v-show="productPromotionList.length > 0"
+        v-show="productPromotionList.length > 0 && from === 9999"
       >
         <div class="ui-field__group">
           <span class="ui-field__group__label">{{ $t('ui.label.promotion') }}</span>
           <select class="ui-field__select" v-model="promotion">
-            <option value="">{{ $t('ui.label.pleaseSelect') }}</option>
-            <option :value="item.Value" v-for="item in productPromotionList" :key="item.Value">
+            <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
+            <option :value="item" v-for="item in productPromotionList" :key="item.Value">
               {{ item.Text }}
             </option>
           </select>
