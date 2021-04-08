@@ -5,7 +5,7 @@
         <div class="ui-field user-profile__field">
           <div class="ui-field__group">
             <label class="ui-field__group__label">
-              {{ $t('user.profile.accessed.createdDatetime') }}
+              {{ $t('user.profile.field.registerTime') }}
             </label>
             <input class="ui-field__group__input" type="text" :value="userCreatedDatetime" />
           </div>

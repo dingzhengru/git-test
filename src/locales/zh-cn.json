@@ -16,7 +16,9 @@
       "noData": "尚无资料",
       "baht": "泰铢",
       "underMaintenance": "维护中",
-      "promotion": "优惠活动"
+      "promotion": "优惠活动",
+      "transactionNumber": "交易编号",
+      "news": "最新消息"
     },
     "button": {
       "submit": "提交",
@@ -29,7 +31,8 @@
       "close": "关闭",
       "copy": "复制",
       "search": "查询",
-      "lotteryCount": "{count} 次抽奖"
+      "lotteryCount": "{count} 次抽奖",
+      "allToMyWallet": "全部转回我的钱包"
     },
     "currency": {
       "thaiBaht": "泰銖"
@@ -203,11 +206,7 @@
       "captcha": "验证码"
     },
     "link": {
-      "register": "注册",
       "forgetPassword": "忘记密码"
-    },
-    "button": {
-      "login": "登入"
     }
   },
   "register": {
@@ -530,43 +529,8 @@
       "mail": "站内信"
     },
     "profile": {
-      "accessed": {
-        "username": "帐号",
-        "currency": "币别",
-        "createdDatetime": "注册时间",
-        "realName": "真实姓名",
-        "nickname": "昵称",
-        "email": "E-mail",
-        "mobile": "连络电话",
-        "birthday": "生日",
-        "bankName1": "银行名称",
-        "bankAccount1": "银行帐号",
-        "bankBrach1": "支行名称",
-        "bankAccountName1": "银行户名",
-        "bankName2": "银行名称2",
-        "bankAccount2": "银行帐号2",
-        "bankBrach2": "支行名称2",
-        "bankAccountName2": "银行户名2",
-        "bankName3": "银行名称3",
-        "bankAccount3": "银行帐号3",
-        "bankBrach3": "支行名称3",
-        "bankAccountName3": "银行户名3",
-        "withdrawalPasswordOld": "取款密码(旧)",
-        "withdrawalPasswordNew": "取款密码(新)",
-        "withdrawalPasswordCheck": "取款密码(确认)"
-      },
-      "notAccessed": {
-        "username": "帐号",
-        "currency": "币别",
-        "createdDatetime": "注册时间",
-        "button": {
-          "access": "立即开通"
-        },
-        "notice": {
-          "access": "您的会员账号尚未开通，目前只能使用有限的功能。",
-          "suggest": "为保障您的权益，我们极力建议您尽快开通会员账号。",
-          "contact": "如果您需要任何协助，请随时联系我们的客服人员，您的个人资料将被保密。"
-        }
+      "field": {
+        "registerTime": "注册时间"
       },
       "step": {
         "bank": "银行资料"
@@ -602,13 +566,17 @@
     "mailDetail": {
       "title": "寄件內容",
       "label": {
-        "sender": "寄件者"
+        "sender": "寄件者",
+        "reply": "回复邮件"
       }
     },
     "mailSend": {
       "title": "新增信件",
       "label": {
         "desc": "问题描述"
+      },
+      "placeholder": {
+        "categoryList": "请选择信件类别"
       }
     }
   },
@@ -700,9 +668,6 @@
       "placeholder": {
         "bank": "请选择"
       },
-      "button": {
-        "allToMyWallet": "全部转回我的钱包"
-      },
       "notice": {
         "contact": "如果您需要任何协助，请随时联系我们的客服人员，您的个人资料将被保密。",
         "amount": "取款金額，請填整百數，最低取款金額 100 銖",
@@ -723,7 +688,6 @@
       },
       "button": {
         "transfer": "转帐",
-        "allToMyWallet": "全部转回我的钱包",
         "refresh": "刷新"
       }
     },
@@ -744,11 +708,15 @@
         "table": {
           "date": "建立时间",
           "status": "状态",
-          "bank": "银行",
           "amount": "金额",
           "promotion": "优惠活动",
-          "receipt": "汇款收据",
-          "detail": "明细"
+          "detail": {
+            "bank": "入帐银行",
+            "paymentMethod": "支付方式",
+            "transactionNumber": "交易编号",
+            "receipt": "汇款收据",
+            "transactionTime": "成功交易时间"
+          }
         },
         "notice": "事务数据为本月最新10笔交易，如对帐务有任何疑问需调阅总账务请联系客服人员。"
       },
@@ -757,9 +725,14 @@
         "table": {
           "date": "送单时间",
           "status": "状态",
-          "bank": "银行",
           "amount": "金额",
-          "detail": "明细"
+          "serviceCharge": "手续费",
+          "detail": {
+            "transactionNumber": "交易编号",
+            "createdDate": "建立日期",
+            "submitDate": "送单时间",
+            "transactionTime": "成功交易时间"
+          }
         },
         "notice": "事务数据为本月最新10笔交易，如对帐务有任何疑问需调阅总账务请联系客服人员。"
       },
@@ -813,7 +786,12 @@
           "type": "类型",
           "restriction": "限制",
           "notRolloverExchange": "未洗码量",
-          "rolloverDeadline": "洗码期限"
+          "rolloverDeadline": "洗码期限",
+          "detail": {
+            "activity": "活动名称",
+            "bonusIssue": "发放红利",
+            "datetime": "时间"
+          }
         }
       },
       "adjustment": {
@@ -825,46 +803,6 @@
           "datetime": "调整时间"
         }
       }
-    },
-    "recordDetail": {
-      "button": {
-        "back": "返回"
-      },
-      "deposit": {
-        "title": "存款明细",
-        "table": {
-          "bank": "入帐银行",
-          "rollinPoint": "点数转入",
-          "createdDate": "建立日期",
-          "submitDate": "送单时间",
-          "transactionTime": "成功交易时间",
-          "paymentMethod": "支付方式",
-          "transactionNumber": "交易编号",
-          "activity": "活动"
-        }
-      },
-      "withdrawal": {
-        "title": "取款明细",
-        "table": {
-          "amount": "取款金额",
-          "serviceCharge": "手续费",
-          "createdDate": "建立日期",
-          "submitDate": "送单时间",
-          "transactionTime": "成功交易时间",
-          "transactionNumber": "交易编号"
-        }
-      },
-      "bonus": {},
-      "lottery": {},
-      "withdrawalRestriction": {
-        "title": "取款-我的钱包 限制",
-        "table": {
-          "activity": "活动名称",
-          "bonusIssue": "发放红利",
-          "datetime": "时间"
-        }
-      },
-      "adjustment": {}
     }
   },
   "report": {
@@ -918,39 +856,6 @@
       },
       "button": {
         "back": "返回"
-      }
-    }
-  },
-  "notification": {
-    "nav": {
-      "news": "最新消息",
-      "inbox": "站内信",
-      "outbox": "寄件箱"
-    },
-    "news": {},
-    "inbox": {},
-    "inboxDetail": {
-      "title": "主旨",
-      "sender": "发件人",
-      "datetime": "信件日期",
-      "reply": "回复邮件"
-    },
-    "outbox": {
-      "category": "信件类别",
-      "title": "主旨",
-      "content": "内容",
-      "categoryList": {
-        "placeholder": "请选择信件类别",
-        "registerIssue": "开户问题",
-        "accountSearch": "查询账户",
-        "depositIssue": "存款问题",
-        "withdrawalRelated": "取款问题",
-        "betIssue": "投注问题",
-        "gameIssue": "游戏问题",
-        "limitedGambling": "博彩责任",
-        "promotion": "优惠活动",
-        "technologyRelated": "技术问题",
-        "aboutUs": "有关本站"
       }
     }
   },

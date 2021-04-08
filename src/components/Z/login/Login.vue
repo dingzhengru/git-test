@@ -79,7 +79,7 @@
           :id="$idMapper.login.button.submit"
           :disabled="invalid"
         >
-          {{ $t('login.button.login') }}
+          {{ $t('ui.button.login') }}
         </button>
         <button
           class="login__btn--forget ui-btn ui-btn--block"

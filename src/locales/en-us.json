@@ -16,7 +16,9 @@
       "noData": "No Data Found",
       "baht": "Baht",
       "underMaintenance": "Maintenance",
-      "promotion": "Promotions"
+      "promotion": "Promotions",
+      "transactionNumber": "Transaction No.",
+      "news": "News"
     },
     "button": {
       "submit": "Submit",
@@ -29,7 +31,8 @@
       "close": "Close",
       "copy": "Copy",
       "search": "Search",
-      "lotteryCount": "{count} Lucky draw"
+      "lotteryCount": "{count} Lucky draw",
+      "allToMyWallet": "All to my wallet"
     },
     "currency": {
       "thaiBaht": "Baht"
@@ -203,11 +206,7 @@
       "captcha": "Captcha"
     },
     "link": {
-      "register": "Register",
       "forgetPassword": "GetPassword"
-    },
-    "button": {
-      "login": "Login"
     }
   },
   "register": {
@@ -534,43 +533,8 @@
       "mail": "Chats"
     },
     "profile": {
-      "accessed": {
-        "username": "Account",
-        "currency": "Specific Currency",
-        "createdDatetime": "Registration time",
-        "realName": "Your real name",
-        "nickname": "Nickname",
-        "email": "E-mail",
-        "mobile": "Mobile",
-        "birthday": "Birthday",
-        "bankName1": "Name of Bank",
-        "bankAccount1": "Bank Account",
-        "bankBrach1": "Name of Branch",
-        "bankAccountName1": "Account Name of Bank",
-        "bankName2": "Name of Bank2",
-        "bankAccount2": "Bank Account2",
-        "bankBrach2": "Name of Branch2",
-        "bankAccountName2": "Account Name of Bank2",
-        "bankName3": "Name of Bank3",
-        "bankAccount3": "Bank Account3",
-        "bankBrach3": "Name of Branch3",
-        "bankAccountName3": "Account Name of Bank3",
-        "withdrawalPasswordOld": "Withdrawal password (old)",
-        "withdrawalPasswordNew": "Withdrawal password (new)",
-        "withdrawalPasswordCheck": "Withdrawal password(confirm)"
-      },
-      "notAccessed": {
-        "username": "Account",
-        "currency": "Specific Currency",
-        "createdDatetime": "Registration time",
-        "button": {
-          "access": "Instant Access"
-        },
-        "notice": {
-          "access": "Your account has not opened yet, you can only use the limited function currently.",
-          "suggest": "For ensuring your rights and benefits, we urge you to open the member account as soon as possible.",
-          "contact": "If you have any additional questions about your account details ,please contact our online service."
-        }
+      "field": {
+        "registerTime": "Registration time"
       },
       "step": {
         "bank": "Bank information"
@@ -606,13 +570,17 @@
     "mailDetail": {
       "title": "Mail Detail",
       "label": {
-        "sender": "Sender"
+        "sender": "Sender",
+        "reply": "Reply to mail"
       }
     },
     "mailSend": {
       "title": "新增信件",
       "label": {
         "desc": "Question Description"
+      },
+      "placeholder": {
+        "categoryList": "Please select the category of mail."
       }
     }
   },
@@ -704,9 +672,6 @@
       "placeholder": {
         "bank": "Please select"
       },
-      "button": {
-        "allToMyWallet": "All to my wallet"
-      },
       "notice": {
         "contact": "If you have any additional questions about your account details ,please contact our online service.",
         "amount": "取款金額，請填整百數，最低取款金額 100 銖",
@@ -727,7 +692,6 @@
       },
       "button": {
         "transfer": "Transfer",
-        "allToMyWallet": "All to my wallet",
         "refresh": "Refresh"
       }
     },
@@ -748,11 +712,15 @@
         "table": {
           "date": "Date",
           "status": "Status",
-          "bank": "Bank",
           "amount": "Amount",
           "promotion": "Promotions",
-          "receipt": "Remittance Receipt",
-          "detail": "Detail"
+          "detail": {
+            "bank": "Bank Recorded",
+            "paymentMethod": "Payment Method",
+            "transactionNumber": "Transaction No.",
+            "receipt": "Remittance Receipt",
+            "transactionTime": "Transaction Time"
+          }
         },
         "notice": "Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger"
       },
@@ -761,9 +729,13 @@
         "table": {
           "date": "Submit Time",
           "status": "Status",
-          "bank": "Bank",
           "amount": "Amount",
-          "detail": "Detail"
+          "serviceCharge": "Service Charge",
+          "detail": {
+            "createdDate": "Creation Date",
+            "submitDate": "Submit Time",
+            "transactionTime": "Transaction Time"
+          }
         },
         "notice": "Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger"
       },
@@ -817,7 +789,12 @@
           "type": "Type",
           "restriction": "Restriction",
           "notRolloverExchange": "Non-rollover Exchange Volume",
-          "rolloverDeadline": "Deadline of Rollover Exchange"
+          "rolloverDeadline": "Deadline of Rollover Exchange",
+          "detail": {
+            "activity": "Activity Name",
+            "bonusIssue": "Bonus Issue",
+            "datetime": "Time"
+          }
         }
       },
       "adjustment": {
@@ -829,46 +806,6 @@
           "datetime": "Adjustment time"
         }
       }
-    },
-    "recordDetail": {
-      "button": {
-        "back": "Previous"
-      },
-      "deposit": {
-        "title": "Deposit Detail",
-        "table": {
-          "bank": "Bank Recorded",
-          "rollinPoint": "Roll-in of Points",
-          "createdDate": "Creation Date",
-          "submitDate": "Submit Time",
-          "transactionTime": "Transaction Time",
-          "paymentMethod": "Payment Method",
-          "transactionNumber": "Transaction No.",
-          "activity": "Activity"
-        }
-      },
-      "withdrawal": {
-        "title": "Withdrawal Detail",
-        "table": {
-          "amount": "Withdrawal Amount",
-          "serviceCharge": "Service Charge",
-          "createdDate": "Creation Date",
-          "submitDate": "Submit Time",
-          "transactionTime": "Transaction Time",
-          "transactionNumber": "Transaction No."
-        }
-      },
-      "bonus": {},
-      "lottery": {},
-      "withdrawalRestriction": {
-        "title": "Withdrawal-Wallet Restriction",
-        "table": {
-          "activity": "Activity Name",
-          "bonusIssue": "Bonus Issue",
-          "datetime": "Time"
-        }
-      },
-      "adjustment": {}
     }
   },
   "report": {
@@ -922,39 +859,6 @@
       },
       "button": {
         "back": "Previous"
-      }
-    }
-  },
-  "notification": {
-    "nav": {
-      "news": "Latest News",
-      "inbox": "Chats",
-      "outbox": "Outbox"
-    },
-    "news": {},
-    "inbox": {},
-    "inboxDetail": {
-      "title": "Title",
-      "sender": "Contact info",
-      "datetime": "Date",
-      "reply": "Reply to mail"
-    },
-    "outbox": {
-      "category": "Letter Category",
-      "title": "Title",
-      "content": "Content",
-      "categoryList": {
-        "placeholder": "Please select the category of mail.",
-        "registerIssue": "Register Issue",
-        "accountSearch": "Account Search",
-        "depositIssue": "Deposit Issue",
-        "withdrawalRelated": "Withdrawals Related",
-        "betIssue": "Betting Issue",
-        "gameIssue": "Gaming Issue",
-        "limitedGambling": "Limited gambling",
-        "promotion": "Promotions",
-        "technologyRelated": "Technology Related",
-        "aboutUs": "About us"
       }
     }
   },

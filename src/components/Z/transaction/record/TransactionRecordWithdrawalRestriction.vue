@@ -24,14 +24,16 @@
           <td colspan="5" class="record-content__table__tr--detail__list">
             <div v-for="(detail, index) in item.DetailItems" :key="index">
               <div>
-                {{ $t('transaction.recordDetail.withdrawalRestriction.table.activity') }}：
+                {{ $t('transaction.recordContent.withdrawalRestriction.table.detail.activity') }}：
                 {{ detail.Lst_Activty_Name }}
               </div>
               <div>
-                {{ $t('transaction.recordDetail.withdrawalRestriction.table.bonusIssue') }}：{{ detail.Lst_Bonus }}
+                {{ $t('transaction.recordContent.withdrawalRestriction.table.detail.bonusIssue') }}：：{{
+                  detail.Lst_Bonus
+                }}
               </div>
               <div>
-                {{ $t('transaction.recordDetail.withdrawalRestriction.table.datetime') }}：
+                {{ $t('transaction.recordContent.withdrawalRestriction.table.detail.datetime') }}：：
                 {{ detail.Lst_Mtime.replace('T', ' ').split('.')[0] }}
               </div>
             </div>

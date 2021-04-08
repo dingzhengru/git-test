@@ -16,7 +16,9 @@
       "noData": "ไม่พบข้อมูล",
       "baht": "บาท",
       "underMaintenance": "ปิดปรับปรุง",
-      "promotion": "โปรโมชั่น"
+      "promotion": "โปรโมชั่น",
+      "transactionNumber": "หมายเลขบิล",
+      "news": "ข่าวล่าสุด"
     },
     "button": {
       "submit": "ส่ง",
@@ -29,7 +31,8 @@
       "close": "ปิด",
       "copy": "สำเนา",
       "search": "ค้นหา",
-      "lotteryCount": "{count} รอง โชคดี"
+      "lotteryCount": "{count} รอง โชคดี",
+      "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด"
     },
     "currency": {
       "thaiBaht": "บาท"
@@ -203,11 +206,7 @@
       "captcha": "รหัสยืนยัน"
     },
     "link": {
-      "register": "สมัครสมาชิก",
       "forgetPassword": "ลืมรหัสผ่าน"
-    },
-    "button": {
-      "login": "ล็อกอิน"
     }
   },
   "register": {
@@ -532,43 +531,8 @@
       "mail": "แชท"
     },
     "profile": {
-      "accessed": {
-        "username": "ยูสเซอร์",
-        "currency": "สกุลเงิน",
-        "createdDatetime": "วันที่ลงทะเบียน",
-        "realName": "ชื่อจริง",
-        "nickname": "ชื่อเล่น",
-        "email": "E-mail",
-        "mobile": "Mobile",
-        "birthday": "วันเกิด",
-        "bankName1": "ธนาคาร",
-        "bankAccount1": "รเลขที่บัญชี",
-        "bankBrach1": "สาขา",
-        "bankAccountName1": "ชื่อบัญชี",
-        "bankName2": "ธนาคาร2",
-        "bankAccount2": "รเลขที่บัญชี2",
-        "bankBrach2": "สาขา2",
-        "bankAccountName2": "ชื่อบัญชี2",
-        "bankName3": "ธนาคาร3",
-        "bankAccount3": "รเลขที่บัญชี3",
-        "bankBrach3": "สาขา3",
-        "bankAccountName3": "ชื่อบัญชี3",
-        "withdrawalPasswordOld": "รหัสถอนเงิน (เก่า)",
-        "withdrawalPasswordNew": "รหัสถอนเงิน (ใหม่)",
-        "withdrawalPasswordCheck": "รหัสถอนเงิน (ยืนยัน)"
-      },
-      "notAccessed": {
-        "username": "ยูสเซอร์",
-        "currency": "สกุลเงิน",
-        "createdDatetime": "วันที่ลงทะเบียน",
-        "button": {
-          "access": "เปิดใช้งานในทันที"
-        },
-        "notice": {
-          "access": "บัญชีของท่านยังไม่เปิดใช้บริการ ตอนนี้สามารถใช้ได้เพียงบางฟังก์ชั่นเท่านั้น",
-          "suggest": "เราจะเร่งดำเนินการเปิดใช้งานบัญชีของท่าน เพื่อรักษาสิทธิ์ของท่าน",
-          "contact": "โปรดติดต่อสนทนาออนไลน์24ชม.ของเราหากต้องการความช่วยเหลือ ข้อมูลของท่านจะถูกเก็บไว้เป็นความลับ"
-        }
+      "field": {
+        "registerTime": "วันที่ลงทะเบียน"
       },
       "step": {
         "bank": "ข้อมูลธนาคาร"
@@ -604,13 +568,17 @@
     "mailDetail": {
       "title": "เนื้อหาอีเมล",
       "label": {
-        "sender": "ผู้ส่ง"
+        "sender": "ผู้ส่ง",
+        "reply": "ตอบกลับจดหมาย"
       }
     },
     "mailSend": {
       "title": "新增信件",
       "label": {
         "desc": "คำอธิบายปัญหา"
+      },
+      "placeholder": {
+        "categoryList": "โปรดเลือกประเภทจดหมาย"
       }
     }
   },
@@ -702,9 +670,6 @@
       "placeholder": {
         "bank": "โปรดเลือก"
       },
-      "button": {
-        "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด"
-      },
       "notice": {
         "contact": "โปรดติดต่อสนทนาออนไลน์24ชม.ของเราหากต้องการความช่วยเหลือ ข้อมูลของท่านจะถูกเก็บไว้เป็นความลับ",
         "amount": "取款金額，請填整百數，最低取款金額 100 銖",
@@ -725,7 +690,6 @@
       },
       "button": {
         "transfer": "โอนเงิน",
-        "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด",
         "refresh": "รีเฟรช"
       }
     },
@@ -746,11 +710,15 @@
         "table": {
           "date": "วันที่",
           "status": "สถานะ",
-          "bank": "ธนาคาร",
           "amount": "จำนวน",
           "promotion": "โปรโมชั่น",
-          "receipt": "ใบเสร็จรับเงิน",
-          "detail": "รายละเอียด"
+          "detail": {
+            "bank": "โอนเข้าธนาคาร",
+            "paymentMethod": "วิธีการชำระ",
+            "transactionNumber": "หมายเลขบิล",
+            "receipt": "ใบเสร็จรับเงิน",
+            "transactionTime": "เวลาฝากเงินสำเร็จ"
+          }
         },
         "notice": "บันทึกการซื้อขายจะถูกบันทึกเฉพาะ 10 รายการเท่านั้น ต้องการสินค้ามากกว่า 10 ชิ้น? กรุณาติดต่อเรา"
       },
@@ -759,9 +727,13 @@
         "table": {
           "date": "เวลาทำรายการ",
           "status": "สถานะ",
-          "bank": "ธนาคาร",
           "amount": "จำนวน",
-          "detail": "รายละเอียด"
+          "serviceCharge": "ค่าธรรมเนียม",
+          "detail": {
+            "createdDate": "วันที่ก่อตั้ง",
+            "submitDate": "เวลาทำรายการ",
+            "transactionTime": "เวลาฝากเงินสำเร็จ"
+          }
         },
         "notice": "บันทึกการซื้อขายจะถูกบันทึกเฉพาะ 10 รายการเท่านั้น ต้องการสินค้ามากกว่า 10 ชิ้น? กรุณาติดต่อเรา"
       },
@@ -815,7 +787,12 @@
           "type": "ประเภท",
           "restriction": "จำกัด",
           "notRolloverExchange": "เหลือยอดโรลลิ่ง",
-          "rolloverDeadline": "กำหนดวันทำโรลลิ่ง"
+          "rolloverDeadline": "กำหนดวันทำโรลลิ่ง",
+          "detail": {
+            "activity": "ชื่อโปรโมชั่น",
+            "bonusIssue": "แจกโบนัส",
+            "datetime": "เวลา"
+          }
         }
       },
       "adjustment": {
@@ -827,60 +804,6 @@
           "datetime": "แก้ไขเวลา"
         }
       }
-    },
-    "recordDetail": {
-      "button": {
-        "back": "Previous"
-      },
-      "deposit": {
-        "title": "รายละเอียดการฝาก",
-        "table": {
-          "bank": "โอนเข้าธนาคาร",
-          "rollinPoint": "ยอดเงินโอนเข้า",
-          "createdDate": "วันที่ก่อตั้ง",
-          "submitDate": "เวลาทำรายการ",
-          "transactionTime": "เวลาฝากเงินสำเร็จ",
-          "paymentMethod": "วิธีการชำระ",
-          "transactionNumber": "หมายเลขบิล",
-          "activity": "กิจกรรม"
-        }
-      },
-      "withdrawal": {
-        "title": "รายละเอียดการถอน",
-        "table": {
-          "amount": "ยอดเงินที่ถอน",
-          "serviceCharge": "ค่าธรรมเนียม",
-          "createdDate": "วันที่ก่อตั้ง",
-          "submitDate": "เวลาทำรายการ",
-          "transactionTime": "เวลาฝากเงินสำเร็จ",
-          "transactionNumber": "หมายเลขบิล"
-        }
-      },
-      "transfer": {
-        "title": "โอน รายละเอียด",
-        "table": {
-          "game": "เกมส์",
-          "rollinPoint": "ยอดเงินโอนเข้า",
-          "rolloutPoint": "ยอดเงินโอนออก",
-          "accountingDate": "วันที่บัญชี",
-          "transactionTime": "เวลาทำการ",
-          "beforeWallet": "กระเป๋าเงิน(ก่อนโยกเงิน)",
-          "afterWallet": "กระเป๋าเงิน(หลังโยกเงิน)",
-          "beforeGameAccount": "ชื่อเกมส์(ก่อนโยกเงิน)",
-          "afterGameAccount": "ชื่อเกมส์(หลังโยกเงิน)"
-        }
-      },
-      "bonus": {},
-      "lottery": {},
-      "withdrawalRestriction": {
-        "title": "ถอนเงิน-กระเป๋าเงิน จำกัด",
-        "table": {
-          "activity": "ชื่อโปรโมชั่น",
-          "bonusIssue": "แจกโบนัส",
-          "datetime": "เวลา"
-        }
-      },
-      "adjustment": {}
     }
   },
   "report": {
@@ -934,39 +857,6 @@
       },
       "button": {
         "back": "กลับไปยังหน้าที่แล้ว"
-      }
-    }
-  },
-  "notification": {
-    "nav": {
-      "news": "ข่าวล่าสุด",
-      "inbox": "แชท",
-      "outbox": "กล่องขาออก"
-    },
-    "news": {},
-    "inbox": {},
-    "inboxDetail": {
-      "title": "หัวข้อ",
-      "sender": "ผู้ส่งสาร",
-      "datetime": "ที่ส่งจดหมาย",
-      "reply": "ตอบกลับจดหมาย"
-    },
-    "outbox": {
-      "category": "ประเภท",
-      "title": "หัวข้อ",
-      "content": "รายละเอียด",
-      "categoryList": {
-        "placeholder": "โปรดเลือกประเภทจดหมาย",
-        "registerIssue": "ปัญหาการสมัคร",
-        "accountSearch": "ค้นหายูสเซอร์",
-        "depositIssue": "ปัญหาการเติมเงิน",
-        "withdrawalRelated": "ปัญหาในการถอนเงิน",
-        "betIssue": "ปัญหาการเดิมพัน",
-        "gameIssue": "ปัญหาเกมส์",
-        "limitedGambling": "ปัญหากฎคาสิโน",
-        "promotion": "โปรโมชั่น",
-        "technologyRelated": "ปัญหาทางเทคนิก",
-        "aboutUs": "เกี่ยวกับเว็ป"
       }
     }
   },

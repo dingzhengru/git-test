@@ -45,7 +45,7 @@
             />
           </ValidationProvider>
           <div class="sign-in__wrapper__form__field">
-            <button type="submit" :disabled="invalid">{{ $t('login.button.login') }}</button>
+            <button type="submit" :disabled="invalid">{{ $t('ui.button.login') }}</button>
           </div>
         </form>
       </ValidationObserver>

@@ -20,17 +20,21 @@
         </tr>
         <tr class="record-content__table__tr--detail" :key="item.Lst_TransID" v-show="item.isShowDetail">
           <td colspan="5">
-            <div>{{ $t('transaction.recordDetail.deposit.table.bank') }}：{{ item.Lst_MemberBankName }}</div>
-            <div>{{ $t('transaction.recordDetail.deposit.table.paymentMethod') }}：{{ item.Lst_DMTitle }}</div>
-            <div>{{ $t('transaction.recordDetail.deposit.table.transactionNumber') }}： {{ item.Lst_TransID }}</div>
+            <div>{{ $t('transaction.recordContent.deposit.table.detail.bank') }}：{{ item.Lst_MemberBankName }}</div>
+            <div>{{ $t('transaction.recordContent.deposit.table.detail.paymentMethod') }}：{{ item.Lst_DMTitle }}</div>
             <div>
-              {{ $t('transaction.recordContent.deposit.table.receipt') }}：
+              {{ $t('transaction.recordContent.deposit.table.detail.transactionNumber') }}： {{ item.Lst_TransID }}
+            </div>
+            <div>
+              {{ $t('transaction.recordContent.deposit.table.detail.receipt') }}：
               <a href="javascript:;" @click="openReceiptImage(item)" v-if="receiptImageUrl">
                 {{ item.Lst_Receipt }}
               </a>
               <span v-else>{{ item.Lst_Receipt }}</span>
             </div>
-            <div>{{ $t('transaction.recordDetail.deposit.table.transactionTime') }}：{{ item.Lst_CreateTime }}</div>
+            <div>
+              {{ $t('transaction.recordContent.deposit.table.detail.transactionTime') }}：{{ item.Lst_CreateTime }}
+            </div>
           </td>
         </tr>
       </template>

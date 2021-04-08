@@ -8,7 +8,7 @@
         </div>
         <div class="withdrawal__field--transfer__btn">
           <button class="ui-btn ui-btn--block" type="button" @click="transferToMain">
-            {{ $t('transaction.withdrawal.button.allToMyWallet') }}
+            {{ $t('ui.button.allToMyWallet') }}
           </button>
         </div>
       </ValidationProvider>

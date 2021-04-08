@@ -3,7 +3,7 @@
     <form class="user-mail-send__form" @submit.prevent="handleSubmit(submitMail)" @reset.prevent="reset">
       <ValidationProvider class="ui-field user-mail-send__field" tag="div" :rules="{ required: true }">
         <select class="ui-field__select user-mail-send__field__select" v-model="mail.Add_Category">
-          <option value="" selected>{{ $t('notification.outbox.categoryList.placeholder') }}</option>
+          <option value="" selected>{{ $t('user.mailSend.placeholder.categoryList') }}</option>
           <option :value="item.Value" v-for="item in categoryList" :key="item.Value">
             {{ item.Text }}
           </option>

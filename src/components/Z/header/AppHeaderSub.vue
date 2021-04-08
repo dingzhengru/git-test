@@ -29,7 +29,7 @@
           <template v-if="refreshButtonIsLoading">{{ `(${getCountdownTimeoutSecondCurrent}s)` }}</template>
         </button>
         <button class="ui-btn ui-btn--block header-sub__dropdown__btn--transfer-all" @click="transferAllPointToMain">
-          {{ $t('transaction.transfer.button.allToMyWallet') }}
+          {{ $t('ui.button.allToMyWallet') }}
         </button>
 
         <div class="ui-point-list">

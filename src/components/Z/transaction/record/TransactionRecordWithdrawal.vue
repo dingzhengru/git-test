@@ -6,7 +6,7 @@
         <th>{{ $t('transaction.recordContent.withdrawal.table.date') }}</th>
         <th>{{ $t('transaction.recordContent.withdrawal.table.status') }}</th>
         <th>{{ $t('transaction.recordContent.withdrawal.table.amount') }}</th>
-        <th>{{ $t('transaction.recordDetail.withdrawal.table.serviceCharge') }}</th>
+        <th>{{ $t('transaction.recordContent.withdrawal.table.serviceCharge') }}</th>
       </tr>
       <template v-for="(item, index) in recordList">
         <tr :key="item.Lst_TransID + String(index)">
@@ -23,7 +23,7 @@
         </tr>
         <tr class="record-content__table__tr--detail" :key="item.Lst_TransID" v-show="item.isShowDetail">
           <td colspan="5">
-            {{ $t('transaction.recordDetail.withdrawal.table.transactionNumber') }}： {{ item.Lst_TransID }} <br />
+            {{ $t('ui.label.transactionNumber') }}： {{ item.Lst_TransID }} <br />
             N/A
           </td>
         </tr>

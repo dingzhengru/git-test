@@ -20,7 +20,7 @@
       <form class="user-mail-detail__reply-form" @submit.prevent="handleSubmit(submitMail)" @reset.prevent="reset">
         <ValidationProvider class="ui-field" tag="div" :rules="{ required: true }">
           <div class="ui-field__group--textarea">
-            <label for="user-mail-detail-content">{{ $t('notification.inboxDetail.reply') }}</label>
+            <label for="user-mail-detail-content">{{ $t('user.mailDetail.label.reply') }}</label>
             <textarea id="user-mail-detail-content" cols="30" rows="7" v-model="mail.Add_Content"></textarea>
           </div>
         </ValidationProvider>
