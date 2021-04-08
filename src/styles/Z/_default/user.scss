@@ -1,6 +1,14 @@
 @mixin user {
   padding: 30px;
   padding-top: $header-sub-height-auth;
+
+  .nav-tab {
+    &__item {
+      &:lang(th-th) {
+        font-size: 1.5rem;
+      }
+    }
+  }
 }
 
 @mixin user-profile {
