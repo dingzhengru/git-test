@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-development": "vue-cli-service build && set NODE_ENV=development",
+    "build-development": "cross-env NODE_ENV=development vue-cli-service build",
+    "build-release": "cross-env NODE_ENV=release vue-cli-service build",
     "lint": "vue-cli-service lint",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "server": "node -r esm server.js"
@@ -47,6 +48,7 @@
     "@vue/cli-service": "~4.4.0",
     "babel-eslint": "^10.1.0",
     "compression-webpack-plugin": "^5.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.26.5",

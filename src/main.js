@@ -231,5 +231,3 @@ if (isLoggedIn) {
     },
   }).$mount('#app');
 })();
-
-console.log(process.env.VUE_APP_I18N_LOCALE, '123123');
