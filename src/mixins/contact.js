@@ -173,9 +173,6 @@ export default {
         window.open(`http://weixin.qq.com/r/${content.Lst_ContactValue}`);
       }
     },
-    openLink(link) {
-      window.open(link);
-    },
     closeAllContentList() {
       this.contactList.forEach(item => {
         item.isShowContentList = false;
