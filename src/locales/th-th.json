@@ -200,10 +200,15 @@
   "login": {
     "title": "สมาชิกล็อคอิน",
     "rememberMe": "คลิกจำยูสเซอร์",
-    "placeholder": {
+    "label": {
       "username": "ยูสเซอร์",
       "password": "รหัสผ่าน",
       "captcha": "รหัสยืนยัน"
+    },
+    "placeholder": {
+      "username": "โปรดกรอกชื่อบัญชีของท่าน",
+      "password": "โปรดกรอกรหัสผ่านของท่าน",
+      "captcha": "โปรดกรอกรหัสยืนยัน"
     },
     "link": {
       "forgetPassword": "ลืมรหัสผ่าน"

@@ -200,10 +200,15 @@
   "login": {
     "title": "会员登入",
     "rememberMe": "记住我",
-    "placeholder": {
-      "username": "帐号",
+    "label": {
+      "username": "账号",
       "password": "密码",
       "captcha": "验证码"
+    },
+    "placeholder": {
+      "username": "请输入您的账号",
+      "password": "请输入您的密码",
+      "captcha": "请输入验证码"
     },
     "link": {
       "forgetPassword": "忘记密码"

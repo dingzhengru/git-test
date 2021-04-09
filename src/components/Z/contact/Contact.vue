@@ -5,7 +5,7 @@
         class="contact__item"
         :key="contactItem.Lst_ContactID"
         @click="clickServiceHandler"
-        v-if="contactItem === service && !$isObjEmpty(service)"
+        v-if="isShowService(contactItem)"
       >
         <i class="contact__item__icon--contact icon-service"></i>
         <div class="contact__item__text">
@@ -18,7 +18,7 @@
         class="contact__item"
         :key="contactItem.Lst_ContactID"
         @click="isShowDetailMobile = !isShowDetailMobile"
-        v-if="contactItem === mobile && !$isObjEmpty(mobile)"
+        v-if="isShowMobile(contactItem)"
       >
         <i class="contact__item__icon--contact icon-mobile"></i>
         <div class="contact__item__text">
@@ -44,7 +44,7 @@
         class="contact__item"
         :key="contactItem.Lst_ContactID"
         @click="isShowDetailSkype = !isShowDetailSkype"
-        v-if="contactItem === skype && !$isObjEmpty(skype)"
+        v-if="isShowSkype(contactItem)"
       >
         <i class="contact__item__icon--contact icon-skype"></i>
         <div class="contact__item__text">
@@ -69,7 +69,7 @@
       <div
         class="contact__item contact__item--no-wrap"
         :key="'contactItemButton' + String(contactItem.Lst_ContactID)"
-        v-if="contactItem === line && !$isObjEmpty(line) && line.DetailList.length > 0"
+        v-if="isShowLine(contactItem)"
       >
         <i class="contact__item__icon--contact icon-line"></i>
         <div class="contact__item__text">
@@ -90,7 +90,7 @@
         class="contact__item"
         :key="contactItem.Lst_ContactID"
         @click="isShowDetailLine = !isShowDetailLine"
-        v-if="contactItem === line && !$isObjEmpty(line) && line.DetailList.length > 1"
+        v-if="isShowLineDropdown(contactItem)"
       >
         <i class="contact__item__icon--contact icon-line"></i>
         <div class="contact__item__text">
@@ -115,7 +115,7 @@
       <div
         class="contact__item contact__item--no-wrap"
         :key="'contactItemButton' + String(contactItem.Lst_ContactID)"
-        v-if="contactItem === wechat && !$isObjEmpty(wechat) && wechat.DetailList.length > 0"
+        v-if="isShowWechat(contactItem)"
       >
         <i class="contact__item__icon--contact icon-wechat"></i>
         <div class="contact__item__text">
@@ -136,7 +136,7 @@
         class="contact__item"
         :key="contactItem.Lst_ContactID"
         @click="isShowDetailWechat = !isShowDetailWechat"
-        v-if="contactItem === wechat && !$isObjEmpty(wechat) && wechat.DetailList.length > 1"
+        v-if="isShowWechatDropdown(contactItem)"
       >
         <i class="contact__item__icon--contact icon-wechat"></i>
         <div class="contact__item__text">

@@ -8,7 +8,7 @@
       >
         <div class="ui-field__group">
           <label class="ui-field__group__label" :for="$idMapper.login.input.username">
-            {{ $t('login.placeholder.username') }}
+            {{ $t('login.label.username') }}
           </label>
           <input
             class="ui-field__group__input"
@@ -26,7 +26,7 @@
       >
         <div class="ui-field__group">
           <label class="ui-field__group__label" :for="$idMapper.login.input.password">
-            {{ $t('login.placeholder.password') }}
+            {{ $t('login.label.password') }}
           </label>
           <input
             class="ui-field__group__input"
@@ -44,7 +44,7 @@
       >
         <div class="ui-field__group">
           <label class="ui-field__group__label" :for="$idMapper.login.input.captcha">
-            {{ $t('login.placeholder.captcha') }}
+            {{ $t('login.label.captcha') }}
           </label>
           <input
             class="ui-field__group__input"

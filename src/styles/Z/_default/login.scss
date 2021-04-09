@@ -2,6 +2,22 @@
   font-size: 2rem;
   padding: 60px;
 
+  .ui-field {
+    &:lang(en-us) {
+      label,
+      input {
+        font-size: 1.6rem !important;
+      }
+    }
+
+    &:lang(th-th) {
+      label,
+      input {
+        font-size: 1.7rem !important;
+      }
+    }
+  }
+
   &-form {
     display: flex;
     flex-direction: column;

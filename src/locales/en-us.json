@@ -200,10 +200,15 @@
   "login": {
     "title": "Member Login",
     "rememberMe": "Remember Me",
-    "placeholder": {
+    "label": {
       "username": "Account",
       "password": "Password",
       "captcha": "Captcha"
+    },
+    "placeholder": {
+      "username": "Please enter your account",
+      "password": "Please enter your passwords",
+      "captcha": "Please enter captcha"
     },
     "link": {
       "forgetPassword": "GetPassword"
