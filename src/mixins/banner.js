@@ -61,17 +61,13 @@ export default {
       const bannerType = this.userIsLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
       const bannerUrl = this.userIsLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
 
-      if (bannerType == 1) {
+      if (bannerType === 1) {
         window.open(bannerUrl, banner.Lst_Target);
-      } else if (bannerType == 2 || bannerType == 0) {
-        if (bannerUrl > 0) {
-          this.$router.push({
-            name: 'PromotionDetail',
-            params: { id: bannerUrl },
-          });
-        } else {
-          this.$router.push({ name: 'Promotion' });
-        }
+      } else if (bannerType === 2) {
+        this.$router.push({ name: 'PromotionDetail', params: { id: bannerUrl } });
+      } else if (bannerType === 3) {
+        const [classify, id, key] = bannerUrl.split('/');
+        this.$router.push({ name: 'GameLobby', params: { classify, id, key } });
       }
     },
   },
