@@ -171,17 +171,17 @@ if (isLoggedIn) {
   store.dispatch('site/getSeoInfo', requestDataSeo);
 
   //* 檢查網域是否正常 (測試 API 用的區塊)
-  const requestDataDomainInfo = {
-    SiteID: store.getters.siteID,
-    DomainName: window.location.hostname,
-  };
-  apiGetDomainInfo(requestDataDomainInfo).then(result => {
-    //* 不是空值、回傳值非此網域 => 轉址
-    if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
-      store.commit('site/setDomainRedirect', result.RetObj);
-      store.commit('setModalSiteBlockedMessageIsShow', true);
-    }
-  });
+  // const requestDataDomainInfo = {
+  //   SiteID: store.getters.siteID,
+  //   DomainName: window.location.hostname,
+  // };
+  // apiGetDomainInfo(requestDataDomainInfo).then(result => {
+  //   //* 不是空值、回傳值非此網域 => 轉址
+  //   if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
+  //     store.commit('site/setDomainRedirect', result.RetObj);
+  //     store.commit('setModalSiteBlockedMessageIsShow', true);
+  //   }
+  // });
 
   //* 檢查網域是否正常
   checkSite().then(result => {
