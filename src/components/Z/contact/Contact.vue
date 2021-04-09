@@ -78,10 +78,7 @@
             {{ $t('contact.lineContent', { site: line.DetailList[0].Lst_ContactValue }) }}
           </div>
         </div>
-        <button
-          class="contact__item__btn"
-          @click="openLink(`http://line.me/ti/p/${line.DetailList[0].Lst_ContactValue}`)"
-        >
+        <button class="contact__item__btn" @click="openContactLink(line, line.DetailList[0])">
           {{ $t('contact.join') }}
         </button>
       </div>
@@ -124,10 +121,7 @@
             {{ $t('contact.wechatContent', { site: wechat.DetailList[0].Lst_ContactValue }) }}
           </div>
         </div>
-        <button
-          class="contact__item__btn"
-          @click="openLink(`https://weixin.qq.com/r/${wechat.DetailList[0].Lst_ContactValue}`)"
-        >
+        <button class="contact__item__btn" @click="openContactLink(wechat, wechat.DetailList[0])">
           {{ $t('contact.join') }}
         </button>
       </div>
