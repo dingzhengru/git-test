@@ -33,6 +33,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
   - [javascript-winwheel](#javascript-winwheel)
   - [gsap](#gsap)
   - [vee-validate](#vee-validate-1)
+  - [cross-env](#cross-env)
 
 ## 分支
 
@@ -182,3 +183,8 @@ git commit -m "merged <merge-branch>"
 - 因轉盤需要用到，https://github.com/zarocknz/javascript-winwheel
 
 ### vee-validate
+
+### cross-env
+
+允許跨環境使用指令，像是設置環境變數 (可以看 package.json 內的 script)
+`cross-env NODE_ENV=release vue-cli-service build`
