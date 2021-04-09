@@ -162,7 +162,7 @@ export default {
       if (contact == this.skype) {
         window.open(`skype:${content.Lst_ContactValue}?call`, '_self');
       } else if (contact == this.line) {
-        window.open(`https://line.me/ti/p/${content.Lst_ContactValue}`);
+        window.open(`https://line.me/ti/p/~${content.Lst_ContactValue}`);
       } else if (contact == this.mobile) {
         window.open(`tel:${content.Lst_ContactValue}`, '_self');
       } else if (contact == this.email) {
