@@ -23,6 +23,12 @@ export default {
     service() {
       return this.contactList.find(item => item.Lst_ContactType == 6) || {};
     },
+    facebook() {
+      return this.contactList.find(item => item.Lst_ContactType == 7) || {};
+    },
+    telegram() {
+      return this.contactList.find(item => item.Lst_ContactType == 8) || {};
+    },
   },
   data() {
     return {
@@ -43,6 +49,61 @@ export default {
     };
   },
   methods: {
+    async apiGetContactList() {
+      const result = await apiGetContactList();
+
+      if (result.Code == 200) {
+        this.contactList = result.RetObj.ServiceList;
+      }
+
+      /*eslint-disable no-undef*/
+      // 確認是否有 service 在，在的話就執行 jscode
+      if (this.service) {
+        if (this.service.Js_Type == 'zopim' && typeof $zopim == 'undefined') {
+          //* zopim
+          console.log('[CustomService]', 'import zopim');
+          window.eval(this.service.Js_Code);
+          const zopimInterval = setInterval(() => {
+            if ($zopim && $zopim.livechat) {
+              this.zopim = $zopim;
+              this.zopim.livechat.setLanguage(this.zopimLangMapper[this.lang] || 'en');
+              this.zopim.livechat.hideAll();
+              this.zopim.livechat.window.onHide(() => {
+                this.zopim.livechat.hideAll();
+              });
+              window.clearInterval(zopimInterval);
+            }
+          }, 500);
+        } else if (this.service.Js_Type == 'ze-snippet' && typeof zE == 'undefined') {
+          console.log('[CustomService]', 'import ze-snippet');
+          // const jsSrc = jscode.split('src="')[1].split('"')[0]
+          const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
+
+          const scriptElement = document.createElement('script');
+          scriptElement.id = 'ze-snippet';
+          scriptElement.src = jsSrc;
+          document.querySelector('head').append(scriptElement);
+
+          const zeInterval = setInterval(() => {
+            if (zE) {
+              this.zE = zE;
+              this.zE.hide();
+
+              this.zE('webWidget:on', 'close', function() {
+                this.zE.hide();
+              });
+
+              window.clearInterval(zeInterval);
+            }
+          }, 500);
+        } else if ($zopim) {
+          this.zopim = $zopim;
+        } else if (zE) {
+          this.zE = zE;
+        }
+      }
+      /*eslint-enable no-undef*/
+    },
     clickServiceHandler() {
       if (this.zopim) {
         //* zopim
@@ -87,55 +148,7 @@ export default {
     },
   },
   async mounted() {
-    const result = await apiGetContactList();
-
-    if (result.Code == 200) {
-      this.contactList = result.RetObj.ServiceList;
-    }
-
-    /*eslint-disable no-undef*/
-    // 確認是否有 service 在，在的話就執行 jscode
-    if (this.service) {
-      if (this.service.Js_Type == 'zopim' && typeof $zopim == 'undefined') {
-        //* zopim
-        console.log('[CustomService]', 'import zopim');
-        window.eval(this.service.Js_Code);
-        const zopimInterval = setInterval(() => {
-          if ($zopim && $zopim.livechat) {
-            this.zopim = $zopim;
-            this.zopim.livechat.setLanguage(this.zopimLangMapper[this.lang] || 'en');
-            this.zopim.livechat.hideAll();
-            this.zopim.livechat.window.onHide(() => {
-              this.zopim.livechat.hideAll();
-            });
-            window.clearInterval(zopimInterval);
-          }
-        }, 500);
-      } else if (this.service.Js_Type == 'ze-snippet' && typeof zE == 'undefined') {
-        console.log('[CustomService]', 'import ze-snippet');
-        // const jsSrc = jscode.split('src="')[1].split('"')[0]
-        const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
-
-        const scriptElement = document.createElement('script');
-        scriptElement.id = 'ze-snippet';
-        scriptElement.src = jsSrc;
-        document.querySelector('head').append(scriptElement);
-
-        const zeInterval = setInterval(() => {
-          if (zE) {
-            this.zE = zE;
-            this.zE.hide();
-
-            this.zE('webWidget:on', 'close', function() {
-              this.zE.hide();
-            });
-
-            window.clearInterval(zeInterval);
-          }
-        }, 500);
-      }
-    }
-    /*eslint-enable no-undef*/
+    this.apiGetContactList();
   },
   watch: {
     lang() {

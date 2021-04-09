@@ -69,7 +69,7 @@
       <div
         class="contact__item contact__item--no-wrap"
         :key="'contactItemButton' + String(contactItem.Lst_ContactID)"
-        v-if="contactItem === line && !$isObjEmpty(line)"
+        v-if="contactItem === line && !$isObjEmpty(line) && line.DetailList.length > 0"
       >
         <i class="contact__item__icon--contact icon-line"></i>
         <div class="contact__item__text">
@@ -115,7 +115,7 @@
       <div
         class="contact__item contact__item--no-wrap"
         :key="'contactItemButton' + String(contactItem.Lst_ContactID)"
-        v-if="contactItem === wechat && !$isObjEmpty(wechat)"
+        v-if="contactItem === wechat && !$isObjEmpty(wechat) && wechat.DetailList.length > 0"
       >
         <i class="contact__item__icon--contact icon-wechat"></i>
         <div class="contact__item__text">
