@@ -1,8 +1,6 @@
 //* 檢查是否為健康網域的 API 網域
 export const DOMAIN_INFO_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://membercashdomain.h3use.co/api/Siteinfo/DomainInfo '
-    : 'https://api.starbets.re888show.com';
+  process.env.NODE_ENV === 'production' ? 'https://membercashdomain.h3use.co' : 'https://api.starbets.re888show.com';
 
 //* Lang
 export const LANG_DEFAULT = 'th-th';

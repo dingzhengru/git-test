@@ -14,6 +14,8 @@ import {
   cookieGetIsPreview,
 } from '@/utils/cookie';
 
+console.log(process.env.NODE_ENV);
+
 //* CSS
 import '../node_modules/normalize.css/normalize.css'; //* ^3.0.2
 import './styles/global/base.scss';
