@@ -1,7 +1,7 @@
 <template>
   <AppModal :isShow="isShow" @close="closeRedEnvelope">
-    <div class="ui-box-close" @click="closeRedEnvelope"></div>
     <div class="red-envelope-container">
+      <div class="ui-box-close" @click="closeRedEnvelope"></div>
       <RedEnvelope
         :gameStyle="redEnvelopeStyle"
         :prizeList="redEnvelopePrizeList"
