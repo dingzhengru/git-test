@@ -81,6 +81,7 @@ export default {
       'siteAppIconUrl',
       'siteIOSUrl',
       'userIsLoggedIn',
+      'siteNoticeLinkMain',
     ]),
     AppHeader() {
       return () => import(`@/${this.siteSetting.components.app.AppHeader}`);

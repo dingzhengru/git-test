@@ -55,8 +55,15 @@ const getters = {
   siteMaintainTimeEnd: state => state.site.info.Lst_MaintainTimeEnd,
   siteIsShowMainNotice: state => state.site.info.MainNotice,
   siteIsShowDepositNotice: state => state.site.info.DepositNotice,
+  sitePopLinkList: state => state.site.info.SitePopLinkList,
   siteIsSpare: state => state.site.info.IsSpare,
   siteEnableSpareDomain: state => state.site.info.EnableSpareDomain,
+  siteNoticeLinkMain: getters => {
+    return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 1) : {};
+  },
+  siteNoticeLinkDeposit: getters => {
+    return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 2) : {};
+  },
   siteFullCss: state => {
     return `${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Type}`;
   },

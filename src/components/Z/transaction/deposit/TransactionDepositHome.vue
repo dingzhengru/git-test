@@ -22,6 +22,7 @@
     <ModalNoticeImage
       :isShow="isShowDepositNotice"
       :image="siteDepositNoticeUrl"
+      type="deposit"
       @close="isShowDepositNotice = false"
     />
   </div>
