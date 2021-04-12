@@ -4,7 +4,7 @@
       <p class="modal-message-c__text" v-for="(item, index) in messageList" :key="index">
         {{ item.Lst_Content }}
       </p>
-      <button @click="$emit('close')">OK</button>
+      <!-- <button @click="$emit('close')">OK</button> -->
     </div>
   </ModalMessage>
 </template>

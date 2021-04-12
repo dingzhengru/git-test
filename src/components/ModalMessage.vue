@@ -2,6 +2,8 @@
   <AppModal :isShow="isShow">
     <div class="modal-message">
       <div class="modal-message__inner">
+        <div class="ui-box-close" @click="$emit('close')"></div>
+        <img :src="warningIcon" alt="" width="87" height="87" />
         <slot></slot>
       </div>
     </div>
@@ -20,6 +22,11 @@ export default {
   components: {
     AppModal: () => import('@/components/AppModal'),
   },
+  computed: {
+    warningIcon() {
+      return require('@/assets/common/ui/warning-icon.png');
+    },
+  },
 };
 </script>
 
@@ -31,10 +38,17 @@ export default {
   z-index: 5;
 
   &__inner {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     width: 80%;
-    padding: 25px;
+    min-height: 15vh;
+    padding: 75px 25px;
     margin: 0 auto;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>

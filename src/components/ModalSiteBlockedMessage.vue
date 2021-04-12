@@ -45,7 +45,7 @@ export default {
 .modal-message-c {
   button {
     display: block;
-    margin: 35px 0 0 auto;
+    margin: 30px auto;
     padding: 15px 30px;
     font-size: 1.5rem;
     color: #000;
