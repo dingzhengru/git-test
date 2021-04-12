@@ -10,15 +10,11 @@ $promotion-img-border: 3px solid #82704f;
 $promotion-detail-img-border: 3px solid #82704f;
 $promotion-detail-title-bg: assetPath('ui/ui-event.png') #488472 no-repeat;
 $promotion-detail-title-color: white;
-$promotion-detail-content-text-color: white;
+$promotion-detail-content-text-color: $base-text-color;
 $promotion-detail-button-bg-back: $btn-bg-green;
 $promotion-detail-button-text-color-back: white;
 $promotion-detail-button-shadow-back: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 .promotion-detail {
   @include promotion-detail;
-
-  &__main__button--back {
-    width: 80%;
-  }
 }

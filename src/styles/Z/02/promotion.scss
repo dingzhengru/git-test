@@ -31,8 +31,4 @@ $promotion-detail-button-shadow-back: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 .promotion-detail {
   @include promotion-detail;
   background: $base-inner-bg;
-
-  &__main__button--back {
-    width: 80%;
-  }
 }
