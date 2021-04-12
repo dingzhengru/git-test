@@ -1,8 +1,10 @@
+import mixinLinkUrl from '@/mixins/linkUrl';
 import { mapGetters } from 'vuex';
 import { apiGetPromotionList, apiPostPromotionList } from '@/api/promotion';
 
 export default {
   name: 'MixinPromotion',
+  mixins: [mixinLinkUrl],
   computed: {
     ...mapGetters(['lang', 'userIsLoggedIn', 'siteIsPreview']),
     promotionListByCategory() {
@@ -37,14 +39,10 @@ export default {
       }
     },
     async goPromotionDetail(promotion) {
-      if (promotion.Lst_LinkType == 1) {
-        window.open(promotion.Lst_LinkUrl);
-      } else if (promotion.Lst_LinkType == 2 || promotion.Lst_LinkType == 0) {
-        this.$router.push({
-          name: 'PromotionDetail',
-          params: { id: promotion.Lst_PromotionID },
-        });
-      }
+      const linkType = promotion.Lst_LinkType;
+      const linkUrl = promotion.Lst_LinkUrl;
+
+      this.goLinkUrlByTypeAndUrl(linkType, linkUrl);
     },
     changeCategory(category) {
       this.category = category;

@@ -1,7 +1,9 @@
+import mixinLinkUrl from '@/mixins/linkUrl';
 import { apiGetBannerList, apiPostBannerList } from '@/api/banner';
 import { mapGetters } from 'vuex';
 
 export default {
+  mixins: [mixinLinkUrl],
   computed: {
     ...mapGetters(['lang', 'siteResourceUrl', 'userIsLoggedIn', 'siteIsPreview']),
   },
@@ -58,17 +60,11 @@ export default {
     handleClickSlide(index, reallyIndex) {
       const banner = this.bannerList[reallyIndex];
 
-      const bannerType = this.userIsLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
-      const bannerUrl = this.userIsLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
+      const linkType = this.userIsLoggedIn ? banner.Lst_Login_Type : banner.Lst_Nonelogin_Type;
+      const linkUrl = this.userIsLoggedIn ? banner.Lst_Login_Url : banner.Lst_Nonelogin_Url;
+      const linkTarget = banner.Lst_Target;
 
-      if (bannerType === 1) {
-        window.open(bannerUrl, banner.Lst_Target);
-      } else if (bannerType === 2) {
-        this.$router.push({ name: 'PromotionDetail', params: { id: bannerUrl } });
-      } else if (bannerType === 3) {
-        const [classify, id, key] = bannerUrl.split('/');
-        this.$router.push({ name: 'GameLobby', params: { classify, id, key } });
-      }
+      this.goLinkUrlByTypeAndUrl(linkType, linkUrl, linkTarget);
     },
   },
   mounted() {
