@@ -40,9 +40,9 @@ export default {
     },
     async goPromotionDetail(promotion) {
       const linkType = promotion.Lst_LinkType;
-      const linkUrl = promotion.Lst_LinkUrl;
+      const linkUrl = promotion.Lst_LinkUrl || promotion.Lst_PromotionID;
 
-      this.goLinkUrlByTypeAndUrl(linkType, linkUrl);
+      this.goLinkUrlByPromotion(linkType, linkUrl);
     },
     changeCategory(category) {
       this.category = category;
