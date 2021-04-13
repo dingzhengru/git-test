@@ -1,0 +1,25 @@
+@mixin header {
+  width: 100%;
+  height: $header-height;
+  background: $header-bg;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    // width: $header-logo-width;
+    // height: $header-logo-height;
+    max-width: 425px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  &__right {
+    margin-left: auto;
+  }
+}

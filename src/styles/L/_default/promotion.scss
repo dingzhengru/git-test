@@ -1,0 +1,105 @@
+@mixin promotion {
+  width: 100%;
+  padding: 15px;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-content: center;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    left: 0;
+    right: 0;
+    img {
+      max-width: 100%;
+      border: $promotion-img-border;
+    }
+  }
+
+  &-auth {
+    padding-top: $header-sub-height-auth + 15;
+  }
+}
+
+@mixin promotion-detail {
+  padding: 30px 15px;
+
+  &-auth {
+    padding-top: $header-sub-height-auth + 15;
+  }
+
+  &__image {
+    display: block;
+    width: 600px;
+    height: 190px;
+    margin: 20px auto;
+    border: $promotion-detail-img-border;
+  }
+
+  &__main {
+    &__content {
+      &__title {
+        background: $promotion-detail-title-bg;
+        color: $promotion-detail-title-color;
+        height: 98px;
+        padding: 25px 0 25px 95px;
+        font-size: 2.4rem;
+        font-weight: normal;
+      }
+
+      &__desc {
+        color: $promotion-detail-content-text-color;
+        font-size: 2rem;
+
+        h1 {
+          font-size: 4rem;
+        }
+        h2 {
+          font-size: 3rem;
+        }
+        h3 {
+          font-size: 2rem;
+        }
+        h4 {
+          font-size: 2.3rem;
+        }
+        h5 {
+          font-size: 1.6rem;
+        }
+        h6 {
+          font-size: 1.3rem;
+        }
+      }
+
+      .ui-table04 {
+        font-size: 1rem;
+      }
+
+      ul > li {
+        margin-bottom: 20px;
+      }
+
+      ul > li > a {
+        border-radius: 6px;
+        padding: 5px 10px;
+        margin: 5px;
+        display: inline-block;
+      }
+    }
+    &__button {
+      text-align: center;
+
+      button {
+        width: 80%;
+        background: $promotion-detail-button-bg-back;
+        color: $promotion-detail-button-text-color-back;
+        box-shadow: $promotion-detail-button-shadow-back;
+      }
+    }
+  }
+}

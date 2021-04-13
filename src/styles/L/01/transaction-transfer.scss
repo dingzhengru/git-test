@@ -1,0 +1,12 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/transaction-transfer';
+
+$transfer-btn-bg-switch: assetPath('ui/ui-transfer.png') #462b16 center no-repeat;
+$transfer-btn-shadow-switch: none;
+
+$transfer-btn-bg-submit: #462b16;
+$transfer-btn-color-submit: white;
+$transfer-btn-shadow-submit: none;
+.transfer {
+  @include transfer;
+}

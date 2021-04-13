@@ -207,9 +207,13 @@ if (isLoggedIn) {
     }
   });
 
-  //* 手動設置 style
-  if (process.env.NODE_ENV != 'production') {
-    store.commit('site/setInfoStyle', { siteClass: 'Z', siteType: '01' });
+  //* 手動設置 style && setting
+  if (process.env.NODE_ENV !== 'production') {
+    //* style
+    store.commit('site/setInfoStyle', { siteClass: 'L', siteType: '01' });
+
+    //* setting
+    await store.dispatch('site/loadSetting', 'L');
   }
 
   new Vue({

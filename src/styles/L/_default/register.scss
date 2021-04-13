@@ -1,0 +1,71 @@
+@mixin register {
+  font-size: 1.8rem;
+  padding: 30px 45px;
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .ui-field {
+      &__group {
+        &__input,
+        &__label {
+          font-size: 1.8rem;
+        }
+
+        &__label {
+          flex-basis: 220px;
+        }
+      }
+      &__select {
+        font-size: 1.8rem;
+        color: $field-input-color;
+        padding: 0;
+        width: 60%;
+      }
+    }
+
+    a {
+      color: $register-link-color;
+    }
+  }
+
+  &__field {
+    &--check {
+      // input[type='checkbox'] {
+      //   width: 50px;
+      //   height: 50px;
+      // }
+      a,
+      label {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  &__btn {
+    width: 100%;
+
+    button {
+      margin: 15px 0;
+    }
+
+    &--submit {
+      background: $register-btn-bg-submit;
+      color: $register-btn-text-color-submit;
+      box-shadow: $register-btn-shadow-submit;
+    }
+    &--reset {
+      background: $register-btn-bg-reset;
+      color: $register-btn-text-color-reset;
+      box-shadow: $register-btn-shadow-reset;
+    }
+  }
+
+  &__notice {
+    ol {
+      list-style-type: decimal-leading-zero;
+    }
+  }
+}

@@ -1,6 +1,8 @@
 import { API_URL } from '@/settings';
 
 const getters = {
+  isLandscape: state => state.isLandscape,
+
   lang: state => state.lang,
   langList: state => state.langList,
   langName: state =>

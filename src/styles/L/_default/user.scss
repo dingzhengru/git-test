@@ -1,0 +1,353 @@
+@mixin user {
+  padding: 30px;
+  padding-top: $header-sub-height-auth;
+
+  .nav-tab {
+    &__item {
+      &:lang(th-th) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@mixin user-profile {
+  width: 100%;
+  // &__form {}
+
+  &__field-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__field {
+    width: 90%;
+    margin-bottom: 30px;
+
+    label,
+    input {
+      font-size: 1.6rem;
+    }
+
+    label {
+      flex-basis: 30%;
+    }
+
+    input {
+      width: calc(100% - 25%);
+    }
+  }
+  &__btn {
+    width: 100%;
+
+    button {
+      margin-bottom: 15px;
+    }
+
+    &--submit {
+      background: $user-profile-btn-bg-submit;
+      color: $user-profile-btn-color-submit;
+      box-shadow: $user-profile-btn-shadow-submit;
+    }
+    &--reset {
+      background: $user-profile-btn-bg-reset;
+      color: $user-profile-btn-color-reset;
+      box-shadow: $user-profile-btn-shadow-reset;
+    }
+  }
+}
+
+@mixin user-change-password {
+  width: 100%;
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__field {
+    width: 90%;
+    margin-bottom: 30px;
+
+    &--remember {
+      .ui-field__label {
+        margin-right: 15px;
+      }
+    }
+
+    &:lang(zh-cn) {
+      * {
+        font-size: 1.8rem;
+      }
+    }
+
+    &:lang(en-us) {
+      * {
+        font-size: 1.6rem;
+      }
+    }
+
+    &:lang(th-th) {
+      * {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  &__notice {
+    width: 100%;
+    ul,
+    li {
+      list-style-type: disc;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+
+    button {
+      margin-bottom: 15px;
+    }
+
+    &--submit {
+      background: $user-change-password-btn-bg-submit;
+      color: $user-change-password-btn-color-submit;
+      box-shadow: $user-change-password-btn-shadow-submit;
+    }
+    &--reset {
+      background: $user-change-password-btn-bg-reset;
+      color: $user-change-password-btn-color-reset;
+      box-shadow: $user-change-password-btn-shadow-reset;
+    }
+  }
+
+  /*
+  * Switch 開關，EX: width: 640px, height: 100px
+  */
+
+  .v-switch-core {
+    border-radius: $user-change-password-switch-radius !important;
+  }
+
+  /*
+  * 按鈕
+  */
+
+  .vue-js-switch .v-switch-core .v-switch-button {
+    border-radius: $user-change-password-switch-radius !important;
+    width: $user-change-password-switch-width-btn !important;
+  }
+
+  /*
+  * 按鈕在右邊時
+  * 位置: (開關寬度/2) + (開關寬度/2 - 按鈕寬度) => (640/2) + (640/2 - 320)
+  */
+  .vue-js-switch.toggled .v-switch-core .v-switch-button {
+    transform: translate3d($user-change-password-switch-width-btn, 0px, 0px) !important;
+  }
+
+  /*
+  * 左邊標籤(文字)
+  * 位置: (按鈕大小 - 標籤大小) / 2 => (320-80) / 2
+  * 但不同語言的標籤大小會不同
+  */
+  .vue-js-switch .v-switch-label.v-left {
+    &:lang(zh-cn) {
+      left: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-left-zh-cn) / 2 !important;
+    }
+    &:lang(en-us) {
+      left: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-left-en-us) / 2 !important;
+    }
+    &:lang(th-th) {
+      left: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-left-th-th) / 2 !important;
+    }
+  }
+
+  /*
+   * 右邊標籤(文字)
+   * 位置: 同上
+  */
+  .vue-js-switch .v-switch-label.v-right {
+    &:lang(zh-cn) {
+      right: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-right-zh-cn) / 2 !important;
+    }
+    &:lang(en-us) {
+      right: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-right-en-us) / 2 !important;
+    }
+    &:lang(th-th) {
+      right: ($user-change-password-switch-width-btn - $user-change-password-switch-width-label-right-th-th) / 2 !important;
+    }
+  }
+}
+
+@mixin user-mail {
+  padding: 0 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+
+  &__nav {
+    display: flex;
+    margin-bottom: 30px;
+
+    > button {
+      width: 50%;
+      margin: 0 5px;
+
+      background: $user-mail-btn-bg;
+      color: $user-mail-btn-color;
+      box-shadow: $user-mail-btn-shadow;
+
+      &.active {
+        background: $user-mail-btn-bg-active;
+        color: $user-mail-btn-color-active;
+        box-shadow: $user-mail-btn-shadow-active;
+      }
+    }
+
+    // &--inbox {
+    //   background: $user-mail-btn-bg-inbox;
+    //   color: $user-mail-btn-color-inbox;
+    //   box-shadow: $user-mail-btn-shadow-inbox;
+    // }
+    // &--add {
+    //   background: $user-mail-btn-bg-add;
+    //   color: $user-mail-btn-color-add;
+    //   box-shadow: $user-mail-btn-shadow-add;
+    // }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    font-size: 1.8rem;
+    width: 100%;
+    background: $user-mail-item-bg;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 30px 15px;
+    &__date {
+      color: $user-mail-item-color-date;
+      margin-right: 15px;
+    }
+    &__title {
+      color: $user-mail-item-color-title;
+    }
+    &__icon {
+      &--arrow {
+        margin-left: auto;
+        background: $user-mail-item-icon-bg-arrow;
+        width: $user-mail-item-icon-width;
+        height: $user-mail-item-icon-height;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+@mixin user-mail-detail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+  align-items: center;
+  padding: 15px 30px 30px 30px;
+  &__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-bottom: 15px;
+  }
+  &__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: $user-mail-detail-item-bg;
+    border: $user-mail-detail-item-border;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+
+    > div {
+      display: flex;
+      margin-bottom: 15px;
+      > div:first-child {
+        color: $user-mail-detail-item-label-color;
+        flex-basis: 20%;
+        margin-right: 15px;
+      }
+
+      > div:nth-child(2) {
+        color: $user-mail-detail-item-content-color;
+      }
+    }
+
+    &__content {
+      border-top: $user-mail-detail-item-content-border-top;
+      color: $user-mail-detail-item-content-color;
+      padding: 15px;
+    }
+  }
+  &__reply {
+    width: 100%;
+
+    &-form {
+      width: 100%;
+    }
+
+    &__btn {
+      width: 100%;
+      margin-top: 30px;
+
+      button {
+        margin-bottom: 15px;
+      }
+
+      &--submit {
+        background: $user-mail-btn-bg-submit;
+        color: $user-mail-btn-color-submit;
+        box-shadow: $user-mail-btn-shadow-submit;
+      }
+      &--reset {
+        background: $user-mail-btn-bg-reset;
+        color: $user-mail-btn-color-reset;
+        box-shadow: $user-mail-btn-shadow-reset;
+      }
+    }
+  }
+}
+
+@mixin user-mail-send {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+  font-size: 1.8rem;
+
+  &__btn {
+    width: 100%;
+    margin-top: 30px;
+
+    button {
+      margin-bottom: 15px;
+    }
+
+    &--submit {
+      background: $user-mail-btn-bg-submit;
+      color: $user-mail-btn-color-submit;
+      box-shadow: $user-mail-btn-shadow-submit;
+    }
+    &--reset {
+      background: $user-mail-btn-bg-reset;
+      color: $user-mail-btn-color-reset;
+      box-shadow: $user-mail-btn-shadow-reset;
+    }
+  }
+}

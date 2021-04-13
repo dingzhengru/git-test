@@ -1,0 +1,84 @@
+@mixin record {
+  font-size: 1.6rem;
+}
+
+@mixin record-content {
+  &__icon {
+    &--detail {
+      display: inline-block;
+      background: $record-content-icon-bg-detail;
+      width: $record-content-icon-width;
+      height: $record-content-icon-height;
+      &.close {
+        background: $record-content-icon-bg-detail-close;
+      }
+    }
+  }
+
+  &__table {
+    td,
+    th {
+      word-break: break-word;
+      // border: 2px solid #555;
+    }
+
+    &__tr {
+      &--detail {
+        transform-origin: top;
+        td {
+          text-align: left;
+          padding: 15px;
+        }
+
+        a {
+          color: $record-content-link-color;
+          border-bottom: $record-content-link-border-bottom;
+        }
+
+        &__list {
+          > div:not(:last-child) {
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+
+    &--bet {
+      a {
+        color: #cbaa6d;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__search {
+    &-form {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    &__field {
+      &--date {
+        width: calc(50% - 25px);
+        font-size: 1.6rem;
+      }
+    }
+
+    span {
+      width: 50px;
+      text-align: center;
+    }
+
+    &__btn {
+      width: 100%;
+
+      &--submit {
+        background: $record-content-search-btn-bg-submit;
+        color: $record-content-search-btn-text-color-submit;
+        box-shadow: $record-content-search-btn-shadow-submit;
+      }
+    }
+  }
+}

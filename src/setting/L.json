@@ -1,0 +1,92 @@
+{
+  "components": {
+    "app": {
+      "AppHeader": "components/L/header/AppHeader",
+      "AppHeaderSub": "components/Z/header/AppHeaderSub",
+      "AppFooter": "components/Z/footer/AppFooter",
+      "AppLotteryButtonBlock": "components/AppLotteryButtonBlock",
+      "AppGoTopButton": "components/AppGoTopButton"
+    },
+    "header": {
+      "AppHeaderMenu": "components/Z/header/AppHeaderMenu"
+    },
+    "home": {
+      "HomeBanner": "components/Z/home/HomeBanner",
+      "HomeProductNav": "components/Z/home/HomeProductNav",
+      "HomeProductBlock": "components/Z/home/HomeProductBlock",
+      "NewsMarquee": "components/Z/NewsMarquee"
+    },
+    "footer": {
+      "AppFooterNav": "components/Z/footer/AppFooterNav"
+    },
+    "register": {
+      "ModalServiceTerm": "components/Z/ModalServiceTerm"
+    },
+    "promotion": {
+      "PromotionNavTab": "components/Z/promotion/PromotionNavTab"
+    },
+    "user": {
+      "AppNavTab": "components/Z/AppNavTab"
+    },
+    "transaction": {
+      "record": {
+        "RecordImageDialog": "components/Z/transaction/record/RecordImageDialog"
+      }
+    },
+    "game": {
+      "GameCategoryNavigation": "components/Z/game/GameCategoryNavigation",
+      "GameJackpot": "components/Z/game/GameJackpot",
+      "GameListTable": "components/Z/game/GameListTable",
+      "GameListIcon": "components/Z/game/GameListIcon",
+      "GameProductNavigation": "components/Z/game/GameProductNavigation",
+      "GameSearchBlock": "components/Z/game/GameSearchBlock",
+      "LiveGameEnterDialog": "components/Z/game/LiveGameEnterDialog"
+    }
+  },
+  "views": {
+    "home": "components/Z/home/Home",
+    "login": "components/Z/login/Login",
+    "register": "components/Z/register/Register",
+    "forgetPassword": "components/Z/forget-password/ForgetPassword",
+    "gameHome": "components/Z/game/GameHome",
+    "gameLobby": "components/Z/game/GameLobby",
+    "gameLobbySlot": "components/Z/game/GameLobbySlot",
+    "gameLobbyLive": "components/Z/game/GameLobbyLive",
+    "userHome": "components/Z/user/UserHome",
+    "userProfile": "components/Z/user/UserProfile",
+    "userChangePassword": "components/Z/user/UserChangePassword",
+    "userChangePasswordWithdrawal": "components/Z/user/UserChangePasswordWithdrawal",
+    "userMail": "components/Z/user/UserMail",
+    "userMailDetail": "components/Z/user/UserMailDetail",
+    "userMailSend": "components/Z/user/UserMailSend",
+    "transactionHome": "components/Z/transaction/TransactionHome",
+    "transactionDepositHome": "components/Z/transaction/deposit/TransactionDepositHome",
+    "transactionDepositBase": "components/Z/transaction/deposit/TransactionDepositBase",
+    "transactionDepositThirdParty": "components/Z/transaction/deposit/TransactionDepositThirdParty",
+    "transactionWithdrawal": "components/Z/transaction/TransactionWithdrawal",
+    "transactionTransfer": "components/Z/transaction/TransactionTransfer",
+    "transactionRecordHome": "components/Z/transaction/record/TransactionRecordHome",
+    "transactionRecordDeposit": "components/Z/transaction/record/TransactionRecordDeposit",
+    "transactionRecordWithdrawal": "components/Z/transaction/record/TransactionRecordWithdrawal",
+    "transactionRecordTransfer": "components/Z/transaction/record/TransactionRecordTransfer",
+    "transactionRecordBonus": "components/Z/transaction/record/TransactionRecordBonus",
+    "transactionRecordLottery": "components/Z/transaction/record/TransactionRecordLottery",
+    "transactionRecordWithdrawalRestriction": "components/Z/transaction/record/TransactionRecordWithdrawalRestriction",
+    "transactionRecordAdjustment": "components/Z/transaction/record/TransactionRecordAdjustment",
+    "transactionRecordBetHome": "components/Z/transaction/record/TransactionRecordBetHome",
+    "transactionRecordBetUnsettle": "components/Z/transaction/record/TransactionRecordBetUnsettle",
+    "transactionRecordBetDay": "components/Z/transaction/record/TransactionRecordBetDay",
+    "transactionRecordBetWeek": "components/Z/transaction/record/TransactionRecordBetWeek",
+    "transactionRecordDepositDetail": "components/Z/transaction/record/TransactionRecordDepositDetail",
+    "transactionRecordWithdrawalDetail": "components/Z/transaction/record/TransactionRecordWithdrawalDetail",
+    "transactionRecordTransferDetail": "components/Z/transaction/record/TransactionRecordTransferDetail",
+    "transactionRecordWithdrawalRestrictionDetail": "components/Z/transaction/record/TransactionRecordWithdrawalRestrictionDetail",
+    "promotion": "components/Z/promotion/Promotion",
+    "promotionDetail": "components/Z/promotion/PromotionDetail",
+    "contact": "components/Z/contact/Contact",
+    "about": "components/Z/about/About",
+    "news": "components/Z/news/News",
+    "maintenance": "components/Z/maintenance/Maintenance",
+    "depositThirdPartyReturn": "components/Z/DepositThirdPartyReturn"
+  }
+}
