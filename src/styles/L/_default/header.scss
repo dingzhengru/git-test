@@ -27,15 +27,72 @@
     margin-right: 15px;
   }
 
+  &__back {
+    position: relative;
+    height: 100%;
+    width: 10%;
+    background: peru;
+    margin-right: 15px;
+  }
+
+  &__user {
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    span {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+    }
+
+    &__account {
+      &__icon {
+        background: white;
+        margin-right: 5px;
+      }
+    }
+    &__vip {
+      &__icon {
+        background: orange;
+        margin-right: 5px;
+      }
+    }
+  }
+
   &__right {
     height: 100%;
     margin-left: auto;
+
+    button {
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
   }
 
   &__lang-btn {
     height: 100%;
     width: 50px;
     background: blue;
+  }
+
+  &__lottery-btn {
+    &--win-wheel {
+      height: 100%;
+      width: 50px;
+      background: green;
+    }
+    &--red-envelope {
+      height: 100%;
+      width: 50px;
+      background: orange;
+    }
   }
 
   &__btn {

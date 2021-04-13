@@ -3,6 +3,7 @@
 
 * {
   outline: none;
+  color: $base-text-color;
 }
 
 html {
@@ -16,12 +17,9 @@ body {
   margin: 0;
 }
 
-#app {
-  .main {
-    padding-top: $header-height;
-    padding-bottom: $footer-height;
-  }
-}
+// #app {
+
+// }
 
 .ui-btn {
   @include ui-btn;

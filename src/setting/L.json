@@ -2,7 +2,6 @@
   "components": {
     "app": {
       "AppHeader": "components/L/header/AppHeader",
-      "AppFooter": "components/Z/footer/AppFooter",
       "AppLotteryButtonBlock": "components/AppLotteryButtonBlock",
       "AppGoTopButton": "components/AppGoTopButton"
     },
@@ -17,9 +16,6 @@
       "HomeProductNav": "components/Z/home/HomeProductNav",
       "HomeProductBlock": "components/Z/home/HomeProductBlock",
       "NewsMarquee": "components/Z/NewsMarquee"
-    },
-    "footer": {
-      "AppFooterNav": "components/Z/footer/AppFooterNav"
     },
     "register": {
       "ModalServiceTerm": "components/Z/ModalServiceTerm"
@@ -46,7 +42,7 @@
     }
   },
   "views": {
-    "home": "components/Z/home/Home",
+    "home": "components/L/home/Home",
     "login": "components/Z/login/Login",
     "register": "components/Z/register/Register",
     "forgetPassword": "components/Z/forget-password/ForgetPassword",
