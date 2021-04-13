@@ -1,5 +1,5 @@
 @import './_abstracts';
-@import '@/styles/Z/_default/_mixins';
+@import '@/styles/L/_default/_mixins';
 
 * {
   outline: none;
@@ -65,4 +65,8 @@ body {
 //* 服務規章視窗
 .service-term {
   @include service-term;
+}
+
+.modal-lang-menu {
+  @include modal-lang-menu;
 }

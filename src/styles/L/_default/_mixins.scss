@@ -351,10 +351,10 @@
 
   &:before,
   &:after {
+    content: ' ';
     background: $box-close-line-color;
     position: absolute;
     left: $box-close-size / 2;
-    content: ' ';
     height: $box-close-size;
     width: $box-close-line-width;
   }
@@ -501,5 +501,24 @@
       color: $service-term-btn-color;
       box-shadow: $service-term-btn-shadow;
     }
+  }
+}
+
+@mixin modal-lang-menu {
+  min-width: 50vw;
+  min-height: 50vh;
+  background: white;
+  position: relative;
+
+  &__btn-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  &__btn {
+    width: 50%;
+    margin-bottom: 15px;
   }
 }

@@ -8,7 +8,7 @@
       "AppGoTopButton": "components/AppGoTopButton"
     },
     "header": {
-      "AppHeaderMenu": "components/Z/header/AppHeaderMenu"
+      "ModalLangMenu": "components/L/header/ModalLangMenu"
     },
     "home": {
       "HomeBanner": "components/Z/home/HomeBanner",
