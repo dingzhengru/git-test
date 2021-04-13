@@ -42,3 +42,83 @@
     margin-right: 15px;
   }
 }
+
+@mixin modal-auth {
+  min-width: 50vw;
+  min-height: 50vh;
+  background: white;
+  position: relative;
+
+  &__nav {
+    display: flex;
+    border-bottom: 1px solid gray;
+    &__item {
+      flex-grow: 1;
+      text-align: center;
+      padding: 15px;
+
+      &.active {
+        background: gray;
+        color: white;
+      }
+    }
+  }
+}
+
+@mixin modal-login {
+  padding: 30px 60px;
+
+  &-form {
+    input:not(input[type='checkbox']) {
+      flex-grow: 1;
+    }
+  }
+
+  &__remember {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+
+    &__right {
+      margin-left: auto;
+    }
+  }
+
+  &__btn-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn {
+    &--login {
+      width: 50%;
+    }
+  }
+}
+
+@mixin modal-register {
+}
+
+@mixin modal-lang-menu {
+  min-width: 50vw;
+  min-height: 50vh;
+  background: white;
+  position: relative;
+
+  padding: 30px;
+
+  &__btn-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__btn {
+    width: 50%;
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+}

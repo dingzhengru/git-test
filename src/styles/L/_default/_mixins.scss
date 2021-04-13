@@ -13,140 +13,32 @@
 }
 
 @mixin ui-field {
-  background: $field-bg;
-  font-size: $field-font-size;
-  // width: 593px;
-  width: 100%;
-  min-height: 89px;
-  // padding: 30px;
-  border-radius: 5px;
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 
   input[type='date']::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
 
-  // input:read-only,
-  // input:disabled {
-  //   color: gray;
-  // }
-
   &__group {
-    width: 100%;
-    padding: 30px;
     display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-
-    &__label {
-      flex-shrink: 0;
-      color: $field-label-color;
-      // flex-basis: 150px;
-      margin-right: 15px;
-    }
-    &__input {
-      flex-grow: 1;
-      background: transparent;
-      color: $field-input-color;
-      border: none;
-      &::placeholder {
-        color: $field-input-color-placeholder;
-      }
-    }
-    &__text {
-      color: $field-input-color;
-      margin-left: 15px;
-    }
-
-    select {
-      padding: 0;
-    }
   }
 
   &__group--checkbox {
-    input[type='checkbox'] {
-      width: 35px;
-      height: 35px;
-      margin-right: 15px;
-    }
-
-    label {
-      flex-grow: 1;
-      word-break: break-word;
-      // width: calc(100% - 45px);
-      color: $field-label-color-checkbox;
-    }
   }
 
   &__group--textarea {
-    width: 100%;
-    border-radius: 5px;
-    padding: 15px 30px 30px 30px;
-    display: flex;
-    flex-direction: column;
-    label {
-      width: 100%;
-      justify-self: flex-start;
-      color: $field-textarea-label-color;
-      margin-bottom: 10px;
-    }
-    textarea {
-      width: 100%;
-      padding: 15px;
-      background: $field-textarea-bg;
-      color: $field-textarea-color;
-      box-shadow: $field-textarea-shadow;
-    }
   }
 
   &__group--btn {
-    flex-wrap: wrap;
-    position: relative;
-    label {
-      width: 100%;
-    }
-    span {
-      margin: 0;
-    }
-    button {
-      position: absolute;
-      right: 15px;
-    }
   }
 
   &__select {
-    background: $field-select-bg;
-    color: $field-select-color;
-    padding: 30px;
-    border: none;
-    appearance: none;
-    flex-grow: 1;
-
-    option {
-      color: $field-select-color;
-      font-size: 1rem;
-    }
   }
 
   &__error {
-    background: $field-error-bg;
-    color: $field-error-color;
-    display: block;
-    width: 100%;
-    text-align: center;
-    position: relative;
-    padding: 5px;
   }
 
   &__captcha {
-    position: absolute;
-    right: 30px;
-    top: 20px;
   }
 
   &__star {
@@ -342,21 +234,22 @@
 }
 
 @mixin ui-box-close {
-  background: $box-close-bg;
+  background: black;
   position: absolute;
-  right: $box-close-top;
-  top: $box-close-right;
-  width: $box-close-size;
-  height: $box-close-size;
-
+  right: -12px;
+  top: -12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
   &:before,
   &:after {
     content: ' ';
-    background: $box-close-line-color;
+    background: white;
     position: absolute;
-    left: $box-close-size / 2;
-    height: $box-close-size;
-    width: $box-close-line-width;
+    left: 18px;
+    top: 9px;
+    height: 18px;
+    width: 2px;
   }
 
   &:before {
@@ -501,24 +394,5 @@
       color: $service-term-btn-color;
       box-shadow: $service-term-btn-shadow;
     }
-  }
-}
-
-@mixin modal-lang-menu {
-  min-width: 50vw;
-  min-height: 50vh;
-  background: white;
-  position: relative;
-
-  &__btn-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-  }
-
-  &__btn {
-    width: 50%;
-    margin-bottom: 15px;
   }
 }

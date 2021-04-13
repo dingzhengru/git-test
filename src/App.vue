@@ -88,9 +88,15 @@ export default {
       return () => import(`@/${this.siteSetting.components.app.AppHeader}`);
     },
     AppHeaderSub() {
+      if (!this.siteSetting.components.app.AppHeaderSub) {
+        return '';
+      }
       return () => import(`@/${this.siteSetting.components.app.AppHeaderSub}`);
     },
     AppFooter() {
+      if (!this.siteSetting.components.app.AppFooter) {
+        return '';
+      }
       return () => import(`@/${this.siteSetting.components.app.AppFooter}`);
     },
     AppLotteryButtonBlock() {

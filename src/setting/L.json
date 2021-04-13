@@ -2,12 +2,14 @@
   "components": {
     "app": {
       "AppHeader": "components/L/header/AppHeader",
-      "AppHeaderSub": "components/Z/header/AppHeaderSub",
       "AppFooter": "components/Z/footer/AppFooter",
       "AppLotteryButtonBlock": "components/AppLotteryButtonBlock",
       "AppGoTopButton": "components/AppGoTopButton"
     },
     "header": {
+      "ModalAuth": "components/L/header/ModalAuth",
+      "ModalLogin": "components/L/header/ModalLogin",
+      "ModalRegister": "components/L/header/ModalRegister",
       "ModalLangMenu": "components/L/header/ModalLangMenu"
     },
     "home": {
