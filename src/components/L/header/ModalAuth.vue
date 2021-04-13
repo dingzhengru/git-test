@@ -1,7 +1,7 @@
 <template>
-  <AppModal :isShow="isShow" @close="$emit('close')">
+  <AppModal :isShow="isShow" @close="closeModal">
     <div class="modal-auth">
-      <div class="ui-box-close" @click="$emit('close')"></div>
+      <div class="ui-box-close" @click="closeModal"></div>
       <div class="modal-auth__nav">
         <div class="modal-auth__nav__item" :class="{ active: type === 'login' }" @click="type = 'login'">
           {{ $t('ui.button.login') }}
@@ -11,8 +11,10 @@
         </div>
       </div>
 
-      <component :is="ModalLogin" v-show="type === 'login'" />
-      <component :is="ModalRegister" v-show="type === 'register'" />
+      <div class="modal-auth__main">
+        <component :is="ModalLogin" v-show="type === 'login'" />
+        <component :is="ModalRegister" v-show="type === 'register'" />
+      </div>
     </div>
   </AppModal>
 </template>
@@ -46,6 +48,12 @@ export default {
     return {
       type: 'login',
     };
+  },
+  methods: {
+    closeModal() {
+      this.$emit('close');
+      this.type = 'login';
+    },
   },
 };
 </script>

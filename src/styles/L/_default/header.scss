@@ -44,8 +44,6 @@
 }
 
 @mixin modal-auth {
-  min-width: 50vw;
-  min-height: 50vh;
   background: white;
   position: relative;
 
@@ -62,6 +60,12 @@
         color: white;
       }
     }
+  }
+
+  &__main {
+    width: 60vw;
+    height: 70vh;
+    overflow-y: auto;
   }
 }
 
@@ -98,11 +102,17 @@
 }
 
 @mixin modal-register {
+  padding: 30px 60px;
+  &-form {
+    input:not(input[type='checkbox']) {
+      flex-grow: 1;
+    }
+  }
 }
 
 @mixin modal-lang-menu {
-  min-width: 50vw;
-  min-height: 50vh;
+  width: 50vw;
+  height: 50vh;
   background: white;
   position: relative;
 

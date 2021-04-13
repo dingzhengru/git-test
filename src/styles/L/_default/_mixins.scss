@@ -1,10 +1,5 @@
 @mixin ui-btn {
   display: inline-block;
-  height: $btn-height;
-  font-size: 2rem;
-  border-radius: 5px;
-  text-align: center;
-  border: none;
 
   &--block {
     display: block;
@@ -14,6 +9,8 @@
 
 @mixin ui-field {
   margin-bottom: 15px;
+
+  position: relative;
 
   input[type='date']::-webkit-calendar-picker-indicator {
     filter: invert(1);
@@ -42,11 +39,10 @@
   }
 
   &__star {
-    font-size: 3rem;
     color: $field-star-color;
     position: absolute;
-    left: -30px;
-    top: 25px;
+    left: -15px;
+    top: 5px;
   }
 }
 
@@ -320,32 +316,32 @@
 @mixin service-term {
   background: $service-term-bg;
   color: $service-term-color;
-  width: 95%;
-  height: 90vh;
+  width: 80vw;
+  height: auto;
   padding: 15px 30px;
   border: 1px solid #c1ae71;
   border-radius: 5px;
   position: relative;
 
   &__container {
-    height: 80%;
+    height: 50vh;
     // height: calc(90vh - #{$btn-height} - 160px);
     overflow-y: auto;
     margin-bottom: 30px;
   }
 
   &__title {
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
     padding-bottom: 30px;
   }
 
   &__sub-title {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
 
   &__body {
-    font-size: 2rem;
+    font-size: 1rem;
     &__item {
       &__title {
         background: $service-term-item-title-bg;
@@ -390,6 +386,7 @@
   }
   &__footer {
     button {
+      padding: 10px 0;
       background: $service-term-btn-bg;
       color: $service-term-btn-color;
       box-shadow: $service-term-btn-shadow;
