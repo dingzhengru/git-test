@@ -1,20 +1,20 @@
 @mixin home {
-  padding: 15px 0;
+  padding: 10px 0;
 
   height: 100vh - $header-height;
   &__main {
-    height: 80%;
+    height: 85%;
 
     &__tabs {
       height: 90%;
     }
 
-    &__content {
-    }
+    // &__content {
+    // }
   }
 
   &__footer {
-    height: 20%;
+    height: 15%;
     background: green;
 
     display: flex;
@@ -27,14 +27,14 @@
       align-items: center;
     }
 
-    &__left {
-    }
+    // &__left {
+    // }
 
-    &__center {
-    }
+    // &__center {
+    // }
 
-    &__right {
-    }
+    // &__right {
+    // }
 
     &__icon {
       display: inline-block;
@@ -58,10 +58,57 @@
   }
 }
 
+@mixin home-product-block {
+  height: calc(100% - #{$news-marquee-height});
+  margin: 5px 0;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &.block {
+    flex-direction: row;
+
+    .home-product-block {
+      &__item {
+        height: 90%;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__item {
+    background: red;
+    width: 100px;
+    height: 45%;
+    position: relative;
+
+    &:nth-child(odd) {
+      margin-bottom: 5px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+
+    &__overlay--maintain {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: $home-product-maintain-bg;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+}
+
 @mixin news-marquee {
   width: 100%;
-  height: $news-marquee-icon-height;
-  background: $news-marquee-bg;
+  height: $news-marquee-height;
+  // background: $news-marquee-bg;
   color: $news-marquee-label-color;
   display: flex;
   flex-direction: row;
@@ -70,20 +117,23 @@
 
   &__icon {
     display: inline-block;
-    background: $news-marquee-icon-bg;
+    // background: $news-marquee-icon-bg;
     width: $news-marquee-icon-width;
     height: $news-marquee-icon-height;
-    background-size: contain;
+    margin-right: 5px;
   }
 
   &__label {
+    display: none;
     white-space: nowrap;
   }
 
   &__window {
-    flex-grow: 1;
-    margin-left: 10px;
+    background: $news-marquee-bg;
+    width: 90%;
 
+    border: 1px solid gray;
+    border-radius: 10px;
     a {
       display: inline;
       white-space: nowrap;

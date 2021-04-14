@@ -160,10 +160,15 @@
 
     &__item {
       width: 100%;
-      padding: 15px;
+      padding: 10px 15px;
       border: 1px solid gray;
       border-right: none;
       text-align: center;
+
+      &.active {
+        background: gray;
+        color: white;
+      }
     }
   }
 
@@ -171,6 +176,7 @@
     flex-basis: 85%;
     border-top: 1px solid gray;
     overflow-x: auto;
+    overflow-y: hidden;
     padding: 5px;
   }
 }

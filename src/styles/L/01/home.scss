@@ -6,13 +6,19 @@
 }
 
 $news-marquee-bg: #e5e5e5;
-$news-marquee-height: 70px;
+$news-marquee-height: 20px;
 $news-marquee-label-color: #8b8b8b;
-$news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
-$news-marquee-icon-width: 35px;
-$news-marquee-icon-height: 35px;
+// $news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
+$news-marquee-icon-width: 20px;
+$news-marquee-icon-height: 20px;
 $news-marquee-link-color: #8b8b8b;
 
 .news-marquee {
   @include news-marquee;
+}
+
+$home-product-maintain-bg: black;
+
+.home-product-block {
+  @include home-product-block;
 }

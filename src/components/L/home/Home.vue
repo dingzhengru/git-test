@@ -2,13 +2,24 @@
   <div class="home">
     <div class="ui-panel-tab home__main">
       <div class="ui-panel-tab__tabs home__main__tabs">
-        <div class="ui-panel-tab__tabs__item" v-for="item in 10" :key="item">
-          {{ item }}
+        <div
+          class="ui-panel-tab__tabs__item"
+          :class="{ active: productClassifyCurrent === item.Lst_Game_Classify }"
+          v-for="item in productClassifyListNoAll"
+          :key="item.Lst_Game_Classify"
+          @click="productClassifyCurrent = item.Lst_Game_Classify"
+        >
+          {{ $te(item.Lst_Game_Classify_Name) ? $t(item.Lst_Game_Classify_Name) : item.Lst_Game_Classify_Name }}
         </div>
       </div>
 
       <div class="ui-panel-tab__content home__main__content">
         <component :is="NewsMarquee" />
+        <component
+          :is="HomeProductBlock"
+          :list="productListByClassify(productClassifyCurrent)"
+          :classify="productClassifyCurrent"
+        />
       </div>
     </div>
     <div class="home__footer">
@@ -45,11 +56,23 @@ export default {
       'siteIsShowMainNotice',
       'userIsLoggedIn',
       'productList',
+      'productClassifyList',
       'productListByClassify',
     ]),
     NewsMarquee() {
       return () => import(`@/${this.siteSetting.components.home.NewsMarquee}`);
     },
+    HomeProductBlock() {
+      return () => import(`@/${this.siteSetting.components.home.HomeProductBlock}`);
+    },
+    productClassifyListNoAll() {
+      return this.productClassifyList.slice(1);
+    },
+  },
+  data() {
+    return {
+      productClassifyCurrent: 1,
+    };
   },
   mounted() {
     this.importStyleByFilename('home');

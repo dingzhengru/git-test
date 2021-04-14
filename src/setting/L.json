@@ -12,9 +12,8 @@
       "ModalLangMenu": "components/L/header/ModalLangMenu"
     },
     "home": {
-      "HomeBanner": "components/Z/home/HomeBanner",
       "HomeProductNav": "components/Z/home/HomeProductNav",
-      "HomeProductBlock": "components/Z/home/HomeProductBlock",
+      "HomeProductBlock": "components/L/home/HomeProductBlock",
       "NewsMarquee": "components/Z/NewsMarquee"
     },
     "register": {
