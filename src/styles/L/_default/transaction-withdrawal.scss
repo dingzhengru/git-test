@@ -1,0 +1,52 @@
+@mixin withdrawal {
+  .ui-field {
+    * {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__field {
+    &--transfer {
+      background: $withdrawal-transfer-bg;
+
+      label {
+        color: $withdrawal-transfer-label-color;
+      }
+
+      span {
+        margin-left: auto;
+      }
+
+      &__btn {
+        width: 100%;
+        padding: 0px 30px 30px 30px;
+        button {
+          background: $withdrawal-transfer-btn-bg;
+          color: $withdrawal-transfer-btn-color;
+          box-shadow: $withdrawal-transfer-btn-shadow;
+        }
+      }
+    }
+
+    &--amount {
+      span {
+        color: $withdrawal-amount-currency-color;
+      }
+    }
+  }
+
+  &__btn {
+    margin-top: 30px;
+    &--submit {
+      background: $withdrawal-btn-bg-submit;
+      color: $withdrawal-btn-color-submit;
+      box-shadow: $withdrawal-btn-shadow-submit;
+    }
+  }
+
+  &__notice {
+    a {
+      text-decoration: $withdrawal-notice-link-underline;
+    }
+  }
+}

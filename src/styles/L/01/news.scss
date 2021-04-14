@@ -1,0 +1,10 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/news';
+
+$news-item-bg: #444444;
+$news-item-color: white;
+$news-date-label-color: #cbaa6d;
+
+.news {
+  @include news;
+}

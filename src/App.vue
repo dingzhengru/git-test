@@ -32,8 +32,8 @@
 
     <div v-if="userIsLoggedIn">
       <ModalTransfer :isShow="modalTransferIsShow" />
-      <ModalWinWheel :isShow="modalWinWheelIsShow" />
-      <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
+      <component :is="ModalWinWheel" :isShow="modalWinWheelIsShow" />
+      <component :is="ModalRedEnvelope" :isShow="modalRedEnvelopeIsShow" />
     </div>
 
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
@@ -56,13 +56,14 @@ export default {
     AppLoading: () => import('@/components/AppLoading'),
     AppGoTopButton: () => import('@/components/AppGoTopButton'),
     ModalTransfer: () => import('@/components/ModalTransfer'),
-    ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
-    ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
+    // ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
+    // ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
     ModalSiteBlockedMessage: () => import('@/components/ModalSiteBlockedMessage'),
     Intersect,
   },
   computed: {
     ...mapGetters([
+      'isLandscape',
       'lang',
       'loadingList',
       'loadingListIncludeSiteInfo',
@@ -87,9 +88,15 @@ export default {
       return () => import(`@/${this.siteSetting.components.app.AppHeader}`);
     },
     AppHeaderSub() {
+      if (!this.siteSetting.components.app.AppHeaderSub) {
+        return '';
+      }
       return () => import(`@/${this.siteSetting.components.app.AppHeaderSub}`);
     },
     AppFooter() {
+      if (!this.siteSetting.components.app.AppFooter) {
+        return '';
+      }
       return () => import(`@/${this.siteSetting.components.app.AppFooter}`);
     },
     AppLotteryButtonBlock() {
@@ -104,9 +111,29 @@ export default {
       }
       return '';
     },
+    ModalWinWheel() {
+      if (this.siteSetting.components.app.ModalWinWheel) {
+        return () => import(`@/${this.siteSetting.components.app.ModalWinWheel}`);
+      }
+      return '';
+    },
+    ModalRedEnvelope() {
+      if (this.siteSetting.components.app.ModalRedEnvelope) {
+        return () => import(`@/${this.siteSetting.components.app.ModalRedEnvelope}`);
+      }
+      return '';
+    },
   },
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
+
+    console.log(this.isLandscape);
+
+    if (this.isLandscape) {
+      const viewport = document.querySelector('meta[name=viewport]');
+      viewport.content = 'width=device-width';
+      // document.querySelector('body').style.transform = 'rotate(90deg)';
+    }
 
     // import(`@/styles/${this.siteFullCss}/_layout.scss`);
     // import(`@/styles/${this.siteFullCss}/header.scss`);

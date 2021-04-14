@@ -1,0 +1,68 @@
+@import './_abstracts';
+@import '@/styles/L/_default/_mixins';
+
+* {
+  outline: none;
+  color: $base-text-color;
+}
+
+html {
+  font-size: $base-font-size;
+}
+
+body {
+  background: $base-bg;
+  color: $base-text-color;
+  font-family: $base-font-family;
+  margin: 0;
+}
+
+#app {
+  .main {
+    padding: 0 15px;
+  }
+}
+
+.ui-btn {
+  @include ui-btn;
+}
+.ui-field {
+  @include ui-field;
+}
+.ui-notice {
+  @include ui-notice;
+}
+.ui-step {
+  @include ui-step;
+}
+.ui-point-list {
+  @include ui-point-list;
+}
+.ui-table {
+  @include ui-table;
+}
+
+.nav-tab {
+  @include nav-tab;
+}
+
+.ui-box-close {
+  @include ui-box-close;
+}
+
+.go-top-btn {
+  @include go-top-btn;
+}
+
+.lottery-btn-block {
+  @include lottery-btn-block;
+}
+
+.ui-no-data {
+  @include ui-no-data;
+}
+
+//* 服務規章視窗
+.service-term {
+  @include service-term;
+}

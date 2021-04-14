@@ -1,0 +1,218 @@
+@mixin home {
+  padding-top: $header-sub-height;
+  padding-bottom: 30px;
+
+  &-auth {
+    padding-top: $header-sub-height-auth;
+  }
+}
+
+@mixin home-banner {
+  width: 100%;
+  height: $home-banner-height; // 432px
+
+  .swiper-lazy-preloader {
+    border: 4px solid $home-banner-preloader-color;
+    border-top-color: transparent;
+  }
+
+  // &__link {
+  //   display: block;
+  //   width: 100%;
+  //   height: $home-banner-height;
+
+  //   img {
+  //     width: 100%;
+  //     height: $home-banner-height;
+  //   }
+  // }
+
+  &__button {
+    display: inline-block;
+    position: absolute;
+    top: 40%;
+    width: $home-banner-button-width;
+    height: $home-banner-button-height;
+    z-index: 1;
+
+    &--previous {
+      background: $home-banner-button-bg-prev;
+      left: 0;
+    }
+
+    &--next {
+      background: $home-banner-button-bg-next;
+      right: 0;
+    }
+  }
+}
+
+@mixin home-main {
+  background: $home-main-bg;
+}
+
+@mixin home-product-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  &__item {
+    width: 218px;
+    height: 180px;
+    margin: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    &__text {
+      color: $home-product-text-color;
+      text-align: center;
+      font-size: 1.6rem;
+      padding-bottom: 10px;
+    }
+
+    &__overlay--maintain {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: $home-product-maintain-bg;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+}
+
+@mixin home-lottery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__item {
+    width: 427px;
+    height: 75px;
+    line-height: 75px;
+    position: relative;
+    margin-top: 5px;
+
+    &__icon {
+      display: inline-block;
+      width: 71px;
+      height: 73px;
+      padding-top: 22px;
+      position: absolute;
+      left: -18px;
+
+      &--win-wheel {
+        background: url(~@/assets/common/ui/prizeIcn.png) left center no-repeat;
+      }
+      &--red-envelope {
+        background: url(~@/assets/common/ui/luckyDrawIcn.png) left center no-repeat;
+      }
+    }
+
+    &__text {
+      width: 409px;
+      height: 71px;
+      padding: 23px 0 0 20px;
+      background: url(~@/assets/common/ui/prizeBg.png) left center no-repeat;
+      font-size: 36px;
+      font-weight: bold;
+      line-height: 26px;
+      text-align: center;
+      // filter: drop-shadow(0px 1px 1px #272727);
+      /*文字閃動*/
+      animation: colorchange 1s infinite alternate;
+    }
+  }
+
+  @keyframes colorchange {
+    0% {
+      color: #fff;
+    }
+    20% {
+      color: #fc0;
+    }
+    40% {
+      color: #fff;
+    }
+    60% {
+      color: #fc0;
+    }
+    80% {
+      color: #fff;
+    }
+    100% {
+      color: #fc0;
+    }
+  }
+}
+
+@mixin win-wheel-container {
+  position: fixed;
+  left: 5%;
+  top: 15%;
+  right: 5%;
+  background: url('~@/assets/common/lottery/winWheel/container-bg.png') #860103 center no-repeat;
+  // background-size: contain;
+
+  .acticityWinwheel__title {
+    color: black;
+    font-size: 2rem;
+  }
+
+  .acticityWinwheel__result {
+    color: red;
+    font-size: 3rem;
+  }
+
+  .acticityWinwheel__prize {
+    color: black;
+    font-size: 3rem;
+  }
+}
+
+@mixin red-envelope-container {
+  position: fixed;
+  height: 50%;
+  left: 5%;
+  top: 20%;
+  right: 5%;
+  background: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
+  // background-size: contain;
+}
+
+@mixin news-marquee {
+  width: 100%;
+  height: $news-marquee-icon-height;
+  background: $news-marquee-bg;
+  color: $news-marquee-label-color;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__icon {
+    display: inline-block;
+    background: $news-marquee-icon-bg;
+    width: $news-marquee-icon-width;
+    height: $news-marquee-icon-height;
+  }
+
+  &__window {
+    margin-left: 10px;
+    padding: 15px;
+    display: inline-block;
+    width: 500px;
+    height: 100%;
+
+    a {
+      display: inline;
+      white-space: nowrap;
+      font-size: 2rem;
+      margin-right: 100px;
+
+      color: $news-marquee-link-color;
+    }
+  }
+}

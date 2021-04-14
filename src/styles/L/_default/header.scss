@@ -1,0 +1,191 @@
+@mixin header {
+  width: 100%;
+  height: $header-height;
+  background: $header-bg;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  color: $base-text-color;
+
+  &__logo {
+    // width: $header-logo-width;
+    // height: $header-logo-height;
+    // max-width: 425px;
+    // position: absolute;
+    // top: 0;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+    // margin: auto;
+    position: relative;
+    height: 100%;
+    width: 10%;
+    background: black;
+    bottom: -10px;
+    margin-right: 15px;
+  }
+
+  &__back {
+    position: relative;
+    height: 100%;
+    width: 10%;
+    background: peru;
+    margin-right: 15px;
+  }
+
+  &__user {
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    span {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+    }
+
+    &__account {
+      &__icon {
+        background: white;
+        margin-right: 5px;
+      }
+    }
+    &__vip {
+      &__icon {
+        background: orange;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &__right {
+    height: 100%;
+    margin-left: auto;
+
+    button {
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  &__lang-btn {
+    height: 100%;
+    width: 50px;
+    background: blue;
+  }
+
+  &__lottery-btn {
+    &--win-wheel {
+      height: 100%;
+      width: 50px;
+      background: green;
+    }
+    &--red-envelope {
+      height: 100%;
+      width: 50px;
+      background: orange;
+    }
+  }
+
+  &__btn {
+    margin-right: 15px;
+  }
+}
+
+@mixin modal-auth {
+  background: white;
+  position: relative;
+
+  &__nav {
+    display: flex;
+    border-bottom: 1px solid gray;
+    &__item {
+      flex-grow: 1;
+      text-align: center;
+      padding: 15px;
+
+      &.active {
+        background: gray;
+        color: white;
+      }
+    }
+  }
+
+  &__main {
+    width: 60vw;
+    height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+@mixin modal-login {
+  padding: 30px 60px;
+
+  &-form {
+    input:not(input[type='checkbox']) {
+      flex-grow: 1;
+    }
+  }
+
+  &__remember {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+
+    &__right {
+      margin-left: auto;
+    }
+  }
+
+  &__btn-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn {
+    &--login {
+      width: 50%;
+    }
+  }
+}
+
+@mixin modal-register {
+  padding: 30px 60px;
+  &-form {
+    input:not(input[type='checkbox']) {
+      flex-grow: 1;
+    }
+  }
+}
+
+@mixin modal-lang-menu {
+  width: 50vw;
+  height: 50vh;
+  background: white;
+  position: relative;
+
+  padding: 30px;
+
+  &__btn-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__btn {
+    width: 50%;
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+}

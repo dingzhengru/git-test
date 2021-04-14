@@ -90,8 +90,9 @@ const actions = {
       return false;
     }
   },
-  async loadSetting({ state, commit }) {
-    const setting = await import(`@/setting/${state.info.LS_CSS_Class}`);
+  async loadSetting({ state, commit }, styleCode) {
+    styleCode = styleCode || state.info.LS_CSS_Class;
+    const setting = await import(`@/setting/${styleCode}`);
     commit('setSetting', setting.default);
     return setting.default;
   },

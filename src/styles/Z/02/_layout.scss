@@ -68,3 +68,11 @@ body {
 .service-term {
   @include service-term;
 }
+
+.win-wheel-container {
+  @include win-wheel-container;
+}
+
+.red-envelope-container {
+  @include red-envelope-container;
+}

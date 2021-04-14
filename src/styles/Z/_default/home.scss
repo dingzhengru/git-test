@@ -148,40 +148,6 @@
   }
 }
 
-@mixin win-wheel-container {
-  position: fixed;
-  left: 5%;
-  top: 15%;
-  right: 5%;
-  background: url('~@/assets/common/lottery/winWheel/container-bg.png') #860103 center no-repeat;
-  // background-size: contain;
-
-  .acticityWinwheel__title {
-    color: black;
-    font-size: 2rem;
-  }
-
-  .acticityWinwheel__result {
-    color: red;
-    font-size: 3rem;
-  }
-
-  .acticityWinwheel__prize {
-    color: black;
-    font-size: 3rem;
-  }
-}
-
-@mixin red-envelope-container {
-  position: fixed;
-  height: 50%;
-  left: 5%;
-  top: 20%;
-  right: 5%;
-  background: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
-  // background-size: contain;
-}
-
 @mixin news-marquee {
   width: 100%;
   height: $news-marquee-icon-height;

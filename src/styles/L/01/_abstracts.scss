@@ -1,0 +1,128 @@
+@import '@/styles/global/abstracts';
+
+// function
+@function assetPath($path) {
+  @return url('~@/assets/L/01/#{$path}');
+}
+
+$base-bg: white;
+$base-text-color: black;
+$base-font-size: 16px;
+$base-font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
+
+$header-height: 75px;
+$header-sub-height: 90px;
+$header-sub-height-auth: 58px;
+
+$footer-height: 119px;
+
+$btn-height: 89px;
+
+$btn-bg-yellow-light: #caad76;
+$btn-bg-brown: #462b16;
+
+$field-font-size: 2rem;
+$field-bg: #444444;
+$field-input-color: white;
+$field-input-color-placeholder: rgb(117, 117, 117);
+$field-select-bg: assetPath('ui/ui-arrow-select.png') #444444 97% center no-repeat;
+$field-select-color: #c8aa73;
+$field-label-color: #cbaa6d;
+$field-label-color-checkbox: white;
+$field-error-bg: #c8aa73;
+$field-error-color: black;
+$field-star-color: #c8aa73;
+$field-textarea-label-color: #959595;
+$field-textarea-bg: #2c2d2e;
+$field-textarea-color: white;
+$field-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 0, 0.8);
+$field-textarea-border-radius: 0px;
+
+$notice-color: #8b8b8b;
+$notice-font-size: 1.8rem;
+$notice-line-height: 2.5rem;
+$notice-height-light-color: red;
+
+$step-color: white;
+$step-border: 4px solid #c8aa73;
+
+$point-list-bg: #444444;
+$point-list-label-color: #cbaa6d;
+$point-list-content-color: white;
+$point-list-border-bg: black;
+$point-list-border-shadow: 0px -2px #8b8b8b;
+
+$table-bg: #444444;
+$table-th-bg: #444444;
+$table-th-color: #cbaa6d;
+$table-tr-border-bottom: 1px solid black;
+$table-tr-shadow: 0px -2px #8b8b8b;
+$table-td-color: white;
+$table-td-border: 2px solid #555;
+
+$nav-tab-text-color: #8b8b8b;
+$nav-tab-text-color-active: #c8aa73;
+$nav-tab-border-bottom: 5px solid #8b8b8b;
+$nav-tab-border-bottom-active: 5px solid #c8aa73;
+$nav-tab-arrow-width: 50px;
+$nav-tab-arrow-bg-left-home: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
+  linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+$nav-tab-arrow-bg-right-home: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
+  linear-gradient(to left, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+
+$nav-tab-arrow-bg-left-promotion: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
+  linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+$nav-tab-arrow-bg-right-promotion: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
+  linear-gradient(to left, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+
+$nav-tab-arrow-bg-left-game-product: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
+  linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+$nav-tab-arrow-bg-right-game-product: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
+  linear-gradient(to left, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+
+$nav-tab-arrow-bg-left-game-category: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
+  linear-gradient(to right, rgb(70, 43, 22, 1) 0%, rgb(70, 43, 22, 1) 50%, rgba(70, 43, 22, 0));
+$nav-tab-arrow-bg-right-game-category: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
+  linear-gradient(to left, rgb(70, 43, 22, 1) 0%, rgb(70, 43, 22, 1) 50%, rgba(70, 43, 22, 0));
+
+// $box-close-bg: gray;
+// $box-close-size: 24px;
+// $box-close-top: -8px;
+// $box-close-right: -8px;
+// $box-close-line-color: white;
+// $box-close-line-width: 2px;
+
+$go-top-btn-bg: assetPath('ui/goTOP.png') center no-repeat;
+$go-top-btn-width: 58px;
+$go-top-btn-height: 58px;
+$go-top-btn-bottom: $footer-height + 30;
+$go-top-btn-right: 30px;
+
+$lottery-btn-block-bottom: $footer-height + 30;
+$lottery-btn-block-left: 0px;
+// $lottery-btn-block-win-wheel-bg: assetPath('lottery/rotaryTable.png') center no-repeat;
+$lottery-btn-block-win-wheel-width: 144px;
+$lottery-btn-block-win-wheel-height: 138px;
+$lottery-btn-block-win-wheel-text-top: 42px;
+$lottery-btn-block-win-wheel-text-color: white;
+// $lottery-btn-block-red-envelope-bg: assetPath('lottery/luckyDraw.png') center no-repeat;
+$lottery-btn-block-red-envelope-width: 124px;
+$lottery-btn-block-red-envelope-height: 126px;
+$lottery-btn-block-red-envelope-text-top: 75px;
+$lottery-btn-block-red-envelope-text-color: white;
+
+//* 尚無資料的部分
+$no-data-bg: none;
+$no-data-color: black;
+$no-data-font-size: 2rem;
+
+//* 服務規章視窗
+$service-term-bg: white;
+$service-term-color: black;
+$service-term-item-title-color: white;
+$service-term-item-title-bg: #503725;
+$service-term-item-title-icon: assetPath('ui/ui-arrow-select.png');
+$service-term-item-content-color: black;
+$service-term-btn-bg: #462b16;
+$service-term-btn-color: white;
+$service-term-btn-shadow: none;
