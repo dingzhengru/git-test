@@ -150,7 +150,7 @@
 
 @mixin news-marquee {
   width: 100%;
-  height: $news-marquee-icon-height;
+  height: $news-marquee-height;
   background: $news-marquee-bg;
   color: $news-marquee-label-color;
   font-size: 1.5rem;
@@ -160,12 +160,14 @@
 
   &__icon {
     display: inline-block;
-    background: $news-marquee-icon-bg;
+    // background: $news-marquee-icon-bg;
     width: $news-marquee-icon-width;
     height: $news-marquee-icon-height;
+    margin: 0 5px;
   }
 
   &__window {
+    flex-grow: 1;
     margin-left: 10px;
     padding: 15px;
     display: inline-block;

@@ -17,10 +17,11 @@ $home-banner-preloader-color: gray;
 }
 
 $news-marquee-bg: linear-gradient(to bottom, #fbb544 0%, #e88c27 15%, #bf5e09 100%);
+$news-marquee-height: 70px;
 $news-marquee-label-color: white;
-$news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
-$news-marquee-icon-width: 71px;
-$news-marquee-icon-height: 71px;
+// $news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
+$news-marquee-icon-width: 35px;
+$news-marquee-icon-height: 35px;
 $news-marquee-link-color: white;
 
 .news-marquee {

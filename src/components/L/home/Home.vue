@@ -8,7 +8,7 @@
       </div>
 
       <div class="ui-panel-tab__content home__main__content">
-        asd
+        <component :is="NewsMarquee" />
       </div>
     </div>
     <div class="home__footer">

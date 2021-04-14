@@ -31,7 +31,7 @@ export default {
         result = await apiGetMessageList(requestData);
       }
       if (result.Code == 200) {
-        this.marqueeList = result.RetObj;
+        // this.marqueeList = result.RetObj;
       }
     },
   },

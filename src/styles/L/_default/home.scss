@@ -63,29 +63,30 @@
   height: $news-marquee-icon-height;
   background: $news-marquee-bg;
   color: $news-marquee-label-color;
-  font-size: 1.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: nowrap;
 
   &__icon {
     display: inline-block;
     background: $news-marquee-icon-bg;
     width: $news-marquee-icon-width;
     height: $news-marquee-icon-height;
+    background-size: contain;
+  }
+
+  &__label {
+    white-space: nowrap;
   }
 
   &__window {
+    flex-grow: 1;
     margin-left: 10px;
-    padding: 15px;
-    display: inline-block;
-    width: 500px;
-    height: 100%;
 
     a {
       display: inline;
       white-space: nowrap;
-      font-size: 2rem;
       margin-right: 100px;
 
       color: $news-marquee-link-color;

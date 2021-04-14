@@ -1,6 +1,7 @@
 <template>
   <div class="news-marquee">
-    <i class="news-marquee__icon"></i>
+    <!-- <i class="news-marquee__icon"></i> -->
+    <img class="news-marquee__icon" :src="newsIcon" alt="" />
     <span class="news-marquee__label">{{ $t('header.menu.news') }}:</span>
     <!-- <div class="news-marquee__window" @click="$router.push({ name: 'News' })">
       <DynamicMarquee :direction="'row'" :reverse="true" :speed="{ type: 'pps', number: 50 }" :repeatMargin="50">
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import MarqueeText from 'vue-marquee-text-component';
 import mixinMessageNewsMarquee from '@/mixins/messageNewsMarquee';
 export default {
@@ -27,6 +29,12 @@ export default {
   mixins: [mixinMessageNewsMarquee],
   components: {
     MarqueeText,
+  },
+  computed: {
+    ...mapGetters(['siteFullCss']),
+    newsIcon() {
+      return require(`@/assets/${this.siteFullCss}/ui/ui-horn.png`);
+    },
   },
 };
 </script>
