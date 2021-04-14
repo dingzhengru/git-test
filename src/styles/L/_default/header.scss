@@ -169,7 +169,7 @@
 
 @mixin modal-lang-menu {
   width: 50vw;
-  height: 50vh;
+  min-height: 50vh;
   background: white;
   position: relative;
 
