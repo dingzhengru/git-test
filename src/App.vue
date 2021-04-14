@@ -32,8 +32,8 @@
 
     <div v-if="userIsLoggedIn">
       <ModalTransfer :isShow="modalTransferIsShow" />
-      <ModalWinWheel :isShow="modalWinWheelIsShow" />
-      <ModalRedEnvelope :isShow="modalRedEnvelopeIsShow" />
+      <component :is="ModalWinWheel" :isShow="modalWinWheelIsShow" />
+      <component :is="ModalRedEnvelope" :isShow="modalRedEnvelopeIsShow" />
     </div>
 
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
@@ -56,8 +56,8 @@ export default {
     AppLoading: () => import('@/components/AppLoading'),
     AppGoTopButton: () => import('@/components/AppGoTopButton'),
     ModalTransfer: () => import('@/components/ModalTransfer'),
-    ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
-    ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
+    // ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
+    // ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
     ModalSiteBlockedMessage: () => import('@/components/ModalSiteBlockedMessage'),
     Intersect,
   },
@@ -111,9 +111,23 @@ export default {
       }
       return '';
     },
+    ModalWinWheel() {
+      if (this.siteSetting.components.app.ModalWinWheel) {
+        return () => import(`@/${this.siteSetting.components.app.ModalWinWheel}`);
+      }
+      return '';
+    },
+    ModalRedEnvelope() {
+      if (this.siteSetting.components.app.ModalRedEnvelope) {
+        return () => import(`@/${this.siteSetting.components.app.ModalRedEnvelope}`);
+      }
+      return '';
+    },
   },
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
+
+    console.log(this.isLandscape);
 
     if (this.isLandscape) {
       const viewport = document.querySelector('meta[name=viewport]');

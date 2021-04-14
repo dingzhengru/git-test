@@ -17,9 +17,11 @@ body {
   margin: 0;
 }
 
-// #app {
-
-// }
+#app {
+  .main {
+    padding: 0 15px;
+  }
+}
 
 .ui-btn {
   @include ui-btn;

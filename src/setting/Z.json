@@ -4,8 +4,10 @@
       "AppHeader": "components/Z/header/AppHeader",
       "AppHeaderSub": "components/Z/header/AppHeaderSub",
       "AppFooter": "components/Z/footer/AppFooter",
-      "AppLotteryButtonBlock": "components/AppLotteryButtonBlock",
-      "AppGoTopButton": "components/AppGoTopButton"
+      "AppLotteryButtonBlock": "components/Z/AppLotteryButtonBlock",
+      "AppGoTopButton": "components/AppGoTopButton",
+      "ModalRedEnvelope": "components/Z/ModalRedEnvelope",
+      "ModalWinWheel": "components/Z/ModalWinWheel"
     },
     "header": {
       "AppHeaderMenu": "components/Z/header/AppHeaderMenu"

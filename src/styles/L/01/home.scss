@@ -1,5 +1,5 @@
 @import './_abstracts';
-@import '@/styles/Z/_default/home';
+@import '@/styles/L/_default/home';
 
 .home {
   @include home;
@@ -12,9 +12,6 @@ $home-banner-button-bg-prev: assetPath('ui/swiper-button-prev.png') no-repeat ce
 $home-banner-button-bg-next: assetPath('ui/swiper-button-next.png') no-repeat center center;
 $home-banner-preloader-color: gray;
 
-.home-banner {
-  @include home-banner;
-}
 
 $news-marquee-bg: #e5e5e5;
 $news-marquee-label-color: #8b8b8b;
