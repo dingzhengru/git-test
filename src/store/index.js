@@ -24,6 +24,9 @@ export default new Vuex.Store({
     modalRedEnvelopeIsShow: false,
     modalSiteBlockedMessageIsShow: false,
     isShowGoTopButton: false,
+
+    //* 橫版
+    modalAuthIsShow: false,
   },
   mutations: {
     setIsLandscape(state, boolean) {
@@ -67,6 +70,9 @@ export default new Vuex.Store({
     setModalSiteBlockedMessageIsShow: (state, isShow) => {
       state.modalSiteBlockedMessageIsShow = isShow;
     },
+    setModalAuthIsShow: (state, isShow) => {
+      state.modalAuthIsShow = isShow;
+    },
   },
   actions: {
     async changeLang({ commit }, lang) {
@@ -95,6 +101,12 @@ export default new Vuex.Store({
       setTimeout(() => {
         commit('setModalTransferProduct', {});
       }, 500);
+    },
+    openModalAuth({ commit }) {
+      commit('setModalAuthIsShow', true);
+    },
+    closeModalAuth({ commit }) {
+      commit('setModalAuthIsShow', false);
     },
   },
   modules: {

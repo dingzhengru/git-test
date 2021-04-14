@@ -30,6 +30,7 @@ const getters = {
   modalWinWheelIsShow: state => state.modalWinWheelIsShow,
   modalRedEnvelopeIsShow: state => state.modalRedEnvelopeIsShow,
   modalSiteBlockedMessageIsShow: state => state.modalSiteBlockedMessageIsShow,
+  modalAuthIsShow: state => state.modalAuthIsShow,
 
   //* Site.setting
   siteSetting: state => state.site.setting,

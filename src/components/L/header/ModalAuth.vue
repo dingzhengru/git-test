@@ -52,7 +52,10 @@ export default {
   methods: {
     closeModal() {
       this.$emit('close');
-      this.type = 'login';
+
+      window.setTimeout(() => {
+        this.type = 'login';
+      }, 500);
     },
   },
 };

@@ -144,6 +144,37 @@
   }
 }
 
+@mixin ui-panel-tab {
+  display: flex;
+  // height: 100vh - $header-height;
+  height: 100%;
+
+  &__tabs {
+    flex-basis: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    border-right: 1px solid gray;
+    padding-top: 30px;
+
+    &__item {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid gray;
+      border-right: none;
+      text-align: center;
+    }
+  }
+
+  &__content {
+    flex-basis: 85%;
+    border-top: 1px solid gray;
+    overflow-x: auto;
+    padding: 5px;
+  }
+}
+
 @mixin ui-box-close {
   background: black;
   position: absolute;
@@ -307,4 +338,38 @@
       box-shadow: $service-term-btn-shadow;
     }
   }
+}
+
+@mixin win-wheel-container {
+  position: fixed;
+  left: 5%;
+  top: 15%;
+  right: 5%;
+  background: url('~@/assets/common/lottery/winWheel/container-bg.png') #860103 center no-repeat;
+  // background-size: contain;
+
+  .acticityWinwheel__title {
+    color: black;
+    font-size: 2rem;
+  }
+
+  .acticityWinwheel__result {
+    color: red;
+    font-size: 3rem;
+  }
+
+  .acticityWinwheel__prize {
+    color: black;
+    font-size: 3rem;
+  }
+}
+
+@mixin red-envelope-container {
+  position: fixed;
+  height: 50%;
+  left: 5%;
+  top: 20%;
+  right: 5%;
+  background: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
+  // background-size: contain;
 }

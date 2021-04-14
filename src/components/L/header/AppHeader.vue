@@ -4,7 +4,7 @@
     <div class="header__logo" v-show="$route.name === 'Home'"></div>
     <div class="header__back" v-show="$route.name !== 'Home'" @click="$router.push({ name: 'Home' })"></div>
 
-    <button class="header__btn header__btn--login" @click="isShowModalAuth = true" v-if="!userIsLoggedIn">
+    <button class="header__btn header__btn--login" @click="$store.dispatch('openModalAuth')" v-if="!userIsLoggedIn">
       {{ `${$t('ui.button.login')}/${$t('ui.button.register')}` }}
     </button>
 
@@ -40,7 +40,7 @@
       <button class="header__lang-btn" @click="isShowModalLangMenu = true"></button>
     </div>
 
-    <component :is="ModalAuth" :isShow="isShowModalAuth" @close="isShowModalAuth = false" />
+    <component :is="ModalAuth" :isShow="modalAuthIsShow" @close="$store.dispatch('closeModalAuth')" />
     <component :is="ModalLangMenu" :isShow="isShowModalLangMenu" @close="isShowModalLangMenu = false" />
   </header>
 </template>
@@ -58,12 +58,18 @@ export default {
   },
   data() {
     return {
-      isShowModalAuth: false,
       isShowModalLangMenu: false,
     };
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteLogoUrl', 'userIsLoggedIn', 'userAccount', 'userGamePointWallet']),
+    ...mapGetters([
+      'siteSetting',
+      'siteLogoUrl',
+      'userIsLoggedIn',
+      'userAccount',
+      'userGamePointWallet',
+      'modalAuthIsShow',
+    ]),
     ModalAuth() {
       return () => import(`@/${this.siteSetting.components.header.ModalAuth}`);
     },
@@ -76,7 +82,7 @@ export default {
       if (this.userIsLoggedIn) {
         return this.$router.push({ name: 'TransactionTransfer' }).catch(() => {});
       }
-      this.isShowModalAuth = true;
+      this.$store.dispatch('openModalAuth');
     },
     changeLang(lang) {
       this.$emit('changeLang', lang);

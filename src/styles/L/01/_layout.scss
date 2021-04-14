@@ -19,7 +19,7 @@ body {
 
 #app {
   .main {
-    padding: 0 15px;
+    padding: 0 0 0 15px;
   }
 }
 
@@ -46,6 +46,10 @@ body {
   @include nav-tab;
 }
 
+.ui-panel-tab {
+  @include ui-panel-tab;
+}
+
 .ui-box-close {
   @include ui-box-close;
 }
@@ -65,4 +69,12 @@ body {
 //* 服務規章視窗
 .service-term {
   @include service-term;
+}
+
+.win-wheel-container {
+  @include win-wheel-container;
+}
+
+.red-envelope-container {
+  @include red-envelope-container;
 }
