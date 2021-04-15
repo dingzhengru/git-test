@@ -1,17 +1,15 @@
 @import './_abstracts';
 @import '@/styles/Z/_default/game';
 
-$game-bg: none;
+$game-lobby-bg: none;
 
-.game {
-  @include game;
+.game-lobby {
+  @include game-lobby;
 
   padding-top: 0;
 
-  &-lobby {
-    &-auth {
-      padding-top: $header-sub-height-auth;
-    }
+  &-auth {
+    padding-top: $header-sub-height-auth;
   }
 }
 

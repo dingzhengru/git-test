@@ -1,5 +1,5 @@
-@mixin game {
-  background: $game-bg;
+@mixin game-lobby {
+  background: $game-lobby-bg;
   padding-top: $header-sub-height-auth;
   min-height: 65vh;
 }

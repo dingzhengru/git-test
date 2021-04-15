@@ -31,11 +31,11 @@
       }
     },
     "game": {
+      "GameProductNavigation": "components/L/game/GameProductNavigation",
       "GameCategoryNavigation": "components/Z/game/GameCategoryNavigation",
       "GameJackpot": "components/Z/game/GameJackpot",
       "GameListTable": "components/Z/game/GameListTable",
       "GameListIcon": "components/Z/game/GameListIcon",
-      "GameProductNavigation": "components/Z/game/GameProductNavigation",
       "GameSearchBlock": "components/Z/game/GameSearchBlock",
       "LiveGameEnterDialog": "components/Z/game/LiveGameEnterDialog"
     }
@@ -43,12 +43,10 @@
   "views": {
     "home": "components/L/home/Home",
     "login": "components/L/login/Login",
-    "register": "components/Z/register/Register",
+    "register": "components/L/login/Login",
     "forgetPassword": "components/Z/forget-password/ForgetPassword",
-    "gameHome": "components/Z/game/GameHome",
-    "gameLobby": "components/Z/game/GameLobby",
-    "gameLobbySlot": "components/Z/game/GameLobbySlot",
-    "gameLobbyLive": "components/Z/game/GameLobbyLive",
+    "gameHome": "components/L/game/GameHome",
+    "gameLobby": "components/L/game/GameLobby",
     "userHome": "components/Z/user/UserHome",
     "userProfile": "components/Z/user/UserProfile",
     "userChangePassword": "components/Z/user/UserChangePassword",

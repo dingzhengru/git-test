@@ -1,17 +1,15 @@
 @import './_abstracts';
 @import '@/styles/Z/_default/game';
 
-$game-bg: #1c6080;
+$game-lobby-bg: #1c6080;
 
-.game {
-  @include game;
+.game-lobby {
+  @include game-lobby;
 
   padding-top: 0;
 
-  &-lobby {
-    &-auth {
-      padding-top: $header-sub-height-auth;
-    }
+  &-auth {
+    padding-top: $header-sub-height-auth;
   }
 }
 

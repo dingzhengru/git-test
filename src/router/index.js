@@ -53,7 +53,7 @@ const routes = [
       {
         path: '',
         name: 'GameHome',
-        redirect: { name: 'GameList' },
+        redirect: { name: 'Home' },
       },
       {
         path: ':classify/:id/:key',

@@ -1,28 +1,10 @@
 @import './_abstracts';
-@import '@/styles/Z/_default/game';
+@import '@/styles/L/_default/game';
 
-$game-bg: none;
+$game-lobby-bg: none;
 
-.game {
-  @include game;
-
-  padding-top: 0;
-
-  &-lobby {
-    &-auth {
-      padding-top: $header-sub-height-auth;
-    }
-  }
-}
-
-$game-lobby-jackpot-bg-en-us: assetPath('game-lobby/bg_jackpot.png') center no-repeat;
-$game-lobby-jackpot-bg-th-th: assetPath('game-lobby/bg_jackpot.png') center no-repeat;
-$game-lobby-jackpot-bg-zh-cn: assetPath('game-lobby/bg_jackpot.png') center no-repeat;
-$game-lobby-jackpot-text-color: white;
-$game-lobby-jackpot-text-bg: white;
-
-.game-lobby-jackpot {
-  @include game-lobby-jackpot;
+.game-lobby {
+  @include game-lobby;
 }
 
 $game-lobby-product-bg: #cbaa6d;
@@ -125,12 +107,3 @@ $game-transfer-dialog-btn-color-submit: white;
 .game-transfer-dialog {
   @include game-transfer-dialog;
 }
-
-// $live-game-enter-dialog-bg: white;
-// $live-game-enter-dialog-border: 1px solid #c1ae71;
-// $live-game-enter-dialog-btn-bg: #462b16;
-// $live-game-enter-dialog-btn-color: white;
-
-// .live-game-enter-dialog {
-//   @include live-game-enter-dialog;
-// }

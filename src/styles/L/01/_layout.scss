@@ -20,6 +20,7 @@ body {
 #app {
   .main {
     padding: 0 0 0 15px;
+    height: 100vh - $header-height;
   }
 }
 
