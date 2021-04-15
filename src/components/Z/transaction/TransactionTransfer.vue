@@ -45,7 +45,12 @@
           <span class="ui-field__group__label">{{ $t('ui.label.promotion') }}</span>
           <select class="ui-field__select" v-model="promotion">
             <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
-            <option :value="item" v-for="item in productPromotionList" :key="item.Value">
+            <option
+              :value="item"
+              v-for="item in productPromotionList"
+              :key="item.Value"
+              :disabled="to > 0 && item.game !== to"
+            >
               {{ item.Text }}
             </option>
           </select>
