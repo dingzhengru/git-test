@@ -1,10 +1,6 @@
 <template>
   <div class="promotion-nav-tab nav-tab">
-    <div class="nav-tab__container">
-      <intersect @enter="leftEnter" @leave="leftLeave">
-        <div class="nav-tab__intersect nav-tab__intersect--left"></div>
-      </intersect>
-
+    <div class="nav-tab__container" ref="navTabContainer" @scroll.passive="handelScrollArrowX($event.target)">
       <div class="nav-tab__item" :class="{ active: category === 0 }" @click="$emit('change-category', 0)">
         {{ $t('promotion.nav.all') }}
       </div>
@@ -18,23 +14,17 @@
       >
         {{ item.Lst_CategoryName }}
       </div>
-
-      <intersect @enter="rightEnter" @leave="rightLeave">
-        <div class="nav-tab__intersect nav-tab__intersect--right"></div>
-      </intersect>
     </div>
-    <div class="nav-tab__left nav-tab__left--promotion" v-show="isShowArrowLeft"></div>
-    <div class="nav-tab__right nav-tab__right--promotion" v-show="isShowArrowRight"></div>
+    <div class="nav-tab__left nav-tab__left--promotion" v-show="isShowLeftArrow"></div>
+    <div class="nav-tab__right nav-tab__right--promotion" v-show="isShowRightArrow"></div>
   </div>
 </template>
 
 <script>
-import Intersect from 'vue-intersect';
+import mixinScrollArrow from '@/mixins/_scrollArrow';
 export default {
   name: 'PromotionNavTab',
-  components: {
-    Intersect,
-  },
+  mixins: [mixinScrollArrow],
   props: {
     categoryList: {
       type: Array,
@@ -45,25 +35,8 @@ export default {
       default: 0,
     },
   },
-  data() {
-    return {
-      isShowArrowLeft: true,
-      isShowArrowRight: true,
-    };
-  },
-  methods: {
-    leftEnter() {
-      this.isShowArrowLeft = false;
-    },
-    leftLeave() {
-      this.isShowArrowLeft = true;
-    },
-    rightEnter() {
-      this.isShowArrowRight = false;
-    },
-    rightLeave() {
-      this.isShowArrowRight = true;
-    },
+  mounted() {
+    this.handelScrollArrowX(this.$refs.navTabContainer);
   },
 };
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div class="game-lobby-category">
-    <div class="game-lobby-category__container">
-      <intersect @enter="leftEnter" @leave="leftLeave">
-        <div class="nav-tab__intersect nav-tab__intersect--left"></div>
-      </intersect>
-
+    <div
+      class="game-lobby-category__container"
+      ref="gameLobbyCategoryContainer"
+      @scroll.passive="handelScrollArrowX($event.target)"
+    >
       <div
         class="game-lobby-category__item"
         v-for="item in categoryList"
@@ -19,23 +19,17 @@
           {{ $te(`game.category.${item.Lst_GameName}`) ? $t(`game.category.${item.Lst_GameName}`) : item.Lst_GameName }}
         </div>
       </div>
-
-      <intersect @enter="rightEnter" @leave="rightLeave">
-        <div class="nav-tab__intersect nav-tab__intersect--right"></div>
-      </intersect>
     </div>
-    <div class="nav-tab__left nav-tab__left--game-category" v-show="isShowArrowLeft"></div>
-    <div class="nav-tab__right nav-tab__right--game-category" v-show="isShowArrowRight"></div>
+    <div class="nav-tab__left nav-tab__left--game-category" v-show="isShowLeftArrow"></div>
+    <div class="nav-tab__right nav-tab__right--game-category" v-show="isShowRightArrow"></div>
   </div>
 </template>
 
 <script>
-import Intersect from 'vue-intersect';
+import mixinScrollArrow from '@/mixins/_scrollArrow';
 export default {
   name: 'GameCategoryNavigation',
-  components: {
-    Intersect,
-  },
+  mixins: [mixinScrollArrow],
   props: {
     categoryList: {
       type: Array,
@@ -46,28 +40,13 @@ export default {
       default: () => {},
     },
   },
-  data() {
-    return {
-      isShowArrowLeft: true,
-      isShowArrowRight: true,
-    };
-  },
   methods: {
     changeCategory(category) {
       this.$emit('change-category', category);
     },
-    leftEnter() {
-      this.isShowArrowLeft = false;
-    },
-    leftLeave() {
-      this.isShowArrowLeft = true;
-    },
-    rightEnter() {
-      this.isShowArrowRight = false;
-    },
-    rightLeave() {
-      this.isShowArrowRight = true;
-    },
+  },
+  mounted() {
+    this.handelScrollArrowX(this.$refs.gameLobbyCategoryContainer);
   },
 };
 </script>

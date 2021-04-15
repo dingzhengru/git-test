@@ -1,9 +1,7 @@
 <template>
   <div class="home-product-nav nav-tab" ref="navTab">
-    <div class="nav-tab__container" ref="navTabContainer">
-      <intersect @enter="leftEnter" @leave="leftLeave">
-        <div class="nav-tab__intersect nav-tab__intersect--left"></div>
-      </intersect>
+    <div class="nav-tab__container" ref="navTabContainer" @scroll.passive="handelScrollArrowX($event.target)">
+      <h1></h1>
       <div
         class="nav-tab__item"
         :class="{ active: item.Lst_Game_Classify === classify }"
@@ -13,24 +11,19 @@
       >
         {{ $te(item.Lst_Game_Classify_Name) ? $t(item.Lst_Game_Classify_Name) : item.Lst_Game_Classify_Name }}
       </div>
-      <intersect @enter="rightEnter" @leave="rightLeave">
-        <div class="nav-tab__intersect nav-tab__intersect--right"></div>
-      </intersect>
     </div>
 
-    <div class="nav-tab__left nav-tab__left--home" v-show="isShowArrowLeft"></div>
-    <div class="nav-tab__right nav-tab__right--home" v-show="isShowArrowRight"></div>
+    <div class="nav-tab__left nav-tab__left--home" v-show="isShowLeftArrow"></div>
+    <div class="nav-tab__right nav-tab__right--home" v-show="isShowRightArrow"></div>
   </div>
 </template>
 
 <script>
+import mixinScrollArrow from '@/mixins/_scrollArrow';
 import { mapGetters } from 'vuex';
-import Intersect from 'vue-intersect';
 export default {
   name: 'HomeProductNav',
-  components: {
-    Intersect,
-  },
+  mixins: [mixinScrollArrow],
   computed: {
     ...mapGetters(['productClassifyList']),
   },
@@ -40,25 +33,8 @@ export default {
       default: 0,
     },
   },
-  data() {
-    return {
-      isShowArrowLeft: true,
-      isShowArrowRight: true,
-    };
-  },
-  methods: {
-    leftEnter() {
-      this.isShowArrowLeft = false;
-    },
-    leftLeave() {
-      this.isShowArrowLeft = true;
-    },
-    rightEnter() {
-      this.isShowArrowRight = false;
-    },
-    rightLeave() {
-      this.isShowArrowRight = true;
-    },
+  mounted() {
+    this.handelScrollArrowX(this.$refs.navTabContainer);
   },
 };
 </script>

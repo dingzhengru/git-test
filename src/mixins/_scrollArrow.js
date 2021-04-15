@@ -9,43 +9,49 @@ export default {
     };
   },
   methods: {
-    handelScrollArrowX(event) {
-      const target = event.target;
-      const hasScroll = target.scrollWidth > target.offsetWidth;
+    handelScrollArrowX(element) {
+      if (!element) {
+        return;
+      }
+      const hasScroll = element.scrollWidth > element.offsetWidth;
       if (!hasScroll) {
         this.resetArrowX();
         return;
       }
 
-      const scrollInnerWidth = target.scrollWidth - target.offsetWidth;
+      const scrollInnerWidth = element.scrollWidth - element.offsetWidth;
 
-      if (target.scrollLeft > 0) {
+      if (element.scrollLeft > 0) {
         this.isShowLeftArrow = true;
       } else {
         this.isShowLeftArrow = false;
       }
 
-      if (target.scrollLeft === scrollInnerWidth) {
+      if (element.scrollLeft === scrollInnerWidth) {
         this.isShowRightArrow = false;
       } else {
         this.isShowRightArrow = true;
       }
     },
-    handelScrollArrowY(event) {
-      const target = event.target;
-      const hasScroll = target.scrollWidth > target.offsetWidth;
+    handelScrollArrowY(element) {
+      if (!element) {
+        return;
+      }
+      const hasScroll = element.scrollWidth > element.offsetWidth;
       if (!hasScroll) {
         this.resetArrowY();
         return;
       }
 
-      if (target.scrollTop > 0) {
+      const scrollInnerHeight = element.scrollHeight - element.offsetHeight;
+
+      if (element.scrollTop > 0) {
         this.isShowTopArrow = true;
       } else {
         this.isShowTopArrow = false;
       }
 
-      if (target.scrollBottom > 0) {
+      if (element.scrollTop === scrollInnerHeight) {
         this.isShowBottomArrow = true;
       } else {
         this.isShowBottomArrow = false;

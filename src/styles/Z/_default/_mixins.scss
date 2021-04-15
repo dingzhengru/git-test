@@ -332,13 +332,6 @@
       background: $nav-tab-arrow-bg-right-game-category;
     }
   }
-
-  &__intersect {
-    &--right {
-      opacity: 0;
-      padding-right: 1px;
-    }
-  }
 }
 
 @mixin ui-box-close {
