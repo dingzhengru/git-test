@@ -47,8 +47,6 @@ export default {
         linkUrl = this.siteNoticeLinkDeposit.LinkType;
       }
 
-      console.log(linkType, linkUrl);
-
       if (!linkType || !linkUrl) {
         this.$emit('close');
         return;
