@@ -61,21 +61,26 @@
 @mixin home-product-block {
   height: calc(100% - #{$news-marquee-height});
   margin: 5px 0;
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-
   overflow-x: auto;
   overflow-y: hidden;
+  position: relative;
 
-  &.block {
-    flex-direction: row;
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-    .home-product-block {
-      &__item {
-        height: 90%;
-        margin-bottom: 0;
+    &.block {
+      flex-direction: row;
+
+      .home-product-block {
+        &__item {
+          height: 90%;
+          margin-bottom: 0;
+        }
       }
     }
   }

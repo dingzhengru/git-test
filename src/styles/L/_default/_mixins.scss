@@ -178,6 +178,25 @@
     overflow-x: auto;
     overflow-y: hidden;
     padding: 5px;
+
+    &__arrow {
+      position: absolute;
+      background: black;
+      width: 33px;
+      height: 33px;
+      top: 50%;
+      transform: translateY(-50%);
+      &--left {
+        background: $panel-tab-content-arrow-bg-left;
+        background-size: contain;
+        left: 0;
+      }
+      &--right {
+        background: $panel-tab-content-arrow-bg-right;
+        background-size: contain;
+        right: 0;
+      }
+    }
   }
 }
 

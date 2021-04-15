@@ -69,5 +69,12 @@ export default {
   mounted() {
     this.handelScrollArrowX(this.$refs.gameLobbyProductContainer);
   },
+  watch: {
+    productList() {
+      window.setTimeout(() => {
+        this.handelScrollArrowX(this.$refs.gameLobbyProductContainer);
+      }, 500);
+    },
+  },
 };
 </script>

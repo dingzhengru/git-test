@@ -36,5 +36,12 @@ export default {
   mounted() {
     this.handelScrollArrowX(this.$refs.navTabContainer);
   },
+  watch: {
+    productClassifyList() {
+      window.setTimeout(() => {
+        this.handelScrollArrowX(this.$refs.navTabContainer);
+      }, 500);
+    },
+  },
 };
 </script>

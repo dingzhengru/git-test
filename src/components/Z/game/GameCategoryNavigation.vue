@@ -48,5 +48,12 @@ export default {
   mounted() {
     this.handelScrollArrowX(this.$refs.gameLobbyCategoryContainer);
   },
+  watch: {
+    categoryList() {
+      window.setTimeout(() => {
+        this.handelScrollArrowX(this.$refs.gameLobbyCategoryContainer);
+      }, 500);
+    },
+  },
 };
 </script>

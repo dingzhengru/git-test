@@ -85,6 +85,16 @@ $nav-tab-arrow-bg-left-game-category: assetPath('ui/ui-arrow-maskLeft.png') left
 $nav-tab-arrow-bg-right-game-category: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
   linear-gradient(to left, rgb(70, 43, 22, 1) 0%, rgb(70, 43, 22, 1) 50%, rgba(70, 43, 22, 0));
 
+$panel-tab-item-bg: none;
+$panel-tab-item-color: none;
+$panel-tab-item-bg-active: none;
+$panel-tab-item-color-active: none;
+$panel-tab-content-bg: none;
+$panel-tab-content-arrow-width: none;
+$panel-tab-content-arrow-height: none;
+$panel-tab-content-arrow-bg-left: assetPath('ui/swiper-button-prev.png') center no-repeat;
+$panel-tab-content-arrow-bg-right: assetPath('ui/swiper-button-next.png') center no-repeat;
+
 // $box-close-bg: gray;
 // $box-close-size: 24px;
 // $box-close-top: -8px;

@@ -38,5 +38,12 @@ export default {
   mounted() {
     this.handelScrollArrowX(this.$refs.navTabContainer);
   },
+  watch: {
+    categoryList() {
+      window.setTimeout(() => {
+        this.handelScrollArrowX(this.$refs.navTabContainer);
+      }, 500);
+    },
+  },
 };
 </script>
