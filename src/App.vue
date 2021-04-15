@@ -127,8 +127,6 @@ export default {
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
 
-    console.log(this.isLandscape);
-
     if (this.isLandscape) {
       const viewport = document.querySelector('meta[name=viewport]');
       viewport.content = 'width=device-width';
