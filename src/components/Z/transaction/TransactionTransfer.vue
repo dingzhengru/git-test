@@ -1,5 +1,9 @@
 <template>
   <ValidationObserver class="transfer" tag="div" v-slot="{ invalid, handleSubmit }">
+    <div class="ui-message-box" v-if="siteWalletType === 2">
+      試試免轉錢包直接進遊戲
+    </div>
+
     <form class="transfer-form" @submit.prevent="handleSubmit(submitTransferPoint)">
       <ValidationProvider
         class="ui-field transfer__field transfer__field--from"

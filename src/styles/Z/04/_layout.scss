@@ -50,6 +50,10 @@ body {
   @include ui-box-close;
 }
 
+.ui-message-box {
+  @include ui-message-box;
+}
+
 .go-top-btn {
   @include go-top-btn;
 }

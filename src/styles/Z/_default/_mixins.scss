@@ -418,6 +418,17 @@
   padding: 30px 0;
 }
 
+@mixin ui-message-box {
+  background: $message-box-bg;
+  color: $message-box-color;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
 @mixin service-term {
   background: $service-term-bg;
   color: $service-term-color;
