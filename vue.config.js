@@ -55,7 +55,10 @@ module.exports = {
     // });
 
     config.optimization.minimizer('terser').tap(args => {
-      // args[0].terserOptions.compress.drop_console = true;
+      //* 清除 console.log
+      if (process.env.NODE_ENV === 'production') {
+        args[0].terserOptions.compress.drop_console = true;
+      }
       args[0].terserOptions.output = {
         ...args[0].terserOptions.output,
         comments: false,

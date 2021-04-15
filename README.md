@@ -43,7 +43,7 @@ H3 前後端分離的前端專案，使用 vue & vue-cli 框架
 ### 主要分支
 
 master: 正式站
-develope: show 站
+development: show 站
 
 ### 次要分支
 
