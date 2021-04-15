@@ -7,12 +7,12 @@
       <component :is="HomeProductBlock" :list="productListByClassify(productClassifyCurrent)" />
     </div>
 
-    <!-- <ModalNoticeImage
+    <ModalNoticeImage
       :isShow="isShowMainNotice"
       :image="siteMainPageNoticeUrl"
       type="main"
       @close="isShowMainNotice = false"
-    /> -->
+    />
     <ModalMessageC :isShow="isShowModalMessage && !userIsLoggedIn" @close="isShowModalMessage = false" />
   </div>
 </template>

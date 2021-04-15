@@ -62,10 +62,10 @@ const getters = {
   siteIsSpare: state => state.site.info.IsSpare,
   siteEnableSpareDomain: state => state.site.info.EnableSpareDomain,
   siteWalletType: state => state.site.info.WalletType,
-  siteNoticeLinkMain: getters => {
+  siteNoticeLinkMain: (state, getters) => {
     return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 1) : {};
   },
-  siteNoticeLinkDeposit: getters => {
+  siteNoticeLinkDeposit: (state, getters) => {
     return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 2) : {};
   },
   siteFullCss: state => {
