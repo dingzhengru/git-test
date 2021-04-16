@@ -86,6 +86,12 @@ export async function apiPostFightLobby(data) {
   return result.data;
 }
 
+//* 2.80  我的收藏
+export async function apiGetGameListFav(data) {
+  const result = await axios.post(API_URL + '/Game/MFavoritesList', data);
+  return result.data;
+}
+
 // export async function apiGetLiveGameLobbyCategory(params) {
 //   const result = await axios.get(API_URL + '/Game/GetLiveLobbyMenu', { params });
 //   return result.data;

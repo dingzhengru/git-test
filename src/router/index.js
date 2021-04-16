@@ -56,6 +56,11 @@ const routes = [
         redirect: { name: 'Home' },
       },
       {
+        path: ':classify/fav',
+        name: 'GameLobbyFav',
+        component: () => import('@/views/game/GameLobby'),
+      },
+      {
         path: ':classify/:id/:key',
         name: 'GameLobby',
         component: () => import('@/views/game/GameLobby'),

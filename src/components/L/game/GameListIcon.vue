@@ -14,6 +14,11 @@
         <div class="game-lobby-list-icon__item__text">
           {{ item.Lst_GameName }}
         </div>
+        <div
+          class="game-lobby-list-icon__item__fav"
+          :class="{ active: item.Lst_IsLike }"
+          @click.stop="$emit('change-game-fav', item)"
+        ></div>
         <!-- <div class="game-lobby-list-icon__item__new">New!</div> -->
       </div>
       <intersect @enter="changePage" rootMargin="0px 15px 0px 0px" v-if="gameList.length > 0 && isShowIntersect">

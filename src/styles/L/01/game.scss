@@ -27,6 +27,11 @@ $game-lobby-category-text-color-active: #cbaa6d;
 // $game-lobby-list-icon-item-img-width: 50px;
 $game-lobby-list-icon-item-text-color: black;
 
+$game-lobby-list-icon-item-fav-bg: assetPath('game-lobby/btn_favorites.png') center/cover no-repeat;
+$game-lobby-list-icon-item-fav-bg-active: assetPath('game-lobby/btn_favorites_active.png') center/cover no-repeat;
+$game-lobby-list-icon-item-fav-width: 30px;
+$game-lobby-list-icon-item-fav-height: 30px;
+
 .game-lobby-list-icon {
   @include game-lobby-list-icon;
 }

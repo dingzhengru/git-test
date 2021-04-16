@@ -44,6 +44,7 @@
     align-items: flex-start;
     justify-content: center;
     margin-right: 5px;
+    position: relative;
 
     &__icon {
       width: 100%;
@@ -56,6 +57,19 @@
       flex-basis: 20%;
       text-align: center;
       align-self: center;
+    }
+
+    &__fav {
+      background: $game-lobby-list-icon-item-fav-bg;
+      width: $game-lobby-list-icon-item-fav-width;
+      height: $game-lobby-list-icon-item-fav-height;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      &.active {
+        background: $game-lobby-list-icon-item-fav-bg-active;
+      }
     }
   }
 }

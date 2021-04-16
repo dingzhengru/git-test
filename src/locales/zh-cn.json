@@ -868,6 +868,9 @@
     "title": "最新消息"
   },
   "game": {
+    "product": {
+      "fav": "我的收藏"
+    },
     "category": {
       "all": "所有游戏",
       "hot": "热门游戏"

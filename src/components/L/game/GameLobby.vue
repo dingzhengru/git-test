@@ -5,6 +5,9 @@
         :is="GameProductNavigation"
         :productList="productList"
         :productCurrent="productCurrent"
+        :productClassify="productClassify"
+        :isProductFav="isProductFav"
+        :isShowProductFav="isShowProductFav"
         @change-product="changeProduct"
       />
 
@@ -14,16 +17,17 @@
           :categoryList="categoryList"
           :categoryCurrent="categoryCurrent"
           @change-category="changeCategory"
-          v-if="isShowCategory"
+          v-if="isShowCategory && !isProductFav"
         />
 
         <component
           :is="GameListIcon"
           :gameList="gameList"
           :productCurrent="productCurrent"
-          :isProductActive="isProductActive"
+          :isProductActive="isProductActive || isProductFav"
           @change-page="changePageScrollBottom"
           @open-game="openGame"
+          @change-game-fav="changeGameFav"
         />
       </div>
     </div>

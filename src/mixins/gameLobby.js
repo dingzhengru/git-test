@@ -14,6 +14,7 @@ import {
   apiPostGameLobbyGameList,
   apiSetGameFav,
   apiGetJackpotTotal,
+  apiGetGameListFav,
 } from '@/api/game';
 import { openNewWindowURL } from '@/utils/device';
 
@@ -21,7 +22,7 @@ export default {
   name: 'MixinGameLobby',
   mixins: [mixinProductLinkHandler],
   computed: {
-    ...mapGetters(['lang', 'userGamePointById', 'siteWalletType', 'isLandscape']),
+    ...mapGetters(['lang', 'userIsLoggedIn', 'userGamePointById', 'siteWalletType', 'isLandscape']),
     productClassify() {
       return Number(this.$route.params.classify);
     },
@@ -91,6 +92,14 @@ export default {
     totalPage() {
       return Math.ceil(this.pagination.count / this.pagination.pagesize);
     },
+
+    //* 橫版
+    isProductFav() {
+      return this.$route.name === 'GameLobbyFav';
+    },
+    isShowProductFav() {
+      return this.userIsLoggedIn;
+    },
   },
   data() {
     return {
@@ -120,11 +129,11 @@ export default {
       defaultCategoryListSlot: [
         {
           Lst_Category: '',
-          Lst_GameName: 'all',
+          Lst_GameName: 'game.category.all',
         },
         {
           Lst_Category: 'Hot Games',
-          Lst_GameName: 'hot',
+          Lst_GameName: 'game.category.hot',
         },
       ],
     };
@@ -161,6 +170,7 @@ export default {
       this.search.text = '';
 
       this.$router.push({
+        name: 'GameLobby',
         params: { id: product.Lst_Product_id, key: product.Lst_Proxy_Product_Key },
         query: { category: '' },
       });
@@ -202,6 +212,10 @@ export default {
       this.productList = result.RetObj.ProductList;
     },
     async getGameCategoryList() {
+      if (this.isProductFav) {
+        return;
+      }
+
       const requestData = { Tag: this.productTag, GameClassify: this.productClassify };
       let result = {};
       if (this.userIsLoggedIn) {
@@ -221,7 +235,12 @@ export default {
       this.productCategoryEntry = result.RetObj.ProductEntry;
       return result;
     },
-    async getGameList() {
+    async getGameList(isScroll = false) {
+      if (this.isProductFav) {
+        this.getGameListFav();
+        return;
+      }
+
       const requestData = {
         Tag: this.productTag,
         Category: this.categoryCurrent.Lst_Category || '',
@@ -238,29 +257,22 @@ export default {
         requestData.Lang = this.lang;
         result = await apiGetGameLobbyGameList(requestData);
       }
-      this.gameList = result.RetObj.JsonGameList || [];
+
+      if (isScroll) {
+        this.gameList = this.gameList.concat(result.RetObj.JsonGameList || []);
+      } else {
+        this.gameList = result.RetObj.JsonGameList || [];
+      }
+
       this.pagination.count = result.RetObj.DataCnt;
       this.pagination.pagesize = result.RetObj.PageSize;
     },
-    async getGameListScrollBottom() {
-      const requestData = {
-        Tag: this.productTag,
-        Category: this.categoryCurrent.Lst_Category || '',
-        Page: this.pagination.page,
-        GameName: this.search.text,
-        IsLike: this.search.isFav ? 1 : 0,
-        GameClassify: this.productClassify,
-      };
-      let result = {};
-      if (this.userIsLoggedIn) {
-        result = await apiPostGameLobbyGameList(requestData);
-      } else {
-        requestData.Lang = this.lang;
-        result = await apiGetGameLobbyGameList(requestData);
-      }
-      this.gameList = this.gameList.concat(result.RetObj.JsonGameList || []);
-      this.gameLimitBetList = result.RetObj.GameLimitBet;
+    async getGameListFav() {
+      const requestData = { Page: this.pagination.page };
+      const result = await apiGetGameListFav(requestData);
+      this.gameList = result.RetObj.FavoritesList || [];
       this.pagination.count = result.RetObj.DataCnt;
+      this.pagination.pagesize = result.RetObj.PageSize;
     },
     async openGame(game) {
       if (!this.userIsLoggedIn) {
@@ -270,7 +282,7 @@ export default {
         return this.$router.push({ name: 'Login' });
       }
       const requestData = {
-        Tag: this.productTag,
+        Tag: game.Tag || this.productTag,
         Gameid: game.Lst_GameID,
         Freeplay: 0,
         GameClassify: this.productClassify,
@@ -316,7 +328,7 @@ export default {
         return;
       }
       this.pagination.page = this.pagination.page + 1;
-      this.getGameListScrollBottom();
+      this.getGameList(true);
     },
   },
   async mounted() {

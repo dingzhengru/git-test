@@ -16,7 +16,7 @@
           class="game-lobby-category__item__text"
           :class="{ active: categoryCurrent.Lst_Category == item.Lst_Category }"
         >
-          {{ $te(`game.category.${item.Lst_GameName}`) ? $t(`game.category.${item.Lst_GameName}`) : item.Lst_GameName }}
+          {{ $te(item.Lst_GameName) ? $t(item.Lst_GameName) : item.Lst_GameName }}
         </div>
       </div>
     </div>

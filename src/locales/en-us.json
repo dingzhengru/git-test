@@ -871,6 +871,9 @@
     "title": "Latest News"
   },
   "game": {
+    "product": {
+      "fav": "My Favorites"
+    },
     "category": {
       "all": "All Games",
       "hot": "Hot Games"
