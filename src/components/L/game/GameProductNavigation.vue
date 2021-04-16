@@ -1,6 +1,11 @@
 <template>
   <div class="ui-panel-tab__tabs game-lobby-product">
-    <div class="ui-panel-tab__tabs__item" v-for="item in productList" :key="item.Lst_Product_id">
+    <div
+      class="ui-panel-tab__tabs__item game-lobby-product__item"
+      v-for="item in productList"
+      :key="item.Lst_Product_id"
+      @click="changeProduct(item)"
+    >
       {{ item.Lst_Name }}
     </div>
   </div>

@@ -13,8 +13,8 @@
       </div>
     </div>
 
-    <div class="nav-tab__left nav-tab__left--home" v-show="isShowLeftArrow"></div>
-    <div class="nav-tab__right nav-tab__right--home" v-show="isShowRightArrow"></div>
+    <div class="nav-tab__arrow nav-tab__arrow--left nav-tab__arrow--left--home" v-show="isShowLeftArrow"></div>
+    <div class="nav-tab__arrow nav-tab__arrow--right nav-tab__arrow--right--home" v-show="isShowRightArrow"></div>
   </div>
 </template>
 

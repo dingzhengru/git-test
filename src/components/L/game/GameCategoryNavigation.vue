@@ -1,12 +1,12 @@
 <template>
-  <div class="game-lobby-category">
+  <div class="game-lobby-category nav-tab">
     <div
-      class="game-lobby-category__container"
+      class="game-lobby-category__container nav-tab__container"
       ref="gameLobbyCategoryContainer"
       @scroll.passive="handelScrollArrowX($event.target)"
     >
       <div
-        class="game-lobby-category__item"
+        class="game-lobby-category__item nav-tab__item"
         v-for="item in categoryList"
         :key="item.Lst_Category"
         @click="changeCategory(item)"
@@ -20,7 +20,6 @@
         </div>
       </div>
     </div>
-
     <div class="nav-tab__arrow nav-tab__arrow--left nav-tab__arrow--left--game-category" v-show="isShowLeftArrow"></div>
     <div
       class="nav-tab__arrow nav-tab__arrow--right nav-tab__arrow--right--game-category"

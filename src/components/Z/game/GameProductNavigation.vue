@@ -26,8 +26,11 @@
         </div>
       </div>
     </div>
-    <div class="nav-tab__left nav-tab__left--game-product" v-show="isShowLeftArrow"></div>
-    <div class="nav-tab__right nav-tab__right--game-product" v-show="isShowRightArrow"></div>
+    <div class="nav-tab__arrow nav-tab__arrow--left nav-tab__arrow--left--game-product" v-show="isShowLeftArrow"></div>
+    <div
+      class="nav-tab__arrow nav-tab__arrow--right nav-tab__arrow--right--game-product"
+      v-show="isShowRightArrow"
+    ></div>
   </div>
 </template>
 

@@ -15,8 +15,8 @@
         {{ item.Lst_CategoryName }}
       </div>
     </div>
-    <div class="nav-tab__left nav-tab__left--promotion" v-show="isShowLeftArrow"></div>
-    <div class="nav-tab__right nav-tab__right--promotion" v-show="isShowRightArrow"></div>
+    <div class="nav-tab__arrow nav-tab__arrow--left nav-tab__arrow--left--promotion" v-show="isShowLeftArrow"></div>
+    <div class="nav-tab__arrow nav-tab__arrow--right nav-tab__arrow--right--promotion" v-show="isShowRightArrow"></div>
   </div>
 </template>
 

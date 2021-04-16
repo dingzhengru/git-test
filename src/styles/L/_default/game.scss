@@ -2,6 +2,16 @@
   background: $game-lobby-bg;
   height: 100%;
   padding: 15px 0;
+
+  .ui-panel-tab {
+    &__tabs {
+      flex-basis: 20%;
+    }
+
+    &__content {
+      flex-basis: 80%;
+    }
+  }
 }
 
 @mixin game-lobby-product {

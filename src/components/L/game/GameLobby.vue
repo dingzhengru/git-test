@@ -1,16 +1,22 @@
 <template>
   <div class="game-lobby" :class="{ 'game-lobby-auth': userIsLoggedIn }">
     <div class="ui-panel-tab">
-      <!-- <div class="ui-panel-tab__tabs"> -->
       <component
         :is="GameProductNavigation"
         :productList="productList"
         :productCurrent="productCurrent"
         @change-product="changeProduct"
       />
-      <!-- </div> -->
 
-      <div class="ui-panel-tab__content"></div>
+      <div class="ui-panel-tab__content">
+        <component
+          :is="GameCategoryNavigation"
+          :categoryList="categoryList"
+          :categoryCurrent="categoryCurrent"
+          @change-category="changeCategory"
+          v-if="isShowCategory"
+        />
+      </div>
     </div>
 
     <!-- <component
