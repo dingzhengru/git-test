@@ -2,6 +2,7 @@
   <div class="ui-panel-tab__tabs game-lobby-product">
     <div
       class="ui-panel-tab__tabs__item game-lobby-product__item"
+      :class="{ active: item.Lst_Product_id == productCurrent.Lst_Product_id }"
       v-for="item in productList"
       :key="item.Lst_Product_id"
       @click="changeProduct(item)"

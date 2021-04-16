@@ -19,7 +19,10 @@
       </div>
     </div>
 
-    <button class="header__btn header__btn--wallet" @click="clickWalletHandler">
+    <button
+      class="header__btn header__btn--wallet"
+      @click="$router.push({ name: 'TransactionTransfer' }).catch(() => {})"
+    >
       <span class="header__btn--wallet__icon">$</span>
       <template v-if="userIsLoggedIn">
         {{ $numeral(userGamePointWallet.Point).format('0,0.00') }}
@@ -78,12 +81,6 @@ export default {
     },
   },
   methods: {
-    clickWalletHandler() {
-      if (this.userIsLoggedIn) {
-        return this.$router.push({ name: 'TransactionTransfer' }).catch(() => {});
-      }
-      this.$store.dispatch('openModalAuth');
-    },
     changeLang(lang) {
       this.$emit('changeLang', lang);
     },

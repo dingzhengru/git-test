@@ -33,9 +33,9 @@
     "game": {
       "GameProductNavigation": "components/L/game/GameProductNavigation",
       "GameCategoryNavigation": "components/L/game/GameCategoryNavigation",
+      "GameListIcon": "components/L/game/GameListIcon",
       "GameJackpot": "components/Z/game/GameJackpot",
       "GameListTable": "components/Z/game/GameListTable",
-      "GameListIcon": "components/Z/game/GameListIcon",
       "GameSearchBlock": "components/Z/game/GameSearchBlock",
       "LiveGameEnterDialog": "components/Z/game/LiveGameEnterDialog"
     }

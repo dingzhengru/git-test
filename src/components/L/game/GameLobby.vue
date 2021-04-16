@@ -16,6 +16,15 @@
           @change-category="changeCategory"
           v-if="isShowCategory"
         />
+
+        <component
+          :is="GameListIcon"
+          :gameList="gameList"
+          :productCurrent="productCurrent"
+          :isProductActive="isProductActive"
+          @change-page="changePageScrollBottom"
+          @open-game="openGame"
+        />
       </div>
     </div>
 
@@ -73,6 +82,10 @@
       @submit-transfer="transferPoint"
       @close="closeTransferDialog"
     /> -->
+
+    <!-- <intersect @enter="changePageScrollBottom" rootMargin="0px 5px 0px 0px">
+      <div class="game-lobby-intersect"></div>
+    </intersect> -->
   </div>
 </template>
 

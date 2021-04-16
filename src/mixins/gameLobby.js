@@ -21,7 +21,7 @@ export default {
   name: 'MixinGameLobby',
   mixins: [mixinProductLinkHandler],
   computed: {
-    ...mapGetters(['lang', 'userGamePointById']),
+    ...mapGetters(['lang', 'userGamePointById', 'isLandscape']),
     productClassify() {
       return Number(this.$route.params.classify);
     },
@@ -62,7 +62,7 @@ export default {
       return this.userIsLoggedIn && this.isProductClassifySlot;
     },
     isShowCategory() {
-      return this.isProductActive && this.productCategoryStatus === 0;
+      return this.isProductActive && this.productCategoryStatus === 0 && !this.isCategoryEntry;
     },
     isShowSearchBlock() {
       return this.isProductActive;
@@ -264,6 +264,9 @@ export default {
     },
     async openGame(game) {
       if (!this.userIsLoggedIn) {
+        if (this.isLandscape) {
+          return this.$store.dispatch('openModalAuth');
+        }
         return this.$router.push({ name: 'Login' });
       }
       const requestData = {

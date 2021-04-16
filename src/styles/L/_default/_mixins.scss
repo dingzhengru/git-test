@@ -130,6 +130,7 @@
 
 @mixin nav-tab {
   width: 100%;
+  height: $nav-tab-height;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -138,6 +139,7 @@
 
   &__container {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     overflow-x: auto;

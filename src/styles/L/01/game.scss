@@ -9,11 +9,8 @@ $game-lobby-bg: none;
 
 $game-lobby-product-bg: #cbaa6d;
 $game-lobby-product-item-bg-active: #462b16;
-$game-lobby-product-icon-width: 90px;
-$game-lobby-product-icon-height: 50px;
 $game-lobby-product-item-color: white;
 $game-lobby-product-item-color-active: white;
-$game-lobby-product-border-arrow-color: #462b16;
 
 .game-lobby-product {
   @include game-lobby-product;
@@ -25,6 +22,13 @@ $game-lobby-category-text-color-active: #cbaa6d;
 
 .game-lobby-category {
   @include game-lobby-category;
+}
+
+// $game-lobby-list-icon-item-img-width: 50px;
+$game-lobby-list-icon-item-text-color: black;
+
+.game-lobby-list-icon {
+  @include game-lobby-list-icon;
 }
 
 $game-lobby-search-bg: none;
@@ -57,28 +61,6 @@ $game-lobby-search-transfer-height: 59px;
       border-radius: 10px;
     }
   }
-}
-
-$game-lobby-list-table-bg: none;
-$game-lobby-list-table-tr-bg: none;
-$game-lobby-list-table-tr-border-bottom: 2px solid #e0e0e0;
-
-$game-lobby-list-table-title-color: black;
-$game-lobby-list-table-content-color: black;
-
-$game-lobby-list-link-bg-start: assetPath('game-lobby/btn_start.png') no-repeat;
-$game-lobby-list-link-bg-free: assetPath('game-lobby/btn_freeplay.png') no-repeat;
-$game-lobby-list-link-bg-fav: assetPath('game-lobby/btn_favorites.png') no-repeat;
-$game-lobby-list-link-bg-fav-active: assetPath('game-lobby/btn_favorites_active.png') no-repeat;
-
-.game-lobby-list {
-  @include game-lobby-list;
-}
-$game-lobby-list-icon-item-img-height: 180px;
-$game-lobby-list-icon-item-text-color: black;
-
-.game-lobby-list-icon {
-  @include game-lobby-list-icon;
 }
 
 $game-transfer-dialog-bg: white;
