@@ -21,7 +21,7 @@ export default {
   name: 'MixinGameLobby',
   mixins: [mixinProductLinkHandler],
   computed: {
-    ...mapGetters(['lang', 'userGamePointById', 'isLandscape']),
+    ...mapGetters(['lang', 'userGamePointById', 'siteWalletType', 'isLandscape']),
     productClassify() {
       return Number(this.$route.params.classify);
     },
@@ -74,7 +74,7 @@ export default {
       return !this.isCategoryEntry;
     },
     isShowTransfer() {
-      return this.userIsLoggedIn;
+      return this.userIsLoggedIn && this.siteWalletType === 1;
     },
     isShowStart() {
       return true;
