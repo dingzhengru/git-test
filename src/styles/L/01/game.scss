@@ -32,35 +32,20 @@ $game-lobby-list-icon-item-text-color: black;
 }
 
 $game-lobby-search-bg: none;
+$game-lobby-search-width: 200px;
+$game-lobby-search-height: $header-height;
 
-$game-lobby-search-input-width: 255px;
-$game-lobby-search-input-color: white;
+$game-lobby-search-position-right: 60px;
+
 $game-lobby-search-input-bg: #444444;
-$game-lobby-search-input-height: 53px;
+$game-lobby-search-input-width: 140px;
+$game-lobby-search-input-color: white;
 
-$game-lobby-search-icon-bg: assetPath('game-lobby/bg_lnk_inquire.png') center no-repeat;
+$game-lobby-search-icon-bg: assetPath('game-lobby/bg_lnk_inquire.png') center/cover no-repeat;
 $game-lobby-search-icon-width: 53px;
-$game-lobby-search-icon-height: 54px;
-
-$game-lobby-search-fav-bg: assetPath('game-lobby/ipt_favorites.png') center no-repeat;
-$game-lobby-search-fav-width: 56px;
-$game-lobby-search-fav-height: 59px;
-
-$game-lobby-search-transfer-bg: assetPath('game-lobby/btnTrans.png') #ccaf78 left center no-repeat;
-$game-lobby-search-transfer-icon-width: 59px;
-$game-lobby-search-transfer-icon-height: 59px;
-$game-lobby-search-transfer-color: white;
-$game-lobby-search-transfer-width: 240px;
-$game-lobby-search-transfer-height: 59px;
 
 .game-lobby-search {
   @include game-lobby-search;
-
-  &__btn {
-    &--transfer {
-      border-radius: 10px;
-    }
-  }
 }
 
 $game-transfer-dialog-bg: white;

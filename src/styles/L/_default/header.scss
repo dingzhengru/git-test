@@ -68,12 +68,18 @@
   &__right {
     height: 100%;
     margin-left: auto;
+    display: flex;
+    align-items: center;
 
-    button {
+    > button {
       &:not(:last-child) {
         margin-right: 15px;
       }
     }
+  }
+
+  &__btn {
+    margin-right: 15px;
   }
 
   &__lang-btn {
@@ -93,10 +99,6 @@
       width: 50px;
       background: orange;
     }
-  }
-
-  &__btn {
-    margin-right: 15px;
   }
 }
 

@@ -28,22 +28,14 @@
       </div>
     </div>
 
+    <component :is="GameSearchBlock" @submit-search="submitSearch" v-if="isShowSearchBlock" />
+
     <!-- <component
       :is="GameCategoryNavigation"
       :categoryList="categoryList"
       :categoryCurrent="categoryCurrent"
       @change-category="changeCategory"
       v-if="isShowCategory"
-    /> -->
-
-    <!-- <component
-      :is="GameSearchBlock"
-      :isShowSearch="isShowSearch"
-      :isShowTransfer="isShowTransfer"
-      :isShowFav="isShowFav"
-      @submit-search="submitSearch"
-      @open-transfer-dialog="$store.dispatch('openModalTransfer', productPointCurrent)"
-      v-if="isShowSearchBlock"
     /> -->
 
     <!-- <component

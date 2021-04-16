@@ -61,6 +61,31 @@
 }
 
 @mixin game-lobby-search {
+  background: $game-lobby-search-bg;
+  width: $game-lobby-search-width;
+  height: $game-lobby-search-height;
+  position: fixed;
+  top: 0;
+  right: 60px;
+
+  &__form {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    width: $game-lobby-search-input-width;
+    height: 80%;
+  }
+
+  &__btn {
+    &--submit {
+      width: $game-lobby-search-icon-width;
+      height: 80%;
+      background: $game-lobby-search-icon-bg;
+    }
+  }
 }
 
 @mixin game-transfer-dialog {
