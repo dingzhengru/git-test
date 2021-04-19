@@ -27,9 +27,15 @@
         <button @click="$router.push({ name: 'TransactionDepositHome' })">{{ $t('transaction.title') }}</button>
       </div>
       <div class="home__footer__center">
-        <span class="home__footer__icon home__footer__icon--promotion"></span>
-        <span class="home__footer__icon home__footer__icon--mail"></span>
-        <span class="home__footer__icon home__footer__icon--fav"></span>
+        <span
+          class="home__footer__icon home__footer__icon--promotion"
+          @click="$router.push({ name: 'Promotion' })"
+        ></span>
+        <span class="home__footer__icon home__footer__icon--mail" @click="$router.push({ name: 'UserMail' })"></span>
+        <span
+          class="home__footer__icon home__footer__icon--fav"
+          @click="changeRoute({ name: 'GameLobbyFav', params: { classify: 2 } })"
+        ></span>
         <span
           class="home__footer__icon home__footer__icon--contact"
           @click="$store.dispatch('openModalContact')"
@@ -76,6 +82,14 @@ export default {
     return {
       productClassifyCurrent: 1,
     };
+  },
+  methods: {
+    changeRoute(route) {
+      if (route.name === 'GameLobbyFav' && !this.userIsLoggedIn) {
+        return this.$store.dispatch('openModalAuth');
+      }
+      this.$router.push(route);
+    },
   },
   mounted() {
     this.importStyleByFilename('home');
