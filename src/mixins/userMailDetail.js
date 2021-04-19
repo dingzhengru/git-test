@@ -2,6 +2,12 @@ import { apiGetInboxDetail, apiSendMail } from '@/api/notification';
 
 export default {
   name: 'MixinUserMailDetail',
+  props: {
+    mailKey: {
+      type: Number,
+      default: () => null,
+    },
+  },
   data() {
     return {
       list: [],
@@ -14,8 +20,13 @@ export default {
     };
   },
   methods: {
-    async getInboxDetail() {
-      const requestData = { KEY: this.$route.params.key };
+    async getInboxDetail(mailKey = '') {
+      if (this.mailKey) {
+        mailKey = this.mailKey;
+      } else {
+        mailKey = this.$route.params.key;
+      }
+      const requestData = { KEY: mailKey };
       const result = await apiGetInboxDetail(requestData);
 
       this.list = result.RetObj.Rows;
@@ -37,5 +48,10 @@ export default {
   },
   mounted() {
     this.getInboxDetail();
+  },
+  watch: {
+    mailKey() {
+      this.getInboxDetail();
+    },
   },
 };

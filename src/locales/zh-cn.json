@@ -572,7 +572,10 @@
       "title": "寄件內容",
       "label": {
         "sender": "寄件者",
-        "reply": "回复邮件"
+        "reply": "回复邮件",
+        "date": "信件日期",
+        "time": "信件时间",
+        "category": "信件类别"
       }
     },
     "mailSend": {

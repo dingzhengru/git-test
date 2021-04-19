@@ -1,14 +1,7 @@
 @mixin user {
-  padding: 30px;
-  padding-top: $header-sub-height-auth;
-
-  .nav-tab {
-    &__item {
-      &:lang(th-th) {
-        font-size: 1.5rem;
-      }
-    }
-  }
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
 }
 
 @mixin user-profile {
@@ -183,142 +176,59 @@
 }
 
 @mixin user-mail {
-  padding: 0 15px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  font-size: 2rem;
+  height: 100%;
 
-  &__nav {
-    display: flex;
-    margin-bottom: 30px;
-
-    > button {
-      width: 50%;
-      margin: 0 5px;
-
-      background: $user-mail-btn-bg;
-      color: $user-mail-btn-color;
-      box-shadow: $user-mail-btn-shadow;
-
-      &.active {
-        background: $user-mail-btn-bg-active;
-        color: $user-mail-btn-color-active;
-        box-shadow: $user-mail-btn-shadow-active;
-      }
-    }
-
-    // &--inbox {
-    //   background: $user-mail-btn-bg-inbox;
-    //   color: $user-mail-btn-color-inbox;
-    //   box-shadow: $user-mail-btn-shadow-inbox;
-    // }
-    // &--add {
-    //   background: $user-mail-btn-bg-add;
-    //   color: $user-mail-btn-color-add;
-    //   box-shadow: $user-mail-btn-shadow-add;
-    // }
+  &__content {
+    height: 100%;
   }
 
-  &__main {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__item {
-    font-size: 1.8rem;
-    width: 100%;
-    background: $user-mail-item-bg;
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    padding: 30px 15px;
-    &__date {
-      color: $user-mail-item-color-date;
-      margin-right: 15px;
-    }
-    &__title {
-      color: $user-mail-item-color-title;
-    }
-    &__icon {
-      &--arrow {
-        margin-left: auto;
-        background: $user-mail-item-icon-bg-arrow;
-        width: $user-mail-item-icon-width;
-        height: $user-mail-item-icon-height;
-        transform: rotate(-90deg);
-      }
+  &__table {
+    a {
+      color: skyblue;
+      text-decoration: underline;
     }
   }
 }
 
 @mixin user-mail-detail {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  font-size: 1.8rem;
-  align-items: center;
-  padding: 15px 30px 30px 30px;
-  &__title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    padding-bottom: 15px;
-  }
-  &__item {
+  width: 70vw;
+  height: 90vh;
+  background: white;
+  position: relative;
+
+  &__container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    background: $user-mail-detail-item-bg;
-    border: $user-mail-detail-item-border;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  &__form {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
     padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-
-    > div {
-      display: flex;
-      margin-bottom: 15px;
-      > div:first-child {
-        color: $user-mail-detail-item-label-color;
-        flex-basis: 20%;
-        margin-right: 15px;
-      }
-
-      > div:nth-child(2) {
-        color: $user-mail-detail-item-content-color;
-      }
-    }
-
-    &__content {
-      border-top: $user-mail-detail-item-content-border-top;
-      color: $user-mail-detail-item-content-color;
-      padding: 15px;
-    }
   }
-  &__reply {
+
+  &__table {
     width: 100%;
-
-    &-form {
-      width: 100%;
-    }
-
-    &__btn {
-      width: 100%;
-      margin-top: 30px;
-
-      button {
-        margin-bottom: 15px;
+    height: 100%;
+    margin: 0;
+    > tr:not(:first-child) {
+      box-shadow: none;
+      > td {
+        text-align: left;
+        span {
+          color: white;
+        }
       }
 
-      &--submit {
-        background: $user-mail-btn-bg-submit;
-        color: $user-mail-btn-color-submit;
-        box-shadow: $user-mail-btn-shadow-submit;
+      > td:nth-child(1) {
+        width: 40%;
+        font-size: 0.8rem;
       }
-      &--reset {
-        background: $user-mail-btn-bg-reset;
-        color: $user-mail-btn-color-reset;
-        box-shadow: $user-mail-btn-shadow-reset;
+      > td:nth-child(2) {
+        width: 60%;
       }
     }
   }
@@ -326,28 +236,4 @@
 
 @mixin user-mail-send {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0 30px;
-  font-size: 1.8rem;
-
-  &__btn {
-    width: 100%;
-    margin-top: 30px;
-
-    button {
-      margin-bottom: 15px;
-    }
-
-    &--submit {
-      background: $user-mail-btn-bg-submit;
-      color: $user-mail-btn-color-submit;
-      box-shadow: $user-mail-btn-shadow-submit;
-    }
-    &--reset {
-      background: $user-mail-btn-bg-reset;
-      color: $user-mail-btn-color-reset;
-      box-shadow: $user-mail-btn-shadow-reset;
-    }
-  }
 }

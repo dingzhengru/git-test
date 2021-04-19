@@ -576,7 +576,10 @@
       "title": "Mail Detail",
       "label": {
         "sender": "Sender",
-        "reply": "Reply to mail"
+        "reply": "Reply to mail",
+        "date": "Date",
+        "time": "Time",
+        "category": "Letter Category"
       }
     },
     "mailSend": {

@@ -18,7 +18,7 @@ export default {
       // ],
       pagination: {
         page: 1,
-        pagesize: 1,
+        pagesize: 10,
         count: 0,
       },
     };
@@ -36,7 +36,7 @@ export default {
     },
     changePage(page) {
       this.pagination.page = page;
-      this.getNewsList();
+      this.getInboxList();
     },
   },
   mounted() {

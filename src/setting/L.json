@@ -24,7 +24,9 @@
       "PromotionNavTab": "components/Z/promotion/PromotionNavTab"
     },
     "user": {
-      "AppNavTab": "components/Z/AppNavTab"
+      "ModalUserMailDetail": "components/L/user/ModalUserMailDetail",
+      "AppNavTab": "components/Z/AppNavTab",
+      "PanelTabsNews": "components/L/PanelTabsNews"
     },
     "transaction": {
       "record": {
@@ -39,6 +41,9 @@
     },
     "news": {
       "PanelTabsNews": "components/L/PanelTabsNews"
+    },
+    "about": {
+      "PanelTabsNews": "components/L/PanelTabsNews"
     }
   },
   "views": {
@@ -48,11 +53,11 @@
     "forgetPassword": "components/Z/forget-password/ForgetPassword",
     "gameHome": "components/L/game/GameHome",
     "gameLobby": "components/L/game/GameLobby",
-    "userHome": "components/Z/user/UserHome",
+    "userHome": "components/L/user/UserHome",
     "userProfile": "components/Z/user/UserProfile",
     "userChangePassword": "components/Z/user/UserChangePassword",
     "userChangePasswordWithdrawal": "components/Z/user/UserChangePasswordWithdrawal",
-    "userMail": "components/Z/user/UserMail",
+    "userMail": "components/L/user/UserMail",
     "userMailDetail": "components/Z/user/UserMailDetail",
     "userMailSend": "components/Z/user/UserMailSend",
     "transactionHome": "components/Z/transaction/TransactionHome",

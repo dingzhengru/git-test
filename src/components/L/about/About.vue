@@ -42,7 +42,7 @@ export default {
   computed: {
     ...mapGetters(['siteSetting', 'userIsLoggedIn']),
     PanelTabsNews() {
-      return () => import(`@/${this.siteSetting.components.news.PanelTabsNews}`);
+      return () => import(`@/${this.siteSetting.components.about.PanelTabsNews}`);
     },
     imgSport() {
       return require('@/assets/common/about/gameIntro-01.jpg');
