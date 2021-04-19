@@ -80,7 +80,7 @@
     "promotion": "components/L/promotion/Promotion",
     "promotionDetail": "components/Z/promotion/PromotionDetail",
     "contact": "components/Z/contact/Contact",
-    "about": "components/Z/about/About",
+    "about": "components/L/about/About",
     "news": "components/L/news/News",
     "maintenance": "components/Z/maintenance/Maintenance",
     "depositThirdPartyReturn": "components/Z/DepositThirdPartyReturn"

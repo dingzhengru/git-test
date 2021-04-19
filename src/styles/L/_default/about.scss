@@ -1,19 +1,23 @@
 @mixin about {
-  padding: 30px;
+  height: 100%;
+  width: 100%;
 
-  &-auth {
-    padding-top: $header-sub-height-auth + 30;
+  padding-left: 10px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+
+    img {
+      width: 100%;
+    }
   }
 
-  position: relative;
-  width: 100%;
-  font-size: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   &__title {
-    font-size: 2.5rem;
+    width: 100%;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 
