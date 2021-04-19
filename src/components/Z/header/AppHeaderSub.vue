@@ -69,5 +69,10 @@ export default {
       isShowDropdown: false,
     };
   },
+  watch: {
+    $route() {
+      this.isShowDropdown = false;
+    },
+  },
 };
 </script>
