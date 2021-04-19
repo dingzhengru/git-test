@@ -171,16 +171,17 @@
 
 @mixin modal-lang-menu {
   width: 50vw;
-  min-height: 50vh;
+  height: 60vh;
   background: white;
   position: relative;
 
-  padding: 30px;
-
   &__btn-block {
+    height: 100%;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
   }
 
   &__btn {
