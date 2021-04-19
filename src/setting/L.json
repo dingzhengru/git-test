@@ -36,6 +36,9 @@
       "GameCategoryNavigation": "components/L/game/GameCategoryNavigation",
       "GameListIcon": "components/L/game/GameListIcon",
       "GameSearchBlock": "components/L/game/GameSearchBlock"
+    },
+    "news": {
+      "PanelTabsNews": "components/L/PanelTabsNews"
     }
   },
   "views": {
@@ -78,7 +81,7 @@
     "promotionDetail": "components/Z/promotion/PromotionDetail",
     "contact": "components/Z/contact/Contact",
     "about": "components/Z/about/About",
-    "news": "components/Z/news/News",
+    "news": "components/L/news/News",
     "maintenance": "components/Z/maintenance/Maintenance",
     "depositThirdPartyReturn": "components/Z/DepositThirdPartyReturn"
   }

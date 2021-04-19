@@ -1,10 +1,7 @@
 @mixin promotion {
   width: 100%;
-  padding: 15px 0 0 10px;
-
-  &__content {
-    border-left: 1px solid gray;
-  }
+  height: 100%;
+  padding: 0 0 0 10px;
 
   &__group {
     display: flex;
@@ -75,7 +72,7 @@
       }
 
       // .ui-table04 {
-        // font-size: 1rem;
+      // font-size: 1rem;
       // }
 
       ul > li {

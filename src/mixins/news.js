@@ -16,11 +16,11 @@ export default {
       // newsList: [
       //   {
       //     Lst_StartDateTime: '2020-07-29 10:27:52',
-      //     Lst_Content: `<h2>test</h2>`,
+      //     Lst_Content: `test`,
       //   },
       //   {
       //     Lst_StartDateTime: '2018-03-29 20:05:03',
-      //     Lst_Content: `<h2>3/29 測試消息內容</h2>`,
+      //     Lst_Content: `3/29 測試消息內容`,
       //   },
       // ],
       // pagination: {
@@ -41,8 +41,8 @@ export default {
         result = await apiGetNewsList(requestData);
       }
       if (result.Code == 200) {
-        this.newsList = result.RetObj.Rows;
-        this.pagination.count = result.RetObj.Records;
+        // this.newsList = result.RetObj.Rows;
+        // this.pagination.count = result.RetObj.Records;
       }
     },
     changePage(page) {

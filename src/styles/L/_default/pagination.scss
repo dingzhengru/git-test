@@ -1,31 +1,34 @@
 @mixin pagination {
+  width: 100%;
   margin: 20px 0;
-  padding: 25px 0;
-  font-size: 2rem;
-  white-space: nowrap;
+  // font-size: 2rem;
   display: flex;
   justify-content: center;
+  flex-wrap: nowrap;
 
   select {
-    flex-shrink: 0;
+    flex-basis: 20%;
     background: $pagination-select-bg;
     color: $pagination-select-color;
     appearance: none;
-    width: 134px;
     height: 65px;
+    padding-left: 30px;
     border: none;
-    padding: 0 67px 0 20px;
-    line-height: 65px;
   }
 
   > a {
-    flex-shrink: 0;
-    display: inline-block;
-    width: 134px;
-    zoom: 1;
+    flex-basis: 20%;
     height: 65px;
-    padding: 0;
-    margin: 0;
+
+    &:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
   }
 
   &__prev {

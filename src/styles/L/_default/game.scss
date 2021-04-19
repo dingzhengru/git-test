@@ -1,18 +1,7 @@
 @mixin game-lobby {
   background: $game-lobby-bg;
   height: 100%;
-  padding: 15px 0 15px 10px;
-
-  .ui-panel-tab {
-    &__tabs {
-      padding: 5px 0;
-      flex-basis: 20%;
-    }
-
-    &__content {
-      flex-basis: 80%;
-    }
-  }
+  padding: 0 0 0 10px;
 }
 
 @mixin game-lobby-product {

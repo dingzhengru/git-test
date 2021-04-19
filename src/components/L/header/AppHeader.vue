@@ -2,7 +2,7 @@
   <header class="header">
     <!-- <img :src="siteLogoUrl" class="header__logo" /> -->
     <div class="header__logo" v-show="$route.name === 'Home'"></div>
-    <div class="header__back" v-show="$route.name !== 'Home'" @click="$router.go(-1)"></div>
+    <div class="header__back" v-show="$route.name !== 'Home'" @click="goRoutePrevious"></div>
 
     <button class="header__btn header__btn--login" @click="$store.dispatch('openModalAuth')" v-if="!userIsLoggedIn">
       {{ `${$t('ui.button.login')}/${$t('ui.button.register')}` }}
@@ -77,6 +77,12 @@ export default {
     },
   },
   methods: {
+    goRoutePrevious() {
+      if (this.$route.name === 'PromotionDetail') {
+        return this.$router.push({ name: 'Promotion' });
+      }
+      this.$router.push({ name: 'Home' });
+    },
     changeLang(lang) {
       this.$emit('changeLang', lang);
     },

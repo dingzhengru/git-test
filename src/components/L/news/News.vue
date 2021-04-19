@@ -1,0 +1,52 @@
+<template>
+  <div class="news" :class="{ 'news-auth': userIsLoggedIn }">
+    <div class="ui-panel-tab">
+      <component :is="PanelTabsNews" />
+
+      <div class="ui-panel-tab__content news__content">
+        <div class="news__item" v-for="(item, index) in newsList" :key="index">
+          <div class="news__item__date">
+            <div class="news__item__date__label">{{ $t('ui.label.time') }}</div>
+            <div class="news__item__date__content">{{ getDateTime(item.Lst_StartDateTime) }}</div>
+          </div>
+          <div class="news__item__content">{{ item.Lst_Content }}</div>
+        </div>
+
+        <div class="ui-no-data" v-show="newsList.length === 0">{{ $t('ui.label.noData') }}</div>
+
+        <AppPagination
+          :count="pagination.count"
+          :page="pagination.page"
+          :pagesize="pagination.pagesize"
+          @change-page="changePage"
+          v-show="newsList.length > 0"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import mixinStyleLoader from '@/mixins/_styleLoader';
+import mixinNews from '@/mixins/news';
+import { mapGetters } from 'vuex';
+export default {
+  name: 'News',
+  mixins: [mixinStyleLoader, mixinNews],
+  components: {
+    AppPagination: () => import('@/components/AppPagination'),
+  },
+  computed: {
+    ...mapGetters(['siteSetting', 'userIsLoggedIn']),
+    PanelTabsNews() {
+      return () => import(`@/${this.siteSetting.components.news.PanelTabsNews}`);
+    },
+    getDateTime: () => datetime => {
+      return datetime.replace('T', ' ');
+    },
+  },
+  mounted() {
+    this.importStyleByFilename('news');
+  },
+};
+</script>
