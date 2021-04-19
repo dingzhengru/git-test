@@ -40,11 +40,11 @@
         @click="$store.commit('setModalRedEnvelopeIsShow', true)"
         v-if="userIsLoggedIn"
       ></button>
-      <button class="header__lang-btn" @click="isShowModalLangMenu = true"></button>
+      <button class="header__lang-btn" @click="$store.dispatch('openModalLang')"></button>
     </div>
 
     <component :is="ModalAuth" :isShow="modalAuthIsShow" @close="$store.dispatch('closeModalAuth')" />
-    <component :is="ModalLangMenu" :isShow="isShowModalLangMenu" @close="isShowModalLangMenu = false" />
+    <component :is="ModalLangMenu" :isShow="modalLangIsShow" @close="$store.dispatch('closeModalLang')" />
   </header>
 </template>
 
@@ -59,11 +59,6 @@ export default {
       default: () => '',
     },
   },
-  data() {
-    return {
-      isShowModalLangMenu: false,
-    };
-  },
   computed: {
     ...mapGetters([
       'siteSetting',
@@ -71,6 +66,7 @@ export default {
       'userIsLoggedIn',
       'userAccount',
       'userGamePointWallet',
+      'modalLangIsShow',
       'modalAuthIsShow',
     ]),
     ModalAuth() {

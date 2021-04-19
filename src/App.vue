@@ -39,6 +39,8 @@
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
     <component :is="AppGoTopButton" v-show="isShowGoTopButton" />
     <ModalSiteBlockedMessage :isShow="modalSiteBlockedMessageIsShow" />
+
+    <component :is="ModalContact" :isShow="modalContactIsShow" />
   </div>
 </template>
 
@@ -83,6 +85,7 @@ export default {
       'siteIOSUrl',
       'userIsLoggedIn',
       'siteNoticeLinkMain',
+      'modalContactIsShow',
     ]),
     AppHeader() {
       return () => import(`@/${this.siteSetting.components.app.AppHeader}`);
@@ -120,6 +123,13 @@ export default {
     ModalRedEnvelope() {
       if (this.siteSetting.components.app.ModalRedEnvelope) {
         return () => import(`@/${this.siteSetting.components.app.ModalRedEnvelope}`);
+      }
+      return '';
+    },
+    //* 橫版
+    ModalContact() {
+      if (this.siteSetting.components.app.ModalContact) {
+        return () => import(`@/${this.siteSetting.components.app.ModalContact}`);
       }
       return '';
     },

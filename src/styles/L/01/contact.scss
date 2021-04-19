@@ -1,13 +1,15 @@
 @import './_abstracts';
-@import '@/styles/Z/_default/contact';
+@import '@/styles/L/_default/contact';
+
+$contact-bg: white;
 
 $contact-item-bg: #444;
 $contact-item-title-color: white;
 $contact-item-content-color: #b7b7b7;
 
-$contact-icon-contact-bg: assetPath('contact/ui-contact.png') no-repeat;
-$contact-icon-contact-width: 84px;
-$contact-icon-contact-height: 84px;
+$contact-icon-contact-bg: assetPath('contact/ui-contact.png') center/cover no-repeat;
+$contact-icon-contact-width: 44px;
+$contact-icon-contact-height: 44px;
 
 $contact-icon-dropdown-bg: assetPath('ui/ui-arrow-select.png') no-repeat;
 $contact-icon-dropdown-width: 35px;

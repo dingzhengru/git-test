@@ -3,7 +3,8 @@
     "app": {
       "AppHeader": "components/L/header/AppHeader",
       "ModalRedEnvelope": "components/Z/ModalRedEnvelope",
-      "ModalWinWheel": "components/Z/ModalWinWheel"
+      "ModalWinWheel": "components/Z/ModalWinWheel",
+      "ModalContact": "components/L/ModalContact"
     },
     "header": {
       "ModalAuth": "components/L/header/ModalAuth",

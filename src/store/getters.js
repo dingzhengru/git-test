@@ -32,7 +32,9 @@ const getters = {
   modalSiteBlockedMessageIsShow: state => state.modalSiteBlockedMessageIsShow,
 
   //* 橫版
+  modalLangIsShow: state => state.modalLangIsShow,
   modalAuthIsShow: state => state.modalAuthIsShow,
+  modalContactIsShow: state => state.modalContactIsShow,
 
   //* Site.setting
   siteSetting: state => state.site.setting,

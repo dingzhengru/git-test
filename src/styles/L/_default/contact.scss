@@ -1,23 +1,26 @@
 @mixin contact {
-  padding: 30px;
+  width: 70vw;
+  height: 90vh;
+  background: $contact-bg;
+  position: relative;
 
-  &-auth {
-    padding-top: $header-sub-height-auth + 30;
+  &__container {
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
   }
-
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 2rem;
 
   &__item {
     background: $contact-item-bg;
     // width: 638px;
     width: 100%;
-    min-height: 120px;
+    // min-height: 120px;
     padding: 15px;
-    margin: 10px 0;
+    margin: 3px 0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -55,7 +58,7 @@
         color: $contact-item-title-color;
       }
       &__content {
-        font-size: 1.5rem;
+        // font-size: 1.5rem;
         color: $contact-item-content-color;
       }
     }
@@ -66,16 +69,16 @@
       box-shadow: $contact-btn-shadow;
       border: $contact-btn-border;
       text-align: center;
-      width: 185px;
-      height: 85px;
+      // width: 185px;
+      // height: 85px;
       border-radius: 5px;
       padding: 10px 15px;
 
       &:lang(en-us) {
-        font-size: 1.5rem;
+        // font-size: 1.5rem;
       }
       &:lang(th-th) {
-        font-size: 1.4rem;
+        // font-size: 1.4rem;
       }
     }
     &__icon--dropdown {
@@ -99,7 +102,7 @@
       transform-origin: top;
 
       &__item {
-        font-size: 1.5rem;
+        // font-size: 1.5rem;
         color: white;
         width: 29%;
         margin-right: 15px;
@@ -119,9 +122,9 @@
       transform-origin: top;
 
       &__item {
+        // font-size: 1.5rem;
         margin-right: 15px;
         margin-top: 10px;
-        font-size: 1.5rem;
         background: $contact-btn-bg;
         color: $contact-btn-color;
         width: 30%;

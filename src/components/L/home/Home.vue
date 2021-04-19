@@ -30,7 +30,10 @@
         <span class="home__footer__icon home__footer__icon--promotion"></span>
         <span class="home__footer__icon home__footer__icon--mail"></span>
         <span class="home__footer__icon home__footer__icon--fav"></span>
-        <span class="home__footer__icon home__footer__icon--contact"></span>
+        <span
+          class="home__footer__icon home__footer__icon--contact"
+          @click="$store.dispatch('openModalContact')"
+        ></span>
       </div>
       <div class="home__footer__right">
         <button @click="$router.push({ name: 'TransactionDepositHome' })">{{ $t('transaction.nav.deposit') }}</button>

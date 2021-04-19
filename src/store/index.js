@@ -26,7 +26,9 @@ export default new Vuex.Store({
     isShowGoTopButton: false,
 
     //* 橫版
+    modalLangIsShow: false,
     modalAuthIsShow: false,
+    modalContactIsShow: false,
   },
   mutations: {
     setIsLandscape(state, boolean) {
@@ -70,8 +72,14 @@ export default new Vuex.Store({
     setModalSiteBlockedMessageIsShow: (state, isShow) => {
       state.modalSiteBlockedMessageIsShow = isShow;
     },
+    setModalLangIsShow: (state, isShow) => {
+      state.modalLangIsShow = isShow;
+    },
     setModalAuthIsShow: (state, isShow) => {
       state.modalAuthIsShow = isShow;
+    },
+    setModalContactIsShow: (state, isShow) => {
+      state.modalContactIsShow = isShow;
     },
   },
   actions: {
@@ -102,11 +110,23 @@ export default new Vuex.Store({
         commit('setModalTransferProduct', {});
       }, 500);
     },
+    openModalLang({ commit }) {
+      commit('setModalLangIsShow', true);
+    },
+    closeModalLang({ commit }) {
+      commit('setModalLangIsShow', false);
+    },
     openModalAuth({ commit }) {
       commit('setModalAuthIsShow', true);
     },
     closeModalAuth({ commit }) {
       commit('setModalAuthIsShow', false);
+    },
+    openModalContact({ commit }) {
+      commit('setModalContactIsShow', true);
+    },
+    closeModalContact({ commit }) {
+      commit('setModalContactIsShow', false);
     },
   },
   modules: {

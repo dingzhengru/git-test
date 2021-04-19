@@ -56,9 +56,9 @@
       <div class="modal-login__remember">
         <input id="login-remember" type="checkbox" v-model="user.RememberMe" />
         <label for="login-remember">{{ $t('login.rememberMe') }}</label>
-        <router-link class="modal-login__remember__right" :to="{ name: 'ForgetPassword' }">
+        <a href="javascript:;" class="modal-login__remember__right" @click="$store.dispatch('openModalContact')">
           {{ $t('login.link.forgetPassword') }}
-        </router-link>
+        </a>
       </div>
 
       <div class="modal-login__btn-block">
