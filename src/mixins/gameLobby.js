@@ -332,7 +332,7 @@ export default {
     },
   },
   async mounted() {
-    if (this.isShowJackpot) {
+    if (this.isShowJackpot && !this.isLandscape) {
       this.getJackpotTotal();
       this.intervalJackpot = window.setInterval(() => {
         this.getJackpotTotal();
