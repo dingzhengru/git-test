@@ -1,7 +1,7 @@
 @mixin game-lobby {
   background: $game-lobby-bg;
   height: 100%;
-  padding: 15px 0;
+  padding: 15px 0 15px 10px;
 
   .ui-panel-tab {
     &__tabs {

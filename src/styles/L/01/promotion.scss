@@ -1,5 +1,5 @@
 @import './_abstracts';
-@import '@/styles/Z/_default/promotion';
+@import '@/styles/L/_default/promotion';
 
 $promotion-img-border: none;
 
@@ -8,7 +8,7 @@ $promotion-img-border: none;
 }
 
 $promotion-detail-img-border: none;
-$promotion-detail-title-bg: assetPath('ui/ui-event.png') #c8aa73 no-repeat;
+$promotion-detail-title-bg: assetPath('ui/ui-event.png') #c8aa73 left/contain no-repeat;
 $promotion-detail-title-color: black;
 $promotion-detail-content-text-color: $base-text-color;
 $promotion-detail-button-bg-back: #462b16;

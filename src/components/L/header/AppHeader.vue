@@ -2,7 +2,7 @@
   <header class="header">
     <!-- <img :src="siteLogoUrl" class="header__logo" /> -->
     <div class="header__logo" v-show="$route.name === 'Home'"></div>
-    <div class="header__back" v-show="$route.name !== 'Home'" @click="$router.push({ name: 'Home' })"></div>
+    <div class="header__back" v-show="$route.name !== 'Home'" @click="$router.go(-1)"></div>
 
     <button class="header__btn header__btn--login" @click="$store.dispatch('openModalAuth')" v-if="!userIsLoggedIn">
       {{ `${$t('ui.button.login')}/${$t('ui.button.register')}` }}

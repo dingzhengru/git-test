@@ -31,7 +31,7 @@
   transition: all 0.3s ease-in-out;
 }
 .list-zoom-leave-active {
-  position: absolute !important;
+  position: fixed !important;
 }
 .list-zoom-enter,
 .list-zoom-leave-to {
