@@ -5,7 +5,7 @@ import { apiGetProductPromotionList } from '@/api/product';
 export default {
   name: 'TransactionTransfer',
   computed: {
-    ...mapGetters(['lang', 'userGamePointList', 'userGamePointById', 'siteWalletType']),
+    ...mapGetters(['lang', 'userGamePointList', 'userGamePointById', 'siteWalletType', 'siteIsWalletTypeNoTransfer']),
     fromList() {
       return this.productList;
     },

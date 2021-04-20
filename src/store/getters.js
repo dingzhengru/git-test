@@ -66,6 +66,7 @@ const getters = {
   siteIsSpare: state => state.site.info.IsSpare,
   siteEnableSpareDomain: state => state.site.info.EnableSpareDomain,
   siteWalletType: state => state.site.info.WalletType,
+  siteIsWalletTypeNoTransfer: state => state.site.info.WalletType === 2,
   siteNoticeLinkMain: (state, getters) => {
     return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 1) : {};
   },

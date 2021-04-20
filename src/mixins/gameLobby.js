@@ -22,7 +22,14 @@ export default {
   name: 'MixinGameLobby',
   mixins: [mixinProductLinkHandler],
   computed: {
-    ...mapGetters(['lang', 'userIsLoggedIn', 'userGamePointById', 'siteWalletType', 'isLandscape']),
+    ...mapGetters([
+      'lang',
+      'userIsLoggedIn',
+      'userGamePointById',
+      'siteWalletType',
+      'isLandscape',
+      'siteIsWalletTypeNoTransfer',
+    ]),
     productClassify() {
       return Number(this.$route.params.classify);
     },
@@ -293,6 +300,18 @@ export default {
       const result = await apiGetGameUrl(requestData);
 
       if (result.Code == 200) {
+        if (this.siteIsWalletTypeNoTransfer) {
+          //* 免轉錢包的話，要更新錢包、於新視窗顯示轉移訊息
+
+          if (result.GameSitePoints.length > 0) {
+            this.$store.commit('user/setPointInfo', result.GameSitePoints);
+          }
+
+          if (result.MsgString) {
+            newWindow.alert(result.MsgString);
+          }
+        }
+
         openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
       } else {
         newWindow.close();

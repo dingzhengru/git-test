@@ -1,8 +1,12 @@
+import { mapGetters } from 'vuex';
 import { apiGetGameRedirectUrl } from '@/api/game';
 import { openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 
 export default {
   name: 'MixinGameLinkHandler',
+  computed: {
+    ...mapGetters(['siteIsWalletTypeNoTransfer']),
+  },
   methods: {
     goInnerLobby(product) {
       // let gameLobby = 'GameLobbySlot';
@@ -37,6 +41,18 @@ export default {
 
       if (result.Code == 200) {
         //* iGameOpenType: 判斷回傳內容類型，1: 一般URL，2: HTML
+
+        if (this.siteIsWalletTypeNoTransfer) {
+          //* 免轉錢包的話，要更新錢包、於新視窗顯示轉移訊息
+
+          if (result.GameSitePoints.length > 0) {
+            this.$store.commit('user/setPointInfo', result.GameSitePoints);
+          }
+
+          if (result.MsgString) {
+            newWindow.alert(result.MsgString);
+          }
+        }
 
         if (result.RetObj.iGameOpenType == 1) {
           openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
