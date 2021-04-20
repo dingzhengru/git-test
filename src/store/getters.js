@@ -83,28 +83,28 @@ const getters = {
   },
   siteFaviconUrl: (state, getters) => {
     //* Favicon: {樣式網址}/Site_Uploadfile/{站台ID}/FavoriteIcon.ico
-    if (getters.siteIsMultiStyle) {
+    if (getters.siteIsMultiStyle && getters.siteMultiStyleId > 0) {
       return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/FavoriteIcon.ico`;
     }
     return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/FavoriteIcon.ico`;
   },
   siteLogoUrl: (state, getters) => {
     //* Logo: {樣式網址}/Site_Uploadfile/{站台ID}/Logo_{裝置}.png
-    if (getters.siteIsMultiStyle) {
+    if (getters.siteIsMultiStyle && getters.siteMultiStyleId > 0) {
       return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/Logo_1.png`;
     }
     return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/Logo_1.png`;
   },
   siteAppIconUrl: (state, getters) => size => {
     //* AppIcon: {樣式網址}/Site_Uploadfile/{站台ID}/AppIcon_{尺寸}.png
-    if (getters.siteIsMultiStyle) {
+    if (getters.siteIsMultiStyle && getters.siteMultiStyleId > 0) {
       return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/AppIcon_${size}.png`;
     }
     return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/AppIcon_${size}.png`;
   },
   siteIOSUrl: (state, getters) => size => {
     //* IOS過場: {樣式網址}/Site_Uploadfile/{站台ID}/IOS_{尺寸}.png
-    if (getters.siteIsMultiStyle) {
+    if (getters.siteIsMultiStyle && getters.siteMultiStyleId > 0) {
       return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/IOS_${size}.png`;
     }
     return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/IOS_${size}.png`;
