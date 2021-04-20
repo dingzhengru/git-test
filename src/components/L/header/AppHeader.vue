@@ -43,8 +43,8 @@
       <button class="header__lang-btn" @click="$store.dispatch('openModalLang')"></button>
     </div>
 
-    <component :is="ModalAuth" :isShow="modalAuthIsShow" @close="$store.dispatch('closeModalAuth')" />
-    <component :is="ModalLangMenu" :isShow="modalLangIsShow" @close="$store.dispatch('closeModalLang')" />
+    <component :is="ModalAuth" v-if="modalAuthIsShow" @close="$store.dispatch('closeModalAuth')" />
+    <component :is="ModalLangMenu" v-if="modalLangIsShow" @close="$store.dispatch('closeModalLang')" />
   </header>
 </template>
 

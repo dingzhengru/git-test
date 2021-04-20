@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="!!imageUrl" @close="$emit('close')">
+  <AppModal v-if="!!imageUrl" @close="$emit('close')">
     <div class="record-image-dialog">
       <div class="ui-box-close" @click="$emit('close')"></div>
 
@@ -20,10 +20,6 @@ export default {
     imageUrl: {
       type: String,
       default: () => '',
-    },
-    isShow: {
-      type: Boolean,
-      default: () => false,
     },
   },
 };

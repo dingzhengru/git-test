@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="closeWinWheel">
+  <AppModal @close="closeWinWheel">
     <div class="win-wheel-container">
       <div class="ui-box-close" @click="closeWinWheel"></div>
       <WinWheel
@@ -31,12 +31,6 @@ import mixinLotteryWinWheel from '@/mixins/lotteryWinWheel';
 export default {
   name: 'ModalWinWheel',
   mixins: [mixinLotteryWinWheel],
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-  },
   components: {
     AppModal: () => import('@/components/AppModal'),
     WinWheel: () => import('@/components/lottery/WinWheel'),

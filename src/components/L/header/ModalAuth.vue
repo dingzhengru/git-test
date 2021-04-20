@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="closeModal">
+  <AppModal @close="closeModal">
     <div class="modal-auth">
       <div class="ui-box-close" @click="closeModal"></div>
       <div class="modal-auth__nav">
@@ -26,12 +26,6 @@ import mixinLang from '@/mixins/lang';
 export default {
   name: 'ModalLangMenu',
   mixins: [mixinLang],
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-  },
   components: {
     AppModal: () => import('@/components/AppModal'),
   },

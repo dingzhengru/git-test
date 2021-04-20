@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @click.native="$emit('close')">
+  <AppModal @click.native="$emit('close')">
     <div class="modal-notice-image">
       <div class="ui-box-close" @click="$emit('close')"></div>
       <img :src="image" alt="" @click.stop="imageClickHandler" />
@@ -15,10 +15,6 @@ export default {
   name: 'ModalNoticeImage',
   mixins: [mixinLinkUrl],
   props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
     image: {
       type: String,
       default: () => '',

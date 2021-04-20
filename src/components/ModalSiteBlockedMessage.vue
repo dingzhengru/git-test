@@ -1,5 +1,5 @@
 <template>
-  <ModalMessage :isShow="isShow">
+  <ModalMessage>
     <div class="modal-message-c">
       <div v-if="$isStandaloneMode()">
         <p class="modal-message-c__text">被封網域訊息(下載 APK)</p>
@@ -18,12 +18,6 @@
 import { mapGetters } from 'vuex';
 export default {
   name: 'ModalSiteBlockedMessage',
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-  },
   components: {
     ModalMessage: () => import('@/components/ModalMessage'),
   },

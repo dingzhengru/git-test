@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="$emit('close')">
+  <AppModal @close="$emit('close')">
     <div class="modal-deposit-third-party" :style="{ width: `${width}px`, height: `${height}px` }">
       <div class="ui-box-close" @click="$emit('close')"></div>
       <iframe id="deposit-iframe" :src="src" width="100%" height="100%" v-show="!isOrderSuccess"></iframe>
@@ -16,10 +16,6 @@ export default {
   name: 'ModalMessage',
   mixins: [mixinMessageC],
   props: {
-    isShow: {
-      type: Boolean,
-      default: true,
-    },
     src: {
       type: String,
       default: '',

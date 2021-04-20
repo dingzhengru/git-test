@@ -35,7 +35,6 @@
 
     <component
       :is="ModalUserMailDetail"
-      :isShow="isShowModalMailDetail"
       :mailKey="mailKey"
       @close="isShowModalMailDetail = false"
       v-if="isShowModalMailDetail"

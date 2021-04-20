@@ -161,12 +161,12 @@
     </form>
     <div v-if="iframe.isShow">
       <ModalDepositThirdParty
-        :isShow="iframe.isShow"
         :src="iframe.src"
         :width="platform.sp_MobileWidth || 720"
         :height="platform.sp_MobileHeight || 500"
         :isOrderSuccess="isOrderSuccess"
         @close="closeIframe"
+        v-if="iframe.isShow"
       />
     </div>
   </ValidationObserver>

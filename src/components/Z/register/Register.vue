@@ -93,7 +93,7 @@
         </ol>
       </div>
     </form>
-    <component :is="ModalServiceTerm" :isShow="isShowModalServiceTerm" @close="isShowModalServiceTerm = false" />
+    <component :is="ModalServiceTerm" @close="isShowModalServiceTerm = false" v-if="isShowModalServiceTerm" />
   </ValidationObserver>
 </template>
 

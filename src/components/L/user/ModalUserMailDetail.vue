@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="closeModal">
+  <AppModal @close="closeModal">
     <div class="user-mail-detail">
       <div class="ui-box-close" @click="closeModal"></div>
 
@@ -68,12 +68,6 @@ import { ValidationObserver, ValidationProvider } from 'vee-validate';
 export default {
   name: 'ModalUserMailDetail',
   mixins: [mixinStyleLoader, mixinUserMailDetail],
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-  },
   components: {
     AppModal: () => import('@/components/AppModal'),
     ValidationObserver,

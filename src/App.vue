@@ -31,16 +31,16 @@
     <AppLoading v-show="loadingList.length > 0" />
 
     <div v-if="userIsLoggedIn">
-      <ModalTransfer :isShow="modalTransferIsShow" />
-      <component :is="ModalWinWheel" :isShow="modalWinWheelIsShow" />
-      <component :is="ModalRedEnvelope" :isShow="modalRedEnvelopeIsShow" />
+      <ModalTransfer v-if="modalTransferIsShow" />
+      <component :is="ModalWinWheel" v-if="modalWinWheelIsShow" />
+      <component :is="ModalRedEnvelope" v-if="modalRedEnvelopeIsShow" />
     </div>
 
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
     <component :is="AppGoTopButton" v-show="isShowGoTopButton" />
-    <ModalSiteBlockedMessage :isShow="modalSiteBlockedMessageIsShow" />
+    <ModalSiteBlockedMessage v-if="modalSiteBlockedMessageIsShow" />
 
-    <component :is="ModalContact" :isShow="modalContactIsShow" />
+    <component :is="ModalContact" v-if="modalContactIsShow" />
   </div>
 </template>
 

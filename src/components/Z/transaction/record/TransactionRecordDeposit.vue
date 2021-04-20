@@ -51,8 +51,8 @@
     <component
       :is="RecordImageDialog"
       :imageUrl="receiptImageUrl"
-      :isShow="!!receiptImageUrl"
       @close="closeReceiptImage"
+      :v-if="!!receiptImageUrl"
     />
   </div>
 </template>

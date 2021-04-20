@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="closeDialog">
+  <AppModal @close="closeDialog">
     <div class="game-transfer-dialog">
       <div class="ui-box-close" @click="closeDialog"></div>
 

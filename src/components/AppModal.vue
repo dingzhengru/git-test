@@ -1,20 +1,13 @@
 <template>
   <transition name="fade">
-    <div class="modal" v-show="isShow" @click.self="$emit('close')">
+    <div class="modal" @click.self="$emit('close')">
       <slot></slot>
     </div>
   </transition>
 </template>
 
 <script>
-export default {
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>

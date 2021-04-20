@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="closeModal">
+  <AppModal @close="closeModal">
     <div class="contact modal-contact">
       <div class="ui-box-close" @click="closeModal"></div>
       <div class="contact__container">
@@ -168,12 +168,6 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'ModalContact',
   mixins: [mixinStyleLoader, mixinContact],
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-  },
   components: {
     AppModal: () => import('@/components/AppModal'),
   },

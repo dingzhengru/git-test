@@ -8,12 +8,12 @@
     </div>
 
     <ModalNoticeImage
-      :isShow="isShowMainNotice"
       :image="siteMainPageNoticeUrl"
       type="main"
       @close="isShowMainNotice = false"
+      v-if="isShowMainNotice"
     />
-    <ModalMessageC :isShow="isShowModalMessage && !userIsLoggedIn" @close="isShowModalMessage = false" />
+    <ModalMessageC @close="isShowModalMessage = false" v-if="isShowModalMessage && !userIsLoggedIn" />
   </div>
 </template>
 

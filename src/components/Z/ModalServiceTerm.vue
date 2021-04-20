@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="$emit('close')">
+  <AppModal @close="$emit('close')">
     <div class="service-term">
       <!-- <div class="service-term__close" @click="$emit('close')"></div> -->
       <div class="ui-box-close" @click="$emit('close')"></div>
@@ -44,12 +44,6 @@ export default {
   name: 'ModalServiceTerm',
   components: {
     AppModal: () => import('@/components/AppModal'),
-  },
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
   },
   computed: {
     ...mapGetters(['siteName']),

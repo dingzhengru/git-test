@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="$emit('close')">
+  <AppModal @close="$emit('close')">
     <div class="modal-lang-menu">
       <div class="ui-box-close" @click="$emit('close')"></div>
 
@@ -27,12 +27,6 @@ import mixinLang from '@/mixins/lang';
 export default {
   name: 'ModalLangMenu',
   mixins: [mixinLang],
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-  },
   components: {
     AppModal: () => import('@/components/AppModal'),
   },

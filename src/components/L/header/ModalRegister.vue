@@ -84,7 +84,7 @@
         </button>
       </div>
     </form>
-    <component :is="ModalServiceTerm" :isShow="isShowModalServiceTerm" @close="isShowModalServiceTerm = false" />
+    <component :is="ModalServiceTerm" v-if="isShowModalServiceTerm" @close="isShowModalServiceTerm = false" />
   </ValidationObserver>
 </template>
 

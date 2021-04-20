@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow">
+  <AppModal>
     <div class="modal-message">
       <div class="modal-message__inner">
         <div class="ui-box-close" @click="$emit('close')"></div>
@@ -13,12 +13,6 @@
 <script>
 export default {
   name: 'ModalMessage',
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-  },
   components: {
     AppModal: () => import('@/components/AppModal'),
   },

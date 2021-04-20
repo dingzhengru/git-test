@@ -4,12 +4,6 @@ import { apiGetProductPromotionList } from '@/api/product';
 export default {
   name: 'modalTransfer',
   mixins: [mixinProductLinkHandler],
-  props: {
-    isShow: {
-      type: Boolean,
-      default: () => false,
-    },
-  },
   computed: {
     ...mapGetters([
       'modalTransferProduct',

@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="closeRedEnvelope">
+  <AppModal @close="closeRedEnvelope">
     <div class="red-envelope-container">
       <div class="ui-box-close" @click="closeRedEnvelope"></div>
       <RedEnvelope
@@ -33,12 +33,6 @@ import mixinLotteryRedEnvelope from '@/mixins/lotteryRedEnvelope';
 export default {
   name: 'ModalRedEnvelope',
   mixins: [mixinLotteryRedEnvelope],
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-  },
   components: {
     AppModal: () => import('@/components/AppModal'),
     RedEnvelope: () => import('@/components/lottery/RedEnvelope'),

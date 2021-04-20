@@ -1,5 +1,5 @@
 <template>
-  <AppModal :isShow="isShow" @close="$emit('close')">
+  <AppModal @close="$emit('close')">
     <div class="live-game-enter-dialog">
       <div class="ui-box-close" @click="$emit('close')"></div>
       <div class="live-game-enter-dialog__button-div" v-for="(item, index) in filterGameLimitBetList" :key="index">
@@ -41,10 +41,6 @@ export default {
     selectedGame: {
       type: Object,
       default: () => {},
-    },
-    isShow: {
-      type: Boolean,
-      default: () => false,
     },
   },
   computed: {

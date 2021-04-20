@@ -20,10 +20,10 @@
     <router-view @baseBankInfo="baseBankInfoHandler"></router-view>
 
     <ModalNoticeImage
-      :isShow="isShowDepositNotice"
       :image="siteDepositNoticeUrl"
       type="deposit"
       @close="isShowDepositNotice = false"
+      v-if="isShowDepositNotice"
     />
   </div>
 </template>
