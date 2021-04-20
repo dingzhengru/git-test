@@ -46,7 +46,7 @@ export default {
           //* 免轉錢包的話，要更新錢包、於新視窗顯示轉移訊息
 
           if (result.RetObj.GameSitePoints.length > 0) {
-            this.$store.commit('user/setPointInfo', result.RetObj.GameSitePoints);
+            this.$store.commit('user/setPointInfo', result.RetObj);
           }
 
           if (result.RetObj.MsgString) {
