@@ -303,12 +303,12 @@ export default {
         if (this.siteIsWalletTypeNoTransfer) {
           //* 免轉錢包的話，要更新錢包、於新視窗顯示轉移訊息
 
-          if (result.GameSitePoints.length > 0) {
-            this.$store.commit('user/setPointInfo', result.GameSitePoints);
+          if (result.RetObj.GameSitePoints.length > 0) {
+            this.$store.commit('user/setPointInfo', result.RetObj.GameSitePoints);
           }
 
-          if (result.MsgString) {
-            newWindow.alert(result.MsgString);
+          if (result.RetObj.MsgString) {
+            newWindow.alert(result.RetObj.MsgString);
           }
         }
 
