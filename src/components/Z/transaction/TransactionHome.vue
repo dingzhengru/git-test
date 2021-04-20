@@ -13,7 +13,7 @@ export default {
   name: 'TransactionHome',
   mixins: [mixinStyleLoader],
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss']),
+    ...mapGetters(['siteSetting', 'siteFullCss', 'siteIsWalletTypeNoTransfer']),
     AppNavTab() {
       return () => import(`@/${this.siteSetting.components.user.AppNavTab}`);
     },
@@ -73,6 +73,10 @@ export default {
     this.importStyleByFilename('transaction');
 
     this.$store.commit('setPageTitle', 'transaction.title');
+
+    if (this.siteIsWalletTypeNoTransfer) {
+      this.navList = this.navList.filter(item => item.name !== 'transfer');
+    }
   },
 };
 </script>

@@ -65,6 +65,8 @@ const getters = {
   sitePopLinkList: state => state.site.info.SitePopLinkList,
   siteIsSpare: state => state.site.info.IsSpare,
   siteEnableSpareDomain: state => state.site.info.EnableSpareDomain,
+  siteIsMultiStyle: state => state.site.info.MultiStyle,
+  siteMultiStyleId: state => state.site.info.Lst_MultiStyleID,
   siteWalletType: state => state.site.info.WalletType,
   siteIsWalletTypeNoTransfer: state => state.site.info.WalletType === 2,
   siteNoticeLinkMain: (state, getters) => {
@@ -79,23 +81,33 @@ const getters = {
   siteManifestUrl: () => {
     return `${API_URL}/Siteinfo/ManifestJson`;
   },
-  siteFaviconUrl: state => {
-    //* Favicon: {siteResourceUrl}/imgs/favicon/favicon.ico (舊)
+  siteFaviconUrl: (state, getters) => {
     //* Favicon: {樣式網址}/Site_Uploadfile/{站台ID}/FavoriteIcon.ico
-    // return `${state.site.info.RemoteCSSUrls}/ContentStyle/${state.site.info.LS_MainDomain}/Member/${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Version}/2/default/css${state.site.info.LS_CSS_Type}/common/imgs/favicon/favicon.ico`;
-    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/FavoriteIcon.ico`;
+    if (getters.siteIsMultiStyle) {
+      return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/FavoriteIcon.ico`;
+    }
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/FavoriteIcon.ico`;
   },
-  siteLogoUrl: state => {
+  siteLogoUrl: (state, getters) => {
     //* Logo: {樣式網址}/Site_Uploadfile/{站台ID}/Logo_{裝置}.png
-    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/Logo_1.png`;
+    if (getters.siteIsMultiStyle) {
+      return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/Logo_1.png`;
+    }
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/Logo_1.png`;
   },
-  siteAppIconUrl: state => size => {
+  siteAppIconUrl: (state, getters) => size => {
     //* AppIcon: {樣式網址}/Site_Uploadfile/{站台ID}/AppIcon_{尺寸}.png
-    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/AppIcon_${size}.png`;
+    if (getters.siteIsMultiStyle) {
+      return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/AppIcon_${size}.png`;
+    }
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/AppIcon_${size}.png`;
   },
-  siteIOSUrl: state => size => {
+  siteIOSUrl: (state, getters) => size => {
     //* IOS過場: {樣式網址}/Site_Uploadfile/{站台ID}/IOS_{尺寸}.png
-    return `${state.site.info.RemoteCSSUrls}/Site_Uploadfile/${state.site.info.LS_SiteID}/IOS_${size}.png`;
+    if (getters.siteIsMultiStyle) {
+      return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/IOS_${size}.png`;
+    }
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/IOS_${size}.png`;
   },
   siteMainPageNoticeUrl: state => {
     //* 彈跳首頁圖片: {樣式網址}/Site_Uploadfile/{站台ID}/Notice/{語系}/MainPageNotice.png

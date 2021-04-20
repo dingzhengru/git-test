@@ -1,9 +1,5 @@
 <template>
   <ValidationObserver class="transfer" tag="div" v-slot="{ invalid, handleSubmit }">
-    <div class="ui-message-box" v-if="siteIsWalletTypeNoTransfer">
-      {{ $t('transaction.transfer.message.noTransfer') }}
-    </div>
-
     <form class="transfer-form" @submit.prevent="handleSubmit(submitTransferPoint)">
       <ValidationProvider
         class="ui-field transfer__field transfer__field--from"
@@ -102,11 +98,15 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteFullCss']),
+    ...mapGetters(['siteFullCss', 'siteIsWalletTypeNoTransfer']),
   },
   mounted() {
     // import(`@/styles/${this.siteFullCss}/transaction-transfer.scss`);
     this.importStyleByFilename('transaction-transfer');
+
+    if (this.siteIsWalletTypeNoTransfer) {
+      this.$router.replace({ name: 'Home' });
+    }
   },
 };
 </script>
