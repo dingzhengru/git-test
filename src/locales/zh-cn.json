@@ -685,6 +685,9 @@
       }
     },
     "transfer": {
+      "message": {
+        "noTransfer": "试试免转钱包直接进游戏"
+      },
       "field": {
         "from": "从",
         "to": "转至",

@@ -1,7 +1,7 @@
 <template>
   <ValidationObserver class="transfer" tag="div" v-slot="{ invalid, handleSubmit }">
     <div class="ui-message-box" v-if="siteIsWalletTypeNoTransfer">
-      试试免转钱包直接进游戏
+      {{ $t('transaction.transfer.message.noTransfer') }}
     </div>
 
     <form class="transfer-form" @submit.prevent="handleSubmit(submitTransferPoint)">
