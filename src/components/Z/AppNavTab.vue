@@ -5,7 +5,7 @@
       :class="[
         item.class,
         {
-          active: item.link == $route.name || (item.otherActivePath && item.otherActivePath.includes($route.name)),
+          active: item.link == $route.name || (item.otherActiveRoute && item.otherActiveRoute.includes($route.name)),
         },
       ]"
       :id="item.id ? $getObjectValueByDotString($idMapper, item.id) : ''"

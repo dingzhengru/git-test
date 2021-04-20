@@ -78,14 +78,14 @@ export default {
           text: 'user.mail.nav.inbox',
           link: 'UserMail',
           class: '',
-          otherActivePath: [],
+          otherActiveRoute: [],
         },
         {
           name: 'UserMailSend',
           text: 'user.mail.nav.add',
           link: 'UserMailSend',
           class: '',
-          otherActivePath: ['UserMailDetail', 'UserMailSend'],
+          otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
         },
       ],
     };

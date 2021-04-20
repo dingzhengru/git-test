@@ -27,7 +27,7 @@ export default {
           text: 'transaction.nav.deposit',
           class: '',
           id: 'transaction.nav.deposit',
-          otherActivePath: ['TransactionDepositThirdParty'],
+          otherActiveRoute: ['TransactionDepositThirdParty'],
         },
         {
           name: 'withdrawal',
@@ -35,7 +35,7 @@ export default {
           text: 'transaction.nav.withdrawal',
           class: 'ui-li-tabs-withdrawal',
           id: 'transaction.nav.withdrawal',
-          otherActivePath: [],
+          otherActiveRoute: [],
         },
         {
           name: 'transfer',
@@ -43,7 +43,7 @@ export default {
           text: 'transaction.nav.transfer',
           class: '',
           id: 'transaction.nav.transfer',
-          otherActivePath: [],
+          otherActiveRoute: [],
         },
         {
           name: 'record',
@@ -51,7 +51,7 @@ export default {
           text: 'transaction.nav.record',
           class: '',
           id: 'transaction.nav.record',
-          otherActivePath: [
+          otherActiveRoute: [
             'TransactionRecordHome',
             'TransactionRecordWithdrawal',
             'TransactionRecordTransfer',

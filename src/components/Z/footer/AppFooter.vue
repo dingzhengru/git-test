@@ -23,25 +23,25 @@ export default {
           name: 'home',
           text: 'ui.label.home',
           link: 'Home',
-          otherActivePath: [],
+          otherActiveRoute: [],
         },
         {
           name: 'login',
           text: 'ui.button.login',
           link: 'Login',
-          otherActivePath: ['Register'],
+          otherActiveRoute: ['Register'],
         },
         {
           name: 'promotion',
           text: 'footer.promotion',
           link: 'Promotion',
-          otherActivePath: ['PromotionDetail'],
+          otherActiveRoute: ['PromotionDetail'],
         },
         {
           name: 'contact',
           text: 'footer.contact',
           link: 'Contact',
-          otherActivePath: [],
+          otherActiveRoute: [],
         },
       ],
       authList: [
@@ -49,13 +49,13 @@ export default {
           name: 'home',
           text: 'ui.label.home',
           link: 'Home',
-          otherActivePath: [],
+          otherActiveRoute: [],
         },
         {
           name: 'transaction',
           text: 'footer.transaction-2',
           link: 'TransactionDepositBase',
-          otherActivePath: [
+          otherActiveRoute: [
             'TransactionDepositThirdParty',
             'TransactionWithdrawal',
             'TransactionTransfer',
@@ -82,13 +82,13 @@ export default {
           name: 'promotion',
           text: 'footer.promotion',
           link: 'Promotion',
-          otherActivePath: ['PromotionContent'],
+          otherActiveRoute: ['PromotionContent'],
         },
         {
           name: 'contact',
           text: 'footer.contact',
           link: 'Contact',
-          otherActivePath: [],
+          otherActiveRoute: [],
         },
       ],
     };

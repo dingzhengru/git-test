@@ -3,7 +3,7 @@
     <div
       class="footer-nav__item"
       :class="[
-        { active: $route.name == item.link || item.otherActivePath.includes($route.name) },
+        { active: $route.name == item.link || item.otherActiveRoute.includes($route.name) },
         `footer-nav__item--${item.name}`,
       ]"
       :id="$idMapper.footer[item.name]"
