@@ -8,7 +8,7 @@
       {{ `${$t('ui.button.login')}/${$t('ui.button.register')}` }}
     </button>
 
-    <div class="header__user" v-if="userIsLoggedIn">
+    <div class="header__user" v-if="userIsLoggedIn" @click="$router.push({ name: 'UserProfile' }).catch(() => {})">
       <div class="header__user__account">
         <span class="header__user__account__icon"></span>
         <div class="header__user__account__content">{{ userAccount }}</div>
