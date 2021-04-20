@@ -7,25 +7,17 @@
       <div></div>
     </intersect>
 
-    <div v-show="!loadingListIncludeSiteInfo">
-      <component
-        :is="AppHeader"
-        @changeLang="changeLang"
-        @logout="$store.dispatch('user/logout')"
-        v-if="$route.meta.header != false"
-      ></component>
-
-      <component
-        :is="AppHeaderSub"
-        v-show="(!userIsLoggedIn && this.$route.name === 'Home') || userIsLoggedIn"
-        v-if="$route.meta.header != false"
-      />
+    <div v-if="!loadingListIncludeSiteInfo">
+      <template v-if="$route.meta.header !== false">
+        <component :is="AppHeader" @changeLang="changeLang" @logout="$store.dispatch('user/logout')"></component>
+        <component :is="AppHeaderSub" v-if="(!userIsLoggedIn && this.$route.name === 'Home') || userIsLoggedIn" />
+      </template>
 
       <div class="main">
         <router-view />
       </div>
 
-      <component :is="AppFooter" :isLoggedIn="userIsLoggedIn" v-if="$route.meta.footer != false" />
+      <component :is="AppFooter" :isLoggedIn="userIsLoggedIn" v-if="$route.meta.footer !== false" />
     </div>
 
     <AppLoading v-show="loadingList.length > 0" />
@@ -172,7 +164,7 @@ export default {
     document.querySelector('#apple-startup-image-1242x2208').setAttribute('href', this.siteIOSUrl('1242x2208'));
 
     //* 確認是否維護
-    if (!this.siteIsActive && this.$route.name != 'Maintenance') {
+    if (!this.siteIsActive && this.$route.name !== 'Maintenance') {
       this.$router.replace({ name: 'Maintenance' });
       return;
     }
