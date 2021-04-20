@@ -156,7 +156,7 @@ const actions = {
       dispatch('getBankList');
       dispatch('getPointInfo');
       dispatch('getLotteryCountList');
-      router.replace({ name: 'Home' });
+      router.replace({ name: 'Home' }).catch(() => {});
     }
     return result;
   },

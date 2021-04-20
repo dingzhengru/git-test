@@ -90,5 +90,10 @@ export default {
       this.$emit('logout');
     },
   },
+  watch: {
+    userIsLoggedIn() {
+      this.$store.dispatch('closeModalAuth');
+    },
+  },
 };
 </script>
