@@ -542,7 +542,8 @@
         "registerTime": "Registration time"
       },
       "step": {
-        "bank": "Bank information"
+        "bank": "Bank information",
+        "basic": "Basic information"
       }
     },
     "changePassword": {

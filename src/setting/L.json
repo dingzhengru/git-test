@@ -54,7 +54,7 @@
     "gameHome": "components/L/game/GameHome",
     "gameLobby": "components/L/game/GameLobby",
     "userHome": "components/L/user/UserHome",
-    "userProfile": "components/Z/user/UserProfile",
+    "userProfile": "components/L/user/UserProfile",
     "userChangePassword": "components/Z/user/UserChangePassword",
     "userChangePasswordWithdrawal": "components/Z/user/UserChangePasswordWithdrawal",
     "userMail": "components/L/user/UserMail",

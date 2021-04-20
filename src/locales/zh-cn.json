@@ -538,7 +538,8 @@
         "registerTime": "注册时间"
       },
       "step": {
-        "bank": "银行资料"
+        "bank": "银行资料",
+        "basic": "基本资料"
       }
     },
     "changePassword": {
