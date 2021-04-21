@@ -209,14 +209,18 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
+    const siteClass = 'Z';
+    const siteType = '01';
+    const isLandscape = false;
+    console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
-    store.commit('site/setInfoStyle', { siteClass: 'Z', siteType: '01' });
+    store.commit('site/setInfoStyle', { siteClass, siteType });
 
     //* setting
-    await store.dispatch('site/loadSetting', 'Z');
+    await store.dispatch('site/loadSetting', siteClass);
 
     //* landscape
-    store.commit('setIsLandscape', false);
+    store.commit('setIsLandscape', isLandscape);
   }
 
   new Vue({
