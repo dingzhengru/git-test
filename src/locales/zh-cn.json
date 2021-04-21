@@ -31,6 +31,8 @@
       "close": "关闭",
       "copy": "复制",
       "search": "查询",
+      "edit": "修改",
+      "setup": "设置",
       "lotteryCount": "{count} 次抽奖",
       "allToMyWallet": "全部转回我的钱包"
     },
@@ -535,7 +537,9 @@
     },
     "profile": {
       "field": {
-        "registerTime": "注册时间"
+        "registerTime": "注册时间",
+        "password": "登入密码",
+        "passwordWithdrawal": "取款密碼"
       },
       "step": {
         "bank": "银行资料",

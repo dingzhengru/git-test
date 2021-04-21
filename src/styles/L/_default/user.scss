@@ -60,10 +60,15 @@
       text-align: right;
       padding-right: 5px;
     }
-  }
-  &__btn {
-    width: 100%;
 
+    &--btn {
+      input {
+        width: 75px;
+      }
+    }
+  }
+
+  &__btn {
     button {
       margin-bottom: 15px;
     }

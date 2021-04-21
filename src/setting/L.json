@@ -25,6 +25,8 @@
     },
     "user": {
       "ModalUserMailDetail": "components/L/user/ModalUserMailDetail",
+      "ModalUserChangePassword": "components/L/user/ModalUserChangePassword",
+      "ModalUserChangePasswordWithdrawal": "components/L/user/ModalUserChangePasswordWithdrawal",
       "AppNavTab": "components/Z/AppNavTab",
       "PanelTabsNews": "components/L/PanelTabsNews"
     },

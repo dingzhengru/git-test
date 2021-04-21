@@ -18,7 +18,7 @@
           <div class="user-profile__basic">
             <div class="user-profile__field">
               <label>{{ $t('user.profile.field.registerTime') }}</label>
-              <input type="text" :value="userCreatedDatetime" />
+              <input type="text" :value="getDatetime(userCreatedDatetime)" />
             </div>
 
             <ValidationProvider
@@ -30,7 +30,7 @@
               v-show="fieldAccount.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldAccount.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_Account.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldAccount.value"
@@ -52,7 +52,7 @@
               v-show="fieldRealName.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldRealName.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_RealName.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldRealName.value"
@@ -74,7 +74,7 @@
               v-show="fieldMobile.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldMobile.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_Mobile.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldMobile.value"
@@ -96,7 +96,7 @@
               v-show="fieldEmail.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldEmail.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_Email.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldEmail.value"
@@ -118,7 +118,7 @@
               v-show="fieldNickname.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldNickname.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_NickName.placeholder`) }}</label>
               <input type="text" v-model="fieldNickname.value" v-if="fieldNickname.isModifiable" />
               <input type="text" :value="fieldNickname.value" readonly v-else />
               <div class="user-profile__field__error" v-if="errors.length > 0 && errors[0]">
@@ -135,7 +135,7 @@
               v-show="fieldLine.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldLine.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_Line.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldLine.value"
@@ -157,7 +157,7 @@
               v-show="fieldBirthday.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBirthday.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_Birthday.placeholder`) }}</label>
               <input
                 type="date"
                 v-model="fieldBirthday.value"
@@ -180,7 +180,7 @@
               v-show="fieldSkype.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldSkype.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_Skype.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldSkype.value"
@@ -202,7 +202,7 @@
               v-show="fieldQQ.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldQQ.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_QQ.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldQQ.value"
@@ -214,6 +214,18 @@
                 {{ errors[0] }}
               </div>
             </ValidationProvider>
+
+            <div class="user-profile__field user-profile__field--btn">
+              <label>{{ $t('user.profile.field.password') }}</label>
+              <input type="password" :value="'password'" readonly />
+              <button type="button" @click="isShowModalChangePassword = true">{{ $t('ui.button.edit') }}</button>
+            </div>
+
+            <div class="user-profile__field user-profile__field--btn">
+              <label>{{ $t('user.profile.field.passwordWithdrawal') }}</label>
+              <input type="password" :value="'password'" readonly />
+              <button type="button">{{ $t('ui.button.setup') }}</button>
+            </div>
           </div>
 
           <div class="user-profile__title user-profile__title--bank">
@@ -233,7 +245,7 @@
               v-show="fieldBankId1.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBankId1.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_BankId1.placeholder`) }}</label>
               <select class="ui-field__select" v-model="fieldBankId1.value" v-if="fieldBankId1.isModifiable">
                 <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
               </select>
@@ -252,7 +264,7 @@
               v-show="fieldBankAccount1.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBankAccount1.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_BankAccount1.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldBankAccount1.value"
@@ -274,7 +286,7 @@
               v-show="fieldBankBranchName1.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBankBranchName1.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_BankBranchName1.placeholder`) }}</label>
               <input type="text" v-model="fieldBankBranchName1.value" v-if="fieldBankBranchName1.isModifiable" />
               <input type="text" :value="fieldBankBranchName1.value" readonly v-else />
               <div class="user-profile__field__error" v-if="errors.length > 0 && errors[0]">
@@ -291,7 +303,7 @@
               v-show="fieldBankId2.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBankId2.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_BankId2.placeholder`) }}</label>
               <select class="ui-field__select" v-model="fieldBankId2.value" v-if="fieldBankId2.isModifiable">
                 <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
               </select>
@@ -310,7 +322,7 @@
               v-show="fieldBankAccount2.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBankAccount2.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_BankAccount2.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldBankAccount2.value"
@@ -332,7 +344,7 @@
               v-show="fieldBankBranchName2.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBankBranchName2.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_BankBranchName2.placeholder`) }}</label>
               <input type="text" v-model="fieldBankBranchName2.value" v-if="fieldBankBranchName2.isModifiable" />
               <input type="text" :value="fieldBankBranchName2.value" readonly v-else />
               <div class="user-profile__field__error" v-if="errors.length > 0 && errors[0]">
@@ -349,7 +361,7 @@
               v-show="fieldBankId3.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBankId3.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_BankId3.placeholder`) }}</label>
               <select class="ui-field__select" v-model="fieldBankId3.value" v-if="fieldBankId3.isModifiable">
                 <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
               </select>
@@ -368,7 +380,7 @@
               v-show="fieldBankAccount3.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBankAccount3.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_BankAccount3.placeholder`) }}</label>
               <input
                 type="text"
                 v-model="fieldBankAccount3.value"
@@ -390,7 +402,7 @@
               v-show="fieldBankBranchName3.isShow"
               v-slot="{ errors }"
             >
-              <label>{{ $t(`register.${fieldBankBranchName3.name}.placeholder`) }}</label>
+              <label>{{ $t(`register.Add_BankBranchName3.placeholder`) }}</label>
               <input type="text" v-model="fieldBankBranchName3.value" v-if="fieldBankBranchName3.isModifiable" />
               <input type="text" :value="fieldBankBranchName3.value" readonly v-else />
               <div class="user-profile__field__error" v-if="errors.length > 0 && errors[0]">
@@ -410,6 +422,8 @@
         </div>
       </div>
     </form>
+    <component :is="ModalUserChangePassword" v-if="isShowModalChangePassword" />
+    <component :is="ModalUserChangePasswordWithdrawal" v-if="isShowModalChangePassword" />
   </ValidationObserver>
 </template>
 
@@ -426,6 +440,18 @@ export default {
   },
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss']),
+    ModalUserChangePassword() {
+      return () => import(`@/${this.siteSetting.components.user.ModalUserChangePassword}`);
+    },
+    ModalUserChangePasswordWithdrawal() {
+      return () => import(`@/${this.siteSetting.components.user.ModalUserChangePasswordWithdrawal}`);
+    },
+  },
+  data() {
+    return {
+      isShowModalChangePassword: false,
+      isShowModalChangePasswordWithdrawal: false,
+    };
   },
 };
 </script>

@@ -31,6 +31,8 @@
       "close": "Close",
       "copy": "Copy",
       "search": "Search",
+      "edit": "Edit",
+      "setup": "Set up",
       "lotteryCount": "{count} Lucky draw",
       "allToMyWallet": "All to my wallet"
     },
@@ -539,7 +541,9 @@
     },
     "profile": {
       "field": {
-        "registerTime": "Registration time"
+        "registerTime": "Registration time",
+        "password": "Password",
+        "passwordWithdrawal": "Withdrawal Password"
       },
       "step": {
         "bank": "Bank information",

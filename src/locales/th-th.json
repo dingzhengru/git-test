@@ -31,6 +31,8 @@
       "close": "ปิด",
       "copy": "สำเนา",
       "search": "ค้นหา",
+      "edit": "ปรับเปลี่ยน",
+      "setup": "ตั้งค่า",
       "lotteryCount": "{count} รอง โชคดี",
       "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด"
     },
@@ -537,7 +539,9 @@
     },
     "profile": {
       "field": {
-        "registerTime": "วันที่ลงทะเบียน"
+        "registerTime": "วันที่ลงทะเบียน",
+        "password": "รหัสผ่าน",
+        "passwordWithdrawal": "รหัสถอนเงินเว็บไซต์"
       },
       "step": {
         "bank": "ข้อมูลธนาคาร",
