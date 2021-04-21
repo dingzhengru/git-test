@@ -1,13 +1,14 @@
 import { mapGetters } from 'vuex';
 import { apiGetCaptcha } from '@/api/captcha';
-import {
-  apiGetDepositAllActivityList,
-  apiGetDepositThirdPartyInfo,
-  apiDepositThirdParty,
-  apiDepositCheckOrderStatus,
-} from '@/api/transaction-deposit';
+import { apiDepositThirdParty, apiDepositCheckOrderStatus } from '@/api/transaction-deposit';
 export default {
   name: 'MixinTransactionDepositThirdParty',
+  props: {
+    depositInfo: {
+      type: Object,
+      default: () => {},
+    },
+  },
   computed: {
     ...mapGetters(['lang']),
     getPlatformListByMethod() {
@@ -34,7 +35,6 @@ export default {
   },
   data() {
     return {
-      depositInfo: {},
       promotionList: [],
       method: '',
       platform: {},
@@ -70,16 +70,6 @@ export default {
     };
   },
   methods: {
-    async getDepositAllActivityList() {
-      const requestData = { ActivityType: 3 };
-      const result = await apiGetDepositAllActivityList(requestData);
-      this.promotionList = result.RetObj.AllActivityList;
-    },
-    async getDepositThirdPartyInfo() {
-      const result = await apiGetDepositThirdPartyInfo();
-      this.depositInfo = result.RetObj;
-      this.changeMethod(this.depositInfo.paymentSelect[0]);
-    },
     async submitDeposit() {
       const requestData = {
         Add_Company_ServiceKey: this.platform.spp_key,
@@ -97,10 +87,9 @@ export default {
         this.intervalCheckOrderStatus = window.setInterval(() => {
           this.checkDepositCheckOrderStatus(result.RetObj.Lst_TransID);
         }, 2000);
-      } else if (result.Code === 203 || result.Code === 599) {
-        //* 驗證碼錯誤
-        this.changeCaptcha();
       }
+
+      this.changeCaptcha();
     },
     async checkDepositCheckOrderStatus(Lst_TransID) {
       const requestData = { Lst_TransID };
@@ -164,19 +153,11 @@ export default {
     },
   },
   mounted() {
-    this.getDepositThirdPartyInfo();
-    this.getDepositAllActivityList();
     this.changeCaptcha();
 
     window.addEventListener('message', this.receiveMessageHandler);
   },
   beforeDestroy() {
     window.removeEventListener('message', this.receiveMessageHandler);
-  },
-  watch: {
-    lang() {
-      this.getDepositThirdPartyInfo();
-      this.getDepositAllActivityList();
-    },
   },
 };

@@ -1,7 +1,13 @@
 import { mapGetters } from 'vuex';
-import { apiGetDepositInfo, apiDeposit } from '@/api/transaction-deposit';
+import { apiDeposit } from '@/api/transaction-deposit';
 export default {
-  name: 'TransactionDepositBase',
+  name: 'MixinTransactionDepositBase',
+  props: {
+    depositInfo: {
+      type: Object,
+      default: () => {},
+    },
+  },
   computed: {
     ...mapGetters(['lang']),
     amountMin() {
@@ -24,8 +30,6 @@ export default {
       remark: '',
       promotion: '-1',
 
-      depositInfo: {},
-
       noticeList: [
         // 'transaction.deposit.notice.currency',
         'transaction.deposit.notice.depositLimit01',
@@ -39,14 +43,6 @@ export default {
     };
   },
   methods: {
-    async getDepositInfo() {
-      const result = await apiGetDepositInfo();
-
-      if (result.Code == 200) {
-        this.depositInfo = result.RetObj;
-        this.$parent.$emit('baseBankInfo', this.depositInfo);
-      }
-    },
     async submitDeposit() {
       //* BankAccount.length == 0 的時候，會讓使用者自己輸入銀行帳號(this.depositBankAccount)
 
@@ -134,14 +130,6 @@ export default {
       copyElement.setSelectionRange(0, 99999);
       document.execCommand('copy');
       copyElement.blur();
-    },
-  },
-  mounted() {
-    this.getDepositInfo();
-  },
-  watch: {
-    lang() {
-      this.getDepositInfo();
     },
   },
 };

@@ -1,23 +1,8 @@
 <template>
   <div class="deposit">
-    <div class="deposit__nav" v-if="depositInfo.IsShowThirdPartyBtn === true">
-      <button
-        class="ui-btn ui-btn--block deposit__nav--base"
-        :class="{ active: $route.name == 'TransactionDepositBase' }"
-        @click="$router.push({ name: 'TransactionDepositBase' }).catch(() => {})"
-      >
-        {{ $t('transaction.deposit.nav.base') }}
-      </button>
-      <button
-        class="ui-btn ui-btn--block deposit__nav--third-party"
-        :class="{ active: $route.name == 'TransactionDepositThirdParty' }"
-        @click="$router.push({ name: 'TransactionDepositThirdParty' }).catch(() => {})"
-      >
-        {{ $t('transaction.deposit.nav.thirdParty') }}
-      </button>
-    </div>
+    <div class="deposit__nav" v-if="baseBankInfo.IsShowThirdPartyBtn === true"></div>
 
-    <router-view :depositInfo="depositInfo" />
+    <router-view @baseBankInfo="baseBankInfoHandler"></router-view>
 
     <ModalNoticeImage
       :image="siteDepositNoticeUrl"
@@ -30,12 +15,11 @@
 
 <script>
 import mixinStyleLoader from '@/mixins/_styleLoader';
-import mixinTransactionDepositHome from '@/mixins/transactionDepositHome';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'TransactionDepositHome',
-  mixins: [mixinStyleLoader, mixinTransactionDepositHome],
+  mixins: [mixinStyleLoader],
   components: {
     ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
   },
@@ -45,7 +29,13 @@ export default {
   data() {
     return {
       isShowDepositNotice: false,
+      baseBankInfo: {},
     };
+  },
+  methods: {
+    baseBankInfoHandler(bankInfo) {
+      this.baseBankInfo = bankInfo;
+    },
   },
   mounted() {
     // import(`@/styles/${this.siteFullCss}/transaction-deposit.scss`);

@@ -175,6 +175,11 @@ const routes = [
             name: 'TransactionDepositThirdParty',
             component: () => import('@/views/transaction/deposit/TransactionDepositThirdParty'),
           },
+          {
+            path: 'third-party/:payment',
+            name: 'TransactionDepositThirdPartyPayment',
+            component: () => import('@/views/transaction/deposit/TransactionDepositThirdParty'),
+          },
         ],
       },
       {
@@ -390,7 +395,6 @@ const routes = [
     meta: { header: false, footer: false },
   },
   {
-    
     path: '/:proxyCode',
     name: 'ProxyCode',
     component: () => import('@/views/ProxyCode'),

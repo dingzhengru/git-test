@@ -57,5 +57,9 @@ export default {
 <style lang="scss" scoped>
 .modal-notice-image {
   position: relative;
+
+  img {
+    max-height: 90vh;
+  }
 }
 </style>

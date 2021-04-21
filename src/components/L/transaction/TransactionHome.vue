@@ -1,7 +1,12 @@
 <template>
   <div class="transaction">
-    <component :is="AppNavTab" :list="navList" />
-    <router-view />
+    <div class="ui-panel-tab">
+      <component :is="PanelTabs" :list="tabList" />
+
+      <div class="ui-panel-tab__content">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,44 +18,32 @@ export default {
   name: 'TransactionHome',
   mixins: [mixinStyleLoader],
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss']),
-    AppNavTab() {
-      return () => import(`@/${this.siteSetting.components.user.AppNavTab}`);
+    ...mapGetters(['siteSetting', 'siteFullCss', 'siteIsWalletTypeNoTransfer']),
+    PanelTabs() {
+      return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
   },
   data() {
     return {
-      navList: [
+      tabList: [
         {
-          name: 'deposit',
-          link: 'TransactionDepositBase',
+          route: 'TransactionDepositBase',
           text: 'transaction.nav.deposit',
-          class: '',
-          id: 'transaction.nav.deposit',
           otherActiveRoute: ['TransactionDepositThirdParty'],
         },
         {
-          name: 'withdrawal',
-          link: 'TransactionWithdrawal',
+          route: 'TransactionWithdrawal',
           text: 'transaction.nav.withdrawal',
-          class: 'ui-li-tabs-withdrawal',
-          id: 'transaction.nav.withdrawal',
           otherActiveRoute: [],
         },
         {
-          name: 'transfer',
-          link: 'TransactionTransfer',
+          route: 'TransactionTransfer',
           text: 'transaction.nav.transfer',
-          class: '',
-          id: 'transaction.nav.transfer',
           otherActiveRoute: [],
         },
         {
-          name: 'record',
-          link: 'TransactionRecordDeposit',
+          route: 'TransactionRecordDeposit',
           text: 'transaction.nav.record',
-          class: '',
-          id: 'transaction.nav.record',
           otherActiveRoute: [
             'TransactionRecordHome',
             'TransactionRecordWithdrawal',
@@ -73,6 +66,10 @@ export default {
     this.importStyleByFilename('transaction');
 
     this.$store.commit('setPageTitle', 'transaction.title');
+
+    if (this.siteIsWalletTypeNoTransfer) {
+      this.tabList = this.tabList.filter(item => item.name !== 'transfer');
+    }
   },
 };
 </script>
