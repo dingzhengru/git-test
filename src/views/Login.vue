@@ -9,8 +9,6 @@ export default {
   computed: {
     ...mapGetters(['siteSetting']),
     settingComponent() {
-      console.log('siteSetting', this.siteSetting);
-      console.log('siteSetting login', this.siteSetting.views.login);
       return () => import(`@/${this.siteSetting.views.login}`);
     },
   },
