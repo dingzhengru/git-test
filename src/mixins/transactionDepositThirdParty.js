@@ -160,4 +160,9 @@ export default {
   beforeDestroy() {
     window.removeEventListener('message', this.receiveMessageHandler);
   },
+  watch: {
+    $route() {
+      this.method = this.$route.params.payment;
+    },
+  },
 };

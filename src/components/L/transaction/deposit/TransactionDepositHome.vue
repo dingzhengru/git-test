@@ -1,8 +1,18 @@
 <template>
   <div class="deposit">
-    <div class="deposit__nav" v-if="baseBankInfo.IsShowThirdPartyBtn === true"></div>
+    <div class="deposit__nav" v-if="depositInfo.IsShowThirdPartyBtn === true">
+      <div
+        class="deposit__nav__item"
+        :class="{ active: navIsActive(item) }"
+        v-for="(item, index) in navList"
+        :key="index"
+        @click="$router.push({ name: item.route, params: item.params })"
+      >
+        {{ $te(item.text) ? $t(item.text) : item.text }}
+      </div>
+    </div>
 
-    <router-view @baseBankInfo="baseBankInfoHandler"></router-view>
+    <router-view :depositInfo="depositInfo" />
 
     <ModalNoticeImage
       :image="siteDepositNoticeUrl"
@@ -15,34 +25,52 @@
 
 <script>
 import mixinStyleLoader from '@/mixins/_styleLoader';
+import mixinTransactionDepositHome from '@/mixins/transactionDepositHome';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'TransactionDepositHome',
-  mixins: [mixinStyleLoader],
+  mixins: [mixinStyleLoader, mixinTransactionDepositHome],
   components: {
     ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss', 'siteIsShowDepositNotice', 'siteDepositNoticeUrl']),
+    ...mapGetters(['siteSetting']),
   },
   data() {
     return {
-      isShowDepositNotice: false,
-      baseBankInfo: {},
+      navList: [
+        {
+          route: 'TransactionDepositBase',
+          text: 'transaction.deposit.nav.base',
+          params: {},
+        },
+      ],
     };
   },
   methods: {
-    baseBankInfoHandler(bankInfo) {
-      this.baseBankInfo = bankInfo;
+    navIsActive(nav) {
+      if (this.$isObjEmpty(nav.params)) {
+        return this.$route.name === nav.route;
+      }
+
+      const payment = nav.params.payment;
+      return this.$route.name === nav.route && this.$route.params.payment === payment;
     },
   },
   mounted() {
-    // import(`@/styles/${this.siteFullCss}/transaction-deposit.scss`);
     this.importStyleByFilename('transaction-deposit');
-
-    //* 是否顯示 DepositNotice
-    this.isShowDepositNotice = this.siteIsShowDepositNotice;
+  },
+  watch: {
+    depositInfo() {
+      this.depositInfo.paymentSelect.forEach(item => {
+        this.navList.push({
+          route: 'TransactionDepositThirdPartyPayment',
+          params: { payment: item.Value },
+          text: item.Text,
+        });
+      });
+    },
   },
 };
 </script>

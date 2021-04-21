@@ -3,11 +3,12 @@ import { apiGetDepositInfo } from '@/api/transaction-deposit';
 export default {
   name: 'MixinTransactionDepositHome',
   computed: {
-    ...mapGetters(['lang']),
+    ...mapGetters(['lang', 'siteIsShowDepositNotice', 'siteDepositNoticeUrl']),
   },
   data() {
     return {
       depositInfo: {},
+      isShowDepositNotice: false,
     };
   },
   methods: {
@@ -21,6 +22,9 @@ export default {
   },
   mounted() {
     this.getDepositInfo();
+
+    //* 是否顯示 DepositNotice
+    this.isShowDepositNotice = this.siteIsShowDepositNotice;
   },
   watch: {
     lang() {

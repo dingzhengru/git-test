@@ -40,19 +40,11 @@ export default {
     ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss', 'siteIsShowDepositNotice', 'siteDepositNoticeUrl']),
-  },
-  data() {
-    return {
-      isShowDepositNotice: false,
-    };
+    ...mapGetters(['siteSetting']),
   },
   mounted() {
     // import(`@/styles/${this.siteFullCss}/transaction-deposit.scss`);
     this.importStyleByFilename('transaction-deposit');
-
-    //* 是否顯示 DepositNotice
-    this.isShowDepositNotice = this.siteIsShowDepositNotice;
   },
 };
 </script>

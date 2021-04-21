@@ -33,6 +33,7 @@
     },
     "transaction": {
       "PanelTabs": "components/L/PanelTabs",
+      "ModalNoticeList": "components/L/ModalNoticeList",
       "record": {
         "RecordImageDialog": "components/Z/transaction/record/RecordImageDialog"
       }
@@ -66,7 +67,7 @@
     "userMailSend": "components/L/user/UserMailSend",
     "transactionHome": "components/L/transaction/TransactionHome",
     "transactionDepositHome": "components/L/transaction/deposit/TransactionDepositHome",
-    "transactionDepositBase": "components/Z/transaction/deposit/TransactionDepositBase",
+    "transactionDepositBase": "components/L/transaction/deposit/TransactionDepositBase",
     "transactionDepositThirdParty": "components/Z/transaction/deposit/TransactionDepositThirdParty",
     "transactionWithdrawal": "components/Z/transaction/TransactionWithdrawal",
     "transactionTransfer": "components/Z/transaction/TransactionTransfer",
