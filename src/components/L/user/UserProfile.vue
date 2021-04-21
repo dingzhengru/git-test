@@ -2,11 +2,11 @@
   <ValidationObserver class="user-profile" tag="div" v-slot="{ invalid, handleSubmit, reset }">
     <form class="user-profile__form" @submit.prevent="handleSubmit(submitUserProfile)" @reset.prevent="reset">
       <div class="ui-panel-tab">
-        <div class="ui-panel-tab__tabs">
-          <div class="ui-panel-tab__tabs__item">
-            asd
+        <component :is="PanelTabs" :list="tabList">
+          <div slot="after" class="user-profile__logout">
+            <button type="button" @click="$store.dispatch('user/logout')">{{ $t('header.button.logout') }}</button>
           </div>
-        </div>
+        </component>
 
         <div class="ui-panel-tab__content user-profile__content">
           <div class="user-profile__title user-profile__title--basic">
@@ -439,8 +439,16 @@
 
     <component
       :is="ModalNoticeList"
+      :noticeList="noticeListChangePassword"
       v-if="isShowModalNoticeChangePassword"
       @close="isShowModalNoticeChangePassword = false"
+    />
+
+    <component
+      :is="ModalNoticeList"
+      :noticeList="noticeListChangePasswordWithdrawal"
+      v-if="isShowModalNoticeChangePasswordWithdrawal"
+      @close="isShowModalNoticeChangePasswordWithdrawal = false"
     />
   </ValidationObserver>
 </template>
@@ -458,6 +466,9 @@ export default {
   },
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss']),
+    PanelTabs() {
+      return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
+    },
     ModalUserChangePassword() {
       return () => import(`@/${this.siteSetting.components.user.ModalUserChangePassword}`);
     },
@@ -474,6 +485,22 @@ export default {
       isShowModalChangePasswordWithdrawal: false,
       isShowModalNoticeChangePassword: false,
       isShowModalNoticeChangePasswordWithdrawal: false,
+
+      noticeListChangePassword: [
+        'user.changePassword.notice.suggest',
+        'user.changePassword.notice.rule',
+        'user.changePassword.notice.contact',
+      ],
+
+      noticeListChangePasswordWithdrawal: ['user.changePasswordWithdrawal.notice.first'],
+
+      tabList: [
+        {
+          route: 'UserProfile',
+          text: 'header.menu.profile',
+          otherActiveRoute: [],
+        },
+      ],
     };
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="user-mail">
     <div class="ui-panel-tab">
-      <component :is="PanelTabsNews" />
+      <component :is="PanelTabs" :list="tabList" />
 
       <div class="ui-panel-tab__content user-mail__content">
         <component :is="AppNavTab" :list="navList" />
@@ -56,8 +56,8 @@ export default {
     ModalUserMailDetail() {
       return () => import(`@/${this.siteSetting.components.user.ModalUserMailDetail}`);
     },
-    PanelTabsNews() {
-      return () => import(`@/${this.siteSetting.components.user.PanelTabsNews}`);
+    PanelTabs() {
+      return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
     AppNavTab() {
       return () => import(`@/${this.siteSetting.components.user.AppNavTab}`);
@@ -84,6 +84,24 @@ export default {
           link: 'UserMailSend',
           class: '',
           otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
+        },
+      ],
+
+      tabList: [
+        {
+          route: 'UserMail',
+          text: 'user.nav.mail',
+          otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
+        },
+        {
+          route: 'News',
+          text: 'news.title',
+          otherActiveRoute: [],
+        },
+        {
+          route: 'About',
+          text: 'about.title',
+          otherActiveRoute: [],
         },
       ],
     };

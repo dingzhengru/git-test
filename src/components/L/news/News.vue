@@ -1,7 +1,7 @@
 <template>
   <div class="news" :class="{ 'news-auth': userIsLoggedIn }">
     <div class="ui-panel-tab">
-      <component :is="PanelTabsNews" />
+      <component :is="PanelTabs" :list="tabList" />
 
       <div class="ui-panel-tab__content news__content">
         <div class="news__item" v-for="(item, index) in newsList" :key="index">
@@ -38,12 +38,33 @@ export default {
   },
   computed: {
     ...mapGetters(['siteSetting', 'userIsLoggedIn']),
-    PanelTabsNews() {
-      return () => import(`@/${this.siteSetting.components.news.PanelTabsNews}`);
+    PanelTabs() {
+      return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
     getDateTime: () => datetime => {
       return datetime.replace('T', ' ');
     },
+  },
+  data() {
+    return {
+      tabList: [
+        {
+          route: 'UserMail',
+          text: 'user.nav.mail',
+          otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
+        },
+        {
+          route: 'News',
+          text: 'news.title',
+          otherActiveRoute: [],
+        },
+        {
+          route: 'About',
+          text: 'about.title',
+          otherActiveRoute: [],
+        },
+      ],
+    };
   },
   mounted() {
     this.importStyleByFilename('news');

@@ -3,11 +3,7 @@
     <div class="modal-notice">
       <div class="ui-notice">
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
+          <li v-for="(item, index) in noticeList" :key="index" v-html="$t(item)"></li>
         </ul>
       </div>
     </div>
@@ -21,6 +17,12 @@ export default {
   name: 'ModalUserChangePassword',
   components: {
     AppModal: () => import('@/components/AppModal'),
+  },
+  props: {
+    noticeList: {
+      type: Array,
+      default: () => [],
+    },
   },
   computed: {
     ...mapGetters([]),

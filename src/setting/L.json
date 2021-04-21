@@ -28,7 +28,7 @@
       "ModalUserChangePassword": "components/L/user/ModalUserChangePassword",
       "ModalUserChangePasswordWithdrawal": "components/L/user/ModalUserChangePasswordWithdrawal",
       "AppNavTab": "components/Z/AppNavTab",
-      "PanelTabsNews": "components/L/PanelTabsNews",
+      "PanelTabs": "components/L/PanelTabs",
       "ModalNoticeList": "components/L/ModalNoticeList"
     },
     "transaction": {
@@ -43,10 +43,10 @@
       "GameSearchBlock": "components/L/game/GameSearchBlock"
     },
     "news": {
-      "PanelTabsNews": "components/L/PanelTabsNews"
+      "PanelTabs": "components/L/PanelTabs"
     },
     "about": {
-      "PanelTabsNews": "components/L/PanelTabsNews"
+      "PanelTabs": "components/L/PanelTabs"
     }
   },
   "views": {

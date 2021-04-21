@@ -1,7 +1,7 @@
 <template>
   <div class="about" :class="{ 'about-auth': userIsLoggedIn }">
     <div class="ui-panel-tab">
-      <component :is="PanelTabsNews" />
+      <component :is="PanelTabs" :list="tabList" />
 
       <div class="ui-panel-tab__content about__content">
         <div class="about__item">
@@ -41,8 +41,8 @@ export default {
   mixins: [mixinStyleLoader],
   computed: {
     ...mapGetters(['siteSetting', 'userIsLoggedIn']),
-    PanelTabsNews() {
-      return () => import(`@/${this.siteSetting.components.about.PanelTabsNews}`);
+    PanelTabs() {
+      return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
     imgSport() {
       return require('@/assets/common/about/gameIntro-01.jpg');
@@ -53,6 +53,27 @@ export default {
     imgRNG() {
       return require('@/assets/common/about/gameIntro-03.jpg');
     },
+  },
+  data() {
+    return {
+      tabList: [
+        {
+          route: 'UserMail',
+          text: 'user.nav.mail',
+          otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
+        },
+        {
+          route: 'News',
+          text: 'news.title',
+          otherActiveRoute: [],
+        },
+        {
+          route: 'About',
+          text: 'about.title',
+          otherActiveRoute: [],
+        },
+      ],
+    };
   },
   mounted() {
     // import(`@/styles/${this.siteFullCss}/about.scss`);

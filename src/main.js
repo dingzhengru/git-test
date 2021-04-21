@@ -209,9 +209,9 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
-    const siteClass = 'Z';
+    const siteClass = 'L';
     const siteType = '01';
-    const isLandscape = false;
+    const isLandscape = true;
     console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
     store.commit('site/setInfoStyle', { siteClass, siteType });

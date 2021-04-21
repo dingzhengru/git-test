@@ -16,6 +16,19 @@
   // &__content {
   // }
 
+  &__logout {
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-right: 10px;
+
+    button {
+      width: 100%;
+    }
+  }
+
   &__title {
     display: flex;
     padding: 5px 0;
