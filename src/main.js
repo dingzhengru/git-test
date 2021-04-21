@@ -3,7 +3,13 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
-import { LANG_DEFAULT, OFFLINE_MESSAGE } from '@/settings';
+import {
+  LANG_DEFAULT,
+  OFFLINE_MESSAGE,
+  SITE_STYLE_CLASS_LIST,
+  SITE_DEFAULT_STYLE_CLASS,
+  SITE_DEFAULT_STYLE_TYPE,
+} from '@/settings';
 import {
   cookieGetVersion,
   cookieSetVersion,
@@ -206,6 +212,11 @@ if (isLoggedIn) {
       });
     }
   });
+
+  //* 預設版號、版型 (若是傳來的版型不在列表內)
+  if (!SITE_STYLE_CLASS_LIST.includes(store.getters.siteCssClass)) {
+    store.commit('site/setInfoStyle', { siteClass: SITE_DEFAULT_STYLE_CLASS, siteType: SITE_DEFAULT_STYLE_TYPE });
+  }
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {

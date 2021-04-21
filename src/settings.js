@@ -11,9 +11,12 @@ export const OFFLINE_MESSAGE = 'Offline Alert';
 //* Site
 export const SITE_INFO_LOAD_FAIL_MESSAGE = 'Load failed. Please refresh the page and retry.';
 
-// 預設版型
-// export const SITE_DEFAULT_STYLE_CLASS = 'Z';
-// export const SITE_DEFAULT_STYLE_TYPE = '01';
+//* 目前已有版號
+export const SITE_STYLE_CLASS_LIST = ['Z', 'L'];
+
+//* 預設版型
+export const SITE_DEFAULT_STYLE_CLASS = 'Z';
+export const SITE_DEFAULT_STYLE_TYPE = '01';
 
 //* API
 //* API URL
