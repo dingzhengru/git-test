@@ -1,5 +1,10 @@
 <template>
-  <ValidationObserver class="user-change-password" tag="div" v-slot="{ invalid, handleSubmit, reset }">
+  <ValidationObserver
+    class="user-change-password"
+    tag="div"
+    ref="validationObserver"
+    v-slot="{ invalid, handleSubmit, reset }"
+  >
     <form
       class="user-change-password__form"
       @submit.prevent="handleSubmit(submitChangePassword)"

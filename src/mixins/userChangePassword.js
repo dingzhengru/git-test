@@ -47,6 +47,8 @@ export default {
       this.passwordOld = '';
       this.passwordNew = '';
       this.passwordCheck = '';
+
+      this.$refs.validationObserver.reset();
     },
   },
   mounted() {

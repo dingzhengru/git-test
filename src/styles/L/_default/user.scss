@@ -87,67 +87,25 @@
 }
 
 @mixin user-change-password {
-  width: 100%;
+  width: 50vw;
+  height: 70vh;
+  background: white;
+  position: relative;
+
+  &__container {
+    width: 100%;
+    height: 100%;
+  }
+
   &__form {
     width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 30px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  &__field {
-    width: 90%;
-    margin-bottom: 30px;
-
-    &--remember {
-      .ui-field__label {
-        margin-right: 15px;
-      }
-    }
-
-    // &:lang(zh-cn) {
-    //   * {
-    //     font-size: 1.8rem;
-    //   }
-    // }
-
-    // &:lang(en-us) {
-    //   * {
-    //     font-size: 1.6rem;
-    //   }
-    // }
-
-    // &:lang(th-th) {
-    //   * {
-    //     font-size: 1.6rem;
-    //   }
-    // }
-  }
-
-  &__notice {
-    width: 100%;
-    ul,
-    li {
-      list-style-type: disc;
-    }
-  }
-
-  &__btn {
-    width: 100%;
-
-    button {
-      margin-bottom: 15px;
-    }
-
-    &--submit {
-      background: $user-change-password-btn-bg-submit;
-      color: $user-change-password-btn-color-submit;
-      box-shadow: $user-change-password-btn-shadow-submit;
-    }
-    &--reset {
-      background: $user-change-password-btn-bg-reset;
-      color: $user-change-password-btn-color-reset;
-      box-shadow: $user-change-password-btn-shadow-reset;
-    }
   }
 
   /*

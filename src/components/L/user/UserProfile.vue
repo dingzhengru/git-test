@@ -224,7 +224,9 @@
             <div class="user-profile__field user-profile__field--btn">
               <label>{{ $t('user.profile.field.passwordWithdrawal') }}</label>
               <input type="password" :value="'password'" readonly />
-              <button type="button">{{ $t('ui.button.setup') }}</button>
+              <button type="button" @click="isShowModalChangePasswordWithdrawal = true">
+                {{ $t('ui.button.setup') }}
+              </button>
             </div>
           </div>
 
@@ -422,8 +424,16 @@
         </div>
       </div>
     </form>
-    <component :is="ModalUserChangePassword" v-if="isShowModalChangePassword" />
-    <component :is="ModalUserChangePasswordWithdrawal" v-if="isShowModalChangePassword" />
+    <component
+      :is="ModalUserChangePassword"
+      @close="isShowModalChangePassword = false"
+      v-if="isShowModalChangePassword"
+    />
+    <component
+      :is="ModalUserChangePasswordWithdrawal"
+      @close="isShowModalChangePasswordWithdrawal = false"
+      v-if="isShowModalChangePasswordWithdrawal"
+    />
   </ValidationObserver>
 </template>
 

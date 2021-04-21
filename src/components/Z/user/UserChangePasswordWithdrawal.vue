@@ -9,7 +9,7 @@
         class="ui-field user-change-password__field"
         tag="div"
         :rules="{
-          'change-password-required': true,
+          'change-password-required': false,
           'change-password-min': 6,
           'change-password-max': 30,
           'change-password-regex': '^[a-zA-Z0-9]*$',
