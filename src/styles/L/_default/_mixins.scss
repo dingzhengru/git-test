@@ -54,6 +54,10 @@
   &--height-light {
     color: $notice-height-light-color;
   }
+
+  ul {
+    margin: 0;
+  }
 }
 
 @mixin ui-step {
@@ -277,6 +281,24 @@
   }
 }
 
+@mixin ui-question {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: black;
+  color: white;
+  position: relative;
+  border-radius: 12px;
+  &:before {
+    content: '?';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+  }
+}
+
 @mixin go-top-btn {
   background: $go-top-btn-bg;
   width: $go-top-btn-width;
@@ -332,6 +354,13 @@
   font-size: $no-data-font-size;
   text-align: center;
   padding: 30px 0;
+}
+
+@mixin modal-notice {
+  width: 70vw;
+  height: 70vh;
+  background: white;
+  padding: 30px;
 }
 
 @mixin service-term {

@@ -219,6 +219,7 @@
               <label>{{ $t('user.profile.field.password') }}</label>
               <input type="password" :value="'password'" readonly />
               <button type="button" @click="isShowModalChangePassword = true">{{ $t('ui.button.edit') }}</button>
+              <div class="ui-question" @click="isShowModalNoticeChangePassword = true"></div>
             </div>
 
             <div class="user-profile__field user-profile__field--btn">
@@ -227,6 +228,7 @@
               <button type="button" @click="isShowModalChangePasswordWithdrawal = true">
                 {{ $t('ui.button.setup') }}
               </button>
+              <div class="ui-question" @click="isShowModalNoticeChangePasswordWithdrawal = true"></div>
             </div>
           </div>
 
@@ -434,6 +436,12 @@
       @close="isShowModalChangePasswordWithdrawal = false"
       v-if="isShowModalChangePasswordWithdrawal"
     />
+
+    <component
+      :is="ModalNoticeList"
+      v-if="isShowModalNoticeChangePassword"
+      @close="isShowModalNoticeChangePassword = false"
+    />
   </ValidationObserver>
 </template>
 
@@ -456,11 +464,16 @@ export default {
     ModalUserChangePasswordWithdrawal() {
       return () => import(`@/${this.siteSetting.components.user.ModalUserChangePasswordWithdrawal}`);
     },
+    ModalNoticeList() {
+      return () => import(`@/${this.siteSetting.components.user.ModalNoticeList}`);
+    },
   },
   data() {
     return {
       isShowModalChangePassword: false,
       isShowModalChangePasswordWithdrawal: false,
+      isShowModalNoticeChangePassword: false,
+      isShowModalNoticeChangePasswordWithdrawal: false,
     };
   },
 };

@@ -390,6 +390,12 @@ const routes = [
     meta: { header: false, footer: false },
   },
   {
+    
+    path: '/:proxyCode',
+    name: 'ProxyCode',
+    component: () => import('@/views/ProxyCode'),
+  },
+  {
     path: '*',
     name: 'PageNotFound',
     component: () => import('@/views/PageNotFound'),
