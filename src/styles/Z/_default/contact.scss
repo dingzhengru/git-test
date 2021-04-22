@@ -48,6 +48,12 @@
       &.icon-wechat {
         background-position: center -910px;
       }
+      &.icon-facebook {
+        background: $contact-icon-contact-bg-facebook;
+      }
+      &.icon-telegram {
+        background: $contact-icon-contact-bg-telegram;
+      }
     }
     &__text {
       flex-grow: 1;
