@@ -1,6 +1,6 @@
 <template>
   <div class="record-content">
-    <div class="ui-field">
+    <div class="ui-field record-content__field--bet">
       <select class="ui-field__select" v-model="route" @change="changeRoute">
         <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
         <option :value="item" v-for="item in routeList" :key="item.name">

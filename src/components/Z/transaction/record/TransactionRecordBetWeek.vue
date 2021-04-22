@@ -15,7 +15,7 @@
             <a href="javascript:;" v-if="item.Lst_BetCount > 0" @click="goRecordBetDay(item)">
               {{ item.Lst_ReportDate }}
             </a>
-            <span v-else>{{ item.Lst_ReportDate }}</span>
+            <template v-else>{{ item.Lst_ReportDate }}</template>
           </td>
           <td>{{ item.Lst_BetCount }}</td>
           <td>{{ $numeral(item.Lst_TTLBet).format('0,0.00') }}</td>
