@@ -187,8 +187,8 @@
 </template>
 
 <script>
-import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { mapGetters } from 'vuex';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import mixinTransactionDepositBase from '@/mixins/transactionDepositBase';
 export default {
   name: 'DepositFormBase',

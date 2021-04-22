@@ -31,7 +31,7 @@ import './router/permission'; //* 路徑權限
 import './api/interceptors.js'; //* 攔截器
 import i18n from '@/i18n-lazy'; //* 語言載入
 import '@/utils/vee-validate.js'; //* 載入 vee-validate 規則
-import { getQueryValueByKey, checkQueryByKeyMultiple } from '@/utils/url';
+import { getQueryValueByKey, checkQueryByKey, checkQueryByKeyMultiple } from '@/utils/url';
 
 //* API
 import { apiGetVersion } from '@/api/version';
@@ -185,7 +185,7 @@ if (isLoggedIn) {
   //   //* 不是空值、回傳值非此網域 => 轉址
   //   if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
   //     store.commit('site/setDomainRedirect', result.RetObj);
-  //     store.commit('setModalSiteBlockedMessageIsShow', true);
+  //     store.commit('setModalMessageSiteBlockedIsShow', true);
   //   }
   // });
 
@@ -207,7 +207,7 @@ if (isLoggedIn) {
         //* 不是空值、回傳值非此網域 => 轉址
         if (result.Code === 200 && result.RetObj && result.RetObj !== window.location.hostname) {
           store.commit('site/setDomainRedirect', result.RetObj);
-          store.commit('setModalSiteBlockedMessageIsShow', true);
+          store.commit('setModalMessageSiteBlockedIsShow', true);
         }
       });
     }
@@ -233,6 +233,11 @@ if (isLoggedIn) {
 
     //* landscape
     store.commit('setIsLandscape', isLandscape);
+  }
+
+  //* 是否顯示 apk download message (網址有 ?pwa 的話)
+  if (checkQueryByKey('pwa')) {
+    store.commit('setModalMessageApkDownloadIsShow', true);
   }
 
   new Vue({

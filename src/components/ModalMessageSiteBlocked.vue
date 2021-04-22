@@ -1,13 +1,13 @@
 <template>
-  <ModalMessage>
-    <div class="modal-message-c">
+  <ModalMessage @close="$emit('close')">
+    <div class="modal-message-block">
       <div v-if="$isStandaloneMode()">
-        <p class="modal-message-c__text">被封網域訊息(下載 APK)</p>
+        <p class="modal-message-block__text">被封網域訊息(下載 APK)</p>
         <button @click="downloadAPK">Download APK</button>
       </div>
 
       <div v-else>
-        <p class="modal-message-c__text">被封網域訊息(轉址)</p>
+        <p class="modal-message-block__text">被封網域訊息(轉址)</p>
         <button @click="redirectDomain">Redirect to {{ siteDomainRedirect }}</button>
       </div>
     </div>
@@ -17,7 +17,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-  name: 'ModalSiteBlockedMessage',
+  name: 'ModalMessageSiteBlocked',
   components: {
     ModalMessage: () => import('@/components/ModalMessage'),
   },
@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.modal-message-c {
+.modal-message-block {
   button {
     display: block;
     margin: 30px auto;

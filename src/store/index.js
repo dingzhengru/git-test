@@ -22,7 +22,8 @@ export default new Vuex.Store({
     modalTransferProduct: {},
     modalWinWheelIsShow: false,
     modalRedEnvelopeIsShow: false,
-    modalSiteBlockedMessageIsShow: false,
+    modalMessageSiteBlockedIsShow: false,
+    modalMessageApkDownloadIsShow: false,
     isShowGoTopButton: false,
 
     //* 橫版
@@ -69,8 +70,11 @@ export default new Vuex.Store({
     setIsShowGoTopButton: (state, isShow) => {
       state.isShowGoTopButton = isShow;
     },
-    setModalSiteBlockedMessageIsShow: (state, isShow) => {
-      state.modalSiteBlockedMessageIsShow = isShow;
+    setModalMessageSiteBlockedIsShow: (state, isShow) => {
+      state.modalMessageSiteBlockedIsShow = isShow;
+    },
+    setModalMessageApkDownloadIsShow: (state, isShow) => {
+      state.modalMessageApkDownloadIsShow = isShow;
     },
     setModalLangIsShow: (state, isShow) => {
       state.modalLangIsShow = isShow;

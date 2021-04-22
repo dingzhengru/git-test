@@ -1,8 +1,17 @@
 @mixin record {
-  font-size: 1.6rem;
+  position: relative;
 }
 
 @mixin record-content {
+  &__field {
+    &--product,
+    &--bet {
+      position: absolute;
+      top: 0;
+      right: 30%;
+    }
+  }
+
   &__icon {
     &--detail {
       display: inline-block;
@@ -59,12 +68,10 @@
       align-items: center;
     }
 
-    &__field {
-      &--date {
-        width: calc(50% - 25px);
-        font-size: 1.6rem;
-      }
-    }
+    // &__field {
+    //   &--date {
+    //   }
+    // }
 
     span {
       width: 50px;
@@ -72,8 +79,6 @@
     }
 
     &__btn {
-      width: 100%;
-
       &--submit {
         background: $record-content-search-btn-bg-submit;
         color: $record-content-search-btn-text-color-submit;

@@ -154,6 +154,45 @@
               </div>
             </transition>
           </div>
+
+          <div
+            class="contact__item"
+            :key="contactItem.Lst_ContactID"
+            @click="openContactLink(contactItem, contactItem.DetailList[0])"
+            v-if="isShowFacebook(contactItem)"
+          >
+            <i class="contact__item__icon--contact icon-facebook"></i>
+            <div class="contact__item__text">
+              <div class="contact__item__text__title">Facebook</div>
+              <div class="contact__item__text__content"></div>
+            </div>
+          </div>
+
+          <div
+            class="contact__item"
+            :key="contactItem.Lst_ContactID"
+            @click="isShowDetailTelegram = !isShowDetailTelegram"
+            v-if="isShowTelegram(contactItem)"
+          >
+            <i class="contact__item__icon--contact icon-telegram"></i>
+            <div class="contact__item__text">
+              <div class="contact__item__text__title">Telegram</div>
+              <div class="contact__item__text__content"></div>
+            </div>
+            <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailTelegram }"></i>
+            <transition name="slide-dropdown">
+              <div class="contact__item__detail" v-show="isShowDetailTelegram">
+                <div
+                  class="contact__item__detail__item"
+                  v-for="item in contactItem.DetailList"
+                  :key="item.Lst_ContactValueID"
+                  @click="openContactLink(contactItem, item)"
+                >
+                  {{ item.Lst_ContactValue }}
+                </div>
+              </div>
+            </transition>
+          </div>
         </template>
       </div>
     </div>

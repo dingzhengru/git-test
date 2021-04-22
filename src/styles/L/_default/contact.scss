@@ -51,6 +51,12 @@
       &.icon-wechat {
         background-position: center -910px;
       }
+      &.icon-facebook {
+        background: $contact-icon-contact-bg-facebook;
+      }
+      &.icon-telegram {
+        background: $contact-icon-contact-bg-telegram;
+      }
     }
     &__text {
       flex-grow: 1;
@@ -74,12 +80,12 @@
       border-radius: 5px;
       padding: 10px 15px;
 
-      &:lang(en-us) {
-        // font-size: 1.5rem;
-      }
-      &:lang(th-th) {
-        // font-size: 1.4rem;
-      }
+      // &:lang(en-us) {
+      // font-size: 1.5rem;
+      // }
+      // &:lang(th-th) {
+      // font-size: 1.4rem;
+      // }
     }
     &__icon--dropdown {
       margin-left: auto;

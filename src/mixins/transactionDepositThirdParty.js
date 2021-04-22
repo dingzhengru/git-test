@@ -58,15 +58,6 @@ export default {
 
       intervalCheckOrderStatus: null,
       isOrderSuccess: false,
-
-      noticeList: [
-        'transaction.deposit.notice.currency',
-        'transaction.deposit.notice.depositLimit01',
-        'transaction.deposit.notice.depositLimit02',
-        'transaction.deposit.notice.userBear01',
-        'transaction.deposit.notice.userBear02',
-        'transaction.deposit.notice.contact',
-      ],
     };
   },
   methods: {
@@ -102,14 +93,20 @@ export default {
       }
     },
     changeMethod(method) {
-      this.method = method.Value;
+      if (typeof method === 'string') {
+        this.method = method;
+      } else {
+        this.method = method.Value;
+      }
       this.platform = this.getPlatformListByMethod.find(item => !item.isMaintenance) || {};
+      this.amount = 0;
     },
     changePlatform(platform) {
       if (platform.isisMaintenance) {
         return;
       }
       this.platform = platform;
+      this.amount = 0;
     },
     changeAmountByButton(amount) {
       this.amount = amount;
@@ -161,8 +158,15 @@ export default {
     window.removeEventListener('message', this.receiveMessageHandler);
   },
   watch: {
-    $route() {
-      this.method = this.$route.params.payment;
+    $route: {
+      immediate: true,
+      handler() {
+        if (this.$route.params.payment === undefined) {
+          return;
+        }
+
+        this.changeMethod(this.$route.params.payment);
+      },
     },
   },
 };

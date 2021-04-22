@@ -1,12 +1,11 @@
 <template>
   <AppModal @close="closeModal">
     <div class="modal-notice">
-      <div class="ui-box-close"></div>
-
+      <div class="ui-box-close" @click="closeModal"></div>
       <div class="modal-notice__container">
         <div class="ui-notice">
           <ul>
-            <li v-for="(item, index) in noticeList" :key="index" v-html="$t(item)"></li>
+            <li v-for="(item, index) in noticeList" :key="index" v-html="getNoticeContent(item)"></li>
           </ul>
         </div>
       </div>
@@ -32,6 +31,15 @@ export default {
     ...mapGetters([]),
   },
   methods: {
+    getNoticeContent(notice) {
+      if (typeof notice === 'string') {
+        return this.$t(notice);
+      }
+
+      if (typeof notice === 'object') {
+        return this.$t(notice.text, notice.params);
+      }
+    },
     closeModal() {
       this.$emit('close');
     },
