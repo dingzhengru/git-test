@@ -1,17 +1,17 @@
 <template>
   <ValidationObserver class="withdrawal" tag="div" v-slot="{ invalid, handleSubmit }">
     <form class="withdrawal-form" @submit.prevent="handleSubmit(submitWithdrawal)">
-      <ValidationProvider class="ui-field withdrawal__field--transfer" tag="div" :rules="{ 'object-not-empty': true }">
-        <div class="ui-field__group">
+      <div class="withdrawal__field--transfer" :rules="{ 'object-not-empty': true }">
+        <div class="withdrawal__field--transfer__wallet">
           <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.wallet') }}</label>
           <span class="ui-field__group__text">{{ userGamePointWallet.Point }}</span>
         </div>
         <div class="withdrawal__field--transfer__btn">
-          <button class="ui-btn ui-btn--block" type="button" @click="transferToMain">
+          <button class="ui-btn" type="button" @click="transferToMain">
             {{ $t('ui.button.allToMyWallet') }}
           </button>
         </div>
-      </ValidationProvider>
+      </div>
 
       <ValidationProvider
         class="ui-field withdrawal__field withdrawal__field--amount"
@@ -94,8 +94,17 @@
             :placeholder="$t('login.placeholder.password')"
             v-model="password"
           />
+          <button class="ui-btn withdrawal__btn--submit" type="submit" :disabled="invalid">
+            {{ $t('ui.button.submit') }}
+          </button>
         </div>
       </ValidationProvider>
+
+      <!-- <div class="withdrawal__btn">
+        <button class="ui-btn withdrawal__btn--submit" type="submit" :disabled="invalid">
+          {{ $t('ui.button.submit') }}
+        </button>
+      </div> -->
 
       <div class="ui-notice withdrawal__notice">
         <ul>
@@ -109,12 +118,6 @@
           </li>
           <li>{{ $t('transaction.withdrawal.notice.contact') }}</li>
         </ul>
-      </div>
-
-      <div class="withdrawal__btn">
-        <button class="ui-btn ui-btn--block withdrawal__btn--submit" type="submit" :disabled="invalid">
-          {{ $t('ui.button.submit') }}
-        </button>
       </div>
     </form>
   </ValidationObserver>

@@ -9,7 +9,6 @@
 
 @mixin ui-field {
   margin-bottom: 15px;
-
   position: relative;
 
   input[type='date']::-webkit-calendar-picker-indicator {
@@ -49,7 +48,6 @@
 @mixin ui-notice {
   color: $notice-color;
   font-size: $notice-font-size;
-  line-height: $notice-line-height;
 
   &--height-light {
     color: $notice-height-light-color;

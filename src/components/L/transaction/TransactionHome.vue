@@ -3,7 +3,7 @@
     <div class="ui-panel-tab">
       <component :is="PanelTabs" :list="tabList" />
 
-      <div class="ui-panel-tab__content">
+      <div class="ui-panel-tab__content transaction__content">
         <router-view />
       </div>
     </div>
