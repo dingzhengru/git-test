@@ -93,7 +93,11 @@ export default {
       }
     },
     changeMethod(method) {
-      this.method = method.Value;
+      if (typeof method === 'string') {
+        this.method = method;
+      } else {
+        this.method = method.Value;
+      }
       this.platform = this.getPlatformListByMethod.find(item => !item.isMaintenance) || {};
       this.amount = 0;
     },
@@ -161,7 +165,7 @@ export default {
           return;
         }
 
-        this.method = this.$route.params.payment;
+        this.changeMethod(this.$route.params.payment);
       },
     },
   },
