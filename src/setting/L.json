@@ -70,7 +70,7 @@
     "transactionDepositBase": "components/L/transaction/deposit/TransactionDepositBase",
     "transactionDepositThirdParty": "components/L/transaction/deposit/TransactionDepositThirdParty",
     "transactionWithdrawal": "components/L/transaction/TransactionWithdrawal",
-    "transactionTransfer": "components/Z/transaction/TransactionTransfer",
+    "transactionTransfer": "components/L/transaction/TransactionTransfer",
     "transactionRecordHome": "components/Z/transaction/record/TransactionRecordHome",
     "transactionRecordDeposit": "components/Z/transaction/record/TransactionRecordDeposit",
     "transactionRecordWithdrawal": "components/Z/transaction/record/TransactionRecordWithdrawal",
