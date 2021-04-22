@@ -29,7 +29,7 @@ export default {
         {
           route: 'TransactionDepositBase',
           text: 'transaction.nav.deposit',
-          otherActiveRoute: ['TransactionDepositThirdParty'],
+          otherActiveRoute: ['TransactionDepositThirdParty', 'TransactionDepositThirdPartyPayment'],
         },
         {
           route: 'TransactionWithdrawal',

@@ -2,30 +2,6 @@
   <ValidationObserver class="deposit-third-party" tag="div" v-slot="{ invalid, handleSubmit }">
     <form class="deposit-third-party-form" @submit.prevent="handleSubmit(submitDeposit)" @reset.prevent="reset">
       <ValidationProvider
-        class="deposit-third-party__field--btn deposit-third-party__field--method"
-        tag="div"
-        :rules="{ required: true }"
-      >
-        <div class="deposit-third-party__field--btn__title">{{ $t('transaction.deposit.field.payMethod') }}</div>
-        <div class="deposit-third-party__field--btn__option">
-          <button
-            class="ui-btn ui-btn--block"
-            type="button"
-            :class="{ active: method == item.Value }"
-            v-for="item in depositInfo.paymentSelect"
-            :key="item.Value"
-            @click="changeMethod(item)"
-          >
-            {{ item.Text }}
-          </button>
-        </div>
-        <select v-model="method" v-show="false">
-          <option value=""></option>
-          <option :value="item.Value" v-for="item in depositInfo.paymentSelect" :key="item.Value"></option>
-        </select>
-      </ValidationProvider>
-
-      <ValidationProvider
         class="deposit-third-party__field--btn deposit-third-party__field--platform"
         tag="div"
         :rules="{ 'object-not-empty': true }"
@@ -33,7 +9,7 @@
         <div class="deposit-third-party__field--btn__title">{{ $t('transaction.deposit.field.payPlatform') }}</div>
         <div class="deposit-third-party__field--btn__option">
           <button
-            class="ui-btn ui-btn--block"
+            class=""
             type="button"
             :class="{ active: platform === item }"
             v-for="item in getPlatformListByMethod"
@@ -59,7 +35,7 @@
         <div class="deposit-third-party__field--btn__title">{{ $t('transaction.deposit.field.amount') }}</div>
         <div class="deposit-third-party__field--btn__option" v-show="!$isObjEmpty(platform)">
           <button
-            class="ui-btn ui-btn--block"
+            class=""
             type="button"
             v-for="item in amountList"
             :key="item"
@@ -69,12 +45,7 @@
           >
             {{ item }}
           </button>
-          <button
-            class="ui-btn ui-btn--block"
-            type="button"
-            :class="{ active: isShowInputAmount }"
-            @click="showInputAmount"
-          >
+          <button class="" type="button" :class="{ active: isShowInputAmount }" @click="showInputAmount">
             {{ $t('transaction.deposit.third-party.amountEnter') }}
           </button>
         </div>
@@ -146,23 +117,15 @@
         </div>
       </ValidationProvider>
 
-      <div class="ui-notice">
-        <ul>
-          <li
-            v-for="(item, index) in noticeList"
-            :key="index"
-            v-html="$t(item, { currency: $t('ui.label.baht') })"
-          ></li>
-        </ul>
-      </div>
-
       <div class="deposit-third-party__btn">
-        <button class="ui-btn ui-btn--block deposit-third-party__btn--submit" type="submit" :disabled="invalid">
+        <button class="deposit-third-party__btn deposit-third-party__btn--submit" type="submit" :disabled="invalid">
           {{ $t('ui.button.submit') }}
         </button>
-        <button class="ui-btn ui-btn--block deposit-third-party__btn--reset" type="reset" @click="resetForm">
+        <button class="deposit-third-party__btn deposit-third-party__btn--reset" type="reset" @click="resetForm">
           {{ $t('ui.button.reset') }}
         </button>
+
+        <div class="ui-question" @click="isShowModalNotice = true"></div>
       </div>
     </form>
     <div v-if="iframe.isShow">
@@ -175,10 +138,18 @@
         v-if="iframe.isShow"
       />
     </div>
+
+    <component
+      :is="ModalNoticeList"
+      :noticeList="noticeList"
+      v-if="isShowModalNotice"
+      @close="isShowModalNotice = false"
+    />
   </ValidationObserver>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import mixinTransactionDepositThirdParty from '@/mixins/transactionDepositThirdParty';
 export default {
@@ -189,10 +160,21 @@ export default {
     ValidationProvider,
     ModalDepositThirdParty: () => import('@/components/ModalDepositThirdParty'),
   },
+  computed: {
+    ...mapGetters(['siteSetting']),
+    ModalNoticeList() {
+      return () => import(`@/${this.siteSetting.components.transaction.ModalNoticeList}`);
+    },
+  },
   data() {
     return {
+      isShowModalNotice: false,
+
       noticeList: [
-        'transaction.deposit.notice.currency',
+        {
+          text: 'transaction.deposit.notice.currency',
+          params: { currency: this.$t('ui.label.baht') },
+        },
         'transaction.deposit.notice.depositLimit01',
         'transaction.deposit.notice.depositLimit02',
         'transaction.deposit.notice.userBear01',
