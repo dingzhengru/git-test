@@ -30,7 +30,14 @@
 
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
     <component :is="AppGoTopButton" v-show="isShowGoTopButton" />
-    <ModalSiteBlockedMessage v-if="modalSiteBlockedMessageIsShow" />
+    <ModalMessageSiteBlocked
+      v-if="modalMessageSiteBlockedIsShow"
+      @close="$store.commit('setModalMessageSiteBlockedIsShow', false)"
+    />
+    <ModalMessageApkDownload
+      v-if="modalMessageApkDownloadIsShow"
+      @close="$store.commit('setModalMessageApkDownloadIsShow', false)"
+    />
 
     <component :is="ModalContact" v-if="modalContactIsShow" />
   </div>
@@ -52,7 +59,8 @@ export default {
     ModalTransfer: () => import('@/components/ModalTransfer'),
     // ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
     // ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
-    ModalSiteBlockedMessage: () => import('@/components/ModalSiteBlockedMessage'),
+    ModalMessageSiteBlocked: () => import('@/components/ModalMessageSiteBlocked'),
+    ModalMessageApkDownload: () => import('@/components/ModalMessageApkDownload'),
     Intersect,
   },
   computed: {
@@ -64,7 +72,8 @@ export default {
       'modalTransferIsShow',
       'modalWinWheelIsShow',
       'modalRedEnvelopeIsShow',
-      'modalSiteBlockedMessageIsShow',
+      'modalMessageSiteBlockedIsShow',
+      'modalMessageApkDownloadIsShow',
       'isShowGoTopButton',
       'siteSetting',
       'siteFullCss',

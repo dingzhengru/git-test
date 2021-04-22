@@ -29,7 +29,8 @@ const getters = {
   modalTransferProduct: state => state.modalTransferProduct,
   modalWinWheelIsShow: state => state.modalWinWheelIsShow,
   modalRedEnvelopeIsShow: state => state.modalRedEnvelopeIsShow,
-  modalSiteBlockedMessageIsShow: state => state.modalSiteBlockedMessageIsShow,
+  modalMessageSiteBlockedIsShow: state => state.modalMessageSiteBlockedIsShow,
+  modalMessageApkDownloadIsShow: state => state.modalMessageApkDownloadIsShow,
 
   //* 橫版
   modalLangIsShow: state => state.modalLangIsShow,
