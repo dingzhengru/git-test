@@ -17,14 +17,11 @@ export default {
     ModalMessage: () => import('@/components/ModalMessage'),
   },
   computed: {
-    ...mapGetters(['siteDomainRedirect', 'siteAPKUrl']),
+    ...mapGetters(['siteAPKLink']),
   },
   methods: {
-    redirectDomain() {
-      window.location.href = `https://${this.siteDomainRedirect}`;
-    },
     downloadAPK() {
-      window.open(this.siteAPKUrl(this.siteDomainRedirect));
+      window.open(this.siteAPKLink);
     },
   },
 };

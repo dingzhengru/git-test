@@ -46,6 +46,17 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
+  /^(http|https):\/\/resource.re888show.com.*$/,
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: 'cors-re888show-static-file-catch',
+    fetchOptions: {
+      mode: 'cors',
+      credentials: 'omit',
+    },
+  })
+);
+
+workbox.routing.registerRoute(
   /^(http|https):\/\/resource.h3use.co.*$/,
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'cors-thsitea-static-file-catch',

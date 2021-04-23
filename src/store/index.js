@@ -12,8 +12,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    isLandscape: false,
-
     lang: '',
     langList: [],
     loadingList: [],
@@ -32,9 +30,6 @@ export default new Vuex.Store({
     modalContactIsShow: false,
   },
   mutations: {
-    setIsLandscape(state, boolean) {
-      state.isLandscape = boolean;
-    },
     setLang: (state, lang) => {
       loadLanguageAsync(lang);
       state.lang = lang;

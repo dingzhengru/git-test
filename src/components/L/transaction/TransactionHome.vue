@@ -27,6 +27,11 @@ export default {
     return {
       tabList: [
         {
+          route: 'TransactionWallet',
+          text: 'ui.label.wallet',
+          otherActiveRoute: [],
+        },
+        {
           route: 'TransactionDepositBase',
           text: 'transaction.nav.deposit',
           otherActiveRoute: ['TransactionDepositThirdParty', 'TransactionDepositThirdPartyPayment'],

@@ -2,7 +2,7 @@
   <AppModal @close="$emit('close')">
     <!-- <div class="modal-deposit-third-party" :style="{ width: `${width}px`, height: `${height}px` }"> -->
 
-    <div class="modal-deposit-third-party" :class="{ landscape: isLandscape }">
+    <div class="modal-deposit-third-party" :class="{ landscape: siteIsLandscape }">
       <div class="ui-box-close" @click="$emit('close')"></div>
       <iframe id="deposit-iframe" :src="src" width="100%" height="100%" v-show="!isOrderSuccess"></iframe>
       <div class="modal-deposit-third-party__content" v-show="isOrderSuccess">
@@ -40,7 +40,7 @@ export default {
     AppModal: () => import('@/components/AppModal'),
   },
   computed: {
-    ...mapGetters(['isLandscape']),
+    ...mapGetters(['siteIsLandscape']),
   },
   // methods: {
   //   setSize() {

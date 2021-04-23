@@ -20,8 +20,9 @@ export const SITE_DEFAULT_STYLE_TYPE = '01';
 
 //* API
 //* API URL
-// export const API_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:80/api';
-export const API_URL = '/api';
+//* 之後要改成 /rch3api0member
+export const API_URL = '/rch3api0member';
+// export const API_URL = '/api';
 
 //* 重新發送次數限制
 export const API_RETRY_COUNT_LIMIT = 1;

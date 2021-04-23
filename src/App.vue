@@ -17,7 +17,7 @@
         <router-view />
       </div>
 
-      <component :is="AppFooter" :isLoggedIn="userIsLoggedIn" v-if="$route.meta.footer !== false" />
+      <component :is="AppFooter" v-if="$route.meta.footer !== false" />
     </div>
 
     <AppLoading v-show="loadingList.length > 0" />
@@ -65,7 +65,6 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'isLandscape',
       'lang',
       'loadingList',
       'loadingListIncludeSiteInfo',
@@ -84,6 +83,7 @@ export default {
       'siteFaviconUrl',
       'siteAppIconUrl',
       'siteIOSUrl',
+      'siteIsLandscape',
       'userIsLoggedIn',
       'siteNoticeLinkMain',
       'modalContactIsShow',
@@ -138,7 +138,7 @@ export default {
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
 
-    if (this.isLandscape) {
+    if (this.siteIsLandscape) {
       const viewport = document.querySelector('meta[name=viewport]');
       viewport.content = 'width=device-width';
       // document.querySelector('body').style.transform = 'rotate(90deg)';
