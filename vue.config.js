@@ -5,10 +5,13 @@
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 const proxy = {
-  '/api': {
+  '/rch3api0member': {
     target: 'http://api.caza7.re888show.com',
     ws: true,
     changeOrigin: true,
+    pathRewrite: {
+      '^/rch3api0member': '/api', // rewrite path
+    },
   },
 };
 

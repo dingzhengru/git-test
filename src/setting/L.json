@@ -87,6 +87,7 @@
     "transactionRecordWithdrawalDetail": "components/Z/transaction/record/TransactionRecordWithdrawalDetail",
     "transactionRecordTransferDetail": "components/Z/transaction/record/TransactionRecordTransferDetail",
     "transactionRecordWithdrawalRestrictionDetail": "components/Z/transaction/record/TransactionRecordWithdrawalRestrictionDetail",
+    "TransactionWallet": "components/L/transaction/TransactionWallet",
     "promotion": "components/L/promotion/Promotion",
     "promotionDetail": "components/Z/promotion/PromotionDetail",
     "contact": "components/Z/contact/Contact",

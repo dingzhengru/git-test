@@ -284,6 +284,11 @@ const routes = [
           },
         ],
       },
+      {
+        path: 'wallet',
+        name: 'TransactionWallet',
+        component: () => import('@/views/transaction/TransactionWallet'),
+      },
     ],
   },
   {
