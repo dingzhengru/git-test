@@ -27,7 +27,7 @@ export default {
       'userIsLoggedIn',
       'userGamePointById',
       'siteWalletType',
-      'isLandscape',
+      'siteIsLandscape',
       'siteIsWalletTypeNoTransfer',
     ]),
     productClassify() {
@@ -283,7 +283,7 @@ export default {
     },
     async openGame(game) {
       if (!this.userIsLoggedIn) {
-        if (this.isLandscape) {
+        if (this.siteIsLandscape) {
           return this.$store.dispatch('openModalAuth');
         }
         return this.$router.push({ name: 'Login' });
@@ -351,7 +351,7 @@ export default {
     },
   },
   async mounted() {
-    if (this.isShowJackpot && !this.isLandscape) {
+    if (this.isShowJackpot && !this.siteIsLandscape) {
       this.getJackpotTotal();
       this.intervalJackpot = window.setInterval(() => {
         this.getJackpotTotal();

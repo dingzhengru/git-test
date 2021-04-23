@@ -9,7 +9,7 @@ router.beforeEach(async (to, from, next) => {
     store.commit('setPageTitle', '');
   }
   if (to.matched.some(item => item.meta.auth === true) && !isLoggedIn) {
-    if (store.getters.isLandscape) {
+    if (store.getters.siteIsLandscape) {
       return store.dispatch('openModalAuth');
     }
     next({ name: 'Login' });

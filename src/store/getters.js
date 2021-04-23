@@ -1,8 +1,6 @@
 import { API_URL } from '@/settings';
 
 const getters = {
-  isLandscape: state => state.isLandscape,
-
   lang: state => state.lang,
   langList: state => state.langList,
   langName: state =>
@@ -69,6 +67,10 @@ const getters = {
   siteIsMultiStyle: state => state.site.info.MultiStyle,
   siteMultiStyleId: state => state.site.info.Lst_MultiStyleID,
   siteWalletType: state => state.site.info.WalletType,
+  siteIsPortrait: state => state.site.info.IsPortrait,
+  siteAPKLink: state => state.site.info.APKLink,
+
+  siteIsLandscape: state => !state.site.info.IsPortrait,
   siteIsWalletTypeNoTransfer: state => state.site.info.WalletType === 2,
   siteNoticeLinkMain: (state, getters) => {
     return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 1) : {};
@@ -133,10 +135,10 @@ const getters = {
   siteLotteryButtonBgRedEnvelope: (state, getters) => {
     return `${getters.siteResourceUrl}/imgs/ad/luckyDraw.png`;
   },
-  siteAPKUrl: (state, getters) => site => {
-    site = site.replace('.', '');
-    return `${getters.siteRemoteCSSUrl}/APP/${getters.siteMainDomain}/${site}.apk`;
-  },
+  // siteAPKUrl: (state, getters) => site => {
+  //   site = site.replace('.', '');
+  //   return `${getters.siteRemoteCSSUrl}/APP/${getters.siteMainDomain}/${site}.apk`;
+  // },
   //* site.seo
   siteSeo: state => state.site.seo,
   siteSeoList: state => state.site.seo.SeoList,

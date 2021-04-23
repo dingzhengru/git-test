@@ -1,8 +1,8 @@
 <template>
   <AppModal>
     <div class="modal-message">
-      <div class="modal-message__inner">
-        <div class="ui-box-close" @click="$emit('close')"></div>
+      <div class="ui-box-close" @click="$emit('close')"></div>
+      <div class="modal-message__container">
         <img :src="warningIcon" alt="" width="87" height="87" />
         <slot></slot>
       </div>
@@ -26,23 +26,22 @@ export default {
 
 <style lang="scss" scoped>
 .modal-message {
-  width: 100%;
-  margin: 0 auto;
+  width: 80vw;
+  background: #fff;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   position: relative;
   z-index: 5;
 
-  &__inner {
-    position: relative;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
-    width: 80%;
-    min-height: 15vh;
-    padding: 75px 25px;
-    margin: 0 auto;
-    background-color: #fff;
+  &__container {
+    width: 100%;
+    min-height: 40vh;
+    max-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 30px 0;
+    overflow-y: auto;
   }
 }
 </style>
