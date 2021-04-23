@@ -1,2 +1,29 @@
-@mixin wallet {
+@mixin transaction-wallet {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  &__wallet {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+
+    > div,
+    > button {
+      margin-right: 5px;
+    }
+  }
+
+  &__product {
+    display: flex;
+    flex-wrap: wrap;
+    &__item {
+      border: 1px solid gray;
+      padding: 5px;
+      margin: 0 10px 10px 0;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 }
