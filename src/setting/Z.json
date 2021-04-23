@@ -6,6 +6,7 @@
       "AppFooter": "components/Z/footer/AppFooter",
       "AppLotteryButtonBlock": "components/Z/AppLotteryButtonBlock",
       "AppGoTopButton": "components/AppGoTopButton",
+      "ModalTransfer": "components/Z/ModalTransfer",
       "ModalRedEnvelope": "components/Z/ModalRedEnvelope",
       "ModalWinWheel": "components/Z/ModalWinWheel"
     },

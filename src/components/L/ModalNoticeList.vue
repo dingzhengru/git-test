@@ -17,7 +17,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'ModalUserChangePassword',
+  name: 'ModalNoticeList',
   components: {
     AppModal: () => import('@/components/AppModal'),
   },

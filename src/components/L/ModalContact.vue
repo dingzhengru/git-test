@@ -215,7 +215,6 @@ export default {
   },
   methods: {
     closeModal() {
-      this.$store.dispatch('closeModalContact');
       this.$emit('close');
     },
   },

@@ -2,6 +2,7 @@
   "components": {
     "app": {
       "AppHeader": "components/L/header/AppHeader",
+      "ModalTransfer": "components/L/ModalTransfer",
       "ModalRedEnvelope": "components/Z/ModalRedEnvelope",
       "ModalWinWheel": "components/Z/ModalWinWheel",
       "ModalContact": "components/L/ModalContact"

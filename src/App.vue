@@ -23,9 +23,17 @@
     <AppLoading v-show="loadingList.length > 0" />
 
     <div v-if="userIsLoggedIn">
-      <ModalTransfer v-if="modalTransferIsShow" />
-      <component :is="ModalWinWheel" v-if="modalWinWheelIsShow" />
-      <component :is="ModalRedEnvelope" v-if="modalRedEnvelopeIsShow" />
+      <component :is="ModalTransfer" v-if="modalTransferIsShow" @close="$store.dispatch('closeModalTransfer')" />
+      <component
+        :is="ModalWinWheel"
+        v-if="modalWinWheelIsShow"
+        @close="$store.commit('setModalWinWheelIsShow', false)"
+      />
+      <component
+        :is="ModalRedEnvelope"
+        v-if="modalRedEnvelopeIsShow"
+        @close="$store.commit('setModalRedEnvelopeIsShow', false)"
+      />
     </div>
 
     <component :is="AppLotteryButtonBlock" v-show="siteIsActive && userIsLoggedIn" />
@@ -39,7 +47,7 @@
       @close="$store.commit('setModalMessageApkDownloadIsShow', false)"
     />
 
-    <component :is="ModalContact" v-if="modalContactIsShow" />
+    <component :is="ModalContact" v-if="modalContactIsShow" @close="$store.dispatch('closeModalContact')" />
   </div>
 </template>
 
@@ -56,7 +64,7 @@ export default {
   components: {
     AppLoading: () => import('@/components/AppLoading'),
     AppGoTopButton: () => import('@/components/AppGoTopButton'),
-    ModalTransfer: () => import('@/components/ModalTransfer'),
+    // ModalTransfer: () => import('@/components/ModalTransfer'),
     // ModalWinWheel: () => import('@/components/lottery/ModalWinWheel'),
     // ModalRedEnvelope: () => import('@/components/lottery/ModalRedEnvelope'),
     ModalMessageSiteBlocked: () => import('@/components/ModalMessageSiteBlocked'),
@@ -112,6 +120,12 @@ export default {
     AppGoTopButton() {
       if (this.siteSetting.components.app.AppGoTopButton) {
         return () => import(`@/${this.siteSetting.components.app.AppGoTopButton}`);
+      }
+      return '';
+    },
+    ModalTransfer() {
+      if (this.siteSetting.components.app.ModalTransfer) {
+        return () => import(`@/${this.siteSetting.components.app.ModalTransfer}`);
       }
       return '';
     },

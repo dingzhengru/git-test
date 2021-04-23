@@ -71,6 +71,10 @@ body {
   @include ui-no-data;
 }
 
+.modal-transfer {
+  @include modal-transfer;
+}
+
 .modal-notice {
   @include modal-notice;
 }

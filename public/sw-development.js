@@ -4,7 +4,7 @@ workbox.setConfig({ debug: false });
 
 //* API Cache
 workbox.routing.registerRoute(
-  ({ url }) => url.pathname.startsWith('/api'),
+  ({ url }) => url.pathname.startsWith('/rch3api0member'),
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'api-cache',
     plugins: [

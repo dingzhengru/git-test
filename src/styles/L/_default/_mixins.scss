@@ -353,6 +353,13 @@
   padding: 30px 0;
 }
 
+@mixin modal-transfer {
+  width: 70vw;
+  height: 70vh;
+  background: white;
+  position: relative;
+}
+
 @mixin modal-notice {
   width: 70vw;
   height: 70vh;

@@ -114,7 +114,6 @@ export default {
       }
     },
     closeWinWheel() {
-      this.$store.commit('setModalWinWheelIsShow', false);
       this.wheelBillNo = '';
       this.wheelGameChance = '';
       this.wheelGamePrize = '';
@@ -126,6 +125,8 @@ export default {
 
       //* 更新用戶點數
       this.$store.dispatch('user/getPointInfo');
+
+      this.$emit('close');
     },
   },
   watch: {

@@ -15,7 +15,12 @@
       </button>
     </div>
     <div class="transaction-wallet__product">
-      <div class="transaction-wallet__product__item" v-for="item in userGamePointList" :key="item.Product_id">
+      <div
+        class="transaction-wallet__product__item"
+        v-for="item in userGamePointList"
+        :key="item.Product_id"
+        @click="$store.dispatch('openModalTransfer', item)"
+      >
         <div class="transaction-wallet__product__item__name">{{ item.Product_Name }}</div>
         <div class="transaction-wallet__product__item__amount">{{ $numeral(item.Point).format('0,0.00') }}</div>
       </div>
