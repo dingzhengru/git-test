@@ -57,7 +57,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  /^(http|https):\/\/resource.h3use.co.*$/,
+  /^(http|https):\/\/resource2.h3use.co.*$/,
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'cors-thsitea-static-file-catch',
     fetchOptions: {
