@@ -51,28 +51,28 @@
 
       <div class="ui-field withdrawal__field">
         <div class="ui-field__group">
-          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bankName') }}</label>
+          <label class="ui-field__group__label">{{ $t('ui.label.bankName') }}</label>
           <span class="ui-field__group__text">{{ bank.Lst_Bank_name }}</span>
         </div>
       </div>
 
       <div class="ui-field withdrawal__field">
         <div class="ui-field__group">
-          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bankAccount') }}</label>
+          <label class="ui-field__group__label">{{ $t('ui.label.bankAccount') }}</label>
           <span class="ui-field__group__text">{{ bank.Lst_BankAccount }}</span>
         </div>
       </div>
 
       <div class="ui-field withdrawal__field">
         <div class="ui-field__group">
-          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bankBranch') }}</label>
+          <label class="ui-field__group__label">{{ $t('ui.label.bankBranch') }}</label>
           <span class="ui-field__group__text">{{ bank.Lst_Bank_Branches }}</span>
         </div>
       </div>
 
       <div class="ui-field withdrawal__field">
         <div class="ui-field__group">
-          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bankAccountName') }}</label>
+          <label class="ui-field__group__label">{{ $t('ui.label.bankAccountName') }}</label>
           <span class="ui-field__group__text">{{ withdrawalInfo.Add_RealName }}</span>
         </div>
       </div>

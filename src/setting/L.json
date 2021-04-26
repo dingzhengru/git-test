@@ -28,6 +28,7 @@
       "ModalUserMailDetail": "components/L/user/ModalUserMailDetail",
       "ModalUserChangePassword": "components/L/user/ModalUserChangePassword",
       "ModalUserChangePasswordWithdrawal": "components/L/user/ModalUserChangePasswordWithdrawal",
+      "ModalUserBank": "components/L/user/ModalUserBank",
       "AppNavTab": "components/Z/AppNavTab",
       "PanelTabs": "components/L/PanelTabs",
       "ModalNoticeList": "components/L/ModalNoticeList"

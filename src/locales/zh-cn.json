@@ -19,9 +19,14 @@
       "underMaintenance": "维护中",
       "promotion": "优惠活动",
       "transactionNumber": "交易编号",
-      "news": "最新消息"
+      "news": "最新消息",
+      "bankName": "银行名称",
+      "bankAccount": "银行帐号",
+      "bankBranch": "支行名称",
+      "bankAccountName": "银行户名"
     },
     "button": {
+      "save": "保存",
       "confirm": "确认",
       "submit": "提交",
       "send": "送出",
@@ -546,6 +551,9 @@
       "step": {
         "bank": "银行资料",
         "basic": "基本资料"
+      },
+      "button": {
+        "bankAdd": "新增银行卡"
       }
     },
     "changePassword": {
@@ -674,10 +682,6 @@
         "currency": "币别",
         "wallet": "我的钱包额度",
         "amount": "取款金额",
-        "bankName": "银行名称",
-        "bankAccount": "银行帐号",
-        "bankBranch": "支行名称",
-        "bankAccountName": "银行户名",
         "password": "取款密碼"
       },
       "placeholder": {

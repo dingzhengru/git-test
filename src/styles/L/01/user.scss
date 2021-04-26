@@ -37,6 +37,10 @@ $user-change-password-btn-bg-reset: #caad76;
 $user-change-password-btn-color-reset: black;
 $user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
+.user-bank {
+  @include user-bank;
+}
+
 .user-change-password {
   @include user-change-password;
 }

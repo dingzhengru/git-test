@@ -19,9 +19,14 @@
       "underMaintenance": "ปิดปรับปรุง",
       "promotion": "โปรโมชั่น",
       "transactionNumber": "หมายเลขบิล",
-      "news": "ข่าวล่าสุด"
+      "news": "ข่าวล่าสุด",
+      "bankName": "ธนาคาร",
+      "bankAccount": "เลขที่บัญชี",
+      "bankBranch": "สาขา",
+      "bankAccountName": "ชื่อบัญชี"
     },
     "button": {
+      "save": "จัดเก็บ",
       "confirm": "ยืนยัน",
       "submit": "ส่ง",
       "send": "ส่ง",
@@ -548,6 +553,9 @@
       "step": {
         "bank": "ข้อมูลธนาคาร",
         "basic": "ข้อมูลพื้นฐาน"
+      },
+      "button": {
+        "bankAdd": "เพิ่มธนาคาร"
       }
     },
     "changePassword": {
@@ -676,10 +684,6 @@
         "currency": "สกุลเงิน",
         "wallet": "ยอดเงินในกระเป๋าเงิน",
         "amount": "ยอดเงินที่ถอน",
-        "bankName": "ธนาคาร",
-        "bankAccount": "เลขที่บัญชี",
-        "bankBranch": "สาขา",
-        "bankAccountName": "ชื่อบัญชี",
         "password": "รหัสถอนเงินเว็บไซต์"
       },
       "placeholder": {

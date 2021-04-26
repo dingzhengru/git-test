@@ -19,9 +19,14 @@
       "underMaintenance": "Maintenance",
       "promotion": "Promotions",
       "transactionNumber": "Transaction No.",
-      "news": "News"
+      "news": "News",
+      "bankName": "Name of Bank",
+      "bankAccount": "Bank Account",
+      "bankBranch": "Name of Branch",
+      "bankAccountName": "Account Name of Bank"
     },
     "button": {
+      "save": "Save",
       "confirm": "Confirmation",
       "submit": "Submit",
       "send": "Send",
@@ -550,6 +555,9 @@
       "step": {
         "bank": "Bank information",
         "basic": "Basic information"
+      },
+      "button": {
+        "bankAdd": "Add bank"
       }
     },
     "changePassword": {
@@ -678,10 +686,6 @@
         "currency": "Specific Currency",
         "wallet": "wallet balance",
         "amount": "Withdrawal Amount",
-        "bankName": "Name of Bank",
-        "bankAccount": "Bank Account",
-        "bankBranch": "Name of Branch",
-        "bankAccountName": "Account Name of Bank",
         "password": "Password for Withdrawal"
       },
       "placeholder": {

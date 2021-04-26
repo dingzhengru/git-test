@@ -236,6 +236,7 @@
             <div class="user-profile__title__icon user-profile__title__icon--bank"></div>
             <div class="user-profile__title__text user-profile__title__text--bank">
               {{ $t('user.profile.step.bank') }}
+              <button type="button" @click="isShowModalUserBank = true">{{ $t('user.profile.button.bankAdd') }}</button>
             </div>
           </div>
 
@@ -436,6 +437,7 @@
       @close="isShowModalChangePasswordWithdrawal = false"
       v-if="isShowModalChangePasswordWithdrawal"
     />
+    <component :is="ModalUserBank" @close="isShowModalUserBank = false" v-if="isShowModalUserBank" />
 
     <component
       :is="ModalNoticeList"
@@ -475,9 +477,13 @@ export default {
     ModalUserChangePasswordWithdrawal() {
       return () => import(`@/${this.siteSetting.components.user.ModalUserChangePasswordWithdrawal}`);
     },
+    ModalUserBank() {
+      return () => import(`@/${this.siteSetting.components.user.ModalUserBank}`);
+    },
     ModalNoticeList() {
       return () => import(`@/${this.siteSetting.components.user.ModalNoticeList}`);
     },
+    // bankAddData() {},
   },
   data() {
     return {
@@ -485,6 +491,7 @@ export default {
       isShowModalChangePasswordWithdrawal: false,
       isShowModalNoticeChangePassword: false,
       isShowModalNoticeChangePasswordWithdrawal: false,
+      isShowModalUserBank: false,
 
       noticeListChangePassword: [
         'user.changePassword.notice.suggest',
