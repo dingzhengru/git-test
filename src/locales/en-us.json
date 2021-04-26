@@ -295,8 +295,7 @@
       "invalid": "The bank account has been used."
     },
     "Add_BankId2": {
-      "title": "Name of Bank 2",
-      "placeholder": "Please select"
+      "placeholder": "Name of Bank 2"
     },
     "Add_BankBranchName2": {
       "placeholder": "Branch Name 2"
@@ -306,8 +305,7 @@
       "invalid": "The bank account has been used."
     },
     "Add_BankId3": {
-      "title": "Name of Bank 3",
-      "placeholder": "Please select"
+      "placeholder": "Name of Bank 3"
     },
     "Add_BankBranchName3": {
       "placeholder": "Branch Name 3"

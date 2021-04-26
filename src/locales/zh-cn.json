@@ -292,8 +292,7 @@
       "invalid": "银行账号已存在"
     },
     "Add_BankId2": {
-      "title": "银行名称2",
-      "placeholder": "请选择银行名称"
+      "placeholder": "银行名称2"
     },
     "Add_BankBranchName2": {
       "placeholder": "支行名称2"
@@ -303,8 +302,7 @@
       "invalid": "银行账号已存在"
     },
     "Add_BankId3": {
-      "title": "银行名称3",
-      "placeholder": "请选择银行名称"
+      "placeholder": "银行名称3"
     },
     "Add_BankBranchName3": {
       "placeholder": "支行名称3"

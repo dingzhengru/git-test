@@ -32,7 +32,7 @@
             :name="field.name"
             v-model="field.value"
             v-if="field.type != 'select'"
-            @change="changeField(field, invalid)"
+            @change="checkField(field, invalid)"
           />
 
           <select

@@ -36,7 +36,7 @@
               :min="field.min"
               :max="field.max"
               v-model="field.value"
-              @change="changeField(field, invalid)"
+              @change="checkField(field, invalid)"
               v-if="field.type !== 'select' && field.isModifiable"
             />
 
@@ -49,7 +49,7 @@
               :max="field.max"
               :readonly="!field.isModifiable"
               :value="field.value"
-              @change="changeField(field, invalid)"
+              @change="checkField(field, invalid)"
               v-else-if="field.type !== 'select' && !field.isModifiable"
             />
 

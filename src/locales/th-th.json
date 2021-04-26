@@ -293,8 +293,7 @@
       "invalid": "มีการใช้บัญชีธนาคาร"
     },
     "Add_BankId2": {
-      "title": "ธนาคาร 2",
-      "placeholder": "โปรดเลือก"
+      "placeholder": "ธนาคาร 2"
     },
     "Add_BankBranchName2": {
       "placeholder": "สาขาธนาคาร 2"
@@ -304,8 +303,7 @@
       "invalid": "มีการใช้บัญชีธนาคาร"
     },
     "Add_BankId3": {
-      "title": "ธนาคาร 3",
-      "placeholder": "โปรดเลือก"
+      "placeholder": "ธนาคาร 3"
     },
     "Add_BankBranchName3": {
       "placeholder": "สาขาธนาคาร 3"

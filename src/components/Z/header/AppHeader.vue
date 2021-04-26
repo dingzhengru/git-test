@@ -31,7 +31,10 @@ export default {
   computed: {
     ...mapGetters(['pageTitle', 'siteSetting', 'siteLogoUrl', 'siteIsActive', 'userIsLoggedIn']),
     AppHeaderMenu() {
-      return () => import(`@/${this.siteSetting.components.header.AppHeaderMenu}`);
+      if (this.siteSetting.components.header.AppHeaderMenu) {
+        return () => import(`@/${this.siteSetting.components.header.AppHeaderMenu}`);
+      }
+      return '';
     },
   },
   methods: {
