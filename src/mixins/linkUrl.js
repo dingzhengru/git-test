@@ -5,7 +5,7 @@
 export default {
   name: 'MixinLinkUrl',
   methods: {
-    goLinkUrlByTypeAndUrl(type, url, target = '_self') {
+    goLinkUrlByTypeAndUrl(type, url, target = '_blank') {
       if (type === 1) {
         window.open(url, target);
       } else if (type === 2) {
@@ -15,7 +15,7 @@ export default {
         this.$router.push({ name: 'GameLobby', params: { classify, id, key } });
       }
     },
-    goLinkUrlByPromotion(type, url, target = '_self') {
+    goLinkUrlByPromotion(type, url, target = '_blank') {
       //* 優惠活動多一個 0 會進 detail
       if (type === 1) {
         window.open(url, target);
