@@ -103,11 +103,8 @@ export default new Vuex.Store({
       commit('setModalTransferIsShow', true);
     },
     closeModalTransfer({ commit }) {
+      commit('setModalTransferProduct', {});
       commit('setModalTransferIsShow', false);
-
-      setTimeout(() => {
-        commit('setModalTransferProduct', {});
-      }, 500);
     },
     openModalLang({ commit }) {
       commit('setModalLangIsShow', true);

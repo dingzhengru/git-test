@@ -14,6 +14,7 @@ export default {
       'productById',
     ]),
     productPointCurrent() {
+      console.log(this.modalTransferProduct);
       if (this.$isObjEmpty(this.modalTransferProduct)) {
         return {};
       }
@@ -89,18 +90,12 @@ export default {
       this.resetForm();
     },
   },
-  watch: {
-    async isShow() {
-      if (!this.isShow) {
-        return;
-      }
+  async mounted() {
+    const requestData = { Add_Destination: [this.productPointCurrent.Product_id] };
+    const result = await apiGetProductPromotionList(requestData);
 
-      const requestData = { Add_Destination: [this.productPointCurrent.Product_id] };
-      const result = await apiGetProductPromotionList(requestData);
-
-      if (result.Code === 200) {
-        this.promotionList = result.RetObj.ActivityList;
-      }
-    },
+    if (result.Code === 200) {
+      this.promotionList = result.RetObj.ActivityList;
+    }
   },
 };

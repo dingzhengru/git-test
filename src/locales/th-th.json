@@ -11,6 +11,7 @@
       "subject": "หัวข้อ",
       "content": "รายละเอียด",
       "amount": "จำนวน",
+      "transferAmount": "จำนวนเงินโอน",
       "other": "อื่นๆ",
       "pleaseSelect": "โปรดเลือก",
       "noData": "ไม่พบข้อมูล",
@@ -21,6 +22,7 @@
       "news": "ข่าวล่าสุด"
     },
     "button": {
+      "confirm": "ยืนยัน",
       "submit": "ส่ง",
       "send": "ส่ง",
       "reset": "ตั้งค่าใหม่",

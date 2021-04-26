@@ -358,6 +358,25 @@
   height: 70vh;
   background: white;
   position: relative;
+
+  &__container {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    overflow-y: auto;
+  }
+
+  &__field {
+    margin-bottom: 15px;
+  }
 }
 
 @mixin modal-notice {

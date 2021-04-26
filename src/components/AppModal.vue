@@ -23,6 +23,6 @@ export default {};
   top: 0;
   margin: 0;
   background-color: rgba(#000, 0.6);
-  z-index: 9999;
+  z-index: 999;
 }
 </style>

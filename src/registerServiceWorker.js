@@ -2,7 +2,10 @@ import { register } from 'register-service-worker';
 
 let SW_FILE = '/sw.js';
 
-if (process.env.NODE_ENV === 'development') {
+//* 開發環境就不啟用
+if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
+  SW_FILE = '';
+} else if (process.env.NODE_ENV === 'development') {
   SW_FILE = '/sw-development.js';
 } else if (process.env.NODE_ENV === 'release') {
   SW_FILE = '/sw-release.js';

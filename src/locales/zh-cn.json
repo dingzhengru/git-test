@@ -11,6 +11,7 @@
       "subject": "主旨",
       "content": "内容",
       "amount": "金额",
+      "transferAmount": "转帐金额",
       "other": "其它",
       "pleaseSelect": "请选择",
       "noData": "尚无资料",
@@ -21,6 +22,7 @@
       "news": "最新消息"
     },
     "button": {
+      "confirm": "确认",
       "submit": "提交",
       "send": "送出",
       "reset": "重设",
