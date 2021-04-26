@@ -9,7 +9,7 @@
 
 @mixin home-banner {
   width: 100%;
-  height: $home-banner-height; // 432px
+  // height: $home-banner-height; // 432px
 
   .swiper-lazy-preloader {
     border: 4px solid $home-banner-preloader-color;
