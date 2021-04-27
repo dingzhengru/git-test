@@ -4,7 +4,7 @@
 .home {
   @include home;
 
-  padding: 0;
+  padding-bottom: 0;
 }
 
 $home-banner-height: 432px;
