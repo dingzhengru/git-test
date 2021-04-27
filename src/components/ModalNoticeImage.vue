@@ -1,8 +1,11 @@
 <template>
-  <AppModal @click.native="$emit('close')">
+  <AppModal @click.native="$emit('close')" :class="{ landscape: siteIsLandscape }">
     <div class="modal-notice-image">
       <div class="ui-box-close" @click="$emit('close')"></div>
-      <img :src="image" alt="" @click.stop="imageClickHandler" />
+
+      <div class="modal-notice-image__container" :class="{ landscape: siteIsLandscape }">
+        <img :src="image" alt="" @click.stop="imageClickHandler" />
+      </div>
     </div>
   </AppModal>
 </template>
@@ -28,7 +31,7 @@ export default {
     AppModal: () => import('@/components/AppModal'),
   },
   computed: {
-    ...mapGetters(['siteDepositNoticeUrl', 'siteNoticeLinkMain', 'siteNoticeLinkDeposit']),
+    ...mapGetters(['siteDepositNoticeUrl', 'siteNoticeLinkMain', 'siteNoticeLinkDeposit', 'siteIsLandscape']),
   },
   methods: {
     imageClickHandler() {
@@ -57,16 +60,15 @@ export default {
 <style lang="scss" scoped>
 .modal-notice-image {
   position: relative;
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   img {
-    max-width: 90%;
-    max-height: 90%;
+    max-height: 90vh;
+  }
+
+  &.landscape {
+    img {
+      max-height: 90vw;
+    }
   }
 }
 </style>
