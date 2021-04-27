@@ -354,8 +354,8 @@
 }
 
 @mixin modal-transfer {
-  width: 70vw;
-  height: 70vh;
+  width: 70%;
+  height: 70%;
   background: white;
   position: relative;
 
@@ -380,8 +380,8 @@
 }
 
 @mixin modal-notice {
-  width: 70vw;
-  height: 70vh;
+  width: 70%;
+  height: 80%;
   background: white;
   position: relative;
 
@@ -396,28 +396,32 @@
 @mixin service-term {
   background: $service-term-bg;
   color: $service-term-color;
-  width: 80vw;
-  height: auto;
+  width: 80%;
+  height: 90%;
   padding: 15px 30px;
   border: 1px solid #c1ae71;
   border-radius: 5px;
   position: relative;
 
+  display: flex;
+  flex-direction: column;
+
   &__container {
-    height: 50vh;
+    flex-grow: 1;
+    // height: 50%;
     // height: calc(90vh - #{$btn-height} - 160px);
     overflow-y: auto;
     margin-bottom: 30px;
   }
 
   &__title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
   }
 
   &__sub-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   &__body {

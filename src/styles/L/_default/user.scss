@@ -117,8 +117,8 @@
 }
 
 @mixin user-bank {
-  width: 60vw;
-  height: 70vh;
+  width: 60%;
+  height: 70%;
   background: white;
   position: relative;
 
@@ -143,8 +143,8 @@
 }
 
 @mixin user-change-password {
-  width: 50vw;
-  height: 70vh;
+  width: 50%;
+  height: 70%;
   background: white;
   position: relative;
 
@@ -240,8 +240,8 @@
 }
 
 @mixin user-mail-detail {
-  width: 70vw;
-  height: 90vh;
+  width: 70%;
+  height: 90%;
   background: white;
   position: relative;
 

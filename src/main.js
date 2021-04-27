@@ -49,6 +49,8 @@ Vue.prototype.$dayjs = dayjs;
 Vue.prototype.$numeral = numeral;
 Vue.prototype.$idMapper = idMapper;
 
+Vue.prototype.$env = process.env.NODE_ENV;
+Vue.prototype.$isLocalhost = window.location.hostname === 'localhost';
 Vue.prototype.$isObjEmpty = isObjEmpty;
 Vue.prototype.$deepClone = deepClone;
 Vue.prototype.$getObjectValueByDotString = getObjectValueByDotString;
@@ -221,9 +223,9 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
-    const siteClass = 'Z';
+    const siteClass = 'L';
     const siteType = '01';
-    const isLandscape = false;
+    const isLandscape = true;
     console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
     store.commit('site/setInfoStyle', { siteClass, siteType });

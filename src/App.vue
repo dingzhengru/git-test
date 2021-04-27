@@ -1,13 +1,13 @@
 <template>
-  <div id="app" :lang="lang" :class="lang">
+  <div id="app" :lang="lang" :class="[lang, { landscape: siteIsLandscape && !$isLocalhost }]">
     <intersect
       @enter="$store.commit('setIsShowGoTopButton', false)"
       @leave="$store.commit('setIsShowGoTopButton', true)"
     >
-      <div></div>
+      <div class="intersect-top"></div>
     </intersect>
 
-    <div v-if="!loadingListIncludeSiteInfo">
+    <template v-if="!loadingListIncludeSiteInfo">
       <template v-if="$route.meta.header !== false">
         <component :is="AppHeader" @changeLang="changeLang" @logout="$store.dispatch('user/logout')"></component>
         <component :is="AppHeaderSub" v-if="(!userIsLoggedIn && this.$route.name === 'Home') || userIsLoggedIn" />
@@ -18,7 +18,7 @@
       </div>
 
       <component :is="AppFooter" v-if="$route.meta.footer !== false" />
-    </div>
+    </template>
 
     <AppLoading v-show="loadingList.length > 0" />
 

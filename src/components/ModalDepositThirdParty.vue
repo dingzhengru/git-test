@@ -68,8 +68,8 @@ export default {
   align-items: center;
 
   &.landscape {
-    width: 90vh;
-    height: 90vw;
+    // width: 90vh;
+    // height: 90vw;
     transform: rotate(-90deg);
   }
 

@@ -81,6 +81,33 @@ hotfix(由 master 分支，馬上修正 bug)
 
 #### css 強制調整
 
+參考: https://stackoverflow.com/a/35856390/5134658
+
+然後將所有 vw, vh 互換，width: xx vw => width: xx vh，height: xx vh => height: x vw
+
+```css
+body {
+  margin: 0;
+  overflow: hidden;
+}
+.wrapper {
+  transform: rotate(90deg);
+  transform-origin: bottom left;
+
+  position: absolute;
+  top: -100vw;
+  left: 0;
+
+  height: 100vw;
+  width: 100vh;
+
+  background-color: #000;
+  color: #fff;
+
+  overflow: auto;
+}
+```
+
 ## 其他
 
 ### 合併分支時忽略部分文件

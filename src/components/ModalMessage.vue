@@ -1,8 +1,8 @@
 <template>
   <AppModal>
-    <div class="modal-message">
+    <div class="modal-message" :class="{ landscape: siteIsLandscape }">
       <div class="ui-box-close" @click="$emit('close')"></div>
-      <div class="modal-message__container">
+      <div class="modal-message__container" :class="{ landscape: siteIsLandscape }">
         <img :src="warningIcon" alt="" width="87" height="87" />
         <slot></slot>
       </div>
@@ -11,12 +11,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: 'ModalMessage',
   components: {
     AppModal: () => import('@/components/AppModal'),
   },
   computed: {
+    ...mapGetters(['siteIsLandscape']),
     warningIcon() {
       return require('@/assets/common/ui/warning-icon.png');
     },
@@ -26,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .modal-message {
-  width: 80vw;
+  width: 80%;
   background: #fff;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -42,6 +44,11 @@ export default {
     align-items: center;
     padding: 30px 0;
     overflow-y: auto;
+
+    &.landscape {
+      min-height: 40vw;
+      max-height: 90vw;
+    }
   }
 }
 </style>
