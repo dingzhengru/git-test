@@ -1,0 +1,134 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/game';
+
+$game-lobby-bg: none;
+
+.game-lobby {
+  @include game-lobby;
+
+  padding-top: 0;
+
+  &-auth {
+    padding-top: $header-sub-height-auth;
+  }
+}
+
+$game-lobby-jackpot-bg-en-us: assetPath('game-lobby/bg_jackpot.png') center no-repeat;
+$game-lobby-jackpot-bg-th-th: assetPath('game-lobby/bg_jackpot.png') center no-repeat;
+$game-lobby-jackpot-bg-zh-cn: assetPath('game-lobby/bg_jackpot.png') center no-repeat;
+$game-lobby-jackpot-text-color: white;
+$game-lobby-jackpot-text-bg: white;
+
+.game-lobby-jackpot {
+  @include game-lobby-jackpot;
+}
+
+$game-lobby-product-bg: #cbaa6d;
+$game-lobby-product-item-bg-active: #462b16;
+$game-lobby-product-icon-width: 90px;
+$game-lobby-product-icon-height: 50px;
+$game-lobby-product-item-color: white;
+$game-lobby-product-item-color-active: white;
+$game-lobby-product-border-arrow-color: #462b16;
+
+.game-lobby-product {
+  @include game-lobby-product;
+}
+
+$game-lobby-category-bg: #462b16;
+$game-lobby-category-text-color: #959595;
+$game-lobby-category-text-color-active: #cbaa6d;
+
+.game-lobby-category {
+  @include game-lobby-category;
+}
+
+$game-lobby-search-bg: none;
+
+$game-lobby-search-input-width: 255px;
+$game-lobby-search-input-color: white;
+$game-lobby-search-input-bg: #444444;
+$game-lobby-search-input-height: 53px;
+
+$game-lobby-search-icon-bg: assetPath('game-lobby/bg_lnk_inquire.png') center no-repeat;
+$game-lobby-search-icon-width: 53px;
+$game-lobby-search-icon-height: 54px;
+
+$game-lobby-search-fav-bg: assetPath('game-lobby/ipt_favorites.png') center no-repeat;
+$game-lobby-search-fav-width: 56px;
+$game-lobby-search-fav-height: 59px;
+
+$game-lobby-search-transfer-bg: assetPath('game-lobby/btnTrans.png') #ccaf78 left center no-repeat;
+$game-lobby-search-transfer-icon-width: 59px;
+$game-lobby-search-transfer-icon-height: 59px;
+$game-lobby-search-transfer-color: white;
+$game-lobby-search-transfer-width: 240px;
+$game-lobby-search-transfer-height: 59px;
+
+.game-lobby-search {
+  @include game-lobby-search;
+
+  &__btn {
+    &--transfer {
+      border-radius: 10px;
+    }
+  }
+}
+
+$game-lobby-list-table-bg: none;
+$game-lobby-list-table-tr-bg: none;
+$game-lobby-list-table-tr-border-bottom: 2px solid #e0e0e0;
+
+$game-lobby-list-table-title-color: black;
+$game-lobby-list-table-content-color: black;
+
+$game-lobby-list-link-bg-start: assetPath('game-lobby/btn_start.png') no-repeat;
+$game-lobby-list-link-bg-free: assetPath('game-lobby/btn_freeplay.png') no-repeat;
+$game-lobby-list-link-bg-fav: assetPath('game-lobby/btn_favorites.png') no-repeat;
+$game-lobby-list-link-bg-fav-active: assetPath('game-lobby/btn_favorites_active.png') no-repeat;
+
+.game-lobby-list {
+  @include game-lobby-list;
+}
+$game-lobby-list-icon-item-img-height: 180px;
+$game-lobby-list-icon-item-text-color: black;
+
+.game-lobby-list-icon {
+  @include game-lobby-list-icon;
+}
+
+$game-transfer-dialog-bg: white;
+$game-transfer-dialog-border: 1px solid #c1ae71;
+
+$game-transfer-dialog-header-bg: white;
+$game-transfer-dialog-title-color: black;
+$game-transfer-dialog-label-color: #c6a96d;
+$game-transfer-dialog-wallet-color: black;
+$game-transfer-dialog-amount-color: black;
+
+$game-transfer-dialog-switch-width: 271px;
+$game-transfer-dialog-switch-color: #686868;
+$game-transfer-dialog-switch-color-active: black;
+$game-transfer-dialog-switch-left: assetPath('ui/lnk-trans.png') transparent left no-repeat;
+$game-transfer-dialog-switch-left-on: assetPath('ui/lnk-trans-on.png') transparent left no-repeat;
+$game-transfer-dialog-switch-right: assetPath('ui/lnk-trans2.png') transparent right no-repeat;
+$game-transfer-dialog-switch-right-on: assetPath('ui/lnk-trans2-on.png') transparent right no-repeat;
+
+$game-transfer-dialog-input-bg: #444444;
+$game-transfer-dialog-input-color: white;
+
+$game-transfer-dialog-btn-bg-submit: #462b16;
+$game-transfer-dialog-btn-color-submit: white;
+
+.game-transfer-dialog {
+  @include game-transfer-dialog;
+}
+
+// $live-game-enter-dialog-bg: white;
+// $live-game-enter-dialog-border: 1px solid #c1ae71;
+// $live-game-enter-dialog-btn-bg: #462b16;
+// $live-game-enter-dialog-btn-color: white;
+
+// .live-game-enter-dialog {
+//   @include live-game-enter-dialog;
+// }

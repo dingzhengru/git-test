@@ -1,0 +1,54 @@
+@import './_abstracts';
+@import '@/styles/Z/_default/home';
+
+.home {
+  @include home;
+}
+
+$home-banner-height: 432px;
+$home-banner-button-width: 100px;
+$home-banner-button-height: 100px;
+$home-banner-button-bg-prev: assetPath('ui/swiper-button-prev.png') no-repeat center center;
+$home-banner-button-bg-next: assetPath('ui/swiper-button-next.png') no-repeat center center;
+$home-banner-preloader-color: gray;
+
+.home-banner {
+  @include home-banner;
+}
+
+$news-marquee-bg: #e5e5e5;
+$news-marquee-height: 70px;
+$news-marquee-label-color: #8b8b8b;
+// $news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
+$news-marquee-icon-width: 35px;
+$news-marquee-icon-height: 35px;
+$news-marquee-link-color: #8b8b8b;
+
+.news-marquee {
+  @include news-marquee;
+}
+
+$home-main-bg: white;
+
+.home-main {
+  @include home-main;
+  padding: 30px 15px 0 15px;
+  background: linear-gradient(to bottom, #caa96c 0%, #4a2f19 100%);
+
+  .nav-tab {
+    margin: 0;
+    &__item {
+      &.active {
+        color: white;
+        border-color: white;
+      }
+    }
+  }
+}
+
+$home-product-text-color: white;
+$home-product-maintain-bg: assetPath('home/btn_maintain.png') no-repeat;
+
+.home-product-block {
+  @include home-product-block;
+}
