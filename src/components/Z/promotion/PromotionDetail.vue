@@ -2,7 +2,7 @@
   <div class="promotion-detail" :class="{ 'promotion-detail-auth': userIsLoggedIn }">
     <img class="promotion-detail__image" :src="image" alt="" />
     <div class="promotion-detail__main">
-      <div class="promotion-detail__main__content" v-for="item in promotionDetailList" :key="item.name">
+      <div class="promotion-detail__main__content" v-for="item in promotionDetailListEnabled" :key="item.name">
         <h3 class="promotion-detail__main__content__title">
           {{ item.ContentTitle }}
         </h3>

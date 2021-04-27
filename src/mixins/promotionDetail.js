@@ -5,6 +5,9 @@ export default {
   name: 'MixinPromotionDetail',
   computed: {
     ...mapGetters(['lang', 'userIsLoggedIn']),
+    promotionDetailListEnabled() {
+      return this.promotionDetailList.filter(item => item.Enable);
+    },
   },
   data() {
     return {
