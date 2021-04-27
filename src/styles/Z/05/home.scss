@@ -3,6 +3,8 @@
 
 .home {
   @include home;
+
+  padding: 0;
 }
 
 $home-banner-height: 432px;
@@ -32,7 +34,7 @@ $home-main-bg: white;
 
 .home-main {
   @include home-main;
-  padding: 30px 15px 0 15px;
+  padding: 30px 15px 15px 15px;
   background: linear-gradient(to bottom, #caa96c 0%, #4a2f19 100%);
 
   .nav-tab {
