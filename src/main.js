@@ -214,8 +214,8 @@ if (isLoggedIn) {
   });
 
   //* 預設版號、版型 (若是傳來的版型不在列表內)
-  console.log('DEFAULT', SITE_DEFAULT_STYLE_CLASS);
   if (!SITE_STYLE_CLASS_LIST.includes(store.getters.siteCssClass)) {
+    console.log('SET DEFAULT', SITE_DEFAULT_STYLE_CLASS);
     store.commit('site/setInfoStyle', { siteClass: SITE_DEFAULT_STYLE_CLASS, siteType: SITE_DEFAULT_STYLE_TYPE });
   }
 
