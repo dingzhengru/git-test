@@ -1,9 +1,11 @@
 import { mapGetters } from 'vuex';
 import { apiGetRegisterAdvanceNew } from '@/api/user';
-import { apiCheckRegisterFieldExist } from '@/api/register';
 import { registerFieldList } from '@/utils/register';
+import mixinCheckField from '@/mixins/checkField';
+
 export default {
   name: 'MixinUserProfile',
+  mixins: [mixinCheckField],
   computed: {
     ...mapGetters(['lang', 'userCreatedDatetime', 'userBankById', 'userBankName1']),
     getDatetime: () => datetime => {
@@ -73,33 +75,8 @@ export default {
       if (result.Code == 200) {
         this.getRegisterAdvanceNew();
         window.alert(this.$t('alert.changeProfileSuccess'));
-      }
-    },
-    async changeField(field, invalid) {
-      //* 即時驗證欄位資料是否通過
-      if (invalid) {
-        return;
-      }
-      if (field.name == 'Add_FirstName' || field.name == 'Add_LastName') {
-        const firstNameField = this.fieldList.find(item => item.name == 'Add_FirstName');
-        const lastNameField = this.fieldList.find(item => item.name == 'Add_LastName');
-        //* 姓跟名都有填的時候才檢查
-        if (!(firstNameField.value && lastNameField.value)) {
-          return;
-        }
-        const requestData = { field: 'Add_RealName', strValue: this.fullName };
-        const result = await apiCheckRegisterFieldExist(requestData);
-        if (result === false) {
-          field.value = '';
-          window.alert(this.$t('register.Add_RealName.invalid'));
-        }
-      } else if (field.isOnly && field.value) {
-        const requestData = { field: field.name, strValue: field.value };
-        const result = await apiCheckRegisterFieldExist(requestData);
-        if (result === false) {
-          field.value = '';
-          window.alert(this.$t(`register.${field.name}.invalid`));
-        }
+      } else if (result.Code === 500) {
+        window.alert(result.ErrMsg);
       }
     },
     resetForm() {
@@ -165,6 +142,12 @@ export default {
           }
         }
       });
+    },
+    getBankById(id) {
+      if (!id) {
+        return {};
+      }
+      return this.bankList.find(item => item.Value === id);
     },
   },
   mounted() {

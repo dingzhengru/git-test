@@ -56,12 +56,6 @@
     flex-wrap: wrap;
   }
 
-  &__bank {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
   &__field {
     width: 50%;
     margin-bottom: 5px;
@@ -81,6 +75,25 @@
 
       .ui-question {
         margin-left: 5px;
+      }
+    }
+  }
+
+  &__bank {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__fields {
+      flex-basis: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__field {
+      label {
+        flex-grow: 1;
+        text-align: right;
       }
     }
   }
@@ -110,6 +123,11 @@
   position: relative;
 
   &__container {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__form {
     width: 100%;
     height: 100%;
     display: flex;
