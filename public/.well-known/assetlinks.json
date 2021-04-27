@@ -18,5 +18,15 @@
         "68:0E:0F:BA:F6:96:F4:BB:47:09:BC:49:68:40:9C:C8:90:C5:61:A5:48:E2:7D:0C:31:45:06:75:79:91:DA:4F"
       ]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.odohyn",
+      "sha256_cert_fingerprints": [
+        "C7:F5:B3:0B:A2:0D:AE:27:A3:8E:BA:3F:68:4D:BD:AB:F5:30:F0:63:FF:1C:04:39:FE:91:E6:DD:D7:41:DC:AF"
+      ]
+    }
   }
 ]
