@@ -168,8 +168,8 @@ export default {
     this.importStyleByFilename('pagination');
 
     //* 載入 manifest
-    // document.querySelector('link[rel=manifest]').setAttribute('href', '/manifest01.json');
-    document.querySelector('link[rel=manifest]').setAttribute('href', this.siteManifestUrl);
+    document.querySelector('link[rel=manifest]').setAttribute('href', '/manifest.json');
+    // document.querySelector('link[rel=manifest]').setAttribute('href', this.siteManifestUrl);
 
     //* 設置 Favicon
     document.querySelector('link[rel=icon]').setAttribute('href', this.siteFaviconUrl);
