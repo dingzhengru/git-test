@@ -129,7 +129,6 @@ import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinLogin from '@/mixins/login';
 import mixinPwa from '@/mixins/pwa';
 import { mapGetters } from 'vuex';
-import { apiGetRememberInfo } from '@/api/user';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default {
@@ -140,36 +139,12 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters([
-      'pageTitle',
-      'siteFullCss',
-      'pwaIsShowButton',
-      'userToken',
-      'userPublicKey',
-      'siteIsOpenRememberMe',
-    ]),
+    ...mapGetters(['pwaIsShowButton']),
   },
   async mounted() {
-    // import(`@/styles/${this.siteFullCss}/login.scss`);
     this.importStyleByFilename('login');
 
     this.$store.commit('setPageTitle', 'login.title');
-
-    //* 取得公鑰 & token
-    if (!this.userToken || !this.userPublicKey) {
-      await this.$store.dispatch('user/getTokenAndPublicKey');
-    }
-
-    //* 取得記憶帳密(先判斷此 Site 是否開放此功能)
-    if (this.siteIsOpenRememberMe) {
-      const result = await apiGetRememberInfo();
-
-      if (result.Code == 200) {
-        this.user = result.RetObj.LoginUser;
-      }
-    }
-
-    this.changeCaptcha();
   },
 };
 </script>
