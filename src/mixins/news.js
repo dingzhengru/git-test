@@ -41,8 +41,8 @@ export default {
         result = await apiGetNewsList(requestData);
       }
       if (result.Code == 200) {
-        // this.newsList = result.RetObj.Rows;
-        // this.pagination.count = result.RetObj.Records;
+        this.newsList = result.RetObj.Rows;
+        this.pagination.count = result.RetObj.Records;
       }
     },
     changePage(page) {

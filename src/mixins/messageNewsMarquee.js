@@ -7,17 +7,18 @@ export default {
   },
   data() {
     return {
-      marqueeList: [
-        {
-          Lst_Content: '最新消息1',
-        },
-        {
-          Lst_Content: '最新消息2',
-        },
-        {
-          Lst_Content: '最新消息3',
-        },
-      ],
+      marqueeList: [],
+      // marqueeList: [
+      //   {
+      //     Lst_Content: '最新消息1',
+      //   },
+      //   {
+      //     Lst_Content: '最新消息2',
+      //   },
+      //   {
+      //     Lst_Content: '最新消息3',
+      //   },
+      // ],
     };
   },
   methods: {
@@ -31,7 +32,7 @@ export default {
         result = await apiGetMessageList(requestData);
       }
       if (result.Code == 200) {
-        // this.marqueeList = result.RetObj;
+        this.marqueeList = result.RetObj;
       }
     },
   },
