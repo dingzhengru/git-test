@@ -5,12 +5,18 @@
 export default {
   name: 'MixinLinkUrl',
   methods: {
-    goLinkUrlByTypeAndUrl(type, url, target = '_blank') {
+    goLinkUrlByTypeAndUrl(type, url, target = '_self') {
       if (type === 1) {
         window.open(url, target);
       } else if (type === 2) {
+        if (target === '_blank') {
+          return this.openRouteBlank({ name: 'PromotionDetail', params: { id: url } });
+        }
         this.$router.push({ name: 'PromotionDetail', params: { id: url } });
       } else if (type === 3) {
+        if (target === '_blank') {
+          return this.openRouteBlank({ name: 'GameLobby', params: { classify, id, key } });
+        }
         const [classify, id, key] = url.split('/');
         this.$router.push({ name: 'GameLobby', params: { classify, id, key } });
       }
@@ -25,6 +31,10 @@ export default {
         const [classify, id, key] = url.split('/');
         this.$router.push({ name: 'GameLobby', params: { classify, id, key } });
       }
+    },
+    openRouteBlank(route) {
+      let routeData = this.$router.resolve(route);
+      window.open(routeData.href, '_blank');
     },
   },
 };
