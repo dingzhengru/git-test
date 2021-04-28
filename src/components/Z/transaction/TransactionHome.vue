@@ -75,7 +75,7 @@ export default {
     this.$store.commit('setPageTitle', 'transaction.title');
 
     if (this.siteIsWalletTypeNoTransfer) {
-      this.tabList = this.tabList.filter(item => item.name !== 'transfer');
+      this.navList = this.navList.filter(item => item.name !== 'transfer');
     }
   },
 };
