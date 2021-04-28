@@ -3,9 +3,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "xyz.appmaker.irurjr",
+      "package_name": "xyz.appmaker.bmegsw",
       "sha256_cert_fingerprints": [
-        "A6:41:30:88:CB:B8:C1:7D:AB:46:CD:19:5F:FE:A8:75:35:1C:5E:AD:A5:CA:E5:E6:D3:9F:DC:C4:AF:E5:9B:86"
+        "82:86:A3:14:4A:7C:8E:D3:AA:F3:CD:F8:1D:9C:79:C8:34:3E:E3:A9:86:3A:4C:E8:3C:82:ED:B0:99:38:7E:E3"
       ]
     }
   },
@@ -13,9 +13,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "xyz.appmaker.nssfwx",
+      "package_name": "xyz.appmaker.odsebx",
       "sha256_cert_fingerprints": [
-        "68:0E:0F:BA:F6:96:F4:BB:47:09:BC:49:68:40:9C:C8:90:C5:61:A5:48:E2:7D:0C:31:45:06:75:79:91:DA:4F"
+        "05:27:D7:B7:AF:3A:7D:D4:A6:B8:41:29:23:02:79:00:D8:38:01:CB:32:7A:3F:BE:53:8B:A6:42:20:0E:C2:3D"
       ]
     }
   },
@@ -23,9 +23,109 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "xyz.appmaker.odohyn",
+      "package_name": "xyz.appmaker.tmnfhu",
       "sha256_cert_fingerprints": [
-        "C7:F5:B3:0B:A2:0D:AE:27:A3:8E:BA:3F:68:4D:BD:AB:F5:30:F0:63:FF:1C:04:39:FE:91:E6:DD:D7:41:DC:AF"
+        "3C:44:47:F2:78:F5:DC:96:5D:D6:08:D0:76:88:B1:E8:7B:A4:B5:A9:38:D7:77:59:27:E0:2E:78:A5:E2:A0:81"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.wmdpix",
+      "sha256_cert_fingerprints": [
+        "19:BB:74:06:5E:B5:0C:08:38:D6:69:E1:0D:43:4C:C1:C7:8C:F8:A2:66:18:27:2C:17:7F:16:9A:EC:87:D3:57"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.wkajoa",
+      "sha256_cert_fingerprints": [
+        "3D:8B:48:F3:D0:C7:72:DB:A9:5A:9C:AA:00:0F:B1:B3:4A:79:B0:AE:3A:9C:CF:CD:4F:BF:94:6B:C0:85:BE:E4"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.mlqtnr",
+      "sha256_cert_fingerprints": [
+        "E1:E7:CD:24:5B:6E:AF:95:39:BE:0E:63:3D:68:F0:6F:F3:AC:25:8B:52:C1:11:EE:CC:64:CA:CB:6B:34:25:24"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.bqlxuk",
+      "sha256_cert_fingerprints": [
+        "48:D6:44:0A:31:5C:B2:07:CA:F3:AE:C3:87:D0:BF:E3:05:9A:D9:E6:9B:CE:44:0E:2D:0A:BB:D7:D7:7F:E5:16"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.jxnxao",
+      "sha256_cert_fingerprints": [
+        "C8:CF:2D:5B:B5:2D:80:97:CF:E7:0E:17:67:8B:74:21:BE:94:52:A3:57:48:92:1D:A4:25:88:02:D1:A4:66:F8"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.rccydi",
+      "sha256_cert_fingerprints": [
+        "5A:B3:88:6B:E3:11:AB:10:AD:A6:E0:1B:21:7A:8C:5A:71:41:DC:7B:7E:B1:33:90:CD:BC:D1:96:9B:47:9C:16"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.youvqp",
+      "sha256_cert_fingerprints": [
+        "AA:28:4C:81:FD:97:36:8C:0B:CE:0A:E1:8E:61:0A:36:5C:8A:3C:0D:D3:BF:E4:CF:85:6D:6D:3E:2A:B4:57:F1"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.ifmdzp",
+      "sha256_cert_fingerprints": [
+        "76:33:BA:F6:7F:D5:73:D0:9B:C0:A1:14:E3:A7:F8:CC:49:BA:B9:EA:8D:92:04:B1:EE:68:12:A1:DE:95:42:5B"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.zlympc",
+      "sha256_cert_fingerprints": [
+        "78:31:4B:0B:22:5C:B9:81:EB:98:31:39:B4:48:B2:CB:AE:DA:0E:87:CC:39:2D:9A:EF:63:B3:1C:C4:D0:D3:95"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.oaytux",
+      "sha256_cert_fingerprints": [
+        "26:A8:4B:E0:03:21:24:FC:8E:45:50:5E:B8:0F:C3:A3:47:CE:DD:FA:9E:E1:7B:3B:71:E8:99:72:D1:30:DE:20"
       ]
     }
   }
