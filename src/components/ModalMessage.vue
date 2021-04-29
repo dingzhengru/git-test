@@ -37,7 +37,7 @@ export default {
 
   &__container {
     width: 100%;
-    min-height: 40vh;
+    min-height: 20vh;
     max-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@ export default {
     overflow-y: auto;
 
     &.landscape {
-      min-height: 40vw;
+      min-height: 20vw;
       max-height: 90vw;
     }
   }
