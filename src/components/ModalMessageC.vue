@@ -1,5 +1,5 @@
 <template>
-  <ModalMessage v-show="messageList.length > 0" @close="$emit('close')">
+  <ModalMessage @close="$emit('close')" v-if="messageList.length > 0">
     <div class="modal-message-c">
       <p class="modal-message-c__text" v-for="(item, index) in messageList" :key="index">
         {{ item.Lst_Content }}
