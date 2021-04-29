@@ -223,9 +223,9 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
-    const siteClass = 'Z';
+    const siteClass = 'L';
     const siteType = '01';
-    const isLandscape = false;
+    const isLandscape = true;
     console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
     store.commit('site/setInfoStyle', { siteClass, siteType });
@@ -258,6 +258,12 @@ if (isLoggedIn) {
       window.setTimeout(() => {
         document.dispatchEvent(new Event('custom-render-trigger'));
       }, 9000);
+
+      //* 橫版改變 viewport
+      if (store.getters.siteIsLandscape && window.location.hostname === 'localhost') {
+        const viewport = document.querySelector('meta[name=viewport]');
+        viewport.content = 'width=device-width';
+      }
     },
   }).$mount('#app');
 })();

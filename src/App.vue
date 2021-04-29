@@ -152,12 +152,6 @@ export default {
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
 
-    if (this.siteIsLandscape) {
-      const viewport = document.querySelector('meta[name=viewport]');
-      viewport.content = 'width=device-width';
-      // document.querySelector('body').style.transform = 'rotate(90deg)';
-    }
-
     // import(`@/styles/${this.siteFullCss}/_layout.scss`);
     // import(`@/styles/${this.siteFullCss}/header.scss`);
     // import(`@/styles/${this.siteFullCss}/footer.scss`);
