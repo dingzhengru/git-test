@@ -37,17 +37,18 @@ export default {
 
   &__container {
     width: 100%;
-    min-height: 20vh;
-    max-height: 90vh;
+    min-height: 30vh;
+    max-height: 60vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 30px 0;
     overflow-y: auto;
 
     &.landscape {
       min-height: 20vw;
-      max-height: 90vw;
+      max-height: 80vw;
     }
   }
 }
