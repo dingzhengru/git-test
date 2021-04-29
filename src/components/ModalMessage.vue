@@ -37,7 +37,7 @@ export default {
 
   &__container {
     width: 100%;
-    min-height: 30vh;
+    min-height: 20vh;
     max-height: 60vh;
     display: flex;
     flex-direction: column;
@@ -45,6 +45,10 @@ export default {
     align-items: center;
     padding: 30px 0;
     overflow-y: auto;
+
+    img {
+      margin-bottom: 15px;
+    }
 
     &.landscape {
       min-height: 20vw;

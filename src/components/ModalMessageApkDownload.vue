@@ -1,10 +1,10 @@
 <template>
   <ModalMessage @close="$emit('close')">
     <div class="modal-message-apk">
-      <div>
-        <p class="modal-message-apk__text"></p>
-        <button @click="downloadAPK">Download APK</button>
+      <div class="modal-message-apk__text">
+        {{ $t('ui.alert.pwaToApkDownload') }}
       </div>
+      <button @click="downloadAPK">Download</button>
     </div>
   </ModalMessage>
 </template>
@@ -29,20 +29,23 @@ export default {
 
 <style lang="scss" scoped>
 .modal-message-apk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    font-size: 2rem;
+    text-align: center;
+    color: #636363;
+  }
+
   button {
-    display: block;
-    margin: 30px auto;
-    padding: 15px 30px;
     font-size: 1.5rem;
     color: #000;
     border: none;
-  }
-
-  &__text {
-    text-align: center;
-    color: #636363;
-    font-size: 2rem;
-    margin: 15px 0 15px;
+    margin-top: 15px;
+    padding: 15px 30px;
   }
 }
 </style>

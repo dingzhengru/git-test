@@ -47,7 +47,8 @@
       "thaiBaht": "Baht"
     },
     "alert": {
-      "notLoggedIn": "Please Login first to continue"
+      "notLoggedIn": "Please Login first to continue",
+      "pwaToApkDownload": "The APP version has been updated, please download again"
     }
   },
   "alert": {

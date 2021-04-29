@@ -47,7 +47,8 @@
       "thaiBaht": "泰銖"
     },
     "alert": {
-      "notLoggedIn": "请先登录"
+      "notLoggedIn": "请先登录",
+      "pwaToApkDownload": "APP版本已更新，请重新下载"
     }
   },
   "alert": {
