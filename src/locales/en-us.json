@@ -41,7 +41,8 @@
       "edit": "Edit",
       "setup": "Set up",
       "lotteryCount": "{count} Lucky draw",
-      "allToMyWallet": "All to my wallet"
+      "allToMyWallet": "All to my wallet",
+      "download": "Download"
     },
     "currency": {
       "thaiBaht": "Baht"

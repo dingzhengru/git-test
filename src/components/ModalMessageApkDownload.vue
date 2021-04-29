@@ -4,7 +4,7 @@
       <div class="modal-message-apk__text">
         {{ $t('ui.alert.pwaToApkDownload') }}
       </div>
-      <button @click="downloadAPK">Download</button>
+      <button @click="downloadAPK">{{ $t('ui.button.download') }}</button>
     </div>
   </ModalMessage>
 </template>
