@@ -40,10 +40,10 @@ export default {
 
       if (this.type === 'main') {
         linkType = this.siteNoticeLinkMain.LinkType;
-        linkUrl = this.siteNoticeLinkMain.LinkType;
+        linkUrl = this.siteNoticeLinkMain.LinkUrl;
       } else if (this.type === 'deposit') {
         linkType = this.siteNoticeLinkDeposit.LinkType;
-        linkUrl = this.siteNoticeLinkDeposit.LinkType;
+        linkUrl = this.siteNoticeLinkDeposit.LinkUrl;
       }
 
       if (!linkType || !linkUrl) {
@@ -51,7 +51,9 @@ export default {
         return;
       }
 
-      this.goLinkUrlByTypeAndUrl(linkType, linkUrl);
+      const linkTarget = linkType === 1 ? '_blank' : '_self';
+
+      this.goLinkUrlByTypeAndUrl(linkType, linkUrl, linkTarget);
     },
   },
 };
