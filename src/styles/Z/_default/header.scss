@@ -101,22 +101,22 @@
           background: $header-menu-dropdown-icon;
           margin-right: 15px;
 
-          &.about {
+          &.header-menu-about {
             background-position: center 0px;
           }
-          &.news {
+          &.header-menu-news {
             background-position: center -95px;
           }
-          &.profile {
+          &.header-menu-profile {
             background-position: center -185px;
           }
-          &.mail {
+          &.header-menu-mail {
             background-position: center -275px;
           }
-          &.transaction {
+          &.header-menu-transaction {
             background-position: center -365px;
           }
-          &.logout {
+          &.header-menu-logout {
             background-position: center -450px;
           }
         }

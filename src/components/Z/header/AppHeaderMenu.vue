@@ -14,7 +14,7 @@
             :key="item.route"
             @click="$router.push({ name: item.route }).catch(() => {})"
           >
-            <i class="header-menu__dropdown__route__item__icon" :class="item.name"></i>
+            <i class="header-menu__dropdown__route__item__icon" :class="`header-menu-${item.name}`"></i>
             <a class="header-menu__dropdown__route__item__link" href="javascript:;">
               {{ $t(`header.menu.${item.name}`) }}
             </a>
