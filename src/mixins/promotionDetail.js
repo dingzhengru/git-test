@@ -6,14 +6,24 @@ export default {
   computed: {
     ...mapGetters(['lang', 'userIsLoggedIn']),
     promotionDetailListEnabled() {
-      return this.promotionDetailList.filter(item => item.Enable);
+      return this.promotionDetail.ReturnList.filter(item => item.Enable);
+    },
+    promotionDetailStartTimeFormatted() {
+      return this.$dayjs(this.promotionDetail.StartTime).format('YYYY/MM/DD HH:mm:ss');
+    },
+    promotionDetailEndTimeFormatted() {
+      return this.$dayjs(this.promotionDetail.EndTime).format('YYYY/MM/DD HH:mm:ss');
+    },
+    promotionDetailDateContent() {
+      if (this.promotionDetail.IsPermanent || this.promotionDetail.EndTime === null) {
+        return `${this.promotionDetailStartTimeFormatted} ~`;
+      }
+      return `${this.promotionDetailStartTimeFormatted} ~ ${this.promotionDetailEndTimeFormatted}`;
     },
   },
   data() {
     return {
-      image: '',
-      promotionDetailList: [],
-      contentList: [],
+      promotionDetail: {},
     };
   },
   methods: {
@@ -22,8 +32,7 @@ export default {
       const result = await apiGetPromotionDetail(requestData);
 
       if (result.Code == 200) {
-        this.image = result.RetObj.ImageUrl;
-        this.promotionDetailList = result.RetObj.ReturnList;
+        this.promotionDetail = result.RetObj;
       }
     },
   },

@@ -1,7 +1,14 @@
 <template>
   <div class="promotion-detail" :class="{ 'promotion-detail-auth': userIsLoggedIn }">
-    <img class="promotion-detail__image" :src="image" alt="" />
+    <img class="promotion-detail__image" :src="promotionDetail.ImageUrl" alt="" />
     <div class="promotion-detail__main">
+      <div class="promotion-detail__main__content">
+        <h3 class="promotion-detail__main__content__title">
+          {{ $t('promotionDetail.title.date') }}
+        </h3>
+        <div class="promotion-detail__main__content__desc">{{ promotionDetailDateContent }}</div>
+      </div>
+
       <div class="promotion-detail__main__content" v-for="item in promotionDetailListEnabled" :key="item.name">
         <h3 class="promotion-detail__main__content__title">
           {{ item.ContentTitle }}
