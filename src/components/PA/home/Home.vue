@@ -22,40 +22,8 @@
         />
       </div>
     </div>
-    <div class="home__footer">
-      <div class="home__footer__left" @click="$router.push({ name: 'TransactionDepositHome' })">
-        {{ $t('transaction.title') }}
-      </div>
-      <div class="home__footer__center">
-        <span
-          class="home__footer__icon home__footer__icon--promotion"
-          @click="$router.push({ name: 'Promotion' })"
-        ></span>
-        <span class="home__footer__icon home__footer__icon--mail" @click="$router.push({ name: 'UserMail' })"></span>
-        <span
-          class="home__footer__icon home__footer__icon--fav"
-          @click="changeRoute({ name: 'GameLobbyFav', params: { classify: 2 } })"
-        ></span>
-        <span
-          class="home__footer__icon home__footer__icon--contact"
-          @click="$store.dispatch('openModalContact')"
-        ></span>
-      </div>
-      <div class="home__footer__right">
-        <button
-          class="home__footer__btn home__footer__btn--deposit"
-          @click="$router.push({ name: 'TransactionDepositHome' })"
-        >
-          {{ $t('transaction.nav.deposit') }}
-        </button>
-        <button
-          class="home__footer__btn home__footer__btn--withdrawal"
-          @click="$router.push({ name: 'TransactionWithdrawal' })"
-        >
-          {{ $t('transaction.nav.withdrawal') }}
-        </button>
-      </div>
-    </div>
+
+    <component :is="HomeFooter" />
   </div>
 </template>
 
@@ -68,13 +36,10 @@ export default {
   mixins: [mixinStyleLoader],
   computed: {
     ...mapGetters([
-      'lang',
       'siteSetting',
-      'siteFullCss',
       'siteMainPageNoticeUrl',
       'siteIsShowMainNotice',
       'userIsLoggedIn',
-      'productList',
       'productClassifyList',
       'productListByClassify',
     ]),
@@ -83,6 +48,9 @@ export default {
     },
     HomeProductBlock() {
       return () => import(`@/${this.siteSetting.components.home.HomeProductBlock}`);
+    },
+    HomeFooter() {
+      return () => import(`@/${this.siteSetting.components.home.HomeFooter}`);
     },
     productClassifyListNoAll() {
       return this.productClassifyList.slice(1);

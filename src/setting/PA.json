@@ -16,6 +16,7 @@
     "home": {
       "HomeProductNav": "components/Z/home/HomeProductNav",
       "HomeProductBlock": "components/PA/home/HomeProductBlock",
+      "HomeFooter": "components/PA/home/HomeFooter",
       "NewsMarquee": "components/Z/NewsMarquee"
     },
     "register": {
