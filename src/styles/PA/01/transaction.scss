@@ -1,0 +1,6 @@
+@import './_abstracts';
+@import '@/styles/PA/_default/transaction';
+
+.transaction {
+  @include transaction;
+}

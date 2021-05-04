@@ -1,0 +1,31 @@
+@import './_abstracts';
+@import '@/styles/PA/_default/contact';
+
+$contact-bg: white;
+
+$contact-item-bg: #444;
+$contact-item-title-color: white;
+$contact-item-content-color: #b7b7b7;
+
+$contact-icon-contact-bg: assetPath('contact/ui-contact.png') center/cover no-repeat;
+$contact-icon-contact-bg-facebook: assetPath('contact/ui-facebook.png') center/cover no-repeat;
+$contact-icon-contact-bg-telegram: assetPath('contact/ui-telegram.png') center/cover no-repeat;
+$contact-icon-contact-width: 44px;
+$contact-icon-contact-height: 44px;
+
+$contact-icon-dropdown-bg: assetPath('ui/ui-arrow-select.png') no-repeat;
+$contact-icon-dropdown-width: 35px;
+$contact-icon-dropdown-height: 23px;
+$contact-icon-dropdown-transform: rotate(-90deg);
+$contact-icon-dropdown-transform-open: rotate(0);
+
+$contact-btn-bg: #cbaa6d;
+$contact-btn-color: black;
+$contact-btn-shadow: none;
+$contact-btn-border: none;
+
+$contact-detail-border-top: 1px solid #c8aa73;
+
+.contact {
+  @include contact;
+}

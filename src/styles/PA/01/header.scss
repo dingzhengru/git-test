@@ -1,0 +1,25 @@
+@import './_abstracts';
+@import '@/styles/PA/_default/header';
+
+//* AppHeader
+$header-bg: red;
+
+.header {
+  @include header;
+}
+
+.modal-auth {
+  @include modal-auth;
+}
+
+.modal-login {
+  @include modal-login;
+}
+
+.modal-register {
+  @include modal-register;
+}
+
+.modal-lang-menu {
+  @include modal-lang-menu;
+}

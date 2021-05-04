@@ -1,0 +1,89 @@
+@import './_abstracts';
+@import '@/styles/PA/_default/user';
+
+.user {
+  @include user;
+}
+
+$user-profile-btn-bg-submit: #462b16;
+$user-profile-btn-color-submit: white;
+$user-profile-btn-shadow-submit: none;
+
+$user-profile-btn-bg-reset: #caad76;
+$user-profile-btn-color-reset: black;
+$user-profile-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+.user-profile {
+  @include user-profile;
+}
+
+//* switch 需對照 vue 檔中的設定
+$user-change-password-switch-radius: 0;
+$user-change-password-switch-width: 300px;
+$user-change-password-switch-height: 70px;
+$user-change-password-switch-width-btn: 150px;
+$user-change-password-switch-width-label-left-zh-cn: 64px;
+$user-change-password-switch-width-label-right-zh-cn: 64px;
+$user-change-password-switch-width-label-left-en-us: 128px;
+$user-change-password-switch-width-label-right-en-us: 140px;
+$user-change-password-switch-width-label-left-th-th: 94px;
+$user-change-password-switch-width-label-right-th-th: 105px;
+
+$user-change-password-btn-bg-submit: #462b16;
+$user-change-password-btn-color-submit: white;
+$user-change-password-btn-shadow-submit: none;
+
+$user-change-password-btn-bg-reset: #caad76;
+$user-change-password-btn-color-reset: black;
+$user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+.user-bank {
+  @include user-bank;
+}
+
+.user-change-password {
+  @include user-change-password;
+}
+
+$user-mail-btn-bg: #462b16;
+$user-mail-btn-color: white;
+$user-mail-btn-shadow: none;
+
+$user-mail-btn-bg-active: #caad76;
+$user-mail-btn-color-active: black;
+$user-mail-btn-shadow-active: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$user-mail-item-bg: $field-bg;
+$user-mail-item-color-date: white;
+$user-mail-item-color-title: #caad76;
+$user-mail-item-icon-bg-arrow: assetPath('ui/ui-arrow-select.png') center no-repeat;
+$user-mail-item-icon-width: 35px;
+$user-mail-item-icon-height: 23px;
+
+.user-mail {
+  @include user-mail;
+}
+
+$user-mail-detail-item-bg: $field-bg;
+$user-mail-detail-item-border: none;
+$user-mail-detail-item-label-color: #caad76;
+$user-mail-detail-item-content-color: white;
+$user-mail-detail-item-content-border-top: 1px solid #c8aa73;
+$user-mail-detail-item-reply-bg: $field-bg;
+$user-mail-detail-item-reply-label-color: #959595;
+
+$user-mail-btn-bg-submit: #462b16;
+$user-mail-btn-color-submit: white;
+$user-mail-btn-shadow-submit: none;
+
+$user-mail-btn-bg-reset: #caad76;
+$user-mail-btn-color-reset: black;
+$user-mail-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+.user-mail-detail {
+  @include user-mail-detail;
+}
+
+.user-mail-send {
+  @include user-mail-send;
+}

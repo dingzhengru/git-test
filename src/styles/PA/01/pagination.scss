@@ -1,0 +1,13 @@
+@import './_abstracts';
+@import '@/styles/PA/_default/pagination';
+
+$pagination-select-bg: assetPath('ui/ddl_pager.jpg') #b1925c center no-repeat;
+$pagination-select-color: white;
+$pagination-prev-bg: assetPath('ui/lnk_previous.png') center/cover no-repeat;
+$pagination-prev-more-bg: assetPath('ui/lnk_previousMore.png') center/cover no-repeat;
+$pagination-next-bg: assetPath('ui/lnk_next.png') center/cover no-repeat;
+$pagination-next-more-bg: assetPath('ui/lnk_nextMore.png') center/cover no-repeat;
+
+.ui-pagination {
+  @include pagination;
+}

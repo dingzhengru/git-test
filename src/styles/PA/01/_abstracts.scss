@@ -1,19 +1,18 @@
 @import '@/styles/global/abstracts';
-@import '@/styles/Z/_default/_abstracts';
 
 // function
 @function assetPath($path) {
-  @return url('~@/assets/Z/05/#{$path}');
+  @return url('~@/assets/PA/01/#{$path}');
 }
 
-$base-bg: white;
+$base-bg: assetPath('ui/bg-mask.png') center/100% 100% no-repeat, assetPath('ui/bg.png') center/100% 100% no-repeat;
 $base-text-color: black;
 $base-font-size: 16px;
 $base-font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
 
-$header-height: 130px;
-$header-sub-height: 90px;
-$header-sub-height-auth: 58px;
+$header-height: 10%;
+$header-sub-height: 0px;
+$header-sub-height-auth: 0px;
 
 $footer-height: 119px;
 
@@ -40,11 +39,11 @@ $field-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 0, 0.8);
 $field-textarea-border-radius: 0px;
 
 $notice-color: #8b8b8b;
-$notice-font-size: 1.8rem;
-$notice-line-height: 2.5rem;
+$notice-font-size: 1rem;
+// $notice-line-height: 1rem;
 $notice-height-light-color: red;
 
-$step-color: white;
+$step-color: $base-text-color;
 $step-border: 4px solid #c8aa73;
 
 $point-list-bg: #444444;
@@ -61,40 +60,38 @@ $table-tr-shadow: 0px -2px #8b8b8b;
 $table-td-color: white;
 $table-td-border: 2px solid #555;
 
+$nav-tab-height: 25px;
 $nav-tab-text-color: #8b8b8b;
 $nav-tab-text-color-active: #c8aa73;
-$nav-tab-border-bottom: 5px solid #8b8b8b;
-$nav-tab-border-bottom-active: 5px solid #c8aa73;
+$nav-tab-border-bottom: 3px solid #8b8b8b;
+$nav-tab-border-bottom-active: 3px solid #c8aa73;
 $nav-tab-arrow-width: 50px;
-$nav-tab-arrow-bg-left-home: assetPath('ui/ui-arrow-maskLeft-home.png') left no-repeat,
-  linear-gradient(to right, rgb(195, 162, 104, 1) 0%, rgb(195, 162, 104, 1) 50%, rgba(195, 162, 104, 0));
-$nav-tab-arrow-bg-right-home: assetPath('ui/ui-arrow-maskRight-home.png') right no-repeat,
-  linear-gradient(to left, rgb(195, 162, 104, 1) 0%, rgb(195, 162, 104, 1) 50%, rgba(195, 162, 104, 0));
-
-$nav-tab-arrow-bg-left-promotion: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
+$nav-tab-arrow-bg-left-promotion: assetPath('ui/ui-arrow-maskLeft.png') left/contain no-repeat,
   linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
-$nav-tab-arrow-bg-right-promotion: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
+$nav-tab-arrow-bg-right-promotion: assetPath('ui/ui-arrow-maskRight.png') right/contain no-repeat,
   linear-gradient(to left, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
 
-$nav-tab-arrow-bg-left-game-product: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
-  linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
-$nav-tab-arrow-bg-right-game-product: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
-  linear-gradient(to left, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
-
-$nav-tab-arrow-bg-left-game-category: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
+$nav-tab-arrow-bg-left-game-category: assetPath('ui/ui-arrow-maskLeft.png') left/contain no-repeat,
   linear-gradient(to right, rgb(70, 43, 22, 1) 0%, rgb(70, 43, 22, 1) 50%, rgba(70, 43, 22, 0));
-$nav-tab-arrow-bg-right-game-category: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
+$nav-tab-arrow-bg-right-game-category: assetPath('ui/ui-arrow-maskRight.png') right/contain no-repeat,
   linear-gradient(to left, rgb(70, 43, 22, 1) 0%, rgb(70, 43, 22, 1) 50%, rgba(70, 43, 22, 0));
 
-$box-close-bg: gray;
-$box-close-size: 48px;
-$box-close-top: 24px;
-$box-close-right: 24px;
-$box-close-line-color: white;
-$box-close-line-width: 2px;
+$panel-tab-item-bg: none;
+$panel-tab-item-color: none;
+$panel-tab-item-bg-active: none;
+$panel-tab-item-color-active: none;
+$panel-tab-content-bg: none;
+$panel-tab-content-arrow-width: none;
+$panel-tab-content-arrow-height: none;
+$panel-tab-content-arrow-bg-left: assetPath('ui/swiper-button-prev.png') center no-repeat;
+$panel-tab-content-arrow-bg-right: assetPath('ui/swiper-button-next.png') center no-repeat;
 
-$message-box-bg: $field-bg;
-$message-box-color: $field-label-color;
+// $box-close-bg: gray;
+// $box-close-size: 24px;
+// $box-close-top: -8px;
+// $box-close-right: -8px;
+// $box-close-line-color: white;
+// $box-close-line-width: 2px;
 
 $go-top-btn-bg: assetPath('ui/goTOP.png') center no-repeat;
 $go-top-btn-width: 58px;
@@ -118,7 +115,7 @@ $lottery-btn-block-red-envelope-text-color: white;
 //* 尚無資料的部分
 $no-data-bg: none;
 $no-data-color: black;
-$no-data-font-size: 2rem;
+$no-data-font-size: 1.5rem;
 
 //* 服務規章視窗
 $service-term-bg: white;
