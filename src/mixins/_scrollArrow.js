@@ -21,13 +21,15 @@ export default {
 
       const scrollInnerWidth = element.scrollWidth - element.offsetWidth;
 
-      if (element.scrollLeft > 0) {
+      //* element.scrollLeft === 0，為最左端
+      if (element.scrollLeft > 15) {
         this.isShowLeftArrow = true;
       } else {
         this.isShowLeftArrow = false;
       }
 
-      if (element.scrollLeft === scrollInnerWidth) {
+      //* scrollInnerHeight === element.scrollTop，代表最右端
+      if (scrollInnerWidth - element.scrollLeft <= 15) {
         this.isShowRightArrow = false;
       } else {
         this.isShowRightArrow = true;
@@ -37,7 +39,7 @@ export default {
       if (!element) {
         return;
       }
-      const hasScroll = element.scrollWidth > element.offsetWidth;
+      const hasScroll = element.scrollHeight > element.offsetHeight;
       if (!hasScroll) {
         this.resetArrowY();
         return;
@@ -45,16 +47,18 @@ export default {
 
       const scrollInnerHeight = element.scrollHeight - element.offsetHeight;
 
-      if (element.scrollTop > 0) {
+      //* element.scrollTop === 0，為最頂端
+      if (element.scrollTop > 15) {
         this.isShowTopArrow = true;
       } else {
         this.isShowTopArrow = false;
       }
 
-      if (element.scrollTop === scrollInnerHeight) {
-        this.isShowBottomArrow = true;
-      } else {
+      //* scrollInnerHeight === element.scrollTop，代表最底端
+      if (scrollInnerHeight - element.scrollTop <= 15) {
         this.isShowBottomArrow = false;
+      } else {
+        this.isShowBottomArrow = true;
       }
     },
     resetArrowX() {

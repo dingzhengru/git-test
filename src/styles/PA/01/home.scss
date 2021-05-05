@@ -11,6 +11,7 @@ $home-footer-bg: assetPath('footer/footer-bg-top.png') center 35% no-repeat,
 $home-footer-transfer-bg: assetPath('footer/footer-bg-transfer.png') center/100% 100% no-repeat;
 $home-footer-transfer-color: white;
 
+$home-footer-icon-width: 64px;
 $home-footer-icon-promotion: assetPath('footer/footer-icon-promotion.png') center/contain no-repeat;
 $home-footer-icon-mail: assetPath('footer/footer-icon-mail.png') center/contain no-repeat;
 $home-footer-icon-fav: assetPath('footer/footer-icon-fav.png') center/contain no-repeat;
@@ -28,13 +29,13 @@ $home-footer-btn-withdrawal: assetPath('footer/footer-btn-withdrawal.png') cente
   @include home-footer;
 }
 
-$news-marquee-bg: #e5e5e5;
-$news-marquee-height: 20px;
+$news-marquee-bg: #e0e0e0;
+$news-marquee-height: 30px;
 $news-marquee-label-color: #8b8b8b;
 // $news-marquee-icon-bg: assetPath('ui/ui-horn.png') center no-repeat;
-$news-marquee-icon-width: 20px;
-$news-marquee-icon-height: 20px;
-$news-marquee-link-color: #8b8b8b;
+$news-marquee-icon-width: 34px;
+$news-marquee-icon-height: 30px;
+$news-marquee-link-color: black;
 
 .news-marquee {
   @include news-marquee;

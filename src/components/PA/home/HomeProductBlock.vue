@@ -8,12 +8,20 @@
       :class="{ block: classify !== 2 }"
       @scroll.native.passive="handelScrollArrowX($event.target)"
     >
-      <div
+      <!-- <div
         class="home-product-block__item product-list-landscape-item"
         :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
         v-for="item in list"
         :key="item.Lst_Product_Proxy_Tag"
         :style="{ 'background-image': `url(${siteProductImage(item)})` }"
+        @click="clickProductItem(item)"
+      > -->
+      <div
+        class="home-product-block__item product-list-landscape-item"
+        :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
+        v-for="item in list"
+        :key="item.Lst_Product_Proxy_Tag"
+        :style="{ 'background-image': `url(${imgSrcTest})` }"
         @click="clickProductItem(item)"
       >
         <!-- <div class="home-product-block__item__text">{{ item.Lst_Name }}</div> -->
@@ -56,6 +64,13 @@ export default {
     imgSrc: app => game => {
       try {
         return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgSrcTest() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/home/SBO.png`);
       } catch {
         return '';
       }

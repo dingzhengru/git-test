@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="ui-panel-tab home__main">
-      <div class="ui-panel-tab__tabs home__main__tabs">
+      <div class="ui-panel-tab__tabs home__main__tabs" @scroll.passive="handelScrollArrowY($event.target)">
         <div
           class="ui-panel-tab__tabs__item"
           :class="{ active: productClassifyCurrent === item.Lst_Game_Classify }"
@@ -11,6 +11,10 @@
         >
           {{ $te(item.Lst_Game_Classify_Name) ? $t(item.Lst_Game_Classify_Name) : item.Lst_Game_Classify_Name }}
         </div>
+
+        <!-- <div class="ui-panel-tab__tabs__item">Test</div> -->
+
+        <div class="ui-panel-tab__tabs__arrow ui-panel-tab__tabs__arrow--bottom" v-show="isShowBottomArrow"></div>
       </div>
 
       <div class="ui-panel-tab__content home__main__content">
@@ -30,10 +34,11 @@
 <script>
 import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
+import mixinScrollArrow from '@/mixins/_scrollArrow';
 
 export default {
   name: 'Home',
-  mixins: [mixinStyleLoader],
+  mixins: [mixinStyleLoader, mixinScrollArrow],
   computed: {
     ...mapGetters([
       'siteSetting',

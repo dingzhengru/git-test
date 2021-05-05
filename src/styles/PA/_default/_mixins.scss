@@ -209,43 +209,62 @@
     position: relative;
 
     &__item {
+      background: $panel-tab-item-bg;
+      color: $panel-tab-item-color;
       width: 100%;
-      border: 1px solid gray;
-      border-right: none;
       text-align: center;
-      padding: 10px 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 15px 15px;
+      margin-bottom: 2px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 5px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       &.active {
-        background: gray;
-        color: white;
+        background: $panel-tab-item-bg-active;
+        color: $panel-tab-item-color-active;
+      }
+    }
+
+    &__arrow {
+      position: fixed;
+      width: $panel-tab-content-arrow-width-y;
+      height: $panel-tab-content-arrow-height-y;
+      left: 12%;
+      &--bottom {
+        background: $panel-tab-content-arrow-bg-bottom;
+        bottom: 20%;
       }
     }
   }
 
   &__content {
+    background: $panel-tab-content-bg;
+    border-left: $panel-tab-content-left-border;
+    border-image: $panel-tab-content-left-border-image;
     flex-basis: 80%;
     height: 100%;
     overflow-x: auto;
     overflow-y: auto;
     padding: 5px;
-    border-left: 1px solid gray;
 
     &__arrow {
       position: absolute;
-      background: black;
-      width: 33px;
-      height: 33px;
+      width: $panel-tab-content-arrow-width;
+      height: $panel-tab-content-arrow-height;
       top: 50%;
       transform: translateY(-50%);
       &--left {
         background: $panel-tab-content-arrow-bg-left;
-        background-size: contain;
-        left: 0;
+        left: -1px;
       }
       &--right {
         background: $panel-tab-content-arrow-bg-right;
-        background-size: contain;
-        right: 0;
+        right: -1px;
       }
     }
   }
