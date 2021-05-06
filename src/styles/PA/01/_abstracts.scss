@@ -10,7 +10,7 @@ $base-text-color: black;
 $base-font-size: 16px;
 $base-font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
 
-$header-height: 10%;
+$header-height: 15%;
 $header-sub-height: 0px;
 $header-sub-height-auth: 0px;
 
@@ -82,7 +82,7 @@ $panel-tab-item-bg-active: assetPath('ui/ui-panel-tab-bg-active.png') center/cov
 $panel-tab-item-color-active: white;
 $panel-tab-content-bg: none;
 $panel-tab-content-left-border: 1px solid transparent;
-$panel-tab-content-left-border-image: assetPath('ui/ui-panel-tab-border.png') 12 round;
+$panel-tab-content-left-border-image: assetPath('ui/ui-panel-tab-border.png') 12 stretch;
 $panel-tab-content-arrow-width: 32.5px;
 $panel-tab-content-arrow-height: 66px;
 $panel-tab-content-arrow-bg-left: assetPath('ui/ui-panel-tab-arrow-left.png') center/100% 100% no-repeat;

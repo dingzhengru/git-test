@@ -17,18 +17,20 @@
       <div class="home-footer__icon home-footer__icon--contact" @click="$store.dispatch('openModalContact')"></div>
     </div>
     <div class="home-footer__right">
-      <button
-        class="home-footer__btn home-footer__btn--deposit"
+      <div
+        class="home-footer__right__block home-footer__deposit"
         @click="$router.push({ name: 'TransactionDepositHome' })"
       >
-        {{ $t('transaction.nav.deposit') }}
-      </button>
-      <button
-        class="home-footer__btn home-footer__btn--withdrawal"
+        <img class="home-footer__right__block__text home-footer__deposit__text" :src="imgDepositText" />
+        <img class="home-footer__right__block__icon home-footer__deposit__icon" :src="imgDepositIcon" />
+      </div>
+      <div
+        class="home-footer__right__block home-footer__deposit"
         @click="$router.push({ name: 'TransactionWithdrawal' })"
       >
-        {{ $t('transaction.nav.withdrawal') }}
-      </button>
+        <img class="home-footer__right__block__text home-footer__deposit__text" :src="imgWithdrawalText" />
+        <img class="home-footer__right__block__icon home-footer__deposit__icon" :src="imgWithdrawalIcon" />
+      </div>
     </div>
   </div>
 </template>
@@ -39,7 +41,35 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'HomeFooter',
   computed: {
-    ...mapGetters(['lang', 'userIsLoggedIn', 'userNewMailCount']),
+    ...mapGetters(['lang', 'siteFullCss', 'userIsLoggedIn', 'userNewMailCount']),
+    imgDepositIcon() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/footer/footer-deposit-bg-${this.lang}.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgDepositText() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/footer/footer-deposit-${this.lang}.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgWithdrawalIcon() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/footer/footer-withdrawal-bg-${this.lang}.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgWithdrawalText() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/footer/footer-withdrawal-${this.lang}.png`);
+      } catch {
+        return '';
+      }
+    },
   },
   methods: {
     changeRoute(route) {

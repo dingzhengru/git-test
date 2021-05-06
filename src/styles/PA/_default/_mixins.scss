@@ -198,7 +198,7 @@
   height: 100%;
   display: flex;
   &__tabs {
-    flex-basis: 20%;
+    flex-basis: 25%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -209,13 +209,16 @@
     position: relative;
 
     &__item {
+      width: 100%;
+      flex-basis: 20%;
       background: $panel-tab-item-bg;
       color: $panel-tab-item-color;
-      width: 100%;
-      text-align: center;
       font-size: 1.2rem;
       font-weight: bold;
-      padding: 15px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // padding: 15px 15px;
       margin-bottom: 2px;
       border-top-left-radius: 15px;
       border-bottom-left-radius: 5px;
@@ -246,7 +249,7 @@
     background: $panel-tab-content-bg;
     border-left: $panel-tab-content-left-border;
     border-image: $panel-tab-content-left-border-image;
-    flex-basis: 80%;
+    flex-basis: 75%;
     height: 100%;
     overflow-x: auto;
     overflow-y: auto;

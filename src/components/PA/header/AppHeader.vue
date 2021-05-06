@@ -1,50 +1,59 @@
 <template>
   <header class="header">
-    <!-- <img :src="siteLogoUrl" class="header__logo" /> -->
-    <div class="header__logo" v-show="$route.name === 'Home'"></div>
-    <div class="header__back" v-show="$route.name !== 'Home'" @click="goRoutePrevious"></div>
+    <div class="header__logo">
+      <img class="header__logo__icon" :src="imgLogo" v-show="isShowLogo" />
+      <img class="header__logo__back" :src="imgBack" @click="goRoutePrevious" v-show="isShowLogoBack" />
+    </div>
 
-    <button class="header__btn header__btn--login" @click="$store.dispatch('openModalAuth')" v-if="!userIsLoggedIn">
-      {{ `${$t('ui.button.login')}/${$t('ui.button.register')}` }}
-    </button>
+    <div class="header__login" @click="$store.dispatch('openModalAuth')" v-if="isShowLogin">
+      {{ `${$t('ui.button.login')}\\${$t('ui.button.register')}` }}
+    </div>
 
-    <div class="header__user" v-if="userIsLoggedIn" @click="$router.push({ name: 'UserProfile' }).catch(() => {})">
+    <div class="header__user" @click="$router.push({ name: 'UserProfile' }).catch(() => {})" v-show="isShowUser">
       <div class="header__user__account">
-        <span class="header__user__account__icon"></span>
+        <img class="header__user__account__icon" :src="imgUserAccount" />
         <div class="header__user__account__content">{{ userAccount }}</div>
       </div>
       <div class="header__user__vip">
-        <span class="header__user__vip__icon"></span>
-        <div class="header__user__vip__content">vip</div>
+        <img class="header__user__vip__icon" :src="imgUserVip" />
+        <div class="header__user__vip__content">vip123</div>
       </div>
     </div>
 
-    <button
-      class="header__btn header__btn--wallet"
+    <div
+      class="header__wallet"
       @click="$router.push({ name: 'TransactionTransfer' }).catch(() => {})"
+      v-show="isShowWallet"
     >
-      <span class="header__btn--wallet__icon">$</span>
-      <template v-if="userIsLoggedIn">
+      <img class="header__wallet__icon" :src="imgWalletIcon" alt="" />
+      <span class="header__wallet__text" v-if="userIsLoggedIn">
         {{ $numeral(userGamePointWallet.Point).format('0,0.00') }}
-      </template>
-    </button>
-
-    <div class="header__right">
-      <button
-        class="header__lottery-btn--win-wheel"
-        @click="$store.commit('setModalWinWheelIsShow', true)"
-        v-if="userIsLoggedIn"
-      ></button>
-      <button
-        class="header__lottery-btn--red-envelope"
-        @click="$store.commit('setModalRedEnvelopeIsShow', true)"
-        v-if="userIsLoggedIn"
-      ></button>
-      <button class="header__lang-btn" @click="$store.dispatch('openModalLang')"></button>
+      </span>
+      <img class="header__wallet__arrow" :src="imgWalletArrow" alt="" />
     </div>
 
-    <component :is="ModalAuth" v-if="modalAuthIsShow" @close="$store.dispatch('closeModalAuth')" />
-    <component :is="ModalLangMenu" v-if="modalLangIsShow" @close="$store.dispatch('closeModalLang')" />
+    <div class="header__right">
+      <div
+        class="header__lottery header__lottery--win-wheel"
+        @click="$store.commit('setModalWinWheelIsShow', true)"
+        v-if="isShowLottery"
+      >
+        <img class="header__lottery__text header__lottery__text--win-wheel" :src="imgLotteryIconWinWheelText" alt="" />
+        <img class="header__lottery__icon header__lottery__icon--win-wheel" :src="imgLotteryIconWinWheel" alt="" />
+      </div>
+      <div
+        class="header__lottery header__lottery--red-envelope"
+        @click="$store.commit('setModalRedEnvelopeIsShow', true)"
+        v-if="isShowLottery"
+      >
+        <img class="header__lottery__text header__lottery__text--red-envelope" :src="imgLotteryIconRedEnvelopeText" />
+        <img class="header__lottery__icon header__lottery__icon--red-envelope" :src="imgLotteryIconRedEnvelope" />
+      </div>
+      <div class="header__lang" @click="$store.dispatch('openModalLang')"></div>
+    </div>
+
+    <component :is="ModalAuth" @close="$store.dispatch('closeModalAuth')" v-if="modalAuthIsShow" />
+    <component :is="ModalLangMenu" @close="$store.dispatch('closeModalLang')" v-if="modalLangIsShow" />
   </header>
 </template>
 
@@ -62,18 +71,115 @@ export default {
   computed: {
     ...mapGetters([
       'siteSetting',
+      'lang',
       'siteLogoUrl',
       'userIsLoggedIn',
       'userAccount',
       'userGamePointWallet',
       'modalLangIsShow',
       'modalAuthIsShow',
+      'siteFullCss',
     ]),
     ModalAuth() {
       return () => import(`@/${this.siteSetting.components.header.ModalAuth}`);
     },
     ModalLangMenu() {
       return () => import(`@/${this.siteSetting.components.header.ModalLangMenu}`);
+    },
+    isShowLogo() {
+      return this.$route.name === 'Home';
+    },
+    isShowLogoBack() {
+      return this.$route.name !== 'Home';
+    },
+    isShowLogin() {
+      return !this.userIsLoggedIn && this.$route.name === 'Home';
+    },
+    isShowUser() {
+      return this.userIsLoggedIn && this.$route.name === 'Home';
+    },
+    isShowWallet() {
+      return this.userIsLoggedIn && this.$route.name === 'Home';
+    },
+    isShowLottery() {
+      return this.userIsLoggedIn && this.$route.name === 'Home';
+    },
+    imgLogo() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/logo.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgBack() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/logo.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgWalletIcon() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/header-money-icon.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgWalletArrow() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/ui/ui-arrow-down.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgLangIcon() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/header-lang-icon.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgUserAccount() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/header-user-account.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgUserVip() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/header-user-vip.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgLotteryIconWinWheel() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/header-lottery-win-wheel-bg.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgLotteryIconWinWheelText() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/header-lottery-win-wheel-${this.lang}.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgLotteryIconRedEnvelope() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/header-lottery-red-envelope-bg.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgLotteryIconRedEnvelopeText() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/header-lottery-red-envelope-${this.lang}.png`);
+      } catch {
+        return '';
+      }
     },
   },
   methods: {

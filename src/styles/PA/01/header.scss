@@ -2,7 +2,40 @@
 @import '@/styles/PA/_default/header';
 
 //* AppHeader
-$header-bg: red;
+$header-bg: assetPath('header/header-bg.png') center/100% 100% no-repeat;
+$header-logo-width: 238px;
+$header-logo-height: 65px;
+$header-login-bg: assetPath('header/header-login-bg.png') center/100% 100% no-repeat;
+$header-login-height: 70%;
+$header-login-color: white;
+
+$header-wallet-bg: assetPath('header/header-wallet-bg.png') center/100% 100% no-repeat;
+$header-wallet-min-width: 100px;
+$header-wallet-height: 70%;
+$header-wallet-color: #e6d42c;
+
+// $header-wallet-icon: assetPath('header/header-money-icon.png') center/100% 100% no-repeat;
+$header-wallet-icon-width: auto;
+$header-wallet-icon-height: 50%;
+
+$header-wallet-arrow-width: auto;
+$header-wallet-arrow-height: 20%;
+
+//* 內: 32x32， 外: 59x60
+$header-lang-bg: assetPath('header/header-lang-icon.png') center/24px 24px no-repeat,
+  assetPath('header/header-lang-bg.png') center/contain no-repeat;
+$header-lang-width: 44.5px;
+$header-lang-height: 70%;
+
+$header-user-height: 70%;
+$header-user-color: white;
+
+$header-lottery-win-wheel-bg: assetPath('header/header-lottery-red-envelope-bg.png') center/cover no-repeat;
+$header-lottery-win-wheel-width: 131px;
+$header-lottery-win-wheel-height: 100%;
+$header-lottery-red-envelope-bg: assetPath('header/header-lottery-win-wheel-bg.png') center/cover no-repeat;
+$header-lottery-red-envelope-width: 131px;
+$header-lottery-red-envelope-height: 100%;
 
 .header {
   @include header;

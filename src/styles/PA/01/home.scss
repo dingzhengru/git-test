@@ -1,10 +1,13 @@
 @import './_abstracts';
 @import '@/styles/PA/_default/home';
 
+$home-main-height: 75%;
+
 .home {
   @include home;
 }
 
+$home-footer-height: 100% - $home-main-height;
 $home-footer-bg: assetPath('footer/footer-bg-top.png') center 35% no-repeat,
   assetPath('footer/footer-bg.png') center/cover no-repeat;
 

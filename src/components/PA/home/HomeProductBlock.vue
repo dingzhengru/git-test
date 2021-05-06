@@ -70,7 +70,14 @@ export default {
     },
     imgSrcTest() {
       try {
-        return require(`@/assets/${this.siteFullCss}/home/SBO.png`);
+        return require(`@/assets/${this.siteFullCss}/home/sbo.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgSrcBlockTest() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/home/sbo-block.png`);
       } catch {
         return '';
       }
