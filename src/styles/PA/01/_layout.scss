@@ -71,16 +71,12 @@ body {
   @include ui-question;
 }
 
-.go-top-btn {
-  @include go-top-btn;
-}
-
-.lottery-btn-block {
-  @include lottery-btn-block;
-}
-
 .ui-no-data {
   @include ui-no-data;
+}
+
+.ui-modal {
+  @include ui-modal;
 }
 
 .modal-transfer {
@@ -91,9 +87,17 @@ body {
   @include modal-notice;
 }
 
+.go-top-btn {
+  @include go-top-btn;
+}
+
 //* 服務規章視窗
 .service-term {
   @include service-term;
+}
+
+.lottery-btn-block {
+  @include lottery-btn-block;
 }
 
 .win-wheel-container {

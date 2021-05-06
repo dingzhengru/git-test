@@ -23,7 +23,8 @@
       "bankName": "Name of Bank",
       "bankAccount": "Bank Account",
       "bankBranch": "Name of Branch",
-      "bankAccountName": "Account Name of Bank"
+      "bankAccountName": "Account Name of Bank",
+      "langSelect": "Select Language"
     },
     "button": {
       "save": "Save",

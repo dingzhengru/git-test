@@ -91,12 +91,9 @@ $panel-tab-content-arrow-width-y: 3%;
 $panel-tab-content-arrow-height-y: 6%;
 $panel-tab-content-arrow-bg-bottom: assetPath('ui/ui-panel-tab-arrow-bottom.png') center/100% 100% no-repeat;
 
-// $box-close-bg: gray;
-// $box-close-size: 24px;
-// $box-close-top: -8px;
-// $box-close-right: -8px;
-// $box-close-line-color: white;
-// $box-close-line-width: 2px;
+$box-close-bg: #4f331c;
+$box-close-border: 1px solid #bb9b63;
+$box-close-line-color: white;
 
 $go-top-btn-bg: assetPath('ui/goTOP.png') center no-repeat;
 $go-top-btn-width: 58px;
@@ -121,6 +118,13 @@ $lottery-btn-block-red-envelope-text-color: white;
 $no-data-bg: none;
 $no-data-color: black;
 $no-data-font-size: 1.5rem;
+
+//* Modal
+$modal-bg: white;
+$modal-title-bg: #cbaa6d;
+$modal-title-height: 20%;
+$modal-title-color: #070706;
+$modal-content-bg: assetPath('ui/ui-modal-bg-decoration.png') #fcfaf7 center/100% 100% no-repeat;
 
 //* 服務規章視窗
 $service-term-bg: white;

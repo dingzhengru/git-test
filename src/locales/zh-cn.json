@@ -23,7 +23,8 @@
       "bankName": "银行名称",
       "bankAccount": "银行帐号",
       "bankBranch": "支行名称",
-      "bankAccountName": "银行户名"
+      "bankAccountName": "银行户名",
+      "langSelect": "语系选择"
     },
     "button": {
       "save": "保存",

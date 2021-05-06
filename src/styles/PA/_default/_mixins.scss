@@ -274,21 +274,22 @@
 }
 
 @mixin ui-box-close {
-  background: black;
+  background: $box-close-bg;
   position: absolute;
   right: -12px;
   top: -12px;
   width: 36px;
   height: 36px;
   border-radius: 18px;
+  border: $box-close-border;
   &:before,
   &:after {
     content: ' ';
-    background: white;
+    background: $box-close-line-color;
     position: absolute;
-    left: 18px;
-    top: 9px;
-    height: 18px;
+    left: 16px;
+    top: 6px;
+    height: 24px;
     width: 2px;
   }
 
@@ -328,51 +329,43 @@
   border: none;
 }
 
-@mixin lottery-btn-block {
-  position: fixed;
-  bottom: $lottery-btn-block-bottom;
-  left: $lottery-btn-block-left;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  font-size: 1.2rem;
-
-  &__win-wheel {
-    // background: $lottery-btn-block-win-wheel-bg;
-    width: $lottery-btn-block-win-wheel-width;
-    height: $lottery-btn-block-win-wheel-height;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    &__text {
-      position: absolute;
-      top: $lottery-btn-block-win-wheel-text-top;
-      color: $lottery-btn-block-win-wheel-text-color;
-    }
-  }
-  &__red-envelope {
-    // background: $lottery-btn-block-red-envelope-bg;
-    width: $lottery-btn-block-red-envelope-width;
-    height: $lottery-btn-block-red-envelope-height;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    &__text {
-      position: absolute;
-      top: $lottery-btn-block-red-envelope-text-top;
-      color: $lottery-btn-block-red-envelope-text-color;
-    }
-  }
-}
-
 @mixin ui-no-data {
   background: $no-data-bg;
   color: $no-data-color;
   font-size: $no-data-font-size;
   text-align: center;
   padding: 30px 0;
+}
+
+@mixin ui-modal {
+  width: 60%;
+  height: 60%;
+  background: white;
+  position: relative;
+
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    width: 100%;
+    flex-basis: $modal-title-height;
+    background: $modal-title-bg;
+    color: $modal-title-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  &__content {
+    width: 100%;
+    flex-grow: 1;
+    background: $modal-content-bg;
+    overflow-y: auto;
+  }
 }
 
 @mixin modal-transfer {
@@ -496,6 +489,45 @@
       background: $service-term-btn-bg;
       color: $service-term-btn-color;
       box-shadow: $service-term-btn-shadow;
+    }
+  }
+}
+
+@mixin lottery-btn-block {
+  position: fixed;
+  bottom: $lottery-btn-block-bottom;
+  left: $lottery-btn-block-left;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: 1.2rem;
+
+  &__win-wheel {
+    // background: $lottery-btn-block-win-wheel-bg;
+    width: $lottery-btn-block-win-wheel-width;
+    height: $lottery-btn-block-win-wheel-height;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    &__text {
+      position: absolute;
+      top: $lottery-btn-block-win-wheel-text-top;
+      color: $lottery-btn-block-win-wheel-text-color;
+    }
+  }
+  &__red-envelope {
+    // background: $lottery-btn-block-red-envelope-bg;
+    width: $lottery-btn-block-red-envelope-width;
+    height: $lottery-btn-block-red-envelope-height;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    &__text {
+      position: absolute;
+      top: $lottery-btn-block-red-envelope-text-top;
+      color: $lottery-btn-block-red-envelope-text-color;
     }
   }
 }

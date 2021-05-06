@@ -23,7 +23,8 @@
       "bankName": "ธนาคาร",
       "bankAccount": "เลขที่บัญชี",
       "bankBranch": "สาขา",
-      "bankAccountName": "ชื่อบัญชี"
+      "bankAccountName": "ชื่อบัญชี",
+      "langSelect": "เลือกภาษา"
     },
     "button": {
       "save": "จัดเก็บ",

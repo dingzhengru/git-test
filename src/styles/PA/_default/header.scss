@@ -222,26 +222,44 @@
   }
 }
 
-@mixin modal-lang-menu {
-  width: 50%;
-  height: 60%;
-  background: white;
-  position: relative;
-
-  &__btn-block {
-    height: 100%;
-    padding: 30px;
+@mixin modal-lang {
+  &__content {
+    width: 100%;
+    padding: 30px 30px 15px 30px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    overflow-y: auto;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
-  &__btn {
-    width: 50%;
+  &__item {
+    flex-basis: calc(50% - 15px);
+    height: 30%;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
-    &:not(:last-child) {
-      margin-bottom: 15px;
+    margin-bottom: 15px;
+
+    &:nth-child(odd) {
+      margin-right: 15px;
+    }
+
+    &__btn {
+      flex-basis: $modal-lang-btn-width;
+      height: 100%;
+      background: $modal-lang-btn-bg;
+      color: $modal-lang-btn-color;
+      border: 0;
+      margin-right: 15px;
+    }
+
+    &__selected {
+      flex-grow: 1;
+      height: 100%;
+      background: $modal-lang-selected-bg;
+      margin-top: -30px;
     }
   }
 }
