@@ -6,32 +6,32 @@
         tag="div"
         :rules="{ required: true, min: 3, max: 15, regex: '^[a-zA-Z]{1}[a-zA-Z0-9]*$' }"
       >
-        <div class="ui-field__group">
-          <input
-            class="ui-field__group__input"
-            :id="$idMapper.login.input.username"
-            type="text"
-            :placeholder="$t('login.placeholder.username')"
-            v-model="user.UserName"
-          />
-        </div>
+        <input
+          class="ui-input"
+          :id="$idMapper.login.input.username"
+          type="text"
+          :placeholder="$t('login.placeholder.username')"
+          v-model="user.UserName"
+        />
       </ValidationProvider>
       <ValidationProvider
         tag="div"
         class="ui-field"
         :rules="{ required: true, min: 6, max: 30, regex: '^[a-zA-Z0-9]*$' }"
       >
-        <div class="ui-field__group">
-          <input
-            class="ui-field__group__input"
-            :id="$idMapper.login.input.password"
-            type="password"
-            :placeholder="$t('login.placeholder.password')"
-            v-model="user.Password"
-          />
-        </div>
+        <input
+          class="ui-input"
+          :id="$idMapper.login.input.password"
+          type="password"
+          :placeholder="$t('login.placeholder.password')"
+          v-model="user.Password"
+        />
       </ValidationProvider>
-      <ValidationProvider tag="div" class="ui-field" :rules="{ required: true, min: 4, max: 4, regex: '^[0-9]*$' }">
+      <ValidationProvider
+        tag="div"
+        class="ui-field modal-login__field--captcha"
+        :rules="{ required: true, min: 4, max: 4, regex: '^[0-9]*$' }"
+      >
         <div class="ui-field__group">
           <input
             class="ui-field__group__input"
@@ -45,8 +45,6 @@
             class="ui-field__captcha"
             :id="$idMapper.login.image.captcha"
             :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
-            :width="captchaImage.Width / 1.5"
-            :height="captchaImage.Height / 1.5"
             v-if="captchaImage.ImgBase64 != ''"
             @click="changeCaptcha"
           />
@@ -57,7 +55,7 @@
         <input id="login-remember" type="checkbox" v-model="user.RememberMe" />
         <label for="login-remember">{{ $t('login.rememberMe') }}</label>
         <a href="javascript:;" class="modal-login__remember__right" @click="$store.dispatch('openModalContact')">
-          {{ $t('login.link.forgetPassword') }}
+          {{ $t('login.link.forgetPassword') }}?
         </a>
       </div>
 

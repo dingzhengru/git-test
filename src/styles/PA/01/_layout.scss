@@ -42,6 +42,9 @@ body {
 .ui-field {
   @include ui-field;
 }
+.ui-checkbox {
+  @include ui-checkbox;
+}
 .ui-notice {
   @include ui-notice;
 }

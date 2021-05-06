@@ -6,7 +6,7 @@
 }
 
 $base-bg: assetPath('ui/bg-mask.png') center/100% 100% no-repeat, assetPath('ui/bg.png') center/100% 100% no-repeat;
-$base-text-color: black;
+$base-text-color: #313131;
 $base-font-size: 16px;
 $base-font-family: 'Microsoft YaHei', Arial, Helvetica, 'Zawgyi-One', sans-serif;
 
@@ -21,22 +21,26 @@ $btn-height: 89px;
 $btn-bg-yellow-light: #caad76;
 $btn-bg-brown: #462b16;
 
-$field-font-size: 2rem;
-$field-bg: #444444;
+$input-bg: #444444;
+$input-color: white;
+$input-placeholder-color: #959595;
+
+$select-bg: $input-bg;
+$select-color: $input-color;
+$select-placeholder-color: $input-placeholder-color;
+
+$field-bg: none;
+$field-input-bg: #444444;
 $field-input-color: white;
-$field-input-color-placeholder: rgb(117, 117, 117);
-$field-select-bg: assetPath('ui/ui-arrow-select.png') #444444 97% center no-repeat;
-$field-select-color: #c8aa73;
-$field-label-color: #cbaa6d;
-$field-label-color-checkbox: white;
-$field-error-bg: #c8aa73;
-$field-error-color: black;
-$field-star-color: #c8aa73;
-$field-textarea-label-color: #959595;
-$field-textarea-bg: #2c2d2e;
-$field-textarea-color: white;
-$field-textarea-shadow: inset 0px 3px 14px 0px rgba(0, 0, 0, 0.8);
-$field-textarea-border-radius: 0px;
+$field-input-color-placeholder: #959595;
+$field-select-bg: assetPath('ui/ui-arrow-select.png') $field-input-bg 97% center no-repeat;
+$field-select-color: $field-input-color;
+$field-label-color: $base-text-color;
+$field-error-bg: #c6a260;
+$field-error-color: $base-text-color;
+$field-star-color: #c6a260;
+$field-captcha-width: 73px;
+$field-captcha-height: 29px;
 
 $notice-color: #8b8b8b;
 $notice-font-size: 1rem;
@@ -120,11 +124,15 @@ $no-data-color: black;
 $no-data-font-size: 1.5rem;
 
 //* Modal
-$modal-bg: white;
+$modal-bg: none;
+$modal-border: 1px solid white;
 $modal-title-bg: #cbaa6d;
 $modal-title-height: 20%;
 $modal-title-color: #070706;
 $modal-content-bg: assetPath('ui/ui-modal-bg-decoration.png') #fcfaf7 center/100% 100% no-repeat;
+$modal-nav-bg: $modal-title-bg;
+$modal-nav-bg-active: linear-gradient(135deg, #e4d0a7, $modal-title-bg);
+$modal-nav-color: $modal-title-color;
 
 //* 服務規章視窗
 $service-term-bg: white;
