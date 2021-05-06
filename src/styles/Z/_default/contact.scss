@@ -105,9 +105,9 @@
       transform-origin: top;
 
       &__item {
+        width: auto;
         font-size: 1.5rem;
         color: white;
-        width: 29%;
         margin-right: 15px;
         margin-top: 10px;
         word-wrap: break-word;
@@ -125,18 +125,16 @@
       transform-origin: top;
 
       &__item {
-        margin-right: 15px;
-        margin-top: 10px;
-        font-size: 1.5rem;
+        width: auto;
+        min-height: 57px;
         background: $contact-btn-bg;
         color: $contact-btn-color;
-        width: 30%;
-        min-height: 57px;
+        font-size: 1.5rem;
         text-align: center;
         border-radius: 5px;
         padding: 10px 15px;
-        word-wrap: break-word;
-        border: none;
+        margin-right: 15px;
+        margin-top: 10px;
       }
     }
   }

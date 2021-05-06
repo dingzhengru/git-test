@@ -173,7 +173,7 @@ export default {
         //* weixin:// 打開指定用戶方法，已只適用於少數白名單應用程式，最多就用此連結開啟程式
         window.open(`http://weixin.qq.com/r/${content.Lst_ContactValue}`);
       } else if (contact == this.facebook) {
-        window.open(`https://www.facebook.com/${content.Lst_ContactValue}`);
+        window.open(content.Lst_ContactValue);
       } else if (contact == this.telegram) {
         window.open(`https://t.me/${content.Lst_ContactValue}`);
       }
