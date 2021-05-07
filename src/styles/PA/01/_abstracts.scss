@@ -139,10 +139,12 @@ $modal-nav-color: $modal-title-color;
 //* 服務規章視窗
 $service-term-bg: white;
 $service-term-color: black;
-$service-term-item-title-color: white;
-$service-term-item-title-bg: #503725;
-$service-term-item-title-icon: assetPath('ui/ui-arrow-select.png');
+$service-term-item-border-bottom-bg: assetPath('ui/ui-border-01.png') center/cover no-repeat;
+$service-term-item-bg-active: #563e2c;
+$service-term-item-title-color: $base-text-color;
+$service-term-item-title-color-active: white;
+$service-term-item-title-bg: none;
+$service-term-item-title-icon: assetPath('ui/ui-arrow-down-brown.png') no-repeat;
+$service-term-item-title-icon-active: assetPath('ui/ui-arrow-up-white.png') no-repeat;
 $service-term-item-content-color: black;
-$service-term-btn-bg: #462b16;
-$service-term-btn-color: white;
-$service-term-btn-shadow: none;
+$service-term-item-content-color-active: #959595;

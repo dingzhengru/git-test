@@ -481,59 +481,64 @@
 @mixin service-term {
   background: $service-term-bg;
   color: $service-term-color;
-  width: 80%;
-  height: 90%;
-  padding: 15px 30px;
-  border: 1px solid #c1ae71;
-  border-radius: 5px;
-  position: relative;
 
   display: flex;
   flex-direction: column;
 
   &__container {
     flex-grow: 1;
-    // height: 50%;
-    // height: calc(90vh - #{$btn-height} - 160px);
     overflow-y: auto;
-    margin-bottom: 30px;
-  }
-
-  &__title {
-    font-size: 1.5rem;
-    text-align: center;
-    padding-bottom: 15px;
   }
 
   &__sub-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   &__body {
-    font-size: 1rem;
+    width: 100%;
     &__item {
+      width: 100%;
+      padding: 0 15px;
+      position: relative;
+
+      &:after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: $service-term-item-border-bottom-bg;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      &.open {
+        background: $service-term-item-bg-active;
+      }
+
       &__title {
         background: $service-term-item-title-bg;
         color: $service-term-item-title-color;
-        padding: 15px;
-        margin: 15px 0;
-        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 5px 0 5px 5px;
 
-        &__icon {
-          display: inline-block;
-          width: 35px;
-          height: 23px;
-          background: $service-term-item-title-icon;
-          position: absolute;
-          right: 15px;
-          // top: 50%;
-          // transform: translateY(-50%);
-          top: 30%;
-          transform: translateY(-50%);
-          transition: all 0.3s linear;
-          transform: rotate(-90deg);
+        &.open {
+          span {
+            color: $service-term-item-title-color-active;
+          }
+        }
+
+        > span {
+          flex-grow: 1;
+        }
+
+        > img {
+          flex-basis: 5%;
+          max-width: 5%;
+
           &.open {
-            transform: rotate(0deg);
+            transform: rotate(180deg);
+            // background: $service-term-item-title-icon-active;
           }
         }
       }
@@ -544,21 +549,20 @@
         transform-origin: top;
         ul {
           list-style-type: decimal-leading-zero;
-          margin: 30px;
+          margin: 5px;
 
           li {
+            font-size: 0.8rem;
             color: $service-term-item-content-color;
           }
         }
+
+        &.open {
+          li {
+            color: $service-term-item-content-color-active;
+          }
+        }
       }
-    }
-  }
-  &__footer {
-    button {
-      padding: 10px 0;
-      background: $service-term-btn-bg;
-      color: $service-term-btn-color;
-      box-shadow: $service-term-btn-shadow;
     }
   }
 }

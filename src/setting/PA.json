@@ -20,7 +20,7 @@
       "NewsMarquee": "components/Z/NewsMarquee"
     },
     "register": {
-      "ModalServiceTerm": "components/Z/ModalServiceTerm"
+      "ModalServiceTerm": "components/PA/ModalServiceTerm"
     },
     "promotion": {
       "PromotionNavTab": "components/Z/promotion/PromotionNavTab"
