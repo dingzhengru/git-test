@@ -11,7 +11,10 @@ export default {
   computed: {
     ...mapGetters(['lang']),
     payType() {
-      return this.depositInfo.BankAccount.length > 0 ? 2 : 1;
+      if (this.depositInfo.BankAccount) {
+        return this.depositInfo.BankAccount.length > 0 ? 2 : 1;
+      }
+      return 1;
     },
     depositBankList() {
       if (this.payType === 1) {
