@@ -54,6 +54,10 @@
     margin-left: 15px;
   }
 
+  &__error {
+    font-size: 0.8rem;
+  }
+
   &__star {
     color: $field-star-color;
     position: absolute;
@@ -63,6 +67,16 @@
 }
 
 @mixin ui-checkbox {
+  // width: 100%;
+  display: flex;
+  align-items: center;
+
+  input {
+    flex-basis: 10%;
+  }
+  label {
+    flex-grow: 1;
+  }
 }
 
 @mixin ui-notice {

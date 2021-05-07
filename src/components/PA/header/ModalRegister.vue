@@ -43,46 +43,38 @@
           >
             <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
           </select>
-        </div>
 
-        <img
-          class="ui-field__captcha"
-          :id="$idMapper.register.image.captcha"
-          :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
-          :width="captchaImage.Width / 1.5"
-          :height="captchaImage.Height / 1.5"
-          border="0"
-          @click="changeCaptcha"
-          v-if="field.name == 'CaptchaValue' && captchaImage.ImgBase64 != ''"
-        />
+          <img
+            class="ui-field__captcha"
+            :id="$idMapper.register.image.captcha"
+            :src="`data:image/png;base64,${captchaImage.ImgBase64}`"
+            border="0"
+            @click="changeCaptcha"
+            v-if="field.name == 'CaptchaValue' && captchaImage.ImgBase64 != ''"
+          />
+        </div>
 
         <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
           {{ errors[0] }}
         </div>
       </ValidationProvider>
 
-      <ValidationProvider
-        class="ui-field modal-register__field--check"
-        tag="div"
-        :rules="{ required: { allowFalse: false } }"
-      >
-        <div class="ui-field__group ui-field__group--checkbox">
-          <input id="register-remember" type="checkbox" v-model="isAgreeServiceTerm" />
-          <label for="register-remember">
-            <span>{{ $t('register.service.read', { site: siteName }) }}</span>
-            <a href="javascript:;" @click="isShowModalServiceTerm = true">{{ $t('register.service.term') }}</a>
-          </label>
-        </div>
-      </ValidationProvider>
-
       <div class="modal-register__btn">
-        <button class="modal-register__btn--submit ui-btn ui-btn--block" type="submit" :disabled="invalid">
+        <button class="ui-btn ui-btn--block modal-register__btn--submit" type="submit" :disabled="invalid">
           {{ $t('register.button.submit') }}
         </button>
-        <button class="modal-register__btn--reset ui-btn ui-btn--block" type="reset" @click="resetForm">
+        <!-- <button class="modal-register__btn--reset ui-btn ui-btn--block" type="reset" @click="resetForm">
           {{ $t('ui.button.reset') }}
-        </button>
+        </button> -->
       </div>
+
+      <ValidationProvider class="ui-checkbox" tag="div" :rules="{ required: { allowFalse: false } }">
+        <input id="register-remember" type="checkbox" v-model="isAgreeServiceTerm" />
+        <label for="register-remember">
+          <span>{{ $t('register.service.read', { site: siteName }) }}</span>
+          <a href="javascript:;" @click="isShowModalServiceTerm = true">{{ $t('register.service.term') }}</a>
+        </label>
+      </ValidationProvider>
     </form>
     <component :is="ModalServiceTerm" v-if="isShowModalServiceTerm" @close="isShowModalServiceTerm = false" />
   </ValidationObserver>

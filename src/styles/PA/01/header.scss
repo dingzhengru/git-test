@@ -46,10 +46,14 @@ $header-lottery-red-envelope-height: 100%;
 }
 
 $modal-login-btn-bg-submit: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
+$modal-login-link-color: $base-link-color;
 
 .modal-login {
   @include modal-login;
 }
+
+$modal-register-btn-bg-submit: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
+$modal-register-link-color: $base-link-color;
 
 .modal-register {
   @include modal-register;
