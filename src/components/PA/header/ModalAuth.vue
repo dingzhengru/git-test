@@ -24,7 +24,7 @@ import { mapGetters } from 'vuex';
 import mixinLang from '@/mixins/lang';
 
 export default {
-  name: 'ModalLangMenu',
+  name: 'ModalLang',
   mixins: [mixinLang],
   components: {
     AppModal: () => import('@/components/AppModal'),

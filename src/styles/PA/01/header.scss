@@ -59,9 +59,9 @@ $modal-register-link-color: $base-link-color;
   @include modal-register;
 }
 
-$modal-lang-btn-bg: assetPath('ui/ui-btn-oval.png') center/100% 100% no-repeat;
+// $modal-lang-btn-bg: assetPath('ui/ui-btn-oval.png') center/100% 100% no-repeat;
+// $modal-lang-btn-color: white;
 $modal-lang-btn-width: 60%;
-$modal-lang-btn-color: white;
 $modal-lang-selected-bg: assetPath('header/header-lang-modal-tick.png') center/ 100% 100% no-repeat;
 
 .modal-lang {

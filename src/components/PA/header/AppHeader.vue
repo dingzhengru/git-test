@@ -53,7 +53,7 @@
     </div>
 
     <component :is="ModalAuth" @close="$store.dispatch('closeModalAuth')" v-if="modalAuthIsShow" />
-    <component :is="ModalLangMenu" @close="$store.dispatch('closeModalLang')" v-if="modalLangIsShow" />
+    <component :is="ModalLang" @close="$store.dispatch('closeModalLang')" v-if="modalLangIsShow" />
   </header>
 </template>
 
@@ -83,8 +83,8 @@ export default {
     ModalAuth() {
       return () => import(`@/${this.siteSetting.components.header.ModalAuth}`);
     },
-    ModalLangMenu() {
-      return () => import(`@/${this.siteSetting.components.header.ModalLangMenu}`);
+    ModalLang() {
+      return () => import(`@/${this.siteSetting.components.header.ModalLang}`);
     },
     isShowLogo() {
       return this.$route.name === 'Home';

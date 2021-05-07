@@ -135,6 +135,10 @@ $modal-content-bg: assetPath('ui/ui-modal-bg-decoration.png') #fcfaf7 center/100
 $modal-nav-bg: $modal-title-bg;
 $modal-nav-bg-active: linear-gradient(135deg, #e4d0a7, $modal-title-bg);
 $modal-nav-color: $modal-title-color;
+$modal-item-btn-bg: assetPath('ui/ui-btn-oval.png') center/100% 100% no-repeat;
+$modal-item-btn-color: white;
+$modal-item-selected-bg: assetPath('header/header-lang-modal-tick.png') center/ 100% 100% no-repeat;
+
 
 //* 服務規章視窗
 $service-term-bg: white;

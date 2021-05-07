@@ -11,7 +11,7 @@
       "ModalAuth": "components/PA/header/ModalAuth",
       "ModalLogin": "components/PA/header/ModalLogin",
       "ModalRegister": "components/PA/header/ModalRegister",
-      "ModalLangMenu": "components/PA/header/ModalLangMenu"
+      "ModalLang": "components/PA/header/ModalLang"
     },
     "home": {
       "HomeProductNav": "components/Z/home/HomeProductNav",

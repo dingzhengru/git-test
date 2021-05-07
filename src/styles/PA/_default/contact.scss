@@ -5,9 +5,9 @@
   position: relative;
 
   &__container {
-    padding: 30px;
     width: 100%;
-    height: 100%;
+    flex-basis: 100%;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,132 +15,25 @@
   }
 
   &__item {
-    background: $contact-item-bg;
-    // width: 638px;
     width: 100%;
-    // min-height: 120px;
-    padding: 15px;
-    margin: 3px 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-
-    &--no-wrap {
-      flex-wrap: nowrap;
-    }
-
-    &__icon--contact {
-      background: $contact-icon-contact-bg;
-      width: $contact-icon-contact-width;
-      height: $contact-icon-contact-height;
-      // flex-shrink: 0;
-      margin-right: 15px;
-      // transition: all 0.3s linear;
-      &.icon-service {
-        background-position: center -32px;
-      }
-      &.icon-mobile {
-        background-position: center -250px;
-      }
-      &.icon-skype {
-        background-position: center -470px;
-      }
-      &.icon-line {
-        background-position: center -690px;
-      }
-      &.icon-wechat {
-        background-position: center -910px;
-      }
-      &.icon-facebook {
-        background: $contact-icon-contact-bg-facebook;
-      }
-      &.icon-telegram {
-        background: $contact-icon-contact-bg-telegram;
-      }
-    }
-    &__text {
-      flex-grow: 1;
-      &__title {
-        color: $contact-item-title-color;
-      }
-      &__content {
-        // font-size: 1.5rem;
-        color: $contact-item-content-color;
-      }
-    }
+    height: 100%;
     &__btn {
-      margin-left: auto;
-      background: $contact-btn-bg;
-      color: $contact-btn-color;
-      box-shadow: $contact-btn-shadow;
-      border: $contact-btn-border;
-      text-align: center;
-      // width: 185px;
-      // height: 85px;
-      border-radius: 5px;
-      padding: 10px 15px;
-
-      // &:lang(en-us) {
-      // font-size: 1.5rem;
-      // }
-      // &:lang(th-th) {
-      // font-size: 1.4rem;
-      // }
+      flex-basis: $contact-item-btn-width;
+      line-height: 2.5;
+      margin-right: 30px;
     }
-    &__icon--dropdown {
-      margin-left: auto;
-      background: $contact-icon-dropdown-bg;
-      width: $contact-icon-dropdown-width;
-      height: $contact-icon-dropdown-height;
-      transform: $contact-icon-dropdown-transform;
-      transition: all 0.3s linear;
-      &.open {
-        transform: $contact-icon-dropdown-transform-open;
-      }
-    }
-
-    &__detail {
-      width: 100%;
-      border-top: $contact-detail-border-top;
+    &__content {
+      height: 100%;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      transform-origin: top;
-
-      &__item {
-        // font-size: 1.5rem;
-        color: white;
-        width: 29%;
-        margin-right: 15px;
-        margin-top: 10px;
-        word-wrap: break-word;
+      justify-content: flex-start;
+      img {
+        width: 10%;
+        margin-right: 5px;
       }
     }
-
-    &__detail-btn {
-      margin-left: auto;
-      width: 85%;
-      border-top: $contact-detail-border-top;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-end;
-      transform-origin: top;
-
-      &__item {
-        // font-size: 1.5rem;
-        margin-right: 15px;
-        margin-top: 10px;
-        background: $contact-btn-bg;
-        color: $contact-btn-color;
-        width: 30%;
-        min-height: 57px;
-        text-align: center;
-        border-radius: 5px;
-        padding: 10px 15px;
-        word-wrap: break-word;
-        border: none;
-      }
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }

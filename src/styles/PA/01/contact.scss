@@ -26,6 +26,8 @@ $contact-btn-border: none;
 
 $contact-detail-border-top: 1px solid #c8aa73;
 
+$contact-item-btn-width: 35%;
+
 .contact {
   @include contact;
 }

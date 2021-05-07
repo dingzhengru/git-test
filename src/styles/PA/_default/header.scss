@@ -245,15 +245,6 @@
   &__item {
     flex-basis: calc(50% - 15px);
     height: 25%;
-    background: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border: 1px solid #dacfba;
-    border-radius: 10px;
-    border-top-left-radius: 18px;
-    border-bottom-left-radius: 18px;
-    margin-bottom: 15px;
 
     &:nth-child(odd) {
       margin-right: 15px;
@@ -261,16 +252,10 @@
 
     &__btn {
       flex-basis: $modal-lang-btn-width;
-      height: 100%;
-      background: $modal-lang-btn-bg;
-      color: $modal-lang-btn-color;
-      border: 0;
       margin-right: 15px;
     }
 
     &__selected {
-      flex-grow: 1;
-      height: 100%;
       background: $modal-lang-selected-bg;
       margin-top: -30px;
     }
