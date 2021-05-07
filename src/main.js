@@ -38,13 +38,19 @@ import { apiGetVersion } from '@/api/version';
 import { apiKeepUserOnline } from '@/api/user';
 import { apiGetDomainInfo, checkSite, apiPreviewModeSwitch } from '@/api/site';
 
-//* set Vue.prototype
+//* dayjs
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
 import { isObjEmpty, deepClone, getObjectValueByDotString } from '@/utils/object';
 import { isStandaloneMode } from '@/utils/device';
 
+//* set Vue.prototype
 Vue.prototype.$dayjs = dayjs;
 Vue.prototype.$numeral = numeral;
 Vue.prototype.$idMapper = idMapper;
@@ -223,9 +229,9 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
-    const siteClass = 'PA';
+    const siteClass = 'Z';
     const siteType = '01';
-    const isLandscape = true;
+    const isLandscape = false;
     console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
     store.commit('site/setInfoStyle', { siteClass, siteType });

@@ -1,7 +1,7 @@
 <template>
-  <ModalMessage @close="$emit('close')" v-if="messageList.length > 0">
+  <ModalMessage @close="$emit('close')" v-if="messageListFiltered.length > 0">
     <div class="modal-message-c">
-      <p class="modal-message-c__text" v-for="(item, index) in messageList" :key="index">
+      <p class="modal-message-c__text" v-for="(item, index) in messageListFiltered" :key="index">
         {{ item.Lst_Content }}
       </p>
       <!-- <button @click="$emit('close')">OK</button> -->
