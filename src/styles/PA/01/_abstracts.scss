@@ -16,7 +16,7 @@ $header-sub-height-auth: 0px;
 
 $footer-height: 119px;
 
-$btn-height: 89px;
+$btn-height: auto;
 
 $btn-bg-yellow-light: #caad76;
 $btn-bg-brown: #462b16;
@@ -126,8 +126,8 @@ $no-data-font-size: 1.5rem;
 //* Modal
 $modal-bg: none;
 $modal-border: 1px solid white;
+$modal-title-height: 15%;
 $modal-title-bg: #cbaa6d;
-$modal-title-height: 20%;
 $modal-title-color: #070706;
 $modal-content-bg: assetPath('ui/ui-modal-bg-decoration.png') #fcfaf7 center/100% 100% no-repeat;
 $modal-nav-bg: $modal-title-bg;

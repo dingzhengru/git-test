@@ -52,15 +52,22 @@
       </ValidationProvider>
 
       <div class="modal-login__remember">
-        <input id="login-remember" type="checkbox" v-model="user.RememberMe" />
-        <label for="login-remember">{{ $t('login.rememberMe') }}</label>
+        <label for="login-remember">
+          <input id="login-remember" type="checkbox" v-model="user.RememberMe" />
+          {{ $t('login.rememberMe') }}
+        </label>
         <a href="javascript:;" class="modal-login__remember__right" @click="$store.dispatch('openModalContact')">
           {{ $t('login.link.forgetPassword') }}?
         </a>
       </div>
 
       <div class="modal-login__btn-block">
-        <button class="modal-login__btn--login" type="submit" :id="$idMapper.login.button.submit" :disabled="invalid">
+        <button
+          class="ui-btn modal-login__btn--login"
+          type="submit"
+          :id="$idMapper.login.button.submit"
+          :disabled="invalid"
+        >
           {{ $t('ui.button.login') }}
         </button>
       </div>

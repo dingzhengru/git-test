@@ -45,6 +45,8 @@ $header-lottery-red-envelope-height: 100%;
   @include modal-auth;
 }
 
+$modal-login-btn-bg-submit: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
+
 .modal-login {
   @include modal-login;
 }

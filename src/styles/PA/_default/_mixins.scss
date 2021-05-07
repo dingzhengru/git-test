@@ -1,5 +1,11 @@
 @mixin ui-btn {
   display: inline-block;
+  height: $btn-height;
+  line-height: 2.5;
+  border: 0;
+
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
   &--block {
     display: block;
@@ -34,6 +40,7 @@
     color: $field-input-color;
     border: none;
     border-radius: 5px;
+    font-size: 0.8rem;
     padding: 5px 10px;
 
     &::placeholder {
@@ -378,7 +385,8 @@
 
   &__content {
     width: 100%;
-    flex-grow: 1;
+    flex-basis: 100% - $modal-title-height;
+    // flex-grow: 1;
     background: $modal-content-bg;
     overflow-y: auto;
     border-bottom-left-radius: 10px;
@@ -386,18 +394,22 @@
   }
 
   &__nav {
+    width: 100%;
+    flex-basis: $modal-title-height;
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
     > div {
+      height: 100%;
       background: $modal-nav-bg;
       color: $modal-nav-color;
       flex-grow: 1;
-      text-align: center;
-      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &.active {
         background: $modal-nav-bg-active;

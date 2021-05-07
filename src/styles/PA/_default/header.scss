@@ -170,12 +170,8 @@
     align-items: center;
     margin-bottom: 15px;
 
-    input[type='checkbox'] {
-      background: black;
-      color: white;
-    }
-
     &__right {
+      color: red;
       margin-left: auto;
     }
   }
@@ -189,6 +185,7 @@
   &__btn {
     &--login {
       width: 50%;
+      background: $modal-login-btn-bg-submit;
     }
   }
 }
