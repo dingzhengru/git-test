@@ -129,6 +129,8 @@ export default {
                 this.zE.hide();
               });
 
+              // this.zE.hide();
+
               window.clearInterval(zeInterval);
             }
           }, 500);
