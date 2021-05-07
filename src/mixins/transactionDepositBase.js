@@ -10,6 +10,15 @@ export default {
   },
   computed: {
     ...mapGetters(['lang']),
+    payType() {
+      return this.depositInfo.BankAccount.length > 0 ? 2 : 1;
+    },
+    depositBankList() {
+      if (this.payType === 1) {
+        this.depositInfo.BankURL;
+      }
+      return this.depositInfo.BankAccount;
+    },
     amountMin() {
       return this.depositInfo.DepositDownlimit;
     },
@@ -20,7 +29,6 @@ export default {
   data() {
     return {
       depositBank: {},
-      // depositBankAccount: '',
       transferBank: {},
       datetime: this.$dayjs().format('YYYY-MM-DDTHH:mm:00'),
       method: '',
@@ -29,6 +37,9 @@ export default {
       receipt: { name: '', image: '' },
       remark: '',
       promotion: '-1',
+
+      //* 客服，payType === 1
+      depositBankAccount: '',
 
       noticeList: [
         // 'transaction.deposit.notice.currency',
@@ -55,13 +66,13 @@ export default {
         exchangeRage = this.depositInfo.hid_MMKtoTHBrate;
       }
 
-      let requestData = {
-        rsaData: {
+      let rsaData = {};
+      if (this.payType === 2) {
+        rsaData = {
           Add_Company_ServiceKey: this.depositBank.Value.split('||')[2],
           Add_Pay_BankAccount: this.depositBank.BankAccount,
-          Add_BankAccountName: this.depositBank.BankAccountName,
-          // Add_BankId: this.transferBank.BankId,
-          Add_BankId: this.transferBank.Value.split('_')[0],
+          // Add_BankAccountName: this.depositBank.BankAccountName,
+          Add_BankId: '',
           Add_MemberBankName: this.transferBank.Value,
           Add_Pay_Date: this.datetime.replace('T', ' '),
           Add_Pay_Money: this.amount,
@@ -70,8 +81,28 @@ export default {
           Add_SDM_Key: this.method,
           Add_Request_Currency: this.currency,
           Add_Exchange_Rate: exchangeRage,
-          Add_Pay_Type: this.depositInfo.BankAccount.length > 0 ? 2 : 1,
-        },
+          Add_Pay_Type: this.payType,
+        };
+      } else if (this.payType === 1) {
+        rsaData = {
+          Add_Company_ServiceKey: this.depositInfo.CustomerService,
+          Add_Pay_BankAccount: '',
+          Add_MemberBankName: this.transferBank.Value,
+          Add_Pay_Date: this.datetime.replace('T', ' '),
+          Add_Pay_Money: this.amount,
+          Add_Activity: this.promotion,
+          Add_Pay_Memo: this.remark,
+          Add_SDM_Key: this.method,
+          Add_Request_Currency: this.currency,
+          Add_Exchange_Rate: exchangeRage,
+          Add_Pay_Type: this.payType,
+          Add_BankId: this.depositBank.Value.split('_')[0],
+          Add_BankAccountName: this.depositBankAccount,
+        };
+      }
+
+      let requestData = {
+        rsaData,
         noRsaData: {
           upfile_name: this.receipt.name,
           upfile: this.receipt.image.split(',')[1] || '',
