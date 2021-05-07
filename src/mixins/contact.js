@@ -121,18 +121,20 @@ export default {
           scriptElement.src = jsSrc;
           document.querySelector('head').append(scriptElement);
 
-          const zeInterval = setInterval(() => {
+          const zeInterval = window.setInterval(() => {
             if (zE) {
               this.zE = zE;
-
-              console.log(zE);
-              console.log(this.zE);
-
-              zE.hide();
 
               this.zE('webWidget:on', 'close', () => {
                 this.zE.hide();
               });
+
+              const zeHideInterval = window.setInterval(() => {
+                if (typeof this.zE.hide === 'function') {
+                  this.zE.hide();
+                  window.clearInterval(zeHideInterval);
+                }
+              }, 1000);
 
               window.clearInterval(zeInterval);
             }

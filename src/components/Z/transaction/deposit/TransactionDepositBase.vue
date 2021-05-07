@@ -10,13 +10,13 @@
       >
         <select class="ui-field__select" v-model="depositBank">
           <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.depositBank`) }}</option>
-          <option :value="item" v-for="item in depositInfo.BankAccount" :key="item.Value">
+          <option :value="item" v-for="item in depositBankList" :key="item.Value">
             {{ item.Text }}
           </option>
         </select>
       </ValidationProvider>
 
-      <div class="ui-field deposit-base__field deposit-base__field--bank-name">
+      <div class="ui-field deposit-base__field deposit-base__field--bank-name" v-if="payType === 2">
         <div class="ui-field__group">
           <label class="ui-field__group__label" for="deposit-bank-account">
             {{ $t('transaction.deposit.field.bankAccountName') }}</label
@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="ui-field deposit-base__field deposit-base__field--bank-account">
+      <div class="ui-field deposit-base__field deposit-base__field--bank-account" v-if="payType === 2">
         <div class="ui-field__group ui-field__group--btn">
           <label class="ui-field__group__label" for="deposit-bank-account">
             {{ $t('transaction.deposit.field.bankAccount') }}</label
@@ -39,6 +39,15 @@
             readonly
           />
           <button class="ui-btn" type="button" @click="copyBankAccount">{{ $t('ui.button.copy') }}</button>
+        </div>
+      </div>
+
+      <div class="ui-field deposit-base__field deposit-base__field--bank-name" v-if="payType === 1">
+        <div class="ui-field__group">
+          <label class="ui-field__group__label" for="deposit-bank-account">
+            {{ $t('transaction.deposit.field.bankAccountName') }}
+          </label>
+          <input class="ui-field__group__input" v-model="depositBankAccount" />
         </div>
       </div>
 
