@@ -18,7 +18,7 @@ export default {
     },
     depositBankList() {
       if (this.payType === 1) {
-        this.depositInfo.BankURL;
+        return this.depositInfo.BankURL;
       }
       return this.depositInfo.BankAccount;
     },
