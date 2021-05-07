@@ -128,11 +128,11 @@ export default {
               console.log(zE);
               console.log(this.zE);
 
-              this.zE('webWidget:on', 'close', function() {
+              zE.hide();
+
+              this.zE('webWidget:on', 'close', () => {
                 this.zE.hide();
               });
-
-              // this.zE.hide();
 
               window.clearInterval(zeInterval);
             }
