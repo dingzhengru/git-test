@@ -113,8 +113,8 @@ export default {
           }, 500);
         } else if (this.service.Js_Type == 'ze-snippet' && typeof zE == 'undefined') {
           console.log('[CustomService]', 'import ze-snippet');
-          // const jsSrc = jscode.split('src="')[1].split('"')[0]
-          const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
+          const jsSrc = jscode.split('src="')[1].split('"')[0];
+          // const jsSrc = 'https://static.zdassets.com/ekr/snippet.js?key=22acc8e3-164e-4f5f-9987-42269dc9635c';
 
           const scriptElement = document.createElement('script');
           scriptElement.id = 'ze-snippet';
