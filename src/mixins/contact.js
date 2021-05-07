@@ -124,7 +124,6 @@ export default {
           const zeInterval = setInterval(() => {
             if (zE) {
               this.zE = zE;
-              this.zE.hide();
 
               this.zE('webWidget:on', 'close', function() {
                 this.zE.hide();
