@@ -125,6 +125,9 @@ export default {
             if (zE) {
               this.zE = zE;
 
+              console.log(zE);
+              console.log(this.zE);
+
               this.zE('webWidget:on', 'close', function() {
                 this.zE.hide();
               });
