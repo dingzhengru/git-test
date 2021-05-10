@@ -1,9 +1,11 @@
 @import './_abstracts';
 @import '@/styles/PA/_default/news';
 
-$news-item-bg: #444444;
-$news-item-color: white;
-$news-date-label-color: #cbaa6d;
+$news-item-bg: none;
+$news-item-date-bg: none;
+$news-item-date-color: $base-text-color;
+$news-item-content-bg: #948f87;
+$news-item-content-color: white;
 
 .news {
   @include news;

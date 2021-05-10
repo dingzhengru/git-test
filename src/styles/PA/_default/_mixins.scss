@@ -371,10 +371,13 @@
 }
 
 @mixin ui-no-data {
+  width: 100%;
   background: $no-data-bg;
   color: $no-data-color;
   font-size: $no-data-font-size;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 30px 0;
 }
 

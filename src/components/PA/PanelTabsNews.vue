@@ -28,11 +28,11 @@ export default {
           text: 'news.title',
           otherActiveRoute: [],
         },
-        {
-          name: 'About',
-          text: 'about.title',
-          otherActiveRoute: [],
-        },
+        // {
+        //   name: 'About',
+        //   text: 'about.title',
+        //   otherActiveRoute: [],
+        // },
       ],
     };
   },
