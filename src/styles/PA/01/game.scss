@@ -36,18 +36,18 @@ $game-lobby-list-icon-item-fav-height: 30px;
   @include game-lobby-list-icon;
 }
 
-$game-lobby-search-bg: none;
-$game-lobby-search-width: 200px;
-$game-lobby-search-height: $header-height;
+$game-lobby-search-bg: #322400;
+$game-lobby-search-width: 30%;
+$game-lobby-search-height: $header-height - 5%;
+$game-lobby-search-shadow: 0px 0px 3px 1px rgba(171, 150, 115, 0.9);
+$game-lobby-search-transform: skew(-0.06turn, 0deg);
 
-$game-lobby-search-position-right: 60px;
-
-$game-lobby-search-input-bg: #444444;
-$game-lobby-search-input-width: 140px;
+$game-lobby-search-input-bg: #322400;
 $game-lobby-search-input-color: white;
+$game-lobby-search-input-transform: skew(0.06turn, 0deg);
 
-$game-lobby-search-icon-bg: assetPath('game-lobby/bg_lnk_inquire.png') center/cover no-repeat;
-$game-lobby-search-icon-width: 53px;
+$game-lobby-search-icon-bg: none;
+$game-lobby-search-icon-transform: skew(0.06turn, 0deg);
 
 .game-lobby-search {
   @include game-lobby-search;

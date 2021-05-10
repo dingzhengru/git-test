@@ -25,6 +25,7 @@
           :gameList="gameList"
           :productCurrent="productCurrent"
           :isProductActive="isProductActive || isProductFav"
+          :isShowFav="isShowFav"
           @change-page="changePageScrollBottom"
           @open-game="openGame"
           @change-game-fav="changeGameFav"
@@ -32,7 +33,7 @@
       </div>
     </div>
 
-    <component :is="GameSearchBlock" @submit-search="submitSearch" v-if="isShowSearchBlock" />
+    <component :is="GameSearchBlock" @submit-search="submitSearch" v-if="isShowSearch" />
 
     <!-- <component
       :is="GameCategoryNavigation"

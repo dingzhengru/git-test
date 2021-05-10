@@ -18,6 +18,7 @@
           class="game-lobby-list-icon__item__fav"
           :class="{ active: item.Lst_IsLike }"
           @click.stop="$emit('change-game-fav', item)"
+          v-if="isShowFav"
         ></div>
         <!-- <div class="game-lobby-list-icon__item__new">New!</div> -->
       </div>
@@ -58,6 +59,10 @@ export default {
       default: () => {},
     },
     isProductActive: {
+      type: Boolean,
+      default: true,
+    },
+    isShowFav: {
       type: Boolean,
       default: true,
     },
