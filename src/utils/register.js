@@ -161,7 +161,7 @@ export const registerFieldList = [
     type: 'text',
     rules: {
       'register-required': false,
-      'register-regex': '^[A-Za-z ]+$|^[\u4e00-\u9fa5\uF900-\uFA2D]+$|^[\u0e00-\u0e5b]+$',
+      'register-regex': '^[A-Za-z ]+$|^[\u4e00-\u9fa5\uF900-\uFA2D ]+$|^[\u0e00-\u0e5b ]+$',
       'register-max': 70,
     },
     isRequired: false,
