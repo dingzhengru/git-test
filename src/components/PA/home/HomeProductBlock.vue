@@ -5,7 +5,7 @@
       ref="homeProductBlockContainer"
       tag="div"
       name="product-list-landscape"
-      :class="{ block: classify !== 2 }"
+      :class="{ block: isImgBlock }"
       @scroll.native.passive="handelScrollArrowX($event.target)"
     >
       <!-- <div
@@ -61,6 +61,9 @@ export default {
   },
   computed: {
     ...mapGetters(['siteFullCss', 'siteProductImage', 'userIsLoggedIn']),
+    isImgBlock() {
+      return this.classify !== 2;
+    },
     imgSrc: app => game => {
       try {
         return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
@@ -70,14 +73,10 @@ export default {
     },
     imgSrcTest() {
       try {
+        if (this.isImgBlock) {
+          return require(`@/assets/${this.siteFullCss}/home/evo-block.png`);
+        }
         return require(`@/assets/${this.siteFullCss}/home/sbo.png`);
-      } catch {
-        return '';
-      }
-    },
-    imgSrcBlockTest() {
-      try {
-        return require(`@/assets/${this.siteFullCss}/home/sbo-block.png`);
       } catch {
         return '';
       }
