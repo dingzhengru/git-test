@@ -72,6 +72,10 @@
     margin-bottom: 30px;
 
     &--remember {
+      > div {
+        flex-wrap: wrap;
+      }
+
       .ui-field__label {
         margin-right: 15px;
       }
@@ -138,6 +142,7 @@
   .vue-js-switch .v-switch-core .v-switch-button {
     border-radius: $user-change-password-switch-radius !important;
     width: $user-change-password-switch-width-btn !important;
+    z-index: 1 !important;
   }
 
   /*

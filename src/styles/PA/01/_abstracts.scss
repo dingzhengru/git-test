@@ -66,11 +66,14 @@ $table-tr-shadow: 0px -2px #8b8b8b;
 $table-td-color: white;
 $table-td-border: 2px solid #555;
 
-$nav-tab-height: 25px;
+$nav-tab-height: 15%;
+$nav-tab-bg: assetPath('ui/ui-nav-tab-bg.png') center/contain repeat-x;
 $nav-tab-text-color: #8b8b8b;
-$nav-tab-text-color-active: #c8aa73;
-$nav-tab-border-bottom: 3px solid #8b8b8b;
-$nav-tab-border-bottom-active: 3px solid #c8aa73;
+$nav-tab-text-color-active: white;
+$nav-tab-border: none;
+$nav-tab-border-active: none;
+$nav-tab-item-bg: none;
+$nav-tab-item-bg-active: assetPath('ui/ui-nav-tab-item-bg-active.png') center/100% 100% no-repeat;
 $nav-tab-arrow-width: 50px;
 $nav-tab-arrow-bg-left-promotion: assetPath('ui/ui-arrow-maskLeft.png') left/contain no-repeat,
   linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
@@ -138,7 +141,6 @@ $modal-nav-color: $modal-title-color;
 $modal-item-btn-bg: assetPath('ui/ui-btn-oval.png') center/100% 100% no-repeat;
 $modal-item-btn-color: white;
 $modal-item-selected-bg: assetPath('header/header-lang-modal-tick.png') center/ 100% 100% no-repeat;
-
 
 //* 服務規章視窗
 $service-term-bg: white;

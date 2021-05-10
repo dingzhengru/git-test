@@ -49,7 +49,7 @@
         <img class="header__lottery__text header__lottery__text--red-envelope" :src="imgLotteryIconRedEnvelopeText" />
         <img class="header__lottery__icon header__lottery__icon--red-envelope" :src="imgLotteryIconRedEnvelope" />
       </div>
-      <div class="header__lang" @click="$store.dispatch('openModalLang')"></div>
+      <div class="header__lang" @click="$store.dispatch('openModalLang')" v-if="isShowLang"></div>
     </div>
 
     <component :is="ModalAuth" @close="$store.dispatch('closeModalAuth')" v-if="modalAuthIsShow" />
@@ -91,6 +91,9 @@ export default {
     },
     isShowLogoBack() {
       return this.$route.name !== 'Home';
+    },
+    isShowLang() {
+      return this.$route.name === 'Home';
     },
     isShowLogin() {
       return !this.userIsLoggedIn && this.$route.name === 'Home';

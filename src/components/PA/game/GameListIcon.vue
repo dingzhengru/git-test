@@ -1,5 +1,5 @@
 <template>
-  <div class="game-lobby-list-icon">
+  <div class="game-lobby-list-icon" :class="{ 'no-category': !isShowCategory }">
     <h2 class="text-center" v-if="!isProductActive">{{ $t('alert.gameMaintenance') }}</h2>
 
     <div
@@ -18,6 +18,7 @@
           class="game-lobby-list-icon__item__fav"
           :class="{ active: item.Lst_IsLike }"
           @click.stop="$emit('change-game-fav', item)"
+          v-if="isShowFav"
         ></div>
         <!-- <div class="game-lobby-list-icon__item__new">New!</div> -->
       </div>
@@ -57,7 +58,15 @@ export default {
       type: Object,
       default: () => {},
     },
+    isShowCategory: {
+      type: Boolean,
+      default: true,
+    },
     isProductActive: {
+      type: Boolean,
+      default: true,
+    },
+    isShowFav: {
       type: Boolean,
       default: true,
     },
