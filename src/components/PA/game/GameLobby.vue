@@ -24,6 +24,7 @@
           :is="GameListIcon"
           :gameList="gameList"
           :productCurrent="productCurrent"
+          :isShowCategory="isShowCategory"
           :isProductActive="isProductActive || isProductFav"
           :isShowFav="isShowFav"
           @change-page="changePageScrollBottom"

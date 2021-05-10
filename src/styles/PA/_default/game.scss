@@ -8,31 +8,42 @@
 }
 
 @mixin game-lobby-category {
-  margin: 5px 0 10px 0;
+  // margin: 5px 0 0 0;
 }
 @mixin game-lobby-list-icon {
   width: 100%;
-  height: calc(100% - #{$nav-tab-height} - 15px);
+  height: calc(100% - #{$nav-tab-height});
   display: flex;
-  overflow-x: auto;
+  overflow-y: auto;
   position: relative;
+
+  &.no-category {
+    height: 100%;
+
+    .game-lobby-list-icon {
+      &__item {
+        height: 40%;
+      }
+    }
+  }
 
   &__container {
     width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    overflow-x: auto;
+    overflow-y: auto;
   }
 
   &__item {
-    width: 32%;
-    height: 50%;
+    width: calc(33% - 5px);
+    height: 48%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     margin-right: 5px;
+    margin-bottom: 5px;
     position: relative;
 
     &__icon {

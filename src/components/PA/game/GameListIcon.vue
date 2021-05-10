@@ -1,5 +1,5 @@
 <template>
-  <div class="game-lobby-list-icon">
+  <div class="game-lobby-list-icon" :class="{ 'no-category': !isShowCategory }">
     <h2 class="text-center" v-if="!isProductActive">{{ $t('alert.gameMaintenance') }}</h2>
 
     <div
@@ -57,6 +57,10 @@ export default {
     productCurrent: {
       type: Object,
       default: () => {},
+    },
+    isShowCategory: {
+      type: Boolean,
+      default: true,
     },
     isProductActive: {
       type: Boolean,
