@@ -15,24 +15,20 @@
     flex-basis: 25%;
     height: 100%;
 
-    > img {
-      width: 100%;
-    }
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 
     &__icon {
+      width: 100%;
       position: relative;
       bottom: -30%;
       margin-right: 15px;
     }
-  }
 
-  &__back {
-    flex-basis: 25%;
-    max-width: 25%;
-    position: relative;
-    height: 100%;
-    background: peru;
-    margin-right: 15px;
+    &__back {
+      width: 50%;
+    }
   }
 
   &__login {

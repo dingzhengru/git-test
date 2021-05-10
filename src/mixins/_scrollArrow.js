@@ -9,6 +9,16 @@ export default {
     };
   },
   methods: {
+    initScrollArrowX(el) {
+      window.setTimeout(() => {
+        this.handelScrollArrowX(el);
+      }, 600);
+    },
+    initScrollArrowY(el) {
+      window.setTimeout(() => {
+        this.handelScrollArrowY(el);
+      }, 600);
+    },
     handelScrollArrowX(element) {
       if (!element) {
         return;

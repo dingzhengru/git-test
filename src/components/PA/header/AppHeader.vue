@@ -116,7 +116,7 @@ export default {
     },
     imgBack() {
       try {
-        return require(`@/assets/${this.siteFullCss}/header/logo.png`);
+        return require(`@/assets/${this.siteFullCss}/header/header-back.png`);
       } catch {
         return '';
       }

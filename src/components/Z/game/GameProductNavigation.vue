@@ -74,9 +74,7 @@ export default {
   },
   watch: {
     productList() {
-      window.setTimeout(() => {
-        this.handelScrollArrowX(this.$refs.gameLobbyProductContainer);
-      }, 500);
+      this.initScrollArrowX(this.$refs.gameLobbyProductContainer);
     },
   },
 };
