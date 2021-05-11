@@ -4,13 +4,17 @@
       <component :is="PanelTabs" :list="tabList" />
 
       <div class="ui-panel-tab__content user-mail__content">
-        <component :is="AppNavTab" :list="navList">
-          <div slot="after" class="nav-tab__right user-mail__nav-tab__right">
+        <div class="nav-tab">
+          <div class="nav-tab__item">
+            <img :src="imgMail" />
+            <span>{{ $t('user.mail.nav.inbox') }}</span>
+          </div>
+          <div class="nav-tab__right user-mail__nav-tab__right">
             <button class="ui-btn" @click="$router.push({ name: 'UserMailSend' })">
               {{ $t('user.mail.nav.add') }}
             </button>
           </div>
-        </component>
+        </div>
 
         <table class="ui-table user-mail__table">
           <tr>
@@ -70,6 +74,13 @@ export default {
     },
     getDate: () => datetime => {
       return datetime.split('T')[0];
+    },
+    imgMail() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/ui/ui-mail.png`);
+      } catch {
+        return '';
+      }
     },
   },
   data() {
