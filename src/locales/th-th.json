@@ -55,6 +55,7 @@
   },
   "alert": {
     "loadFailed": "การโหลดล้มเหลว โปรดรีเฟรชหน้าแล้วลองอีกครั้ง",
+    "success": "สำเร็จ",
     "accessSuccess": "เปิดใช้งานบัญชีเรียบร้อยแล้ว!",
     "changeProfileSuccess": "แก้ไขข้อมูลสำเร็จ！",
     "transferSuccess": "โอนความสำเร็จ!",

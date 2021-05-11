@@ -4,7 +4,13 @@
       <component :is="PanelTabs" :list="tabList" />
 
       <div class="ui-panel-tab__content user-mail__content">
-        <component :is="AppNavTab" :list="navList" />
+        <component :is="AppNavTab" :list="navList">
+          <div slot="after" class="nav-tab__right user-mail__nav-tab__right">
+            <button class="ui-btn" @click="$router.push({ name: 'UserMailSend' })">
+              {{ $t('user.mail.nav.add') }}
+            </button>
+          </div>
+        </component>
 
         <table class="ui-table user-mail__table">
           <tr>
@@ -78,13 +84,13 @@ export default {
           class: '',
           otherActiveRoute: [],
         },
-        {
-          name: 'UserMailSend',
-          text: 'user.mail.nav.add',
-          link: 'UserMailSend',
-          class: '',
-          otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
-        },
+        // {
+        //   name: 'UserMailSend',
+        //   text: 'user.mail.nav.add',
+        //   link: 'UserMailSend',
+        //   class: '',
+        //   otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
+        // },
       ],
 
       tabList: [

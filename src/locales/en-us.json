@@ -55,6 +55,7 @@
   },
   "alert": {
     "loadFailed": "Load failed. Please refresh the page and retry.",
+    "success": "Successful",
     "accessSuccess": "Account activated successfully!",
     "changeProfileSuccess": "Profile changed successfully!",
     "transferSuccess": "Transfer successfully!",
