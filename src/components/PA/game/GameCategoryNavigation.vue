@@ -53,9 +53,7 @@ export default {
   },
   watch: {
     categoryList() {
-      window.setTimeout(() => {
-        this.handelScrollArrowX(this.$refs.gameLobbyCategoryContainer);
-      }, 500);
+      this.initScrollArrowX(this.$refs.gameLobbyCategoryContainer);
     },
   },
 };

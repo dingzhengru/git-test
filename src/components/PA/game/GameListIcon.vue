@@ -101,9 +101,7 @@ export default {
       window.setTimeout(() => {
         this.isShowIntersect = true;
 
-        window.setTimeout(() => {
-          this.handelScrollArrowX(this.$refs.gameLobbyListIconContainer);
-        }, 500);
+        this.initScrollArrowX(this.$refs.gameLobbyListIconContainer);
       }, 100);
     },
   },

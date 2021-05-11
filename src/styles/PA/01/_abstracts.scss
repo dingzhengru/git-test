@@ -75,6 +75,7 @@ $nav-tab-border-active: none;
 $nav-tab-item-bg: none;
 $nav-tab-item-bg-active: assetPath('ui/ui-nav-tab-item-bg-active.png') center/100% 100% no-repeat;
 $nav-tab-arrow-width: 50px;
+$nav-tab-arrow-height: 90%;
 $nav-tab-arrow-bg-left-promotion: assetPath('ui/ui-arrow-maskLeft.png') left/contain no-repeat,
   linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
 $nav-tab-arrow-bg-right-promotion: assetPath('ui/ui-arrow-maskRight.png') right/contain no-repeat,

@@ -12,6 +12,10 @@
         // flex-basis: 25%;
         height: calc(25% - 2.5px);
       }
+
+      &__arrow {
+        bottom: 20%;
+      }
     }
   }
 

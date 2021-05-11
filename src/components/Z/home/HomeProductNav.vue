@@ -38,9 +38,7 @@ export default {
   },
   watch: {
     productClassifyList() {
-      window.setTimeout(() => {
-        this.handelScrollArrowX(this.$refs.navTabContainer);
-      }, 500);
+      this.initScrollArrowX(this.$refs.navTabContainer);
     },
   },
 };

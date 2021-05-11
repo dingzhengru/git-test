@@ -76,7 +76,7 @@ export default {
           Add_Pay_BankAccount: this.depositBank.BankAccount,
           // Add_BankAccountName: this.depositBank.BankAccountName,
           Add_BankId: '',
-          Add_MemberBankName: this.transferBank.Value,
+          Add_MemberBankName: this.transferBank.Text,
           Add_Pay_Date: this.datetime.replace('T', ' '),
           Add_Pay_Money: this.amount,
           Add_Activity: this.promotion,
@@ -90,7 +90,7 @@ export default {
         rsaData = {
           Add_Company_ServiceKey: this.depositInfo.CustomerService,
           Add_Pay_BankAccount: '',
-          Add_MemberBankName: this.transferBank.Value,
+          Add_MemberBankName: this.transferBank.Text,
           Add_Pay_Date: this.datetime.replace('T', ' '),
           Add_Pay_Money: this.amount,
           Add_Activity: this.promotion,

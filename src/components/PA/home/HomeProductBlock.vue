@@ -99,9 +99,7 @@ export default {
   },
   watch: {
     list() {
-      window.setTimeout(() => {
-        this.handelScrollArrowX(this.$refs.homeProductBlockContainer.$el);
-      }, 600);
+      this.initScrollArrowX(this.$refs.homeProductBlockContainer);
     },
   },
 };

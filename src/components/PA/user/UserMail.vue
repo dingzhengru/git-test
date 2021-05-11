@@ -98,11 +98,11 @@ export default {
           text: 'news.title',
           otherActiveRoute: [],
         },
-        {
-          route: 'About',
-          text: 'about.title',
-          otherActiveRoute: [],
-        },
+        // {
+        //   route: 'About',
+        //   text: 'about.title',
+        //   otherActiveRoute: [],
+        // },
       ],
     };
   },
