@@ -62,6 +62,8 @@ $user-mail-item-icon-height: 23px;
 
 $user-mail-nav-tab-btn-bg: assetPath('ui/ui-btn-yellow.png') center/100% 100% no-repeat;
 
+$user-mail-search-btn-bg: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
+
 .user-mail {
   @include user-mail;
 }

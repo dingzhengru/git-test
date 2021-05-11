@@ -20,6 +20,7 @@
       "promotion": "Promotions",
       "transactionNumber": "Transaction No.",
       "news": "News",
+      "mail": "Mail",
       "bankName": "Name of Bank",
       "bankAccount": "Bank Account",
       "bankBranch": "Name of Branch",
@@ -587,6 +588,10 @@
       "nav": {
         "inbox": "Inbox",
         "add": "New letters"
+      },
+      "field": {
+        "category": "Letter Category",
+        "subject": "Subject of Mail"
       }
     },
     "mailDetail": {

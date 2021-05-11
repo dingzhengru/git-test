@@ -252,15 +252,35 @@
     }
   }
 
-  &__content {
-    height: 100%;
+  &__search {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    > div:not(:last-child) {
+      margin-right: 5px;
+    }
+
+    &__category {
+      flex-basis: 45%;
+    }
+
+    &__subject {
+      flex-grow: 1;
+    }
+
+    &__btn {
+      flex-basis: 25%;
+      word-break: keep-all;
+      button {
+        width: 100%;
+        background: $user-mail-search-btn-bg;
+      }
+    }
   }
 
-  &__table {
-    a {
-      color: skyblue;
-      text-decoration: underline;
-    }
+  &__content {
+    height: 100%;
   }
 }
 

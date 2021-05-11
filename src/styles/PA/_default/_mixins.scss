@@ -1,6 +1,6 @@
 @mixin ui-btn {
   height: $btn-height;
-  line-height: 2.5;
+  line-height: 2;
   border: 0;
 
   color: white;
@@ -8,6 +8,9 @@
 
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  padding: 0 15px;
 
   &--block {
     display: block;
@@ -23,6 +26,11 @@
   position: relative;
   margin-bottom: 10px;
 
+  &.no-wrap {
+    flex-wrap: nowrap;
+    margin-bottom: 0;
+  }
+
   &__group {
     width: 100%;
     display: flex;
@@ -35,19 +43,28 @@
     filter: invert(1);
   }
 
-  input {
+  input,
+  select {
     min-width: 0;
     flex-grow: 1;
-    background: $field-input-bg;
-    color: $field-input-color;
     border: none;
     border-radius: 5px;
-    font-size: 0.8rem;
     padding: 5px 10px;
+  }
+
+  input {
+    background: $field-input-bg;
+    color: $field-input-color;
 
     &::placeholder {
       color: $field-input-color-placeholder;
     }
+  }
+
+  select {
+    background: $field-select-bg;
+    color: $field-select-color;
+    appearance: none;
   }
 
   &__captcha {
@@ -140,28 +157,30 @@
   margin: 15px 0;
 
   tr {
-    border-bottom: $table-tr-border-bottom;
-    box-shadow: $table-tr-shadow;
-  }
+    background: $table-tr-bg;
 
-  // tr:not(:first-child) {
-  //   border-bottom: $table-tr-border-bottom;
-  //   box-shadow: $table-tr-shadow;
-  // }
-
-  th,
-  td {
-    padding: 10px 5px;
-    border: $table-td-border;
+    &:not(:first-child):nth-child(even) {
+      background: $table-tr-bg-even;
+    }
   }
 
   th {
     background: $table-th-bg;
     color: $table-th-color;
+    border-bottom: $table-th-border-bottom;
+  }
+
+  th,
+  td {
+    padding: 10px 5px;
   }
 
   td {
     color: $table-td-color;
+
+    * {
+      color: $table-td-color;
+    }
   }
 }
 

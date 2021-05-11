@@ -16,6 +16,21 @@
           </div>
         </div>
 
+        <form class="user-mail__search">
+          <div class="ui-field no-wrap user-mail__search__category">
+            <select>
+              <option value="">{{ $t('user.mail.field.category') }}</option>
+            </select>
+          </div>
+          <div class="ui-field no-wrap user-mail__search__subject">
+            <input type="text" :placeholder="$t('user.mail.field.subject')" />
+          </div>
+
+          <div class="user-mail__search__btn">
+            <button class="ui-btn" type="submit">{{ $t('ui.button.search') }}</button>
+          </div>
+        </form>
+
         <table class="ui-table user-mail__table">
           <tr>
             <th>No.</th>
