@@ -207,6 +207,11 @@ export default {
       const requestDataSeo = { Lang: this.lang };
       this.$store.dispatch('site/getSeoInfo', requestDataSeo);
     },
+    userIsLoggedIn() {
+      if (this.siteIsLandscape === true && this.userIsLoggedIn === true) {
+        window.location.reload();
+      }
+    },
   },
 };
 </script>
