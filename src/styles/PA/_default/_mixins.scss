@@ -210,10 +210,11 @@
     width: $nav-tab-arrow-width;
     height: $nav-tab-arrow-height;
     position: absolute;
-    animation-name: arrow-opacity;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-
+    // animation-name: arrow-opacity;
+    // animation-duration: 2s;
+    // animation-iteration-count: infinite;
+    top: 50%;
+    transform: translateY(-50%);
     &--left {
       left: 0;
       &--promotion {

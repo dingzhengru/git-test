@@ -68,23 +68,19 @@ $table-td-border: 2px solid #555;
 
 $nav-tab-height: 15%;
 $nav-tab-bg: assetPath('ui/ui-nav-tab-bg.png') center/contain repeat-x;
-$nav-tab-text-color: #8b8b8b;
+$nav-tab-text-color: #cbaa6d;
 $nav-tab-text-color-active: white;
 $nav-tab-border: none;
 $nav-tab-border-active: none;
 $nav-tab-item-bg: none;
 $nav-tab-item-bg-active: assetPath('ui/ui-nav-tab-item-bg-active.png') center/100% 100% no-repeat;
 $nav-tab-arrow-width: 50px;
-$nav-tab-arrow-height: 90%;
-$nav-tab-arrow-bg-left-promotion: assetPath('ui/ui-arrow-maskLeft.png') left/contain no-repeat,
-  linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
-$nav-tab-arrow-bg-right-promotion: assetPath('ui/ui-arrow-maskRight.png') right/contain no-repeat,
-  linear-gradient(to left, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+$nav-tab-arrow-height: 70%;
+$nav-tab-arrow-bg-left-promotion: assetPath('ui/ui-tab-arrow-left.png') left/contain no-repeat;
+$nav-tab-arrow-bg-right-promotion: assetPath('ui/ui-tab-arrow-right.png') right/contain no-repeat;
 
-$nav-tab-arrow-bg-left-game-category: assetPath('ui/ui-arrow-maskLeft.png') left/contain no-repeat,
-  linear-gradient(to right, rgb(70, 43, 22, 1) 0%, rgb(70, 43, 22, 1) 50%, rgba(70, 43, 22, 0));
-$nav-tab-arrow-bg-right-game-category: assetPath('ui/ui-arrow-maskRight.png') right/contain no-repeat,
-  linear-gradient(to left, rgb(70, 43, 22, 1) 0%, rgb(70, 43, 22, 1) 50%, rgba(70, 43, 22, 0));
+$nav-tab-arrow-bg-left-game-category: assetPath('ui/ui-tab-arrow-left.png') left/contain no-repeat;
+$nav-tab-arrow-bg-right-game-category: assetPath('ui/ui-tab-arrow-right.png') right/contain no-repeat;
 
 $panel-tab-item-bg: assetPath('ui/ui-panel-tab-bg.png') center/cover no-repeat;
 $panel-tab-item-color: #462b16;

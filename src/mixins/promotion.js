@@ -14,6 +14,9 @@ export default {
 
       return this.promotionList.filter(item => item.Lst_CategoryTag.includes(this.category));
     },
+    promotionListHasDetail() {
+      return this.promotionList.filter(item => item.Lst_LinkType === 0 || item.Lst_LinkType === 2);
+    },
   },
   data() {
     return {
