@@ -50,8 +50,8 @@ export default {
         const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
 
         if (field) {
-          field.value = registerField.Lst_Value;
           field.isShow = registerField.Lst_Phase > 0;
+          field.value = field.isShow ? registerField.Lst_Value : '';
           field.isOnly = registerField.Lst_isOnly;
           field.isRequired = registerField.Lst_isRequired;
           field.rules['register-required'] = registerField.Lst_isRequired;
