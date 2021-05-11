@@ -1,5 +1,6 @@
 <template>
   <div class="nav-tab">
+    <slot name="before"></slot>
     <div
       class="nav-tab__item"
       :class="[
@@ -16,6 +17,7 @@
         {{ $t(item.text) }}
       </router-link>
     </div>
+    <slot name="after"></slot>
   </div>
 </template>
 

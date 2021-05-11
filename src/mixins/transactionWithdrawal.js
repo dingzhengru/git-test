@@ -65,7 +65,7 @@ export default {
 
       const result = await apiWithdrawal(requestData);
       if (result.Code == 200) {
-        this.$router.push({ name: 'TransactionWithdrawal' });
+        this.$router.push({ name: 'TransactionRecordWithdrawal' });
       }
     },
     changeAmount() {

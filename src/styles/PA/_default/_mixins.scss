@@ -1,11 +1,13 @@
 @mixin ui-btn {
-  display: inline-block;
   height: $btn-height;
   line-height: 2.5;
   border: 0;
 
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+  display: flex;
+  align-items: center;
 
   &--block {
     display: block;
@@ -233,6 +235,12 @@
         background: $nav-tab-arrow-bg-right-game-category;
       }
     }
+  }
+
+  &__right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
   }
 }
 

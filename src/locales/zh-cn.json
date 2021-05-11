@@ -55,6 +55,7 @@
   },
   "alert": {
     "loadFailed": "讀取失敗，請重整頁面",
+    "success": "成功",
     "accessSuccess": "开通成功！开启页面中请等待",
     "changeProfileSuccess": "资料更改成功！",
     "transferSuccess": "转帐成功!",
