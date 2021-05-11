@@ -2,7 +2,7 @@
   <ValidationObserver class="user-mail-send" v-slot="{ invalid, handleSubmit, reset }">
     <form class="user-mail-send__form" @submit.prevent="handleSubmit(submitMail)" @reset.prevent="reset">
       <div class="ui-panel-tab">
-        <component :is="PanelTabsNews" />
+        <component :is="PanelTabs" :list="tabList" />
 
         <div class="ui-panel-tab__content user-mail-send__content">
           <component :is="AppNavTab" :list="navList" />
@@ -63,8 +63,8 @@ export default {
   },
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss']),
-    PanelTabsNews() {
-      return () => import(`@/${this.siteSetting.components.user.PanelTabsNews}`);
+    PanelTabs() {
+      return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
     AppNavTab() {
       return () => import(`@/${this.siteSetting.components.user.AppNavTab}`);
@@ -72,6 +72,24 @@ export default {
   },
   data() {
     return {
+      tabList: [
+        {
+          route: 'UserMail',
+          text: 'user.nav.mail',
+          otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
+        },
+        {
+          route: 'News',
+          text: 'news.title',
+          otherActiveRoute: [],
+        },
+        // {
+        //   route: 'About',
+        //   text: 'about.title',
+        //   otherActiveRoute: [],
+        // },
+      ],
+
       navList: [
         {
           name: 'UserMail',
