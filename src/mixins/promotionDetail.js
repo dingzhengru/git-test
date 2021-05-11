@@ -6,6 +6,9 @@ export default {
   computed: {
     ...mapGetters(['lang', 'userIsLoggedIn']),
     promotionDetailListEnabled() {
+      if (!this.promotionDetail.ReturnList) {
+        return [];
+      }
       return this.promotionDetail.ReturnList.filter(item => item.Enable);
     },
     promotionDetailStartTimeFormatted() {
@@ -41,6 +44,9 @@ export default {
   },
   watch: {
     lang() {
+      this.getPromotionDetail();
+    },
+    $route() {
       this.getPromotionDetail();
     },
   },

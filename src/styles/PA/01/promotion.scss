@@ -8,12 +8,10 @@ $promotion-img-border: none;
 }
 
 $promotion-detail-img-border: none;
-$promotion-detail-title-bg: assetPath('ui/ui-event.png') #c8aa73 left/contain no-repeat;
-$promotion-detail-title-color: black;
-$promotion-detail-content-text-color: $base-text-color;
-$promotion-detail-button-bg-back: #462b16;
-$promotion-detail-button-text-color-back: white;
-$promotion-detail-button-shadow-back: none;
+$promotion-detail-title-color: $base-text-color;
+$promotion-detail-content-text-color: white;
+$promotion-detail-item-border-bottom: 1px solid black;
+$promotion-detail-item-shadow: 0px 1px 0px 0px white;
 
 .promotion-detail {
   @include promotion-detail;

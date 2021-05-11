@@ -3,75 +3,58 @@
   height: 100%;
   padding: 0 0 0 10px;
 
-  &__group {
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-content: center;
-  }
-
-  &__item {
-    display: flex;
-    justify-content: center;
-    margin: 15px 0;
-    left: 0;
-    right: 0;
-    img {
-      max-width: 100%;
-      border: $promotion-img-border;
+  &__tabs {
+    &__group {
+      width: 100%;
+      height: 100%;
     }
   }
+
+  // &__content {
+  // }
 }
 
 @mixin promotion-detail {
-  padding: 15px;
+  padding: 5px 15px;
 
   width: 100%;
 
+  display: flex;
+  flex-direction: column;
+
   &__image {
-    display: block;
     width: 100%;
-    // height: 190px;
-    margin: 20px auto;
-    border: $promotion-detail-img-border;
   }
 
   &__main {
+    width: 100%;
+    background: #949392;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-top: 5px;
     &__content {
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+
+      &:not(:last-child) {
+        border-bottom: $promotion-detail-item-border-bottom;
+        box-shadow: $promotion-detail-item-shadow;
+      }
+
       &__title {
-        background: $promotion-detail-title-bg;
         color: $promotion-detail-title-color;
-        height: 45px;
-        padding: 10px 0 10px 45px;
-        // font-size: 2.4rem;
-        font-weight: normal;
+        font-size: 1.1rem;
+        font-weight: bold;
       }
 
       &__desc {
+        color: $promotion-detail-content-text-color;
+        * {
+          color: $promotion-detail-content-text-color;
+        }
         img {
           width: 100% !important;
         }
-        color: $promotion-detail-content-text-color;
-        // font-size: 2rem;
-
-        // h1 {
-        //   font-size: 4rem;
-        // }
-        // h2 {
-        //   font-size: 3rem;
-        // }
-        // h3 {
-        //   font-size: 2rem;
-        // }
-        // h4 {
-        //   font-size: 2.3rem;
-        // }
-        // h5 {
-        //   font-size: 1.6rem;
-        // }
-        // h6 {
-        //   font-size: 1.3rem;
-        // }
       }
 
       // .ui-table04 {
@@ -87,16 +70,6 @@
         padding: 5px 10px;
         margin: 5px;
         display: inline-block;
-      }
-    }
-    &__button {
-      text-align: center;
-
-      button {
-        width: 80%;
-        background: $promotion-detail-button-bg-back;
-        color: $promotion-detail-button-text-color-back;
-        box-shadow: $promotion-detail-button-shadow-back;
       }
     }
   }

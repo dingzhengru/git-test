@@ -23,7 +23,8 @@
       "ModalServiceTerm": "components/PA/ModalServiceTerm"
     },
     "promotion": {
-      "PromotionNavTab": "components/Z/promotion/PromotionNavTab"
+      "PromotionNavTab": "components/Z/promotion/PromotionNavTab",
+      "PromotionDetail": "components/PA/promotion/PromotionDetail"
     },
     "user": {
       "ModalUserMailDetail": "components/PA/user/ModalUserMailDetail",
@@ -92,7 +93,7 @@
     "transactionRecordWithdrawalRestrictionDetail": "components/Z/transaction/record/TransactionRecordWithdrawalRestrictionDetail",
     "transactionWallet": "components/PA/transaction/TransactionWallet",
     "promotion": "components/PA/promotion/Promotion",
-    "promotionDetail": "components/Z/promotion/PromotionDetail",
+    "promotionDetail": "components/PA/promotion/Promotion",
     "contact": "components/Z/contact/Contact",
     "about": "components/PA/about/About",
     "news": "components/PA/news/News",

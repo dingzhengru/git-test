@@ -1,10 +1,24 @@
 <template>
   <div class="promotion">
     <div class="ui-panel-tab">
-      <div class="ui-panel-tab__tabs promotion__tabs">
-        <div class="ui-panel-tab__tabs__item">
-          全部
-        </div>
+      <div
+        class="ui-panel-tab__tabs promotion__tabs"
+        ref="promotionPanelTabs"
+        @scroll.passive="handelScrollArrowY($event.target)"
+      >
+        <transition-group class="promotion__tabs__group" tag="div" name="panel-tabs">
+          <div
+            class="ui-panel-tab__tabs__item panel-tabs-item"
+            :class="{ active: item.Lst_PromotionID == $route.params.id }"
+            v-for="item in promotionListByCategory"
+            :key="item.Lst_PromotionID"
+            @click="goPromotionDetail(item)"
+          >
+            {{ item.Lst_Title }}
+          </div>
+        </transition-group>
+
+        <div class="ui-panel-tab__tabs__arrow ui-panel-tab__tabs__arrow--bottom" v-show="isShowBottomArrow"></div>
       </div>
 
       <div class="ui-panel-tab__content promotion__content">
@@ -15,16 +29,7 @@
           @change-category="changeCategory"
         />
 
-        <transition-group tag="div" class="promotion__group" name="list-zoom">
-          <div
-            class="promotion__item list-zoom-item"
-            v-for="item in promotionListByCategory"
-            :key="item.Lst_PromotionID"
-            @click="goPromotionDetail(item)"
-          >
-            <img :src="item.Lst_ImageUrl" />
-          </div>
-        </transition-group>
+        <component :is="PromotionDetail" v-if="isShowPromotionDetail" />
       </div>
     </div>
   </div>
@@ -33,20 +38,36 @@
 <script>
 import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinPromotion from '@/mixins/promotion';
+import mixinScrollArrow from '@/mixins/_scrollArrow';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'Promotion',
-  mixins: [mixinStyleLoader, mixinPromotion],
+  mixins: [mixinStyleLoader, mixinPromotion, mixinScrollArrow],
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss', 'userIsLoggedIn']),
     PromotionNavTab() {
       return () => import(`@/${this.siteSetting.components.promotion.PromotionNavTab}`);
     },
+    PromotionDetail() {
+      return () => import(`@/${this.siteSetting.components.promotion.PromotionDetail}`);
+    },
+    isShowPromotionDetail() {
+      return this.$route.params.id !== undefined;
+    },
   },
   mounted() {
-    // import(`@/styles/${this.siteFullCss}/promotion.scss`);
     this.importStyleByFilename('promotion');
+    this.initScrollArrowY(this.$refs.promotionPanelTabs);
+  },
+  watch: {
+    promotionListByCategory() {
+      if (this.isShowPromotionDetail) {
+        return;
+      }
+      const promotion = this.promotionListByCategory[0];
+      this.$router.push({ name: 'PromotionDetail', params: { id: promotion.Lst_PromotionID } });
+    },
   },
 };
 </script>
