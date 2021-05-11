@@ -14,7 +14,7 @@
         {{ userAccount }}
       </div>
       <div class="header-sub__member__item header-sub__member__item--wallet">
-        {{ $t('ui.label.wallet') }}：{{ $numeral(userGamePointWallet.Point).format('0,0.00') }}
+        {{ $t('header.user.total') }}：{{ $numeral(userTotalBalance).format('0,0.00') }}
       </div>
       <i class="header-sub__member__icon--dropdown" :class="{ open: isShowDropdown }"></i>
     </div>
@@ -33,14 +33,6 @@
         </button>
 
         <div class="ui-point-list">
-          <div class="ui-point-list__item">
-            <div class="ui-point-list__item__label">
-              {{ $t('header.user.total') }}
-            </div>
-            <div class="ui-point-list__item__content">
-              {{ $numeral(userTotalBalance).format('0,0.00') }}
-            </div>
-          </div>
           <div class="ui-point-list__item" v-for="item in userGamePointList" :key="item.Product_id">
             <div class="ui-point-list__item__label">
               {{ item.Product_Name }}
