@@ -187,9 +187,6 @@ export default {
   },
   methods: {
     goRoutePrevious() {
-      if (this.$route.name === 'PromotionDetail') {
-        return this.$router.push({ name: 'Promotion' });
-      }
       this.$router.push({ name: 'Home' });
     },
     changeLang(lang) {
@@ -197,11 +194,6 @@ export default {
     },
     logout() {
       this.$emit('logout');
-    },
-  },
-  watch: {
-    userIsLoggedIn() {
-      this.$store.dispatch('closeModalAuth');
     },
   },
 };

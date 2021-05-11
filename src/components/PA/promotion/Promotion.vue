@@ -58,14 +58,14 @@ export default {
   },
   mounted() {
     this.importStyleByFilename('promotion');
-    this.initScrollArrowY(this.$refs.promotionPanelTabs);
   },
   watch: {
     promotionListByCategory() {
+      this.initScrollArrowY(this.$refs.promotionPanelTabs);
       if (this.isShowPromotionDetail) {
         return;
       }
-      const promotion = this.promotionListByCategory[0];
+      const promotion = this.promotionListHasDetail[0];
       this.$router.push({ name: 'PromotionDetail', params: { id: promotion.Lst_PromotionID } });
     },
   },

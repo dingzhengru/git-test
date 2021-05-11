@@ -27,11 +27,11 @@ export const API_URL = '/rch3api0member';
 //* 重新發送次數限制
 export const API_RETRY_COUNT_LIMIT = 1;
 
-//* 預設的 timeout (後端指定: 10秒)
-export const API_REQUEST_TIMEOUT = 10000;
+//* 預設的 timeout (後端指定: 30秒)
+export const API_REQUEST_TIMEOUT = 30000;
 
-//* 轉帳的 timeout (後端指定: 20秒)
-export const API_TIMEOUT_TRANSFER = 20000;
+//* 轉帳的 timeout (後端指定: 30秒)
+export const API_TIMEOUT_TRANSFER = 30000;
 
 //* 需加密的 API
 export const API_CRYPTO_LIST = ['Member/LoginIn', 'Member/MChangePassword', 'Member/MChgWithdrawalsPwd'];
