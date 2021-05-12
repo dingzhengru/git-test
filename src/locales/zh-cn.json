@@ -20,6 +20,7 @@
       "promotion": "优惠活动",
       "transactionNumber": "交易编号",
       "news": "最新消息",
+      "mail": "信件",
       "bankName": "银行名称",
       "bankAccount": "银行帐号",
       "bankBranch": "支行名称",
@@ -583,6 +584,10 @@
       "nav": {
         "inbox": "收件匣",
         "add": "新增信件"
+      },
+      "field": {
+        "category": "信件类别",
+        "subject": "信件主旨"
       }
     },
     "mailDetail": {

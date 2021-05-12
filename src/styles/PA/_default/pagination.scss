@@ -11,14 +11,14 @@
     background: $pagination-select-bg;
     color: $pagination-select-color;
     appearance: none;
-    height: 65px;
+    height: $pagination-height;
     padding-left: 30px;
     border: none;
+    // text-align-last: center;
   }
 
   > a {
     flex-basis: 20%;
-    height: 65px;
 
     &:first-child {
       border-top-left-radius: 10px;

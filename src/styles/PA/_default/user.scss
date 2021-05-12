@@ -252,15 +252,35 @@
     }
   }
 
-  &__content {
-    height: 100%;
+  &__search {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    > div:not(:last-child) {
+      margin-right: 5px;
+    }
+
+    &__category {
+      flex-basis: 45%;
+    }
+
+    &__subject {
+      flex-grow: 1;
+    }
+
+    &__btn {
+      flex-basis: 25%;
+      word-break: keep-all;
+      button {
+        width: 100%;
+        background: $user-mail-search-btn-bg;
+      }
+    }
   }
 
-  &__table {
-    a {
-      color: skyblue;
-      text-decoration: underline;
-    }
+  &__content {
+    height: 100%;
   }
 }
 
@@ -280,28 +300,86 @@
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    padding: 15px;
   }
 
-  &__table {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    > tr:not(:first-child) {
-      box-shadow: none;
-      > td {
-        text-align: left;
-        span {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 40%;
+    &__item {
+      background: #543c29;
+      display: flex;
+      padding: 15px;
+
+      font-size: 0.9rem;
+
+      &__info {
+        flex-basis: 50%;
+        color: white;
+        border-right: 1px solid #311134;
+        box-shadow: inset -2px 0px 0px 0px #634d3d;
+        * {
           color: white;
         }
       }
+      &__content {
+        flex-grow: 1;
+        color: #959595;
 
-      > td:nth-child(1) {
-        width: 40%;
-        font-size: 0.8rem;
+        display: flex;
+        justify-content: center;
+        * {
+          color: #959595;
+        }
       }
-      > td:nth-child(2) {
-        width: 60%;
+    }
+  }
+
+  &__reply {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+
+    &-title {
+      background: #cbaa6d;
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 0;
+    }
+    .ui-field {
+      align-items: flex-start;
+
+      label {
+        padding-bottom: 5px;
+      }
+
+      textarea {
+        width: 100%;
+      }
+    }
+    &__btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      button:first-child {
+        margin-right: 15px;
+      }
+
+      button[type='submit'] {
+        width: 30%;
+        background: $user-mail-detail-btn-bg-submit;
+      }
+      button[type='reset'] {
+        width: 30%;
+        background: $user-mail-detail-btn-bg-reset;
       }
     }
   }

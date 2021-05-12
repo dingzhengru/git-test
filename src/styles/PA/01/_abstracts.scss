@@ -32,12 +32,14 @@ $select-color: $input-color;
 $select-placeholder-color: $input-placeholder-color;
 
 $field-bg: none;
+$field-label-color: $base-text-color;
 $field-input-bg: #444444;
 $field-input-color: white;
 $field-input-color-placeholder: #959595;
-$field-select-bg: assetPath('ui/ui-arrow-select.png') $field-input-bg 97% center no-repeat;
+$field-select-bg: assetPath('ui/ui-arrow-down-white.png') $field-input-bg 95% center/auto 40% no-repeat;
 $field-select-color: $field-input-color;
-$field-label-color: $base-text-color;
+$field-textarea-bg: $field-input-bg;
+$field-textarea-color: $field-input-color;
 $field-error-bg: #c6a260;
 $field-error-color: $base-text-color;
 $field-star-color: #c6a260;
@@ -58,13 +60,13 @@ $point-list-content-color: white;
 $point-list-border-bg: black;
 $point-list-border-shadow: 0px -2px #8b8b8b;
 
-$table-bg: #444444;
-$table-th-bg: #444444;
+$table-bg: none;
+$table-tr-bg: #828080;
+$table-tr-bg-even: #696767;
+$table-th-bg: #464646;
 $table-th-color: #cbaa6d;
-$table-tr-border-bottom: 1px solid black;
-$table-tr-shadow: 0px -2px #8b8b8b;
+$table-th-border-bottom: 2px solid white;
 $table-td-color: white;
-$table-td-border: 2px solid #555;
 
 $nav-tab-height: 15%;
 $nav-tab-bg: assetPath('ui/ui-nav-tab-bg.png') center/contain repeat-x;

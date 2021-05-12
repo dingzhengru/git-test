@@ -241,6 +241,9 @@ if (isLoggedIn) {
 
     //* landscape
     store.state.site.info.IsPortrait = !isLandscape;
+
+    //* lang
+    store.dispatch('changeLang', 'my-mm');
   }
 
   //* 是否顯示 apk download message (網址有 ?pwa 的話)

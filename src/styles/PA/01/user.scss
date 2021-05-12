@@ -62,6 +62,8 @@ $user-mail-item-icon-height: 23px;
 
 $user-mail-nav-tab-btn-bg: assetPath('ui/ui-btn-yellow.png') center/100% 100% no-repeat;
 
+$user-mail-search-btn-bg: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
+
 .user-mail {
   @include user-mail;
 }
@@ -74,6 +76,9 @@ $user-mail-detail-item-content-border-top: 1px solid #c8aa73;
 $user-mail-detail-item-reply-bg: $field-bg;
 $user-mail-detail-item-reply-label-color: #959595;
 
+$user-mail-detail-btn-bg-submit: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
+$user-mail-detail-btn-bg-reset: assetPath('ui/ui-btn-rectangle-light.png') center/100% 100% no-repeat;
+
 $user-mail-btn-bg-submit: #462b16;
 $user-mail-btn-color-submit: white;
 $user-mail-btn-shadow-submit: none;
@@ -81,6 +86,9 @@ $user-mail-btn-shadow-submit: none;
 $user-mail-btn-bg-reset: #caad76;
 $user-mail-btn-color-reset: black;
 $user-mail-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$user-mail-detail-table-th-bg: #cbaa6d;
+$user-mail-detail-table-th-color: $base-text-color;
 
 .user-mail-detail {
   @include user-mail-detail;

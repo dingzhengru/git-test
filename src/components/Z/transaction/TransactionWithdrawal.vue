@@ -7,7 +7,7 @@
           <span class="ui-field__group__text">{{ userGamePointWallet.Point }}</span>
         </div>
         <div class="withdrawal__field--transfer__btn">
-          <button class="ui-btn ui-btn--block" type="button" @click="transferToMain">
+          <button class="ui-btn ui-btn--block" type="button" @click="$store.dispatch('user/transferAllPointToMain')">
             {{ $t('ui.button.allToMyWallet') }}
           </button>
         </div>

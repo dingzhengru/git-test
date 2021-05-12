@@ -1,6 +1,6 @@
 @mixin ui-btn {
   height: $btn-height;
-  line-height: 2.5;
+  line-height: 2;
   border: 0;
 
   color: white;
@@ -8,10 +8,18 @@
 
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  padding: 0 15px;
 
   &--block {
     display: block;
     width: 100%;
+  }
+
+  &--lg {
+    font-size: 1.2rem;
+    line-height: 2.5;
   }
 }
 
@@ -22,6 +30,15 @@
   flex-wrap: wrap;
   position: relative;
   margin-bottom: 10px;
+
+  &.no-wrap {
+    flex-wrap: nowrap;
+    margin-bottom: 0;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
 
   &__group {
     width: 100%;
@@ -35,19 +52,38 @@
     filter: invert(1);
   }
 
-  input {
+  input,
+  select,
+  textarea {
     min-width: 0;
     flex-grow: 1;
-    background: $field-input-bg;
-    color: $field-input-color;
     border: none;
     border-radius: 5px;
-    font-size: 0.8rem;
     padding: 5px 10px;
+  }
+
+  input {
+    background: $field-input-bg;
+    color: $field-input-color;
 
     &::placeholder {
       color: $field-input-color-placeholder;
     }
+  }
+
+  select {
+    background: $field-select-bg;
+    color: $field-select-color;
+    appearance: none;
+
+    option {
+      color: $field-select-color;
+    }
+  }
+
+  textarea {
+    background: $field-textarea-bg;
+    color: $field-textarea-color;
   }
 
   &__captcha {
@@ -140,28 +176,30 @@
   margin: 15px 0;
 
   tr {
-    border-bottom: $table-tr-border-bottom;
-    box-shadow: $table-tr-shadow;
-  }
+    background: $table-tr-bg;
 
-  // tr:not(:first-child) {
-  //   border-bottom: $table-tr-border-bottom;
-  //   box-shadow: $table-tr-shadow;
-  // }
-
-  th,
-  td {
-    padding: 10px 5px;
-    border: $table-td-border;
+    &:not(:first-child):nth-child(even) {
+      background: $table-tr-bg-even;
+    }
   }
 
   th {
     background: $table-th-bg;
     color: $table-th-color;
+    border-bottom: $table-th-border-bottom;
+  }
+
+  th,
+  td {
+    padding: 10px 5px;
   }
 
   td {
     color: $table-td-color;
+
+    * {
+      color: $table-td-color;
+    }
   }
 }
 
@@ -296,6 +334,7 @@
   }
 
   &__content {
+    @include ui-scrollbar;
     background: $panel-tab-content-bg;
     border-left: $panel-tab-content-left-border;
     border-image: $panel-tab-content-left-border-image;
@@ -319,21 +358,6 @@
         background: $panel-tab-content-arrow-bg-right;
         right: -1px;
       }
-    }
-
-    &::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: #baaf9f;
-      border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #c79523;
-      border-radius: 10px;
-      box-shadow: 0 0 5px 1px rgba(black, 0.8);
     }
   }
 }
@@ -535,6 +559,23 @@
     height: 100%;
     padding: 30px;
     overflow-y: auto;
+  }
+}
+
+@mixin ui-scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #baaf9f;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c79523;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px rgba(black, 0.8);
   }
 }
 

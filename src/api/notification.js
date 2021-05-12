@@ -25,8 +25,8 @@ export async function apiGetInboxDetail(data) {
 }
 
 //* 2.52   寄件箱 -信件类别
-export async function apiGetMailCategoryList() {
-  const result = await axios.post(API_URL + '/Msg/MailCategoryList');
+export async function apiGetMailCategoryList(data = {}) {
+  const result = await axios.post(API_URL + '/Msg/MailCategoryList', data);
   return result.data;
 }
 
