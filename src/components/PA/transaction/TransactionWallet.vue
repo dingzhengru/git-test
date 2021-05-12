@@ -1,20 +1,18 @@
 <template>
   <div class="transaction-wallet">
     <div class="nav-tab transaction-wallet__wallet">
-      <div class="transaction-wallet__wallet__name">{{ $t('ui.label.wallet') }}：</div>
-      <div class="ui-field transaction-wallet__wallet__amount">
-        <input :value="userGamePointWallet.Point" />
-      </div>
-      <button class="transaction-wallet__wallet__btn" :disabled="refreshButtonIsLoading" @click="refreshWallet">
+      <div class="transaction-wallet__wallet__name">{{ $t('ui.label.wallet') }} :</div>
+      <div class="transaction-wallet__wallet__amount">{{ userGamePointWallet.Point }}</div>
+      <div class="nav-tab__item active" @click="refreshWallet">
         {{ $t('transaction.transfer.button.refresh') }}
         <template v-if="refreshButtonIsLoading">{{ `(${getCountdownTimeoutSecondCurrent}s)` }}</template>
-      </button>
-      <button class="transaction-wallet__wallet__btn" @click="transferAllPointToMain">
-        {{ $t('ui.button.allToMyWallet') }}
-      </button>
-      <button class="transaction-wallet__wallet__btn" @click="$router.push({ name: 'TransactionTransfer' })">
+      </div>
+      <div class="nav-tab__item active" @click="transferAllPointToMain">
+        {{ $t('ui.button.allToMyWallet-2') }}
+      </div>
+      <div class="nav-tab__item active" @click="$router.push({ name: 'TransactionTransfer' })">
         {{ $t('transaction.nav.transfer') }}
-      </button>
+      </div>
     </div>
     <div class="transaction-wallet__product">
       <div

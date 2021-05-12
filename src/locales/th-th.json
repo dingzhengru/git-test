@@ -44,6 +44,7 @@
       "setup": "ตั้งค่า",
       "lotteryCount": "{count} รอง โชคดี",
       "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด",
+      "allToMyWallet-2": "โอนไปยังกระเป๋าเงินทั้งหมด",
       "download": "ดาวน์โหลด"
     },
     "currency": {
