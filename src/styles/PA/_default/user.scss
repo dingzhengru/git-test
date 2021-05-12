@@ -265,6 +265,10 @@
     align-items: center;
     flex-wrap: nowrap;
 
+    > div {
+      margin-bottom: 0;
+    }
+
     > div:not(:last-child) {
       margin-right: 5px;
     }

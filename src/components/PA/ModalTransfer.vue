@@ -1,24 +1,29 @@
 <template>
   <AppModal @close="closeModal">
-    <div class="modal-transfer">
+    <div class="ui-modal modal-transfer">
       <div class="ui-box-close" @click="closeModal"></div>
-      <ValidationObserver class="modal-transfer__container" tag="div" v-slot="{ invalid, handleSubmit }">
+      <div class="ui-modal__title">{{ $t('transaction.nav.transfer') }}</div>
+      <ValidationObserver
+        class="ui-modal__content modal-transfer__container"
+        tag="div"
+        v-slot="{ invalid, handleSubmit }"
+      >
         <form class="modal-transfer__form" @submit.prevent="handleSubmit(submitTransfer)">
-          <div class="modal-transfer__field">
+          <div class="ui-field modal-transfer__field">
             <label>{{ userGamePointWallet.Product_Name }}</label>
             <input type="text" :value="userGamePointWallet.Point" readonly />
           </div>
-          <div class="modal-transfer__field">
+          <div class="ui-field modal-transfer__field">
             <label>{{ productPointCurrent.Product_Name }}</label>
             <input type="text" :value="productPointCurrent.Point" readonly />
           </div>
           <ValidationProvider
-            class="modal-transfer__field"
+            class="ui-field modal-transfer__field"
             tag="div"
             :rules="{ required: true, integer: true, min_value: 1, max_value: userGamePointWallet.Point }"
           >
             <label for="modal-transfer-amount">{{ $t('ui.label.transferAmount') }}</label>
-            <input id="modal-transfer-amount" type="number" v-model="amount" />
+            <input id="modal-transfer-amount" type="number" v-model="amount" @change="changeAmount" />
           </ValidationProvider>
 
           <ValidationProvider class="modal-transfer__field" tag="div" v-show="promotionList.length > 0">
@@ -32,7 +37,7 @@
           </ValidationProvider>
 
           <div class="modal-transfer__btn">
-            <button class="modal-transfer__btn--submit" type="submit" :disabled="invalid">
+            <button class="ui-btn ui-btn--lg modal-transfer__btn--submit" type="submit" :disabled="invalid">
               {{ $t('ui.button.confirm') }}
             </button>
           </div>
