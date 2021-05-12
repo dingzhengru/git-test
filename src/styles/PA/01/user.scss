@@ -45,54 +45,22 @@ $user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
   @include user-change-password;
 }
 
-$user-mail-btn-bg: #462b16;
-$user-mail-btn-color: white;
-$user-mail-btn-shadow: none;
-
-$user-mail-btn-bg-active: #caad76;
-$user-mail-btn-color-active: black;
-$user-mail-btn-shadow-active: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
-
-$user-mail-item-bg: $field-bg;
-$user-mail-item-color-date: white;
-$user-mail-item-color-title: #caad76;
-$user-mail-item-icon-bg-arrow: assetPath('ui/ui-arrow-select.png') center no-repeat;
-$user-mail-item-icon-width: 35px;
-$user-mail-item-icon-height: 23px;
-
-$user-mail-nav-tab-btn-bg: assetPath('ui/ui-btn-yellow.png') center/100% 100% no-repeat;
-
-$user-mail-search-btn-bg: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
+$user-mail-nav-tab-btn-bg: $btn-bg-rectangle-yellow;
+$user-mail-search-btn-bg: $btn-bg-rectangle;
 
 .user-mail {
   @include user-mail;
 }
 
-$user-mail-detail-item-bg: $field-bg;
-$user-mail-detail-item-border: none;
-$user-mail-detail-item-label-color: #caad76;
-$user-mail-detail-item-content-color: white;
-$user-mail-detail-item-content-border-top: 1px solid #c8aa73;
-$user-mail-detail-item-reply-bg: $field-bg;
-$user-mail-detail-item-reply-label-color: #959595;
-
-$user-mail-detail-btn-bg-submit: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
-$user-mail-detail-btn-bg-reset: assetPath('ui/ui-btn-rectangle-light.png') center/100% 100% no-repeat;
-
-$user-mail-btn-bg-submit: #462b16;
-$user-mail-btn-color-submit: white;
-$user-mail-btn-shadow-submit: none;
-
-$user-mail-btn-bg-reset: #caad76;
-$user-mail-btn-color-reset: black;
-$user-mail-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
-
-$user-mail-detail-table-th-bg: #cbaa6d;
-$user-mail-detail-table-th-color: $base-text-color;
+$user-mail-detail-btn-bg-submit: $btn-bg-rectangle;
+$user-mail-detail-btn-bg-reset: $btn-bg-rectangle-light;
 
 .user-mail-detail {
   @include user-mail-detail;
 }
+
+$user-mail-send-btn-bg-submit: $btn-bg-rectangle;
+$user-mail-send-btn-bg-reset: $btn-bg-rectangle-light;
 
 .user-mail-send {
   @include user-mail-send;
