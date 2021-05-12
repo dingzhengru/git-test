@@ -20,6 +20,9 @@
           <div class="ui-field no-wrap user-mail__search__category">
             <select>
               <option value="">{{ $t('user.mail.field.category') }}</option>
+              <option :value="item.Value" v-for="item in categoryList" :key="item.Value">
+                {{ item.Text }}
+              </option>
             </select>
           </div>
           <div class="ui-field no-wrap user-mail__search__subject">
@@ -37,14 +40,14 @@
             <th>{{ $t('ui.label.subject') }}</th>
             <th>{{ $t('ui.label.date') }}</th>
           </tr>
-          <tr v-for="(item, index) in list" :key="String(index) + String(item.Lst_Key)">
+          <tr
+            v-for="(item, index) in list"
+            :key="String(index) + String(item.Lst_Key)"
+            @click="openModalMailDetail(item)"
+          >
             <td>{{ index + 1 + (pagination.page - 1) * 10 }}</td>
-            <td>
-              <a href="javascript:;" @click="openModalMailDetail(item)">
-                {{ getDate(item.Lst_Subject) }}
-              </a>
-            </td>
-            <td>{{ getDate(item.Lst_SendTime) }}</td>
+            <td>{{ item.Lst_Subject }}</td>
+            <td>{{ $dayjs(item.Lst_SendTime).format('YYYY-MM-DD') }}</td>
           </tr>
         </table>
 
@@ -70,6 +73,7 @@
 <script>
 import mixinUserMail from '@/mixins/userMail';
 import { mapGetters } from 'vuex';
+import { apiGetMailCategoryList } from '@/api/notification';
 export default {
   name: 'UserMail',
   mixins: [mixinUserMail],
@@ -87,9 +91,6 @@ export default {
     AppNavTab() {
       return () => import(`@/${this.siteSetting.components.user.AppNavTab}`);
     },
-    getDate: () => datetime => {
-      return datetime.split('T')[0];
-    },
     imgMail() {
       try {
         return require(`@/assets/${this.siteFullCss}/ui/ui-mail.png`);
@@ -102,23 +103,6 @@ export default {
     return {
       mailKey: '',
       isShowModalMailDetail: false,
-      navList: [
-        {
-          name: 'UserMail',
-          text: 'user.mail.nav.inbox',
-          link: 'UserMail',
-          class: '',
-          otherActiveRoute: [],
-        },
-        // {
-        //   name: 'UserMailSend',
-        //   text: 'user.mail.nav.add',
-        //   link: 'UserMailSend',
-        //   class: '',
-        //   otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
-        // },
-      ],
-
       tabList: [
         {
           route: 'UserMail',
@@ -136,6 +120,12 @@ export default {
         //   otherActiveRoute: [],
         // },
       ],
+
+      categoryList: [],
+      search: {
+        category: '',
+        subject: '',
+      },
     };
   },
   methods: {
@@ -143,6 +133,13 @@ export default {
       this.mailKey = mail.Lst_Key;
       this.isShowModalMailDetail = true;
     },
+    async getMailCategoryList() {
+      const result = await apiGetMailCategoryList();
+      this.categoryList = result.RetObj;
+    },
+  },
+  mounted() {
+    this.getMailCategoryList();
   },
 };
 </script>

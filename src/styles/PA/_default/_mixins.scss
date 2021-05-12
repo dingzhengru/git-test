@@ -16,6 +16,11 @@
     display: block;
     width: 100%;
   }
+
+  &--lg {
+    font-size: 1.2rem;
+    line-height: 2.5;
+  }
 }
 
 @mixin ui-field {
@@ -31,6 +36,10 @@
     margin-bottom: 0;
   }
 
+  &.column {
+    flex-direction: column;
+  }
+
   &__group {
     width: 100%;
     display: flex;
@@ -44,7 +53,8 @@
   }
 
   input,
-  select {
+  select,
+  textarea {
     min-width: 0;
     flex-grow: 1;
     border: none;
@@ -65,6 +75,15 @@
     background: $field-select-bg;
     color: $field-select-color;
     appearance: none;
+
+    option {
+      color: $field-select-color;
+    }
+  }
+
+  textarea {
+    background: $field-textarea-bg;
+    color: $field-textarea-color;
   }
 
   &__captcha {
@@ -315,6 +334,7 @@
   }
 
   &__content {
+    @include ui-scrollbar;
     background: $panel-tab-content-bg;
     border-left: $panel-tab-content-left-border;
     border-image: $panel-tab-content-left-border-image;
@@ -338,21 +358,6 @@
         background: $panel-tab-content-arrow-bg-right;
         right: -1px;
       }
-    }
-
-    &::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: #baaf9f;
-      border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #c79523;
-      border-radius: 10px;
-      box-shadow: 0 0 5px 1px rgba(black, 0.8);
     }
   }
 }
@@ -554,6 +559,23 @@
     height: 100%;
     padding: 30px;
     overflow-y: auto;
+  }
+}
+
+@mixin ui-scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #baaf9f;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c79523;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px rgba(black, 0.8);
   }
 }
 

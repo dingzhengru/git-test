@@ -94,6 +94,10 @@ body {
   @include go-top-btn;
 }
 
+.ui-scrollbar {
+  @include ui-scrollbar;
+}
+
 //* 服務規章視窗
 .service-term {
   @include service-term;

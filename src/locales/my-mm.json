@@ -1,0 +1,975 @@
+{
+  "ui": {
+    "label": {
+      "home": "အိမ္",
+      "captcha": "စစ်ဆေးနံပါတ်",
+      "wallet": "ငွေစာရင်းကောင်တာ",
+      "account": "အကောင့်",
+      "date": "ေန ့စြဲ",
+      "time": "အခ်ိန္",
+      "title": "ေခါင္းစဥ္",
+      "subject": "ေခါင္းစဥ္",
+      "content": "အေသးစိတ္",
+      "amount": "ပမာဏ",
+      "transferAmount": "ေငြလႊဲမည့္ပမာဏ",
+      "other": "အျခား",
+      "pleaseSelect": "ဘဏ္္ကုဒ္ေ၇ြးခ်ယ္ပါ",
+      "noData": "အချက်အလက်မရှိပါ",
+      "baht": "ဘတ်",
+      "underMaintenance": "ပြုပြင်ထိန်းသိမ်းမှု",
+      "promotion": "ပရိုမိုးရှင်း",
+      "transactionNumber": "ေငြလဲႊနံပါတ္",
+      "news": "သတင်း",
+      "mail": "စာပို့",
+      "bankName": "ဘဏ္",
+      "bankAccount": "ဘဏ်အကောင့်",
+      "bankBranch": "လုပ္ငန္းခြဲ",
+      "bankAccountName": "ဘဏ်အကောင့်အမည်",
+      "langSelect": "ဘာသာစကားရွေးပါ"
+    },
+    "button": {
+      "save": "မွတ္သားသည္",
+      "confirm": "အတည္ျပဳျခင္း",
+      "submit": "တင္သြင္းသည္",
+      "send": "ပို့ပါ",
+      "reset": "အစကျပန္စရန္",
+      "cancel": "ဖျက်သိမ်းသည်",
+      "login": "မှတ်ပုံတင်ရန်",
+      "register": "ลงทะเบียนทันที",
+      "registerNow": "ခ််က္ခ်င္းမွတ္ပံုတင္ရန္",
+      "close": "ပိတ္သည္",
+      "copy": "ကူးပါ",
+      "search": "ဂိမ်းရှာပါ",
+      "edit": "ျပဳျပင္သည္",
+      "setup": "ျပင္ဆင္မည္",
+      "lotteryCount": "{count} Lucky draw",
+      "allToMyWallet": "ပိုက်ဆံအိတ်ထဲသို့အားလုံးလွဲမည်",
+      "download": "ေဒါင္းလုပ္"
+    },
+    "currency": {
+      "thaiBaht": "ဘတ်"
+    },
+    "alert": {
+      "notLoggedIn": "Please Login first to continue",
+      "pwaToApkDownload": "The APP version has been updated, please download again"
+    }
+  },
+  "alert": {
+    "loadFailed": "Load failed. Please refresh the page and retry.",
+    "success": "Successful",
+    "accessSuccess": "Account activated successfully!",
+    "changeProfileSuccess": "Profile changed successfully!",
+    "transferSuccess": "Transfer successfully!",
+    "replaySuccess": "Reply successfully",
+    "sendEmailSuccess": "Mail sent successfully!",
+    "gameMaintenance": "Game under maintenance, we apologize for the inconvenience brought to you!",
+    "versionUpdate": "New version update, reload now"
+  },
+  "validate": {
+    "common": {
+      "required": {
+        "password": "Please enter your password"
+      },
+      "length": {
+        "password": "At least 6 characters up to 30 characters"
+      },
+      "regex": {
+        "password": "Format False"
+      },
+      "confirmed": {
+        "password": "Please reconfirm your password"
+      }
+    },
+    "register": {
+      "required": {
+        "Add_Account": "Please enter your account",
+        "Add_Password": "Please enter your password",
+        "Add_PasswordCheck": "Please reconfirm your password",
+        "Add_Mobile": "Please enter your phone number",
+        "Add_Email": "Please enter your E-mail",
+        "Add_Line": "Please enter your LINE",
+        "Add_Skype": "Please enter your Skype",
+        "Add_QQ": "Please enter your QQ",
+        "Add_FirstName": "Please enter your first name",
+        "Add_LastName": "Please enter your last name",
+        "Add_RealName": "Please enter your real name",
+        "Add_NickName": "lease enter your nickname",
+        "Add_Birthday": "Please enter your birthday",
+        "Add_BankId1": "Please select the bank name",
+        "Add_BankBranchName1": "Please enter the branch name",
+        "Add_BankAccount1": "Please enter your bank account number",
+        "Add_BankId2": "Please select the bank name",
+        "Add_BankBranchName2": "Please enter the branch name",
+        "Add_BankAccount2": "Please enter your bank account number",
+        "Add_BankId3": "Please select the bank name",
+        "Add_BankBranchName3": "Please enter the branch name",
+        "Add_BankAccount3": "Please enter your bank account number",
+        "Add_Withdrawals_Password": "Please enter a withdrawal password",
+        "Add_Withdrawals_CheckPassword": "Please enter a withdrawal password",
+        "CaptchaValue": "Please enter the verification code"
+      },
+      "length": {
+        "Add_RelatedAccount": "At least 3 characters up to 15 characters",
+        "Add_Account": "At least 3 characters up to 15 characters",
+        "Add_Password": "The length of password must be 6 and above",
+        "Add_PasswordCheck": "The length of password must be 6 and above",
+        "Add_Mobile": "At least 5 characters up to 20 characters",
+        "Add_Email": "Maximum length 50 characters",
+        "Add_FirstName": "Maximum length 70 characters",
+        "Add_LastName": "Maximum length 70 characters",
+        "Add_RealName": "Maximum length 70 characters",
+        "Add_NickName": "Maximum length 30 characters",
+        "Add_BankBranchName1": "Maximum length 70 characters",
+        "Add_BankAccount1": "Maximum length 30 characters",
+        "Add_BankBranchName2": "Maximum length 70 characters",
+        "Add_BankAccount2": "Maximum length 30 characters",
+        "Add_BankBranchName3": "Maximum length 70 characters",
+        "Add_BankAccount3": "Maximum length 30 characters",
+        "Add_Withdrawals_Password": "The length of password must be 6 and above",
+        "Add_Withdrawals_CheckPassword": "The length of password must be 6 and above",
+        "CaptchaValue": "must be 4 characters"
+      },
+      "regex": {
+        "common": "Format False",
+        "Add_RelatedAccount": "Alphanumeric format necessary, prefix with a letter, blank not allowed.",
+        "Add_Account": "Alphanumeric format necessary, prefix with a letter, blank not allowed."
+      },
+      "confirmed": {
+        "Add_PasswordCheck": "Please reconfirm your password",
+        "Add_Withdrawals_CheckPassword": "Please reconfirm your withdrawal password"
+      },
+      "date": {
+        "Add_Birthday": "Must be at least 18 years old"
+      }
+    },
+    "changePassword": {
+      "required": {
+        "Add_OldPassword": "Please enter your old password",
+        "Add_NewPassword": "Please enter your new password",
+        "Add_PasswordCheck": "Please enter your confirm password"
+      },
+      "length": "At least 6 characters up to 30 characters",
+      "regex": "Format False",
+      "confirmed": "Confirm password error"
+    },
+    "changeWithdrawPassword": {
+      "required": {
+        "OldPassword": "Please enter your old password",
+        "Password": "Please enter your new password",
+        "CheckPassword": "Please enter your confirm password"
+      },
+      "length": "At least 6 characters up to 30 characters",
+      "regex": "Format False",
+      "confirmed": "Confirm password error"
+    }
+  },
+  "header": {
+    "menu": {
+      "profile": "Profile",
+      "transaction": "Trade Center",
+      "report": "Report",
+      "notification": "Latest News",
+      "news": "News",
+      "promotion": "Promotions",
+      "about": "About us",
+      "personalInfo": "Personal Info",
+      "mail": "Mail"
+    },
+    "user": {
+      "username": "Username",
+      "total": "Total",
+      "vip": "Bonus VIP level",
+      "roll": "Rolling"
+    },
+    "button": {
+      "logout": "Logout"
+    }
+  },
+  "footer": {
+    "member": "အသင်းဝင်စင်တာ",
+    "login": "မှတ်ပုံတင်ရန်",
+    "transaction": "ကုန္သြယ္မူ ့စင္တ",
+    "promotion": "ပရိုမိုးရှင်း",
+    "contact": "ကာစတန်မာဆားဗစ်",
+    "transaction-2": "ကုန္သြယ္မူ ့စင္တ"
+  },
+  "home": {
+    "product": {
+      "nav": {
+        "all": "All games"
+      }
+    },
+    "lottery": {
+      "winWheel": {
+        "homeTitle": "{count} Lucky draw"
+      },
+      "redEnvelope": {
+        "homeTitle": "{count} Lucky draw",
+        "gameTitle": "Lottery activity",
+        "startButton": "Chance to lucky. ({count})",
+        "gameResult": "Congratulate to won."
+      }
+    }
+  },
+  "login": {
+    "title": "Member Login",
+    "rememberMe": "Remember Me",
+    "label": {
+      "username": "Account",
+      "password": "Password",
+      "captcha": "Captcha"
+    },
+    "placeholder": {
+      "username": "Please enter your account",
+      "password": "Please enter your passwords",
+      "captcha": "Please enter captcha"
+    },
+    "link": {
+      "forgetPassword": "GetPassword"
+    }
+  },
+  "register": {
+    "title": "Membership Registration",
+    "Add_RelatedAccount": {
+      "placeholder": "Referrer",
+      "hint": "If there is no referrer,you are not required to fill in",
+      "hintHasValue": "Promotion code: {proxyCode}",
+      "invalid": "Referrer does not exist"
+    },
+    "Add_Account": {
+      "placeholder": "Account No.",
+      "invalid": "The account has been used."
+    },
+    "Add_Password": {
+      "placeholder": "Password"
+    },
+    "Add_PasswordCheck": {
+      "placeholder": "Confirm Password",
+      "invalid": "Confirm password error"
+    },
+    "Add_Mobile": {
+      "placeholder": "Mobile number",
+      "hint": "This is for contact channel of account and surprise preferential informing, please kindly provide the real information.",
+      "invalid": "This cell phone / telephone number has been used by others, please enter other phone / telephone number"
+    },
+    "Add_Email": {
+      "placeholder": "E-mail",
+      "hint": "This is for surprise preferential informing, please kindly provide the real information.",
+      "invalid": "This mailbox has been used by others, please enter another mailbox"
+    },
+    "Add_Line": {
+      "placeholder": "ID LINE",
+      "hint": "This is for surprise preferential informing, please kindly provide the real information.",
+      "invalid": "The LINE already exists"
+    },
+    "Add_Skype": {
+      "placeholder": "Skype Account",
+      "invalid": "The Skype already exists"
+    },
+    "Add_QQ": {
+      "placeholder": "QQ number",
+      "invalid": "The QQ already exists"
+    },
+    "Add_FirstName": {
+      "placeholder": "First Name"
+    },
+    "Add_LastName": {
+      "placeholder": "Last Name"
+    },
+    "Add_RealName": {
+      "placeholder": "Real Name",
+      "hint": "It is necessary to be identical with your bank account, otherwise it cannot make outward remittance.",
+      "invalid": "The real name has been used by others, please enter another real name"
+    },
+    "Add_NickName": {
+      "placeholder": "Nickname"
+    },
+    "Add_Birthday": {
+      "placeholder": "Birthday ",
+      "invalid": "Must be at least 18 years old"
+    },
+    "Add_BankId1": {
+      "title": "Name of Bank",
+      "placeholder": "Please select"
+    },
+    "Add_BankBranchName1": {
+      "placeholder": "Branch Name"
+    },
+    "Add_BankAccount1": {
+      "placeholder": "Bank Account",
+      "invalid": "The bank account has been used."
+    },
+    "Add_BankId2": {
+      "placeholder": "Name of Bank 2"
+    },
+    "Add_BankBranchName2": {
+      "placeholder": "Branch Name 2"
+    },
+    "Add_BankAccount2": {
+      "placeholder": "Bank Account 2",
+      "invalid": "The bank account has been used."
+    },
+    "Add_BankId3": {
+      "placeholder": "Name of Bank 3"
+    },
+    "Add_BankBranchName3": {
+      "placeholder": "Branch Name 3"
+    },
+    "Add_BankAccount3": {
+      "placeholder": "Bank Account 3",
+      "invalid": "The bank account has been used."
+    },
+    "Add_Withdrawals_Password": {
+      "placeholder": "Password for Withdrawal"
+    },
+    "Add_Withdrawals_CheckPassword": {
+      "placeholder": "Withdrawal Confirm Password",
+      "invalid": "Confirm the password Error"
+    },
+    "CaptchaValue": {
+      "placeholder": "Captcha"
+    },
+    "service": {
+      "read": "I have read and agreed with the Online Service {site}",
+      "term": "《Term of Service》"
+    },
+    "button": {
+      "submit": "Register Now"
+    },
+    "notice": {
+      "required": "Remark with <span class='ui-txt-star'>*</span> are required items, please be sure to fill in them correctly.",
+      "recommend": "Customer who knows our website through our client introduction, please kindly write the referee code at referral column.",
+      "contact": "Any questions toward member registration, please feel free to contact our online service."
+    },
+    "modalServiceTerm": {
+      "title": "《Term of Service》",
+      "subTitle": "<p>【{site} Agreement of member application and games service】</p> <p>Please read the terms carefully, and make sure you have fully understood the content.<br> If you have any questions about the rights and obligations of the terms, please ask the legal counsel of local jurisdiction for help.</p>",
+      "definition": {
+        "title": "1. Definition",
+        "1": "The following rules apply to the users who use, connect and join the online betting service which is managed by 『{site}』(It will be named 『{site}』、『We』and『Our』according to the concrete circumstances) through {siteOrigin} The rules should be read together with the betting rules of specified betting, the rules of usage of the betting software and the rules of connection of the betting website. ",
+        "2": "「Betting」is including but not limited to all bets, games and all kinds of betting activities offered by the betting website and conducting in the betting service.",
+        "3": "「Connection devices」means any connection devices, they are including but not limited to the personal computers, laptop computers, mobile phones, personal digital assistant, PDA phone, portable devices for using and connecting the betting website and participating in the betting service.",
+        "4": "「Betting software」means computer programs and data file, or any other information and information content (including the related any user information) which are authorized by the competent authorities and installed on the connection devices of the users. The software helps users to use, connect and participate in the betting service provided by the betting website."
+      },
+      "agreement": {
+        "title": "2. Agreement",
+        "subTitle": "Users click on ''yes'' of the box in the「I declare that I have reached the age of 18」and「I agree with the rules and regulations of『{site}』」when registering. After click on the button of「Submit」, it indicates that the users acknowledge and agree that:",
+        "1": "Users have read, fully understood and agreed with the rules.",
+        "2": "The rules are legally binding agreements between users and『{site}』about betting service.",
+        "3": "If users disagree with any clauses, please don’t click on 'yes' of the box in the 「I agree with the rules and regulations of『{site}』」and don’t click on the button of「Submit」. Don’t try to use or continue to use any betting services or download and install the betting software."
+      },
+      "amendment": {
+        "title": "3. Amendment",
+        "1": "『{site}』reserves the absolute right for changing, updating, and modifying the rules and betting rules (or any part of it) at any time. The above changes, updates and modifications will be announced in the betting website. They will take effect once are announced. Users are considered to agree and accept the rules and betting rules which are modified and updated, if users connect and join the betting service through betting website or betting device.",
+        "2": "Users acknowledge and agree that it’s for their own access to check the changes, updates and modification. 『{site}』can independently decide to inform the users of the changes, updates and modifications at any time. 『{site}』has no obligation to inform."
+      },
+      "bet": {
+        "title": "4. Betting information and intellectual property",
+        "1": "『{site}』and the people permitted by 『{site}』have ownership of the messages, information and data which open, acquire, create, collect from users through betting website, betting service, betting device and any other means. The messages, information and data only for the user for personal non-commercial purposes are including but not limited to marketing plan and material, achievements, statistical data, event schedule, probability, betting data, text, icon, image information.",
+        "2": "Users cannot adapt, copy, modify, store, send out, display, publicly broadcast, place into cable shows, publish, transfer, sell, lease, lend, and license the betting information without prior written agreement of us and information owner in addition to the rules. Users cannot acquire, use, connect the above information through others or other website, online service, bulletin board, any media or connection device in any other means.",
+        "3": "We enjoy intellectual property rights, trademark rights and the patent protections in betting website or betting software, betting service and betting information offered by the connection device. All rights, property rights and interests of the betting software, betting service, betting information of the betting website are owned, used, controlled by 『{site}』and the permitted one. Users get any rights, interests or permission through using or connecting the betting software, betting service and betting information offered by the betting website or betting software."
+      },
+      "condition": {
+        "title": "5. Service conditions",
+        "subTitle": "As the conditions of using the betting service, users guarantee and promise to use and connect the betting website, betting service, betting software without violating the laws, the rules. In addition to all the statements and promises listed in the rules, users should guarantee and promise further as the conditions of using the betting service:",
+        "1": "The user participates in the activities in his own identify and name, but not takes the place of others.",
+        "2": "The legal capacity of the user is not restricted.",
+        "3": "User is not diagnosed or identified as gambling obsessive-compulsive disorder.",
+        "4": "The age (a) of the user must be more than 18 years old, or (b) has reached the legal age or mature age governed by the law. The age is based on the bigger one.",
+        "5": "User fully knows the risk of money losses when using the betting service.",
+        "6": "The fund for depositing is not from crime or other illegal and unauthorized or unlicensed activities.",
+        "7": "The user is not meant to engage in the crime, and other illegal and unauthorized activity or attempted to make use of the account and engages in the above activities. User must not make use of or permit other to use the betting service and the account to occupy in crime or other illegal activities. The illegal activity is including but not limited to money laundering.",
+        "8": "In order to avoid illegal connection or use, the user name, account and password will be confidential. In case of the password loses in any way in the user name, account or password, please change password immediately or inform us.",
+        "9": "In spite of the above connection or use is authorized or known by the user or not, any activities are in self-responsibility through betting website, connection device and betting service by using user name, account and password.",
+        "10": "You shouldn’t use the betting service, betting website, connection device, betting software and betting information to interrupt other users. Any behavior for reducing the operation effectiveness of the betting service and betting website is prohibited.",
+        "11": "You shouldn’t collect or access to any information of the other users in any way.",
+        "12": "You shouldn’t upload or distribute any programs, documents or data which are with virus, have been destroyed or may affect the operation effectiveness of the connection device, betting software, betting service and betting website.",
+        "13": "Users shouldn’t violate the laws which are applied to the users when connect and use the betting service and betting information through betting website or connection device.Users shouldn’t violate the binding contract obligation.",
+        "14": "You shouldn’t interrupt or try to interrupt normal operation of the transaction offered by the betting service, connection device, betting software, betting website, betting information, connection device.",
+        "15": "You must not commit a crime, abetted a crime, cause civil liability or violate any laws such as release or send any illegal, abusive, abusive, threatening, libelous, obscene, provocative, racial discrimination, pornographic or vulgar content to other users.",
+        "16": "User shouldn’t be the officers, directors, employees, consultation, association or agent of 『{site}』or the affiliates. Or the user has relative relationship or domestic partnership with the above people is not permitted.",
+        "17": "User shouldn’t interrupt other users to use the betting service, betting website, betting software, connection device, betting information, or send and participate in investigation, competition, and chain letters, or send [spam] or unrequested mass email."
+      },
+      "openBettingAccount": {
+        "title": "6. Register to open a betting account and membership",
+        "1": "If you want to participate in the betting and use betting service in 『{site}』, you should complete the procedure described in the betting website to open an account and apply for membership.",
+        "2": "User should state and promise that all the information including user name, the source of fund (Bank account and card number) and address offered by user when registered and applied for membership are true, accurate and complete in all aspects.",
+        "3": "『{site}』will take necessary and appropriate measures to keep the information of the users a secret. We will strictly keep all the personal data and betting information a secret, we expose only if the laws, regulations, rules, courts, regulatory authorities, any betting management, law enforcement agency command or the terms demand. Users are in self-responsible for confidentiality of their personal information. We reserve the right for exposing users’ personal information to the providers and financial institution for payment clearing services in the scope of the requirement of the handling charge.",
+        "4": "Users should make sure when use and connect betting website, the betting information, the use of betting software and participation of betting service are not prohibited by the laws which is applied to users.",
+        "5": "In order to verify the application of the membership, user is required to provide identification and verification of age (such as valid identification with photo and debit card or credit card). If any changes of concrete original information, please inform us at once.In order to ensure the name and address of the user, 『{site}』reserves the right to confirm the name and address by mail. 『{site}』is in self-decision to take the other security measures to verify the information offered by the users. If users agree with the terms, it means that users agree with the connection, use, deal, store of the result of authentication and verification.",
+        "6": "We reserve the absolute right to reject the user to apply for membership by any reasons.",
+        "7": "We are only responsible for the official spare website of『{site}』. If member login other website which is similar to『{site}』, we are not responsible for any losses. If any question, please contact our online customer service directly.",
+        "8": "If you have ever violated the clause and regulation of the website or the vendor/website we have ever cooperated, your registration won’t be accepted. If the above account is found, the account will be frozen and the winnings and balance will be deducted.",
+        "9": "User can only open one account. If we find user opens more than one account in 『{site}』, we reserve the right to combine the accounts, cancel the spare account or terminate the agreement."
+      },
+      "betAcceptance": {
+        "title": "7. Bet and bet acceptance",
+        "1": "Games, sport events and other betting activities offered by『{site}』through betting website or connection device are opened to users for bet. While betting, users must obey the game, the rules of betting activities and the terms. All the bets will be cancelled, if there is a clear mistake or a wrong gamester. If there is fault in betting system,『{site}』has the right to declare any or all bets are invalid.",
+        "2": "There may be other provisions in the terms, but『{site}』has the right to reject all bets or part of the bets in any reasons.",
+        "3": "We only accept the bets ruled by the terms through internet or connection device. Other means (Mail, email, fax, etc) are out of acceptance, though they are received. Whatever results they are, they will invalid.",
+        "4": "『{site}』has the right to delay or refuse the bets which are considered to be using deception means such as destroy the operation system by attack or control.",
+        "5": "Any unusual bets will be cancelled without notification. The behavior of using artificial intelligence or software (robot 'bots') in online betting service is strictly prohibited. Any attempts or uses of the behavior of the bet will be cancelled; the related account will be closed immediately.",
+        "6": "Limited by the other rules of the terms, it is available for user to bet, if user input the correct user name and password and account has enough balance.",
+        "7": "User should be responsible for the below contents when participating in the activities and trading (whatever is authorized.)<ul><li>User name</li><li>User account and password</li></ul>",
+        "8": "User should make sure the accuracy of the betting details. Limited by the other rules of the terms, once user has bet and the bet is confirmed and accepted by『{site}』, that will be the final confirmation. User cannot cancel or withdraw the bet or change the betting detail.",
+        "9": "All bets are in transaction record database. The transaction records are the final confirmation of all transactions and bets.",
+        "10": "Limited by the other rules of the terms, the bet is considered to be valid and accepted by 『{site}』, when the transaction number shows in the user screen and the transaction history.",
+        "11": "You must not bet if you know the result of the game when the game starts and you are betting. Under this circumstance, the bet will be invalid and rejected by 『{site}』without notification. 『{site}』has the self-decision for accepting all bets or part of the bets. To avoid doubt, the terms do not rule out second 'halftime' bets and 'halftime' bets.",
+        "12": "The forecast for start time in the betting website is only for reference. If『{site}』accepts any bets after the game starts by accident, 『{site}』has the right to cancel them and announce them to be invalid.",
+        "13": "Unless there are other rules in the specified games, for the purpose of betting, the result of the game will be decided in the actual end date. The later interpellation that may overturn the result is not admitted by 『{site}』, the original winning is still valid.",
+        "14": "If the venue of the sport game changes, the bet based on the original venue is invalid.",
+        "15": "The game and the {site} will be decided in the actual end date of the specified game according to the betting rules.",
+        "16": "For the purpose of betting, 『{site}』will not admit to any result for delaying, objection or overturning.",
+        "17": "The winning will be counted based on the left valid options, if the bet for lottery including non participants options or invalid options",
+        "18": "The odds, percentage and handicap admitted by the user can float up and down. The above odds, percentage and handicap can only be confirmed when the bet of the user is accepted by us.",
+        "19": "If the odds, percentage or handicap of the bet is incorrect because of obvious error and system failure, the bet will be invalid. If the error or failure is corrected immediately, 『{site}』has the right but not obligation to decide to let the user re-bet in correct odds, percentage and handicap with the reasonable efforts.",
+        "20": "We will not accept that user re-bet for the same game in the meantime.",
+        "21": "For any bets and transactions, 『{site}』has the final decision, and the decision is a final confirmation."
+      },
+      "bettingSoftwareRight": {
+        "title": "8. Right of use of betting software",
+        "1": "User should confirm and agree that the betting software which is downloaded through connection device or acquired by other means for remote using the website is part of the betting service. The software is the property of『{site}』and permitted one, user has no right for it. Users cannot adapt, copy, modify, store, send out, display, publicly broadcast, place into cable shows, publish, transfer, sell, lease, lend, and license the betting information. Users cannot acquire, use, connect the above information through others or other website, online service, bulletin board, any media or connection device in any other means.",
+        "2": "『{site}』hereby grants users nonexclusive and non-transferable personal right of use in the connection device installation and use of betting software. But the user should be the main user.",
+        "3": "The purpose for authorizing and sending the software is for the connection and use of betting service for the terminal user of the betting software.",
+        "4": "Users are not allowed to:<ul><li>Install or upload the betting software to other server of connection device. Take the measures to be acquired by others through bulletin board, online services, remote dial-up, network and any other means.</li><li>Make others acquire or use the betting software through sending out, renting, leasing, sublicensing, copying and transferring, or in some other way.</li><li>Permit others to use the betting software.</li><li>Set up or offer any methods (including but not limited to emulation program) to let others use the software.</li><li>Develop derivative products by translation, reverse engineering, disassembling, reverse compilation, modification, crack based on the betting software and the original code.</li><li>Develop derivative products by copy, modification, translation based on the related user documents of betting software.</li></ul>",
+        "5": "User should admit and agree that『{site}』and the permitted one have the ownership for the betting software offered through connection device or other means. They are also protected by copyright, trademark right, other intellectual property rights, the patent. User hereby admits that the structure, organization, original code of the betting software are valuable trade secrets for『{site}』and the permitted one. User should admit that user has no right and interest for the betting software and user documents except for the right according to the right of use.",
+        "6": "If the agreement is terminated, the right of use authorized under the agreement will be abolished. User should stop to use the software and unload from the connection device."
+      },
+      "transactionSettlement": {
+        "title": "9. Transaction settlement",
+        "1": "The name of credit cards, debit cards, cardholder should be consistent with the name of registration and application. If not, 『{site}』has the right to reject to count related transaction.",
+        "2": "User has the obligation to pay all the payment for『{site}』and other users (Depending on the concrete circumstances). User should be responsible for no paying, urging others to refund or rejecting or cancelling the payment and the related losses and expends .『{site}』has the right to terminate to provide service or pay for several users or the user who uses certain credit cards or debit cards.",
+        "3": "Any admission by『{site}』is valid:<ul><li>The highest jackpot of Sportsbook is based on different handicap.</li><li>The highest jackpot of Live Casino is based on different games (Or equal currency confirmed from time to time according to the exchange rate)</li></ul>",
+        "4": "The jackpot is not including bet amount.",
+        "5": "『{site}』will not be responsible, if there is error when the fund or jackpot is being deposited. And 『{site}』has the right to declare the transaction is invalid at any time or afterwards. Once user finds the error of the account, he has the obligation to inform 『{site}』immediately.",
+        "6": "Users are responsible for taxation and cost of the jackpot under any applied laws."
+      },
+      "jackpot": {
+        "title": "10. Get jackpot",
+        "1": "After the jackpot is counted, it will be deposited in the user account. The concrete method for withdrawal please check the jackpot withdrawal rules and you should show your valid Id card, credit card and debit card.",
+        "2": "According to the regulatory policy and the requirements of operation, you may need to offer related certificate information for the customer service to verify identification before you withdraw. Once it is required, the customer service will ask you to offer by email, the verification will only be once.",
+        "3": "If the bank of issue of the credit card or debit card admits, the jackpot will be deposited in the account of credit card or debit card which is used for paying deposit. The payee of the check and cable transfer is based on the name of registration and application. If the deposit is paid by credit card or debit card, the payee must be the cardholder.",
+        "4": "The bet amount must reach the valid bet that you can withdraw. 『{site}』reserves the right to charge handling charge for withdrawal and deposit.",
+        "5": "All the costs of the bank generated in the betting transaction will be paid by the user.『{site}』has the right to deduct the above costs from the jackpot or account of the user."
+      },
+      "promotion": {
+        "title": "11. Promotion and award",
+        "1": "All promotions, awards and bargains should abide by the terms. 『{site}』will set the rules from time to time according to concrete promotion activities. 『{site}』reserves the right to suspend, cancel and change the award, promotion and related rules.",
+        "2": "If 『{site}』finds someone abuse or attempt to abuse the awards and promotion activities, or benefit from it, we has self-decision to find a appropriate method to stop, reject, suspend and cancel related activities.",
+        "3": "We reserve the right to cancel all or part of the bets, if we suspect individual or team acts in collusion or tries to fraud. The amount of the account for the related individual, relative, organization, banker and worker will be closed down immediately.",
+        "4": "As a ministrant entertainment websites, the service and favorable activity are only applied to real player. Our service and favorable activity will adjust according to the circumstance for the unreal players. Real player is a player who participates in the game and risks in bet and benefits from the game result."
+      },
+      "compensation": {
+        "title": "12. Compensation",
+        "1": "If user violates the terms and betting rules when connecting betting website, downloading and installing betting software, betting or using betting service, betting software or betting information. User should agree that user shall give a full compensation (including counsel fee), if he/she creates any losses or damages for shareholders, employees, officers, directors, licensee, dealers, affiliated parties, subsidiaries or agent of 『{site}』."
+      },
+      "disclaimer": {
+        "title": "13. Disclaimer and notice",
+        "1": "Betting completely is a personal choice, with individual judgment and analysis for the basis, and the risk of conceit behavior. When betting, it means that the user admit unoffending of the betting service, betting website and betting information. Some jurisdictions are uncertain about online betting, the legitimacy of the overseas online betting; and some clearly rule that both are illegal. We don't encourage anyone in the illegal use of or connect of betting website, betting information and betting service. The offer of betting website, betting information and betting service doesn’t constitute an offer, canvass or invitation in the jurisdiction where betting is invalid. User should independently undertake the responsibilities ruled by related laws and 『{site}』won’t make any statement.",
+        "2": "The betting service, betting website, betting software and betting information are offered according to 「Original state principle」. Except that it is expressed in the rules, 『{site}』won’t make any statement or promise for the betting service, betting website, betting software and betting information. No matter it is express or implication, it is legal or not, it shall be excluded to the greatest extent. 『{site}』doesn’t promise for the accuracy, timeliness, safety, continuity, correctness, anti-interference (any properties). 『{site}』doesn’t promise that the server does not contain any virus, spyware, adware, and other malicious , destructive code, procedures, data, instructions that may paralyze the computer. User should promise to take measures at his/her own expense to prevent the above circumstances from happening.",
+        "3": "『{site}』won’t be responsible for the system error or communication error of the balance or betting service. If it happens, 『{site}』has the right to cancel the bet influenced by the above error and take action to correct it.",
+        "4": "『{site}』won’t be responsible for the loss, damage or expense because of the interrupt when connecting, using or participating in betting service, betting website, betting software or betting information. Otherwise, we won’t be responsible for the content offered by the third party (including but not limited to broadband and telecommunications service providers). In any case, 『{site}』won’t be responsible for breach of contract and fault of the third party.",
+        "5": "In any case, affiliate, affiliated parties, partner, managers, employees and the agent of『{site}』are not responsible for any damage, loss and expense. The above is including but not limited to any direct, indirect, causality or special damage or economic loss when user connects or uses betting service, betting website, betting software and betting information. If any loss or damage (whatever is based on contract, tort, strict liability or any other reasons) directly related to the bet, the responsibility of 『{site}』for the user won’t exceed the related amount of the bet.",
+        "6": "User should admit that all of or part of the betting information is temporary, it can be changed or modified according to the rules. User should admit that it is only for reference. It doesn’t constitute any advice, opinion or canvass; it won’t be a binding statement, promise, obligation or a basis of the user.",
+        "7": "User hereby admits and agrees that all liability immunities and obligation exclusions are fair and reasonable risk sharing and distribution of interests between user and『{site}』. The further agreement of the user to the above disclaimer and limit has the enforcement power limited by the laws.",
+        "8": "If user has any objection on the result of the betting or game, please contact online customer service in 24 hours after the result is announced. If the result of the user connection device is inconsistent with the record in the system of『{site}』(Though it may never happen), the result is a final and indubitable evidence if the user agrees the record approved by the technical director of『{site}』."
+      },
+      "closeService": {
+        "title": "14. Terminate, close and suspend the betting service",
+        "1": "If we have sufficient reasons to prove the below circumstances, 『{site}』has the right to announce that the jackpot is invalid and confiscate the balance of the account, terminate the agreement, suspend to offer betting service or freeze the account according to self-judgement.",
+        "2": "User has more than one account in『{site}』.",
+        "3": "The user name is inconsistent with the name for deposit/withdrawal or the holder name of the credit card, debit card or other payment account.",
+        "4": "User participates in the sale promotion and quits it before meeting the requirement.",
+        "5": "User offers incorrect or misleading information for registration. User hasn’t offered or forgets to offer necessary identification.",
+        "6": "User hasn’t offered or forgets to offer necessary identification.",
+        "7": "User hasn’t reached the legal age.",
+        "8": "It is prohibited in law to use betting service in the district where the user connects or uses betting service.",
+        "9": "User carries out or urges others to carry out [Rebate] or denies conducting any transaction or deposit of the account.",
+        "10": "The deposit of the account comes from criminal offense or other illegal and unauthorized activities.",
+        "11": "User has been found fraud, attempts to cheat anyone or has cheated anyone. Specified design is used to interrupt or destroy the artificial intelligence system or other system (including machinery, computer, software or other automation system). Or is found that someone acts in collusion or tries to act to cheat 『{site}』or other users.",
+        "12": "User allows others to use the account (whatever is not for purpose). User doesn’t obey the using rules of the agreement.",
+        "13": "User hasn’t exposed the truth that he/she is in the Philippines, Taiwan and the United States, Singapore and Hong Kong territory.",
+        "14": "If we suspend to offer betting service or freeze the account according to clause 14-1, user should take every necessary action to correct (if it is possible). If we are content with it, the betting services and user accounts will be restored and defrosted."
+      },
+      "externalWebsite": {
+        "title": "15. Connection with the external website",
+        "1": "There may be external website link which is not maintained by 『{site}』 in betting website. The link is only offered for convenience, 『{site}』won’t promise to make sure the accuracy, timeliness and maintainability of the content, and we are not for any responsibility.",
+        "2": "『{site}』won’t be responsible for offering, examining, approving, checking or making any statements or promise with the content of the external website information, privacy policy, the external website propaganda, sale or any other product, service.",
+        "3": "We will not undertake contract, tort, negligence or other liability if there is loss or damage when the user is using the external website link offered by betting website.",
+        "4": "Unless there is express term, 『{site}』has no relationship with any statements, opinions, product, service marks, marks, other designs, the external website propaganda, sale or any other products, service and external website owners, managers, or the related persons."
+      },
+      "linkOrFrame": {
+        "title": "16. Link or Frame",
+        "1": "User cannot set links, deep links, in-line links or frame betting information in any part of the betting website or betting service."
+      },
+      "addOrSuspendBetting": {
+        "title": "17. Add or suspend the kind of betting",
+        "1": "We reserve self-decision for adding new kind or function of betting in betting website at any time without notifying user. We will not be responsible for beginning, suspending or limiting the connection or changing any kind or function of betting."
+      },
+      "violation": {
+        "title": "18. Violation",
+        "1": "『{site}』reserves the right to find for relieve (law and equity law) according to the laws if there is any violation. The rights includes rejecting or limiting any specified people to connect the betting service, betting website and betting information by any reason in any time . We also have the right to stop connecting betting service, betting website and betting information through specified internet address or connection device."
+      },
+      "priority": {
+        "title": "19. Priority",
+        "1": "Betting rules, connection service, betting software, betting information, betting website and any other rules constitute a part of this rules.",
+        "2": "If any other clauses of betting rules, connection service, betting software, betting information and betting website conflict with the terms, the terms will to the priorities except for the express term."
+      },
+      "forceMajeure": {
+        "title": "20. Force majeure",
+        "1": "If any uncontrollable events (including natural disasters and applicable laws and regulations change, government, civil administration, the behavior of military organs, a court order, terror, lightning, fire, strike, lockout, other labor disputes, flood, drought, war, riot, theft, transmission failure, and system fault, the communication failures or interrupt, broadband service fault or interrupt, power supply, equipment failure, severe weather, earthquake, natural disasters) happen, these do not constitute a violation of this rule though we cannot fulfill the obligation or delay it. User should agree to take every necessary action to lighten the result."
+      },
+      "abstention": {
+        "title": "21. Abstention",
+        "1": "If『{site}』cannot execute any clauses of the terms, it doesn’t mean that we give up the rights or impact the effectiveness of terms. We still have the right to take further action."
+      },
+      "severability": {
+        "title": "22. Severability",
+        "1": "If any clauses and any parts of them are considered to be invalid, illegal or unenforceable in some degree by related organization, the clauses and the parts will be apart from the other clauses in the above degree. The other clauses continue to take effect to the extent permitted by law."
+      },
+      "governingLawAndJurisdiction": {
+        "title": "23. Governing Law and Jurisdiction",
+        "1": "User should agree that Cambodia local laws are applied to user when connecting or using betting service, betting website, betting software, betting information and explaining related rules.",
+        "2": "If any dispute appears because of the terms or the related terms:<ul><li>If the user brings, it will be submitted to Cambodia local laws and local administrative authority for final solution.</li><li>If『{site}』brings, 『{site}』 has its own choice:<br>I.Submit to arbitration for final solution according to clause 23-2.<br>II.Litigate in Cambodia court which is agreed by the user. But 『{site}』still has the right to litigate in other jurisdictions.</li></ul>"
+      }
+    }
+  },
+  "forgetPassword": {
+    "title": "Forgotten your account or passwords?",
+    "notice": {
+      "title": "Notice：",
+      "content": "Please contact with our online service, and submit any information to prove your identification of member."
+    }
+  },
+  "user": {
+    "title": "Profile",
+    "nav": {
+      "profile": "Personal Info",
+      "changePassword": "Change Password",
+      "changePasswordWithdrawal": "Change Withdrawal Password",
+      "mail": "Chats"
+    },
+    "profile": {
+      "field": {
+        "registerTime": "Registration time",
+        "password": "Password",
+        "passwordWithdrawal": "Withdrawal Password"
+      },
+      "step": {
+        "bank": "Bank information",
+        "basic": "Basic information"
+      },
+      "button": {
+        "bankAdd": "Add bank"
+      }
+    },
+    "changePassword": {
+      "passwordOld": "Old Password",
+      "passwordNew": "New Password",
+      "passwordCheck": "Confirm Password",
+      "passwordRemember": "Phone memory account",
+      "switch": {
+        "on": "Enabled",
+        "off": "Disabled"
+      },
+      "notice": {
+        "suggest": "For the security of account, please change your passwords periodically.",
+        "rule": "It needs over six characters to set up your new passwords.",
+        "contact": "If you have any additional questions about your account details ,please contact our online service."
+      }
+    },
+    "changePasswordWithdrawal": {
+      "notice": {
+        "first": "The first time you do not need to enter the old password"
+      }
+    },
+    "mail": {
+      "title": "Chats",
+      "nav": {
+        "inbox": "Inbox",
+        "add": "New letters"
+      },
+      "field": {
+        "category": "Letter Category",
+        "subject": "Subject of Mail"
+      }
+    },
+    "mailDetail": {
+      "title": "Mail Detail",
+      "label": {
+        "sender": "Sender",
+        "reply": "Reply to mail",
+        "date": "Date",
+        "time": "Time",
+        "category": "Letter Category"
+      }
+    },
+    "mailSend": {
+      "title": "新增信件",
+      "label": {
+        "desc": "Question Description"
+      },
+      "placeholder": {
+        "categoryList": "Please select the category of mail."
+      }
+    }
+  },
+  "transaction": {
+    "title": "Trade Center",
+    "nav": {
+      "deposit": "Deposit",
+      "withdrawal": "Withdrawal",
+      "transfer": "Transfer",
+      "record": "Record"
+    },
+    "deposit": {
+      "title": "Fill in Cash Voucher",
+      "third-party": {
+        "success": "Automatic score success",
+        "failed": "Automatic score failed",
+        "amountEnter": "Enter by yourself"
+      },
+      "nav": {
+        "base": "Deposit by people",
+        "thirdParty": "Automatic score"
+      },
+      "step": {
+        "selectDepositBank": "Step1 Select Deposit Bank",
+        "selectTransferBank": "Step2 Please select Bank transfer",
+        "selectDepositInfo": "Step3 Deposit Information"
+      },
+      "field": {
+        "depositBank": "Select Deposit Bank",
+        "bankDepositAccount": "Account name of deposit",
+        "bankName": "Bank name of deposit",
+        "bankBranchName": "Branch Name of Bank",
+        "bankAccountName": "Account name of deposit",
+        "bankAccount": "Account number of deposit",
+        "transferBank": "Bank Transfer",
+        "datetime": "Deposit Time",
+        "method": "Deposit Method",
+        "amount": "Deposit Amount",
+        "receipt": "Remittance Receipt",
+        "remark": "Remark",
+        "promotion": "Favorable Project on Payment",
+        "payMethod": "payment",
+        "payPlatform": "payment platform"
+      },
+      "placeholder": {
+        "depositBank": "Select Deposit Bank",
+        "transferBank": "please choose your payment bank.",
+        "method": "Please select",
+        "currency": "Specific Currency",
+        "promotion": "Please select a Promotion"
+      },
+      "hint": {
+        "amount": "Baht Maximum {amountLimitMax} , Minimum {amountLimitMin} Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit. ",
+        "receipt": "The Format of Image Allow Only JPG / PNG <br /> File size cannot exceed 2MB",
+        "promotion": "Note: Non-selection regarded as abdication.",
+        "amount01": "<span class='ui-notice--height-light'>{currency}</span> Maximum {amountLimitMax} , Minimum {amountLimitMin}",
+        "amount02": "Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit.",
+        "receipt01": "The Format of Image Allow Only JPG / PNG",
+        "receipt02": "File size cannot exceed 2MB",
+        "receipt03": "Maximum filename length：50",
+        "receipt04": "Do not enter this symbol： ."
+      },
+      "notice": {
+        "currency": "only for <span class='ui-notice--height-light'>Baht</span> transaction.",
+        "depositLimit01": "Please note that the lowest and highest limitation on Deposit.",
+        "depositLimit02": "The minimum and maximum values listed above are to act as a guideline only.",
+        "userBear01": "Please conduct deposit according to the deposit method as above, otherwise members shall bear any additional expense by themselves.",
+        "userBear02": "Members shall bear any additional expense resulted from any failure transfer or drawback occurred.",
+        "suggest": "It can accelerate the review procedure in case of deposit of non-integer amount.(eg. deposit amount of 123).",
+        "contact": "If you have any additional questions about your Withdrawal details ,please contact our online service."
+      },
+      "button": {
+        "upload": "Upload"
+      }
+    },
+    "withdrawal": {
+      "title": "Cashier",
+      "hightLightMessage": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal {min} THB",
+      "field": {
+        "bank": "Select Bank",
+        "account": "Account",
+        "currency": "Specific Currency",
+        "wallet": "wallet balance",
+        "amount": "Withdrawal Amount",
+        "password": "Password for Withdrawal"
+      },
+      "placeholder": {
+        "bank": "Please select"
+      },
+      "notice": {
+        "contact": "If you have any additional questions about your account details ,please contact our online service.",
+        "amount": "取款金額，請填整百數，最低取款金額 100 銖",
+        "restrict01": "無法取款？請確認",
+        "restrict02": "提取限制",
+        "restrict03": "中'我的錢包'的解鎖條件。"
+      }
+    },
+    "transfer": {
+      "field": {
+        "from": "From",
+        "to": "To",
+        "amount": "Amount"
+      },
+      "placeholder": {
+        "from": "Wallet",
+        "to": "Please select"
+      },
+      "button": {
+        "transfer": "Transfer",
+        "refresh": "Refresh"
+      }
+    },
+    "record": {
+      "title": "Record List",
+      "deposit": "Deposit Record",
+      "withdrawal": "Withdrawal Record",
+      "transfer": "Transfer Record",
+      "bonus": "Bonus Record",
+      "lottery": "Lottery Record",
+      "withdrawalRestriction": "Withdrawal Restriction",
+      "adjustment": "Adjustment Record",
+      "bet": "Report"
+    },
+    "recordContent": {
+      "deposit": {
+        "title": "Deposit Record",
+        "table": {
+          "date": "Date",
+          "status": "Status",
+          "amount": "Amount",
+          "promotion": "Promotions",
+          "detail": {
+            "bank": "Bank Recorded",
+            "paymentMethod": "Payment Method",
+            "transactionNumber": "Transaction No.",
+            "receipt": "Remittance Receipt",
+            "transactionTime": "Transaction Time"
+          }
+        },
+        "notice": "Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger"
+      },
+      "withdrawal": {
+        "title": "Withdrawal Record",
+        "table": {
+          "date": "Submit Time",
+          "status": "Status",
+          "amount": "Amount",
+          "serviceCharge": "Service Charge",
+          "detail": {
+            "createdDate": "Creation Date",
+            "submitDate": "Submit Time",
+            "transactionTime": "Transaction Time"
+          }
+        },
+        "notice": "Here are the latest 10 trading records of this month, if you have any questions, please contact with our online service for checking up with our general ledger"
+      },
+      "transfer": {
+        "title": "Transfer Record",
+        "table": {
+          "product": "Product",
+          "rollinPoint": "Roll-in of Points",
+          "rolloutPoint": "Roll-out of Points",
+          "datetime": "Time",
+          "status": "Status"
+        },
+        "field": {
+          "from": "From",
+          "to": "To"
+        },
+        "placeholder": {
+          "product": "Choose the product",
+          "dateRange": "Select Date Range"
+        },
+        "dateRange": {
+          "lastWeek": "Last week",
+          "lastTwoWeek": "Last two week",
+          "lastMonth": "Last month"
+        },
+        "button": {
+          "search": "Search"
+        }
+      },
+      "bonus": {
+        "title": "Bonus Record",
+        "table": {
+          "activity": "Activity Name",
+          "bindWallet": "Binding Purse",
+          "issue": "Bonus Issue",
+          "datetime": "Time"
+        }
+      },
+      "lottery": {
+        "title": "Lottery Record",
+        "table": {
+          "prize": "Prize",
+          "status": "Status",
+          "type": "Type",
+          "datetime": "Date"
+        }
+      },
+      "withdrawalRestriction": {
+        "title": "Withdrawal Restriction",
+        "table": {
+          "type": "Type",
+          "restriction": "Restriction",
+          "notRolloverExchange": "Non-rollover Exchange Volume",
+          "rolloverDeadline": "Deadline of Rollover Exchange",
+          "detail": {
+            "activity": "Activity Name",
+            "bonusIssue": "Bonus Issue",
+            "datetime": "Time"
+          }
+        }
+      },
+      "adjustment": {
+        "title": "Adjustment Record",
+        "table": {
+          "status": "Status",
+          "description": "Adjustment Description",
+          "point": "Adjustment points",
+          "datetime": "Adjustment time"
+        }
+      }
+    }
+  },
+  "report": {
+    "nav": {
+      "unsettleBet": "Unsettled Betting",
+      "betRecord": "Betting Records",
+      "recordToday": "Accounting of the day",
+      "recordThisWeek": "Accounting of this week",
+      "recordLastWeek": "Accounting of last week"
+    },
+    "unsettleBet": {
+      "table": {
+        "Lst_ProductName": "Arena of Games",
+        "Lst_BetCount": "Total Bet Count",
+        "Lst_TTLBet": "Total Bet Amount",
+        "product": "Product",
+        "number": "Number",
+        "amount": "Amount",
+        "bindAmount": "Binding amount",
+        "total": "Total"
+      }
+    },
+    "betRecord": {
+      "table": {
+        "date": "Date",
+        "totalWinLose": "Total Win-lose"
+      },
+      "dateRange": {
+        "Today": "Accounting of the day",
+        "ThisWeek": "Accounting of this week",
+        "LastWeek": "Accounting of last week"
+      }
+    },
+    "betRecordDetail": {
+      "title": "Account detail",
+      "table": {
+        "total": {
+          "BetCount": "Total Bet Count",
+          "TTLBet": "Total Bet Amount",
+          "TTLNetWin": "Total Win-lose",
+          "JackpotScore": "Total Prize"
+        },
+        "recordList": {
+          "Lst_ProductName": "Arena of Games",
+          "Lst_BetCount": "Total Bet Count",
+          "Lst_TTLBet": "Total Bet Amount",
+          "Lst_TTLNetBet": "Valid Bet Amount",
+          "Lst_MemberTTLNetWin": "Total Win-lose",
+          "Lst_JackpotScore": "Total Prize"
+        }
+      },
+      "button": {
+        "back": "Previous"
+      }
+    }
+  },
+  "news": {
+    "title": "Latest News"
+  },
+  "game": {
+    "product": {
+      "fav": "My Favorites"
+    },
+    "category": {
+      "all": "All Games",
+      "hot": "Hot Games"
+    },
+    "placeholder": {
+      "search": "Search"
+    },
+    "button": {
+      "transferNow": "Transfer Now",
+      "enterGame": "Enter"
+    },
+    "link": {
+      "play": "Play Now",
+      "free": "Free Play",
+      "fav": "Favorites"
+    },
+    "transfer": {
+      "title": "Transfer",
+      "from": "From",
+      "to": "To",
+      "transferAll": "Transfer all",
+      "transferByEnter": "Enter by yourself",
+      "submit": "Done"
+    }
+  },
+  "promotion": {
+    "nav": {
+      "all": "All promotion"
+    }
+  },
+  "promotionDetail": {
+    "title": {
+      "date": "Activity time",
+      "content": "Activity Content",
+      "rule": "Activity rules"
+    },
+    "button": {
+      "back": "Back"
+    }
+  },
+  "contact": {
+    "skype": "Skype",
+    "line": "Line",
+    "mobile": "Mobile",
+    "email": "Email",
+    "wechat": "wechat",
+    "service": "Online Customer Service",
+    "serviceTitle": "Online Customer Service 7/24",
+    "serviceContent": "Click to start using web customer service",
+    "lineTitle": "Line",
+    "lineContent": "Join {site} customer service friends",
+    "wechatTitle": "Wechat",
+    "wechatContent": "Join {site} customer service friends",
+    "join": "Chat Now"
+  },
+  "about": {
+    "title": "About us",
+    "sport": {
+      "title": "Sports",
+      "content": "Offers a wide range of sporting event bets, including soccer, baseball, basketball and rugby, and other major sporting events in the world, offering the most accurate real-time event results and online betting services by a professional information management team. In addition to the diversification of events, but also in the various events in the design of many games are played, such as the ball and size, audience half, wave, the first goal / final goal."
+    },
+    "GClub": {
+      "title": "G-Club",
+      "content": "GClub locates in the resort of Cambodia POIPET. It established legally and our online casino is franchised. Royal Online has stable financial background and safe information system. Members can fully trust that your rights will be guaranteed completely. GClub is a casino which is licensed and ruled by the local laws of Cambodia and managed by local administration. GClub is a live and open casino. Member can trust in any circumstances, because the financial system is supervised by the rules and ruled by public. The information system is the same level with the bank's. It is highly reliable and safe."
+    },
+    "RNG": {
+      "title": "RNG",
+      "content": "Slot game ... provide more than 100 probability games, including slot machines, table games, arcade games, scratch music and other projects, in recent years more active development of multiplayer online game, wish you all the good luck, visual and acoustical effects Top-level entertainment, 4 level of gold pool and bonus game like a movie, unique style characters with current events, festivals and other topics, just want to give you a fun to enjoy the game experience."
+    }
+  },
+  "lottery": {
+    "noChance": "Chance ran out",
+    "winWheel": {},
+    "redEnvelope": {}
+  }
+}
