@@ -1,6 +1,12 @@
 @import './_abstracts';
 @import '@/styles/PA/_default/transaction-wallet';
 
+$transaction-wallet-item-name-bg: #462b16;
+$transaction-wallet-item-name-color: white;
+
+$transaction-wallet-item-amount-bg: #ccaa6d;
+$transaction-wallet-item-amount-color: $base-text-color;
+
 .transaction-wallet {
   @include transaction-wallet;
 }

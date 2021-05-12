@@ -7,9 +7,18 @@
     align-items: center;
     margin: 15px 0;
 
+    &__amount {
+      width: auto;
+
+      input {
+        width: auto;
+      }
+    }
+
     > div,
     > button {
       margin-right: 5px;
+      word-break: keep-all;
     }
   }
 
@@ -18,12 +27,38 @@
     flex-wrap: wrap;
     &__item {
       border: 1px solid gray;
-      padding: 5px;
       margin: 0 10px 10px 0;
 
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      border: none;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+
+      > div {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__name {
+        background: $transaction-wallet-item-name-bg;
+        color: $transaction-wallet-item-name-color;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 10px;
+        margin-bottom: 1px;
+      }
+
+      &__amount {
+        background: $transaction-wallet-item-amount-bg;
+        color: $transaction-wallet-item-amount-color;
+        padding: 5px;
+      }
     }
   }
 }
