@@ -65,6 +65,10 @@
     background: $field-select-bg;
     color: $field-select-color;
     appearance: none;
+
+    option {
+      color: $field-select-color;
+    }
   }
 
   &__captcha {
