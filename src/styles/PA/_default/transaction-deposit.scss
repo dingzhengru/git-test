@@ -22,6 +22,90 @@
 }
 
 @mixin deposit-base {
+  fieldset {
+    border: 1px solid #d6cbb9;
+  }
+
+  .ui-notice {
+    ul {
+      padding-left: 25px;
+    }
+  }
+
+  &__field {
+    &--bank {
+      width: 70%;
+    }
+    &--bank-name {
+      width: 70%;
+    }
+    &--bank-transfer {
+      width: 70%;
+    }
+    &--method {
+      width: 70%;
+    }
+    &--datetime {
+      width: 70%;
+    }
+    &--amount {
+      width: 70%;
+      background: $field-input-bg;
+      border-radius: 5px;
+      padding-right: 5px;
+      span {
+        color: #939393;
+      }
+    }
+    &--receipt {
+      width: 70%;
+      background: $field-input-bg;
+      border-radius: 5px;
+      button {
+        background: $field-input-bg;
+      }
+      span {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #939393;
+      }
+    }
+  }
+
+  &__bank-info {
+    width: 100%;
+    display: flex;
+
+    > div {
+      flex-basis: 50%;
+      background: #989491;
+      display: flex;
+      flex-direction: column;
+      padding: 5px 10px;
+
+      label {
+        color: white;
+      }
+
+      &:first-child {
+        margin-right: 5px;
+      }
+    }
+
+    &__bank-account {
+      input {
+        border: none;
+        background: transparent;
+      }
+
+      span {
+        margin-left: auto;
+        color: #f3cc28;
+      }
+    }
+  }
 }
 
 @mixin deposit-third-party {

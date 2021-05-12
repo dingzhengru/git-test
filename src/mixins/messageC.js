@@ -9,7 +9,7 @@ export default {
       return this.messageList.filter(item => {
         const datetimeEnd = this.$dayjs(item.Lst_EndDateTime);
         const now = this.$dayjs().tz('Africa/Abidjan');
-        return datetimeEnd.isBefore(now);
+        return now.isBefore(datetimeEnd);
       });
     },
   },
