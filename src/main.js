@@ -229,9 +229,9 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
-    const siteClass = 'PA';
+    const siteClass = 'Z';
     const siteType = '01';
-    const isLandscape = true;
+    const isLandscape = false;
     console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
     store.commit('site/setInfoStyle', { siteClass, siteType });
@@ -241,6 +241,9 @@ if (isLoggedIn) {
 
     //* landscape
     store.state.site.info.IsPortrait = !isLandscape;
+
+    //* lang
+    store.dispatch('changeLang', 'my-mm');
   }
 
   //* 是否顯示 apk download message (網址有 ?pwa 的話)
