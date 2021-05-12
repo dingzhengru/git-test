@@ -16,48 +16,50 @@
           </div>
         </div>
 
-        <form class="user-mail__search">
-          <div class="ui-field no-wrap user-mail__search__category">
-            <select>
-              <option value="">{{ $t('user.mail.field.category') }}</option>
-              <option :value="item.Value" v-for="item in categoryList" :key="item.Value">
-                {{ item.Text }}
-              </option>
-            </select>
-          </div>
-          <div class="ui-field no-wrap user-mail__search__subject">
-            <input type="text" :placeholder="$t('user.mail.field.subject')" />
-          </div>
+        <div class="user-mail__content__main">
+          <form class="user-mail__search">
+            <div class="ui-field no-wrap user-mail__search__category">
+              <select>
+                <option value="">{{ $t('user.mail.field.category') }}</option>
+                <option :value="item.Value" v-for="item in categoryList" :key="item.Value">
+                  {{ item.Text }}
+                </option>
+              </select>
+            </div>
+            <div class="ui-field no-wrap user-mail__search__subject">
+              <input type="text" :placeholder="$t('user.mail.field.subject')" />
+            </div>
 
-          <div class="user-mail__search__btn">
-            <button class="ui-btn" type="submit">{{ $t('ui.button.search') }}</button>
-          </div>
-        </form>
+            <div class="user-mail__search__btn">
+              <button class="ui-btn" type="submit">{{ $t('ui.button.search') }}</button>
+            </div>
+          </form>
 
-        <table class="ui-table user-mail__table">
-          <tr>
-            <th>No.</th>
-            <th>{{ $t('ui.label.subject') }}</th>
-            <th>{{ $t('ui.label.date') }}</th>
-          </tr>
-          <tr
-            v-for="(item, index) in list"
-            :key="String(index) + String(item.Lst_Key)"
-            @click="openModalMailDetail(item)"
-          >
-            <td>{{ index + 1 + (pagination.page - 1) * 10 }}</td>
-            <td>{{ item.Lst_Subject }}</td>
-            <td>{{ $dayjs(item.Lst_SendTime).format('YYYY-MM-DD') }}</td>
-          </tr>
-        </table>
+          <table class="ui-table user-mail__table">
+            <tr>
+              <th>No.</th>
+              <th>{{ $t('ui.label.subject') }}</th>
+              <th>{{ $t('ui.label.date') }}</th>
+            </tr>
+            <tr
+              v-for="(item, index) in list"
+              :key="String(index) + String(item.Lst_Key)"
+              @click="openModalMailDetail(item)"
+            >
+              <td>{{ index + 1 + (pagination.page - 1) * 10 }}</td>
+              <td>{{ item.Lst_Subject }}</td>
+              <td>{{ $dayjs(item.Lst_SendTime).format('YYYY-MM-DD') }}</td>
+            </tr>
+          </table>
 
-        <AppPagination
-          :count="pagination.count"
-          :page="pagination.page"
-          :pagesize="pagination.pagesize"
-          @change-page="changePage"
-          v-show="list.length > 0"
-        />
+          <AppPagination
+            :count="pagination.count"
+            :page="pagination.page"
+            :pagesize="pagination.pagesize"
+            @change-page="changePage"
+            v-show="list.length > 0"
+          />
+        </div>
       </div>
     </div>
 
