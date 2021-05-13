@@ -7,8 +7,9 @@
           tag="div"
           class="ui-field deposit-base__field deposit-base__field--bank"
           :rules="{ 'object-not-empty': true }"
+          v-slot="{ invalid }"
         >
-          <select class="ui-field__select" v-model="depositBank">
+          <select class="ui-field__select" :class="{ invalid: invalid }" v-model="depositBank">
             <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.depositBank`) }}</option>
             <option :value="item" v-for="item in depositInfo.BankAccount" :key="item.Value">
               {{ item.Text }}
@@ -52,8 +53,9 @@
           class="ui-field deposit-base__field deposit-base__field--bank-transfer"
           tag="div"
           :rules="{ 'object-not-empty': true }"
+          v-slot="{ invalid }"
         >
-          <select class="ui-field__select" v-model="transferBank">
+          <select class="ui-field__select" :class="{ invalid: invalid }" v-model="transferBank">
             <option :value="{}" selected>{{ $t('transaction.deposit.placeholder.transferBank') }}</option>
             <option :value="item" v-for="item in depositInfo.BankURL" :key="item.Value">
               {{ item.Text }}
@@ -68,8 +70,9 @@
           class="ui-field deposit-base__field deposit-base__field--method"
           tag="div"
           :rules="{ required: true }"
+          v-slot="{ invalid }"
         >
-          <select class="ui-field__select" v-model="method">
+          <select class="ui-field__select" :class="{ invalid: invalid }" v-model="method">
             <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
             <option :value="item.Value" v-for="item in depositInfo.DepositMethod" :key="item.Value">
               {{ item.Text }}

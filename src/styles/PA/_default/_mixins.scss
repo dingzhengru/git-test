@@ -57,7 +57,7 @@
   input,
   select,
   textarea {
-    min-width: 100px;
+    min-width: 50px;
     flex-grow: 1;
     border: none;
     border-radius: 5px;
@@ -78,8 +78,12 @@
     color: $field-select-color;
     appearance: none;
 
+    &:invalid,
+    &.invalid {
+      color: $field-select-color-invalid;
+    }
     option {
-      color: $field-select-color;
+      color: $field-input-color;
     }
   }
 
