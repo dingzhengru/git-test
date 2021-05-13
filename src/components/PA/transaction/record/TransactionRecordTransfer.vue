@@ -2,6 +2,7 @@
   <div class="record-content record-content--transfer">
     <div class="record-content__search">
       <form class="record-content__search-form" @submit.prevent="submitSearch">
+        <span>{{ $t('ui.label.date') }}</span>
         <div class="ui-field record-content__field--product">
           <select class="ui-field__select" v-model="search.product">
             <option value="" selected>{{ $t(`transaction.recordContent.transfer.placeholder.product`) }}</option>
