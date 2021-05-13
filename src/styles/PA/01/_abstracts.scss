@@ -33,7 +33,7 @@ $select-bg: $input-bg;
 $select-color: $input-color;
 $select-placeholder-color: $input-placeholder-color;
 
-$field-bg: none;
+$field-bg: #444444;
 $field-label-color: $base-text-color;
 $field-input-bg: #444444;
 $field-input-color: white;
@@ -47,6 +47,7 @@ $field-error-color: $base-text-color;
 $field-star-color: #c6a260;
 $field-captcha-width: 73px;
 $field-captcha-height: 29px;
+$field-inside-color: #939393;
 
 $notice-color: #8b8b8b;
 $notice-font-size: 1rem;
@@ -108,6 +109,8 @@ $box-close-line-color: white;
 $question-bg: radial-gradient(circle at center, #ffff1c, #ad910d);
 $question-color: black;
 $question-border: 2px solid #503b22;
+
+$fieldset-border: 1px solid #d6cbb9;
 
 $go-top-btn-bg: assetPath('ui/goTOP.png') center no-repeat;
 $go-top-btn-width: 58px;

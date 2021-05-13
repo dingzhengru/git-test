@@ -31,6 +31,9 @@
   position: relative;
   margin-bottom: 10px;
 
+  background: $field-bg;
+  border-radius: 5px;
+
   &.no-wrap {
     flex-wrap: nowrap;
   }
@@ -85,6 +88,25 @@
     color: $field-textarea-color;
   }
 
+  &--inside {
+    &-left {
+      padding-left: 30px;
+      span {
+        color: $field-inside-color;
+        position: absolute;
+        left: 5px;
+      }
+    }
+    &-right {
+      padding-right: 30px;
+      span {
+        color: $field-inside-color;
+        position: absolute;
+        right: 5px;
+      }
+    }
+  }
+
   &__captcha {
     width: $field-captcha-width;
     height: $field-captcha-height;
@@ -92,9 +114,14 @@
   }
 
   &__error {
-    color: #d56216;
+    width: 100%;
+    background: $field-error-bg;
+    color: $field-error-color;
     font-size: 0.9rem;
     font-weight: bold;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 0 10px 5px 10px;
   }
 
   &__star {
@@ -408,6 +435,19 @@
     top: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
+  }
+}
+
+@mixin ui-fieldset {
+  width: 100%;
+  border: $fieldset-border;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+
+  &.flex-row {
+    flex-direction: row;
+    align-items: center;
   }
 }
 

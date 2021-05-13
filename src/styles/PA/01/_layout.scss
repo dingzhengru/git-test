@@ -74,6 +74,10 @@ body {
   @include ui-question;
 }
 
+.ui-fieldset {
+  @include ui-fieldset;
+}
+
 .ui-no-data {
   @include ui-no-data;
 }
