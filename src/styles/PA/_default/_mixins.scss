@@ -31,7 +31,7 @@
   position: relative;
   margin-bottom: 10px;
 
-  background: $field-bg;
+  // background: $field-bg;
   border-radius: 5px;
 
   &.no-wrap {
@@ -57,7 +57,7 @@
   input,
   select,
   textarea {
-    min-width: 0;
+    min-width: 100px;
     flex-grow: 1;
     border: none;
     border-radius: 5px;
@@ -89,21 +89,13 @@
   }
 
   &--inside {
-    &-left {
-      padding-left: 30px;
-      span {
-        color: $field-inside-color;
-        position: absolute;
-        left: 5px;
-      }
-    }
-    &-right {
-      padding-right: 30px;
-      span {
-        color: $field-inside-color;
-        position: absolute;
-        right: 5px;
-      }
+    flex-wrap: nowrap;
+    background: $field-input-bg;
+
+    span {
+      color: $field-inside-color;
+      word-break: keep-all;
+      padding-right: 5px;
     }
   }
 
@@ -237,6 +229,7 @@
   background: $nav-tab-bg;
   display: flex;
   flex-direction: row;
+  align-items: center;
   flex-wrap: nowrap;
   position: relative;
   overflow-x: auto;

@@ -39,7 +39,7 @@
           v-show="!$isObjEmpty(platform)"
         >
           <div class="deposit-third-party__field--amount__field">
-            <div class="ui-field ui-field--inside-right">
+            <div class="ui-field ui-field--inside">
               <input
                 type="number"
                 step="1"
@@ -47,7 +47,7 @@
                 v-model.number="amount"
                 @change="inputAmount"
               />
-              <span class="ui-field__inside">{{ $t('ui.currency.thaiBaht') }}</span>
+              <span>{{ $t('ui.currency.thaiBaht') }}</span>
             </div>
             <div class="deposit-third-party__field--btn__option deposit-third-party__field--amount__field__btn">
               <button

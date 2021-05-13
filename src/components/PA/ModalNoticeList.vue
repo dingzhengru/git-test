@@ -5,7 +5,9 @@
       <div class="ui-modal__content no-title modal-notice__container">
         <div class="ui-notice">
           <ul>
+            <slot name="top"></slot>
             <li v-for="(item, index) in noticeList" :key="index" v-html="getNoticeContent(item)"></li>
+            <slot name="bottom"></slot>
           </ul>
         </div>
       </div>

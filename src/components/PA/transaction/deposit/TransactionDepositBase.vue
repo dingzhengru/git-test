@@ -96,17 +96,11 @@
         <legend>{{ $t('transaction.deposit.field.amount') }}</legend>
         <ValidationProvider
           tag="div"
-          class="ui-field deposit-base__field deposit-base__field--amount"
+          class="ui-field ui-field--inside deposit-base__field deposit-base__field--amount"
           :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
         >
-          <input
-            class="ui-field__group__input"
-            type="number"
-            step="100"
-            v-model.number="amount"
-            @change="inputAmount"
-          />
-          <span class="ui-field__group__text">{{ $t('ui.currency.thaiBaht') }}</span>
+          <input type="number" step="100" v-model.number="amount" @change="inputAmount" />
+          <span>{{ $t('ui.currency.thaiBaht') }}</span>
         </ValidationProvider>
 
         <div class="ui-notice">
