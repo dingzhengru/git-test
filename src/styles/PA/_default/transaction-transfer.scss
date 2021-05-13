@@ -23,9 +23,10 @@
     &--switch {
       background: $transfer-btn-bg-switch;
       width: 50%;
-      padding: 10px 15px;
       display: flex;
       align-items: center;
+      padding: 10px 15px;
+      margin: 10px 0;
 
       img {
         width: 15%;
