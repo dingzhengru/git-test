@@ -31,6 +31,8 @@ $deposit-base-bnt-shadow-submit: none;
 
 $deposit-base-color-currency: #f88d80;
 
+$deposit-base-btn-bg-submit: $btn-bg-rectangle;
+
 .deposit-base {
   @include deposit-base;
 }

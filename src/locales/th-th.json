@@ -45,7 +45,8 @@
       "lotteryCount": "{count} รอง โชคดี",
       "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด",
       "allToMyWallet-2": "โอนไปยังกระเป๋าเงินทั้งหมด",
-      "download": "ดาวน์โหลด"
+      "download": "ดาวน์โหลด",
+      "upload": "อัพโหลด"
     },
     "currency": {
       "thaiBaht": "บาท"

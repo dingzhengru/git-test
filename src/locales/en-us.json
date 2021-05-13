@@ -45,7 +45,8 @@
       "lotteryCount": "{count} Lucky draw",
       "allToMyWallet": "All to my wallet",
       "allToMyWallet-2": "All to wallet",
-      "download": "Download"
+      "download": "Download",
+      "upload": "Upload"
     },
     "currency": {
       "thaiBaht": "Baht"
