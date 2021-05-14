@@ -52,12 +52,11 @@
       </ValidationProvider>
 
       <div class="modal-login__remember">
-        <div class="ui-checkbox modal-login__remember__remember">
-          <input id="login-remember" type="checkbox" v-model="user.RememberMe" />
-          <label for="login-remember">
-            {{ $t('login.rememberMe') }}
-          </label>
-        </div>
+        <label class="ui-field-box">
+          <span>{{ $t('login.rememberMe') }}</span>
+          <input type="radio" v-model="user.RememberMe" />
+          <div></div>
+        </label>
 
         <div class="modal-login__remember__forget" @click="$store.dispatch('openModalContact')">
           {{ $t('login.link.forgetPassword') }}?
