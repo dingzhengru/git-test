@@ -25,7 +25,8 @@
       "bankAccount": "银行帐号",
       "bankBranch": "支行名称",
       "bankAccountName": "银行户名",
-      "langSelect": "语系选择"
+      "langSelect": "语系选择",
+      "default": "默认"
     },
     "button": {
       "save": "保存",
@@ -559,6 +560,9 @@
       },
       "button": {
         "bankAdd": "新增银行卡"
+      },
+      "modal": {
+        "bankTitle": "设置银行卡"
       }
     },
     "changePassword": {
@@ -700,7 +704,7 @@
       },
       "notice": {
         "contact": "如果您需要任何协助，请随时联系我们的客服人员，您的个人资料将被保密。",
-        "amount": "取款金額，請填整百數，最低取款金額 100 銖",
+        "amount": "取款金額，請填整百數，最低取款金額 {amount} 銖",
         "restrict01": "無法取款？請確認",
         "restrict02": "提取限制",
         "restrict03": "中'我的錢包'的解鎖條件。"

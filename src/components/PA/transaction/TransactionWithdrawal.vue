@@ -98,6 +98,7 @@
         @close="isShowModalNotice = false"
       >
         <template v-slot:top>
+          <li>{{ $t('transaction.withdrawal.notice.amount', { amount: withdrawalInfo.WithalDownlimit }) }}</li>
           <li>
             {{ $t('transaction.withdrawal.notice.restrict01') }}
             <router-link class="ui-notice--height-light" :to="{ name: 'TransactionRecordWithdrawalRestriction' }">
@@ -133,7 +134,7 @@ export default {
   data() {
     return {
       isShowModalNotice: false,
-      noticeList: ['transaction.withdrawal.notice.amount', 'transaction.withdrawal.notice.contact'],
+      noticeList: ['transaction.withdrawal.notice.contact'],
     };
   },
   mounted() {

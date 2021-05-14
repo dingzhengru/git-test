@@ -20,6 +20,7 @@
   &--lg {
     font-size: 1.2rem;
     line-height: 2.5;
+    padding: 0 30px;
   }
 }
 
@@ -616,7 +617,7 @@
     align-items: center;
     justify-content: center;
     button[type='submit'] {
-      width: 50%;
+      min-width: 50%;
       background: $btn-bg-rectangle;
     }
   }
@@ -807,4 +808,139 @@
   right: 5%;
   background: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
   // background-size: contain;
+}
+
+//* 參考 https://bun.js.org/
+@mixin ui-field-box {
+  *,
+  *::before,
+  *::after {
+    box-sizing: content-box !important;
+  }
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  display: table;
+  position: relative;
+  padding-left: 1.8rem;
+  cursor: pointer;
+  // margin-bottom: 0.5rem;
+
+  input[type='checkbox'] ~ div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1rem;
+    width: 1rem;
+    background: rgba(241, 245, 248, 1);
+    transition: background 250ms;
+    border: 1px solid rgba(184, 194, 204, 1);
+    border-radius: 0.125rem;
+  }
+
+  input[type='radio'] ~ div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1rem;
+    width: 1rem;
+    background: rgba(241, 245, 248, 1);
+    transition: background 250ms;
+    border: 1px solid rgba(184, 194, 204, 1);
+    border-radius: 2rem;
+  }
+
+  input[type='checkbox'] ~ div::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 0.45rem;
+    top: 0rem;
+    width: 0.25rem;
+    height: 0.6rem;
+    border: solid rgba(230, 173, 37, 1);
+    border-width: 0 2px 2px 0;
+    transition: background 250ms;
+    transform: rotate(45deg);
+  }
+
+  input[type='radio'] ~ div::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 0.25rem;
+    top: 0.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 2rem;
+    background: rgba(230, 173, 37, 1);
+    transition: background 250ms;
+  }
+
+  input:disabled ~ div::after {
+    border-color: rgba(135, 149, 161, 1);
+  }
+
+  input:checked ~ div::after {
+    display: block;
+  }
+
+  :hover input ~ div,
+  input:focus ~ div {
+    background: rgb(231, 238, 243);
+  }
+
+  input:focus ~ div {
+    box-shadow: 0 0 0 2px rgba(83, 74, 113, 1);
+  }
+
+  input:checked ~ div {
+    background: rgba(30, 0, 50, 1);
+    border-color: rgba(83, 74, 113, 1);
+  }
+
+  input[type='checkbox']:disabled ~ div {
+    background: rgba(241, 245, 248, 1);
+    border-color: rgba(184, 194, 204, 1);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  input[type='radio']:disabled ~ div {
+    background: rgba(241, 245, 248, 1);
+    border-color: rgba(184, 194, 204, 1);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  input[type='radio']:disabled ~ div::after {
+    background: rgba(135, 149, 161, 1);
+  }
+
+  input:checked:focus ~ div,
+  :hover input:not([disabled]):checked ~ div {
+    background: rgba(30, 0, 50, 1);
+    border-color: rgba(83, 74, 113, 1);
+  }
+
+  div::before {
+    content: '';
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.616rem;
+    height: 5.348rem;
+    margin-left: 1.244rem;
+    margin-top: -0.85rem;
+    background: rgba(0, 130, 243, 1);
+    border-radius: 2rem;
+    opacity: 0.6;
+    z-index: 99999;
+    transform: scale(0);
+  }
 }

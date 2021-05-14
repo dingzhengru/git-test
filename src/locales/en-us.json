@@ -25,7 +25,8 @@
       "bankAccount": "Bank Account",
       "bankBranch": "Name of Branch",
       "bankAccountName": "Account Name of Bank",
-      "langSelect": "Select Language"
+      "langSelect": "Select Language",
+      "default": "Default"
     },
     "button": {
       "save": "Save",
@@ -563,6 +564,9 @@
       },
       "button": {
         "bankAdd": "Add bank"
+      },
+      "modal": {
+        "bankTitle": "Set up bank"
       }
     },
     "changePassword": {
@@ -704,7 +708,7 @@
       },
       "notice": {
         "contact": "If you have any additional questions about your account details ,please contact our online service.",
-        "amount": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount 100 THB",
+        "amount": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount {amount} THB",
         "restrict01": "Unable to withdraw? Please confirm:",
         "restrict02": "Withdrawal Restriction",
         "restrict03": "Withdrawal Restriction"
