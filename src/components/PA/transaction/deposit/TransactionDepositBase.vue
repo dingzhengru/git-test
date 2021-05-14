@@ -1,14 +1,15 @@
 <template>
   <ValidationObserver class="deposit-base" tag="div" v-slot="{ invalid, handleSubmit }">
     <form class="deposit-base__form" novalidate @submit.prevent="handleSubmit(submitDeposit)">
-      <fieldset>
+      <fieldset class="ui-fieldset">
         <legend>{{ $t('transaction.deposit.step.selectDepositBank') }}</legend>
         <ValidationProvider
           tag="div"
           class="ui-field deposit-base__field deposit-base__field--bank"
           :rules="{ 'object-not-empty': true }"
+          v-slot="{ invalid }"
         >
-          <select class="ui-field__select" v-model="depositBank">
+          <select class="ui-field__select" :class="{ invalid: invalid }" v-model="depositBank">
             <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.depositBank`) }}</option>
             <option :value="item" v-for="item in depositInfo.BankAccount" :key="item.Value">
               {{ item.Text }}
@@ -46,14 +47,15 @@
         </div>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="ui-fieldset">
         <legend>{{ $t('transaction.deposit.step.selectTransferBank') }}</legend>
         <ValidationProvider
           class="ui-field deposit-base__field deposit-base__field--bank-transfer"
           tag="div"
           :rules="{ 'object-not-empty': true }"
+          v-slot="{ invalid }"
         >
-          <select class="ui-field__select" v-model="transferBank">
+          <select class="ui-field__select" :class="{ invalid: invalid }" v-model="transferBank">
             <option :value="{}" selected>{{ $t('transaction.deposit.placeholder.transferBank') }}</option>
             <option :value="item" v-for="item in depositInfo.BankURL" :key="item.Value">
               {{ item.Text }}
@@ -62,14 +64,15 @@
         </ValidationProvider>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="ui-fieldset">
         <legend>{{ $t('transaction.deposit.step.selectDepositInfo') }}</legend>
         <ValidationProvider
           class="ui-field deposit-base__field deposit-base__field--method"
           tag="div"
           :rules="{ required: true }"
+          v-slot="{ invalid }"
         >
-          <select class="ui-field__select" v-model="method">
+          <select class="ui-field__select" :class="{ invalid: invalid }" v-model="method">
             <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
             <option :value="item.Value" v-for="item in depositInfo.DepositMethod" :key="item.Value">
               {{ item.Text }}
@@ -92,21 +95,15 @@
         </ValidationProvider>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="ui-fieldset">
         <legend>{{ $t('transaction.deposit.field.amount') }}</legend>
         <ValidationProvider
           tag="div"
-          class="ui-field deposit-base__field deposit-base__field--amount"
+          class="ui-field ui-field--inside deposit-base__field deposit-base__field--amount"
           :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
         >
-          <input
-            class="ui-field__group__input"
-            type="number"
-            step="100"
-            v-model.number="amount"
-            @change="inputAmount"
-          />
-          <span class="ui-field__group__text">{{ $t('ui.currency.thaiBaht') }}</span>
+          <input type="number" step="100" v-model.number="amount" @change="inputAmount" />
+          <span>{{ $t('ui.currency.thaiBaht') }}</span>
         </ValidationProvider>
 
         <div class="ui-notice">
@@ -125,19 +122,22 @@
         </div>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="ui-fieldset">
         <legend>{{ $t('transaction.deposit.field.receipt') }}</legend>
         <ValidationProvider
           class="ui-field deposit-base__field deposit-base__field--receipt"
           tag="div"
           :rules="{ image: true, size: 2048 }"
           v-slot="{ validate }"
+          @click.native="uploadReceipt"
         >
           <!-- <button class="ui-btn ui-btn--block deposit-base__field--receipt__btn" type="button" @click="uploadReceipt">
             {{ receipt.name ? receipt.name : '上傳後檔名顯示位置' }}
           </button> -->
-          <input type="text" :value="receipt.name ? receipt.name : '上傳後檔名顯示位置'" />
-          <span>...</span>
+          <input type="text" :value="receipt.name ? receipt.name : $t('ui.button.upload')" readonly />
+          <span></span>
+          <span></span>
+          <span></span>
           <input
             class="deposit-base__field--receipt__input"
             ref="receipt"
@@ -155,28 +155,37 @@
         </div>
       </fieldset>
 
-      <ValidationProvider class="ui-field deposit-base__field deposit-base__field--remark" tag="div">
-        <div class="ui-field__group">
-          <label class="ui-field__group__label" for="deposit-bank-account">
-            {{ $t('transaction.deposit.field.remark') }}
-          </label>
-          <input class="ui-field__group__input" type="text" v-model="remark" />
-        </div>
-      </ValidationProvider>
+      <fieldset class="ui-fieldset">
+        <legend>{{ $t('transaction.deposit.field.remark') }}</legend>
+        <ValidationProvider class="ui-field deposit-base__field deposit-base__field--remark" tag="div">
+          <input
+            class="ui-field__group__input"
+            type="text"
+            :placeholder="$t('transaction.deposit.field.remark')"
+            v-model="remark"
+          />
+        </ValidationProvider>
+      </fieldset>
 
-      <ValidationProvider class="ui-field deposit-base__field deposit-base__field--bank" tag="div">
-        <select class="ui-field__select" v-model="promotion">
-          <option :value="item.Value" v-for="item in depositInfo.AllActivityList" :key="item.Value">
-            {{ item.Text }}
-          </option>
-        </select>
-        <div class="ui-field__error" v-if="promotion == -1">
+      <fieldset class="ui-fieldset flex-row deposit-base__promotion">
+        <legend>{{ $t('ui.label.promotion') }}</legend>
+        <ValidationProvider class="ui-field deposit-base__field deposit-base__field--promotion" tag="div">
+          <select class="ui-field__select" v-model="promotion">
+            <option :value="item.Value" v-for="item in depositInfo.AllActivityList" :key="item.Value">
+              {{ item.Text }}
+            </option>
+          </select>
+          <!-- <div class="ui-field__error" v-if="promotion == -1">
+            {{ $t('transaction.deposit.hint.promotion') }}
+          </div> -->
+        </ValidationProvider>
+        <div class="deposit-base__field--promotion-hint" v-if="promotion == -1">
           {{ $t('transaction.deposit.hint.promotion') }}
         </div>
-      </ValidationProvider>
+      </fieldset>
 
       <div class="deposit-base__btn">
-        <button class="deposit-base__btn--submit" type="submit" :disabled="invalid">
+        <button class="ui-btn ui-btn--lg" type="submit" :disabled="invalid">
           {{ $t('ui.button.submit') }}
         </button>
         <div class="ui-question" @click="isShowModalNotice = true"></div>

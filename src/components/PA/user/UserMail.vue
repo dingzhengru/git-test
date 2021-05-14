@@ -4,30 +4,28 @@
       <component :is="PanelTabs" :list="tabList" />
 
       <div class="ui-panel-tab__content user-mail__content">
-        <div class="nav-tab">
-          <div class="nav-tab__item">
-            <img :src="imgMail" />
-            <span>{{ $t('user.mail.nav.inbox') }}</span>
-          </div>
-          <div class="nav-tab__right user-mail__nav-tab__right">
-            <button class="ui-btn" @click="$router.push({ name: 'UserMailSend' })">
+        <div class="ui-step">
+          <img class="ui-step__icon" :src="imgMail" />
+          <span>{{ $t('user.mail.nav.inbox') }}</span>
+          <div class="ui-step__right">
+            <button class="ui-btn user-mail__btn--mail-send" @click="$router.push({ name: 'UserMailSend' })">
               {{ $t('user.mail.nav.add') }}
             </button>
           </div>
         </div>
 
         <div class="user-mail__content__main">
-          <form class="user-mail__search">
+          <form class="user-mail__search" @submit.prevent="submitSearch">
             <div class="ui-field no-wrap user-mail__search__category">
-              <select>
-                <option value="">{{ $t('user.mail.field.category') }}</option>
+              <select v-model="search.Category">
+                <option :value="-1">{{ $t('user.mail.field.category') }}</option>
                 <option :value="item.Value" v-for="item in categoryList" :key="item.Value">
                   {{ item.Text }}
                 </option>
               </select>
             </div>
             <div class="ui-field no-wrap user-mail__search__subject">
-              <input type="text" :placeholder="$t('user.mail.field.subject')" />
+              <input type="text" :placeholder="$t('user.mail.field.subject')" v-model="search.SearchKeyword" />
             </div>
 
             <div class="user-mail__search__btn">
@@ -95,7 +93,7 @@ export default {
     },
     imgMail() {
       try {
-        return require(`@/assets/${this.siteFullCss}/ui/ui-mail.png`);
+        return require(`@/assets/${this.siteFullCss}/ui/ui-icon-mail.png`);
       } catch {
         return '';
       }
@@ -124,10 +122,6 @@ export default {
       ],
 
       categoryList: [],
-      search: {
-        category: '',
-        subject: '',
-      },
     };
   },
   methods: {

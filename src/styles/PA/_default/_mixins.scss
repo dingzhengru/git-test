@@ -31,6 +31,9 @@
   position: relative;
   margin-bottom: 10px;
 
+  // background: $field-bg;
+  border-radius: 5px;
+
   &.no-wrap {
     flex-wrap: nowrap;
   }
@@ -54,7 +57,7 @@
   input,
   select,
   textarea {
-    min-width: 0;
+    min-width: 50px;
     flex-grow: 1;
     border: none;
     border-radius: 5px;
@@ -75,14 +78,29 @@
     color: $field-select-color;
     appearance: none;
 
+    &:invalid,
+    &.invalid {
+      color: $field-select-color-invalid;
+    }
     option {
-      color: $field-select-color;
+      color: $field-input-color;
     }
   }
 
   textarea {
     background: $field-textarea-bg;
     color: $field-textarea-color;
+  }
+
+  &--inside {
+    flex-wrap: nowrap;
+    background: $field-input-bg;
+
+    span {
+      color: $field-inside-color;
+      word-break: keep-all;
+      padding-right: 5px;
+    }
   }
 
   &__captcha {
@@ -92,7 +110,14 @@
   }
 
   &__error {
-    font-size: 0.8rem;
+    width: 100%;
+    background: $field-error-bg;
+    color: $field-error-color;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 0 10px 5px 10px;
   }
 
   &__star {
@@ -131,10 +156,23 @@
 
 @mixin ui-step {
   width: 100%;
+  background: $step-bg;
   color: $step-color;
-  border-bottom: $step-border;
-  padding-bottom: 5px;
-  margin: 15px 0px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 5px 15px 5px 15px;
+  margin-bottom: 15px;
+
+  &__icon {
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  &__right {
+    margin-left: auto;
+  }
 }
 
 @mixin ui-point-list {
@@ -208,6 +246,7 @@
   background: $nav-tab-bg;
   display: flex;
   flex-direction: row;
+  align-items: center;
   flex-wrap: nowrap;
   position: relative;
   overflow-x: auto;
@@ -223,6 +262,7 @@
   }
 
   &__item {
+    height: 100%;
     // margin-right: 15px;
     padding: 5px 15px 10px 15px;
     color: $nav-tab-text-color;
@@ -231,6 +271,11 @@
     white-space: nowrap;
     display: flex;
     align-items: center;
+
+    &__icon {
+      height: 24px;
+      margin-right: 10px;
+    }
 
     &.active {
       background: $nav-tab-item-bg-active;
@@ -393,10 +438,12 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: black;
-  color: white;
   position: relative;
+  background: $question-bg;
+  color: $question-color;
+  border: $question-border;
   border-radius: 12px;
+  margin: 0 5px;
   &:before {
     content: '?';
     position: absolute;
@@ -404,6 +451,19 @@
     top: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
+  }
+}
+
+@mixin ui-fieldset {
+  width: 100%;
+  border: $fieldset-border;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+
+  &.flex-row {
+    flex-direction: row;
+    align-items: center;
   }
 }
 
@@ -462,6 +522,10 @@
     overflow-y: auto;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    &.no-title {
+      flex-basis: 100%;
+    }
   }
 
   &__nav {
@@ -559,16 +623,10 @@
 }
 
 @mixin modal-notice {
-  width: 70%;
+  width: 75%;
   height: 80%;
-  background: white;
-  position: relative;
-
   &__container {
-    width: 100%;
-    height: 100%;
     padding: 30px;
-    overflow-y: auto;
   }
 }
 

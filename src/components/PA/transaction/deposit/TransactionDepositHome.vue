@@ -1,8 +1,8 @@
 <template>
   <div class="deposit">
-    <div class="deposit__nav" v-if="depositInfo.IsShowThirdPartyBtn === true">
+    <div class="nav-tab deposit__nav" v-if="depositInfo.IsShowThirdPartyBtn === true">
       <div
-        class="deposit__nav__item"
+        class="nav-tab__item deposit__nav__item"
         :class="{ active: navIsActive(item) }"
         v-for="(item, index) in navList"
         :key="index"

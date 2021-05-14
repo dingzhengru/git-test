@@ -2,7 +2,7 @@
   <div class="transaction-wallet">
     <div class="nav-tab transaction-wallet__wallet">
       <div class="transaction-wallet__wallet__name">{{ $t('ui.label.wallet') }} :</div>
-      <div class="transaction-wallet__wallet__amount">{{ userGamePointWallet.Point }}</div>
+      <div class="transaction-wallet__wallet__amount">{{ $numeral(userGamePointWallet.Point).format('0,0.00') }}</div>
       <div class="nav-tab__item active" @click="refreshWallet">
         {{ $t('transaction.transfer.button.refresh') }}
         <template v-if="refreshButtonIsLoading">{{ `(${getCountdownTimeoutSecondCurrent}s)` }}</template>

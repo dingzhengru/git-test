@@ -82,7 +82,7 @@ export default {
     },
     imgMail() {
       try {
-        return require(`@/assets/${this.siteFullCss}/ui/ui-plus.png`);
+        return require(`@/assets/${this.siteFullCss}/ui/ui-icon-plus.png`);
       } catch {
         return '';
       }
