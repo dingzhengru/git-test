@@ -103,6 +103,11 @@
       margin-bottom: 15px;
     }
 
+    &--add-bank {
+      background: $user-profile-btn-bg-add-bank;
+      margin-left: 10px;
+    }
+
     &--submit {
       background: $user-profile-btn-bg-submit;
       color: $user-profile-btn-color-submit;
@@ -112,6 +117,30 @@
       background: $user-profile-btn-bg-reset;
       color: $user-profile-btn-color-reset;
       box-shadow: $user-profile-btn-shadow-reset;
+    }
+  }
+
+  &__footer {
+    width: calc(30% + 10px);
+    height: 20%;
+    background: $user-profile-footer-bg;
+    color: $user-profile-footer-color;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 7%;
+
+    span {
+      width: 95%;
+      height: 90%;
+      color: $user-profile-footer-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-right-radius: 50%;
     }
   }
 }
@@ -235,31 +264,6 @@
     }
   }
 
-  .nav-tab {
-    &__item {
-      height: 100%;
-      img {
-        height: 70%;
-        margin-right: 10px;
-      }
-      span {
-        font-size: 1.2rem;
-        font-weight: bold;
-      }
-    }
-
-    &__right {
-      height: 90%;
-      button {
-        height: 100%;
-        background: $user-mail-nav-tab-btn-bg;
-        border: 0;
-        padding: 0 30px;
-        font-size: 1.2rem;
-      }
-    }
-  }
-
   &__search {
     display: flex;
     align-items: center;
@@ -284,6 +288,7 @@
     &__btn {
       flex-basis: 25%;
       word-break: keep-all;
+
       button {
         width: 100%;
         background: $user-mail-search-btn-bg;
@@ -293,6 +298,15 @@
 
   &__content {
     height: 100%;
+  }
+
+  &__btn {
+    &--mail-send {
+      background: $user-mail-btn-mail-send;
+      border: 0;
+      padding: 0 30px;
+      font-size: 1.2rem;
+    }
   }
 }
 

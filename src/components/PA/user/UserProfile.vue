@@ -2,18 +2,12 @@
   <ValidationObserver class="user-profile" tag="div" v-slot="{ invalid, handleSubmit, reset }">
     <form class="user-profile__form" @submit.prevent="handleSubmit(submitUserProfile)" @reset.prevent="reset">
       <div class="ui-panel-tab">
-        <component :is="PanelTabs" :list="tabList">
-          <div slot="after" class="user-profile__logout">
-            <button type="button" @click="$store.dispatch('user/logout')">{{ $t('header.button.logout') }}</button>
-          </div>
-        </component>
+        <component :is="PanelTabs" :list="tabList"></component>
 
         <div class="ui-panel-tab__content user-profile__content">
-          <div class="user-profile__title user-profile__title--basic">
-            <div class="user-profile__title__icon user-profile__title__icon--basic"></div>
-            <div class="user-profile__title__text user-profile__title__text--basic">
-              {{ $t('user.profile.step.basic') }}
-            </div>
+          <div class="ui-step">
+            <img class="ui-step__icon" :src="imgUser" />
+            <span>{{ $t('user.profile.step.basic') }}</span>
           </div>
           <div class="user-profile__basic">
             <div class="user-profile__field">
@@ -232,14 +226,12 @@
             </div>
           </div>
 
-          <div class="user-profile__title user-profile__title--bank">
-            <div class="user-profile__title__icon user-profile__title__icon--bank"></div>
-            <div class="user-profile__title__text user-profile__title__text--bank">
-              {{ $t('user.profile.step.bank') }}
-              <button type="button" @click="isShowModalUserBank = true" v-if="isShowBankAddButton">
-                {{ $t('user.profile.button.bankAdd') }}
-              </button>
-            </div>
+          <div class="ui-step">
+            <img class="ui-step__icon" :src="imgBank" />
+            <span>{{ $t('user.profile.step.bank') }}</span>
+            <button class="ui-btn user-profile__btn--add-bank" type="button" @click="isShowModalUserBank = true">
+              {{ $t('user.profile.button.bankAdd') }}
+            </button>
           </div>
 
           <div class="user-profile__bank">
@@ -435,6 +427,11 @@
         </div>
       </div>
     </form>
+
+    <div class="user-profile__footer">
+      <span @click="$store.dispatch('user/logout')">{{ $t('header.button.logout') }}</span>
+    </div>
+
     <component
       :is="ModalUserChangePassword"
       @close="isShowModalChangePassword = false"
@@ -486,7 +483,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteSetting']),
+    ...mapGetters(['siteSetting', 'siteFullCss']),
     PanelTabs() {
       return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
@@ -551,6 +548,20 @@ export default {
         return this.fieldBankBranchName3;
       }
       return {};
+    },
+    imgUser() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/ui/ui-icon-user.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgBank() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/ui/ui-icon-bank.png`);
+      } catch {
+        return '';
+      }
     },
   },
   data() {

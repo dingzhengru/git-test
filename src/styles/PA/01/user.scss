@@ -13,6 +13,11 @@ $user-profile-btn-bg-reset: #caad76;
 $user-profile-btn-color-reset: black;
 $user-profile-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
+$user-profile-btn-bg-add-bank: $btn-bg-rectangle;
+
+$user-profile-footer-bg: assetPath('footer/footer-bg-transfer.png') center/100% 100% no-repeat;
+$user-profile-footer-color: white;
+
 .user-profile {
   @include user-profile;
 }
@@ -45,7 +50,7 @@ $user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
   @include user-change-password;
 }
 
-$user-mail-nav-tab-btn-bg: $btn-bg-rectangle-yellow;
+$user-mail-btn-mail-send: $btn-bg-rectangle-yellow;
 $user-mail-search-btn-bg: $btn-bg-rectangle;
 
 .user-mail {

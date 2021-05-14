@@ -156,10 +156,23 @@
 
 @mixin ui-step {
   width: 100%;
+  background: $step-bg;
   color: $step-color;
-  border-bottom: $step-border;
-  padding-bottom: 5px;
-  margin: 15px 0px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 5px 15px 5px 15px;
+  margin-bottom: 15px;
+
+  &__icon {
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  &__right {
+    margin-left: auto;
+  }
 }
 
 @mixin ui-point-list {
@@ -249,6 +262,7 @@
   }
 
   &__item {
+    height: 100%;
     // margin-right: 15px;
     padding: 5px 15px 10px 15px;
     color: $nav-tab-text-color;
@@ -257,6 +271,11 @@
     white-space: nowrap;
     display: flex;
     align-items: center;
+
+    &__icon {
+      height: 24px;
+      margin-right: 10px;
+    }
 
     &.active {
       background: $nav-tab-item-bg-active;
