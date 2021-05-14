@@ -205,6 +205,12 @@
     align-items: center;
   }
 
+  &__btn {
+    button[type='submit'] {
+      background: $user-change-password-btn-bg-submit;
+    }
+  }
+
   /*
   * Switch 開關，EX: width: 640px, height: 100px
   */
