@@ -235,7 +235,22 @@
           </div>
 
           <div class="user-profile__bank">
-            <div class="user-profile__bank__fields">
+            <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value">
+              <div class="user-profile__bank__item__radio">
+                <input type="radio" :value="fieldBankId1.value" v-model="bankDefault" />
+                <span>{{ $t('ui.label.default') }}</span>
+              </div>
+              <div class="user-profile__bank__item__card">
+                <span class="user-profile__bank__item__card__name">
+                  {{ getBankById(fieldBankId1.value).Text }}
+                </span>
+                <span class="user-profile__bank__item__card__number">
+                  {{ transferToBankString(fieldBankAccount1.value) }}
+                </span>
+              </div>
+            </div>
+
+            <!-- <div class="user-profile__bank__fields">
               <ValidationProvider
                 class="user-profile__bank__field"
                 tag="div"
@@ -413,17 +428,17 @@
                   {{ errors[0] }}
                 </div>
               </ValidationProvider>
-            </div>
+            </div> -->
           </div>
 
-          <div class="user-profile__btn">
+          <!-- <div class="user-profile__btn">
             <button class="user-profile__btn--submit ui-btn ui-btn--block" type="submit" :disabled="invalid">
               {{ $t('ui.button.submit') }}
             </button>
             <button class="user-profile__btn--reset ui-btn ui-btn--block" type="reset" @click="resetForm">
               {{ $t('ui.button.reset') }}
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </form>
@@ -587,6 +602,8 @@ export default {
           otherActiveRoute: [],
         },
       ],
+
+      bankDefault: '',
     };
   },
   methods: {
@@ -600,6 +617,21 @@ export default {
     },
     updateBankBranchAdd(bankBranch) {
       this.fieldList.find(item => item.name === bankBranch.name).value = bankBranch.value;
+    },
+    transferToBankString(str) {
+      if (!str) {
+        return '';
+      }
+
+      const strList = str.split('');
+      let strNew = '';
+      strList.forEach((item, index) => {
+        strNew = strNew + item;
+        if ((index + 1) % 4 === 0) {
+          strNew = strNew + ' ';
+        }
+      });
+      return strNew;
     },
   },
 };

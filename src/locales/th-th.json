@@ -25,7 +25,8 @@
       "bankAccount": "เลขที่บัญชี",
       "bankBranch": "สาขา",
       "bankAccountName": "ชื่อบัญชี",
-      "langSelect": "เลือกภาษา"
+      "langSelect": "เลือกภาษา",
+      "default": "ตั้งค่า"
     },
     "button": {
       "save": "จัดเก็บ",
@@ -561,6 +562,9 @@
       },
       "button": {
         "bankAdd": "เพิ่มธนาคาร"
+      },
+      "modal": {
+        "bankTitle": "ตั้งค่าธนาคาร"
       }
     },
     "changePassword": {

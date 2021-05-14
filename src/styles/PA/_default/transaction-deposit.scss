@@ -101,7 +101,7 @@
     align-items: center;
     justify-content: center;
     button[type='submit'] {
-      width: 30%;
+      min-width: 30%;
       background: $deposit-base-btn-bg-submit;
     }
   }
@@ -191,7 +191,7 @@
     align-items: center;
     justify-content: center;
     button[type='submit'] {
-      width: 30%;
+      min-width: 30%;
       background: $deposit-base-btn-bg-submit;
     }
   }

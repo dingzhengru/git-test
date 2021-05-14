@@ -25,7 +25,8 @@
       "bankAccount": "ဘဏ်အကောင့်",
       "bankBranch": "လုပ္ငန္းခြဲ",
       "bankAccountName": "ဘဏ်အကောင့်အမည်",
-      "langSelect": "ဘာသာစကားရွေးပါ"
+      "langSelect": "ဘာသာစကားရွေးပါ",
+      "default": "နဂိုအတိုင္းထားမည္"
     },
     "button": {
       "save": "မွတ္သားသည္",
@@ -561,6 +562,9 @@
       },
       "button": {
         "bankAdd": "Add bank"
+      },
+      "modal": {
+        "bankTitle": "Set up bank"
       }
     },
     "changePassword": {

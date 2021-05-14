@@ -13,8 +13,9 @@
     height: 100%;
   }
 
-  // &__content {
-  // }
+  &__content {
+    padding-bottom: 15px;
+  }
 
   &__logout {
     width: 100%;
@@ -83,17 +84,34 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    padding-left: 45px;
 
-    &__fields {
-      flex-basis: 50%;
-      display: flex;
-      flex-direction: column;
-    }
+    &__item {
+      width: 45%;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      &__radio {
+        padding-left: 5px;
+        input[type='radio'] {
+          margin-right: 5px;
+        }
+      }
+      &__card {
+        width: 100%;
+        // width: $user-profile-bank-card-width;
+        height: $user-profile-bank-card-height;
+        background: $user-profile-bank-card-bg;
 
-    &__field {
-      label {
-        flex-grow: 1;
-        text-align: right;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 10% 10% 10% 10%;
+
+        > span {
+          color: $user-profile-bank-card-color;
+        }
       }
     }
   }
@@ -146,28 +164,22 @@
 }
 
 @mixin user-bank {
-  width: 60%;
-  height: 70%;
-  background: white;
-  position: relative;
-
-  &__container {
-    width: 100%;
-    height: 100%;
-  }
-
-  &__form {
+  &-form {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding: 30px 45px;
     overflow-y: auto;
   }
 
-  &__field {
-    margin-bottom: 15px;
+  &__btn {
+    margin-top: 30px;
+
+    button[type='submit'] {
+      background: $user-bank-btn-bg-submit;
+    }
   }
 }
 
@@ -400,11 +412,11 @@
       }
 
       button[type='submit'] {
-        width: 30%;
+        min-width: 30%;
         background: $user-mail-detail-btn-bg-submit;
       }
       button[type='reset'] {
-        width: 30%;
+        min-width: 30%;
         background: $user-mail-detail-btn-bg-reset;
       }
     }
@@ -479,11 +491,11 @@
     }
 
     button[type='submit'] {
-      width: 30%;
+      min-width: 30%;
       background: $user-mail-send-btn-bg-submit;
     }
     button[type='reset'] {
-      width: 30%;
+      min-width: 30%;
       background: $user-mail-send-btn-bg-reset;
     }
   }

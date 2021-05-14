@@ -15,11 +15,21 @@ $user-profile-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 $user-profile-btn-bg-add-bank: $btn-bg-rectangle;
 
+$user-profile-bank-card-bg: assetPath('ui/ui-bank-card.png') center/100% 100% no-repeat;
+$user-profile-bank-card-height: 125px;
+$user-profile-bank-card-color: white;
+
 $user-profile-footer-bg: assetPath('footer/footer-bg-transfer.png') center/100% 100% no-repeat;
 $user-profile-footer-color: white;
 
 .user-profile {
   @include user-profile;
+}
+
+$user-bank-btn-bg-submit: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
+
+.user-bank {
+  @include user-bank;
 }
 
 //* switch 需對照 vue 檔中的設定
@@ -41,10 +51,6 @@ $user-change-password-btn-shadow-submit: none;
 $user-change-password-btn-bg-reset: #caad76;
 $user-change-password-btn-color-reset: black;
 $user-change-password-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
-
-.user-bank {
-  @include user-bank;
-}
 
 .user-change-password {
   @include user-change-password;

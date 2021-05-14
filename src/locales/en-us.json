@@ -25,7 +25,8 @@
       "bankAccount": "Bank Account",
       "bankBranch": "Name of Branch",
       "bankAccountName": "Account Name of Bank",
-      "langSelect": "Select Language"
+      "langSelect": "Select Language",
+      "default": "Default"
     },
     "button": {
       "save": "Save",
@@ -563,6 +564,9 @@
       },
       "button": {
         "bankAdd": "Add bank"
+      },
+      "modal": {
+        "bankTitle": "Set up bank"
       }
     },
     "changePassword": {
