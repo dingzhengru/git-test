@@ -236,10 +236,11 @@
 
           <div class="user-profile__bank">
             <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value">
-              <div class="user-profile__bank__item__radio">
-                <input type="radio" :value="fieldBankId1.value" v-model="bankDefault" />
+              <label class="ui-field-box user-profile__bank__item__radio">
                 <span>{{ $t('ui.label.default') }}</span>
-              </div>
+                <input type="radio" :value="fieldBankId1.value" v-model="bankDefault" />
+                <div></div>
+              </label>
               <div class="user-profile__bank__item__card">
                 <span class="user-profile__bank__item__card__name">
                   {{ getBankById(fieldBankId1.value).Text }}
