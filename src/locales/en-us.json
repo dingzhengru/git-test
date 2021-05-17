@@ -25,7 +25,8 @@
       "bankAccount": "Bank Account",
       "bankBranch": "Name of Branch",
       "bankAccountName": "Account Name of Bank",
-      "langSelect": "Select Language"
+      "langSelect": "Select Language",
+      "default": "Default"
     },
     "button": {
       "save": "Save",
@@ -44,7 +45,9 @@
       "setup": "Set up",
       "lotteryCount": "{count} Lucky draw",
       "allToMyWallet": "All to my wallet",
-      "download": "Download"
+      "allToMyWallet-2": "All to wallet",
+      "download": "Download",
+      "upload": "Upload"
     },
     "currency": {
       "thaiBaht": "Baht"
@@ -561,6 +564,9 @@
       },
       "button": {
         "bankAdd": "Add bank"
+      },
+      "modal": {
+        "bankTitle": "Set up bank"
       }
     },
     "changePassword": {
@@ -605,7 +611,7 @@
       }
     },
     "mailSend": {
-      "title": "新增信件",
+      "title": "New letters",
       "label": {
         "desc": "Question Description"
       },
@@ -702,10 +708,10 @@
       },
       "notice": {
         "contact": "If you have any additional questions about your account details ,please contact our online service.",
-        "amount": "取款金額，請填整百數，最低取款金額 100 銖",
-        "restrict01": "無法取款？請確認",
-        "restrict02": "提取限制",
-        "restrict03": "中'我的錢包'的解鎖條件。"
+        "amount": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount {amount} THB",
+        "restrict01": "Unable to withdraw? Please confirm:",
+        "restrict02": "Withdrawal Restriction",
+        "restrict03": "Withdrawal Restriction"
       }
     },
     "transfer": {

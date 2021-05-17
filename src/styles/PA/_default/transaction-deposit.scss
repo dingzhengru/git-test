@@ -1,53 +1,198 @@
 @mixin deposit {
   width: 100%;
-  height: 100%;
+}
 
-  &__nav {
+@mixin deposit-base {
+  padding: 15px 0;
+
+  .ui-notice {
+    ul {
+      padding-left: 25px;
+    }
+  }
+
+  &__field {
+    &--bank {
+      width: 70%;
+    }
+    &--bank-name {
+      width: 70%;
+    }
+    &--bank-transfer {
+      width: 70%;
+    }
+    &--method {
+      width: 70%;
+    }
+    &--datetime {
+      width: 70%;
+    }
+    &--amount {
+      width: 70%;
+    }
+    &--receipt {
+      width: 70%;
+      background: $field-input-bg;
+      border-radius: 5px;
+      button {
+        background: $field-input-bg;
+      }
+
+      span {
+        background-color: #939393;
+        border-radius: 5px;
+        padding: 3px;
+        margin-right: 3px;
+      }
+    }
+    &--remark {
+      width: 70%;
+    }
+    &--promotion {
+      width: 35%;
+      display: inline-flex;
+      margin: 0 5px 0 0;
+
+      &-hint {
+        flex-grow: 1;
+        display: inline-flex;
+        font-size: 0.9rem;
+        color: #d56216;
+      }
+    }
+  }
+
+  &__bank-info {
+    width: 100%;
     display: flex;
-    border-bottom: 1px solid gray;
-    overflow-x: auto;
-    padding-left: 5px;
 
-    &__item {
-      padding: 5px 15px;
-      border: 1px solid gray;
-      border-bottom: none;
+    > div {
+      flex-basis: 50%;
+      background: #989491;
+      display: flex;
+      flex-direction: column;
+      padding: 5px 10px;
 
-      &.active {
-        background: gray;
+      label {
         color: white;
       }
+
+      &:first-child {
+        margin-right: 5px;
+      }
+    }
+
+    &__bank-account {
+      input {
+        border: none;
+        background: transparent;
+      }
+
+      span {
+        margin-left: auto;
+        color: #f3cc28;
+      }
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button[type='submit'] {
+      min-width: 30%;
+      background: $deposit-base-btn-bg-submit;
     }
   }
 }
 
-@mixin deposit-base {
-}
-
 @mixin deposit-third-party {
+  width: 100%;
+
+  &-form {
+    width: 100%;
+  }
+
   &__field {
     margin-bottom: 15px;
+
+    &--amount {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &__field {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        > div:first-child {
+          width: 35%;
+          margin-bottom: 0;
+          margin-right: 5px;
+        }
+        > div:last-child {
+          flex-grow: 1;
+        }
+      }
+      .ui-notice {
+        ul {
+          padding-left: 25px;
+        }
+      }
+    }
+    &--promotion {
+      width: 35%;
+      display: inline-flex;
+      margin: 0 5px 0 0;
+
+      &-hint {
+        flex-grow: 1;
+        display: inline-flex;
+        font-size: 0.9rem;
+        color: #d56216;
+      }
+    }
+
+    &--captcha {
+      flex-wrap: nowrap;
+      width: 70%;
+      margin: 0;
+      input {
+        min-width: 100px;
+      }
+    }
   }
 
   &__field--btn {
     // &__title {
     // }
     &__option {
-      padding: 5px 0 15px 15px;
+      display: flex;
+      flex-wrap: wrap;
 
       button {
-        background: none;
-        border: 1px solid black;
-        border-radius: 5px;
+        background: $deposit-third-party-btn-bg-option;
         margin-right: 5px;
-        margin-bottom: 5px;
-        padding: 2px 15px;
 
         &.active {
-          background: gray;
-          color: white;
+          background: $deposit-third-party-btn-bg-option-active;
         }
       }
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button[type='submit'] {
+      min-width: 30%;
+      background: $deposit-base-btn-bg-submit;
     }
   }
 }

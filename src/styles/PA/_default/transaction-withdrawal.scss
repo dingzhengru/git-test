@@ -1,22 +1,62 @@
 @mixin withdrawal {
-  // &-form {
-  //   display: flex;
-  // }
+  width: 100%;
+  &-form {
+    width: 100%;
+  }
 
-  &__field--transfer {
-    display: flex;
+  &__nav {
+    margin-bottom: 15px;
 
-    &__wallet {
-      flex-grow: 1;
+    > div {
+      margin-right: 5px;
     }
-    &__btn {
-      padding-right: 15px;
+
+    &__amount {
+      background: $field-input-bg;
+      color: $field-input-color;
+      border-radius: 5px;
+      padding: 5px 10px;
     }
   }
 
-  &__notice {
-    a {
-      text-decoration: $withdrawal-notice-link-underline;
+  &__field {
+    width: 80%;
+
+    label {
+      min-width: 100px;
+    }
+
+    &--amount {
+      input {
+        padding-right: 30px;
+      }
+
+      span {
+        color: $field-inside-color;
+        position: absolute;
+        right: 5px;
+      }
+    }
+
+    &--bank-info {
+      span {
+        flex-grow: 1;
+        background: $field-input-bg;
+        color: $field-input-color;
+        border-radius: 5px;
+        padding: 5px 10px;
+      }
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button[type='submit'] {
+      min-width: 30%;
+      background: $withdrawal-btn-bg-submit;
     }
   }
 }

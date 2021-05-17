@@ -5,43 +5,57 @@
         <component :is="PanelTabs" :list="tabList" />
 
         <div class="ui-panel-tab__content user-mail-send__content">
-          <component :is="AppNavTab" :list="navList" />
+          <div class="nav-tab">
+            <div class="nav-tab__item">
+              <img :src="imgMail" />
+              <span>{{ $t('user.mail.nav.add') }}</span>
+            </div>
+          </div>
 
-          <ValidationProvider class="ui-field user-mail-send__field" tag="div" :rules="{ required: true }">
-            <select class="ui-field__select user-mail-send__field__select" v-model="mail.Add_Category">
-              <option value="" selected>{{ $t('user.mailSend.placeholder.categoryList') }}</option>
-              <option :value="item.Value" v-for="item in categoryList" :key="item.Value">
-                {{ item.Text }}
-              </option>
-            </select>
-          </ValidationProvider>
+          <div class="user-mail-send__content__main">
+            <ValidationProvider
+              class="ui-field user-mail-send__field user-mail-send__field--category"
+              tag="div"
+              :rules="{ required: true }"
+            >
+              <select class="ui-field__select user-mail-send__field__select" v-model="mail.Add_Category">
+                <option value="" selected>{{ $t('user.mailSend.placeholder.categoryList') }}</option>
+                <option :value="item.Value" v-for="item in categoryList" :key="item.Value">
+                  {{ item.Text }}
+                </option>
+              </select>
+            </ValidationProvider>
 
-          <ValidationProvider class="ui-field user-mail-send__field" tag="div" :rules="{ required: true }">
-            <div class="ui-field__group">
-              <label class="ui-field__group__label" for="user-mail-send-subject">{{ $t('ui.label.subject') }}</label>
+            <ValidationProvider
+              class="ui-field user-mail-send__field user-mail-send__field--subject"
+              tag="div"
+              :rules="{ required: true }"
+            >
               <input
                 class="ui-field__group__input"
-                id="user-mail-send-subject"
                 type="text"
+                :placeholder="$t('user.mail.field.subject')"
                 v-model="mail.Add_Subject"
               />
-            </div>
-          </ValidationProvider>
+            </ValidationProvider>
 
-          <ValidationProvider class="ui-field" tag="div" :rules="{ required: true }">
-            <div class="ui-field__group--textarea">
+            <ValidationProvider
+              class="ui-field user-mail-send__field user-mail-send__field--content column"
+              tag="div"
+              :rules="{ required: true }"
+            >
               <label for="user-mail-send-content">{{ $t('user.mailSend.label.desc') }}</label>
-              <textarea id="user-mail-send-content" cols="30" rows="7" v-model="mail.Add_Content"></textarea>
-            </div>
-          </ValidationProvider>
+              <textarea id="user-mail-send-content" cols="30" rows="5" v-model="mail.Add_Content"></textarea>
+            </ValidationProvider>
 
-          <div class="user-mail-send__btn">
-            <button class="ui-btn ui-btn--block user-mail-send__btn--submit" type="submit" :disabled="invalid">
-              {{ $t('ui.button.send') }}
-            </button>
-            <button class="ui-btn ui-btn--block user-mail-send__btn--reset" type="reset" @click="resetForm">
-              {{ $t('ui.button.reset') }}
-            </button>
+            <div class="user-mail-send__btn">
+              <button class="ui-btn ui-btn--lg" type="reset" @click="resetForm">
+                {{ $t('ui.button.reset') }}
+              </button>
+              <button class="ui-btn ui-btn--lg" type="submit" :disabled="invalid">
+                {{ $t('ui.button.send') }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -66,8 +80,12 @@ export default {
     PanelTabs() {
       return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
-    AppNavTab() {
-      return () => import(`@/${this.siteSetting.components.user.AppNavTab}`);
+    imgMail() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/ui/ui-icon-plus.png`);
+      } catch {
+        return '';
+      }
     },
   },
   data() {
@@ -88,23 +106,6 @@ export default {
         //   text: 'about.title',
         //   otherActiveRoute: [],
         // },
-      ],
-
-      navList: [
-        {
-          name: 'UserMail',
-          text: 'user.mail.nav.inbox',
-          link: 'UserMail',
-          class: '',
-          otherActiveRoute: [],
-        },
-        {
-          name: 'UserMailSend',
-          text: 'user.mail.nav.add',
-          link: 'UserMailSend',
-          class: '',
-          otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
-        },
       ],
     };
   },

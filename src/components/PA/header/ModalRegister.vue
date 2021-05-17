@@ -68,12 +68,18 @@
         </button> -->
       </div>
 
-      <ValidationProvider class="ui-checkbox" tag="div" :rules="{ required: { allowFalse: false } }">
-        <input id="register-remember" type="checkbox" v-model="isAgreeServiceTerm" />
-        <label for="register-remember">
+      <ValidationProvider class="ui-field-box" tag="label" :rules="{ required: { allowFalse: false } }">
+        <span>
           <span>{{ $t('register.service.read', { site: siteName }) }}</span>
           <a href="javascript:;" @click="isShowModalServiceTerm = true">{{ $t('register.service.term') }}</a>
-        </label>
+        </span>
+        <input type="radio" v-model="isAgreeServiceTerm" />
+        <div></div>
+
+        <!-- <label for="register-remember">
+          <span>{{ $t('register.service.read', { site: siteName }) }}</span>
+          <a href="javascript:;" @click="isShowModalServiceTerm = true">{{ $t('register.service.term') }}</a>
+        </label> -->
       </ValidationProvider>
     </form>
     <component :is="ModalServiceTerm" v-if="isShowModalServiceTerm" @close="isShowModalServiceTerm = false" />

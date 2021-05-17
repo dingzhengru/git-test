@@ -1,10 +1,11 @@
 <template>
   <AppModal @close="closeModal">
-    <div class="user-change-password">
+    <div class="ui-modal user-change-password">
       <div class="ui-box-close" @click="closeModal"></div>
+      <div class="ui-modal__title">{{ $t('user.nav.changePassword') }}</div>
       <ValidationObserver
         tag="div"
-        class="user-change-password__container"
+        class="ui-modal__content user-change-password__container"
         ref="validationObserver"
         v-slot="{ invalid, handleSubmit }"
       >
@@ -82,7 +83,7 @@
           </ValidationProvider>
 
           <div class="user-change-password__btn">
-            <button class="user-change-password__btn--submit" type="submit" :disabled="invalid">
+            <button class="ui-btn ui-btn--lg" type="submit" :disabled="invalid">
               {{ $t('ui.button.submit') }}
             </button>
           </div>

@@ -99,7 +99,9 @@
 
       <div class="ui-notice withdrawal__notice">
         <ul>
-          <li class="ui-notice--height-light">{{ $t('transaction.withdrawal.notice.amount') }}</li>
+          <li class="ui-notice--height-light">
+            {{ $t('transaction.withdrawal.notice.amount', { amount: withdrawalInfo.WithalDownlimit }) }}
+          </li>
           <li>
             {{ $t('transaction.withdrawal.notice.restrict01') }}
             <router-link class="ui-notice--height-light" :to="{ name: 'TransactionRecordWithdrawalRestriction' }">

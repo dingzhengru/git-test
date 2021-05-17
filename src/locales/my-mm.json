@@ -25,7 +25,8 @@
       "bankAccount": "ဘဏ်အကောင့်",
       "bankBranch": "လုပ္ငန္းခြဲ",
       "bankAccountName": "ဘဏ်အကောင့်အမည်",
-      "langSelect": "ဘာသာစကားရွေးပါ"
+      "langSelect": "ဘာသာစကားရွေးပါ",
+      "default": "နဂိုအတိုင္းထားမည္"
     },
     "button": {
       "save": "မွတ္သားသည္",
@@ -561,6 +562,9 @@
       },
       "button": {
         "bankAdd": "Add bank"
+      },
+      "modal": {
+        "bankTitle": "Set up bank"
       }
     },
     "changePassword": {
@@ -605,7 +609,7 @@
       }
     },
     "mailSend": {
-      "title": "新增信件",
+      "title": "New letters",
       "label": {
         "desc": "Question Description"
       },
@@ -702,10 +706,10 @@
       },
       "notice": {
         "contact": "If you have any additional questions about your account details ,please contact our online service.",
-        "amount": "取款金額，請填整百數，最低取款金額 100 銖",
-        "restrict01": "無法取款？請確認",
-        "restrict02": "提取限制",
-        "restrict03": "中'我的錢包'的解鎖條件。"
+        "amount": "For the withdrawal amount, please fill in the hundred, the minimum withdrawal amount {amount} THB",
+        "restrict01": "Unable to withdraw? Please confirm:",
+        "restrict02": "Withdrawal Restriction",
+        "restrict03": "Withdrawal Restriction"
       }
     },
     "transfer": {

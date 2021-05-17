@@ -168,6 +168,12 @@
     font-size: 0.8rem;
     font-weight: bold;
 
+    .ui-field-box {
+      * {
+        font-size: 0.8rem;
+      }
+    }
+
     &__remember {
       width: auto;
     }
@@ -210,10 +216,15 @@
     width: 70%;
   }
 
-  .ui-checkbox {
-    width: 90%;
-    font-size: 0.6rem;
+  .ui-field-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 15px;
+
+    * {
+      font-size: 0.8rem;
+    }
 
     a {
       color: $modal-register-link-color;

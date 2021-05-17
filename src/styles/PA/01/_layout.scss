@@ -74,6 +74,10 @@ body {
   @include ui-question;
 }
 
+.ui-fieldset {
+  @include ui-fieldset;
+}
+
 .ui-no-data {
   @include ui-no-data;
 }
@@ -113,4 +117,8 @@ body {
 
 .red-envelope-container {
   @include red-envelope-container;
+}
+
+.ui-field-box {
+  @include ui-field-box;
 }
