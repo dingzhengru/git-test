@@ -1,11 +1,13 @@
 <template>
   <AppModal @close="closeModal">
-    <div class="modal-notice">
+    <div class="ui-modal modal-notice">
       <div class="ui-box-close" @click="closeModal"></div>
-      <div class="modal-notice__container">
+      <div class="ui-modal__content no-title modal-notice__container">
         <div class="ui-notice">
           <ul>
+            <slot name="top"></slot>
             <li v-for="(item, index) in noticeList" :key="index" v-html="getNoticeContent(item)"></li>
+            <slot name="bottom"></slot>
           </ul>
         </div>
       </div>

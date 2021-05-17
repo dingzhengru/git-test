@@ -1,6 +1,5 @@
 import { mapGetters } from 'vuex';
 import { apiGetWithdrawalInfo, apiWithdrawal } from '@/api/transaction-withdrawal';
-import { apiTransferAllGamePointToMain } from '@/api/transaction-transfer';
 
 export default {
   name: 'TransactionWithdrawal',
@@ -39,13 +38,6 @@ export default {
       //* 若會員的 Add_MemberBankAccountList 為空，則轉去會員中心
       if (this.bankList.length <= 0) {
         this.$router.replace({ name: 'UserProfile' });
-      }
-    },
-    async transferToMain() {
-      const result = await apiTransferAllGamePointToMain();
-      if (result.Code == 200) {
-        this.withdrawalInfo.Lst_Point = result.RetObj.GameSitePoints.find(item => item.Product_id == 9999).Point;
-        window.alert(result.RetObj.MsgString);
       }
     },
     async submitWithdrawal() {

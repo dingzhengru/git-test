@@ -1,21 +1,7 @@
 @import './_abstracts';
 @import '@/styles/PA/_default/transaction-withdrawal';
 
-$withdrawal-transfer-bg: #553c2a;
-
-$withdrawal-transfer-label-color: white;
-
-$withdrawal-transfer-btn-bg: #caad76;
-$withdrawal-transfer-btn-color: black;
-$withdrawal-transfer-btn-shadow: none;
-
-$withdrawal-amount-currency-color: #f88d80;
-
-$withdrawal-btn-bg-submit: #462b16;
-$withdrawal-btn-color-submit: white;
-$withdrawal-btn-shadow-submit: none;
-
-$withdrawal-notice-link-underline: underline;
+$withdrawal-btn-bg-submit: $btn-bg-rectangle;
 
 .withdrawal {
   @include withdrawal;

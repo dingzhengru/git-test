@@ -2,18 +2,12 @@
   <ValidationObserver class="user-profile" tag="div" v-slot="{ invalid, handleSubmit, reset }">
     <form class="user-profile__form" @submit.prevent="handleSubmit(submitUserProfile)" @reset.prevent="reset">
       <div class="ui-panel-tab">
-        <component :is="PanelTabs" :list="tabList">
-          <div slot="after" class="user-profile__logout">
-            <button type="button" @click="$store.dispatch('user/logout')">{{ $t('header.button.logout') }}</button>
-          </div>
-        </component>
+        <component :is="PanelTabs" :list="tabList"></component>
 
         <div class="ui-panel-tab__content user-profile__content">
-          <div class="user-profile__title user-profile__title--basic">
-            <div class="user-profile__title__icon user-profile__title__icon--basic"></div>
-            <div class="user-profile__title__text user-profile__title__text--basic">
-              {{ $t('user.profile.step.basic') }}
-            </div>
+          <div class="ui-step">
+            <img class="ui-step__icon" :src="imgUser" />
+            <span>{{ $t('user.profile.step.basic') }}</span>
           </div>
           <div class="user-profile__basic">
             <div class="user-profile__field">
@@ -232,18 +226,32 @@
             </div>
           </div>
 
-          <div class="user-profile__title user-profile__title--bank">
-            <div class="user-profile__title__icon user-profile__title__icon--bank"></div>
-            <div class="user-profile__title__text user-profile__title__text--bank">
-              {{ $t('user.profile.step.bank') }}
-              <button type="button" @click="isShowModalUserBank = true" v-if="isShowBankAddButton">
-                {{ $t('user.profile.button.bankAdd') }}
-              </button>
-            </div>
+          <div class="ui-step">
+            <img class="ui-step__icon" :src="imgBank" />
+            <span>{{ $t('user.profile.step.bank') }}</span>
+            <button class="ui-btn user-profile__btn--add-bank" type="button" @click="isShowModalUserBank = true">
+              {{ $t('user.profile.button.bankAdd') }}
+            </button>
           </div>
 
           <div class="user-profile__bank">
-            <div class="user-profile__bank__fields">
+            <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value">
+              <label class="ui-field-box user-profile__bank__item__radio">
+                <span>{{ $t('ui.label.default') }}</span>
+                <input type="radio" :value="fieldBankId1.value" v-model="bankDefault" />
+                <div></div>
+              </label>
+              <div class="user-profile__bank__item__card">
+                <span class="user-profile__bank__item__card__name">
+                  {{ getBankById(fieldBankId1.value).Text }}
+                </span>
+                <span class="user-profile__bank__item__card__number">
+                  {{ transferToBankString(fieldBankAccount1.value) }}
+                </span>
+              </div>
+            </div>
+
+            <!-- <div class="user-profile__bank__fields">
               <ValidationProvider
                 class="user-profile__bank__field"
                 tag="div"
@@ -421,20 +429,25 @@
                   {{ errors[0] }}
                 </div>
               </ValidationProvider>
-            </div>
+            </div> -->
           </div>
 
-          <div class="user-profile__btn">
+          <!-- <div class="user-profile__btn">
             <button class="user-profile__btn--submit ui-btn ui-btn--block" type="submit" :disabled="invalid">
               {{ $t('ui.button.submit') }}
             </button>
             <button class="user-profile__btn--reset ui-btn ui-btn--block" type="reset" @click="resetForm">
               {{ $t('ui.button.reset') }}
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </form>
+
+    <div class="user-profile__footer">
+      <span @click="$store.dispatch('user/logout')">{{ $t('header.button.logout') }}</span>
+    </div>
+
     <component
       :is="ModalUserChangePassword"
       @close="isShowModalChangePassword = false"
@@ -486,7 +499,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteSetting']),
+    ...mapGetters(['siteSetting', 'siteFullCss']),
     PanelTabs() {
       return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
@@ -552,6 +565,20 @@ export default {
       }
       return {};
     },
+    imgUser() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/ui/ui-icon-user.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgBank() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/ui/ui-icon-bank.png`);
+      } catch {
+        return '';
+      }
+    },
   },
   data() {
     return {
@@ -576,6 +603,8 @@ export default {
           otherActiveRoute: [],
         },
       ],
+
+      bankDefault: '',
     };
   },
   methods: {
@@ -589,6 +618,21 @@ export default {
     },
     updateBankBranchAdd(bankBranch) {
       this.fieldList.find(item => item.name === bankBranch.name).value = bankBranch.value;
+    },
+    transferToBankString(str) {
+      if (!str) {
+        return '';
+      }
+
+      const strList = str.split('');
+      let strNew = '';
+      strList.forEach((item, index) => {
+        strNew = strNew + item;
+        if ((index + 1) % 4 === 0) {
+          strNew = strNew + ' ';
+        }
+      });
+      return strNew;
     },
   },
 };

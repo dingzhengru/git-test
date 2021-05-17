@@ -5,17 +5,15 @@
   @include record;
 }
 
-$record-content-icon-bg-detail: assetPath('ui/icon-tdControl.png') center 0px no-repeat;
-$record-content-icon-bg-detail-close: assetPath('ui/icon-tdControl.png') center -69px no-repeat;
-$record-content-icon-width: 35px;
-$record-content-icon-height: 35px;
+$record-content-icon-bg-detail: assetPath('ui/ui-triangle-right.png') center/100% 100% no-repeat;
+$record-content-icon-bg-detail-close: assetPath('ui/ui-triangle-down.png') center/100% 100% no-repeat;
+$record-content-icon-width: 20px;
+$record-content-icon-height: 25px;
 
 $record-content-link-color: #75a2ff;
 $record-content-link-border-bottom: 2px solid #75a2ff;
 
-$record-content-search-btn-bg-submit: #462b16;
-$record-content-search-btn-text-color-submit: white;
-$record-content-search-btn-shadow-submit: none;
+$record-content-search-btn-bg-submit: $btn-bg-rectangle;
 
 .record-content {
   @include record-content;

@@ -1,6 +1,6 @@
 @mixin ui-btn {
   height: $btn-height;
-  line-height: 2.5;
+  line-height: 2;
   border: 0;
 
   color: white;
@@ -8,10 +8,19 @@
 
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  padding: 0 15px;
 
   &--block {
     display: block;
     width: 100%;
+  }
+
+  &--lg {
+    font-size: 1.2rem;
+    line-height: 2.5;
+    padding: 0 30px;
   }
 }
 
@@ -22,6 +31,17 @@
   flex-wrap: wrap;
   position: relative;
   margin-bottom: 10px;
+
+  // background: $field-bg;
+  border-radius: 5px;
+
+  &.no-wrap {
+    flex-wrap: nowrap;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
 
   &__group {
     width: 100%;
@@ -35,18 +55,52 @@
     filter: invert(1);
   }
 
-  input {
-    min-width: 0;
+  input,
+  select,
+  textarea {
+    min-width: 50px;
     flex-grow: 1;
-    background: $field-input-bg;
-    color: $field-input-color;
     border: none;
     border-radius: 5px;
-    font-size: 0.8rem;
     padding: 5px 10px;
+  }
+
+  input {
+    background: $field-input-bg;
+    color: $field-input-color;
 
     &::placeholder {
       color: $field-input-color-placeholder;
+    }
+  }
+
+  select {
+    background: $field-select-bg;
+    color: $field-select-color;
+    appearance: none;
+
+    &:invalid,
+    &.invalid {
+      color: $field-select-color-invalid;
+    }
+    option {
+      color: $field-input-color;
+    }
+  }
+
+  textarea {
+    background: $field-textarea-bg;
+    color: $field-textarea-color;
+  }
+
+  &--inside {
+    flex-wrap: nowrap;
+    background: $field-input-bg;
+
+    span {
+      color: $field-inside-color;
+      word-break: keep-all;
+      padding-right: 5px;
     }
   }
 
@@ -57,7 +111,14 @@
   }
 
   &__error {
-    font-size: 0.8rem;
+    width: 100%;
+    background: $field-error-bg;
+    color: $field-error-color;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 0 10px 5px 10px;
   }
 
   &__star {
@@ -96,10 +157,23 @@
 
 @mixin ui-step {
   width: 100%;
+  background: $step-bg;
   color: $step-color;
-  border-bottom: $step-border;
-  padding-bottom: 5px;
-  margin: 15px 0px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 5px 15px 5px 15px;
+  margin-bottom: 15px;
+
+  &__icon {
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  &__right {
+    margin-left: auto;
+  }
 }
 
 @mixin ui-point-list {
@@ -140,28 +214,30 @@
   margin: 15px 0;
 
   tr {
-    border-bottom: $table-tr-border-bottom;
-    box-shadow: $table-tr-shadow;
-  }
+    background: $table-tr-bg;
 
-  // tr:not(:first-child) {
-  //   border-bottom: $table-tr-border-bottom;
-  //   box-shadow: $table-tr-shadow;
-  // }
-
-  th,
-  td {
-    padding: 10px 5px;
-    border: $table-td-border;
+    &:not(:first-child):nth-child(even) {
+      background: $table-tr-bg-even;
+    }
   }
 
   th {
     background: $table-th-bg;
     color: $table-th-color;
+    border-bottom: $table-th-border-bottom;
+  }
+
+  th,
+  td {
+    padding: 10px 5px;
   }
 
   td {
     color: $table-td-color;
+
+    * {
+      color: $table-td-color;
+    }
   }
 }
 
@@ -171,6 +247,7 @@
   background: $nav-tab-bg;
   display: flex;
   flex-direction: row;
+  align-items: center;
   flex-wrap: nowrap;
   position: relative;
   overflow-x: auto;
@@ -186,6 +263,7 @@
   }
 
   &__item {
+    height: 100%;
     // margin-right: 15px;
     padding: 5px 15px 10px 15px;
     color: $nav-tab-text-color;
@@ -194,6 +272,11 @@
     white-space: nowrap;
     display: flex;
     align-items: center;
+
+    &__icon {
+      height: 24px;
+      margin-right: 10px;
+    }
 
     &.active {
       background: $nav-tab-item-bg-active;
@@ -296,6 +379,7 @@
   }
 
   &__content {
+    @include ui-scrollbar;
     background: $panel-tab-content-bg;
     border-left: $panel-tab-content-left-border;
     border-image: $panel-tab-content-left-border-image;
@@ -319,21 +403,6 @@
         background: $panel-tab-content-arrow-bg-right;
         right: -1px;
       }
-    }
-
-    &::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: #baaf9f;
-      border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #c79523;
-      border-radius: 10px;
-      box-shadow: 0 0 5px 1px rgba(black, 0.8);
     }
   }
 }
@@ -370,10 +439,12 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: black;
-  color: white;
   position: relative;
+  background: $question-bg;
+  color: $question-color;
+  border: $question-border;
   border-radius: 12px;
+  margin: 0 5px;
   &:before {
     content: '?';
     position: absolute;
@@ -381,6 +452,19 @@
     top: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
+  }
+}
+
+@mixin ui-fieldset {
+  width: 100%;
+  border: $fieldset-border;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+
+  &.flex-row {
+    flex-direction: row;
+    align-items: center;
   }
 }
 
@@ -439,6 +523,10 @@
     overflow-y: auto;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    &.no-title {
+      flex-basis: 100%;
+    }
   }
 
   &__nav {
@@ -499,11 +587,6 @@
 }
 
 @mixin modal-transfer {
-  width: 70%;
-  height: 70%;
-  background: white;
-  position: relative;
-
   &__container {
     width: 100%;
     height: 100%;
@@ -515,26 +598,53 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding: 15px 30px;
     overflow-y: auto;
   }
 
   &__field {
     margin-bottom: 15px;
+    flex-wrap: nowrap;
+
+    label {
+      min-width: 30%;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button[type='submit'] {
+      min-width: 50%;
+      background: $btn-bg-rectangle;
+    }
   }
 }
 
 @mixin modal-notice {
-  width: 70%;
+  width: 75%;
   height: 80%;
-  background: white;
-  position: relative;
-
   &__container {
-    width: 100%;
-    height: 100%;
     padding: 30px;
-    overflow-y: auto;
+  }
+}
+
+@mixin ui-scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #baaf9f;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c79523;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px rgba(black, 0.8);
   }
 }
 
@@ -698,4 +808,139 @@
   right: 5%;
   background: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
   // background-size: contain;
+}
+
+//* 參考 https://bun.js.org/
+@mixin ui-field-box {
+  *,
+  *::before,
+  *::after {
+    box-sizing: content-box !important;
+  }
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  display: table;
+  position: relative;
+  padding-left: 1.8rem;
+  cursor: pointer;
+  // margin-bottom: 0.5rem;
+
+  input[type='checkbox'] ~ div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1rem;
+    width: 1rem;
+    background: rgba(241, 245, 248, 1);
+    transition: background 250ms;
+    border: 1px solid rgba(184, 194, 204, 1);
+    border-radius: 0.125rem;
+  }
+
+  input[type='radio'] ~ div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1rem;
+    width: 1rem;
+    background: rgba(241, 245, 248, 1);
+    transition: background 250ms;
+    border: 1px solid rgba(184, 194, 204, 1);
+    border-radius: 2rem;
+  }
+
+  input[type='checkbox'] ~ div::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 0.45rem;
+    top: 0rem;
+    width: 0.25rem;
+    height: 0.6rem;
+    border: solid rgba(230, 173, 37, 1);
+    border-width: 0 2px 2px 0;
+    transition: background 250ms;
+    transform: rotate(45deg);
+  }
+
+  input[type='radio'] ~ div::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 0.25rem;
+    top: 0.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 2rem;
+    background: rgba(230, 173, 37, 1);
+    transition: background 250ms;
+  }
+
+  input:disabled ~ div::after {
+    border-color: rgba(135, 149, 161, 1);
+  }
+
+  input:checked ~ div::after {
+    display: block;
+  }
+
+  :hover input ~ div,
+  input:focus ~ div {
+    background: rgb(231, 238, 243);
+  }
+
+  input:focus ~ div {
+    box-shadow: 0 0 0 2px rgba(83, 74, 113, 1);
+  }
+
+  input:checked ~ div {
+    background: rgba(30, 0, 50, 1);
+    border-color: rgba(83, 74, 113, 1);
+  }
+
+  input[type='checkbox']:disabled ~ div {
+    background: rgba(241, 245, 248, 1);
+    border-color: rgba(184, 194, 204, 1);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  input[type='radio']:disabled ~ div {
+    background: rgba(241, 245, 248, 1);
+    border-color: rgba(184, 194, 204, 1);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  input[type='radio']:disabled ~ div::after {
+    background: rgba(135, 149, 161, 1);
+  }
+
+  input:checked:focus ~ div,
+  :hover input:not([disabled]):checked ~ div {
+    background: rgba(30, 0, 50, 1);
+    border-color: rgba(83, 74, 113, 1);
+  }
+
+  div::before {
+    content: '';
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.616rem;
+    height: 5.348rem;
+    margin-left: 1.244rem;
+    margin-top: -0.85rem;
+    background: rgba(0, 130, 243, 1);
+    border-radius: 2rem;
+    opacity: 0.6;
+    z-index: 99999;
+    transform: scale(0);
+  }
 }

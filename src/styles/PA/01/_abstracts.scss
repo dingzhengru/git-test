@@ -20,8 +20,10 @@ $footer-height: 119px;
 
 $btn-height: auto;
 
-$btn-bg-yellow-light: #caad76;
-$btn-bg-brown: #462b16;
+$btn-bg-rectangle: assetPath('ui/ui-btn-rectangle.png') center/100% 100% no-repeat;
+$btn-bg-rectangle-light: assetPath('ui/ui-btn-rectangle-light.png') center/100% 100% no-repeat;
+$btn-bg-rectangle-yellow: assetPath('ui/ui-btn-rectangle-yellow.png') center/100% 100% no-repeat;
+$btn-bg-oval: assetPath('ui/ui-btn-oval.png') center/100% 100% no-repeat;
 
 $input-bg: #444444;
 $input-color: white;
@@ -31,26 +33,30 @@ $select-bg: $input-bg;
 $select-color: $input-color;
 $select-placeholder-color: $input-placeholder-color;
 
-$field-bg: none;
+$field-bg: #444444;
+$field-label-color: $base-text-color;
 $field-input-bg: #444444;
 $field-input-color: white;
 $field-input-color-placeholder: #959595;
-$field-select-bg: assetPath('ui/ui-arrow-select.png') $field-input-bg 97% center no-repeat;
+$field-select-bg: assetPath('ui/ui-arrow-down-white.png') $field-input-bg 95% center/auto 40% no-repeat;
 $field-select-color: $field-input-color;
-$field-label-color: $base-text-color;
+$field-select-color-invalid: #7e7e7e;
+$field-textarea-bg: $field-input-bg;
+$field-textarea-color: $field-input-color;
 $field-error-bg: #c6a260;
 $field-error-color: $base-text-color;
 $field-star-color: #c6a260;
 $field-captcha-width: 73px;
 $field-captcha-height: 29px;
+$field-inside-color: #939393;
 
 $notice-color: #8b8b8b;
 $notice-font-size: 1rem;
 // $notice-line-height: 1rem;
 $notice-height-light-color: red;
 
+$step-bg: assetPath('ui/ui-nav-tab-bg.png') center/100% 100% no-repeat;
 $step-color: $base-text-color;
-$step-border: 4px solid #c8aa73;
 
 $point-list-bg: #444444;
 $point-list-label-color: #cbaa6d;
@@ -58,16 +64,16 @@ $point-list-content-color: white;
 $point-list-border-bg: black;
 $point-list-border-shadow: 0px -2px #8b8b8b;
 
-$table-bg: #444444;
-$table-th-bg: #444444;
+$table-bg: none;
+$table-tr-bg: #828080;
+$table-tr-bg-even: #696767;
+$table-th-bg: #464646;
 $table-th-color: #cbaa6d;
-$table-tr-border-bottom: 1px solid black;
-$table-tr-shadow: 0px -2px #8b8b8b;
+$table-th-border-bottom: 2px solid white;
 $table-td-color: white;
-$table-td-border: 2px solid #555;
 
 $nav-tab-height: 15%;
-$nav-tab-bg: assetPath('ui/ui-nav-tab-bg.png') center/contain repeat-x;
+$nav-tab-bg: assetPath('ui/ui-nav-tab-bg.png') center/100% 100% no-repeat;
 $nav-tab-text-color: #cbaa6d;
 $nav-tab-text-color-active: white;
 $nav-tab-border: none;
@@ -100,6 +106,12 @@ $panel-tab-content-arrow-bg-bottom: assetPath('ui/ui-panel-tab-arrow-bottom.png'
 $box-close-bg: #4f331c;
 $box-close-border: 1px solid #bb9b63;
 $box-close-line-color: white;
+
+$question-bg: radial-gradient(circle at center, #ffff1c, #ad910d);
+$question-color: black;
+$question-border: 2px solid #503b22;
+
+$fieldset-border: 1px solid #d6cbb9;
 
 $go-top-btn-bg: assetPath('ui/goTOP.png') center no-repeat;
 $go-top-btn-width: 58px;
