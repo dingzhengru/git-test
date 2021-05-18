@@ -10,7 +10,6 @@
       </div>
 
       <ValidationProvider
-        class="ui-field no-wrap withdrawal__field withdrawal__field--amount"
         tag="div"
         :rules="{
           required: true,
@@ -18,32 +17,40 @@
           max_value: amountMax,
           integerHundredsDivisible: { number: amount },
         }"
+        v-slot="{ errors }"
       >
-        <label class="ui-field__label">{{ $t('transaction.withdrawal.field.amount') }}</label>
-        <input
-          class="ui-field__input"
-          type="number"
-          step="100"
-          autocomplete="off"
-          v-model.number="amount"
-          @change="changeAmount"
-        />
-        <span class="ui-field__text">{{ $t('ui.currency.thaiBaht') }}</span>
+        <div
+          class="ui-field no-wrap withdrawal__field withdrawal__field--amount"
+          :class="{ invalid: errors.length > 0 }"
+        >
+          <label class="ui-field__label">{{ $t('transaction.withdrawal.field.amount') }}</label>
+          <input
+            class="ui-field__input"
+            type="number"
+            step="100"
+            autocomplete="off"
+            v-model.number="amount"
+            @change="changeAmount"
+          />
+          <span class="ui-field__text">{{ $t('ui.currency.thaiBaht') }}</span>
+        </div>
       </ValidationProvider>
 
       <ValidationProvider
-        class="ui-field no-wrap withdrawal__field withdrawal__field--bank"
         tag="div"
         :rules="{ 'object-not-empty': true }"
+        v-slot="{ errors }"
         v-show="bankList.length > 1"
       >
-        <label>{{ $t('transaction.withdrawal.field.bank') }}</label>
-        <select class="ui-field__select" v-model="bank">
-          <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
-          <option :value="item" v-for="item in bankList" :key="item.Lst_BankID">
-            {{ item.Text }}
-          </option>
-        </select>
+        <div class="ui-field no-wrap withdrawal__field withdrawal__field--bank" :class="{ invalid: errors.length > 0 }">
+          <label>{{ $t('transaction.withdrawal.field.bank') }}</label>
+          <select class="ui-field__select" v-model="bank">
+            <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
+            <option :value="item" v-for="item in bankList" :key="item.Lst_BankID">
+              {{ item.Text }}
+            </option>
+          </select>
+        </div>
       </ValidationProvider>
 
       <div class="ui-field no-wrap withdrawal__field withdrawal__field--bank-info">

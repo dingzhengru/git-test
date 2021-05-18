@@ -36,10 +36,11 @@
           class="deposit-third-party__field--btn deposit-third-party__field--amount"
           tag="div"
           :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
+          v-slot="{ errors }"
           v-show="!$isObjEmpty(platform)"
         >
           <div class="deposit-third-party__field--amount__field">
-            <div class="ui-field ui-field--inside">
+            <div class="ui-field ui-field--inside" :class="{ invalid: errors.length > 0 }">
               <input
                 type="number"
                 step="1"
