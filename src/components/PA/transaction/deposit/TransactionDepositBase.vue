@@ -3,18 +3,15 @@
     <form class="deposit-base__form" novalidate @submit.prevent="handleSubmit(submitDeposit)">
       <fieldset class="ui-fieldset">
         <legend>{{ $t('transaction.deposit.step.selectDepositBank') }}</legend>
-        <ValidationProvider
-          tag="div"
-          class="ui-field deposit-base__field deposit-base__field--bank"
-          :rules="{ 'object-not-empty': true }"
-          v-slot="{ invalid }"
-        >
-          <select class="ui-field__select" :class="{ invalid: invalid }" v-model="depositBank">
-            <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.depositBank`) }}</option>
-            <option :value="item" v-for="item in depositInfo.BankAccount" :key="item.Value">
-              {{ item.Text }}
-            </option>
-          </select>
+        <ValidationProvider tag="div" :rules="{ 'object-not-empty': true }" v-slot="{ errors }">
+          <div class="ui-field deposit-base__field deposit-base__field--bank" :class="{ invalid: errors.length > 0 }">
+            <select class="ui-field__select" v-model="depositBank">
+              <option :value="{}" selected>{{ $t(`transaction.deposit.placeholder.depositBank`) }}</option>
+              <option :value="item" v-for="item in depositInfo.BankAccount" :key="item.Value">
+                {{ item.Text }}
+              </option>
+            </select>
+          </div>
         </ValidationProvider>
 
         <div class="deposit-base__bank-info" v-if="payType === 2">
@@ -49,49 +46,51 @@
 
       <fieldset class="ui-fieldset">
         <legend>{{ $t('transaction.deposit.step.selectTransferBank') }}</legend>
-        <ValidationProvider
-          class="ui-field deposit-base__field deposit-base__field--bank-transfer"
-          tag="div"
-          :rules="{ 'object-not-empty': true }"
-          v-slot="{ invalid }"
-        >
-          <select class="ui-field__select" :class="{ invalid: invalid }" v-model="transferBank">
-            <option :value="{}" selected>{{ $t('transaction.deposit.placeholder.transferBank') }}</option>
-            <option :value="item" v-for="item in depositInfo.BankURL" :key="item.Value">
-              {{ item.Text }}
-            </option>
-          </select>
+        <ValidationProvider tag="div" :rules="{ 'object-not-empty': true }" v-slot="{ errors }">
+          <div
+            class="ui-field deposit-base__field deposit-base__field--bank-transfer"
+            :class="{ invalid: errors.length > 0 }"
+          >
+            <select class="ui-field__select" v-model="transferBank">
+              <option :value="{}" selected>{{ $t('transaction.deposit.placeholder.transferBank') }}</option>
+              <option :value="item" v-for="item in depositInfo.BankURL" :key="item.Value">
+                {{ item.Text }}
+              </option>
+            </select>
+          </div>
         </ValidationProvider>
       </fieldset>
 
       <fieldset class="ui-fieldset">
         <legend>{{ $t('transaction.deposit.step.selectDepositInfo') }}</legend>
-        <ValidationProvider
-          class="ui-field deposit-base__field deposit-base__field--method"
-          tag="div"
-          :rules="{ required: true }"
-          v-slot="{ invalid }"
-        >
-          <select class="ui-field__select" :class="{ invalid: invalid }" v-model="method">
-            <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
-            <option :value="item.Value" v-for="item in depositInfo.DepositMethod" :key="item.Value">
-              {{ item.Text }}
-            </option>
-          </select>
+        <ValidationProvider tag="div" :rules="{ required: true }" v-slot="{ errors }">
+          <div class="ui-field deposit-base__field deposit-base__field--method" :class="{ invalid: errors.length > 0 }">
+            <select class="ui-field__select" v-model="method">
+              <option value="">{{ $t(`transaction.deposit.placeholder.method`) }}</option>
+              <option :value="item.Value" v-for="item in depositInfo.DepositMethod" :key="item.Value">
+                {{ item.Text }}
+              </option>
+            </select>
+          </div>
         </ValidationProvider>
 
         <ValidationProvider
-          class="ui-field deposit-base__field deposit-base__field--datetime"
           tag="div"
           :rules="{ required: true, 'date-max': $dayjs().format('YYYY-MM-DDTHH:mm') }"
+          v-slot="{ errors }"
         >
-          <input
-            class="ui-field__group__input"
-            type="datetime-local"
-            :placeholder="$t('transaction.deposit.field.datetime')"
-            v-model="datetime"
-            :max="$dayjs().format('YYYY-MM-DDTHH:mm')"
-          />
+          <div
+            class="ui-field deposit-base__field deposit-base__field--datetime"
+            :class="{ invalid: errors.length > 0 }"
+          >
+            <input
+              class="ui-field__group__input"
+              type="datetime-local"
+              :placeholder="$t('transaction.deposit.field.datetime')"
+              v-model="datetime"
+              :max="$dayjs().format('YYYY-MM-DDTHH:mm')"
+            />
+          </div>
         </ValidationProvider>
       </fieldset>
 
@@ -99,11 +98,16 @@
         <legend>{{ $t('transaction.deposit.field.amount') }}</legend>
         <ValidationProvider
           tag="div"
-          class="ui-field ui-field--inside deposit-base__field deposit-base__field--amount"
           :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
+          v-slot="{ errors }"
         >
-          <input type="number" step="100" v-model.number="amount" @change="inputAmount" />
-          <span>{{ $t('ui.currency.thaiBaht') }}</span>
+          <div
+            class="ui-field ui-field--inside deposit-base__field deposit-base__field--amount"
+            :class="{ invalid: errors.length > 0 }"
+          >
+            <input type="number" step="100" v-model.number="amount" @change="inputAmount" />
+            <span>{{ $t('ui.currency.thaiBaht') }}</span>
+          </div>
         </ValidationProvider>
 
         <div class="ui-notice">

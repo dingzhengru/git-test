@@ -2,10 +2,10 @@
   <div class="vue-winwheel">
     <!-- <div class="vue-winWheel__title" style="text-align: center;">
       <img :src="wheelStyle.activityImgUrl" alt="" style="width: 100%;" />
-    </div>
-    <div class="vue-winwheel__dialog vue-winwheel__dialog-chance" style="margin-top: -4px;">
-      <slot name="game-chance" />
     </div> -->
+    <div class="vue-winwheel__count">
+      <slot name="game-chance" />
+    </div>
     <div class="vue-winwheel__wrapper" :style="{ backgroundImage: 'url(' + wheelStyle.wheelBackgroundImgUrl + ')' }">
       <canvas class="vue-winwheel__body" id="winwheel" :width="wheelStyle.width" :height="wheelStyle.height">
         <p style="{color: white}" align="center">
@@ -198,7 +198,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.5);
 
   &__wrapper {
     display: flex;
@@ -206,6 +205,7 @@ export default {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    transform: scale(0.5);
   }
 
   &__title {
@@ -225,7 +225,8 @@ export default {
     cursor: pointer;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 45%;
+    // top: 50%;
     transform: translate(-50%, -55%);
   }
   &__loading {
@@ -247,8 +248,9 @@ export default {
       padding: 20px 25px 10px 25px;
       position: absolute;
       left: 50%;
-      bottom: 20px;
+      bottom: 25%;
       transform: translateX(-50%);
+      font-size: 1.5rem;
       z-index: 2;
     }
     &-ovelay {
@@ -295,6 +297,19 @@ export default {
     height: 100%;
     background-color: rgba(#000, 0.7);
     z-index: 1;
+  }
+
+  &__count {
+    position: absolute;
+    display: flex;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
   }
 }
 

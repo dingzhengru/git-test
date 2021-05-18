@@ -55,6 +55,10 @@
     "alert": {
       "notLoggedIn": "请先登录",
       "pwaToApkDownload": "APP版本已更新，请重新下载"
+    },
+    "lottery": {
+      "count1": "可抽奖次数",
+      "count2": "次"
     }
   },
   "alert": {
