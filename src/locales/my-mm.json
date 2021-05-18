@@ -53,6 +53,10 @@
     "alert": {
       "notLoggedIn": "Please Login first to continue",
       "pwaToApkDownload": "The APP version has been updated, please download again"
+    },
+    "lottery": {
+      "count1": "Lucky",
+      "count2": "Draw"
     }
   },
   "alert": {

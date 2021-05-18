@@ -13,13 +13,13 @@
         @startHandler="startWheelHandler"
       >
         <template v-slot:game-chance>
-          <div class="acticityWinwheel__title">
-            {{ $t('home.lottery.winWheel.homeTitle', { count: wheelGameChance }) }}
-          </div>
+          {{ $t('ui.lottery.count1') }}
+          <span class="win-wheel-container__count">{{ wheelGameChance }}</span>
+          {{ $t('ui.lottery.count2') }}
         </template>
         <template v-slot:game-dialog>
           <!-- <div class="acticityWinwheel__result">恭喜獲得</div> -->
-          <div class="acticityWinwheel__prize">{{ wheelGamePrize.text }}</div>
+          {{ wheelGamePrize.text }}
         </template>
       </WinWheel>
     </div>
@@ -33,13 +33,14 @@ import lotteryLoadingImage from '@/assets/common/lottery/loading.svg';
 
 //* 轉盤遊戲的圖片
 // import wheelContainerBackgroundImage from '@/assets/common/lottery/winWheel/container-bg.png';
-import wheelPrizeImage from '@/assets/common/lottery/winWheel/prize.png';
+// import wheelPrizeImage from '@/assets/common/lottery/winWheel/prize.png';
 // import wheelPointerImage from '@/assets/common/lottery/winWheel/pointercn.png';
 import wheelLodaingImage from '@/assets/common/lottery/winWheel/wheel-loading.svg';
 // import wheelBackgroundImage from '@/assets/common/lottery/winWheel/wheel-bg.png';
 
 import wheelPointerImage from '@/assets/common/lottery/winWheel/landscape/win-wheel-pointer.png';
 import wheelBackgroundImage from '@/assets/common/lottery/winWheel/landscape/win-wheel-bg.png';
+import wheelPrizeImage from '@/assets/common/lottery/winWheel/landscape/prize.png';
 
 export default {
   name: 'ModalWinWheel',
@@ -52,8 +53,8 @@ export default {
     return {
       //* 轉盤樣式
       wheelStyle: {
-        width: 568, //轉盤寬度
-        height: 625, //轉盤高度
+        width: 1004, //轉盤寬度
+        height: 750, //轉盤高度
         loadingImgUrl: lotteryLoadingImage, //遊戲loading
         activityImgUrl: '', //(獎項表單API)活動標題圖片
         prizeImgUrl: wheelPrizeImage, //禮物
@@ -66,9 +67,9 @@ export default {
       //* 轉盤設定
       wheelOptions: {
         textFontSize: 16,
-        outerRadius: 245, //外圓半徑
+        outerRadius: 255, //外圓半徑
         // centerX: 0, // correctly position the wheel
-        centerY: 285, // over the background.
+        centerY: 345, // over the background.
         innerRadius: 0, //內圓半徑(預設0)
         lineWidth: 0,
         drawMode: 'segmentImage', // code: 以文字及style顯示, image: 背景圖片顯示, segmentImage: 每個欄位一張圖片

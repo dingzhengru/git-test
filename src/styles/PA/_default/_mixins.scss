@@ -416,6 +416,7 @@
   height: 36px;
   border-radius: 18px;
   border: $box-close-border;
+  z-index: 9999;
   &:before,
   &:after {
     content: ' ';
@@ -779,8 +780,14 @@
 @mixin win-wheel-container {
   width: 60%;
   height: 90%;
-  background: red;
+  // background: red;
   position: relative;
+
+  &__count {
+    color: yellow;
+    font-size: 1.5rem;
+    padding: 0 5px;
+  }
 }
 
 @mixin red-envelope-container {
