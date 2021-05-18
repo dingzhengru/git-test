@@ -777,27 +777,10 @@
 }
 
 @mixin win-wheel-container {
-  position: fixed;
-  left: 5%;
-  top: 15%;
-  right: 5%;
-  background: url('~@/assets/common/lottery/winWheel/container-bg.png') #860103 center no-repeat;
-  // background-size: contain;
-
-  .acticityWinwheel__title {
-    color: black;
-    font-size: 2rem;
-  }
-
-  .acticityWinwheel__result {
-    color: red;
-    font-size: 3rem;
-  }
-
-  .acticityWinwheel__prize {
-    color: black;
-    font-size: 3rem;
-  }
+  width: 60%;
+  height: 90%;
+  background: red;
+  position: relative;
 }
 
 @mixin red-envelope-container {
