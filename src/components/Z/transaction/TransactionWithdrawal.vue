@@ -39,15 +39,22 @@
         </div>
       </ValidationProvider>
 
-      <ValidationProvider class="ui-field" tag="div" :rules="{ 'object-not-empty': true }" v-show="bankList.length > 1">
-        <div class="ui-field__group">
-          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bank') }}</label>
-          <select class="ui-field__select" v-model="bank">
-            <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
-            <option :value="item" v-for="item in bankList" :key="item.Lst_BankID">
-              {{ item.Text }}
-            </option>
-          </select>
+      <ValidationProvider
+        tag="div"
+        :rules="{ 'object-not-empty': true }"
+        v-show="bankList.length > 1"
+        v-slot="{ errors }"
+      >
+        <div class="ui-field" :class="{ invalid: errors.length > 0 }">
+          <div class="ui-field__group">
+            <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bank') }}</label>
+            <select class="ui-field__select" v-model="bank">
+              <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
+              <option :value="item" v-for="item in bankList" :key="item.Lst_BankID">
+                {{ item.Text }}
+              </option>
+            </select>
+          </div>
         </div>
       </ValidationProvider>
 

@@ -35,6 +35,13 @@
   // background: $field-bg;
   border-radius: 5px;
 
+  &.invalid {
+    input,
+    select {
+      border: 5px solid red;
+    }
+  }
+
   &.no-wrap {
     flex-wrap: nowrap;
   }
