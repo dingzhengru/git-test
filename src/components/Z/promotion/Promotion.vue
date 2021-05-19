@@ -10,7 +10,7 @@
     <transition-group tag="div" class="promotion__group" name="list-zoom">
       <div
         class="promotion__item list-zoom-item"
-        v-for="item in promotionListByCategory"
+        v-for="item in promotionListFiltered"
         :key="item.Lst_PromotionID"
         @click="goPromotionDetail(item)"
       >
