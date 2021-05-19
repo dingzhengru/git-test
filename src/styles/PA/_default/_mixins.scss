@@ -798,13 +798,10 @@
 }
 
 @mixin red-envelope-container {
-  position: fixed;
-  height: 50%;
-  left: 5%;
-  top: 20%;
-  right: 5%;
-  background: url('~@/assets/common/lottery/redEnvelope/bg.jpg') #860103 center no-repeat;
-  // background-size: contain;
+  width: 80%;
+  height: 90%;
+  position: relative;
+  // background: green;
 }
 
 //* 參考 https://bun.js.org/
