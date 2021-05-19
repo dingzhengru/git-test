@@ -44,7 +44,7 @@ export default {
   mixins: [mixinLotteryRedEnvelope],
   components: {
     AppModal: () => import('@/components/AppModal'),
-    RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
+    RedEnvelope: () => import('@/components/lottery/RedEnvelopeLandscape'),
   },
   data() {
     return {

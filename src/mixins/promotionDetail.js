@@ -36,7 +36,19 @@ export default {
 
       if (result.Code == 200) {
         this.promotionDetail = result.RetObj;
+
+        if (this.checkPromotionEnabled() === false) {
+          this.$router.replace({ name: 'Home' });
+        }
       }
+    },
+    checkPromotionEnabled() {
+      if (this.promotionDetail.Lst_IsPermanent === true || this.promotionDetail.Lst_EndTime === null) {
+        return true;
+      }
+      const datetimeEnd = this.$dayjs(this.promotionDetail.Lst_EndTime);
+      const now = this.$dayjs().tz('Africa/Abidjan');
+      return now.isBefore(datetimeEnd);
     },
   },
   mounted() {

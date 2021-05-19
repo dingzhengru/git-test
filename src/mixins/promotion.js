@@ -17,6 +17,16 @@ export default {
     promotionListHasDetail() {
       return this.promotionList.filter(item => item.Lst_LinkType === 0 || item.Lst_LinkType === 2);
     },
+    promotionListFiltered() {
+      return this.promotionListByCategory.filter(item => {
+        if (item.Lst_IsPermanent === true || item.Lst_EndTime === null) {
+          return true;
+        }
+        const datetimeEnd = this.$dayjs(item.Lst_EndTime);
+        const now = this.$dayjs().tz('Africa/Abidjan');
+        return now.isBefore(datetimeEnd);
+      });
+    },
   },
   data() {
     return {
