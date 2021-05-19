@@ -656,6 +656,20 @@
   }
 }
 
+@mixin ui-box-count {
+  background: $ui-box-count-bg;
+  color: $ui-box-count-color;
+  border: $ui-box-count-border;
+  box-shadow: $ui-box-count-shadow;
+  display: inline-block;
+  position: absolute;
+  top: -10px;
+  right: 0;
+  border-radius: 15px;
+  padding: 1px 5px;
+  font-size: 1.2rem;
+}
+
 @mixin service-term {
   background: $service-term-bg;
   color: $service-term-color;

@@ -110,20 +110,6 @@
       margin: 0;
     }
 
-    &__count {
-      background: $home-footer-icon-count-bg;
-      color: $home-footer-icon-count-color;
-      border: $home-footer-icon-count-border;
-      box-shadow: $home-footer-icon-count-shadow;
-      display: inline-block;
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      border-radius: 15px;
-      padding: 1px 5px;
-      font-size: 1.2rem;
-    }
-
     &--promotion {
       background: $home-footer-icon-promotion;
     }
