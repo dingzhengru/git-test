@@ -2,71 +2,21 @@
   <div class="red-envelope">
     <img class="red-envelope__title" :src="imgTitle" alt="" />
     <div class="red-envelope__content">
-      <div class="red-envelope__item"></div>
-      <div class="red-envelope__item"></div>
-      <div class="red-envelope__item"></div>
-      <div class="red-envelope__item"></div>
-      <div class="red-envelope__item"></div>
-      <div class="red-envelope__item"></div>
-      <div class="red-envelope__item"></div>
-      <div class="red-envelope__item"></div>
-      <div class="red-envelope__item"></div>
-      <div class="red-envelope__item"></div>
-    </div>
-    <!-- <div class="-eedEnvelope__title">
-      <img :src="gameStyle.activityImgUrl" alt="" />
-    </div>
-    <div class="-eedEnvelope__container" v-show="!gamePrize">
       <div
-        class="-eedEnvelope__card"
-        v-for="(item, index) in prizeHolder"
-        :key="item.text"
-        :class="{ 'card-select': item.selected }"
-        @click="selectHandler(item, index)"
-      >
-        <div class="redEnvelope__card__inner">
-          <div class="redEnvelope__card__front">
-            <img :src="gameStyle.cardFrontImgUrl" alt="" />
-          </div>
-          <div class="redEnvelope__card__back">
-            <img :src="gameStyle.cardBackImgUrl" alt="" />
-            <img class="redEnvelope__loading" :src="gameStyle.envelopeLoadingImgUrl" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="redEnvelope__container" v-show="gamePrize">
-      <div
-        class="redEnvelope__card redEnvelope__card-result"
-        v-for="(item, index) in randomResult"
+        class="red-envelope__item"
+        :class="{ open: isShowResult, selected: gamePrize.key == item.key }"
+        v-for="item in prizeListClone"
         :key="item.key"
-        :class="{ 'card-result': gameSelect == index }"
+        @click="selectHandler(item)"
       >
-        <div class="redEnvelope__card__inner">
-          <div class="redEnvelope__card__front">
-            <img :src="item.image" alt="" />
-          </div>
-        </div>
+        <img :src="item.image" alt="" v-if="isShowResult" />
       </div>
     </div>
-    <div class="overlay" v-show="!prizeList.length">
-      <p v-if="errMsg" class="redEnvelope__errorMsg">{{ errMsg }}</p>
-      <img v-else :src="gameStyle.loadingImgUrl" alt="" />
+    <div class="red-envelope__modal" v-if="isModalResultShow">
+      <slot name="game-result" />
     </div>
-    <transition name="dialogTransition">
-      <div
-        class="redEnvelope__dialog"
-        :style="{ backgroundImage: 'url(' + gameStyle.dialogImgUrl + ')' }"
-        v-show="isModalShow"
-      >
-        <div v-show="gamePrize">
-          <slot name="game-result" />
-        </div>
-        <div class="redEnvelope__dialog__btn" @click="startHandler">
-          <slot name="game-chance" />
-        </div>
-      </div>
-    </transition> -->
+    <div class="red-envelope__modal" v-else-if="errorMessage">{{ errorMessage }}</div>
+    <div class="red-envelope__loading" v-show="isLoading"></div>
   </div>
 </template>
 
@@ -92,6 +42,15 @@ export default {
   },
   computed: {
     ...mapGetters(['siteFullCss']),
+    isGameEnable() {
+      return this.gameChance > 0 && this.isShowResult === false;
+    },
+    errorMessage() {
+      if (this.gameChance <= 0) {
+        return this.$t('home.lottery.redEnvelope.startButton', { count: this.gameChance });
+      }
+      return '';
+    },
     imgTitle() {
       try {
         return require(`@/assets/common/lottery/redEnvelope/landscape/title.png`);
@@ -102,98 +61,72 @@ export default {
   },
   data() {
     return {
-      prizeHolder: [],
-      randomResult: [],
-      gameSelect: -1,
-      isModalShow: true,
+      prizeListClone: [],
+      selectedPrize: '',
+      isShowResult: false,
+      isModalResultShow: false,
+      isLoading: true,
     };
   },
   methods: {
-    // 依照回傳獎項數量產出蓋牌紅包列表
-    defaultPrizeHandler() {
-      this.prizeList.map((item, index) => {
-        let prizeText = '' + (index + 1);
-        this.prizeHolder.push({
-          text: prizeText,
-        });
-      });
-      console.log(this.prizeHolder);
-      console.log(this.gamePrize);
-    },
-    // 因回傳的列表為固定位置，隨機化列表
-    randomPrizeHandler() {
-      let sourcePrize = [...this.prizeList];
-      let resultLength = sourcePrize.length;
-      let arr = [];
-      while (resultLength--) {
-        let j = Math.floor(Math.random() * (resultLength + 1));
-        arr.push(sourcePrize[j]);
-        sourcePrize.splice(j, 1);
+    // 選擇紅包
+    selectHandler(item) {
+      if (this.isLoading || this.isGameEnable === false) {
+        return;
       }
 
-      this.randomResult = arr;
-    },
-    // 開始遊戲
-    startHandler() {
-      if (this.gameChance <= 0) return;
-      this.gameSelect = -1;
-      this.isModalShow = false;
-      this.isGameEnable = true;
-
-      this.prizeHolder.map(item => {
-        this.$set(item, 'selected', false);
-      });
-
-      this.$emit('startHandler');
-    },
-    // 選擇紅包
-    selectHandler(item, index) {
-      if (!this.isGameEnable) return;
-      this.isGameEnable = false;
-      this.gameSelect = index;
-      this.$set(item, 'selected', true);
+      this.isLoading = true;
+      this.selectedPrize = item;
       this.$emit('selectHandler');
     },
     // 顯示結果
     resultHandler() {
       // 將抽獎結果的圖片位置與點選的位置做交換
-      let prizeIndex = this.randomResult.findIndex(item => item.key == this.gamePrize.key);
-      let temp = this.randomResult[prizeIndex];
-      this.randomResult[prizeIndex] = this.randomResult[this.gameSelect];
-      this.randomResult[this.gameSelect] = temp;
+      const prize = this.prizeListClone.find(item => item.key == this.gamePrize.key);
+      const selectedPrize = this.prizeListClone.find(item => item.key == this.selectedPrize.key);
 
-      // 彈跳獎項視窗
+      const prizeIndex = this.prizeListClone.findIndex(item => item.key == this.gamePrize.key);
+      const selectedPrizeIndex = this.prizeListClone.findIndex(item => item.key == this.selectedPrize.key);
+
+      this.prizeListClone[prizeIndex] = this.$deepClone(selectedPrize);
+      this.prizeListClone[selectedPrizeIndex] = this.$deepClone(prize);
+
       window.setTimeout(() => {
-        this.isModalShow = true;
-      }, 2500);
+        this.isShowResult = true;
+        this.isLoading = false;
+        this.isModalResultShow = true;
+      }, 1000);
     },
   },
   watch: {
     prizeList: {
       deep: true,
       handler() {
-        console.log(this.prizeHolder);
-        console.log(this.gamePrize);
-        this.randomPrizeHandler();
+        this.prizeListClone = this.$deepClone(this.prizeList);
+        this.prizeListClone = this.$shuffleArray(this.prizeListClone);
+
+        this.isLoading = false;
       },
     },
     gamePrize: {
       deep: true,
-      handler(val) {
-        if (!val) return;
+      handler() {
+        if (!this.gamePrize) {
+          return;
+        }
+        //* 開獎
         this.resultHandler();
       },
     },
   },
-  mounted() {
-    
-  }
 };
 </script>
 
 <style lang="scss" scoped>
 $red-envelop-bg: url(~@/assets/common/lottery/redEnvelope/landscape/bg.png) center/cover no-repeat;
 $red-envelop-item-bg: url(~@/assets/common/lottery/redEnvelope/landscape/prize-01.png) center/contain no-repeat;
+$red-envelop-loading-bg: url(~@/assets/common/ui/loading.gif) center/auto 50% no-repeat, rgba(black, 0.8);
+
 .red-envelope {
   width: 100%;
   height: 100%;
@@ -218,6 +151,26 @@ $red-envelop-item-bg: url(~@/assets/common/lottery/redEnvelope/landscape/prize-0
     width: 50px;
     height: 60px;
     position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 50px;
+      max-height: 60px;
+    }
+
+    &.open {
+      background: none;
+      transform: rotate(0deg) !important;
+      opacity: 0.5;
+    }
+
+    &.selected {
+      opacity: 1 !important;
+    }
+
     &:nth-child(1) {
       left: 25%;
       top: 5%;
@@ -266,6 +219,36 @@ $red-envelop-item-bg: url(~@/assets/common/lottery/redEnvelope/landscape/prize-0
       left: 46%;
       top: 60%;
     }
+  }
+
+  &__modal {
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to right, rgba(black, 0), rgba(black, 1) 40%, rgba(black, 1) 60%, rgba(black, 0) 100%);
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &,
+    * {
+      color: #e5bf79;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__loading {
+    background: $red-envelop-loading-bg;
+    width: 100%;
+    height: 100%;
+    position: absolute;
   }
 
   // position: relative;
