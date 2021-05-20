@@ -48,6 +48,7 @@ dayjs.extend(timezone);
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
 import { isObjEmpty, deepClone, getObjectValueByDotString } from '@/utils/object';
+import { shuffleArray } from '@/utils/array';
 import { isStandaloneMode } from '@/utils/device';
 
 //* set Vue.prototype
@@ -60,6 +61,7 @@ Vue.prototype.$isLocalhost = window.location.hostname === 'localhost';
 Vue.prototype.$isObjEmpty = isObjEmpty;
 Vue.prototype.$deepClone = deepClone;
 Vue.prototype.$getObjectValueByDotString = getObjectValueByDotString;
+Vue.prototype.$shuffleArray = shuffleArray;
 Vue.prototype.$isStandaloneMode = isStandaloneMode;
 
 //* Vue Global Component
@@ -229,9 +231,9 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
-    const siteClass = 'Z';
+    const siteClass = 'PA';
     const siteType = '01';
-    const isLandscape = false;
+    const isLandscape = true;
     console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
     store.commit('site/setInfoStyle', { siteClass, siteType });
