@@ -9,6 +9,10 @@
         <span class="home-footer__icon__count" v-show="userIsLoggedIn && userNewMailCount > 0">
           {{ userNewMailCount }}
         </span>
+
+        <span class="ui-box-count">
+          {{ userNewMailCount }}
+        </span>
       </div>
       <div
         class="home-footer__icon home-footer__icon--fav"

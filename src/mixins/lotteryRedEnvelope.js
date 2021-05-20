@@ -77,14 +77,7 @@ export default {
       this.$emit('close');
     },
   },
-  watch: {
-    modalRedEnvelopeIsShow: {
-      immediate: true,
-      handler() {
-        if (this.modalRedEnvelopeIsShow) {
-          this.initHandlerRedEnvelope();
-        }
-      },
-    },
+  mounted() {
+    this.initHandlerRedEnvelope();
   },
 };

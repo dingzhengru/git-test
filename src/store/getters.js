@@ -73,10 +73,10 @@ const getters = {
   siteIsLandscape: state => !state.site.info.IsPortrait,
   siteIsWalletTypeNoTransfer: state => state.site.info.WalletType === 2,
   siteNoticeLinkMain: (state, getters) => {
-    return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 1) : {};
+    return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 1) || {} : {};
   },
   siteNoticeLinkDeposit: (state, getters) => {
-    return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 2) : {};
+    return getters.sitePopLinkList ? getters.sitePopLinkList.find(item => item.PageType === 2) || {} : {};
   },
   siteFullCss: state => {
     return `${state.site.info.LS_CSS_Class}/${state.site.info.LS_CSS_Type}`;

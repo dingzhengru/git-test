@@ -131,6 +131,11 @@
     align-items: flex-end;
     justify-content: center;
 
+    .ui-box-count {
+      top: 0px;
+      right: 15px;
+    }
+
     &__icon {
       height: 100%;
     }
