@@ -50,13 +50,15 @@ export default {
   },
   methods: {
     updateRoute() {
-      this.route =
-        this.routeList.find(item => {
-          if (this.$isObjEmpty(this.$route.query)) {
-            return item.link === this.$route.name;
-          }
-          return item.link === this.$route.name && JSON.stringify(item.query) === JSON.stringify(this.$route.query);
-        }) || this.routeList[0];
+      if (this.$isObjEmpty(this.$route.query)) {
+        this.route = this.routeList.find(item => item.link === this.$route.name);
+      } else if (this.$route.query.Tag === 'Today' || this.$route.query.Tag === 'DayOfWeek') {
+        this.route = this.routeList.find(item => item.name === 'today');
+      } else if (this.$route.query.Tag === 'ThisWeek') {
+        this.route = this.routeList.find(item => item.name === 'thisWeek');
+      } else if (this.$route.query.Tag === 'LastWeek') {
+        this.route = this.routeList.find(item => item.name === 'lastWeek');
+      }
     },
     changeRoute() {
       this.$router.push({ name: this.route.link, query: this.route.query }).catch(() => {});
