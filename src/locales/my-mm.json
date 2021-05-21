@@ -45,7 +45,8 @@
       "setup": "ျပင္ဆင္မည္",
       "lotteryCount": "{count} Lucky draw",
       "allToMyWallet": "ပိုက်ဆံအိတ်ထဲသို့အားလုံးလွဲမည်",
-      "download": "ေဒါင္းလုပ္"
+      "download": "ေဒါင္းလုပ္",
+      "backToPreviousPage": "ျပီးခဲ့ေသာ"
     },
     "currency": {
       "thaiBaht": "ဘတ်"

@@ -47,7 +47,8 @@
       "allToMyWallet": "All to my wallet",
       "allToMyWallet-2": "All to wallet",
       "download": "Download",
-      "upload": "Upload"
+      "upload": "Upload",
+      "backToPreviousPage": "Previous"
     },
     "currency": {
       "thaiBaht": "Baht"

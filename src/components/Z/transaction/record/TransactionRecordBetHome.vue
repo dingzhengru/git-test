@@ -2,7 +2,6 @@
   <div class="record-content">
     <div class="ui-field record-content__field--bet">
       <select class="ui-field__select" v-model="route" @change="changeRoute">
-        <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
         <option :value="item" v-for="item in routeList" :key="item.name">
           {{ $t(item.text) }}
         </option>
@@ -20,7 +19,7 @@ export default {
   mixins: [],
   data() {
     return {
-      route: {},
+      route: { name: 'unsettle', text: 'report.nav.unsettleBet', link: 'TransactionRecordBetUnsettle', query: {} },
       routeList: [
         {
           name: 'unsettle',
@@ -51,10 +50,16 @@ export default {
   },
   methods: {
     updateRoute() {
-      this.route = this.routeList.find(item => item.link == this.$route.name) || {};
+      this.route =
+        this.routeList.find(item => {
+          if (this.$isObjEmpty(this.$route.query)) {
+            return item.link === this.$route.name;
+          }
+          return item.link === this.$route.name && JSON.stringify(item.query) === JSON.stringify(this.$route.query);
+        }) || this.routeList[0];
     },
     changeRoute() {
-      this.$router.push({ name: this.route.link, query: this.route.query });
+      this.$router.push({ name: this.route.link, query: this.route.query }).catch(() => {});
     },
   },
   mounted() {
