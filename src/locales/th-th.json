@@ -47,7 +47,8 @@
       "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด",
       "allToMyWallet-2": "โอนไปยังกระเป๋าเงินทั้งหมด",
       "download": "ดาวน์โหลด",
-      "upload": "อัพโหลด"
+      "upload": "อัพโหลด",
+      "backToPreviousPage": "กลับไปยังหน้าที่แล้ว"
     },
     "currency": {
       "thaiBaht": "บาท"
