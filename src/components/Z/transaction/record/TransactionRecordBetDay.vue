@@ -31,6 +31,11 @@
         <td>{{ $numeral(totalRecord.Lst_MemberTTLNetWin).format('0,0.00') }}</td>
         <td>{{ $numeral(totalRecord.Lst_JackpotScore).format('0,0.00') }}</td>
       </tr>
+      <tr v-if="isTagToday === false">
+        <td colspan="6">
+          <a href="javascript:;" @click="$router.go(-1)">{{ $t('ui.button.backToPreviousPage') }}</a>
+        </td>
+      </tr>
     </table>
 
     <div class="ui-no-data" v-show="recordList.length === 0">{{ $t('ui.label.noData') }}</div>
