@@ -65,6 +65,11 @@ export default {
     $route() {
       this.isShowDropdown = false;
     },
+    isShowDropdown() {
+      if (this.isShowDropdown === true) {
+        this.refreshWallet();
+      }
+    },
   },
 };
 </script>
