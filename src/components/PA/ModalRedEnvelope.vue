@@ -12,11 +12,8 @@
         @selectHandler="selectRedEnvelopeHandler"
       >
         <template v-slot:game-result>
-          <div class="acticityRedEnvelepe__result">
-            {{ $t('home.lottery.redEnvelope.gameResult') }}
-            <br />
-            【 {{ redEnvelopeGamePrize.text }} 】
-          </div>
+          <span>{{ $t('home.lottery.redEnvelope.gameResult') }}</span>
+          <span>【 {{ redEnvelopeGamePrize.text }} 】</span>
         </template>
         <template v-slot:game-chance>
           <div class="acticityRedEnvelepe__chance">
@@ -44,7 +41,7 @@ export default {
   mixins: [mixinLotteryRedEnvelope],
   components: {
     AppModal: () => import('@/components/AppModal'),
-    RedEnvelope: () => import('@/components/lottery/RedEnvelope'),
+    RedEnvelope: () => import('@/components/lottery/RedEnvelopeLandscape'),
   },
   data() {
     return {

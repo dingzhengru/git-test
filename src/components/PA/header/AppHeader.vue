@@ -40,6 +40,7 @@
       >
         <img class="header__lottery__text header__lottery__text--win-wheel" :src="imgLotteryIconWinWheelText" alt="" />
         <img class="header__lottery__icon header__lottery__icon--win-wheel" :src="imgLotteryIconWinWheel" alt="" />
+        <div class="ui-box-count">{{ userLotteryCountWinWheel.Count }}</div>
       </div>
       <div
         class="header__lottery header__lottery--red-envelope"
@@ -48,6 +49,7 @@
       >
         <img class="header__lottery__text header__lottery__text--red-envelope" :src="imgLotteryIconRedEnvelopeText" />
         <img class="header__lottery__icon header__lottery__icon--red-envelope" :src="imgLotteryIconRedEnvelope" />
+        <div class="ui-box-count">{{ userLotteryCountRedEnvelope.Count }}</div>
       </div>
       <div class="header__lang" @click="$store.dispatch('openModalLang')" v-if="isShowLang"></div>
     </div>
@@ -79,6 +81,8 @@ export default {
       'modalLangIsShow',
       'modalAuthIsShow',
       'siteFullCss',
+      'userLotteryCountWinWheel',
+      'userLotteryCountRedEnvelope',
     ]),
     ModalAuth() {
       return () => import(`@/${this.siteSetting.components.header.ModalAuth}`);

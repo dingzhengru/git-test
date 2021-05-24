@@ -48,6 +48,7 @@ dayjs.extend(timezone);
 import numeral from 'numeral';
 import idMapper from '@/idMapper';
 import { isObjEmpty, deepClone, getObjectValueByDotString } from '@/utils/object';
+import { shuffleArray } from '@/utils/array';
 import { isStandaloneMode } from '@/utils/device';
 
 //* set Vue.prototype
@@ -60,6 +61,7 @@ Vue.prototype.$isLocalhost = window.location.hostname === 'localhost';
 Vue.prototype.$isObjEmpty = isObjEmpty;
 Vue.prototype.$deepClone = deepClone;
 Vue.prototype.$getObjectValueByDotString = getObjectValueByDotString;
+Vue.prototype.$shuffleArray = shuffleArray;
 Vue.prototype.$isStandaloneMode = isStandaloneMode;
 
 //* Vue Global Component

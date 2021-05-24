@@ -47,7 +47,8 @@
       "allToMyWallet": "全部转回我的钱包",
       "allToMyWallet-2": "一键转回",
       "download": "下载",
-      "upload": "上传"
+      "upload": "上传",
+      "backToPreviousPage": "返回上一页"
     },
     "currency": {
       "thaiBaht": "泰銖"
@@ -55,6 +56,10 @@
     "alert": {
       "notLoggedIn": "请先登录",
       "pwaToApkDownload": "APP版本已更新，请重新下载"
+    },
+    "lottery": {
+      "count1": "可抽奖次数",
+      "count2": "次"
     }
   },
   "alert": {

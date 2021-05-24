@@ -4,6 +4,9 @@ export default {
   name: 'mixinRecordBetDay',
   computed: {
     ...mapGetters(['lang']),
+    isTagToday() {
+      return this.$route.query.Tag === 'Today';
+    },
     totalRecord() {
       if (this.recordList.length === 0) {
         return {};

@@ -55,6 +55,7 @@
         class="deposit-third-party__field--btn deposit-third-party__field--amount"
         tag="div"
         :rules="{ required: true, min_value: amountMin, max_value: amountMax }"
+        v-slot="{ errors }"
       >
         <div class="deposit-third-party__field--btn__title">{{ $t('transaction.deposit.field.amount') }}</div>
         <div class="deposit-third-party__field--btn__option" v-show="!$isObjEmpty(platform)">
@@ -78,7 +79,7 @@
             {{ $t('transaction.deposit.third-party.amountEnter') }}
           </button>
         </div>
-        <div class="ui-field" v-show="isShowInputAmount">
+        <div class="ui-field" :class="{ invalid: errors.length > 0 }" v-show="isShowInputAmount">
           <div class="ui-field__group">
             <label class="ui-field__group__label">{{ $t('transaction.deposit.field.amount') }}</label>
             <input

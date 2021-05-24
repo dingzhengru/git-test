@@ -47,7 +47,8 @@
       "allToMyWallet": "โอนไปยังกระเป๋าเงินทั้งหมด",
       "allToMyWallet-2": "โอนไปยังกระเป๋าเงินทั้งหมด",
       "download": "ดาวน์โหลด",
-      "upload": "อัพโหลด"
+      "upload": "อัพโหลด",
+      "backToPreviousPage": "กลับไปยังหน้าที่แล้ว"
     },
     "currency": {
       "thaiBaht": "บาท"
@@ -55,6 +56,10 @@
     "alert": {
       "notLoggedIn": "กรุณาเข้าสู่ระบบก่อนเพื่อดำเนินการต่อ",
       "pwaToApkDownload": "APP ได้มีการอัปเดตเวอร์ชันแล้ว โปรดดาวน์โหลดอีกครั้ง"
+    },
+    "lottery": {
+      "count1": "หมุนวงล้อ",
+      "count2": "ครั้ง"
     }
   },
   "alert": {
@@ -194,7 +199,7 @@
     "transaction": "กระเป๋าเงิน",
     "promotion": "โปรโมชั่น",
     "contact": "ศูนย์ลูกค้า",
-    "transaction-2": "กระเป๋าเงิน"
+    "transaction-2": "ฝาก-ถอน"
   },
   "home": {
     "product": {

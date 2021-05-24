@@ -1,7 +1,7 @@
 <template>
   <ValidationObserver class="withdrawal" tag="div" v-slot="{ invalid, handleSubmit }">
     <form class="withdrawal-form" @submit.prevent="handleSubmit(submitWithdrawal)">
-      <ValidationProvider class="ui-field withdrawal__field--transfer" tag="div" :rules="{ 'object-not-empty': true }">
+      <div class="ui-field withdrawal__field--transfer">
         <div class="ui-field__group">
           <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.wallet') }}</label>
           <span class="ui-field__group__text">{{ userGamePointWallet.Point }}</span>
@@ -11,10 +11,9 @@
             {{ $t('ui.button.allToMyWallet') }}
           </button>
         </div>
-      </ValidationProvider>
+      </div>
 
       <ValidationProvider
-        class="ui-field withdrawal__field withdrawal__field--amount"
         tag="div"
         :rules="{
           required: true,
@@ -22,30 +21,40 @@
           max_value: amountMax,
           integerHundredsDivisible: { number: amount },
         }"
+        v-slot="{ errors }"
       >
-        <div class="ui-field__group">
-          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.amount') }}</label>
-          <input
-            class="ui-field__group__input"
-            type="number"
-            step="100"
-            autocomplete="off"
-            v-model.number="amount"
-            @change="changeAmount"
-          />
-          <span class="ui-field__group__text">{{ $t('ui.currency.thaiBaht') }}</span>
+        <div class="ui-field withdrawal__field withdrawal__field--amount" :class="{ invalid: errors.length > 0 }">
+          <div class="ui-field__group">
+            <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.amount') }}</label>
+            <input
+              class="ui-field__group__input"
+              type="number"
+              step="100"
+              autocomplete="off"
+              v-model.number="amount"
+              @change="changeAmount"
+            />
+            <span class="ui-field__group__text">{{ $t('ui.currency.thaiBaht') }}</span>
+          </div>
         </div>
       </ValidationProvider>
 
-      <ValidationProvider class="ui-field" tag="div" :rules="{ 'object-not-empty': true }" v-show="bankList.length > 1">
-        <div class="ui-field__group">
-          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bank') }}</label>
-          <select class="ui-field__select" v-model="bank">
-            <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
-            <option :value="item" v-for="item in bankList" :key="item.Lst_BankID">
-              {{ item.Text }}
-            </option>
-          </select>
+      <ValidationProvider
+        tag="div"
+        :rules="{ 'object-not-empty': true }"
+        v-show="bankList.length > 1"
+        v-slot="{ errors }"
+      >
+        <div class="ui-field" :class="{ invalid: errors.length > 0 }">
+          <div class="ui-field__group">
+            <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.bank') }}</label>
+            <select class="ui-field__select" v-model="bank">
+              <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
+              <option :value="item" v-for="item in bankList" :key="item.Lst_BankID">
+                {{ item.Text }}
+              </option>
+            </select>
+          </div>
         </div>
       </ValidationProvider>
 
@@ -78,22 +87,24 @@
       </div>
 
       <ValidationProvider
-        class="ui-field withdrawal__field"
         tag="div"
         :rules="{
           'withdrawal-password-required': true,
           'withdrawal-password-min': 6,
           'withdrawal-password-regex': '^[a-zA-Z0-9]*$',
         }"
+        v-slot="{ errors }"
       >
-        <div class="ui-field__group">
-          <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.password') }}</label>
-          <input
-            class="ui-field__group__input"
-            type="password"
-            :placeholder="$t('login.placeholder.password')"
-            v-model="password"
-          />
+        <div class="ui-field withdrawal__field" :class="{ invalid: errors.length > 0 }">
+          <div class="ui-field__group">
+            <label class="ui-field__group__label">{{ $t('transaction.withdrawal.field.password') }}</label>
+            <input
+              class="ui-field__group__input"
+              type="password"
+              :placeholder="$t('login.placeholder.password')"
+              v-model="password"
+            />
+          </div>
         </div>
       </ValidationProvider>
 

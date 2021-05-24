@@ -2,7 +2,6 @@
   <div class="record-content">
     <div class="ui-field record-content__field--bet">
       <select class="ui-field__select" v-model="route" @change="changeRoute">
-        <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
         <option :value="item" v-for="item in routeList" :key="item.name">
           {{ $t(item.text) }}
         </option>
@@ -20,7 +19,7 @@ export default {
   mixins: [],
   data() {
     return {
-      route: {},
+      route: { name: 'unsettle', text: 'report.nav.unsettleBet', link: 'TransactionRecordBetUnsettle', query: {} },
       routeList: [
         {
           name: 'unsettle',
@@ -51,10 +50,18 @@ export default {
   },
   methods: {
     updateRoute() {
-      this.route = this.routeList.find(item => item.link == this.$route.name) || {};
+      if (this.$isObjEmpty(this.$route.query)) {
+        this.route = this.routeList.find(item => item.link === this.$route.name);
+      } else if (this.$route.query.Tag === 'Today' || this.$route.query.Tag === 'DayOfWeek') {
+        this.route = this.routeList.find(item => item.name === 'today');
+      } else if (this.$route.query.Tag === 'ThisWeek') {
+        this.route = this.routeList.find(item => item.name === 'thisWeek');
+      } else if (this.$route.query.Tag === 'LastWeek') {
+        this.route = this.routeList.find(item => item.name === 'lastWeek');
+      }
     },
     changeRoute() {
-      this.$router.push({ name: this.route.link, query: this.route.query });
+      this.$router.push({ name: this.route.link, query: this.route.query }).catch(() => {});
     },
   },
   mounted() {
