@@ -38,7 +38,7 @@
         @click="$store.commit('setModalWinWheelIsShow', true)"
         v-if="isShowLottery"
       >
-        <img class="header__lottery__text header__lottery__text--win-wheel" :src="imgLotteryIconWinWheelText" alt="" />
+        <!-- <img class="header__lottery__text header__lottery__text--win-wheel" :src="imgLotteryIconWinWheelText" alt="" /> -->
         <img class="header__lottery__icon header__lottery__icon--win-wheel" :src="imgLotteryIconWinWheel" alt="" />
         <div class="ui-box-count">{{ userLotteryCountWinWheel.Count }}</div>
       </div>
@@ -47,7 +47,7 @@
         @click="$store.commit('setModalRedEnvelopeIsShow', true)"
         v-if="isShowLottery"
       >
-        <img class="header__lottery__text header__lottery__text--red-envelope" :src="imgLotteryIconRedEnvelopeText" />
+        <!-- <img class="header__lottery__text header__lottery__text--red-envelope" :src="imgLotteryIconRedEnvelopeText" /> -->
         <img class="header__lottery__icon header__lottery__icon--red-envelope" :src="imgLotteryIconRedEnvelope" />
         <div class="ui-box-count">{{ userLotteryCountRedEnvelope.Count }}</div>
       </div>
@@ -162,28 +162,14 @@ export default {
     },
     imgLotteryIconWinWheel() {
       try {
-        return require(`@/assets/${this.siteFullCss}/header/header-lottery-win-wheel-bg.png`);
-      } catch {
-        return '';
-      }
-    },
-    imgLotteryIconWinWheelText() {
-      try {
-        return require(`@/assets/${this.siteFullCss}/header/header-lottery-win-wheel-${this.lang}.png`);
+        return require(`@/assets/${this.siteFullCss}/header/header-lottery-win-wheel-bg-${this.lang}.png`);
       } catch {
         return '';
       }
     },
     imgLotteryIconRedEnvelope() {
       try {
-        return require(`@/assets/${this.siteFullCss}/header/header-lottery-red-envelope-bg.png`);
-      } catch {
-        return '';
-      }
-    },
-    imgLotteryIconRedEnvelopeText() {
-      try {
-        return require(`@/assets/${this.siteFullCss}/header/header-lottery-red-envelope-${this.lang}.png`);
+        return require(`@/assets/${this.siteFullCss}/header/header-lottery-red-envelope-bg-${this.lang}.png`);
       } catch {
         return '';
       }
