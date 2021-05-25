@@ -30,7 +30,7 @@
           <div class="contact__item__detail" v-show="isShowDetailMobile">
             <div
               class="contact__item__detail__item"
-              v-for="item in contactItem.DetailList"
+              v-for="item in contactItem.GroupList[0].DetailList"
               :key="item.Lst_ContactValueID"
               @click="openContactLink(contactItem, item)"
             >
@@ -56,7 +56,7 @@
           <div class="contact__item__detail" v-show="isShowDetailSkype">
             <div
               class="contact__item__detail__item"
-              v-for="item in contactItem.DetailList"
+              v-for="item in contactItem.GroupList[0].DetailList"
               :key="item.Lst_ContactValueID"
               @click="openContactLink(contactItem, item)"
             >
@@ -65,6 +65,48 @@
           </div>
         </transition>
       </div>
+
+      <!-- <template v-if="isShowLine(contactItem)">
+        <div class="contact__wrapper" v-for="groupItem in contactItem.GroupList" :key="groupItem.Lst_ContactGroupID">
+          <div class="contact__item contact__item--no-wrap" v-if="groupItem.DetailList.length <= 1">
+            <i class="contact__item__icon--contact icon-line"></i>
+            <div class="contact__item__text">
+              <div class="contact__item__text__title">{{ $t('contact.lineTitle') }}</div>
+              <div class="contact__item__text__content">
+                {{ $t('contact.lineContent', { site: groupItem.DetailList[0].Lst_ContactValue }) }}
+              </div>
+            </div>
+            <button class="contact__item__btn" @click="openContactLink(contactItem, groupItem[0])">
+              {{ $t('contact.join') }}
+            </button>
+          </div>
+
+          <div
+            class="contact__item"
+            @click="isShowDetailLine = !isShowDetailLine"
+            v-else-if="groupItem.DetailList.length > 1"
+          >
+            <i class="contact__item__icon--contact icon-line"></i>
+            <div class="contact__item__text">
+              <div class="contact__item__text__title">{{ $t('contact.line') }}</div>
+              <div class="contact__item__text__content"></div>
+            </div>
+            <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailLine }"></i>
+            <transition name="slide-dropdown">
+              <div class="contact__item__detail-btn" v-show="isShowDetailLine">
+                <div
+                  class="contact__item__detail-btn__item"
+                  v-for="item in groupItem.DetailList.slice(1)"
+                  :key="item.Lst_ContactValueID"
+                  @click="openContactLink(contactItem, item)"
+                >
+                  {{ item.Lst_ContactValue }}
+                </div>
+              </div>
+            </transition>
+          </div>
+        </div>
+      </template> -->
 
       <div
         class="contact__item contact__item--no-wrap"
@@ -75,10 +117,13 @@
         <div class="contact__item__text">
           <div class="contact__item__text__title">{{ $t('contact.lineTitle') }}</div>
           <div class="contact__item__text__content">
-            {{ $t('contact.lineContent', { site: contactItem.DetailList[0].Lst_ContactValue }) }}
+            {{ $t('contact.lineContent', { site: contactItem.GroupList[0].DetailList[0].Lst_ContactValue }) }}
           </div>
         </div>
-        <button class="contact__item__btn" @click="openContactLink(contactItem, contactItem.DetailList[0])">
+        <button
+          class="contact__item__btn"
+          @click="openContactLink(contactItem, contactItem.GroupList[0].DetailList[0])"
+        >
           {{ $t('contact.join') }}
         </button>
       </div>
@@ -99,7 +144,7 @@
           <div class="contact__item__detail-btn" v-show="isShowDetailLine">
             <div
               class="contact__item__detail-btn__item"
-              v-for="item in contactItem.DetailList.slice(1)"
+              v-for="item in contactItem.GroupList[0].DetailList.slice(1)"
               :key="item.Lst_ContactValueID"
               @click="openContactLink(contactItem, item)"
             >
@@ -118,10 +163,13 @@
         <div class="contact__item__text">
           <div class="contact__item__text__title">{{ $t('contact.wechatTitle') }}</div>
           <div class="contact__item__text__content">
-            {{ $t('contact.wechatContent', { site: contactItem.DetailList[0].Lst_ContactValue }) }}
+            {{ $t('contact.wechatContent', { site: contactItem.GroupList[0].DetailList[0].Lst_ContactValue }) }}
           </div>
         </div>
-        <button class="contact__item__btn" @click="openContactLink(contactItem, contactItem.DetailList[0])">
+        <button
+          class="contact__item__btn"
+          @click="openContactLink(contactItem, contactItem.GroupList[0].DetailList[0])"
+        >
           {{ $t('contact.join') }}
         </button>
       </div>
@@ -142,7 +190,7 @@
           <div class="contact__item__detail-btn" v-show="isShowDetailWechat">
             <button
               class="contact__item__detail-btn__item"
-              v-for="item in contactItem.DetailList.slice(1)"
+              v-for="item in contactItem.GroupList[0].DetailList.slice(1)"
               :key="item.Lst_ContactValueID"
               @click="openContactLink(contactItem, item)"
             >
@@ -155,7 +203,7 @@
       <div
         class="contact__item"
         :key="contactItem.Lst_ContactID"
-        @click="openContactLink(contactItem, contactItem.DetailList[0])"
+        @click="openContactLink(contactItem, contactItem.GroupList[0].DetailList[0])"
         v-if="isShowFacebook(contactItem)"
       >
         <i class="contact__item__icon--contact icon-facebook"></i>
@@ -181,7 +229,7 @@
           <div class="contact__item__detail" v-show="isShowDetailTelegram">
             <div
               class="contact__item__detail__item"
-              v-for="item in contactItem.DetailList"
+              v-for="item in contactItem.GroupList[0].DetailList"
               :key="item.Lst_ContactValueID"
               @click="openContactLink(contactItem, item)"
             >
