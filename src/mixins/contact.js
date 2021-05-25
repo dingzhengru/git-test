@@ -30,25 +30,31 @@ export default {
       return this.contactList.find(item => item.Lst_ContactType == 8) || {};
     },
     isShowSkype: app => contactItem => {
-      return contactItem === app.skype && !app.$isObjEmpty(app.skype) && app.skype.GroupList.length > 0;
+      return contactItem === app.skype && !app.$isObjEmpty(app.skype) && app.skype.GroupList[0].DetailList.length > 0;
     },
     isShowLine: app => contactItem => {
-      return contactItem === app.line && !app.$isObjEmpty(app.line) && app.line.GroupList.length > 0;
+      return contactItem === app.line && !app.$isObjEmpty(app.line) && app.line.GroupList[0].DetailList.length > 0;
     },
     isShowLineDropdown: app => contactItem => {
-      return contactItem === app.line && !app.$isObjEmpty(app.line) && app.line.GroupList.length > 1;
+      return contactItem === app.line && !app.$isObjEmpty(app.line) && app.line.GroupList[0].DetailList.length > 1;
     },
     isShowMobile: app => contactItem => {
-      return contactItem === app.mobile && !app.$isObjEmpty(app.mobile) && app.mobile.GroupList.length > 0;
+      return (
+        contactItem === app.mobile && !app.$isObjEmpty(app.mobile) && app.mobile.GroupList[0].DetailList.length > 0
+      );
     },
     isShowMail: app => contactItem => {
-      return contactItem === app.mail && !app.$isObjEmpty(app.mail) && app.mail.GroupList.length > 0;
+      return contactItem === app.mail && !app.$isObjEmpty(app.mail) && app.mail.GroupList[0].DetailList.length > 0;
     },
     isShowWechat: app => contactItem => {
-      return contactItem === app.wechat && !app.$isObjEmpty(app.wechat) && app.wechat.GroupList.length > 0;
+      return (
+        contactItem === app.wechat && !app.$isObjEmpty(app.wechat) && app.wechat.GroupList[0].DetailList.length > 0
+      );
     },
     isShowWechatDropdown: app => contactItem => {
-      return contactItem === app.wechat && !app.$isObjEmpty(app.wechat) && app.wechat.GroupList.length > 1;
+      return (
+        contactItem === app.wechat && !app.$isObjEmpty(app.wechat) && app.wechat.GroupList[0].DetailList.length > 1
+      );
     },
     isShowService: app => contactItem => {
       return contactItem === app.service && !app.$isObjEmpty(app.service);
