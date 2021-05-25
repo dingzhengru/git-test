@@ -565,7 +565,7 @@
         "basic": "基本资料"
       },
       "button": {
-        "bankAdd": "新增银行卡"
+        "bankAdd": "+ 新增银行卡"
       },
       "modal": {
         "bankTitle": "设置银行卡"

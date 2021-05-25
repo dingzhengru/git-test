@@ -569,7 +569,7 @@
         "basic": "Basic information"
       },
       "button": {
-        "bankAdd": "Add bank"
+        "bankAdd": "+ Add a bank card"
       },
       "modal": {
         "bankTitle": "Set up bank"
