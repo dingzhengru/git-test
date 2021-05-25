@@ -1,4 +1,5 @@
 import { register } from 'register-service-worker';
+import i18n from '@/i18n-lazy';
 
 let SW_FILE = '/sw.js';
 
@@ -22,6 +23,8 @@ register(SW_FILE, {
   },
   cached() {
     console.log('Content has been cached for offline use.');
+    window.alert(i18n.t('alert.versionUpdate'));
+    window.location.reload();
   },
   updatefound() {
     console.log('New content is downloading.');
