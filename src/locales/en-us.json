@@ -26,7 +26,8 @@
       "bankBranch": "Name of Branch",
       "bankAccountName": "Account Name of Bank",
       "langSelect": "Select Language",
-      "default": "Default"
+      "default": "Default",
+      "hotGame": "Hot Games"
     },
     "button": {
       "save": "Save",

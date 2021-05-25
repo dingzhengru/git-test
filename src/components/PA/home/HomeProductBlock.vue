@@ -16,17 +16,30 @@
         :style="{ 'background-image': `url(${siteProductImage(item)})` }"
         @click="clickProductItem(item)"
       > -->
-      <div
-        class="home-product-block__item product-list-landscape-item"
-        :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
-        v-for="item in list"
-        :key="item.Lst_Product_Proxy_Tag"
-        :style="{ 'background-image': `url(${imgSrcTest})` }"
-        @click="clickProductItem(item)"
-      >
-        <!-- <div class="home-product-block__item__text">{{ item.Lst_Name }}</div> -->
-        <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
-      </div>
+
+      <template v-if="isProduct">
+        <div
+          class="home-product-block__item product-list-landscape-item"
+          :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
+          v-for="item in list"
+          :key="item.Lst_Product_Proxy_Tag"
+          :style="{ 'background-image': `url(${imgSrcTest})` }"
+          @click="clickProductItem(item)"
+        >
+          <!-- <div class="home-product-block__item__text">{{ item.Lst_Name }}</div> -->
+          <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
+        </div>
+      </template>
+
+      <template v-else>
+        <div
+          class="home-product-block__item product-list-landscape-item"
+          v-for="item in list"
+          :key="item.Lst_GameID"
+          :style="{ 'background-image': `url(${item.imagePath})` }"
+          @click="openGame(item)"
+        ></div>
+      </template>
     </transition-group>
     <div
       class="ui-panel-tab__content__arrow ui-panel-tab__content__arrow--left"
@@ -44,25 +57,28 @@
 <script>
 import mixinProductLinkHandler from '@/mixins/productLinkHandler';
 import { mapGetters } from 'vuex';
+import mixinGameOpen from '@/mixins/gameOpen';
 import mixinScrollArrow from '@/mixins/_scrollArrow';
 
 export default {
   name: 'HomeProductBlock',
-  mixins: [mixinProductLinkHandler, mixinScrollArrow],
+  mixins: [mixinProductLinkHandler, mixinGameOpen, mixinScrollArrow],
   props: {
     list: {
       type: Array,
       default: () => [],
     },
     classify: {
-      type: Number,
       default: () => 0,
     },
   },
   computed: {
     ...mapGetters(['siteFullCss', 'siteProductImage', 'userIsLoggedIn']),
+    isProduct() {
+      return typeof this.classify === 'number';
+    },
     isImgBlock() {
-      return this.classify !== 2;
+      return this.classify !== 2 && this.isProduct;
     },
     imgSrc: app => game => {
       try {

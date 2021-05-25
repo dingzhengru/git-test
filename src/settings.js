@@ -116,6 +116,7 @@ export const API_AUTH_LIST = [
   'Game/MemberCollectionEdit',
   'Game/MFightLobby',
   'Game/MFavoritesList',
+  'Game/MSiteHotGames',
   'Msg/MessageList',
   'Msg/MInbox_Load',
   'Msg/MInbox_LoadDetail',

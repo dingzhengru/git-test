@@ -26,7 +26,8 @@
       "bankBranch": "支行名称",
       "bankAccountName": "银行户名",
       "langSelect": "语系选择",
-      "default": "默认"
+      "default": "默认",
+      "hotGame": "热门游戏"
     },
     "button": {
       "save": "保存",

@@ -98,8 +98,8 @@ store.dispatch('getLangList');
     cookieSetVersion(version);
     cacheKeyList.forEach(key => caches.delete(key));
 
-    setTimeout(() => {
-      alert(i18n.t('alert.versionUpdate'));
+    window.setTimeout(() => {
+      window.alert(i18n.t('alert.versionUpdate'));
       window.location.reload();
     }, 1000);
   }
@@ -231,9 +231,9 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
-    const siteClass = 'Z';
+    const siteClass = 'PA';
     const siteType = '01';
-    const isLandscape = false;
+    const isLandscape = true;
     console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
     store.commit('site/setInfoStyle', { siteClass, siteType });
