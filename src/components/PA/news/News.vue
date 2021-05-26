@@ -4,7 +4,7 @@
       <component :is="PanelTabs" :list="tabList" />
 
       <div class="ui-panel-tab__content news__content">
-        <div class="news__item" v-for="(item, index) in newsList" :key="index">
+        <div class="news__item" v-for="(item, index) in newsListFiltered" :key="index">
           <div class="news__item__date">
             <div class="news__item__date__content">{{ getDateTime(item.Lst_StartDateTime) }}</div>
           </div>
