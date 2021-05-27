@@ -89,7 +89,8 @@ export default {
         let prizeText = '' + (index + 1);
         this.wheelSegments.push({
           text: prizeText,
-          image: this.wheelStyle.prizeImgUrl,
+          // image: this.wheelStyle.prizeImgUrl,
+          image: item.image,
           fillStyle: item.fillStyle,
         });
       });
