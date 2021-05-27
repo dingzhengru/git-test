@@ -20,6 +20,7 @@ import {
   cookieGetIsPreview,
 } from '@/utils/cookie';
 
+console.log('log: update test');
 console.log(process.env.NODE_ENV);
 
 //* CSS
