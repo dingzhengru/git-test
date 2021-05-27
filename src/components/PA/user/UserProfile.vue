@@ -229,7 +229,12 @@
           <div class="ui-step">
             <img class="ui-step__icon" :src="imgBank" />
             <span>{{ $t('user.profile.step.bank') }}</span>
-            <button class="ui-btn user-profile__btn--add-bank" type="button" @click="isShowModalUserBank = true">
+            <button
+              class="ui-btn user-profile__btn--add-bank"
+              type="button"
+              @click="isShowModalUserBank = true"
+              v-if="isShowBankAddButton"
+            >
               {{ $t('user.profile.button.bankAdd') }}
             </button>
           </div>
@@ -247,6 +252,38 @@
                 </span>
                 <span class="user-profile__bank__item__card__number">
                   {{ transferToBankString(fieldBankAccount1.value) }}
+                </span>
+              </div>
+            </div>
+
+            <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value" v-if="fieldBankId2.value">
+              <label class="ui-field-box user-profile__bank__item__radio">
+                <span>{{ $t('ui.label.default') }}</span>
+                <input type="radio" :value="fieldBankId2.value" v-model="bankDefault" />
+                <div></div>
+              </label>
+              <div class="user-profile__bank__item__card">
+                <span class="user-profile__bank__item__card__name">
+                  {{ getBankById(fieldBankId2.value).Text }}
+                </span>
+                <span class="user-profile__bank__item__card__number">
+                  {{ transferToBankString(fieldBankAccount2.value) }}
+                </span>
+              </div>
+            </div>
+
+            <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value" v-if="fieldBankId3.value">
+              <label class="ui-field-box user-profile__bank__item__radio">
+                <span>{{ $t('ui.label.default') }}</span>
+                <input type="radio" :value="fieldBankId3.value" v-model="bankDefault" />
+                <div></div>
+              </label>
+              <div class="user-profile__bank__item__card">
+                <span class="user-profile__bank__item__card__name">
+                  {{ getBankById(fieldBankId3.value).Text }}
+                </span>
+                <span class="user-profile__bank__item__card__number">
+                  {{ transferToBankString(fieldBankAccount3.value) }}
                 </span>
               </div>
             </div>
@@ -460,13 +497,12 @@
     />
     <component
       :is="ModalUserBank"
+      :bankAddNumber="bankAddNumber"
       :bankIdAdd="bankIdAdd"
       :bankAccountAdd="bankAccountAdd"
       :bankBranchAdd="bankBranchAdd"
       :bankList="bankList"
-      @update-bank-id="updateBankIdAdd"
-      @update-bank-account="updateBankAccountAdd"
-      @update-bank-branch="updateBankBranchAdd"
+      @update-bank="updateBankAdd"
       @close="isShowModalUserBank = false"
       v-if="isShowModalUserBank"
     />
@@ -499,7 +535,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss']),
+    ...mapGetters(['siteSetting', 'siteFullCss', 'userWithdrawalCount']),
     PanelTabs() {
       return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
@@ -518,9 +554,9 @@ export default {
     isShowBankAddButton() {
       if (this.bankAddNumber === 1) {
         return true;
-      } else if (this.bankAddNumber === 2 && this.fieldBankId2.isShow && this.fieldBankId2.isModifiable) {
+      } else if (this.bankAddNumber === 2 && this.fieldBankId2.isModifiable && this.userWithdrawalCount > 0) {
         return true;
-      } else if (this.bankAddNumber === 3 && this.fieldBankId3.isShow && this.fieldBankId3.isModifiable) {
+      } else if (this.bankAddNumber === 3 && this.fieldBankId3.isModifiable && this.userWithdrawalCount > 0) {
         return true;
       }
       return false;
@@ -608,16 +644,10 @@ export default {
     };
   },
   methods: {
-    updateBankIdAdd(bankId) {
-      this.fieldList.find(item => item.name === bankId.name).value = bankId.value;
-
-      console.log(this.fieldList.find(item => item.name === bankId.name));
-    },
-    updateBankAccountAdd(bankAccount) {
-      this.fieldList.find(item => item.name === bankAccount.name).value = bankAccount.value;
-    },
-    updateBankBranchAdd(bankBranch) {
-      this.fieldList.find(item => item.name === bankBranch.name).value = bankBranch.value;
+    updateBankAdd(bank) {
+      this.fieldList.find(item => item.name === bank.bankId.name).value = bank.bankId.value;
+      this.fieldList.find(item => item.name === bank.bankAccount.name).value = bank.bankAccount.value;
+      this.fieldList.find(item => item.name === bank.bankBranch.name).value = bank.bankBranch.value;
     },
     transferToBankString(str) {
       if (!str) {

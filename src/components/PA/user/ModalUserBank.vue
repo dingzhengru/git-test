@@ -39,20 +39,21 @@
               {{ errors[0] }}
             </div>
           </ValidationProvider>
-          <!-- <ValidationProvider
-            class="user-bank__field"
+
+          <ValidationProvider
+            class="ui-field user-bank__field"
             tag="div"
             :class="[bankBranch.class]"
             :name="bankBranch.name"
             :rules="bankBranch.rules"
             v-slot="{ errors }"
           >
-            <label for="">{{ $t('ui.label.bankBranch') }}</label>
+            <label for="">{{ $t('ui.label.bankBranch') }}： </label>
             <input type="text" v-model="bankBranch.value" />
             <div class="user-bank__field__error" v-if="errors.length > 0 && errors[0]">
               {{ errors[0] }}
             </div>
-          </ValidationProvider> -->
+          </ValidationProvider>
 
           <div class="user-bank__btn">
             <button class="ui-btn ui-btn--lg" type="submit" :disabled="invalid">{{ $t('ui.button.save') }}</button>
@@ -66,6 +67,7 @@
 <script>
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import mixinCheckField from '@/mixins/checkField';
+import { apiBankInfoChange } from '@/api/user';
 
 export default {
   name: 'ModalUserBank',
@@ -76,6 +78,10 @@ export default {
     ValidationProvider,
   },
   props: {
+    bankAddNumber: {
+      type: Number,
+      default: 0,
+    },
     bankIdAdd: {
       type: Object,
       default: () => {
@@ -119,10 +125,24 @@ export default {
       this.bankAccount.rules['register-required'] = true;
       this.bankBranch.rules['register-required'] = true;
     },
-    submitUserBank() {
-      this.$emit('update-bank-id', this.bankId);
-      this.$emit('update-bank-account', this.bankAccount);
-      this.$emit('update-bank-branch', this.bankBranch);
+    async submitUserBank() {
+      const requestData = {};
+      requestData.Add_BankType = this.bankAddNumber;
+      requestData[this.bankId.name] = this.bankId.value;
+      requestData[this.bankAccount.name] = this.bankAccount.value;
+      requestData[this.bankBranch.name] = this.bankBranch.value;
+
+      console.log(requestData);
+
+      const result = await apiBankInfoChange(requestData);
+
+      if (result.Code === 200) {
+        this.$emit('update-bank', {
+          bankId: this.bankId,
+          bankAccount: this.bankAccount,
+          bankBranch: this.bankBranch,
+        });
+      }
     },
   },
   mounted() {
