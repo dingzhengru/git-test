@@ -30,51 +30,45 @@ export default {
       return this.contactList.find(item => item.Lst_ContactType == 8) || {};
     },
     isShowSkype: app => contactItem => {
-      return contactItem === app.skype && !app.$isObjEmpty(app.skype) && app.skype.GroupList[0].DetailList.length > 0;
+      return contactItem === app.skype && !app.$isObjEmpty(app.skype);
     },
     isShowLine: app => contactItem => {
-      return contactItem === app.line && !app.$isObjEmpty(app.line) && app.line.GroupList[0].DetailList.length > 0;
-    },
-    isShowLineDropdown: app => contactItem => {
-      return contactItem === app.line && !app.$isObjEmpty(app.line) && app.line.GroupList[0].DetailList.length > 1;
+      return contactItem === app.line && !app.$isObjEmpty(app.line);
     },
     isShowMobile: app => contactItem => {
-      return (
-        contactItem === app.mobile && !app.$isObjEmpty(app.mobile) && app.mobile.GroupList[0].DetailList.length > 0
-      );
+      return contactItem === app.mobile && !app.$isObjEmpty(app.mobile);
     },
     isShowMail: app => contactItem => {
-      return contactItem === app.mail && !app.$isObjEmpty(app.mail) && app.mail.GroupList[0].DetailList.length > 0;
+      return contactItem === app.mail && !app.$isObjEmpty(app.mail);
     },
     isShowWechat: app => contactItem => {
-      return (
-        contactItem === app.wechat && !app.$isObjEmpty(app.wechat) && app.wechat.GroupList[0].DetailList.length > 0
-      );
-    },
-    isShowWechatDropdown: app => contactItem => {
-      return (
-        contactItem === app.wechat && !app.$isObjEmpty(app.wechat) && app.wechat.GroupList[0].DetailList.length > 1
-      );
+      return contactItem === app.wechat && !app.$isObjEmpty(app.wechat);
     },
     isShowService: app => contactItem => {
       return contactItem === app.service && !app.$isObjEmpty(app.service);
     },
     isShowFacebook: app => contactItem => {
-      return contactItem === app.facebook && !app.$isObjEmpty(app.facebook) && app.facebook.GroupList.length > 0;
-    },
-    isShowFacebookDropdown: app => contactItem => {
-      return contactItem === app.facebook && !app.$isObjEmpty(app.facebook) && app.facebook.GroupList.length > 1;
+      return contactItem === app.facebook && !app.$isObjEmpty(app.facebook);
     },
     isShowTelegram: app => contactItem => {
-      return contactItem === app.telegram && !app.$isObjEmpty(app.telegram) && app.telegram.GroupList.length > 0;
-    },
-    isShowTelegramDropdown: app => contactItem => {
-      return contactItem === app.telegram && !app.$isObjEmpty(app.telegram) && app.telegram.GroupList.length > 1;
+      return contactItem === app.telegram && !app.$isObjEmpty(app.telegram);
     },
   },
   data() {
     return {
       contactList: [],
+
+      contactNameMap: {
+        1: 'skype',
+        2: 'line',
+        3: 'mobile',
+        4: 'mail',
+        5: 'wechat',
+        6: 'service',
+        7: 'facebook',
+        8: 'telegram',
+      },
+
       zopim: undefined,
       zE: undefined,
       zopimLangMapper: {
@@ -83,12 +77,6 @@ export default {
         'zh-cn': 'zh_CN',
         'zh-tw': 'zh_TW',
       },
-
-      isShowDetailMobile: false,
-      isShowDetailSkype: false,
-      isShowDetailLine: false,
-      isShowDetailWechat: false,
-      isShowDetailTelegram: false,
     };
   },
   methods: {
@@ -98,6 +86,16 @@ export default {
 
       if (result.Code == 200) {
         this.contactList = result.RetObj.ServiceList;
+
+        this.contactList.forEach(item => {
+          if (item === this.service) {
+            return;
+          }
+
+          item.GroupList = item.GroupList.map(groupItem => {
+            return { ...groupItem, isShowDetail: false };
+          });
+        });
       }
 
       /*eslint-disable no-undef*/

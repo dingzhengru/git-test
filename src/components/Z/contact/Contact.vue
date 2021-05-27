@@ -14,57 +14,107 @@
         </div>
       </div>
 
-      <div
-        class="contact__item"
-        :key="contactItem.Lst_ContactID"
-        @click="isShowDetailMobile = !isShowDetailMobile"
-        v-if="isShowMobile(contactItem)"
-      >
-        <i class="contact__item__icon--contact icon-mobile"></i>
-        <div class="contact__item__text">
-          <div class="contact__item__text__title">{{ $t('contact.mobile') }}</div>
-          <div class="contact__item__text__content"></div>
-        </div>
-        <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailMobile }"></i>
-        <transition name="slide-dropdown">
-          <div class="contact__item__detail" v-show="isShowDetailMobile">
-            <div
-              class="contact__item__detail__item"
-              v-for="item in contactItem.GroupList[0].DetailList"
-              :key="item.Lst_ContactValueID"
-              @click="openContactLink(contactItem, item)"
-            >
-              {{ item.Lst_ContactValue }}
+      <template v-if="isShowService(contactItem) === false && isShowMail(contactItem) === false">
+        <div class="contact__wrapper" v-for="groupItem in contactItem.GroupList" :key="groupItem.Lst_ContactGroupID">
+          <div class="contact__item contact__item--no-wrap" v-if="groupItem.DetailList.length <= 1">
+            <i class="contact__item__icon--contact" :class="`icon-${contactNameMap[contactItem.Lst_ContactType]}`"></i>
+            <div class="contact__item__text">
+              <div class="contact__item__text__title">
+                {{ $t(`contact.${contactNameMap[contactItem.Lst_ContactType]}`) }}
+              </div>
+              <div class="contact__item__text__content">
+                {{ groupItem.Lst_ContactGroupName }}
+              </div>
             </div>
+            <button class="contact__item__btn" @click="openContactLink(contactItem, groupItem.DetailList[0])">
+              {{ $t('contact.join') }}
+            </button>
           </div>
-        </transition>
-      </div>
 
-      <div
-        class="contact__item"
-        :key="contactItem.Lst_ContactID"
-        @click="isShowDetailSkype = !isShowDetailSkype"
-        v-if="isShowSkype(contactItem)"
-      >
-        <i class="contact__item__icon--contact icon-skype"></i>
-        <div class="contact__item__text">
-          <div class="contact__item__text__title">{{ $t('contact.skype') }}</div>
-          <div class="contact__item__text__content"></div>
-        </div>
-        <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailSkype }"></i>
-        <transition name="slide-dropdown">
-          <div class="contact__item__detail" v-show="isShowDetailSkype">
-            <div
-              class="contact__item__detail__item"
-              v-for="item in contactItem.GroupList[0].DetailList"
-              :key="item.Lst_ContactValueID"
-              @click="openContactLink(contactItem, item)"
-            >
-              {{ item.Lst_ContactValue }}
+          <div
+            class="contact__item"
+            @click="groupItem.isShowDetail = !groupItem.isShowDetail"
+            v-else-if="groupItem.DetailList.length > 1"
+          >
+            <i class="contact__item__icon--contact" :class="`icon-${contactNameMap[contactItem.Lst_ContactType]}`"></i>
+            <div class="contact__item__text">
+              <div class="contact__item__text__title">
+                {{ $t(`contact.${contactNameMap[contactItem.Lst_ContactType]}`) }}
+              </div>
+              <div class="contact__item__text__content">{{ groupItem.Lst_ContactGroupName }}</div>
             </div>
+            <i class="contact__item__icon--dropdown" :class="{ open: groupItem.isShowDetail }"></i>
+            <transition name="slide-dropdown">
+              <div class="contact__item__detail-btn" v-show="groupItem.isShowDetail">
+                <div
+                  class="contact__item__detail-btn__item"
+                  v-for="item in groupItem.DetailList"
+                  :key="item.Lst_ContactValueID"
+                  @click="openContactLink(contactItem, item)"
+                >
+                  {{ item.Lst_ContactValue }}
+                </div>
+              </div>
+            </transition>
           </div>
-        </transition>
-      </div>
+        </div>
+      </template>
+
+      <!-- <template v-if="isShowMobile(contactItem)">
+        <div
+          class="contact__item"
+          v-for="groupItem in contactItem.GroupList"
+          :key="groupItem.Lst_ContactGroupID"
+          @click="groupItem.isShowDetail = !groupItem.isShowDetail"
+        >
+          <i class="contact__item__icon--contact icon-mobile"></i>
+          <div class="contact__item__text">
+            <div class="contact__item__text__title">{{ $t('contact.mobile') }}</div>
+            <div class="contact__item__text__content"></div>
+          </div>
+          <i class="contact__item__icon--dropdown" :class="{ open: groupItem.isShowDetail }"></i>
+          <transition name="slide-dropdown">
+            <div class="contact__item__detail" v-show="groupItem.isShowDetail">
+              <div
+                class="contact__item__detail__item"
+                v-for="item in groupItem.DetailList"
+                :key="item.Lst_ContactValueID"
+                @click="openContactLink(contactItem, item)"
+              >
+                {{ item.Lst_ContactValue }}
+              </div>
+            </div>
+          </transition>
+        </div>
+      </template> -->
+
+      <!-- <template v-if="isShowSkype(contactItem)">
+        <div
+          class="contact__item"
+          v-for="groupItem in contactItem.GroupList"
+          :key="groupItem.Lst_ContactGroupID"
+          @click="groupItem.isShowDetail = !groupItem.isShowDetail"
+        >
+          <i class="contact__item__icon--contact icon-skype"></i>
+          <div class="contact__item__text">
+            <div class="contact__item__text__title">{{ $t('contact.skype') }}</div>
+            <div class="contact__item__text__content"></div>
+          </div>
+          <i class="contact__item__icon--dropdown" :class="{ open: groupItem.isShowDetail }"></i>
+          <transition name="slide-dropdown">
+            <div class="contact__item__detail" v-show="groupItem.isShowDetail">
+              <div
+                class="contact__item__detail__item"
+                v-for="item in groupItem.DetailList"
+                :key="item.Lst_ContactValueID"
+                @click="openContactLink(contactItem, item)"
+              >
+                {{ item.Lst_ContactValue }}
+              </div>
+            </div>
+          </transition>
+        </div>
+      </template> -->
 
       <!-- <template v-if="isShowLine(contactItem)">
         <div class="contact__wrapper" v-for="groupItem in contactItem.GroupList" :key="groupItem.Lst_ContactGroupID">
@@ -73,30 +123,30 @@
             <div class="contact__item__text">
               <div class="contact__item__text__title">{{ $t('contact.lineTitle') }}</div>
               <div class="contact__item__text__content">
-                {{ $t('contact.lineContent', { site: groupItem.DetailList[0].Lst_ContactValue }) }}
+                {{ groupItem.Lst_ContactGroupName }}
               </div>
             </div>
-            <button class="contact__item__btn" @click="openContactLink(contactItem, groupItem[0])">
+            <button class="contact__item__btn" @click="openContactLink(contactItem, groupItem.DetailList[0])">
               {{ $t('contact.join') }}
             </button>
           </div>
 
           <div
             class="contact__item"
-            @click="isShowDetailLine = !isShowDetailLine"
+            @click="groupItem.isShowDetail = !groupItem.isShowDetail"
             v-else-if="groupItem.DetailList.length > 1"
           >
             <i class="contact__item__icon--contact icon-line"></i>
             <div class="contact__item__text">
               <div class="contact__item__text__title">{{ $t('contact.line') }}</div>
-              <div class="contact__item__text__content"></div>
+              <div class="contact__item__text__content">{{ groupItem.Lst_ContactGroupName }}</div>
             </div>
-            <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailLine }"></i>
+            <i class="contact__item__icon--dropdown" :class="{ open: groupItem.isShowDetail }"></i>
             <transition name="slide-dropdown">
-              <div class="contact__item__detail-btn" v-show="isShowDetailLine">
+              <div class="contact__item__detail-btn" v-show="groupItem.isShowDetail">
                 <div
                   class="contact__item__detail-btn__item"
-                  v-for="item in groupItem.DetailList.slice(1)"
+                  v-for="item in groupItem.DetailList"
                   :key="item.Lst_ContactValueID"
                   @click="openContactLink(contactItem, item)"
                 >
@@ -108,7 +158,7 @@
         </div>
       </template> -->
 
-      <div
+      <!-- <div
         class="contact__item contact__item--no-wrap"
         :key="'contactItemButton' + String(contactItem.Lst_ContactID)"
         v-if="isShowLine(contactItem)"
@@ -152,92 +202,92 @@
             </div>
           </div>
         </transition>
-      </div>
+      </div> -->
 
-      <div
-        class="contact__item contact__item--no-wrap"
-        :key="'contactItemButton' + String(contactItem.Lst_ContactID)"
-        v-if="isShowWechat(contactItem)"
-      >
-        <i class="contact__item__icon--contact icon-wechat"></i>
-        <div class="contact__item__text">
-          <div class="contact__item__text__title">{{ $t('contact.wechatTitle') }}</div>
-          <div class="contact__item__text__content">
-            {{ $t('contact.wechatContent', { site: contactItem.GroupList[0].DetailList[0].Lst_ContactValue }) }}
-          </div>
-        </div>
-        <button
-          class="contact__item__btn"
-          @click="openContactLink(contactItem, contactItem.GroupList[0].DetailList[0])"
-        >
-          {{ $t('contact.join') }}
-        </button>
-      </div>
-
-      <div
-        class="contact__item"
-        :key="contactItem.Lst_ContactID"
-        @click="isShowDetailWechat = !isShowDetailWechat"
-        v-if="isShowWechatDropdown(contactItem)"
-      >
-        <i class="contact__item__icon--contact icon-wechat"></i>
-        <div class="contact__item__text">
-          <div class="contact__item__text__title">{{ $t('contact.wechat') }}</div>
-          <div class="contact__item__text__content"></div>
-        </div>
-        <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailWechat }"></i>
-        <transition name="slide-dropdown">
-          <div class="contact__item__detail-btn" v-show="isShowDetailWechat">
-            <button
-              class="contact__item__detail-btn__item"
-              v-for="item in contactItem.GroupList[0].DetailList.slice(1)"
-              :key="item.Lst_ContactValueID"
-              @click="openContactLink(contactItem, item)"
-            >
-              {{ item.Lst_ContactValue }}
+      <!-- <template v-if="isShowWechat(contactItem)">
+        <div class="contact__wrapper" v-for="groupItem in contactItem.GroupList" :key="groupItem.Lst_ContactGroupID">
+          <div class="contact__item contact__item--no-wrap" v-if="groupItem.DetailList.length <= 1">
+            <i class="contact__item__icon--contact icon-line"></i>
+            <div class="contact__item__text">
+              <div class="contact__item__text__title">{{ $t('contact.wechatTitle') }}</div>
+              <div class="contact__item__text__content">
+                {{ groupItem.Lst_ContactGroupName }}
+              </div>
+            </div>
+            <button class="contact__item__btn" @click="openContactLink(contactItem, groupItem.DetailList[0])">
+              {{ $t('contact.join') }}
             </button>
           </div>
-        </transition>
-      </div>
 
-      <div
-        class="contact__item"
-        :key="contactItem.Lst_ContactID"
-        @click="openContactLink(contactItem, contactItem.GroupList[0].DetailList[0])"
-        v-if="isShowFacebook(contactItem)"
-      >
-        <i class="contact__item__icon--contact icon-facebook"></i>
-        <div class="contact__item__text">
-          <div class="contact__item__text__title">Facebook</div>
-          <div class="contact__item__text__content"></div>
-        </div>
-      </div>
-
-      <div
-        class="contact__item"
-        :key="contactItem.Lst_ContactID"
-        @click="isShowDetailTelegram = !isShowDetailTelegram"
-        v-if="isShowTelegram(contactItem)"
-      >
-        <i class="contact__item__icon--contact icon-telegram"></i>
-        <div class="contact__item__text">
-          <div class="contact__item__text__title">Telegram</div>
-          <div class="contact__item__text__content"></div>
-        </div>
-        <i class="contact__item__icon--dropdown" :class="{ open: isShowDetailTelegram }"></i>
-        <transition name="slide-dropdown">
-          <div class="contact__item__detail" v-show="isShowDetailTelegram">
-            <div
-              class="contact__item__detail__item"
-              v-for="item in contactItem.GroupList[0].DetailList"
-              :key="item.Lst_ContactValueID"
-              @click="openContactLink(contactItem, item)"
-            >
-              {{ item.Lst_ContactValue }}
+          <div
+            class="contact__item"
+            @click="groupItem.isShowDetail = !groupItem.isShowDetail"
+            v-else-if="groupItem.DetailList.length > 1"
+          >
+            <i class="contact__item__icon--contact icon-wechat"></i>
+            <div class="contact__item__text">
+              <div class="contact__item__text__title">{{ $t('contact.wechat') }}</div>
+              <div class="contact__item__text__content">{{ groupItem.Lst_ContactGroupName }}</div>
             </div>
+            <i class="contact__item__icon--dropdown" :class="{ open: groupItem.isShowDetail }"></i>
+            <transition name="slide-dropdown">
+              <div class="contact__item__detail-btn" v-show="groupItem.isShowDetail">
+                <div
+                  class="contact__item__detail-btn__item"
+                  v-for="item in groupItem.DetailList"
+                  :key="item.Lst_ContactValueID"
+                  @click="openContactLink(contactItem, item)"
+                >
+                  {{ item.Lst_ContactValue }}
+                </div>
+              </div>
+            </transition>
           </div>
-        </transition>
-      </div>
+        </div>
+      </template> -->
+
+      <!-- <template v-if="isShowFacebook(contactItem)">
+        <div
+          class="contact__item"
+          v-for="groupItem in contactItem.GroupList"
+          :key="groupItem.Lst_ContactGroupID"
+          @click="openContactLink(contactItem, groupItem.DetailList[0])"
+        >
+          <i class="contact__item__icon--contact icon-facebook"></i>
+          <div class="contact__item__text">
+            <div class="contact__item__text__title">Facebook</div>
+            <div class="contact__item__text__content"></div>
+          </div>
+        </div>
+      </template> -->
+
+      <!-- <template v-if="isShowTelegram(contactItem)">
+        <div
+          class="contact__item"
+          v-for="groupItem in contactItem.GroupList"
+          :key="groupItem.Lst_ContactGroupID"
+          @click="groupItem.isShowDetail = !groupItem.isShowDetail"
+        >
+          <i class="contact__item__icon--contact icon-telegram"></i>
+          <div class="contact__item__text">
+            <div class="contact__item__text__title">Telegram</div>
+            <div class="contact__item__text__content"></div>
+          </div>
+          <i class="contact__item__icon--dropdown" :class="{ open: groupItem.isShowDetail }"></i>
+          <transition name="slide-dropdown">
+            <div class="contact__item__detail" v-show="groupItem.isShowDetail">
+              <div
+                class="contact__item__detail__item"
+                v-for="item in groupItem.DetailList"
+                :key="item.Lst_ContactValueID"
+                @click="openContactLink(contactItem, item)"
+              >
+                {{ item.Lst_ContactValue }}
+              </div>
+            </div>
+          </transition>
+        </div>
+      </template> -->
     </template>
   </div>
 </template>
