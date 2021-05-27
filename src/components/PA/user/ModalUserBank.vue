@@ -132,16 +132,18 @@ export default {
       requestData[this.bankAccount.name] = this.bankAccount.value;
       requestData[this.bankBranch.name] = this.bankBranch.value;
 
-      console.log(requestData);
-
       const result = await apiBankInfoChange(requestData);
 
       if (result.Code === 200) {
+        window.alert(this.$t('alert.changeProfileSuccess'));
+        this.$emit('close');
         this.$emit('update-bank', {
           bankId: this.bankId,
           bankAccount: this.bankAccount,
           bankBranch: this.bankBranch,
         });
+      } else if (result.Code === 500) {
+        window.alert(result.ErrMsg);
       }
     },
   },
