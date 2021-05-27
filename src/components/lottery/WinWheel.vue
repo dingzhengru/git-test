@@ -83,10 +83,12 @@ export default {
     // 依照回傳獎項數量產出蓋牌轉盤列表
     defaultSegemetsHandler() {
       this.wheelSegmentsPrize.map((item, index) => {
+        console.log(item);
         let prizeText = '' + (index + 1);
         this.wheelSegments.push({
           text: prizeText,
-          image: this.wheelStyle.prizeImgUrl,
+          // image: this.wheelStyle.prizeImgUrl,
+          image: item.image,
           fillStyle: item.fillStyle,
         });
       });
