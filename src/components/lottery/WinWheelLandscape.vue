@@ -90,7 +90,6 @@ export default {
     // 依照回傳獎項數量產出蓋牌轉盤列表
     defaultSegemetsHandler() {
       this.wheelSegmentsPrize.forEach((item, index) => {
-        // console.log(item);
         let prizeText = '' + (index + 1);
         this.wheelSegments.push({
           text: prizeText,
