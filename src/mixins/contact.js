@@ -172,7 +172,7 @@ export default {
         window.open(`https://line.me/ti/p/~${content.Lst_ContactValue}`);
       } else if (contact == this.mobile) {
         window.open(`tel:${content.Lst_ContactValue}`, '_self');
-      } else if (contact == this.email) {
+      } else if (contact == this.mail) {
         window.open(`mailto:${content.Lst_ContactValue}`, '_self');
       } else if (contact == this.wechat) {
         //* 參考: https://stackoverflow.com/a/41297068/5134658
@@ -196,6 +196,8 @@ export default {
   },
   watch: {
     lang() {
+      this.apiGetContactList();
+
       if (this.zopim && this.zopim.livechat) {
         this.zopim.livechat.setLanguage(this.zopimLangMapper[this.lang] || 'en');
       } else if (this.zE) {

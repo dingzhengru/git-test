@@ -14,9 +14,9 @@
         </div>
       </div>
 
-      <template v-if="isShowService(contactItem) === false && isShowMail(contactItem) === false">
+      <template v-if="isShowService(contactItem) === false">
         <div class="contact__wrapper" v-for="groupItem in contactItem.GroupList" :key="groupItem.Lst_ContactGroupID">
-          <div class="contact__item contact__item--no-wrap" v-if="groupItem.DetailList.length <= 1">
+          <div class="contact__item contact__item--no-wrap" v-if="groupItem.DetailList.length === 1">
             <i class="contact__item__icon--contact" :class="`icon-${contactNameMap[contactItem.Lst_ContactType]}`"></i>
             <div class="contact__item__text">
               <div class="contact__item__text__title">
