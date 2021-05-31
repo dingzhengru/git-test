@@ -26,7 +26,8 @@
       "bankBranch": "လုပ္ငန္းခြဲ",
       "bankAccountName": "ဘဏ်အကောင့်အမည်",
       "langSelect": "ဘာသာစကားရွေးပါ",
-      "default": "နဂိုအတိုင္းထားမည္"
+      "default": "နဂိုအတိုင္းထားမည္",
+      "hotGame": "လူကြိုက်များသောဂိမ်း"
     },
     "button": {
       "save": "မွတ္သားသည္",
@@ -566,7 +567,7 @@
         "basic": "Basic information"
       },
       "button": {
-        "bankAdd": "Add bank"
+        "bankAdd": "+ Add a bank card"
       },
       "modal": {
         "bankTitle": "Set up bank"
@@ -950,9 +951,11 @@
     "skype": "Skype",
     "line": "Line",
     "mobile": "Mobile",
-    "email": "Email",
+    "mail": "Email",
     "wechat": "wechat",
     "service": "Online Customer Service",
+    "facebook": "Facebook",
+    "telegram": "Telegram",
     "serviceTitle": "Online Customer Service 7/24",
     "serviceContent": "Click to start using web customer service",
     "lineTitle": "Line",

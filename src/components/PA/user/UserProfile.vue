@@ -229,7 +229,12 @@
           <div class="ui-step">
             <img class="ui-step__icon" :src="imgBank" />
             <span>{{ $t('user.profile.step.bank') }}</span>
-            <button class="ui-btn user-profile__btn--add-bank" type="button" @click="isShowModalUserBank = true">
+            <button
+              class="ui-btn user-profile__btn--add-bank"
+              type="button"
+              @click="isShowModalUserBank = true"
+              v-if="isShowBankAddButton"
+            >
               {{ $t('user.profile.button.bankAdd') }}
             </button>
           </div>
@@ -251,185 +256,37 @@
               </div>
             </div>
 
-            <!-- <div class="user-profile__bank__fields">
-              <ValidationProvider
-                class="user-profile__bank__field"
-                tag="div"
-                :class="[fieldBankId1.class]"
-                :name="fieldBankId1.name"
-                :rules="fieldBankId1.rules"
-                v-show="fieldBankId1.isShow"
-                v-slot="{ errors }"
-              >
-                <label>{{ $t(`register.Add_BankId1.placeholder`) }}</label>
-                <select class="ui-field__select" v-model="fieldBankId1.value" v-if="fieldBankId1.isModifiable">
-                  <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
-                </select>
-                <input type="text" :value="getBankById(fieldBankId1.value).Text" readonly v-else />
-                <div class="" v-if="errors.length > 0 && errors[0]">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-
-              <ValidationProvider
-                class="user-profile__bank__field"
-                tag="div"
-                :class="[fieldBankAccount1.class]"
-                :name="fieldBankAccount1.name"
-                :rules="fieldBankAccount1.rules"
-                v-show="fieldBankAccount1.isShow"
-                v-slot="{ errors, invalid }"
-              >
-                <label>{{ $t(`register.Add_BankAccount1.placeholder`) }}</label>
-                <input
-                  type="text"
-                  v-model="fieldBankAccount1.value"
-                  @change="checkField(fieldBankAccount1, invalid)"
-                  v-if="fieldBankAccount1.isModifiable"
-                />
-                <input type="text" :value="fieldBankAccount1.value" readonly v-else />
-                <div class="" v-if="errors.length > 0 && errors[0]">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-
-              <ValidationProvider
-                class="user-profile__bank__field"
-                tag="div"
-                :class="[fieldBankBranchName1.class]"
-                :name="fieldBankBranchName1.name"
-                :rules="fieldBankBranchName1.rules"
-                v-show="fieldBankBranchName1.isShow"
-                v-slot="{ errors }"
-              >
-                <label>{{ $t(`register.Add_BankBranchName1.placeholder`) }}</label>
-                <input type="text" v-model="fieldBankBranchName1.value" v-if="fieldBankBranchName1.isModifiable" />
-                <input type="text" :value="fieldBankBranchName1.value" readonly v-else />
-                <div class="" v-if="errors.length > 0 && errors[0]">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
+            <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value" v-if="fieldBankId2.value">
+              <label class="ui-field-box user-profile__bank__item__radio">
+                <span>{{ $t('ui.label.default') }}</span>
+                <input type="radio" :value="fieldBankId2.value" v-model="bankDefault" />
+                <div></div>
+              </label>
+              <div class="user-profile__bank__item__card">
+                <span class="user-profile__bank__item__card__name">
+                  {{ getBankById(fieldBankId2.value).Text }}
+                </span>
+                <span class="user-profile__bank__item__card__number">
+                  {{ transferToBankString(fieldBankAccount2.value) }}
+                </span>
+              </div>
             </div>
 
-            <div class="user-profile__bank__fields">
-              <ValidationProvider
-                class="user-profile__bank__field"
-                tag="div"
-                :class="[fieldBankId2.class]"
-                :name="fieldBankId2.name"
-                :rules="fieldBankId2.rules"
-                v-show="fieldBankId2.isShow"
-                v-slot="{ errors }"
-              >
-                <label>{{ $t(`register.Add_BankId2.placeholder`) }}</label>
-                <select class="ui-field__select" v-model="fieldBankId2.value" v-if="fieldBankId2.isModifiable">
-                  <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
-                </select>
-                <input type="text" :value="getBankById(fieldBankId2.value).Text" readonly v-else />
-                <div class="" v-if="errors.length > 0 && errors[0]">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-
-              <ValidationProvider
-                class="user-profile__bank__field"
-                tag="div"
-                :class="[fieldBankAccount2.class]"
-                :name="fieldBankAccount2.name"
-                :rules="fieldBankAccount2.rules"
-                v-show="fieldBankAccount2.isShow"
-                v-slot="{ errors, invalid }"
-              >
-                <label>{{ $t(`register.Add_BankAccount2.placeholder`) }}</label>
-                <input
-                  type="text"
-                  v-model="fieldBankAccount2.value"
-                  @change="checkField(fieldBankAccount2, invalid)"
-                  v-if="fieldBankAccount2.isModifiable"
-                />
-                <input type="text" :value="fieldBankAccount2.value" readonly v-else />
-                <div class="" v-if="errors.length > 0 && errors[0]">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-
-              <ValidationProvider
-                class="user-profile__bank__field"
-                tag="div"
-                :class="[fieldBankBranchName2.class]"
-                :name="fieldBankBranchName2.name"
-                :rules="fieldBankBranchName2.rules"
-                v-show="fieldBankBranchName2.isShow"
-                v-slot="{ errors }"
-              >
-                <label>{{ $t(`register.Add_BankBranchName2.placeholder`) }}</label>
-                <input type="text" v-model="fieldBankBranchName2.value" v-if="fieldBankBranchName2.isModifiable" />
-                <input type="text" :value="fieldBankBranchName2.value" readonly v-else />
-                <div class="" v-if="errors.length > 0 && errors[0]">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
+            <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value" v-if="fieldBankId3.value">
+              <label class="ui-field-box user-profile__bank__item__radio">
+                <span>{{ $t('ui.label.default') }}</span>
+                <input type="radio" :value="fieldBankId3.value" v-model="bankDefault" />
+                <div></div>
+              </label>
+              <div class="user-profile__bank__item__card">
+                <span class="user-profile__bank__item__card__name">
+                  {{ getBankById(fieldBankId3.value).Text }}
+                </span>
+                <span class="user-profile__bank__item__card__number">
+                  {{ transferToBankString(fieldBankAccount3.value) }}
+                </span>
+              </div>
             </div>
-
-            <div class="user-profile__bank__fields">
-              <ValidationProvider
-                class="user-profile__bank__field"
-                tag="div"
-                :class="[fieldBankId3.class]"
-                :name="fieldBankId3.name"
-                :rules="fieldBankId3.rules"
-                v-show="fieldBankId3.isShow"
-                v-slot="{ errors }"
-              >
-                <label>{{ $t(`register.Add_BankId3.placeholder`) }}</label>
-                <select class="ui-field__select" v-model="fieldBankId3.value" v-if="fieldBankId3.isModifiable">
-                  <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
-                </select>
-                <input type="text" :value="getBankById(fieldBankId3.value).Text" readonly v-else />
-                <div class="" v-if="errors.length > 0 && errors[0]">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-
-              <ValidationProvider
-                class="user-profile__bank__field"
-                tag="div"
-                :class="[fieldBankAccount3.class]"
-                :name="fieldBankAccount3.name"
-                :rules="fieldBankAccount3.rules"
-                v-show="fieldBankAccount3.isShow"
-                v-slot="{ errors, invalid }"
-              >
-                <label>{{ $t(`register.Add_BankAccount3.placeholder`) }}</label>
-                <input
-                  type="text"
-                  v-model="fieldBankAccount3.value"
-                  @change="checkField(fieldBankAccount3, invalid)"
-                  v-if="fieldBankAccount3.isModifiable"
-                />
-                <input type="text" :value="fieldBankAccount3.value" readonly v-else />
-                <div class="" v-if="errors.length > 0 && errors[0]">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-
-              <ValidationProvider
-                class="user-profile__bank__field"
-                tag="div"
-                :class="[fieldBankBranchName3.class]"
-                :name="fieldBankBranchName3.name"
-                :rules="fieldBankBranchName3.rules"
-                v-show="fieldBankBranchName3.isShow"
-                v-slot="{ errors }"
-              >
-                <label>{{ $t(`register.Add_BankBranchName3.placeholder`) }}</label>
-                <input type="text" v-model="fieldBankBranchName3.value" v-if="fieldBankBranchName3.isModifiable" />
-                <input type="text" :value="fieldBankBranchName3.value" readonly v-else />
-                <div class="" v-if="errors.length > 0 && errors[0]">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-            </div> -->
           </div>
 
           <!-- <div class="user-profile__btn">
@@ -460,13 +317,12 @@
     />
     <component
       :is="ModalUserBank"
+      :bankAddNumber="bankAddNumber"
       :bankIdAdd="bankIdAdd"
       :bankAccountAdd="bankAccountAdd"
       :bankBranchAdd="bankBranchAdd"
       :bankList="bankList"
-      @update-bank-id="updateBankIdAdd"
-      @update-bank-account="updateBankAccountAdd"
-      @update-bank-branch="updateBankBranchAdd"
+      @update-bank="getRegisterAdvanceNew"
       @close="isShowModalUserBank = false"
       v-if="isShowModalUserBank"
     />
@@ -499,7 +355,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss']),
+    ...mapGetters(['siteSetting', 'siteFullCss', 'userWithdrawalCount']),
     PanelTabs() {
       return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
@@ -518,9 +374,9 @@ export default {
     isShowBankAddButton() {
       if (this.bankAddNumber === 1) {
         return true;
-      } else if (this.bankAddNumber === 2 && this.fieldBankId2.isShow && this.fieldBankId2.isModifiable) {
+      } else if (this.bankAddNumber === 2 && this.fieldBankId2.isModifiable && this.userWithdrawalCount > 0) {
         return true;
-      } else if (this.bankAddNumber === 3 && this.fieldBankId3.isShow && this.fieldBankId3.isModifiable) {
+      } else if (this.bankAddNumber === 3 && this.fieldBankId3.isModifiable && this.userWithdrawalCount > 0) {
         return true;
       }
       return false;
@@ -608,16 +464,10 @@ export default {
     };
   },
   methods: {
-    updateBankIdAdd(bankId) {
-      this.fieldList.find(item => item.name === bankId.name).value = bankId.value;
-
-      console.log(this.fieldList.find(item => item.name === bankId.name));
-    },
-    updateBankAccountAdd(bankAccount) {
-      this.fieldList.find(item => item.name === bankAccount.name).value = bankAccount.value;
-    },
-    updateBankBranchAdd(bankBranch) {
-      this.fieldList.find(item => item.name === bankBranch.name).value = bankBranch.value;
+    updateBankAdd(bank) {
+      this.fieldList.find(item => item.name === bank.bankId.name).value = bank.bankId.value;
+      this.fieldList.find(item => item.name === bank.bankAccount.name).value = bank.bankAccount.value;
+      this.fieldList.find(item => item.name === bank.bankBranch.name).value = bank.bankBranch.value;
     },
     transferToBankString(str) {
       if (!str) {

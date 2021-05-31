@@ -104,5 +104,8 @@ export default {
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss']),
   },
+  mounted() {
+    this.$store.commit('setPageTitle', 'user.title');
+  },
 };
 </script>

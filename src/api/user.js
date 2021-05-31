@@ -90,3 +90,15 @@ export async function apiChangeRemember(data) {
   const result = await axios.post(API_URL + '/Member/MChangeReMember', data);
   return result.data;
 }
+
+//* 2.82  會員銀行資訊修改APP
+export async function apiBankInfoChange(data) {
+  const result = await axios.post(API_URL + '/Member/MBankInfoChange', data);
+  return result.data;
+}
+
+//* 2.83  會員進階驗証New-APP
+export async function apiAdvancedRegisterNewApp(data) {
+  const result = await axios.post(API_URL + '/Member/AdvancedRegisterNewApp', data);
+  return result.data;
+}

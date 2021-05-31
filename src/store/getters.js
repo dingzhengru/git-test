@@ -206,6 +206,7 @@ const getters = {
   userBankById: state => id => {
     return state.user.bankList.find(item => item.Lst_BankId === id) || {};
   },
+  userWithdrawalCount: state => state.user.info.Lst_WithdrawalsNum,
 
   //* Product
   productList: state => state.product.list,

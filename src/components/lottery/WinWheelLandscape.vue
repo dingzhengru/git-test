@@ -24,7 +24,7 @@
         <slot name="game-dialog" />
       </div>
     </transition>
-    <div class="overlay" v-show="!wheelSegmentsPrize.length">
+    <div class="overlay" v-show="!wheelSegmentsPrize.length || isLoading">
       <p v-if="errMsg" class="vue-winwheel__errorMsg">{{ errMsg }}</p>
       <img v-else :src="wheelStyle.loadingImgUrl" alt="" />
     </div>
@@ -80,20 +80,30 @@ export default {
       isWheelSpinning: false,
       isModalShow: false,
       isFirstTry: true,
+
+      isLoading: true,
+
+      prizeImgLoadedCount: 0,
     };
   },
   methods: {
     // 依照回傳獎項數量產出蓋牌轉盤列表
     defaultSegemetsHandler() {
-      this.wheelSegmentsPrize.map((item, index) => {
+      this.wheelSegmentsPrize.forEach((item, index) => {
         let prizeText = '' + (index + 1);
         this.wheelSegments.push({
           text: prizeText,
-          image: this.wheelStyle.prizeImgUrl,
+          // image: this.wheelStyle.prizeImgUrl,
+          image: item.image,
           fillStyle: item.fillStyle,
         });
+
+        const prizeImg = new Image();
+        prizeImg.src = item.image;
+        prizeImg.onload = this.loadPrizeImageHandler;
+        prizeImg.onerror = this.loadPrizeImageHandler;
       });
-      this.initWheel();
+      // this.initWheel();
     },
     // 開始抽獎
     startHandler() {
@@ -131,6 +141,9 @@ export default {
       this.wheelObject.rotationAngle = 0; // Re-set the wheel angle to 0 degrees.
       this.wheelObject.draw(); // Call draw to render changes to the wheel.
       this.isWheelSpinning = false; // Reset to false to power buttons and spin can be clicked again.
+
+      this.isLoading = false;
+      this.prizeImgLoadedCount = 0;
     },
     // 轉盤旋轉
     startWheel(prize) {
@@ -166,6 +179,13 @@ export default {
 
       this.wheelObject.rotationAngle = 360 - this.wheelPrizeAngle;
       this.wheelObject.draw();
+    },
+
+    loadPrizeImageHandler() {
+      this.prizeImgLoadedCount = this.prizeImgLoadedCount + 1;
+      if (this.prizeImgLoadedCount === this.wheelSegmentsPrize.length) {
+        this.initWheel();
+      }
     },
   },
   watch: {

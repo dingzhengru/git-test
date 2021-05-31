@@ -6,11 +6,7 @@
     <div class="home-footer__center">
       <div class="home-footer__icon home-footer__icon--promotion" @click="$router.push({ name: 'Promotion' })"></div>
       <div class="home-footer__icon home-footer__icon--mail" @click="$router.push({ name: 'UserMail' })">
-        <span class="home-footer__icon__count" v-show="userIsLoggedIn && userNewMailCount > 0">
-          {{ userNewMailCount }}
-        </span>
-
-        <span class="ui-box-count">
+        <span class="ui-box-count" v-show="userIsLoggedIn && userNewMailCount > 0">
           {{ userNewMailCount }}
         </span>
       </div>

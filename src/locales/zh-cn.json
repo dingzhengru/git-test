@@ -26,7 +26,8 @@
       "bankBranch": "支行名称",
       "bankAccountName": "银行户名",
       "langSelect": "语系选择",
-      "default": "默认"
+      "default": "默认",
+      "hotGame": "热门游戏"
     },
     "button": {
       "save": "保存",
@@ -564,7 +565,7 @@
         "basic": "基本资料"
       },
       "button": {
-        "bankAdd": "新增银行卡"
+        "bankAdd": "+ 新增银行卡"
       },
       "modal": {
         "bankTitle": "设置银行卡"
@@ -957,9 +958,11 @@
     "skype": "Skype",
     "line": "Line",
     "mobile": "Mobile",
-    "email": "Email",
+    "mail": "Email",
     "wechat": "wechat",
     "service": "在线客服",
+    "facebook": "Facebook",
+    "telegram": "Telegram",
     "serviceTitle": "线上客服 7/24",
     "serviceContent": "点击开始使用网页客服服务",
     "lineTitle": "Line 客服",

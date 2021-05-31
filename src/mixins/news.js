@@ -7,6 +7,13 @@ export default {
     totalPage() {
       return Math.ceil(this.pagination.count / this.pagination.pagesize);
     },
+    newsListFiltered() {
+      return this.newsList.filter(item => {
+        const datetimeEnd = this.$dayjs(item.Lst_EndDateTime);
+        const now = this.$dayjs().tz('Africa/Abidjan');
+        return now.isBefore(datetimeEnd);
+      });
+    },
   },
   data() {
     return {

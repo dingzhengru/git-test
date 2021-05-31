@@ -26,7 +26,8 @@
       "bankBranch": "Name of Branch",
       "bankAccountName": "Account Name of Bank",
       "langSelect": "Select Language",
-      "default": "Default"
+      "default": "Default",
+      "hotGame": "Hot Games"
     },
     "button": {
       "save": "Save",
@@ -568,7 +569,7 @@
         "basic": "Basic information"
       },
       "button": {
-        "bankAdd": "Add bank"
+        "bankAdd": "+ Add a bank card"
       },
       "modal": {
         "bankTitle": "Set up bank"
@@ -952,9 +953,11 @@
     "skype": "Skype",
     "line": "Line",
     "mobile": "Mobile",
-    "email": "Email",
+    "mail": "Email",
     "wechat": "wechat",
     "service": "Online Customer Service",
+    "facebook": "Facebook",
+    "telegram": "Telegram",
     "serviceTitle": "Online Customer Service 7/24",
     "serviceContent": "Click to start using web customer service",
     "lineTitle": "Line",

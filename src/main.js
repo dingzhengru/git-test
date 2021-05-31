@@ -20,6 +20,7 @@ import {
   cookieGetIsPreview,
 } from '@/utils/cookie';
 
+console.log('log: update test');
 console.log(process.env.NODE_ENV);
 
 //* CSS
@@ -98,8 +99,8 @@ store.dispatch('getLangList');
     cookieSetVersion(version);
     cacheKeyList.forEach(key => caches.delete(key));
 
-    setTimeout(() => {
-      alert(i18n.t('alert.versionUpdate'));
+    window.setTimeout(() => {
+      window.alert(i18n.t('alert.versionUpdate'));
       window.location.reload();
     }, 1000);
   }

@@ -2306,7 +2306,12 @@ function winwheelLoadedImage() {
         for (let i = 1; i <= winwheelToDrawDuringAnimation.numSegments; i++) {
             // Check the image data object is not null and also that the image has completed loading by checking
             // that a property of it such as the height has some sort of true value.
-            if ((winwheelToDrawDuringAnimation.segments[i].imgData != null) && (winwheelToDrawDuringAnimation.segments[i].imgData.height)) {
+
+            // if ((winwheelToDrawDuringAnimation.segments[i].imgData != null) && (winwheelToDrawDuringAnimation.segments[i].imgData.height)) {
+            //     winwheelImageLoadCount++;
+            // }
+
+            if ((winwheelToDrawDuringAnimation.segments[i].imgData != null) && (winwheelToDrawDuringAnimation.segments[i].imgData.complete)) {
                 winwheelImageLoadCount++;
             }
         }

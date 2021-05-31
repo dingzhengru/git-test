@@ -128,5 +128,15 @@
         "1F:A5:97:FC:E8:3B:F1:AB:B6:E8:DC:58:2E:1D:39:2E:8C:D0:FF:93:0F:EF:80:3A:19:42:E7:9E:CA:33:D3:4D"
       ]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.abniru",
+      "sha256_cert_fingerprints": [
+        "9B:28:96:66:1A:C5:9B:E7:DB:B8:29:35:45:C2:2F:9F:5E:CD:6B:A7:28:54:05:AE:40:95:51:0F:A5:67:4B:29"
+      ]
+    }
   }
 ]

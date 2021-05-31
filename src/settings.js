@@ -34,13 +34,19 @@ export const API_REQUEST_TIMEOUT = 30000;
 export const API_TIMEOUT_TRANSFER = 30000;
 
 //* 需加密的 API
-export const API_CRYPTO_LIST = ['Member/LoginIn', 'Member/MChangePassword', 'Member/MChgWithdrawalsPwd'];
+export const API_CRYPTO_LIST = [
+  'Member/LoginIn',
+  'Member/MChangePassword',
+  'Member/MChgWithdrawalsPwd',
+  'Member/MBankInfoChange',
+];
 
 //* 需使用"大數據加密"的 API
 export const API_CRYPTO_BIG_DATA_LIST = [
   'Member/SimpleRegister',
   'Operator/MWithdrawals',
   'Member/AdvancedRegisterNew',
+  'Member/AdvancedRegisterNewApp',
 ];
 
 //* 需使用"大數據加密"的 API，但並非全部參數都要加密的情況，EX: 存款動作中的匯款收據圖片
@@ -74,6 +80,8 @@ export const API_AUTH_LIST = [
   'Member/MBankInfoList',
   'Member/RememberInfo',
   'Member/MChangeReMember',
+  'Member/MBankInfoChange',
+  'Member/AdvancedRegisterNewApp',
   'Siteinfo/MGetAllGamePoint',
   'Siteinfo/MGetPITTLBet',
   'Siteinfo/MGetLotteryCount',
@@ -116,6 +124,7 @@ export const API_AUTH_LIST = [
   'Game/MemberCollectionEdit',
   'Game/MFightLobby',
   'Game/MFavoritesList',
+  'Game/MSiteHotGames',
   'Msg/MessageList',
   'Msg/MInbox_Load',
   'Msg/MInbox_LoadDetail',

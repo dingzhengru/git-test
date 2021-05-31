@@ -11,8 +11,8 @@
       </DynamicMarquee>
     </div> -->
     <div class="news-marquee__window" @click="$router.push({ name: 'News' })">
-      <MarqueeText>
-        <a href="javascript:;" v-for="(item, index) in marqueeList" :key="index">
+      <MarqueeText v-if="marqueeList.length > 0">
+        <a href="javascript:;" v-for="(item, index) in marqueeListFiltered" :key="index">
           {{ item.Lst_Content }}
         </a>
       </MarqueeText>

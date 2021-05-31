@@ -1,6 +1,6 @@
 <template>
   <div class="news" :class="{ 'news-auth': userIsLoggedIn }">
-    <div class="news__item" v-for="(item, index) in newsList" :key="index">
+    <div class="news__item" v-for="(item, index) in newsListFiltered" :key="index">
       <div class="news__item__date">
         <div class="news__item__date__label">{{ $t('ui.label.time') }}</div>
         <div class="news__item__date__content">{{ getDateTime(item.Lst_StartDateTime) }}</div>

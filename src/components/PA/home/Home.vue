@@ -1,7 +1,20 @@
 <template>
   <div class="home">
     <div class="ui-panel-tab home__main">
-      <div class="ui-panel-tab__tabs home__main__tabs" @scroll.passive="handelScrollArrowY($event.target)">
+      <div
+        class="ui-panel-tab__tabs home__main__tabs"
+        ref="homePanelTab"
+        @scroll.passive="handelScrollArrowY($event.target)"
+      >
+        <div
+          class="ui-panel-tab__tabs__item"
+          :class="{ active: productClassifyCurrent === hotGameClassify }"
+          @click="productClassifyCurrent = hotGameClassify"
+          v-if="userIsLoggedIn"
+        >
+          {{ $t('ui.label.hotGame') }}
+        </div>
+
         <div
           class="ui-panel-tab__tabs__item"
           :class="{ active: productClassifyCurrent === item.Lst_Game_Classify }"
@@ -19,11 +32,7 @@
 
       <div class="ui-panel-tab__content home__main__content">
         <component :is="NewsMarquee" />
-        <component
-          :is="HomeProductBlock"
-          :list="productListByClassify(productClassifyCurrent)"
-          :classify="productClassifyCurrent"
-        />
+        <component :is="HomeProductBlock" :list="productBlockList" :classify="productClassifyCurrent" />
       </div>
     </div>
 
@@ -35,6 +44,7 @@
 import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 import mixinScrollArrow from '@/mixins/_scrollArrow';
+import { apiGetGameListHot } from '@/api/game';
 
 export default {
   name: 'Home',
@@ -60,10 +70,25 @@ export default {
     productClassifyListNoAll() {
       return this.productClassifyList.slice(1);
     },
+    gameListClassify() {
+      if (this.productClassifyCurrent === this.hotGameClassify) {
+        return this.gameListHot;
+      }
+      return [];
+    },
+    productBlockList() {
+      if (typeof this.productClassifyCurrent === 'string') {
+        return this.gameListClassify;
+      }
+      return this.productListByClassify(this.productClassifyCurrent);
+    },
   },
   data() {
     return {
       productClassifyCurrent: 1,
+
+      gameListHot: [],
+      hotGameClassify: 'hot',
     };
   },
   methods: {
@@ -73,9 +98,23 @@ export default {
       }
       this.$router.push(route);
     },
+    async getGameListHot() {
+      const requestData = {};
+      const result = await apiGetGameListHot(requestData);
+
+      if (result.Code === 200) {
+        this.gameListHot = result.RetObj.SiteHotGamesList;
+      }
+    },
   },
   mounted() {
     this.importStyleByFilename('home');
+
+    this.initScrollArrowY(this.$refs.homePanelTab);
+
+    if (this.userIsLoggedIn) {
+      this.getGameListHot();
+    }
   },
 };
 </script>

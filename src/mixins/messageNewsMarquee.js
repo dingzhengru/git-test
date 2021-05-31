@@ -1,9 +1,16 @@
 import { apiGetMessageList, apiPostMessageList } from '@/api/message';
 import { mapGetters } from 'vuex';
 export default {
-  name: 'NewsMarquee',
+  name: 'MixinNewsMarquee',
   computed: {
     ...mapGetters(['lang', 'userIsLoggedIn']),
+    marqueeListFiltered() {
+      return this.marqueeList.filter(item => {
+        const datetimeEnd = this.$dayjs(item.Lst_EndDateTime);
+        const now = this.$dayjs().tz('Africa/Abidjan');
+        return now.isBefore(datetimeEnd);
+      });
+    },
   },
   data() {
     return {

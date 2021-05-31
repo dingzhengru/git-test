@@ -26,7 +26,8 @@
       "bankBranch": "สาขา",
       "bankAccountName": "ชื่อบัญชี",
       "langSelect": "เลือกภาษา",
-      "default": "ตั้งค่า"
+      "default": "ตั้งค่า",
+      "hotGame": "เกมส์ยอดนิยม"
     },
     "button": {
       "save": "จัดเก็บ",
@@ -566,7 +567,7 @@
         "basic": "ข้อมูลพื้นฐาน"
       },
       "button": {
-        "bankAdd": "เพิ่มธนาคาร"
+        "bankAdd": "+ เพิ่มบัตรธนาคาร"
       },
       "modal": {
         "bankTitle": "ตั้งค่าธนาคาร"
@@ -950,9 +951,11 @@
     "skype": "Skype",
     "line": "Line",
     "mobile": "Mobile",
-    "email": "Email",
+    "mail": "Email",
     "wechat": "wechat",
     "service": "ลูกค้าสัมพันธ์ออนไลน์",
+    "facebook": "Facebook",
+    "telegram": "Telegram",
     "serviceTitle": "ลูกค้าสัมพันธ์ออนไลน์ 7/24",
     "serviceContent": "คลิกเพื่อเริ่มใช้บริการลูกค้าทางเว็บ",
     "lineTitle": "Line",
