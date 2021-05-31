@@ -27,6 +27,12 @@
   flex-wrap: wrap;
   margin-bottom: 20px;
 
+  &:lang(en-us) {
+    * {
+      font-size: 1.5rem !important;
+    }
+  }
+
   &.invalid {
     border: 10px solid red;
   }
@@ -60,6 +66,7 @@
       border: none;
       &::placeholder {
         color: $field-input-color-placeholder;
+        text-overflow: ellipsis;
       }
     }
     &__text {
