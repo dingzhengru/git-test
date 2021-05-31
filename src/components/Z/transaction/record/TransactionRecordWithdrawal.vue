@@ -21,7 +21,7 @@
         <tr class="record-content__table__tr--detail" :key="item.Lst_TransID" v-show="item.isShowDetail">
           <td colspan="5">
             {{ $t('ui.label.transactionNumber') }}： {{ item.Lst_TransID }} <br />
-            {{ item.Lst_CreateTime }}
+            {{ item.Lst_Mtime }}
           </td>
         </tr>
       </template>
