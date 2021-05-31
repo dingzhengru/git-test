@@ -13,10 +13,7 @@
           <td @click="toggleRecordDetail(item)">
             <i class="record-content__icon--detail" :class="{ close: item.isShowDetail }"></i>
           </td>
-          <td>
-            {{ item.Lst_CreateTime.split('T')[0] }} <br />
-            12:00:00
-          </td>
+          <td>{{ item.Lst_CreateTime }}</td>
           <td>{{ item.Lst_StatusName }}</td>
           <td>{{ $numeral(item.Lst_MoneyPayment).format('0,0.00') }}</td>
           <td>{{ item.Lst_Charges }}</td>
@@ -24,7 +21,7 @@
         <tr class="record-content__table__tr--detail" :key="item.Lst_TransID" v-show="item.isShowDetail">
           <td colspan="5">
             {{ $t('ui.label.transactionNumber') }}： {{ item.Lst_TransID }} <br />
-            N/A
+            {{ item.Lst_CreateTime }}
           </td>
         </tr>
       </template>

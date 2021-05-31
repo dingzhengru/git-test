@@ -8,15 +8,30 @@ export default {
   data() {
     return {
       recordList: [],
+
+      // recordList: [
+      //   {
+      //     Lst_CreateTime: '2021-03-03 09:33:13',
+      //     Lst_MoneyPayment: 100.0,
+      //     Lst_Charges: 0.0,
+      //     Lst_Mtime: 'N/A',
+      //     Lst_StatusName: '审核中',
+      //     Lst_TransID: 'CR210303093313297',
+      //     isShowDetail: false,
+      //   },
+      // ],
     };
   },
   methods: {
     async getRecord() {
       const result = await apiGetRecordWithdrawal();
-      this.recordList = result.RetObj.Rows.map(item => {
-        item.isShowDetail = false;
-        return item;
-      });
+
+      if (result.Code === 200) {
+        this.recordList = result.RetObj.Rows.map(item => {
+          item.isShowDetail = false;
+          return item;
+        });
+      }
     },
     toggleRecordDetail(record) {
       record.isShowDetail = !record.isShowDetail;
