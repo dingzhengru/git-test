@@ -138,5 +138,15 @@
         "9B:28:96:66:1A:C5:9B:E7:DB:B8:29:35:45:C2:2F:9F:5E:CD:6B:A7:28:54:05:AE:40:95:51:0F:A5:67:4B:29"
       ]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.kfllcu",
+      "sha256_cert_fingerprints": [
+        "19:BB:D9:E0:D7:98:3E:1B:43:2E:C7:73:90:87:E9:9D:0F:6D:38:38:50:79:22:19:F8:70:E9:C0:88:75:41:B3"
+      ]
+    }
   }
 ]
