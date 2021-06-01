@@ -5,8 +5,11 @@
       <img class="header__logo__back" :src="imgBack" @click="goRoutePrevious" v-show="isShowLogoBack" />
     </div>
 
-    <div class="header__login" @click="$store.dispatch('openModalAuth')" v-if="isShowLogin">
+    <!-- <div class="header__login" @click="$store.dispatch('openModalAuth')" v-if="isShowLogin">
       {{ `${$t('ui.button.login')}\\${$t('ui.button.register')}` }}
+    </div> -->
+    <div class="header__auth" @click="$store.dispatch('openModalAuth')" v-if="isShowLogin">
+      <img :src="imgAuthButton" alt="" />
     </div>
 
     <div class="header__user" @click="$router.push({ name: 'UserProfile' }).catch(() => {})" v-show="isShowUser">
@@ -121,6 +124,13 @@ export default {
     imgBack() {
       try {
         return require(`@/assets/${this.siteFullCss}/header/header-back.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgAuthButton() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/header/header-login-bg-${this.lang}.png`);
       } catch {
         return '';
       }

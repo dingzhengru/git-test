@@ -31,16 +31,11 @@
     }
   }
 
-  &__login {
-    flex-basis: 20%;
-    height: $header-login-height;
-    background: $header-login-bg;
-    color: $header-login-color;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    -webkit-text-stroke: 1px black;
+  &__auth {
+    height: 75%;
+    img {
+      height: 100%;
+    }
   }
 
   &__wallet {
