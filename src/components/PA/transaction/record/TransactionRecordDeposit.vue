@@ -32,9 +32,7 @@
               </a>
               <span v-else>{{ item.Lst_Receipt }}</span>
             </div>
-            <div>
-              {{ $t('transaction.recordContent.deposit.table.detail.transactionTime') }}：{{ item.Lst_CreateTime }}
-            </div>
+            <div>{{ $t('transaction.recordContent.deposit.table.detail.transactionTime') }}：{{ item.Lst_Mtime }}</div>
           </td>
         </tr>
       </template>
