@@ -1,4 +1,5 @@
 import store from '@/store';
+import router from '@/router';
 import axios from 'axios';
 import {
   API_URL,
@@ -99,6 +100,12 @@ axios.interceptors.response.use(
         store.dispatch('user/logout');
       }
       return;
+    } else if (res.data.Code === 205) {
+      //* 205: 維護中
+      if (store.getters.userIsLoggedIn) {
+        await store.dispatch('user/logout');
+      }
+      return router.replace({ name: 'Maintenance' });
     } else if (res.data.Code === 599) {
       //* 599: 正常操作回應錯誤訊息，前端ALERT 顯示訊息(多語系文字)
 
