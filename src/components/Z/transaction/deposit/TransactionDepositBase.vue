@@ -1,5 +1,5 @@
 <template>
-  <ValidationObserver class="deposit-base" tag="div" v-slot="{ invalid, handleSubmit }">
+  <ValidationObserver class="deposit-base" tag="div" v-slot="{ invalid, handleSubmit }" ref="observerDeposit">
     <form class="deposit-base__form" novalidate @submit.prevent="handleSubmit(submitDeposit)">
       <div class="ui-step">{{ $t('transaction.deposit.step.selectDepositBank') }}</div>
 
@@ -137,20 +137,22 @@
         class="deposit-base__field deposit-base__field--receipt"
         tag="div"
         :rules="{ image: true, size: 2048 }"
-        v-slot="{ validate, errors }"
+        v-slot="{ validate }"
+        v-if="isShowReceipt"
       >
         <button
           class="ui-btn ui-btn--block deposit-base__field--receipt__btn"
-          :class="{ invalid: errors.length > 0 }"
+          :class="{ invalid: receipt.error }"
           type="button"
           @click="uploadReceipt"
         >
           {{ $t('transaction.deposit.field.receipt') }}
         </button>
-        <div class="deposit-base__field--receipt__text" :class="{ invalid: errors.length > 0 }">
-          <template v-if="errors.length > 0">{{ errors[0] }}</template>
+        <div class="deposit-base__field--receipt__text" :class="{ invalid: receipt.error }">
+          <template v-if="receipt.error">{{ receipt.error }}</template>
           <template v-else>{{ receipt.name }}</template>
         </div>
+
         <input
           class="deposit-base__field--receipt__input"
           ref="receipt"

@@ -37,7 +37,7 @@ export default {
       method: '',
       currency: 'THB',
       amount: 0,
-      receipt: { name: '', image: '' },
+      receipt: { name: '', image: '', error: '' },
       remark: '',
       promotion: '-1',
 
@@ -54,6 +54,8 @@ export default {
         'transaction.deposit.notice.contact',
       ],
       isShowDepositNotice: false,
+
+      isShowReceipt: true,
     };
   },
   methods: {
@@ -133,9 +135,17 @@ export default {
     async onFileChange(event, validate) {
       //* validate: vee-validate 的函式，根據 rules 檢查(這裡是檢查是否為 image)
       const validResult = await validate(event);
-      if (!validResult.valid) {
+      if (validResult.valid === false) {
+        this.receipt.error = validResult.errors[0];
+        this.$refs.receipt.value = '';
+        this.isShowReceipt = false;
+        window.setTimeout(() => {
+          this.isShowReceipt = true;
+        }, 100);
         return;
       }
+
+      this.receipt.error = '';
 
       const files = event.target.files || event.dataTransfer.files;
       if (!files.length || files.length <= 0) {
@@ -144,14 +154,11 @@ export default {
       this.receipt.name = files[0].name;
 
       //* 將圖片轉成 base64 url
-      this.createImage(files[0]);
-    },
-    createImage(file) {
       const reader = new FileReader();
       reader.onload = e => {
         this.receipt.image = e.target.result;
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(files[0]);
     },
     copyBankAccount() {
       if (this.$isObjEmpty(this.depositBank)) {

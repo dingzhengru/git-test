@@ -134,6 +134,7 @@
           :rules="{ image: true, size: 2048 }"
           v-slot="{ validate }"
           @click.native="uploadReceipt"
+          v-if="isShowReceipt"
         >
           <!-- <button class="ui-btn ui-btn--block deposit-base__field--receipt__btn" type="button" @click="uploadReceipt">
             {{ receipt.name ? receipt.name : '上傳後檔名顯示位置' }}
