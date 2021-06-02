@@ -85,6 +85,9 @@
       },
       "confirmed": {
         "password": "Please reconfirm your password"
+      },
+      "file": {
+        "size": "File is too large"
       }
     },
     "register": {

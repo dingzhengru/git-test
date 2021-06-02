@@ -137,12 +137,20 @@
         class="deposit-base__field deposit-base__field--receipt"
         tag="div"
         :rules="{ image: true, size: 2048 }"
-        v-slot="{ validate }"
+        v-slot="{ validate, errors }"
       >
-        <button class="ui-btn ui-btn--block deposit-base__field--receipt__btn" type="button" @click="uploadReceipt">
+        <button
+          class="ui-btn ui-btn--block deposit-base__field--receipt__btn"
+          :class="{ invalid: errors.length > 0 }"
+          type="button"
+          @click="uploadReceipt"
+        >
           {{ $t('transaction.deposit.field.receipt') }}
         </button>
-        <div class="deposit-base__field--receipt__text">{{ receipt.name }}</div>
+        <div class="deposit-base__field--receipt__text" :class="{ invalid: errors.length > 0 }">
+          <template v-if="errors.length > 0">{{ errors[0] }}</template>
+          <template v-else>{{ receipt.name }}</template>
+        </div>
         <input
           class="deposit-base__field--receipt__input"
           ref="receipt"

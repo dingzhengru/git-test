@@ -1,6 +1,6 @@
 <template>
-  <div id="app" :lang="lang" :class="[lang, { landscape: siteIsLandscape && !$isLocalhost }]">
-  <!-- <div id="app" :lang="lang" :class="[lang, { landscape: siteIsLandscape }]"> -->
+  <div id="app" :lang="lang" :class="[lang]">
+    <!-- <div id="app" :lang="lang" :class="[lang, { landscape: siteIsLandscape }]"> -->
     <intersect
       @enter="$store.commit('setIsShowGoTopButton', false)"
       @leave="$store.commit('setIsShowGoTopButton', true)"
