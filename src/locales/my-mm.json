@@ -87,7 +87,7 @@
         "password": "Please reconfirm your password"
       },
       "file": {
-        "size": "File is too large"
+        "size": "file ကိုသတ်မှတ်ထားသောအရွယ်အစားမကိုက်ညီ"
       }
     },
     "register": {

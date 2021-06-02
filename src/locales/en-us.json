@@ -89,7 +89,7 @@
         "password": "Please reconfirm your password"
       },
       "file": {
-        "size": "File is too large"
+        "size": "File size does not match the rules"
       }
     },
     "register": {

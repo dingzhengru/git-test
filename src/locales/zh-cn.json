@@ -89,7 +89,7 @@
         "password": "确认密码错误"
       },
       "file": {
-        "size": "档案过大"
+        "size": "档案大小不符合规定"
       }
     },
     "register": {
