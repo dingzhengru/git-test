@@ -156,5 +156,13 @@
       "package_name": "xyz.appmaker.qgabfu",
       "sha256_cert_fingerprints": ["1E:B8:06:01:82:4E:48:6B:9C:4C:A6:9A:D5:A3:79:BC:19:F4:F3:90:D0:1E:78:E9:64:5C:4A:9D:8A:98:1A:C3"]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.sibyeo",
+      "sha256_cert_fingerprints": ["97:30:B8:09:58:64:45:0D:B2:2D:D4:FC:34:27:AC:A2:05:E0:60:68:04:33:F4:1D:17:17:8E:22:DE:C1:DA:E1"]
+    }
   }
 ]
