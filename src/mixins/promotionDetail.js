@@ -1,10 +1,10 @@
 import { mapGetters } from 'vuex';
-import { apiGetPromotionDetail } from '@/api/promotion';
+import { apiGetPromotionDetail, apiGetPromotionDetailAPP } from '@/api/promotion';
 
 export default {
   name: 'MixinPromotionDetail',
   computed: {
-    ...mapGetters(['lang', 'userIsLoggedIn']),
+    ...mapGetters(['lang', 'userIsLoggedIn', 'siteIsLandscape']),
     promotionDetailListEnabled() {
       if (!this.promotionDetail.ReturnList) {
         return [];
@@ -32,7 +32,14 @@ export default {
   methods: {
     async getPromotionDetail() {
       const requestData = { PromotionId: Number(this.$route.params.id), Lang: this.lang };
-      const result = await apiGetPromotionDetail(requestData);
+
+      let result = {};
+
+      if (this.siteIsLandscape) {
+        result = await apiGetPromotionDetailAPP(requestData);
+      } else {
+        result = await apiGetPromotionDetail(requestData);
+      }
 
       if (result.Code == 200) {
         this.promotionDetail = result.RetObj;

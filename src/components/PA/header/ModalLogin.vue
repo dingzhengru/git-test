@@ -54,7 +54,7 @@
       <div class="modal-login__remember">
         <label class="ui-field-box">
           <span>{{ $t('login.rememberMe') }}</span>
-          <input type="radio" v-model="user.RememberMe" />
+          <input type="checkbox" v-model="user.RememberMe" />
           <div></div>
         </label>
 
