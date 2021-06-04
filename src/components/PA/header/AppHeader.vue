@@ -97,7 +97,7 @@ export default {
       return this.$route.name === 'Home';
     },
     isShowLogoBack() {
-      return this.$route.name !== 'Home';
+      return this.$route.name !== 'Home' && this.$route.name !== 'Maintenance';
     },
     isShowLang() {
       return this.$route.name === 'Home';

@@ -92,7 +92,7 @@ export default {
         if (this.isImgBlock) {
           return require(`@/assets/${this.siteFullCss}/home/evo-block.png`);
         }
-        return require(`@/assets/${this.siteFullCss}/home/sbo.png`);
+        return require(`@/assets/${this.siteFullCss}/home/sbo-small.png`);
       } catch {
         return '';
       }
