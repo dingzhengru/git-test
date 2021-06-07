@@ -30,7 +30,7 @@ export default {
       if (type === 1) {
         window.open(url, target);
       } else if (type === 2 || type === 0) {
-        this.$router.push({ name: 'PromotionDetail', params: { id } });
+        this.$router.push({ name: 'PromotionDetail', params: { id } }).catch(() => {});
       } else if (type === 3) {
         const [classify, id, key] = url.split('/');
         this.$router.push({ name: 'GameLobby', params: { classify, id, key } });
