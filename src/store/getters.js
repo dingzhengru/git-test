@@ -129,16 +129,22 @@ const getters = {
   siteProductImage: (state, getters) => product => {
     return `${getters.siteResourceUrl}/imgs/game/game${product.Lst_Product_id}-0${product.Lst_Game_Classify}-01.png`;
   },
+  siteProductImagePortrait: (state, getters) => product => {
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/ProductImg/${product.Lst_Product_Proxy_Tag}_1.png`;
+  },
+  siteProductImageLandscape: (state, getters) => product => {
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/ProductImg/${product.Lst_Product_Proxy_Tag}_2_1.png`;
+  },
+  siteProductImageLandscapeSmall: (state, getters) => product => {
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/ProductImg/${product.Lst_Product_Proxy_Tag}_2_2.png`;
+  },
   siteLotteryButtonBgWinWheel: (state, getters) => {
     return `${getters.siteResourceUrl}/imgs/ad/rotaryTable.png`;
   },
   siteLotteryButtonBgRedEnvelope: (state, getters) => {
     return `${getters.siteResourceUrl}/imgs/ad/luckyDraw.png`;
   },
-  // siteAPKUrl: (state, getters) => site => {
-  //   site = site.replace('.', '');
-  //   return `${getters.siteRemoteCSSUrl}/APP/${getters.siteMainDomain}/${site}.apk`;
-  // },
+
   //* site.seo
   siteSeo: state => state.site.seo,
   siteSeoList: state => state.site.seo.SeoList,

@@ -12,8 +12,25 @@ export async function apiPostPromotionList() {
   return result.data;
 }
 
+//* 橫版
+export async function apiGetPromotionListAPP(params) {
+  const result = await axios.get(API_URL + '/Promotion/PromotionListAPP', { params });
+  return result.data;
+}
+
+export async function apiPostPromotionListAPP() {
+  const result = await axios.post(API_URL + '/Promotion/PromotionListAPP');
+  return result.data;
+}
+
 //* 2.62  優惠活動-列表明細
 export async function apiGetPromotionDetail(params) {
   const result = await axios.get(API_URL + '/Promotion/PromotionDetail', { params });
+  return result.data;
+}
+
+//* 橫版
+export async function apiGetPromotionDetailAPP(params) {
+  const result = await axios.get(API_URL + '/Promotion/PromotionDetailAPP', { params });
   return result.data;
 }

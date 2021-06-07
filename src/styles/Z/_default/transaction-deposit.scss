@@ -58,10 +58,19 @@
         background: $deposit-base-btn-bg-receipt;
         color: $deposit-base-btn-color-receipt;
         box-shadow: $deposit-base-btn-shadow-receipt;
+
+        &.invalid {
+          border: $field-border-invalid;
+        }
       }
 
       &__text {
         text-align: center;
+
+        &.invalid {
+          font-weight: bold;
+          color: red;
+        }
       }
     }
   }

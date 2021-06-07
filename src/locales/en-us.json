@@ -87,6 +87,9 @@
       },
       "confirmed": {
         "password": "Please reconfirm your password"
+      },
+      "file": {
+        "size": "File size does not match the rules"
       }
     },
     "register": {

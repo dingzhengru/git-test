@@ -85,6 +85,9 @@
       },
       "confirmed": {
         "password": "Please reconfirm your password"
+      },
+      "file": {
+        "size": "file ကိုသတ်မှတ်ထားသောအရွယ်အစားမကိုက်ညီ"
       }
     },
     "register": {

@@ -40,7 +40,7 @@
   }
 
   &.invalid {
-    border: 10px solid red;
+    border: $field-border-invalid;
   }
 
   input[type='date']::-webkit-calendar-picker-indicator {

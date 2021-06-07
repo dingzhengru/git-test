@@ -30,7 +30,14 @@ extend('max_value', max_value);
 extend('regex', regex);
 extend('integer', integer);
 extend('image', image);
-extend('size', size);
+// extend('size', size);
+
+extend('size', {
+  ...size,
+  message: () => {
+    return i18n.t('validate.common.file.size');
+  },
+});
 
 extend('object-not-empty', {
   validate: value => {

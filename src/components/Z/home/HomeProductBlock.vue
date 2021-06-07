@@ -28,7 +28,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'siteProductImage', 'userIsLoggedIn']),
+    ...mapGetters(['siteFullCss', 'siteProductImage', 'userIsLoggedIn', 'siteProductImagePortrait']),
     imgSrc: app => game => {
       try {
         return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
