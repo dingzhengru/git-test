@@ -85,9 +85,7 @@
         <legend>{{ $t('ui.label.promotion') }}</legend>
         <ValidationProvider class="ui-field deposit-third-party__field deposit-third-party__field--promotion" tag="div">
           <select class="ui-field__select" v-model="promotion">
-            <option :value="item.Value" v-for="item in depositInfo.AllActivityList" :key="item.Value">{{
-              item.Text
-            }}</option>
+            <option :value="item.Value" v-for="item in promotionList" :key="item.Value">{{ item.Text }}</option>
           </select>
         </ValidationProvider>
         <div class="deposit-third-party__field--promotion-hint" v-if="promotion == -1">
