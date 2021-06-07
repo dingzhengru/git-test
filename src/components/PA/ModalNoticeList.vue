@@ -10,6 +10,10 @@
             <slot name="bottom"></slot>
           </ul>
         </div>
+
+        <!-- <div class="modal-notice__image">
+          <img :src="image" v-if="image" />
+        </div> -->
       </div>
     </div>
   </AppModal>
@@ -27,6 +31,10 @@ export default {
     noticeList: {
       type: Array,
       default: () => [],
+    },
+    image: {
+      type: String,
+      default: '',
     },
   },
   computed: {

@@ -446,6 +446,7 @@
 @mixin ui-question {
   display: inline-block;
   width: 24px;
+  min-width: 24px;
   height: 24px;
   position: relative;
   background: $question-bg;
@@ -637,6 +638,16 @@
   &__container {
     padding: 30px;
   }
+
+  // &__image {
+  //   float: right;
+  //   clear: right;
+  //   height: 50%;
+  //   img {
+  //     width: auto;
+  //     height: 100%;
+  //   }
+  // }
 }
 
 @mixin ui-scrollbar {

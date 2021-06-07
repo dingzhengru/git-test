@@ -51,7 +51,8 @@
 
   &__basic {
     width: 100%;
-    height: 60%;
+    min-height: 50%;
+    max-height: 90%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -60,8 +61,11 @@
   &__field {
     width: 50%;
     margin-bottom: 5px;
+    flex-wrap: nowrap;
 
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
     label {
       flex-grow: 1;
@@ -69,13 +73,36 @@
       padding-right: 5px;
     }
 
+    input {
+      flex-grow: 0;
+      margin-left: auto;
+      width: 150px !important;
+
+      &:lang(en-us),
+      &:lang(my-mm) {
+        width: 110px !important;
+      }
+
+      &:lang(th-th) {
+        width: 140px !important;
+      }
+    }
+
     &--btn {
+      img {
+        width: 30%;
+      }
+
+      button {
+        background: $user-profile-btn-change-password;
+        white-space: nowrap;
+      }
+
       input {
         width: 75px;
       }
 
       .ui-question {
-        margin-left: 5px;
       }
     }
   }
@@ -117,24 +144,25 @@
   }
 
   &__btn {
+    display: flex;
+    justify-content: center;
+
     button {
       margin-bottom: 15px;
+    }
+
+    button[type='submit'] {
+      background: $user-profile-btn-bg-submit;
+      margin-right: 15px;
+    }
+
+    button[type='reset'] {
+      background: $user-profile-btn-bg-reset;
     }
 
     &--add-bank {
       background: $user-profile-btn-bg-add-bank;
       margin-left: 10px;
-    }
-
-    &--submit {
-      background: $user-profile-btn-bg-submit;
-      color: $user-profile-btn-color-submit;
-      box-shadow: $user-profile-btn-shadow-submit;
-    }
-    &--reset {
-      background: $user-profile-btn-bg-reset;
-      color: $user-profile-btn-color-reset;
-      box-shadow: $user-profile-btn-shadow-reset;
     }
   }
 

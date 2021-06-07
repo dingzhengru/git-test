@@ -10,13 +10,13 @@
             <span>{{ $t('user.profile.step.basic') }}</span>
           </div>
           <div class="user-profile__basic">
-            <div class="user-profile__field">
+            <div class="ui-field user-profile__field">
               <label>{{ $t('user.profile.field.registerTime') }}</label>
               <input type="text" :value="getDatetime(userCreatedDatetime)" />
             </div>
 
             <ValidationProvider
-              class="user-profile__field"
+              class="ui-field user-profile__field"
               tag="div"
               :class="[fieldAccount.class]"
               :name="fieldAccount.name"
@@ -38,7 +38,7 @@
             </ValidationProvider>
 
             <ValidationProvider
-              class="user-profile__field"
+              class="ui-field user-profile__field"
               tag="div"
               :class="[fieldRealName.class]"
               :name="fieldRealName.name"
@@ -60,7 +60,7 @@
             </ValidationProvider>
 
             <ValidationProvider
-              class="user-profile__field"
+              class="ui-field user-profile__field"
               tag="div"
               :class="[fieldAccount.class]"
               :name="fieldMobile.name"
@@ -82,7 +82,7 @@
             </ValidationProvider>
 
             <ValidationProvider
-              class="user-profile__field"
+              class="ui-field user-profile__field"
               tag="div"
               :class="[fieldEmail.class]"
               :name="fieldEmail.name"
@@ -104,7 +104,7 @@
             </ValidationProvider>
 
             <ValidationProvider
-              class="user-profile__field"
+              class="ui-field user-profile__field"
               tag="div"
               :class="[fieldNickname.class]"
               :name="fieldNickname.name"
@@ -121,7 +121,7 @@
             </ValidationProvider>
 
             <ValidationProvider
-              class="user-profile__field"
+              class="ui-field user-profile__field"
               tag="div"
               :class="[fieldLine.class]"
               :name="fieldLine.name"
@@ -143,7 +143,7 @@
             </ValidationProvider>
 
             <ValidationProvider
-              class="user-profile__field"
+              class="ui-field user-profile__field"
               tag="div"
               :class="[fieldBirthday.class]"
               :name="fieldBirthday.name"
@@ -166,7 +166,7 @@
             </ValidationProvider>
 
             <ValidationProvider
-              class="user-profile__field"
+              class="ui-field user-profile__field"
               tag="div"
               :class="[fieldSkype.class]"
               :name="fieldSkype.name"
@@ -188,7 +188,7 @@
             </ValidationProvider>
 
             <ValidationProvider
-              class="user-profile__field"
+              class="ui-field user-profile__field"
               tag="div"
               :class="[fieldQQ.class]"
               :name="fieldQQ.name"
@@ -209,21 +209,34 @@
               </div>
             </ValidationProvider>
 
-            <div class="user-profile__field user-profile__field--btn">
+            <div class="ui-field user-profile__field user-profile__field--btn">
               <label>{{ $t('user.profile.field.password') }}</label>
-              <input type="password" :value="'password'" readonly />
-              <button type="button" @click="isShowModalChangePassword = true">{{ $t('ui.button.edit') }}</button>
+              <!-- <input type="password" :value="'password'" readonly /> -->
+              <!-- <button class="ui-btn" type="button" @click="isShowModalChangePassword = true">
+                {{ $t('ui.button.edit') }}
+              </button> -->
+              <img :src="imgButtonModify" alt="" />
               <div class="ui-question" @click="isShowModalNoticeChangePassword = true"></div>
             </div>
 
-            <div class="user-profile__field user-profile__field--btn">
+            <div class="ui-field user-profile__field user-profile__field--btn">
               <label>{{ $t('user.profile.field.passwordWithdrawal') }}</label>
-              <input type="password" :value="'password'" readonly />
-              <button type="button" @click="isShowModalChangePasswordWithdrawal = true">
+              <!-- <input type="password" :value="'password'" readonly /> -->
+              <!-- <button class="ui-btn" type="button" @click="isShowModalChangePasswordWithdrawal = true">
                 {{ $t('ui.button.setup') }}
-              </button>
+              </button> -->
+              <img :src="imgButtonSetup" alt="" />
               <div class="ui-question" @click="isShowModalNoticeChangePasswordWithdrawal = true"></div>
             </div>
+          </div>
+
+          <div class="user-profile__btn">
+            <button class="ui-btn ui-btn--lg user-profile__btn--submit" type="submit" :disabled="invalid">
+              {{ $t('ui.button.submit') }}
+            </button>
+            <button class="ui-btn ui-btn--lg user-profile__btn--reset" type="reset" @click="resetForm">
+              {{ $t('ui.button.reset') }}
+            </button>
           </div>
 
           <div class="ui-step">
@@ -355,7 +368,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss', 'userWithdrawalCount']),
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss', 'userWithdrawalCount']),
     PanelTabs() {
       return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
@@ -431,6 +444,27 @@ export default {
     imgBank() {
       try {
         return require(`@/assets/${this.siteFullCss}/ui/ui-icon-bank.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgButtonModify() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/user/ui-btn-modify-${this.lang}.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgButtonSetup() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/user/ui-btn-setup-${this.lang}.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgChangePassword() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/user/ui-change-password.png`);
       } catch {
         return '';
       }
