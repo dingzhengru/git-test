@@ -117,9 +117,7 @@
 
       <ValidationProvider class="ui-field deposit-base__field deposit-base__field--bank" tag="div">
         <select class="ui-field__select" v-model="promotion">
-          <option :value="item.Value" v-for="item in depositInfo.AllActivityList" :key="item.Value">{{
-            item.Text
-          }}</option>
+          <option :value="item.Value" v-for="item in promotionList" :key="item.Value">{{ item.Text }}</option>
         </select>
         <div class="ui-field__error" v-if="promotion == -1">
           {{ $t('transaction.deposit.hint.promotion') }}

@@ -1,6 +1,10 @@
 import { mapGetters } from 'vuex';
 import { apiGetCaptcha } from '@/api/captcha';
-import { apiDepositThirdParty, apiDepositCheckOrderStatus } from '@/api/transaction-deposit';
+import {
+  apiDepositThirdParty,
+  apiDepositCheckOrderStatus,
+  apiGetDepositAllActivityList,
+} from '@/api/transaction-deposit';
 export default {
   name: 'MixinTransactionDepositThirdParty',
   props: {
@@ -101,6 +105,14 @@ export default {
       this.platform = this.getPlatformListByMethod.find(item => !item.isMaintenance) || {};
       this.amount = 0;
     },
+    async getPromotionListThirdParty() {
+      const requestData = { ActivityType: 3 };
+      const result = await apiGetDepositAllActivityList(requestData);
+
+      if (result.Code === 200) {
+        this.promotionList = result.RetObj.AllActivityList;
+      }
+    },
     changePlatform(platform) {
       if (platform.isisMaintenance) {
         return;
@@ -151,6 +163,7 @@ export default {
   },
   mounted() {
     this.changeCaptcha();
+    this.getPromotionListThirdParty();
 
     window.addEventListener('message', this.receiveMessageHandler);
   },
