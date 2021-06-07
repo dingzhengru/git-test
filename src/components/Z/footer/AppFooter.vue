@@ -82,7 +82,7 @@ export default {
           name: 'promotion',
           text: 'footer.promotion',
           link: 'Promotion',
-          otherActiveRoute: ['PromotionContent'],
+          otherActiveRoute: ['PromotionDetail'],
         },
         {
           name: 'contact',

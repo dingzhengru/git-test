@@ -21,12 +21,16 @@ export default {
         this.$router.push({ name: 'GameLobby', params: { classify, id, key } });
       }
     },
-    goLinkUrlByPromotion(type, url, target = '_blank') {
+    goLinkUrlByPromotion(promotion) {
       //* 優惠活動多一個 0 會進 detail
+      const id = promotion.Lst_PromotionID;
+      const type = promotion.Lst_LinkType;
+      const url = promotion.Lst_LinkUrl;
+      const target = '_blank';
       if (type === 1) {
         window.open(url, target);
       } else if (type === 2 || type === 0) {
-        this.$router.push({ name: 'PromotionDetail', params: { id: url } });
+        this.$router.push({ name: 'PromotionDetail', params: { id } });
       } else if (type === 3) {
         const [classify, id, key] = url.split('/');
         this.$router.push({ name: 'GameLobby', params: { classify, id, key } });

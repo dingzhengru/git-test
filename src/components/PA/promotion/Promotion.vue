@@ -66,7 +66,9 @@ export default {
         return;
       }
       const promotion = this.promotionListHasDetail[0];
-      this.$router.push({ name: 'PromotionDetail', params: { id: promotion.Lst_PromotionID } });
+      if (promotion) {
+        this.$router.push({ name: 'PromotionDetail', params: { id: promotion.Lst_PromotionID } }).catch(() => {});
+      }
     },
   },
 };
