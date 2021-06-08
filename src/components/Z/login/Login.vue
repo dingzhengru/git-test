@@ -2,39 +2,43 @@
   <ValidationObserver class="login" tag="div" v-slot="{ invalid, handleSubmit }">
     <form class="login-form" @submit.prevent="handleSubmit(submitLogin)">
       <ValidationProvider
-        class="login__field ui-field"
         tag="div"
         :rules="{ required: true, min: 3, max: 15, regex: '^[a-zA-Z]{1}[a-zA-Z0-9]*$' }"
+        v-slot="{ errors }"
       >
-        <div class="ui-field__group">
-          <label class="ui-field__group__label" :for="$idMapper.login.input.username">
-            {{ $t('login.label.username') }}
-          </label>
-          <input
-            class="ui-field__group__input"
-            :id="$idMapper.login.input.username"
-            type="text"
-            :placeholder="$t('login.placeholder.username')"
-            v-model="user.UserName"
-          />
+        <div class="login__field ui-field" :class="{ invalid: errors.length > 0 }">
+          <div class="ui-field__group">
+            <label class="ui-field__group__label" :for="$idMapper.login.input.username">
+              {{ $t('login.label.username') }}
+            </label>
+            <input
+              class="ui-field__group__input"
+              :id="$idMapper.login.input.username"
+              type="text"
+              :placeholder="$t('login.placeholder.username')"
+              v-model="user.UserName"
+            />
+          </div>
         </div>
       </ValidationProvider>
       <ValidationProvider
         tag="div"
-        class="login__field ui-field"
         :rules="{ required: true, min: 6, max: 30, regex: '^[a-zA-Z0-9]*$' }"
+        v-slot="{ errors }"
       >
-        <div class="ui-field__group">
-          <label class="ui-field__group__label" :for="$idMapper.login.input.password">
-            {{ $t('login.label.password') }}
-          </label>
-          <input
-            class="ui-field__group__input"
-            :id="$idMapper.login.input.password"
-            type="password"
-            :placeholder="$t('login.placeholder.password')"
-            v-model="user.Password"
-          />
+        <div class="login__field ui-field" :class="{ invalid: errors.length > 0 }">
+          <div class="ui-field__group">
+            <label class="ui-field__group__label" :for="$idMapper.login.input.password">
+              {{ $t('login.label.password') }}
+            </label>
+            <input
+              class="ui-field__group__input"
+              :id="$idMapper.login.input.password"
+              type="password"
+              :placeholder="$t('login.placeholder.password')"
+              v-model="user.Password"
+            />
+          </div>
         </div>
       </ValidationProvider>
       <ValidationProvider
@@ -49,10 +53,11 @@
           <input
             class="ui-field__group__input"
             :id="$idMapper.login.input.captcha"
-            type="code"
+            type="tel"
             :placeholder="$t('login.placeholder.captcha')"
-            v-model="user.CaptchaValue"
+            maxlength="4"
             autocomplete="off"
+            v-model="user.CaptchaValue"
           />
           <img
             class="ui-field__captcha"

@@ -2,6 +2,16 @@
   font-size: 2rem;
   padding: 30px 60px 30px 60px;
 
+  &-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > div {
+      width: 100%;
+    }
+  }
+
   .ui-field {
     &:lang(en-us) {
       label,
@@ -23,12 +33,6 @@
         font-size: 1.8rem !important;
       }
     }
-  }
-
-  &-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   button {
