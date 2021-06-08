@@ -15,7 +15,7 @@
       </ValidationProvider>
 
       <div class="transfer__btn">
-        <button class="ui-btn ui-btn--block transfer__btn--switch" type="button" @click="switchProduct">
+        <button class="ui-btn ui-btn--lg ui-btn--block transfer__btn--switch" type="button" @click="switchProduct">
           <img :src="imgSwitch" alt="" />
         </button>
       </div>
@@ -67,7 +67,7 @@
       </ValidationProvider>
 
       <div class="transfer__btn">
-        <button class="ui-btn ui-btn--lg transfer__btn--submit" type="submit" :disabled="invalid">
+        <button class="ui-btn ui-btn--lg ui-btn--block transfer__btn--submit" type="submit" :disabled="invalid">
           {{ $t('transaction.transfer.button.transfer') }}
         </button>
       </div>
