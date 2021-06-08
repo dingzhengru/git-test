@@ -10,7 +10,7 @@
           class="ui-panel-tab__tabs__item"
           :class="{ active: productClassifyCurrent === hotGameClassify }"
           @click="productClassifyCurrent = hotGameClassify"
-          v-if="userIsLoggedIn"
+          v-if="gameListHot.length > 0"
         >
           {{ $t('ui.label.hotGame') }}
         </div>
@@ -44,7 +44,7 @@
 import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 import mixinScrollArrow from '@/mixins/_scrollArrow';
-import { apiGetGameListHot } from '@/api/game';
+import { apiGetGameListHot, apiPostGameListHot } from '@/api/game';
 
 export default {
   name: 'Home',
@@ -99,8 +99,12 @@ export default {
       this.$router.push(route);
     },
     async getGameListHot() {
-      const requestData = {};
-      const result = await apiGetGameListHot(requestData);
+      let result = {};
+      if (this.userIsLoggedIn) {
+        result = await apiPostGameListHot();
+      } else {
+        result = await apiGetGameListHot();
+      }
 
       if (result.Code === 200) {
         this.gameListHot = result.RetObj.SiteHotGamesList;
@@ -112,9 +116,7 @@ export default {
 
     this.initScrollArrowY(this.$refs.homePanelTab);
 
-    if (this.userIsLoggedIn) {
-      this.getGameListHot();
-    }
+    this.getGameListHot();
   },
 };
 </script>
