@@ -15,7 +15,8 @@
 }
 
 @mixin promotion-detail {
-  padding: 5px 15px;
+  // padding: 5px 15px;
+  padding: 5px 0;
 
   width: 100%;
 
@@ -45,6 +46,10 @@
         color: $promotion-detail-title-color;
         font-size: 1.1rem;
         font-weight: bold;
+        
+        &:first-child {
+          margin-bottom: 10px;
+        }
       }
 
       &__desc {
