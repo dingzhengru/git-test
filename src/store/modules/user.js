@@ -1,3 +1,5 @@
+import router from '@/router';
+import store from '@/store';
 import i18n from '@/i18n-lazy';
 import {
   cookieSetIsLoggedIn,
@@ -6,7 +8,6 @@ import {
   cookieRemoveToken,
   cookieRemovePublicKey,
 } from '@/utils/cookie';
-import router from '@/router';
 import {
   apiRegister,
   apiLogin,
@@ -112,7 +113,12 @@ const actions = {
     const result = await apiTransferAllGamePointToMain();
     if (result.Code === 200) {
       commit('setPointInfo', result.RetObj);
-      window.alert(result.RetObj.MsgString);
+
+      if (store.getters.siteIsLandscape === false) {
+        window.alert(result.RetObj.MsgString);
+      } else {
+        store.dispatch('openModalAlert', result.RetObj.MsgString);
+      }
     }
     return result;
   },
@@ -120,7 +126,12 @@ const actions = {
     const result = await apiTransferPoint(data);
     if (result.Code === 200) {
       commit('setPointInfo', result.RetObj);
-      window.alert(i18n.t('alert.transferSuccess'));
+
+      if (store.getters.siteIsLandscape === false) {
+        window.alert(i18n.t('alert.transferSuccess'));
+      } else {
+        store.dispatch('openModalAlert', i18n.t('alert.transferSuccess'));
+      }
     }
     return result;
   },

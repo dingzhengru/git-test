@@ -681,6 +681,28 @@
   font-size: 1.2rem;
 }
 
+@mixin modal-alert {
+  position: fixed;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to right, rgba(black, 0), rgba(black, 1) 40%, rgba(black, 1) 60%, rgba(black, 0) 100%);
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &,
+  * {
+    color: #e5bf79;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+}
+
 @mixin service-term {
   background: $service-term-bg;
   color: $service-term-color;

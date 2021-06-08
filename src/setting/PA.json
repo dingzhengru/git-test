@@ -5,7 +5,8 @@
       "ModalTransfer": "components/PA/ModalTransfer",
       "ModalRedEnvelope": "components/PA/ModalRedEnvelope",
       "ModalWinWheel": "components/PA/ModalWinWheel",
-      "ModalContact": "components/PA/ModalContact"
+      "ModalContact": "components/PA/ModalContact",
+      "ModalAlert": "components/PA/ModalAlert"
     },
     "header": {
       "ModalAuth": "components/PA/header/ModalAuth",

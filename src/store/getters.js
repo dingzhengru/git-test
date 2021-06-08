@@ -34,6 +34,8 @@ const getters = {
   modalLangIsShow: state => state.modalLangIsShow,
   modalAuthIsShow: state => state.modalAuthIsShow,
   modalContactIsShow: state => state.modalContactIsShow,
+  modalAlertIsShow: state => state.modalAlertIsShow,
+  modalAlertText: state => state.modalAlertText,
 
   //* Site.setting
   siteSetting: state => state.site.setting,

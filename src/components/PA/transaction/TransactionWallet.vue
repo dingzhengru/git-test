@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
+import mixinStyleLoader from '@/mixins/_styleLoader';
 import mixinAccountWallet from '@/mixins/accountWallet';
 
 export default {

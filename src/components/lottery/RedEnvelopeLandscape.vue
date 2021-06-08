@@ -12,10 +12,10 @@
         <img :src="item.image" alt="" v-if="isShowResult" />
       </div>
     </div>
-    <div class="red-envelope__modal" v-if="isModalResultShow">
+    <div class="modal-alert red-envelope__modal" v-if="isModalResultShow">
       <slot name="game-result" />
     </div>
-    <div class="red-envelope__modal" v-else-if="errorMessage">{{ errorMessage }}</div>
+    <div class="modal-alert red-envelope__modal" v-else-if="errorMessage">{{ errorMessage }}</div>
     <div class="red-envelope__loading" v-show="isLoading"></div>
   </div>
 </template>
@@ -225,28 +225,28 @@ $red-envelop-loading-bg: url(~@/assets/common/ui/loading.gif) center/auto 50% no
     }
   }
 
-  &__modal {
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to right, rgba(black, 0), rgba(black, 1) 40%, rgba(black, 1) 60%, rgba(black, 0) 100%);
+  // &__modal {
+  //   width: 100%;
+  //   height: 50%;
+  //   background: linear-gradient(to right, rgba(black, 0), rgba(black, 1) 40%, rgba(black, 1) 60%, rgba(black, 0) 100%);
 
-    top: 50%;
-    transform: translateY(-50%);
+  //   top: 50%;
+  //   transform: translateY(-50%);
 
-    position: absolute;
+  //   position: absolute;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   justify-content: center;
 
-    &,
-    * {
-      color: #e5bf79;
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-  }
+  //   &,
+  //   * {
+  //     color: #e5bf79;
+  //     font-weight: bold;
+  //     font-size: 1.5rem;
+  //   }
+  // }
 
   &__loading {
     background: $red-envelop-loading-bg;

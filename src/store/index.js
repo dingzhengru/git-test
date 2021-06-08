@@ -28,6 +28,8 @@ export default new Vuex.Store({
     modalLangIsShow: false,
     modalAuthIsShow: false,
     modalContactIsShow: false,
+    modalAlertIsShow: false,
+    modalAlertText: '',
   },
   mutations: {
     setLang: (state, lang) => {
@@ -80,6 +82,12 @@ export default new Vuex.Store({
     setModalContactIsShow: (state, isShow) => {
       state.modalContactIsShow = isShow;
     },
+    setModalAlertIsShow: (state, isShow) => {
+      state.modalAlertIsShow = isShow;
+    },
+    setModalAlertText: (state, text) => {
+      state.modalAlertText = text;
+    },
   },
   actions: {
     async changeLang({ commit }, lang) {
@@ -123,6 +131,18 @@ export default new Vuex.Store({
     },
     closeModalContact({ commit }) {
       commit('setModalContactIsShow', false);
+    },
+    openModalAlert({ commit, dispatch }, text) {
+      commit('setModalAlertText', text);
+      commit('setModalAlertIsShow', true);
+
+      window.setTimeout(() => {
+        dispatch('closeModalAlert');
+      }, 1000);
+    },
+    closeModalAlert({ commit }) {
+      commit('setModalAlertIsShow', false);
+      commit('setModalAlertText', '');
     },
   },
   modules: {
