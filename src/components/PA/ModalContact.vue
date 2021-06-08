@@ -20,6 +20,21 @@
           <div
             class="ui-modal__item contact__item"
             :key="contactItem.Lst_ContactID"
+            @click="openContactLink(contactItem, contactItem.GroupList[0].DetailList[0])"
+            v-if="isShowService(contactItem) === false"
+          >
+            <button class="ui-modal__item__btn contact__item__btn">
+              {{ contactTitleMapper[contactItem.Lst_ContactType] }}
+            </button>
+            <span class="ui-modal__item__content contact__item__content">
+              <img :src="getImgByContact(contactItem)" />
+              {{ contactItem.GroupList[0].DetailList[0].Lst_ContactValue }}
+            </span>
+          </div>
+
+          <!-- <div
+            class="ui-modal__item contact__item"
+            :key="contactItem.Lst_ContactID"
             @click="openContactLink(contactItem, contactItem.DetailList[0])"
             v-if="isShowMobile(contactItem)"
           >
@@ -106,7 +121,7 @@
               <img :src="imgTelegram" />
               {{ contactItem.DetailList[0].Lst_ContactValue }}
             </span>
-          </div>
+          </div> -->
         </template>
       </div>
     </div>
@@ -126,6 +141,27 @@ export default {
   },
   computed: {
     ...mapGetters(['siteName', 'siteFullCss', 'userIsLoggedIn']),
+
+    getImgByContact: app => contact => {
+      if (contact === app.skype) {
+        return app.imgSkype;
+      } else if (contact === app.line) {
+        return app.imgLine;
+      } else if (contact === app.mobile) {
+        return app.imgMobile;
+      } else if (contact === app.mail) {
+        return app.imgMail;
+      } else if (contact === app.wechat) {
+        return app.imgWechat;
+      } else if (contact === app.service) {
+        return app.imgService;
+      } else if (contact === app.facebook) {
+        return app.imgFacebook;
+      } else if (contact === app.telegram) {
+        return app.imgTelegram;
+      }
+    },
+
     imgService() {
       try {
         return require(`@/assets/${this.siteFullCss}/contact/service.png`);
@@ -133,6 +169,7 @@ export default {
         return '';
       }
     },
+
     imgMobile() {
       try {
         return require(`@/assets/${this.siteFullCss}/contact/mobile.png`);
@@ -183,6 +220,20 @@ export default {
         return '';
       }
     },
+  },
+  data() {
+    return {
+      contactTitleMapper: {
+        1: 'SKYPE',
+        2: 'Line',
+        3: 'Call phone',
+        4: 'Email',
+        5: 'WECHAT',
+        6: 'Online service',
+        7: 'Facebook',
+        8: 'Telegram',
+      },
+    };
   },
   methods: {
     closeModal() {
