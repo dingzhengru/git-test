@@ -153,6 +153,27 @@
     }
   }
 
+  &__item-game {
+    width: calc(25% - 5px);
+    height: calc(50% - 5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 5px;
+
+    img {
+      width: 100%;
+      flex-basis: 80%;
+      max-height: 80%;
+      
+    }
+
+    > div {
+      flex-grow: 1;
+    }
+  }
+
   &__item {
     // background: red no-repeat;
     width: 25%;

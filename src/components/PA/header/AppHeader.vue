@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <img class="header__logo__icon" :src="imgLogo" v-show="isShowLogo" />
+      <img class="header__logo__icon" :src="siteLogoUrl" v-show="isShowLogo" />
       <img class="header__logo__back" :src="imgBack" @click="goRoutePrevious" v-show="isShowLogoBack" />
     </div>
 

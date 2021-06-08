@@ -93,10 +93,11 @@ const getters = {
   },
   siteLogoUrl: (state, getters) => {
     //* Logo: {樣式網址}/Site_Uploadfile/{站台ID}/Logo_{裝置}.png
+    const device = getters.siteIsLandscape ? 2 : 1;
     if (getters.siteIsMultiStyle && getters.siteMultiStyleId > 0) {
-      return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/Logo_1.png`;
+      return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/Logo_${device}.png`;
     }
-    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/Logo_1.png`;
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/Logo_${device}.png`;
   },
   siteAppIconUrl: (state, getters) => size => {
     //* AppIcon: {樣式網址}/Site_Uploadfile/{站台ID}/AppIcon_{尺寸}.png

@@ -33,12 +33,14 @@
 
       <template v-else>
         <div
-          class="home-product-block__item product-list-landscape-item"
+          class="home-product-block__item-game product-list-landscape-item"
           v-for="item in list"
           :key="item.Lst_GameID"
-          :style="{ 'background-image': `url(${item.imagePath})` }"
           @click="openGame(item)"
-        ></div>
+        >
+          <img :src="item.imagePath" alt="" />
+          <div>{{ item.Lst_GameName }}</div>
+        </div>
       </template>
     </transition-group>
     <div
