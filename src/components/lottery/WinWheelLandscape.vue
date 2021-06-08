@@ -24,9 +24,12 @@
         <slot name="game-dialog" />
       </div>
     </transition>
-    <div class="overlay" v-show="!wheelSegmentsPrize.length || isLoading">
-      <p v-if="errMsg" class="vue-winwheel__errorMsg">{{ errMsg }}</p>
-      <img v-else :src="wheelStyle.loadingImgUrl" alt="" />
+
+    <div class="modal-alert" v-if="errorMessage">{{ errorMessage }}</div>
+
+    <div class="overlay" v-else-if="!wheelSegmentsPrize.length || isLoading">
+      <!-- <p v-if="errorMessage" class="vue-winwheel__errorMsg">{{ errorMessage }}</p> -->
+      <img :src="wheelStyle.loadingImgUrl" alt="" />
     </div>
   </div>
 </template>
@@ -54,11 +57,18 @@ export default {
     isWheelLoading: {
       require: true,
     },
-    errMsg: {
-      require: false,
-    },
   },
   computed: {
+    isShowLoading() {
+      return !this.wheelSegmentsPrize.length || this.isLoading;
+    },
+    errorMessage() {
+      if (!this.gameChance || this.gameChance === 0) {
+        return `${this.$t('ui.lottery.count1')} 0 ${this.$t('ui.lottery.count2')}`;
+      }
+
+      return '';
+    },
     wheelBackgroundImage() {
       try {
         return require(`@/assets/common/lottery/winWheel/landscape/win-wheel-bg.png`);
@@ -82,6 +92,7 @@ export default {
       isFirstTry: true,
 
       isLoading: true,
+      // errorMessage: '',
 
       prizeImgLoadedCount: 0,
     };
