@@ -34,7 +34,11 @@ export default {
         {
           route: 'TransactionDepositBase',
           text: 'transaction.nav.deposit',
-          otherActiveRoute: ['TransactionDepositThirdParty', 'TransactionDepositThirdPartyPayment'],
+          otherActiveRoute: [
+            'TransactionDepositThirdParty',
+            'TransactionDepositThirdPartyPayment',
+            'TransactionDepositAutoCash',
+          ],
         },
         {
           route: 'TransactionWithdrawal',
