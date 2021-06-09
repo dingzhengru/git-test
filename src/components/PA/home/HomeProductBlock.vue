@@ -81,6 +81,8 @@ export default {
       'userIsLoggedIn',
       'siteProductImageLandscape',
       'siteProductImageLandscapeSmall',
+      'siteProductImageLandscapeDefault',
+      'siteProductImageLandscapeSmallDefault',
     ]),
     isProduct() {
       return typeof this.classify === 'number';

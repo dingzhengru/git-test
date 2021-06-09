@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import { apiGetRegisterAdvanceNew } from '@/api/user';
+import { apiGetRegisterAdvanceNew, apiGetBankInfoList } from '@/api/user';
 import { registerFieldList } from '@/utils/register';
 import mixinCheckField from '@/mixins/checkField';
 
@@ -7,12 +7,15 @@ export default {
   name: 'MixinUserProfile',
   mixins: [mixinCheckField],
   computed: {
-    ...mapGetters(['lang', 'userCreatedDatetime', 'userBankById', 'userBankName1']),
+    ...mapGetters(['lang', 'userCreatedDatetime']),
     getDatetime: () => datetime => {
       return `${datetime.split('.')[0].replace('T', ' ')} (GMT+8)`;
     },
     getDate: () => datetime => {
       return datetime.split('T')[0];
+    },
+    userBankById: app => id => {
+      return app.userBankList.find(item => item.Lst_BankId === id) || {};
     },
   },
   data() {
@@ -20,6 +23,8 @@ export default {
       fieldList: registerFieldList,
       bankList: [],
       fieldListOld: [],
+
+      userBankList: [],
 
       fieldAccount: {},
       fieldNickname: {},
@@ -147,7 +152,16 @@ export default {
       if (!id) {
         return {};
       }
+
       return this.bankList.find(item => item.Value === id);
+    },
+
+    async getUserBankList() {
+      const result = await apiGetBankInfoList();
+      if (result.Code === 200) {
+        this.userBankList = result.RetObj;
+      }
+      return result;
     },
   },
   mounted() {

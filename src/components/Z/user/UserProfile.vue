@@ -68,7 +68,7 @@
               type="text"
               :placeholder="$t(`register.${field.name}.placeholder`)"
               :readonly="!field.isModifiable"
-              :value="userBankById(field.value).Lst_BankName"
+              :value="getBankById(field.value).Text"
               v-else-if="field.type === 'select' && !field.isModifiable"
             />
           </div>

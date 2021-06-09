@@ -85,7 +85,8 @@ export default {
   },
   data() {
     return {
-      productClassifyCurrent: 1,
+      // productClassifyCurrent: 1,
+      productClassifyCurrent: 'hot',
 
       gameListHot: [],
       hotGameClassify: 'hot',

@@ -141,6 +141,15 @@ const getters = {
   siteProductImageLandscapeSmall: (state, getters) => product => {
     return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/ProductImg/${product.Lst_Product_Proxy_Tag}_2_2.png`;
   },
+  siteProductImagePortraitDefault: (state, getters) => product => {
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/2/ProductImg/${product.Lst_Product_Proxy_Tag}_1.png`;
+  },
+  siteProductImageLandscapeDefault: (state, getters) => product => {
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/2/ProductImg/${product.Lst_Product_Proxy_Tag}_2_1.png`;
+  },
+  siteProductImageLandscapeSmallDefault: (state, getters) => product => {
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/2/ProductImg/${product.Lst_Product_Proxy_Tag}_2_2.png`;
+  },
   siteLotteryButtonBgWinWheel: (state, getters) => {
     return `${getters.siteResourceUrl}/imgs/ad/rotaryTable.png`;
   },
@@ -198,23 +207,23 @@ const getters = {
   userNewMailCount: state => state.user.info.Lst_NewMailCount,
   userIsUsingfirstDeposit: state => state.user.info.Lst_UsingfirstDeposit,
   userBankId1: state => state.user.info.Lst_BankID_1,
-  userBankName1: (state, getters) => getters.userBankById(getters.userBankId1).Lst_BankName || '',
+  // userBankName1: (state, getters) => getters.userBankById(getters.userBankId1).Lst_BankName || '',
   userBankAccount1: state => state.user.info.Lst_BankAccount_1,
   userBankBrach1: state => state.user.info.Lst_Bank_Branches_1,
   userBankAccountName1: state => state.user.info.Lst_BankAccountName_1,
   userBankId2: state => state.user.info.Lst_BankID_2,
-  userBankName2: (state, getters) => getters.userBankById(getters.userBankId2).Lst_BankName || '',
+  // userBankName2: (state, getters) => getters.userBankById(getters.userBankId2).Lst_BankName || '',
   userBankAccount2: state => state.user.info.Lst_BankAccount_2,
   userBankBrach2: state => state.user.info.Lst_Bank_Branches_2,
   userBankAccountName2: state => state.user.info.Lst_BankAccountName_2,
   userBankId3: state => state.user.info.Lst_BankID_3,
   userBankName3: (state, getters) => getters.userBankById(getters.userBankId3).Lst_BankName || '',
-  userBankAccount3: state => state.user.info.Lst_BankAccount_3,
+  // userBankAccount3: state => state.user.info.Lst_BankAccount_3,
   userBankBrach3: state => state.user.info.Lst_Bank_Branches_3,
   userBankAccountName3: state => state.user.info.Lst_BankAccountName_3,
-  userBankById: state => id => {
-    return state.user.bankList.find(item => item.Lst_BankId === id) || {};
-  },
+  // userBankById: state => id => {
+  //   return state.user.bankList.find(item => item.Lst_BankId === id) || {};
+  // },
   userWithdrawalCount: state => state.user.info.Lst_WithdrawalsNum,
 
   //* Product
