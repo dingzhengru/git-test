@@ -23,10 +23,16 @@
           :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
           v-for="item in list"
           :key="item.Lst_Product_Proxy_Tag"
-          :style="{ 'background-image': `url(${imgProduct(item)})` }"
           @click="clickProductItem(item)"
+          v-lazy-container="{ selector: 'img' }"
         >
           <!-- <div class="home-product-block__item__text">{{ item.Lst_Name }}</div> -->
+          <img
+            :data-src="imgProduct(item)"
+            :data-error="imgProductDefault(item)"
+            :data-loading="imgLoading"
+          />
+
           <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
         </div>
       </template>
@@ -96,6 +102,12 @@ export default {
       }
       return app.siteProductImageLandscape(product);
     },
+    imgProductDefault: app => product => {
+      if (app.isImgBlock) {
+        app.siteProductImageLandscapeSmallDefault(product);
+      }
+      return app.siteProductImageLandscapeDefault(product);
+    },
     imgSrcTest() {
       try {
         if (this.isImgBlock) {
@@ -105,6 +117,9 @@ export default {
       } catch {
         return '';
       }
+    },
+    imgLoading() {
+      return require(`@/assets/common/ui/loading-2.gif`);
     },
   },
   methods: {

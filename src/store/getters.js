@@ -193,6 +193,7 @@ const getters = {
   userInfo: state => state.user.info,
   userAccount: state => state.user.info.Lst_Account,
   userPILevel: state => state.user.info.Lst_PILevel,
+  userVIPLevel: state => state.user.info.Lst_VIPlevel,
   userPIBetAmount: state => state.user.info.Lst_PI_BetAmount,
   userBirthday: state => state.user.info.Lst_Birthday,
   userCreatedDatetime: state => state.user.info.Lst_Ctime,

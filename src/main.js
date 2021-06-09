@@ -67,7 +67,10 @@ Vue.prototype.$isStandaloneMode = isStandaloneMode;
 
 //* Vue Global Component
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
+import VueLazyload from 'vue-lazyload';
+
 Vue.use(VueScrollTo);
+Vue.use(VueLazyload);
 
 Vue.config.productionTip = false;
 
@@ -232,9 +235,9 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
-    const siteClass = 'Z';
+    const siteClass = 'PA';
     const siteType = '01';
-    const isLandscape = false;
+    const isLandscape = true;
     console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
     store.commit('site/setInfoStyle', { siteClass, siteType });
