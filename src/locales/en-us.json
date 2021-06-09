@@ -640,19 +640,21 @@
     },
     "deposit": {
       "title": "Fill in Cash Voucher",
+      "nav": {
+        "base": "Deposit by people",
+        "thirdParty": "Automatic score",
+        "autoCash": "Automatic score"
+      },
       "third-party": {
         "success": "Automatic score success",
         "failed": "Automatic score failed",
         "amountEnter": "Enter by yourself"
       },
-      "nav": {
-        "base": "Deposit by people",
-        "thirdParty": "Automatic score"
-      },
       "step": {
         "selectDepositBank": "Step1 Select Deposit Bank",
         "selectTransferBank": "Step2 Please select Bank transfer",
-        "selectDepositInfo": "Step3 Deposit Information"
+        "selectDepositInfo": "Step3 Deposit Information",
+        "transferBankInfo": "Transfer Information"
       },
       "field": {
         "depositBank": "Select Deposit Bank",
@@ -669,7 +671,11 @@
         "remark": "Remark",
         "promotion": "Favorable Project on Payment",
         "payMethod": "payment",
-        "payPlatform": "payment platform"
+        "payPlatform": "payment platform",
+        "dispensingBank": "Dispensing Bank",
+        "beneficiaryBank": "Beneficiary bank",
+        "beneficiaryBankAccountName": "Account name of beneficiary",
+        "beneficiaryBankAccount": "Account number of beneficiary"
       },
       "placeholder": {
         "depositBank": "Select Deposit Bank",

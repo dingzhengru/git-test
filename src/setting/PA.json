@@ -74,6 +74,7 @@
     "transactionDepositHome": "components/PA/transaction/deposit/TransactionDepositHome",
     "transactionDepositBase": "components/PA/transaction/deposit/TransactionDepositBase",
     "transactionDepositThirdParty": "components/PA/transaction/deposit/TransactionDepositThirdParty",
+    "transactionDepositAutoCash": "components/PA/transaction/deposit/TransactionDepositAutoCash",
     "transactionWithdrawal": "components/PA/transaction/TransactionWithdrawal",
     "transactionTransfer": "components/PA/transaction/TransactionTransfer",
     "transactionRecordHome": "components/Z/transaction/record/TransactionRecordHome",

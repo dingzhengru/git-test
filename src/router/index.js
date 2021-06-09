@@ -180,6 +180,11 @@ const routes = [
             name: 'TransactionDepositThirdPartyPayment',
             component: () => import('@/views/transaction/deposit/TransactionDepositThirdParty'),
           },
+          {
+            path: 'auto-cash',
+            name: 'TransactionDepositAutoCash',
+            component: () => import('@/views/transaction/deposit/TransactionDepositAutoCash'),
+          },
         ],
       },
       {

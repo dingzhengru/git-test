@@ -32,6 +32,10 @@
   position: relative;
   margin-bottom: 15px;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   // background: $field-bg;
   border-radius: 5px;
 
@@ -60,6 +64,10 @@
 
   input[type='date']::-webkit-calendar-picker-indicator {
     filter: invert(1);
+  }
+
+  label {
+    margin-right: 5px;
   }
 
   input,

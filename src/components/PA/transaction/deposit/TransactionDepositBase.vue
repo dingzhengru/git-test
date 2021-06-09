@@ -180,13 +180,11 @@
               {{ item.Text }}
             </option>
           </select>
-          <!-- <div class="ui-field__error" v-if="promotion == -1">
+
+          <div class="deposit-base__field--promotion-hint" v-if="promotion == -1">
             {{ $t('transaction.deposit.hint.promotion') }}
-          </div> -->
+          </div>
         </ValidationProvider>
-        <div class="deposit-base__field--promotion-hint" v-if="promotion == -1">
-          {{ $t('transaction.deposit.hint.promotion') }}
-        </div>
       </fieldset>
 
       <div class="deposit-base__btn">

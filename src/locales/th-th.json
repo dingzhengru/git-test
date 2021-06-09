@@ -638,19 +638,21 @@
     },
     "deposit": {
       "title": "กรุณากรอกข้อมูลบิลฝาก",
+      "nav": {
+        "base": "ฝากผ่านเจ้าหน้าที่",
+        "thirdParty": "ฝากอัตโนมัติ",
+        "autoCash": "คะแนนอัตโนมัติ"
+      },
       "third-party": {
         "success": "ให้คะแนนอัตโนมัติ สำเร็จ",
         "failed": "ห้คะแนนอัตโนมัติ ล้มเหลว",
         "amountEnter": "ป้อนด้วยตนเอง"
       },
-      "nav": {
-        "base": "ฝากผ่านเจ้าหน้าที่",
-        "thirdParty": "ฝากอัตโนมัติ"
-      },
       "step": {
         "selectDepositBank": "Step1 เลือกธนาคารที่ต้องการโอนเข้า",
         "selectTransferBank": "Step2 กรุณาเลือกบัญชีธนาคาร",
-        "selectDepositInfo": "Step3 ข้อมูลบิลฝาก"
+        "selectDepositInfo": "Step3 ข้อมูลบิลฝาก",
+        "transferBankInfo": "ข้อมูลการโอน"
       },
       "field": {
         "depositBank": "เลือกธนาคารที่ต้องการโอนเข้า",
@@ -667,7 +669,11 @@
         "remark": "หมายเหตุ",
         "promotion": "เลือกโปรโมชั่น",
         "payMethod": "วิธีการชำระเงิน",
-        "payPlatform": "แพลตฟอร์มการชำระเงิน"
+        "payPlatform": "แพลตฟอร์มการชำระเงิน",
+        "dispensingBank": "ธนาคารถอนเงิน",
+        "beneficiaryBank": "ธนาคารผู้รับผลประโยชน์",
+        "beneficiaryBankAccountName": "ชื่อบัญชีของผู้รับผลประโยชน์",
+        "beneficiaryBankAccount": "เลขที่บัญชีผู้รับผลประโยชน์"
       },
       "placeholder": {
         "depositBank": "เลือกธนาคารที่ต้องการโอนเข้า",

@@ -636,19 +636,21 @@
     },
     "deposit": {
       "title": "填写存款申请单",
+      "nav": {
+        "base": "人工存款",
+        "thirdParty": "自動上分",
+        "autoCash": "自动上分"
+      },
       "third-party": {
         "success": "自动上分 成功",
         "failed": "自动上分 失败",
         "amountEnter": "自行输入"
       },
-      "nav": {
-        "base": "人工存款",
-        "thirdParty": "自動上分"
-      },
       "step": {
         "selectDepositBank": "Step1 请选择存入银行",
         "selectTransferBank": "Step2 请选择转帐银行",
-        "selectDepositInfo": "Step3 存款数据"
+        "selectDepositInfo": "Step3 存款数据",
+        "transferBankInfo": "汇款资讯"
       },
       "field": {
         "depositBank": "请选择存入银行",
@@ -665,7 +667,11 @@
         "remark": "备注",
         "promotion": "存款优惠方案",
         "payMethod": "支付方式",
-        "payPlatform": "支付平台"
+        "payPlatform": "支付平台",
+        "dispensingBank": "收款银行",
+        "beneficiaryBank": "收款银行",
+        "beneficiaryBankAccountName": "收款名称",
+        "beneficiaryBankAccount": "收款帐号"
       },
       "placeholder": {
         "depositBank": "请选择存入银行",
