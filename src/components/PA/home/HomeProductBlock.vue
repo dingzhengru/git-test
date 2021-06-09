@@ -27,11 +27,7 @@
           v-lazy-container="{ selector: 'img' }"
         >
           <!-- <div class="home-product-block__item__text">{{ item.Lst_Name }}</div> -->
-          <img
-            :data-src="imgProduct(item)"
-            :data-error="imgProductDefault(item)"
-            :data-loading="imgLoading"
-          />
+          <img :data-src="imgProduct(item)" :data-error="imgProductDefault(item)" />
 
           <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
         </div>
@@ -117,9 +113,6 @@ export default {
       } catch {
         return '';
       }
-    },
-    imgLoading() {
-      return require(`@/assets/common/ui/loading-2.gif`);
     },
   },
   methods: {
