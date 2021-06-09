@@ -19,7 +19,7 @@
       </div>
       <div class="header__user__vip">
         <img class="header__user__vip__icon" :src="imgUserVip" />
-        <div class="header__user__vip__content">{{ userVIPLevel }}</div>
+        <div class="header__user__vip__content">{{ userVIPLevelName }}</div>
       </div>
     </div>
 
@@ -80,7 +80,7 @@ export default {
       'siteLogoUrl',
       'userIsLoggedIn',
       'userAccount',
-      'userVIPLevel',
+      'userVIPLevelName',
       'userGamePointWallet',
       'modalLangIsShow',
       'modalAuthIsShow',

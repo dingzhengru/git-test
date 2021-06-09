@@ -79,6 +79,9 @@ export default {
       return this.productCategoryEntry === 1;
     },
     isShowSearch() {
+      if (this.siteIsLandscape) {
+        return !this.isCategoryEntry && this.$route.name !== 'GameLobbyFav';
+      }
       return !this.isCategoryEntry;
     },
     isShowTransfer() {

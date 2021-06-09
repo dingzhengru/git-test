@@ -71,7 +71,7 @@ import VueLazyload from 'vue-lazyload';
 import loadingImage from '@/assets/common/ui/loading-2.gif';
 
 Vue.use(VueScrollTo);
-Vue.use(VueLazyload, { loading: loadingImage });
+Vue.use(VueLazyload, { loading: loadingImage, attempt: 1 });
 
 Vue.config.productionTip = false;
 
