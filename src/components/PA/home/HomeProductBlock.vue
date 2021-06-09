@@ -23,7 +23,7 @@
           :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
           v-for="item in list"
           :key="item.Lst_Product_Proxy_Tag"
-          :style="{ 'background-image': `url(${imgSrcTest})` }"
+          :style="{ 'background-image': `url(${imgProduct(item)})` }"
           @click="clickProductItem(item)"
         >
           <!-- <div class="home-product-block__item__text">{{ item.Lst_Name }}</div> -->
@@ -75,19 +75,24 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'siteProductImage', 'userIsLoggedIn']),
+    ...mapGetters([
+      'siteFullCss',
+      'siteProductImage',
+      'userIsLoggedIn',
+      'siteProductImageLandscape',
+      'siteProductImageLandscapeSmall',
+    ]),
     isProduct() {
       return typeof this.classify === 'number';
     },
     isImgBlock() {
       return this.classify !== 2 && this.isProduct;
     },
-    imgSrc: app => game => {
-      try {
-        return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
-      } catch {
-        return '';
+    imgProduct: app => product => {
+      if (app.isImgBlock) {
+        app.siteProductImageLandscapeSmall(product);
       }
+      return app.siteProductImageLandscape(product);
     },
     imgSrcTest() {
       try {
