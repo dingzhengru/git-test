@@ -7,7 +7,7 @@ export default {
   name: 'MixinUserProfile',
   mixins: [mixinCheckField],
   computed: {
-    ...mapGetters(['lang', 'userCreatedDatetime']),
+    ...mapGetters(['lang', 'userCreatedDatetime', 'userBindBank']),
     getDatetime: () => datetime => {
       return `${datetime.split('.')[0].replace('T', ' ')} (GMT+8)`;
     },
@@ -44,6 +44,8 @@ export default {
       fieldBankId3: {},
       fieldBankAccount3: {},
       fieldBankBranchName3: {},
+
+      bankDefault: 0,
     };
   },
   methods: {
@@ -166,10 +168,15 @@ export default {
   },
   mounted() {
     this.getRegisterAdvanceNew();
+
+    this.bankDefault = this.userBindBank;
   },
   watch: {
     fieldList() {
       this.setFields();
+    },
+    userBindBank() {
+      this.bankDefault = this.userBindBank;
     },
   },
 };

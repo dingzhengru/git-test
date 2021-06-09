@@ -196,6 +196,7 @@ const getters = {
   userVIPLevel: state => state.user.info.Lst_VIPlevel,
   userVIPLevelName: state => state.user.info.Lst_VIPlevelName,
   userPIBetAmount: state => state.user.info.Lst_PI_BetAmount,
+  userBindBank: state => state.user.info.Lst_BindAccount,
   userBirthday: state => state.user.info.Lst_Birthday,
   userCreatedDatetime: state => state.user.info.Lst_Ctime,
   userCurrency: state => state.user.info.Lst_Currency,
