@@ -94,15 +94,15 @@ export default {
     },
     imgProduct: app => product => {
       if (app.isImgBlock) {
-        app.siteProductImageLandscapeSmall(product);
+        return app.siteProductImageLandscape(product);
       }
-      return app.siteProductImageLandscape(product);
+      return app.siteProductImageLandscapeSmall(product);
     },
     imgProductDefault: app => product => {
       if (app.isImgBlock) {
-        app.siteProductImageLandscapeSmallDefault(product);
+        return app.siteProductImageLandscapeDefault(product);
       }
-      return app.siteProductImageLandscapeDefault(product);
+      return app.siteProductImageLandscapeSmallDefault(product);
     },
     imgSrcTest() {
       try {
