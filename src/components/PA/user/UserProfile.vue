@@ -12,7 +12,8 @@
           <div class="user-profile__basic">
             <div class="ui-field user-profile__field">
               <label>{{ $t('user.profile.field.registerTime') }}</label>
-              <input type="text" :value="getDatetime(userCreatedDatetime)" readonly />
+              <span>{{ getDatetime(userCreatedDatetime) }}</span>
+              <!-- <input type="text" :value="getDatetime(userCreatedDatetime)" readonly /> -->
             </div>
 
             <ValidationProvider
@@ -31,7 +32,8 @@
                 @change="checkField(fieldAccount, invalid)"
                 v-if="fieldAccount.isModifiable"
               />
-              <input type="text" :value="fieldAccount.value" readonly v-else />
+              <span v-else>{{ fieldAccount.value }}</span>
+              <!-- <input type="text" :value="fieldAccount.value" readonly v-else /> -->
               <div class="" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
               </div>
@@ -53,7 +55,8 @@
                 @change="checkField(fieldRealName, invalid)"
                 v-if="fieldRealName.isModifiable"
               />
-              <input type="text" :value="fieldRealName.value" readonly v-else />
+              <span v-else>{{ fieldRealName.value }}</span>
+              <!-- <input type="text" :value="fieldRealName.value" readonly v-else /> -->
               <div class="" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
               </div>
@@ -75,7 +78,8 @@
                 @change="checkField(fieldMobile, invalid)"
                 v-if="fieldMobile.isModifiable"
               />
-              <input type="text" :value="fieldMobile.value" readonly v-else />
+              <span v-else>{{ fieldMobile.value }}</span>
+              <!-- <input type="text" :value="fieldMobile.value" readonly v-else /> -->
               <div class="" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
               </div>
@@ -97,7 +101,8 @@
                 @change="checkField(fieldEmail, invalid)"
                 v-if="fieldEmail.isModifiable"
               />
-              <input type="text" :value="fieldEmail.value" readonly v-else />
+              <span v-else>{{ fieldEmail.value }}</span>
+              <!-- <input type="text" :value="fieldEmail.value" readonly v-else /> -->
               <div class="" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
               </div>
@@ -114,7 +119,8 @@
             >
               <label>{{ $t(`register.Add_NickName.placeholder`) }}</label>
               <input type="text" v-model="fieldNickname.value" v-if="fieldNickname.isModifiable" />
-              <input type="text" :value="fieldNickname.value" readonly v-else />
+              <span v-else>{{ fieldNickname.value }}</span>
+              <!-- <input type="text" :value="fieldNickname.value" readonly v-else /> -->
               <div class="" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
               </div>
@@ -136,7 +142,8 @@
                 @change="checkField(fieldLine, invalid)"
                 v-if="fieldLine.isModifiable"
               />
-              <input type="text" :value="fieldLine.value" readonly v-else />
+              <span v-else>{{ fieldLine.value }}</span>
+              <!-- <input type="text" :value="fieldLine.value" readonly v-else /> -->
               <div class="" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
               </div>
@@ -159,7 +166,8 @@
                 :max="fieldBirthday.max"
                 v-if="fieldBirthday.isModifiable"
               />
-              <input type="date" :value="fieldBirthday.value" readonly v-else />
+              <span v-else>{{ fieldBirthday.value }}</span>
+              <!-- <input type="date" :value="fieldBirthday.value" readonly v-else /> -->
               <div class="" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
               </div>
@@ -181,7 +189,8 @@
                 @change="checkField(fieldSkype, invalid)"
                 v-if="fieldSkype.isModifiable"
               />
-              <input type="text" :value="fieldSkype.value" readonly v-else />
+              <span v-else>{{ fieldSkype.value }}</span>
+              <!-- <input type="text" :value="fieldSkype.value" readonly v-else /> -->
               <div class="" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
               </div>
@@ -203,7 +212,8 @@
                 @change="checkField(fieldQQ, invalid)"
                 v-if="fieldQQ.isModifiable"
               />
-              <input type="text" :value="fieldQQ.value" readonly v-else />
+              <span v-else>{{ fieldQQ.value }}</span>
+              <!-- <input type="text" :value="fieldQQ.value" readonly v-else /> -->
               <div class="" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
               </div>
@@ -211,20 +221,12 @@
 
             <div class="ui-field user-profile__field user-profile__field--btn">
               <label>{{ $t('user.profile.field.password') }}</label>
-              <!-- <input type="password" :value="'password'" readonly /> -->
-              <!-- <button class="ui-btn" type="button" @click="isShowModalChangePassword = true">
-                {{ $t('ui.button.edit') }}
-              </button> -->
               <img :src="imgButtonModify" @click="isShowModalChangePassword = true" />
               <div class="ui-question" @click="isShowModalNoticeChangePassword = true"></div>
             </div>
 
             <div class="ui-field user-profile__field user-profile__field--btn">
               <label>{{ $t('user.profile.field.passwordWithdrawal') }}</label>
-              <!-- <input type="password" :value="'password'" readonly /> -->
-              <!-- <button class="ui-btn" type="button" @click="isShowModalChangePasswordWithdrawal = true">
-                {{ $t('ui.button.setup') }}
-              </button> -->
               <img :src="imgButtonSetup" @click="isShowModalChangePasswordWithdrawal = true" />
               <div class="ui-question" @click="isShowModalNoticeChangePasswordWithdrawal = true"></div>
             </div>
