@@ -39,6 +39,7 @@
             type="code"
             :placeholder="$t('login.placeholder.captcha')"
             v-model="user.CaptchaValue"
+            maxlength="4"
             autocomplete="off"
           />
           <img

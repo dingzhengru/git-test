@@ -104,6 +104,7 @@
             class="ui-field__group__input"
             type="code"
             :placeholder="$t('login.placeholder.captcha')"
+            maxlength="4"
             autocomplete="off"
             v-model="captcha"
           />

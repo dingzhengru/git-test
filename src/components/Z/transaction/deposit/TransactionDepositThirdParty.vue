@@ -132,6 +132,7 @@
             type="code"
             :placeholder="$t('login.placeholder.captcha')"
             autocomplete="off"
+            maxlength="4"
             v-model="captcha"
           />
           <img
