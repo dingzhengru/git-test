@@ -80,6 +80,11 @@
     background: $field-input-bg;
     color: $field-input-color;
 
+    &:read-only {
+      background: transparent;
+      color: $base-text-color;
+    }
+
     &::placeholder {
       color: $field-input-color-placeholder;
     }

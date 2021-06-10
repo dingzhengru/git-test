@@ -12,7 +12,7 @@
           <div class="user-profile__basic">
             <div class="ui-field user-profile__field">
               <label>{{ $t('user.profile.field.registerTime') }}</label>
-              <input type="text" :value="getDatetime(userCreatedDatetime)" />
+              <input type="text" :value="getDatetime(userCreatedDatetime)" readonly />
             </div>
 
             <ValidationProvider
