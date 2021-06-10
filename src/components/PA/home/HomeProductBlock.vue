@@ -39,8 +39,9 @@
           v-for="item in list"
           :key="item.Lst_GameID"
           @click="openGame(item)"
+          v-lazy-container="{ selector: 'img' }"
         >
-          <img :src="item.imagePath" alt="" />
+          <img :data-src="item.imagePath" :data-error="imgProductDefaultByImageUrl(item.imagePath)" />
           <div>{{ item.Lst_GameName }}</div>
         </div>
       </template>
@@ -103,6 +104,9 @@ export default {
         return app.siteProductImageLandscapeDefault(product);
       }
       return app.siteProductImageLandscapeSmallDefault(product);
+    },
+    imgProductDefaultByImageUrl: () => url => {
+      return url.replace(/Site_Uploadfile\/./, 'Site_Uploadfile\/2');
     },
     imgSrcTest() {
       try {
