@@ -215,7 +215,7 @@
               <!-- <button class="ui-btn" type="button" @click="isShowModalChangePassword = true">
                 {{ $t('ui.button.edit') }}
               </button> -->
-              <img :src="imgButtonModify" alt="" />
+              <img :src="imgButtonModify" @click="isShowModalChangePassword = true" />
               <div class="ui-question" @click="isShowModalNoticeChangePassword = true"></div>
             </div>
 
@@ -225,7 +225,7 @@
               <!-- <button class="ui-btn" type="button" @click="isShowModalChangePasswordWithdrawal = true">
                 {{ $t('ui.button.setup') }}
               </button> -->
-              <img :src="imgButtonSetup" alt="" />
+              <img :src="imgButtonSetup" @click="isShowModalChangePasswordWithdrawal = true" />
               <div class="ui-question" @click="isShowModalNoticeChangePasswordWithdrawal = true"></div>
             </div>
           </div>
