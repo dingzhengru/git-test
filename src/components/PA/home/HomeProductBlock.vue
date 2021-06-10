@@ -135,8 +135,16 @@ export default {
     },
   },
   watch: {
-    list() {
-      this.initScrollArrowX(this.$refs.homeProductBlockContainer);
+    list: {
+      immediate: true,
+      handler() {
+        const interval = window.setInterval(() => {
+          if (this.$refs.homeProductBlockContainer) {
+            this.initScrollArrowX(this.$refs.homeProductBlockContainer.$el);
+            window.clearInterval(interval);
+          }
+        }, 500);
+      },
     },
   },
 };
