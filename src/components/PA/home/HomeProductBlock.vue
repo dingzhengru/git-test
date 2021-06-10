@@ -106,7 +106,7 @@ export default {
       return app.siteProductImageLandscapeSmallDefault(product);
     },
     imgProductDefaultByImageUrl: () => url => {
-      return url.replace(/Site_Uploadfile\/./, 'Site_Uploadfile\/2');
+      return url.replace(/Site_Uploadfile\/./, 'Site_Uploadfile/2');
     },
     imgSrcTest() {
       try {
