@@ -16,7 +16,8 @@
       <slot name="game-result" />
     </div>
     <div class="modal-alert red-envelope__modal" v-else-if="errorMessage">{{ errorMessage }}</div>
-    <div class="red-envelope__loading" v-show="isLoading"></div>
+
+    <div class="red-envelope__loading" v-show="isLoading && errorMessage === ''"></div>
   </div>
 </template>
 
@@ -46,8 +47,8 @@ export default {
       return this.gameChance > 0 && this.isShowResult === false;
     },
     errorMessage() {
-      if (this.gameChance <= 0) {
-        return this.$t('home.lottery.redEnvelope.startButton', { count: this.gameChance });
+      if (this.gameChance === 0) {
+        return this.$t('home.lottery.redEnvelope.startButton', { count: 0 });
       }
       return '';
     },
