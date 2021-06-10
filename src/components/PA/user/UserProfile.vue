@@ -27,6 +27,7 @@
             >
               <label>{{ $t(`register.Add_Account.placeholder`) }}</label>
               <input
+                :class="{ invalid: errors.length > 0 }"
                 type="text"
                 v-model="fieldAccount.value"
                 @change="checkField(fieldAccount, invalid)"
@@ -34,9 +35,9 @@
               />
               <span v-else>{{ fieldAccount.value }}</span>
               <!-- <input type="text" :value="fieldAccount.value" readonly v-else /> -->
-              <div class="" v-if="errors.length > 0 && errors[0]">
+              <!-- <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
-              </div>
+              </div> -->
             </ValidationProvider>
 
             <ValidationProvider
@@ -50,6 +51,7 @@
             >
               <label>{{ $t(`register.Add_RealName.placeholder`) }}</label>
               <input
+                :class="{ invalid: errors.length > 0 }"
                 type="text"
                 v-model="fieldRealName.value"
                 @change="checkField(fieldRealName, invalid)"
@@ -57,9 +59,9 @@
               />
               <span v-else>{{ fieldRealName.value }}</span>
               <!-- <input type="text" :value="fieldRealName.value" readonly v-else /> -->
-              <div class="" v-if="errors.length > 0 && errors[0]">
+              <!-- <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
-              </div>
+              </div> -->
             </ValidationProvider>
 
             <ValidationProvider
@@ -73,6 +75,7 @@
             >
               <label>{{ $t(`register.Add_Mobile.placeholder`) }}</label>
               <input
+                :class="{ invalid: errors.length > 0 }"
                 type="text"
                 v-model="fieldMobile.value"
                 @change="checkField(fieldMobile, invalid)"
@@ -80,9 +83,9 @@
               />
               <span v-else>{{ fieldMobile.value }}</span>
               <!-- <input type="text" :value="fieldMobile.value" readonly v-else /> -->
-              <div class="" v-if="errors.length > 0 && errors[0]">
+              <!-- <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
-              </div>
+              </div> -->
             </ValidationProvider>
 
             <ValidationProvider
@@ -96,16 +99,18 @@
             >
               <label>{{ $t(`register.Add_Email.placeholder`) }}</label>
               <input
+                :class="{ invalid: errors.length > 0 }"
                 type="text"
                 v-model="fieldEmail.value"
                 @change="checkField(fieldEmail, invalid)"
                 v-if="fieldEmail.isModifiable"
               />
               <span v-else>{{ fieldEmail.value }}</span>
+
               <!-- <input type="text" :value="fieldEmail.value" readonly v-else /> -->
-              <div class="" v-if="errors.length > 0 && errors[0]">
+              <!-- <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
-              </div>
+              </div> -->
             </ValidationProvider>
 
             <ValidationProvider
@@ -119,11 +124,11 @@
             >
               <label>{{ $t(`register.Add_NickName.placeholder`) }}</label>
               <input type="text" v-model="fieldNickname.value" v-if="fieldNickname.isModifiable" />
-              <span v-else>{{ fieldNickname.value }}</span>
+              <span :class="{ invalid: errors.length > 0 }" v-else>{{ fieldNickname.value }}</span>
               <!-- <input type="text" :value="fieldNickname.value" readonly v-else /> -->
-              <div class="" v-if="errors.length > 0 && errors[0]">
+              <!-- <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
-              </div>
+              </div> -->
             </ValidationProvider>
 
             <ValidationProvider
@@ -137,6 +142,7 @@
             >
               <label>{{ $t(`register.Add_Line.placeholder`) }}</label>
               <input
+                :class="{ invalid: errors.length > 0 }"
                 type="text"
                 v-model="fieldLine.value"
                 @change="checkField(fieldLine, invalid)"
@@ -144,9 +150,9 @@
               />
               <span v-else>{{ fieldLine.value }}</span>
               <!-- <input type="text" :value="fieldLine.value" readonly v-else /> -->
-              <div class="" v-if="errors.length > 0 && errors[0]">
+              <!-- <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
-              </div>
+              </div> -->
             </ValidationProvider>
 
             <ValidationProvider
@@ -160,6 +166,7 @@
             >
               <label>{{ $t(`register.Add_Birthday.placeholder`) }}</label>
               <input
+                :class="{ invalid: errors.length > 0 }"
                 type="date"
                 v-model="fieldBirthday.value"
                 :min="fieldBirthday.min"
@@ -168,9 +175,9 @@
               />
               <span v-else>{{ fieldBirthday.value }}</span>
               <!-- <input type="date" :value="fieldBirthday.value" readonly v-else /> -->
-              <div class="" v-if="errors.length > 0 && errors[0]">
+              <!-- <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
-              </div>
+              </div> -->
             </ValidationProvider>
 
             <ValidationProvider
@@ -184,6 +191,7 @@
             >
               <label>{{ $t(`register.Add_Skype.placeholder`) }}</label>
               <input
+                :class="{ invalid: errors.length > 0 }"
                 type="text"
                 v-model="fieldSkype.value"
                 @change="checkField(fieldSkype, invalid)"
@@ -191,9 +199,9 @@
               />
               <span v-else>{{ fieldSkype.value }}</span>
               <!-- <input type="text" :value="fieldSkype.value" readonly v-else /> -->
-              <div class="" v-if="errors.length > 0 && errors[0]">
+              <!-- <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
-              </div>
+              </div> -->
             </ValidationProvider>
 
             <ValidationProvider
@@ -207,6 +215,7 @@
             >
               <label>{{ $t(`register.Add_QQ.placeholder`) }}</label>
               <input
+                :class="{ invalid: errors.length > 0 }"
                 type="text"
                 v-model="fieldQQ.value"
                 @change="checkField(fieldQQ, invalid)"
@@ -214,9 +223,9 @@
               />
               <span v-else>{{ fieldQQ.value }}</span>
               <!-- <input type="text" :value="fieldQQ.value" readonly v-else /> -->
-              <div class="" v-if="errors.length > 0 && errors[0]">
+              <!-- <div class="ui-field__error" v-if="errors.length > 0 && errors[0]">
                 {{ errors[0] }}
-              </div>
+              </div> -->
             </ValidationProvider>
 
             <div class="ui-field user-profile__field user-profile__field--btn">
