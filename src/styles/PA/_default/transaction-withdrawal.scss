@@ -38,16 +38,6 @@
       }
     }
 
-    &--bank-info {
-      span {
-        min-height: 2rem;
-        flex-grow: 1;
-        background: $field-input-bg;
-        color: $field-input-color;
-        border-radius: 5px;
-        padding: 5px 10px;
-      }
-    }
   }
 
   &__btn {
