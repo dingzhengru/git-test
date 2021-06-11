@@ -188,7 +188,9 @@ export default {
   },
   methods: {
     goRoutePrevious() {
-      this.$store.dispatch('user/getPointInfo');
+      if (this.userIsLoggedIn) {
+        this.$store.dispatch('user/getPointInfo');
+      }
       this.$router.push({ name: 'Home' });
     },
     changeLang(lang) {
