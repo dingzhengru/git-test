@@ -7,6 +7,9 @@ export default {
   },
   computed: {
     ...mapGetters(['lang']),
+    totalPage() {
+      return Math.ceil(this.pagination.count / this.pagination.pagesize);
+    },
   },
   data() {
     return {
@@ -19,15 +22,28 @@ export default {
     };
   },
   methods: {
-    async getRecord() {
+    async getRecord(isScroll = false) {
       const requestData = { Page: this.pagination.page };
       const result = await apiGetRecordAdjustment(requestData);
-      this.recordList = result.RetObj.Rows;
+
+      if (isScroll) {
+        this.recordList = this.recordList.concat(result.RetObj.Rows);
+      } else {
+        this.recordList = result.RetObj.Rows;
+      }
+
       this.pagination.count = result.RetObj.Records;
     },
     changePage(page) {
       this.pagination.page = page;
       this.getRecord();
+    },
+    changePageScroll() {
+      if (this.pagination.page >= this.totalPage) {
+        return;
+      }
+      this.pagination.page = this.pagination.page + 1;
+      this.getRecord(true);
     },
   },
   mounted() {

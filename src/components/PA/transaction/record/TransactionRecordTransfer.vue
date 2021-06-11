@@ -66,21 +66,29 @@
 
     <div class="ui-no-data" v-show="recordList.length === 0">{{ $t('ui.label.noData') }}</div>
 
-    <AppPagination
+    <!-- <AppPagination
       :count="pagination.count"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
       @change-page="changePage"
       v-show="recordList.length > 0"
-    />
+    /> -->
+
+    <intersect @enter="changePageScroll" rootMargin="0px 0px 5px 0px">
+      <div></div>
+    </intersect>
   </div>
 </template>
 
 <script>
 import mixinTransactionRecordTransfer from '@/mixins/transactionRecordTransfer';
+import Intersect from 'vue-intersect';
 
 export default {
   name: 'TransactionRecordTransfer',
   mixins: [mixinTransactionRecordTransfer],
+  components: {
+    Intersect,
+  },
 };
 </script>

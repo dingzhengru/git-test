@@ -8,6 +8,9 @@ export default {
   },
   computed: {
     ...mapGetters(['lang']),
+    totalPage() {
+      return Math.ceil(this.pagination.count / this.pagination.pagesize);
+    },
   },
   data() {
     return {
@@ -41,7 +44,7 @@ export default {
     };
   },
   methods: {
-    async getRecord() {
+    async getRecord(isScroll = false) {
       const requestData = {
         Page: this.pagination.page,
         ProductID: this.search.product,
@@ -49,10 +52,17 @@ export default {
         EndTime: this.search.dateTo == '' ? '' : `${this.search.dateTo} 23:59:59`,
       };
       const result = await apiGetRecordTransfer(requestData);
-      this.recordList = result.RetObj.Rows.map(item => {
-        item.isShowDetail = false;
-        return item;
+
+      const resultRecordList = result.RetObj.Rows.map(item => {
+        return { ...item, isShowDetail: false };
       });
+
+      if (isScroll) {
+        this.recordList = this.recordList.concat(resultRecordList);
+      } else {
+        this.recordList = resultRecordList;
+      }
+
       this.pagination.count = result.RetObj.Records;
     },
     async getMemberProductList() {
@@ -72,6 +82,13 @@ export default {
     changePage(page) {
       this.pagination.page = page;
       this.getRecord();
+    },
+    changePageScroll() {
+      if (this.pagination.page >= this.totalPage) {
+        return;
+      }
+      this.pagination.page = this.pagination.page + 1;
+      this.getRecord(true);
     },
     changeSearchDateRange() {
       this.search.dateTo = this.$dayjs().format('YYYY-MM-DD');

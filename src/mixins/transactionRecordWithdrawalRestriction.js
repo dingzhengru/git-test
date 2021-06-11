@@ -7,6 +7,9 @@ export default {
   },
   computed: {
     ...mapGetters(['lang']),
+    totalPage() {
+      return Math.ceil(this.pagination.count / this.pagination.pagesize);
+    },
   },
   data() {
     return {
@@ -19,13 +22,19 @@ export default {
     };
   },
   methods: {
-    async getRecord() {
+    async getRecord(isScroll = false) {
       const requestData = { Page: this.pagination.page };
       const result = await apiGetRecordWithdrawalRestriction(requestData);
-      this.recordList = result.RetObj.Rows.map(item => {
-        item.isShowDetail = false;
-        return item;
+
+      const resultRecordList = result.RetObj.Rows.map(item => {
+        return { ...item, isShowDetail: false };
       });
+
+      if (isScroll) {
+        this.recordList = this.recordList.concat(resultRecordList);
+      } else {
+        this.recordList = resultRecordList;
+      }
 
       this.pagination.count = result.RetObj.Records;
     },
@@ -40,6 +49,13 @@ export default {
     changePage(page) {
       this.pagination.page = page;
       this.getRecord();
+    },
+    changePageScroll() {
+      if (this.pagination.page >= this.totalPage) {
+        return;
+      }
+      this.pagination.page = this.pagination.page + 1;
+      this.getRecord(true);
     },
     toggleRecordDetail(record) {
       record.isShowDetail = !record.isShowDetail;
