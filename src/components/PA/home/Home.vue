@@ -51,6 +51,7 @@ export default {
   mixins: [mixinStyleLoader, mixinScrollArrow],
   computed: {
     ...mapGetters([
+      'lang',
       'siteSetting',
       'siteMainPageNoticeUrl',
       'siteIsShowMainNotice',
@@ -104,7 +105,8 @@ export default {
       if (this.userIsLoggedIn) {
         result = await apiPostGameListHot();
       } else {
-        result = await apiGetGameListHot();
+        const requestData = { Lang: this.lang };
+        result = await apiGetGameListHot(requestData);
       }
 
       if (result.Code === 200) {

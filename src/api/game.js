@@ -93,8 +93,8 @@ export async function apiGetGameListFav(data) {
 }
 
 //* 2.81  熱門遊戲
-export async function apiGetGameListHot() {
-  const result = await axios.get(API_URL + '/Game/SiteHotGames');
+export async function apiGetGameListHot(params) {
+  const result = await axios.get(API_URL + '/Game/SiteHotGames', { params });
   return result.data;
 }
 

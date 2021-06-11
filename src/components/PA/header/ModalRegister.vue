@@ -73,13 +73,8 @@
           <span>{{ $t('register.service.read', { site: siteName }) }}</span>
           <a href="javascript:;" @click="isShowModalServiceTerm = true">{{ $t('register.service.term') }}</a>
         </span>
-        <input type="radio" v-model="isAgreeServiceTerm" />
+        <input type="radio" :value="true" v-model="isAgreeServiceTerm" />
         <div></div>
-
-        <!-- <label for="register-remember">
-          <span>{{ $t('register.service.read', { site: siteName }) }}</span>
-          <a href="javascript:;" @click="isShowModalServiceTerm = true">{{ $t('register.service.term') }}</a>
-        </label> -->
       </ValidationProvider>
     </form>
     <component :is="ModalServiceTerm" v-if="isShowModalServiceTerm" @close="isShowModalServiceTerm = false" />
