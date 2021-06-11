@@ -125,8 +125,8 @@
       "length": {
         "Add_RelatedAccount": "最少 3 字元，最多 15 字元",
         "Add_Account": "最少 3 字元，最多 15 字元",
-        "Add_Password": "密码长度最少为6位字元",
-        "Add_PasswordCheck": "密码长度最少为6位字元",
+        "Add_Password": "密码长度最少 6 字元，最多 30 字元",
+        "Add_PasswordCheck": "密码长度最少 6 字元，最多 30 字元",
         "Add_Mobile": "最少 5 字元，最多 20 字元",
         "Add_Email": "最多 50 字元",
         "Add_FirstName": "最多 70 字元",
@@ -139,8 +139,8 @@
         "Add_BankAccount2": "最多 30 字元",
         "Add_BankBranchName3": "最多 70 字元",
         "Add_BankAccount3": "最多 30 字元",
-        "Add_Withdrawals_Password": "密码长度最少为6位字元",
-        "Add_Withdrawals_CheckPassword": "密码长度最少为6位字元",
+        "Add_Withdrawals_Password": "密码长度最少 6 字元，最多 30 字元",
+        "Add_Withdrawals_CheckPassword": "密码长度最少 6 字元，最多 30 字元",
         "CaptchaValue": "应为4位字元"
       },
       "regex": {

@@ -123,8 +123,8 @@
       "length": {
         "Add_RelatedAccount": "At least 3 characters up to 15 characters",
         "Add_Account": "At least 3 characters up to 15 characters",
-        "Add_Password": "The length of password must be 6 and above",
-        "Add_PasswordCheck": "The length of password must be 6 and above",
+        "Add_Password": "At least 6 characters up to 30 characters",
+        "Add_PasswordCheck": "At least 6 characters up to 30 characters",
         "Add_Mobile": "At least 5 characters up to 20 characters",
         "Add_Email": "Maximum length 50 characters",
         "Add_FirstName": "Maximum length 70 characters",
@@ -137,8 +137,8 @@
         "Add_BankAccount2": "Maximum length 30 characters",
         "Add_BankBranchName3": "Maximum length 70 characters",
         "Add_BankAccount3": "Maximum length 30 characters",
-        "Add_Withdrawals_Password": "The length of password must be 6 and above",
-        "Add_Withdrawals_CheckPassword": "The length of password must be 6 and above",
+        "Add_Withdrawals_Password": "At least 6 characters up to 30 characters",
+        "Add_Withdrawals_CheckPassword": "At least 6 characters up to 30 characters",
         "CaptchaValue": "must be 4 characters"
       },
       "regex": {
