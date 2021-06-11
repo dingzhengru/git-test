@@ -71,7 +71,8 @@
     "sendEmailSuccess": "Mail sent successfully!",
     "gameMaintenance": "Game under maintenance, we apologize for the inconvenience brought to you!",
     "versionUpdate": "New version update, reload now",
-    "refreshSuccess": "Refresh successfully"
+    "refreshSuccess": "Refresh successfully",
+    "confirmLogout": "Are you sure you want to leave?"
   },
   "validate": {
     "common": {

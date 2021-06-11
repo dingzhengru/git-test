@@ -73,7 +73,8 @@
     "sendEmailSuccess": "邮件发送成功！",
     "gameMaintenance": "游戏维护中，很抱歉造成您的不便！",
     "versionUpdate": "版本更新，将重整",
-    "refreshSuccess": "刷新成功"
+    "refreshSuccess": "刷新成功",
+    "confirmLogout": "确定离开吗?"
   },
   "validate": {
     "common": {

@@ -73,7 +73,8 @@
     "sendEmailSuccess": "ส่งอีเมลเรียบร้อยแล้ว",
     "gameMaintenance": "เกมส์อยู่ในระหว่างการปรับปรุง  ขออภัยในความไม่สะดวก",
     "versionUpdate": "อัปเดตเวอร์ชันใหม่โหลดใหม่ทันที",
-    "refreshSuccess": "รีเฟรชสำเร็จ"
+    "refreshSuccess": "รีเฟรชสำเร็จ",
+    "confirmLogout": "คุณแน่ใจหรือว่าต้องการออก"
   },
   "validate": {
     "common": {

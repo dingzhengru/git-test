@@ -322,7 +322,7 @@
     </form>
 
     <div class="user-profile__footer">
-      <span @click="$store.dispatch('user/logout')">{{ $t('header.button.logout') }}</span>
+      <span @click="isShowModalLogout = true">{{ $t('header.button.logout') }}</span>
     </div>
 
     <component
@@ -360,6 +360,14 @@
       v-if="isShowModalNoticeChangePasswordWithdrawal"
       @close="isShowModalNoticeChangePasswordWithdrawal = false"
     />
+
+    <component
+      :is="ModalConfirm"
+      :text="$t('alert.confirmLogout')"
+      @ok="$store.dispatch('user/logout')"
+      @close="isShowModalLogout = false"
+      v-if="isShowModalLogout"
+    />
   </ValidationObserver>
 </template>
 
@@ -390,6 +398,9 @@ export default {
     },
     ModalNoticeList() {
       return () => import(`@/${this.siteSetting.components.user.ModalNoticeList}`);
+    },
+    ModalConfirm() {
+      return () => import(`@/${this.siteSetting.components.app.ModalConfirm}`);
     },
     isShowBankAddButton() {
       if (this.bankAddNumber === 1) {
@@ -500,6 +511,8 @@ export default {
           otherActiveRoute: [],
         },
       ],
+
+      isShowModalLogout: false,
     };
   },
   methods: {

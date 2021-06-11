@@ -720,6 +720,43 @@
   }
 }
 
+@mixin modal-confirm {
+  height: 50%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5%;
+  }
+
+  &__text {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  &__btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      width: 45%;
+      margin-right: 15px;
+    }
+
+    &--ok {
+      background: $btn-bg-rectangle;
+    }
+
+    &--close {
+      background: $btn-bg-rectangle-light;
+    }
+  }
+}
+
 @mixin service-term {
   background: $service-term-bg;
   color: $service-term-color;

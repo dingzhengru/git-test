@@ -6,7 +6,8 @@
       "ModalRedEnvelope": "components/PA/ModalRedEnvelope",
       "ModalWinWheel": "components/PA/ModalWinWheel",
       "ModalContact": "components/PA/ModalContact",
-      "ModalAlert": "components/PA/ModalAlert"
+      "ModalAlert": "components/PA/ModalAlert",
+      "ModalConfirm": "components/PA/ModalConfirm"
     },
     "header": {
       "ModalAuth": "components/PA/header/ModalAuth",
