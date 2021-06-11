@@ -37,7 +37,8 @@
 
   &.invalid {
     input,
-    select {
+    select,
+    > div {
       border: 5px solid red;
     }
   }
