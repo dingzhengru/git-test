@@ -37,6 +37,8 @@
     </div>
 
     <component :is="HomeFooter" />
+
+    <ModalMessageC @close="isShowModalMessage = false" v-if="isShowModalMessage && !userIsLoggedIn" />
   </div>
 </template>
 
@@ -49,6 +51,9 @@ import { apiGetGameListHot, apiPostGameListHot } from '@/api/game';
 export default {
   name: 'Home',
   mixins: [mixinStyleLoader, mixinScrollArrow],
+  components: {
+    ModalMessageC: () => import('@/components/ModalMessageC'),
+  },
   computed: {
     ...mapGetters([
       'lang',
@@ -91,6 +96,8 @@ export default {
 
       gameListHot: [],
       hotGameClassify: 'hot',
+
+      isShowModalMessage: true,
     };
   },
   methods: {
