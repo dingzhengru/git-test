@@ -129,28 +129,32 @@
       <fieldset class="ui-fieldset">
         <legend>{{ $t('transaction.deposit.field.receipt') }}</legend>
         <ValidationProvider
-          class="ui-field deposit-base__field deposit-base__field--receipt"
           tag="div"
           :rules="{ image: true, size: 2048 }"
           v-slot="{ validate }"
           @click.native="uploadReceipt"
           v-if="isShowReceipt"
         >
-          <!-- <button class="ui-btn ui-btn--block deposit-base__field--receipt__btn" type="button" @click="uploadReceipt">
-            {{ receipt.name ? receipt.name : '上傳後檔名顯示位置' }}
-          </button> -->
-          <input type="text" :value="receipt.name ? receipt.name : $t('ui.button.upload')" readonly />
-          <span></span>
-          <span></span>
-          <span></span>
-          <input
-            class="deposit-base__field--receipt__input"
-            ref="receipt"
-            type="file"
-            accept=".jpg,.png"
-            v-show="false"
-            @change="onFileChange($event, validate)"
-          />
+          <div class="ui-field deposit-base__field deposit-base__field--receipt" :class="{ invalid: receipt.error }">
+            <!-- <input type="text" :value="receipt.name ? receipt.name : $t('ui.button.upload')" readonly /> -->
+
+            <div>
+              {{ receipt.name ? receipt.name : $t('ui.button.upload') }}
+            </div>
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <input
+              class="deposit-base__field--receipt__input"
+              ref="receipt"
+              type="file"
+              accept=".jpg,.png"
+              v-show="false"
+              @change="onFileChange($event, validate)"
+            />
+          </div>
         </ValidationProvider>
         <div class="ui-notice">
           <ul>
