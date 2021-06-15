@@ -49,6 +49,8 @@
     -webkit-text-stroke: 1px black;
     padding-left: 2%;
     padding-right: 2%;
+    max-width: 30%;
+    overflow-x: auto;
 
     &__icon {
       width: $header-wallet-icon-width;

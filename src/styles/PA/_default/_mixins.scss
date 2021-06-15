@@ -552,6 +552,8 @@
     border-bottom-right-radius: 10px;
 
     &.no-title {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
       flex-basis: 100%;
     }
   }

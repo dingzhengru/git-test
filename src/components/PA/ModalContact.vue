@@ -2,7 +2,7 @@
   <AppModal @close="closeModal">
     <div class="ui-modal contact modal-contact">
       <div class="ui-box-close" @click="closeModal"></div>
-      <div class="ui-modal__content contact__container">
+      <div class="ui-modal__content no-title contact__container">
         <template v-for="contactItem in contactList">
           <div
             class="ui-modal__item contact__item"
