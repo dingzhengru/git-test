@@ -70,6 +70,8 @@ module.exports = {
     });
 
     // console.log(config.optimization.get('splitChunks'));
+
+    config.optimization.sideEffects(false);
   },
   devServer: { proxy },
   pluginOptions: {
