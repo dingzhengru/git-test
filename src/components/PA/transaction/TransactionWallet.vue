@@ -7,10 +7,14 @@
         {{ $t('transaction.transfer.button.refresh') }}
         <template v-if="refreshButtonIsLoading">{{ `(${getCountdownTimeoutSecondCurrent}s)` }}</template>
       </div>
-      <div class="nav-tab__item active" @click="transferAllPointToMain">
+      <div class="nav-tab__item active" @click="transferAllPointToMain" v-if="!siteIsWalletTypeNoTransfer">
         {{ $t('ui.button.allToMyWallet-2') }}
       </div>
-      <div class="nav-tab__item active" @click="$router.push({ name: 'TransactionTransfer' })">
+      <div
+        class="nav-tab__item active"
+        @click="$router.push({ name: 'TransactionTransfer' })"
+        v-if="!siteIsWalletTypeNoTransfer"
+      >
         {{ $t('transaction.nav.transfer') }}
       </div>
     </div>
@@ -40,7 +44,7 @@ export default {
   name: 'TransactionWallet',
   mixins: [mixinStyleLoader, mixinAccountWallet],
   computed: {
-    ...mapGetters(['userGamePointList', 'userGamePointWallet', 'productById']),
+    ...mapGetters(['userGamePointList', 'userGamePointWallet', 'productById', 'siteIsWalletTypeNoTransfer']),
     userGamePointListNoWallet() {
       return this.userGamePointList.filter(item => item.Product_id !== 9999);
     },
@@ -50,7 +54,7 @@ export default {
       return this.productById(product.Product_id).Lst_Site_Product_Status === 0;
     },
     openTransferModal(product) {
-      if (this.productEnabled(product) === false) {
+      if (this.productEnabled(product) === false || this.siteIsWalletTypeNoTransfer) {
         return;
       }
       this.$store.dispatch('openModalTransfer', product);

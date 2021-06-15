@@ -25,7 +25,7 @@
 
     <div
       class="header__wallet"
-      @click="$router.push({ name: 'TransactionTransfer' }).catch(() => {})"
+      @click="$router.push({ name: 'TransactionWallet' }).catch(() => {})"
       v-show="isShowWallet"
     >
       <img class="header__wallet__icon" :src="imgWalletIcon" alt="" />

@@ -102,9 +102,9 @@ export default {
     // import(`@/styles/${this.siteFullCss}/transaction-transfer.scss`);
     this.importStyleByFilename('transaction-transfer');
 
-    // if (this.siteIsWalletTypeNoTransfer) {
-    //   this.$router.replace({ name: 'Home' });
-    // }
+    if (this.siteIsWalletTypeNoTransfer) {
+      this.$router.replace({ name: 'Home' });
+    }
   },
 };
 </script>
