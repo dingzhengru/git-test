@@ -17,6 +17,9 @@ export default {
     userBankById: app => id => {
       return app.userBankList.find(item => item.Lst_BankId === id) || {};
     },
+    fieldListNoBank() {
+      return this.fieldList.filter(item => item.name.includes('Bank') === false);
+    },
   },
   data() {
     return {
@@ -77,6 +80,7 @@ export default {
           requestData[field.name] = field.value;
         }
       }
+      console.log(requestData);
 
       const result = await this.$store.dispatch('user/changeUserProfile', requestData);
       if (result.Code == 200) {
@@ -90,7 +94,6 @@ export default {
       this.fieldList = this.$deepClone(this.fieldListOld);
     },
     setFields() {
-      console.log('setFields');
       this.fieldList.forEach(item => {
         switch (item.name) {
           case 'Add_Account': {

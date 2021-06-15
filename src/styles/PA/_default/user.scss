@@ -67,6 +67,13 @@
     align-items: center;
     justify-content: flex-start;
 
+    &__container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
     label {
       flex-grow: 1;
       text-align: right;

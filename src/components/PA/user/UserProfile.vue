@@ -15,214 +15,34 @@
               <span>{{ getDatetime(userCreatedDatetime) }}</span>
             </div>
 
-            <ValidationProvider
+            <div
               class="ui-field user-profile__field"
-              tag="div"
-              :class="[fieldAccount.class]"
-              :name="fieldAccount.name"
-              :rules="fieldAccount.rules"
-              v-show="fieldAccount.isShow"
-              v-slot="{ errors }"
+              v-for="item in fieldListNoBank"
+              :key="item.name"
+              v-show="item.isShow"
             >
-              <label>{{ $t(`register.Add_Account.placeholder`) }}</label>
-              <input
-                :class="{ invalid: errors.length > 0 }"
-                type="text"
-                v-model="fieldAccount.value"
-                @change="checkField(fieldAccount, invalid)"
-                v-if="fieldAccount.isModifiable"
-              />
+              <ValidationProvider
+                class="user-profile__field__container"
+                tag="div"
+                :name="item.name"
+                :rules="item.rules"
+                v-slot="{ errors }"
+                v-if="item.isModifiable"
+              >
+                <label>{{ $t(`register.${item.name}.placeholder`) }}</label>
+                <input
+                  :class="{ invalid: errors.length > 0 }"
+                  type="text"
+                  v-model="item.value"
+                  @change="checkField(item, invalid)"
+                />
+              </ValidationProvider>
 
               <template v-else>
-                <span>{{ fieldAccount.value }}</span>
-                <input type="text" :value="fieldAccount.value" readonly v-show="false" />
+                <label>{{ $t(`register.${item.name}.placeholder`) }}</label>
+                <span>{{ item.value }}</span>
               </template>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="ui-field user-profile__field"
-              tag="div"
-              :class="[fieldRealName.class]"
-              :name="fieldRealName.name"
-              :rules="fieldRealName.rules"
-              v-show="fieldRealName.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_RealName.placeholder`) }}</label>
-              <input
-                :class="{ invalid: errors.length > 0 }"
-                type="text"
-                v-model="fieldRealName.value"
-                @change="checkField(fieldRealName, invalid)"
-                v-if="fieldRealName.isModifiable"
-              />
-              <template v-else>
-                <span>{{ fieldRealName.value }}</span>
-                <input type="text" :value="fieldRealName.value" readonly v-show="false" />
-              </template>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="ui-field user-profile__field"
-              tag="div"
-              :class="[fieldAccount.class]"
-              :name="fieldMobile.name"
-              :rules="fieldMobile.rules"
-              v-show="fieldMobile.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Mobile.placeholder`) }}</label>
-              <input
-                :class="{ invalid: errors.length > 0 }"
-                type="text"
-                v-model="fieldMobile.value"
-                @change="checkField(fieldMobile, invalid)"
-                v-if="fieldMobile.isModifiable"
-              />
-              <template v-else>
-                <span>{{ fieldMobile.value }}</span>
-                <input type="text" :value="fieldMobile.value" readonly v-show="false" />
-              </template>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="ui-field user-profile__field"
-              tag="div"
-              :class="[fieldEmail.class]"
-              :name="fieldEmail.name"
-              :rules="fieldEmail.rules"
-              v-show="fieldEmail.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Email.placeholder`) }}</label>
-              <input
-                :class="{ invalid: errors.length > 0 }"
-                type="text"
-                v-model="fieldEmail.value"
-                @change="checkField(fieldEmail, invalid)"
-                v-if="fieldEmail.isModifiable"
-              />
-              <template v-else>
-                <span>{{ fieldEmail.value }}</span>
-                <input type="text" :value="fieldEmail.value" readonly v-show="false" />
-              </template>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="ui-field user-profile__field"
-              tag="div"
-              :class="[fieldNickname.class]"
-              :name="fieldNickname.name"
-              :rules="fieldNickname.rules"
-              v-show="fieldNickname.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_NickName.placeholder`) }}</label>
-              <input
-                :class="{ invalid: errors.length > 0 }"
-                type="text"
-                v-model="fieldNickname.value"
-                v-if="fieldNickname.isModifiable"
-              />
-
-              <template v-else>
-                <span>{{ fieldNickname.value }}</span>
-                <input type="text" :value="fieldNickname.value" readonly v-show="false" />
-              </template>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="ui-field user-profile__field"
-              tag="div"
-              :class="[fieldLine.class]"
-              :name="fieldLine.name"
-              :rules="fieldLine.rules"
-              v-show="fieldLine.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Line.placeholder`) }}</label>
-              <input
-                :class="{ invalid: errors.length > 0 }"
-                type="text"
-                v-model="fieldLine.value"
-                @change="checkField(fieldLine, invalid)"
-                v-if="fieldLine.isModifiable"
-              />
-              <template v-else>
-                <span>{{ fieldLine.value }}</span>
-                <input type="text" :value="fieldLine.value" readonly v-show="false" />
-              </template>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="ui-field user-profile__field"
-              tag="div"
-              :class="[fieldBirthday.class]"
-              :name="fieldBirthday.name"
-              :rules="fieldBirthday.rules"
-              v-show="fieldBirthday.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Birthday.placeholder`) }}</label>
-              <input
-                :class="{ invalid: errors.length > 0 }"
-                type="date"
-                v-model="fieldBirthday.value"
-                :min="fieldBirthday.min"
-                :max="fieldBirthday.max"
-                v-if="fieldBirthday.isModifiable"
-              />
-              <template v-else>
-                <span>{{ fieldBirthday.value }}</span>
-                <input type="text" :value="fieldBirthday.value" readonly v-show="false" />
-              </template>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="ui-field user-profile__field"
-              tag="div"
-              :class="[fieldSkype.class]"
-              :name="fieldSkype.name"
-              :rules="fieldSkype.rules"
-              v-show="fieldSkype.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Skype.placeholder`) }}</label>
-              <input
-                :class="{ invalid: errors.length > 0 }"
-                type="text"
-                v-model="fieldSkype.value"
-                @change="checkField(fieldSkype, invalid)"
-                v-if="fieldSkype.isModifiable"
-              />
-              <template v-else>
-                <span>{{ fieldSkype.value }}</span>
-                <input type="text" :value="fieldSkype.value" readonly v-show="false" />
-              </template>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="ui-field user-profile__field"
-              tag="div"
-              :class="[fieldQQ.class]"
-              :name="fieldQQ.name"
-              :rules="fieldQQ.rules"
-              v-show="fieldQQ.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_QQ.placeholder`) }}</label>
-              <input
-                :class="{ invalid: errors.length > 0 }"
-                type="text"
-                v-model="fieldQQ.value"
-                @change="checkField(fieldQQ, invalid)"
-                v-if="fieldQQ.isModifiable"
-              />
-              <template v-else>
-                <span>{{ fieldQQ.value }}</span>
-                <input type="text" :value="fieldQQ.value" readonly v-show="false" />
-              </template>
-            </ValidationProvider>
+            </div>
 
             <div class="ui-field user-profile__field user-profile__field--btn">
               <label>{{ $t('user.profile.field.password') }}</label>
