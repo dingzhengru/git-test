@@ -284,7 +284,8 @@ export default {
     async getGameListFav() {
       const requestData = { Page: this.pagination.page };
       const result = await apiGetGameListFav(requestData);
-      this.gameList = result.RetObj.FavoritesList || [];
+      // this.gameList = result.RetObj.FavoritesList || [];
+      this.gameList = this.gameList.concat(result.RetObj.FavoritesList);
       this.pagination.count = result.RetObj.DataCnt;
       this.pagination.pagesize = result.RetObj.PageSize;
     },
