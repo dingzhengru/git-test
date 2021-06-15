@@ -181,8 +181,8 @@ const actions = {
     try {
       await apiLogout();
     } finally {
-      commit('removeToken');
-      commit('removePublicKey');
+      // commit('removeToken');
+      // commit('removePublicKey');
       commit('setIsLoggedIn', false);
       window.location.replace('/login');
     }
