@@ -16,6 +16,7 @@ import {
   apiGetTokenAndPublicKey,
   apiGetAllGamePoint,
   apiAdvancedRegisterNew,
+  apiAdvancedRegisterNewApp,
 } from '@/api/user';
 import { apiTransferAllGamePointToMain, apiTransferPoint } from '@/api/transaction-transfer';
 import { apiGetLotteryCount } from '@/api/user';
@@ -136,7 +137,13 @@ const actions = {
   },
   async changeUserProfile({ commit }, data) {
     //* 修改會員資料
-    const result = await apiAdvancedRegisterNew(data);
+    let result = {};
+    if (store.siteIsLandscape) {
+      result = await apiAdvancedRegisterNew(data);
+    } else {
+      result = await apiAdvancedRegisterNewApp(data);
+    }
+
     if (result.Code === 200) {
       commit('setInfo', result.RetObj);
       // dispatch('getBankList');

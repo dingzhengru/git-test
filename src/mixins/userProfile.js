@@ -7,7 +7,7 @@ export default {
   name: 'MixinUserProfile',
   mixins: [mixinCheckField],
   computed: {
-    ...mapGetters(['lang', 'userCreatedDatetime', 'userBindBank']),
+    ...mapGetters(['lang', 'userCreatedDatetime', 'userBindBank', 'siteIsLandscape']),
     getDatetime: () => datetime => {
       return `${datetime.split('.')[0].replace('T', ' ')} (GMT+8)`;
     },
