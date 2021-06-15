@@ -19,7 +19,7 @@ export const registerFieldList = [
     rules: {
       'register-required': false,
       'register-min': 3,
-      'register-max': 15,
+      'register-max': 11,
       'register-regex': '^[a-zA-Z]{1}[a-zA-Z0-9]*$',
     },
     isRequired: false,

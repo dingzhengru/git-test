@@ -124,7 +124,7 @@
       },
       "length": {
         "Add_RelatedAccount": "At least 3 characters up to 15 characters",
-        "Add_Account": "At least 3 characters up to 15 characters",
+        "Add_Account": "At least 3 characters up to 11 characters",
         "Add_Password": "At least 6 characters up to 30 characters",
         "Add_PasswordCheck": "At least 6 characters up to 30 characters",
         "Add_Mobile": "At least 5 characters up to 20 characters",

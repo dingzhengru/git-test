@@ -124,7 +124,7 @@
       },
       "length": {
         "Add_RelatedAccount": "最少 3 字元，最多 15 字元",
-        "Add_Account": "最少 3 字元，最多 15 字元",
+        "Add_Account": "最少 3 字元，最多 11 字元",
         "Add_Password": "密码长度最少 6 字元，最多 30 字元",
         "Add_PasswordCheck": "密码长度最少 6 字元，最多 30 字元",
         "Add_Mobile": "最少 5 字元，最多 20 字元",
