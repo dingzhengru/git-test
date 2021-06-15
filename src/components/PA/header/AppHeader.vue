@@ -30,7 +30,7 @@
     >
       <img class="header__wallet__icon" :src="imgWalletIcon" alt="" />
       <span class="header__wallet__text" v-if="userIsLoggedIn">
-        {{ $numeral(userGamePointWallet.Point).format('0,0.00') }}
+        {{ $numeral(userTotalBalance).format('0,0.00') }}
       </span>
       <img class="header__wallet__arrow" :src="imgWalletArrow" alt="" />
     </div>
@@ -81,6 +81,7 @@ export default {
       'userIsLoggedIn',
       'userAccount',
       'userVIPLevelName',
+      'userTotalBalance',
       'userGamePointWallet',
       'modalLangIsShow',
       'modalAuthIsShow',
