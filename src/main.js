@@ -20,7 +20,7 @@ import {
   cookieGetIsPreview,
 } from '@/utils/cookie';
 
-console.log('log: update vue.config: sideEffects');
+console.log('log: update vue.config');
 console.log(process.env.NODE_ENV);
 
 //* CSS
