@@ -49,12 +49,14 @@ export default {
       fieldBankBranchName3: {},
 
       bankDefault: 0,
+      isAutoCashOpen: false,
     };
   },
   methods: {
     async getRegisterAdvanceNew() {
       const result = await apiGetRegisterAdvanceNew();
       this.bankList = result.RetObj.Add_BankList;
+      this.isAutoCashOpen = result.RetObj.AutoCashOpen;
 
       for (const registerField of result.RetObj.Register) {
         const field = this.fieldList.find(item => item.name == registerField.Lst_Field);

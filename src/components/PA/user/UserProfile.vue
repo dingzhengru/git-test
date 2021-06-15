@@ -81,7 +81,7 @@
 
           <div class="user-profile__bank">
             <div class="user-profile__bank__item" @click="bankDefault = 1">
-              <label class="ui-field-box user-profile__bank__item__radio">
+              <label class="ui-field-box user-profile__bank__item__radio" v-if="isAutoCashOpen">
                 <span>{{ $t('ui.label.default') }}</span>
                 <input type="radio" :value="1" v-model="bankDefault" />
                 <div></div>
@@ -97,7 +97,7 @@
             </div>
 
             <div class="user-profile__bank__item" @click="bankDefault = 2" v-if="fieldBankId2.value">
-              <label class="ui-field-box user-profile__bank__item__radio">
+              <label class="ui-field-box user-profile__bank__item__radio" v-if="isAutoCashOpen">
                 <span>{{ $t('ui.label.default') }}</span>
                 <input type="radio" :value="2" v-model="bankDefault" />
                 <div></div>
@@ -113,7 +113,7 @@
             </div>
 
             <div class="user-profile__bank__item" @click="bankDefault = 3" v-if="fieldBankId3.value">
-              <label class="ui-field-box user-profile__bank__item__radio">
+              <label class="ui-field-box user-profile__bank__item__radio" v-if="isAutoCashOpen">
                 <span>{{ $t('ui.label.default') }}</span>
                 <input type="radio" :value="3" v-model="bankDefault" />
                 <div></div>
