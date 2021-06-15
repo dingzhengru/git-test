@@ -53,11 +53,11 @@ export default {
         this.amount = 0;
 
         //* 開啟站外連結
-        if (this.productCurrent.GetGameRedirectUrl) {
-          this.handleProductLink(this.productCurrent);
-          this.closeModalTransfer();
-          this.$router.go(-1);
-        }
+        // if (this.productCurrent.GetGameRedirectUrl) {
+        //   this.handleProductLink(this.productCurrent);
+        //   this.closeModalTransfer();
+        //   this.$router.go(-1);
+        // }
       }
     },
     focusAmount() {
