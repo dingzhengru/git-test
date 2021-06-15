@@ -20,7 +20,7 @@ import {
   cookieGetIsPreview,
 } from '@/utils/cookie';
 
-console.log('log: update vue.config');
+console.log('log: update');
 console.log(process.env.NODE_ENV);
 
 //* CSS
