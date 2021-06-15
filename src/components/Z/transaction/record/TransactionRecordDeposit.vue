@@ -60,12 +60,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import mixinTransactionRecordDeposit from '@/mixins/transactionRecordDeposit';
+import ModalNoticeImage from '@/components/ModalNoticeImage';
 
 export default {
   name: 'TransactionRecordDeposit',
   mixins: [mixinTransactionRecordDeposit],
   components: {
-    ModalNoticeImage: () => import('@/components/ModalNoticeImage'),
+    ModalNoticeImage,
   },
   computed: {
     ...mapGetters(['siteSetting']),
