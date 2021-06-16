@@ -108,7 +108,7 @@ export default {
       return this.$route.name === 'GameLobbyFav';
     },
     isShowProductFav() {
-      return this.userIsLoggedIn;
+      return this.userIsLoggedIn && this.isProductClassifySlot;
     },
   },
   data() {
