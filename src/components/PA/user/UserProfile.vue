@@ -52,7 +52,12 @@
 
             <div class="ui-field user-profile__field user-profile__field--btn">
               <label>{{ $t('user.profile.field.passwordWithdrawal') }}</label>
-              <img :src="imgButtonSetup" @click="isShowModalChangePasswordWithdrawal = true" />
+              <img
+                :src="imgButtonModify"
+                @click="isShowModalChangePasswordWithdrawal = true"
+                v-if="userHasWithdrawalPassWord"
+              />
+              <img :src="imgButtonSetup" @click="isShowModalChangePasswordWithdrawal = true" v-else />
               <div class="ui-question" @click="isShowModalNoticeChangePasswordWithdrawal = true"></div>
             </div>
           </div>
@@ -203,7 +208,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['lang', 'siteSetting', 'siteFullCss', 'userWithdrawalCount']),
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss', 'userWithdrawalCount', 'userHasWithdrawalPassWord']),
     PanelTabs() {
       return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
