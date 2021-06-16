@@ -128,5 +128,10 @@ export default {
 
     this.getGameListHot();
   },
+  watch: {
+    lang() {
+      this.getGameListHot();
+    },
+  },
 };
 </script>

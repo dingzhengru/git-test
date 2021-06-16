@@ -42,7 +42,7 @@
           v-lazy-container="{ selector: 'img' }"
         >
           <img :data-src="item.imagePath" :data-error="imgProductDefaultByImageUrl(item.imagePath)" />
-          <div>{{ item.Lst_GameName }}</div>
+          <div class="home-product-block__item__text">{{ item.Lst_GameName }}</div>
           <div
             class="home-product-block__item__overlay--maintain"
             @click.stop=""
