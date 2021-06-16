@@ -10,7 +10,13 @@
       @scroll.passive="handelScrollArrowX($event.target)"
       v-else
     >
-      <div class="game-lobby-list-icon__item" v-for="item in gameList" :key="item.Lst_GameID" @click="openGame(item)">
+      <div
+        class="game-lobby-list-icon__item"
+        v-for="(item, index) in gameList"
+        :key="item.Lst_GameID + String(index)"
+        @click="openGame(item)"
+        v-show="isShowGameItem(item)"
+      >
         <!-- <div class="game-lobby-list-icon__item__icon" :style="{ 'background-image': `url(${GameImagePopular})` }"></div> -->
         <img class="game-lobby-list-icon__item__icon" :src="item.imagePath" alt="" />
         <div class="game-lobby-list-icon__item__text">
@@ -76,6 +82,15 @@ export default {
   computed: {
     GameImagePopular() {
       return require('@/assets/Z/01/game-lobby/popular.png');
+    },
+    isProductFav() {
+      return this.$route.name === 'GameLobbyFav';
+    },
+    isShowGameItem: app => game => {
+      if (app.isProductFav) {
+        return game.Lst_IsLike;
+      }
+      return true;
     },
   },
   data() {
