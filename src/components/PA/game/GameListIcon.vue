@@ -30,7 +30,11 @@
         ></div>
         <!-- <div class="game-lobby-list-icon__item__new">New!</div> -->
 
-        <div class="game-lobby-list-icon__item__overlay--maintain" v-show="!isProductEnabledByGame(item)"></div>
+        <div
+          class="game-lobby-list-icon__item__overlay--maintain"
+          @click.stop=""
+          v-show="!isProductEnabledByGame(item)"
+        ></div>
       </div>
       <intersect @enter="changePage" rootMargin="0px 15px 0px 0px" v-if="gameList.length > 0 && isShowIntersect">
         <div class="game-lobby-intersect"></div>
