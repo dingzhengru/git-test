@@ -70,7 +70,8 @@ export default {
       return this.userIsLoggedIn && this.isProductClassifySlot;
     },
     isShowCategory() {
-      return this.isProductActive && this.productCategoryStatus === 0 && !this.isCategoryEntry;
+      return this.isProductActive && this.isProductClassifySlot;
+      // return this.isProductActive && this.productCategoryStatus === 0 && !this.isCategoryEntry;
     },
     isShowSearchBlock() {
       return this.isProductActive;
