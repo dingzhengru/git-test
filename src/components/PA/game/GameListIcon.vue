@@ -2,6 +2,8 @@
   <div class="game-lobby-list-icon" :class="{ 'no-category': !isShowCategory }">
     <h2 class="text-center" v-if="!isProductActive">{{ $t('alert.gameMaintenance') }}</h2>
 
+    <div class="ui-no-data" v-else-if="gameList.length === 0">{{ $t('ui.label.noData') }}</div>
+
     <div
       class="game-lobby-list-icon__container"
       ref="gameLobbyListIconContainer"

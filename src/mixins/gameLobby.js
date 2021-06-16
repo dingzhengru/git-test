@@ -166,10 +166,6 @@ export default {
 
       if (result.Code == 200) {
         game.Lst_IsLike = !game.Lst_IsLike;
-
-        if (this.isProductFav) {
-          this.getGameListFav();
-        }
       }
     },
     async changeProduct(product) {
@@ -251,7 +247,7 @@ export default {
     },
     async getGameList(isScroll = false) {
       if (this.isProductFav) {
-        this.getGameListFav();
+        this.getGameListFav(isScroll);
         return;
       }
 
@@ -281,11 +277,15 @@ export default {
       this.pagination.count = result.RetObj.DataCnt;
       this.pagination.pagesize = result.RetObj.PageSize;
     },
-    async getGameListFav() {
+    async getGameListFav(isScroll = false) {
       const requestData = { Page: this.pagination.page };
       const result = await apiGetGameListFav(requestData);
-      // this.gameList = result.RetObj.FavoritesList || [];
-      this.gameList = this.gameList.concat(result.RetObj.FavoritesList);
+
+      if (isScroll) {
+        this.gameList = this.gameList.concat(result.RetObj.FavoritesList);
+      } else {
+        this.gameList = result.RetObj.FavoritesList || [];
+      }
       this.pagination.count = result.RetObj.DataCnt;
       this.pagination.pagesize = result.RetObj.PageSize;
     },
