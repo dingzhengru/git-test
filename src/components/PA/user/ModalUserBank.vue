@@ -10,49 +10,55 @@
       >
         <form class="user-bank-form" @submit.prevent="handleSubmit(submitUserBank)" @reset.prevent="reset">
           <ValidationProvider
-            class="ui-field user-bank__field"
+            class="user-bank__field-container"
             tag="div"
             :class="[bankId.class]"
             :name="bankId.name"
             :rules="bankId.rules"
             v-slot="{ errors }"
           >
-            <label for="">{{ $t('ui.label.bankName') }}：</label>
-            <select v-model="bankId.value">
-              <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
-            </select>
-            <div class="user-bank__field__error" v-if="errors.length > 0 && errors[0]">
-              {{ errors[0] }}
+            <div class="ui-field user-bank__field" :class="{ invalid: errors.length > 0 }">
+              <label for="">{{ $t('ui.label.bankName') }}：</label>
+              <select v-model="bankId.value">
+                <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
+              </select>
             </div>
+            <!-- <div class="ui-field__error user-bank__field__error" v-if="errors.length > 0 && errors[0]">
+              {{ errors[0] }}
+            </div> -->
           </ValidationProvider>
           <ValidationProvider
-            class="ui-field user-bank__field"
+            class="user-bank__field-container"
             tag="div"
             :class="[bankAccount.class]"
             :name="bankAccount.name"
             :rules="bankAccount.rules"
             v-slot="{ errors, invalid }"
           >
-            <label for="">{{ $t('ui.label.bankAccount') }}：</label>
-            <input type="text" v-model="bankAccount.value" @change="checkField(bankAccount, invalid)" />
-            <div class="user-bank__field__error" v-if="errors.length > 0 && errors[0]">
-              {{ errors[0] }}
+            <div class="ui-field user-bank__field" :class="{ invalid: errors.length > 0 }">
+              <label for="">{{ $t('ui.label.bankAccount') }}：</label>
+              <input type="text" v-model="bankAccount.value" @change="checkField(bankAccount, invalid)" />
             </div>
+            <!-- <div class="ui-field__error user-bank__field__error" v-if="errors.length > 0 && errors[0]">
+              {{ errors[0] }}
+            </div> -->
           </ValidationProvider>
 
           <ValidationProvider
-            class="ui-field user-bank__field"
+            class="user-bank__field-container"
             tag="div"
             :class="[bankBranch.class]"
             :name="bankBranch.name"
             :rules="bankBranch.rules"
             v-slot="{ errors }"
           >
-            <label for="">{{ $t('ui.label.bankBranch') }}： </label>
-            <input type="text" v-model="bankBranch.value" />
-            <div class="user-bank__field__error" v-if="errors.length > 0 && errors[0]">
-              {{ errors[0] }}
+            <div class="ui-field user-bank__field" :class="{ invalid: errors.length > 0 }">
+              <label for="">{{ $t('ui.label.bankBranch') }}： </label>
+              <input type="text" v-model="bankBranch.value" />
             </div>
+            <!-- <div class="ui-field__error user-bank__field__error" v-if="errors.length > 0 && errors[0]">
+              {{ errors[0] }}
+            </div> -->
           </ValidationProvider>
 
           <div class="user-bank__btn">
