@@ -875,7 +875,7 @@
         "product": "Product",
         "number": "Number",
         "amount": "Amount",
-        "bindAmount": "Binding amount",
+        "pendingAmount": "pending/DepositAmount",
         "total": "Total"
       }
     },

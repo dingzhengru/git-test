@@ -872,7 +872,7 @@
         "product": "馆别",
         "number": "笔数",
         "amount": "下注金额",
-        "bindAmount": "绑定金额",
+        "pendingAmount": "待定金额",
         "total": "合计"
       }
     },
