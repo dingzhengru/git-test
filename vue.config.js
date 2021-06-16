@@ -71,16 +71,16 @@ module.exports = {
 
     // console.log(config.optimization.get('splitChunks'));
 
-    // config.optimization
-    //   .minimize(true)
-    //   .namedModules(true)
-    //   .namedChunks(true)
-    //   .removeAvailableModules(true)
-    //   .flagIncludedChunks(true)
-    //   .occurrenceOrder(false)
-    //   .usedExports(true)
-    //   .concatenateModules(true)
-    //   .sideEffects(false);
+    config.optimization
+      .minimize(true)
+      .namedModules(true)
+      .namedChunks(true)
+      .removeAvailableModules(true)
+      .flagIncludedChunks(true)
+      .occurrenceOrder(false)
+      .usedExports(true)
+      .concatenateModules(true)
+      .sideEffects(false);
   },
   devServer: { proxy },
   pluginOptions: {
