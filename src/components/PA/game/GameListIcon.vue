@@ -29,6 +29,8 @@
           v-if="isShowFav"
         ></div>
         <!-- <div class="game-lobby-list-icon__item__new">New!</div> -->
+
+        <div class="game-lobby-list-icon__item__overlay--maintain" v-show="!isProductEnabledByGame(item)"></div>
       </div>
       <intersect @enter="changePage" rootMargin="0px 15px 0px 0px" v-if="gameList.length > 0 && isShowIntersect">
         <div class="game-lobby-intersect"></div>
@@ -89,6 +91,12 @@ export default {
     isShowGameItem: app => game => {
       if (app.isProductFav) {
         return game.Lst_IsLike;
+      }
+      return true;
+    },
+    isProductEnabledByGame: app => game => {
+      if (app.isProductFav) {
+        return game.Lst_Site_Product_Status === 0;
       }
       return true;
     },

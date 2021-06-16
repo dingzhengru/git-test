@@ -78,6 +78,17 @@
         background: $game-lobby-list-icon-item-fav-bg-active;
       }
     }
+
+    &__overlay--maintain {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: $game-lobby-list-icon-item-maintain-bg;
+      user-select: none;
+      pointer-events: none;
+    }
   }
 }
 

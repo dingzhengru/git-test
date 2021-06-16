@@ -43,6 +43,7 @@
         >
           <img :data-src="item.imagePath" :data-error="imgProductDefaultByImageUrl(item.imagePath)" />
           <div>{{ item.Lst_GameName }}</div>
+          <div class="home-product-block__item__overlay--maintain" v-show="!isProductEnabledByGame(item)"></div>
         </div>
       </template>
     </transition-group>
@@ -89,6 +90,12 @@ export default {
     ]),
     isProduct() {
       return typeof this.classify === 'number';
+    },
+    isProductEnabledByGame: app => game => {
+      if (app.isProduct === false) {
+        return game.Lst_Site_Product_Status === 0;
+      }
+      return true;
     },
     isImgBlock() {
       return this.classify !== 2 && this.isProduct;
