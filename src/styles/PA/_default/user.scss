@@ -52,7 +52,7 @@
   &__basic {
     width: 100%;
     min-height: 50%;
-    max-height: 90%;
+    max-height: 85%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -74,17 +74,30 @@
       justify-content: flex-start;
     }
 
+    label,
+    input,
+    span {
+      &:lang(en-us) {
+        font-size: 0.8rem;
+      }
+
+      &:lang(th-th) {
+        font-size: 0.8rem;
+      }
+
+      &:lang(zh-cn) {
+        font-size: 1rem;
+      }
+    }
+
     label {
       flex-grow: 1;
       text-align: right;
       padding-right: 5px;
     }
 
+    input,
     span {
-      width: 150px;
-    }
-
-    input {
       flex-grow: 0;
       margin-left: auto;
       width: 150px !important;
