@@ -159,8 +159,8 @@ export default {
     },
     async changeGameFav(game) {
       const requestData = {
-        Add_ProductID: game.Lst_ProductID || this.productId,
-        Add_ProductKey: game.Lst_ProductKey || this.productKey,
+        Add_ProductID: game.Lst_ProductID === undefined ? this.productId : game.Lst_ProductID,
+        Add_ProductKey: game.Lst_ProductKey === undefined ? this.productKey : game.Lst_ProductKey,
         Add_GameID: game.Lst_GameID,
       };
       const result = await apiSetGameFav(requestData);
