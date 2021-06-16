@@ -70,8 +70,12 @@ export default {
       return this.userIsLoggedIn && this.isProductClassifySlot;
     },
     isShowCategory() {
-      return this.isProductActive && this.isProductClassifySlot;
-      // return this.isProductActive && this.productCategoryStatus === 0 && !this.isCategoryEntry;
+      if (this.isProductClassifySlot) {
+        return this.isProductActive;
+      } else if (this.isProductClassifyLive) {
+        return this.isProductActive && this.productCategoryStatus === 0 && !this.isCategoryEntry;
+      }
+      return false;
     },
     isShowSearchBlock() {
       return this.isProductActive;
