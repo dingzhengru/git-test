@@ -362,9 +362,6 @@ export default {
         this.getGameList(true);
       }
     },
-    resetPagination() {
-      this.pagination = { page: 1, pagesize: 12, count: 1 };
-    },
     resetSearch() {
       this.search = { text: '', isFav: false };
     },
