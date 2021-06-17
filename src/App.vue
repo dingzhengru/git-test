@@ -208,6 +208,7 @@ export default {
   watch: {
     lang() {
       if (this.userIsLoggedIn) {
+        this.$store.dispatch('user/getInfo');
         this.$store.dispatch('user/getPointInfo');
       }
 
