@@ -47,6 +47,10 @@ export default {
       return this.gameChance > 0 && this.isShowResult === false;
     },
     errorMessage() {
+      if (this.gamePrize) {
+        return '';
+      }
+
       if (this.gameChance === 0) {
         return this.$t('home.lottery.redEnvelope.startButton', { count: 0 });
       }
