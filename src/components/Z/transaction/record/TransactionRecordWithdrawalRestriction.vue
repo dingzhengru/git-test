@@ -48,7 +48,7 @@
       :count="pagination.count"
       :page="pagination.page"
       :pagesize="pagination.pagesize"
-      @change-page="changePage"
+      @change-page="changePageHandler"
       v-show="recordList.length > 0"
     />
   </div>

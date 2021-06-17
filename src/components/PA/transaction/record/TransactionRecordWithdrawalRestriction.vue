@@ -44,15 +44,7 @@
 
     <div class="ui-no-data" v-show="recordList.length === 0">{{ $t('ui.label.noData') }}</div>
 
-    <!-- <AppPagination
-      :count="pagination.count"
-      :page="pagination.page"
-      :pagesize="pagination.pagesize"
-      @change-page="changePage"
-      v-show="recordList.length > 0"
-    /> -->
-
-    <intersect @enter="changePageScroll" rootMargin="0px 0px 5px 0px">
+    <intersect @enter="changePageScrollHandler" rootMargin="0px 0px 5px 0px">
       <div></div>
     </intersect>
   </div>

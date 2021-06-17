@@ -1,7 +1,9 @@
 import { mapGetters } from 'vuex';
 import { apiGetRecordLottery } from '@/api/transaction-record';
+import mixinPagination from '@/mixins/pagination';
 
 export default {
+  mixins: [mixinPagination],
   components: {
     AppPagination: () => import('@/components/AppPagination'),
   },
@@ -14,11 +16,6 @@ export default {
   data() {
     return {
       recordList: [],
-      pagination: {
-        page: 1,
-        pagesize: 10,
-        count: 0,
-      },
     };
   },
   methods: {
@@ -34,16 +31,15 @@ export default {
 
       this.pagination.count = result.RetObj.Records;
     },
-    changePage(page) {
-      this.pagination.page = page;
+    changePageHandler(page) {
+      this.changePage(page);
       this.getRecord();
     },
-    changePageScroll() {
-      if (this.pagination.page >= this.totalPage) {
-        return;
+    changePageScrollHandler() {
+      const result = this.changePageScroll();
+      if (result === true) {
+        this.getRecord(true);
       }
-      this.pagination.page = this.pagination.page + 1;
-      this.getRecord(true);
     },
   },
   mounted() {

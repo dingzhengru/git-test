@@ -46,14 +46,6 @@
       v-else
     />
 
-    <!-- <AppPagination
-      :count="pagination.count"
-      :page="pagination.page"
-      :pagesize="pagination.pagesize"
-      @change-page="changePage"
-      v-if="productCurrent.Lst_Site_Product_Status == 0"
-    /> -->
-
     <!-- <component
       :is="GameTransferDialog"
       :wallet="userGamePointWallet"

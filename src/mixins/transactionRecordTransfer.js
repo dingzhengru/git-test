@@ -1,8 +1,10 @@
 import { mapGetters } from 'vuex';
 import { apiGetRecordTransfer } from '@/api/transaction-record';
 import { apiGetMemberProductList } from '@/api/product';
+import mixinPagination from '@/mixins/pagination';
 
 export default {
+  mixins: [mixinPagination],
   components: {
     AppPagination: () => import('@/components/AppPagination'),
   },
@@ -16,11 +18,6 @@ export default {
     return {
       recordList: [],
       productList: [],
-      pagination: {
-        page: 1,
-        pagesize: 10,
-        count: 0,
-      },
       searchDateRangeList: [
         {
           name: 'lastWeek',
@@ -79,16 +76,15 @@ export default {
       this.pagination.page = 1;
       this.getRecord();
     },
-    changePage(page) {
-      this.pagination.page = page;
+    changePageHandler(page) {
+      this.changePage(page);
       this.getRecord();
     },
-    changePageScroll() {
-      if (this.pagination.page >= this.totalPage) {
-        return;
+    changePageScrollHandler() {
+      const result = this.changePageScroll();
+      if (result === true) {
+        this.getRecord(true);
       }
-      this.pagination.page = this.pagination.page + 1;
-      this.getRecord(true);
     },
     changeSearchDateRange() {
       this.search.dateTo = this.$dayjs().format('YYYY-MM-DD');

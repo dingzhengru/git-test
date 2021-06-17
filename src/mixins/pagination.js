@@ -1,4 +1,5 @@
 export default {
+  name: 'MixinPagination',
   computed: {
     totalPage() {
       return Math.ceil(this.pagination.count / this.pagination.pagesize);
