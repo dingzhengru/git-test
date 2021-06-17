@@ -82,7 +82,6 @@ export default {
           requestData[field.name] = field.value;
         }
       }
-      console.log(requestData);
 
       const result = await this.$store.dispatch('user/changeUserProfile', requestData);
       if (result.Code == 200) {
@@ -160,7 +159,7 @@ export default {
         return {};
       }
 
-      return this.bankList.find(item => item.Value === id);
+      return this.bankList.find(item => item.Value === id) || {};
     },
 
     async getUserBankList() {
