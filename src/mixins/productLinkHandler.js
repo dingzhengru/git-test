@@ -9,14 +9,6 @@ export default {
   },
   methods: {
     goInnerLobby(product) {
-      // let gameLobby = 'GameLobbySlot';
-
-      // if (product.Lst_Game_Classify == 1) {
-      //   gameLobby = 'GameLobbyLive';
-      // } else if (product.Lst_Game_Classify == 2) {
-      //   gameLobby = 'GameLobbySlot';
-      // }
-
       this.$router.push({
         name: 'GameLobby',
         params: {

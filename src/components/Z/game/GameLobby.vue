@@ -70,7 +70,6 @@
 </template>
 
 <script>
-// import mixinGameLobbySlot from '@/mixins/gameLobbySlot';
 import mixinGameLobby from '@/mixins/gameLobby';
 import { mapGetters } from 'vuex';
 import Intersect from 'vue-intersect';
