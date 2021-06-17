@@ -9,7 +9,7 @@ export default {
       pagination: {
         page: 1,
         pagesize: 10,
-        count: 0,
+        count: 1,
       },
     };
   },
@@ -24,6 +24,9 @@ export default {
       }
       this.pagination.page = this.pagination.page + 1;
       return true;
+    },
+    resetPagination() {
+      this.pagination = { page: 1, pagesize: 10, count: 1 };
     },
   },
 };
