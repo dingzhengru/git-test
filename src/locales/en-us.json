@@ -561,6 +561,7 @@
       "profile": "Personal Info",
       "changePassword": "Change Password",
       "changePasswordWithdrawal": "Change Withdrawal Password",
+      "setPasswordWithdrawal": "Set Withdrawal Password",
       "mail": "Chats"
     },
     "profile": {
