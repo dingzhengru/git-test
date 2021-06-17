@@ -33,7 +33,9 @@
             </div>
           </form>
 
-          <table class="ui-table user-mail__table">
+          <div class="ui-no-data" v-if="list.length === 0">{{ $t('ui.label.noData') }}</div>
+
+          <table class="ui-table user-mail__table" v-else>
             <tr>
               <th>No.</th>
               <th>{{ $t('ui.label.subject') }}</th>
