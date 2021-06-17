@@ -63,6 +63,10 @@ export default {
       return !this.wheelSegmentsPrize.length || this.isLoading;
     },
     errorMessage() {
+      if (this.gamePrize) {
+        return '';
+      }
+
       if (!this.gameChance || this.gameChance === 0) {
         return `${this.$t('ui.lottery.count1')} 0 ${this.$t('ui.lottery.count2')}`;
       }
