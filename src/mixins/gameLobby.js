@@ -128,7 +128,7 @@ export default {
       },
       pagination: {
         page: 1,
-        pagesize: 6,
+        pagesize: 12,
         count: 1,
       },
       // isShowTransferDialog: false, //* 轉帳視窗
@@ -181,8 +181,8 @@ export default {
         return;
       }
 
-      this.pagination.page = 1;
-      this.search.text = '';
+      // this.pagination.page = 1;
+      // this.search.text = '';
 
       this.$router.push({
         name: 'GameLobby',
@@ -362,6 +362,12 @@ export default {
       this.pagination.page = this.pagination.page + 1;
       this.getGameList(true);
     },
+    resetPagination() {
+      this.pagination = { page: 1, pagesize: 12, count: 1 };
+    },
+    resetSearch() {
+      this.search = { text: '', isFav: false };
+    },
   },
   async mounted() {
     if (this.isShowJackpot && !this.siteIsLandscape) {
@@ -377,11 +383,15 @@ export default {
   },
   watch: {
     async lang() {
+      this.resetPagination();
+      this.resetSearch();
       this.getGameProductList();
       await this.getGameCategoryList();
       this.getGameList();
     },
     async productTag() {
+      this.resetPagination();
+      this.resetSearch();
       await this.getGameCategoryList();
       this.getGameList();
     },
