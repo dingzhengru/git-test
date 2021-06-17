@@ -74,21 +74,22 @@
           <div class="ui-step">
             <img class="ui-step__icon" :src="imgBank" />
             <span>{{ $t('user.profile.step.bank') }}</span>
-            <!-- <button
+            <button
               class="ui-btn user-profile__btn--add-bank"
               type="button"
               @click="isShowModalUserBank = true"
               v-if="isShowBankAddButton"
             >
               {{ $t('user.profile.button.bankAdd') }}
-            </button> -->
-            <button
+            </button>
+
+            <!-- <button
               class="ui-btn user-profile__btn--add-bank"
               type="button"
               @click="isShowModalUserBank = true"
             >
               {{ $t('user.profile.button.bankAdd') }}
-            </button>
+            </button> -->
           </div>
 
           <div class="user-profile__bank">
