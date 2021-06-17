@@ -27,7 +27,7 @@
           :isShowCategory="isShowCategory"
           :isProductActive="isProductActive || isProductFav"
           :isShowFav="isShowFav"
-          @change-page="changePageScrollBottom"
+          @change-page="changePageScrollHandler"
           @open-game="openGame"
           @change-game-fav="changeGameFav"
         />
@@ -35,55 +35,6 @@
     </div>
 
     <component :is="GameSearchBlock" @submit-search="submitSearch" v-if="isShowSearch" />
-
-    <!-- <component
-      :is="GameCategoryNavigation"
-      :categoryList="categoryList"
-      :categoryCurrent="categoryCurrent"
-      @change-category="changeCategory"
-      v-if="isShowCategory"
-    /> -->
-
-    <!-- <component
-      :is="GameListIcon"
-      :gameList="gameList"
-      :productCurrent="productCurrent"
-      @open-game="openGame"
-      v-if="isCategoryEntry"
-    /> -->
-
-    <!-- <component
-      :is="GameListTable"
-      :gameList="gameList"
-      :productCurrent="productCurrent"
-      :isShowStart="isShowStart"
-      :isShowDemo="isShowDemo"
-      :isShowFav="isShowFav"
-      @open-game="openGame"
-      @change-game-fav="changeGameFav"
-      v-else
-    /> -->
-
-    <!-- <AppPagination
-      :count="pagination.count"
-      :page="pagination.page"
-      :pagesize="pagination.pagesize"
-      @change-page="changePage"
-      v-if="productCurrent.Lst_Site_Product_Status == 0"
-    /> -->
-
-    <!-- <component
-      :is="GameTransferDialog"
-      :wallet="userGamePointWallet"
-      :currentPointProduct="productPointCurrent"
-      v-if="isShowTransferDialog"
-      @submit-transfer="transferPoint"
-      @close="closeTransferDialog"
-    /> -->
-
-    <!-- <intersect @enter="changePageScrollBottom" rootMargin="0px 5px 0px 0px">
-      <div class="game-lobby-intersect"></div>
-    </intersect> -->
   </div>
 </template>
 

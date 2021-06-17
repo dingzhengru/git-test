@@ -17,10 +17,11 @@ import {
   apiGetGameListFav,
 } from '@/api/game';
 import { openNewWindowURL } from '@/utils/device';
+import mixinPagination from '@/mixins/pagination';
 
 export default {
   name: 'MixinGameLobby',
-  mixins: [mixinProductLinkHandler],
+  mixins: [mixinProductLinkHandler, mixinPagination],
   computed: {
     ...mapGetters([
       'lang',
@@ -126,11 +127,11 @@ export default {
         text: '',
         isFav: false,
       },
-      pagination: {
-        page: 1,
-        pagesize: 12,
-        count: 1,
-      },
+      // pagination: {
+      //   page: 1,
+      //   pagesize: 12,
+      //   count: 1,
+      // },
       // isShowTransferDialog: false, //* 轉帳視窗
 
       productCategoryStatus: null, //* 是否顯示 Category (0啟用10維護20未啟用30即將推出40關閉50產品下架)
@@ -352,15 +353,14 @@ export default {
       this.getGameList();
     },
     changePage(page) {
-      this.pagination.page = page;
+      this.changePage(page);
       this.getGameList();
     },
-    changePageScrollBottom() {
-      if (this.pagination.page >= this.totalPage) {
-        return;
+    changePageScrollHandler() {
+      const result = this.changePageScroll();
+      if (result === true) {
+        this.getGameList(true);
       }
-      this.pagination.page = this.pagination.page + 1;
-      this.getGameList(true);
     },
     resetPagination() {
       this.pagination = { page: 1, pagesize: 12, count: 1 };

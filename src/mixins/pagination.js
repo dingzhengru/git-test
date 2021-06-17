@@ -18,7 +18,6 @@ export default {
       this.pagination.page = page;
     },
     changePageScroll() {
-      console.log(this.pagination.page, this.totalPage);
       if (this.pagination.page >= this.totalPage) {
         return false;
       }
