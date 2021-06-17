@@ -173,7 +173,7 @@
       :bankIdAdd="bankIdAdd"
       :bankAccountAdd="bankAccountAdd"
       :bankBranchAdd="bankBranchAdd"
-      :bankList="bankList"
+      :bankList="bankListEnabled"
       @update-bank="getRegisterAdvanceNew"
       @close="isShowModalUserBank = false"
       v-if="isShowModalUserBank"
