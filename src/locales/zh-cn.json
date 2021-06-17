@@ -643,8 +643,8 @@
         "autoCash": "自动上分"
       },
       "third-party": {
-        "success": "自动上分 成功",
-        "failed": "自动上分 失败",
+        "success": "成功",
+        "failed": "失败",
         "amountEnter": "自行输入"
       },
       "step": {

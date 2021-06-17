@@ -645,8 +645,8 @@
         "autoCash": "Automatic score"
       },
       "third-party": {
-        "success": "Automatic score success",
-        "failed": "Automatic score failed",
+        "success": "Success",
+        "failed": "Failed",
         "amountEnter": "Enter by yourself"
       },
       "auto-cash": {
