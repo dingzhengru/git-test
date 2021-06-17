@@ -30,7 +30,6 @@ export default {
       const requestData = { Page: this.pagination.page, ...this.search };
       const result = await apiGetInboxList(requestData);
 
-      console.log(isScroll);
       if (isScroll) {
         this.list = this.list.concat(result.RetObj.Rows);
       } else {

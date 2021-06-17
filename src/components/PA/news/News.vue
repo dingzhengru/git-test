@@ -13,7 +13,7 @@
 
         <div class="ui-no-data" v-show="newsList.length === 0">{{ $t('ui.label.noData') }}</div>
 
-        <intersect @enter="changePageScroll">
+        <intersect @enter="changePageScrollHandler">
           <div></div>
         </intersect>
 
