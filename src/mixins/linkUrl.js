@@ -2,10 +2,15 @@
  ** Lst_LinkType int 連結類型(0 : 無、1 : 自定義、2 : 優惠活動、3：遊戲館)
  */
 
+import mixinGameOpen from '@/mixins/gameOpen';
+
 export default {
   name: 'MixinLinkUrl',
+  mixins: [mixinGameOpen],
   methods: {
     goLinkUrlByTypeAndUrl(type, url, target = '_self') {
+      console.log(type, url);
+
       if (type === 1) {
         window.open(url, target);
       } else if (type === 2) {
@@ -15,6 +20,12 @@ export default {
         this.$router.push({ name: 'PromotionDetail', params: { id: url } });
       } else if (type === 3) {
         const [classify, id, key] = url.split('/');
+
+        if (classify === '3') {
+          const game = { Tag: `${id}-${key}`, Lst_GameID: id, Lst_Classify: classify };
+          return this.openGame(game);
+        }
+
         if (target === '_blank') {
           return this.openRouteBlank({ name: 'GameLobby', params: { classify, id, key } });
         }
