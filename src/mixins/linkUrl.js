@@ -9,8 +9,6 @@ export default {
   mixins: [mixinGameOpen],
   methods: {
     goLinkUrlByTypeAndUrl(type, url, target = '_self') {
-      console.log(type, url);
-
       if (type === 1) {
         window.open(url, target);
       } else if (type === 2) {
@@ -48,9 +46,7 @@ export default {
       }
     },
     openRouteBlank(route) {
-      console.log(route);
       let routeData = this.$router.resolve(route);
-      console.log(routeData.href);
       window.open(routeData.href, '_blank');
     },
   },
