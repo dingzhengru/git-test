@@ -21,9 +21,9 @@ export function isStandaloneMode() {
   );
 }
 
-export function openNewWindowURL(newWindow, url) {
+export function openNewWindowURL(newWindow, url, target = '_blank') {
   if (newWindow == null || !newWindow) {
-    newWindow = window.open(url);
+    newWindow = window.open(url, target);
   } else {
     newWindow.location = url;
   }

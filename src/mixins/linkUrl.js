@@ -21,7 +21,7 @@ export default {
 
         if (classify === '3') {
           const product = { Lst_Game_Classify: classify, Lst_Product_id: id, Lst_Proxy_Product_Key: key };
-          return this.goOuterLobby(product);
+          return this.goOuterLobby(product, target);
         }
 
         if (target === '_blank') {
