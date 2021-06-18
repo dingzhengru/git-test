@@ -5,7 +5,7 @@ import { openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 export default {
   name: 'MixinGameLinkHandler',
   computed: {
-    ...mapGetters(['siteIsWalletTypeNoTransfer']),
+    ...mapGetters(['userIsLoggedIn', 'siteIsWalletTypeNoTransfer']),
   },
   methods: {
     goInnerLobby(product) {
@@ -20,6 +20,10 @@ export default {
       });
     },
     async goOuterLobby(product) {
+      if (!this.userIsLoggedIn) {
+        return this.$router.push({ name: 'Login' });
+      }
+
       const requestDataGameRedirectUrl = {
         Pid: product.Lst_Product_id,
         gameclassify: product.Lst_Game_Classify,
