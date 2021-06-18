@@ -22,21 +22,21 @@
 
     <div class="ui-no-data" v-show="recordList.length === 0">{{ $t('ui.label.noData') }}</div>
 
-    <AppPagination
-      :count="pagination.count"
-      :page="pagination.page"
-      :pagesize="pagination.pagesize"
-      @change-page="changePageHandler"
-      v-show="recordList.length > 0"
-    />
+    <intersect rootMargin="0px 0px 5px 0px" @enter="changePageScrollHandler">
+      <div></div>
+    </intersect>
   </div>
 </template>
 
 <script>
 import mixinTransactionRecordLottery from '@/mixins/transactionRecordLottery';
+import Intersect from 'vue-intersect';
 
 export default {
   name: 'TransactionRecordLottery',
   mixins: [mixinTransactionRecordLottery],
+  components: {
+    Intersect,
+  },
 };
 </script>
