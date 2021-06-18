@@ -21,7 +21,7 @@ export default {
     },
     async goOuterLobby(product, target = '_blank') {
       if (!this.userIsLoggedIn) {
-        return this.$router.push({ name: 'Register' });
+        return this.$router.push({ name: 'Login' });
       }
 
       const requestDataGameRedirectUrl = {
