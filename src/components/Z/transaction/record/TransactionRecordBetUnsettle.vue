@@ -25,7 +25,7 @@
         <td>{{ $t('report.unsettleBet.table.total') }}</td>
         <td>{{ totalRecord.Lst_BetCount }}</td>
         <td>{{ $numeral(totalRecord.Lst_TTLBet).format('0,0.00') }}</td>
-        <td></td>
+        <td>{{ totalRecord.Lst_WaitMoney }}</td>
       </tr>
     </table>
 
