@@ -35,6 +35,11 @@ export default {
         this.amount = this.amountMax;
       }
     },
+    resetForm() {
+      this.dispensingBank = {};
+      this.amount = 0;
+      this.promotion = '-1';
+    },
   },
   mounted() {},
 };

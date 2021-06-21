@@ -25,9 +25,9 @@ $deposit-base-btn-bg-receipt: $btn-bg-green;
 $deposit-base-btn-color-receipt: white;
 $deposit-base-btn-shadow-receipt: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
-$deposit-base-bnt-bg-submit: $btn-bg-green;
-$deposit-base-bnt-color-submit: white;
-$deposit-base-bnt-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+$deposit-base-btn-bg-submit: $btn-bg-green;
+$deposit-base-btn-color-submit: white;
+$deposit-base-btn-shadow-submit: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 $deposit-base-color-currency: #f88d80;
 
@@ -57,4 +57,8 @@ $deposit-third-party-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
 .deposit-third-party {
   @include deposit-third-party;
+}
+
+.deposit-auto-cash {
+  @include deposit-auto-cash;
 }
