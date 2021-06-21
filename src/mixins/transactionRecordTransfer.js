@@ -5,9 +5,6 @@ import mixinPagination from '@/mixins/pagination';
 
 export default {
   mixins: [mixinPagination],
-  components: {
-    AppPagination: () => import('@/components/AppPagination'),
-  },
   computed: {
     ...mapGetters(['lang']),
     totalPage() {

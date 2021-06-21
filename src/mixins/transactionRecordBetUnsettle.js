@@ -13,10 +13,12 @@ export default {
       return this.recordList.reduce((acc, item) => {
         const Lst_BetCount = acc.Lst_BetCount + item.Lst_BetCount;
         const Lst_TTLBet = acc.Lst_TTLBet + item.Lst_TTLBet;
+        const Lst_WaitMoney = acc.Lst_WaitMoney + item.Lst_WaitMoney;
 
         return {
           Lst_BetCount,
           Lst_TTLBet,
+          Lst_WaitMoney,
         };
       });
     },

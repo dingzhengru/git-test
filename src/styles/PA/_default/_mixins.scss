@@ -689,6 +689,20 @@
   }
 }
 
+@mixin no-scrollbar {
+  &::-webkit-scrollbar {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+}
+
 @mixin ui-box-count {
   background: $ui-box-count-bg;
   color: $ui-box-count-color;

@@ -26,23 +26,21 @@
 
     <div class="ui-no-data" v-show="list.length === 0">{{ $t('ui.label.noData') }}</div>
 
-    <AppPagination
-      :count="pagination.count"
-      :page="pagination.page"
-      :pagesize="pagination.pagesize"
-      @change-page="changePageHandler"
-      v-show="list.length > 0"
-    />
+    <intersect rootMargin="0px 0px 5px 0px" @enter="changePageScrollHandler">
+      <div></div>
+    </intersect>
   </div>
 </template>
 
 <script>
 import mixinUserMail from '@/mixins/userMail';
+import Intersect from 'vue-intersect';
+
 export default {
   name: 'UserMail',
   mixins: [mixinUserMail],
   components: {
-    AppPagination: () => import('@/components/AppPagination'),
+    Intersect,
   },
   computed: {
     getDate: () => datetime => {

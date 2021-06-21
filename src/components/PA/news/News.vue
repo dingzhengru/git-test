@@ -31,7 +31,6 @@ export default {
   name: 'News',
   mixins: [mixinStyleLoader, mixinNews],
   components: {
-    AppPagination: () => import('@/components/AppPagination'),
     Intersect,
   },
   computed: {

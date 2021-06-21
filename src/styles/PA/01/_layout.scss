@@ -24,16 +24,16 @@ body {
     height: 100% - $header-height;
   }
 
-  &.landscape {
-    transform: rotate(90deg);
-    transform-origin: bottom left;
-    height: 100vw;
-    width: 100vh;
-    position: absolute;
-    top: -100vw;
-    left: 0;
-    overflow: auto;
-  }
+  // &.landscape {
+  //   transform: rotate(90deg);
+  //   transform-origin: bottom left;
+  //   height: 100vw;
+  //   width: 100vh;
+  //   position: absolute;
+  //   top: -100vw;
+  //   left: 0;
+  //   overflow: auto;
+  // }
 }
 
 .ui-btn {
@@ -100,6 +100,10 @@ body {
 
 .ui-scrollbar {
   @include ui-scrollbar;
+}
+
+.no-scrollbar {
+  @include no-scrollbar;
 }
 
 .ui-box-count {
