@@ -74,7 +74,9 @@
     "gameMaintenance": "Game under maintenance, we apologize for the inconvenience brought to you!",
     "versionUpdate": "New version update, reload now",
     "refreshSuccess": "Refresh successfully",
-    "confirmLogout": "Are you sure you want to leave?"
+    "confirmLogout": "Are you sure you want to leave?",
+    "noSetBankInfo": "Bank account information has not been set",
+    "noSetWithdrawalPassword": "Withdrawal password has not been set"
   },
   "validate": {
     "common": {
