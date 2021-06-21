@@ -72,7 +72,8 @@ export default {
           field.isRequired = registerField.Lst_isRequired;
           field.rules['register-required'] = registerField.Lst_isRequired;
           field.isModifiable =
-            registerField.Lst_Phase === 2 || (registerField.Lst_Phase === 1 && registerField.Lst_isModifiable);
+            (registerField.Lst_Phase === 2 && registerField.Lst_Value === '') ||
+            (registerField.Lst_Phase === 1 && registerField.Lst_isModifiable);
         }
       }
       this.fieldListOld = this.$deepClone(this.fieldList);
