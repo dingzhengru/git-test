@@ -139,9 +139,9 @@ const actions = {
     //* 修改會員資料
     let result = {};
     if (store.siteIsLandscape) {
-      result = await apiAdvancedRegisterNew(data);
-    } else {
       result = await apiAdvancedRegisterNewApp(data);
+    } else {
+      result = await apiAdvancedRegisterNew(data);
     }
 
     if (result.Code === 200) {
