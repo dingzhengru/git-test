@@ -74,6 +74,11 @@ export default {
           field.isModifiable =
             (registerField.Lst_Phase === 2 && registerField.Lst_Value === '') ||
             (registerField.Lst_Phase === 1 && registerField.Lst_isModifiable);
+
+          console.log(field.name);
+          console.log(field.isModifiable);
+          console.log(registerField.Lst_Phase === 2 && registerField.Lst_Value === '');
+          console.log(registerField.Lst_Phase === 1 && registerField.Lst_isModifiable);
         }
       }
       this.fieldListOld = this.$deepClone(this.fieldList);
