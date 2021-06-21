@@ -15,6 +15,33 @@
       <div class="user-profile__field-box" v-for="field in fieldList" :key="field.name">
         <div class="ui-step" v-if="field.name === 'Add_BankId1'">{{ $t('user.profile.step.bank') }}</div>
 
+        <label
+          class="ui-field-box user-profile__radio"
+          v-if="isAutoCashOpen && field.name === 'Add_BankId1' && field.isShow"
+        >
+          <span>{{ $t('ui.label.default') }}</span>
+          <input type="radio" :value="1" v-model="bankDefault" />
+          <div></div>
+        </label>
+
+        <label
+          class="ui-field-box user-profile__radio"
+          v-if="isAutoCashOpen && field.name === 'Add_BankId2' && field.isShow"
+        >
+          <span>{{ $t('ui.label.default') }}</span>
+          <input type="radio" :value="2" v-model="bankDefault" />
+          <div></div>
+        </label>
+
+        <label
+          class="ui-field-box user-profile__radio"
+          v-if="isAutoCashOpen && field.name === 'Add_BankId3' && field.isShow"
+        >
+          <span>{{ $t('ui.label.default') }}</span>
+          <input type="radio" :value="2" v-model="bankDefault" />
+          <div></div>
+        </label>
+
         <!-- <div class="user-profile__radio" v-if="field.name === 'Add_BankId1' && field.isShow">
           <input id="bank1" type="radio" :value="1" v-model="bankDefault" />
           <label for="bank1">{{ $t('ui.label.default') }}</label>
