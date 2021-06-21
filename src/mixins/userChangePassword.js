@@ -4,7 +4,7 @@ import { apiChangePassword, apiChangeRemember } from '@/api/user';
 export default {
   name: 'MixinUserChangePassword',
   computed: {
-    ...mapGetters(['userIsEnableRememberOption']),
+    ...mapGetters(['siteIs', 'userIsEnableRememberOption']),
   },
   data() {
     return {
@@ -33,6 +33,8 @@ export default {
         window.alert(this.$t('alert.changeProfileSuccess'));
         this.resetForm();
       }
+
+      return result;
     },
     async changeRemember() {
       const requestData = { ReMember: this.isRememberPassword };

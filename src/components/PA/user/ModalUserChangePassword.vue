@@ -9,7 +9,7 @@
         ref="validationObserver"
         v-slot="{ invalid, handleSubmit }"
       >
-        <form class="user-change-password__form" @submit.prevent="handleSubmit(submitChangePassword)">
+        <form class="user-change-password__form" @submit.prevent="handleSubmit(submitForm)">
           <ValidationProvider
             class="ui-field user-change-password__field"
             tag="div"
@@ -110,6 +110,12 @@ export default {
     ...mapGetters([]),
   },
   methods: {
+    async submitForm() {
+      const result = await this.submitChangePassword();
+      if (result.Code === 200) {
+        this.closeModal();
+      }
+    },
     closeModal() {
       this.$emit('close');
     },
