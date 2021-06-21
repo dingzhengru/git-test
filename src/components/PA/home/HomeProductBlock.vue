@@ -1,7 +1,7 @@
 <template>
-  <div class="home-product-block">
+  <div class="home-product-block no-scrollbar">
     <transition-group
-      class="home-product-block__container"
+      class="home-product-block__container no-scrollbar"
       ref="homeProductBlockContainer"
       tag="div"
       name="product-list-landscape"
