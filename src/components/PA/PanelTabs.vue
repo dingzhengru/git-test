@@ -6,7 +6,7 @@
       :class="{ active: item.route === $route.name || item.otherActiveRoute.includes($route.name) }"
       v-for="(item, index) in list"
       :key="index"
-      @click="$router.push({ name: item.route })"
+      @click="$router.push({ name: item.route }).catch(() => {})"
     >
       {{ $t(item.text) }}
     </div>
@@ -26,5 +26,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

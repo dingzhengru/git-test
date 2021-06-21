@@ -1,31 +1,37 @@
 import { mapGetters } from 'vuex';
 import { apiGetRecordWithdrawalRestriction } from '@/api/transaction-record';
+import mixinPagination from '@/mixins/pagination';
 
 export default {
+  mixins: [mixinPagination],
   components: {
     AppPagination: () => import('@/components/AppPagination'),
   },
   computed: {
     ...mapGetters(['lang']),
+    totalPage() {
+      return Math.ceil(this.pagination.count / this.pagination.pagesize);
+    },
   },
   data() {
     return {
       recordList: [],
-      pagination: {
-        page: 1,
-        pagesize: 10,
-        count: 0,
-      },
     };
   },
   methods: {
-    async getRecord() {
+    async getRecord(isScroll = false) {
       const requestData = { Page: this.pagination.page };
       const result = await apiGetRecordWithdrawalRestriction(requestData);
-      this.recordList = result.RetObj.Rows.map(item => {
-        item.isShowDetail = false;
-        return item;
+
+      const resultRecordList = result.RetObj.Rows.map(item => {
+        return { ...item, isShowDetail: false };
       });
+
+      if (isScroll) {
+        this.recordList = this.recordList.concat(resultRecordList);
+      } else {
+        this.recordList = resultRecordList;
+      }
 
       this.pagination.count = result.RetObj.Records;
     },
@@ -37,9 +43,15 @@ export default {
       };
       this.$router.push({ name: 'TransactionRecordWithdrawalRestrictionDetail', query });
     },
-    changePage(page) {
-      this.pagination.page = page;
+    changePageHandler(page) {
+      this.changePage(page);
       this.getRecord();
+    },
+    changePageScrollHandler() {
+      const result = this.changePageScroll();
+      if (result === true) {
+        this.getRecord(true);
+      }
     },
     toggleRecordDetail(record) {
       record.isShowDetail = !record.isShowDetail;

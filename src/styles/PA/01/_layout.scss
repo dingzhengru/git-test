@@ -106,6 +106,14 @@ body {
   @include ui-box-count;
 }
 
+.modal-alert {
+  @include modal-alert;
+}
+
+.modal-confirm {
+  @include modal-confirm;
+}
+
 //* 服務規章視窗
 .service-term {
   @include service-term;

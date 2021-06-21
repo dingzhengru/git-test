@@ -39,7 +39,7 @@ $news-marquee-link-color: black;
   @include news-marquee;
 }
 
-$home-product-maintain-bg: black;
+$home-product-maintain-bg: assetPath('home/btn_maintain.png') center/100% 100% no-repeat;
 
 .home-product-block {
   @include home-product-block;

@@ -49,11 +49,6 @@ export default {
     img {
       margin-bottom: 15px;
     }
-
-    &.landscape {
-      min-height: 20vw;
-      max-height: 80vw;
-    }
   }
 }
 </style>

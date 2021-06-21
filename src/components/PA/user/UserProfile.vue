@@ -10,220 +10,65 @@
             <span>{{ $t('user.profile.step.basic') }}</span>
           </div>
           <div class="user-profile__basic">
-            <div class="user-profile__field">
+            <div class="ui-field user-profile__field">
               <label>{{ $t('user.profile.field.registerTime') }}</label>
-              <input type="text" :value="getDatetime(userCreatedDatetime)" />
+              <span>{{ getDatetime(userCreatedDatetime) }}</span>
             </div>
 
-            <ValidationProvider
-              class="user-profile__field"
-              tag="div"
-              :class="[fieldAccount.class]"
-              :name="fieldAccount.name"
-              :rules="fieldAccount.rules"
-              v-show="fieldAccount.isShow"
-              v-slot="{ errors }"
+            <div
+              class="ui-field user-profile__field"
+              v-for="item in fieldListNoBank"
+              :key="item.name"
+              v-show="item.isShow"
             >
-              <label>{{ $t(`register.Add_Account.placeholder`) }}</label>
-              <input
-                type="text"
-                v-model="fieldAccount.value"
-                @change="checkField(fieldAccount, invalid)"
-                v-if="fieldAccount.isModifiable"
-              />
-              <input type="text" :value="fieldAccount.value" readonly v-else />
-              <div class="" v-if="errors.length > 0 && errors[0]">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
+              <ValidationProvider
+                class="user-profile__field__container"
+                tag="div"
+                :name="item.name"
+                :rules="item.rules"
+                v-slot="{ errors }"
+                v-if="item.isModifiable"
+              >
+                <label>{{ $t(`register.${item.name}.placeholder`) }}</label>
+                <input
+                  :class="{ invalid: errors.length > 0 }"
+                  type="text"
+                  v-model="item.value"
+                  @change="checkField(item, invalid)"
+                />
+              </ValidationProvider>
 
-            <ValidationProvider
-              class="user-profile__field"
-              tag="div"
-              :class="[fieldRealName.class]"
-              :name="fieldRealName.name"
-              :rules="fieldRealName.rules"
-              v-show="fieldRealName.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_RealName.placeholder`) }}</label>
-              <input
-                type="text"
-                v-model="fieldRealName.value"
-                @change="checkField(fieldRealName, invalid)"
-                v-if="fieldRealName.isModifiable"
-              />
-              <input type="text" :value="fieldRealName.value" readonly v-else />
-              <div class="" v-if="errors.length > 0 && errors[0]">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
+              <template v-else>
+                <label>{{ $t(`register.${item.name}.placeholder`) }}</label>
+                <span>{{ item.value }}</span>
+              </template>
+            </div>
 
-            <ValidationProvider
-              class="user-profile__field"
-              tag="div"
-              :class="[fieldAccount.class]"
-              :name="fieldMobile.name"
-              :rules="fieldMobile.rules"
-              v-show="fieldMobile.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Mobile.placeholder`) }}</label>
-              <input
-                type="text"
-                v-model="fieldMobile.value"
-                @change="checkField(fieldMobile, invalid)"
-                v-if="fieldMobile.isModifiable"
-              />
-              <input type="text" :value="fieldMobile.value" readonly v-else />
-              <div class="" v-if="errors.length > 0 && errors[0]">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="user-profile__field"
-              tag="div"
-              :class="[fieldEmail.class]"
-              :name="fieldEmail.name"
-              :rules="fieldEmail.rules"
-              v-show="fieldEmail.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Email.placeholder`) }}</label>
-              <input
-                type="text"
-                v-model="fieldEmail.value"
-                @change="checkField(fieldEmail, invalid)"
-                v-if="fieldEmail.isModifiable"
-              />
-              <input type="text" :value="fieldEmail.value" readonly v-else />
-              <div class="" v-if="errors.length > 0 && errors[0]">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="user-profile__field"
-              tag="div"
-              :class="[fieldNickname.class]"
-              :name="fieldNickname.name"
-              :rules="fieldNickname.rules"
-              v-show="fieldNickname.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_NickName.placeholder`) }}</label>
-              <input type="text" v-model="fieldNickname.value" v-if="fieldNickname.isModifiable" />
-              <input type="text" :value="fieldNickname.value" readonly v-else />
-              <div class="" v-if="errors.length > 0 && errors[0]">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="user-profile__field"
-              tag="div"
-              :class="[fieldLine.class]"
-              :name="fieldLine.name"
-              :rules="fieldLine.rules"
-              v-show="fieldLine.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Line.placeholder`) }}</label>
-              <input
-                type="text"
-                v-model="fieldLine.value"
-                @change="checkField(fieldLine, invalid)"
-                v-if="fieldLine.isModifiable"
-              />
-              <input type="text" :value="fieldLine.value" readonly v-else />
-              <div class="" v-if="errors.length > 0 && errors[0]">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="user-profile__field"
-              tag="div"
-              :class="[fieldBirthday.class]"
-              :name="fieldBirthday.name"
-              :rules="fieldBirthday.rules"
-              v-show="fieldBirthday.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Birthday.placeholder`) }}</label>
-              <input
-                type="date"
-                v-model="fieldBirthday.value"
-                :min="fieldBirthday.min"
-                :max="fieldBirthday.max"
-                v-if="fieldBirthday.isModifiable"
-              />
-              <input type="date" :value="fieldBirthday.value" readonly v-else />
-              <div class="" v-if="errors.length > 0 && errors[0]">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="user-profile__field"
-              tag="div"
-              :class="[fieldSkype.class]"
-              :name="fieldSkype.name"
-              :rules="fieldSkype.rules"
-              v-show="fieldSkype.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_Skype.placeholder`) }}</label>
-              <input
-                type="text"
-                v-model="fieldSkype.value"
-                @change="checkField(fieldSkype, invalid)"
-                v-if="fieldSkype.isModifiable"
-              />
-              <input type="text" :value="fieldSkype.value" readonly v-else />
-              <div class="" v-if="errors.length > 0 && errors[0]">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-
-            <ValidationProvider
-              class="user-profile__field"
-              tag="div"
-              :class="[fieldQQ.class]"
-              :name="fieldQQ.name"
-              :rules="fieldQQ.rules"
-              v-show="fieldQQ.isShow"
-              v-slot="{ errors }"
-            >
-              <label>{{ $t(`register.Add_QQ.placeholder`) }}</label>
-              <input
-                type="text"
-                v-model="fieldQQ.value"
-                @change="checkField(fieldQQ, invalid)"
-                v-if="fieldQQ.isModifiable"
-              />
-              <input type="text" :value="fieldQQ.value" readonly v-else />
-              <div class="" v-if="errors.length > 0 && errors[0]">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-
-            <div class="user-profile__field user-profile__field--btn">
+            <div class="ui-field user-profile__field user-profile__field--btn">
               <label>{{ $t('user.profile.field.password') }}</label>
-              <input type="password" :value="'password'" readonly />
-              <button type="button" @click="isShowModalChangePassword = true">{{ $t('ui.button.edit') }}</button>
+              <img :src="imgButtonModify" @click="isShowModalChangePassword = true" />
               <div class="ui-question" @click="isShowModalNoticeChangePassword = true"></div>
             </div>
 
-            <div class="user-profile__field user-profile__field--btn">
+            <div class="ui-field user-profile__field user-profile__field--btn">
               <label>{{ $t('user.profile.field.passwordWithdrawal') }}</label>
-              <input type="password" :value="'password'" readonly />
-              <button type="button" @click="isShowModalChangePasswordWithdrawal = true">
-                {{ $t('ui.button.setup') }}
-              </button>
+              <img
+                :src="imgButtonModify"
+                @click="isShowModalChangePasswordWithdrawal = true"
+                v-if="userHasWithdrawalPassWord"
+              />
+              <img :src="imgButtonSetup" @click="isShowModalChangePasswordWithdrawal = true" v-else />
               <div class="ui-question" @click="isShowModalNoticeChangePasswordWithdrawal = true"></div>
             </div>
+          </div>
+
+          <div class="user-profile__btn">
+            <button class="ui-btn ui-btn--lg user-profile__btn--submit" type="submit" :disabled="invalid">
+              {{ $t('ui.button.submit') }}
+            </button>
+            <button class="ui-btn ui-btn--lg user-profile__btn--reset" type="reset" @click="resetForm">
+              {{ $t('ui.button.reset') }}
+            </button>
           </div>
 
           <div class="ui-step">
@@ -237,13 +82,21 @@
             >
               {{ $t('user.profile.button.bankAdd') }}
             </button>
+
+            <!-- <button
+              class="ui-btn user-profile__btn--add-bank"
+              type="button"
+              @click="isShowModalUserBank = true"
+            >
+              {{ $t('user.profile.button.bankAdd') }}
+            </button> -->
           </div>
 
           <div class="user-profile__bank">
-            <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value">
-              <label class="ui-field-box user-profile__bank__item__radio">
+            <div class="user-profile__bank__item" @click="bankDefault = 1">
+              <label class="ui-field-box user-profile__bank__item__radio" v-if="isAutoCashOpen">
                 <span>{{ $t('ui.label.default') }}</span>
-                <input type="radio" :value="fieldBankId1.value" v-model="bankDefault" />
+                <input type="radio" :value="1" v-model="bankDefault" />
                 <div></div>
               </label>
               <div class="user-profile__bank__item__card">
@@ -256,10 +109,10 @@
               </div>
             </div>
 
-            <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value" v-if="fieldBankId2.value">
-              <label class="ui-field-box user-profile__bank__item__radio">
+            <div class="user-profile__bank__item" @click="bankDefault = 2" v-if="fieldBankId2.value">
+              <label class="ui-field-box user-profile__bank__item__radio" v-if="isAutoCashOpen">
                 <span>{{ $t('ui.label.default') }}</span>
-                <input type="radio" :value="fieldBankId2.value" v-model="bankDefault" />
+                <input type="radio" :value="2" v-model="bankDefault" />
                 <div></div>
               </label>
               <div class="user-profile__bank__item__card">
@@ -272,10 +125,10 @@
               </div>
             </div>
 
-            <div class="user-profile__bank__item" @click="bankDefault = fieldBankId1.value" v-if="fieldBankId3.value">
-              <label class="ui-field-box user-profile__bank__item__radio">
+            <div class="user-profile__bank__item" @click="bankDefault = 3" v-if="fieldBankId3.value">
+              <label class="ui-field-box user-profile__bank__item__radio" v-if="isAutoCashOpen">
                 <span>{{ $t('ui.label.default') }}</span>
-                <input type="radio" :value="fieldBankId3.value" v-model="bankDefault" />
+                <input type="radio" :value="3" v-model="bankDefault" />
                 <div></div>
               </label>
               <div class="user-profile__bank__item__card">
@@ -302,7 +155,7 @@
     </form>
 
     <div class="user-profile__footer">
-      <span @click="$store.dispatch('user/logout')">{{ $t('header.button.logout') }}</span>
+      <span @click="isShowModalLogout = true">{{ $t('header.button.logout') }}</span>
     </div>
 
     <component
@@ -321,7 +174,7 @@
       :bankIdAdd="bankIdAdd"
       :bankAccountAdd="bankAccountAdd"
       :bankBranchAdd="bankBranchAdd"
-      :bankList="bankList"
+      :bankList="bankListEnabled"
       @update-bank="getRegisterAdvanceNew"
       @close="isShowModalUserBank = false"
       v-if="isShowModalUserBank"
@@ -340,6 +193,14 @@
       v-if="isShowModalNoticeChangePasswordWithdrawal"
       @close="isShowModalNoticeChangePasswordWithdrawal = false"
     />
+
+    <component
+      :is="ModalConfirm"
+      :text="$t('alert.confirmLogout')"
+      @ok="$store.dispatch('user/logout')"
+      @close="isShowModalLogout = false"
+      v-if="isShowModalLogout"
+    />
   </ValidationObserver>
 </template>
 
@@ -355,7 +216,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters(['siteSetting', 'siteFullCss', 'userWithdrawalCount']),
+    ...mapGetters(['lang', 'siteSetting', 'siteFullCss', 'userWithdrawalCount', 'userHasWithdrawalPassWord']),
     PanelTabs() {
       return () => import(`@/${this.siteSetting.components.user.PanelTabs}`);
     },
@@ -370,6 +231,9 @@ export default {
     },
     ModalNoticeList() {
       return () => import(`@/${this.siteSetting.components.user.ModalNoticeList}`);
+    },
+    ModalConfirm() {
+      return () => import(`@/${this.siteSetting.components.app.ModalConfirm}`);
     },
     isShowBankAddButton() {
       if (this.bankAddNumber === 1) {
@@ -435,6 +299,27 @@ export default {
         return '';
       }
     },
+    imgButtonModify() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/user/ui-btn-modify-${this.lang}.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgButtonSetup() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/user/ui-btn-setup-${this.lang}.png`);
+      } catch {
+        return '';
+      }
+    },
+    imgChangePassword() {
+      try {
+        return require(`@/assets/${this.siteFullCss}/user/ui-change-password.png`);
+      } catch {
+        return '';
+      }
+    },
   },
   data() {
     return {
@@ -460,7 +345,7 @@ export default {
         },
       ],
 
-      bankDefault: '',
+      isShowModalLogout: false,
     };
   },
   methods: {

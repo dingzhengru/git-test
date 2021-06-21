@@ -33,7 +33,9 @@
             </div>
           </form>
 
-          <table class="ui-table user-mail__table">
+          <div class="ui-no-data" v-if="list.length === 0">{{ $t('ui.label.noData') }}</div>
+
+          <table class="ui-table user-mail__table" v-else>
             <tr>
               <th>No.</th>
               <th>{{ $t('ui.label.subject') }}</th>
@@ -44,19 +46,24 @@
               :key="String(index) + String(item.Lst_Key)"
               @click="openModalMailDetail(item)"
             >
-              <td>{{ index + 1 + (pagination.page - 1) * 10 }}</td>
+              <!-- <td>{{ index + 1 + (pagination.page - 1) * 10 }}</td> -->
+              <td>{{ index + 1 }}</td>
               <td>{{ item.Lst_Subject }}</td>
               <td>{{ $dayjs(item.Lst_SendTime).format('YYYY-MM-DD') }}</td>
             </tr>
           </table>
 
-          <AppPagination
+          <!-- <AppPagination
             :count="pagination.count"
             :page="pagination.page"
             :pagesize="pagination.pagesize"
-            @change-page="changePage"
+            @change-page="changePageHandler"
             v-show="list.length > 0"
-          />
+          /> -->
+
+          <intersect rootMargin="0px 0px 5px 0px" @enter="changePageScrollHandler">
+            <div></div>
+          </intersect>
         </div>
       </div>
     </div>
@@ -74,11 +81,13 @@
 import mixinUserMail from '@/mixins/userMail';
 import { mapGetters } from 'vuex';
 import { apiGetMailCategoryList } from '@/api/notification';
+import Intersect from 'vue-intersect';
 export default {
   name: 'UserMail',
   mixins: [mixinUserMail],
   components: {
-    AppPagination: () => import('@/components/AppPagination'),
+    // AppPagination: () => import('@/components/AppPagination'),
+    Intersect,
   },
   computed: {
     ...mapGetters(['siteSetting', 'siteFullCss']),

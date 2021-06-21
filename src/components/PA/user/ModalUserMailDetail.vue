@@ -33,7 +33,7 @@
             </ValidationProvider>
 
             <div class="user-mail-detail__reply__btn">
-              <button class="ui-btn ui-btn--lg" type="reset" @click="resetForm">{{ $t('ui.button.cancel') }}</button>
+              <button class="ui-btn ui-btn--lg" type="reset" @click="closeModal">{{ $t('ui.button.cancel') }}</button>
               <button class="ui-btn ui-btn--lg" type="submit" :disabled="invalid">{{ $t('ui.button.send') }}</button>
             </div>
           </div>

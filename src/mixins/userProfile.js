@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import { apiGetRegisterAdvanceNew } from '@/api/user';
+import { apiGetRegisterAdvanceNew, apiGetBankInfoList } from '@/api/user';
 import { registerFieldList } from '@/utils/register';
 import mixinCheckField from '@/mixins/checkField';
 
@@ -7,12 +7,21 @@ export default {
   name: 'MixinUserProfile',
   mixins: [mixinCheckField],
   computed: {
-    ...mapGetters(['lang', 'userCreatedDatetime', 'userBankById', 'userBankName1']),
+    ...mapGetters(['lang', 'userCreatedDatetime', 'userBindBank', 'siteIsLandscape']),
     getDatetime: () => datetime => {
       return `${datetime.split('.')[0].replace('T', ' ')} (GMT+8)`;
     },
     getDate: () => datetime => {
       return datetime.split('T')[0];
+    },
+    userBankById: app => id => {
+      return app.userBankList.find(item => item.Lst_BankId === id) || {};
+    },
+    fieldListNoBank() {
+      return this.fieldList.filter(item => item.name.includes('Bank') === false);
+    },
+    bankListEnabled() {
+      return this.bankList.filter(item => item.Visibled);
     },
   },
   data() {
@@ -20,6 +29,8 @@ export default {
       fieldList: registerFieldList,
       bankList: [],
       fieldListOld: [],
+
+      userBankList: [],
 
       fieldAccount: {},
       fieldNickname: {},
@@ -39,12 +50,16 @@ export default {
       fieldBankId3: {},
       fieldBankAccount3: {},
       fieldBankBranchName3: {},
+
+      bankDefault: 0,
+      isAutoCashOpen: false,
     };
   },
   methods: {
     async getRegisterAdvanceNew() {
       const result = await apiGetRegisterAdvanceNew();
       this.bankList = result.RetObj.Add_BankList;
+      this.isAutoCashOpen = result.RetObj.AutoCashOpen;
 
       for (const registerField of result.RetObj.Register) {
         const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
@@ -83,7 +98,6 @@ export default {
       this.fieldList = this.$deepClone(this.fieldListOld);
     },
     setFields() {
-      console.log('setFields');
       this.fieldList.forEach(item => {
         switch (item.name) {
           case 'Add_Account': {
@@ -147,15 +161,29 @@ export default {
       if (!id) {
         return {};
       }
-      return this.bankList.find(item => item.Value === id);
+
+      return this.bankList.find(item => item.Value === id) || {};
+    },
+
+    async getUserBankList() {
+      const result = await apiGetBankInfoList();
+      if (result.Code === 200) {
+        this.userBankList = result.RetObj;
+      }
+      return result;
     },
   },
   mounted() {
     this.getRegisterAdvanceNew();
+
+    this.bankDefault = this.userBindBank;
   },
   watch: {
     fieldList() {
       this.setFields();
+    },
+    userBindBank() {
+      this.bankDefault = this.userBindBank;
     },
   },
 };

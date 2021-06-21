@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <img class="header__logo__icon" :src="imgLogo" v-show="isShowLogo" />
+      <img class="header__logo__icon" :src="siteLogoUrl" v-show="isShowLogo" />
       <img class="header__logo__back" :src="imgBack" @click="goRoutePrevious" v-show="isShowLogoBack" />
     </div>
 
@@ -19,18 +19,18 @@
       </div>
       <div class="header__user__vip">
         <img class="header__user__vip__icon" :src="imgUserVip" />
-        <div class="header__user__vip__content">vip123</div>
+        <div class="header__user__vip__content">{{ userVIPLevelName }}</div>
       </div>
     </div>
 
     <div
       class="header__wallet"
-      @click="$router.push({ name: 'TransactionTransfer' }).catch(() => {})"
+      @click="$router.push({ name: 'TransactionWallet' }).catch(() => {})"
       v-show="isShowWallet"
     >
       <img class="header__wallet__icon" :src="imgWalletIcon" alt="" />
       <span class="header__wallet__text" v-if="userIsLoggedIn">
-        {{ $numeral(userGamePointWallet.Point).format('0,0.00') }}
+        {{ $numeral(userTotalBalance).format('0,0.00') }}
       </span>
       <img class="header__wallet__arrow" :src="imgWalletArrow" alt="" />
     </div>
@@ -80,6 +80,8 @@ export default {
       'siteLogoUrl',
       'userIsLoggedIn',
       'userAccount',
+      'userVIPLevelName',
+      'userTotalBalance',
       'userGamePointWallet',
       'modalLangIsShow',
       'modalAuthIsShow',
@@ -187,6 +189,9 @@ export default {
   },
   methods: {
     goRoutePrevious() {
+      if (this.userIsLoggedIn) {
+        this.$store.dispatch('user/getPointInfo');
+      }
       this.$router.push({ name: 'Home' });
     },
     changeLang(lang) {

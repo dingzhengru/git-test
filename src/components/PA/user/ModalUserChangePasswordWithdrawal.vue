@@ -2,7 +2,9 @@
   <AppModal @close="closeModal">
     <div class="ui-modal user-change-password">
       <div class="ui-box-close" @click="closeModal"></div>
-      <div class="ui-modal__title">{{ $t('user.nav.changePasswordWithdrawal') }}</div>
+      <div class="ui-modal__title">
+        {{ userHasWithdrawalPassWord ? $t('user.nav.changePasswordWithdrawal') : $t('user.nav.setPasswordWithdrawal') }}
+      </div>
       <ValidationObserver
         tag="div"
         class="ui-modal__content user-change-password__container"
@@ -21,6 +23,7 @@
             }"
             name="Add_OldPassword"
             v-slot="{ errors }"
+            v-show="userHasWithdrawalPassWord"
           >
             <input
               class="ui-field__group__input"
@@ -107,7 +110,7 @@ export default {
     ValidationProvider,
   },
   computed: {
-    ...mapGetters([]),
+    ...mapGetters(['userHasWithdrawalPassWord']),
   },
   methods: {
     closeModal() {

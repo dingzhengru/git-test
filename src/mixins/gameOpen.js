@@ -19,7 +19,7 @@ export default {
         Tag: game.Tag || this.productTag,
         Gameid: game.Lst_GameID,
         Freeplay: 0,
-        GameClassify: this.productClassify,
+        GameClassify: game.Lst_Classify || this.productClassify,
       };
 
       const newWindow = window.open('/loading.html');

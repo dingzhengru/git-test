@@ -26,7 +26,7 @@
             <input id="modal-transfer-amount" type="number" v-model="amount" @change="changeAmount" />
           </ValidationProvider>
 
-          <ValidationProvider class="modal-transfer__field" tag="div" v-show="promotionList.length > 0">
+          <ValidationProvider class="ui-field modal-transfer__field" tag="div" v-show="promotionList.length > 0">
             <label class="">{{ $t('ui.label.promotion') }}</label>
             <select class="" v-model="promotion">
               <option value="">{{ $t('ui.label.pleaseSelect') }}</option>

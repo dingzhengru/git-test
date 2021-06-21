@@ -31,6 +31,7 @@ $game-lobby-list-icon-item-fav-bg: assetPath('game-lobby/btn_favorites.png') cen
 $game-lobby-list-icon-item-fav-bg-active: assetPath('game-lobby/btn_favorites_active.png') center/cover no-repeat;
 $game-lobby-list-icon-item-fav-width: 30px;
 $game-lobby-list-icon-item-fav-height: 30px;
+$game-lobby-list-icon-item-maintain-bg: assetPath('home/btn_maintain.png') center/100% 100% no-repeat;
 
 .game-lobby-list-icon {
   @include game-lobby-list-icon;

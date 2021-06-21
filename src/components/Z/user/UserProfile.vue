@@ -59,7 +59,7 @@
               v-model="field.value"
               v-else-if="field.type === 'select' && field.isModifiable"
             >
-              <option :value="item.Value" v-for="item in bankList" :key="item.Value">{{ item.Text }}</option>
+              <option :value="item.Value" v-for="item in bankListEnabled" :key="item.Value">{{ item.Text }}</option>
             </select>
 
             <input
@@ -68,7 +68,7 @@
               type="text"
               :placeholder="$t(`register.${field.name}.placeholder`)"
               :readonly="!field.isModifiable"
-              :value="userBankById(field.value).Lst_BankName"
+              :value="getBankById(field.value).Text"
               v-else-if="field.type === 'select' && !field.isModifiable"
             />
           </div>

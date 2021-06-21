@@ -21,15 +21,13 @@
         class="home-footer__right__block home-footer__deposit"
         @click="$router.push({ name: 'TransactionDepositHome' })"
       >
-        <img class="home-footer__right__block__text home-footer__deposit__text" :src="imgDepositText" />
-        <img class="home-footer__right__block__icon home-footer__deposit__icon" :src="imgDepositIcon" />
+        <img class="home-footer__right__block__icon home-footer__deposit__icon" :src="imgButtonDeposit" />
       </div>
       <div
         class="home-footer__right__block home-footer__deposit"
         @click="$router.push({ name: 'TransactionWithdrawal' })"
       >
-        <img class="home-footer__right__block__text home-footer__deposit__text" :src="imgWithdrawalText" />
-        <img class="home-footer__right__block__icon home-footer__deposit__icon" :src="imgWithdrawalIcon" />
+        <img class="home-footer__right__block__icon home-footer__deposit__icon" :src="imgButtonWithdrawal" />
       </div>
     </div>
   </div>
@@ -42,30 +40,16 @@ export default {
   name: 'HomeFooter',
   computed: {
     ...mapGetters(['lang', 'siteFullCss', 'userIsLoggedIn', 'userNewMailCount']),
-    imgDepositIcon() {
+    imgButtonDeposit() {
       try {
-        return require(`@/assets/${this.siteFullCss}/footer/footer-deposit-bg-${this.lang}.png`);
+        return require(`@/assets/${this.siteFullCss}/footer/footer-btn-deposit-${this.lang}.png`);
       } catch {
         return '';
       }
     },
-    imgDepositText() {
+    imgButtonWithdrawal() {
       try {
-        return require(`@/assets/${this.siteFullCss}/footer/footer-deposit-${this.lang}.png`);
-      } catch {
-        return '';
-      }
-    },
-    imgWithdrawalIcon() {
-      try {
-        return require(`@/assets/${this.siteFullCss}/footer/footer-withdrawal-bg-${this.lang}.png`);
-      } catch {
-        return '';
-      }
-    },
-    imgWithdrawalText() {
-      try {
-        return require(`@/assets/${this.siteFullCss}/footer/footer-withdrawal-${this.lang}.png`);
+        return require(`@/assets/${this.siteFullCss}/footer/footer-btn-withdrawal-${this.lang}.png`);
       } catch {
         return '';
       }
@@ -81,5 +65,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

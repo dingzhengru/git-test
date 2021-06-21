@@ -10,7 +10,7 @@
           class="ui-panel-tab__tabs__item"
           :class="{ active: productClassifyCurrent === hotGameClassify }"
           @click="productClassifyCurrent = hotGameClassify"
-          v-if="userIsLoggedIn"
+          v-if="gameListHot.length > 0"
         >
           {{ $t('ui.label.hotGame') }}
         </div>
@@ -37,6 +37,8 @@
     </div>
 
     <component :is="HomeFooter" />
+
+    <ModalMessageC @close="isShowModalMessage = false" v-if="isShowModalMessage && !userIsLoggedIn" />
   </div>
 </template>
 
@@ -44,13 +46,17 @@
 import mixinStyleLoader from '@/mixins/_styleLoader';
 import { mapGetters } from 'vuex';
 import mixinScrollArrow from '@/mixins/_scrollArrow';
-import { apiGetGameListHot } from '@/api/game';
+import { apiGetGameListHot, apiPostGameListHot } from '@/api/game';
 
 export default {
   name: 'Home',
   mixins: [mixinStyleLoader, mixinScrollArrow],
+  components: {
+    ModalMessageC: () => import('@/components/ModalMessageC'),
+  },
   computed: {
     ...mapGetters([
+      'lang',
       'siteSetting',
       'siteMainPageNoticeUrl',
       'siteIsShowMainNotice',
@@ -85,10 +91,13 @@ export default {
   },
   data() {
     return {
-      productClassifyCurrent: 1,
+      // productClassifyCurrent: 1,
+      productClassifyCurrent: 'hot',
 
       gameListHot: [],
       hotGameClassify: 'hot',
+
+      isShowModalMessage: true,
     };
   },
   methods: {
@@ -99,8 +108,13 @@ export default {
       this.$router.push(route);
     },
     async getGameListHot() {
-      const requestData = {};
-      const result = await apiGetGameListHot(requestData);
+      let result = {};
+      if (this.userIsLoggedIn) {
+        result = await apiPostGameListHot();
+      } else {
+        const requestData = { Lang: this.lang };
+        result = await apiGetGameListHot(requestData);
+      }
 
       if (result.Code === 200) {
         this.gameListHot = result.RetObj.SiteHotGamesList;
@@ -112,11 +126,12 @@ export default {
 
     this.initScrollArrowY(this.$refs.homePanelTab);
 
-    if (this.userIsLoggedIn) {
+    this.getGameListHot();
+  },
+  watch: {
+    lang() {
       this.getGameListHot();
-    }
+    },
   },
 };
 </script>
-
-<style></style>

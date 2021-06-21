@@ -6,27 +6,24 @@
   }
 
   &__field {
-    margin: 5px 0;
     width: 60%;
   }
 
   &__btn {
-    width: 100%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
     button[type='submit'] {
-      min-width: 30%;
       background: $transfer-btn-bg-submit;
     }
 
     &--switch {
       background: $transfer-btn-bg-switch;
-      width: 50%;
       display: flex;
       align-items: center;
-      padding: 10px 15px;
-      margin: 10px 0;
+      padding: 15px;
+      margin-bottom: 15px;
 
       img {
         width: 15%;

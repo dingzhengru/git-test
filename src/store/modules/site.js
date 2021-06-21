@@ -1,4 +1,5 @@
 import router from '@/router';
+import store from '@/store';
 import { apiGetSiteInfo, apiPostSiteInfo, apiGetSiteSeoInfo, apiPreviewModeSwitch } from '@/api/site';
 import { cookieSetIsPreview, cookieRemoveIsPreview } from '@/utils/cookie';
 // import { SITE_DEFAULT_STYLE_CLASS, SITE_DEFAULT_STYLE_TYPE } from '@/settings';
@@ -56,6 +57,10 @@ const actions = {
     return result;
   },
   async getSeoInfo({ commit }, requestData) {
+    if (store.getters.siteIsLandscape) {
+      return;
+    }
+
     const result = await apiGetSiteSeoInfo(requestData);
 
     if (result.Code == 200) {

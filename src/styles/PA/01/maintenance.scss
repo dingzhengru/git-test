@@ -1,7 +1,7 @@
 @import './_abstracts';
 @import '@/styles/Z/_default/maintenance';
 
-$maintenance-bg: none;
+$maintenance-bg: assetPath('ui/bg-mask.png') center/100% 100% repeat-y, assetPath('ui/bg-chunk.png') center/100% 100% repeat;
 $maintenance-text-color: black;
 $maintenance-button-bg: #462b16;
 $maintenance-button-color: white;

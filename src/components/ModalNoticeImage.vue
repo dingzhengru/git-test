@@ -1,10 +1,10 @@
 <template>
-  <AppModal @click.native="$emit('close')" :class="{ landscape: siteIsLandscape }">
+  <AppModal @click.native="$emit('close')">
     <div class="modal-notice-image">
       <div class="ui-box-close" @click="$emit('close')"></div>
 
-      <div class="modal-notice-image__container" :class="{ landscape: siteIsLandscape }">
-        <img :src="image" alt="" @click.stop="imageClickHandler" />
+      <div class="modal-notice-image__container">
+        <img :src="image" @click.stop="imageClickHandler" />
       </div>
     </div>
   </AppModal>
@@ -64,13 +64,11 @@ export default {
   position: relative;
 
   img {
-    max-height: 90vh;
-  }
+    min-width: 50vw;
+    min-height: 50vh;
 
-  &.landscape {
-    img {
-      max-height: 90vw;
-    }
+    max-width: 90vw;
+    max-height: 90vh;
   }
 }
 </style>

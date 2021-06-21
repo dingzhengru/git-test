@@ -49,6 +49,7 @@
     />
 
     <component :is="ModalContact" v-if="modalContactIsShow" @close="$store.dispatch('closeModalContact')" />
+    <component :is="ModalAlert" :text="modalAlertText" v-if="modalAlertIsShow" />
   </div>
 </template>
 
@@ -96,6 +97,8 @@ export default {
       'userIsLoggedIn',
       'siteNoticeLinkMain',
       'modalContactIsShow',
+      'modalAlertIsShow',
+      'modalAlertText',
     ]),
     AppHeader() {
       return () => import(`@/${this.siteSetting.components.app.AppHeader}`);
@@ -149,6 +152,12 @@ export default {
       }
       return '';
     },
+    ModalAlert() {
+      if (this.siteSetting.components.app.ModalContact) {
+        return () => import(`@/${this.siteSetting.components.app.ModalAlert}`);
+      }
+      return '';
+    },
   },
   mounted() {
     console.log('[SiteFullCss]', this.siteFullCss);
@@ -199,6 +208,7 @@ export default {
   watch: {
     lang() {
       if (this.userIsLoggedIn) {
+        this.$store.dispatch('user/getInfo');
         this.$store.dispatch('user/getPointInfo');
       }
 
@@ -216,5 +226,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

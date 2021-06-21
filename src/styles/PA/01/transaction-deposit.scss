@@ -29,3 +29,7 @@ $deposit-third-party-btn-bg-option-active: $btn-bg-rectangle;
 .deposit-third-party {
   @include deposit-third-party;
 }
+
+.deposit-auto-cash {
+  @include deposit-auto-cash;
+}

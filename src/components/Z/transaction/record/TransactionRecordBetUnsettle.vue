@@ -5,7 +5,7 @@
         <th>{{ $t('report.unsettleBet.table.product') }}</th>
         <th>{{ $t('report.unsettleBet.table.number') }}</th>
         <th>{{ $t('report.unsettleBet.table.amount') }}</th>
-        <th>{{ $t('report.unsettleBet.table.bindAmount') }}</th>
+        <th>{{ $t('report.unsettleBet.table.pendingAmount') }}</th>
       </tr>
       <template v-for="(item, index) in recordList">
         <tr :key="item.Lst_TransID + String(index)">
@@ -18,7 +18,7 @@
           <td>
             {{ $numeral(item.Lst_TTLBet).format('0,0.00') }}
           </td>
-          <td></td>
+          <td>{{ item.Lst_WaitMoney }}</td>
         </tr>
       </template>
       <tr v-show="recordList.length > 0">

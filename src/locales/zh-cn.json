@@ -72,7 +72,9 @@
     "replaySuccess": "回覆成功",
     "sendEmailSuccess": "邮件发送成功！",
     "gameMaintenance": "游戏维护中，很抱歉造成您的不便！",
-    "versionUpdate": "版本更新，将重整"
+    "versionUpdate": "版本更新，将重整",
+    "refreshSuccess": "刷新成功",
+    "confirmLogout": "确定离开吗?"
   },
   "validate": {
     "common": {
@@ -123,8 +125,8 @@
       "length": {
         "Add_RelatedAccount": "最少 3 字元，最多 15 字元",
         "Add_Account": "最少 3 字元，最多 15 字元",
-        "Add_Password": "密码长度最少为6位字元",
-        "Add_PasswordCheck": "密码长度最少为6位字元",
+        "Add_Password": "密码长度最少 6 字元，最多 30 字元",
+        "Add_PasswordCheck": "密码长度最少 6 字元，最多 30 字元",
         "Add_Mobile": "最少 5 字元，最多 20 字元",
         "Add_Email": "最多 50 字元",
         "Add_FirstName": "最多 70 字元",
@@ -137,8 +139,8 @@
         "Add_BankAccount2": "最多 30 字元",
         "Add_BankBranchName3": "最多 70 字元",
         "Add_BankAccount3": "最多 30 字元",
-        "Add_Withdrawals_Password": "密码长度最少为6位字元",
-        "Add_Withdrawals_CheckPassword": "密码长度最少为6位字元",
+        "Add_Withdrawals_Password": "密码长度最少 6 字元，最多 30 字元",
+        "Add_Withdrawals_CheckPassword": "密码长度最少 6 字元，最多 30 字元",
         "CaptchaValue": "应为4位字元"
       },
       "regex": {
@@ -555,6 +557,7 @@
       "profile": "个人资料",
       "changePassword": "修改密码",
       "changePasswordWithdrawal": "修改取款密码",
+      "setPasswordWithdrawal": "设置取款密码",
       "mail": "站内信"
     },
     "profile": {
@@ -635,19 +638,21 @@
     },
     "deposit": {
       "title": "填写存款申请单",
-      "third-party": {
-        "success": "自动上分 成功",
-        "failed": "自动上分 失败",
-        "amountEnter": "自行输入"
-      },
       "nav": {
         "base": "人工存款",
-        "thirdParty": "自動上分"
+        "thirdParty": "自動上分",
+        "autoCash": "自动上分"
+      },
+      "third-party": {
+        "success": "成功",
+        "failed": "失败",
+        "amountEnter": "自行输入"
       },
       "step": {
         "selectDepositBank": "Step1 请选择存入银行",
         "selectTransferBank": "Step2 请选择转帐银行",
-        "selectDepositInfo": "Step3 存款数据"
+        "selectDepositInfo": "Step3 存款数据",
+        "transferBankInfo": "汇款资讯"
       },
       "field": {
         "depositBank": "请选择存入银行",
@@ -664,7 +669,11 @@
         "remark": "备注",
         "promotion": "存款优惠方案",
         "payMethod": "支付方式",
-        "payPlatform": "支付平台"
+        "payPlatform": "支付平台",
+        "dispensingBank": "收款银行",
+        "beneficiaryBank": "收款银行",
+        "beneficiaryBankAccountName": "收款名称",
+        "beneficiaryBankAccount": "收款帐号"
       },
       "placeholder": {
         "depositBank": "请选择存入银行",
@@ -864,7 +873,7 @@
         "product": "馆别",
         "number": "笔数",
         "amount": "下注金额",
-        "bindAmount": "绑定金额",
+        "pendingAmount": "待定金额",
         "total": "合计"
       }
     },

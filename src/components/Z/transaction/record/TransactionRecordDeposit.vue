@@ -27,7 +27,7 @@
             </div>
             <div>
               {{ $t('transaction.recordContent.deposit.table.detail.receipt') }}：
-              <a href="javascript:;" @click="openReceiptImage(item)" v-if="receiptImageUrl">
+              <a href="javascript:;" @click="openReceiptImage(item)" v-if="item.Lst_ImageUrl">
                 {{ item.Lst_Receipt }}
               </a>
               <span v-else>{{ item.Lst_Receipt }}</span>
@@ -46,27 +46,33 @@
       </ul>
     </div>
 
-    <component
+    <!-- <component
       :is="RecordImageDialog"
       :imageUrl="receiptImageUrl"
       @close="closeReceiptImage"
       :v-if="!!receiptImageUrl"
-    />
+    /> -->
+
+    <ModalNoticeImage :image="receiptImageUrl" v-if="receiptImageUrl" @close="closeReceiptImage" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import mixinTransactionRecordDeposit from '@/mixins/transactionRecordDeposit';
+import ModalNoticeImage from '@/components/ModalNoticeImage';
 
 export default {
   name: 'TransactionRecordDeposit',
   mixins: [mixinTransactionRecordDeposit],
+  components: {
+    ModalNoticeImage,
+  },
   computed: {
     ...mapGetters(['siteSetting']),
-    RecordImageDialog() {
-      return () => import(`@/${this.siteSetting.components.transaction.record.RecordImageDialog}`);
-    },
+    // RecordImageDialog() {
+    //   return () => import(`@/${this.siteSetting.components.transaction.record.RecordImageDialog}`);
+    // },
   },
 };
 </script>

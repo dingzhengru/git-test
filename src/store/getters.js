@@ -34,6 +34,8 @@ const getters = {
   modalLangIsShow: state => state.modalLangIsShow,
   modalAuthIsShow: state => state.modalAuthIsShow,
   modalContactIsShow: state => state.modalContactIsShow,
+  modalAlertIsShow: state => state.modalAlertIsShow,
+  modalAlertText: state => state.modalAlertText,
 
   //* Site.setting
   siteSetting: state => state.site.setting,
@@ -93,10 +95,11 @@ const getters = {
   },
   siteLogoUrl: (state, getters) => {
     //* Logo: {樣式網址}/Site_Uploadfile/{站台ID}/Logo_{裝置}.png
+    const device = getters.siteIsLandscape ? 2 : 1;
     if (getters.siteIsMultiStyle && getters.siteMultiStyleId > 0) {
-      return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/Logo_1.png`;
+      return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/${getters.siteMultiStyleId}/Logo_${device}.png`;
     }
-    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/Logo_1.png`;
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/Logo_${device}.png`;
   },
   siteAppIconUrl: (state, getters) => size => {
     //* AppIcon: {樣式網址}/Site_Uploadfile/{站台ID}/AppIcon_{尺寸}.png
@@ -137,6 +140,15 @@ const getters = {
   },
   siteProductImageLandscapeSmall: (state, getters) => product => {
     return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/${getters.siteID}/ProductImg/${product.Lst_Product_Proxy_Tag}_2_2.png`;
+  },
+  siteProductImagePortraitDefault: (state, getters) => product => {
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/2/ProductImg/${product.Lst_Product_Proxy_Tag}_1.png`;
+  },
+  siteProductImageLandscapeDefault: (state, getters) => product => {
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/2/ProductImg/${product.Lst_Product_Proxy_Tag}_2_1.png`;
+  },
+  siteProductImageLandscapeSmallDefault: (state, getters) => product => {
+    return `${getters.siteRemoteCSSUrl}/Site_Uploadfile/2/ProductImg/${product.Lst_Product_Proxy_Tag}_2_2.png`;
   },
   siteLotteryButtonBgWinWheel: (state, getters) => {
     return `${getters.siteResourceUrl}/imgs/ad/rotaryTable.png`;
@@ -181,7 +193,11 @@ const getters = {
   userInfo: state => state.user.info,
   userAccount: state => state.user.info.Lst_Account,
   userPILevel: state => state.user.info.Lst_PILevel,
+  userVIPLevel: state => state.user.info.Lst_VIPlevel,
+  userVIPLevelName: state => state.user.info.Lst_VIPlevelName,
   userPIBetAmount: state => state.user.info.Lst_PI_BetAmount,
+  userBindBank: state => state.user.info.Lst_BindAccount,
+  userHasWithdrawalPassWord: state => state.user.info.Lst_HasWithdrawalPassWord,
   userBirthday: state => state.user.info.Lst_Birthday,
   userCreatedDatetime: state => state.user.info.Lst_Ctime,
   userCurrency: state => state.user.info.Lst_Currency,
@@ -195,23 +211,23 @@ const getters = {
   userNewMailCount: state => state.user.info.Lst_NewMailCount,
   userIsUsingfirstDeposit: state => state.user.info.Lst_UsingfirstDeposit,
   userBankId1: state => state.user.info.Lst_BankID_1,
-  userBankName1: (state, getters) => getters.userBankById(getters.userBankId1).Lst_BankName || '',
+  // userBankName1: (state, getters) => getters.userBankById(getters.userBankId1).Lst_BankName || '',
   userBankAccount1: state => state.user.info.Lst_BankAccount_1,
   userBankBrach1: state => state.user.info.Lst_Bank_Branches_1,
   userBankAccountName1: state => state.user.info.Lst_BankAccountName_1,
   userBankId2: state => state.user.info.Lst_BankID_2,
-  userBankName2: (state, getters) => getters.userBankById(getters.userBankId2).Lst_BankName || '',
+  // userBankName2: (state, getters) => getters.userBankById(getters.userBankId2).Lst_BankName || '',
   userBankAccount2: state => state.user.info.Lst_BankAccount_2,
   userBankBrach2: state => state.user.info.Lst_Bank_Branches_2,
   userBankAccountName2: state => state.user.info.Lst_BankAccountName_2,
   userBankId3: state => state.user.info.Lst_BankID_3,
   userBankName3: (state, getters) => getters.userBankById(getters.userBankId3).Lst_BankName || '',
-  userBankAccount3: state => state.user.info.Lst_BankAccount_3,
+  // userBankAccount3: state => state.user.info.Lst_BankAccount_3,
   userBankBrach3: state => state.user.info.Lst_Bank_Branches_3,
   userBankAccountName3: state => state.user.info.Lst_BankAccountName_3,
-  userBankById: state => id => {
-    return state.user.bankList.find(item => item.Lst_BankId === id) || {};
-  },
+  // userBankById: state => id => {
+  //   return state.user.bankList.find(item => item.Lst_BankId === id) || {};
+  // },
   userWithdrawalCount: state => state.user.info.Lst_WithdrawalsNum,
 
   //* Product

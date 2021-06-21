@@ -23,22 +23,32 @@
           :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
           v-for="item in list"
           :key="item.Lst_Product_Proxy_Tag"
-          :style="{ 'background-image': `url(${imgSrcTest})` }"
           @click="clickProductItem(item)"
+          v-lazy-container="{ selector: 'img' }"
         >
           <!-- <div class="home-product-block__item__text">{{ item.Lst_Name }}</div> -->
+          <img :data-src="imgProduct(item)" :data-error="imgProductDefault(item)" />
+
           <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
         </div>
       </template>
 
       <template v-else>
         <div
-          class="home-product-block__item product-list-landscape-item"
+          class="home-product-block__item-game product-list-landscape-item"
           v-for="item in list"
           :key="item.Lst_GameID"
-          :style="{ 'background-image': `url(${item.imagePath})` }"
           @click="openGame(item)"
-        ></div>
+          v-lazy-container="{ selector: 'img' }"
+        >
+          <img :data-src="item.imagePath" :data-error="imgProductDefaultByImageUrl(item.imagePath)" />
+          <div class="home-product-block__item__text">{{ item.Lst_GameName }}</div>
+          <div
+            class="home-product-block__item__overlay--maintain"
+            @click.stop=""
+            v-show="!isProductEnabledByGame(item)"
+          ></div>
+        </div>
       </template>
     </transition-group>
     <div
@@ -73,19 +83,41 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'siteProductImage', 'userIsLoggedIn']),
+    ...mapGetters([
+      'siteFullCss',
+      'siteProductImage',
+      'userIsLoggedIn',
+      'siteProductImageLandscape',
+      'siteProductImageLandscapeSmall',
+      'siteProductImageLandscapeDefault',
+      'siteProductImageLandscapeSmallDefault',
+    ]),
     isProduct() {
       return typeof this.classify === 'number';
+    },
+    isProductEnabledByGame: app => game => {
+      if (app.isProduct === false) {
+        return game.Lst_Site_Product_Status === 0;
+      }
+      return true;
     },
     isImgBlock() {
       return this.classify !== 2 && this.isProduct;
     },
-    imgSrc: app => game => {
-      try {
-        return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
-      } catch {
-        return '';
+    imgProduct: app => product => {
+      if (app.isImgBlock) {
+        return app.siteProductImageLandscape(product);
       }
+      return app.siteProductImageLandscapeSmall(product);
+    },
+    imgProductDefault: app => product => {
+      if (app.isImgBlock) {
+        return app.siteProductImageLandscapeDefault(product);
+      }
+      return app.siteProductImageLandscapeSmallDefault(product);
+    },
+    imgProductDefaultByImageUrl: () => url => {
+      return url.replace(/Site_Uploadfile\/./, 'Site_Uploadfile/2');
     },
     imgSrcTest() {
       try {
@@ -114,8 +146,16 @@ export default {
     },
   },
   watch: {
-    list() {
-      this.initScrollArrowX(this.$refs.homeProductBlockContainer);
+    list: {
+      immediate: true,
+      handler() {
+        const interval = window.setInterval(() => {
+          if (this.$refs.homeProductBlockContainer) {
+            this.initScrollArrowX(this.$refs.homeProductBlockContainer.$el);
+            window.clearInterval(interval);
+          }
+        }, 500);
+      },
     },
   },
 };

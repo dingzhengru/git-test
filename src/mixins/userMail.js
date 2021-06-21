@@ -1,6 +1,8 @@
 import { apiGetInboxList } from '@/api/notification';
+import mixinPagination from '@/mixins/pagination';
 export default {
   name: 'MixinUserMail',
+  mixins: [mixinPagination],
   data() {
     return {
       list: [],
@@ -16,11 +18,6 @@ export default {
       //     Lst_SendTime: '2020-04-08T15:23:55',
       //   },
       // ],
-      pagination: {
-        page: 1,
-        pagesize: 10,
-        count: 0,
-      },
 
       search: {
         Category: -1,
@@ -29,11 +26,16 @@ export default {
     };
   },
   methods: {
-    async getInboxList() {
+    async getInboxList(isScroll = false) {
       const requestData = { Page: this.pagination.page, ...this.search };
       const result = await apiGetInboxList(requestData);
 
-      this.list = result.RetObj.Rows;
+      if (isScroll) {
+        this.list = this.list.concat(result.RetObj.Rows);
+      } else {
+        this.list = result.RetObj.Rows;
+      }
+
       this.pagination.count = result.RetObj.Records;
     },
     goMailDetail(key) {
@@ -42,9 +44,15 @@ export default {
     submitSearch() {
       this.getInboxList();
     },
-    changePage(page) {
-      this.pagination.page = page;
+    changePageHandler(page) {
+      this.changePage(page);
       this.getInboxList();
+    },
+    changePageScrollHandler() {
+      const result = this.changePageScroll();
+      if (result === true) {
+        this.getInboxList(true);
+      }
     },
   },
   mounted() {

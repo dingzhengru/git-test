@@ -5,18 +5,10 @@ import { openNewWindowURL, openNewWindowHTML } from '@/utils/device';
 export default {
   name: 'MixinGameLinkHandler',
   computed: {
-    ...mapGetters(['siteIsWalletTypeNoTransfer']),
+    ...mapGetters(['userIsLoggedIn', 'siteIsWalletTypeNoTransfer']),
   },
   methods: {
     goInnerLobby(product) {
-      // let gameLobby = 'GameLobbySlot';
-
-      // if (product.Lst_Game_Classify == 1) {
-      //   gameLobby = 'GameLobbyLive';
-      // } else if (product.Lst_Game_Classify == 2) {
-      //   gameLobby = 'GameLobbySlot';
-      // }
-
       this.$router.push({
         name: 'GameLobby',
         params: {
@@ -27,7 +19,11 @@ export default {
         query: { category: '' },
       });
     },
-    async goOuterLobby(product) {
+    async goOuterLobby(product, target = '_blank') {
+      if (!this.userIsLoggedIn) {
+        return this.$router.push({ name: 'Login' });
+      }
+
       const requestDataGameRedirectUrl = {
         Pid: product.Lst_Product_id,
         gameclassify: product.Lst_Game_Classify,
@@ -35,7 +31,10 @@ export default {
       };
 
       //* 因瀏覽器預設會擋非同步後開啟的視窗，所以需於送出請求前打開
-      const newWindow = window.open('/loading.html');
+      let newWindow = null;
+      if (target === '_blank') {
+        newWindow = window.open('/loading.html');
+      }
 
       const result = await apiGetGameRedirectUrl(requestDataGameRedirectUrl);
 
@@ -50,12 +49,16 @@ export default {
           }
 
           if (result.RetObj.MsgString) {
-            newWindow.alert(result.RetObj.MsgString);
+            if (newWindow) {
+              newWindow.alert(result.RetObj.MsgString);
+            } else {
+              window.alert(result.RetObj.MsgString);
+            }
           }
         }
 
         if (result.RetObj.iGameOpenType == 1) {
-          openNewWindowURL(newWindow, result.RetObj.RedirectUrl);
+          openNewWindowURL(newWindow, result.RetObj.RedirectUrl, target);
         } else if (result.RetObj.iGameOpenType == 2) {
           openNewWindowHTML(newWindow, result.RetObj.RedirectUrl, product.Lst_Name);
         }

@@ -5,13 +5,15 @@
   @include user;
 }
 
-$user-profile-btn-bg-submit: #462b16;
+$user-profile-btn-bg-submit: $btn-bg-rectangle;
 $user-profile-btn-color-submit: white;
 $user-profile-btn-shadow-submit: none;
 
-$user-profile-btn-bg-reset: #caad76;
+$user-profile-btn-bg-reset:  $btn-bg-rectangle-light;
 $user-profile-btn-color-reset: black;
 $user-profile-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
+
+$user-profile-btn-change-password: $btn-bg-rectangle-half-right;
 
 $user-profile-btn-bg-add-bank: $btn-bg-rectangle;
 

@@ -72,7 +72,9 @@
     "replaySuccess": "ตอบกลับสำเร็จ",
     "sendEmailSuccess": "ส่งอีเมลเรียบร้อยแล้ว",
     "gameMaintenance": "เกมส์อยู่ในระหว่างการปรับปรุง  ขออภัยในความไม่สะดวก",
-    "versionUpdate": "อัปเดตเวอร์ชันใหม่โหลดใหม่ทันที"
+    "versionUpdate": "อัปเดตเวอร์ชันใหม่โหลดใหม่ทันที",
+    "refreshSuccess": "รีเฟรชสำเร็จ",
+    "confirmLogout": "คุณแน่ใจหรือว่าต้องการออก"
   },
   "validate": {
     "common": {
@@ -123,8 +125,8 @@
       "length": {
         "Add_RelatedAccount": "อย่างน้อย 3 ตัวอักษร อย่างมาก 15 ตัวอักษร",
         "Add_Account": "อย่างน้อย 3 ตัวอักษร อย่างมาก 15 ตัวอักษร",
-        "Add_Password": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร",
-        "Add_PasswordCheck": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร",
+        "Add_Password": "อย่างน้อย 6 ตัวอักษร อย่างมาก 30 ตัวอักษร",
+        "Add_PasswordCheck": "อย่างน้อย 6 ตัวอักษร อย่างมาก 30 ตัวอักษร",
         "Add_Mobile": "อย่างน้อย 5 ตัวอักษร อย่างมาก 20 ตัวอักษร",
         "Add_Email": "ความยาวสูงสุด 50 อักขระ",
         "Add_FirstName": "ความยาวสูงสุด 70 อักขระ",
@@ -137,8 +139,8 @@
         "Add_BankAccount2": "ความยาวสูงสุด 30 อักขระ",
         "Add_BankBranchName3": "ความยาวสูงสุด 70 อักขระ",
         "Add_BankAccount3": "ความยาวสูงสุด 30 อักขระ",
-        "Add_Withdrawals_Password": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร",
-        "Add_Withdrawals_CheckPassword": "ความยาวของรหัสผ่าน ต้องมีอย่างน้อยหกตัวอักษร",
+        "Add_Withdrawals_Password": "อย่างน้อย 6 ตัวอักษร อย่างมาก 30 ตัวอักษร",
+        "Add_Withdrawals_CheckPassword": "อย่างน้อย 6 ตัวอักษร อย่างมาก 30 ตัวอักษร",
         "CaptchaValue": "ต้องมีความยาว 4 อักขระ"
       },
       "regex": {
@@ -557,6 +559,7 @@
       "profile": "ข้อมูลส่วนตัว",
       "changePassword": "แก้ไขรหัสผ่าน",
       "changePasswordWithdrawal": "แก้ไขรหัสถอนเงิน",
+      "setPasswordWithdrawal": "ตั้งค่ารหัสถอนเงิน",
       "mail": "แชท"
     },
     "profile": {
@@ -637,19 +640,21 @@
     },
     "deposit": {
       "title": "กรุณากรอกข้อมูลบิลฝาก",
-      "third-party": {
-        "success": "ให้คะแนนอัตโนมัติ สำเร็จ",
-        "failed": "ห้คะแนนอัตโนมัติ ล้มเหลว",
-        "amountEnter": "ป้อนด้วยตนเอง"
-      },
       "nav": {
         "base": "ฝากผ่านเจ้าหน้าที่",
-        "thirdParty": "ฝากอัตโนมัติ"
+        "thirdParty": "ฝากอัตโนมัติ",
+        "autoCash": "คะแนนอัตโนมัติ"
+      },
+      "third-party": {
+        "success": "สำเร็จ",
+        "failed": "ล้มเหลว",
+        "amountEnter": "ป้อนด้วยตนเอง"
       },
       "step": {
         "selectDepositBank": "Step1 เลือกธนาคารที่ต้องการโอนเข้า",
         "selectTransferBank": "Step2 กรุณาเลือกบัญชีธนาคาร",
-        "selectDepositInfo": "Step3 ข้อมูลบิลฝาก"
+        "selectDepositInfo": "Step3 ข้อมูลบิลฝาก",
+        "transferBankInfo": "ข้อมูลการโอน"
       },
       "field": {
         "depositBank": "เลือกธนาคารที่ต้องการโอนเข้า",
@@ -666,7 +671,11 @@
         "remark": "หมายเหตุ",
         "promotion": "เลือกโปรโมชั่น",
         "payMethod": "วิธีการชำระเงิน",
-        "payPlatform": "แพลตฟอร์มการชำระเงิน"
+        "payPlatform": "แพลตฟอร์มการชำระเงิน",
+        "dispensingBank": "ธนาคารถอนเงิน",
+        "beneficiaryBank": "ธนาคารผู้รับผลประโยชน์",
+        "beneficiaryBankAccountName": "ชื่อบัญชีของผู้รับผลประโยชน์",
+        "beneficiaryBankAccount": "เลขที่บัญชีผู้รับผลประโยชน์"
       },
       "placeholder": {
         "depositBank": "เลือกธนาคารที่ต้องการโอนเข้า",
@@ -865,7 +874,7 @@
         "product": "โซน",
         "number": "จำนวนรายการ",
         "amount": "จำนวนเงินเดิมพัน",
-        "bindAmount": "จำนวนเงิินที่สัมพันธ์",
+        "pendingAmount": "จำนวนเงินที่รอดำเนินการ",
         "total": "รวม"
       }
     },

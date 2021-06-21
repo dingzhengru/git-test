@@ -13,17 +13,9 @@
 
         <div class="ui-no-data" v-show="newsList.length === 0">{{ $t('ui.label.noData') }}</div>
 
-        <intersect @enter="changePageScroll">
+        <intersect @enter="changePageScrollHandler">
           <div></div>
         </intersect>
-
-        <!-- <AppPagination
-          :count="pagination.count"
-          :page="pagination.page"
-          :pagesize="pagination.pagesize"
-          @change-page="changePage"
-          v-show="newsList.length > 0"
-        /> -->
       </div>
     </div>
   </div>

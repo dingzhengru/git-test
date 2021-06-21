@@ -46,14 +46,6 @@
       v-else
     />
 
-    <!-- <AppPagination
-      :count="pagination.count"
-      :page="pagination.page"
-      :pagesize="pagination.pagesize"
-      @change-page="changePage"
-      v-if="productCurrent.Lst_Site_Product_Status == 0"
-    /> -->
-
     <!-- <component
       :is="GameTransferDialog"
       :wallet="userGamePointWallet"
@@ -63,14 +55,13 @@
       @close="closeTransferDialog"
     /> -->
 
-    <intersect @enter="changePageScrollBottom" rootMargin="0px 0px 5px 0px" v-if="isChangePageScroll">
+    <intersect @enter="changePageScrollHandler" rootMargin="0px 0px 5px 0px" v-if="isChangePageScroll">
       <div class="game-lobby-bottom-intersect"></div>
     </intersect>
   </div>
 </template>
 
 <script>
-// import mixinGameLobbySlot from '@/mixins/gameLobbySlot';
 import mixinGameLobby from '@/mixins/gameLobby';
 import { mapGetters } from 'vuex';
 import Intersect from 'vue-intersect';

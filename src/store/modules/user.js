@@ -1,3 +1,5 @@
+import router from '@/router';
+import store from '@/store';
 import i18n from '@/i18n-lazy';
 import {
   cookieSetIsLoggedIn,
@@ -6,7 +8,6 @@ import {
   cookieRemoveToken,
   cookieRemovePublicKey,
 } from '@/utils/cookie';
-import router from '@/router';
 import {
   apiRegister,
   apiLogin,
@@ -14,15 +15,15 @@ import {
   apiGetUserInfo,
   apiGetTokenAndPublicKey,
   apiGetAllGamePoint,
-  apiGetBankInfoList,
   apiAdvancedRegisterNew,
+  apiAdvancedRegisterNewApp,
 } from '@/api/user';
 import { apiTransferAllGamePointToMain, apiTransferPoint } from '@/api/transaction-transfer';
 import { apiGetLotteryCount } from '@/api/user';
 
 const state = {
   info: {},
-  bankList: [],
+  // bankList: [],
   pointInfo: {},
   lotteryCountList: [],
   isLoggedIn: null,
@@ -34,9 +35,9 @@ const mutations = {
   setInfo(state, info) {
     state.info = info;
   },
-  setBankList(state, bankList) {
-    state.bankList = bankList;
-  },
+  // setBankList(state, bankList) {
+  //   state.bankList = bankList;
+  // },
   setPointInfo(state, pointInfo) {
     state.pointInfo = pointInfo;
   },
@@ -81,19 +82,19 @@ const actions = {
     const result = await apiGetUserInfo();
     if (result.Code === 200) {
       commit('setInfo', result.RetObj);
-      dispatch('getBankList');
+      // dispatch('getBankList');
       dispatch('getPointInfo');
       dispatch('getLotteryCountList');
     }
     return result;
   },
-  async getBankList({ commit }) {
-    const result = await apiGetBankInfoList();
-    if (result.Code === 200) {
-      commit('setBankList', result.RetObj);
-    }
-    return result;
-  },
+  // async getBankList({ commit }) {
+  //   const result = await apiGetBankInfoList();
+  //   if (result.Code === 200) {
+  //     commit('setBankList', result.RetObj);
+  //   }
+  //   return result;
+  // },
   async getPointInfo({ commit }) {
     const result = await apiGetAllGamePoint();
     if (result.Code === 200) {
@@ -112,7 +113,12 @@ const actions = {
     const result = await apiTransferAllGamePointToMain();
     if (result.Code === 200) {
       commit('setPointInfo', result.RetObj);
-      window.alert(result.RetObj.MsgString);
+
+      if (store.getters.siteIsLandscape === false) {
+        window.alert(result.RetObj.MsgString);
+      } else {
+        store.dispatch('openModalAlert', result.RetObj.MsgString);
+      }
     }
     return result;
   },
@@ -120,16 +126,27 @@ const actions = {
     const result = await apiTransferPoint(data);
     if (result.Code === 200) {
       commit('setPointInfo', result.RetObj);
-      window.alert(i18n.t('alert.transferSuccess'));
+
+      if (store.getters.siteIsLandscape === false) {
+        window.alert(i18n.t('alert.transferSuccess'));
+      } else {
+        store.dispatch('openModalAlert', i18n.t('alert.transferSuccess'));
+      }
     }
     return result;
   },
-  async changeUserProfile({ commit, dispatch }, data) {
+  async changeUserProfile({ commit }, data) {
     //* 修改會員資料
-    const result = await apiAdvancedRegisterNew(data);
+    let result = {};
+    if (store.siteIsLandscape) {
+      result = await apiAdvancedRegisterNew(data);
+    } else {
+      result = await apiAdvancedRegisterNewApp(data);
+    }
+
     if (result.Code === 200) {
       commit('setInfo', result.RetObj);
-      dispatch('getBankList');
+      // dispatch('getBankList');
     }
     return result;
   },
@@ -139,7 +156,7 @@ const actions = {
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);
       commit('setInfo', result.RetObj);
-      dispatch('getBankList');
+      // dispatch('getBankList');
       dispatch('getPointInfo');
       dispatch('getLotteryCountList');
 
@@ -153,7 +170,7 @@ const actions = {
     if (result.Code == 200) {
       commit('setIsLoggedIn', true);
       commit('setInfo', result.RetObj);
-      dispatch('getBankList');
+      // dispatch('getBankList');
       dispatch('getPointInfo');
       dispatch('getLotteryCountList');
       router.replace({ name: 'Home' }).catch(() => {});

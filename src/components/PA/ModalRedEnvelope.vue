@@ -15,11 +15,6 @@
           <span>{{ $t('home.lottery.redEnvelope.gameResult') }}</span>
           <span>【 {{ redEnvelopeGamePrize.text }} 】</span>
         </template>
-        <template v-slot:game-chance>
-          <div class="acticityRedEnvelepe__chance">
-            {{ $t('home.lottery.redEnvelope.startButton', { count: redEnvelopeGameChance }) }}
-          </div>
-        </template>
       </RedEnvelope>
     </div>
   </AppModal>

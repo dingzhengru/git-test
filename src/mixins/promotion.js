@@ -65,10 +65,7 @@ export default {
       }
     },
     async goPromotionDetail(promotion) {
-      const linkType = promotion.Lst_LinkType;
-      const linkUrl = promotion.Lst_LinkUrl || promotion.Lst_PromotionID;
-
-      this.goLinkUrlByPromotion(linkType, linkUrl);
+      this.goLinkUrlByPromotion(promotion);
     },
     changeCategory(category) {
       this.category = category;

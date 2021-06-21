@@ -30,6 +30,7 @@ export default {
       //* 沒有抽獎次數
       if (this.userLotteryCountRedEnvelope.Count <= 0) {
         this.errMsg = this.$t('lottery.noChance');
+        this.redEnvelopeGameChance = 0;
         return;
       }
 

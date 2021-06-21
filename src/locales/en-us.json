@@ -72,7 +72,9 @@
     "replaySuccess": "Reply successfully",
     "sendEmailSuccess": "Mail sent successfully!",
     "gameMaintenance": "Game under maintenance, we apologize for the inconvenience brought to you!",
-    "versionUpdate": "New version update, reload now"
+    "versionUpdate": "New version update, reload now",
+    "refreshSuccess": "Refresh successfully",
+    "confirmLogout": "Are you sure you want to leave?"
   },
   "validate": {
     "common": {
@@ -123,8 +125,8 @@
       "length": {
         "Add_RelatedAccount": "At least 3 characters up to 15 characters",
         "Add_Account": "At least 3 characters up to 15 characters",
-        "Add_Password": "The length of password must be 6 and above",
-        "Add_PasswordCheck": "The length of password must be 6 and above",
+        "Add_Password": "At least 6 characters up to 30 characters",
+        "Add_PasswordCheck": "At least 6 characters up to 30 characters",
         "Add_Mobile": "At least 5 characters up to 20 characters",
         "Add_Email": "Maximum length 50 characters",
         "Add_FirstName": "Maximum length 70 characters",
@@ -137,8 +139,8 @@
         "Add_BankAccount2": "Maximum length 30 characters",
         "Add_BankBranchName3": "Maximum length 70 characters",
         "Add_BankAccount3": "Maximum length 30 characters",
-        "Add_Withdrawals_Password": "The length of password must be 6 and above",
-        "Add_Withdrawals_CheckPassword": "The length of password must be 6 and above",
+        "Add_Withdrawals_Password": "At least 6 characters up to 30 characters",
+        "Add_Withdrawals_CheckPassword": "At least 6 characters up to 30 characters",
         "CaptchaValue": "must be 4 characters"
       },
       "regex": {
@@ -559,6 +561,7 @@
       "profile": "Personal Info",
       "changePassword": "Change Password",
       "changePasswordWithdrawal": "Change Withdrawal Password",
+      "setPasswordWithdrawal": "Set Withdrawal Password",
       "mail": "Chats"
     },
     "profile": {
@@ -639,19 +642,21 @@
     },
     "deposit": {
       "title": "Fill in Cash Voucher",
-      "third-party": {
-        "success": "Automatic score success",
-        "failed": "Automatic score failed",
-        "amountEnter": "Enter by yourself"
-      },
       "nav": {
         "base": "Deposit by people",
-        "thirdParty": "Automatic score"
+        "thirdParty": "Automatic score",
+        "autoCash": "Automatic score"
+      },
+      "third-party": {
+        "success": "Success",
+        "failed": "Failed",
+        "amountEnter": "Enter by yourself"
       },
       "step": {
         "selectDepositBank": "Step1 Select Deposit Bank",
         "selectTransferBank": "Step2 Please select Bank transfer",
-        "selectDepositInfo": "Step3 Deposit Information"
+        "selectDepositInfo": "Step3 Deposit Information",
+        "transferBankInfo": "Transfer Information"
       },
       "field": {
         "depositBank": "Select Deposit Bank",
@@ -668,7 +673,11 @@
         "remark": "Remark",
         "promotion": "Favorable Project on Payment",
         "payMethod": "payment",
-        "payPlatform": "payment platform"
+        "payPlatform": "payment platform",
+        "dispensingBank": "Dispensing Bank",
+        "beneficiaryBank": "Beneficiary bank",
+        "beneficiaryBankAccountName": "Account name of beneficiary",
+        "beneficiaryBankAccount": "Account number of beneficiary"
       },
       "placeholder": {
         "depositBank": "Select Deposit Bank",
@@ -867,7 +876,7 @@
         "product": "Product",
         "number": "Number",
         "amount": "Amount",
-        "bindAmount": "Binding amount",
+        "pendingAmount": "pending/DepositAmount",
         "total": "Total"
       }
     },

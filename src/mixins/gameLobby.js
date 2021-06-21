@@ -17,10 +17,11 @@ import {
   apiGetGameListFav,
 } from '@/api/game';
 import { openNewWindowURL } from '@/utils/device';
+import mixinPagination from '@/mixins/pagination';
 
 export default {
   name: 'MixinGameLobby',
-  mixins: [mixinProductLinkHandler],
+  mixins: [mixinProductLinkHandler, mixinPagination],
   computed: {
     ...mapGetters([
       'lang',
@@ -70,7 +71,12 @@ export default {
       return this.userIsLoggedIn && this.isProductClassifySlot;
     },
     isShowCategory() {
-      return this.isProductActive && this.productCategoryStatus === 0 && !this.isCategoryEntry;
+      if (this.isProductClassifySlot) {
+        return this.isProductActive;
+      } else if (this.isProductClassifyLive) {
+        return this.isProductActive && this.productCategoryStatus === 0 && !this.isCategoryEntry;
+      }
+      return false;
     },
     isShowSearchBlock() {
       return this.isProductActive;
@@ -79,6 +85,9 @@ export default {
       return this.productCategoryEntry === 1;
     },
     isShowSearch() {
+      if (this.siteIsLandscape) {
+        return !this.isCategoryEntry && this.$route.name !== 'GameLobbyFav';
+      }
       return !this.isCategoryEntry;
     },
     isShowTransfer() {
@@ -105,7 +114,7 @@ export default {
       return this.$route.name === 'GameLobbyFav';
     },
     isShowProductFav() {
-      return this.userIsLoggedIn;
+      return this.userIsLoggedIn && this.isProductClassifySlot;
     },
   },
   data() {
@@ -118,11 +127,11 @@ export default {
         text: '',
         isFav: false,
       },
-      pagination: {
-        page: 1,
-        pagesize: 6,
-        count: 1,
-      },
+      // pagination: {
+      //   page: 1,
+      //   pagesize: 12,
+      //   count: 1,
+      // },
       // isShowTransferDialog: false, //* 轉帳視窗
 
       productCategoryStatus: null, //* 是否顯示 Category (0啟用10維護20未啟用30即將推出40關閉50產品下架)
@@ -155,8 +164,8 @@ export default {
     },
     async changeGameFav(game) {
       const requestData = {
-        Add_ProductID: this.productId,
-        Add_ProductKey: this.productKey,
+        Add_ProductID: game.Lst_ProductID === undefined ? this.productId : game.Lst_ProductID,
+        Add_ProductKey: game.Lst_ProductKey === undefined ? this.productKey : game.Lst_ProductKey,
         Add_GameID: game.Lst_GameID,
       };
       const result = await apiSetGameFav(requestData);
@@ -173,8 +182,8 @@ export default {
         return;
       }
 
-      this.pagination.page = 1;
-      this.search.text = '';
+      // this.pagination.page = 1;
+      // this.search.text = '';
 
       this.$router.push({
         name: 'GameLobby',
@@ -244,7 +253,7 @@ export default {
     },
     async getGameList(isScroll = false) {
       if (this.isProductFav) {
-        this.getGameListFav();
+        this.getGameListFav(isScroll);
         return;
       }
 
@@ -274,10 +283,15 @@ export default {
       this.pagination.count = result.RetObj.DataCnt;
       this.pagination.pagesize = result.RetObj.PageSize;
     },
-    async getGameListFav() {
+    async getGameListFav(isScroll = false) {
       const requestData = { Page: this.pagination.page };
       const result = await apiGetGameListFav(requestData);
-      this.gameList = result.RetObj.FavoritesList || [];
+
+      if (isScroll) {
+        this.gameList = this.gameList.concat(result.RetObj.FavoritesList);
+      } else {
+        this.gameList = result.RetObj.FavoritesList || [];
+      }
       this.pagination.count = result.RetObj.DataCnt;
       this.pagination.pagesize = result.RetObj.PageSize;
     },
@@ -339,15 +353,17 @@ export default {
       this.getGameList();
     },
     changePage(page) {
-      this.pagination.page = page;
+      this.changePage(page);
       this.getGameList();
     },
-    changePageScrollBottom() {
-      if (this.pagination.page >= this.totalPage) {
-        return;
+    changePageScrollHandler() {
+      const result = this.changePageScroll();
+      if (result === true) {
+        this.getGameList(true);
       }
-      this.pagination.page = this.pagination.page + 1;
-      this.getGameList(true);
+    },
+    resetSearch() {
+      this.search = { text: '', isFav: false };
     },
   },
   async mounted() {
@@ -364,11 +380,15 @@ export default {
   },
   watch: {
     async lang() {
+      this.resetPagination();
+      this.resetSearch();
       this.getGameProductList();
       await this.getGameCategoryList();
       this.getGameList();
     },
     async productTag() {
+      this.resetPagination();
+      this.resetSearch();
       await this.getGameCategoryList();
       this.getGameList();
     },

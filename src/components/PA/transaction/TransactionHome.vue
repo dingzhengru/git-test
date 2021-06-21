@@ -34,7 +34,11 @@ export default {
         {
           route: 'TransactionDepositBase',
           text: 'transaction.nav.deposit',
-          otherActiveRoute: ['TransactionDepositThirdParty', 'TransactionDepositThirdPartyPayment'],
+          otherActiveRoute: [
+            'TransactionDepositThirdParty',
+            'TransactionDepositThirdPartyPayment',
+            'TransactionDepositAutoCash',
+          ],
         },
         {
           route: 'TransactionWithdrawal',
@@ -73,7 +77,7 @@ export default {
     this.$store.commit('setPageTitle', 'transaction.title');
 
     if (this.siteIsWalletTypeNoTransfer) {
-      this.tabList = this.tabList.filter(item => item.name !== 'transfer');
+      this.tabList = this.tabList.filter(item => item.route !== 'TransactionTransfer');
     }
   },
 };

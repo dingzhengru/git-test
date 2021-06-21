@@ -46,7 +46,10 @@ export default {
       };
       const result = await apiGetProductPromotionList(requestData);
       if (result.Code === 200) {
-        this.productPromotionList = result.RetObj.ActivityList;
+        this.productPromotionList = result.RetObj.ActivityList.map(item => {
+          item.game = Number(item.game);
+          return item;
+        });
       }
     },
     submitTransferPoint() {

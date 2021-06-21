@@ -98,5 +98,8 @@ export default {
     lang() {
       this.getWithdrawalInfo();
     },
+    userGamePointWallet() {
+      this.getWithdrawalInfo();
+    },
   },
 };

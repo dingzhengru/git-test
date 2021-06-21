@@ -1,7 +1,9 @@
 import { apiGetNewsList, apiPostNewsList } from '@/api/notification';
 import { mapGetters } from 'vuex';
+import mixinPagination from '@/mixins/pagination';
 
 export default {
+  mixins: [mixinPagination],
   computed: {
     ...mapGetters(['lang', 'userIsLoggedIn']),
     totalPage() {
@@ -18,11 +20,13 @@ export default {
   data() {
     return {
       newsList: [],
-      pagination: {
-        page: 1,
-        pagesize: 10,
-        count: 0,
-      },
+
+      // pagination: {
+      //   page: 1,
+      //   pagesize: 10,
+      //   count: 0,
+      // },
+
       // newsList: [
       //   {
       //     Lst_StartDateTime: '2020-07-29 10:27:52',
@@ -63,19 +67,15 @@ export default {
         }
       }
     },
-    changePage(page) {
-      this.pagination.page = page;
+    changePageHandler(page) {
+      this.changePage(page);
       this.getNewsList();
     },
-    changePageScroll() {
-      if (this.pagination.page >= this.totalPage) {
-        return;
+    changePageScrollHandler() {
+      const result = this.changePageScroll();
+      if (result === true) {
+        this.getNewsList(true);
       }
-      this.pagination.page = this.pagination.page + 1;
-      this.getNewsList(true);
-    },
-    changePagesize(size) {
-      this.pagination.pagesize = size;
     },
   },
   mounted() {

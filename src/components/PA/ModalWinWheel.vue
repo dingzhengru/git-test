@@ -14,7 +14,7 @@
       >
         <template v-slot:game-chance>
           {{ $t('ui.lottery.count1') }}
-          <span class="win-wheel-container__count">{{ wheelGameChance }}</span>
+          <span class="win-wheel-container__count">{{ wheelGameChance || 0 }}</span>
           {{ $t('ui.lottery.count2') }}
         </template>
         <template v-slot:game-dialog>
