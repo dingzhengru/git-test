@@ -15,6 +15,21 @@
       <div class="user-profile__field-box" v-for="field in fieldList" :key="field.name">
         <div class="ui-step" v-if="field.name === 'Add_BankId1'">{{ $t('user.profile.step.bank') }}</div>
 
+        <!-- <div class="user-profile__radio" v-if="field.name === 'Add_BankId1' && field.isShow">
+          <input id="bank1" type="radio" :value="1" v-model="bankDefault" />
+          <label for="bank1">{{ $t('ui.label.default') }}</label>
+        </div>
+
+        <div class="user-profile__radio" v-if="field.name === 'Add_BankId2' && field.isShow">
+          <input id="bank2" type="radio" :value="2" v-model="bankDefault" />
+          <label for="bank2">{{ $t('ui.label.default') }}</label>
+        </div>
+
+        <div class="user-profile__radio" v-if="field.name === 'Add_BankId3' && field.isShow">
+          <input id="bank3" type="radio" :value="3" v-model="bankDefault" />
+          <label for="bank3">{{ $t('ui.label.default') }}</label>
+        </div> -->
+
         <ValidationProvider
           class="ui-field user-profile__field"
           tag="div"
