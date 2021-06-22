@@ -93,13 +93,17 @@
           </div>
 
           <div class="user-profile__bank">
-            <div class="user-profile__bank__item" @click="bankDefault = 1">
-              <label class="ui-field-box user-profile__bank__item__radio" v-if="isAutoCashOpen">
+            <div class="user-profile__bank__item">
+              <label
+                class="ui-field-box user-profile__bank__item__radio"
+                @click="bankDefault = 1"
+                v-if="isAutoCashOpen"
+              >
                 <span>{{ $t('ui.label.default') }}</span>
                 <input type="radio" :value="1" v-model="bankDefault" />
                 <div></div>
               </label>
-              <div class="user-profile__bank__item__card">
+              <div class="user-profile__bank__item__card" @click="openBankModalModify(1)">
                 <span class="user-profile__bank__item__card__name">
                   {{ getBankById(fieldBankId1.value).Text }}
                 </span>
@@ -109,13 +113,17 @@
               </div>
             </div>
 
-            <div class="user-profile__bank__item" @click="bankDefault = 2" v-if="fieldBankId2.value">
-              <label class="ui-field-box user-profile__bank__item__radio" v-if="isAutoCashOpen">
+            <div class="user-profile__bank__item" v-if="fieldBankId2.value">
+              <label
+                class="ui-field-box user-profile__bank__item__radio"
+                @click="bankDefault = 2"
+                v-if="isAutoCashOpen"
+              >
                 <span>{{ $t('ui.label.default') }}</span>
                 <input type="radio" :value="2" v-model="bankDefault" />
                 <div></div>
               </label>
-              <div class="user-profile__bank__item__card">
+              <div class="user-profile__bank__item__card" @click="openBankModalModify(2)">
                 <span class="user-profile__bank__item__card__name">
                   {{ getBankById(fieldBankId2.value).Text }}
                 </span>
@@ -125,13 +133,17 @@
               </div>
             </div>
 
-            <div class="user-profile__bank__item" @click="bankDefault = 3" v-if="fieldBankId3.value">
-              <label class="ui-field-box user-profile__bank__item__radio" v-if="isAutoCashOpen">
+            <div class="user-profile__bank__item" v-if="fieldBankId3.value">
+              <label
+                class="ui-field-box user-profile__bank__item__radio"
+                @click="bankDefault = 3"
+                v-if="isAutoCashOpen"
+              >
                 <span>{{ $t('ui.label.default') }}</span>
                 <input type="radio" :value="3" v-model="bankDefault" />
                 <div></div>
               </label>
-              <div class="user-profile__bank__item__card">
+              <div class="user-profile__bank__item__card" @click="openBankModalModify(3)">
                 <span class="user-profile__bank__item__card__name">
                   {{ getBankById(fieldBankId3.value).Text }}
                 </span>
@@ -168,9 +180,10 @@
       @close="isShowModalChangePasswordWithdrawal = false"
       v-if="isShowModalChangePasswordWithdrawal"
     />
+
     <component
       :is="ModalUserBank"
-      :bankAddNumber="bankAddNumber"
+      :bankNumber="bankNumberAdd"
       :bankIdAdd="bankIdAdd"
       :bankAccountAdd="bankAccountAdd"
       :bankBranchAdd="bankBranchAdd"
@@ -178,6 +191,18 @@
       @update-bank="getRegisterAdvanceNew"
       @close="isShowModalUserBank = false"
       v-if="isShowModalUserBank"
+    />
+
+    <component
+      :is="ModalUserBank"
+      :bankNumber="bankNumberModify"
+      :bankIdAdd="bankIdModify"
+      :bankAccountAdd="bankAccountModify"
+      :bankBranchAdd="bankBranchModify"
+      :bankList="bankListEnabled"
+      @update-bank="getRegisterAdvanceNew"
+      @close="isShowModalUserBankModify = false"
+      v-if="isShowModalUserBankModify"
     />
 
     <component
@@ -236,16 +261,16 @@ export default {
       return () => import(`@/${this.siteSetting.components.app.ModalConfirm}`);
     },
     isShowBankAddButton() {
-      if (this.bankAddNumber === 1) {
+      if (this.bankNumberAdd === 1) {
         return true;
-      } else if (this.bankAddNumber === 2 && this.fieldBankId2.isModifiable && this.userWithdrawalCount > 0) {
+      } else if (this.bankNumberAdd === 2 && this.fieldBankId2.isModifiable && this.userWithdrawalCount > 0) {
         return true;
-      } else if (this.bankAddNumber === 3 && this.fieldBankId3.isModifiable && this.userWithdrawalCount > 0) {
+      } else if (this.bankNumberAdd === 3 && this.fieldBankId3.isModifiable && this.userWithdrawalCount > 0) {
         return true;
       }
       return false;
     },
-    bankAddNumber() {
+    bankNumberAdd() {
       if (!this.fieldBankId1.value || !this.fieldBankAccount1.value) {
         return 1;
       } else if (!this.fieldBankId2.value || !this.fieldBankAccount2.value) {
@@ -255,35 +280,60 @@ export default {
       }
       return 0;
     },
-    bankIdAdd() {
-      if (this.bankAddNumber === 1) {
-        return this.fieldBankId1;
-      } else if (this.bankAddNumber === 2) {
-        return this.fieldBankId2;
-      } else if (this.bankAddNumber === 3) {
-        return this.fieldBankId3;
+    bankIdByNumber: app => number => {
+      if (number === 1) {
+        return app.fieldBankId1;
+      } else if (number === 2) {
+        return app.fieldBankId2;
+      } else if (number === 3) {
+        return app.fieldBankId3;
       }
       return {};
+    },
+    bankAccountByNumber: app => number => {
+      if (number === 1) {
+        return app.fieldBankAccount1;
+      } else if (number === 2) {
+        return app.fieldBankAccount2;
+      } else if (number === 3) {
+        return app.fieldBankAccount3;
+      }
+      return {};
+    },
+    bankBranchByNumber: app => number => {
+      if (number === 1) {
+        return app.fieldBankBranchName1;
+      } else if (number === 2) {
+        return app.fieldBankBranchName2;
+      } else if (number === 3) {
+        return app.fieldBankBranchName3;
+      }
+      return {};
+    },
+    bankIdAdd() {
+      return this.bankIdByNumber(this.bankNumberAdd);
     },
     bankAccountAdd() {
-      if (this.bankAddNumber === 1) {
-        return this.fieldBankAccount1;
-      } else if (this.bankAddNumber === 2) {
-        return this.fieldBankAccount2;
-      } else if (this.bankAddNumber === 3) {
-        return this.fieldBankAccount3;
-      }
-      return {};
+      return this.bankAccountByNumber(this.bankNumberAdd);
     },
     bankBranchAdd() {
-      if (this.bankAddNumber === 1) {
-        return this.fieldBankBranchName1;
-      } else if (this.bankAddNumber === 2) {
-        return this.fieldBankBranchName2;
-      } else if (this.bankAddNumber === 3) {
-        return this.fieldBankBranchName3;
-      }
-      return {};
+      return this.bankBranchByNumber(this.bankNumberAdd);
+    },
+    bankIdModify() {
+      return this.bankIdByNumber(this.bankNumberModify);
+    },
+    bankAccountModify() {
+      return this.bankAccountByNumber(this.bankNumberModify);
+    },
+    bankBranchModify() {
+      return this.bankBranchByNumber(this.bankNumberModify);
+    },
+    isBankModify() {
+      return (
+        this.bankIdModify.Lst_isModifiable &&
+        this.bankAccountModify.Lst_isModifiable &&
+        this.bankBranchModify.Lst_isModifiable
+      );
     },
     imgUser() {
       try {
@@ -328,6 +378,9 @@ export default {
       isShowModalNoticeChangePassword: false,
       isShowModalNoticeChangePasswordWithdrawal: false,
       isShowModalUserBank: false,
+      isShowModalUserBankModify: false,
+
+      bankNumberModify: 0,
 
       noticeListChangePassword: [
         'user.changePassword.notice.suggest',
@@ -368,6 +421,15 @@ export default {
         }
       });
       return strNew;
+    },
+    openBankModalModify(type) {
+      this.bankNumberModify = type;
+
+      if (this.isBankModify) {
+        this.isShowModalUserBankModify = true;
+      } else {
+        this.bankNumberModify = 0;
+      }
     },
   },
 };
