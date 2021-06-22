@@ -330,9 +330,7 @@ export default {
     },
     isBankModify() {
       return (
-        this.bankIdModify.Lst_isModifiable &&
-        this.bankAccountModify.Lst_isModifiable &&
-        this.bankBranchModify.Lst_isModifiable
+        this.bankIdModify.isModifiable && this.bankAccountModify.isModifiable && this.bankBranchModify.isModifiable
       );
     },
     imgUser() {
