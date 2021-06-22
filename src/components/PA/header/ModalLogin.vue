@@ -66,7 +66,7 @@
 
       <div class="modal-login__btn-block">
         <button
-          class="ui-btn modal-login__btn--login"
+          class="ui-btn ui-btn--lg modal-login__btn--login"
           type="submit"
           :id="$idMapper.login.button.submit"
           :disabled="invalid"

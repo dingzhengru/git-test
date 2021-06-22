@@ -185,7 +185,7 @@
             </option>
           </select>
 
-          <div class="deposit-base__field--promotion-hint" v-if="promotion == -1">
+          <div class="deposit-base__field--promotion__hint" v-if="promotion == -1">
             {{ $t('transaction.deposit.hint.promotion') }}
           </div>
         </ValidationProvider>

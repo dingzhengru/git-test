@@ -7,15 +7,20 @@
   .ui-panel-tab {
     &__tabs {
       padding: 5px 0;
+      flex-basis: 21%;
 
       &__item {
-        // flex-basis: 25%;
+        flex-basis: 25%;
         height: calc(25% - 2.5px);
       }
 
       &__arrow {
         bottom: 20%;
       }
+    }
+
+    &__content {
+      flex-basis: 79%;
     }
   }
 
@@ -50,13 +55,10 @@
     align-items: center;
     background: $home-footer-transfer-bg;
     color: $home-footer-transfer-color;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
     padding-right: 7%;
     word-break: keep-all;
-
-    @media screen and (max-height: 600px) {
-      font-size: 1.2rem;
-    }
   }
 
   &__center {
@@ -147,7 +149,7 @@
         &__item {
           height: 100%;
           margin-bottom: 0;
-          margin-right: 15px;
+          // margin-right: 15px;
         }
       }
     }
@@ -256,7 +258,7 @@
     display: flex;
     align-items: center;
 
-    border: 1px solid gray;
+    border: 1px solid rgb(213, 191, 152);
     border-radius: 20px;
     a {
       display: inline;
