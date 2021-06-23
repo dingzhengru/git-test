@@ -112,8 +112,7 @@ export default {
       return this.userIsLoggedIn && this.$route.name === 'Home';
     },
     isShowLotteryWinWheel() {
-      return this.userIsLoggedIn && this.$route.name === 'Home';
-      // return this.userIsLoggedIn && this.$route.name === 'Home' && this.userLotteryCountWinWheel.LotteryStatus;
+      return this.userIsLoggedIn && this.$route.name === 'Home' && this.userLotteryCountWinWheel.LotteryStatus;
     },
     isShowLotteryRedEnvelope() {
       return this.userIsLoggedIn && this.$route.name === 'Home' && this.userLotteryCountWinWheel.LotteryStatus;
