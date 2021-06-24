@@ -5,16 +5,23 @@
   &__nav {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 30px;
-    button {
+
+    &__item {
+      flex-basis: calc(50% - 10px);
       font-size: 1.5rem;
       height: $deposit-nav-btn-height;
-      margin: 0 10px;
-
       background: $deposit-nav-btn-bg;
       color: $deposit-nav-btn-color;
       box-shadow: $deposit-nav-btn-shadow;
       border: $deposit-nav-btn-border;
+
+      margin-bottom: 15px;
+
+      &:nth-child(odd) {
+        margin: 0 15px 0 0;
+      }
 
       &.active {
         background: $deposit-nav-btn-bg-active;
@@ -76,9 +83,9 @@
   }
   &__btn {
     &--submit {
-      background: $deposit-base-bnt-bg-submit;
-      color: $deposit-base-bnt-color-submit;
-      box-shadow: $deposit-base-bnt-shadow-submit;
+      background: $deposit-base-btn-bg-submit;
+      color: $deposit-base-btn-color-submit;
+      box-shadow: $deposit-base-btn-shadow-submit;
     }
   }
 }
@@ -141,6 +148,41 @@
       box-shadow: $deposit-third-party-btn-shadow-submit;
     }
     &--reset {
+      background: $deposit-third-party-btn-bg-reset;
+      color: $deposit-third-party-btn-color-reset;
+      box-shadow: $deposit-third-party-btn-shadow-reset;
+    }
+  }
+}
+
+@mixin deposit-auto-cash {
+  &__step {
+    margin: 15px 0;
+    font-size: 2rem;
+  }
+
+  &__link {
+    color: red;
+    text-decoration: underline;
+  }
+
+  &__field {
+    &--amount {
+      span {
+        color: $deposit-base-color-currency;
+      }
+    }
+  }
+
+  &__btn {
+    button[type='submit'] {
+      background: $deposit-third-party-btn-bg-submit;
+      color: $deposit-third-party-btn-color-submit;
+      box-shadow: $deposit-third-party-btn-shadow-submit;
+      margin-bottom: 15px;
+    }
+
+    button[type='reset'] {
       background: $deposit-third-party-btn-bg-reset;
       color: $deposit-third-party-btn-color-reset;
       box-shadow: $deposit-third-party-btn-shadow-reset;

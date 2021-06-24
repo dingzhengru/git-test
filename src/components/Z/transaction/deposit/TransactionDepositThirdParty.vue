@@ -1,7 +1,7 @@
 <template>
   <ValidationObserver class="deposit-third-party" tag="div" v-slot="{ invalid, handleSubmit }">
     <form class="deposit-third-party-form" @submit.prevent="handleSubmit(submitDeposit)" @reset.prevent="reset">
-      <ValidationProvider
+      <!-- <ValidationProvider
         class="deposit-third-party__field--btn deposit-third-party__field--method"
         tag="div"
         :rules="{ required: true }"
@@ -23,7 +23,7 @@
           <option value=""></option>
           <option :value="item.Value" v-for="item in depositInfo.paymentSelect" :key="item.Value"></option>
         </select>
-      </ValidationProvider>
+      </ValidationProvider> -->
 
       <ValidationProvider
         class="deposit-third-party__field--btn deposit-third-party__field--platform"

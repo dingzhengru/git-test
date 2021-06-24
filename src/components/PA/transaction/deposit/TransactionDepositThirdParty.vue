@@ -87,10 +87,10 @@
           <select class="ui-field__select" v-model="promotion">
             <option :value="item.Value" v-for="item in promotionList" :key="item.Value">{{ item.Text }}</option>
           </select>
+          <div class="deposit-third-party__field--promotion__hint" v-if="promotion == -1">
+            {{ $t('transaction.deposit.hint.promotion') }}
+          </div>
         </ValidationProvider>
-        <div class="deposit-third-party__field--promotion-hint" v-if="promotion == -1">
-          {{ $t('transaction.deposit.hint.promotion') }}
-        </div>
       </fieldset>
 
       <fieldset class="ui-fieldset">

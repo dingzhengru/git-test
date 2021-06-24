@@ -80,3 +80,7 @@ body {
 .red-envelope-container {
   @include red-envelope-container;
 }
+
+.ui-field-box {
+  @include ui-field-box;
+}

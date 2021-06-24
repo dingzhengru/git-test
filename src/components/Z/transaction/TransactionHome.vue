@@ -27,7 +27,11 @@ export default {
           text: 'transaction.nav.deposit',
           class: '',
           id: 'transaction.nav.deposit',
-          otherActiveRoute: ['TransactionDepositThirdParty'],
+          otherActiveRoute: [
+            'TransactionDepositThirdParty',
+            'TransactionDepositThirdPartyPayment',
+            'TransactionDepositAutoCash',
+          ],
         },
         {
           name: 'withdrawal',

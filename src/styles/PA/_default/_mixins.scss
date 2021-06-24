@@ -59,8 +59,19 @@
     flex-wrap: nowrap;
   }
 
-  input[type='date']::-webkit-calendar-picker-indicator {
-    filter: invert(1);
+  input[type='date'],
+  input[type='datetime-local'] {
+    &::-webkit-calendar-picker-indicator {
+      // filter: invert(1);
+
+      color: rgba(0, 0, 0, 0);
+      opacity: 1;
+      display: block;
+      background: $field-date-icon;
+      width: 15px;
+      height: 15px;
+      border-width: thin;
+    }
   }
 
   label {
@@ -695,7 +706,7 @@
   }
 
   &::-webkit-scrollbar-track {
-    background-color: transparent;
+    background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -706,15 +717,16 @@
 @mixin ui-box-count {
   background: $ui-box-count-bg;
   color: $ui-box-count-color;
-  border: $ui-box-count-border;
-  box-shadow: $ui-box-count-shadow;
   display: inline-block;
   position: absolute;
+  min-width: 2rem;
+  min-height: 1rem;
   top: -10px;
   right: 0;
   border-radius: 15px;
-  padding: 1px 5px;
-  font-size: 1.2rem;
+  padding: 1px 5px 3px 7px;
+  font-size: 1rem;
+  text-align: center;
 }
 
 @mixin modal-alert {
@@ -857,6 +869,11 @@
           li {
             font-size: 0.8rem;
             color: $service-term-item-content-color;
+
+            a {
+              color: #75a2ff;
+              text-decoration: underline;
+            }
           }
         }
 

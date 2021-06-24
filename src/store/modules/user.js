@@ -105,7 +105,7 @@ const actions = {
   async getLotteryCountList({ commit }) {
     const result = await apiGetLotteryCount();
     if (result.Code === 200) {
-      commit('setLotteryCountList', result.RetObj);
+      commit('setLotteryCountList', result.RetObj.lotteryClasseList);
     }
     return result;
   },

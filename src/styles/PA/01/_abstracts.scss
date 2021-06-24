@@ -50,6 +50,7 @@ $field-star-color: #c6a260;
 $field-captcha-width: 73px;
 $field-captcha-height: 29px;
 $field-inside-color: #939393;
+$field-date-icon: assetPath('ui/ui-input-date.png') center/100% 100% no-repeat;
 
 $notice-color: #8b8b8b;
 $notice-font-size: 1rem;
@@ -143,7 +144,8 @@ $modal-bg: none;
 $modal-border: 1px solid white;
 $modal-title-height: 15%;
 $modal-title-bg: #cbaa6d;
-$modal-title-color: #070706;
+// $modal-title-color: #070706;
+$modal-title-color: #4d3522;
 $modal-content-bg: assetPath('ui/ui-modal-bg-decoration.png') #fcfaf7 center/100% 100% no-repeat;
 $modal-nav-bg: $modal-title-bg;
 $modal-nav-bg-active: linear-gradient(135deg, #e4d0a7, $modal-title-bg);
@@ -152,10 +154,8 @@ $modal-item-btn-bg: assetPath('ui/ui-btn-oval.png') center/100% 100% no-repeat;
 $modal-item-btn-color: white;
 $modal-item-selected-bg: assetPath('header/header-lang-modal-tick.png') center/ 100% 100% no-repeat;
 
-$ui-box-count-bg: #50351d;
-$ui-box-count-color: #f5d600;
-$ui-box-count-border: 2px solid #c5a469;
-$ui-box-count-shadow: 0px -1px 5px 1px rgba(255, 255, 255, 0.5);
+$ui-box-count-bg: assetPath('ui/ui-box-count-bg.png') center/ 100% 100% no-repeat;
+$ui-box-count-color: #fcefa6;
 
 //* 服務規章視窗
 $service-term-bg: white;

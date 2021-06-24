@@ -74,7 +74,9 @@
     "gameMaintenance": "เกมส์อยู่ในระหว่างการปรับปรุง  ขออภัยในความไม่สะดวก",
     "versionUpdate": "อัปเดตเวอร์ชันใหม่โหลดใหม่ทันที",
     "refreshSuccess": "รีเฟรชสำเร็จ",
-    "confirmLogout": "คุณแน่ใจหรือว่าต้องการออก"
+    "confirmLogout": "คุณแน่ใจหรือว่าต้องการออก",
+    "noSetBankInfo": "ยังไม่ได้ตั้งค่าข้อมูลบัญชีธนาคาร",
+    "noSetWithdrawalPassword": "ยังไม่ได้ตั้งรหัสผ่านถอนเงิน"
   },
   "validate": {
     "common": {

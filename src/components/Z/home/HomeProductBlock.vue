@@ -5,10 +5,11 @@
       :id="$idMapper.home.product[item.Lst_Product_Proxy_Tag]"
       v-for="item in list"
       :key="item.Lst_Product_Proxy_Tag"
-      :style="{ 'background-image': `url(${siteProductImage(item)})` }"
       @click="clickProductItem(item)"
+      v-lazy-container="{ selector: 'img' }"
     >
       <!-- <div class="home-product-block__item__text">{{ item.Lst_Name }}</div> -->
+      <img :data-src="imgProduct(item)" :data-error="imgProductDefault(item)" />
       <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
     </div>
   </transition-group>
@@ -28,13 +29,21 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['siteFullCss', 'siteProductImage', 'userIsLoggedIn', 'siteProductImagePortrait']),
-    imgSrc: app => game => {
-      try {
-        return require(`@/assets/${app.siteFullCss}/game/${game.Lst_Product_id}.png`);
-      } catch {
-        return '';
+    ...mapGetters([
+      'siteFullCss',
+      'userIsLoggedIn',
+      'siteProductImage',
+      'siteProductImagePortrait',
+      'siteProductImagePortraitDefault',
+    ]),
+    imgProduct: app => product => {
+      if (app.$env === 'development') {
+        return app.siteProductImagePortrait(product);
       }
+      return app.siteProductImage(product);
+    },
+    imgProductDefault: app => product => {
+      return app.siteProductImagePortraitDefault(product);
     },
   },
   methods: {
