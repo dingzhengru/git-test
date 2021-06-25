@@ -14,8 +14,9 @@
   width: 100%;
   height: calc(100% - #{$nav-tab-height});
   display: flex;
-  overflow-y: auto;
   position: relative;
+  overflow-x: overlay;
+  overflow-y: hidden;
 
   &.no-category {
     height: 100%;
@@ -33,8 +34,9 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    overflow-y: auto;
     align-content: flex-start;
+    overflow-x: overlay;
+    overflow-y: hidden;
   }
 
   &__item {
