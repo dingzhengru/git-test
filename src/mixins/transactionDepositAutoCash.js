@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-// import { apiDepositAutoCash } from '@/api/transaction-deposit';
+import { apiDepositAutoCash } from '@/api/transaction-deposit';
 export default {
   name: 'MixinTransactionDepositThirdParty',
   props: {
@@ -26,8 +26,6 @@ export default {
   },
   data() {
     return {
-      promotionList: [],
-
       dispensingBank: {},
       amount: 0,
       promotion: '-1',
@@ -36,18 +34,27 @@ export default {
     };
   },
   methods: {
-    submitDepositAutoCash() {
+    async submitDepositAutoCash() {
       const requestData = {
         Add_Company_ServiceKey: this.depositInfo.AutoCashData.Service_Setting,
         Add_Pay_BankAccount: this.depositInfo.AutoCashData.Lst_BankAccount,
+        Add_BindAccount: this.dispensingBank.Value,
         Add_Pay_Money: this.amount,
         Add_Activity: this.promotion,
-        Add_BindAccount: this.depositInfo.AutoCashCount,
         Add_Pay_Date: this.$dayjs().format('YYYY-MM-DD HH:mm:ss.SSS'),
         Add_Pay_Memo: this.payMemo,
       };
 
       console.log(requestData);
+
+      const result = await apiDepositAutoCash(requestData);
+
+      if (result.Code === 200) {
+        window.alert(`${this.$t('transaction.deposit.field.amount')}: ${result.RetObj}`);
+        this.$router.push({ name: 'TransactionRecordDeposit' });
+      } else if (result.Code == 500) {
+        window.alert(result.ErrMsg);
+      }
     },
     inputAmount() {
       if (this.amount < this.amountMin) {

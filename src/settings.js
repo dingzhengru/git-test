@@ -39,13 +39,13 @@ export const API_CRYPTO_LIST = [
   'Member/MChangePassword',
   'Member/MChgWithdrawalsPwd',
   'Member/MBankInfoChange',
-  'Operator/AutoCashFormdata',
 ];
 
 //* 需使用"大數據加密"的 API
 export const API_CRYPTO_BIG_DATA_LIST = [
   'Member/SimpleRegister',
   'Operator/MWithdrawals',
+  'Operator/AutoCashFormdata',
   'Member/AdvancedRegisterNew',
   'Member/AdvancedRegisterNewApp',
 ];
