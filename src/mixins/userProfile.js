@@ -21,8 +21,7 @@ export default {
       return this.fieldList.filter(item => item.name.includes('Bank') === false);
     },
     bankListEnabled() {
-      return this.bankList;
-      // return this.bankList.filter(item => item.Visibled);
+      return this.bankList.filter(item => item.Visibled);
     },
   },
   data() {

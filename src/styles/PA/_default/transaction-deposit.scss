@@ -13,25 +13,25 @@
 
   &__field {
     &--bank {
-      width: 70%;
+      width: 50%;
     }
     &--bank-name {
-      width: 70%;
+      width: 50%;
     }
     &--bank-transfer {
-      width: 70%;
+      width: 50%;
     }
     &--method {
-      width: 70%;
+      width: 50%;
     }
     &--datetime {
-      width: 70%;
+      width: 50%;
     }
     &--amount {
-      width: 70%;
+      width: 50%;
     }
     &--receipt {
-      width: 70%;
+      width: 50%;
       background: $field-input-bg;
       border-radius: 5px;
 
@@ -48,23 +48,30 @@
       span {
         background-color: #939393;
         border-radius: 5px;
-        padding: 3px;
+        padding: 2px;
         margin-right: 3px;
+
+        &:nth-child(4) {
+          margin-right: 10px;
+        }
       }
     }
     &--remark {
-      width: 70%;
+      width: 50%;
     }
     &--promotion {
       width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
 
       select {
-        width: 35%;
+        min-width: 50%;
         max-width: 50%;
-        margin: 0 5px 0 0;
+        margin-right: 5px;
       }
 
-      &-hint {
+      &__hint {
         flex-grow: 1;
         font-size: 0.9rem;
         color: #d56216;
@@ -140,7 +147,7 @@
         flex-wrap: nowrap;
         align-items: center;
         > div:first-child {
-          width: 35%;
+          width: calc(50% - 5px);
           margin-bottom: 0;
           margin-right: 5px;
         }
@@ -155,24 +162,31 @@
       }
     }
     &--promotion {
-      width: 35%;
-      display: inline-flex;
-      margin: 0 5px 0 0;
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
 
-      &-hint {
+      select {
+        min-width: 50%;
+        max-width: 50%;
+        margin-right: 5px;
+      }
+
+      &__hint {
         flex-grow: 1;
-        display: inline-flex;
         font-size: 0.9rem;
         color: #d56216;
       }
     }
 
     &--captcha {
+      width: 100%;
       flex-wrap: nowrap;
-      width: 70%;
-      margin: 0;
+
       input {
-        min-width: 100px;
+        flex-basis: 50%;
+        max-width: 50%;
       }
     }
   }

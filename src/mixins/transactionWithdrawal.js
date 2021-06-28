@@ -37,6 +37,13 @@ export default {
 
       //* 若會員的 Add_MemberBankAccountList 為空，則轉去會員中心
       if (this.bankList.length <= 0) {
+        window.alert(this.$t('alert.noSetBankInfo'));
+        this.$router.replace({ name: 'UserProfile' });
+      }
+
+      //* 若會員沒設置取款密碼
+      if (result.RetObj.Lst_HasWithdrawalPassWord === false) {
+        window.alert(this.$t('alert.noSetWithdrawalPassword'));
         this.$router.replace({ name: 'UserProfile' });
       }
     },

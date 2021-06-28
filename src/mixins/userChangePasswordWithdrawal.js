@@ -21,9 +21,12 @@ export default {
       const result = await apiChangePasswordWithdrawal(requestData);
 
       if (result.Code == 200) {
+        this.$store.dispatch('user/getInfo');
         window.alert(this.$t('alert.changeProfileSuccess'));
         this.resetForm();
       }
+      
+      return result;
     },
     resetForm() {
       this.passwordOld = '';

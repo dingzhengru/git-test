@@ -39,18 +39,16 @@
       <div
         class="header__lottery header__lottery--win-wheel"
         @click="$store.commit('setModalWinWheelIsShow', true)"
-        v-if="isShowLottery"
+        v-if="isShowLotteryWinWheel"
       >
-        <!-- <img class="header__lottery__text header__lottery__text--win-wheel" :src="imgLotteryIconWinWheelText" alt="" /> -->
         <img class="header__lottery__icon header__lottery__icon--win-wheel" :src="imgLotteryIconWinWheel" alt="" />
         <div class="ui-box-count">{{ userLotteryCountWinWheel.Count }}</div>
       </div>
       <div
         class="header__lottery header__lottery--red-envelope"
         @click="$store.commit('setModalRedEnvelopeIsShow', true)"
-        v-if="isShowLottery"
+        v-if="isShowLotteryRedEnvelope"
       >
-        <!-- <img class="header__lottery__text header__lottery__text--red-envelope" :src="imgLotteryIconRedEnvelopeText" /> -->
         <img class="header__lottery__icon header__lottery__icon--red-envelope" :src="imgLotteryIconRedEnvelope" />
         <div class="ui-box-count">{{ userLotteryCountRedEnvelope.Count }}</div>
       </div>
@@ -113,8 +111,11 @@ export default {
     isShowWallet() {
       return this.userIsLoggedIn && this.$route.name === 'Home';
     },
-    isShowLottery() {
-      return this.userIsLoggedIn && this.$route.name === 'Home';
+    isShowLotteryWinWheel() {
+      return this.userIsLoggedIn && this.$route.name === 'Home' && this.userLotteryCountWinWheel.LotteryStatus;
+    },
+    isShowLotteryRedEnvelope() {
+      return this.userIsLoggedIn && this.$route.name === 'Home' && this.userLotteryCountRedEnvelope.LotteryStatus;
     },
     imgLogo() {
       try {

@@ -20,7 +20,7 @@
     justify-content: center;
 
     &__icon {
-      width: 100%;
+      // width: 100%;
       position: relative;
       bottom: -30%;
       margin-right: 15px;
@@ -39,7 +39,7 @@
   }
 
   &__wallet {
-    min-width: $header-wallet-min-width;
+    min-width: 25%;
     height: $header-wallet-height;
     background: $header-wallet-bg;
     display: flex;

@@ -84,7 +84,7 @@ export default {
     ValidationProvider,
   },
   props: {
-    bankAddNumber: {
+    bankNumber: {
       type: Number,
       default: 0,
     },
@@ -133,7 +133,7 @@ export default {
     },
     async submitUserBank() {
       const requestData = {};
-      requestData.Add_BankType = this.bankAddNumber;
+      requestData.Add_BankType = this.bankNumber;
       requestData[this.bankId.name] = this.bankId.value;
       requestData[this.bankAccount.name] = this.bankAccount.value;
       requestData[this.bankBranch.name] = this.bankBranch.value;

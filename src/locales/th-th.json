@@ -72,9 +72,11 @@
     "replaySuccess": "ตอบกลับสำเร็จ",
     "sendEmailSuccess": "ส่งอีเมลเรียบร้อยแล้ว",
     "gameMaintenance": "เกมส์อยู่ในระหว่างการปรับปรุง  ขออภัยในความไม่สะดวก",
-    "versionUpdate": "อัปเดตเวอร์ชันใหม่โหลดใหม่ทันที",
+    "versionUpdate": "ทางเราได้อัปเดตเวอร์ชันล่าสุดให้คุณแล้ว",
     "refreshSuccess": "รีเฟรชสำเร็จ",
-    "confirmLogout": "คุณแน่ใจหรือว่าต้องการออก"
+    "confirmLogout": "คุณแน่ใจหรือว่าต้องการออก",
+    "noSetBankInfo": "ยังไม่ได้ตั้งค่าข้อมูลบัญชีธนาคาร",
+    "noSetWithdrawalPassword": "ยังไม่ได้ตั้งรหัสผ่านถอนเงิน"
   },
   "validate": {
     "common": {
