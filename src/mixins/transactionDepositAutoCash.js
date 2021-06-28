@@ -9,7 +9,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['lang']),
+    ...mapGetters(['lang', 'userBindBank']),
     isDepositInfoLoaded() {
       return this.$isObjEmpty(this.depositInfo) === false;
     },
@@ -72,8 +72,12 @@ export default {
     },
   },
   mounted() {
-    //* AutoCashCount > 0 才可以使用 AutoCash
+    //* AutoCashCount > 0 才可以進入 AutoCash
     if (this.depositInfo.AutoCashCount <= 0) {
+      return this.$router.push({ name: 'TransactionDepositBase' });
+    }
+
+    if (this.userBindBank <= 0) {
       window.alert(`${this.$t('alert.goProfileSetting')}\n${this.$t('alert.NotSetBankDefault')}`);
       return this.$router.push({ name: 'UserProfile' });
     }
