@@ -50,7 +50,9 @@ export default {
       const result = await apiDepositAutoCash(requestData);
 
       if (result.Code === 200) {
-        window.alert(`${this.$t('transaction.deposit.field.amount')}: ${result.RetObj}`);
+        window.alert(
+          this.$t('alert.submitDepositAutoCash', { amount: result.RetObj, currency: this.$t('ui.currency.thaiBaht') })
+        );
         this.$router.push({ name: 'TransactionRecordDeposit' });
       } else if (result.Code == 500) {
         window.alert(result.ErrMsg);

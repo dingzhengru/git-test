@@ -75,7 +75,8 @@
     "refreshSuccess": "Refresh successfully",
     "confirmLogout": "Are you sure you want to leave?",
     "noSetBankInfo": "Bank account information has not been set",
-    "noSetWithdrawalPassword": "Withdrawal password has not been set"
+    "noSetWithdrawalPassword": "Withdrawal password has not been set",
+    "submitDepositAutoCash": "Remittance amount: {amount}{currency}"
   },
   "validate": {
     "common": {

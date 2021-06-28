@@ -75,7 +75,8 @@
     "refreshSuccess": "รีเฟรชสำเร็จ",
     "confirmLogout": "คุณแน่ใจหรือว่าต้องการออก",
     "noSetBankInfo": "ยังไม่ได้ตั้งค่าข้อมูลบัญชีธนาคาร",
-    "noSetWithdrawalPassword": "ยังไม่ได้ตั้งรหัสผ่านถอนเงิน"
+    "noSetWithdrawalPassword": "ยังไม่ได้ตั้งรหัสผ่านถอนเงิน",
+    "submitDepositAutoCash": "จำนวนเงินโอน: {amount}{currency}"
   },
   "validate": {
     "common": {
