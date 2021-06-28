@@ -76,6 +76,8 @@
     "confirmLogout": "Are you sure you want to leave?",
     "noSetBankInfo": "Bank account information has not been set",
     "noSetWithdrawalPassword": "Withdrawal password has not been set",
+    "goProfileSetting": "Please go to 'Profile' to complete the settings",
+    "NotSetBankDefault": "Remind you that the bank information has not been set for the current account",
     "submitDepositAutoCash": "Remittance amount: {amount}{currency}"
   },
   "validate": {

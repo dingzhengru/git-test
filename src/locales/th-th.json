@@ -76,6 +76,8 @@
     "confirmLogout": "คุณแน่ใจหรือว่าต้องการออก",
     "noSetBankInfo": "ยังไม่ได้ตั้งค่าข้อมูลบัญชีธนาคาร",
     "noSetWithdrawalPassword": "ยังไม่ได้ตั้งรหัสผ่านถอนเงิน",
+    "goProfileSetting": "โปรดไปที่ 'โปรไฟล์' เพื่อสิ้นสุดการตั้งค่า",
+    "NotSetBankDefault": "เตือนคุณว่าข้อมูลธนาคารยังไม่ได้ตั้งค่าสำหรับบัญชีปัจจุบัน",
     "submitDepositAutoCash": "จำนวนเงินโอน: {amount}{currency}"
   },
   "validate": {

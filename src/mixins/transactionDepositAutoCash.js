@@ -74,7 +74,12 @@ export default {
   mounted() {
     //* AutoCashCount > 0 才可以使用 AutoCash
     if (this.depositInfo.AutoCashCount <= 0) {
-      return this.$router.push({ home: 'TransactionDepositBase' });
+      window.alert(`${this.$t('alert.goProfileSetting')}\n${this.$t('alert.NotSetBankDefault')}`);
+      return this.$router.push({ name: 'UserProfile' });
+    }
+
+    if (this.depositInfo.AutoCashData.Lst_MemberBank.length > 0) {
+      this.dispensingBank = this.depositInfo.AutoCashData.Lst_MemberBank[0];
     }
   },
 };

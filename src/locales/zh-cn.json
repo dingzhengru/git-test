@@ -76,6 +76,8 @@
     "confirmLogout": "确定离开吗?",
     "noSetBankInfo": "银行帐号资料尚未设定",
     "noSetWithdrawalPassword": "取款密​​码资料尚未设定",
+    "goProfileSetting": "请先至「个人资料」中完成设定",
+    "NotSetBankDefault": "提醒您，当前帐号尚未设定银行资料",
     "submitDepositAutoCash": "汇款金额: {amount}{currency}"
   },
   "validate": {

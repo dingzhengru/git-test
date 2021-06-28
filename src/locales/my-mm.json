@@ -74,6 +74,8 @@
     "confirmLogout": "Are you sure you want to leave?",
     "noSetBankInfo": "Bank account information has not been set",
     "noSetWithdrawalPassword": "Withdrawal password has not been set",
+    "goProfileSetting": "settings ကိုဖြည့်စွက်ရန် 'ကိုယ်ရေးဖိုင်' ကိုသွားပါ",
+    "NotSetBankDefault": "လက်ရှိဘဏ်စာရင်းအတွက်ဘဏ်အချက်အလက်များမသတ်မှတ်ထားကြောင်းသတိပြုပါ",
     "submitDepositAutoCash": "Remittance amount: {amount}{currency}"
   },
   "validate": {
