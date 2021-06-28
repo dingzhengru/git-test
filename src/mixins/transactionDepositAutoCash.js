@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-// import { apiDepositThirdParty } from '@/api/transaction-deposit';
+// import { apiDepositAutoCash } from '@/api/transaction-deposit';
 export default {
   name: 'MixinTransactionDepositThirdParty',
   props: {
@@ -10,11 +10,18 @@ export default {
   },
   computed: {
     ...mapGetters(['lang']),
+    isDepositInfoLoaded() {
+      return this.$isObjEmpty(this.depositInfo) === false;
+    },
     amountMin() {
       return this.depositInfo.DepositDownlimit;
     },
     amountMax() {
       return this.depositInfo.DepositUplimit;
+    },
+    payMemo() {
+      const amountMMK = Math.round(this.amount * this.depositInfo.hid_THBtoMMKrate * 1000) / 1000;
+      return `${this.remark} | ${amountMMK}MMK`;
     },
   },
   data() {
@@ -24,10 +31,24 @@ export default {
       dispensingBank: {},
       amount: 0,
       promotion: '-1',
+
+      remark: '',
     };
   },
   methods: {
-    submitDepositAutoCash() {},
+    submitDepositAutoCash() {
+      const requestData = {
+        Add_Company_ServiceKey: this.depositInfo.AutoCashData.Service_Setting,
+        Add_Pay_BankAccount: this.depositInfo.AutoCashData.Lst_BankAccount,
+        Add_Pay_Money: this.amount,
+        Add_Activity: this.promotion,
+        Add_BindAccount: this.depositInfo.AutoCashCount,
+        Add_Pay_Date: this.$dayjs().format('YYYY-MM-DD HH:mm:ss.SSS'),
+        Add_Pay_Memo: this.payMemo,
+      };
+
+      console.log(requestData);
+    },
     inputAmount() {
       if (this.amount < this.amountMin) {
         this.amount = this.amountMin;
@@ -41,5 +62,10 @@ export default {
       this.promotion = '-1';
     },
   },
-  mounted() {},
+  mounted() {
+    //* AutoCashCount > 0 才可以使用 AutoCash
+    if (this.depositInfo.AutoCashCount <= 0) {
+      return this.$router.push({ home: 'TransactionDepositBase' });
+    }
+  },
 };

@@ -27,7 +27,8 @@
       "bankAccountName": "ဘဏ်အကောင့်အမည်",
       "langSelect": "ဘာသာစကားရွေးပါ",
       "default": "နဂိုအတိုင္းထားမည္",
-      "hotGame": "လူကြိုက်များသောဂိမ်း"
+      "hotGame": "လူကြိုက်များသောဂိမ်း",
+      "goSetDefaultBank": "Go to set default bank"
     },
     "button": {
       "save": "မွတ္သားသည္",

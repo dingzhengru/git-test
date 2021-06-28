@@ -27,7 +27,8 @@
       "bankAccountName": "银行户名",
       "langSelect": "语系选择",
       "default": "默认",
-      "hotGame": "热门游戏"
+      "hotGame": "热门游戏",
+      "goSetDefaultBank": "前往设定预设银行"
     },
     "button": {
       "save": "保存",
@@ -672,7 +673,7 @@
         "promotion": "存款优惠方案",
         "payMethod": "支付方式",
         "payPlatform": "支付平台",
-        "dispensingBank": "收款银行",
+        "dispensingBank": "出款銀行",
         "beneficiaryBank": "收款银行",
         "beneficiaryBankAccountName": "收款名称",
         "beneficiaryBankAccount": "收款帐号"

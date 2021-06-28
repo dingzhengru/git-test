@@ -39,6 +39,7 @@ export const API_CRYPTO_LIST = [
   'Member/MChangePassword',
   'Member/MChgWithdrawalsPwd',
   'Member/MBankInfoChange',
+  'Operator/AutoCashFormdata',
 ];
 
 //* 需使用"大數據加密"的 API
@@ -98,6 +99,7 @@ export const API_AUTH_LIST = [
   'Operator/MTransferPoint',
   'Operator/MPointTransferForAllGame',
   'Operator/MGame_GetGameName',
+  'Operator/AutoCashFormdata',
   'PointRecord/MDeposit',
   'PointRecord/MWithdrawals',
   'PointRecord/MTransfer',

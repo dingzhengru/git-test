@@ -12,7 +12,7 @@
       </button>
     </div>
 
-    <router-view :depositInfo="depositInfo" />
+    <router-view :depositInfo="depositInfo" v-if="isDepositInfoLoaded" />
 
     <ModalNoticeImage
       :image="siteDepositNoticeUrl"

@@ -27,7 +27,8 @@
       "bankAccountName": "Account Name of Bank",
       "langSelect": "Select Language",
       "default": "Default",
-      "hotGame": "Hot Games"
+      "hotGame": "Hot Games",
+      "goSetDefaultBank": "Go to set default bank"
     },
     "button": {
       "save": "Save",

@@ -1,11 +1,13 @@
 <template>
   <ValidationObserver class="deposit-auto-cash" tag="div" v-slot="{ invalid, handleSubmit }">
-    <form class="deposit-auto-cash__form" @submit.prevent="handleSubmit(submitDeposit)" @reset.prevent="reset">
+    <form class="deposit-auto-cash__form" @submit.prevent="handleSubmit(submitDepositAutoCash)" @reset.prevent="reset">
       <ValidationProvider tag="div" :rules="{ 'object-not-empty': true }" v-slot="{ errors }">
         <div class="ui-field deposit-auto-cash__field" :class="{ invalid: errors.length > 0 }">
           <select class="ui-field__select" v-model="dispensingBank">
-            <option :value="{}" selected>{{ $t('ui.label.pleaseSelect') }}</option>
-            <option :value="item" v-for="item in depositInfo.BankAccount" :key="item.Value">
+            <option :value="{}">
+              {{ `${$t('ui.label.pleaseSelect')}${$t('transaction.deposit.field.dispensingBank')}` }}
+            </option>
+            <option :value="item" v-for="item in depositInfo.AutoCashData.Lst_MemberBank" :key="item.Value">
               {{ item.Text }}
             </option>
           </select>
@@ -13,14 +15,14 @@
       </ValidationProvider>
 
       <router-link class="deposit-auto-cash__link" :to="{ name: 'UserProfile' }">
-        前往設定預設銀行
+        {{ $t('ui.label.goSetDefaultBank') }}
       </router-link>
 
       <div class="deposit-auto-cash__step">{{ $t('transaction.deposit.step.transferBankInfo') }}</div>
       <div class="ui-field deposit-auto-cash__field">
         <div class="ui-field__group">
           <label class="ui-field__group__label">{{ $t('transaction.deposit.field.beneficiaryBank') }}</label>
-          <input class="ui-field__group__input" type="text" readonly />
+          <input class="ui-field__group__input" type="text" :value="depositInfo.AutoCashData.Lst_BankName" readonly />
         </div>
       </div>
       <div class="ui-field deposit-auto-cash__field">
@@ -28,13 +30,23 @@
           <label class="ui-field__group__label">
             {{ $t('transaction.deposit.field.beneficiaryBankAccountName') }}
           </label>
-          <input class="ui-field__group__input" type="text" readonly />
+          <input
+            class="ui-field__group__input"
+            type="text"
+            :value="depositInfo.AutoCashData.Lst_BankAccountName"
+            readonly
+          />
         </div>
       </div>
       <div class="ui-field deposit-auto-cash__field">
         <div class="ui-field__group">
           <label class="ui-field__group__label"> {{ $t('transaction.deposit.field.beneficiaryBankAccount') }}</label>
-          <input class="ui-field__group__input" type="text" readonly />
+          <input
+            class="ui-field__group__input"
+            type="text"
+            :value="depositInfo.AutoCashData.Lst_BankAccount"
+            readonly
+          />
         </div>
       </div>
 
@@ -83,7 +95,7 @@
 
       <ValidationProvider class="ui-field deposit-auto-cash__field deposit-auto-cash__field--promotion" tag="div">
         <select class="ui-field__select" v-model="promotion">
-          <option :value="item.Value" v-for="item in depositInfo.AllActivityList" :key="item.Value">
+          <option :value="item.Value" v-for="item in depositInfo.AutoCashData.Lst_ActivityList" :key="item.Value">
             {{ item.Text }}
           </option>
         </select>

@@ -27,7 +27,8 @@
       "bankAccountName": "ชื่อบัญชี",
       "langSelect": "เลือกภาษา",
       "default": "ตั้งค่า",
-      "hotGame": "เกมส์ยอดนิยม"
+      "hotGame": "เกมส์ยอดนิยม",
+      "goSetDefaultBank": "ไปที่การตั้งค่าธนาคารเริ่มต้น"
     },
     "button": {
       "save": "จัดเก็บ",
