@@ -55,16 +55,14 @@
     "currency": {
       "thaiBaht": "泰銖"
     },
-    "alert": {
-      "notLoggedIn": "请先登录",
-      "pwaToApkDownload": "APP版本已更新，请重新下载"
-    },
     "lottery": {
       "count1": "可抽奖次数",
       "count2": "次"
     }
   },
   "alert": {
+    "notLoggedIn": "请先登录",
+    "pwaToApkDownload": "APP版本已更新，请重新下载",
     "loadFailed": "讀取失敗，請重整頁面",
     "success": "成功",
     "accessSuccess": "开通成功！开启页面中请等待",
