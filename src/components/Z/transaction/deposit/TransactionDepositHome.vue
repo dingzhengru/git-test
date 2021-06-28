@@ -12,7 +12,7 @@
       </button>
     </div>
 
-    <router-view :depositInfo="depositInfo" />
+    <router-view :depositInfo="depositInfo" v-if="isDepositInfoLoaded" />
 
     <ModalNoticeImage
       :image="siteDepositNoticeUrl"
@@ -45,11 +45,6 @@ export default {
           text: 'transaction.deposit.nav.base',
           params: {},
         },
-        // {
-        //   route: 'TransactionDepositAutoCash',
-        //   text: 'transaction.deposit.nav.autoCash',
-        //   params: {},
-        // },
       ],
     };
   },
@@ -69,15 +64,31 @@ export default {
   },
   watch: {
     depositInfo() {
-      let index = 1;
+      // let index = 1;
+      // this.depositInfo.paymentSelect.forEach(item => {
+      //   this.navList.splice(index, 0, {
+      //     route: 'TransactionDepositThirdPartyPayment',
+      //     params: { payment: item.Value },
+      //     text: item.Text,
+      //   });
+      //   index = index + 1;
+      // });
+
       this.depositInfo.paymentSelect.forEach(item => {
-        this.navList.splice(index, 0, {
+        this.navList.push({
           route: 'TransactionDepositThirdPartyPayment',
           params: { payment: item.Value },
           text: item.Text,
         });
-        index = index + 1;
       });
+
+      if (this.depositInfo.AutoCashCount > 0) {
+        this.navList.push({
+          route: 'TransactionDepositAutoCash',
+          text: 'transaction.deposit.nav.autoCash',
+          params: {},
+        });
+      }
     },
   },
 };

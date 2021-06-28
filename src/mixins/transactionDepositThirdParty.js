@@ -163,7 +163,7 @@ export default {
   },
   mounted() {
     this.changeCaptcha();
-    this.getPromotionListThirdParty();
+    // this.getPromotionListThirdParty();
 
     window.addEventListener('message', this.receiveMessageHandler);
   },

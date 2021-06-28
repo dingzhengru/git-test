@@ -6,8 +6,8 @@
         <ValidationProvider tag="div" :rules="{ 'object-not-empty': true }" v-slot="{ errors }">
           <div class="ui-field deposit-auto-cash__field" :class="{ invalid: errors.length > 0 }">
             <select class="ui-field__select" v-model="dispensingBank">
-              <option :value="{}" selected>{{ $t('ui.label.pleaseSelect') }}</option>
-              <option :value="item" v-for="item in depositInfo.BankAccount" :key="item.Value">
+              <option :value="{}">{{ $t('ui.label.pleaseSelect') }}</option>
+              <option :value="item" v-for="item in depositInfo.AutoCashData.Lst_MemberBank" :key="item.Value">
                 {{ item.Text }}
               </option>
             </select>
@@ -19,15 +19,18 @@
         <legend>{{ $t('transaction.deposit.step.transferBankInfo') }}</legend>
         <div class="ui-field deposit-auto-cash__field">
           <label>{{ $t('transaction.deposit.field.beneficiaryBank') }}</label>
-          <input type="text" readonly />
+          <!-- <input type="text" :value="depositInfo.AutoCashData.Lst_BankName" readonly /> -->
+          <span>{{ depositInfo.AutoCashData.Lst_BankName }}</span>
         </div>
         <div class="ui-field deposit-auto-cash__field">
           <label>{{ $t('transaction.deposit.field.beneficiaryBankAccountName') }}</label>
-          <input type="text" readonly />
+          <!-- <input type="text" :value="depositInfo.AutoCashData.Lst_BankAccountName" readonly /> -->
+          <span>{{ depositInfo.AutoCashData.Lst_BankAccountName }}</span>
         </div>
         <div class="ui-field deposit-auto-cash__field">
           <label>{{ $t('transaction.deposit.field.beneficiaryBankAccount') }}</label>
-          <input type="text" readonly />
+          <!-- <input type="text" :value="depositInfo.AutoCashData.Lst_BankAccount" readonly /> -->
+          <span>{{ depositInfo.AutoCashData.Lst_BankAccount }}</span>
         </div>
       </fieldset>
 
@@ -51,7 +54,7 @@
 
         <ValidationProvider class="ui-field deposit-auto-cash__field deposit-auto-cash__field--promotion" tag="div">
           <select class="ui-field__select" v-model="promotion">
-            <option :value="item.Value" v-for="item in depositInfo.AllActivityList" :key="item.Value">
+            <option :value="item.Value" v-for="item in depositInfo.AutoCashData.Lst_ActivityList" :key="item.Value">
               {{ item.Text }}
             </option>
           </select>

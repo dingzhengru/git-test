@@ -27,7 +27,8 @@
       "bankAccountName": "Account Name of Bank",
       "langSelect": "Select Language",
       "default": "Default",
-      "hotGame": "Hot Games"
+      "hotGame": "Hot Games",
+      "goSetDefaultBank": "Go to set default bank"
     },
     "button": {
       "save": "Save",
@@ -54,16 +55,14 @@
     "currency": {
       "thaiBaht": "Baht"
     },
-    "alert": {
-      "notLoggedIn": "Please Login first to continue",
-      "pwaToApkDownload": "The APP version has been updated, please download again"
-    },
     "lottery": {
       "count1": "Lucky",
       "count2": "Draw"
     }
   },
   "alert": {
+    "notLoggedIn": "Please Login first to continue",
+    "pwaToApkDownload": "The APP version has been updated, please download again",
     "loadFailed": "Load failed. Please refresh the page and retry.",
     "success": "Successful",
     "accessSuccess": "Account activated successfully!",
@@ -76,7 +75,10 @@
     "refreshSuccess": "Refresh successfully",
     "confirmLogout": "Are you sure you want to leave?",
     "noSetBankInfo": "Bank account information has not been set",
-    "noSetWithdrawalPassword": "Withdrawal password has not been set"
+    "noSetWithdrawalPassword": "Withdrawal password has not been set",
+    "goProfileSetting": "Please go to 'Profile' to complete the settings",
+    "NotSetBankDefault": "Remind you that the bank information has not been set for the current account",
+    "submitDepositAutoCash": "Remittance amount: {amount}{currency}"
   },
   "validate": {
     "common": {

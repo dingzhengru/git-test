@@ -45,6 +45,7 @@ export const API_CRYPTO_LIST = [
 export const API_CRYPTO_BIG_DATA_LIST = [
   'Member/SimpleRegister',
   'Operator/MWithdrawals',
+  'Operator/AutoCashFormdata',
   'Member/AdvancedRegisterNew',
   'Member/AdvancedRegisterNewApp',
 ];
@@ -98,6 +99,7 @@ export const API_AUTH_LIST = [
   'Operator/MTransferPoint',
   'Operator/MPointTransferForAllGame',
   'Operator/MGame_GetGameName',
+  'Operator/AutoCashFormdata',
   'PointRecord/MDeposit',
   'PointRecord/MWithdrawals',
   'PointRecord/MTransfer',
