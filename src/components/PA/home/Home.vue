@@ -118,6 +118,11 @@ export default {
 
       if (result.Code === 200) {
         this.gameListHot = result.RetObj.SiteHotGamesList;
+
+        //* 熱門遊戲為空時
+        if (this.gameListHot.length === 0) {
+          this.productClassifyCurrent = 1;
+        }
       }
     },
   },
