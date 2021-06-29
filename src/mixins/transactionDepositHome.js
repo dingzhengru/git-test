@@ -20,6 +20,13 @@ export default {
 
       if (result.Code === 200) {
         this.depositInfo = result.RetObj;
+
+        //* 若 AutoCash 開啟
+        if (this.$env === 'development') {
+          if (this.depositInfo.AutoCashCount > 0) {
+            return this.$router.push({ name: 'TransactionDepositAutoCash' });
+          }
+        }
       }
     },
   },
