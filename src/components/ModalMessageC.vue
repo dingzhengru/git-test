@@ -1,6 +1,5 @@
 <template>
-  <!-- <ModalMessage @close="$emit('close')" v-if="messageListFiltered.length > 0"> -->
-  <ModalMessage @close="$emit('close')">
+  <ModalMessage @close="$emit('close')" v-if="messageListFiltered.length > 0">
     <div class="modal-message-c" :class="{ landscape: siteIsLandscape }">
       <p
         class="modal-message-c__text"
