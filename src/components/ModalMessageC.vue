@@ -1,8 +1,65 @@
 <template>
-  <ModalMessage @close="$emit('close')" v-if="messageListFiltered.length > 0">
-    <div class="modal-message-c">
-      <p class="modal-message-c__text" v-for="(item, index) in messageListFiltered" :key="index">
+  <!-- <ModalMessage @close="$emit('close')" v-if="messageListFiltered.length > 0"> -->
+  <ModalMessage @close="$emit('close')">
+    <div class="modal-message-c" :class="{ landscape: siteIsLandscape }">
+      <p
+        class="modal-message-c__text"
+        :class="{ landscape: siteIsLandscape }"
+        v-for="(item, index) in messageListFiltered"
+        :key="index"
+      >
         {{ item.Lst_Content }}
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
+      </p>
+      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
+        asdasdasd
       </p>
       <!-- <button @click="$emit('close')">OK</button> -->
     </div>
@@ -10,12 +67,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import mixinMessageC from '@/mixins/messageC';
 export default {
   name: 'ModalMessageC',
   mixins: [mixinMessageC],
   components: {
     ModalMessage: () => import('@/components/ModalMessage'),
+  },
+  computed: {
+    ...mapGetters(['siteIsLandscape']),
   },
 };
 </script>
@@ -36,6 +97,11 @@ export default {
     color: #636363;
     font-size: 2rem;
     margin: 15px 0 15px;
+
+    &.landscape {
+      font-size: 1.5rem;
+      margin: 0 5px;
+    }
   }
 }
 </style>
