@@ -57,18 +57,18 @@
 
     &__icon {
       width: 100%;
-      flex-basis: 80%;
+      flex-basis: 75%;
       max-height: 80%;
       border-radius: 5px;
     }
 
     &__text {
       width: 100%;
-      flex-basis: 20%;
+      flex-basis: 25%;
       align-self: center;
       text-align: center;
 
-      font-size: 0.9rem;
+      font-size: 0.8rem;
 
       &:lang(en-us) {
         font-size: 0.8rem;
