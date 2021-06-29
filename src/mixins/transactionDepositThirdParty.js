@@ -153,7 +153,7 @@ export default {
       this.iframe.src = '';
     },
     resetForm() {
-      this.method = '';
+      // this.method = '';
       this.platform = {};
       this.amount = 0;
       this.remark = '';

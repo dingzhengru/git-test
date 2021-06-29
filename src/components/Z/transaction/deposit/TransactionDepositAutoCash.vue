@@ -68,7 +68,7 @@
             <input
               class="ui-field__group__input"
               type="number"
-              step="100"
+              step="1"
               v-model.number="amount"
               @change="inputAmount"
             />

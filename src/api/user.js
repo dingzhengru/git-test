@@ -102,3 +102,9 @@ export async function apiAdvancedRegisterNewApp(data) {
   const result = await axios.post(API_URL + '/Member/AdvancedRegisterNewApp', data);
   return result.data;
 }
+
+//* 2.86  會員銀行預設修改APP
+export async function apiBankDefaultChange(data) {
+  const result = await axios.post(API_URL + '/Member/MBankDefaultChange', data);
+  return result.data;
+}

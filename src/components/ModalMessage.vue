@@ -41,13 +41,20 @@ export default {
     max-height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 30px 0;
     overflow-y: auto;
 
     img {
       margin-bottom: 15px;
+    }
+
+    &.landscape {
+      min-height: 65vh;
+      max-height: 80vh;
+      padding: 15px 0;
     }
   }
 }
