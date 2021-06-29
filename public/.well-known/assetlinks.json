@@ -288,5 +288,25 @@
         "CB:52:BC:F2:6C:83:2E:05:70:65:FE:38:72:B8:BB:4C:60:50:58:72:48:BD:C7:40:85:F8:E7:8C:0B:C0:4F:C3"
       ]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.ossebp",
+      "sha256_cert_fingerprints": [
+        "FD:D1:23:44:A4:DE:20:7D:0D:63:E8:14:00:B8:E3:97:ED:AB:94:B9:3F:08:7E:6C:18:27:32:9B:55:16:F8:DB"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.kobmac",
+      "sha256_cert_fingerprints": [
+        "49:89:AB:D5:4F:DA:8B:6A:7D:BF:EA:58:19:42:0F:0B:2D:7C:DB:C3:05:BF:B9:5B:82:A2:03:A5:6B:92:88:E0"
+      ]
+    }
   }
 ]
