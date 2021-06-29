@@ -10,57 +10,6 @@
       >
         {{ item.Lst_Content }}
       </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
-      <p class="modal-message-c__text" :class="{ landscape: siteIsLandscape }">
-        asdasdasd
-      </p>
       <!-- <button @click="$emit('close')">OK</button> -->
     </div>
   </ModalMessage>
