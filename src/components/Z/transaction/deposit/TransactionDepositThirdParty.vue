@@ -1,5 +1,5 @@
 <template>
-  <ValidationObserver class="deposit-third-party" tag="div" v-slot="{ invalid, handleSubmit }">
+  <ValidationObserver class="deposit-third-party" tag="div" v-slot="{ invalid, handleSubmit, reset }">
     <form class="deposit-third-party-form" @submit.prevent="handleSubmit(submitDeposit)" @reset.prevent="reset">
       <!-- <ValidationProvider
         class="deposit-third-party__field--btn deposit-third-party__field--method"
