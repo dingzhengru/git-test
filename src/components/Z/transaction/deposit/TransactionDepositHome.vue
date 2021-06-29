@@ -82,12 +82,14 @@ export default {
         });
       });
 
-      if (this.depositInfo.AutoCashCount > 0) {
-        this.navList.push({
-          route: 'TransactionDepositAutoCash',
-          text: 'transaction.deposit.nav.autoCash',
-          params: {},
-        });
+      if (this.$env === 'development') {
+        if (this.depositInfo.AutoCashCount > 0) {
+          this.navList.push({
+            route: 'TransactionDepositAutoCash',
+            text: 'transaction.deposit.nav.autoCash',
+            params: {},
+          });
+        }
       }
     },
   },
