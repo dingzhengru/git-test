@@ -85,10 +85,10 @@
         <legend>{{ $t('ui.label.promotion') }}</legend>
         <ValidationProvider class="ui-field deposit-third-party__field deposit-third-party__field--promotion" tag="div">
           <select class="ui-field__select" v-model="promotion">
-            <option :value="item.Value" v-for="item in depositInfo.AllActivityList3" :key="item.Value">
+            <!-- <option :value="item.Value" v-for="item in depositInfo.AllActivityList3" :key="item.Value">
               {{ item.Text }}
-            </option>
-            <!-- <option :value="item.Value" v-for="item in promotionList" :key="item.Value">{{ item.Text }}</option> -->
+            </option> -->
+            <option :value="item.Value" v-for="item in promotionList" :key="item.Value">{{ item.Text }}</option>
           </select>
           <div class="deposit-third-party__field--promotion__hint" v-if="promotion == -1">
             {{ $t('transaction.deposit.hint.promotion') }}
