@@ -36,3 +36,9 @@ export async function apiDepositCheckOrderStatus(data) {
   const result = await axios.post(API_URL + '/Operator/CheckOrderStatus', data);
   return result.data;
 }
+
+//* 2.85  交易中心-存款-自動上分動作
+export async function apiDepositAutoCash(data) {
+  const result = await axios.post(API_URL + '/Operator/AutoCashFormdata', data);
+  return result.data;
+}

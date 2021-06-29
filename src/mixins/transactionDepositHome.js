@@ -4,6 +4,9 @@ export default {
   name: 'MixinTransactionDepositHome',
   computed: {
     ...mapGetters(['lang', 'siteIsShowDepositNotice', 'siteDepositNoticeUrl']),
+    isDepositInfoLoaded() {
+      return this.$isObjEmpty(this.depositInfo) === false;
+    },
   },
   data() {
     return {

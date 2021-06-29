@@ -27,7 +27,8 @@
       "bankAccountName": "银行户名",
       "langSelect": "语系选择",
       "default": "默认",
-      "hotGame": "热门游戏"
+      "hotGame": "热门游戏",
+      "goSetDefaultBank": "前往设定预设银行"
     },
     "button": {
       "save": "保存",
@@ -54,16 +55,14 @@
     "currency": {
       "thaiBaht": "泰銖"
     },
-    "alert": {
-      "notLoggedIn": "请先登录",
-      "pwaToApkDownload": "APP版本已更新，请重新下载"
-    },
     "lottery": {
       "count1": "可抽奖次数",
       "count2": "次"
     }
   },
   "alert": {
+    "notLoggedIn": "请先登录",
+    "pwaToApkDownload": "APP版本已更新，请重新下载",
     "loadFailed": "讀取失敗，請重整頁面",
     "success": "成功",
     "accessSuccess": "开通成功！开启页面中请等待",
@@ -76,7 +75,10 @@
     "refreshSuccess": "刷新成功",
     "confirmLogout": "确定离开吗?",
     "noSetBankInfo": "银行帐号资料尚未设定",
-    "noSetWithdrawalPassword": "取款密​​码资料尚未设定"
+    "noSetWithdrawalPassword": "取款密​​码资料尚未设定",
+    "goProfileSetting": "请先至「个人资料」中完成设定",
+    "NotSetBankDefault": "提醒您，当前帐号尚未设定银行资料",
+    "submitDepositAutoCash": "汇款金额: {amount}{currency}"
   },
   "validate": {
     "common": {
@@ -672,7 +674,7 @@
         "promotion": "存款优惠方案",
         "payMethod": "支付方式",
         "payPlatform": "支付平台",
-        "dispensingBank": "收款银行",
+        "dispensingBank": "出款銀行",
         "beneficiaryBank": "收款银行",
         "beneficiaryBankAccountName": "收款名称",
         "beneficiaryBankAccount": "收款帐号"

@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-// import { apiDepositThirdParty } from '@/api/transaction-deposit';
+import { apiDepositAutoCash } from '@/api/transaction-deposit';
 export default {
   name: 'MixinTransactionDepositThirdParty',
   props: {
@@ -9,25 +9,55 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['lang']),
+    ...mapGetters(['lang', 'userBindBank']),
+    isDepositInfoLoaded() {
+      return this.$isObjEmpty(this.depositInfo) === false;
+    },
     amountMin() {
       return this.depositInfo.DepositDownlimit;
     },
     amountMax() {
       return this.depositInfo.DepositUplimit;
     },
+    payMemo() {
+      const amountMMK = Math.round(this.amount * this.depositInfo.hid_THBtoMMKrate * 1000) / 1000;
+      return `${this.remark} | ${amountMMK}MMK`;
+    },
   },
   data() {
     return {
-      promotionList: [],
-
       dispensingBank: {},
       amount: 0,
       promotion: '-1',
+
+      remark: '',
     };
   },
   methods: {
-    submitDepositAutoCash() {},
+    async submitDepositAutoCash() {
+      const requestData = {
+        Add_Company_ServiceKey: this.depositInfo.AutoCashData.Service_Setting,
+        Add_Pay_BankAccount: this.depositInfo.AutoCashData.Lst_BankAccount,
+        Add_BindAccount: this.dispensingBank.Value,
+        Add_Pay_Money: this.amount,
+        Add_Activity: this.promotion,
+        Add_Pay_Date: this.$dayjs().format('YYYY-MM-DD HH:mm:ss.SSS'),
+        Add_Pay_Memo: this.payMemo,
+      };
+
+      console.log(requestData);
+
+      const result = await apiDepositAutoCash(requestData);
+
+      if (result.Code === 200) {
+        window.alert(
+          this.$t('alert.submitDepositAutoCash', { amount: result.RetObj, currency: this.$t('ui.currency.thaiBaht') })
+        );
+        this.$router.push({ name: 'TransactionRecordDeposit' });
+      } else if (result.Code == 500) {
+        window.alert(result.ErrMsg);
+      }
+    },
     inputAmount() {
       if (this.amount < this.amountMin) {
         this.amount = this.amountMin;
@@ -41,5 +71,19 @@ export default {
       this.promotion = '-1';
     },
   },
-  mounted() {},
+  mounted() {
+    //* AutoCashCount > 0 才可以進入 AutoCash
+    if (this.depositInfo.AutoCashCount <= 0) {
+      return this.$router.push({ name: 'TransactionDepositBase' });
+    }
+
+    if (this.userBindBank <= 0) {
+      window.alert(`${this.$t('alert.goProfileSetting')}\n${this.$t('alert.NotSetBankDefault')}`);
+      return this.$router.push({ name: 'UserProfile' });
+    }
+
+    if (this.depositInfo.AutoCashData.Lst_MemberBank.length > 0) {
+      this.dispensingBank = this.depositInfo.AutoCashData.Lst_MemberBank[0];
+    }
+  },
 };
