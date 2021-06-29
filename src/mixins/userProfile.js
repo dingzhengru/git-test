@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import { apiGetRegisterAdvanceNew, apiGetBankInfoList } from '@/api/user';
+import { apiGetRegisterAdvanceNew, apiGetBankInfoList, apiBankDefaultChange } from '@/api/user';
 import { registerFieldList } from '@/utils/register';
 import mixinCheckField from '@/mixins/checkField';
 
@@ -59,7 +59,10 @@ export default {
     async getRegisterAdvanceNew() {
       const result = await apiGetRegisterAdvanceNew();
       this.bankList = result.RetObj.Add_BankList;
-      this.isAutoCashOpen = result.RetObj.AutoCashOpen;
+
+      if (this.$env === 'development') {
+        this.isAutoCashOpen = result.RetObj.AutoCashOpen;
+      }
 
       for (const registerField of result.RetObj.Register) {
         const field = this.fieldList.find(item => item.name == registerField.Lst_Field);
@@ -93,6 +96,14 @@ export default {
         window.alert(this.$t('alert.changeProfileSuccess'));
       } else if (result.Code === 500) {
         window.alert(result.ErrMsg);
+      }
+    },
+    async submitChangeBankDefault(bankNumber) {
+      const requestData = { Add_ab_bind_account: bankNumber };
+      const result = await apiBankDefaultChange(requestData);
+
+      if (result.Code === 200) {
+        this.bankDefault = bankNumber;
       }
     },
     resetForm() {

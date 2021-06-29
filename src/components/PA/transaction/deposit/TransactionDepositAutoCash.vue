@@ -43,7 +43,7 @@
           v-slot="{ errors }"
         >
           <div class="ui-field ui-field--inside deposit-auto-cash__field" :class="{ invalid: errors.length > 0 }">
-            <input type="number" step="100" v-model.number="amount" @change="inputAmount" />
+            <input type="number" step="1" v-model.number="amount" @change="inputAmount" />
             <span>{{ $t('ui.currency.thaiBaht') }}</span>
           </div>
         </ValidationProvider>
