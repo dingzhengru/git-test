@@ -17,7 +17,7 @@
 
         <label
           class="ui-field-box user-profile__radio"
-          @click="submitChangeBankDefault(1)"
+          @click.prevent="submitChangeBankDefault(1)"
           v-if="isAutoCashOpen && field.name === 'Add_BankId1' && field.isShow"
         >
           <span>{{ $t('ui.label.default') }}</span>
@@ -27,7 +27,7 @@
 
         <label
           class="ui-field-box user-profile__radio"
-          @click="submitChangeBankDefault(2)"
+          @click.prevent="submitChangeBankDefault(2)"
           v-if="isAutoCashOpen && field.name === 'Add_BankId2' && field.isShow"
         >
           <span>{{ $t('ui.label.default') }}</span>
@@ -37,7 +37,7 @@
 
         <label
           class="ui-field-box user-profile__radio"
-          @click="submitChangeBankDefault(3)"
+          @click.prevent="submitChangeBankDefault(3)"
           v-if="isAutoCashOpen && field.name === 'Add_BankId3' && field.isShow"
         >
           <span>{{ $t('ui.label.default') }}</span>

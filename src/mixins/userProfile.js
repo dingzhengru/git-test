@@ -102,6 +102,8 @@ export default {
       const requestData = { Add_ab_bind_account: bankNumber };
       const result = await apiBankDefaultChange(requestData);
 
+      console.log(requestData);
+
       if (result.Code === 200) {
         this.bankDefault = bankNumber;
       }
