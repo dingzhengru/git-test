@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import { apiGetRegisterAdvanceNew, apiGetBankInfoList, apiBankDefaultChange } from '@/api/user';
+import { apiGetRegisterAdvanceNew, apiGetBankInfoList } from '@/api/user';
 import { registerFieldList } from '@/utils/register';
 import mixinCheckField from '@/mixins/checkField';
 
@@ -99,10 +99,7 @@ export default {
       }
     },
     async submitChangeBankDefault(bankNumber) {
-      const requestData = { Add_ab_bind_account: bankNumber };
-      const result = await apiBankDefaultChange(requestData);
-
-      console.log(requestData);
+      const result = await this.$store.dispatch('user/changeBankDefault', bankNumber);
 
       if (result.Code === 200) {
         this.bankDefault = bankNumber;

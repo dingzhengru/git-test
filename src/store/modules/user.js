@@ -19,7 +19,7 @@ import {
   apiAdvancedRegisterNewApp,
 } from '@/api/user';
 import { apiTransferAllGamePointToMain, apiTransferPoint } from '@/api/transaction-transfer';
-import { apiGetLotteryCount } from '@/api/user';
+import { apiGetLotteryCount, apiBankDefaultChange } from '@/api/user';
 
 const state = {
   info: {},
@@ -67,9 +67,21 @@ const mutations = {
   setIsEnableRememberOption(state, isRemember) {
     state.info.Lst_Enable_Remember_Option = isRemember;
   },
+  setBankDefault(state, bankNumber) {
+    state.info.Lst_BindAccount = bankNumber;
+  },
 };
 
 const actions = {
+  async changeBankDefault({ commit }, bankNumber) {
+    const requestData = { Add_ab_bind_account: bankNumber };
+    const result = await apiBankDefaultChange(requestData);
+
+    if (result.Code === 200) {
+      commit('setBankDefault', bankNumber);
+    }
+    return result;
+  },
   async getTokenAndPublicKey({ commit }) {
     const result = await apiGetTokenAndPublicKey();
     if (result.Code === 200) {
