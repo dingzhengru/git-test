@@ -1,10 +1,15 @@
 import { mapGetters } from 'vuex';
-import { apiGetPromotionDetail, apiGetPromotionDetailAPP } from '@/api/promotion';
+import {
+  apiGetPromotionDetail,
+  apiPostPromotionDetail,
+  apiGetPromotionDetailAPP,
+  apiPostPromotionDetailAPP,
+} from '@/api/promotion';
 
 export default {
   name: 'MixinPromotionDetail',
   computed: {
-    ...mapGetters(['lang', 'userIsLoggedIn', 'siteIsLandscape']),
+    ...mapGetters(['lang', 'userIsLoggedIn', 'siteIsLandscape', 'siteIsPreview']),
     promotionDetailListEnabled() {
       if (!this.promotionDetail.ReturnList) {
         return [];
@@ -31,14 +36,23 @@ export default {
   },
   methods: {
     async getPromotionDetail() {
-      const requestData = { PromotionId: Number(this.$route.params.id), Lang: this.lang };
+      const requestData = { PromotionId: Number(this.$route.params.id) };
 
       let result = {};
 
-      if (this.siteIsLandscape) {
-        result = await apiGetPromotionDetailAPP(requestData);
+      if (this.userIsLoggedIn || this.siteIsPreview) {
+        if (this.siteIsLandscape) {
+          result = await apiPostPromotionDetailAPP(requestData);
+        } else {
+          result = await apiPostPromotionDetail(requestData);
+        }
       } else {
-        result = await apiGetPromotionDetail(requestData);
+        requestData.Lang = this.lang;
+        if (this.siteIsLandscape) {
+          result = await apiGetPromotionDetailAPP(requestData);
+        } else {
+          result = await apiGetPromotionDetail(requestData);
+        }
       }
 
       if (result.Code == 200) {
