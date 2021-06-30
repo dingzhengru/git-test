@@ -150,7 +150,7 @@ const actions = {
   async changeUserProfile({ commit }, data) {
     //* 修改會員資料
     let result = {};
-    if (store.siteIsLandscape) {
+    if (store.getters.siteIsLandscape) {
       result = await apiAdvancedRegisterNewApp(data);
     } else {
       result = await apiAdvancedRegisterNew(data);
