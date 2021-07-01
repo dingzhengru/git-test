@@ -24,7 +24,7 @@ export default {
     },
     promotionDetailDateContent() {
       if (this.promotionDetail.IsPermanent || this.promotionDetail.EndTime === null) {
-        return `${this.promotionDetailStartTimeFormatted} ~`;
+        return `${this.promotionDetailStartTimeFormatted} ~ (${this.$t('ui.label.thailandTime')})`;
       }
       return `${this.promotionDetailStartTimeFormatted} ~ ${this.promotionDetailEndTimeFormatted} (${this.$t(
         'ui.label.thailandTime'
