@@ -165,7 +165,7 @@
         <ul>
           <li>{{ $t('transaction.deposit.hint.receipt01') }}</li>
           <li>{{ $t('transaction.deposit.hint.receipt02') }}</li>
-          <li>{{ $t('transaction.deposit.hint.receipt03') }}</li>
+          <!-- <li>{{ $t('transaction.deposit.hint.receipt03') }}</li> -->
           <!-- <li>{{ $t('transaction.deposit.hint.receipt04') }}</li> -->
         </ul>
       </div>
