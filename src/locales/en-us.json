@@ -692,12 +692,12 @@
       },
       "hint": {
         "amount": "Baht Maximum {amountLimitMax} , Minimum {amountLimitMin} Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit. ",
-        "receipt": "The Format of Image Allow Only JPG / PNG <br /> File size cannot exceed 2MB",
+        "receipt": "The Format of Image Allow Only JPG / PNG <br /> File size cannot exceed 10MB",
         "promotion": "Note: Non-selection regarded as abdication.",
         "amount01": "<span class='ui-notice--height-light'>{currency}</span> Maximum {amountLimitMax} , Minimum {amountLimitMin}",
         "amount02": "Note: Please enter a whole number, when you are making a deposit Ex.1,001.00 in order to avoid an unsuccessful deposit.",
         "receipt01": "The Format of Image Allow Only JPG / PNG",
-        "receipt02": "File size cannot exceed 2MB",
+        "receipt02": "File size cannot exceed 10MB",
         "receipt03": "Maximum filename length：50",
         "receipt04": "Do not enter this symbol： ."
       },
