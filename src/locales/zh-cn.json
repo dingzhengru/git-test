@@ -28,7 +28,8 @@
       "langSelect": "语系选择",
       "default": "默认",
       "hotGame": "热门游戏",
-      "goSetDefaultBank": "前往设定预设银行"
+      "goSetDefaultBank": "前往设定预设银行",
+      "thailandTime": "泰国时间"
     },
     "button": {
       "save": "保存",

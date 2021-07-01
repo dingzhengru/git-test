@@ -26,7 +26,9 @@ export default {
       if (this.promotionDetail.IsPermanent || this.promotionDetail.EndTime === null) {
         return `${this.promotionDetailStartTimeFormatted} ~`;
       }
-      return `${this.promotionDetailStartTimeFormatted} ~ ${this.promotionDetailEndTimeFormatted}`;
+      return `${this.promotionDetailStartTimeFormatted} ~ ${this.promotionDetailEndTimeFormatted} (${this.$t(
+        'ui.label.thailandTime'
+      )})`;
     },
   },
   data() {
