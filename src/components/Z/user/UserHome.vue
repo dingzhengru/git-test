@@ -47,7 +47,7 @@ export default {
     // import(`@/styles/${this.siteFullCss}/user.scss`);
     this.importStyleByFilename('user');
 
-    if (this.$env === 'development') {
+    if (this.$env === 'development' && this.$isLocalhost) {
       this.navList.push({
         route: 'UserPromotionMGM',
         text: 'user.nav.promotionMGM',
