@@ -144,6 +144,11 @@ const routes = [
         component: () => import('@/views/user/UserMailSend'),
         meta: { 'header-back-icon': true },
       },
+      {
+        path: 'promotion-mgm',
+        name: 'UserPromotionMGM',
+        component: () => import('@/views/user/UserPromotionMGM'),
+      },
     ],
   },
   {

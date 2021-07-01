@@ -3,14 +3,14 @@
     <div
       class="footer-nav__item"
       :class="[
-        { active: $route.name == item.link || item.otherActiveRoute.includes($route.name) },
-        `footer-nav__item--${item.name}`,
+        item.class ? item.class : '',
+        { active: $route.name == item.route || item.otherActiveRoute.includes($route.name) },
       ]"
-      :id="$idMapper.footer[item.name]"
+      :id="item.id ? $getObjectValueByDotString($idMapper, item.id) : ''"
       v-for="item in routerList"
-      :key="item.name"
+      :key="item.route"
     >
-      <router-link :to="{ name: item.link }" class="footer-nav__item__link">
+      <router-link :to="{ name: item.route }" class="footer-nav__item__link">
         {{ $te(`${item.text}`) ? $t(`${item.text}`) : item.text }}
       </router-link>
     </div>

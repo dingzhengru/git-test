@@ -136,7 +136,7 @@
       <ValidationProvider
         class="deposit-base__field deposit-base__field--receipt"
         tag="div"
-        :rules="{ image: true, size: 2048 }"
+        :rules="{ image: true, size: 10240 }"
         v-slot="{ validate }"
         v-if="isShowReceipt"
       >
@@ -165,8 +165,8 @@
         <ul>
           <li>{{ $t('transaction.deposit.hint.receipt01') }}</li>
           <li>{{ $t('transaction.deposit.hint.receipt02') }}</li>
-          <li>{{ $t('transaction.deposit.hint.receipt03') }}</li>
-          <li>{{ $t('transaction.deposit.hint.receipt04') }}</li>
+          <!-- <li>{{ $t('transaction.deposit.hint.receipt03') }}</li> -->
+          <!-- <li>{{ $t('transaction.deposit.hint.receipt04') }}</li> -->
         </ul>
       </div>
 

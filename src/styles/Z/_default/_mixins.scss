@@ -318,6 +318,7 @@
 
     &--left {
       left: 0;
+      background: $nav-tab-arrow-bg-left;
       &--home {
         background: $nav-tab-arrow-bg-left-home;
       }
@@ -333,6 +334,7 @@
     }
     &--right {
       right: 0;
+      background: $nav-tab-arrow-bg-right;
       &--home {
         background: $nav-tab-arrow-bg-right-home;
       }

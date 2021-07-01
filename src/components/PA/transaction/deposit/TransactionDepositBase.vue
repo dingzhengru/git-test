@@ -130,7 +130,7 @@
         <legend>{{ $t('transaction.deposit.field.receipt') }}</legend>
         <ValidationProvider
           tag="div"
-          :rules="{ image: true, size: 2048 }"
+          :rules="{ image: true, size: 10240 }"
           v-slot="{ validate }"
           @click.native="uploadReceipt"
           v-if="isShowReceipt"

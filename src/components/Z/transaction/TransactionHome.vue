@@ -22,10 +22,8 @@ export default {
     return {
       navList: [
         {
-          name: 'deposit',
-          link: 'TransactionDepositBase',
+          route: 'TransactionDepositBase',
           text: 'transaction.nav.deposit',
-          class: '',
           id: 'transaction.nav.deposit',
           otherActiveRoute: [
             'TransactionDepositThirdParty',
@@ -34,26 +32,20 @@ export default {
           ],
         },
         {
-          name: 'withdrawal',
-          link: 'TransactionWithdrawal',
+          route: 'TransactionWithdrawal',
           text: 'transaction.nav.withdrawal',
-          class: 'ui-li-tabs-withdrawal',
           id: 'transaction.nav.withdrawal',
           otherActiveRoute: [],
         },
         {
-          name: 'transfer',
-          link: 'TransactionTransfer',
+          route: 'TransactionTransfer',
           text: 'transaction.nav.transfer',
-          class: '',
           id: 'transaction.nav.transfer',
           otherActiveRoute: [],
         },
         {
-          name: 'record',
-          link: 'TransactionRecordDeposit',
+          route: 'TransactionRecordDeposit',
           text: 'transaction.nav.record',
-          class: '',
           id: 'transaction.nav.record',
           otherActiveRoute: [
             'TransactionRecordHome',
@@ -79,7 +71,7 @@ export default {
     this.$store.commit('setPageTitle', 'transaction.title');
 
     if (this.siteIsWalletTypeNoTransfer) {
-      this.navList = this.navList.filter(item => item.name !== 'transfer');
+      this.navList = this.navList.filter(item => item.route !== 'TransactionTransfer');
     }
   },
 };
