@@ -71,6 +71,7 @@
     "userMail": "components/PA/user/UserMail",
     "userMailDetail": "components/Z/user/UserMailDetail",
     "userMailSend": "components/PA/user/UserMailSend",
+    "userPromotionMGM": "components/PA/user/UserPromotionMGM",
     "transactionHome": "components/PA/transaction/TransactionHome",
     "transactionDepositHome": "components/PA/transaction/deposit/TransactionDepositHome",
     "transactionDepositBase": "components/PA/transaction/deposit/TransactionDepositBase",

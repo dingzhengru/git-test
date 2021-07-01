@@ -563,7 +563,8 @@
       "changePassword": "修改密码",
       "changePasswordWithdrawal": "修改取款密码",
       "setPasswordWithdrawal": "设置取款密码",
-      "mail": "站内信"
+      "mail": "站内信",
+      "promotionMGM": "老带新活动"
     },
     "profile": {
       "field": {

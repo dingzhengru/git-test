@@ -565,7 +565,8 @@
       "changePassword": "Change Password",
       "changePasswordWithdrawal": "Change Withdrawal Password",
       "setPasswordWithdrawal": "Set Withdrawal Password",
-      "mail": "Chats"
+      "mail": "Chats",
+      "promotionMGM": "老带新活动"
     },
     "profile": {
       "field": {

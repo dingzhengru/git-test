@@ -565,7 +565,8 @@
       "changePassword": "แก้ไขรหัสผ่าน",
       "changePasswordWithdrawal": "แก้ไขรหัสถอนเงิน",
       "setPasswordWithdrawal": "ตั้งค่ารหัสถอนเงิน",
-      "mail": "แชท"
+      "mail": "แชท",
+      "promotionMGM": "老带新活动"
     },
     "profile": {
       "field": {
