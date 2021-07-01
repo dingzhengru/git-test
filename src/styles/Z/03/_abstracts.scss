@@ -68,6 +68,12 @@ $nav-tab-text-color-active: #c8aa73;
 $nav-tab-border-bottom: 5px solid #8b8b8b;
 $nav-tab-border-bottom-active: 5px solid #c8aa73;
 $nav-tab-arrow-width: 50px;
+
+$nav-tab-arrow-bg-left: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
+  linear-gradient(to right, rgb(15, 17, 16, 1) 0%, rgb(15, 17, 16, 1) 50%, rgba(15, 17, 16, 0));
+$nav-tab-arrow-bg-right: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
+  linear-gradient(to left, rgb(15, 17, 16, 1) 0%, rgb(15, 17, 16, 1) 50%, rgba(15, 17, 16, 0));
+
 $nav-tab-arrow-bg-left-home: assetPath('ui/ui-arrow-maskLeft.png') left no-repeat,
   linear-gradient(to right, rgb(15, 17, 16, 1) 0%, rgb(15, 17, 16, 1) 50%, rgba(15, 17, 16, 0));
 $nav-tab-arrow-bg-right-home: assetPath('ui/ui-arrow-maskRight.png') right no-repeat,
