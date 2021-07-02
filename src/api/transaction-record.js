@@ -43,6 +43,12 @@ export async function apiGetRecordWithdrawalRestriction(data) {
   return result.data;
 }
 
+//* 2.87  存款紀錄圖片
+export async function apiGetDepositImageUrl(data) {
+  const result = await axios.post(API_URL + '/Member/MDepositImageUrl', data);
+  return result.data;
+}
+
 /**
  ** Detail
  */

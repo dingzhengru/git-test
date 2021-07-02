@@ -85,6 +85,7 @@ export const API_AUTH_LIST = [
   'Member/MBankInfoChange',
   'Member/AdvancedRegisterNewApp',
   'Member/MBankDefaultChange',
+  'Member/MDepositImageUrl',
   'Siteinfo/MGetAllGamePoint',
   'Siteinfo/MGetPITTLBet',
   'Siteinfo/MGetLotteryCount',
