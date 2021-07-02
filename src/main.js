@@ -87,8 +87,8 @@ store.commit('setLang', lang);
 //* 取得語系列表
 store.dispatch('getLangList');
 
-//* Version (目前設置於 public/version)
 
+//* Version (目前設置於 public/version)
 (async () => {
   if (!window.caches) {
     return;
