@@ -384,13 +384,16 @@
 
     margin-bottom: 15px;
 
+    overflow-x: auto;
+
     &__item {
       width: 20%;
       background: #999999;
-      padding: 5px;
+      padding: 5px 10px;
       text-align: center;
       font-size: 1.5rem;
       margin-right: 15px;
+      word-break: keep-all;
 
       &.active {
         background: #cc9900;
