@@ -27,11 +27,11 @@ export const API_URL = '/rch3api0member';
 //* 重新發送次數限制
 export const API_RETRY_COUNT_LIMIT = 1;
 
-//* 預設的 timeout (後端指定: 30秒)
-export const API_REQUEST_TIMEOUT = 30000;
+//* 預設的 timeout (後端指定: 60秒)
+export const API_REQUEST_TIMEOUT = 60000;
 
-//* 轉帳的 timeout (後端指定: 30秒)
-export const API_TIMEOUT_TRANSFER = 30000;
+//* 轉帳的 timeout (後端指定: 60秒)
+export const API_TIMEOUT_TRANSFER = 60000;
 
 //* 需加密的 API
 export const API_CRYPTO_LIST = [
@@ -115,6 +115,7 @@ export const API_AUTH_LIST = [
   'PointRecord/MBetHistory',
   'PointRecord/MBetHistory_Day',
   'PointRecord/MBetHistory_Week',
+  'PointRecord/MDepositImageUrl',
   'Game/MCheckIsOpen',
   'Game/MGameRedirectUrl',
   'Game/MGetJackpotTotal',

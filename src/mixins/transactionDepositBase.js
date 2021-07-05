@@ -109,7 +109,7 @@ export default {
       let requestData = {
         rsaData,
         noRsaData: {
-          upfile_name: this.receipt.name,
+          // upfile_name: this.receipt.name,
           upfile: this.receipt.image.split(',')[1] || '',
         },
       };

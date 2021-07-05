@@ -79,7 +79,8 @@ export default {
 
     if (this.userBindBank <= 0) {
       window.alert(`${this.$t('alert.goProfileSetting')}\n${this.$t('alert.NotSetBankDefault')}`);
-      return this.$router.push({ name: 'UserProfile' });
+      return this.$router.push({ name: 'TransactionDepositBase' });
+      // return this.$router.push({ name: 'UserProfile' });
     }
 
     if (this.depositInfo.AutoCashData.Lst_MemberBank.length > 0) {

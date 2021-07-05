@@ -29,8 +29,18 @@ export async function apiGetPromotionDetail(params) {
   return result.data;
 }
 
+export async function apiPostPromotionDetail(data) {
+  const result = await axios.post(API_URL + '/Promotion/PromotionDetail', data);
+  return result.data;
+}
+
 //* 橫版
 export async function apiGetPromotionDetailAPP(params) {
   const result = await axios.get(API_URL + '/Promotion/PromotionDetailAPP', { params });
+  return result.data;
+}
+
+export async function apiPostPromotionDetailAPP(data) {
+  const result = await axios.post(API_URL + '/Promotion/PromotionDetailAPP', data);
   return result.data;
 }

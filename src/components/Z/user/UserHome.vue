@@ -21,31 +21,23 @@ export default {
     return {
       navList: [
         {
-          name: 'profile',
+          route: 'UserProfile',
           text: 'user.nav.profile',
-          link: 'UserProfile',
-          class: '',
           otherActiveRoute: [],
         },
         {
-          name: 'changePassword',
           text: 'user.nav.changePassword',
-          link: 'UserChangePassword',
-          class: '',
+          route: 'UserChangePassword',
           otherActiveRoute: [],
         },
         {
-          name: 'changePasswordWithdrawal',
+          route: 'UserChangePasswordWithdrawal',
           text: 'user.nav.changePasswordWithdrawal',
-          link: 'UserChangePasswordWithdrawal',
-          class: '',
           otherActiveRoute: [],
         },
         {
-          name: 'inbox',
+          route: 'UserMail',
           text: 'user.nav.mail',
-          link: 'UserMail',
-          class: '',
           otherActiveRoute: ['UserMailDetail', 'UserMailSend'],
         },
       ],
@@ -54,6 +46,15 @@ export default {
   mounted() {
     // import(`@/styles/${this.siteFullCss}/user.scss`);
     this.importStyleByFilename('user');
+
+    if (this.$env === 'development' && this.$isLocalhost) {
+      this.navList.push({
+        route: 'UserPromotionMGM',
+        text: 'user.nav.promotionMGM',
+        class: '',
+        otherActiveRoute: [],
+      });
+    }
   },
 };
 </script>

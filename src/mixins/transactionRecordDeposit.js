@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import { apiGetRecordDeposit } from '@/api/transaction-record';
+import { apiGetRecordDeposit, apiGetDepositImageUrl } from '@/api/transaction-record';
 
 export default {
   name: 'MixinTransactionRecordDeposit',
@@ -20,6 +20,19 @@ export default {
         return item;
       });
     },
+    async getDepositImageUrl(record) {
+      if (!record.Lst_ImageUrl) {
+        return;
+      }
+
+      const requestData = { ID: record.Lst_ImageUrl };
+      const result = await apiGetDepositImageUrl(requestData);
+      if (result.Code === 200) {
+        this.receiptImageUrl = result.RetObj;
+      } else {
+        window.alert('No Image');
+      }
+    },
     goRecordDetail(record) {
       if (record.Lst_Status == 2) {
         const query = { TransID: record.Lst_TransID };
@@ -30,7 +43,7 @@ export default {
       record.isShowDetail = !record.isShowDetail;
     },
     openReceiptImage(record) {
-      this.receiptImageUrl = record.Lst_ImageUrl;
+      this.getDepositImageUrl(record);
     },
     closeReceiptImage() {
       this.receiptImageUrl = '';

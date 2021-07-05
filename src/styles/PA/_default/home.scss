@@ -169,13 +169,15 @@
 
     img {
       width: 100%;
-      flex-basis: 80%;
-      max-height: 80%;
+      flex-basis: 75%;
+      max-height: 75%;
       border-radius: 5px;
     }
 
-    > div {
+    &__text {
+      width: 100%;
       flex-grow: 1;
+      font-size: 0.8rem;
     }
   }
 
