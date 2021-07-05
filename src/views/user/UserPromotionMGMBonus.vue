@@ -9,7 +9,7 @@ export default {
   computed: {
     ...mapGetters(['siteSetting']),
     settingComponent() {
-      return () => import(`@/${this.siteSetting.views.UserPromotionMGMBonus}`);
+      return () => import(`@/${this.siteSetting.views.userPromotionMGMBonus}`);
     },
   },
 };
