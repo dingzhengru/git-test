@@ -101,3 +101,15 @@ $user-mail-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 .user-mail-send {
   @include user-mail-send;
 }
+
+.user-promotion-gmg {
+  @include user-promotion-gmg;
+}
+
+.user-promotion-gmg-detail {
+  @include user-promotion-gmg-detail;
+}
+
+.user-promotion-gmg-bonus {
+  @include user-promotion-gmg-bonus;
+}

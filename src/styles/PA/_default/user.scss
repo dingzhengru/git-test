@@ -125,9 +125,6 @@
       input {
         width: 75px;
       }
-
-      .ui-question {
-      }
     }
   }
 
@@ -561,4 +558,13 @@
       background: $user-mail-send-btn-bg-reset;
     }
   }
+}
+
+@mixin user-promotion-gmg {
+}
+
+@mixin user-promotion-gmg-detail {
+}
+
+@mixin user-promotion-gmg-bonus {
 }

@@ -1,10 +1,14 @@
 <template>
-  <div class="user-promotion-gmg"></div>
+  <div class="user-promotion-gmg">
+    <router-view />
+  </div>
 </template>
 
 <script>
+import mixinUserPromotionMGM from '@/mixins/userPromotionMGM';
 export default {
   name: 'UserPromotionMGM',
+  mixins: [mixinUserPromotionMGM],
 };
 </script>
 

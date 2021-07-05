@@ -9,7 +9,7 @@ $user-profile-btn-bg-submit: $btn-bg-rectangle;
 $user-profile-btn-color-submit: white;
 $user-profile-btn-shadow-submit: none;
 
-$user-profile-btn-bg-reset:  $btn-bg-rectangle-light;
+$user-profile-btn-bg-reset: $btn-bg-rectangle-light;
 $user-profile-btn-color-reset: black;
 $user-profile-btn-shadow-reset: 0 2px 2px 0px rgba(0, 0, 0, 0.8);
 
@@ -71,4 +71,16 @@ $user-mail-send-btn-bg-reset: $btn-bg-rectangle-light;
 
 .user-mail-send {
   @include user-mail-send;
+}
+
+.user-promotion-gmg {
+  @include user-promotion-gmg;
+}
+
+.user-promotion-gmg-detail {
+  @include user-promotion-gmg-detail;
+}
+
+.user-promotion-gmg-bonus {
+  @include user-promotion-gmg-bonus;
 }

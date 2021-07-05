@@ -146,8 +146,24 @@ const routes = [
       },
       {
         path: 'promotion-mgm',
-        name: 'UserPromotionMGM',
         component: () => import('@/views/user/UserPromotionMGM'),
+        children: [
+          {
+            path: '',
+            name: 'UserPromotionMGM',
+            redirect: { name: 'UserPromotionMGMDetail' },
+          },
+          {
+            path: 'detail',
+            name: 'UserPromotionMGMDetail',
+            component: () => import('@/views/user/UserPromotionMGMDetail'),
+          },
+          {
+            path: 'bonus',
+            name: 'UserPromotionMGMBonus',
+            component: () => import('@/views/user/UserPromotionMGMBonus'),
+          },
+        ],
       },
     ],
   },
