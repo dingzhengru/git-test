@@ -49,10 +49,10 @@ export default {
 
     if (this.$env === 'development' && this.$isLocalhost) {
       this.navList.push({
-        route: 'UserPromotionMGM',
+        route: 'UserPromotionMGMDetail',
         text: 'user.nav.promotionMGM',
         class: '',
-        otherActiveRoute: [],
+        otherActiveRoute: ['UserPromotionMGMBonus'],
       });
     }
   },

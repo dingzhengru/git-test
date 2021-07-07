@@ -636,6 +636,12 @@
       "placeholder": {
         "categoryList": "Please select the category of mail."
       }
+    },
+    "mgm": {
+      "nav": {
+        "detail": "活动内容",
+        "bonus": "红利领取"
+      }
     }
   },
   "transaction": {

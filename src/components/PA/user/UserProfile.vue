@@ -430,5 +430,14 @@ export default {
       }
     },
   },
+  mounted() {
+    if (this.$env === 'development') {
+      this.tabList.push({
+        route: 'UserPromotionMGMDetail',
+        text: 'user.nav.promotionMGM',
+        otherActiveRoute: [],
+      });
+    }
+  },
 };
 </script>
