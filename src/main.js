@@ -87,7 +87,6 @@ store.commit('setLang', lang);
 //* 取得語系列表
 store.dispatch('getLangList');
 
-
 //* Version (目前設置於 public/version)
 (async () => {
   if (!window.caches) {
@@ -236,9 +235,9 @@ if (isLoggedIn) {
 
   //* 手動設置 style && setting && landscape
   if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
-    const siteClass = 'Z';
+    const siteClass = 'PA';
     const siteType = '01';
-    const isLandscape = false;
+    const isLandscape = true;
     console.log('手動設置', siteClass, siteType, isLandscape);
     //* style
     store.commit('site/setInfoStyle', { siteClass, siteType });
