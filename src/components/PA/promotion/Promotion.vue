@@ -8,7 +8,7 @@
       >
         <transition-group class="promotion__tabs__group" tag="div" name="panel-tabs">
           <div
-            class="ui-panel-tab__tabs__item panel-tabs-item"
+            class="ui-panel-tab__tabs__item panel-tabs-item promotion__tabs__item"
             :class="{ active: item.Lst_PromotionID == $route.params.id }"
             v-for="item in promotionListByCategory"
             :key="item.Lst_PromotionID"
