@@ -24,10 +24,8 @@
           v-for="item in list"
           :key="item.Lst_Product_Proxy_Tag"
           @click="clickProductItem(item)"
-          v-lazy-container="{ selector: 'img' }"
         >
-          <!-- <div class="home-product-block__item__text">{{ item.Lst_Name }}</div> -->
-          <img :data-src="imgProduct(item)" :data-error="imgProductDefault(item)" />
+          <img :src="imgProduct(item)" @error="setErrorImage($event, imgProductDefault(item))" />
 
           <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
         </div>
@@ -39,9 +37,9 @@
           v-for="item in list"
           :key="item.Lst_GameID"
           @click="openGame(item)"
-          v-lazy-container="{ selector: 'img' }"
         >
-          <img :data-src="item.imagePath" :data-error="imgProductDefaultByImageUrl(item.imagePath)" />
+          <img :src="item.imagePath" @error="setErrorImage($event, imgProductDefaultByImageUrl(item.imagePath))" />
+
           <div class="home-product-block__item__text home-product-block__item-game__text">{{ item.Lst_GameName }}</div>
           <div
             class="home-product-block__item__overlay--maintain"
@@ -143,6 +141,10 @@ export default {
       }
 
       this.handleProductLink(product);
+    },
+
+    setErrorImage(event, img) {
+      event.target.src = img;
     },
   },
   watch: {
