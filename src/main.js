@@ -67,11 +67,11 @@ Vue.prototype.$isStandaloneMode = isStandaloneMode;
 
 //* Vue Global Component
 import VueScrollTo from 'vue-scrollto'; //* 此 Library 只能註冊全域
-import VueLazyload from 'vue-lazyload';
-import loadingImage from '@/assets/common/ui/loading-2.gif';
+// import VueLazyload from 'vue-lazyload';
+// import loadingImage from '@/assets/common/ui/loading-2.gif';
 
 Vue.use(VueScrollTo);
-Vue.use(VueLazyload, { loading: loadingImage, attempt: 1 });
+// Vue.use(VueLazyload, { loading: loadingImage, attempt: 1, throttleWait: 0 });
 
 Vue.config.productionTip = false;
 
