@@ -7,7 +7,8 @@
       :key="item.Lst_Product_Proxy_Tag"
       @click="clickProductItem(item)"
     >
-      <img :src="imgProduct(item)" @error="setErrorImage($event, imgProductDefault(item))" />
+      <!-- <img :src="imgProduct(item)" @error="setErrorImage($event, imgProductDefault(item))" /> -->
+      <img :src="siteProductImage(item)" alt="" />
 
       <div class="home-product-block__item__overlay--maintain" v-show="item.Lst_Site_Product_Status != 0"></div>
     </div>
