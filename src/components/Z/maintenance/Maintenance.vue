@@ -72,9 +72,9 @@ export default {
   },
   mounted() {
     //* 非維護時，轉去首頁
-    // if (this.siteIsActive) {
-    //   this.$router.replace({ name: 'Home' });
-    // }
+    if (this.siteIsActive) {
+      this.$router.replace({ name: 'Home' });
+    }
 
     // import(`@/styles/${this.siteFullCss}/maintenance.scss`);
     this.importStyleByFilename('maintenance');
