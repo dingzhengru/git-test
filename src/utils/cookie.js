@@ -4,11 +4,8 @@
 import Cookies from 'js-cookie';
 // import settings from '@/settings';
 
-// const tokenKey = 'token';
-// const tokenConfig = { sameSite: 'lax' };
-
-// const publicKeyKey = 'publicKey';
-// const publicKeyConfig = { sameSite: 'lax' };
+const tokenKey = 'token';
+const publicKeyKey = 'publicKey';
 
 const isLoggedInKey = 'isLoggedIn';
 const isLoggedInConfig = { sameSite: 'lax' };
@@ -33,9 +30,9 @@ const notShowMessageDateConfig = { sameSite: 'lax' };
 //   return Cookies.set(tokenKey, token, tokenConfig);
 // }
 
-// export function cookieRemoveToken() {
-//   return Cookies.remove(tokenKey);
-// }
+export function cookieRemoveToken() {
+  return Cookies.remove(tokenKey);
+}
 
 // export function cookieGetPublicKey() {
 //   return Cookies.get(publicKeyKey);
@@ -45,9 +42,9 @@ const notShowMessageDateConfig = { sameSite: 'lax' };
 //   return Cookies.set(publicKeyKey, publicKey, publicKeyConfig);
 // }
 
-// export function cookieRemovePublicKey() {
-//   return Cookies.remove(publicKeyKey);
-// }
+export function cookieRemovePublicKey() {
+  return Cookies.remove(publicKeyKey);
+}
 
 export function cookieGetIsLoggedIn() {
   return Cookies.get(isLoggedInKey) === 'true';

@@ -1,3 +1,9 @@
+//* 為了刪除已有 Cookie 的
+import { cookieRemoveToken, cookieRemovePublicKey } from '@/utils/cookie';
+
+cookieRemoveToken();
+cookieRemovePublicKey();
+
 const tokenKey = 'token';
 const publicKeyKey = 'publicKey';
 
