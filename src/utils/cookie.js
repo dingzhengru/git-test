@@ -4,20 +4,17 @@
 import Cookies from 'js-cookie';
 // import settings from '@/settings';
 
-const tokenKey = 'token';
-const tokenConfig = { sameSite: 'lax' };
+// const tokenKey = 'token';
+// const tokenConfig = { sameSite: 'lax' };
 
-const publicKeyKey = 'publicKey';
-const publicKeyConfig = { sameSite: 'lax' };
+// const publicKeyKey = 'publicKey';
+// const publicKeyConfig = { sameSite: 'lax' };
 
 const isLoggedInKey = 'isLoggedIn';
 const isLoggedInConfig = { sameSite: 'lax' };
 
 const langKey = 'lang';
-const langConfig = {
-  sameSite: 'lax',
-  expires: 365,
-};
+const langConfig = { sameSite: 'lax' };
 
 const versionKey = 'version';
 const versionConfig = { sameSite: 'lax' };
@@ -25,29 +22,32 @@ const versionConfig = { sameSite: 'lax' };
 const isPreviewKey = 'isPreview';
 const isPreviewConfig = { sameSite: 'lax' };
 
-export function cookieGetToken() {
-  return Cookies.get(tokenKey);
-}
+const notShowMessageDateKey = 'notShowMessageDate';
+const notShowMessageDateConfig = { sameSite: 'lax' };
 
-export function cookieSetToken(token) {
-  return Cookies.set(tokenKey, token, tokenConfig);
-}
+// export function cookieGetToken() {
+//   return Cookies.get(tokenKey);
+// }
 
-export function cookieRemoveToken() {
-  return Cookies.remove(tokenKey);
-}
+// export function cookieSetToken(token) {
+//   return Cookies.set(tokenKey, token, tokenConfig);
+// }
 
-export function cookieGetPublicKey() {
-  return Cookies.get(publicKeyKey);
-}
+// export function cookieRemoveToken() {
+//   return Cookies.remove(tokenKey);
+// }
 
-export function cookieSetPublicKey(publicKey) {
-  return Cookies.set(publicKeyKey, publicKey, publicKeyConfig);
-}
+// export function cookieGetPublicKey() {
+//   return Cookies.get(publicKeyKey);
+// }
 
-export function cookieRemovePublicKey() {
-  return Cookies.remove(publicKeyKey);
-}
+// export function cookieSetPublicKey(publicKey) {
+//   return Cookies.set(publicKeyKey, publicKey, publicKeyConfig);
+// }
+
+// export function cookieRemovePublicKey() {
+//   return Cookies.remove(publicKeyKey);
+// }
 
 export function cookieGetIsLoggedIn() {
   return Cookies.get(isLoggedInKey) === 'true';
@@ -95,4 +95,16 @@ export function cookieSetIsPreview(isPreview) {
 
 export function cookieRemoveIsPreview() {
   return Cookies.remove(isPreviewKey);
+}
+
+export function cookieGetNotShowMessageDate() {
+  return Cookies.get(notShowMessageDateKey);
+}
+
+export function cookieSetNotShowMessageDate(date) {
+  return Cookies.set(notShowMessageDateKey, date, notShowMessageDateConfig);
+}
+
+export function cookieRemoveNotShowMessageDate() {
+  return Cookies.remove(notShowMessageDateKey);
 }

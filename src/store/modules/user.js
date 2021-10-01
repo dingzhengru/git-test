@@ -1,13 +1,13 @@
 import router from '@/router';
 import store from '@/store';
 import i18n from '@/i18n-lazy';
+import { cookieSetIsLoggedIn } from '@/utils/cookie';
 import {
-  cookieSetIsLoggedIn,
-  cookieSetToken,
-  cookieSetPublicKey,
-  cookieRemoveToken,
-  cookieRemovePublicKey,
-} from '@/utils/cookie';
+  localStorageSetToken,
+  localStorageRemoveToken,
+  localStorageSetPublicKey,
+  localStorageRemovePublicKey,
+} from '@/utils/localStorage';
 import {
   apiRegister,
   apiLogin,
@@ -50,19 +50,19 @@ const mutations = {
   },
   setToken(state, token) {
     state.token = token;
-    cookieSetToken(token);
+    localStorageSetToken(token);
   },
   setPublicKey(state, publicKey) {
     state.publicKey = publicKey;
-    cookieSetPublicKey(publicKey);
+    localStorageSetPublicKey(publicKey);
   },
   removeToken(state) {
     state.token = null;
-    cookieRemoveToken();
+    localStorageRemoveToken();
   },
   removePublicKey(state) {
     state.publicKey = null;
-    cookieRemovePublicKey();
+    localStorageRemovePublicKey();
   },
   setIsEnableRememberOption(state, isRemember) {
     state.info.Lst_Enable_Remember_Option = isRemember;

@@ -14,11 +14,10 @@ import {
   cookieGetVersion,
   cookieSetVersion,
   cookieGetIsLoggedIn,
-  cookieGetToken,
-  cookieGetPublicKey,
   cookieGetLang,
   cookieGetIsPreview,
 } from '@/utils/cookie';
+import { localStorageGetToken, localStorageGetPublicKey } from '@/utils/localStorage';
 
 console.log('log: update config');
 console.log(process.env.NODE_ENV);
@@ -130,9 +129,9 @@ if (isLoggedIn) {
  ** 3. 已登入: Cookie 沒有 => 不管哪個頁面，直接取得
  */
 
-if (cookieGetToken() && cookieGetPublicKey()) {
-  store.commit('user/setToken', cookieGetToken());
-  store.commit('user/setPublicKey', cookieGetPublicKey());
+if (localStorageGetToken() && localStorageGetPublicKey()) {
+  store.commit('user/setToken', localStorageGetToken());
+  store.commit('user/setPublicKey', localStorageGetPublicKey());
 } else if (isLoggedIn) {
   store.dispatch('user/getTokenAndPublicKey');
 }
