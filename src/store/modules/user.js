@@ -177,6 +177,7 @@ const actions = {
     return result;
   },
   async login({ commit, dispatch }, user) {
+    console.log('login', user);
     const result = await apiLogin(user);
 
     if (result.Code == 200) {
